@@ -4,7 +4,9 @@ set -e
 
 # Module name
 module_name="github.com/itera-io/taikungoclient"
-client_definition_file="client/github_com_itera_io_taikungoclient_client.go"
+
+# Application name
+app_name="taikungoclient"
 
 # Delete client/ and models/ directories if they already exist
 rm -rfv client/
@@ -21,11 +23,12 @@ sed 's/"Documentation"/"Doc"/g' swagger.json > swagger-patch.json
 go mod init "${module_name}"
 
 # Generate the client
-swagger generate client -f swagger-patch.json -A "${module_name}" $@
+swagger generate client -f swagger-patch.json -A "${app_name}" $@
 rm -f swagger-patch.json
 
 # Insert code to support extra media types
 reference_line="transport := httptransport.New"
+client_definition_file="client/${app_name}_client.go"
 sed -i "/${reference_line}/r .github/codegen/media_type_support_code.go" "${client_definition_file}"
 go fmt "${client_definition_file}"
 
