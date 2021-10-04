@@ -59,7 +59,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/users"
 )
 
-// Default github com itera io taikungoclient HTTP client.
+// Default taikungoclient HTTP client.
 var Default = NewHTTPClient(nil)
 
 const (
@@ -74,14 +74,14 @@ const (
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
 var DefaultSchemes = []string{"https"}
 
-// NewHTTPClient creates a new github com itera io taikungoclient HTTP client.
-func NewHTTPClient(formats strfmt.Registry) *GithubComIteraIoTaikungoclient {
+// NewHTTPClient creates a new taikungoclient HTTP client.
+func NewHTTPClient(formats strfmt.Registry) *Taikungoclient {
 	return NewHTTPClientWithConfig(formats, nil)
 }
 
-// NewHTTPClientWithConfig creates a new github com itera io taikungoclient HTTP client,
+// NewHTTPClientWithConfig creates a new taikungoclient HTTP client,
 // using a customizable transport config.
-func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *GithubComIteraIoTaikungoclient {
+func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Taikungoclient {
 	// ensure nullable parameters have default
 	if cfg == nil {
 		cfg = DefaultTransportConfig()
@@ -109,14 +109,14 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Git
 	return New(transport, formats)
 }
 
-// New creates a new github com itera io taikungoclient client
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *GithubComIteraIoTaikungoclient {
+// New creates a new taikungoclient client
+func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungoclient {
 	// ensure nullable parameters have default
 	if formats == nil {
 		formats = strfmt.Default
 	}
 
-	cli := new(GithubComIteraIoTaikungoclient)
+	cli := new(Taikungoclient)
 	cli.Transport = transport
 	cli.AccessProfiles = access_profiles.New(transport, formats)
 	cli.Admin = admin.New(transport, formats)
@@ -207,8 +207,8 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 	return cfg
 }
 
-// GithubComIteraIoTaikungoclient is a client for github com itera io taikungoclient
-type GithubComIteraIoTaikungoclient struct {
+// Taikungoclient is a client for taikungoclient
+type Taikungoclient struct {
 	AccessProfiles access_profiles.ClientService
 
 	Admin admin.ClientService
@@ -307,7 +307,7 @@ type GithubComIteraIoTaikungoclient struct {
 }
 
 // SetTransport changes the transport on the client and all its subresources
-func (c *GithubComIteraIoTaikungoclient) SetTransport(transport runtime.ClientTransport) {
+func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.AccessProfiles.SetTransport(transport)
 	c.Admin.SetTransport(transport)
