@@ -21,7 +21,7 @@ sed 's/"Documentation"/"Doc"/g' swagger.json > swagger-patch.json
 go mod init "${module_name}"
 
 # Generate the client
-swagger generate client -c "client" -f swagger-patch.json -A "${module_name}" $@
+swagger generate client -f swagger-patch.json -A "${module_name}" $@
 rm -f swagger-patch.json
 
 # Insert code to support extra media types
