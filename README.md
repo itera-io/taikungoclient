@@ -1,3 +1,3 @@
 # taikungoclient
 
-Go client for taikun generated using [go-swagger](https://goswagger.io/).
+Go client for Taikun generated using [go-swagger](https://goswagger.io/).
