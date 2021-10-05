@@ -37,6 +37,9 @@ type UserForListDto struct {
 	// is approved by partner
 	IsApprovedByPartner bool `json:"isApprovedByPartner,omitempty"`
 
+	// is csm
+	IsCsm bool `json:"isCsm,omitempty"`
+
 	// is eligible update subscription
 	IsEligibleUpdateSubscription bool `json:"isEligibleUpdateSubscription,omitempty"`
 
