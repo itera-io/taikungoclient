@@ -40,6 +40,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/organizations"
 	"github.com/itera-io/taikungoclient/client/partner"
 	"github.com/itera-io/taikungoclient/client/payment"
+	"github.com/itera-io/taikungoclient/client/pre_defined_queries"
 	"github.com/itera-io/taikungoclient/client/project_quotas"
 	"github.com/itera-io/taikungoclient/client/projects"
 	"github.com/itera-io/taikungoclient/client/prometheus"
@@ -148,6 +149,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Organizations = organizations.New(transport, formats)
 	cli.Partner = partner.New(transport, formats)
 	cli.Payment = payment.New(transport, formats)
+	cli.PreDefinedQueries = pre_defined_queries.New(transport, formats)
 	cli.ProjectQuotas = project_quotas.New(transport, formats)
 	cli.Projects = projects.New(transport, formats)
 	cli.Prometheus = prometheus.New(transport, formats)
@@ -269,6 +271,8 @@ type Taikungoclient struct {
 
 	Payment payment.ClientService
 
+	PreDefinedQueries pre_defined_queries.ClientService
+
 	ProjectQuotas project_quotas.ClientService
 
 	Projects projects.ClientService
@@ -339,6 +343,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Organizations.SetTransport(transport)
 	c.Partner.SetTransport(transport)
 	c.Payment.SetTransport(transport)
+	c.PreDefinedQueries.SetTransport(transport)
 	c.ProjectQuotas.SetTransport(transport)
 	c.Projects.SetTransport(transport)
 	c.Prometheus.SetTransport(transport)

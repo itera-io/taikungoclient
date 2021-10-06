@@ -60,6 +60,11 @@ func NewCloudCredentialsDashboardListParamsWithHTTPClient(client *http.Client) *
 */
 type CloudCredentialsDashboardListParams struct {
 
+	// ID.
+	//
+	// Format: int32
+	ID *int32
+
 	// Limit.
 	//
 	// Format: int32
@@ -141,6 +146,17 @@ func (o *CloudCredentialsDashboardListParams) WithHTTPClient(client *http.Client
 // SetHTTPClient adds the HTTPClient to the cloud credentials dashboard list params
 func (o *CloudCredentialsDashboardListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithID adds the id to the cloud credentials dashboard list params
+func (o *CloudCredentialsDashboardListParams) WithID(id *int32) *CloudCredentialsDashboardListParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the cloud credentials dashboard list params
+func (o *CloudCredentialsDashboardListParams) SetID(id *int32) {
+	o.ID = id
 }
 
 // WithLimit adds the limit to the cloud credentials dashboard list params
@@ -238,6 +254,23 @@ func (o *CloudCredentialsDashboardListParams) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 	var res []error
+
+	if o.ID != nil {
+
+		// query param id
+		var qrID int32
+
+		if o.ID != nil {
+			qrID = *o.ID
+		}
+		qID := swag.FormatInt32(qrID)
+		if qID != "" {
+
+			if err := r.SetQueryParam("id", qID); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 

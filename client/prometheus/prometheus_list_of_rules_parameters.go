@@ -60,6 +60,11 @@ func NewPrometheusListOfRulesParamsWithHTTPClient(client *http.Client) *Promethe
 */
 type PrometheusListOfRulesParams struct {
 
+	// ID.
+	//
+	// Format: int32
+	ID *int32
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -147,6 +152,17 @@ func (o *PrometheusListOfRulesParams) WithHTTPClient(client *http.Client) *Prome
 // SetHTTPClient adds the HTTPClient to the prometheus list of rules params
 func (o *PrometheusListOfRulesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithID adds the id to the prometheus list of rules params
+func (o *PrometheusListOfRulesParams) WithID(id *int32) *PrometheusListOfRulesParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the prometheus list of rules params
+func (o *PrometheusListOfRulesParams) SetID(id *int32) {
+	o.ID = id
 }
 
 // WithLimit adds the limit to the prometheus list of rules params
@@ -244,6 +260,23 @@ func (o *PrometheusListOfRulesParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 	var res []error
+
+	if o.ID != nil {
+
+		// query param id
+		var qrID int32
+
+		if o.ID != nil {
+			qrID = *o.ID
+		}
+		qID := swag.FormatInt32(qrID)
+		if qID != "" {
+
+			if err := r.SetQueryParam("id", qID); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 

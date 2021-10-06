@@ -60,6 +60,11 @@ func NewS3CredentialsListParamsWithHTTPClient(client *http.Client) *S3Credential
 */
 type S3CredentialsListParams struct {
 
+	// ID.
+	//
+	// Format: int32
+	ID *int32
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -143,6 +148,17 @@ func (o *S3CredentialsListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithID adds the id to the s3 credentials list params
+func (o *S3CredentialsListParams) WithID(id *int32) *S3CredentialsListParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the s3 credentials list params
+func (o *S3CredentialsListParams) SetID(id *int32) {
+	o.ID = id
+}
+
 // WithLimit adds the limit to the s3 credentials list params
 func (o *S3CredentialsListParams) WithLimit(limit *int32) *S3CredentialsListParams {
 	o.SetLimit(limit)
@@ -216,6 +232,23 @@ func (o *S3CredentialsListParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
+
+	if o.ID != nil {
+
+		// query param id
+		var qrID int32
+
+		if o.ID != nil {
+			qrID = *o.ID
+		}
+		qID := swag.FormatInt32(qrID)
+		if qID != "" {
+
+			if err := r.SetQueryParam("id", qID); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 

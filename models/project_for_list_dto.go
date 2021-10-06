@@ -122,6 +122,9 @@ type ProjectForListDto struct {
 	// organization name
 	OrganizationName string `json:"organizationName,omitempty"`
 
+	// quota Id
+	QuotaID int32 `json:"quotaId,omitempty"`
+
 	// router Id end range
 	RouterIDEndRange int32 `json:"routerIdEndRange,omitempty"`
 

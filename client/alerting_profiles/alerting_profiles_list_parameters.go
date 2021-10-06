@@ -60,6 +60,11 @@ func NewAlertingProfilesListParamsWithHTTPClient(client *http.Client) *AlertingP
 */
 type AlertingProfilesListParams struct {
 
+	// ID.
+	//
+	// Format: int32
+	ID *int32
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -146,6 +151,17 @@ func (o *AlertingProfilesListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithID adds the id to the alerting profiles list params
+func (o *AlertingProfilesListParams) WithID(id *int32) *AlertingProfilesListParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the alerting profiles list params
+func (o *AlertingProfilesListParams) SetID(id *int32) {
+	o.ID = id
+}
+
 // WithLimit adds the limit to the alerting profiles list params
 func (o *AlertingProfilesListParams) WithLimit(limit *int32) *AlertingProfilesListParams {
 	o.SetLimit(limit)
@@ -230,6 +246,23 @@ func (o *AlertingProfilesListParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
+
+	if o.ID != nil {
+
+		// query param id
+		var qrID int32
+
+		if o.ID != nil {
+			qrID = *o.ID
+		}
+		qID := swag.FormatInt32(qrID)
+		if qID != "" {
+
+			if err := r.SetQueryParam("id", qID); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 
