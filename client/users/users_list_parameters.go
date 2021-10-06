@@ -60,6 +60,9 @@ func NewUsersListParamsWithHTTPClient(client *http.Client) *UsersListParams {
 */
 type UsersListParams struct {
 
+	// ID.
+	ID *string
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -150,6 +153,17 @@ func (o *UsersListParams) WithHTTPClient(client *http.Client) *UsersListParams {
 // SetHTTPClient adds the HTTPClient to the users list params
 func (o *UsersListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithID adds the id to the users list params
+func (o *UsersListParams) WithID(id *string) *UsersListParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the users list params
+func (o *UsersListParams) SetID(id *string) {
+	o.ID = id
 }
 
 // WithLimit adds the limit to the users list params
@@ -247,6 +261,23 @@ func (o *UsersListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 		return err
 	}
 	var res []error
+
+	if o.ID != nil {
+
+		// query param id
+		var qrID string
+
+		if o.ID != nil {
+			qrID = *o.ID
+		}
+		qID := qrID
+		if qID != "" {
+
+			if err := r.SetQueryParam("id", qID); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 

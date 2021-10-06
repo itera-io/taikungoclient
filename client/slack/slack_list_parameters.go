@@ -60,6 +60,11 @@ func NewSlackListParamsWithHTTPClient(client *http.Client) *SlackListParams {
 */
 type SlackListParams struct {
 
+	// ID.
+	//
+	// Format: int32
+	ID *int32
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -152,6 +157,17 @@ func (o *SlackListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithID adds the id to the slack list params
+func (o *SlackListParams) WithID(id *int32) *SlackListParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the slack list params
+func (o *SlackListParams) SetID(id *int32) {
+	o.ID = id
+}
+
 // WithLimit adds the limit to the slack list params
 func (o *SlackListParams) WithLimit(limit *int32) *SlackListParams {
 	o.SetLimit(limit)
@@ -236,6 +252,23 @@ func (o *SlackListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 		return err
 	}
 	var res []error
+
+	if o.ID != nil {
+
+		// query param id
+		var qrID int32
+
+		if o.ID != nil {
+			qrID = *o.ID
+		}
+		qID := swag.FormatInt32(qrID)
+		if qID != "" {
+
+			if err := r.SetQueryParam("id", qID); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 

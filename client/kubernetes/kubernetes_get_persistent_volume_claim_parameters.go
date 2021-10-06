@@ -60,6 +60,9 @@ func NewKubernetesGetPersistentVolumeClaimParamsWithHTTPClient(client *http.Clie
 */
 type KubernetesGetPersistentVolumeClaimParams struct {
 
+	// FilterBy.
+	FilterBy *string
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -147,6 +150,17 @@ func (o *KubernetesGetPersistentVolumeClaimParams) WithHTTPClient(client *http.C
 // SetHTTPClient adds the HTTPClient to the kubernetes get persistent volume claim params
 func (o *KubernetesGetPersistentVolumeClaimParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithFilterBy adds the filterBy to the kubernetes get persistent volume claim params
+func (o *KubernetesGetPersistentVolumeClaimParams) WithFilterBy(filterBy *string) *KubernetesGetPersistentVolumeClaimParams {
+	o.SetFilterBy(filterBy)
+	return o
+}
+
+// SetFilterBy adds the filterBy to the kubernetes get persistent volume claim params
+func (o *KubernetesGetPersistentVolumeClaimParams) SetFilterBy(filterBy *string) {
+	o.FilterBy = filterBy
 }
 
 // WithLimit adds the limit to the kubernetes get persistent volume claim params
@@ -244,6 +258,23 @@ func (o *KubernetesGetPersistentVolumeClaimParams) WriteToRequest(r runtime.Clie
 		return err
 	}
 	var res []error
+
+	if o.FilterBy != nil {
+
+		// query param filterBy
+		var qrFilterBy string
+
+		if o.FilterBy != nil {
+			qrFilterBy = *o.FilterBy
+		}
+		qFilterBy := qrFilterBy
+		if qFilterBy != "" {
+
+			if err := r.SetQueryParam("filterBy", qFilterBy); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 

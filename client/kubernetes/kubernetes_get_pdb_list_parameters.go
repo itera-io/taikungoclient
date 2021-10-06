@@ -60,6 +60,9 @@ func NewKubernetesGetPdbListParamsWithHTTPClient(client *http.Client) *Kubernete
 */
 type KubernetesGetPdbListParams struct {
 
+	// FilterBy.
+	FilterBy *string
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -147,6 +150,17 @@ func (o *KubernetesGetPdbListParams) WithHTTPClient(client *http.Client) *Kubern
 // SetHTTPClient adds the HTTPClient to the kubernetes get pdb list params
 func (o *KubernetesGetPdbListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithFilterBy adds the filterBy to the kubernetes get pdb list params
+func (o *KubernetesGetPdbListParams) WithFilterBy(filterBy *string) *KubernetesGetPdbListParams {
+	o.SetFilterBy(filterBy)
+	return o
+}
+
+// SetFilterBy adds the filterBy to the kubernetes get pdb list params
+func (o *KubernetesGetPdbListParams) SetFilterBy(filterBy *string) {
+	o.FilterBy = filterBy
 }
 
 // WithLimit adds the limit to the kubernetes get pdb list params
@@ -244,6 +258,23 @@ func (o *KubernetesGetPdbListParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
+
+	if o.FilterBy != nil {
+
+		// query param filterBy
+		var qrFilterBy string
+
+		if o.FilterBy != nil {
+			qrFilterBy = *o.FilterBy
+		}
+		qFilterBy := qrFilterBy
+		if qFilterBy != "" {
+
+			if err := r.SetQueryParam("filterBy", qFilterBy); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 

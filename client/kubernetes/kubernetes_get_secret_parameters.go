@@ -60,6 +60,9 @@ func NewKubernetesGetSecretParamsWithHTTPClient(client *http.Client) *Kubernetes
 */
 type KubernetesGetSecretParams struct {
 
+	// FilterBy.
+	FilterBy *string
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -147,6 +150,17 @@ func (o *KubernetesGetSecretParams) WithHTTPClient(client *http.Client) *Kuberne
 // SetHTTPClient adds the HTTPClient to the kubernetes get secret params
 func (o *KubernetesGetSecretParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithFilterBy adds the filterBy to the kubernetes get secret params
+func (o *KubernetesGetSecretParams) WithFilterBy(filterBy *string) *KubernetesGetSecretParams {
+	o.SetFilterBy(filterBy)
+	return o
+}
+
+// SetFilterBy adds the filterBy to the kubernetes get secret params
+func (o *KubernetesGetSecretParams) SetFilterBy(filterBy *string) {
+	o.FilterBy = filterBy
 }
 
 // WithLimit adds the limit to the kubernetes get secret params
@@ -244,6 +258,23 @@ func (o *KubernetesGetSecretParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
+
+	if o.FilterBy != nil {
+
+		// query param filterBy
+		var qrFilterBy string
+
+		if o.FilterBy != nil {
+			qrFilterBy = *o.FilterBy
+		}
+		qFilterBy := qrFilterBy
+		if qFilterBy != "" {
+
+			if err := r.SetQueryParam("filterBy", qFilterBy); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 

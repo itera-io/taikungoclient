@@ -60,6 +60,9 @@ func NewKubernetesGetIngressesParamsWithHTTPClient(client *http.Client) *Kuberne
 */
 type KubernetesGetIngressesParams struct {
 
+	// FilterBy.
+	FilterBy *string
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -147,6 +150,17 @@ func (o *KubernetesGetIngressesParams) WithHTTPClient(client *http.Client) *Kube
 // SetHTTPClient adds the HTTPClient to the kubernetes get ingresses params
 func (o *KubernetesGetIngressesParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithFilterBy adds the filterBy to the kubernetes get ingresses params
+func (o *KubernetesGetIngressesParams) WithFilterBy(filterBy *string) *KubernetesGetIngressesParams {
+	o.SetFilterBy(filterBy)
+	return o
+}
+
+// SetFilterBy adds the filterBy to the kubernetes get ingresses params
+func (o *KubernetesGetIngressesParams) SetFilterBy(filterBy *string) {
+	o.FilterBy = filterBy
 }
 
 // WithLimit adds the limit to the kubernetes get ingresses params
@@ -244,6 +258,23 @@ func (o *KubernetesGetIngressesParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
+
+	if o.FilterBy != nil {
+
+		// query param filterBy
+		var qrFilterBy string
+
+		if o.FilterBy != nil {
+			qrFilterBy = *o.FilterBy
+		}
+		qFilterBy := qrFilterBy
+		if qFilterBy != "" {
+
+			if err := r.SetQueryParam("filterBy", qFilterBy); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 

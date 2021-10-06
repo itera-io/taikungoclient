@@ -17,6 +17,9 @@ import (
 // swagger:model ApiResponse
 type APIResponse struct {
 
+	// id
+	ID string `json:"id,omitempty"`
+
 	// is error
 	IsError bool `json:"isError,omitempty"`
 

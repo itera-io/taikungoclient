@@ -84,6 +84,8 @@ type ClientService interface {
 
 	KubernetesGetKubernetesEventsList(params *KubernetesGetKubernetesEventsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetKubernetesEventsListOK, error)
 
+	KubernetesGetNamespacesList(params *KubernetesGetNamespacesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetNamespacesListOK, error)
+
 	KubernetesGetNodeList(params *KubernetesGetNodeListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetNodeListOK, error)
 
 	KubernetesGetPdbList(params *KubernetesGetPdbListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetPdbListOK, error)
@@ -1167,6 +1169,45 @@ func (a *Client) KubernetesGetKubernetesEventsList(params *KubernetesGetKubernet
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetKubernetesEventsList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesGetNamespacesList retrieves kube config file
+*/
+func (a *Client) KubernetesGetNamespacesList(params *KubernetesGetNamespacesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetNamespacesListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesGetNamespacesListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_GetNamespacesList",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Kubernetes/{projectId}/namespaces",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesGetNamespacesListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesGetNamespacesListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetNamespacesList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

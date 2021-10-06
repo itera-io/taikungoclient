@@ -60,6 +60,9 @@ func NewKubernetesGetDaemonSetParamsWithHTTPClient(client *http.Client) *Kuberne
 */
 type KubernetesGetDaemonSetParams struct {
 
+	// FilterBy.
+	FilterBy *string
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -147,6 +150,17 @@ func (o *KubernetesGetDaemonSetParams) WithHTTPClient(client *http.Client) *Kube
 // SetHTTPClient adds the HTTPClient to the kubernetes get daemon set params
 func (o *KubernetesGetDaemonSetParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithFilterBy adds the filterBy to the kubernetes get daemon set params
+func (o *KubernetesGetDaemonSetParams) WithFilterBy(filterBy *string) *KubernetesGetDaemonSetParams {
+	o.SetFilterBy(filterBy)
+	return o
+}
+
+// SetFilterBy adds the filterBy to the kubernetes get daemon set params
+func (o *KubernetesGetDaemonSetParams) SetFilterBy(filterBy *string) {
+	o.FilterBy = filterBy
 }
 
 // WithLimit adds the limit to the kubernetes get daemon set params
@@ -244,6 +258,23 @@ func (o *KubernetesGetDaemonSetParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
+
+	if o.FilterBy != nil {
+
+		// query param filterBy
+		var qrFilterBy string
+
+		if o.FilterBy != nil {
+			qrFilterBy = *o.FilterBy
+		}
+		qFilterBy := qrFilterBy
+		if qFilterBy != "" {
+
+			if err := r.SetQueryParam("filterBy", qFilterBy); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 

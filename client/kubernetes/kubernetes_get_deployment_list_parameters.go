@@ -60,6 +60,9 @@ func NewKubernetesGetDeploymentListParamsWithHTTPClient(client *http.Client) *Ku
 */
 type KubernetesGetDeploymentListParams struct {
 
+	// FilterBy.
+	FilterBy *string
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -147,6 +150,17 @@ func (o *KubernetesGetDeploymentListParams) WithHTTPClient(client *http.Client) 
 // SetHTTPClient adds the HTTPClient to the kubernetes get deployment list params
 func (o *KubernetesGetDeploymentListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithFilterBy adds the filterBy to the kubernetes get deployment list params
+func (o *KubernetesGetDeploymentListParams) WithFilterBy(filterBy *string) *KubernetesGetDeploymentListParams {
+	o.SetFilterBy(filterBy)
+	return o
+}
+
+// SetFilterBy adds the filterBy to the kubernetes get deployment list params
+func (o *KubernetesGetDeploymentListParams) SetFilterBy(filterBy *string) {
+	o.FilterBy = filterBy
 }
 
 // WithLimit adds the limit to the kubernetes get deployment list params
@@ -244,6 +258,23 @@ func (o *KubernetesGetDeploymentListParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 	var res []error
+
+	if o.FilterBy != nil {
+
+		// query param filterBy
+		var qrFilterBy string
+
+		if o.FilterBy != nil {
+			qrFilterBy = *o.FilterBy
+		}
+		qFilterBy := qrFilterBy
+		if qFilterBy != "" {
+
+			if err := r.SetQueryParam("filterBy", qFilterBy); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 

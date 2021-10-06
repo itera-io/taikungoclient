@@ -60,6 +60,9 @@ func NewKubernetesGetConfigMapParamsWithHTTPClient(client *http.Client) *Kuberne
 */
 type KubernetesGetConfigMapParams struct {
 
+	// FilterBy.
+	FilterBy *string
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -147,6 +150,17 @@ func (o *KubernetesGetConfigMapParams) WithHTTPClient(client *http.Client) *Kube
 // SetHTTPClient adds the HTTPClient to the kubernetes get config map params
 func (o *KubernetesGetConfigMapParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithFilterBy adds the filterBy to the kubernetes get config map params
+func (o *KubernetesGetConfigMapParams) WithFilterBy(filterBy *string) *KubernetesGetConfigMapParams {
+	o.SetFilterBy(filterBy)
+	return o
+}
+
+// SetFilterBy adds the filterBy to the kubernetes get config map params
+func (o *KubernetesGetConfigMapParams) SetFilterBy(filterBy *string) {
+	o.FilterBy = filterBy
 }
 
 // WithLimit adds the limit to the kubernetes get config map params
@@ -244,6 +258,23 @@ func (o *KubernetesGetConfigMapParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
+
+	if o.FilterBy != nil {
+
+		// query param filterBy
+		var qrFilterBy string
+
+		if o.FilterBy != nil {
+			qrFilterBy = *o.FilterBy
+		}
+		qFilterBy := qrFilterBy
+		if qFilterBy != "" {
+
+			if err := r.SetQueryParam("filterBy", qFilterBy); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 

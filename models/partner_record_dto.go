@@ -17,6 +17,9 @@ import (
 // swagger:model PartnerRecordDto
 type PartnerRecordDto struct {
 
+	// allow registration
+	AllowRegistration bool `json:"allowRegistration,omitempty"`
+
 	// id
 	ID int32 `json:"id,omitempty"`
 

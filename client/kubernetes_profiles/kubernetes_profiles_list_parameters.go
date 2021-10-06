@@ -60,6 +60,11 @@ func NewKubernetesProfilesListParamsWithHTTPClient(client *http.Client) *Kuberne
 */
 type KubernetesProfilesListParams struct {
 
+	// ID.
+	//
+	// Format: int32
+	ID *int32
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -147,6 +152,17 @@ func (o *KubernetesProfilesListParams) WithHTTPClient(client *http.Client) *Kube
 // SetHTTPClient adds the HTTPClient to the kubernetes profiles list params
 func (o *KubernetesProfilesListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithID adds the id to the kubernetes profiles list params
+func (o *KubernetesProfilesListParams) WithID(id *int32) *KubernetesProfilesListParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the kubernetes profiles list params
+func (o *KubernetesProfilesListParams) SetID(id *int32) {
+	o.ID = id
 }
 
 // WithLimit adds the limit to the kubernetes profiles list params
@@ -244,6 +260,23 @@ func (o *KubernetesProfilesListParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
+
+	if o.ID != nil {
+
+		// query param id
+		var qrID int32
+
+		if o.ID != nil {
+			qrID = *o.ID
+		}
+		qID := swag.FormatInt32(qrID)
+		if qID != "" {
+
+			if err := r.SetQueryParam("id", qID); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 

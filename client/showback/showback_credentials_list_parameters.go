@@ -60,6 +60,11 @@ func NewShowbackCredentialsListParamsWithHTTPClient(client *http.Client) *Showba
 */
 type ShowbackCredentialsListParams struct {
 
+	// ID.
+	//
+	// Format: int32
+	ID *int32
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -146,6 +151,17 @@ func (o *ShowbackCredentialsListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithID adds the id to the showback credentials list params
+func (o *ShowbackCredentialsListParams) WithID(id *int32) *ShowbackCredentialsListParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the showback credentials list params
+func (o *ShowbackCredentialsListParams) SetID(id *int32) {
+	o.ID = id
+}
+
 // WithLimit adds the limit to the showback credentials list params
 func (o *ShowbackCredentialsListParams) WithLimit(limit *int32) *ShowbackCredentialsListParams {
 	o.SetLimit(limit)
@@ -230,6 +246,23 @@ func (o *ShowbackCredentialsListParams) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
+
+	if o.ID != nil {
+
+		// query param id
+		var qrID int32
+
+		if o.ID != nil {
+			qrID = *o.ID
+		}
+		qID := swag.FormatInt32(qrID)
+		if qID != "" {
+
+			if err := r.SetQueryParam("id", qID); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 
