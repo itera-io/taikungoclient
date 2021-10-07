@@ -26,6 +26,9 @@ type AllTicketsDto struct {
 	// current status date
 	CurrentStatusDate string `json:"currentStatusDate,omitempty"`
 
+	// deleted user
+	DeletedUser bool `json:"deletedUser,omitempty"`
+
 	// description
 	Description string `json:"description,omitempty"`
 
