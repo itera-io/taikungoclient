@@ -20,7 +20,7 @@ import (
 type TaikunRequestList struct {
 
 	// data
-	Data []*ElasticRequest `json:"data"`
+	Data []*ElasticTaikunRequest `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`

@@ -14,26 +14,23 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// ElasticRequest elastic request
+// ElasticTaikunRequest elastic taikun request
 //
-// swagger:model ElasticRequest
-type ElasticRequest struct {
-
-	// alerts
-	Alerts string `json:"alerts,omitempty"`
+// swagger:model ElasticTaikunRequest
+type ElasticTaikunRequest struct {
 
 	// created at
 	// Format: date-time
 	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
-
-	// details
-	Details string `json:"details,omitempty"`
 
 	// endpoint
 	Endpoint string `json:"endpoint,omitempty"`
 
 	// error message
 	ErrorMessage string `json:"errorMessage,omitempty"`
+
+	// filtering element
+	FilteringElement FilteringElement `json:"filteringElement,omitempty"`
 
 	// ip
 	IP string `json:"ip,omitempty"`
@@ -43,12 +40,6 @@ type ElasticRequest struct {
 
 	// organization name
 	OrganizationName string `json:"organizationName,omitempty"`
-
-	// overviews
-	Overviews string `json:"overviews,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
 
 	// request Id
 	RequestID string `json:"requestId,omitempty"`
@@ -69,11 +60,15 @@ type ElasticRequest struct {
 	UserRole string `json:"userRole,omitempty"`
 }
 
-// Validate validates this elastic request
-func (m *ElasticRequest) Validate(formats strfmt.Registry) error {
+// Validate validates this elastic taikun request
+func (m *ElasticTaikunRequest) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCreatedAt(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFilteringElement(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -83,7 +78,7 @@ func (m *ElasticRequest) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ElasticRequest) validateCreatedAt(formats strfmt.Registry) error {
+func (m *ElasticTaikunRequest) validateCreatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.CreatedAt) { // not required
 		return nil
 	}
@@ -95,13 +90,49 @@ func (m *ElasticRequest) validateCreatedAt(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this elastic request based on context it is used
-func (m *ElasticRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *ElasticTaikunRequest) validateFilteringElement(formats strfmt.Registry) error {
+	if swag.IsZero(m.FilteringElement) { // not required
+		return nil
+	}
+
+	if err := m.FilteringElement.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("filteringElement")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this elastic taikun request based on the context it is used
+func (m *ElasticTaikunRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateFilteringElement(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ElasticTaikunRequest) contextValidateFilteringElement(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.FilteringElement.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("filteringElement")
+		}
+		return err
+	}
+
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ElasticRequest) MarshalBinary() ([]byte, error) {
+func (m *ElasticTaikunRequest) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -109,8 +140,8 @@ func (m *ElasticRequest) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *ElasticRequest) UnmarshalBinary(b []byte) error {
-	var res ElasticRequest
+func (m *ElasticTaikunRequest) UnmarshalBinary(b []byte) error {
+	var res ElasticTaikunRequest
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

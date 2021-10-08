@@ -74,20 +74,22 @@ func NewPrometheusCreateOK() *PrometheusCreateOK {
 Success
 */
 type PrometheusCreateOK struct {
-	Payload models.Unit
+	Payload *models.APIResponse
 }
 
 func (o *PrometheusCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateOK  %+v", 200, o.Payload)
 }
-func (o *PrometheusCreateOK) GetPayload() models.Unit {
+func (o *PrometheusCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *PrometheusCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.APIResponse)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
