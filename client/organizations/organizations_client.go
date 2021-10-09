@@ -40,8 +40,6 @@ type ClientService interface {
 
 	OrganizationsList(params *OrganizationsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsListOK, error)
 
-	OrganizationsOrgDescription(params *OrganizationsOrgDescriptionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsOrgDescriptionOK, error)
-
 	OrganizationsOrganizationList(params *OrganizationsOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsOrganizationListOK, error)
 
 	OrganizationsToggleKeycloak(params *OrganizationsToggleKeycloakParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsToggleKeycloakOK, error)
@@ -248,45 +246,6 @@ func (a *Client) OrganizationsList(params *OrganizationsListParams, authInfo run
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Organizations_List: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  OrganizationsOrgDescription orgs description
-*/
-func (a *Client) OrganizationsOrgDescription(params *OrganizationsOrgDescriptionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsOrgDescriptionOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewOrganizationsOrgDescriptionParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Organizations_OrgDescription",
-		Method:             "GET",
-		PathPattern:        "/api/v{v}/Organizations/description",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &OrganizationsOrgDescriptionReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*OrganizationsOrgDescriptionOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Organizations_OrgDescription: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -104,19 +104,19 @@ func NewOpsCredentialsMakeDefaultBadRequest() *OpsCredentialsMakeDefaultBadReque
 Bad Request
 */
 type OpsCredentialsMakeDefaultBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload *models.ValidationProblemDetails
 }
 
 func (o *OpsCredentialsMakeDefaultBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
-func (o *OpsCredentialsMakeDefaultBadRequest) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsMakeDefaultBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsMakeDefaultBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(models.ValidationProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

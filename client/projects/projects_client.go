@@ -350,7 +350,7 @@ func (a *Client) ProjectsExtendLifeTime(params *ProjectsExtendLifeTimeParams, au
 }
 
 /*
-  ProjectsList retrieves a list of projects it s possible to filter and select projects by their organization Id and by their status only available for admins
+  ProjectsList retrieves a list of projects
 */
 func (a *Client) ProjectsList(params *ProjectsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsListOK, error) {
 	// TODO: Validate the params before sending

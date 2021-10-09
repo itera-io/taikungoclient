@@ -131,19 +131,19 @@ func NewOpsCredentialsDeleteBadRequest() *OpsCredentialsDeleteBadRequest {
 Bad Request
 */
 type OpsCredentialsDeleteBadRequest struct {
-	Payload *models.ProblemDetails
+	Payload *models.ValidationProblemDetails
 }
 
 func (o *OpsCredentialsDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteBadRequest  %+v", 400, o.Payload)
 }
-func (o *OpsCredentialsDeleteBadRequest) GetPayload() *models.ProblemDetails {
+func (o *OpsCredentialsDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
+	o.Payload = new(models.ValidationProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
