@@ -59,6 +59,8 @@ func (m *CreateAwsCloudCommand) validateAwsRegion(formats strfmt.Registry) error
 	if err := m.AwsRegion.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("awsRegion")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("awsRegion")
 		}
 		return err
 	}
@@ -85,6 +87,8 @@ func (m *CreateAwsCloudCommand) contextValidateAwsRegion(ctx context.Context, fo
 	if err := m.AwsRegion.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("awsRegion")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("awsRegion")
 		}
 		return err
 	}

@@ -44,6 +44,8 @@ func (m *RemindUsersByAlertingProfileCommand) validateReminder(formats strfmt.Re
 	if err := m.Reminder.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("reminder")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("reminder")
 		}
 		return err
 	}
@@ -70,6 +72,8 @@ func (m *RemindUsersByAlertingProfileCommand) contextValidateReminder(ctx contex
 	if err := m.Reminder.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("reminder")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("reminder")
 		}
 		return err
 	}

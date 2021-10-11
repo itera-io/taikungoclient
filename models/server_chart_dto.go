@@ -117,6 +117,8 @@ func (m *ServerChartDto) validateAws(formats strfmt.Registry) error {
 			if err := m.Aws[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("aws" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("aws" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -141,6 +143,8 @@ func (m *ServerChartDto) validateAzure(formats strfmt.Registry) error {
 			if err := m.Azure[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("azure" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("azure" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -165,6 +169,8 @@ func (m *ServerChartDto) validateFailed(formats strfmt.Registry) error {
 			if err := m.Failed[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("failed" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("failed" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -189,6 +195,8 @@ func (m *ServerChartDto) validateOpenstack(formats strfmt.Registry) error {
 			if err := m.Openstack[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("openstack" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("openstack" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -233,6 +241,8 @@ func (m *ServerChartDto) contextValidateAws(ctx context.Context, formats strfmt.
 			if err := m.Aws[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("aws" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("aws" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -251,6 +261,8 @@ func (m *ServerChartDto) contextValidateAzure(ctx context.Context, formats strfm
 			if err := m.Azure[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("azure" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("azure" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -269,6 +281,8 @@ func (m *ServerChartDto) contextValidateFailed(ctx context.Context, formats strf
 			if err := m.Failed[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("failed" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("failed" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -287,6 +301,8 @@ func (m *ServerChartDto) contextValidateOpenstack(ctx context.Context, formats s
 			if err := m.Openstack[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("openstack" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("openstack" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

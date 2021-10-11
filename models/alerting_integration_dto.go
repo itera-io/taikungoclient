@@ -50,6 +50,8 @@ func (m *AlertingIntegrationDto) validateAlertingIntegrationType(formats strfmt.
 	if err := m.AlertingIntegrationType.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("alertingIntegrationType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("alertingIntegrationType")
 		}
 		return err
 	}
@@ -76,6 +78,8 @@ func (m *AlertingIntegrationDto) contextValidateAlertingIntegrationType(ctx cont
 	if err := m.AlertingIntegrationType.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("alertingIntegrationType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("alertingIntegrationType")
 		}
 		return err
 	}

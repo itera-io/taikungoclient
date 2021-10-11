@@ -114,6 +114,8 @@ func (m *PrometheusRuleListDto) validateBoundOrganizations(formats strfmt.Regist
 			if err := m.BoundOrganizations[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("boundOrganizations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundOrganizations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -138,6 +140,8 @@ func (m *PrometheusRuleListDto) validateLabels(formats strfmt.Registry) error {
 			if err := m.Labels[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("labels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("labels" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -157,6 +161,8 @@ func (m *PrometheusRuleListDto) validateOperationCredential(formats strfmt.Regis
 		if err := m.OperationCredential.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("operationCredential")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("operationCredential")
 			}
 			return err
 		}
@@ -174,6 +180,8 @@ func (m *PrometheusRuleListDto) validatePartner(formats strfmt.Registry) error {
 		if err := m.Partner.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("partner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("partner")
 			}
 			return err
 		}
@@ -216,6 +224,8 @@ func (m *PrometheusRuleListDto) contextValidateBoundOrganizations(ctx context.Co
 			if err := m.BoundOrganizations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("boundOrganizations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundOrganizations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -234,6 +244,8 @@ func (m *PrometheusRuleListDto) contextValidateLabels(ctx context.Context, forma
 			if err := m.Labels[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("labels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("labels" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -250,6 +262,8 @@ func (m *PrometheusRuleListDto) contextValidateOperationCredential(ctx context.C
 		if err := m.OperationCredential.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("operationCredential")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("operationCredential")
 			}
 			return err
 		}
@@ -264,6 +278,8 @@ func (m *PrometheusRuleListDto) contextValidatePartner(ctx context.Context, form
 		if err := m.Partner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("partner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("partner")
 			}
 			return err
 		}

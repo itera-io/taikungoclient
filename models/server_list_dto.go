@@ -114,6 +114,8 @@ func (m *ServerListDto) validateKubernetesNodeLabels(formats strfmt.Registry) er
 			if err := m.KubernetesNodeLabels[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -146,6 +148,8 @@ func (m *ServerListDto) contextValidateKubernetesNodeLabels(ctx context.Context,
 			if err := m.KubernetesNodeLabels[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

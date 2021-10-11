@@ -98,6 +98,8 @@ func (m *ElasticTaikunRequest) validateFilteringElement(formats strfmt.Registry)
 	if err := m.FilteringElement.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("filteringElement")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("filteringElement")
 		}
 		return err
 	}
@@ -124,6 +126,8 @@ func (m *ElasticTaikunRequest) contextValidateFilteringElement(ctx context.Conte
 	if err := m.FilteringElement.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("filteringElement")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("filteringElement")
 		}
 		return err
 	}

@@ -65,6 +65,8 @@ func (m *UpdateUserCommand) validateRole(formats strfmt.Registry) error {
 	if err := m.Role.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("role")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("role")
 		}
 		return err
 	}
@@ -91,6 +93,8 @@ func (m *UpdateUserCommand) contextValidateRole(ctx context.Context, formats str
 	if err := m.Role.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("role")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("role")
 		}
 		return err
 	}

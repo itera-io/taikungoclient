@@ -81,6 +81,8 @@ func (m *CreateAlertingProfileCommand) validateAlertingIntegrations(formats strf
 			if err := m.AlertingIntegrations[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("alertingIntegrations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("alertingIntegrations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -105,6 +107,8 @@ func (m *CreateAlertingProfileCommand) validateEmails(formats strfmt.Registry) e
 			if err := m.Emails[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("emails" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("emails" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -123,6 +127,8 @@ func (m *CreateAlertingProfileCommand) validateReminder(formats strfmt.Registry)
 	if err := m.Reminder.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("reminder")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("reminder")
 		}
 		return err
 	}
@@ -144,6 +150,8 @@ func (m *CreateAlertingProfileCommand) validateWebhooks(formats strfmt.Registry)
 			if err := m.Webhooks[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("webhooks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("webhooks" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -188,6 +196,8 @@ func (m *CreateAlertingProfileCommand) contextValidateAlertingIntegrations(ctx c
 			if err := m.AlertingIntegrations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("alertingIntegrations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("alertingIntegrations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -206,6 +216,8 @@ func (m *CreateAlertingProfileCommand) contextValidateEmails(ctx context.Context
 			if err := m.Emails[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("emails" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("emails" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -221,6 +233,8 @@ func (m *CreateAlertingProfileCommand) contextValidateReminder(ctx context.Conte
 	if err := m.Reminder.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("reminder")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("reminder")
 		}
 		return err
 	}
@@ -236,6 +250,8 @@ func (m *CreateAlertingProfileCommand) contextValidateWebhooks(ctx context.Conte
 			if err := m.Webhooks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("webhooks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("webhooks" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

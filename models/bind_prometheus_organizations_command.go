@@ -54,6 +54,8 @@ func (m *BindPrometheusOrganizationsCommand) validateOrganizations(formats strfm
 			if err := m.Organizations[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("organizations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("organizations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -86,6 +88,8 @@ func (m *BindPrometheusOrganizationsCommand) contextValidateOrganizations(ctx co
 			if err := m.Organizations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("organizations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("organizations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -50,6 +50,8 @@ func (m *CheckAwsCommand) validateRegion(formats strfmt.Registry) error {
 	if err := m.Region.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("region")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("region")
 		}
 		return err
 	}
@@ -76,6 +78,8 @@ func (m *CheckAwsCommand) contextValidateRegion(ctx context.Context, formats str
 	if err := m.Region.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("region")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("region")
 		}
 		return err
 	}

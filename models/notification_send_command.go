@@ -54,6 +54,8 @@ func (m *NotificationSendCommand) validateActionStatus(formats strfmt.Registry) 
 	if err := m.ActionStatus.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("actionStatus")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("actionStatus")
 		}
 		return err
 	}
@@ -69,6 +71,8 @@ func (m *NotificationSendCommand) validateActionType(formats strfmt.Registry) er
 	if err := m.ActionType.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("actionType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("actionType")
 		}
 		return err
 	}
@@ -99,6 +103,8 @@ func (m *NotificationSendCommand) contextValidateActionStatus(ctx context.Contex
 	if err := m.ActionStatus.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("actionStatus")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("actionStatus")
 		}
 		return err
 	}
@@ -111,6 +117,8 @@ func (m *NotificationSendCommand) contextValidateActionType(ctx context.Context,
 	if err := m.ActionType.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("actionType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("actionType")
 		}
 		return err
 	}

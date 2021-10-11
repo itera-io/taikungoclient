@@ -74,6 +74,8 @@ func (m *CredentialsChart) validateAmazon(formats strfmt.Registry) error {
 			if err := m.Amazon[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("amazon" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("amazon" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -98,6 +100,8 @@ func (m *CredentialsChart) validateAzure(formats strfmt.Registry) error {
 			if err := m.Azure[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("azure" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("azure" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -122,6 +126,8 @@ func (m *CredentialsChart) validateOpenstack(formats strfmt.Registry) error {
 			if err := m.Openstack[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("openstack" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("openstack" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -162,6 +168,8 @@ func (m *CredentialsChart) contextValidateAmazon(ctx context.Context, formats st
 			if err := m.Amazon[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("amazon" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("amazon" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -180,6 +188,8 @@ func (m *CredentialsChart) contextValidateAzure(ctx context.Context, formats str
 			if err := m.Azure[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("azure" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("azure" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -198,6 +208,8 @@ func (m *CredentialsChart) contextValidateOpenstack(ctx context.Context, formats
 			if err := m.Openstack[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("openstack" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("openstack" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

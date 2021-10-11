@@ -54,6 +54,8 @@ func (m *WhiteListDomainCreateCommand) validateWhiteListDomains(formats strfmt.R
 			if err := m.WhiteListDomains[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("whiteListDomains" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("whiteListDomains" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -86,6 +88,8 @@ func (m *WhiteListDomainCreateCommand) contextValidateWhiteListDomains(ctx conte
 			if err := m.WhiteListDomains[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("whiteListDomains" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("whiteListDomains" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

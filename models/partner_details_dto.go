@@ -100,6 +100,8 @@ func (m *PartnerDetailsDto) validateOrganizations(formats strfmt.Registry) error
 			if err := m.Organizations[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("organizations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("organizations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -124,6 +126,8 @@ func (m *PartnerDetailsDto) validateWhiteListDomains(formats strfmt.Registry) er
 			if err := m.WhiteListDomains[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("whiteListDomains" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("whiteListDomains" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -160,6 +164,8 @@ func (m *PartnerDetailsDto) contextValidateOrganizations(ctx context.Context, fo
 			if err := m.Organizations[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("organizations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("organizations" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -178,6 +184,8 @@ func (m *PartnerDetailsDto) contextValidateWhiteListDomains(ctx context.Context,
 			if err := m.WhiteListDomains[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("whiteListDomains" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("whiteListDomains" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

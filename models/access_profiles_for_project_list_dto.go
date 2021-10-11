@@ -83,6 +83,8 @@ func (m *AccessProfilesForProjectListDto) validateDNSServers(formats strfmt.Regi
 			if err := m.DNSServers[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("dnsServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("dnsServers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -107,6 +109,8 @@ func (m *AccessProfilesForProjectListDto) validateNtpServers(formats strfmt.Regi
 			if err := m.NtpServers[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("ntpServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("ntpServers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -131,6 +135,8 @@ func (m *AccessProfilesForProjectListDto) validateSSHUsers(formats strfmt.Regist
 			if err := m.SSHUsers[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("sshUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("sshUsers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -171,6 +177,8 @@ func (m *AccessProfilesForProjectListDto) contextValidateDNSServers(ctx context.
 			if err := m.DNSServers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("dnsServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("dnsServers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -189,6 +197,8 @@ func (m *AccessProfilesForProjectListDto) contextValidateNtpServers(ctx context.
 			if err := m.NtpServers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("ntpServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("ntpServers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -207,6 +217,8 @@ func (m *AccessProfilesForProjectListDto) contextValidateSSHUsers(ctx context.Co
 			if err := m.SSHUsers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("sshUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("sshUsers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

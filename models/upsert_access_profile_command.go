@@ -77,6 +77,8 @@ func (m *UpsertAccessProfileCommand) validateDNSServers(formats strfmt.Registry)
 			if err := m.DNSServers[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("dnsServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("dnsServers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -101,6 +103,8 @@ func (m *UpsertAccessProfileCommand) validateNtpServers(formats strfmt.Registry)
 			if err := m.NtpServers[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("ntpServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("ntpServers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -125,6 +129,8 @@ func (m *UpsertAccessProfileCommand) validateSSHUsers(formats strfmt.Registry) e
 			if err := m.SSHUsers[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("sshUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("sshUsers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -165,6 +171,8 @@ func (m *UpsertAccessProfileCommand) contextValidateDNSServers(ctx context.Conte
 			if err := m.DNSServers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("dnsServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("dnsServers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -183,6 +191,8 @@ func (m *UpsertAccessProfileCommand) contextValidateNtpServers(ctx context.Conte
 			if err := m.NtpServers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("ntpServers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("ntpServers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -201,6 +211,8 @@ func (m *UpsertAccessProfileCommand) contextValidateSSHUsers(ctx context.Context
 			if err := m.SSHUsers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("sshUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("sshUsers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

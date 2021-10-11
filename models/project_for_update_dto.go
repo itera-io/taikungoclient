@@ -90,6 +90,8 @@ func (m *ProjectForUpdateDto) validateHealth(formats strfmt.Registry) error {
 	if err := m.Health.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("health")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("health")
 		}
 		return err
 	}
@@ -105,6 +107,8 @@ func (m *ProjectForUpdateDto) validateStatus(formats strfmt.Registry) error {
 	if err := m.Status.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("status")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("status")
 		}
 		return err
 	}
@@ -135,6 +139,8 @@ func (m *ProjectForUpdateDto) contextValidateHealth(ctx context.Context, formats
 	if err := m.Health.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("health")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("health")
 		}
 		return err
 	}
@@ -147,6 +153,8 @@ func (m *ProjectForUpdateDto) contextValidateStatus(ctx context.Context, formats
 	if err := m.Status.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("status")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("status")
 		}
 		return err
 	}

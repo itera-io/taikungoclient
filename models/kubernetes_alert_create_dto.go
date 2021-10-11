@@ -71,6 +71,8 @@ func (m *KubernetesAlertCreateDto) validateAnnotations(formats strfmt.Registry) 
 		if err := m.Annotations.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("annotations")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("annotations")
 			}
 			return err
 		}
@@ -123,6 +125,8 @@ func (m *KubernetesAlertCreateDto) contextValidateAnnotations(ctx context.Contex
 		if err := m.Annotations.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("annotations")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("annotations")
 			}
 			return err
 		}

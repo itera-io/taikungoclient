@@ -60,6 +60,8 @@ func (m *StandAloneProfileCreateCommand) validateSecurityGroups(formats strfmt.R
 			if err := m.SecurityGroups[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("securityGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("securityGroups" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -92,6 +94,8 @@ func (m *StandAloneProfileCreateCommand) contextValidateSecurityGroups(ctx conte
 			if err := m.SecurityGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("securityGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("securityGroups" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

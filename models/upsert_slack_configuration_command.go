@@ -59,6 +59,8 @@ func (m *UpsertSlackConfigurationCommand) validateSlackType(formats strfmt.Regis
 	if err := m.SlackType.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("slackType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("slackType")
 		}
 		return err
 	}
@@ -85,6 +87,8 @@ func (m *UpsertSlackConfigurationCommand) contextValidateSlackType(ctx context.C
 	if err := m.SlackType.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("slackType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("slackType")
 		}
 		return err
 	}

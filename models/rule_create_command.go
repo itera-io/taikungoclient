@@ -79,6 +79,8 @@ func (m *RuleCreateCommand) validateLabels(formats strfmt.Registry) error {
 			if err := m.Labels[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("labels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("labels" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -97,6 +99,8 @@ func (m *RuleCreateCommand) validateType(formats strfmt.Registry) error {
 	if err := m.Type.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("type")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("type")
 		}
 		return err
 	}
@@ -130,6 +134,8 @@ func (m *RuleCreateCommand) contextValidateLabels(ctx context.Context, formats s
 			if err := m.Labels[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("labels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("labels" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -145,6 +151,8 @@ func (m *RuleCreateCommand) contextValidateType(ctx context.Context, formats str
 	if err := m.Type.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("type")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("type")
 		}
 		return err
 	}

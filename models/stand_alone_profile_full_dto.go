@@ -60,6 +60,8 @@ func (m *StandAloneProfileFullDto) validateStandAloneProfileSecurityGroups(forma
 			if err := m.StandAloneProfileSecurityGroups[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -92,6 +94,8 @@ func (m *StandAloneProfileFullDto) contextValidateStandAloneProfileSecurityGroup
 			if err := m.StandAloneProfileSecurityGroups[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -73,6 +73,8 @@ func (m *ServerForCreateDto) validateKubernetesNodeLabels(formats strfmt.Registr
 			if err := m.KubernetesNodeLabels[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -91,6 +93,8 @@ func (m *ServerForCreateDto) validateRole(formats strfmt.Registry) error {
 	if err := m.Role.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("role")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("role")
 		}
 		return err
 	}
@@ -124,6 +128,8 @@ func (m *ServerForCreateDto) contextValidateKubernetesNodeLabels(ctx context.Con
 			if err := m.KubernetesNodeLabels[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -139,6 +145,8 @@ func (m *ServerForCreateDto) contextValidateRole(ctx context.Context, formats st
 	if err := m.Role.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("role")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("role")
 		}
 		return err
 	}

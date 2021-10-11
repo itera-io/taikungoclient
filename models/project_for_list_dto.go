@@ -218,6 +218,8 @@ func (m *ProjectForListDto) validateAccessProfiles(formats strfmt.Registry) erro
 		if err := m.AccessProfiles.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("accessProfiles")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("accessProfiles")
 			}
 			return err
 		}
@@ -240,6 +242,8 @@ func (m *ProjectForListDto) validateBoundUsers(formats strfmt.Registry) error {
 			if err := m.BoundUsers[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("boundUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundUsers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -264,6 +268,8 @@ func (m *ProjectForListDto) validateKubernetesAlerts(formats strfmt.Registry) er
 			if err := m.KubernetesAlerts[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("kubernetesAlerts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesAlerts" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -283,6 +289,8 @@ func (m *ProjectForListDto) validateKubernetesProfiles(formats strfmt.Registry) 
 		if err := m.KubernetesProfiles.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("kubernetesProfiles")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("kubernetesProfiles")
 			}
 			return err
 		}
@@ -305,6 +313,8 @@ func (m *ProjectForListDto) validateMonitoringCredentials(formats strfmt.Registr
 			if err := m.MonitoringCredentials[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -363,6 +373,8 @@ func (m *ProjectForListDto) contextValidateAccessProfiles(ctx context.Context, f
 		if err := m.AccessProfiles.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("accessProfiles")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("accessProfiles")
 			}
 			return err
 		}
@@ -379,6 +391,8 @@ func (m *ProjectForListDto) contextValidateBoundUsers(ctx context.Context, forma
 			if err := m.BoundUsers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("boundUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundUsers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -397,6 +411,8 @@ func (m *ProjectForListDto) contextValidateKubernetesAlerts(ctx context.Context,
 			if err := m.KubernetesAlerts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("kubernetesAlerts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesAlerts" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -413,6 +429,8 @@ func (m *ProjectForListDto) contextValidateKubernetesProfiles(ctx context.Contex
 		if err := m.KubernetesProfiles.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("kubernetesProfiles")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("kubernetesProfiles")
 			}
 			return err
 		}
@@ -429,6 +447,8 @@ func (m *ProjectForListDto) contextValidateMonitoringCredentials(ctx context.Con
 			if err := m.MonitoringCredentials[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

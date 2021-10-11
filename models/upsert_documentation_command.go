@@ -53,6 +53,8 @@ func (m *UpsertDocumentationCommand) validateRole(formats strfmt.Registry) error
 	if err := m.Role.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("role")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("role")
 		}
 		return err
 	}
@@ -79,6 +81,8 @@ func (m *UpsertDocumentationCommand) contextValidateRole(ctx context.Context, fo
 	if err := m.Role.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("role")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("role")
 		}
 		return err
 	}

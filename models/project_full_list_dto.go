@@ -131,6 +131,8 @@ func (m *ProjectFullListDto) validateAccessProfiles(formats strfmt.Registry) err
 		if err := m.AccessProfiles.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("accessProfiles")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("accessProfiles")
 			}
 			return err
 		}
@@ -153,6 +155,8 @@ func (m *ProjectFullListDto) validateStandaloneVms(formats strfmt.Registry) erro
 			if err := m.StandaloneVms[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -199,6 +203,8 @@ func (m *ProjectFullListDto) contextValidateAccessProfiles(ctx context.Context, 
 		if err := m.AccessProfiles.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("accessProfiles")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("accessProfiles")
 			}
 			return err
 		}
@@ -215,6 +221,8 @@ func (m *ProjectFullListDto) contextValidateStandaloneVms(ctx context.Context, f
 			if err := m.StandaloneVms[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

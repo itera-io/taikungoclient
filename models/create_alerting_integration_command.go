@@ -48,6 +48,8 @@ func (m *CreateAlertingIntegrationCommand) validateAlertingIntegration(formats s
 		if err := m.AlertingIntegration.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("alertingIntegration")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("alertingIntegration")
 			}
 			return err
 		}
@@ -76,6 +78,8 @@ func (m *CreateAlertingIntegrationCommand) contextValidateAlertingIntegration(ct
 		if err := m.AlertingIntegration.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("alertingIntegration")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("alertingIntegration")
 			}
 			return err
 		}

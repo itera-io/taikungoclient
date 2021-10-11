@@ -88,6 +88,8 @@ func (m *ProjectListForAlert) validateKubernetesAlerts(formats strfmt.Registry) 
 			if err := m.KubernetesAlerts[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("kubernetesAlerts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesAlerts" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -112,6 +114,8 @@ func (m *ProjectListForAlert) validateMonitoringCredentials(formats strfmt.Regis
 			if err := m.MonitoringCredentials[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -148,6 +152,8 @@ func (m *ProjectListForAlert) contextValidateKubernetesAlerts(ctx context.Contex
 			if err := m.KubernetesAlerts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("kubernetesAlerts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("kubernetesAlerts" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -166,6 +172,8 @@ func (m *ProjectListForAlert) contextValidateMonitoringCredentials(ctx context.C
 			if err := m.MonitoringCredentials[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

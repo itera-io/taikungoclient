@@ -121,6 +121,8 @@ func (m *OrganizationDetailsDto) validateBoundRules(formats strfmt.Registry) err
 			if err := m.BoundRules[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("boundRules" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundRules" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -140,6 +142,8 @@ func (m *OrganizationDetailsDto) validatePartner(formats strfmt.Registry) error 
 		if err := m.Partner.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("partner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("partner")
 			}
 			return err
 		}
@@ -174,6 +178,8 @@ func (m *OrganizationDetailsDto) contextValidateBoundRules(ctx context.Context, 
 			if err := m.BoundRules[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("boundRules" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundRules" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -190,6 +196,8 @@ func (m *OrganizationDetailsDto) contextValidatePartner(ctx context.Context, for
 		if err := m.Partner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("partner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("partner")
 			}
 			return err
 		}

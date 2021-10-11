@@ -83,6 +83,8 @@ func (m *StandAloneVMFullDto) validateStandAloneProfile(formats strfmt.Registry)
 		if err := m.StandAloneProfile.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("standAloneProfile")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("standAloneProfile")
 			}
 			return err
 		}
@@ -105,6 +107,8 @@ func (m *StandAloneVMFullDto) validateStandAloneVMDisks(formats strfmt.Registry)
 			if err := m.StandAloneVMDisks[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -139,6 +143,8 @@ func (m *StandAloneVMFullDto) contextValidateStandAloneProfile(ctx context.Conte
 		if err := m.StandAloneProfile.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("standAloneProfile")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("standAloneProfile")
 			}
 			return err
 		}
@@ -155,6 +161,8 @@ func (m *StandAloneVMFullDto) contextValidateStandAloneVMDisks(ctx context.Conte
 			if err := m.StandAloneVMDisks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

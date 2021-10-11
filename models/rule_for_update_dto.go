@@ -34,6 +34,9 @@ type RuleForUpdateDto struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// operation credential Id
+	OperationCredentialID int32 `json:"operationCredentialId,omitempty"`
+
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
@@ -87,6 +90,8 @@ func (m *RuleForUpdateDto) validateLabelsToAdd(formats strfmt.Registry) error {
 			if err := m.LabelsToAdd[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("labelsToAdd" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("labelsToAdd" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -111,6 +116,8 @@ func (m *RuleForUpdateDto) validateLabelsToDelete(formats strfmt.Registry) error
 			if err := m.LabelsToDelete[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("labelsToDelete" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("labelsToDelete" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -135,6 +142,8 @@ func (m *RuleForUpdateDto) validateLabelsToUpdate(formats strfmt.Registry) error
 			if err := m.LabelsToUpdate[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("labelsToUpdate" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("labelsToUpdate" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -153,6 +162,8 @@ func (m *RuleForUpdateDto) validateType(formats strfmt.Registry) error {
 	if err := m.Type.Validate(formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("type")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("type")
 		}
 		return err
 	}
@@ -194,6 +205,8 @@ func (m *RuleForUpdateDto) contextValidateLabelsToAdd(ctx context.Context, forma
 			if err := m.LabelsToAdd[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("labelsToAdd" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("labelsToAdd" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -212,6 +225,8 @@ func (m *RuleForUpdateDto) contextValidateLabelsToDelete(ctx context.Context, fo
 			if err := m.LabelsToDelete[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("labelsToDelete" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("labelsToDelete" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -230,6 +245,8 @@ func (m *RuleForUpdateDto) contextValidateLabelsToUpdate(ctx context.Context, fo
 			if err := m.LabelsToUpdate[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("labelsToUpdate" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("labelsToUpdate" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -245,6 +262,8 @@ func (m *RuleForUpdateDto) contextValidateType(ctx context.Context, formats strf
 	if err := m.Type.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("type")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("type")
 		}
 		return err
 	}

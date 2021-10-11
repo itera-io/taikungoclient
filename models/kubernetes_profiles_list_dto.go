@@ -87,6 +87,8 @@ func (m *KubernetesProfilesListDto) validateProjects(formats strfmt.Registry) er
 			if err := m.Projects[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -119,6 +121,8 @@ func (m *KubernetesProfilesListDto) contextValidateProjects(ctx context.Context,
 			if err := m.Projects[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

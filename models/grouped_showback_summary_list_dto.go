@@ -62,6 +62,8 @@ func (m *GroupedShowbackSummaryListDto) validateCredential(formats strfmt.Regist
 		if err := m.Credential.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("credential")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("credential")
 			}
 			return err
 		}
@@ -84,6 +86,8 @@ func (m *GroupedShowbackSummaryListDto) validateProjects(formats strfmt.Registry
 			if err := m.Projects[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -118,6 +122,8 @@ func (m *GroupedShowbackSummaryListDto) contextValidateCredential(ctx context.Co
 		if err := m.Credential.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("credential")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("credential")
 			}
 			return err
 		}
@@ -134,6 +140,8 @@ func (m *GroupedShowbackSummaryListDto) contextValidateProjects(ctx context.Cont
 			if err := m.Projects[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

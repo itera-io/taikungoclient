@@ -78,6 +78,8 @@ func (m *CreateStandAloneVMCommand) validateStandAloneVMDisks(formats strfmt.Reg
 			if err := m.StandAloneVMDisks[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -110,6 +112,8 @@ func (m *CreateStandAloneVMCommand) contextValidateStandAloneVMDisks(ctx context
 			if err := m.StandAloneVMDisks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

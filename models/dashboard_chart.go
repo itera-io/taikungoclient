@@ -66,6 +66,8 @@ func (m *DashboardChart) validateCloudCredentials(formats strfmt.Registry) error
 		if err := m.CloudCredentials.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("cloudCredentials")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("cloudCredentials")
 			}
 			return err
 		}
@@ -83,6 +85,8 @@ func (m *DashboardChart) validateOrganization(formats strfmt.Registry) error {
 		if err := m.Organization.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("organization")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("organization")
 			}
 			return err
 		}
@@ -100,6 +104,8 @@ func (m *DashboardChart) validateProjects(formats strfmt.Registry) error {
 		if err := m.Projects.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("projects")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("projects")
 			}
 			return err
 		}
@@ -117,6 +123,8 @@ func (m *DashboardChart) validateServers(formats strfmt.Registry) error {
 		if err := m.Servers.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("servers")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("servers")
 			}
 			return err
 		}
@@ -157,6 +165,8 @@ func (m *DashboardChart) contextValidateCloudCredentials(ctx context.Context, fo
 		if err := m.CloudCredentials.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("cloudCredentials")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("cloudCredentials")
 			}
 			return err
 		}
@@ -171,6 +181,8 @@ func (m *DashboardChart) contextValidateOrganization(ctx context.Context, format
 		if err := m.Organization.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("organization")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("organization")
 			}
 			return err
 		}
@@ -185,6 +197,8 @@ func (m *DashboardChart) contextValidateProjects(ctx context.Context, formats st
 		if err := m.Projects.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("projects")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("projects")
 			}
 			return err
 		}
@@ -199,6 +213,8 @@ func (m *DashboardChart) contextValidateServers(ctx context.Context, formats str
 		if err := m.Servers.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("servers")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("servers")
 			}
 			return err
 		}

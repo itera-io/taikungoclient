@@ -109,6 +109,8 @@ func (m *UserForListDto) validateBoundProjects(formats strfmt.Registry) error {
 			if err := m.BoundProjects[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("boundProjects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundProjects" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -128,6 +130,8 @@ func (m *UserForListDto) validatePartner(formats strfmt.Registry) error {
 		if err := m.Partner.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("partner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("partner")
 			}
 			return err
 		}
@@ -162,6 +166,8 @@ func (m *UserForListDto) contextValidateBoundProjects(ctx context.Context, forma
 			if err := m.BoundProjects[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("boundProjects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundProjects" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -178,6 +184,8 @@ func (m *UserForListDto) contextValidatePartner(ctx context.Context, formats str
 		if err := m.Partner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("partner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("partner")
 			}
 			return err
 		}

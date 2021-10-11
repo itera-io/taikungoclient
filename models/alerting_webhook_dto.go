@@ -54,6 +54,8 @@ func (m *AlertingWebhookDto) validateHeaders(formats strfmt.Registry) error {
 			if err := m.Headers[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("headers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("headers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -86,6 +88,8 @@ func (m *AlertingWebhookDto) contextValidateHeaders(ctx context.Context, formats
 			if err := m.Headers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("headers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("headers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

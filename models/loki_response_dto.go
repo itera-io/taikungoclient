@@ -99,6 +99,8 @@ func (m *LokiResponseDto) validateFilters(formats strfmt.Registry) error {
 			if err := m.Filters[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("filters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("filters" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -123,6 +125,8 @@ func (m *LokiResponseDto) validateParameters(formats strfmt.Registry) error {
 			if err := m.Parameters[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("parameters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("parameters" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -171,6 +175,8 @@ func (m *LokiResponseDto) contextValidateFilters(ctx context.Context, formats st
 			if err := m.Filters[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("filters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("filters" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -189,6 +195,8 @@ func (m *LokiResponseDto) contextValidateParameters(ctx context.Context, formats
 			if err := m.Parameters[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("parameters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("parameters" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

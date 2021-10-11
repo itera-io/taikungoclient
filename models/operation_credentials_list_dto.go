@@ -87,6 +87,8 @@ func (m *OperationCredentialsListDto) validateRules(formats strfmt.Registry) err
 			if err := m.Rules[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("rules" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("rules" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -119,6 +121,8 @@ func (m *OperationCredentialsListDto) contextValidateRules(ctx context.Context, 
 			if err := m.Rules[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("rules" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("rules" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

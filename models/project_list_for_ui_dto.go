@@ -117,6 +117,8 @@ func (m *ProjectListForUIDto) validateBoundUsers(formats strfmt.Registry) error 
 			if err := m.BoundUsers[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("boundUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundUsers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -149,6 +151,8 @@ func (m *ProjectListForUIDto) contextValidateBoundUsers(ctx context.Context, for
 			if err := m.BoundUsers[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("boundUsers" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundUsers" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

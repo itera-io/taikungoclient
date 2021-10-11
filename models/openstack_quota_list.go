@@ -59,6 +59,8 @@ func (m *OpenstackQuotaList) validateCompute(formats strfmt.Registry) error {
 		if err := m.Compute.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("compute")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("compute")
 			}
 			return err
 		}
@@ -76,6 +78,8 @@ func (m *OpenstackQuotaList) validateNetwork(formats strfmt.Registry) error {
 		if err := m.Network.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("network")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("network")
 			}
 			return err
 		}
@@ -93,6 +97,8 @@ func (m *OpenstackQuotaList) validateVolume(formats strfmt.Registry) error {
 		if err := m.Volume.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("volume")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("volume")
 			}
 			return err
 		}
@@ -129,6 +135,8 @@ func (m *OpenstackQuotaList) contextValidateCompute(ctx context.Context, formats
 		if err := m.Compute.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("compute")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("compute")
 			}
 			return err
 		}
@@ -143,6 +151,8 @@ func (m *OpenstackQuotaList) contextValidateNetwork(ctx context.Context, formats
 		if err := m.Network.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("network")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("network")
 			}
 			return err
 		}
@@ -157,6 +167,8 @@ func (m *OpenstackQuotaList) contextValidateVolume(ctx context.Context, formats 
 		if err := m.Volume.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("volume")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("volume")
 			}
 			return err
 		}

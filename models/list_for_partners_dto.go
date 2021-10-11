@@ -99,6 +99,8 @@ func (m *ListForPartnersDto) validatePartner(formats strfmt.Registry) error {
 		if err := m.Partner.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("partner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("partner")
 			}
 			return err
 		}
@@ -127,6 +129,8 @@ func (m *ListForPartnersDto) contextValidatePartner(ctx context.Context, formats
 		if err := m.Partner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("partner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("partner")
 			}
 			return err
 		}
