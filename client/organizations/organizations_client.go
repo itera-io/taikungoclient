@@ -211,7 +211,7 @@ func (a *Client) OrganizationsDetails(params *OrganizationsDetailsParams, authIn
 }
 
 /*
-  OrganizationsList retrieves all organizations available only for admins
+  OrganizationsList retrieves all organizations
 */
 func (a *Client) OrganizationsList(params *OrganizationsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsListOK, error) {
 	// TODO: Validate the params before sending

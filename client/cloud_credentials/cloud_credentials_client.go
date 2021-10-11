@@ -38,6 +38,8 @@ type ClientService interface {
 
 	CloudCredentialsDelete(params *CloudCredentialsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsDeleteOK, *CloudCredentialsDeleteNoContent, error)
 
+	CloudCredentialsExceededQuotas(params *CloudCredentialsExceededQuotasParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsExceededQuotasOK, error)
+
 	CloudCredentialsForCli(params *CloudCredentialsForCliParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsForCliOK, error)
 
 	CloudCredentialsForProject(params *CloudCredentialsForProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsForProjectOK, error)
@@ -205,6 +207,45 @@ func (a *Client) CloudCredentialsDelete(params *CloudCredentialsDeleteParams, au
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for cloud_credentials: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CloudCredentialsExceededQuotas retrieves cloud credentials exceeded quotas
+*/
+func (a *Client) CloudCredentialsExceededQuotas(params *CloudCredentialsExceededQuotasParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsExceededQuotasOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCloudCredentialsExceededQuotasParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CloudCredentials_ExceededQuotas",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CloudCredentialsExceededQuotasReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CloudCredentialsExceededQuotasOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CloudCredentials_ExceededQuotas: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
