@@ -74,20 +74,22 @@ func NewKubernetesProfilesCreateOK() *KubernetesProfilesCreateOK {
 Success
 */
 type KubernetesProfilesCreateOK struct {
-	Payload models.Unit
+	Payload *models.APIResponse
 }
 
 func (o *KubernetesProfilesCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateOK  %+v", 200, o.Payload)
 }
-func (o *KubernetesProfilesCreateOK) GetPayload() models.Unit {
+func (o *KubernetesProfilesCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.APIResponse)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

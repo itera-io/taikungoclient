@@ -38,6 +38,9 @@ type UpdateSubscriptionCommand struct {
 	// tcu price
 	TcuPrice float64 `json:"tcuPrice,omitempty"`
 
+	// trial days
+	TrialDays int32 `json:"trialDays,omitempty"`
+
 	// user limit
 	UserLimit int32 `json:"userLimit,omitempty"`
 
