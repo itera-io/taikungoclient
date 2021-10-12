@@ -13,11 +13,12 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Download swagger.json
-        run: wget --user "$SWAGGER_USERNAME" --password "$SWAGGER_PASSWORD" https://api.taikun.dev/swagger/v1/swagger.json -O swagger.json
+        run: wget -q --user "$SWAGGER_USERNAME" --password "$SWAGGER_PASSWORD" "$SWAGGER_URL" -O swagger.json
         shell: bash
         env:
           SWAGGER_USERNAME: ${{ secrets.SWAGGER_USERNAME }}
           SWAGGER_PASSWORD: ${{ secrets.SWAGGER_PASSWORD }}
+          SWAGGER_URL: ${{ secrets.SWAGGER_URL }}
 
       - name: Should regenerate client
         id: check
