@@ -54,6 +54,9 @@ type ShowbackCredentialsListDto struct {
 
 	// url
 	URL string `json:"url,omitempty"`
+
+	// username
+	Username string `json:"username,omitempty"`
 }
 
 // Validate validates this showback credentials list dto

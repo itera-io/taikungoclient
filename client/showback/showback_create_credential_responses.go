@@ -74,20 +74,22 @@ func NewShowbackCreateCredentialOK() *ShowbackCreateCredentialOK {
 Success
 */
 type ShowbackCreateCredentialOK struct {
-	Payload models.Unit
+	Payload *models.APIResponse
 }
 
 func (o *ShowbackCreateCredentialOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Showback/credential/create][%d] showbackCreateCredentialOK  %+v", 200, o.Payload)
 }
-func (o *ShowbackCreateCredentialOK) GetPayload() models.Unit {
+func (o *ShowbackCreateCredentialOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *ShowbackCreateCredentialOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.APIResponse)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

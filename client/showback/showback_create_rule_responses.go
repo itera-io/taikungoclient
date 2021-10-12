@@ -74,20 +74,22 @@ func NewShowbackCreateRuleOK() *ShowbackCreateRuleOK {
 Success
 */
 type ShowbackCreateRuleOK struct {
-	Payload models.Unit
+	Payload *models.APIResponse
 }
 
 func (o *ShowbackCreateRuleOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Showback/rule/create][%d] showbackCreateRuleOK  %+v", 200, o.Payload)
 }
-func (o *ShowbackCreateRuleOK) GetPayload() models.Unit {
+func (o *ShowbackCreateRuleOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *ShowbackCreateRuleOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.APIResponse)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
