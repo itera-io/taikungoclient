@@ -44,6 +44,8 @@ type ClientService interface {
 
 	KubernetesDescribeCrd(params *KubernetesDescribeCrdParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeCrdOK, error)
 
+	KubernetesDescribeCronJob(params *KubernetesDescribeCronJobParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeCronJobOK, error)
+
 	KubernetesDescribeDaemonSet(params *KubernetesDescribeDaemonSetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeDaemonSetOK, error)
 
 	KubernetesDescribeDeployment(params *KubernetesDescribeDeploymentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeDeploymentOK, error)
@@ -69,6 +71,8 @@ type ClientService interface {
 	KubernetesGetConfigMap(params *KubernetesGetConfigMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetConfigMapOK, error)
 
 	KubernetesGetCrdList(params *KubernetesGetCrdListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetCrdListOK, error)
+
+	KubernetesGetCronJobsList(params *KubernetesGetCronJobsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetCronJobsListOK, error)
 
 	KubernetesGetDaemonSet(params *KubernetesGetDaemonSetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetDaemonSetOK, error)
 
@@ -101,8 +105,6 @@ type ClientService interface {
 	KubernetesGetService(params *KubernetesGetServiceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetServiceOK, error)
 
 	KubernetesGetSts(params *KubernetesGetStsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStsOK, error)
-
-	KubernetesModifyConfigMap(params *KubernetesModifyConfigMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesModifyConfigMapOK, error)
 
 	KubernetesOverview(params *KubernetesOverviewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesOverviewOK, error)
 
@@ -389,6 +391,45 @@ func (a *Client) KubernetesDescribeCrd(params *KubernetesDescribeCrdParams, auth
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_DescribeCrd: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesDescribeCronJob describes cronjob
+*/
+func (a *Client) KubernetesDescribeCronJob(params *KubernetesDescribeCronJobParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeCronJobOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesDescribeCronJobParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_DescribeCronJob",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Kubernetes/describe/cronjob",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesDescribeCronJobReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesDescribeCronJobOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_DescribeCronJob: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -896,6 +937,45 @@ func (a *Client) KubernetesGetCrdList(params *KubernetesGetCrdListParams, authIn
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetCrdList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesGetCronJobsList retrieves a list of k8s cron jobs for all namespaces
+*/
+func (a *Client) KubernetesGetCronJobsList(params *KubernetesGetCronJobsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetCronJobsListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesGetCronJobsListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_GetCronJobsList",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Kubernetes/{projectId}/cronjobs",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesGetCronJobsListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesGetCronJobsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetCronJobsList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1520,45 +1600,6 @@ func (a *Client) KubernetesGetSts(params *KubernetesGetStsParams, authInfo runti
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetSts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  KubernetesModifyConfigMap modifies config map
-*/
-func (a *Client) KubernetesModifyConfigMap(params *KubernetesModifyConfigMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesModifyConfigMapOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewKubernetesModifyConfigMapParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Kubernetes_ModifyConfigMap",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/Kubernetes/modify/configmap",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &KubernetesModifyConfigMapReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*KubernetesModifyConfigMapOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Kubernetes_ModifyConfigMap: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

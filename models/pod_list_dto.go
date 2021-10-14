@@ -32,6 +32,9 @@ type PodListDto struct {
 	// node
 	Node string `json:"node,omitempty"`
 
+	// phase
+	Phase string `json:"phase,omitempty"`
+
 	// restart count
 	RestartCount int32 `json:"restartCount,omitempty"`
 
