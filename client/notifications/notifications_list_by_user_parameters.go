@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewNotificationsListByUserParams creates a new NotificationsListByUserParams object,
@@ -58,6 +59,22 @@ func NewNotificationsListByUserParamsWithHTTPClient(client *http.Client) *Notifi
    Typically these are written to a http.Request.
 */
 type NotificationsListByUserParams struct {
+
+	/* Limit.
+
+	   Limits user size (by default 50)
+
+	   Format: int32
+	*/
+	Limit *int32
+
+	/* Offset.
+
+	   Page number
+
+	   Format: int32
+	*/
+	Offset *int32
 
 	// Type.
 	Type *string
@@ -118,6 +135,28 @@ func (o *NotificationsListByUserParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithLimit adds the limit to the notifications list by user params
+func (o *NotificationsListByUserParams) WithLimit(limit *int32) *NotificationsListByUserParams {
+	o.SetLimit(limit)
+	return o
+}
+
+// SetLimit adds the limit to the notifications list by user params
+func (o *NotificationsListByUserParams) SetLimit(limit *int32) {
+	o.Limit = limit
+}
+
+// WithOffset adds the offset to the notifications list by user params
+func (o *NotificationsListByUserParams) WithOffset(offset *int32) *NotificationsListByUserParams {
+	o.SetOffset(offset)
+	return o
+}
+
+// SetOffset adds the offset to the notifications list by user params
+func (o *NotificationsListByUserParams) SetOffset(offset *int32) {
+	o.Offset = offset
+}
+
 // WithType adds the typeVar to the notifications list by user params
 func (o *NotificationsListByUserParams) WithType(typeVar *string) *NotificationsListByUserParams {
 	o.SetType(typeVar)
@@ -147,6 +186,40 @@ func (o *NotificationsListByUserParams) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
+
+	if o.Limit != nil {
+
+		// query param limit
+		var qrLimit int32
+
+		if o.Limit != nil {
+			qrLimit = *o.Limit
+		}
+		qLimit := swag.FormatInt32(qrLimit)
+		if qLimit != "" {
+
+			if err := r.SetQueryParam("limit", qLimit); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Offset != nil {
+
+		// query param offset
+		var qrOffset int32
+
+		if o.Offset != nil {
+			qrOffset = *o.Offset
+		}
+		qOffset := swag.FormatInt32(qrOffset)
+		if qOffset != "" {
+
+			if err := r.SetQueryParam("offset", qOffset); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Type != nil {
 

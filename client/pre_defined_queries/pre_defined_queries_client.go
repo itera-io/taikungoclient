@@ -34,11 +34,13 @@ type ClientService interface {
 
 	PreDefinedQueriesGetPrometheusDashboardList(params *PreDefinedQueriesGetPrometheusDashboardListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesGetPrometheusDashboardListOK, error)
 
+	PreDefinedQueriesUpdatePrometheusDashboard(params *PreDefinedQueriesUpdatePrometheusDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesUpdatePrometheusDashboardOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  PreDefinedQueriesCreatePrometheusDashboard binds organizations to prometheus rule
+  PreDefinedQueriesCreatePrometheusDashboard creates prometheus dashboard pre defined query
 */
 func (a *Client) PreDefinedQueriesCreatePrometheusDashboard(params *PreDefinedQueriesCreatePrometheusDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesCreatePrometheusDashboardOK, error) {
 	// TODO: Validate the params before sending
@@ -112,6 +114,45 @@ func (a *Client) PreDefinedQueriesGetPrometheusDashboardList(params *PreDefinedQ
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for PreDefinedQueries_GetPrometheusDashboardList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PreDefinedQueriesUpdatePrometheusDashboard updates prometheus dashboard pre defined query
+*/
+func (a *Client) PreDefinedQueriesUpdatePrometheusDashboard(params *PreDefinedQueriesUpdatePrometheusDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesUpdatePrometheusDashboardOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPreDefinedQueriesUpdatePrometheusDashboardParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PreDefinedQueries_UpdatePrometheusDashboard",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/PreDefinedQueries/prometheus/dashboard/update",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PreDefinedQueriesUpdatePrometheusDashboardReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PreDefinedQueriesUpdatePrometheusDashboardOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for PreDefinedQueries_UpdatePrometheusDashboard: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

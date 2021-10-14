@@ -32,9 +32,6 @@ type TaikunNotification struct {
 	// created by
 	CreatedBy string `json:"createdBy,omitempty"`
 
-	// estimated time
-	EstimatedTime string `json:"estimatedTime,omitempty"`
-
 	// fingerprint
 	Fingerprint string `json:"fingerprint,omitempty"`
 
@@ -59,12 +56,6 @@ type TaikunNotification struct {
 
 	// last modified by
 	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
-
-	// operation
-	Operation string `json:"operation,omitempty"`
-
-	// operation project Id
-	OperationProjectID int32 `json:"operationProjectId,omitempty"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
