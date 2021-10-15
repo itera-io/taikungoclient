@@ -33,13 +33,19 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
 
+      - name: Set up Go
+        if: steps.check.outcome == 'success'
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.17'
+
       - name: Install Go-Swagger
         if: steps.check.outcome == 'success'
         shell: bash
         run: |
           download_url=$(curl -s https://api.github.com/repos/go-swagger/go-swagger/releases/latest | jq -r '.assets[] | select(.name | contains("'"$(uname | tr '[:upper:]' '[:lower:]')"'_amd64")) | .browser_download_url')
-          curl -o /usr/local/bin/swagger -L'#' "$download_url"
-          chmod +x /usr/local/bin/swagger
+          curl -o swagger -L'#' "$download_url"
+          chmod +x swagger
 
       - name: Generate Client
         if: steps.check.outcome == 'success'
@@ -49,6 +55,11 @@ jobs:
       - name: Delete swagger.json
         if: steps.check.outcome == 'success'
         run: rm swagger.json
+        shell: bash
+
+      - name: Delete go-swagger
+        if: steps.check.outcome == 'success'
+        run: rm swagger
         shell: bash
 
       - name: Commit
