@@ -52,6 +52,12 @@ type OpenstackCredentialsListDto struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
 	// project
 	Project string `json:"project,omitempty"`
 

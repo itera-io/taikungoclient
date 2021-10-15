@@ -52,6 +52,8 @@ type ClientService interface {
 
 	KubernetesDescribeIngress(params *KubernetesDescribeIngressParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeIngressOK, error)
 
+	KubernetesDescribeJob(params *KubernetesDescribeJobParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeJobOK, error)
+
 	KubernetesDescribePdb(params *KubernetesDescribePdbParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribePdbOK, error)
 
 	KubernetesDescribePod(params *KubernetesDescribePodParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribePodOK, error)
@@ -81,6 +83,8 @@ type ClientService interface {
 	KubernetesGetDeploymentList(params *KubernetesGetDeploymentListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetDeploymentListOK, error)
 
 	KubernetesGetIngresses(params *KubernetesGetIngressesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetIngressesOK, error)
+
+	KubernetesGetJobsList(params *KubernetesGetJobsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetJobsListOK, error)
 
 	KubernetesGetKubeConfigFile(params *KubernetesGetKubeConfigFileParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetKubeConfigFileOK, error)
 
@@ -547,6 +551,45 @@ func (a *Client) KubernetesDescribeIngress(params *KubernetesDescribeIngressPara
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_DescribeIngress: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesDescribeJob describes job
+*/
+func (a *Client) KubernetesDescribeJob(params *KubernetesDescribeJobParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeJobOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesDescribeJobParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_DescribeJob",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Kubernetes/describe/job",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesDescribeJobReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesDescribeJobOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_DescribeJob: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1132,6 +1175,45 @@ func (a *Client) KubernetesGetIngresses(params *KubernetesGetIngressesParams, au
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetIngresses: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesGetJobsList retrieves a list of k8s jobs for all namespaces
+*/
+func (a *Client) KubernetesGetJobsList(params *KubernetesGetJobsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetJobsListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesGetJobsListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_GetJobsList",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Kubernetes/{projectId}/jobs",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesGetJobsListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesGetJobsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetJobsList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
