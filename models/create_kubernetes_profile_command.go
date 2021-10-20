@@ -17,6 +17,9 @@ import (
 // swagger:model CreateKubernetesProfileCommand
 type CreateKubernetesProfileCommand struct {
 
+	// allow scheduling on master
+	AllowSchedulingOnMaster bool `json:"allowSchedulingOnMaster,omitempty"`
+
 	// expose node port on bastion
 	ExposeNodePortOnBastion bool `json:"exposeNodePortOnBastion,omitempty"`
 

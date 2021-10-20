@@ -19,6 +19,9 @@ import (
 // swagger:model KubernetesProfilesListDto
 type KubernetesProfilesListDto struct {
 
+	// allow scheduling on master
+	AllowSchedulingOnMaster bool `json:"allowSchedulingOnMaster,omitempty"`
+
 	// cni
 	Cni string `json:"cni,omitempty"`
 
