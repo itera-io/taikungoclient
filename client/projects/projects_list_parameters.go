@@ -60,6 +60,11 @@ func NewProjectsListParamsWithHTTPClient(client *http.Client) *ProjectsListParam
 */
 type ProjectsListParams struct {
 
+	// ID.
+	//
+	// Format: int32
+	ID *int32
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -155,6 +160,17 @@ func (o *ProjectsListParams) WithHTTPClient(client *http.Client) *ProjectsListPa
 // SetHTTPClient adds the HTTPClient to the projects list params
 func (o *ProjectsListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithID adds the id to the projects list params
+func (o *ProjectsListParams) WithID(id *int32) *ProjectsListParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the projects list params
+func (o *ProjectsListParams) SetID(id *int32) {
+	o.ID = id
 }
 
 // WithLimit adds the limit to the projects list params
@@ -263,6 +279,23 @@ func (o *ProjectsListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		return err
 	}
 	var res []error
+
+	if o.ID != nil {
+
+		// query param id
+		var qrID int32
+
+		if o.ID != nil {
+			qrID = *o.ID
+		}
+		qID := swag.FormatInt32(qrID)
+		if qID != "" {
+
+			if err := r.SetQueryParam("id", qID); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 
