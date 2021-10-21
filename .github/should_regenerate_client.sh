@@ -3,8 +3,8 @@
 set -e
 
 # Sha256sum file paths
-old_sha1sum_path="./.github/.swagger_sha1sum.txt"
-new_sha1sum_path="./.github/.swagger_sha1sum_new.txt"
+old_sha1sum_path="./.github/swagger_sha1sum.txt"
+new_sha1sum_path="./.github/swagger_sha1sum_new.txt"
 
 # Generate new sha1sum of swagger.json
 sha1sum swagger.json > "${new_sha1sum_path}"
