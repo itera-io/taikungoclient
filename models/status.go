@@ -21,7 +21,7 @@ type Status struct {
 
 	// last backup
 	// Format: date-time
-	LastBackup strfmt.DateTime `json:"lastBackup,omitempty"`
+	LastBackup *strfmt.DateTime `json:"lastBackup,omitempty"`
 
 	// phase
 	Phase string `json:"phase,omitempty"`

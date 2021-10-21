@@ -24,7 +24,7 @@ type KubernetesAlertCreateDto struct {
 
 	// ends at
 	// Format: date-time
-	EndsAt strfmt.DateTime `json:"endsAt,omitempty"`
+	EndsAt *strfmt.DateTime `json:"endsAt,omitempty"`
 
 	// fingerprint
 	Fingerprint string `json:"fingerprint,omitempty"`
@@ -34,7 +34,7 @@ type KubernetesAlertCreateDto struct {
 
 	// starts at
 	// Format: date-time
-	StartsAt strfmt.DateTime `json:"startsAt,omitempty"`
+	StartsAt *strfmt.DateTime `json:"startsAt,omitempty"`
 
 	// status
 	Status string `json:"status,omitempty"`

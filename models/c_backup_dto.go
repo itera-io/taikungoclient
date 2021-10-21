@@ -21,11 +21,11 @@ type CBackupDto struct {
 
 	// created at
 	// Format: date-time
-	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
+	CreatedAt *strfmt.DateTime `json:"createdAt,omitempty"`
 
 	// expiration
 	// Format: date-time
-	Expiration strfmt.DateTime `json:"expiration,omitempty"`
+	Expiration *strfmt.DateTime `json:"expiration,omitempty"`
 
 	// metadata name
 	MetadataName string `json:"metadataName,omitempty"`

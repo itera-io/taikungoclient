@@ -21,7 +21,7 @@ type BillingSummaryDto struct {
 
 	// end date
 	// Format: date-time
-	EndDate strfmt.DateTime `json:"endDate,omitempty"`
+	EndDate *strfmt.DateTime `json:"endDate,omitempty"`
 
 	// is deleted
 	IsDeleted bool `json:"isDeleted,omitempty"`
@@ -34,7 +34,7 @@ type BillingSummaryDto struct {
 
 	// start date
 	// Format: date-time
-	StartDate strfmt.DateTime `json:"startDate,omitempty"`
+	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
 
 	// tcu
 	Tcu float64 `json:"tcu,omitempty"`

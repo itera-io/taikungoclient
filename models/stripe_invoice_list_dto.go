@@ -27,7 +27,7 @@ type StripeInvoiceListDto struct {
 
 	// end date
 	// Format: date-time
-	EndDate strfmt.DateTime `json:"endDate,omitempty"`
+	EndDate *strfmt.DateTime `json:"endDate,omitempty"`
 
 	// id
 	ID string `json:"id,omitempty"`
@@ -40,7 +40,7 @@ type StripeInvoiceListDto struct {
 
 	// start date
 	// Format: date-time
-	StartDate strfmt.DateTime `json:"startDate,omitempty"`
+	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
 }
 
 // Validate validates this stripe invoice list dto

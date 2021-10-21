@@ -27,7 +27,7 @@ type TaikunNotification struct {
 
 	// created
 	// Format: date-time
-	Created strfmt.DateTime `json:"created,omitempty"`
+	Created *strfmt.DateTime `json:"created,omitempty"`
 
 	// created by
 	CreatedBy string `json:"createdBy,omitempty"`
@@ -52,7 +52,7 @@ type TaikunNotification struct {
 
 	// last modified
 	// Format: date-time
-	LastModified strfmt.DateTime `json:"lastModified,omitempty"`
+	LastModified *strfmt.DateTime `json:"lastModified,omitempty"`
 
 	// last modified by
 	LastModifiedBy string `json:"lastModifiedBy,omitempty"`

@@ -21,7 +21,7 @@ type CreateShowbackSummaryCommand struct {
 
 	// begin apply
 	// Format: date-time
-	BeginApply strfmt.DateTime `json:"beginApply,omitempty"`
+	BeginApply *strfmt.DateTime `json:"beginApply,omitempty"`
 
 	// price
 	Price float64 `json:"price,omitempty"`

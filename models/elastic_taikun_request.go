@@ -21,7 +21,7 @@ type ElasticTaikunRequest struct {
 
 	// created at
 	// Format: date-time
-	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
+	CreatedAt *strfmt.DateTime `json:"createdAt,omitempty"`
 
 	// endpoint
 	Endpoint string `json:"endpoint,omitempty"`

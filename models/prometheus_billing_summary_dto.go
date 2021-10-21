@@ -24,7 +24,7 @@ type PrometheusBillingSummaryDto struct {
 
 	// end date
 	// Format: date-time
-	EndDate strfmt.DateTime `json:"endDate,omitempty"`
+	EndDate *strfmt.DateTime `json:"endDate,omitempty"`
 
 	// last modified
 	LastModified string `json:"lastModified,omitempty"`
@@ -43,7 +43,7 @@ type PrometheusBillingSummaryDto struct {
 
 	// start date
 	// Format: date-time
-	StartDate strfmt.DateTime `json:"startDate,omitempty"`
+	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
 }
 
 // Validate validates this prometheus billing summary dto

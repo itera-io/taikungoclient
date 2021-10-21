@@ -21,7 +21,7 @@ type ProjectExtendLifeTimeCommand struct {
 
 	// expire at
 	// Format: date-time
-	ExpireAt strfmt.DateTime `json:"expireAt,omitempty"`
+	ExpireAt *strfmt.DateTime `json:"expireAt,omitempty"`
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`

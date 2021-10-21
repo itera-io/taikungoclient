@@ -24,14 +24,14 @@ type KubernetesEventCreateDto struct {
 
 	// first time stamp
 	// Format: date-time
-	FirstTimeStamp strfmt.DateTime `json:"firstTimeStamp,omitempty"`
+	FirstTimeStamp *strfmt.DateTime `json:"firstTimeStamp,omitempty"`
 
 	// involved object
 	InvolvedObject interface{} `json:"involvedObject,omitempty"`
 
 	// last time stamp
 	// Format: date-time
-	LastTimeStamp strfmt.DateTime `json:"lastTimeStamp,omitempty"`
+	LastTimeStamp *strfmt.DateTime `json:"lastTimeStamp,omitempty"`
 
 	// message
 	Message string `json:"message,omitempty"`

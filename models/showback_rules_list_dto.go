@@ -65,7 +65,7 @@ type ShowbackRulesListDto struct {
 	ProjectAlertLimit int32 `json:"projectAlertLimit,omitempty"`
 
 	// showback credential Id
-	ShowbackCredentialID int32 `json:"showbackCredentialId,omitempty"`
+	ShowbackCredentialID *int32 `json:"showbackCredentialId,omitempty"`
 
 	// showback credential name
 	ShowbackCredentialName string `json:"showbackCredentialName,omitempty"`

@@ -24,11 +24,11 @@ type CRestoreDto struct {
 
 	// completion date time
 	// Format: date-time
-	CompletionDateTime strfmt.DateTime `json:"completionDateTime,omitempty"`
+	CompletionDateTime *strfmt.DateTime `json:"completionDateTime,omitempty"`
 
 	// created at
 	// Format: date-time
-	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
+	CreatedAt *strfmt.DateTime `json:"createdAt,omitempty"`
 
 	// exclude namespaces
 	ExcludeNamespaces []string `json:"excludeNamespaces"`
@@ -50,7 +50,7 @@ type CRestoreDto struct {
 
 	// start time stamp
 	// Format: date-time
-	StartTimeStamp strfmt.DateTime `json:"startTimeStamp,omitempty"`
+	StartTimeStamp *strfmt.DateTime `json:"startTimeStamp,omitempty"`
 
 	// warnings
 	Warnings int64 `json:"warnings,omitempty"`

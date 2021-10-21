@@ -22,7 +22,7 @@ type OrganizationSubscriptionDto struct {
 
 	// end date
 	// Format: date-time
-	EndDate strfmt.DateTime `json:"endDate,omitempty"`
+	EndDate *strfmt.DateTime `json:"endDate,omitempty"`
 
 	// id
 	ID int32 `json:"id,omitempty"`
@@ -38,7 +38,7 @@ type OrganizationSubscriptionDto struct {
 
 	// start date
 	// Format: date-time
-	StartDate strfmt.DateTime `json:"startDate,omitempty"`
+	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
 
 	// stripe subscription Id
 	StripeSubscriptionID string `json:"stripeSubscriptionId,omitempty"`

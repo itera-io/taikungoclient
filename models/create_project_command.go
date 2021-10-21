@@ -30,7 +30,7 @@ type CreateProjectCommand struct {
 
 	// expired at
 	// Format: date-time
-	ExpiredAt strfmt.DateTime `json:"expiredAt,omitempty"`
+	ExpiredAt *strfmt.DateTime `json:"expiredAt,omitempty"`
 
 	// flavors
 	Flavors []string `json:"flavors"`

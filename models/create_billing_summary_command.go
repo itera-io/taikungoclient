@@ -21,7 +21,7 @@ type CreateBillingSummaryCommand struct {
 
 	// begin apply
 	// Format: date-time
-	BeginApply strfmt.DateTime `json:"beginApply,omitempty"`
+	BeginApply *strfmt.DateTime `json:"beginApply,omitempty"`
 
 	// icu
 	Icu int32 `json:"icu,omitempty"`

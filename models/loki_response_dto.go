@@ -28,7 +28,7 @@ type LokiResponseDto struct {
 
 	// end
 	// Format: date-time
-	End strfmt.DateTime `json:"end,omitempty"`
+	End *strfmt.DateTime `json:"end,omitempty"`
 
 	// filters
 	Filters []*Filter `json:"filters"`
@@ -44,7 +44,7 @@ type LokiResponseDto struct {
 
 	// start
 	// Format: date-time
-	Start strfmt.DateTime `json:"start,omitempty"`
+	Start *strfmt.DateTime `json:"start,omitempty"`
 }
 
 // Validate validates this loki response dto

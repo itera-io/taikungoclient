@@ -21,7 +21,7 @@ type CScheduleDto struct {
 
 	// created at
 	// Format: date-time
-	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
+	CreatedAt *strfmt.DateTime `json:"createdAt,omitempty"`
 
 	// excluded namespaces
 	ExcludedNamespaces []string `json:"excludedNamespaces"`
@@ -31,7 +31,7 @@ type CScheduleDto struct {
 
 	// last backup
 	// Format: date-time
-	LastBackup strfmt.DateTime `json:"lastBackup,omitempty"`
+	LastBackup *strfmt.DateTime `json:"lastBackup,omitempty"`
 
 	// metadata name
 	MetadataName string `json:"metadataName,omitempty"`

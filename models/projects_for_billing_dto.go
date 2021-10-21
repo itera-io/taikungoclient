@@ -22,11 +22,11 @@ type ProjectsForBillingDto struct {
 
 	// billing start date
 	// Format: date-time
-	BillingStartDate strfmt.DateTime `json:"billingStartDate,omitempty"`
+	BillingStartDate *strfmt.DateTime `json:"billingStartDate,omitempty"`
 
 	// created at
 	// Format: date-time
-	CreatedAt strfmt.DateTime `json:"createdAt,omitempty"`
+	CreatedAt *strfmt.DateTime `json:"createdAt,omitempty"`
 
 	// id
 	ID int32 `json:"id,omitempty"`

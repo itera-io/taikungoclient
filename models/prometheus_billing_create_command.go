@@ -30,7 +30,7 @@ type PrometheusBillingCreateCommand struct {
 
 	// start date
 	// Format: date-time
-	StartDate strfmt.DateTime `json:"startDate,omitempty"`
+	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
 }
 
 // Validate validates this prometheus billing create command

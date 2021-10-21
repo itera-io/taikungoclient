@@ -21,7 +21,7 @@ type PrometheusMetricsCommand struct {
 
 	// end
 	// Format: date-time
-	End strfmt.DateTime `json:"end,omitempty"`
+	End *strfmt.DateTime `json:"end,omitempty"`
 
 	// is auto complete
 	IsAutoComplete bool `json:"isAutoComplete,omitempty"`
@@ -37,14 +37,14 @@ type PrometheusMetricsCommand struct {
 
 	// start
 	// Format: date-time
-	Start strfmt.DateTime `json:"start,omitempty"`
+	Start *strfmt.DateTime `json:"start,omitempty"`
 
 	// step
 	Step string `json:"step,omitempty"`
 
 	// time
 	// Format: date-time
-	Time strfmt.DateTime `json:"time,omitempty"`
+	Time *strfmt.DateTime `json:"time,omitempty"`
 }
 
 // Validate validates this prometheus metrics command

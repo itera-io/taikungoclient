@@ -21,11 +21,11 @@ type UpsertInvoiceCommand struct {
 
 	// due date
 	// Format: date-time
-	DueDate strfmt.DateTime `json:"dueDate,omitempty"`
+	DueDate *strfmt.DateTime `json:"dueDate,omitempty"`
 
 	// end date
 	// Format: date-time
-	EndDate strfmt.DateTime `json:"endDate,omitempty"`
+	EndDate *strfmt.DateTime `json:"endDate,omitempty"`
 
 	// id
 	ID int32 `json:"id,omitempty"`
@@ -47,7 +47,7 @@ type UpsertInvoiceCommand struct {
 
 	// start date
 	// Format: date-time
-	StartDate strfmt.DateTime `json:"startDate,omitempty"`
+	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
 
 	// stripe invoice Id
 	StripeInvoiceID string `json:"stripeInvoiceId,omitempty"`
