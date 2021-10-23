@@ -32,7 +32,7 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	SubscriptionCreate(params *SubscriptionCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionCreateOK, error)
 
-	SubscriptionDelete(params *SubscriptionDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionDeleteOK, error)
+	SubscriptionDelete(params *SubscriptionDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionDeleteOK, *SubscriptionDeleteNoContent, error)
 
 	SubscriptionList(params *SubscriptionListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionListOK, error)
 
@@ -87,7 +87,7 @@ func (a *Client) SubscriptionCreate(params *SubscriptionCreateParams, authInfo r
 /*
   SubscriptionDelete deletes subscription package
 */
-func (a *Client) SubscriptionDelete(params *SubscriptionDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionDeleteOK, error) {
+func (a *Client) SubscriptionDelete(params *SubscriptionDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionDeleteOK, *SubscriptionDeleteNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewSubscriptionDeleteParams()
@@ -111,15 +111,16 @@ func (a *Client) SubscriptionDelete(params *SubscriptionDeleteParams, authInfo r
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*SubscriptionDeleteOK)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *SubscriptionDeleteOK:
+		return value, nil, nil
+	case *SubscriptionDeleteNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Subscription_Delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for subscription: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

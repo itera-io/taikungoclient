@@ -29,6 +29,12 @@ func (o *SubscriptionDeleteReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return result, nil
+	case 204:
+		result := NewSubscriptionDeleteNoContent()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 	case 400:
 		result := NewSubscriptionDeleteBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -90,6 +96,27 @@ func (o *SubscriptionDeleteOK) readResponse(response runtime.ClientResponse, con
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewSubscriptionDeleteNoContent creates a SubscriptionDeleteNoContent with default headers values
+func NewSubscriptionDeleteNoContent() *SubscriptionDeleteNoContent {
+	return &SubscriptionDeleteNoContent{}
+}
+
+/* SubscriptionDeleteNoContent describes a response with status code 204, with default header values.
+
+Success
+*/
+type SubscriptionDeleteNoContent struct {
+}
+
+func (o *SubscriptionDeleteNoContent) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteNoContent ", 204)
+}
+
+func (o *SubscriptionDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

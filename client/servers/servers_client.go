@@ -32,7 +32,7 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	ServersCreate(params *ServersCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersCreateOK, error)
 
-	ServersDelete(params *ServersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersDeleteOK, error)
+	ServersDelete(params *ServersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersDeleteOK, *ServersDeleteNoContent, error)
 
 	ServersDetails(params *ServersDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersDetailsOK, error)
 
@@ -93,7 +93,7 @@ func (a *Client) ServersCreate(params *ServersCreateParams, authInfo runtime.Cli
 /*
   ServersDelete deletes servers by project Id
 */
-func (a *Client) ServersDelete(params *ServersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersDeleteOK, error) {
+func (a *Client) ServersDelete(params *ServersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersDeleteOK, *ServersDeleteNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewServersDeleteParams()
@@ -117,15 +117,16 @@ func (a *Client) ServersDelete(params *ServersDeleteParams, authInfo runtime.Cli
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*ServersDeleteOK)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *ServersDeleteOK:
+		return value, nil, nil
+	case *ServersDeleteNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Servers_Delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for servers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
