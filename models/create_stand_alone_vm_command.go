@@ -22,8 +22,8 @@ type CreateStandAloneVMCommand struct {
 	// count
 	Count int32 `json:"count,omitempty"`
 
-	// flavor Id
-	FlavorID string `json:"flavorId,omitempty"`
+	// flavor name
+	FlavorName string `json:"flavorName,omitempty"`
 
 	// image
 	Image string `json:"image,omitempty"`

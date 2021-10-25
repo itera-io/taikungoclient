@@ -146,6 +146,9 @@ type ProjectDetailsForServersDto struct {
 	// project status
 	ProjectStatus string `json:"projectStatus,omitempty"`
 
+	// quota Id
+	QuotaID int32 `json:"quotaId,omitempty"`
+
 	// quota message
 	QuotaMessage string `json:"quotaMessage,omitempty"`
 

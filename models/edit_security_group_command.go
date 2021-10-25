@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -30,7 +31,7 @@ type EditSecurityGroupCommand struct {
 	PortMinRange int32 `json:"portMinRange,omitempty"`
 
 	// protocol
-	Protocol string `json:"protocol,omitempty"`
+	Protocol SecurityGroupProtocol `json:"protocol,omitempty"`
 
 	// remote Ip prefix
 	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
@@ -38,11 +39,60 @@ type EditSecurityGroupCommand struct {
 
 // Validate validates this edit security group command
 func (m *EditSecurityGroupCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateProtocol(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this edit security group command based on context it is used
+func (m *EditSecurityGroupCommand) validateProtocol(formats strfmt.Registry) error {
+	if swag.IsZero(m.Protocol) { // not required
+		return nil
+	}
+
+	if err := m.Protocol.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("protocol")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("protocol")
+		}
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validate this edit security group command based on the context it is used
 func (m *EditSecurityGroupCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateProtocol(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *EditSecurityGroupCommand) contextValidateProtocol(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Protocol.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("protocol")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("protocol")
+		}
+		return err
+	}
+
 	return nil
 }
 
