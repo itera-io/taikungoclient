@@ -17,7 +17,7 @@ rm -rfv go.mod
 rm -rfv go.sum
 
 # Ensure go-swagger names the package for the 'Documentation' endpoint 'doc' instead of 'documentation'
-sed 's/"Documentation"/"Doc"/g' swagger.json > swagger-patch.json
+sed 's/"Documentation"/"Doc"/g' swagger.json >swagger-patch.json
 
 # Make all datetimes nullable
 sed -i 's/"format": "date-time"/"x-nullable": true, "format": "date-time"/g' swagger-patch.json
@@ -25,6 +25,10 @@ sed -i 's/"format": "date-time"/"x-nullable": true, "format": "date-time"/g' swa
 # Make showback_credential_id nullable
 refline="\"showbackCredentialId\":"
 sed -i "/${refline}/a \"x-nullable\": true," swagger-patch.json
+
+# Remove ProjectQuotas omitempty (isCpuUnlimited, isRamUnlimited, isDiskSizeUnlimited
+refline="\"(isCpuUnlimited|isRamUnlimited|isDiskSizeUnlimited)\":"
+sed -Ei "/${refline}/a \"x-omitempty\": false," swagger-patch.json
 
 # Initialize go module
 go mod init "${module_name}"
