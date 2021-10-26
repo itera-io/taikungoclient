@@ -75,6 +75,11 @@ type ProjectQuotasListParams struct {
 	// Format: int64
 	EndRAM *int64
 
+	// ID.
+	//
+	// Format: int32
+	ID *int32
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -207,6 +212,17 @@ func (o *ProjectQuotasListParams) WithEndRAM(endRAM *int64) *ProjectQuotasListPa
 // SetEndRAM adds the endRam to the project quotas list params
 func (o *ProjectQuotasListParams) SetEndRAM(endRAM *int64) {
 	o.EndRAM = endRAM
+}
+
+// WithID adds the id to the project quotas list params
+func (o *ProjectQuotasListParams) WithID(id *int32) *ProjectQuotasListParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the project quotas list params
+func (o *ProjectQuotasListParams) SetID(id *int32) {
+	o.ID = id
 }
 
 // WithLimit adds the limit to the project quotas list params
@@ -373,6 +389,23 @@ func (o *ProjectQuotasListParams) WriteToRequest(r runtime.ClientRequest, reg st
 		if qEndRAM != "" {
 
 			if err := r.SetQueryParam("endRam", qEndRAM); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ID != nil {
+
+		// query param id
+		var qrID int32
+
+		if o.ID != nil {
+			qrID = *o.ID
+		}
+		qID := swag.FormatInt32(qrID)
+		if qID != "" {
+
+			if err := r.SetQueryParam("id", qID); err != nil {
 				return err
 			}
 		}
