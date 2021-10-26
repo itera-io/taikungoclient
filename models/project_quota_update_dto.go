@@ -24,13 +24,13 @@ type ProjectQuotaUpdateDto struct {
 	DiskSize int64 `json:"diskSize,omitempty"`
 
 	// is Cpu unlimited
-	IsCPUUnlimited bool `json:"isCpuUnlimited,omitempty"`
+	IsCPUUnlimited bool `json:"isCpuUnlimited"`
 
 	// is disk size unlimited
-	IsDiskSizeUnlimited bool `json:"isDiskSizeUnlimited,omitempty"`
+	IsDiskSizeUnlimited bool `json:"isDiskSizeUnlimited"`
 
 	// is Ram unlimited
-	IsRAMUnlimited bool `json:"isRamUnlimited,omitempty"`
+	IsRAMUnlimited bool `json:"isRamUnlimited"`
 
 	// ram
 	RAM int64 `json:"ram,omitempty"`

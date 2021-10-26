@@ -27,13 +27,13 @@ type ProjectQuotaListDto struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is Cpu unlimited
-	IsCPUUnlimited bool `json:"isCpuUnlimited,omitempty"`
+	IsCPUUnlimited bool `json:"isCpuUnlimited"`
 
 	// is disk size unlimited
-	IsDiskSizeUnlimited bool `json:"isDiskSizeUnlimited,omitempty"`
+	IsDiskSizeUnlimited bool `json:"isDiskSizeUnlimited"`
 
 	// is Ram unlimited
-	IsRAMUnlimited bool `json:"isRamUnlimited,omitempty"`
+	IsRAMUnlimited bool `json:"isRamUnlimited"`
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
