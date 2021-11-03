@@ -53,12 +53,6 @@ func (o *KubeConfigCreateReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewKubeConfigCreateTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewKubeConfigCreateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *KubeConfigCreateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubeConfigCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewKubeConfigCreateTooManyRequests creates a KubeConfigCreateTooManyRequests with default headers values
-func NewKubeConfigCreateTooManyRequests() *KubeConfigCreateTooManyRequests {
-	return &KubeConfigCreateTooManyRequests{}
-}
-
-/* KubeConfigCreateTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type KubeConfigCreateTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *KubeConfigCreateTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/KubeConfig][%d] kubeConfigCreateTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *KubeConfigCreateTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *KubeConfigCreateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

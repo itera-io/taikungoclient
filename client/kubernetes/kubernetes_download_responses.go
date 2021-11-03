@@ -53,12 +53,6 @@ func (o *KubernetesDownloadReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewKubernetesDownloadTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewKubernetesDownloadInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *KubernetesDownloadNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubernetesDownloadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewKubernetesDownloadTooManyRequests creates a KubernetesDownloadTooManyRequests with default headers values
-func NewKubernetesDownloadTooManyRequests() *KubernetesDownloadTooManyRequests {
-	return &KubernetesDownloadTooManyRequests{}
-}
-
-/* KubernetesDownloadTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type KubernetesDownloadTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *KubernetesDownloadTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *KubernetesDownloadTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *KubernetesDownloadTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

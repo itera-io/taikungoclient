@@ -59,12 +59,6 @@ func (o *SubscriptionDeleteReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewSubscriptionDeleteTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewSubscriptionDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -244,38 +238,6 @@ func (o *SubscriptionDeleteNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *SubscriptionDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewSubscriptionDeleteTooManyRequests creates a SubscriptionDeleteTooManyRequests with default headers values
-func NewSubscriptionDeleteTooManyRequests() *SubscriptionDeleteTooManyRequests {
-	return &SubscriptionDeleteTooManyRequests{}
-}
-
-/* SubscriptionDeleteTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type SubscriptionDeleteTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *SubscriptionDeleteTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *SubscriptionDeleteTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *SubscriptionDeleteTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

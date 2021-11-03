@@ -53,12 +53,6 @@ func (o *OpsCredentialsCreateReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewOpsCredentialsCreateTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewOpsCredentialsCreateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *OpsCredentialsCreateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *OpsCredentialsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewOpsCredentialsCreateTooManyRequests creates a OpsCredentialsCreateTooManyRequests with default headers values
-func NewOpsCredentialsCreateTooManyRequests() *OpsCredentialsCreateTooManyRequests {
-	return &OpsCredentialsCreateTooManyRequests{}
-}
-
-/* OpsCredentialsCreateTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type OpsCredentialsCreateTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *OpsCredentialsCreateTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials][%d] opsCredentialsCreateTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *OpsCredentialsCreateTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *OpsCredentialsCreateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

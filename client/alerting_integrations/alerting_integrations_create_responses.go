@@ -53,12 +53,6 @@ func (o *AlertingIntegrationsCreateReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAlertingIntegrationsCreateTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAlertingIntegrationsCreateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *AlertingIntegrationsCreateNotFound) GetPayload() *models.ProblemDetails
 }
 
 func (o *AlertingIntegrationsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAlertingIntegrationsCreateTooManyRequests creates a AlertingIntegrationsCreateTooManyRequests with default headers values
-func NewAlertingIntegrationsCreateTooManyRequests() *AlertingIntegrationsCreateTooManyRequests {
-	return &AlertingIntegrationsCreateTooManyRequests{}
-}
-
-/* AlertingIntegrationsCreateTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AlertingIntegrationsCreateTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AlertingIntegrationsCreateTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AlertingIntegrationsCreateTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AlertingIntegrationsCreateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

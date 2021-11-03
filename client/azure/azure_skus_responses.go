@@ -53,12 +53,6 @@ func (o *AzureSkusReader) ReadResponse(response runtime.ClientResponse, consumer
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAzureSkusTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAzureSkusInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *AzureSkusNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AzureSkusNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAzureSkusTooManyRequests creates a AzureSkusTooManyRequests with default headers values
-func NewAzureSkusTooManyRequests() *AzureSkusTooManyRequests {
-	return &AzureSkusTooManyRequests{}
-}
-
-/* AzureSkusTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AzureSkusTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AzureSkusTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AzureSkusTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AzureSkusTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

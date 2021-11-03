@@ -53,12 +53,6 @@ func (o *AuthRefreshTokenReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAuthRefreshTokenTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAuthRefreshTokenInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *AuthRefreshTokenNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AuthRefreshTokenNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAuthRefreshTokenTooManyRequests creates a AuthRefreshTokenTooManyRequests with default headers values
-func NewAuthRefreshTokenTooManyRequests() *AuthRefreshTokenTooManyRequests {
-	return &AuthRefreshTokenTooManyRequests{}
-}
-
-/* AuthRefreshTokenTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AuthRefreshTokenTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AuthRefreshTokenTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AuthRefreshTokenTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AuthRefreshTokenTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

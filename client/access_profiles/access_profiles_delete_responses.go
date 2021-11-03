@@ -59,12 +59,6 @@ func (o *AccessProfilesDeleteReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAccessProfilesDeleteTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAccessProfilesDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -244,38 +238,6 @@ func (o *AccessProfilesDeleteNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AccessProfilesDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAccessProfilesDeleteTooManyRequests creates a AccessProfilesDeleteTooManyRequests with default headers values
-func NewAccessProfilesDeleteTooManyRequests() *AccessProfilesDeleteTooManyRequests {
-	return &AccessProfilesDeleteTooManyRequests{}
-}
-
-/* AccessProfilesDeleteTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AccessProfilesDeleteTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AccessProfilesDeleteTooManyRequests) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AccessProfilesDeleteTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AccessProfilesDeleteTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *KubernetesProfilesLockManagerReader) ReadResponse(response runtime.Clie
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewKubernetesProfilesLockManagerTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewKubernetesProfilesLockManagerInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *KubernetesProfilesLockManagerNotFound) GetPayload() *models.ProblemDeta
 }
 
 func (o *KubernetesProfilesLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewKubernetesProfilesLockManagerTooManyRequests creates a KubernetesProfilesLockManagerTooManyRequests with default headers values
-func NewKubernetesProfilesLockManagerTooManyRequests() *KubernetesProfilesLockManagerTooManyRequests {
-	return &KubernetesProfilesLockManagerTooManyRequests{}
-}
-
-/* KubernetesProfilesLockManagerTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type KubernetesProfilesLockManagerTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *KubernetesProfilesLockManagerTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *KubernetesProfilesLockManagerTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *KubernetesProfilesLockManagerTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

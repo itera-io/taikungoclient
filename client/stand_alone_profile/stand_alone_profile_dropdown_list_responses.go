@@ -53,12 +53,6 @@ func (o *StandAloneProfileDropdownListReader) ReadResponse(response runtime.Clie
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewStandAloneProfileDropdownListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewStandAloneProfileDropdownListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *StandAloneProfileDropdownListNotFound) GetPayload() *models.ProblemDeta
 }
 
 func (o *StandAloneProfileDropdownListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewStandAloneProfileDropdownListTooManyRequests creates a StandAloneProfileDropdownListTooManyRequests with default headers values
-func NewStandAloneProfileDropdownListTooManyRequests() *StandAloneProfileDropdownListTooManyRequests {
-	return &StandAloneProfileDropdownListTooManyRequests{}
-}
-
-/* StandAloneProfileDropdownListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type StandAloneProfileDropdownListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *StandAloneProfileDropdownListTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile/list][%d] standAloneProfileDropdownListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *StandAloneProfileDropdownListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *StandAloneProfileDropdownListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

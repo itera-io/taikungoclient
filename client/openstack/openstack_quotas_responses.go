@@ -53,12 +53,6 @@ func (o *OpenstackQuotasReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewOpenstackQuotasTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewOpenstackQuotasInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *OpenstackQuotasNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *OpenstackQuotasNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewOpenstackQuotasTooManyRequests creates a OpenstackQuotasTooManyRequests with default headers values
-func NewOpenstackQuotasTooManyRequests() *OpenstackQuotasTooManyRequests {
-	return &OpenstackQuotasTooManyRequests{}
-}
-
-/* OpenstackQuotasTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type OpenstackQuotasTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *OpenstackQuotasTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *OpenstackQuotasTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *OpenstackQuotasTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

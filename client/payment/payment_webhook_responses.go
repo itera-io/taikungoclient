@@ -53,12 +53,6 @@ func (o *PaymentWebhookReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewPaymentWebhookTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewPaymentWebhookInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *PaymentWebhookNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *PaymentWebhookNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewPaymentWebhookTooManyRequests creates a PaymentWebhookTooManyRequests with default headers values
-func NewPaymentWebhookTooManyRequests() *PaymentWebhookTooManyRequests {
-	return &PaymentWebhookTooManyRequests{}
-}
-
-/* PaymentWebhookTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type PaymentWebhookTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *PaymentWebhookTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *PaymentWebhookTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *PaymentWebhookTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

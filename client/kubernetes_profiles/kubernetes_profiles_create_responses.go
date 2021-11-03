@@ -53,12 +53,6 @@ func (o *KubernetesProfilesCreateReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewKubernetesProfilesCreateTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewKubernetesProfilesCreateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *KubernetesProfilesCreateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubernetesProfilesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewKubernetesProfilesCreateTooManyRequests creates a KubernetesProfilesCreateTooManyRequests with default headers values
-func NewKubernetesProfilesCreateTooManyRequests() *KubernetesProfilesCreateTooManyRequests {
-	return &KubernetesProfilesCreateTooManyRequests{}
-}
-
-/* KubernetesProfilesCreateTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type KubernetesProfilesCreateTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *KubernetesProfilesCreateTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesCreateTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *KubernetesProfilesCreateTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *KubernetesProfilesCreateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

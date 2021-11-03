@@ -53,12 +53,6 @@ func (o *AzureUpdateReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAzureUpdateTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAzureUpdateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *AzureUpdateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AzureUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAzureUpdateTooManyRequests creates a AzureUpdateTooManyRequests with default headers values
-func NewAzureUpdateTooManyRequests() *AzureUpdateTooManyRequests {
-	return &AzureUpdateTooManyRequests{}
-}
-
-/* AzureUpdateTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AzureUpdateTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AzureUpdateTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AzureUpdateTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AzureUpdateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

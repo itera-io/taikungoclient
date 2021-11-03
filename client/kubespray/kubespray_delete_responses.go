@@ -59,12 +59,6 @@ func (o *KubesprayDeleteReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewKubesprayDeleteTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewKubesprayDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -244,38 +238,6 @@ func (o *KubesprayDeleteNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubesprayDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewKubesprayDeleteTooManyRequests creates a KubesprayDeleteTooManyRequests with default headers values
-func NewKubesprayDeleteTooManyRequests() *KubesprayDeleteTooManyRequests {
-	return &KubesprayDeleteTooManyRequests{}
-}
-
-/* KubesprayDeleteTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type KubesprayDeleteTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *KubesprayDeleteTooManyRequests) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *KubesprayDeleteTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *KubesprayDeleteTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

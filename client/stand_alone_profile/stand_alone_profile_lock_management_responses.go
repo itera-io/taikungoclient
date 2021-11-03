@@ -53,12 +53,6 @@ func (o *StandAloneProfileLockManagementReader) ReadResponse(response runtime.Cl
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewStandAloneProfileLockManagementTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewStandAloneProfileLockManagementInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *StandAloneProfileLockManagementNotFound) GetPayload() *models.ProblemDe
 }
 
 func (o *StandAloneProfileLockManagementNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewStandAloneProfileLockManagementTooManyRequests creates a StandAloneProfileLockManagementTooManyRequests with default headers values
-func NewStandAloneProfileLockManagementTooManyRequests() *StandAloneProfileLockManagementTooManyRequests {
-	return &StandAloneProfileLockManagementTooManyRequests{}
-}
-
-/* StandAloneProfileLockManagementTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type StandAloneProfileLockManagementTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *StandAloneProfileLockManagementTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/lockmanager][%d] standAloneProfileLockManagementTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *StandAloneProfileLockManagementTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *StandAloneProfileLockManagementTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

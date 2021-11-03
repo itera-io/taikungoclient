@@ -53,12 +53,6 @@ func (o *ProjectsUpgradeReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewProjectsUpgradeTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewProjectsUpgradeInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *ProjectsUpgradeNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ProjectsUpgradeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewProjectsUpgradeTooManyRequests creates a ProjectsUpgradeTooManyRequests with default headers values
-func NewProjectsUpgradeTooManyRequests() *ProjectsUpgradeTooManyRequests {
-	return &ProjectsUpgradeTooManyRequests{}
-}
-
-/* ProjectsUpgradeTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type ProjectsUpgradeTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *ProjectsUpgradeTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *ProjectsUpgradeTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *ProjectsUpgradeTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

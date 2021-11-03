@@ -53,12 +53,6 @@ func (o *AlertingProfilesVerifyWebhookReader) ReadResponse(response runtime.Clie
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAlertingProfilesVerifyWebhookTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAlertingProfilesVerifyWebhookInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *AlertingProfilesVerifyWebhookNotFound) GetPayload() *models.ProblemDeta
 }
 
 func (o *AlertingProfilesVerifyWebhookNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAlertingProfilesVerifyWebhookTooManyRequests creates a AlertingProfilesVerifyWebhookTooManyRequests with default headers values
-func NewAlertingProfilesVerifyWebhookTooManyRequests() *AlertingProfilesVerifyWebhookTooManyRequests {
-	return &AlertingProfilesVerifyWebhookTooManyRequests{}
-}
-
-/* AlertingProfilesVerifyWebhookTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AlertingProfilesVerifyWebhookTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AlertingProfilesVerifyWebhookTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AlertingProfilesVerifyWebhookTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AlertingProfilesVerifyWebhookTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

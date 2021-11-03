@@ -53,12 +53,6 @@ func (o *FlavorsAwsFlavorsReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewFlavorsAwsFlavorsTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewFlavorsAwsFlavorsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *FlavorsAwsFlavorsNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *FlavorsAwsFlavorsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewFlavorsAwsFlavorsTooManyRequests creates a FlavorsAwsFlavorsTooManyRequests with default headers values
-func NewFlavorsAwsFlavorsTooManyRequests() *FlavorsAwsFlavorsTooManyRequests {
-	return &FlavorsAwsFlavorsTooManyRequests{}
-}
-
-/* FlavorsAwsFlavorsTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type FlavorsAwsFlavorsTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *FlavorsAwsFlavorsTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *FlavorsAwsFlavorsTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *FlavorsAwsFlavorsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

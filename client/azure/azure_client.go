@@ -42,6 +42,8 @@ type ClientService interface {
 
 	AzureSkus(params *AzureSkusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureSkusOK, error)
 
+	AzureSubscriptions(params *AzureSubscriptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureSubscriptionsOK, error)
+
 	AzureUpdate(params *AzureUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureUpdateOK, error)
 
 	AzureZones(params *AzureZonesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureZonesOK, error)
@@ -280,6 +282,45 @@ func (a *Client) AzureSkus(params *AzureSkusParams, authInfo runtime.ClientAuthI
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Azure_Skus: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  AzureSubscriptions azures subscriptions list
+*/
+func (a *Client) AzureSubscriptions(params *AzureSubscriptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureSubscriptionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAzureSubscriptionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Azure_Subscriptions",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Azure/susbcriptions",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AzureSubscriptionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AzureSubscriptionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Azure_Subscriptions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

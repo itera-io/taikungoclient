@@ -53,12 +53,6 @@ func (o *OpenstackUpdateReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewOpenstackUpdateTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewOpenstackUpdateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *OpenstackUpdateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *OpenstackUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewOpenstackUpdateTooManyRequests creates a OpenstackUpdateTooManyRequests with default headers values
-func NewOpenstackUpdateTooManyRequests() *OpenstackUpdateTooManyRequests {
-	return &OpenstackUpdateTooManyRequests{}
-}
-
-/* OpenstackUpdateTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type OpenstackUpdateTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *OpenstackUpdateTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Openstack/update][%d] openstackUpdateTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *OpenstackUpdateTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *OpenstackUpdateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

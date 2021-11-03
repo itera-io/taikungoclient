@@ -53,12 +53,6 @@ func (o *StandAloneUpdateReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewStandAloneUpdateTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewStandAloneUpdateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *StandAloneUpdateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *StandAloneUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewStandAloneUpdateTooManyRequests creates a StandAloneUpdateTooManyRequests with default headers values
-func NewStandAloneUpdateTooManyRequests() *StandAloneUpdateTooManyRequests {
-	return &StandAloneUpdateTooManyRequests{}
-}
-
-/* StandAloneUpdateTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type StandAloneUpdateTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *StandAloneUpdateTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update][%d] standAloneUpdateTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *StandAloneUpdateTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *StandAloneUpdateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

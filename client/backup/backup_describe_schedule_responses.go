@@ -53,12 +53,6 @@ func (o *BackupDescribeScheduleReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewBackupDescribeScheduleTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewBackupDescribeScheduleInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *BackupDescribeScheduleNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *BackupDescribeScheduleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewBackupDescribeScheduleTooManyRequests creates a BackupDescribeScheduleTooManyRequests with default headers values
-func NewBackupDescribeScheduleTooManyRequests() *BackupDescribeScheduleTooManyRequests {
-	return &BackupDescribeScheduleTooManyRequests{}
-}
-
-/* BackupDescribeScheduleTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type BackupDescribeScheduleTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *BackupDescribeScheduleTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *BackupDescribeScheduleTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *BackupDescribeScheduleTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *OpenstackProjectsReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewOpenstackProjectsTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewOpenstackProjectsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *OpenstackProjectsNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *OpenstackProjectsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewOpenstackProjectsTooManyRequests creates a OpenstackProjectsTooManyRequests with default headers values
-func NewOpenstackProjectsTooManyRequests() *OpenstackProjectsTooManyRequests {
-	return &OpenstackProjectsTooManyRequests{}
-}
-
-/* OpenstackProjectsTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type OpenstackProjectsTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *OpenstackProjectsTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Openstack/projects][%d] openstackProjectsTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *OpenstackProjectsTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *OpenstackProjectsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *ShowbackExportCsvReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewShowbackExportCsvTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewShowbackExportCsvInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -208,38 +202,6 @@ func (o *ShowbackExportCsvNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ShowbackExportCsvNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewShowbackExportCsvTooManyRequests creates a ShowbackExportCsvTooManyRequests with default headers values
-func NewShowbackExportCsvTooManyRequests() *ShowbackExportCsvTooManyRequests {
-	return &ShowbackExportCsvTooManyRequests{}
-}
-
-/* ShowbackExportCsvTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type ShowbackExportCsvTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *ShowbackExportCsvTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Showback/export][%d] showbackExportCsvTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *ShowbackExportCsvTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *ShowbackExportCsvTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

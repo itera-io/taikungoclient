@@ -53,12 +53,6 @@ func (o *CronJobFetchKubernetesOverviewReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewCronJobFetchKubernetesOverviewTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewCronJobFetchKubernetesOverviewInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *CronJobFetchKubernetesOverviewNotFound) GetPayload() *models.ProblemDet
 }
 
 func (o *CronJobFetchKubernetesOverviewNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewCronJobFetchKubernetesOverviewTooManyRequests creates a CronJobFetchKubernetesOverviewTooManyRequests with default headers values
-func NewCronJobFetchKubernetesOverviewTooManyRequests() *CronJobFetchKubernetesOverviewTooManyRequests {
-	return &CronJobFetchKubernetesOverviewTooManyRequests{}
-}
-
-/* CronJobFetchKubernetesOverviewTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type CronJobFetchKubernetesOverviewTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *CronJobFetchKubernetesOverviewTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *CronJobFetchKubernetesOverviewTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *CronJobFetchKubernetesOverviewTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *KubernetesOverviewReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewKubernetesOverviewTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewKubernetesOverviewInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *KubernetesOverviewNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubernetesOverviewNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewKubernetesOverviewTooManyRequests creates a KubernetesOverviewTooManyRequests with default headers values
-func NewKubernetesOverviewTooManyRequests() *KubernetesOverviewTooManyRequests {
-	return &KubernetesOverviewTooManyRequests{}
-}
-
-/* KubernetesOverviewTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type KubernetesOverviewTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *KubernetesOverviewTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *KubernetesOverviewTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *KubernetesOverviewTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

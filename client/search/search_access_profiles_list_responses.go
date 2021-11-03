@@ -53,12 +53,6 @@ func (o *SearchAccessProfilesListReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewSearchAccessProfilesListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewSearchAccessProfilesListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *SearchAccessProfilesListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *SearchAccessProfilesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewSearchAccessProfilesListTooManyRequests creates a SearchAccessProfilesListTooManyRequests with default headers values
-func NewSearchAccessProfilesListTooManyRequests() *SearchAccessProfilesListTooManyRequests {
-	return &SearchAccessProfilesListTooManyRequests{}
-}
-
-/* SearchAccessProfilesListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type SearchAccessProfilesListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *SearchAccessProfilesListTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *SearchAccessProfilesListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *SearchAccessProfilesListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

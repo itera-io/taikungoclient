@@ -53,12 +53,6 @@ func (o *CommonGetCountryListReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewCommonGetCountryListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewCommonGetCountryListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *CommonGetCountryListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *CommonGetCountryListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewCommonGetCountryListTooManyRequests creates a CommonGetCountryListTooManyRequests with default headers values
-func NewCommonGetCountryListTooManyRequests() *CommonGetCountryListTooManyRequests {
-	return &CommonGetCountryListTooManyRequests{}
-}
-
-/* CommonGetCountryListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type CommonGetCountryListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *CommonGetCountryListTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *CommonGetCountryListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *CommonGetCountryListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *StandAloneProfileDeleteReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewStandAloneProfileDeleteTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewStandAloneProfileDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *StandAloneProfileDeleteNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *StandAloneProfileDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewStandAloneProfileDeleteTooManyRequests creates a StandAloneProfileDeleteTooManyRequests with default headers values
-func NewStandAloneProfileDeleteTooManyRequests() *StandAloneProfileDeleteTooManyRequests {
-	return &StandAloneProfileDeleteTooManyRequests{}
-}
-
-/* StandAloneProfileDeleteTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type StandAloneProfileDeleteTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *StandAloneProfileDeleteTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *StandAloneProfileDeleteTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *StandAloneProfileDeleteTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

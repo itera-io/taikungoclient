@@ -53,12 +53,6 @@ func (o *SSHUsersListReader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewSSHUsersListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewSSHUsersListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *SSHUsersListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *SSHUsersListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewSSHUsersListTooManyRequests creates a SSHUsersListTooManyRequests with default headers values
-func NewSSHUsersListTooManyRequests() *SSHUsersListTooManyRequests {
-	return &SSHUsersListTooManyRequests{}
-}
-
-/* SSHUsersListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type SSHUsersListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *SSHUsersListTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/SshUsers/list/{accessProfileId}][%d] sshUsersListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *SSHUsersListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *SSHUsersListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *AzurePublishersReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAzurePublishersTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAzurePublishersInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *AzurePublishersNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AzurePublishersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAzurePublishersTooManyRequests creates a AzurePublishersTooManyRequests with default headers values
-func NewAzurePublishersTooManyRequests() *AzurePublishersTooManyRequests {
-	return &AzurePublishersTooManyRequests{}
-}
-
-/* AzurePublishersTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AzurePublishersTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AzurePublishersTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AzurePublishersTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AzurePublishersTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

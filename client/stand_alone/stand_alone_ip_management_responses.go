@@ -53,12 +53,6 @@ func (o *StandAloneIPManagementReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewStandAloneIPManagementTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewStandAloneIPManagementInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *StandAloneIPManagementNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *StandAloneIPManagementNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewStandAloneIPManagementTooManyRequests creates a StandAloneIPManagementTooManyRequests with default headers values
-func NewStandAloneIPManagementTooManyRequests() *StandAloneIPManagementTooManyRequests {
-	return &StandAloneIPManagementTooManyRequests{}
-}
-
-/* StandAloneIPManagementTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type StandAloneIPManagementTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *StandAloneIPManagementTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *StandAloneIPManagementTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *StandAloneIPManagementTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

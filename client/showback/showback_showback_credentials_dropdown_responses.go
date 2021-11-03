@@ -53,12 +53,6 @@ func (o *ShowbackShowbackCredentialsDropdownReader) ReadResponse(response runtim
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewShowbackShowbackCredentialsDropdownTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewShowbackShowbackCredentialsDropdownInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *ShowbackShowbackCredentialsDropdownNotFound) GetPayload() *models.Probl
 }
 
 func (o *ShowbackShowbackCredentialsDropdownNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewShowbackShowbackCredentialsDropdownTooManyRequests creates a ShowbackShowbackCredentialsDropdownTooManyRequests with default headers values
-func NewShowbackShowbackCredentialsDropdownTooManyRequests() *ShowbackShowbackCredentialsDropdownTooManyRequests {
-	return &ShowbackShowbackCredentialsDropdownTooManyRequests{}
-}
-
-/* ShowbackShowbackCredentialsDropdownTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type ShowbackShowbackCredentialsDropdownTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *ShowbackShowbackCredentialsDropdownTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Showback/credentials/list][%d] showbackShowbackCredentialsDropdownTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *ShowbackShowbackCredentialsDropdownTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *ShowbackShowbackCredentialsDropdownTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

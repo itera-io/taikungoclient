@@ -53,12 +53,6 @@ func (o *KubernetesUpdateKubernetesAlertReader) ReadResponse(response runtime.Cl
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewKubernetesUpdateKubernetesAlertTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewKubernetesUpdateKubernetesAlertInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *KubernetesUpdateKubernetesAlertNotFound) GetPayload() *models.ProblemDe
 }
 
 func (o *KubernetesUpdateKubernetesAlertNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewKubernetesUpdateKubernetesAlertTooManyRequests creates a KubernetesUpdateKubernetesAlertTooManyRequests with default headers values
-func NewKubernetesUpdateKubernetesAlertTooManyRequests() *KubernetesUpdateKubernetesAlertTooManyRequests {
-	return &KubernetesUpdateKubernetesAlertTooManyRequests{}
-}
-
-/* KubernetesUpdateKubernetesAlertTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type KubernetesUpdateKubernetesAlertTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *KubernetesUpdateKubernetesAlertTooManyRequests) Error() string {
-	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *KubernetesUpdateKubernetesAlertTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *KubernetesUpdateKubernetesAlertTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

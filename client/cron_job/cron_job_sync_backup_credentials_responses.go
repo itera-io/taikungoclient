@@ -53,12 +53,6 @@ func (o *CronJobSyncBackupCredentialsReader) ReadResponse(response runtime.Clien
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewCronJobSyncBackupCredentialsTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewCronJobSyncBackupCredentialsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *CronJobSyncBackupCredentialsNotFound) GetPayload() *models.ProblemDetai
 }
 
 func (o *CronJobSyncBackupCredentialsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewCronJobSyncBackupCredentialsTooManyRequests creates a CronJobSyncBackupCredentialsTooManyRequests with default headers values
-func NewCronJobSyncBackupCredentialsTooManyRequests() *CronJobSyncBackupCredentialsTooManyRequests {
-	return &CronJobSyncBackupCredentialsTooManyRequests{}
-}
-
-/* CronJobSyncBackupCredentialsTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type CronJobSyncBackupCredentialsTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *CronJobSyncBackupCredentialsTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *CronJobSyncBackupCredentialsTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *CronJobSyncBackupCredentialsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

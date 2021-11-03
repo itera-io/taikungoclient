@@ -53,12 +53,6 @@ func (o *StandAloneResetReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewStandAloneResetTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewStandAloneResetInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *StandAloneResetNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *StandAloneResetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewStandAloneResetTooManyRequests creates a StandAloneResetTooManyRequests with default headers values
-func NewStandAloneResetTooManyRequests() *StandAloneResetTooManyRequests {
-	return &StandAloneResetTooManyRequests{}
-}
-
-/* StandAloneResetTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type StandAloneResetTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *StandAloneResetTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *StandAloneResetTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *StandAloneResetTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

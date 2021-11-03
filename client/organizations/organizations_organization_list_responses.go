@@ -53,12 +53,6 @@ func (o *OrganizationsOrganizationListReader) ReadResponse(response runtime.Clie
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewOrganizationsOrganizationListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewOrganizationsOrganizationListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *OrganizationsOrganizationListNotFound) GetPayload() *models.ProblemDeta
 }
 
 func (o *OrganizationsOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewOrganizationsOrganizationListTooManyRequests creates a OrganizationsOrganizationListTooManyRequests with default headers values
-func NewOrganizationsOrganizationListTooManyRequests() *OrganizationsOrganizationListTooManyRequests {
-	return &OrganizationsOrganizationListTooManyRequests{}
-}
-
-/* OrganizationsOrganizationListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type OrganizationsOrganizationListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *OrganizationsOrganizationListTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *OrganizationsOrganizationListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *OrganizationsOrganizationListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

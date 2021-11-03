@@ -53,12 +53,6 @@ func (o *StandAloneAddDiskReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewStandAloneAddDiskTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewStandAloneAddDiskInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *StandAloneAddDiskNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *StandAloneAddDiskNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewStandAloneAddDiskTooManyRequests creates a StandAloneAddDiskTooManyRequests with default headers values
-func NewStandAloneAddDiskTooManyRequests() *StandAloneAddDiskTooManyRequests {
-	return &StandAloneAddDiskTooManyRequests{}
-}
-
-/* StandAloneAddDiskTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type StandAloneAddDiskTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *StandAloneAddDiskTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAlone/add/disk][%d] standAloneAddDiskTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *StandAloneAddDiskTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *StandAloneAddDiskTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

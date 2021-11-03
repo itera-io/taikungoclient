@@ -53,12 +53,6 @@ func (o *CronJobDeleteExpiredHistoryLogsReader) ReadResponse(response runtime.Cl
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewCronJobDeleteExpiredHistoryLogsTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewCronJobDeleteExpiredHistoryLogsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *CronJobDeleteExpiredHistoryLogsNotFound) GetPayload() *models.ProblemDe
 }
 
 func (o *CronJobDeleteExpiredHistoryLogsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewCronJobDeleteExpiredHistoryLogsTooManyRequests creates a CronJobDeleteExpiredHistoryLogsTooManyRequests with default headers values
-func NewCronJobDeleteExpiredHistoryLogsTooManyRequests() *CronJobDeleteExpiredHistoryLogsTooManyRequests {
-	return &CronJobDeleteExpiredHistoryLogsTooManyRequests{}
-}
-
-/* CronJobDeleteExpiredHistoryLogsTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type CronJobDeleteExpiredHistoryLogsTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *CronJobDeleteExpiredHistoryLogsTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *CronJobDeleteExpiredHistoryLogsTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *CronJobDeleteExpiredHistoryLogsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *AlertingProfilesAssignWebhooksReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAlertingProfilesAssignWebhooksTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAlertingProfilesAssignWebhooksInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *AlertingProfilesAssignWebhooksNotFound) GetPayload() *models.ProblemDet
 }
 
 func (o *AlertingProfilesAssignWebhooksNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAlertingProfilesAssignWebhooksTooManyRequests creates a AlertingProfilesAssignWebhooksTooManyRequests with default headers values
-func NewAlertingProfilesAssignWebhooksTooManyRequests() *AlertingProfilesAssignWebhooksTooManyRequests {
-	return &AlertingProfilesAssignWebhooksTooManyRequests{}
-}
-
-/* AlertingProfilesAssignWebhooksTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AlertingProfilesAssignWebhooksTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AlertingProfilesAssignWebhooksTooManyRequests) Error() string {
-	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignwebhooks/{id}][%d] alertingProfilesAssignWebhooksTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AlertingProfilesAssignWebhooksTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AlertingProfilesAssignWebhooksTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

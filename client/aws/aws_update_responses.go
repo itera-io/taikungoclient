@@ -53,12 +53,6 @@ func (o *AwsUpdateReader) ReadResponse(response runtime.ClientResponse, consumer
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAwsUpdateTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAwsUpdateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *AwsUpdateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AwsUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAwsUpdateTooManyRequests creates a AwsUpdateTooManyRequests with default headers values
-func NewAwsUpdateTooManyRequests() *AwsUpdateTooManyRequests {
-	return &AwsUpdateTooManyRequests{}
-}
-
-/* AwsUpdateTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AwsUpdateTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AwsUpdateTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AwsUpdateTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AwsUpdateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

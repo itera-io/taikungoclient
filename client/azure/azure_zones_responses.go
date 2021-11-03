@@ -53,12 +53,6 @@ func (o *AzureZonesReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAzureZonesTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAzureZonesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *AzureZonesNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AzureZonesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAzureZonesTooManyRequests creates a AzureZonesTooManyRequests with default headers values
-func NewAzureZonesTooManyRequests() *AzureZonesTooManyRequests {
-	return &AzureZonesTooManyRequests{}
-}
-
-/* AzureZonesTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AzureZonesTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AzureZonesTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AzureZonesTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AzureZonesTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

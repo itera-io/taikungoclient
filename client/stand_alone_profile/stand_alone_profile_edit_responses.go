@@ -53,12 +53,6 @@ func (o *StandAloneProfileEditReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewStandAloneProfileEditTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewStandAloneProfileEditInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *StandAloneProfileEditNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *StandAloneProfileEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewStandAloneProfileEditTooManyRequests creates a StandAloneProfileEditTooManyRequests with default headers values
-func NewStandAloneProfileEditTooManyRequests() *StandAloneProfileEditTooManyRequests {
-	return &StandAloneProfileEditTooManyRequests{}
-}
-
-/* StandAloneProfileEditTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type StandAloneProfileEditTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *StandAloneProfileEditTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *StandAloneProfileEditTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *StandAloneProfileEditTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

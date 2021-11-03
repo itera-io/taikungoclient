@@ -53,12 +53,6 @@ func (o *SlackSlackConfigurationForOrganizationListReader) ReadResponse(response
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewSlackSlackConfigurationForOrganizationListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewSlackSlackConfigurationForOrganizationListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *SlackSlackConfigurationForOrganizationListNotFound) GetPayload() *model
 }
 
 func (o *SlackSlackConfigurationForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewSlackSlackConfigurationForOrganizationListTooManyRequests creates a SlackSlackConfigurationForOrganizationListTooManyRequests with default headers values
-func NewSlackSlackConfigurationForOrganizationListTooManyRequests() *SlackSlackConfigurationForOrganizationListTooManyRequests {
-	return &SlackSlackConfigurationForOrganizationListTooManyRequests{}
-}
-
-/* SlackSlackConfigurationForOrganizationListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type SlackSlackConfigurationForOrganizationListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *SlackSlackConfigurationForOrganizationListTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *SlackSlackConfigurationForOrganizationListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *SlackSlackConfigurationForOrganizationListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *CronJobFetchKubernetesAlertsReader) ReadResponse(response runtime.Clien
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewCronJobFetchKubernetesAlertsTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewCronJobFetchKubernetesAlertsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *CronJobFetchKubernetesAlertsNotFound) GetPayload() *models.ProblemDetai
 }
 
 func (o *CronJobFetchKubernetesAlertsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewCronJobFetchKubernetesAlertsTooManyRequests creates a CronJobFetchKubernetesAlertsTooManyRequests with default headers values
-func NewCronJobFetchKubernetesAlertsTooManyRequests() *CronJobFetchKubernetesAlertsTooManyRequests {
-	return &CronJobFetchKubernetesAlertsTooManyRequests{}
-}
-
-/* CronJobFetchKubernetesAlertsTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type CronJobFetchKubernetesAlertsTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *CronJobFetchKubernetesAlertsTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *CronJobFetchKubernetesAlertsTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *CronJobFetchKubernetesAlertsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

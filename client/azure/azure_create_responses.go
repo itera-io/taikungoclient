@@ -53,12 +53,6 @@ func (o *AzureCreateReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAzureCreateTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAzureCreateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *AzureCreateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AzureCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAzureCreateTooManyRequests creates a AzureCreateTooManyRequests with default headers values
-func NewAzureCreateTooManyRequests() *AzureCreateTooManyRequests {
-	return &AzureCreateTooManyRequests{}
-}
-
-/* AzureCreateTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AzureCreateTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AzureCreateTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AzureCreateTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AzureCreateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *SearchDaemonSetListReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewSearchDaemonSetListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewSearchDaemonSetListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *SearchDaemonSetListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *SearchDaemonSetListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewSearchDaemonSetListTooManyRequests creates a SearchDaemonSetListTooManyRequests with default headers values
-func NewSearchDaemonSetListTooManyRequests() *SearchDaemonSetListTooManyRequests {
-	return &SearchDaemonSetListTooManyRequests{}
-}
-
-/* SearchDaemonSetListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type SearchDaemonSetListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *SearchDaemonSetListTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *SearchDaemonSetListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *SearchDaemonSetListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

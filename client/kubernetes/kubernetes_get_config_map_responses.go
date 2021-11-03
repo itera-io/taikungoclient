@@ -53,12 +53,6 @@ func (o *KubernetesGetConfigMapReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewKubernetesGetConfigMapTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewKubernetesGetConfigMapInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *KubernetesGetConfigMapNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubernetesGetConfigMapNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewKubernetesGetConfigMapTooManyRequests creates a KubernetesGetConfigMapTooManyRequests with default headers values
-func NewKubernetesGetConfigMapTooManyRequests() *KubernetesGetConfigMapTooManyRequests {
-	return &KubernetesGetConfigMapTooManyRequests{}
-}
-
-/* KubernetesGetConfigMapTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type KubernetesGetConfigMapTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *KubernetesGetConfigMapTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/configmap][%d] kubernetesGetConfigMapTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *KubernetesGetConfigMapTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *KubernetesGetConfigMapTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

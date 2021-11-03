@@ -53,12 +53,6 @@ func (o *OpenstackVolumeTypesReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewOpenstackVolumeTypesTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewOpenstackVolumeTypesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *OpenstackVolumeTypesNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *OpenstackVolumeTypesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewOpenstackVolumeTypesTooManyRequests creates a OpenstackVolumeTypesTooManyRequests with default headers values
-func NewOpenstackVolumeTypesTooManyRequests() *OpenstackVolumeTypesTooManyRequests {
-	return &OpenstackVolumeTypesTooManyRequests{}
-}
-
-/* OpenstackVolumeTypesTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type OpenstackVolumeTypesTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *OpenstackVolumeTypesTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *OpenstackVolumeTypesTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *OpenstackVolumeTypesTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

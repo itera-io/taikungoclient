@@ -53,12 +53,6 @@ func (o *OpsCredentialsLockManagerReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewOpsCredentialsLockManagerTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewOpsCredentialsLockManagerInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *OpsCredentialsLockManagerNotFound) GetPayload() *models.ProblemDetails 
 }
 
 func (o *OpsCredentialsLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewOpsCredentialsLockManagerTooManyRequests creates a OpsCredentialsLockManagerTooManyRequests with default headers values
-func NewOpsCredentialsLockManagerTooManyRequests() *OpsCredentialsLockManagerTooManyRequests {
-	return &OpsCredentialsLockManagerTooManyRequests{}
-}
-
-/* OpsCredentialsLockManagerTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type OpsCredentialsLockManagerTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *OpsCredentialsLockManagerTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *OpsCredentialsLockManagerTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *OpsCredentialsLockManagerTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

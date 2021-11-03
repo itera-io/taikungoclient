@@ -53,12 +53,6 @@ func (o *CheckerPrometheusReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewCheckerPrometheusTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewCheckerPrometheusInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *CheckerPrometheusNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *CheckerPrometheusNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewCheckerPrometheusTooManyRequests creates a CheckerPrometheusTooManyRequests with default headers values
-func NewCheckerPrometheusTooManyRequests() *CheckerPrometheusTooManyRequests {
-	return &CheckerPrometheusTooManyRequests{}
-}
-
-/* CheckerPrometheusTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type CheckerPrometheusTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *CheckerPrometheusTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Checker/prometheus][%d] checkerPrometheusTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *CheckerPrometheusTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *CheckerPrometheusTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

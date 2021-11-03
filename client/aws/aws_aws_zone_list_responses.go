@@ -53,12 +53,6 @@ func (o *AwsAwsZoneListReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAwsAwsZoneListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAwsAwsZoneListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *AwsAwsZoneListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AwsAwsZoneListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAwsAwsZoneListTooManyRequests creates a AwsAwsZoneListTooManyRequests with default headers values
-func NewAwsAwsZoneListTooManyRequests() *AwsAwsZoneListTooManyRequests {
-	return &AwsAwsZoneListTooManyRequests{}
-}
-
-/* AwsAwsZoneListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AwsAwsZoneListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AwsAwsZoneListTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AwsAwsZoneListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AwsAwsZoneListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

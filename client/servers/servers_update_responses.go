@@ -53,12 +53,6 @@ func (o *ServersUpdateReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewServersUpdateTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewServersUpdateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *ServersUpdateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ServersUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewServersUpdateTooManyRequests creates a ServersUpdateTooManyRequests with default headers values
-func NewServersUpdateTooManyRequests() *ServersUpdateTooManyRequests {
-	return &ServersUpdateTooManyRequests{}
-}
-
-/* ServersUpdateTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type ServersUpdateTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *ServersUpdateTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Servers/update][%d] serversUpdateTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *ServersUpdateTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *ServersUpdateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -59,12 +59,6 @@ func (o *AlertingIntegrationsDeleteReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAlertingIntegrationsDeleteTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAlertingIntegrationsDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -244,38 +238,6 @@ func (o *AlertingIntegrationsDeleteNotFound) GetPayload() *models.ProblemDetails
 }
 
 func (o *AlertingIntegrationsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAlertingIntegrationsDeleteTooManyRequests creates a AlertingIntegrationsDeleteTooManyRequests with default headers values
-func NewAlertingIntegrationsDeleteTooManyRequests() *AlertingIntegrationsDeleteTooManyRequests {
-	return &AlertingIntegrationsDeleteTooManyRequests{}
-}
-
-/* AlertingIntegrationsDeleteTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AlertingIntegrationsDeleteTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AlertingIntegrationsDeleteTooManyRequests) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AlertingIntegrationsDeleteTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AlertingIntegrationsDeleteTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

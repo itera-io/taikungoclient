@@ -53,12 +53,6 @@ func (o *AdminUpdateUserPasswordReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAdminUpdateUserPasswordTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAdminUpdateUserPasswordInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *AdminUpdateUserPasswordNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AdminUpdateUserPasswordNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAdminUpdateUserPasswordTooManyRequests creates a AdminUpdateUserPasswordTooManyRequests with default headers values
-func NewAdminUpdateUserPasswordTooManyRequests() *AdminUpdateUserPasswordTooManyRequests {
-	return &AdminUpdateUserPasswordTooManyRequests{}
-}
-
-/* AdminUpdateUserPasswordTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AdminUpdateUserPasswordTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AdminUpdateUserPasswordTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AdminUpdateUserPasswordTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AdminUpdateUserPasswordTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

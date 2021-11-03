@@ -53,12 +53,6 @@ func (o *OrganizationsCreateDefaultProfilersReader) ReadResponse(response runtim
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewOrganizationsCreateDefaultProfilersTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewOrganizationsCreateDefaultProfilersInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *OrganizationsCreateDefaultProfilersNotFound) GetPayload() *models.Probl
 }
 
 func (o *OrganizationsCreateDefaultProfilersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewOrganizationsCreateDefaultProfilersTooManyRequests creates a OrganizationsCreateDefaultProfilersTooManyRequests with default headers values
-func NewOrganizationsCreateDefaultProfilersTooManyRequests() *OrganizationsCreateDefaultProfilersTooManyRequests {
-	return &OrganizationsCreateDefaultProfilersTooManyRequests{}
-}
-
-/* OrganizationsCreateDefaultProfilersTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type OrganizationsCreateDefaultProfilersTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *OrganizationsCreateDefaultProfilersTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *OrganizationsCreateDefaultProfilersTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *OrganizationsCreateDefaultProfilersTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *CloudCredentialsAllFlavorsReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewCloudCredentialsAllFlavorsTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewCloudCredentialsAllFlavorsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *CloudCredentialsAllFlavorsNotFound) GetPayload() *models.ProblemDetails
 }
 
 func (o *CloudCredentialsAllFlavorsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewCloudCredentialsAllFlavorsTooManyRequests creates a CloudCredentialsAllFlavorsTooManyRequests with default headers values
-func NewCloudCredentialsAllFlavorsTooManyRequests() *CloudCredentialsAllFlavorsTooManyRequests {
-	return &CloudCredentialsAllFlavorsTooManyRequests{}
-}
-
-/* CloudCredentialsAllFlavorsTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type CloudCredentialsAllFlavorsTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *CloudCredentialsAllFlavorsTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *CloudCredentialsAllFlavorsTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *CloudCredentialsAllFlavorsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

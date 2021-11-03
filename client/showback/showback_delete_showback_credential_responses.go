@@ -53,12 +53,6 @@ func (o *ShowbackDeleteShowbackCredentialReader) ReadResponse(response runtime.C
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewShowbackDeleteShowbackCredentialTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewShowbackDeleteShowbackCredentialInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *ShowbackDeleteShowbackCredentialNotFound) GetPayload() *models.ProblemD
 }
 
 func (o *ShowbackDeleteShowbackCredentialNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewShowbackDeleteShowbackCredentialTooManyRequests creates a ShowbackDeleteShowbackCredentialTooManyRequests with default headers values
-func NewShowbackDeleteShowbackCredentialTooManyRequests() *ShowbackDeleteShowbackCredentialTooManyRequests {
-	return &ShowbackDeleteShowbackCredentialTooManyRequests{}
-}
-
-/* ShowbackDeleteShowbackCredentialTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type ShowbackDeleteShowbackCredentialTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *ShowbackDeleteShowbackCredentialTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Showback/credential/delete][%d] showbackDeleteShowbackCredentialTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *ShowbackDeleteShowbackCredentialTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *ShowbackDeleteShowbackCredentialTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

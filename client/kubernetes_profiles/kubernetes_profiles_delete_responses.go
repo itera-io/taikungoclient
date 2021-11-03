@@ -59,12 +59,6 @@ func (o *KubernetesProfilesDeleteReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewKubernetesProfilesDeleteTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewKubernetesProfilesDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -244,38 +238,6 @@ func (o *KubernetesProfilesDeleteNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubernetesProfilesDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewKubernetesProfilesDeleteTooManyRequests creates a KubernetesProfilesDeleteTooManyRequests with default headers values
-func NewKubernetesProfilesDeleteTooManyRequests() *KubernetesProfilesDeleteTooManyRequests {
-	return &KubernetesProfilesDeleteTooManyRequests{}
-}
-
-/* KubernetesProfilesDeleteTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type KubernetesProfilesDeleteTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *KubernetesProfilesDeleteTooManyRequests) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *KubernetesProfilesDeleteTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *KubernetesProfilesDeleteTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *OpsCredentialsBackupCredentialsForOrganizationListReader) ReadResponse(
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewOpsCredentialsBackupCredentialsForOrganizationListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewOpsCredentialsBackupCredentialsForOrganizationListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *OpsCredentialsBackupCredentialsForOrganizationListNotFound) GetPayload(
 }
 
 func (o *OpsCredentialsBackupCredentialsForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewOpsCredentialsBackupCredentialsForOrganizationListTooManyRequests creates a OpsCredentialsBackupCredentialsForOrganizationListTooManyRequests with default headers values
-func NewOpsCredentialsBackupCredentialsForOrganizationListTooManyRequests() *OpsCredentialsBackupCredentialsForOrganizationListTooManyRequests {
-	return &OpsCredentialsBackupCredentialsForOrganizationListTooManyRequests{}
-}
-
-/* OpsCredentialsBackupCredentialsForOrganizationListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type OpsCredentialsBackupCredentialsForOrganizationListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *OpsCredentialsBackupCredentialsForOrganizationListTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsBackupCredentialsForOrganizationListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *OpsCredentialsBackupCredentialsForOrganizationListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *OpsCredentialsBackupCredentialsForOrganizationListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

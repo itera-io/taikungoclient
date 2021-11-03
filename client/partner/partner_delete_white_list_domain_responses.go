@@ -53,12 +53,6 @@ func (o *PartnerDeleteWhiteListDomainReader) ReadResponse(response runtime.Clien
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewPartnerDeleteWhiteListDomainTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewPartnerDeleteWhiteListDomainInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *PartnerDeleteWhiteListDomainNotFound) GetPayload() *models.ProblemDetai
 }
 
 func (o *PartnerDeleteWhiteListDomainNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewPartnerDeleteWhiteListDomainTooManyRequests creates a PartnerDeleteWhiteListDomainTooManyRequests with default headers values
-func NewPartnerDeleteWhiteListDomainTooManyRequests() *PartnerDeleteWhiteListDomainTooManyRequests {
-	return &PartnerDeleteWhiteListDomainTooManyRequests{}
-}
-
-/* PartnerDeleteWhiteListDomainTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type PartnerDeleteWhiteListDomainTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *PartnerDeleteWhiteListDomainTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *PartnerDeleteWhiteListDomainTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *PartnerDeleteWhiteListDomainTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

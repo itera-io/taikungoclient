@@ -53,12 +53,6 @@ func (o *NotificationsUpdateReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewNotificationsUpdateTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewNotificationsUpdateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *NotificationsUpdateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *NotificationsUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewNotificationsUpdateTooManyRequests creates a NotificationsUpdateTooManyRequests with default headers values
-func NewNotificationsUpdateTooManyRequests() *NotificationsUpdateTooManyRequests {
-	return &NotificationsUpdateTooManyRequests{}
-}
-
-/* NotificationsUpdateTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type NotificationsUpdateTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *NotificationsUpdateTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Notifications/update][%d] notificationsUpdateTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *NotificationsUpdateTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *NotificationsUpdateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *KubernetesDeleteAlertsReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewKubernetesDeleteAlertsTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewKubernetesDeleteAlertsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *KubernetesDeleteAlertsNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubernetesDeleteAlertsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewKubernetesDeleteAlertsTooManyRequests creates a KubernetesDeleteAlertsTooManyRequests with default headers values
-func NewKubernetesDeleteAlertsTooManyRequests() *KubernetesDeleteAlertsTooManyRequests {
-	return &KubernetesDeleteAlertsTooManyRequests{}
-}
-
-/* KubernetesDeleteAlertsTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type KubernetesDeleteAlertsTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *KubernetesDeleteAlertsTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *KubernetesDeleteAlertsTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *KubernetesDeleteAlertsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

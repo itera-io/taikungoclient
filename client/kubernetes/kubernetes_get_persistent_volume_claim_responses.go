@@ -53,12 +53,6 @@ func (o *KubernetesGetPersistentVolumeClaimReader) ReadResponse(response runtime
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewKubernetesGetPersistentVolumeClaimTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewKubernetesGetPersistentVolumeClaimInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *KubernetesGetPersistentVolumeClaimNotFound) GetPayload() *models.Proble
 }
 
 func (o *KubernetesGetPersistentVolumeClaimNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewKubernetesGetPersistentVolumeClaimTooManyRequests creates a KubernetesGetPersistentVolumeClaimTooManyRequests with default headers values
-func NewKubernetesGetPersistentVolumeClaimTooManyRequests() *KubernetesGetPersistentVolumeClaimTooManyRequests {
-	return &KubernetesGetPersistentVolumeClaimTooManyRequests{}
-}
-
-/* KubernetesGetPersistentVolumeClaimTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type KubernetesGetPersistentVolumeClaimTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *KubernetesGetPersistentVolumeClaimTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *KubernetesGetPersistentVolumeClaimTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *KubernetesGetPersistentVolumeClaimTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

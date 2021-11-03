@@ -53,12 +53,6 @@ func (o *PartnerPartnerListReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewPartnerPartnerListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewPartnerPartnerListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *PartnerPartnerListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *PartnerPartnerListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewPartnerPartnerListTooManyRequests creates a PartnerPartnerListTooManyRequests with default headers values
-func NewPartnerPartnerListTooManyRequests() *PartnerPartnerListTooManyRequests {
-	return &PartnerPartnerListTooManyRequests{}
-}
-
-/* PartnerPartnerListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type PartnerPartnerListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *PartnerPartnerListTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *PartnerPartnerListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *PartnerPartnerListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

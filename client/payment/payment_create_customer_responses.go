@@ -53,12 +53,6 @@ func (o *PaymentCreateCustomerReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewPaymentCreateCustomerTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewPaymentCreateCustomerInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *PaymentCreateCustomerNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *PaymentCreateCustomerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewPaymentCreateCustomerTooManyRequests creates a PaymentCreateCustomerTooManyRequests with default headers values
-func NewPaymentCreateCustomerTooManyRequests() *PaymentCreateCustomerTooManyRequests {
-	return &PaymentCreateCustomerTooManyRequests{}
-}
-
-/* PaymentCreateCustomerTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type PaymentCreateCustomerTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *PaymentCreateCustomerTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *PaymentCreateCustomerTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *PaymentCreateCustomerTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

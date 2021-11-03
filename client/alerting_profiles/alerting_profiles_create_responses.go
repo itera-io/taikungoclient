@@ -53,12 +53,6 @@ func (o *AlertingProfilesCreateReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAlertingProfilesCreateTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAlertingProfilesCreateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *AlertingProfilesCreateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AlertingProfilesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAlertingProfilesCreateTooManyRequests creates a AlertingProfilesCreateTooManyRequests with default headers values
-func NewAlertingProfilesCreateTooManyRequests() *AlertingProfilesCreateTooManyRequests {
-	return &AlertingProfilesCreateTooManyRequests{}
-}
-
-/* AlertingProfilesCreateTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AlertingProfilesCreateTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AlertingProfilesCreateTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AlertingProfilesCreateTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AlertingProfilesCreateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

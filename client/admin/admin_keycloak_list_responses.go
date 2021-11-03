@@ -53,12 +53,6 @@ func (o *AdminKeycloakListReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAdminKeycloakListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAdminKeycloakListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *AdminKeycloakListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AdminKeycloakListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAdminKeycloakListTooManyRequests creates a AdminKeycloakListTooManyRequests with default headers values
-func NewAdminKeycloakListTooManyRequests() *AdminKeycloakListTooManyRequests {
-	return &AdminKeycloakListTooManyRequests{}
-}
-
-/* AdminKeycloakListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AdminKeycloakListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AdminKeycloakListTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AdminKeycloakListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AdminKeycloakListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

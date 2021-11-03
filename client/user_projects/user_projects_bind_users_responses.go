@@ -53,12 +53,6 @@ func (o *UserProjectsBindUsersReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewUserProjectsBindUsersTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewUserProjectsBindUsersInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *UserProjectsBindUsersNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *UserProjectsBindUsersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewUserProjectsBindUsersTooManyRequests creates a UserProjectsBindUsersTooManyRequests with default headers values
-func NewUserProjectsBindUsersTooManyRequests() *UserProjectsBindUsersTooManyRequests {
-	return &UserProjectsBindUsersTooManyRequests{}
-}
-
-/* UserProjectsBindUsersTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type UserProjectsBindUsersTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *UserProjectsBindUsersTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindusers][%d] userProjectsBindUsersTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *UserProjectsBindUsersTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *UserProjectsBindUsersTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

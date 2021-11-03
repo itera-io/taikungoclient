@@ -53,12 +53,6 @@ func (o *NotificationsGetProjectOperationMessagesReader) ReadResponse(response r
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewNotificationsGetProjectOperationMessagesTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewNotificationsGetProjectOperationMessagesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *NotificationsGetProjectOperationMessagesNotFound) GetPayload() *models.
 }
 
 func (o *NotificationsGetProjectOperationMessagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewNotificationsGetProjectOperationMessagesTooManyRequests creates a NotificationsGetProjectOperationMessagesTooManyRequests with default headers values
-func NewNotificationsGetProjectOperationMessagesTooManyRequests() *NotificationsGetProjectOperationMessagesTooManyRequests {
-	return &NotificationsGetProjectOperationMessagesTooManyRequests{}
-}
-
-/* NotificationsGetProjectOperationMessagesTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type NotificationsGetProjectOperationMessagesTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *NotificationsGetProjectOperationMessagesTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *NotificationsGetProjectOperationMessagesTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *NotificationsGetProjectOperationMessagesTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *ShowbackCredentialsListReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewShowbackCredentialsListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewShowbackCredentialsListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *ShowbackCredentialsListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ShowbackCredentialsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewShowbackCredentialsListTooManyRequests creates a ShowbackCredentialsListTooManyRequests with default headers values
-func NewShowbackCredentialsListTooManyRequests() *ShowbackCredentialsListTooManyRequests {
-	return &ShowbackCredentialsListTooManyRequests{}
-}
-
-/* ShowbackCredentialsListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type ShowbackCredentialsListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *ShowbackCredentialsListTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Showback/credentials][%d] showbackCredentialsListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *ShowbackCredentialsListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *ShowbackCredentialsListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *AuthLeaveTaikunReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAuthLeaveTaikunTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAuthLeaveTaikunInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *AuthLeaveTaikunNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AuthLeaveTaikunNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAuthLeaveTaikunTooManyRequests creates a AuthLeaveTaikunTooManyRequests with default headers values
-func NewAuthLeaveTaikunTooManyRequests() *AuthLeaveTaikunTooManyRequests {
-	return &AuthLeaveTaikunTooManyRequests{}
-}
-
-/* AuthLeaveTaikunTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AuthLeaveTaikunTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AuthLeaveTaikunTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Auth/leave][%d] authLeaveTaikunTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AuthLeaveTaikunTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AuthLeaveTaikunTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -59,12 +59,6 @@ func (o *OpsCredentialsDeleteReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewOpsCredentialsDeleteTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewOpsCredentialsDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -244,38 +238,6 @@ func (o *OpsCredentialsDeleteNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *OpsCredentialsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewOpsCredentialsDeleteTooManyRequests creates a OpsCredentialsDeleteTooManyRequests with default headers values
-func NewOpsCredentialsDeleteTooManyRequests() *OpsCredentialsDeleteTooManyRequests {
-	return &OpsCredentialsDeleteTooManyRequests{}
-}
-
-/* OpsCredentialsDeleteTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type OpsCredentialsDeleteTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *OpsCredentialsDeleteTooManyRequests) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *OpsCredentialsDeleteTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *OpsCredentialsDeleteTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

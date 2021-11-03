@@ -53,12 +53,6 @@ func (o *PrometheusListOfRulesReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewPrometheusListOfRulesTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewPrometheusListOfRulesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *PrometheusListOfRulesNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *PrometheusListOfRulesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewPrometheusListOfRulesTooManyRequests creates a PrometheusListOfRulesTooManyRequests with default headers values
-func NewPrometheusListOfRulesTooManyRequests() *PrometheusListOfRulesTooManyRequests {
-	return &PrometheusListOfRulesTooManyRequests{}
-}
-
-/* PrometheusListOfRulesTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type PrometheusListOfRulesTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *PrometheusListOfRulesTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Prometheus][%d] prometheusListOfRulesTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *PrometheusListOfRulesTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *PrometheusListOfRulesTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

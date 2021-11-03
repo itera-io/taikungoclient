@@ -59,12 +59,6 @@ func (o *ServersDeleteReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewServersDeleteTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewServersDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -244,38 +238,6 @@ func (o *ServersDeleteNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ServersDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewServersDeleteTooManyRequests creates a ServersDeleteTooManyRequests with default headers values
-func NewServersDeleteTooManyRequests() *ServersDeleteTooManyRequests {
-	return &ServersDeleteTooManyRequests{}
-}
-
-/* ServersDeleteTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type ServersDeleteTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *ServersDeleteTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *ServersDeleteTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *ServersDeleteTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

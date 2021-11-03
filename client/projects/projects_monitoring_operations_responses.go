@@ -53,12 +53,6 @@ func (o *ProjectsMonitoringOperationsReader) ReadResponse(response runtime.Clien
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewProjectsMonitoringOperationsTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewProjectsMonitoringOperationsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *ProjectsMonitoringOperationsNotFound) GetPayload() *models.ProblemDetai
 }
 
 func (o *ProjectsMonitoringOperationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewProjectsMonitoringOperationsTooManyRequests creates a ProjectsMonitoringOperationsTooManyRequests with default headers values
-func NewProjectsMonitoringOperationsTooManyRequests() *ProjectsMonitoringOperationsTooManyRequests {
-	return &ProjectsMonitoringOperationsTooManyRequests{}
-}
-
-/* ProjectsMonitoringOperationsTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type ProjectsMonitoringOperationsTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *ProjectsMonitoringOperationsTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *ProjectsMonitoringOperationsTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *ProjectsMonitoringOperationsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

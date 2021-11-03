@@ -53,12 +53,6 @@ func (o *TicketDeleteMessageReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewTicketDeleteMessageTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewTicketDeleteMessageInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *TicketDeleteMessageNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *TicketDeleteMessageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewTicketDeleteMessageTooManyRequests creates a TicketDeleteMessageTooManyRequests with default headers values
-func NewTicketDeleteMessageTooManyRequests() *TicketDeleteMessageTooManyRequests {
-	return &TicketDeleteMessageTooManyRequests{}
-}
-
-/* TicketDeleteMessageTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type TicketDeleteMessageTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *TicketDeleteMessageTooManyRequests) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *TicketDeleteMessageTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *TicketDeleteMessageTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

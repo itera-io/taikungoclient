@@ -53,12 +53,6 @@ func (o *CloudCredentialsForProjectReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewCloudCredentialsForProjectTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewCloudCredentialsForProjectInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *CloudCredentialsForProjectNotFound) GetPayload() *models.ProblemDetails
 }
 
 func (o *CloudCredentialsForProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewCloudCredentialsForProjectTooManyRequests creates a CloudCredentialsForProjectTooManyRequests with default headers values
-func NewCloudCredentialsForProjectTooManyRequests() *CloudCredentialsForProjectTooManyRequests {
-	return &CloudCredentialsForProjectTooManyRequests{}
-}
-
-/* CloudCredentialsForProjectTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type CloudCredentialsForProjectTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *CloudCredentialsForProjectTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/project][%d] cloudCredentialsForProjectTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *CloudCredentialsForProjectTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *CloudCredentialsForProjectTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

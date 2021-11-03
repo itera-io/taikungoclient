@@ -53,12 +53,6 @@ func (o *KubernetesGetDeploymentListReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewKubernetesGetDeploymentListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewKubernetesGetDeploymentListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *KubernetesGetDeploymentListNotFound) GetPayload() *models.ProblemDetail
 }
 
 func (o *KubernetesGetDeploymentListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewKubernetesGetDeploymentListTooManyRequests creates a KubernetesGetDeploymentListTooManyRequests with default headers values
-func NewKubernetesGetDeploymentListTooManyRequests() *KubernetesGetDeploymentListTooManyRequests {
-	return &KubernetesGetDeploymentListTooManyRequests{}
-}
-
-/* KubernetesGetDeploymentListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type KubernetesGetDeploymentListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *KubernetesGetDeploymentListTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *KubernetesGetDeploymentListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *KubernetesGetDeploymentListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

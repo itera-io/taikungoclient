@@ -53,12 +53,6 @@ func (o *KeycloakLoginReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewKeycloakLoginTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewKeycloakLoginInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *KeycloakLoginNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KeycloakLoginNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewKeycloakLoginTooManyRequests creates a KeycloakLoginTooManyRequests with default headers values
-func NewKeycloakLoginTooManyRequests() *KeycloakLoginTooManyRequests {
-	return &KeycloakLoginTooManyRequests{}
-}
-
-/* KeycloakLoginTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type KeycloakLoginTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *KeycloakLoginTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Keycloak/login][%d] keycloakLoginTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *KeycloakLoginTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *KeycloakLoginTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

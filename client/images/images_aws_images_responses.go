@@ -53,12 +53,6 @@ func (o *ImagesAwsImagesReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewImagesAwsImagesTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewImagesAwsImagesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *ImagesAwsImagesNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ImagesAwsImagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewImagesAwsImagesTooManyRequests creates a ImagesAwsImagesTooManyRequests with default headers values
-func NewImagesAwsImagesTooManyRequests() *ImagesAwsImagesTooManyRequests {
-	return &ImagesAwsImagesTooManyRequests{}
-}
-
-/* ImagesAwsImagesTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type ImagesAwsImagesTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *ImagesAwsImagesTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Images/aws/{cloudId}/{platform}/{owner}][%d] imagesAwsImagesTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *ImagesAwsImagesTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *ImagesAwsImagesTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *PrometheusExportCsvReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewPrometheusExportCsvTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewPrometheusExportCsvInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -208,38 +202,6 @@ func (o *PrometheusExportCsvNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *PrometheusExportCsvNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewPrometheusExportCsvTooManyRequests creates a PrometheusExportCsvTooManyRequests with default headers values
-func NewPrometheusExportCsvTooManyRequests() *PrometheusExportCsvTooManyRequests {
-	return &PrometheusExportCsvTooManyRequests{}
-}
-
-/* PrometheusExportCsvTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type PrometheusExportCsvTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *PrometheusExportCsvTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *PrometheusExportCsvTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *PrometheusExportCsvTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *OrganizationsDetailsReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewOrganizationsDetailsTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewOrganizationsDetailsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *OrganizationsDetailsNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *OrganizationsDetailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewOrganizationsDetailsTooManyRequests creates a OrganizationsDetailsTooManyRequests with default headers values
-func NewOrganizationsDetailsTooManyRequests() *OrganizationsDetailsTooManyRequests {
-	return &OrganizationsDetailsTooManyRequests{}
-}
-
-/* OrganizationsDetailsTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type OrganizationsDetailsTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *OrganizationsDetailsTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *OrganizationsDetailsTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *OrganizationsDetailsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

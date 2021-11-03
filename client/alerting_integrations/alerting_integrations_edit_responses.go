@@ -53,12 +53,6 @@ func (o *AlertingIntegrationsEditReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewAlertingIntegrationsEditTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewAlertingIntegrationsEditInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *AlertingIntegrationsEditNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AlertingIntegrationsEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewAlertingIntegrationsEditTooManyRequests creates a AlertingIntegrationsEditTooManyRequests with default headers values
-func NewAlertingIntegrationsEditTooManyRequests() *AlertingIntegrationsEditTooManyRequests {
-	return &AlertingIntegrationsEditTooManyRequests{}
-}
-
-/* AlertingIntegrationsEditTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type AlertingIntegrationsEditTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *AlertingIntegrationsEditTooManyRequests) Error() string {
-	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *AlertingIntegrationsEditTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *AlertingIntegrationsEditTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

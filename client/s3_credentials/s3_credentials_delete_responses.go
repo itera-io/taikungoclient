@@ -59,12 +59,6 @@ func (o *S3CredentialsDeleteReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewS3CredentialsDeleteTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewS3CredentialsDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -244,38 +238,6 @@ func (o *S3CredentialsDeleteNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *S3CredentialsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewS3CredentialsDeleteTooManyRequests creates a S3CredentialsDeleteTooManyRequests with default headers values
-func NewS3CredentialsDeleteTooManyRequests() *S3CredentialsDeleteTooManyRequests {
-	return &S3CredentialsDeleteTooManyRequests{}
-}
-
-/* S3CredentialsDeleteTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type S3CredentialsDeleteTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *S3CredentialsDeleteTooManyRequests) Error() string {
-	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *S3CredentialsDeleteTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *S3CredentialsDeleteTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

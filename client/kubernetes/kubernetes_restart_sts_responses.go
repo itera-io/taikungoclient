@@ -53,12 +53,6 @@ func (o *KubernetesRestartStsReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewKubernetesRestartStsTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewKubernetesRestartStsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *KubernetesRestartStsNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubernetesRestartStsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewKubernetesRestartStsTooManyRequests creates a KubernetesRestartStsTooManyRequests with default headers values
-func NewKubernetesRestartStsTooManyRequests() *KubernetesRestartStsTooManyRequests {
-	return &KubernetesRestartStsTooManyRequests{}
-}
-
-/* KubernetesRestartStsTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type KubernetesRestartStsTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *KubernetesRestartStsTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/sts][%d] kubernetesRestartStsTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *KubernetesRestartStsTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *KubernetesRestartStsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

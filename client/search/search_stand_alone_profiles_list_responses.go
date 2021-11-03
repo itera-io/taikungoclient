@@ -53,12 +53,6 @@ func (o *SearchStandAloneProfilesListReader) ReadResponse(response runtime.Clien
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewSearchStandAloneProfilesListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewSearchStandAloneProfilesListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *SearchStandAloneProfilesListNotFound) GetPayload() *models.ProblemDetai
 }
 
 func (o *SearchStandAloneProfilesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewSearchStandAloneProfilesListTooManyRequests creates a SearchStandAloneProfilesListTooManyRequests with default headers values
-func NewSearchStandAloneProfilesListTooManyRequests() *SearchStandAloneProfilesListTooManyRequests {
-	return &SearchStandAloneProfilesListTooManyRequests{}
-}
-
-/* SearchStandAloneProfilesListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type SearchStandAloneProfilesListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *SearchStandAloneProfilesListTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *SearchStandAloneProfilesListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *SearchStandAloneProfilesListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

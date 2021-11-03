@@ -53,12 +53,6 @@ func (o *S3CredentialsCreateReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewS3CredentialsCreateTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewS3CredentialsCreateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *S3CredentialsCreateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *S3CredentialsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewS3CredentialsCreateTooManyRequests creates a S3CredentialsCreateTooManyRequests with default headers values
-func NewS3CredentialsCreateTooManyRequests() *S3CredentialsCreateTooManyRequests {
-	return &S3CredentialsCreateTooManyRequests{}
-}
-
-/* S3CredentialsCreateTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type S3CredentialsCreateTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *S3CredentialsCreateTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *S3CredentialsCreateTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *S3CredentialsCreateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,12 +53,6 @@ func (o *BillingGroupedListReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewBillingGroupedListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewBillingGroupedListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -217,38 +211,6 @@ func (o *BillingGroupedListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *BillingGroupedListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewBillingGroupedListTooManyRequests creates a BillingGroupedListTooManyRequests with default headers values
-func NewBillingGroupedListTooManyRequests() *BillingGroupedListTooManyRequests {
-	return &BillingGroupedListTooManyRequests{}
-}
-
-/* BillingGroupedListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type BillingGroupedListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *BillingGroupedListTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *BillingGroupedListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *BillingGroupedListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

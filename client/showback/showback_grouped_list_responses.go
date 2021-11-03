@@ -53,12 +53,6 @@ func (o *ShowbackGroupedListReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewShowbackGroupedListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewShowbackGroupedListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *ShowbackGroupedListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ShowbackGroupedListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewShowbackGroupedListTooManyRequests creates a ShowbackGroupedListTooManyRequests with default headers values
-func NewShowbackGroupedListTooManyRequests() *ShowbackGroupedListTooManyRequests {
-	return &ShowbackGroupedListTooManyRequests{}
-}
-
-/* ShowbackGroupedListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type ShowbackGroupedListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *ShowbackGroupedListTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Showback/grouped][%d] showbackGroupedListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *ShowbackGroupedListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *ShowbackGroupedListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

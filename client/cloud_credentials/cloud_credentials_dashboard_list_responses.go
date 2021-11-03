@@ -53,12 +53,6 @@ func (o *CloudCredentialsDashboardListReader) ReadResponse(response runtime.Clie
 			return nil, err
 		}
 		return nil, result
-	case 429:
-		result := NewCloudCredentialsDashboardListTooManyRequests()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 500:
 		result := NewCloudCredentialsDashboardListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -219,38 +213,6 @@ func (o *CloudCredentialsDashboardListNotFound) GetPayload() *models.ProblemDeta
 }
 
 func (o *CloudCredentialsDashboardListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.ProblemDetails)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewCloudCredentialsDashboardListTooManyRequests creates a CloudCredentialsDashboardListTooManyRequests with default headers values
-func NewCloudCredentialsDashboardListTooManyRequests() *CloudCredentialsDashboardListTooManyRequests {
-	return &CloudCredentialsDashboardListTooManyRequests{}
-}
-
-/* CloudCredentialsDashboardListTooManyRequests describes a response with status code 429, with default header values.
-
-Client Error
-*/
-type CloudCredentialsDashboardListTooManyRequests struct {
-	Payload *models.ProblemDetails
-}
-
-func (o *CloudCredentialsDashboardListTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListTooManyRequests  %+v", 429, o.Payload)
-}
-func (o *CloudCredentialsDashboardListTooManyRequests) GetPayload() *models.ProblemDetails {
-	return o.Payload
-}
-
-func (o *CloudCredentialsDashboardListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 
