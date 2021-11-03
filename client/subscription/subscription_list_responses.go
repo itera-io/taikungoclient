@@ -53,6 +53,12 @@ func (o *SubscriptionListReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewSubscriptionListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewSubscriptionListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *SubscriptionListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *SubscriptionListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewSubscriptionListTooManyRequests creates a SubscriptionListTooManyRequests with default headers values
+func NewSubscriptionListTooManyRequests() *SubscriptionListTooManyRequests {
+	return &SubscriptionListTooManyRequests{}
+}
+
+/* SubscriptionListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type SubscriptionListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *SubscriptionListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Subscription][%d] subscriptionListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *SubscriptionListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *SubscriptionListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

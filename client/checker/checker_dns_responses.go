@@ -53,6 +53,12 @@ func (o *CheckerDNSReader) ReadResponse(response runtime.ClientResponse, consume
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewCheckerDNSTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewCheckerDNSInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *CheckerDNSNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *CheckerDNSNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCheckerDNSTooManyRequests creates a CheckerDNSTooManyRequests with default headers values
+func NewCheckerDNSTooManyRequests() *CheckerDNSTooManyRequests {
+	return &CheckerDNSTooManyRequests{}
+}
+
+/* CheckerDNSTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type CheckerDNSTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *CheckerDNSTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/dns][%d] checkerDnsTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *CheckerDNSTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *CheckerDNSTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

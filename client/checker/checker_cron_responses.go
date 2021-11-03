@@ -53,6 +53,12 @@ func (o *CheckerCronReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewCheckerCronTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewCheckerCronInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *CheckerCronNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *CheckerCronNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCheckerCronTooManyRequests creates a CheckerCronTooManyRequests with default headers values
+func NewCheckerCronTooManyRequests() *CheckerCronTooManyRequests {
+	return &CheckerCronTooManyRequests{}
+}
+
+/* CheckerCronTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type CheckerCronTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *CheckerCronTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *CheckerCronTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *CheckerCronTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,6 +53,12 @@ func (o *TicketUpdateMessageReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewTicketUpdateMessageTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewTicketUpdateMessageInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *TicketUpdateMessageNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *TicketUpdateMessageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewTicketUpdateMessageTooManyRequests creates a TicketUpdateMessageTooManyRequests with default headers values
+func NewTicketUpdateMessageTooManyRequests() *TicketUpdateMessageTooManyRequests {
+	return &TicketUpdateMessageTooManyRequests{}
+}
+
+/* TicketUpdateMessageTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type TicketUpdateMessageTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *TicketUpdateMessageTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *TicketUpdateMessageTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *TicketUpdateMessageTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

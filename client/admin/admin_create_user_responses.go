@@ -53,6 +53,12 @@ func (o *AdminCreateUserReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewAdminCreateUserTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewAdminCreateUserInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *AdminCreateUserNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AdminCreateUserNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAdminCreateUserTooManyRequests creates a AdminCreateUserTooManyRequests with default headers values
+func NewAdminCreateUserTooManyRequests() *AdminCreateUserTooManyRequests {
+	return &AdminCreateUserTooManyRequests{}
+}
+
+/* AdminCreateUserTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type AdminCreateUserTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *AdminCreateUserTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *AdminCreateUserTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *AdminCreateUserTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

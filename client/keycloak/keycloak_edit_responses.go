@@ -53,6 +53,12 @@ func (o *KeycloakEditReader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKeycloakEditTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKeycloakEditInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *KeycloakEditNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KeycloakEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKeycloakEditTooManyRequests creates a KeycloakEditTooManyRequests with default headers values
+func NewKeycloakEditTooManyRequests() *KeycloakEditTooManyRequests {
+	return &KeycloakEditTooManyRequests{}
+}
+
+/* KeycloakEditTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KeycloakEditTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KeycloakEditTooManyRequests) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KeycloakEditTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KeycloakEditTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

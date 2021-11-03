@@ -53,6 +53,12 @@ func (o *KubernetesDescribeCrdReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubernetesDescribeCrdTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubernetesDescribeCrdInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *KubernetesDescribeCrdNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubernetesDescribeCrdNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubernetesDescribeCrdTooManyRequests creates a KubernetesDescribeCrdTooManyRequests with default headers values
+func NewKubernetesDescribeCrdTooManyRequests() *KubernetesDescribeCrdTooManyRequests {
+	return &KubernetesDescribeCrdTooManyRequests{}
+}
+
+/* KubernetesDescribeCrdTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubernetesDescribeCrdTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubernetesDescribeCrdTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/crd][%d] kubernetesDescribeCrdTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubernetesDescribeCrdTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubernetesDescribeCrdTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

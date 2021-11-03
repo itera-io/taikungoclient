@@ -53,6 +53,12 @@ func (o *ShowbackCreateShowbackSummaryReader) ReadResponse(response runtime.Clie
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewShowbackCreateShowbackSummaryTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewShowbackCreateShowbackSummaryInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *ShowbackCreateShowbackSummaryNotFound) GetPayload() *models.ProblemDeta
 }
 
 func (o *ShowbackCreateShowbackSummaryNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackCreateShowbackSummaryTooManyRequests creates a ShowbackCreateShowbackSummaryTooManyRequests with default headers values
+func NewShowbackCreateShowbackSummaryTooManyRequests() *ShowbackCreateShowbackSummaryTooManyRequests {
+	return &ShowbackCreateShowbackSummaryTooManyRequests{}
+}
+
+/* ShowbackCreateShowbackSummaryTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type ShowbackCreateShowbackSummaryTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackCreateShowbackSummaryTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Showback/summary/create][%d] showbackCreateShowbackSummaryTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *ShowbackCreateShowbackSummaryTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackCreateShowbackSummaryTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

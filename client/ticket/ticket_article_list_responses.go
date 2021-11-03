@@ -53,6 +53,12 @@ func (o *TicketArticleListReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewTicketArticleListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewTicketArticleListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *TicketArticleListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *TicketArticleListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewTicketArticleListTooManyRequests creates a TicketArticleListTooManyRequests with default headers values
+func NewTicketArticleListTooManyRequests() *TicketArticleListTooManyRequests {
+	return &TicketArticleListTooManyRequests{}
+}
+
+/* TicketArticleListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type TicketArticleListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *TicketArticleListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *TicketArticleListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *TicketArticleListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

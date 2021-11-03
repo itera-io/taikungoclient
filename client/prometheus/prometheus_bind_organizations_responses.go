@@ -53,6 +53,12 @@ func (o *PrometheusBindOrganizationsReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewPrometheusBindOrganizationsTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPrometheusBindOrganizationsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *PrometheusBindOrganizationsNotFound) GetPayload() *models.ProblemDetail
 }
 
 func (o *PrometheusBindOrganizationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPrometheusBindOrganizationsTooManyRequests creates a PrometheusBindOrganizationsTooManyRequests with default headers values
+func NewPrometheusBindOrganizationsTooManyRequests() *PrometheusBindOrganizationsTooManyRequests {
+	return &PrometheusBindOrganizationsTooManyRequests{}
+}
+
+/* PrometheusBindOrganizationsTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type PrometheusBindOrganizationsTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *PrometheusBindOrganizationsTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *PrometheusBindOrganizationsTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *PrometheusBindOrganizationsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

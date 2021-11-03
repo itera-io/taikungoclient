@@ -53,6 +53,12 @@ func (o *SubscriptionSubscriptionForOrganizationListReader) ReadResponse(respons
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewSubscriptionSubscriptionForOrganizationListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewSubscriptionSubscriptionForOrganizationListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *SubscriptionSubscriptionForOrganizationListNotFound) GetPayload() *mode
 }
 
 func (o *SubscriptionSubscriptionForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewSubscriptionSubscriptionForOrganizationListTooManyRequests creates a SubscriptionSubscriptionForOrganizationListTooManyRequests with default headers values
+func NewSubscriptionSubscriptionForOrganizationListTooManyRequests() *SubscriptionSubscriptionForOrganizationListTooManyRequests {
+	return &SubscriptionSubscriptionForOrganizationListTooManyRequests{}
+}
+
+/* SubscriptionSubscriptionForOrganizationListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type SubscriptionSubscriptionForOrganizationListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *SubscriptionSubscriptionForOrganizationListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Subscription/boundlist][%d] subscriptionSubscriptionForOrganizationListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *SubscriptionSubscriptionForOrganizationListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *SubscriptionSubscriptionForOrganizationListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

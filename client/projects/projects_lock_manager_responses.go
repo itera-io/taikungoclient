@@ -53,6 +53,12 @@ func (o *ProjectsLockManagerReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewProjectsLockManagerTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewProjectsLockManagerInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *ProjectsLockManagerNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ProjectsLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewProjectsLockManagerTooManyRequests creates a ProjectsLockManagerTooManyRequests with default headers values
+func NewProjectsLockManagerTooManyRequests() *ProjectsLockManagerTooManyRequests {
+	return &ProjectsLockManagerTooManyRequests{}
+}
+
+/* ProjectsLockManagerTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type ProjectsLockManagerTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ProjectsLockManagerTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *ProjectsLockManagerTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ProjectsLockManagerTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,6 +53,12 @@ func (o *KubernetesDescribeStsReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubernetesDescribeStsTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubernetesDescribeStsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *KubernetesDescribeStsNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubernetesDescribeStsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubernetesDescribeStsTooManyRequests creates a KubernetesDescribeStsTooManyRequests with default headers values
+func NewKubernetesDescribeStsTooManyRequests() *KubernetesDescribeStsTooManyRequests {
+	return &KubernetesDescribeStsTooManyRequests{}
+}
+
+/* KubernetesDescribeStsTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubernetesDescribeStsTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubernetesDescribeStsTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/sts][%d] kubernetesDescribeStsTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubernetesDescribeStsTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubernetesDescribeStsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

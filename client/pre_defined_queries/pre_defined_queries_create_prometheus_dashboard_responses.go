@@ -53,6 +53,12 @@ func (o *PreDefinedQueriesCreatePrometheusDashboardReader) ReadResponse(response
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewPreDefinedQueriesCreatePrometheusDashboardTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPreDefinedQueriesCreatePrometheusDashboardInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *PreDefinedQueriesCreatePrometheusDashboardNotFound) GetPayload() *model
 }
 
 func (o *PreDefinedQueriesCreatePrometheusDashboardNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPreDefinedQueriesCreatePrometheusDashboardTooManyRequests creates a PreDefinedQueriesCreatePrometheusDashboardTooManyRequests with default headers values
+func NewPreDefinedQueriesCreatePrometheusDashboardTooManyRequests() *PreDefinedQueriesCreatePrometheusDashboardTooManyRequests {
+	return &PreDefinedQueriesCreatePrometheusDashboardTooManyRequests{}
+}
+
+/* PreDefinedQueriesCreatePrometheusDashboardTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type PreDefinedQueriesCreatePrometheusDashboardTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *PreDefinedQueriesCreatePrometheusDashboardTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/create][%d] preDefinedQueriesCreatePrometheusDashboardTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *PreDefinedQueriesCreatePrometheusDashboardTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *PreDefinedQueriesCreatePrometheusDashboardTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

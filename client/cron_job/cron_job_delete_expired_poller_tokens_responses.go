@@ -53,6 +53,12 @@ func (o *CronJobDeleteExpiredPollerTokensReader) ReadResponse(response runtime.C
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewCronJobDeleteExpiredPollerTokensTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewCronJobDeleteExpiredPollerTokensInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *CronJobDeleteExpiredPollerTokensNotFound) GetPayload() *models.ProblemD
 }
 
 func (o *CronJobDeleteExpiredPollerTokensNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCronJobDeleteExpiredPollerTokensTooManyRequests creates a CronJobDeleteExpiredPollerTokensTooManyRequests with default headers values
+func NewCronJobDeleteExpiredPollerTokensTooManyRequests() *CronJobDeleteExpiredPollerTokensTooManyRequests {
+	return &CronJobDeleteExpiredPollerTokensTooManyRequests{}
+}
+
+/* CronJobDeleteExpiredPollerTokensTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type CronJobDeleteExpiredPollerTokensTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *CronJobDeleteExpiredPollerTokensTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/poller-tokens][%d] cronJobDeleteExpiredPollerTokensTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *CronJobDeleteExpiredPollerTokensTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *CronJobDeleteExpiredPollerTokensTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

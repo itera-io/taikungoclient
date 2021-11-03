@@ -53,6 +53,12 @@ func (o *AdminAddBalanceReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewAdminAddBalanceTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewAdminAddBalanceInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *AdminAddBalanceNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AdminAddBalanceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAdminAddBalanceTooManyRequests creates a AdminAddBalanceTooManyRequests with default headers values
+func NewAdminAddBalanceTooManyRequests() *AdminAddBalanceTooManyRequests {
+	return &AdminAddBalanceTooManyRequests{}
+}
+
+/* AdminAddBalanceTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type AdminAddBalanceTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *AdminAddBalanceTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *AdminAddBalanceTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *AdminAddBalanceTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,6 +53,12 @@ func (o *CloudCredentialsExceededQuotasReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewCloudCredentialsExceededQuotasTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewCloudCredentialsExceededQuotasInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *CloudCredentialsExceededQuotasNotFound) GetPayload() *models.ProblemDet
 }
 
 func (o *CloudCredentialsExceededQuotasNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCloudCredentialsExceededQuotasTooManyRequests creates a CloudCredentialsExceededQuotasTooManyRequests with default headers values
+func NewCloudCredentialsExceededQuotasTooManyRequests() *CloudCredentialsExceededQuotasTooManyRequests {
+	return &CloudCredentialsExceededQuotasTooManyRequests{}
+}
+
+/* CloudCredentialsExceededQuotasTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type CloudCredentialsExceededQuotasTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *CloudCredentialsExceededQuotasTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *CloudCredentialsExceededQuotasTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *CloudCredentialsExceededQuotasTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

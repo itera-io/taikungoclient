@@ -53,6 +53,12 @@ func (o *StandAloneCommitReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewStandAloneCommitTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewStandAloneCommitInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *StandAloneCommitNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *StandAloneCommitNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewStandAloneCommitTooManyRequests creates a StandAloneCommitTooManyRequests with default headers values
+func NewStandAloneCommitTooManyRequests() *StandAloneCommitTooManyRequests {
+	return &StandAloneCommitTooManyRequests{}
+}
+
+/* StandAloneCommitTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type StandAloneCommitTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *StandAloneCommitTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *StandAloneCommitTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *StandAloneCommitTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

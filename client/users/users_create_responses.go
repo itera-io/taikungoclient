@@ -53,6 +53,12 @@ func (o *UsersCreateReader) ReadResponse(response runtime.ClientResponse, consum
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewUsersCreateTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewUsersCreateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *UsersCreateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *UsersCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUsersCreateTooManyRequests creates a UsersCreateTooManyRequests with default headers values
+func NewUsersCreateTooManyRequests() *UsersCreateTooManyRequests {
+	return &UsersCreateTooManyRequests{}
+}
+
+/* UsersCreateTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type UsersCreateTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *UsersCreateTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *UsersCreateTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *UsersCreateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

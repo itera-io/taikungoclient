@@ -53,6 +53,12 @@ func (o *SecurityGroupDeleteReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewSecurityGroupDeleteTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewSecurityGroupDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *SecurityGroupDeleteNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *SecurityGroupDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewSecurityGroupDeleteTooManyRequests creates a SecurityGroupDeleteTooManyRequests with default headers values
+func NewSecurityGroupDeleteTooManyRequests() *SecurityGroupDeleteTooManyRequests {
+	return &SecurityGroupDeleteTooManyRequests{}
+}
+
+/* SecurityGroupDeleteTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type SecurityGroupDeleteTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *SecurityGroupDeleteTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *SecurityGroupDeleteTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *SecurityGroupDeleteTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

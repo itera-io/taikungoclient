@@ -1,1 +1,1 @@
-397042316cc129a96c0a1e5cafdcddd5671fa1dc  swagger.json
+348e03d9681ea91daa9addb83af24cf7ee010979  swagger.json

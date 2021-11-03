@@ -53,6 +53,12 @@ func (o *AdminUsersListReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewAdminUsersListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewAdminUsersListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *AdminUsersListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AdminUsersListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAdminUsersListTooManyRequests creates a AdminUsersListTooManyRequests with default headers values
+func NewAdminUsersListTooManyRequests() *AdminUsersListTooManyRequests {
+	return &AdminUsersListTooManyRequests{}
+}
+
+/* AdminUsersListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type AdminUsersListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *AdminUsersListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *AdminUsersListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *AdminUsersListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

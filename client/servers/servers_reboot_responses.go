@@ -53,6 +53,12 @@ func (o *ServersRebootReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewServersRebootTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewServersRebootInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *ServersRebootNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ServersRebootNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewServersRebootTooManyRequests creates a ServersRebootTooManyRequests with default headers values
+func NewServersRebootTooManyRequests() *ServersRebootTooManyRequests {
+	return &ServersRebootTooManyRequests{}
+}
+
+/* ServersRebootTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type ServersRebootTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ServersRebootTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *ServersRebootTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ServersRebootTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

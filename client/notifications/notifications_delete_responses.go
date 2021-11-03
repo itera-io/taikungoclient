@@ -59,6 +59,12 @@ func (o *NotificationsDeleteReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewNotificationsDeleteTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewNotificationsDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -238,6 +244,38 @@ func (o *NotificationsDeleteNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *NotificationsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewNotificationsDeleteTooManyRequests creates a NotificationsDeleteTooManyRequests with default headers values
+func NewNotificationsDeleteTooManyRequests() *NotificationsDeleteTooManyRequests {
+	return &NotificationsDeleteTooManyRequests{}
+}
+
+/* NotificationsDeleteTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type NotificationsDeleteTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *NotificationsDeleteTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/delete][%d] notificationsDeleteTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *NotificationsDeleteTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *NotificationsDeleteTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

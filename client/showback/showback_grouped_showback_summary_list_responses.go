@@ -53,6 +53,12 @@ func (o *ShowbackGroupedShowbackSummaryListReader) ReadResponse(response runtime
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewShowbackGroupedShowbackSummaryListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewShowbackGroupedShowbackSummaryListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *ShowbackGroupedShowbackSummaryListNotFound) GetPayload() *models.Proble
 }
 
 func (o *ShowbackGroupedShowbackSummaryListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackGroupedShowbackSummaryListTooManyRequests creates a ShowbackGroupedShowbackSummaryListTooManyRequests with default headers values
+func NewShowbackGroupedShowbackSummaryListTooManyRequests() *ShowbackGroupedShowbackSummaryListTooManyRequests {
+	return &ShowbackGroupedShowbackSummaryListTooManyRequests{}
+}
+
+/* ShowbackGroupedShowbackSummaryListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type ShowbackGroupedShowbackSummaryListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackGroupedShowbackSummaryListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Showback/grouped/summary/list][%d] showbackGroupedShowbackSummaryListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *ShowbackGroupedShowbackSummaryListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackGroupedShowbackSummaryListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

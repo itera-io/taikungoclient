@@ -53,6 +53,12 @@ func (o *NotificationsNotifyOwnerReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewNotificationsNotifyOwnerTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewNotificationsNotifyOwnerInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *NotificationsNotifyOwnerNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *NotificationsNotifyOwnerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewNotificationsNotifyOwnerTooManyRequests creates a NotificationsNotifyOwnerTooManyRequests with default headers values
+func NewNotificationsNotifyOwnerTooManyRequests() *NotificationsNotifyOwnerTooManyRequests {
+	return &NotificationsNotifyOwnerTooManyRequests{}
+}
+
+/* NotificationsNotifyOwnerTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type NotificationsNotifyOwnerTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *NotificationsNotifyOwnerTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *NotificationsNotifyOwnerTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *NotificationsNotifyOwnerTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

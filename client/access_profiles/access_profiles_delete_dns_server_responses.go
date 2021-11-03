@@ -53,6 +53,12 @@ func (o *AccessProfilesDeleteDNSServerReader) ReadResponse(response runtime.Clie
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewAccessProfilesDeleteDNSServerTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewAccessProfilesDeleteDNSServerInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *AccessProfilesDeleteDNSServerNotFound) GetPayload() *models.ProblemDeta
 }
 
 func (o *AccessProfilesDeleteDNSServerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAccessProfilesDeleteDNSServerTooManyRequests creates a AccessProfilesDeleteDNSServerTooManyRequests with default headers values
+func NewAccessProfilesDeleteDNSServerTooManyRequests() *AccessProfilesDeleteDNSServerTooManyRequests {
+	return &AccessProfilesDeleteDNSServerTooManyRequests{}
+}
+
+/* AccessProfilesDeleteDNSServerTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type AccessProfilesDeleteDNSServerTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *AccessProfilesDeleteDNSServerTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/dnsserver][%d] accessProfilesDeleteDnsServerTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *AccessProfilesDeleteDNSServerTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *AccessProfilesDeleteDNSServerTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

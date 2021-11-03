@@ -53,6 +53,12 @@ func (o *KubernetesRestartDaemonSetReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubernetesRestartDaemonSetTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubernetesRestartDaemonSetInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *KubernetesRestartDaemonSetNotFound) GetPayload() *models.ProblemDetails
 }
 
 func (o *KubernetesRestartDaemonSetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubernetesRestartDaemonSetTooManyRequests creates a KubernetesRestartDaemonSetTooManyRequests with default headers values
+func NewKubernetesRestartDaemonSetTooManyRequests() *KubernetesRestartDaemonSetTooManyRequests {
+	return &KubernetesRestartDaemonSetTooManyRequests{}
+}
+
+/* KubernetesRestartDaemonSetTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubernetesRestartDaemonSetTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubernetesRestartDaemonSetTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubernetesRestartDaemonSetTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubernetesRestartDaemonSetTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

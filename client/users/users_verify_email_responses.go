@@ -53,6 +53,12 @@ func (o *UsersVerifyEmailReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewUsersVerifyEmailTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewUsersVerifyEmailInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *UsersVerifyEmailNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *UsersVerifyEmailNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUsersVerifyEmailTooManyRequests creates a UsersVerifyEmailTooManyRequests with default headers values
+func NewUsersVerifyEmailTooManyRequests() *UsersVerifyEmailTooManyRequests {
+	return &UsersVerifyEmailTooManyRequests{}
+}
+
+/* UsersVerifyEmailTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type UsersVerifyEmailTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *UsersVerifyEmailTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *UsersVerifyEmailTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *UsersVerifyEmailTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

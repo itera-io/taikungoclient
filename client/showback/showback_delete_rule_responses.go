@@ -53,6 +53,12 @@ func (o *ShowbackDeleteRuleReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewShowbackDeleteRuleTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewShowbackDeleteRuleInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *ShowbackDeleteRuleNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ShowbackDeleteRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackDeleteRuleTooManyRequests creates a ShowbackDeleteRuleTooManyRequests with default headers values
+func NewShowbackDeleteRuleTooManyRequests() *ShowbackDeleteRuleTooManyRequests {
+	return &ShowbackDeleteRuleTooManyRequests{}
+}
+
+/* ShowbackDeleteRuleTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type ShowbackDeleteRuleTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackDeleteRuleTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Showback/rule/delete][%d] showbackDeleteRuleTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *ShowbackDeleteRuleTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackDeleteRuleTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

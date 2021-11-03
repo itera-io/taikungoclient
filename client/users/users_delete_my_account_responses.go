@@ -53,6 +53,12 @@ func (o *UsersDeleteMyAccountReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewUsersDeleteMyAccountTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewUsersDeleteMyAccountInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *UsersDeleteMyAccountNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *UsersDeleteMyAccountNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUsersDeleteMyAccountTooManyRequests creates a UsersDeleteMyAccountTooManyRequests with default headers values
+func NewUsersDeleteMyAccountTooManyRequests() *UsersDeleteMyAccountTooManyRequests {
+	return &UsersDeleteMyAccountTooManyRequests{}
+}
+
+/* UsersDeleteMyAccountTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type UsersDeleteMyAccountTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *UsersDeleteMyAccountTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users/delete][%d] usersDeleteMyAccountTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *UsersDeleteMyAccountTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *UsersDeleteMyAccountTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

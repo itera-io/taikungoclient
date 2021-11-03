@@ -53,6 +53,12 @@ func (o *AzureLocationsReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewAzureLocationsTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewAzureLocationsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *AzureLocationsNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AzureLocationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAzureLocationsTooManyRequests creates a AzureLocationsTooManyRequests with default headers values
+func NewAzureLocationsTooManyRequests() *AzureLocationsTooManyRequests {
+	return &AzureLocationsTooManyRequests{}
+}
+
+/* AzureLocationsTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type AzureLocationsTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *AzureLocationsTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *AzureLocationsTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *AzureLocationsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

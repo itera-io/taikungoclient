@@ -53,6 +53,12 @@ func (o *CronJobDeleteExpiredAlertsReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewCronJobDeleteExpiredAlertsTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewCronJobDeleteExpiredAlertsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *CronJobDeleteExpiredAlertsNotFound) GetPayload() *models.ProblemDetails
 }
 
 func (o *CronJobDeleteExpiredAlertsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCronJobDeleteExpiredAlertsTooManyRequests creates a CronJobDeleteExpiredAlertsTooManyRequests with default headers values
+func NewCronJobDeleteExpiredAlertsTooManyRequests() *CronJobDeleteExpiredAlertsTooManyRequests {
+	return &CronJobDeleteExpiredAlertsTooManyRequests{}
+}
+
+/* CronJobDeleteExpiredAlertsTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type CronJobDeleteExpiredAlertsTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *CronJobDeleteExpiredAlertsTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *CronJobDeleteExpiredAlertsTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *CronJobDeleteExpiredAlertsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

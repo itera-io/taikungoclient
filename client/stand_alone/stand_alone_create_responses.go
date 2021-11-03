@@ -53,6 +53,12 @@ func (o *StandAloneCreateReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewStandAloneCreateTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewStandAloneCreateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *StandAloneCreateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *StandAloneCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewStandAloneCreateTooManyRequests creates a StandAloneCreateTooManyRequests with default headers values
+func NewStandAloneCreateTooManyRequests() *StandAloneCreateTooManyRequests {
+	return &StandAloneCreateTooManyRequests{}
+}
+
+/* StandAloneCreateTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type StandAloneCreateTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *StandAloneCreateTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/create][%d] standAloneCreateTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *StandAloneCreateTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *StandAloneCreateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,6 +53,12 @@ func (o *KubernetesGetKubernetesEventsListReader) ReadResponse(response runtime.
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubernetesGetKubernetesEventsListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubernetesGetKubernetesEventsListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *KubernetesGetKubernetesEventsListNotFound) GetPayload() *models.Problem
 }
 
 func (o *KubernetesGetKubernetesEventsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubernetesGetKubernetesEventsListTooManyRequests creates a KubernetesGetKubernetesEventsListTooManyRequests with default headers values
+func NewKubernetesGetKubernetesEventsListTooManyRequests() *KubernetesGetKubernetesEventsListTooManyRequests {
+	return &KubernetesGetKubernetesEventsListTooManyRequests{}
+}
+
+/* KubernetesGetKubernetesEventsListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubernetesGetKubernetesEventsListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubernetesGetKubernetesEventsListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/events][%d] kubernetesGetKubernetesEventsListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubernetesGetKubernetesEventsListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubernetesGetKubernetesEventsListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

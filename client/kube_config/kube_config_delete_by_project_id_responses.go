@@ -53,6 +53,12 @@ func (o *KubeConfigDeleteByProjectIDReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubeConfigDeleteByProjectIDTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubeConfigDeleteByProjectIDInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *KubeConfigDeleteByProjectIDNotFound) GetPayload() *models.ProblemDetail
 }
 
 func (o *KubeConfigDeleteByProjectIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubeConfigDeleteByProjectIDTooManyRequests creates a KubeConfigDeleteByProjectIDTooManyRequests with default headers values
+func NewKubeConfigDeleteByProjectIDTooManyRequests() *KubeConfigDeleteByProjectIDTooManyRequests {
+	return &KubeConfigDeleteByProjectIDTooManyRequests{}
+}
+
+/* KubeConfigDeleteByProjectIDTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubeConfigDeleteByProjectIDTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubeConfigDeleteByProjectIDTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubeConfigDeleteByProjectIDTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubeConfigDeleteByProjectIDTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

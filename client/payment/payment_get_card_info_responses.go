@@ -53,6 +53,12 @@ func (o *PaymentGetCardInfoReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewPaymentGetCardInfoTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPaymentGetCardInfoInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *PaymentGetCardInfoNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *PaymentGetCardInfoNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPaymentGetCardInfoTooManyRequests creates a PaymentGetCardInfoTooManyRequests with default headers values
+func NewPaymentGetCardInfoTooManyRequests() *PaymentGetCardInfoTooManyRequests {
+	return &PaymentGetCardInfoTooManyRequests{}
+}
+
+/* PaymentGetCardInfoTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type PaymentGetCardInfoTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *PaymentGetCardInfoTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Payment/cardinfo][%d] paymentGetCardInfoTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *PaymentGetCardInfoTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *PaymentGetCardInfoTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

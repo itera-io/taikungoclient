@@ -53,6 +53,12 @@ func (o *CloudCredentialsMakeDefaultReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewCloudCredentialsMakeDefaultTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewCloudCredentialsMakeDefaultInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *CloudCredentialsMakeDefaultNotFound) GetPayload() *models.ProblemDetail
 }
 
 func (o *CloudCredentialsMakeDefaultNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCloudCredentialsMakeDefaultTooManyRequests creates a CloudCredentialsMakeDefaultTooManyRequests with default headers values
+func NewCloudCredentialsMakeDefaultTooManyRequests() *CloudCredentialsMakeDefaultTooManyRequests {
+	return &CloudCredentialsMakeDefaultTooManyRequests{}
+}
+
+/* CloudCredentialsMakeDefaultTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type CloudCredentialsMakeDefaultTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *CloudCredentialsMakeDefaultTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *CloudCredentialsMakeDefaultTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *CloudCredentialsMakeDefaultTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

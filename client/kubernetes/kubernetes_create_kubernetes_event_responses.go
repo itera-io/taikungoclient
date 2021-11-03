@@ -53,6 +53,12 @@ func (o *KubernetesCreateKubernetesEventReader) ReadResponse(response runtime.Cl
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubernetesCreateKubernetesEventTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubernetesCreateKubernetesEventInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *KubernetesCreateKubernetesEventNotFound) GetPayload() *models.ProblemDe
 }
 
 func (o *KubernetesCreateKubernetesEventNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubernetesCreateKubernetesEventTooManyRequests creates a KubernetesCreateKubernetesEventTooManyRequests with default headers values
+func NewKubernetesCreateKubernetesEventTooManyRequests() *KubernetesCreateKubernetesEventTooManyRequests {
+	return &KubernetesCreateKubernetesEventTooManyRequests{}
+}
+
+/* KubernetesCreateKubernetesEventTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubernetesCreateKubernetesEventTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubernetesCreateKubernetesEventTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/event/{projectId}][%d] kubernetesCreateKubernetesEventTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubernetesCreateKubernetesEventTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubernetesCreateKubernetesEventTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

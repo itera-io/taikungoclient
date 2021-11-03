@@ -53,6 +53,12 @@ func (o *PrometheusGroupedListReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewPrometheusGroupedListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPrometheusGroupedListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *PrometheusGroupedListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *PrometheusGroupedListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPrometheusGroupedListTooManyRequests creates a PrometheusGroupedListTooManyRequests with default headers values
+func NewPrometheusGroupedListTooManyRequests() *PrometheusGroupedListTooManyRequests {
+	return &PrometheusGroupedListTooManyRequests{}
+}
+
+/* PrometheusGroupedListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type PrometheusGroupedListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *PrometheusGroupedListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *PrometheusGroupedListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *PrometheusGroupedListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

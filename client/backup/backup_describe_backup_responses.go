@@ -53,6 +53,12 @@ func (o *BackupDescribeBackupReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewBackupDescribeBackupTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewBackupDescribeBackupInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *BackupDescribeBackupNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *BackupDescribeBackupNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewBackupDescribeBackupTooManyRequests creates a BackupDescribeBackupTooManyRequests with default headers values
+func NewBackupDescribeBackupTooManyRequests() *BackupDescribeBackupTooManyRequests {
+	return &BackupDescribeBackupTooManyRequests{}
+}
+
+/* BackupDescribeBackupTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type BackupDescribeBackupTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *BackupDescribeBackupTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *BackupDescribeBackupTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *BackupDescribeBackupTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

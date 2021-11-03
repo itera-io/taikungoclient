@@ -53,6 +53,12 @@ func (o *AccessProfilesAccessProfilesForOrganizationListReader) ReadResponse(res
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewAccessProfilesAccessProfilesForOrganizationListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewAccessProfilesAccessProfilesForOrganizationListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *AccessProfilesAccessProfilesForOrganizationListNotFound) GetPayload() *
 }
 
 func (o *AccessProfilesAccessProfilesForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAccessProfilesAccessProfilesForOrganizationListTooManyRequests creates a AccessProfilesAccessProfilesForOrganizationListTooManyRequests with default headers values
+func NewAccessProfilesAccessProfilesForOrganizationListTooManyRequests() *AccessProfilesAccessProfilesForOrganizationListTooManyRequests {
+	return &AccessProfilesAccessProfilesForOrganizationListTooManyRequests{}
+}
+
+/* AccessProfilesAccessProfilesForOrganizationListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type AccessProfilesAccessProfilesForOrganizationListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *AccessProfilesAccessProfilesForOrganizationListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles/list][%d] accessProfilesAccessProfilesForOrganizationListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *AccessProfilesAccessProfilesForOrganizationListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *AccessProfilesAccessProfilesForOrganizationListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

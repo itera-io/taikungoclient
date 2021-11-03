@@ -53,6 +53,12 @@ func (o *AuthLoginReader) ReadResponse(response runtime.ClientResponse, consumer
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewAuthLoginTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewAuthLoginInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *AuthLoginNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AuthLoginNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAuthLoginTooManyRequests creates a AuthLoginTooManyRequests with default headers values
+func NewAuthLoginTooManyRequests() *AuthLoginTooManyRequests {
+	return &AuthLoginTooManyRequests{}
+}
+
+/* AuthLoginTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type AuthLoginTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *AuthLoginTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *AuthLoginTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *AuthLoginTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,6 +53,12 @@ func (o *S3CredentialsMakeDefaultReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewS3CredentialsMakeDefaultTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewS3CredentialsMakeDefaultInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *S3CredentialsMakeDefaultNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *S3CredentialsMakeDefaultNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewS3CredentialsMakeDefaultTooManyRequests creates a S3CredentialsMakeDefaultTooManyRequests with default headers values
+func NewS3CredentialsMakeDefaultTooManyRequests() *S3CredentialsMakeDefaultTooManyRequests {
+	return &S3CredentialsMakeDefaultTooManyRequests{}
+}
+
+/* S3CredentialsMakeDefaultTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type S3CredentialsMakeDefaultTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *S3CredentialsMakeDefaultTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *S3CredentialsMakeDefaultTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *S3CredentialsMakeDefaultTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

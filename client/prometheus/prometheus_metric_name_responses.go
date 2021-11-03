@@ -53,6 +53,12 @@ func (o *PrometheusMetricNameReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewPrometheusMetricNameTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPrometheusMetricNameInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *PrometheusMetricNameNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *PrometheusMetricNameNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPrometheusMetricNameTooManyRequests creates a PrometheusMetricNameTooManyRequests with default headers values
+func NewPrometheusMetricNameTooManyRequests() *PrometheusMetricNameTooManyRequests {
+	return &PrometheusMetricNameTooManyRequests{}
+}
+
+/* PrometheusMetricNameTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type PrometheusMetricNameTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *PrometheusMetricNameTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *PrometheusMetricNameTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *PrometheusMetricNameTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

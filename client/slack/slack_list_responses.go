@@ -53,6 +53,12 @@ func (o *SlackListReader) ReadResponse(response runtime.ClientResponse, consumer
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewSlackListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewSlackListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *SlackListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *SlackListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewSlackListTooManyRequests creates a SlackListTooManyRequests with default headers values
+func NewSlackListTooManyRequests() *SlackListTooManyRequests {
+	return &SlackListTooManyRequests{}
+}
+
+/* SlackListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type SlackListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *SlackListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *SlackListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *SlackListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

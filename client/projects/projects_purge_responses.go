@@ -53,6 +53,12 @@ func (o *ProjectsPurgeReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewProjectsPurgeTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewProjectsPurgeInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *ProjectsPurgeNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ProjectsPurgeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewProjectsPurgeTooManyRequests creates a ProjectsPurgeTooManyRequests with default headers values
+func NewProjectsPurgeTooManyRequests() *ProjectsPurgeTooManyRequests {
+	return &ProjectsPurgeTooManyRequests{}
+}
+
+/* ProjectsPurgeTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type ProjectsPurgeTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ProjectsPurgeTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *ProjectsPurgeTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ProjectsPurgeTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

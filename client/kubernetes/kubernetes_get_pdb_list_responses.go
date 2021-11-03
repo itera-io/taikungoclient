@@ -53,6 +53,12 @@ func (o *KubernetesGetPdbListReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubernetesGetPdbListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubernetesGetPdbListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *KubernetesGetPdbListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubernetesGetPdbListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubernetesGetPdbListTooManyRequests creates a KubernetesGetPdbListTooManyRequests with default headers values
+func NewKubernetesGetPdbListTooManyRequests() *KubernetesGetPdbListTooManyRequests {
+	return &KubernetesGetPdbListTooManyRequests{}
+}
+
+/* KubernetesGetPdbListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubernetesGetPdbListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubernetesGetPdbListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pdb][%d] kubernetesGetPdbListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubernetesGetPdbListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubernetesGetPdbListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

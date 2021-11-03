@@ -53,6 +53,12 @@ func (o *PrometheusDeleteReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewPrometheusDeleteTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPrometheusDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *PrometheusDeleteNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *PrometheusDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPrometheusDeleteTooManyRequests creates a PrometheusDeleteTooManyRequests with default headers values
+func NewPrometheusDeleteTooManyRequests() *PrometheusDeleteTooManyRequests {
+	return &PrometheusDeleteTooManyRequests{}
+}
+
+/* PrometheusDeleteTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type PrometheusDeleteTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *PrometheusDeleteTooManyRequests) Error() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Prometheus/{id}][%d] prometheusDeleteTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *PrometheusDeleteTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *PrometheusDeleteTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

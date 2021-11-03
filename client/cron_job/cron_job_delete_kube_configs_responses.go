@@ -53,6 +53,12 @@ func (o *CronJobDeleteKubeConfigsReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewCronJobDeleteKubeConfigsTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewCronJobDeleteKubeConfigsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *CronJobDeleteKubeConfigsNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *CronJobDeleteKubeConfigsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCronJobDeleteKubeConfigsTooManyRequests creates a CronJobDeleteKubeConfigsTooManyRequests with default headers values
+func NewCronJobDeleteKubeConfigsTooManyRequests() *CronJobDeleteKubeConfigsTooManyRequests {
+	return &CronJobDeleteKubeConfigsTooManyRequests{}
+}
+
+/* CronJobDeleteKubeConfigsTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type CronJobDeleteKubeConfigsTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *CronJobDeleteKubeConfigsTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *CronJobDeleteKubeConfigsTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *CronJobDeleteKubeConfigsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

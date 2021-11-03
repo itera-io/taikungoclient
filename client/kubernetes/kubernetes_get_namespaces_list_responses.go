@@ -53,6 +53,12 @@ func (o *KubernetesGetNamespacesListReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubernetesGetNamespacesListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubernetesGetNamespacesListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *KubernetesGetNamespacesListNotFound) GetPayload() *models.ProblemDetail
 }
 
 func (o *KubernetesGetNamespacesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubernetesGetNamespacesListTooManyRequests creates a KubernetesGetNamespacesListTooManyRequests with default headers values
+func NewKubernetesGetNamespacesListTooManyRequests() *KubernetesGetNamespacesListTooManyRequests {
+	return &KubernetesGetNamespacesListTooManyRequests{}
+}
+
+/* KubernetesGetNamespacesListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubernetesGetNamespacesListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubernetesGetNamespacesListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubernetesGetNamespacesListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubernetesGetNamespacesListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

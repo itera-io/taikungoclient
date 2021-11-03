@@ -53,6 +53,12 @@ func (o *CronJobCreateKeyPoolReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewCronJobCreateKeyPoolTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewCronJobCreateKeyPoolInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *CronJobCreateKeyPoolNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *CronJobCreateKeyPoolNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCronJobCreateKeyPoolTooManyRequests creates a CronJobCreateKeyPoolTooManyRequests with default headers values
+func NewCronJobCreateKeyPoolTooManyRequests() *CronJobCreateKeyPoolTooManyRequests {
+	return &CronJobCreateKeyPoolTooManyRequests{}
+}
+
+/* CronJobCreateKeyPoolTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type CronJobCreateKeyPoolTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *CronJobCreateKeyPoolTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *CronJobCreateKeyPoolTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *CronJobCreateKeyPoolTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

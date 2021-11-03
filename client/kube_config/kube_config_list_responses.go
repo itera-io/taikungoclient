@@ -53,6 +53,12 @@ func (o *KubeConfigListReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubeConfigListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubeConfigListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *KubeConfigListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubeConfigListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubeConfigListTooManyRequests creates a KubeConfigListTooManyRequests with default headers values
+func NewKubeConfigListTooManyRequests() *KubeConfigListTooManyRequests {
+	return &KubeConfigListTooManyRequests{}
+}
+
+/* KubeConfigListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubeConfigListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubeConfigListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubeConfigListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubeConfigListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

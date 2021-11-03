@@ -53,6 +53,12 @@ func (o *CronJobDeleteExpiredEventsReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewCronJobDeleteExpiredEventsTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewCronJobDeleteExpiredEventsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *CronJobDeleteExpiredEventsNotFound) GetPayload() *models.ProblemDetails
 }
 
 func (o *CronJobDeleteExpiredEventsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCronJobDeleteExpiredEventsTooManyRequests creates a CronJobDeleteExpiredEventsTooManyRequests with default headers values
+func NewCronJobDeleteExpiredEventsTooManyRequests() *CronJobDeleteExpiredEventsTooManyRequests {
+	return &CronJobDeleteExpiredEventsTooManyRequests{}
+}
+
+/* CronJobDeleteExpiredEventsTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type CronJobDeleteExpiredEventsTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *CronJobDeleteExpiredEventsTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/events][%d] cronJobDeleteExpiredEventsTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *CronJobDeleteExpiredEventsTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *CronJobDeleteExpiredEventsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

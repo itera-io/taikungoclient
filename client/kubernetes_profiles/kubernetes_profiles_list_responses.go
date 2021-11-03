@@ -53,6 +53,12 @@ func (o *KubernetesProfilesListReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubernetesProfilesListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubernetesProfilesListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *KubernetesProfilesListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubernetesProfilesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubernetesProfilesListTooManyRequests creates a KubernetesProfilesListTooManyRequests with default headers values
+func NewKubernetesProfilesListTooManyRequests() *KubernetesProfilesListTooManyRequests {
+	return &KubernetesProfilesListTooManyRequests{}
+}
+
+/* KubernetesProfilesListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubernetesProfilesListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubernetesProfilesListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubernetesProfilesListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubernetesProfilesListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

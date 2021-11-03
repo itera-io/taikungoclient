@@ -53,6 +53,12 @@ func (o *ServersResetReader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewServersResetTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewServersResetInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *ServersResetNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ServersResetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewServersResetTooManyRequests creates a ServersResetTooManyRequests with default headers values
+func NewServersResetTooManyRequests() *ServersResetTooManyRequests {
+	return &ServersResetTooManyRequests{}
+}
+
+/* ServersResetTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type ServersResetTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ServersResetTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *ServersResetTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ServersResetTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

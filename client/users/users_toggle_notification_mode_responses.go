@@ -53,6 +53,12 @@ func (o *UsersToggleNotificationModeReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewUsersToggleNotificationModeTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewUsersToggleNotificationModeInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *UsersToggleNotificationModeNotFound) GetPayload() *models.ProblemDetail
 }
 
 func (o *UsersToggleNotificationModeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUsersToggleNotificationModeTooManyRequests creates a UsersToggleNotificationModeTooManyRequests with default headers values
+func NewUsersToggleNotificationModeTooManyRequests() *UsersToggleNotificationModeTooManyRequests {
+	return &UsersToggleNotificationModeTooManyRequests{}
+}
+
+/* UsersToggleNotificationModeTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type UsersToggleNotificationModeTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *UsersToggleNotificationModeTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *UsersToggleNotificationModeTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *UsersToggleNotificationModeTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

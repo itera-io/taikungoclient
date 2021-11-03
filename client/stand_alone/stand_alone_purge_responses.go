@@ -53,6 +53,12 @@ func (o *StandAlonePurgeReader) ReadResponse(response runtime.ClientResponse, co
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewStandAlonePurgeTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewStandAlonePurgeInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *StandAlonePurgeNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *StandAlonePurgeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewStandAlonePurgeTooManyRequests creates a StandAlonePurgeTooManyRequests with default headers values
+func NewStandAlonePurgeTooManyRequests() *StandAlonePurgeTooManyRequests {
+	return &StandAlonePurgeTooManyRequests{}
+}
+
+/* StandAlonePurgeTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type StandAlonePurgeTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *StandAlonePurgeTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *StandAlonePurgeTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *StandAlonePurgeTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

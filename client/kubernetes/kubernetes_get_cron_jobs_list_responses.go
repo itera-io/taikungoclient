@@ -53,6 +53,12 @@ func (o *KubernetesGetCronJobsListReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubernetesGetCronJobsListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubernetesGetCronJobsListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *KubernetesGetCronJobsListNotFound) GetPayload() *models.ProblemDetails 
 }
 
 func (o *KubernetesGetCronJobsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubernetesGetCronJobsListTooManyRequests creates a KubernetesGetCronJobsListTooManyRequests with default headers values
+func NewKubernetesGetCronJobsListTooManyRequests() *KubernetesGetCronJobsListTooManyRequests {
+	return &KubernetesGetCronJobsListTooManyRequests{}
+}
+
+/* KubernetesGetCronJobsListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubernetesGetCronJobsListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubernetesGetCronJobsListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/cronjobs][%d] kubernetesGetCronJobsListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubernetesGetCronJobsListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubernetesGetCronJobsListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

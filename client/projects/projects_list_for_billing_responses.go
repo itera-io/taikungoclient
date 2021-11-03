@@ -53,6 +53,12 @@ func (o *ProjectsListForBillingReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewProjectsListForBillingTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewProjectsListForBillingInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *ProjectsListForBillingNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ProjectsListForBillingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewProjectsListForBillingTooManyRequests creates a ProjectsListForBillingTooManyRequests with default headers values
+func NewProjectsListForBillingTooManyRequests() *ProjectsListForBillingTooManyRequests {
+	return &ProjectsListForBillingTooManyRequests{}
+}
+
+/* ProjectsListForBillingTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type ProjectsListForBillingTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ProjectsListForBillingTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Projects/forbilling][%d] projectsListForBillingTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *ProjectsListForBillingTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ProjectsListForBillingTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

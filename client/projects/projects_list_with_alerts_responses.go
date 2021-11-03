@@ -53,6 +53,12 @@ func (o *ProjectsListWithAlertsReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewProjectsListWithAlertsTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewProjectsListWithAlertsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *ProjectsListWithAlertsNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ProjectsListWithAlertsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewProjectsListWithAlertsTooManyRequests creates a ProjectsListWithAlertsTooManyRequests with default headers values
+func NewProjectsListWithAlertsTooManyRequests() *ProjectsListWithAlertsTooManyRequests {
+	return &ProjectsListWithAlertsTooManyRequests{}
+}
+
+/* ProjectsListWithAlertsTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type ProjectsListWithAlertsTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ProjectsListWithAlertsTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *ProjectsListWithAlertsTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ProjectsListWithAlertsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

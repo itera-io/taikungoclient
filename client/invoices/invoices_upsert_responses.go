@@ -53,6 +53,12 @@ func (o *InvoicesUpsertReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewInvoicesUpsertTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewInvoicesUpsertInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *InvoicesUpsertNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *InvoicesUpsertNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewInvoicesUpsertTooManyRequests creates a InvoicesUpsertTooManyRequests with default headers values
+func NewInvoicesUpsertTooManyRequests() *InvoicesUpsertTooManyRequests {
+	return &InvoicesUpsertTooManyRequests{}
+}
+
+/* InvoicesUpsertTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type InvoicesUpsertTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *InvoicesUpsertTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Invoices][%d] invoicesUpsertTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *InvoicesUpsertTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *InvoicesUpsertTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

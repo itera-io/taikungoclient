@@ -53,6 +53,12 @@ func (o *SearchOrganizationsListReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewSearchOrganizationsListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewSearchOrganizationsListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *SearchOrganizationsListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *SearchOrganizationsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewSearchOrganizationsListTooManyRequests creates a SearchOrganizationsListTooManyRequests with default headers values
+func NewSearchOrganizationsListTooManyRequests() *SearchOrganizationsListTooManyRequests {
+	return &SearchOrganizationsListTooManyRequests{}
+}
+
+/* SearchOrganizationsListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type SearchOrganizationsListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *SearchOrganizationsListTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *SearchOrganizationsListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *SearchOrganizationsListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

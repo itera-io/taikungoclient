@@ -59,6 +59,12 @@ func (o *DocumentationDeleteReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewDocumentationDeleteTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewDocumentationDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -229,6 +235,38 @@ func (o *DocumentationDeleteNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *DocumentationDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewDocumentationDeleteTooManyRequests creates a DocumentationDeleteTooManyRequests with default headers values
+func NewDocumentationDeleteTooManyRequests() *DocumentationDeleteTooManyRequests {
+	return &DocumentationDeleteTooManyRequests{}
+}
+
+/* DocumentationDeleteTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type DocumentationDeleteTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *DocumentationDeleteTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Documentation/delete][%d] documentationDeleteTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *DocumentationDeleteTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *DocumentationDeleteTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

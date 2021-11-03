@@ -53,6 +53,12 @@ func (o *KubernetesProfilesBackupCredentialsForOrganizationListReader) ReadRespo
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubernetesProfilesBackupCredentialsForOrganizationListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubernetesProfilesBackupCredentialsForOrganizationListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *KubernetesProfilesBackupCredentialsForOrganizationListNotFound) GetPayl
 }
 
 func (o *KubernetesProfilesBackupCredentialsForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubernetesProfilesBackupCredentialsForOrganizationListTooManyRequests creates a KubernetesProfilesBackupCredentialsForOrganizationListTooManyRequests with default headers values
+func NewKubernetesProfilesBackupCredentialsForOrganizationListTooManyRequests() *KubernetesProfilesBackupCredentialsForOrganizationListTooManyRequests {
+	return &KubernetesProfilesBackupCredentialsForOrganizationListTooManyRequests{}
+}
+
+/* KubernetesProfilesBackupCredentialsForOrganizationListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubernetesProfilesBackupCredentialsForOrganizationListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubernetesProfilesBackupCredentialsForOrganizationListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesBackupCredentialsForOrganizationListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubernetesProfilesBackupCredentialsForOrganizationListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubernetesProfilesBackupCredentialsForOrganizationListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

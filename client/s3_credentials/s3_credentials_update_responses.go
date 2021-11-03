@@ -53,6 +53,12 @@ func (o *S3CredentialsUpdateReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewS3CredentialsUpdateTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewS3CredentialsUpdateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *S3CredentialsUpdateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *S3CredentialsUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewS3CredentialsUpdateTooManyRequests creates a S3CredentialsUpdateTooManyRequests with default headers values
+func NewS3CredentialsUpdateTooManyRequests() *S3CredentialsUpdateTooManyRequests {
+	return &S3CredentialsUpdateTooManyRequests{}
+}
+
+/* S3CredentialsUpdateTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type S3CredentialsUpdateTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *S3CredentialsUpdateTooManyRequests) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *S3CredentialsUpdateTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *S3CredentialsUpdateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

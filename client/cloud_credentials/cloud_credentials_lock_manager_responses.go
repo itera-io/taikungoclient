@@ -53,6 +53,12 @@ func (o *CloudCredentialsLockManagerReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewCloudCredentialsLockManagerTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewCloudCredentialsLockManagerInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *CloudCredentialsLockManagerNotFound) GetPayload() *models.ProblemDetail
 }
 
 func (o *CloudCredentialsLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCloudCredentialsLockManagerTooManyRequests creates a CloudCredentialsLockManagerTooManyRequests with default headers values
+func NewCloudCredentialsLockManagerTooManyRequests() *CloudCredentialsLockManagerTooManyRequests {
+	return &CloudCredentialsLockManagerTooManyRequests{}
+}
+
+/* CloudCredentialsLockManagerTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type CloudCredentialsLockManagerTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *CloudCredentialsLockManagerTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *CloudCredentialsLockManagerTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *CloudCredentialsLockManagerTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

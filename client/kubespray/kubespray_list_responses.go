@@ -53,6 +53,12 @@ func (o *KubesprayListReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubesprayListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubesprayListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *KubesprayListNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubesprayListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubesprayListTooManyRequests creates a KubesprayListTooManyRequests with default headers values
+func NewKubesprayListTooManyRequests() *KubesprayListTooManyRequests {
+	return &KubesprayListTooManyRequests{}
+}
+
+/* KubesprayListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubesprayListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubesprayListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubespray][%d] kubesprayListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubesprayListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubesprayListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

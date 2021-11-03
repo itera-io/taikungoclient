@@ -53,6 +53,12 @@ func (o *KubernetesDescribeCronJobReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubernetesDescribeCronJobTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubernetesDescribeCronJobInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *KubernetesDescribeCronJobNotFound) GetPayload() *models.ProblemDetails 
 }
 
 func (o *KubernetesDescribeCronJobNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubernetesDescribeCronJobTooManyRequests creates a KubernetesDescribeCronJobTooManyRequests with default headers values
+func NewKubernetesDescribeCronJobTooManyRequests() *KubernetesDescribeCronJobTooManyRequests {
+	return &KubernetesDescribeCronJobTooManyRequests{}
+}
+
+/* KubernetesDescribeCronJobTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubernetesDescribeCronJobTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubernetesDescribeCronJobTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubernetesDescribeCronJobTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubernetesDescribeCronJobTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

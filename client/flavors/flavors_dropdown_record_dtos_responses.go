@@ -53,6 +53,12 @@ func (o *FlavorsDropdownRecordDtosReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewFlavorsDropdownRecordDtosTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewFlavorsDropdownRecordDtosInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *FlavorsDropdownRecordDtosNotFound) GetPayload() *models.ProblemDetails 
 }
 
 func (o *FlavorsDropdownRecordDtosNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewFlavorsDropdownRecordDtosTooManyRequests creates a FlavorsDropdownRecordDtosTooManyRequests with default headers values
+func NewFlavorsDropdownRecordDtosTooManyRequests() *FlavorsDropdownRecordDtosTooManyRequests {
+	return &FlavorsDropdownRecordDtosTooManyRequests{}
+}
+
+/* FlavorsDropdownRecordDtosTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type FlavorsDropdownRecordDtosTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *FlavorsDropdownRecordDtosTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *FlavorsDropdownRecordDtosTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *FlavorsDropdownRecordDtosTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

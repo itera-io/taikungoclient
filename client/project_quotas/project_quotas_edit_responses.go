@@ -53,6 +53,12 @@ func (o *ProjectQuotasEditReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewProjectQuotasEditTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewProjectQuotasEditInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *ProjectQuotasEditNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ProjectQuotasEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewProjectQuotasEditTooManyRequests creates a ProjectQuotasEditTooManyRequests with default headers values
+func NewProjectQuotasEditTooManyRequests() *ProjectQuotasEditTooManyRequests {
+	return &ProjectQuotasEditTooManyRequests{}
+}
+
+/* ProjectQuotasEditTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type ProjectQuotasEditTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ProjectQuotasEditTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update/{quotaId}][%d] projectQuotasEditTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *ProjectQuotasEditTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ProjectQuotasEditTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

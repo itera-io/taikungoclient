@@ -53,6 +53,12 @@ func (o *KubernetesDescribePvcReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubernetesDescribePvcTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubernetesDescribePvcInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *KubernetesDescribePvcNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *KubernetesDescribePvcNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubernetesDescribePvcTooManyRequests creates a KubernetesDescribePvcTooManyRequests with default headers values
+func NewKubernetesDescribePvcTooManyRequests() *KubernetesDescribePvcTooManyRequests {
+	return &KubernetesDescribePvcTooManyRequests{}
+}
+
+/* KubernetesDescribePvcTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubernetesDescribePvcTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubernetesDescribePvcTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubernetesDescribePvcTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubernetesDescribePvcTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

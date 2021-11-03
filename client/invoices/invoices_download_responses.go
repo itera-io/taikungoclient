@@ -53,6 +53,12 @@ func (o *InvoicesDownloadReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewInvoicesDownloadTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewInvoicesDownloadInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -202,6 +208,38 @@ func (o *InvoicesDownloadNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *InvoicesDownloadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewInvoicesDownloadTooManyRequests creates a InvoicesDownloadTooManyRequests with default headers values
+func NewInvoicesDownloadTooManyRequests() *InvoicesDownloadTooManyRequests {
+	return &InvoicesDownloadTooManyRequests{}
+}
+
+/* InvoicesDownloadTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type InvoicesDownloadTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *InvoicesDownloadTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *InvoicesDownloadTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *InvoicesDownloadTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

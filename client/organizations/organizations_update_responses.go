@@ -53,6 +53,12 @@ func (o *OrganizationsUpdateReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewOrganizationsUpdateTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewOrganizationsUpdateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *OrganizationsUpdateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *OrganizationsUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewOrganizationsUpdateTooManyRequests creates a OrganizationsUpdateTooManyRequests with default headers values
+func NewOrganizationsUpdateTooManyRequests() *OrganizationsUpdateTooManyRequests {
+	return &OrganizationsUpdateTooManyRequests{}
+}
+
+/* OrganizationsUpdateTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type OrganizationsUpdateTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *OrganizationsUpdateTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *OrganizationsUpdateTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *OrganizationsUpdateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

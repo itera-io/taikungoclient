@@ -53,6 +53,12 @@ func (o *CloudCredentialsForCliReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewCloudCredentialsForCliTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewCloudCredentialsForCliInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *CloudCredentialsForCliNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *CloudCredentialsForCliNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCloudCredentialsForCliTooManyRequests creates a CloudCredentialsForCliTooManyRequests with default headers values
+func NewCloudCredentialsForCliTooManyRequests() *CloudCredentialsForCliTooManyRequests {
+	return &CloudCredentialsForCliTooManyRequests{}
+}
+
+/* CloudCredentialsForCliTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type CloudCredentialsForCliTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *CloudCredentialsForCliTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/cli][%d] cloudCredentialsForCliTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *CloudCredentialsForCliTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *CloudCredentialsForCliTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,6 +53,12 @@ func (o *SSHUsersDeleteReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewSSHUsersDeleteTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewSSHUsersDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *SSHUsersDeleteNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *SSHUsersDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewSSHUsersDeleteTooManyRequests creates a SSHUsersDeleteTooManyRequests with default headers values
+func NewSSHUsersDeleteTooManyRequests() *SSHUsersDeleteTooManyRequests {
+	return &SSHUsersDeleteTooManyRequests{}
+}
+
+/* SSHUsersDeleteTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type SSHUsersDeleteTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *SSHUsersDeleteTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *SSHUsersDeleteTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *SSHUsersDeleteTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,6 +53,12 @@ func (o *AdminUpdateUserEmailReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewAdminUpdateUserEmailTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewAdminUpdateUserEmailInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *AdminUpdateUserEmailNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AdminUpdateUserEmailNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAdminUpdateUserEmailTooManyRequests creates a AdminUpdateUserEmailTooManyRequests with default headers values
+func NewAdminUpdateUserEmailTooManyRequests() *AdminUpdateUserEmailTooManyRequests {
+	return &AdminUpdateUserEmailTooManyRequests{}
+}
+
+/* AdminUpdateUserEmailTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type AdminUpdateUserEmailTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *AdminUpdateUserEmailTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *AdminUpdateUserEmailTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *AdminUpdateUserEmailTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

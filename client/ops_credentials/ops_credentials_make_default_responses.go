@@ -53,6 +53,12 @@ func (o *OpsCredentialsMakeDefaultReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewOpsCredentialsMakeDefaultTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewOpsCredentialsMakeDefaultInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *OpsCredentialsMakeDefaultNotFound) GetPayload() *models.ProblemDetails 
 }
 
 func (o *OpsCredentialsMakeDefaultNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewOpsCredentialsMakeDefaultTooManyRequests creates a OpsCredentialsMakeDefaultTooManyRequests with default headers values
+func NewOpsCredentialsMakeDefaultTooManyRequests() *OpsCredentialsMakeDefaultTooManyRequests {
+	return &OpsCredentialsMakeDefaultTooManyRequests{}
+}
+
+/* OpsCredentialsMakeDefaultTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type OpsCredentialsMakeDefaultTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *OpsCredentialsMakeDefaultTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *OpsCredentialsMakeDefaultTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *OpsCredentialsMakeDefaultTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

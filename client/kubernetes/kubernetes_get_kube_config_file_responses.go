@@ -53,6 +53,12 @@ func (o *KubernetesGetKubeConfigFileReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewKubernetesGetKubeConfigFileTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewKubernetesGetKubeConfigFileInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *KubernetesGetKubeConfigFileNotFound) GetPayload() *models.ProblemDetail
 }
 
 func (o *KubernetesGetKubeConfigFileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewKubernetesGetKubeConfigFileTooManyRequests creates a KubernetesGetKubeConfigFileTooManyRequests with default headers values
+func NewKubernetesGetKubeConfigFileTooManyRequests() *KubernetesGetKubeConfigFileTooManyRequests {
+	return &KubernetesGetKubeConfigFileTooManyRequests{}
+}
+
+/* KubernetesGetKubeConfigFileTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type KubernetesGetKubeConfigFileTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *KubernetesGetKubeConfigFileTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *KubernetesGetKubeConfigFileTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *KubernetesGetKubeConfigFileTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

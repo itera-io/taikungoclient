@@ -53,6 +53,12 @@ func (o *AlertingProfilesAlertingProfilesForOrganizationListReader) ReadResponse
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewAlertingProfilesAlertingProfilesForOrganizationListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewAlertingProfilesAlertingProfilesForOrganizationListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *AlertingProfilesAlertingProfilesForOrganizationListNotFound) GetPayload
 }
 
 func (o *AlertingProfilesAlertingProfilesForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAlertingProfilesAlertingProfilesForOrganizationListTooManyRequests creates a AlertingProfilesAlertingProfilesForOrganizationListTooManyRequests with default headers values
+func NewAlertingProfilesAlertingProfilesForOrganizationListTooManyRequests() *AlertingProfilesAlertingProfilesForOrganizationListTooManyRequests {
+	return &AlertingProfilesAlertingProfilesForOrganizationListTooManyRequests{}
+}
+
+/* AlertingProfilesAlertingProfilesForOrganizationListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type AlertingProfilesAlertingProfilesForOrganizationListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *AlertingProfilesAlertingProfilesForOrganizationListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles/list][%d] alertingProfilesAlertingProfilesForOrganizationListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *AlertingProfilesAlertingProfilesForOrganizationListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *AlertingProfilesAlertingProfilesForOrganizationListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

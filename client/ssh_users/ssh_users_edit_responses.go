@@ -53,6 +53,12 @@ func (o *SSHUsersEditReader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewSSHUsersEditTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewSSHUsersEditInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *SSHUsersEditNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *SSHUsersEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewSSHUsersEditTooManyRequests creates a SSHUsersEditTooManyRequests with default headers values
+func NewSSHUsersEditTooManyRequests() *SSHUsersEditTooManyRequests {
+	return &SSHUsersEditTooManyRequests{}
+}
+
+/* SSHUsersEditTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type SSHUsersEditTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *SSHUsersEditTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/SshUsers/edit][%d] sshUsersEditTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *SSHUsersEditTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *SSHUsersEditTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

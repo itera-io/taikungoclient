@@ -53,6 +53,12 @@ func (o *OpenstackSubnetsReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewOpenstackSubnetsTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewOpenstackSubnetsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *OpenstackSubnetsNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *OpenstackSubnetsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewOpenstackSubnetsTooManyRequests creates a OpenstackSubnetsTooManyRequests with default headers values
+func NewOpenstackSubnetsTooManyRequests() *OpenstackSubnetsTooManyRequests {
+	return &OpenstackSubnetsTooManyRequests{}
+}
+
+/* OpenstackSubnetsTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type OpenstackSubnetsTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *OpenstackSubnetsTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *OpenstackSubnetsTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *OpenstackSubnetsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

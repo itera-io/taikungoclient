@@ -53,6 +53,12 @@ func (o *StandAloneProjectDetailsReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewStandAloneProjectDetailsTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewStandAloneProjectDetailsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *StandAloneProjectDetailsNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *StandAloneProjectDetailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewStandAloneProjectDetailsTooManyRequests creates a StandAloneProjectDetailsTooManyRequests with default headers values
+func NewStandAloneProjectDetailsTooManyRequests() *StandAloneProjectDetailsTooManyRequests {
+	return &StandAloneProjectDetailsTooManyRequests{}
+}
+
+/* StandAloneProjectDetailsTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type StandAloneProjectDetailsTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *StandAloneProjectDetailsTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *StandAloneProjectDetailsTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *StandAloneProjectDetailsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

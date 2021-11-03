@@ -53,6 +53,12 @@ func (o *CheckerOpenstackReader) ReadResponse(response runtime.ClientResponse, c
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewCheckerOpenstackTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewCheckerOpenstackInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *CheckerOpenstackNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *CheckerOpenstackNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewCheckerOpenstackTooManyRequests creates a CheckerOpenstackTooManyRequests with default headers values
+func NewCheckerOpenstackTooManyRequests() *CheckerOpenstackTooManyRequests {
+	return &CheckerOpenstackTooManyRequests{}
+}
+
+/* CheckerOpenstackTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type CheckerOpenstackTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *CheckerOpenstackTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack][%d] checkerOpenstackTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *CheckerOpenstackTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *CheckerOpenstackTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

@@ -53,6 +53,12 @@ func (o *S3CredentialsBackupCredentialsForOrganizationListReader) ReadResponse(r
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewS3CredentialsBackupCredentialsForOrganizationListTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewS3CredentialsBackupCredentialsForOrganizationListInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *S3CredentialsBackupCredentialsForOrganizationListNotFound) GetPayload()
 }
 
 func (o *S3CredentialsBackupCredentialsForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewS3CredentialsBackupCredentialsForOrganizationListTooManyRequests creates a S3CredentialsBackupCredentialsForOrganizationListTooManyRequests with default headers values
+func NewS3CredentialsBackupCredentialsForOrganizationListTooManyRequests() *S3CredentialsBackupCredentialsForOrganizationListTooManyRequests {
+	return &S3CredentialsBackupCredentialsForOrganizationListTooManyRequests{}
+}
+
+/* S3CredentialsBackupCredentialsForOrganizationListTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type S3CredentialsBackupCredentialsForOrganizationListTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *S3CredentialsBackupCredentialsForOrganizationListTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/S3Credentials][%d] s3CredentialsBackupCredentialsForOrganizationListTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *S3CredentialsBackupCredentialsForOrganizationListTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *S3CredentialsBackupCredentialsForOrganizationListTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

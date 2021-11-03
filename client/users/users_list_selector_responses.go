@@ -53,6 +53,12 @@ func (o *UsersListSelectorReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewUsersListSelectorTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewUsersListSelectorInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *UsersListSelectorNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *UsersListSelectorNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewUsersListSelectorTooManyRequests creates a UsersListSelectorTooManyRequests with default headers values
+func NewUsersListSelectorTooManyRequests() *UsersListSelectorTooManyRequests {
+	return &UsersListSelectorTooManyRequests{}
+}
+
+/* UsersListSelectorTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type UsersListSelectorTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *UsersListSelectorTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *UsersListSelectorTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *UsersListSelectorTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

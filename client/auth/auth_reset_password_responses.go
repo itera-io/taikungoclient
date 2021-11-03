@@ -53,6 +53,12 @@ func (o *AuthResetPasswordReader) ReadResponse(response runtime.ClientResponse, 
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewAuthResetPasswordTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewAuthResetPasswordInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *AuthResetPasswordNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AuthResetPasswordNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAuthResetPasswordTooManyRequests creates a AuthResetPasswordTooManyRequests with default headers values
+func NewAuthResetPasswordTooManyRequests() *AuthResetPasswordTooManyRequests {
+	return &AuthResetPasswordTooManyRequests{}
+}
+
+/* AuthResetPasswordTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type AuthResetPasswordTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *AuthResetPasswordTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *AuthResetPasswordTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *AuthResetPasswordTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

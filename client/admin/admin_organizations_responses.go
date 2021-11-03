@@ -53,6 +53,12 @@ func (o *AdminOrganizationsReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewAdminOrganizationsTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewAdminOrganizationsInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *AdminOrganizationsNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AdminOrganizationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAdminOrganizationsTooManyRequests creates a AdminOrganizationsTooManyRequests with default headers values
+func NewAdminOrganizationsTooManyRequests() *AdminOrganizationsTooManyRequests {
+	return &AdminOrganizationsTooManyRequests{}
+}
+
+/* AdminOrganizationsTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type AdminOrganizationsTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *AdminOrganizationsTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *AdminOrganizationsTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *AdminOrganizationsTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

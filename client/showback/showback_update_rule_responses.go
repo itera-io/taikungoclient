@@ -53,6 +53,12 @@ func (o *ShowbackUpdateRuleReader) ReadResponse(response runtime.ClientResponse,
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewShowbackUpdateRuleTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewShowbackUpdateRuleInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *ShowbackUpdateRuleNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ShowbackUpdateRuleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackUpdateRuleTooManyRequests creates a ShowbackUpdateRuleTooManyRequests with default headers values
+func NewShowbackUpdateRuleTooManyRequests() *ShowbackUpdateRuleTooManyRequests {
+	return &ShowbackUpdateRuleTooManyRequests{}
+}
+
+/* ShowbackUpdateRuleTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type ShowbackUpdateRuleTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackUpdateRuleTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Showback/rule/update][%d] showbackUpdateRuleTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *ShowbackUpdateRuleTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackUpdateRuleTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

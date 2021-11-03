@@ -53,6 +53,12 @@ func (o *PaymentGetFinalPriceReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewPaymentGetFinalPriceTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPaymentGetFinalPriceInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *PaymentGetFinalPriceNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *PaymentGetFinalPriceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPaymentGetFinalPriceTooManyRequests creates a PaymentGetFinalPriceTooManyRequests with default headers values
+func NewPaymentGetFinalPriceTooManyRequests() *PaymentGetFinalPriceTooManyRequests {
+	return &PaymentGetFinalPriceTooManyRequests{}
+}
+
+/* PaymentGetFinalPriceTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type PaymentGetFinalPriceTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *PaymentGetFinalPriceTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *PaymentGetFinalPriceTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *PaymentGetFinalPriceTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

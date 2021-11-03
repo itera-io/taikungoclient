@@ -53,6 +53,12 @@ func (o *ServersShowServerStatusReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewServersShowServerStatusTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewServersShowServerStatusInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -202,6 +208,38 @@ func (o *ServersShowServerStatusNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ServersShowServerStatusNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewServersShowServerStatusTooManyRequests creates a ServersShowServerStatusTooManyRequests with default headers values
+func NewServersShowServerStatusTooManyRequests() *ServersShowServerStatusTooManyRequests {
+	return &ServersShowServerStatusTooManyRequests{}
+}
+
+/* ServersShowServerStatusTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type ServersShowServerStatusTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ServersShowServerStatusTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Servers/status/{serverId}][%d] serversShowServerStatusTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *ServersShowServerStatusTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ServersShowServerStatusTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

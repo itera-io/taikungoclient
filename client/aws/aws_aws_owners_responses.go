@@ -53,6 +53,12 @@ func (o *AwsAwsOwnersReader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewAwsAwsOwnersTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewAwsAwsOwnersInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *AwsAwsOwnersNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *AwsAwsOwnersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewAwsAwsOwnersTooManyRequests creates a AwsAwsOwnersTooManyRequests with default headers values
+func NewAwsAwsOwnersTooManyRequests() *AwsAwsOwnersTooManyRequests {
+	return &AwsAwsOwnersTooManyRequests{}
+}
+
+/* AwsAwsOwnersTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type AwsAwsOwnersTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *AwsAwsOwnersTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Aws/owners/{cloudId}/{platform}][%d] awsAwsOwnersTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *AwsAwsOwnersTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *AwsAwsOwnersTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

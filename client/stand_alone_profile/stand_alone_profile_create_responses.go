@@ -53,6 +53,12 @@ func (o *StandAloneProfileCreateReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewStandAloneProfileCreateTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewStandAloneProfileCreateInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *StandAloneProfileCreateNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *StandAloneProfileCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewStandAloneProfileCreateTooManyRequests creates a StandAloneProfileCreateTooManyRequests with default headers values
+func NewStandAloneProfileCreateTooManyRequests() *StandAloneProfileCreateTooManyRequests {
+	return &StandAloneProfileCreateTooManyRequests{}
+}
+
+/* StandAloneProfileCreateTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type StandAloneProfileCreateTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *StandAloneProfileCreateTooManyRequests) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *StandAloneProfileCreateTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *StandAloneProfileCreateTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 

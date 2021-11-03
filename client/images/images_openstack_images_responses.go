@@ -53,6 +53,12 @@ func (o *ImagesOpenstackImagesReader) ReadResponse(response runtime.ClientRespon
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewImagesOpenstackImagesTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewImagesOpenstackImagesInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -213,6 +219,38 @@ func (o *ImagesOpenstackImagesNotFound) GetPayload() *models.ProblemDetails {
 }
 
 func (o *ImagesOpenstackImagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewImagesOpenstackImagesTooManyRequests creates a ImagesOpenstackImagesTooManyRequests with default headers values
+func NewImagesOpenstackImagesTooManyRequests() *ImagesOpenstackImagesTooManyRequests {
+	return &ImagesOpenstackImagesTooManyRequests{}
+}
+
+/* ImagesOpenstackImagesTooManyRequests describes a response with status code 429, with default header values.
+
+Client Error
+*/
+type ImagesOpenstackImagesTooManyRequests struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ImagesOpenstackImagesTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *ImagesOpenstackImagesTooManyRequests) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ImagesOpenstackImagesTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.ProblemDetails)
 
