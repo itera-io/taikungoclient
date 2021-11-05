@@ -34,6 +34,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/kubernetes_profiles"
 	"github.com/itera-io/taikungoclient/client/kubespray"
 	"github.com/itera-io/taikungoclient/client/notifications"
+	"github.com/itera-io/taikungoclient/client/opa_profiles"
 	"github.com/itera-io/taikungoclient/client/openstack"
 	"github.com/itera-io/taikungoclient/client/ops_credentials"
 	"github.com/itera-io/taikungoclient/client/organization_subscriptions"
@@ -143,6 +144,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.KubernetesProfiles = kubernetes_profiles.New(transport, formats)
 	cli.Kubespray = kubespray.New(transport, formats)
 	cli.Notifications = notifications.New(transport, formats)
+	cli.OpaProfiles = opa_profiles.New(transport, formats)
 	cli.Openstack = openstack.New(transport, formats)
 	cli.OpsCredentials = ops_credentials.New(transport, formats)
 	cli.OrganizationSubscriptions = organization_subscriptions.New(transport, formats)
@@ -259,6 +261,8 @@ type Taikungoclient struct {
 
 	Notifications notifications.ClientService
 
+	OpaProfiles opa_profiles.ClientService
+
 	Openstack openstack.ClientService
 
 	OpsCredentials ops_credentials.ClientService
@@ -337,6 +341,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.KubernetesProfiles.SetTransport(transport)
 	c.Kubespray.SetTransport(transport)
 	c.Notifications.SetTransport(transport)
+	c.OpaProfiles.SetTransport(transport)
 	c.Openstack.SetTransport(transport)
 	c.OpsCredentials.SetTransport(transport)
 	c.OrganizationSubscriptions.SetTransport(transport)

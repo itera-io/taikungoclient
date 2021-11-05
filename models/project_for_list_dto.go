@@ -80,6 +80,9 @@ type ProjectForListDto struct {
 	// is monitoring enabled
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled,omitempty"`
 
+	// is opa enabled
+	IsOpaEnabled bool `json:"isOpaEnabled,omitempty"`
+
 	// job Url
 	JobURL string `json:"jobUrl,omitempty"`
 
@@ -112,6 +115,12 @@ type ProjectForListDto struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	// opa profile revision
+	OpaProfileRevision int32 `json:"opaProfileRevision,omitempty"`
+
+	// opa profiles
+	OpaProfiles *OpaProfileListDto `json:"opaProfiles,omitempty"`
 
 	// operation
 	Operation string `json:"operation,omitempty"`
@@ -199,6 +208,10 @@ func (m *ProjectForListDto) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateMonitoringCredentials(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOpaProfiles(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -332,6 +345,25 @@ func (m *ProjectForListDto) validateMonitoringCredentials(formats strfmt.Registr
 	return nil
 }
 
+func (m *ProjectForListDto) validateOpaProfiles(formats strfmt.Registry) error {
+	if swag.IsZero(m.OpaProfiles) { // not required
+		return nil
+	}
+
+	if m.OpaProfiles != nil {
+		if err := m.OpaProfiles.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("opaProfiles")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("opaProfiles")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *ProjectForListDto) validateStandaloneVms(formats strfmt.Registry) error {
 	if swag.IsZero(m.StandaloneVms) { // not required
 		return nil
@@ -391,6 +423,10 @@ func (m *ProjectForListDto) ContextValidate(ctx context.Context, formats strfmt.
 	}
 
 	if err := m.contextValidateMonitoringCredentials(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateOpaProfiles(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -491,6 +527,22 @@ func (m *ProjectForListDto) contextValidateMonitoringCredentials(ctx context.Con
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *ProjectForListDto) contextValidateOpaProfiles(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.OpaProfiles != nil {
+		if err := m.OpaProfiles.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("opaProfiles")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("opaProfiles")
+			}
+			return err
+		}
 	}
 
 	return nil
