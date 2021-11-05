@@ -30,7 +30,7 @@ type OrganizationCreateCommand struct {
 	Country string `json:"country,omitempty"`
 
 	// discount rate
-	DiscountRate float64 `json:"discountRate,omitempty"`
+	DiscountRate float64 `json:"discountRate"`
 
 	// email
 	Email string `json:"email,omitempty"`

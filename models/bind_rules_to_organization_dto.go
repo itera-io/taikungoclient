@@ -18,7 +18,7 @@ import (
 type BindRulesToOrganizationDto struct {
 
 	// discount rate
-	DiscountRate float64 `json:"discountRate,omitempty"`
+	DiscountRate float64 `json:"discountRate"`
 
 	// is bound
 	IsBound bool `json:"isBound,omitempty"`

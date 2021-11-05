@@ -27,7 +27,7 @@ type BindOrganizationsToRuleDto struct {
 	OrganizationName string `json:"organizationName,omitempty"`
 
 	// rule discount rate
-	RuleDiscountRate float64 `json:"ruleDiscountRate,omitempty"`
+	RuleDiscountRate float64 `json:"ruleDiscountRate"`
 }
 
 // Validate validates this bind organizations to rule dto

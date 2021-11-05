@@ -44,7 +44,7 @@ type RuleForUpdateDto struct {
 	Price float64 `json:"price,omitempty"`
 
 	// rule discount rate
-	RuleDiscountRate int32 `json:"ruleDiscountRate,omitempty"`
+	RuleDiscountRate int32 `json:"ruleDiscountRate"`
 
 	// type
 	Type PrometheusType `json:"type,omitempty"`

@@ -18,7 +18,7 @@ import (
 type OrganizationForPrometheus struct {
 
 	// global discount rate
-	GlobalDiscountRate float64 `json:"globalDiscountRate,omitempty"`
+	GlobalDiscountRate float64 `json:"globalDiscountRate"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
@@ -27,7 +27,7 @@ type OrganizationForPrometheus struct {
 	OrganizationName string `json:"organizationName,omitempty"`
 
 	// rule discount rate
-	RuleDiscountRate float64 `json:"ruleDiscountRate,omitempty"`
+	RuleDiscountRate float64 `json:"ruleDiscountRate"`
 }
 
 // Validate validates this organization for prometheus

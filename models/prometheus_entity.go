@@ -24,7 +24,7 @@ type PrometheusEntity struct {
 	PrometheusRuleName string `json:"prometheusRuleName,omitempty"`
 
 	// rule discount rate
-	RuleDiscountRate float64 `json:"ruleDiscountRate,omitempty"`
+	RuleDiscountRate float64 `json:"ruleDiscountRate"`
 }
 
 // Validate validates this prometheus entity

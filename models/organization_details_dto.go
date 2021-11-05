@@ -41,7 +41,7 @@ type OrganizationDetailsDto struct {
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// discount rate
-	DiscountRate float64 `json:"discountRate,omitempty"`
+	DiscountRate float64 `json:"discountRate"`
 
 	// email
 	Email string `json:"email,omitempty"`
