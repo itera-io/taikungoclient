@@ -78,7 +78,7 @@ type AzureSubscriptionsOK struct {
 }
 
 func (o *AzureSubscriptionsOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/susbcriptions][%d] azureSubscriptionsOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsOK  %+v", 200, o.Payload)
 }
 func (o *AzureSubscriptionsOK) GetPayload() []*models.CommonStringBasedDropdownDto {
 	return o.Payload
@@ -108,7 +108,7 @@ type AzureSubscriptionsBadRequest struct {
 }
 
 func (o *AzureSubscriptionsBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/susbcriptions][%d] azureSubscriptionsBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsBadRequest  %+v", 400, o.Payload)
 }
 func (o *AzureSubscriptionsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
@@ -140,7 +140,7 @@ type AzureSubscriptionsUnauthorized struct {
 }
 
 func (o *AzureSubscriptionsUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/susbcriptions][%d] azureSubscriptionsUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsUnauthorized  %+v", 401, o.Payload)
 }
 func (o *AzureSubscriptionsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -172,7 +172,7 @@ type AzureSubscriptionsForbidden struct {
 }
 
 func (o *AzureSubscriptionsForbidden) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/susbcriptions][%d] azureSubscriptionsForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsForbidden  %+v", 403, o.Payload)
 }
 func (o *AzureSubscriptionsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -204,7 +204,7 @@ type AzureSubscriptionsNotFound struct {
 }
 
 func (o *AzureSubscriptionsNotFound) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/susbcriptions][%d] azureSubscriptionsNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsNotFound  %+v", 404, o.Payload)
 }
 func (o *AzureSubscriptionsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -235,7 +235,7 @@ type AzureSubscriptionsInternalServerError struct {
 }
 
 func (o *AzureSubscriptionsInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/susbcriptions][%d] azureSubscriptionsInternalServerError ", 500)
+	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsInternalServerError ", 500)
 }
 
 func (o *AzureSubscriptionsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

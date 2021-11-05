@@ -296,7 +296,7 @@ func (a *Client) AzureSubscriptions(params *AzureSubscriptionsParams, authInfo r
 	op := &runtime.ClientOperation{
 		ID:                 "Azure_Subscriptions",
 		Method:             "POST",
-		PathPattern:        "/api/v{v}/Azure/susbcriptions",
+		PathPattern:        "/api/v{v}/Azure/subscriptions",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
 		Schemes:            []string{"https"},
