@@ -26,8 +26,8 @@ sed -i 's/"format": "date-time"/"x-nullable": true, "format": "date-time"/g' swa
 refline="\"showbackCredentialId\":"
 sed -i "/${refline}/a \"x-nullable\": true," swagger-patch.json
 
-# Remove ProjectQuotas omitempty (isCpuUnlimited, isRamUnlimited, isDiskSizeUnlimited
-refline="\"(isCpuUnlimited|isRamUnlimited|isDiskSizeUnlimited)\":"
+# Remove omitempty
+refline="\"(isCpuUnlimited|isRamUnlimited|isDiskSizeUnlimited|ruleDiscountRate|globalDiscountRate|discountRate)\":"
 sed -Ei "/${refline}/a \"x-omitempty\": false," swagger-patch.json
 
 # Initialize go module
