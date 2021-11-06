@@ -34,9 +34,17 @@ type ClientService interface {
 
 	OpaProfilesDelete(params *OpaProfilesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesDeleteOK, error)
 
+	OpaProfilesDisableGatekeeper(params *OpaProfilesDisableGatekeeperParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesDisableGatekeeperOK, error)
+
+	OpaProfilesEnableGatekeeper(params *OpaProfilesEnableGatekeeperParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesEnableGatekeeperOK, error)
+
 	OpaProfilesList(params *OpaProfilesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesListOK, error)
 
 	OpaProfilesLockManager(params *OpaProfilesLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesLockManagerOK, error)
+
+	OpaProfilesOpaProfilesForOrganizationList(params *OpaProfilesOpaProfilesForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesOpaProfilesForOrganizationListOK, error)
+
+	OpaProfilesSync(params *OpaProfilesSyncParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesSyncOK, error)
 
 	OpaProfilesUpdate(params *OpaProfilesUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesUpdateOK, error)
 
@@ -122,6 +130,84 @@ func (a *Client) OpaProfilesDelete(params *OpaProfilesDeleteParams, authInfo run
 }
 
 /*
+  OpaProfilesDisableGatekeeper disables gatekeeper by the project Id
+*/
+func (a *Client) OpaProfilesDisableGatekeeper(params *OpaProfilesDisableGatekeeperParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesDisableGatekeeperOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOpaProfilesDisableGatekeeperParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "OpaProfiles_DisableGatekeeper",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/OpaProfiles/disablegatekeeper",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OpaProfilesDisableGatekeeperReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OpaProfilesDisableGatekeeperOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for OpaProfiles_DisableGatekeeper: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  OpaProfilesEnableGatekeeper enables gatekeeper by the project Id
+*/
+func (a *Client) OpaProfilesEnableGatekeeper(params *OpaProfilesEnableGatekeeperParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesEnableGatekeeperOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOpaProfilesEnableGatekeeperParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "OpaProfiles_EnableGatekeeper",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/OpaProfiles/enablegatekeeper",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OpaProfilesEnableGatekeeperReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OpaProfilesEnableGatekeeperOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for OpaProfiles_EnableGatekeeper: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   OpaProfilesList retrieves a list of opa profiles for project
 */
 func (a *Client) OpaProfilesList(params *OpaProfilesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesListOK, error) {
@@ -196,6 +282,84 @@ func (a *Client) OpaProfilesLockManager(params *OpaProfilesLockManagerParams, au
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for OpaProfiles_LockManager: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  OpaProfilesOpaProfilesForOrganizationList retrieves opa profiles by organization Id
+*/
+func (a *Client) OpaProfilesOpaProfilesForOrganizationList(params *OpaProfilesOpaProfilesForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesOpaProfilesForOrganizationListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOpaProfilesOpaProfilesForOrganizationListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "OpaProfiles_OpaProfilesForOrganizationList",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/OpaProfiles/list",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OpaProfilesOpaProfilesForOrganizationListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OpaProfilesOpaProfilesForOrganizationListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for OpaProfiles_OpaProfilesForOrganizationList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  OpaProfilesSync syncs opa profile
+*/
+func (a *Client) OpaProfilesSync(params *OpaProfilesSyncParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesSyncOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOpaProfilesSyncParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "OpaProfiles_Sync",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/OpaProfiles/sync",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OpaProfilesSyncReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OpaProfilesSyncOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for OpaProfiles_Sync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
