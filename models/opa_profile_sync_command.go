@@ -17,9 +17,6 @@ import (
 // swagger:model OpaProfileSyncCommand
 type OpaProfileSyncCommand struct {
 
-	// id
-	ID int32 `json:"id,omitempty"`
-
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
 }

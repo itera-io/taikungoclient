@@ -30,6 +30,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	OrganizationsAcceptOffer(params *OrganizationsAcceptOfferParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsAcceptOfferOK, error)
+
 	OrganizationsCreate(params *OrganizationsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsCreateOK, error)
 
 	OrganizationsCreateDefaultProfilers(params *OrganizationsCreateDefaultProfilersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsCreateDefaultProfilersOK, error)
@@ -37,6 +39,8 @@ type ClientService interface {
 	OrganizationsDelete(params *OrganizationsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsDeleteOK, *OrganizationsDeleteNoContent, error)
 
 	OrganizationsDetails(params *OrganizationsDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsDetailsOK, error)
+
+	OrganizationsLeaveTaikun(params *OrganizationsLeaveTaikunParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsLeaveTaikunOK, error)
 
 	OrganizationsList(params *OrganizationsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsListOK, error)
 
@@ -51,6 +55,45 @@ type ClientService interface {
 	OrganizationsUpdateSubscription(params *OrganizationsUpdateSubscriptionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsUpdateSubscriptionOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  OrganizationsAcceptOffer accepts discount offer
+*/
+func (a *Client) OrganizationsAcceptOffer(params *OrganizationsAcceptOfferParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsAcceptOfferOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOrganizationsAcceptOfferParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Organizations_AcceptOffer",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Organizations/accept-offer",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OrganizationsAcceptOfferReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OrganizationsAcceptOfferOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Organizations_AcceptOffer: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -207,6 +250,45 @@ func (a *Client) OrganizationsDetails(params *OrganizationsDetailsParams, authIn
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Organizations_Details: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  OrganizationsLeaveTaikun leaves taikun
+*/
+func (a *Client) OrganizationsLeaveTaikun(params *OrganizationsLeaveTaikunParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsLeaveTaikunOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOrganizationsLeaveTaikunParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Organizations_LeaveTaikun",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Organizations/leave",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OrganizationsLeaveTaikunReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OrganizationsLeaveTaikunOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Organizations_LeaveTaikun: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

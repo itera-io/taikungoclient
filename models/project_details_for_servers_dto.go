@@ -104,6 +104,9 @@ type ProjectDetailsForServersDto struct {
 	// is monitoring enabled
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled,omitempty"`
 
+	// is opa enabled
+	IsOpaEnabled bool `json:"isOpaEnabled,omitempty"`
+
 	// kube current version
 	KubeCurrentVersion string `json:"kubeCurrentVersion,omitempty"`
 

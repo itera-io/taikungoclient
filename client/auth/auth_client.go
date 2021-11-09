@@ -32,8 +32,6 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	AuthForgotPassword(params *AuthForgotPasswordParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthForgotPasswordOK, error)
 
-	AuthLeaveTaikun(params *AuthLeaveTaikunParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthLeaveTaikunOK, error)
-
 	AuthLogin(params *AuthLoginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthLoginOK, error)
 
 	AuthRefreshToken(params *AuthRefreshTokenParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthRefreshTokenOK, error)
@@ -81,45 +79,6 @@ func (a *Client) AuthForgotPassword(params *AuthForgotPasswordParams, authInfo r
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Auth_ForgotPassword: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  AuthLeaveTaikun leaves taikun
-*/
-func (a *Client) AuthLeaveTaikun(params *AuthLeaveTaikunParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthLeaveTaikunOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAuthLeaveTaikunParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Auth_LeaveTaikun",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/Auth/leave",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AuthLeaveTaikunReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AuthLeaveTaikunOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Auth_LeaveTaikun: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

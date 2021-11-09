@@ -17,9 +17,6 @@ import (
 // swagger:model DisableGatekeeperCommand
 type DisableGatekeeperCommand struct {
 
-	// opa profile Id
-	OpaProfileID int32 `json:"opaProfileId,omitempty"`
-
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
 }
