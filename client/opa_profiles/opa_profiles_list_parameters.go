@@ -96,9 +96,7 @@ type OpaProfilesListParams struct {
 	Search *string
 
 	// SearchID.
-	//
-	// Format: int32
-	SearchID *int32
+	SearchID *string
 
 	// V.
 	V string
@@ -212,13 +210,13 @@ func (o *OpaProfilesListParams) SetSearch(search *string) {
 }
 
 // WithSearchID adds the searchID to the opa profiles list params
-func (o *OpaProfilesListParams) WithSearchID(searchID *int32) *OpaProfilesListParams {
+func (o *OpaProfilesListParams) WithSearchID(searchID *string) *OpaProfilesListParams {
 	o.SetSearchID(searchID)
 	return o
 }
 
 // SetSearchID adds the searchId to the opa profiles list params
-func (o *OpaProfilesListParams) SetSearchID(searchID *int32) {
+func (o *OpaProfilesListParams) SetSearchID(searchID *string) {
 	o.SearchID = searchID
 }
 
@@ -329,12 +327,12 @@ func (o *OpaProfilesListParams) WriteToRequest(r runtime.ClientRequest, reg strf
 	if o.SearchID != nil {
 
 		// query param searchId
-		var qrSearchID int32
+		var qrSearchID string
 
 		if o.SearchID != nil {
 			qrSearchID = *o.SearchID
 		}
-		qSearchID := swag.FormatInt32(qrSearchID)
+		qSearchID := qrSearchID
 		if qSearchID != "" {
 
 			if err := r.SetQueryParam("searchId", qSearchID); err != nil {

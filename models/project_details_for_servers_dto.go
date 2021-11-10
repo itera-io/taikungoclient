@@ -125,6 +125,12 @@ type ProjectDetailsForServersDto struct {
 	// master ready
 	MasterReady int32 `json:"masterReady,omitempty"`
 
+	// opa profile Id
+	OpaProfileID int32 `json:"opaProfileId,omitempty"`
+
+	// opa profile name
+	OpaProfileName string `json:"opaProfileName,omitempty"`
+
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
 

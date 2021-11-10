@@ -74,13 +74,13 @@ func NewOpaProfilesOpaProfilesForOrganizationListOK() *OpaProfilesOpaProfilesFor
 Success
 */
 type OpaProfilesOpaProfilesForOrganizationListOK struct {
-	Payload []*models.CommonDropdownDto
+	Payload []*models.CommonExtendedDropdownDto
 }
 
 func (o *OpaProfilesOpaProfilesForOrganizationListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles/list][%d] opaProfilesOpaProfilesForOrganizationListOK  %+v", 200, o.Payload)
 }
-func (o *OpaProfilesOpaProfilesForOrganizationListOK) GetPayload() []*models.CommonDropdownDto {
+func (o *OpaProfilesOpaProfilesForOrganizationListOK) GetPayload() []*models.CommonExtendedDropdownDto {
 	return o.Payload
 }
 

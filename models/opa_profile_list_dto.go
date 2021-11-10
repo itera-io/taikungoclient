@@ -35,6 +35,9 @@ type OpaProfileListDto struct {
 	// ingress whitelist
 	IngressWhitelist string `json:"ingressWhitelist,omitempty"`
 
+	// is default
+	IsDefault bool `json:"isDefault,omitempty"`
+
 	// is locked
 	IsLocked bool `json:"isLocked,omitempty"`
 
@@ -43,6 +46,9 @@ type OpaProfileListDto struct {
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
 
 	// require probe
 	RequireProbe bool `json:"requireProbe,omitempty"`
