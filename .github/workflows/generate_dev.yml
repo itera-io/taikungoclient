@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref : 'dev'
+          ref: 'dev'
 
       - name: Download swagger.json
         run: wget -q --user "$SWAGGER_USERNAME" --password "$SWAGGER_PASSWORD" "$SWAGGER_DEV_URL" -O swagger.json
