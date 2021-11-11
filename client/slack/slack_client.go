@@ -36,10 +36,6 @@ type ClientService interface {
 
 	SlackList(params *SlackListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SlackListOK, error)
 
-	SlackSlackConfigurationForOrganizationList(params *SlackSlackConfigurationForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SlackSlackConfigurationForOrganizationListOK, error)
-
-	SlackVerifySlackCredentials(params *SlackVerifySlackCredentialsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SlackVerifySlackCredentialsOK, error)
-
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -158,84 +154,6 @@ func (a *Client) SlackList(params *SlackListParams, authInfo runtime.ClientAuthI
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Slack_List: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  SlackSlackConfigurationForOrganizationList retrieves all slack configs for organization
-*/
-func (a *Client) SlackSlackConfigurationForOrganizationList(params *SlackSlackConfigurationForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SlackSlackConfigurationForOrganizationListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewSlackSlackConfigurationForOrganizationListParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Slack_SlackConfigurationForOrganizationList",
-		Method:             "GET",
-		PathPattern:        "/api/v{v}/Slack/list",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &SlackSlackConfigurationForOrganizationListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*SlackSlackConfigurationForOrganizationListOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Slack_SlackConfigurationForOrganizationList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  SlackVerifySlackCredentials verifies slack credentials
-*/
-func (a *Client) SlackVerifySlackCredentials(params *SlackVerifySlackCredentialsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SlackVerifySlackCredentialsOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewSlackVerifySlackCredentialsParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Slack_VerifySlackCredentials",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/Slack/verify",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &SlackVerifySlackCredentialsReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*SlackVerifySlackCredentialsOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Slack_VerifySlackCredentials: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -8,7 +8,6 @@ package models
 import (
 	"context"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -28,7 +27,7 @@ type StandAloneProfileSecurityGroupDto struct {
 	PortMinRange int32 `json:"portMinRange,omitempty"`
 
 	// protocol
-	Protocol SecurityGroupProtocol `json:"protocol,omitempty"`
+	Protocol string `json:"protocol,omitempty"`
 
 	// remote Ip prefix
 	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
@@ -36,60 +35,11 @@ type StandAloneProfileSecurityGroupDto struct {
 
 // Validate validates this stand alone profile security group dto
 func (m *StandAloneProfileSecurityGroupDto) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateProtocol(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
 	return nil
 }
 
-func (m *StandAloneProfileSecurityGroupDto) validateProtocol(formats strfmt.Registry) error {
-	if swag.IsZero(m.Protocol) { // not required
-		return nil
-	}
-
-	if err := m.Protocol.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("protocol")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("protocol")
-		}
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this stand alone profile security group dto based on the context it is used
+// ContextValidate validates this stand alone profile security group dto based on context it is used
 func (m *StandAloneProfileSecurityGroupDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateProtocol(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *StandAloneProfileSecurityGroupDto) contextValidateProtocol(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := m.Protocol.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("protocol")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("protocol")
-		}
-		return err
-	}
-
 	return nil
 }
 

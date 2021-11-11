@@ -34,8 +34,6 @@ type ClientService interface {
 
 	UserProjectsBindUsers(params *UserProjectsBindUsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserProjectsBindUsersOK, error)
 
-	UserProjectsUsersListByProject(params *UserProjectsUsersListByProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserProjectsUsersListByProjectOK, error)
-
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -114,45 +112,6 @@ func (a *Client) UserProjectsBindUsers(params *UserProjectsBindUsersParams, auth
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for UserProjects_BindUsers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  UserProjectsUsersListByProject users list by project id
-*/
-func (a *Client) UserProjectsUsersListByProject(params *UserProjectsUsersListByProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserProjectsUsersListByProjectOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUserProjectsUsersListByProjectParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "UserProjects_UsersListByProject",
-		Method:             "GET",
-		PathPattern:        "/api/v{v}/UserProjects/users/list/{projectId}",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UserProjectsUsersListByProjectReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UserProjectsUsersListByProjectOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for UserProjects_UsersListByProject: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

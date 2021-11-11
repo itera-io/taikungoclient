@@ -30,8 +30,6 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	BackupClearProject(params *BackupClearProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupClearProjectOK, error)
-
 	BackupCreate(params *BackupCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupCreateOK, error)
 
 	BackupDeleteBackup(params *BackupDeleteBackupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDeleteBackupOK, error)
@@ -61,45 +59,6 @@ type ClientService interface {
 	BackupScheduleByName(params *BackupScheduleByNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupScheduleByNameOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
-}
-
-/*
-  BackupClearProject deletes unfinished backup for project
-*/
-func (a *Client) BackupClearProject(params *BackupClearProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupClearProjectOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBackupClearProjectParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Backup_ClearProject",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/Backup/clear/project",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BackupClearProjectReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*BackupClearProjectOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Backup_ClearProject: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
 }
 
 /*

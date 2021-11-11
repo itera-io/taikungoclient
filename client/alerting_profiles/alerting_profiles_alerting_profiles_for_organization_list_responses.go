@@ -74,13 +74,13 @@ func NewAlertingProfilesAlertingProfilesForOrganizationListOK() *AlertingProfile
 Success
 */
 type AlertingProfilesAlertingProfilesForOrganizationListOK struct {
-	Payload []*models.CommonDropdownDto
+	Payload []*models.AlertingProfilesEntity
 }
 
 func (o *AlertingProfilesAlertingProfilesForOrganizationListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles/list][%d] alertingProfilesAlertingProfilesForOrganizationListOK  %+v", 200, o.Payload)
 }
-func (o *AlertingProfilesAlertingProfilesForOrganizationListOK) GetPayload() []*models.CommonDropdownDto {
+func (o *AlertingProfilesAlertingProfilesForOrganizationListOK) GetPayload() []*models.AlertingProfilesEntity {
 	return o.Payload
 }
 

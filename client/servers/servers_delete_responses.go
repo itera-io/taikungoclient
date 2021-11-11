@@ -29,12 +29,6 @@ func (o *ServersDeleteReader) ReadResponse(response runtime.ClientResponse, cons
 			return nil, err
 		}
 		return result, nil
-	case 204:
-		result := NewServersDeleteNoContent()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return result, nil
 	case 400:
 		result := NewServersDeleteBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -96,27 +90,6 @@ func (o *ServersDeleteOK) readResponse(response runtime.ClientResponse, consumer
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
-
-	return nil
-}
-
-// NewServersDeleteNoContent creates a ServersDeleteNoContent with default headers values
-func NewServersDeleteNoContent() *ServersDeleteNoContent {
-	return &ServersDeleteNoContent{}
-}
-
-/* ServersDeleteNoContent describes a response with status code 204, with default header values.
-
-Success
-*/
-type ServersDeleteNoContent struct {
-}
-
-func (o *ServersDeleteNoContent) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteNoContent ", 204)
-}
-
-func (o *ServersDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

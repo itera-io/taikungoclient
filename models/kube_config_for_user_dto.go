@@ -17,12 +17,6 @@ import (
 // swagger:model KubeConfigForUserDto
 type KubeConfigForUserDto struct {
 
-	// created at
-	CreatedAt string `json:"createdAt,omitempty"`
-
-	// created by
-	CreatedBy string `json:"createdBy,omitempty"`
-
 	// id
 	ID int32 `json:"id,omitempty"`
 
@@ -31,9 +25,6 @@ type KubeConfigForUserDto struct {
 
 	// is accessible for manager
 	IsAccessibleForManager bool `json:"isAccessibleForManager,omitempty"`
-
-	// kube config role name
-	KubeConfigRoleName string `json:"kubeConfigRoleName,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`

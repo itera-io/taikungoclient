@@ -20,7 +20,7 @@ import (
 type AzureImageList struct {
 
 	// data
-	Data []*CommonStringBasedDropdownDto `json:"data"`
+	Data []*UserDropdownDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`

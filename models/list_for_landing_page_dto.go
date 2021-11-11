@@ -23,9 +23,6 @@ type ListForLandingPageDto struct {
 	// currency
 	Currency string `json:"currency,omitempty"`
 
-	// description
-	Description string `json:"description,omitempty"`
-
 	// id
 	ID int32 `json:"id,omitempty"`
 

@@ -74,22 +74,20 @@ func NewAlertingProfilesCreateOK() *AlertingProfilesCreateOK {
 Success
 */
 type AlertingProfilesCreateOK struct {
-	Payload *models.APIResponse
+	Payload models.Unit
 }
 
 func (o *AlertingProfilesCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateOK  %+v", 200, o.Payload)
 }
-func (o *AlertingProfilesCreateOK) GetPayload() *models.APIResponse {
+func (o *AlertingProfilesCreateOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
 func (o *AlertingProfilesCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

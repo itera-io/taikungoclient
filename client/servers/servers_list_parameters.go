@@ -75,11 +75,6 @@ type ServersListParams struct {
 	// Format: int64
 	EndRAM *int64
 
-	// ID.
-	//
-	// Format: int32
-	ID *int32
-
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -217,17 +212,6 @@ func (o *ServersListParams) WithEndRAM(endRAM *int64) *ServersListParams {
 // SetEndRAM adds the endRam to the servers list params
 func (o *ServersListParams) SetEndRAM(endRAM *int64) {
 	o.EndRAM = endRAM
-}
-
-// WithID adds the id to the servers list params
-func (o *ServersListParams) WithID(id *int32) *ServersListParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the servers list params
-func (o *ServersListParams) SetID(id *int32) {
-	o.ID = id
 }
 
 // WithLimit adds the limit to the servers list params
@@ -405,23 +389,6 @@ func (o *ServersListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		if qEndRAM != "" {
 
 			if err := r.SetQueryParam("endRam", qEndRAM); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.ID != nil {
-
-		// query param id
-		var qrID int32
-
-		if o.ID != nil {
-			qrID = *o.ID
-		}
-		qID := swag.FormatInt32(qrID)
-		if qID != "" {
-
-			if err := r.SetQueryParam("id", qID); err != nil {
 				return err
 			}
 		}

@@ -23,11 +23,8 @@ type UpdateStandAloneVMCommand struct {
 	// instance Id
 	InstanceID string `json:"instanceId,omitempty"`
 
-	// ip address
-	IPAddress string `json:"ipAddress,omitempty"`
-
-	// public Ip
-	PublicIP string `json:"publicIp,omitempty"`
+	// ip
+	IP string `json:"ip,omitempty"`
 }
 
 // Validate validates this update stand alone Vm command

@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewNotificationsListByUserParams creates a new NotificationsListByUserParams object,
@@ -59,35 +58,6 @@ func NewNotificationsListByUserParamsWithHTTPClient(client *http.Client) *Notifi
    Typically these are written to a http.Request.
 */
 type NotificationsListByUserParams struct {
-
-	// EndDate.
-	//
-	// Format: date-time
-	EndDate *strfmt.DateTime
-
-	/* Limit.
-
-	   Limits user size (by default 50)
-
-	   Format: int32
-	*/
-	Limit *int32
-
-	/* Offset.
-
-	   Page number
-
-	   Format: int32
-	*/
-	Offset *int32
-
-	// Search.
-	Search *string
-
-	// StartDate.
-	//
-	// Format: date-time
-	StartDate *strfmt.DateTime
 
 	// Type.
 	Type *string
@@ -148,61 +118,6 @@ func (o *NotificationsListByUserParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithEndDate adds the endDate to the notifications list by user params
-func (o *NotificationsListByUserParams) WithEndDate(endDate *strfmt.DateTime) *NotificationsListByUserParams {
-	o.SetEndDate(endDate)
-	return o
-}
-
-// SetEndDate adds the endDate to the notifications list by user params
-func (o *NotificationsListByUserParams) SetEndDate(endDate *strfmt.DateTime) {
-	o.EndDate = endDate
-}
-
-// WithLimit adds the limit to the notifications list by user params
-func (o *NotificationsListByUserParams) WithLimit(limit *int32) *NotificationsListByUserParams {
-	o.SetLimit(limit)
-	return o
-}
-
-// SetLimit adds the limit to the notifications list by user params
-func (o *NotificationsListByUserParams) SetLimit(limit *int32) {
-	o.Limit = limit
-}
-
-// WithOffset adds the offset to the notifications list by user params
-func (o *NotificationsListByUserParams) WithOffset(offset *int32) *NotificationsListByUserParams {
-	o.SetOffset(offset)
-	return o
-}
-
-// SetOffset adds the offset to the notifications list by user params
-func (o *NotificationsListByUserParams) SetOffset(offset *int32) {
-	o.Offset = offset
-}
-
-// WithSearch adds the search to the notifications list by user params
-func (o *NotificationsListByUserParams) WithSearch(search *string) *NotificationsListByUserParams {
-	o.SetSearch(search)
-	return o
-}
-
-// SetSearch adds the search to the notifications list by user params
-func (o *NotificationsListByUserParams) SetSearch(search *string) {
-	o.Search = search
-}
-
-// WithStartDate adds the startDate to the notifications list by user params
-func (o *NotificationsListByUserParams) WithStartDate(startDate *strfmt.DateTime) *NotificationsListByUserParams {
-	o.SetStartDate(startDate)
-	return o
-}
-
-// SetStartDate adds the startDate to the notifications list by user params
-func (o *NotificationsListByUserParams) SetStartDate(startDate *strfmt.DateTime) {
-	o.StartDate = startDate
-}
-
 // WithType adds the typeVar to the notifications list by user params
 func (o *NotificationsListByUserParams) WithType(typeVar *string) *NotificationsListByUserParams {
 	o.SetType(typeVar)
@@ -232,91 +147,6 @@ func (o *NotificationsListByUserParams) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
-
-	if o.EndDate != nil {
-
-		// query param endDate
-		var qrEndDate strfmt.DateTime
-
-		if o.EndDate != nil {
-			qrEndDate = *o.EndDate
-		}
-		qEndDate := qrEndDate.String()
-		if qEndDate != "" {
-
-			if err := r.SetQueryParam("endDate", qEndDate); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.Limit != nil {
-
-		// query param limit
-		var qrLimit int32
-
-		if o.Limit != nil {
-			qrLimit = *o.Limit
-		}
-		qLimit := swag.FormatInt32(qrLimit)
-		if qLimit != "" {
-
-			if err := r.SetQueryParam("limit", qLimit); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.Offset != nil {
-
-		// query param offset
-		var qrOffset int32
-
-		if o.Offset != nil {
-			qrOffset = *o.Offset
-		}
-		qOffset := swag.FormatInt32(qrOffset)
-		if qOffset != "" {
-
-			if err := r.SetQueryParam("offset", qOffset); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.Search != nil {
-
-		// query param search
-		var qrSearch string
-
-		if o.Search != nil {
-			qrSearch = *o.Search
-		}
-		qSearch := qrSearch
-		if qSearch != "" {
-
-			if err := r.SetQueryParam("search", qSearch); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.StartDate != nil {
-
-		// query param startDate
-		var qrStartDate strfmt.DateTime
-
-		if o.StartDate != nil {
-			qrStartDate = *o.StartDate
-		}
-		qStartDate := qrStartDate.String()
-		if qStartDate != "" {
-
-			if err := r.SetQueryParam("startDate", qStartDate); err != nil {
-				return err
-			}
-		}
-	}
 
 	if o.Type != nil {
 

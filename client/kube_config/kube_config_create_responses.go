@@ -74,22 +74,20 @@ func NewKubeConfigCreateOK() *KubeConfigCreateOK {
 Success
 */
 type KubeConfigCreateOK struct {
-	Payload *models.APIResponse
+	Payload models.Unit
 }
 
 func (o *KubeConfigCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig][%d] kubeConfigCreateOK  %+v", 200, o.Payload)
 }
-func (o *KubeConfigCreateOK) GetPayload() *models.APIResponse {
+func (o *KubeConfigCreateOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
 func (o *KubeConfigCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.APIResponse)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

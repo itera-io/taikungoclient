@@ -45,9 +45,6 @@ type ProjectForUpdateDto struct {
 	// is monitoring enabled
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled,omitempty"`
 
-	// is opa enabled
-	IsOpaEnabled bool `json:"isOpaEnabled,omitempty"`
-
 	// job Url
 	JobURL string `json:"jobUrl,omitempty"`
 
