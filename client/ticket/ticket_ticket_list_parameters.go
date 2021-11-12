@@ -97,6 +97,9 @@ type TicketTicketListParams struct {
 	// Format: date-time
 	StartDate *strfmt.DateTime
 
+	// TicketID.
+	TicketID *string
+
 	// V.
 	V string
 
@@ -219,6 +222,17 @@ func (o *TicketTicketListParams) SetStartDate(startDate *strfmt.DateTime) {
 	o.StartDate = startDate
 }
 
+// WithTicketID adds the ticketID to the ticket ticket list params
+func (o *TicketTicketListParams) WithTicketID(ticketID *string) *TicketTicketListParams {
+	o.SetTicketID(ticketID)
+	return o
+}
+
+// SetTicketID adds the ticketId to the ticket ticket list params
+func (o *TicketTicketListParams) SetTicketID(ticketID *string) {
+	o.TicketID = ticketID
+}
+
 // WithV adds the v to the ticket ticket list params
 func (o *TicketTicketListParams) WithV(v string) *TicketTicketListParams {
 	o.SetV(v)
@@ -335,6 +349,23 @@ func (o *TicketTicketListParams) WriteToRequest(r runtime.ClientRequest, reg str
 		if qStartDate != "" {
 
 			if err := r.SetQueryParam("startDate", qStartDate); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.TicketID != nil {
+
+		// query param ticketId
+		var qrTicketID string
+
+		if o.TicketID != nil {
+			qrTicketID = *o.TicketID
+		}
+		qTicketID := qrTicketID
+		if qTicketID != "" {
+
+			if err := r.SetQueryParam("ticketId", qTicketID); err != nil {
 				return err
 			}
 		}
