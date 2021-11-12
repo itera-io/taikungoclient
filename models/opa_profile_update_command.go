@@ -18,7 +18,7 @@ import (
 type OpaProfileUpdateCommand struct {
 
 	// allowed repo
-	AllowedRepo string `json:"allowedRepo,omitempty"`
+	AllowedRepo []string `json:"allowedRepo"`
 
 	// forbid Http ingress
 	ForbidHTTPIngress bool `json:"forbidHttpIngress,omitempty"`
@@ -27,13 +27,13 @@ type OpaProfileUpdateCommand struct {
 	ForbidNodePort bool `json:"forbidNodePort,omitempty"`
 
 	// forbid specific tags
-	ForbidSpecificTags string `json:"forbidSpecificTags,omitempty"`
+	ForbidSpecificTags []string `json:"forbidSpecificTags"`
 
 	// id
 	ID int32 `json:"id,omitempty"`
 
 	// ingress whitelist
-	IngressWhitelist string `json:"ingressWhitelist,omitempty"`
+	IngressWhitelist []string `json:"ingressWhitelist"`
 
 	// name
 	Name string `json:"name,omitempty"`
