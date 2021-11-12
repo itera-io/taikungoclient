@@ -35,7 +35,7 @@ type CreateStandAloneVMCommand struct {
 	ProjectID int32 `json:"projectId,omitempty"`
 
 	// public Ip enabled
-	PublicIPEnabled bool `json:"publicIpEnabled,omitempty"`
+	PublicIPEnabled bool `json:"publicIpEnabled"`
 
 	// stand alone profile Id
 	StandAloneProfileID int32 `json:"standAloneProfileId,omitempty"`

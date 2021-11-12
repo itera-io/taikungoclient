@@ -21,10 +21,10 @@ type CreateOpaProfileCommand struct {
 	AllowedRepo []string `json:"allowedRepo"`
 
 	// forbid Http ingress
-	ForbidHTTPIngress bool `json:"forbidHttpIngress,omitempty"`
+	ForbidHTTPIngress bool `json:"forbidHttpIngress"`
 
 	// forbid node port
-	ForbidNodePort bool `json:"forbidNodePort,omitempty"`
+	ForbidNodePort bool `json:"forbidNodePort"`
 
 	// forbid specific tags
 	ForbidSpecificTags []string `json:"forbidSpecificTags"`
@@ -39,13 +39,13 @@ type CreateOpaProfileCommand struct {
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
 	// require probe
-	RequireProbe bool `json:"requireProbe,omitempty"`
+	RequireProbe bool `json:"requireProbe"`
 
 	// unique ingresses
-	UniqueIngresses bool `json:"uniqueIngresses,omitempty"`
+	UniqueIngresses bool `json:"uniqueIngresses"`
 
 	// unique service selector
-	UniqueServiceSelector bool `json:"uniqueServiceSelector,omitempty"`
+	UniqueServiceSelector bool `json:"uniqueServiceSelector"`
 }
 
 // Validate validates this create opa profile command

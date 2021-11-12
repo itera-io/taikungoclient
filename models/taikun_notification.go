@@ -39,13 +39,13 @@ type TaikunNotification struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is deleted
-	IsDeleted bool `json:"isDeleted,omitempty"`
+	IsDeleted bool `json:"isDeleted"`
 
 	// is seen
-	IsSeen bool `json:"isSeen,omitempty"`
+	IsSeen bool `json:"isSeen"`
 
 	// is unread
-	IsUnread bool `json:"isUnread,omitempty"`
+	IsUnread bool `json:"isUnread"`
 
 	// kubernetes start date
 	KubernetesStartDate string `json:"kubernetesStartDate,omitempty"`

@@ -35,7 +35,7 @@ type StandAloneVMFullDto struct {
 	Name string `json:"name,omitempty"`
 
 	// public Ip enabled
-	PublicIPEnabled bool `json:"publicIpEnabled,omitempty"`
+	PublicIPEnabled bool `json:"publicIpEnabled"`
 
 	// ram
 	RAM int64 `json:"ram,omitempty"`

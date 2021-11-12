@@ -18,7 +18,7 @@ import (
 type OrganizationDto struct {
 
 	// is bound
-	IsBound bool `json:"isBound,omitempty"`
+	IsBound bool `json:"isBound"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`

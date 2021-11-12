@@ -30,10 +30,10 @@ type KubernetesAlertDto struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is silenced
-	IsSilenced bool `json:"isSilenced,omitempty"`
+	IsSilenced bool `json:"isSilenced"`
 
 	// is solved
-	IsSolved bool `json:"isSolved,omitempty"`
+	IsSolved bool `json:"isSolved"`
 
 	// labels
 	Labels interface{} `json:"labels,omitempty"`

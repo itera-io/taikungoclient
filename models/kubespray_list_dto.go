@@ -21,7 +21,7 @@ type KubesprayListDto struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is deprecated
-	IsDeprecated bool `json:"isDeprecated,omitempty"`
+	IsDeprecated bool `json:"isDeprecated"`
 
 	// kubernetes version
 	KubernetesVersion string `json:"kubernetesVersion,omitempty"`

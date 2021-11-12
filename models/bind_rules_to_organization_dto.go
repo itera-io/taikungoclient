@@ -21,7 +21,7 @@ type BindRulesToOrganizationDto struct {
 	DiscountRate float64 `json:"discountRate"`
 
 	// is bound
-	IsBound bool `json:"isBound,omitempty"`
+	IsBound bool `json:"isBound"`
 
 	// prometheus rule Id
 	PrometheusRuleID int32 `json:"prometheusRuleId,omitempty"`

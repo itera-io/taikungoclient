@@ -21,7 +21,7 @@ import (
 type LokiResponseDto struct {
 
 	// can download
-	CanDownload bool `json:"canDownload,omitempty"`
+	CanDownload bool `json:"canDownload"`
 
 	// direction
 	Direction string `json:"direction,omitempty"`

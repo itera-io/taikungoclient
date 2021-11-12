@@ -18,7 +18,7 @@ import (
 type DeleteProjectCommand struct {
 
 	// is force delete
-	IsForceDelete bool `json:"isForceDelete,omitempty"`
+	IsForceDelete bool `json:"isForceDelete"`
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`

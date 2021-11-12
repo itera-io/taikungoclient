@@ -63,19 +63,19 @@ type CredentialsForProjectDto struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is aws
-	IsAws bool `json:"isAws,omitempty"`
+	IsAws bool `json:"isAws"`
 
 	// is azure
-	IsAzure bool `json:"isAzure,omitempty"`
+	IsAzure bool `json:"isAzure"`
 
 	// is default
-	IsDefault bool `json:"isDefault,omitempty"`
+	IsDefault bool `json:"isDefault"`
 
 	// is locked
-	IsLocked bool `json:"isLocked,omitempty"`
+	IsLocked bool `json:"isLocked"`
 
 	// is openstack
-	IsOpenstack bool `json:"isOpenstack,omitempty"`
+	IsOpenstack bool `json:"isOpenstack"`
 
 	// libvirt bridge
 	LibvirtBridge string `json:"libvirtBridge,omitempty"`
@@ -93,7 +93,7 @@ type CredentialsForProjectDto struct {
 	OpenStackDomain string `json:"openStackDomain,omitempty"`
 
 	// open stack import network
-	OpenStackImportNetwork bool `json:"openStackImportNetwork,omitempty"`
+	OpenStackImportNetwork bool `json:"openStackImportNetwork"`
 
 	// open stack internal subnet Id
 	OpenStackInternalSubnetID string `json:"openStackInternalSubnetId,omitempty"`

@@ -29,7 +29,7 @@ type CloudCredentialsForOrganizationEntity struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is default
-	IsDefault bool `json:"isDefault,omitempty"`
+	IsDefault bool `json:"isDefault"`
 
 	// projects
 	Projects []*CommonDropdownDto `json:"projects"`

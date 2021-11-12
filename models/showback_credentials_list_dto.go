@@ -29,7 +29,7 @@ type ShowbackCredentialsListDto struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is locked
-	IsLocked bool `json:"isLocked,omitempty"`
+	IsLocked bool `json:"isLocked"`
 
 	// last modified
 	LastModified string `json:"lastModified,omitempty"`

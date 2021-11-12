@@ -27,7 +27,7 @@ type UpdateKubernetesAlertDto struct {
 	Fingerprint string `json:"fingerprint,omitempty"`
 
 	// is silenced
-	IsSilenced bool `json:"isSilenced,omitempty"`
+	IsSilenced bool `json:"isSilenced"`
 
 	// labels
 	Labels interface{} `json:"labels,omitempty"`

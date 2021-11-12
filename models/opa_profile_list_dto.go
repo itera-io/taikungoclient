@@ -21,10 +21,10 @@ type OpaProfileListDto struct {
 	AllowedRepo string `json:"allowedRepo,omitempty"`
 
 	// forbid Http ingress
-	ForbidHTTPIngress bool `json:"forbidHttpIngress,omitempty"`
+	ForbidHTTPIngress bool `json:"forbidHttpIngress"`
 
 	// forbid node port
-	ForbidNodePort bool `json:"forbidNodePort,omitempty"`
+	ForbidNodePort bool `json:"forbidNodePort"`
 
 	// forbid specific tags
 	ForbidSpecificTags string `json:"forbidSpecificTags,omitempty"`
@@ -36,10 +36,10 @@ type OpaProfileListDto struct {
 	IngressWhitelist string `json:"ingressWhitelist,omitempty"`
 
 	// is default
-	IsDefault bool `json:"isDefault,omitempty"`
+	IsDefault bool `json:"isDefault"`
 
 	// is locked
-	IsLocked bool `json:"isLocked,omitempty"`
+	IsLocked bool `json:"isLocked"`
 
 	// name
 	Name string `json:"name,omitempty"`
@@ -51,16 +51,16 @@ type OpaProfileListDto struct {
 	OrganizationName string `json:"organizationName,omitempty"`
 
 	// require probe
-	RequireProbe bool `json:"requireProbe,omitempty"`
+	RequireProbe bool `json:"requireProbe"`
 
 	// revision
 	Revision int32 `json:"revision,omitempty"`
 
 	// unique ingresses
-	UniqueIngresses bool `json:"uniqueIngresses,omitempty"`
+	UniqueIngresses bool `json:"uniqueIngresses"`
 
 	// unique service selector
-	UniqueServiceSelector bool `json:"uniqueServiceSelector,omitempty"`
+	UniqueServiceSelector bool `json:"uniqueServiceSelector"`
 }
 
 // Validate validates this opa profile list dto

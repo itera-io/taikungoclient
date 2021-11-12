@@ -30,7 +30,7 @@ type PrometheusDashboardDto struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is readonly
-	IsReadonly bool `json:"isReadonly,omitempty"`
+	IsReadonly bool `json:"isReadonly"`
 
 	// name
 	Name string `json:"name,omitempty"`

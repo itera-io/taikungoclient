@@ -36,16 +36,16 @@ type CreateProjectCommand struct {
 	Flavors []string `json:"flavors"`
 
 	// is auto upgrade
-	IsAutoUpgrade bool `json:"isAutoUpgrade,omitempty"`
+	IsAutoUpgrade bool `json:"isAutoUpgrade"`
 
 	// is backup enabled
-	IsBackupEnabled bool `json:"isBackupEnabled,omitempty"`
+	IsBackupEnabled bool `json:"isBackupEnabled"`
 
 	// is kubernetes
-	IsKubernetes bool `json:"isKubernetes,omitempty"`
+	IsKubernetes bool `json:"isKubernetes"`
 
 	// is monitoring enabled
-	IsMonitoringEnabled bool `json:"isMonitoringEnabled,omitempty"`
+	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
 
 	// kubernetes profile Id
 	KubernetesProfileID int32 `json:"kubernetesProfileId,omitempty"`

@@ -48,10 +48,10 @@ type ProjectForListDto struct {
 	Flavors []string `json:"flavors"`
 
 	// has kube config file
-	HasKubeConfigFile bool `json:"hasKubeConfigFile,omitempty"`
+	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
 
 	// has selected flavors
-	HasSelectedFlavors bool `json:"hasSelectedFlavors,omitempty"`
+	HasSelectedFlavors bool `json:"hasSelectedFlavors"`
 
 	// health
 	Health string `json:"health,omitempty"`
@@ -63,25 +63,25 @@ type ProjectForListDto struct {
 	ImageName string `json:"imageName,omitempty"`
 
 	// is auto upgrade
-	IsAutoUpgrade bool `json:"isAutoUpgrade,omitempty"`
+	IsAutoUpgrade bool `json:"isAutoUpgrade"`
 
 	// is backup enabled
-	IsBackupEnabled bool `json:"isBackupEnabled,omitempty"`
+	IsBackupEnabled bool `json:"isBackupEnabled"`
 
 	// is delete cluster
-	IsDeleteCluster bool `json:"isDeleteCluster,omitempty"`
+	IsDeleteCluster bool `json:"isDeleteCluster"`
 
 	// is kubernetes
-	IsKubernetes bool `json:"isKubernetes,omitempty"`
+	IsKubernetes bool `json:"isKubernetes"`
 
 	// is locked
-	IsLocked bool `json:"isLocked,omitempty"`
+	IsLocked bool `json:"isLocked"`
 
 	// is monitoring enabled
-	IsMonitoringEnabled bool `json:"isMonitoringEnabled,omitempty"`
+	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
 
 	// is opa enabled
-	IsOpaEnabled bool `json:"isOpaEnabled,omitempty"`
+	IsOpaEnabled bool `json:"isOpaEnabled"`
 
 	// job Url
 	JobURL string `json:"jobUrl,omitempty"`

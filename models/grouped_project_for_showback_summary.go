@@ -21,7 +21,7 @@ type GroupedProjectForShowbackSummary struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is deleted
-	IsDeleted bool `json:"isDeleted,omitempty"`
+	IsDeleted bool `json:"isDeleted"`
 
 	// name
 	Name string `json:"name,omitempty"`

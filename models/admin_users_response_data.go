@@ -18,7 +18,7 @@ import (
 type AdminUsersResponseData struct {
 
 	// csm
-	Csm bool `json:"csm,omitempty"`
+	Csm bool `json:"csm"`
 
 	// email
 	Email string `json:"email,omitempty"`
@@ -33,7 +33,7 @@ type AdminUsersResponseData struct {
 	OrganizationName string `json:"organizationName,omitempty"`
 
 	// owner
-	Owner bool `json:"owner,omitempty"`
+	Owner bool `json:"owner"`
 
 	// role
 	Role string `json:"role,omitempty"`

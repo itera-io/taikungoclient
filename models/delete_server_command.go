@@ -18,7 +18,7 @@ import (
 type DeleteServerCommand struct {
 
 	// is corrupted
-	IsCorrupted bool `json:"isCorrupted,omitempty"`
+	IsCorrupted bool `json:"isCorrupted"`
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`

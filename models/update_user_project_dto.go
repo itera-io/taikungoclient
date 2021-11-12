@@ -18,7 +18,7 @@ import (
 type UpdateUserProjectDto struct {
 
 	// is bound
-	IsBound bool `json:"isBound,omitempty"`
+	IsBound bool `json:"isBound"`
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`

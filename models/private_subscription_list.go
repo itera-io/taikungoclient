@@ -26,7 +26,7 @@ type PrivateSubscriptionList struct {
 	Data []*ListForPartnersDto `json:"data"`
 
 	// is eligible to switch
-	IsEligibleToSwitch bool `json:"isEligibleToSwitch,omitempty"`
+	IsEligibleToSwitch bool `json:"isEligibleToSwitch"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`

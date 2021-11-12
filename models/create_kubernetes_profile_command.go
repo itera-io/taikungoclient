@@ -18,22 +18,22 @@ import (
 type CreateKubernetesProfileCommand struct {
 
 	// allow scheduling on master
-	AllowSchedulingOnMaster bool `json:"allowSchedulingOnMaster,omitempty"`
+	AllowSchedulingOnMaster bool `json:"allowSchedulingOnMaster"`
 
 	// expose node port on bastion
-	ExposeNodePortOnBastion bool `json:"exposeNodePortOnBastion,omitempty"`
+	ExposeNodePortOnBastion bool `json:"exposeNodePortOnBastion"`
 
 	// name
 	Name string `json:"name,omitempty"`
 
 	// octavia enabled
-	OctaviaEnabled bool `json:"octaviaEnabled,omitempty"`
+	OctaviaEnabled bool `json:"octaviaEnabled"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
 	// taikun l b enabled
-	TaikunLBEnabled bool `json:"taikunLBEnabled,omitempty"`
+	TaikunLBEnabled bool `json:"taikunLBEnabled"`
 }
 
 // Validate validates this create kubernetes profile command

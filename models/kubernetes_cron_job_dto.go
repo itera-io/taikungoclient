@@ -33,7 +33,7 @@ type KubernetesCronJobDto struct {
 	Schedule string `json:"schedule,omitempty"`
 
 	// suspend
-	Suspend bool `json:"suspend,omitempty"`
+	Suspend bool `json:"suspend"`
 }
 
 // Validate validates this kubernetes cron job dto

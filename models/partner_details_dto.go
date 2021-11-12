@@ -23,7 +23,7 @@ type PartnerDetailsDto struct {
 	Address string `json:"address,omitempty"`
 
 	// allow registration
-	AllowRegistration bool `json:"allowRegistration,omitempty"`
+	AllowRegistration bool `json:"allowRegistration"`
 
 	// city
 	City string `json:"city,omitempty"`
@@ -53,13 +53,13 @@ type PartnerDetailsDto struct {
 	Organizations []*CommonDropdownDto `json:"organizations"`
 
 	// payment enabled
-	PaymentEnabled bool `json:"paymentEnabled,omitempty"`
+	PaymentEnabled bool `json:"paymentEnabled"`
 
 	// phone
 	Phone string `json:"phone,omitempty"`
 
 	// required user approval
-	RequiredUserApproval bool `json:"requiredUserApproval,omitempty"`
+	RequiredUserApproval bool `json:"requiredUserApproval"`
 
 	// vat number
 	VatNumber string `json:"vatNumber,omitempty"`

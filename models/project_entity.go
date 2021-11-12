@@ -18,7 +18,7 @@ import (
 type ProjectEntity struct {
 
 	// has kube config file
-	HasKubeConfigFile bool `json:"hasKubeConfigFile,omitempty"`
+	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
 
 	// id
 	ID int32 `json:"id,omitempty"`

@@ -18,10 +18,10 @@ import (
 type CreateKubeConfigCommand struct {
 
 	// is accessible for all
-	IsAccessibleForAll bool `json:"isAccessibleForAll,omitempty"`
+	IsAccessibleForAll bool `json:"isAccessibleForAll"`
 
 	// is accessible for manager
-	IsAccessibleForManager bool `json:"isAccessibleForManager,omitempty"`
+	IsAccessibleForManager bool `json:"isAccessibleForManager"`
 
 	// kube config role Id
 	KubeConfigRoleID int32 `json:"kubeConfigRoleId,omitempty"`

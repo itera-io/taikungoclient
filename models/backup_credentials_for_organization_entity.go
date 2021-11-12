@@ -21,7 +21,7 @@ type BackupCredentialsForOrganizationEntity struct {
 	BackupCredentialID int32 `json:"backupCredentialId,omitempty"`
 
 	// is default
-	IsDefault bool `json:"isDefault,omitempty"`
+	IsDefault bool `json:"isDefault"`
 
 	// name
 	Name string `json:"name,omitempty"`

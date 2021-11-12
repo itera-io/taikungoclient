@@ -42,10 +42,10 @@ type UpdateOrganizationCommand struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is eligible update subscription
-	IsEligibleUpdateSubscription bool `json:"isEligibleUpdateSubscription,omitempty"`
+	IsEligibleUpdateSubscription bool `json:"isEligibleUpdateSubscription"`
 
 	// is locked
-	IsLocked bool `json:"isLocked,omitempty"`
+	IsLocked bool `json:"isLocked"`
 
 	// name
 	Name string `json:"name,omitempty"`

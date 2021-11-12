@@ -18,7 +18,7 @@ import (
 type PartnerRecordDto struct {
 
 	// allow registration
-	AllowRegistration bool `json:"allowRegistration,omitempty"`
+	AllowRegistration bool `json:"allowRegistration"`
 
 	// id
 	ID int32 `json:"id,omitempty"`
@@ -27,7 +27,7 @@ type PartnerRecordDto struct {
 	ImageURL string `json:"imageUrl,omitempty"`
 
 	// payment enabled
-	PaymentEnabled bool `json:"paymentEnabled,omitempty"`
+	PaymentEnabled bool `json:"paymentEnabled"`
 }
 
 // Validate validates this partner record dto

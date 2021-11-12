@@ -24,7 +24,7 @@ type AdminProjectsResponseData struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is locked
-	IsLocked bool `json:"isLocked,omitempty"`
+	IsLocked bool `json:"isLocked"`
 
 	// kubernetes current version
 	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion,omitempty"`

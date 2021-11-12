@@ -24,7 +24,7 @@ type RegisterUserCommand struct {
 	UUID string `json:"uuid,omitempty"`
 
 	// yearly
-	Yearly bool `json:"yearly,omitempty"`
+	Yearly bool `json:"yearly"`
 }
 
 // Validate validates this register user command

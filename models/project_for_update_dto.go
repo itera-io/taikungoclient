@@ -37,16 +37,16 @@ type ProjectForUpdateDto struct {
 	ImageName string `json:"imageName,omitempty"`
 
 	// is auto upgrade
-	IsAutoUpgrade bool `json:"isAutoUpgrade,omitempty"`
+	IsAutoUpgrade bool `json:"isAutoUpgrade"`
 
 	// is backup enabled
-	IsBackupEnabled bool `json:"isBackupEnabled,omitempty"`
+	IsBackupEnabled bool `json:"isBackupEnabled"`
 
 	// is monitoring enabled
-	IsMonitoringEnabled bool `json:"isMonitoringEnabled,omitempty"`
+	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
 
 	// is opa enabled
-	IsOpaEnabled bool `json:"isOpaEnabled,omitempty"`
+	IsOpaEnabled bool `json:"isOpaEnabled"`
 
 	// job Url
 	JobURL string `json:"jobUrl,omitempty"`
