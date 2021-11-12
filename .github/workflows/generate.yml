@@ -61,7 +61,7 @@ jobs:
 
       - name: Generate Client
         if: steps.check.outcome == 'success'
-        run: ./.github/generate_client.sh --skip-validation
+        run: ./.github/generate_client.sh
         shell: bash
 
       - name: Delete swagger.json
