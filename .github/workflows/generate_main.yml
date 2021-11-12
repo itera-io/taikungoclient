@@ -8,7 +8,7 @@ jobs:
   generate-client:
     uses: itera-io/taikungoclient/.github/workflows/generate.yml@main
     with:
-      branch: dev
+      branch: main
     secrets:
       username: ${{ secrets.SWAGGER_USERNAME }}
       password: ${{ secrets.SWAGGER_PASSWORD }}
