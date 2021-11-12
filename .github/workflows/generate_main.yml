@@ -1,4 +1,4 @@
-name: Generate Dev Client
+name: Generate Main Client
 on:
   workflow_dispatch:
   schedule:
@@ -12,4 +12,4 @@ jobs:
     secrets:
       username: ${{ secrets.SWAGGER_USERNAME }}
       password: ${{ secrets.SWAGGER_PASSWORD }}
-      url: ${{ secrets.SWAGGER_DEV_URL }}
+      url: ${{ secrets.SWAGGER_URL }}

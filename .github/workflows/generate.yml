@@ -1,8 +1,18 @@
 name: Generate Client
+
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *"
+  workflow_call:
+    inputs:
+      branch:
+        required: true
+        type: string
+    secrets:
+      username:
+        required: true
+      password:
+        required: true
+      url:
+        required: true
 
 jobs:
   build:
@@ -12,15 +22,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: 'main'
+          ref: ${{ inputs.branch }}
 
       - name: Download swagger.json
         run: wget -q --user "$SWAGGER_USERNAME" --password "$SWAGGER_PASSWORD" "$SWAGGER_URL" -O swagger.json
         shell: bash
         env:
-          SWAGGER_USERNAME: ${{ secrets.SWAGGER_USERNAME }}
-          SWAGGER_PASSWORD: ${{ secrets.SWAGGER_PASSWORD }}
-          SWAGGER_URL: ${{ secrets.SWAGGER_URL }}
+          SWAGGER_USERNAME: ${{ secrets.username }}
+          SWAGGER_PASSWORD: ${{ secrets.password }}
+          SWAGGER_URL: ${{ secrets.url }}
 
       - name: Should regenerate client
         id: check
