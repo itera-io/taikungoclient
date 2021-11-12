@@ -27,8 +27,12 @@ refline="\"showbackCredentialId\":"
 sed -i "/${refline}/a \"x-nullable\": true," swagger-patch.json
 
 # Remove omitempty
-refline="\"(isCpuUnlimited|isRamUnlimited|isDiskSizeUnlimited|ruleDiscountRate|globalDiscountRate|discountRate)\":"
+refline="\"(ruleDiscountRate|globalDiscountRate|discountRate)\":"
 sed -Ei "/${refline}/a \"x-omitempty\": false," swagger-patch.json
+
+# Remove omitempty
+refline="\"type\": \"boolean\""
+sed -i "s/${refline}/\"x-omitempty\": false,${refline}/g" swagger-patch.json
 
 # Initialize go module
 go mod init "${module_name}"
