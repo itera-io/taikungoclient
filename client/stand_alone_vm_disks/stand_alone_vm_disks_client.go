@@ -34,6 +34,8 @@ type ClientService interface {
 
 	StandAloneVMDisksDelete(params *StandAloneVMDisksDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneVMDisksDeleteOK, error)
 
+	StandAloneVMDisksPurge(params *StandAloneVMDisksPurgeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneVMDisksPurgeOK, error)
+
 	StandAloneVMDisksReset(params *StandAloneVMDisksResetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneVMDisksResetOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -114,6 +116,45 @@ func (a *Client) StandAloneVMDisksDelete(params *StandAloneVMDisksDeleteParams, 
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for StandAloneVmDisks_Delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  StandAloneVMDisksPurge purges disks by id
+*/
+func (a *Client) StandAloneVMDisksPurge(params *StandAloneVMDisksPurgeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneVMDisksPurgeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAloneVMDisksPurgeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAloneVmDisks_Purge",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/StandAloneVmDisks/purge",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAloneVMDisksPurgeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAloneVMDisksPurgeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAloneVmDisks_Purge: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

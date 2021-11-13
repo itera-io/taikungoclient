@@ -62,7 +62,7 @@ func NewStandAloneVMDisksDeleteParamsWithHTTPClient(client *http.Client) *StandA
 type StandAloneVMDisksDeleteParams struct {
 
 	// Body.
-	Body *models.DeleteStandAloneDiskCommand
+	Body *models.DeleteStandAloneVMDiskCommand
 
 	// V.
 	V string
@@ -121,13 +121,13 @@ func (o *StandAloneVMDisksDeleteParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone Vm disks delete params
-func (o *StandAloneVMDisksDeleteParams) WithBody(body *models.DeleteStandAloneDiskCommand) *StandAloneVMDisksDeleteParams {
+func (o *StandAloneVMDisksDeleteParams) WithBody(body *models.DeleteStandAloneVMDiskCommand) *StandAloneVMDisksDeleteParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone Vm disks delete params
-func (o *StandAloneVMDisksDeleteParams) SetBody(body *models.DeleteStandAloneDiskCommand) {
+func (o *StandAloneVMDisksDeleteParams) SetBody(body *models.DeleteStandAloneVMDiskCommand) {
 	o.Body = body
 }
 
