@@ -21,7 +21,7 @@ type APIResponse struct {
 	ID string `json:"id,omitempty"`
 
 	// is error
-	IsError bool `json:"isError,omitempty"`
+	IsError bool `json:"isError"`
 
 	// message
 	Message string `json:"message,omitempty"`

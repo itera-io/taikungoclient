@@ -24,10 +24,10 @@ type PrometheusMetricsCommand struct {
 	End *strfmt.DateTime `json:"end,omitempty"`
 
 	// is auto complete
-	IsAutoComplete bool `json:"isAutoComplete,omitempty"`
+	IsAutoComplete bool `json:"isAutoComplete"`
 
 	// is graph enabled
-	IsGraphEnabled bool `json:"isGraphEnabled,omitempty"`
+	IsGraphEnabled bool `json:"isGraphEnabled"`
 
 	// parameters
 	Parameters string `json:"parameters,omitempty"`

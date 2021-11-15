@@ -18,7 +18,7 @@ import (
 type UpdateOrganizationSubscriptionCommand struct {
 
 	// is yearly
-	IsYearly bool `json:"isYearly,omitempty"`
+	IsYearly bool `json:"isYearly"`
 
 	// subscription Id
 	SubscriptionID int32 `json:"subscriptionId,omitempty"`

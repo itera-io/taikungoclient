@@ -19,22 +19,22 @@ import (
 type UpdateUserCommand struct {
 
 	// disable
-	Disable bool `json:"disable,omitempty"`
+	Disable bool `json:"disable"`
 
 	// display name
-	DisplayName string `json:"displayName,omitempty"`
+	DisplayName string `json:"displayName"`
 
 	// email
 	Email string `json:"email,omitempty"`
 
 	// force to reset password
-	ForceToResetPassword bool `json:"forceToResetPassword,omitempty"`
+	ForceToResetPassword bool `json:"forceToResetPassword"`
 
 	// id
 	ID string `json:"id,omitempty"`
 
 	// is approved by partner
-	IsApprovedByPartner bool `json:"isApprovedByPartner,omitempty"`
+	IsApprovedByPartner bool `json:"isApprovedByPartner"`
 
 	// role
 	Role UserRole `json:"role,omitempty"`

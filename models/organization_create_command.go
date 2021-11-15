@@ -39,7 +39,7 @@ type OrganizationCreateCommand struct {
 	FullName string `json:"fullName,omitempty"`
 
 	// is eligible update subscription
-	IsEligibleUpdateSubscription bool `json:"isEligibleUpdateSubscription,omitempty"`
+	IsEligibleUpdateSubscription bool `json:"isEligibleUpdateSubscription"`
 
 	// name
 	Name string `json:"name,omitempty"`

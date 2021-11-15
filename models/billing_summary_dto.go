@@ -24,7 +24,7 @@ type BillingSummaryDto struct {
 	EndDate *strfmt.DateTime `json:"endDate,omitempty"`
 
 	// is deleted
-	IsDeleted bool `json:"isDeleted,omitempty"`
+	IsDeleted bool `json:"isDeleted"`
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`

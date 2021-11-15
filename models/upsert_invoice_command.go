@@ -31,7 +31,7 @@ type UpsertInvoiceCommand struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is paid
-	IsPaid bool `json:"isPaid,omitempty"`
+	IsPaid bool `json:"isPaid"`
 
 	// name
 	Name string `json:"name,omitempty"`
@@ -43,7 +43,7 @@ type UpsertInvoiceCommand struct {
 	Price float64 `json:"price,omitempty"`
 
 	// required payment action
-	RequiredPaymentAction bool `json:"requiredPaymentAction,omitempty"`
+	RequiredPaymentAction bool `json:"requiredPaymentAction"`
 
 	// start date
 	// Format: date-time

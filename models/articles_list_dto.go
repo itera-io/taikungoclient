@@ -24,7 +24,7 @@ type ArticlesListDto struct {
 	CreateAt string `json:"createAt,omitempty"`
 
 	// is csm
-	IsCsm bool `json:"isCsm,omitempty"`
+	IsCsm bool `json:"isCsm"`
 
 	// message Id
 	MessageID string `json:"messageId,omitempty"`

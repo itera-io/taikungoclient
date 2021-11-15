@@ -25,28 +25,28 @@ type ListForPartnersDto struct {
 	Currency string `json:"currency,omitempty"`
 
 	// exceeded cloud credential
-	ExceededCloudCredential bool `json:"exceededCloudCredential,omitempty"`
+	ExceededCloudCredential bool `json:"exceededCloudCredential"`
 
 	// exceeded project
-	ExceededProject bool `json:"exceededProject,omitempty"`
+	ExceededProject bool `json:"exceededProject"`
 
 	// exceeded servers
-	ExceededServers bool `json:"exceededServers,omitempty"`
+	ExceededServers bool `json:"exceededServers"`
 
 	// exceeded user
-	ExceededUser bool `json:"exceededUser,omitempty"`
+	ExceededUser bool `json:"exceededUser"`
 
 	// id
 	ID int32 `json:"id,omitempty"`
 
 	// is active
-	IsActive bool `json:"isActive,omitempty"`
+	IsActive bool `json:"isActive"`
 
 	// is deprecated
-	IsDeprecated bool `json:"isDeprecated,omitempty"`
+	IsDeprecated bool `json:"isDeprecated"`
 
 	// is yearly
-	IsYearly bool `json:"isYearly,omitempty"`
+	IsYearly bool `json:"isYearly"`
 
 	// monthly price
 	MonthlyPrice float64 `json:"monthlyPrice,omitempty"`

@@ -23,7 +23,7 @@ type StandAloneProfilesListDto struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is locked
-	IsLocked bool `json:"isLocked,omitempty"`
+	IsLocked bool `json:"isLocked"`
 
 	// name
 	Name string `json:"name,omitempty"`

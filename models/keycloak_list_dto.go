@@ -24,7 +24,7 @@ type KeycloakListDto struct {
 	ClientSecret string `json:"clientSecret,omitempty"`
 
 	// enabled
-	Enabled bool `json:"enabled,omitempty"`
+	Enabled bool `json:"enabled"`
 
 	// id
 	ID int32 `json:"id,omitempty"`

@@ -22,7 +22,7 @@ type UserDetails struct {
 	Data *UserForListDto `json:"data,omitempty"`
 
 	// is maintenance mode enabled
-	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled,omitempty"`
+	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
 }
 
 // Validate validates this user details

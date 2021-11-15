@@ -26,7 +26,7 @@ type UserForListDto struct {
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// display name
-	DisplayName string `json:"displayName,omitempty"`
+	DisplayName string `json:"displayName"`
 
 	// email
 	Email string `json:"email,omitempty"`
@@ -35,28 +35,28 @@ type UserForListDto struct {
 	ID string `json:"id,omitempty"`
 
 	// is approved by partner
-	IsApprovedByPartner bool `json:"isApprovedByPartner,omitempty"`
+	IsApprovedByPartner bool `json:"isApprovedByPartner"`
 
 	// is csm
-	IsCsm bool `json:"isCsm,omitempty"`
+	IsCsm bool `json:"isCsm"`
 
 	// is eligible update subscription
-	IsEligibleUpdateSubscription bool `json:"isEligibleUpdateSubscription,omitempty"`
+	IsEligibleUpdateSubscription bool `json:"isEligibleUpdateSubscription"`
 
 	// is email confirmed
-	IsEmailConfirmed bool `json:"isEmailConfirmed,omitempty"`
+	IsEmailConfirmed bool `json:"isEmailConfirmed"`
 
 	// is email notification enabled
-	IsEmailNotificationEnabled bool `json:"isEmailNotificationEnabled,omitempty"`
+	IsEmailNotificationEnabled bool `json:"isEmailNotificationEnabled"`
 
 	// is forced to reset password
-	IsForcedToResetPassword bool `json:"isForcedToResetPassword,omitempty"`
+	IsForcedToResetPassword bool `json:"isForcedToResetPassword"`
 
 	// is locked
-	IsLocked bool `json:"isLocked,omitempty"`
+	IsLocked bool `json:"isLocked"`
 
 	// is read only
-	IsReadOnly bool `json:"isReadOnly,omitempty"`
+	IsReadOnly bool `json:"isReadOnly"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
@@ -65,7 +65,7 @@ type UserForListDto struct {
 	OrganizationName string `json:"organizationName,omitempty"`
 
 	// owner
-	Owner bool `json:"owner,omitempty"`
+	Owner bool `json:"owner"`
 
 	// partner
 	Partner *PartnerDetailsForUserDto `json:"partner,omitempty"`

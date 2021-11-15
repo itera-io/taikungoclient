@@ -35,7 +35,7 @@ type PrometheusRuleListDto struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is all
-	IsAll bool `json:"isAll,omitempty"`
+	IsAll bool `json:"isAll"`
 
 	// labels
 	Labels []*PrometheusLabelUpdateDto `json:"labels"`

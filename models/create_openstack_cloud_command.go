@@ -27,7 +27,7 @@ type CreateOpenstackCloudCommand struct {
 	OpenStackDomain string `json:"openStackDomain,omitempty"`
 
 	// open stack import network
-	OpenStackImportNetwork bool `json:"openStackImportNetwork,omitempty"`
+	OpenStackImportNetwork bool `json:"openStackImportNetwork"`
 
 	// open stack internal subnet Id
 	OpenStackInternalSubnetID string `json:"openStackInternalSubnetId,omitempty"`

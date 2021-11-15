@@ -30,7 +30,7 @@ type NotificationListDto struct {
 	CreatedAt string `json:"createdAt,omitempty"`
 
 	// is deleted
-	IsDeleted bool `json:"isDeleted,omitempty"`
+	IsDeleted bool `json:"isDeleted"`
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`

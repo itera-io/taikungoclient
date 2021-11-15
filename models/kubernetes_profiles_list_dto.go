@@ -26,13 +26,13 @@ type KubernetesProfilesListDto struct {
 	CreatedBy string `json:"createdBy,omitempty"`
 
 	// expose node port on bastion
-	ExposeNodePortOnBastion bool `json:"exposeNodePortOnBastion,omitempty"`
+	ExposeNodePortOnBastion bool `json:"exposeNodePortOnBastion"`
 
 	// id
 	ID int32 `json:"id,omitempty"`
 
 	// is locked
-	IsLocked bool `json:"isLocked,omitempty"`
+	IsLocked bool `json:"isLocked"`
 
 	// last modified
 	LastModified string `json:"lastModified,omitempty"`
@@ -44,7 +44,7 @@ type KubernetesProfilesListDto struct {
 	Name string `json:"name,omitempty"`
 
 	// octavia enabled
-	OctaviaEnabled bool `json:"octaviaEnabled,omitempty"`
+	OctaviaEnabled bool `json:"octaviaEnabled"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
@@ -56,7 +56,7 @@ type KubernetesProfilesListDto struct {
 	Projects []*CommonDropdownDto `json:"projects"`
 
 	// taikun l b enabled
-	TaikunLBEnabled bool `json:"taikunLBEnabled,omitempty"`
+	TaikunLBEnabled bool `json:"taikunLBEnabled"`
 }
 
 // Validate validates this kubernetes profiles list dto

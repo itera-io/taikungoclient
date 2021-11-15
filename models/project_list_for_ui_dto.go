@@ -41,7 +41,7 @@ type ProjectListForUIDto struct {
 	ExpiredAt string `json:"expiredAt,omitempty"`
 
 	// has kube config file
-	HasKubeConfigFile bool `json:"hasKubeConfigFile,omitempty"`
+	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
 
 	// health
 	Health string `json:"health,omitempty"`
@@ -50,10 +50,10 @@ type ProjectListForUIDto struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is kubernetes
-	IsKubernetes bool `json:"isKubernetes,omitempty"`
+	IsKubernetes bool `json:"isKubernetes"`
 
 	// is locked
-	IsLocked bool `json:"isLocked,omitempty"`
+	IsLocked bool `json:"isLocked"`
 
 	// kubernetes current version
 	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion,omitempty"`

@@ -27,7 +27,7 @@ type ListForLandingPageDto struct {
 	ID int32 `json:"id,omitempty"`
 
 	// is deprecated
-	IsDeprecated bool `json:"isDeprecated,omitempty"`
+	IsDeprecated bool `json:"isDeprecated"`
 
 	// monthly price
 	MonthlyPrice float64 `json:"monthlyPrice,omitempty"`

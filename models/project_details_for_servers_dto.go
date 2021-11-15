@@ -66,43 +66,43 @@ type ProjectDetailsForServersDto struct {
 	ExpiredAt string `json:"expiredAt,omitempty"`
 
 	// has alerting profile
-	HasAlertingProfile bool `json:"hasAlertingProfile,omitempty"`
+	HasAlertingProfile bool `json:"hasAlertingProfile"`
 
 	// has kube config file
-	HasKubeConfigFile bool `json:"hasKubeConfigFile,omitempty"`
+	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
 
 	// has next version
-	HasNextVersion bool `json:"hasNextVersion,omitempty"`
+	HasNextVersion bool `json:"hasNextVersion"`
 
 	// has selected flavors
-	HasSelectedFlavors bool `json:"hasSelectedFlavors,omitempty"`
+	HasSelectedFlavors bool `json:"hasSelectedFlavors"`
 
 	// is all failed upgrade
-	IsAllFailedUpgrade bool `json:"isAllFailedUpgrade,omitempty"`
+	IsAllFailedUpgrade bool `json:"isAllFailedUpgrade"`
 
 	// is all ready
-	IsAllReady bool `json:"isAllReady,omitempty"`
+	IsAllReady bool `json:"isAllReady"`
 
 	// is auto upgrade
-	IsAutoUpgrade bool `json:"isAutoUpgrade,omitempty"`
+	IsAutoUpgrade bool `json:"isAutoUpgrade"`
 
 	// is backup enabled
-	IsBackupEnabled bool `json:"isBackupEnabled,omitempty"`
+	IsBackupEnabled bool `json:"isBackupEnabled"`
 
 	// is deprecated
-	IsDeprecated bool `json:"isDeprecated,omitempty"`
+	IsDeprecated bool `json:"isDeprecated"`
 
 	// is kubernetes
-	IsKubernetes bool `json:"isKubernetes,omitempty"`
+	IsKubernetes bool `json:"isKubernetes"`
 
 	// is locked
-	IsLocked bool `json:"isLocked,omitempty"`
+	IsLocked bool `json:"isLocked"`
 
 	// is maintenance mode enabled
-	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled,omitempty"`
+	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
 
 	// is monitoring enabled
-	IsMonitoringEnabled bool `json:"isMonitoringEnabled,omitempty"`
+	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
 
 	// kube current version
 	KubeCurrentVersion string `json:"kubeCurrentVersion,omitempty"`

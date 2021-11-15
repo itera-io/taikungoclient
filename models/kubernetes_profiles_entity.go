@@ -24,7 +24,7 @@ type KubernetesProfilesEntity struct {
 	Name string `json:"name,omitempty"`
 
 	// taikun l b enabled
-	TaikunLBEnabled bool `json:"taikunLBEnabled,omitempty"`
+	TaikunLBEnabled bool `json:"taikunLBEnabled"`
 }
 
 // Validate validates this kubernetes profiles entity
