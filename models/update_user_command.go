@@ -22,7 +22,7 @@ type UpdateUserCommand struct {
 	Disable bool `json:"disable"`
 
 	// display name
-	DisplayName string `json:"displayName,omitempty"`
+	DisplayName string `json:"displayName"`
 
 	// email
 	Email string `json:"email,omitempty"`

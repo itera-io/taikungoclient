@@ -60,6 +60,9 @@ type ProjectForUpdateDto struct {
 	// kubespray current version
 	KubesprayCurrentVersion string `json:"kubesprayCurrentVersion,omitempty"`
 
+	// opa profile revision
+	OpaProfileRevision int32 `json:"opaProfileRevision,omitempty"`
+
 	// operation
 	Operation string `json:"operation,omitempty"`
 

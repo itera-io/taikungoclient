@@ -60,6 +60,8 @@ type ClientService interface {
 
 	CronJobSyncBackupCredentials(params *CronJobSyncBackupCredentialsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobSyncBackupCredentialsOK, error)
 
+	CronJobSyncOpaProfiles(params *CronJobSyncOpaProfilesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobSyncOpaProfilesOK, error)
+
 	CronJobUpdateProjectQuotaMessage(params *CronJobUpdateProjectQuotaMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobUpdateProjectQuotaMessageOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -647,6 +649,45 @@ func (a *Client) CronJobSyncBackupCredentials(params *CronJobSyncBackupCredentia
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for CronJob_SyncBackupCredentials: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CronJobSyncOpaProfiles syncs opa profiles
+*/
+func (a *Client) CronJobSyncOpaProfiles(params *CronJobSyncOpaProfilesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobSyncOpaProfilesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCronJobSyncOpaProfilesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CronJob_SyncOpaProfiles",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/CronJob/sync-opa-profiles",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CronJobSyncOpaProfilesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CronJobSyncOpaProfilesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CronJob_SyncOpaProfiles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
