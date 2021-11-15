@@ -27,7 +27,7 @@ refline="\"showbackCredentialId\":"
 sed -i "/${refline}/a \"x-nullable\": true," swagger-patch.json
 
 # Remove omitempty
-refline="\"(ruleDiscountRate|globalDiscountRate|discountRate)\":"
+refline="\"(ruleDiscountRate|globalDiscountRate|discountRate|displayName)\":"
 sed -Ei "/${refline}/a \"x-omitempty\": false," swagger-patch.json
 
 # Remove omitempty
