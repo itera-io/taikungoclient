@@ -98,6 +98,12 @@ type OpaProfilesListParams struct {
 	// SearchID.
 	SearchID *string
 
+	// SortBy.
+	SortBy *string
+
+	// SortDirection.
+	SortDirection *string
+
 	// V.
 	V string
 
@@ -220,6 +226,28 @@ func (o *OpaProfilesListParams) SetSearchID(searchID *string) {
 	o.SearchID = searchID
 }
 
+// WithSortBy adds the sortBy to the opa profiles list params
+func (o *OpaProfilesListParams) WithSortBy(sortBy *string) *OpaProfilesListParams {
+	o.SetSortBy(sortBy)
+	return o
+}
+
+// SetSortBy adds the sortBy to the opa profiles list params
+func (o *OpaProfilesListParams) SetSortBy(sortBy *string) {
+	o.SortBy = sortBy
+}
+
+// WithSortDirection adds the sortDirection to the opa profiles list params
+func (o *OpaProfilesListParams) WithSortDirection(sortDirection *string) *OpaProfilesListParams {
+	o.SetSortDirection(sortDirection)
+	return o
+}
+
+// SetSortDirection adds the sortDirection to the opa profiles list params
+func (o *OpaProfilesListParams) SetSortDirection(sortDirection *string) {
+	o.SortDirection = sortDirection
+}
+
 // WithV adds the v to the opa profiles list params
 func (o *OpaProfilesListParams) WithV(v string) *OpaProfilesListParams {
 	o.SetV(v)
@@ -336,6 +364,40 @@ func (o *OpaProfilesListParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		if qSearchID != "" {
 
 			if err := r.SetQueryParam("searchId", qSearchID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SortBy != nil {
+
+		// query param sortBy
+		var qrSortBy string
+
+		if o.SortBy != nil {
+			qrSortBy = *o.SortBy
+		}
+		qSortBy := qrSortBy
+		if qSortBy != "" {
+
+			if err := r.SetQueryParam("sortBy", qSortBy); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SortDirection != nil {
+
+		// query param sortDirection
+		var qrSortDirection string
+
+		if o.SortDirection != nil {
+			qrSortDirection = *o.SortDirection
+		}
+		qSortDirection := qrSortDirection
+		if qSortDirection != "" {
+
+			if err := r.SetQueryParam("sortDirection", qSortDirection); err != nil {
 				return err
 			}
 		}
