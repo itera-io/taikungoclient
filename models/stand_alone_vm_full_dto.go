@@ -40,6 +40,9 @@ type StandAloneVMFullDto struct {
 	// ram
 	RAM int64 `json:"ram,omitempty"`
 
+	// revision
+	Revision int32 `json:"revision,omitempty"`
+
 	// stand alone profile
 	StandAloneProfile *StandAloneProfileFullDto `json:"standAloneProfile,omitempty"`
 

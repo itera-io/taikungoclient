@@ -104,6 +104,9 @@ type ProjectDetailsForServersDto struct {
 	// is monitoring enabled
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
 
+	// is opa enabled
+	IsOpaEnabled bool `json:"isOpaEnabled"`
+
 	// kube current version
 	KubeCurrentVersion string `json:"kubeCurrentVersion,omitempty"`
 
@@ -121,6 +124,12 @@ type ProjectDetailsForServersDto struct {
 
 	// master ready
 	MasterReady int32 `json:"masterReady,omitempty"`
+
+	// opa profile Id
+	OpaProfileID int32 `json:"opaProfileId,omitempty"`
+
+	// opa profile name
+	OpaProfileName string `json:"opaProfileName,omitempty"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
@@ -145,6 +154,9 @@ type ProjectDetailsForServersDto struct {
 
 	// project status
 	ProjectStatus string `json:"projectStatus,omitempty"`
+
+	// quota Id
+	QuotaID int32 `json:"quotaId,omitempty"`
 
 	// quota message
 	QuotaMessage string `json:"quotaMessage,omitempty"`

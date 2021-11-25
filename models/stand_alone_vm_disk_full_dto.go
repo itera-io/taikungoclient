@@ -17,14 +17,23 @@ import (
 // swagger:model StandAloneVmDiskFullDto
 type StandAloneVMDiskFullDto struct {
 
+	// device name
+	DeviceName string `json:"deviceName,omitempty"`
+
 	// id
 	ID int32 `json:"id,omitempty"`
+
+	// lun Id
+	LunID string `json:"lunId,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`
 
 	// size
 	Size int64 `json:"size,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
 
 	// volume type
 	VolumeType string `json:"volumeType,omitempty"`

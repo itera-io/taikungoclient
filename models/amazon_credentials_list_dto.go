@@ -22,6 +22,9 @@ type AmazonCredentialsListDto struct {
 	// availability zone
 	AvailabilityZone string `json:"availabilityZone,omitempty"`
 
+	// aws region Id
+	AwsRegionID int32 `json:"awsRegionId,omitempty"`
+
 	// created by
 	CreatedBy string `json:"createdBy,omitempty"`
 
@@ -42,6 +45,12 @@ type AmazonCredentialsListDto struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
 
 	// project count
 	ProjectCount int32 `json:"projectCount,omitempty"`

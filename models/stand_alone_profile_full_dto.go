@@ -28,6 +28,9 @@ type StandAloneProfileFullDto struct {
 	// public key
 	PublicKey string `json:"publicKey,omitempty"`
 
+	// revision
+	Revision int32 `json:"revision,omitempty"`
+
 	// stand alone profile security groups
 	StandAloneProfileSecurityGroups []*StandAloneProfileSecurityGroupFullDto `json:"standAloneProfileSecurityGroups"`
 }

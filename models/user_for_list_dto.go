@@ -58,6 +58,9 @@ type UserForListDto struct {
 	// is read only
 	IsReadOnly bool `json:"isReadOnly"`
 
+	// last login at
+	LastLoginAt string `json:"lastLoginAt,omitempty"`
+
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
 

@@ -31,6 +31,9 @@ type CreateKubeConfigCommand struct {
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
+
+	// user Id
+	UserID string `json:"userId,omitempty"`
 }
 
 // Validate validates this create kube config command

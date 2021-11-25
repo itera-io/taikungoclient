@@ -17,6 +17,12 @@ import (
 // swagger:model StandAloneVmDiskSizeDto
 type StandAloneVMDiskSizeDto struct {
 
+	// device name
+	DeviceName string `json:"deviceName,omitempty"`
+
+	// lun Id
+	LunID string `json:"lunId,omitempty"`
+
 	// name
 	Name string `json:"name,omitempty"`
 

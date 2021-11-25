@@ -12,13 +12,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ModifyConfigMapCommand modify config map command
+// DescribeCronJobCommand describe cron job command
 //
-// swagger:model ModifyConfigMapCommand
-type ModifyConfigMapCommand struct {
-
-	// data
-	Data string `json:"data,omitempty"`
+// swagger:model DescribeCronJobCommand
+type DescribeCronJobCommand struct {
 
 	// name
 	Name string `json:"name,omitempty"`
@@ -30,18 +27,18 @@ type ModifyConfigMapCommand struct {
 	ProjectID int32 `json:"projectId,omitempty"`
 }
 
-// Validate validates this modify config map command
-func (m *ModifyConfigMapCommand) Validate(formats strfmt.Registry) error {
+// Validate validates this describe cron job command
+func (m *DescribeCronJobCommand) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this modify config map command based on context it is used
-func (m *ModifyConfigMapCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this describe cron job command based on context it is used
+func (m *DescribeCronJobCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ModifyConfigMapCommand) MarshalBinary() ([]byte, error) {
+func (m *DescribeCronJobCommand) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -49,8 +46,8 @@ func (m *ModifyConfigMapCommand) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *ModifyConfigMapCommand) UnmarshalBinary(b []byte) error {
-	var res ModifyConfigMapCommand
+func (m *DescribeCronJobCommand) UnmarshalBinary(b []byte) error {
+	var res DescribeCronJobCommand
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

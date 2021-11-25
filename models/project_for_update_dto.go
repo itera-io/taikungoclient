@@ -45,6 +45,9 @@ type ProjectForUpdateDto struct {
 	// is monitoring enabled
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
 
+	// is opa enabled
+	IsOpaEnabled bool `json:"isOpaEnabled"`
+
 	// job Url
 	JobURL string `json:"jobUrl,omitempty"`
 
@@ -56,6 +59,9 @@ type ProjectForUpdateDto struct {
 
 	// kubespray current version
 	KubesprayCurrentVersion string `json:"kubesprayCurrentVersion,omitempty"`
+
+	// opa profile revision
+	OpaProfileRevision int32 `json:"opaProfileRevision,omitempty"`
 
 	// operation
 	Operation string `json:"operation,omitempty"`

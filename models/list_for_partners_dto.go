@@ -24,6 +24,9 @@ type ListForPartnersDto struct {
 	// currency
 	Currency string `json:"currency,omitempty"`
 
+	// description
+	Description string `json:"description,omitempty"`
+
 	// exceeded cloud credential
 	ExceededCloudCredential bool `json:"exceededCloudCredential"`
 

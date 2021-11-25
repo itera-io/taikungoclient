@@ -46,6 +46,12 @@ type AzureCredentialsListDto struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
 	// project count
 	ProjectCount int32 `json:"projectCount,omitempty"`
 

@@ -53,6 +53,9 @@ type CreateProjectCommand struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// opa profile Id
+	OpaProfileID int32 `json:"opaProfileId,omitempty"`
+
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
