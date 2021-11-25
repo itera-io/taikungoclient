@@ -41,7 +41,7 @@ type CreateStandAloneVMCommand struct {
 	StandAloneProfileID int32 `json:"standAloneProfileId,omitempty"`
 
 	// stand alone Vm disks
-	StandAloneVMDisks []*StandAloneVMDiskSizeDto `json:"standAloneVmDisks"`
+	StandAloneVMDisks []*StandAloneVMDiskDto `json:"standAloneVmDisks"`
 
 	// volume size
 	VolumeSize int64 `json:"volumeSize,omitempty"`

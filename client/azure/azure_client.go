@@ -178,7 +178,7 @@ func (a *Client) AzureOffers(params *AzureOffersParams, authInfo runtime.ClientA
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "Azure_Offers",
-		Method:             "POST",
+		Method:             "GET",
 		PathPattern:        "/api/v{v}/Azure/offers/{cloudId}/{publisher}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
@@ -217,7 +217,7 @@ func (a *Client) AzurePublishers(params *AzurePublishersParams, authInfo runtime
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "Azure_Publishers",
-		Method:             "POST",
+		Method:             "GET",
 		PathPattern:        "/api/v{v}/Azure/publishers/{cloudId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
@@ -256,7 +256,7 @@ func (a *Client) AzureSkus(params *AzureSkusParams, authInfo runtime.ClientAuthI
 	}
 	op := &runtime.ClientOperation{
 		ID:                 "Azure_Skus",
-		Method:             "POST",
+		Method:             "GET",
 		PathPattern:        "/api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},

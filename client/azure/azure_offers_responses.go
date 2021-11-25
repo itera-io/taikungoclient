@@ -78,7 +78,7 @@ type AzureOffersOK struct {
 }
 
 func (o *AzureOffersOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersOK  %+v", 200, o.Payload)
 }
 func (o *AzureOffersOK) GetPayload() *models.AzureOffersList {
 	return o.Payload
@@ -110,7 +110,7 @@ type AzureOffersBadRequest struct {
 }
 
 func (o *AzureOffersBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersBadRequest  %+v", 400, o.Payload)
 }
 func (o *AzureOffersBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
@@ -142,7 +142,7 @@ type AzureOffersUnauthorized struct {
 }
 
 func (o *AzureOffersUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersUnauthorized  %+v", 401, o.Payload)
 }
 func (o *AzureOffersUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -174,7 +174,7 @@ type AzureOffersForbidden struct {
 }
 
 func (o *AzureOffersForbidden) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersForbidden  %+v", 403, o.Payload)
 }
 func (o *AzureOffersForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -206,7 +206,7 @@ type AzureOffersNotFound struct {
 }
 
 func (o *AzureOffersNotFound) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersNotFound  %+v", 404, o.Payload)
 }
 func (o *AzureOffersNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -237,7 +237,7 @@ type AzureOffersInternalServerError struct {
 }
 
 func (o *AzureOffersInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersInternalServerError ", 500)
 }
 
 func (o *AzureOffersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
