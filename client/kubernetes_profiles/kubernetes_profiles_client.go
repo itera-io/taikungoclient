@@ -30,56 +30,17 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	KubernetesProfilesBackupCredentialsForOrganizationList(params *KubernetesProfilesBackupCredentialsForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesProfilesBackupCredentialsForOrganizationListOK, error)
-
 	KubernetesProfilesCreate(params *KubernetesProfilesCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesProfilesCreateOK, error)
 
 	KubernetesProfilesDelete(params *KubernetesProfilesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesProfilesDeleteOK, *KubernetesProfilesDeleteNoContent, error)
+
+	KubernetesProfilesKubernetesProfilesForOrganizationList(params *KubernetesProfilesKubernetesProfilesForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesProfilesKubernetesProfilesForOrganizationListOK, error)
 
 	KubernetesProfilesList(params *KubernetesProfilesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesProfilesListOK, error)
 
 	KubernetesProfilesLockManager(params *KubernetesProfilesLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesProfilesLockManagerOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
-}
-
-/*
-  KubernetesProfilesBackupCredentialsForOrganizationList retrieves all kubernetes profiles for organization
-*/
-func (a *Client) KubernetesProfilesBackupCredentialsForOrganizationList(params *KubernetesProfilesBackupCredentialsForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesProfilesBackupCredentialsForOrganizationListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewKubernetesProfilesBackupCredentialsForOrganizationListParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "KubernetesProfiles_BackupCredentialsForOrganizationList",
-		Method:             "GET",
-		PathPattern:        "/api/v{v}/KubernetesProfiles",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &KubernetesProfilesBackupCredentialsForOrganizationListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*KubernetesProfilesBackupCredentialsForOrganizationListOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for KubernetesProfiles_BackupCredentialsForOrganizationList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
 }
 
 /*
@@ -158,6 +119,45 @@ func (a *Client) KubernetesProfilesDelete(params *KubernetesProfilesDeleteParams
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for kubernetes_profiles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesProfilesKubernetesProfilesForOrganizationList retrieves all kubernetes profiles for organization
+*/
+func (a *Client) KubernetesProfilesKubernetesProfilesForOrganizationList(params *KubernetesProfilesKubernetesProfilesForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesProfilesKubernetesProfilesForOrganizationListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesProfilesKubernetesProfilesForOrganizationListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "KubernetesProfiles_KubernetesProfilesForOrganizationList",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/KubernetesProfiles",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesProfilesKubernetesProfilesForOrganizationListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesProfilesKubernetesProfilesForOrganizationListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for KubernetesProfiles_KubernetesProfilesForOrganizationList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
