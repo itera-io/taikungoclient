@@ -46,13 +46,9 @@ type ClientService interface {
 
 	AdminProjectsList(params *AdminProjectsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminProjectsListOK, error)
 
-	AdminUpdateProjectKubeConfig(params *AdminUpdateProjectKubeConfigParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminUpdateProjectKubeConfigOK, error)
-
 	AdminUpdateProjectVersion(params *AdminUpdateProjectVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminUpdateProjectVersionOK, error)
 
 	AdminUpdateUserEmail(params *AdminUpdateUserEmailParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminUpdateUserEmailOK, error)
-
-	AdminUpdateUserKubeConfig(params *AdminUpdateUserKubeConfigParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminUpdateUserKubeConfigOK, error)
 
 	AdminUpdateUserPassword(params *AdminUpdateUserPasswordParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminUpdateUserPasswordOK, error)
 
@@ -374,45 +370,6 @@ func (a *Client) AdminProjectsList(params *AdminProjectsListParams, authInfo run
 }
 
 /*
-  AdminUpdateProjectKubeConfig projects update for admin
-*/
-func (a *Client) AdminUpdateProjectKubeConfig(params *AdminUpdateProjectKubeConfigParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminUpdateProjectKubeConfigOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAdminUpdateProjectKubeConfigParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Admin_UpdateProjectKubeConfig",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/Admin/projects/update/kubeconfig",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AdminUpdateProjectKubeConfigReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AdminUpdateProjectKubeConfigOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Admin_UpdateProjectKubeConfig: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
   AdminUpdateProjectVersion projects update for admin
 */
 func (a *Client) AdminUpdateProjectVersion(params *AdminUpdateProjectVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminUpdateProjectVersionOK, error) {
@@ -487,45 +444,6 @@ func (a *Client) AdminUpdateUserEmail(params *AdminUpdateUserEmailParams, authIn
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Admin_UpdateUserEmail: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  AdminUpdateUserKubeConfig projects update for admin
-*/
-func (a *Client) AdminUpdateUserKubeConfig(params *AdminUpdateUserKubeConfigParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminUpdateUserKubeConfigOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAdminUpdateUserKubeConfigParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Admin_UpdateUserKubeConfig",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/Admin/projects/update/userkube",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AdminUpdateUserKubeConfigReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AdminUpdateUserKubeConfigOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Admin_UpdateUserKubeConfig: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

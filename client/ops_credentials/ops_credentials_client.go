@@ -30,6 +30,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	OpsCredentialsBackupCredentialsForOrganizationList(params *OpsCredentialsBackupCredentialsForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpsCredentialsBackupCredentialsForOrganizationListOK, error)
+
 	OpsCredentialsCreate(params *OpsCredentialsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpsCredentialsCreateOK, error)
 
 	OpsCredentialsDelete(params *OpsCredentialsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpsCredentialsDeleteOK, *OpsCredentialsDeleteNoContent, error)
@@ -40,9 +42,46 @@ type ClientService interface {
 
 	OpsCredentialsMakeDefault(params *OpsCredentialsMakeDefaultParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpsCredentialsMakeDefaultOK, error)
 
-	OpsCredentialsOperationCredentialsForOrganizationList(params *OpsCredentialsOperationCredentialsForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpsCredentialsOperationCredentialsForOrganizationListOK, error)
-
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  OpsCredentialsBackupCredentialsForOrganizationList retrieves backup credentials by organization Id
+*/
+func (a *Client) OpsCredentialsBackupCredentialsForOrganizationList(params *OpsCredentialsBackupCredentialsForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpsCredentialsBackupCredentialsForOrganizationListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOpsCredentialsBackupCredentialsForOrganizationListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "OpsCredentials_BackupCredentialsForOrganizationList",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/OpsCredentials",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OpsCredentialsBackupCredentialsForOrganizationListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OpsCredentialsBackupCredentialsForOrganizationListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for OpsCredentials_BackupCredentialsForOrganizationList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -238,45 +277,6 @@ func (a *Client) OpsCredentialsMakeDefault(params *OpsCredentialsMakeDefaultPara
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for OpsCredentials_MakeDefault: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  OpsCredentialsOperationCredentialsForOrganizationList retrieves operation credentials by organization Id
-*/
-func (a *Client) OpsCredentialsOperationCredentialsForOrganizationList(params *OpsCredentialsOperationCredentialsForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpsCredentialsOperationCredentialsForOrganizationListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewOpsCredentialsOperationCredentialsForOrganizationListParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "OpsCredentials_OperationCredentialsForOrganizationList",
-		Method:             "GET",
-		PathPattern:        "/api/v{v}/OpsCredentials",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &OpsCredentialsOperationCredentialsForOrganizationListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*OpsCredentialsOperationCredentialsForOrganizationListOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for OpsCredentials_OperationCredentialsForOrganizationList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

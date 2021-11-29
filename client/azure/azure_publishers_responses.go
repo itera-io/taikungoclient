@@ -78,7 +78,7 @@ type AzurePublishersOK struct {
 }
 
 func (o *AzurePublishersOK) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersOK  %+v", 200, o.Payload)
 }
 func (o *AzurePublishersOK) GetPayload() *models.AzurePublishersList {
 	return o.Payload
@@ -110,7 +110,7 @@ type AzurePublishersBadRequest struct {
 }
 
 func (o *AzurePublishersBadRequest) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersBadRequest  %+v", 400, o.Payload)
 }
 func (o *AzurePublishersBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
@@ -142,7 +142,7 @@ type AzurePublishersUnauthorized struct {
 }
 
 func (o *AzurePublishersUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersUnauthorized  %+v", 401, o.Payload)
 }
 func (o *AzurePublishersUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -174,7 +174,7 @@ type AzurePublishersForbidden struct {
 }
 
 func (o *AzurePublishersForbidden) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersForbidden  %+v", 403, o.Payload)
 }
 func (o *AzurePublishersForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -206,7 +206,7 @@ type AzurePublishersNotFound struct {
 }
 
 func (o *AzurePublishersNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersNotFound  %+v", 404, o.Payload)
 }
 func (o *AzurePublishersNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -237,7 +237,7 @@ type AzurePublishersInternalServerError struct {
 }
 
 func (o *AzurePublishersInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersInternalServerError ", 500)
+	return fmt.Sprintf("[POST /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersInternalServerError ", 500)
 }
 
 func (o *AzurePublishersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

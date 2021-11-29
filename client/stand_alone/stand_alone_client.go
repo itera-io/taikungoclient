@@ -38,8 +38,6 @@ type ClientService interface {
 
 	StandAloneIPManagement(params *StandAloneIPManagementParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneIPManagementOK, error)
 
-	StandAloneList(params *StandAloneListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneListOK, error)
-
 	StandAloneProjectDetails(params *StandAloneProjectDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProjectDetailsOK, error)
 
 	StandAlonePurge(params *StandAlonePurgeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAlonePurgeOK, error)
@@ -204,45 +202,6 @@ func (a *Client) StandAloneIPManagement(params *StandAloneIPManagementParams, au
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for StandAlone_IpManagement: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  StandAloneList lists all standalone vms according to roles
-*/
-func (a *Client) StandAloneList(params *StandAloneListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewStandAloneListParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "StandAlone_List",
-		Method:             "GET",
-		PathPattern:        "/api/v{v}/StandAlone",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &StandAloneListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*StandAloneListOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for StandAlone_List: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
