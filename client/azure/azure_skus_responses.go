@@ -78,7 +78,7 @@ type AzureSkusOK struct {
 }
 
 func (o *AzureSkusOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusOK  %+v", 200, o.Payload)
 }
 func (o *AzureSkusOK) GetPayload() *models.AzureSkusList {
 	return o.Payload
@@ -110,7 +110,7 @@ type AzureSkusBadRequest struct {
 }
 
 func (o *AzureSkusBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusBadRequest  %+v", 400, o.Payload)
 }
 func (o *AzureSkusBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
@@ -142,7 +142,7 @@ type AzureSkusUnauthorized struct {
 }
 
 func (o *AzureSkusUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusUnauthorized  %+v", 401, o.Payload)
 }
 func (o *AzureSkusUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -174,7 +174,7 @@ type AzureSkusForbidden struct {
 }
 
 func (o *AzureSkusForbidden) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusForbidden  %+v", 403, o.Payload)
 }
 func (o *AzureSkusForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -206,7 +206,7 @@ type AzureSkusNotFound struct {
 }
 
 func (o *AzureSkusNotFound) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusNotFound  %+v", 404, o.Payload)
 }
 func (o *AzureSkusNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -237,7 +237,7 @@ type AzureSkusInternalServerError struct {
 }
 
 func (o *AzureSkusInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusInternalServerError ", 500)
 }
 
 func (o *AzureSkusInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

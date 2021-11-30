@@ -12,10 +12,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// StandAloneVMDiskSizeDto stand alone Vm disk size dto
+// StandAloneVMDiskDto stand alone Vm disk dto
 //
-// swagger:model StandAloneVmDiskSizeDto
-type StandAloneVMDiskSizeDto struct {
+// swagger:model StandAloneVmDiskDto
+type StandAloneVMDiskDto struct {
 
 	// device name
 	DeviceName string `json:"deviceName,omitempty"`
@@ -33,18 +33,18 @@ type StandAloneVMDiskSizeDto struct {
 	VolumeType string `json:"volumeType,omitempty"`
 }
 
-// Validate validates this stand alone Vm disk size dto
-func (m *StandAloneVMDiskSizeDto) Validate(formats strfmt.Registry) error {
+// Validate validates this stand alone Vm disk dto
+func (m *StandAloneVMDiskDto) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this stand alone Vm disk size dto based on context it is used
-func (m *StandAloneVMDiskSizeDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this stand alone Vm disk dto based on context it is used
+func (m *StandAloneVMDiskDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *StandAloneVMDiskSizeDto) MarshalBinary() ([]byte, error) {
+func (m *StandAloneVMDiskDto) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -52,8 +52,8 @@ func (m *StandAloneVMDiskSizeDto) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *StandAloneVMDiskSizeDto) UnmarshalBinary(b []byte) error {
-	var res StandAloneVMDiskSizeDto
+func (m *StandAloneVMDiskDto) UnmarshalBinary(b []byte) error {
+	var res StandAloneVMDiskDto
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -36,6 +36,8 @@ type ClientService interface {
 
 	ProjectsDelete(params *ProjectsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsDeleteOK, *ProjectsDeleteNoContent, error)
 
+	ProjectsDeleteWholeProject(params *ProjectsDeleteWholeProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsDeleteWholeProjectOK, *ProjectsDeleteWholeProjectNoContent, error)
+
 	ProjectsDetails(params *ProjectsDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsDetailsOK, error)
 
 	ProjectsEdit(params *ProjectsEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsEditOK, error)
@@ -186,6 +188,46 @@ func (a *Client) ProjectsDelete(params *ProjectsDeleteParams, authInfo runtime.C
 	case *ProjectsDeleteOK:
 		return value, nil, nil
 	case *ProjectsDeleteNoContent:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for projects: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ProjectsDeleteWholeProject deletes whole project by project Id
+*/
+func (a *Client) ProjectsDeleteWholeProject(params *ProjectsDeleteWholeProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsDeleteWholeProjectOK, *ProjectsDeleteWholeProjectNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsDeleteWholeProjectParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Projects_DeleteWholeProject",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Projects/deletewholeproject",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsDeleteWholeProjectReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *ProjectsDeleteWholeProjectOK:
+		return value, nil, nil
+	case *ProjectsDeleteWholeProjectNoContent:
 		return nil, value, nil
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
