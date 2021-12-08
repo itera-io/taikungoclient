@@ -24,7 +24,7 @@ var projectStatusEnum []interface{}
 
 func init() {
 	var res []ProjectStatus
-	if err := json.Unmarshal([]byte(`[50,100,145,150,154,155,156,160,165,200,250,300,400,500,550,600,700,800,900,1000,1100]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`[100,145,150,154,155,156,160,165,200,250,300,400,500,550,600,700,800,900,1000,1100]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

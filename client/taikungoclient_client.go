@@ -18,22 +18,29 @@ import (
 	"github.com/itera-io/taikungoclient/client/azure"
 	"github.com/itera-io/taikungoclient/client/backup"
 	"github.com/itera-io/taikungoclient/client/billing"
+	"github.com/itera-io/taikungoclient/client/cloud_credentials"
 	"github.com/itera-io/taikungoclient/client/flavors"
 	"github.com/itera-io/taikungoclient/client/keycloak"
 	"github.com/itera-io/taikungoclient/client/kube_config"
 	"github.com/itera-io/taikungoclient/client/kubernetes"
+	"github.com/itera-io/taikungoclient/client/kubernetes_profiles"
 	"github.com/itera-io/taikungoclient/client/notifications"
 	"github.com/itera-io/taikungoclient/client/opa_profiles"
 	"github.com/itera-io/taikungoclient/client/openstack"
+	"github.com/itera-io/taikungoclient/client/ops_credentials"
 	"github.com/itera-io/taikungoclient/client/organizations"
 	"github.com/itera-io/taikungoclient/client/project_quotas"
 	"github.com/itera-io/taikungoclient/client/projects"
 	"github.com/itera-io/taikungoclient/client/prometheus"
 	"github.com/itera-io/taikungoclient/client/request"
+	"github.com/itera-io/taikungoclient/client/s3_credentials"
 	"github.com/itera-io/taikungoclient/client/search"
 	"github.com/itera-io/taikungoclient/client/servers"
+	"github.com/itera-io/taikungoclient/client/showback"
 	"github.com/itera-io/taikungoclient/client/slack"
 	"github.com/itera-io/taikungoclient/client/ssh_users"
+	"github.com/itera-io/taikungoclient/client/stand_alone"
+	"github.com/itera-io/taikungoclient/client/stand_alone_profile"
 	"github.com/itera-io/taikungoclient/client/user_projects"
 	"github.com/itera-io/taikungoclient/client/users"
 )
@@ -105,22 +112,29 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Azure = azure.New(transport, formats)
 	cli.Backup = backup.New(transport, formats)
 	cli.Billing = billing.New(transport, formats)
+	cli.CloudCredentials = cloud_credentials.New(transport, formats)
 	cli.Flavors = flavors.New(transport, formats)
 	cli.Keycloak = keycloak.New(transport, formats)
 	cli.KubeConfig = kube_config.New(transport, formats)
 	cli.Kubernetes = kubernetes.New(transport, formats)
+	cli.KubernetesProfiles = kubernetes_profiles.New(transport, formats)
 	cli.Notifications = notifications.New(transport, formats)
 	cli.OpaProfiles = opa_profiles.New(transport, formats)
 	cli.Openstack = openstack.New(transport, formats)
+	cli.OpsCredentials = ops_credentials.New(transport, formats)
 	cli.Organizations = organizations.New(transport, formats)
 	cli.ProjectQuotas = project_quotas.New(transport, formats)
 	cli.Projects = projects.New(transport, formats)
 	cli.Prometheus = prometheus.New(transport, formats)
 	cli.Request = request.New(transport, formats)
+	cli.S3Credentials = s3_credentials.New(transport, formats)
 	cli.Search = search.New(transport, formats)
 	cli.Servers = servers.New(transport, formats)
+	cli.Showback = showback.New(transport, formats)
 	cli.Slack = slack.New(transport, formats)
 	cli.SSHUsers = ssh_users.New(transport, formats)
+	cli.StandAlone = stand_alone.New(transport, formats)
+	cli.StandAloneProfile = stand_alone_profile.New(transport, formats)
 	cli.UserProjects = user_projects.New(transport, formats)
 	cli.Users = users.New(transport, formats)
 	return cli
@@ -183,6 +197,8 @@ type Taikungoclient struct {
 
 	Billing billing.ClientService
 
+	CloudCredentials cloud_credentials.ClientService
+
 	Flavors flavors.ClientService
 
 	Keycloak keycloak.ClientService
@@ -191,11 +207,15 @@ type Taikungoclient struct {
 
 	Kubernetes kubernetes.ClientService
 
+	KubernetesProfiles kubernetes_profiles.ClientService
+
 	Notifications notifications.ClientService
 
 	OpaProfiles opa_profiles.ClientService
 
 	Openstack openstack.ClientService
+
+	OpsCredentials ops_credentials.ClientService
 
 	Organizations organizations.ClientService
 
@@ -207,13 +227,21 @@ type Taikungoclient struct {
 
 	Request request.ClientService
 
+	S3Credentials s3_credentials.ClientService
+
 	Search search.ClientService
 
 	Servers servers.ClientService
 
+	Showback showback.ClientService
+
 	Slack slack.ClientService
 
 	SSHUsers ssh_users.ClientService
+
+	StandAlone stand_alone.ClientService
+
+	StandAloneProfile stand_alone_profile.ClientService
 
 	UserProjects user_projects.ClientService
 
@@ -233,22 +261,29 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Azure.SetTransport(transport)
 	c.Backup.SetTransport(transport)
 	c.Billing.SetTransport(transport)
+	c.CloudCredentials.SetTransport(transport)
 	c.Flavors.SetTransport(transport)
 	c.Keycloak.SetTransport(transport)
 	c.KubeConfig.SetTransport(transport)
 	c.Kubernetes.SetTransport(transport)
+	c.KubernetesProfiles.SetTransport(transport)
 	c.Notifications.SetTransport(transport)
 	c.OpaProfiles.SetTransport(transport)
 	c.Openstack.SetTransport(transport)
+	c.OpsCredentials.SetTransport(transport)
 	c.Organizations.SetTransport(transport)
 	c.ProjectQuotas.SetTransport(transport)
 	c.Projects.SetTransport(transport)
 	c.Prometheus.SetTransport(transport)
 	c.Request.SetTransport(transport)
+	c.S3Credentials.SetTransport(transport)
 	c.Search.SetTransport(transport)
 	c.Servers.SetTransport(transport)
+	c.Showback.SetTransport(transport)
 	c.Slack.SetTransport(transport)
 	c.SSHUsers.SetTransport(transport)
+	c.StandAlone.SetTransport(transport)
+	c.StandAloneProfile.SetTransport(transport)
 	c.UserProjects.SetTransport(transport)
 	c.Users.SetTransport(transport)
 }
