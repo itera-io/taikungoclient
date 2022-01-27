@@ -26,6 +26,9 @@ type NotificationSendCommand struct {
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project type
+	ProjectType ProjectType `json:"projectType,omitempty"`
 }
 
 // Validate validates this notification send command
@@ -37,6 +40,10 @@ func (m *NotificationSendCommand) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateActionType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProjectType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -80,6 +87,23 @@ func (m *NotificationSendCommand) validateActionType(formats strfmt.Registry) er
 	return nil
 }
 
+func (m *NotificationSendCommand) validateProjectType(formats strfmt.Registry) error {
+	if swag.IsZero(m.ProjectType) { // not required
+		return nil
+	}
+
+	if err := m.ProjectType.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("projectType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("projectType")
+		}
+		return err
+	}
+
+	return nil
+}
+
 // ContextValidate validate this notification send command based on the context it is used
 func (m *NotificationSendCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -89,6 +113,10 @@ func (m *NotificationSendCommand) ContextValidate(ctx context.Context, formats s
 	}
 
 	if err := m.contextValidateActionType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProjectType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -119,6 +147,20 @@ func (m *NotificationSendCommand) contextValidateActionType(ctx context.Context,
 			return ve.ValidateName("actionType")
 		} else if ce, ok := err.(*errors.CompositeError); ok {
 			return ce.ValidateName("actionType")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *NotificationSendCommand) contextValidateProjectType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.ProjectType.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("projectType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("projectType")
 		}
 		return err
 	}

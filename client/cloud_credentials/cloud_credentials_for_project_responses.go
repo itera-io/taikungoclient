@@ -78,7 +78,7 @@ type CloudCredentialsForProjectOK struct {
 }
 
 func (o *CloudCredentialsForProjectOK) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/project][%d] cloudCredentialsForProjectOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectOK  %+v", 200, o.Payload)
 }
 func (o *CloudCredentialsForProjectOK) GetPayload() *models.CredentialsForProjectList {
 	return o.Payload
@@ -110,7 +110,7 @@ type CloudCredentialsForProjectBadRequest struct {
 }
 
 func (o *CloudCredentialsForProjectBadRequest) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/project][%d] cloudCredentialsForProjectBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectBadRequest  %+v", 400, o.Payload)
 }
 func (o *CloudCredentialsForProjectBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
@@ -142,7 +142,7 @@ type CloudCredentialsForProjectUnauthorized struct {
 }
 
 func (o *CloudCredentialsForProjectUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/project][%d] cloudCredentialsForProjectUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectUnauthorized  %+v", 401, o.Payload)
 }
 func (o *CloudCredentialsForProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -174,7 +174,7 @@ type CloudCredentialsForProjectForbidden struct {
 }
 
 func (o *CloudCredentialsForProjectForbidden) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/project][%d] cloudCredentialsForProjectForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectForbidden  %+v", 403, o.Payload)
 }
 func (o *CloudCredentialsForProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -206,7 +206,7 @@ type CloudCredentialsForProjectNotFound struct {
 }
 
 func (o *CloudCredentialsForProjectNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/project][%d] cloudCredentialsForProjectNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectNotFound  %+v", 404, o.Payload)
 }
 func (o *CloudCredentialsForProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -237,7 +237,7 @@ type CloudCredentialsForProjectInternalServerError struct {
 }
 
 func (o *CloudCredentialsForProjectInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/project][%d] cloudCredentialsForProjectInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectInternalServerError ", 500)
 }
 
 func (o *CloudCredentialsForProjectInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

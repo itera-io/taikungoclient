@@ -18,6 +18,9 @@ import (
 // swagger:model StandaloneVmListDto
 type StandaloneVMListDto struct {
 
+	// cloud type
+	CloudType string `json:"cloudType,omitempty"`
+
 	// cpu
 	CPU int32 `json:"cpu,omitempty"`
 
@@ -27,23 +30,20 @@ type StandaloneVMListDto struct {
 	// created by
 	CreatedBy string `json:"createdBy,omitempty"`
 
-	// deleted at
-	DeletedAt string `json:"deletedAt,omitempty"`
-
 	// flavor Id
 	FlavorID string `json:"flavorId,omitempty"`
 
 	// id
 	ID int32 `json:"id,omitempty"`
 
-	// image
-	Image string `json:"image,omitempty"`
-
-	// instance Id
-	InstanceID string `json:"instanceId,omitempty"`
+	// image name
+	ImageName string `json:"imageName,omitempty"`
 
 	// ip address
 	IPAddress string `json:"ipAddress,omitempty"`
+
+	// is windows
+	IsWindows bool `json:"isWindows"`
 
 	// last modified
 	LastModified string `json:"lastModified,omitempty"`
@@ -51,11 +51,11 @@ type StandaloneVMListDto struct {
 	// name
 	Name string `json:"name,omitempty"`
 
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
 
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
 
 	// public Ip
 	PublicIP string `json:"publicIp,omitempty"`

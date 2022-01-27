@@ -74,13 +74,13 @@ func NewOpenstackRegionsOK() *OpenstackRegionsOK {
 Success
 */
 type OpenstackRegionsOK struct {
-	Payload interface{}
+	Payload []string
 }
 
 func (o *OpenstackRegionsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsOK  %+v", 200, o.Payload)
 }
-func (o *OpenstackRegionsOK) GetPayload() interface{} {
+func (o *OpenstackRegionsOK) GetPayload() []string {
 	return o.Payload
 }
 

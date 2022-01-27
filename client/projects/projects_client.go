@@ -68,6 +68,8 @@ type ClientService interface {
 
 	ProjectsPurge(params *ProjectsPurgeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsPurgeOK, error)
 
+	ProjectsPurgeWholeProject(params *ProjectsPurgeWholeProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsPurgeWholeProjectOK, error)
+
 	ProjectsRepair(params *ProjectsRepairParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsRepairOK, error)
 
 	ProjectsResetProjectStatus(params *ProjectsResetProjectStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsResetProjectStatusOK, error)
@@ -817,6 +819,45 @@ func (a *Client) ProjectsPurge(params *ProjectsPurgeParams, authInfo runtime.Cli
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Projects_Purge: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ProjectsPurgeWholeProject purges a whole project by project Id
+*/
+func (a *Client) ProjectsPurgeWholeProject(params *ProjectsPurgeWholeProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsPurgeWholeProjectOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsPurgeWholeProjectParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Projects_PurgeWholeProject",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Projects/purgewholeproject",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsPurgeWholeProjectReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ProjectsPurgeWholeProjectOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Projects_PurgeWholeProject: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

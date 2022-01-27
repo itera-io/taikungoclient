@@ -76,6 +76,9 @@ type RequestExportCsvParams struct {
 	// Format: int32
 	OrganizationID *int32
 
+	// Search.
+	Search *string
+
 	// StartDate.
 	//
 	// Format: date-time
@@ -181,6 +184,17 @@ func (o *RequestExportCsvParams) SetOrganizationID(organizationID *int32) {
 	o.OrganizationID = organizationID
 }
 
+// WithSearch adds the search to the request export csv params
+func (o *RequestExportCsvParams) WithSearch(search *string) *RequestExportCsvParams {
+	o.SetSearch(search)
+	return o
+}
+
+// SetSearch adds the search to the request export csv params
+func (o *RequestExportCsvParams) SetSearch(search *string) {
+	o.Search = search
+}
+
 // WithStartDate adds the startDate to the request export csv params
 func (o *RequestExportCsvParams) WithStartDate(startDate *strfmt.DateTime) *RequestExportCsvParams {
 	o.SetStartDate(startDate)
@@ -274,6 +288,23 @@ func (o *RequestExportCsvParams) WriteToRequest(r runtime.ClientRequest, reg str
 		if qOrganizationID != "" {
 
 			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Search != nil {
+
+		// query param search
+		var qrSearch string
+
+		if o.Search != nil {
+			qrSearch = *o.Search
+		}
+		qSearch := qrSearch
+		if qSearch != "" {
+
+			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}

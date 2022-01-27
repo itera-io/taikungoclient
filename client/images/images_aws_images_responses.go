@@ -78,7 +78,7 @@ type ImagesAwsImagesOK struct {
 }
 
 func (o *ImagesAwsImagesOK) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Images/aws/{cloudId}/{platform}/{owner}][%d] imagesAwsImagesOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Images/aws/{cloudId}][%d] imagesAwsImagesOK  %+v", 200, o.Payload)
 }
 func (o *ImagesAwsImagesOK) GetPayload() *models.AwsImageList {
 	return o.Payload
@@ -110,7 +110,7 @@ type ImagesAwsImagesBadRequest struct {
 }
 
 func (o *ImagesAwsImagesBadRequest) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Images/aws/{cloudId}/{platform}/{owner}][%d] imagesAwsImagesBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Images/aws/{cloudId}][%d] imagesAwsImagesBadRequest  %+v", 400, o.Payload)
 }
 func (o *ImagesAwsImagesBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
@@ -142,7 +142,7 @@ type ImagesAwsImagesUnauthorized struct {
 }
 
 func (o *ImagesAwsImagesUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Images/aws/{cloudId}/{platform}/{owner}][%d] imagesAwsImagesUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Images/aws/{cloudId}][%d] imagesAwsImagesUnauthorized  %+v", 401, o.Payload)
 }
 func (o *ImagesAwsImagesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -174,7 +174,7 @@ type ImagesAwsImagesForbidden struct {
 }
 
 func (o *ImagesAwsImagesForbidden) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Images/aws/{cloudId}/{platform}/{owner}][%d] imagesAwsImagesForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Images/aws/{cloudId}][%d] imagesAwsImagesForbidden  %+v", 403, o.Payload)
 }
 func (o *ImagesAwsImagesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -206,7 +206,7 @@ type ImagesAwsImagesNotFound struct {
 }
 
 func (o *ImagesAwsImagesNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Images/aws/{cloudId}/{platform}/{owner}][%d] imagesAwsImagesNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Images/aws/{cloudId}][%d] imagesAwsImagesNotFound  %+v", 404, o.Payload)
 }
 func (o *ImagesAwsImagesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -237,7 +237,7 @@ type ImagesAwsImagesInternalServerError struct {
 }
 
 func (o *ImagesAwsImagesInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Images/aws/{cloudId}/{platform}/{owner}][%d] imagesAwsImagesInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/Images/aws/{cloudId}][%d] imagesAwsImagesInternalServerError ", 500)
 }
 
 func (o *ImagesAwsImagesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

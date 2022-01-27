@@ -74,20 +74,22 @@ func NewAlertingIntegrationsCreateOK() *AlertingIntegrationsCreateOK {
 Success
 */
 type AlertingIntegrationsCreateOK struct {
-	Payload models.Unit
+	Payload *models.APIResponse
 }
 
 func (o *AlertingIntegrationsCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateOK  %+v", 200, o.Payload)
 }
-func (o *AlertingIntegrationsCreateOK) GetPayload() models.Unit {
+func (o *AlertingIntegrationsCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.APIResponse)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -8,7 +8,6 @@ package models
 import (
 	"context"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -25,7 +24,7 @@ type CreateAwsCloudCommand struct {
 	AwsAvailabilityZone string `json:"awsAvailabilityZone,omitempty"`
 
 	// aws region
-	AwsRegion AwsRegion `json:"awsRegion,omitempty"`
+	AwsRegion string `json:"awsRegion,omitempty"`
 
 	// aws secret access key
 	AwsSecretAccessKey string `json:"awsSecretAccessKey,omitempty"`
@@ -39,60 +38,11 @@ type CreateAwsCloudCommand struct {
 
 // Validate validates this create aws cloud command
 func (m *CreateAwsCloudCommand) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateAwsRegion(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
 	return nil
 }
 
-func (m *CreateAwsCloudCommand) validateAwsRegion(formats strfmt.Registry) error {
-	if swag.IsZero(m.AwsRegion) { // not required
-		return nil
-	}
-
-	if err := m.AwsRegion.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("awsRegion")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("awsRegion")
-		}
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this create aws cloud command based on the context it is used
+// ContextValidate validates this create aws cloud command based on context it is used
 func (m *CreateAwsCloudCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateAwsRegion(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *CreateAwsCloudCommand) contextValidateAwsRegion(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := m.AwsRegion.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("awsRegion")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("awsRegion")
-		}
-		return err
-	}
-
 	return nil
 }
 

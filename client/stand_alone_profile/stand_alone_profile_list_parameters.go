@@ -60,6 +60,11 @@ func NewStandAloneProfileListParamsWithHTTPClient(client *http.Client) *StandAlo
 */
 type StandAloneProfileListParams struct {
 
+	// ID.
+	//
+	// Format: int32
+	ID *int32
+
 	/* Limit.
 
 	   Limits user size (by default 50)
@@ -150,6 +155,17 @@ func (o *StandAloneProfileListParams) WithHTTPClient(client *http.Client) *Stand
 // SetHTTPClient adds the HTTPClient to the stand alone profile list params
 func (o *StandAloneProfileListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithID adds the id to the stand alone profile list params
+func (o *StandAloneProfileListParams) WithID(id *int32) *StandAloneProfileListParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the stand alone profile list params
+func (o *StandAloneProfileListParams) SetID(id *int32) {
+	o.ID = id
 }
 
 // WithLimit adds the limit to the stand alone profile list params
@@ -247,6 +263,23 @@ func (o *StandAloneProfileListParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 	var res []error
+
+	if o.ID != nil {
+
+		// query param id
+		var qrID int32
+
+		if o.ID != nil {
+			qrID = *o.ID
+		}
+		qID := swag.FormatInt32(qrID)
+		if qID != "" {
+
+			if err := r.SetQueryParam("id", qID); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 

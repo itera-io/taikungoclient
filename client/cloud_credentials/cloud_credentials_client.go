@@ -48,8 +48,6 @@ type ClientService interface {
 
 	CloudCredentialsMakeDefault(params *CloudCredentialsMakeDefaultParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsMakeDefaultOK, error)
 
-	CloudCredentialsRegionList(params *CloudCredentialsRegionListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsRegionListOK, error)
-
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -289,7 +287,7 @@ func (a *Client) CloudCredentialsForCli(params *CloudCredentialsForCliParams, au
 }
 
 /*
-  CloudCredentialsForProject retrieves cloud credentials by project Id
+  CloudCredentialsForProject retrieves cloud credential details by cloud Id
 */
 func (a *Client) CloudCredentialsForProject(params *CloudCredentialsForProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsForProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -299,7 +297,7 @@ func (a *Client) CloudCredentialsForProject(params *CloudCredentialsForProjectPa
 	op := &runtime.ClientOperation{
 		ID:                 "CloudCredentials_ForProject",
 		Method:             "GET",
-		PathPattern:        "/api/v{v}/CloudCredentials/project",
+		PathPattern:        "/api/v{v}/CloudCredentials/details",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -402,45 +400,6 @@ func (a *Client) CloudCredentialsMakeDefault(params *CloudCredentialsMakeDefault
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for CloudCredentials_MakeDefault: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  CloudCredentialsRegionList retrieves a list of regions
-*/
-func (a *Client) CloudCredentialsRegionList(params *CloudCredentialsRegionListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsRegionListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewCloudCredentialsRegionListParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "CloudCredentials_RegionList",
-		Method:             "GET",
-		PathPattern:        "/api/v{v}/CloudCredentials/regionlist",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &CloudCredentialsRegionListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*CloudCredentialsRegionListOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for CloudCredentials_RegionList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

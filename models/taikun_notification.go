@@ -47,6 +47,9 @@ type TaikunNotification struct {
 	// is unread
 	IsUnread bool `json:"isUnread"`
 
+	// is virt
+	IsVirt bool `json:"isVirt"`
+
 	// kubernetes start date
 	KubernetesStartDate string `json:"kubernetesStartDate,omitempty"`
 

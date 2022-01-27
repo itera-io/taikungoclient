@@ -32,6 +32,10 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	RequestExportCsv(params *RequestExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RequestExportCsvOK, error)
 
+	RequestExportPollerErrorsCsv(params *RequestExportPollerErrorsCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RequestExportPollerErrorsCsvOK, error)
+
+	RequestPollerErrorsList(params *RequestPollerErrorsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RequestPollerErrorsListOK, error)
+
 	RequestRequestsList(params *RequestRequestsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RequestRequestsListOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -73,6 +77,84 @@ func (a *Client) RequestExportCsv(params *RequestExportCsvParams, authInfo runti
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Request_ExportCsv: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  RequestExportPollerErrorsCsv exports poller errors
+*/
+func (a *Client) RequestExportPollerErrorsCsv(params *RequestExportPollerErrorsCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RequestExportPollerErrorsCsvOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRequestExportPollerErrorsCsvParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Request_ExportPollerErrorsCsv",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Request/download-errors",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &RequestExportPollerErrorsCsvReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RequestExportPollerErrorsCsvOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Request_ExportPollerErrorsCsv: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  RequestPollerErrorsList taikuns poller errors
+*/
+func (a *Client) RequestPollerErrorsList(params *RequestPollerErrorsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RequestPollerErrorsListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRequestPollerErrorsListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Request_PollerErrorsList",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Request/poller-errors",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &RequestPollerErrorsListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RequestPollerErrorsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Request_PollerErrorsList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -60,20 +60,10 @@ func NewCloudCredentialsForProjectParamsWithHTTPClient(client *http.Client) *Clo
 */
 type CloudCredentialsForProjectParams struct {
 
-	// Limit.
+	// CloudID.
 	//
 	// Format: int32
-	Limit *int32
-
-	// Offset.
-	//
-	// Format: int32
-	Offset *int32
-
-	// ProjectID.
-	//
-	// Format: int32
-	ProjectID *int32
+	CloudID *int32
 
 	// V.
 	V string
@@ -131,37 +121,15 @@ func (o *CloudCredentialsForProjectParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithLimit adds the limit to the cloud credentials for project params
-func (o *CloudCredentialsForProjectParams) WithLimit(limit *int32) *CloudCredentialsForProjectParams {
-	o.SetLimit(limit)
+// WithCloudID adds the cloudID to the cloud credentials for project params
+func (o *CloudCredentialsForProjectParams) WithCloudID(cloudID *int32) *CloudCredentialsForProjectParams {
+	o.SetCloudID(cloudID)
 	return o
 }
 
-// SetLimit adds the limit to the cloud credentials for project params
-func (o *CloudCredentialsForProjectParams) SetLimit(limit *int32) {
-	o.Limit = limit
-}
-
-// WithOffset adds the offset to the cloud credentials for project params
-func (o *CloudCredentialsForProjectParams) WithOffset(offset *int32) *CloudCredentialsForProjectParams {
-	o.SetOffset(offset)
-	return o
-}
-
-// SetOffset adds the offset to the cloud credentials for project params
-func (o *CloudCredentialsForProjectParams) SetOffset(offset *int32) {
-	o.Offset = offset
-}
-
-// WithProjectID adds the projectID to the cloud credentials for project params
-func (o *CloudCredentialsForProjectParams) WithProjectID(projectID *int32) *CloudCredentialsForProjectParams {
-	o.SetProjectID(projectID)
-	return o
-}
-
-// SetProjectID adds the projectId to the cloud credentials for project params
-func (o *CloudCredentialsForProjectParams) SetProjectID(projectID *int32) {
-	o.ProjectID = projectID
+// SetCloudID adds the cloudId to the cloud credentials for project params
+func (o *CloudCredentialsForProjectParams) SetCloudID(cloudID *int32) {
+	o.CloudID = cloudID
 }
 
 // WithV adds the v to the cloud credentials for project params
@@ -183,52 +151,18 @@ func (o *CloudCredentialsForProjectParams) WriteToRequest(r runtime.ClientReques
 	}
 	var res []error
 
-	if o.Limit != nil {
+	if o.CloudID != nil {
 
-		// query param limit
-		var qrLimit int32
+		// query param cloudId
+		var qrCloudID int32
 
-		if o.Limit != nil {
-			qrLimit = *o.Limit
+		if o.CloudID != nil {
+			qrCloudID = *o.CloudID
 		}
-		qLimit := swag.FormatInt32(qrLimit)
-		if qLimit != "" {
+		qCloudID := swag.FormatInt32(qrCloudID)
+		if qCloudID != "" {
 
-			if err := r.SetQueryParam("limit", qLimit); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.Offset != nil {
-
-		// query param offset
-		var qrOffset int32
-
-		if o.Offset != nil {
-			qrOffset = *o.Offset
-		}
-		qOffset := swag.FormatInt32(qrOffset)
-		if qOffset != "" {
-
-			if err := r.SetQueryParam("offset", qOffset); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.ProjectID != nil {
-
-		// query param projectId
-		var qrProjectID int32
-
-		if o.ProjectID != nil {
-			qrProjectID = *o.ProjectID
-		}
-		qProjectID := swag.FormatInt32(qrProjectID)
-		if qProjectID != "" {
-
-			if err := r.SetQueryParam("projectId", qProjectID); err != nil {
+			if err := r.SetQueryParam("cloudId", qCloudID); err != nil {
 				return err
 			}
 		}

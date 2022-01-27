@@ -34,6 +34,8 @@ type ClientService interface {
 
 	CommonGetEnumValues(params *CommonGetEnumValuesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommonGetEnumValuesOK, error)
 
+	CommonGetSortingElements(params *CommonGetSortingElementsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommonGetSortingElementsOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -112,6 +114,45 @@ func (a *Client) CommonGetEnumValues(params *CommonGetEnumValuesParams, authInfo
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Common_GetEnumValues: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CommonGetSortingElements retrieves country list
+*/
+func (a *Client) CommonGetSortingElements(params *CommonGetSortingElementsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommonGetSortingElementsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCommonGetSortingElementsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Common_GetSortingElements",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Common/sorting-elements/{type}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CommonGetSortingElementsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CommonGetSortingElementsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Common_GetSortingElements: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

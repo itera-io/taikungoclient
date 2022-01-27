@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewTicketTransferListParams creates a new TicketTransferListParams object,
@@ -58,6 +59,11 @@ func NewTicketTransferListParamsWithHTTPClient(client *http.Client) *TicketTrans
    Typically these are written to a http.Request.
 */
 type TicketTransferListParams struct {
+
+	// OrganizationID.
+	//
+	// Format: int32
+	OrganizationID *int32
 
 	// V.
 	V string
@@ -115,6 +121,17 @@ func (o *TicketTransferListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithOrganizationID adds the organizationID to the ticket transfer list params
+func (o *TicketTransferListParams) WithOrganizationID(organizationID *int32) *TicketTransferListParams {
+	o.SetOrganizationID(organizationID)
+	return o
+}
+
+// SetOrganizationID adds the organizationId to the ticket transfer list params
+func (o *TicketTransferListParams) SetOrganizationID(organizationID *int32) {
+	o.OrganizationID = organizationID
+}
+
 // WithV adds the v to the ticket transfer list params
 func (o *TicketTransferListParams) WithV(v string) *TicketTransferListParams {
 	o.SetV(v)
@@ -133,6 +150,23 @@ func (o *TicketTransferListParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
+
+	if o.OrganizationID != nil {
+
+		// query param organizationId
+		var qrOrganizationID int32
+
+		if o.OrganizationID != nil {
+			qrOrganizationID = *o.OrganizationID
+		}
+		qOrganizationID := swag.FormatInt32(qrOrganizationID)
+		if qOrganizationID != "" {
+
+			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
+				return err
+			}
+		}
+	}
 
 	// path param v
 	if err := r.SetPathParam("v", o.V); err != nil {

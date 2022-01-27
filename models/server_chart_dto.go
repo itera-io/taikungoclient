@@ -28,14 +28,17 @@ type ServerChartDto struct {
 	// failed
 	Failed []*ServerCommonRecordDto `json:"failed"`
 
+	// google
+	Google []*ServerCommonRecordDto `json:"google"`
+
 	// openstack
 	Openstack []*ServerCommonRecordDto `json:"openstack"`
 
 	// pending
-	Pending []interface{} `json:"pending"`
+	Pending []*ServerCommonRecordDto `json:"pending"`
 
 	// succeeded
-	Succeeded []interface{} `json:"succeeded"`
+	Succeeded []*ServerCommonRecordDto `json:"succeeded"`
 
 	// total aws count
 	TotalAwsCount int32 `json:"totalAwsCount,omitempty"`
@@ -55,6 +58,9 @@ type ServerChartDto struct {
 	// total failed count
 	TotalFailedCount int32 `json:"totalFailedCount,omitempty"`
 
+	// total google count
+	TotalGoogleCount int32 `json:"totalGoogleCount,omitempty"`
+
 	// total openstack count
 	TotalOpenstackCount int32 `json:"totalOpenstackCount,omitempty"`
 
@@ -71,10 +77,10 @@ type ServerChartDto struct {
 	TotalUpdatingCount int32 `json:"totalUpdatingCount,omitempty"`
 
 	// updating
-	Updating []interface{} `json:"updating"`
+	Updating []*ServerCommonRecordDto `json:"updating"`
 
 	// used resources
-	UsedResources []interface{} `json:"usedResources"`
+	UsedResources []*UserResourceChartDto `json:"usedResources"`
 }
 
 // Validate validates this server chart dto
@@ -93,7 +99,27 @@ func (m *ServerChartDto) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateGoogle(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateOpenstack(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePending(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSucceeded(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUpdating(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsedResources(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -181,6 +207,32 @@ func (m *ServerChartDto) validateFailed(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *ServerChartDto) validateGoogle(formats strfmt.Registry) error {
+	if swag.IsZero(m.Google) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Google); i++ {
+		if swag.IsZero(m.Google[i]) { // not required
+			continue
+		}
+
+		if m.Google[i] != nil {
+			if err := m.Google[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("google" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("google" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ServerChartDto) validateOpenstack(formats strfmt.Registry) error {
 	if swag.IsZero(m.Openstack) { // not required
 		return nil
@@ -207,6 +259,110 @@ func (m *ServerChartDto) validateOpenstack(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *ServerChartDto) validatePending(formats strfmt.Registry) error {
+	if swag.IsZero(m.Pending) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Pending); i++ {
+		if swag.IsZero(m.Pending[i]) { // not required
+			continue
+		}
+
+		if m.Pending[i] != nil {
+			if err := m.Pending[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("pending" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("pending" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ServerChartDto) validateSucceeded(formats strfmt.Registry) error {
+	if swag.IsZero(m.Succeeded) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Succeeded); i++ {
+		if swag.IsZero(m.Succeeded[i]) { // not required
+			continue
+		}
+
+		if m.Succeeded[i] != nil {
+			if err := m.Succeeded[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("succeeded" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("succeeded" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ServerChartDto) validateUpdating(formats strfmt.Registry) error {
+	if swag.IsZero(m.Updating) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Updating); i++ {
+		if swag.IsZero(m.Updating[i]) { // not required
+			continue
+		}
+
+		if m.Updating[i] != nil {
+			if err := m.Updating[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("updating" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("updating" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ServerChartDto) validateUsedResources(formats strfmt.Registry) error {
+	if swag.IsZero(m.UsedResources) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.UsedResources); i++ {
+		if swag.IsZero(m.UsedResources[i]) { // not required
+			continue
+		}
+
+		if m.UsedResources[i] != nil {
+			if err := m.UsedResources[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("usedResources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("usedResources" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this server chart dto based on the context it is used
 func (m *ServerChartDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -223,7 +379,27 @@ func (m *ServerChartDto) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateGoogle(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateOpenstack(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidatePending(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSucceeded(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUpdating(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUsedResources(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -293,6 +469,26 @@ func (m *ServerChartDto) contextValidateFailed(ctx context.Context, formats strf
 	return nil
 }
 
+func (m *ServerChartDto) contextValidateGoogle(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Google); i++ {
+
+		if m.Google[i] != nil {
+			if err := m.Google[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("google" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("google" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *ServerChartDto) contextValidateOpenstack(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Openstack); i++ {
@@ -303,6 +499,86 @@ func (m *ServerChartDto) contextValidateOpenstack(ctx context.Context, formats s
 					return ve.ValidateName("openstack" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("openstack" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ServerChartDto) contextValidatePending(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Pending); i++ {
+
+		if m.Pending[i] != nil {
+			if err := m.Pending[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("pending" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("pending" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ServerChartDto) contextValidateSucceeded(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Succeeded); i++ {
+
+		if m.Succeeded[i] != nil {
+			if err := m.Succeeded[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("succeeded" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("succeeded" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ServerChartDto) contextValidateUpdating(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Updating); i++ {
+
+		if m.Updating[i] != nil {
+			if err := m.Updating[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("updating" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("updating" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ServerChartDto) contextValidateUsedResources(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.UsedResources); i++ {
+
+		if m.UsedResources[i] != nil {
+			if err := m.UsedResources[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("usedResources" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("usedResources" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

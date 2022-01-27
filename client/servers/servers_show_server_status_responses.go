@@ -74,13 +74,22 @@ func NewServersShowServerStatusOK() *ServersShowServerStatusOK {
 Success
 */
 type ServersShowServerStatusOK struct {
+	Payload string
 }
 
 func (o *ServersShowServerStatusOK) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Servers/status/{serverId}][%d] serversShowServerStatusOK ", 200)
+	return fmt.Sprintf("[GET /api/v{v}/Servers/status/{serverId}][%d] serversShowServerStatusOK  %+v", 200, o.Payload)
+}
+func (o *ServersShowServerStatusOK) GetPayload() string {
+	return o.Payload
 }
 
 func (o *ServersShowServerStatusOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

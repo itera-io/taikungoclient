@@ -34,7 +34,17 @@ type ClientService interface {
 
 	ImagesAzureImages(params *ImagesAzureImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesAzureImagesOK, error)
 
+	ImagesBindImagesToProject(params *ImagesBindImagesToProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesBindImagesToProjectOK, error)
+
+	ImagesGetImageDetailsByID(params *ImagesGetImageDetailsByIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesGetImageDetailsByIDOK, error)
+
+	ImagesGetSelectedImagesForProject(params *ImagesGetSelectedImagesForProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesGetSelectedImagesForProjectOK, error)
+
+	ImagesGoogleImages(params *ImagesGoogleImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesGoogleImagesOK, error)
+
 	ImagesOpenstackImages(params *ImagesOpenstackImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesOpenstackImagesOK, error)
+
+	ImagesUnbindImagesFromProject(params *ImagesUnbindImagesFromProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesUnbindImagesFromProjectOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -50,7 +60,7 @@ func (a *Client) ImagesAwsImages(params *ImagesAwsImagesParams, authInfo runtime
 	op := &runtime.ClientOperation{
 		ID:                 "Images_AwsImages",
 		Method:             "GET",
-		PathPattern:        "/api/v{v}/Images/aws/{cloudId}/{platform}/{owner}",
+		PathPattern:        "/api/v{v}/Images/aws/{cloudId}",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -118,6 +128,162 @@ func (a *Client) ImagesAzureImages(params *ImagesAzureImagesParams, authInfo run
 }
 
 /*
+  ImagesBindImagesToProject binds images to project
+*/
+func (a *Client) ImagesBindImagesToProject(params *ImagesBindImagesToProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesBindImagesToProjectOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewImagesBindImagesToProjectParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Images_BindImagesToProject",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Images/bind",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ImagesBindImagesToProjectReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ImagesBindImagesToProjectOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Images_BindImagesToProject: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ImagesGetImageDetailsByID unbinds images from project
+*/
+func (a *Client) ImagesGetImageDetailsByID(params *ImagesGetImageDetailsByIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesGetImageDetailsByIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewImagesGetImageDetailsByIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Images_GetImageDetailsById",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Images/details",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ImagesGetImageDetailsByIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ImagesGetImageDetailsByIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Images_GetImageDetailsById: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ImagesGetSelectedImagesForProject retrieves selected images for projects
+*/
+func (a *Client) ImagesGetSelectedImagesForProject(params *ImagesGetSelectedImagesForProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesGetSelectedImagesForProjectOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewImagesGetSelectedImagesForProjectParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Images_GetSelectedImagesForProject",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Images/projects/list",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ImagesGetSelectedImagesForProjectReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ImagesGetSelectedImagesForProjectOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Images_GetSelectedImagesForProject: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ImagesGoogleImages retrieves google images
+*/
+func (a *Client) ImagesGoogleImages(params *ImagesGoogleImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesGoogleImagesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewImagesGoogleImagesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Images_GoogleImages",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Images/google/{cloudId}/{type}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ImagesGoogleImagesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ImagesGoogleImagesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Images_GoogleImages: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   ImagesOpenstackImages retrieves openstack images
 */
 func (a *Client) ImagesOpenstackImages(params *ImagesOpenstackImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesOpenstackImagesOK, error) {
@@ -153,6 +319,45 @@ func (a *Client) ImagesOpenstackImages(params *ImagesOpenstackImagesParams, auth
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Images_OpenstackImages: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ImagesUnbindImagesFromProject unbinds images from project
+*/
+func (a *Client) ImagesUnbindImagesFromProject(params *ImagesUnbindImagesFromProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesUnbindImagesFromProjectOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewImagesUnbindImagesFromProjectParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Images_UnbindImagesFromProject",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Images/unbind",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ImagesUnbindImagesFromProjectReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ImagesUnbindImagesFromProjectOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Images_UnbindImagesFromProject: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -22,9 +22,6 @@ type AmazonCredentialsListDto struct {
 	// availability zone
 	AvailabilityZone string `json:"availabilityZone,omitempty"`
 
-	// aws region Id
-	AwsRegionID int32 `json:"awsRegionId,omitempty"`
-
 	// created by
 	CreatedBy string `json:"createdBy,omitempty"`
 

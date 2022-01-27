@@ -50,6 +50,8 @@ type ClientService interface {
 
 	CronJobDeletePendingOrganizations(params *CronJobDeletePendingOrganizationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeletePendingOrganizationsOK, error)
 
+	CronJobDeleteRedundantProjectActions(params *CronJobDeleteRedundantProjectActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteRedundantProjectActionsOK, error)
+
 	CronJobFetchKubernetesAlerts(params *CronJobFetchKubernetesAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobFetchKubernetesAlertsOK, error)
 
 	CronJobFetchKubernetesOverview(params *CronJobFetchKubernetesOverviewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobFetchKubernetesOverviewOK, error)
@@ -454,6 +456,45 @@ func (a *Client) CronJobDeletePendingOrganizations(params *CronJobDeletePendingO
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for CronJob_DeletePendingOrganizations: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CronJobDeleteRedundantProjectActions deletes useless project actions
+*/
+func (a *Client) CronJobDeleteRedundantProjectActions(params *CronJobDeleteRedundantProjectActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteRedundantProjectActionsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCronJobDeleteRedundantProjectActionsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CronJob_DeleteRedundantProjectActions",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/CronJob/project-actions",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CronJobDeleteRedundantProjectActionsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CronJobDeleteRedundantProjectActionsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CronJob_DeleteRedundantProjectActions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

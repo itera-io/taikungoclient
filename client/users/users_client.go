@@ -42,6 +42,8 @@ type ClientService interface {
 
 	UsersDetails(params *UsersDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersDetailsOK, error)
 
+	UsersExportCsv(params *UsersExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersExportCsvOK, error)
+
 	UsersList(params *UsersListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersListOK, error)
 
 	UsersListSelector(params *UsersListSelectorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersListSelectorOK, error)
@@ -289,6 +291,45 @@ func (a *Client) UsersDetails(params *UsersDetailsParams, authInfo runtime.Clien
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Users_Details: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UsersExportCsv exports csv file
+*/
+func (a *Client) UsersExportCsv(params *UsersExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersExportCsvOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUsersExportCsvParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Users_ExportCsv",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Users/export",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UsersExportCsvReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UsersExportCsvOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Users_ExportCsv: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

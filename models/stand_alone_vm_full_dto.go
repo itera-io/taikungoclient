@@ -19,6 +19,9 @@ import (
 // swagger:model StandAloneVmFullDto
 type StandAloneVMFullDto struct {
 
+	// cloud init
+	CloudInit string `json:"cloudInit,omitempty"`
+
 	// cpu
 	CPU int32 `json:"cpu,omitempty"`
 
@@ -31,8 +34,14 @@ type StandAloneVMFullDto struct {
 	// image
 	Image string `json:"image,omitempty"`
 
+	// is windows
+	IsWindows bool `json:"isWindows"`
+
 	// name
 	Name string `json:"name,omitempty"`
+
+	// password
+	Password string `json:"password,omitempty"`
 
 	// public Ip enabled
 	PublicIPEnabled bool `json:"publicIpEnabled"`
@@ -43,6 +52,12 @@ type StandAloneVMFullDto struct {
 	// revision
 	Revision int32 `json:"revision,omitempty"`
 
+	// shut off
+	ShutOff bool `json:"shutOff"`
+
+	// ssh public key
+	SSHPublicKey string `json:"sshPublicKey,omitempty"`
+
 	// stand alone profile
 	StandAloneProfile *StandAloneProfileFullDto `json:"standAloneProfile,omitempty"`
 
@@ -51,6 +66,9 @@ type StandAloneVMFullDto struct {
 
 	// status
 	Status string `json:"status,omitempty"`
+
+	// username
+	Username string `json:"username,omitempty"`
 
 	// volume size
 	VolumeSize int64 `json:"volumeSize,omitempty"`

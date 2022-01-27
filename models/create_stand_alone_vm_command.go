@@ -19,6 +19,9 @@ import (
 // swagger:model CreateStandAloneVmCommand
 type CreateStandAloneVMCommand struct {
 
+	// cloud init
+	CloudInit string `json:"cloudInit,omitempty"`
+
 	// count
 	Count int32 `json:"count,omitempty"`
 
@@ -37,6 +40,9 @@ type CreateStandAloneVMCommand struct {
 	// public Ip enabled
 	PublicIPEnabled bool `json:"publicIpEnabled"`
 
+	// stand alone meta datas
+	StandAloneMetaDatas []*StandAloneMetaDataDto `json:"standAloneMetaDatas"`
+
 	// stand alone profile Id
 	StandAloneProfileID int32 `json:"standAloneProfileId,omitempty"`
 
@@ -54,6 +60,10 @@ type CreateStandAloneVMCommand struct {
 func (m *CreateStandAloneVMCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateStandAloneMetaDatas(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateStandAloneVMDisks(formats); err != nil {
 		res = append(res, err)
 	}
@@ -61,6 +71,32 @@ func (m *CreateStandAloneVMCommand) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CreateStandAloneVMCommand) validateStandAloneMetaDatas(formats strfmt.Registry) error {
+	if swag.IsZero(m.StandAloneMetaDatas) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.StandAloneMetaDatas); i++ {
+		if swag.IsZero(m.StandAloneMetaDatas[i]) { // not required
+			continue
+		}
+
+		if m.StandAloneMetaDatas[i] != nil {
+			if err := m.StandAloneMetaDatas[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneMetaDatas" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneMetaDatas" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -94,6 +130,10 @@ func (m *CreateStandAloneVMCommand) validateStandAloneVMDisks(formats strfmt.Reg
 func (m *CreateStandAloneVMCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateStandAloneMetaDatas(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateStandAloneVMDisks(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -101,6 +141,26 @@ func (m *CreateStandAloneVMCommand) ContextValidate(ctx context.Context, formats
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CreateStandAloneVMCommand) contextValidateStandAloneMetaDatas(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.StandAloneMetaDatas); i++ {
+
+		if m.StandAloneMetaDatas[i] != nil {
+			if err := m.StandAloneMetaDatas[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standAloneMetaDatas" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standAloneMetaDatas" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

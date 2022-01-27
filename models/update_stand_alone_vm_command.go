@@ -7,7 +7,9 @@ package models
 
 import (
 	"context"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -16,6 +18,12 @@ import (
 //
 // swagger:model UpdateStandAloneVmCommand
 type UpdateStandAloneVMCommand struct {
+
+	// disks
+	Disks []*UpdateStandAloneVMDiskDto `json:"disks"`
+
+	// flavor Id
+	FlavorID string `json:"flavorId,omitempty"`
 
 	// id
 	ID int32 `json:"id,omitempty"`
@@ -35,11 +43,75 @@ type UpdateStandAloneVMCommand struct {
 
 // Validate validates this update stand alone Vm command
 func (m *UpdateStandAloneVMCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateDisks(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this update stand alone Vm command based on context it is used
+func (m *UpdateStandAloneVMCommand) validateDisks(formats strfmt.Registry) error {
+	if swag.IsZero(m.Disks) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Disks); i++ {
+		if swag.IsZero(m.Disks[i]) { // not required
+			continue
+		}
+
+		if m.Disks[i] != nil {
+			if err := m.Disks[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("disks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("disks" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this update stand alone Vm command based on the context it is used
 func (m *UpdateStandAloneVMCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateDisks(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UpdateStandAloneVMCommand) contextValidateDisks(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Disks); i++ {
+
+		if m.Disks[i] != nil {
+			if err := m.Disks[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("disks" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("disks" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

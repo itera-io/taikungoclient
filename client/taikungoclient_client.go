@@ -25,6 +25,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/cron_job"
 	"github.com/itera-io/taikungoclient/client/doc"
 	"github.com/itera-io/taikungoclient/client/flavors"
+	"github.com/itera-io/taikungoclient/client/google_cloud"
 	"github.com/itera-io/taikungoclient/client/images"
 	"github.com/itera-io/taikungoclient/client/invoices"
 	"github.com/itera-io/taikungoclient/client/keycloak"
@@ -42,7 +43,9 @@ import (
 	"github.com/itera-io/taikungoclient/client/partner"
 	"github.com/itera-io/taikungoclient/client/payment"
 	"github.com/itera-io/taikungoclient/client/pre_defined_queries"
+	"github.com/itera-io/taikungoclient/client/project_actions"
 	"github.com/itera-io/taikungoclient/client/project_quotas"
+	"github.com/itera-io/taikungoclient/client/project_revisions"
 	"github.com/itera-io/taikungoclient/client/projects"
 	"github.com/itera-io/taikungoclient/client/prometheus"
 	"github.com/itera-io/taikungoclient/client/request"
@@ -54,10 +57,13 @@ import (
 	"github.com/itera-io/taikungoclient/client/slack"
 	"github.com/itera-io/taikungoclient/client/ssh_users"
 	"github.com/itera-io/taikungoclient/client/stand_alone"
+	"github.com/itera-io/taikungoclient/client/stand_alone_actions"
 	"github.com/itera-io/taikungoclient/client/stand_alone_profile"
 	"github.com/itera-io/taikungoclient/client/stand_alone_vm_disks"
 	"github.com/itera-io/taikungoclient/client/subscription"
+	"github.com/itera-io/taikungoclient/client/taikun_groups"
 	"github.com/itera-io/taikungoclient/client/ticket"
+	"github.com/itera-io/taikungoclient/client/user_groups"
 	"github.com/itera-io/taikungoclient/client/user_projects"
 	"github.com/itera-io/taikungoclient/client/users"
 )
@@ -136,6 +142,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.CronJob = cron_job.New(transport, formats)
 	cli.Doc = doc.New(transport, formats)
 	cli.Flavors = flavors.New(transport, formats)
+	cli.GoogleCloud = google_cloud.New(transport, formats)
 	cli.Images = images.New(transport, formats)
 	cli.Invoices = invoices.New(transport, formats)
 	cli.Keycloak = keycloak.New(transport, formats)
@@ -153,7 +160,9 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Partner = partner.New(transport, formats)
 	cli.Payment = payment.New(transport, formats)
 	cli.PreDefinedQueries = pre_defined_queries.New(transport, formats)
+	cli.ProjectActions = project_actions.New(transport, formats)
 	cli.ProjectQuotas = project_quotas.New(transport, formats)
+	cli.ProjectRevisions = project_revisions.New(transport, formats)
 	cli.Projects = projects.New(transport, formats)
 	cli.Prometheus = prometheus.New(transport, formats)
 	cli.Request = request.New(transport, formats)
@@ -165,10 +174,13 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Slack = slack.New(transport, formats)
 	cli.SSHUsers = ssh_users.New(transport, formats)
 	cli.StandAlone = stand_alone.New(transport, formats)
+	cli.StandAloneActions = stand_alone_actions.New(transport, formats)
 	cli.StandAloneProfile = stand_alone_profile.New(transport, formats)
 	cli.StandAloneVMDisks = stand_alone_vm_disks.New(transport, formats)
 	cli.Subscription = subscription.New(transport, formats)
+	cli.TaikunGroups = taikun_groups.New(transport, formats)
 	cli.Ticket = ticket.New(transport, formats)
+	cli.UserGroups = user_groups.New(transport, formats)
 	cli.UserProjects = user_projects.New(transport, formats)
 	cli.Users = users.New(transport, formats)
 	return cli
@@ -245,6 +257,8 @@ type Taikungoclient struct {
 
 	Flavors flavors.ClientService
 
+	GoogleCloud google_cloud.ClientService
+
 	Images images.ClientService
 
 	Invoices invoices.ClientService
@@ -279,7 +293,11 @@ type Taikungoclient struct {
 
 	PreDefinedQueries pre_defined_queries.ClientService
 
+	ProjectActions project_actions.ClientService
+
 	ProjectQuotas project_quotas.ClientService
+
+	ProjectRevisions project_revisions.ClientService
 
 	Projects projects.ClientService
 
@@ -303,13 +321,19 @@ type Taikungoclient struct {
 
 	StandAlone stand_alone.ClientService
 
+	StandAloneActions stand_alone_actions.ClientService
+
 	StandAloneProfile stand_alone_profile.ClientService
 
 	StandAloneVMDisks stand_alone_vm_disks.ClientService
 
 	Subscription subscription.ClientService
 
+	TaikunGroups taikun_groups.ClientService
+
 	Ticket ticket.ClientService
+
+	UserGroups user_groups.ClientService
 
 	UserProjects user_projects.ClientService
 
@@ -336,6 +360,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.CronJob.SetTransport(transport)
 	c.Doc.SetTransport(transport)
 	c.Flavors.SetTransport(transport)
+	c.GoogleCloud.SetTransport(transport)
 	c.Images.SetTransport(transport)
 	c.Invoices.SetTransport(transport)
 	c.Keycloak.SetTransport(transport)
@@ -353,7 +378,9 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Partner.SetTransport(transport)
 	c.Payment.SetTransport(transport)
 	c.PreDefinedQueries.SetTransport(transport)
+	c.ProjectActions.SetTransport(transport)
 	c.ProjectQuotas.SetTransport(transport)
+	c.ProjectRevisions.SetTransport(transport)
 	c.Projects.SetTransport(transport)
 	c.Prometheus.SetTransport(transport)
 	c.Request.SetTransport(transport)
@@ -365,10 +392,13 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Slack.SetTransport(transport)
 	c.SSHUsers.SetTransport(transport)
 	c.StandAlone.SetTransport(transport)
+	c.StandAloneActions.SetTransport(transport)
 	c.StandAloneProfile.SetTransport(transport)
 	c.StandAloneVMDisks.SetTransport(transport)
 	c.Subscription.SetTransport(transport)
+	c.TaikunGroups.SetTransport(transport)
 	c.Ticket.SetTransport(transport)
+	c.UserGroups.SetTransport(transport)
 	c.UserProjects.SetTransport(transport)
 	c.Users.SetTransport(transport)
 }

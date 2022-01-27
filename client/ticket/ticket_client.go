@@ -489,7 +489,7 @@ func (a *Client) TicketTransfer(params *TicketTransferParams, authInfo runtime.C
 }
 
 /*
-  TicketTransferList retrieves current organization managers
+  TicketTransferList retrieves organization managers
 */
 func (a *Client) TicketTransferList(params *TicketTransferListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketTransferListOK, error) {
 	// TODO: Validate the params before sending

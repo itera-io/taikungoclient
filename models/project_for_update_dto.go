@@ -21,15 +21,6 @@ type ProjectForUpdateDto struct {
 	// access Ip
 	AccessIP string `json:"accessIp,omitempty"`
 
-	// access profile revision
-	AccessProfileRevision int32 `json:"accessProfileRevision,omitempty"`
-
-	// cloud credential revision
-	CloudCredentialRevision int32 `json:"cloudCredentialRevision,omitempty"`
-
-	// estimated time
-	EstimatedTime string `json:"estimatedTime,omitempty"`
-
 	// health
 	Health ProjectHealth `json:"health,omitempty"`
 
@@ -48,9 +39,6 @@ type ProjectForUpdateDto struct {
 	// is opa enabled
 	IsOpaEnabled bool `json:"isOpaEnabled"`
 
-	// job Url
-	JobURL string `json:"jobUrl,omitempty"`
-
 	// kube config
 	KubeConfig string `json:"kubeConfig,omitempty"`
 
@@ -59,12 +47,6 @@ type ProjectForUpdateDto struct {
 
 	// kubespray current version
 	KubesprayCurrentVersion string `json:"kubesprayCurrentVersion,omitempty"`
-
-	// opa profile revision
-	OpaProfileRevision int32 `json:"opaProfileRevision,omitempty"`
-
-	// operation
-	Operation string `json:"operation,omitempty"`
 
 	// status
 	Status ProjectStatus `json:"status,omitempty"`

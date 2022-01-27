@@ -74,13 +74,13 @@ func NewCommonGetCountryListOK() *CommonGetCountryListOK {
 Success
 */
 type CommonGetCountryListOK struct {
-	Payload interface{}
+	Payload []*models.CountryListDto
 }
 
 func (o *CommonGetCountryListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListOK  %+v", 200, o.Payload)
 }
-func (o *CommonGetCountryListOK) GetPayload() interface{} {
+func (o *CommonGetCountryListOK) GetPayload() []*models.CountryListDto {
 	return o.Payload
 }
 

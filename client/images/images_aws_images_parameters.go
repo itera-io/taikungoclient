@@ -65,6 +65,9 @@ type ImagesAwsImagesParams struct {
 	// Format: int32
 	CloudID int32
 
+	// Latest.
+	Latest *bool
+
 	/* Limit.
 
 	   Limits size (by default 50)
@@ -80,12 +83,6 @@ type ImagesAwsImagesParams struct {
 	   Format: int32
 	*/
 	Offset *int32
-
-	// Owner.
-	Owner string
-
-	// Platform.
-	Platform string
 
 	// Search.
 	Search *string
@@ -163,6 +160,17 @@ func (o *ImagesAwsImagesParams) SetCloudID(cloudID int32) {
 	o.CloudID = cloudID
 }
 
+// WithLatest adds the latest to the images aws images params
+func (o *ImagesAwsImagesParams) WithLatest(latest *bool) *ImagesAwsImagesParams {
+	o.SetLatest(latest)
+	return o
+}
+
+// SetLatest adds the latest to the images aws images params
+func (o *ImagesAwsImagesParams) SetLatest(latest *bool) {
+	o.Latest = latest
+}
+
 // WithLimit adds the limit to the images aws images params
 func (o *ImagesAwsImagesParams) WithLimit(limit *int32) *ImagesAwsImagesParams {
 	o.SetLimit(limit)
@@ -183,28 +191,6 @@ func (o *ImagesAwsImagesParams) WithOffset(offset *int32) *ImagesAwsImagesParams
 // SetOffset adds the offset to the images aws images params
 func (o *ImagesAwsImagesParams) SetOffset(offset *int32) {
 	o.Offset = offset
-}
-
-// WithOwner adds the owner to the images aws images params
-func (o *ImagesAwsImagesParams) WithOwner(owner string) *ImagesAwsImagesParams {
-	o.SetOwner(owner)
-	return o
-}
-
-// SetOwner adds the owner to the images aws images params
-func (o *ImagesAwsImagesParams) SetOwner(owner string) {
-	o.Owner = owner
-}
-
-// WithPlatform adds the platform to the images aws images params
-func (o *ImagesAwsImagesParams) WithPlatform(platform string) *ImagesAwsImagesParams {
-	o.SetPlatform(platform)
-	return o
-}
-
-// SetPlatform adds the platform to the images aws images params
-func (o *ImagesAwsImagesParams) SetPlatform(platform string) {
-	o.Platform = platform
 }
 
 // WithSearch adds the search to the images aws images params
@@ -264,6 +250,23 @@ func (o *ImagesAwsImagesParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		return err
 	}
 
+	if o.Latest != nil {
+
+		// query param latest
+		var qrLatest bool
+
+		if o.Latest != nil {
+			qrLatest = *o.Latest
+		}
+		qLatest := swag.FormatBool(qrLatest)
+		if qLatest != "" {
+
+			if err := r.SetQueryParam("latest", qLatest); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.Limit != nil {
 
 		// query param limit
@@ -296,16 +299,6 @@ func (o *ImagesAwsImagesParams) WriteToRequest(r runtime.ClientRequest, reg strf
 				return err
 			}
 		}
-	}
-
-	// path param owner
-	if err := r.SetPathParam("owner", o.Owner); err != nil {
-		return err
-	}
-
-	// path param platform
-	if err := r.SetPathParam("platform", o.Platform); err != nil {
-		return err
 	}
 
 	if o.Search != nil {

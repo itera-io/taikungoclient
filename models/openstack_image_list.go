@@ -20,7 +20,7 @@ import (
 type OpenstackImageList struct {
 
 	// data
-	Data []*OpenstackImageListDto `json:"data"`
+	Data []*CommonStringBasedDropdownDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`

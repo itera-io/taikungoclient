@@ -82,11 +82,17 @@ type ProjectListForUIDto struct {
 	// organization name
 	OrganizationName string `json:"organizationName,omitempty"`
 
+	// quota Id
+	QuotaID int32 `json:"quotaId,omitempty"`
+
 	// status
 	Status string `json:"status,omitempty"`
 
 	// total servers count
 	TotalServersCount int32 `json:"totalServersCount,omitempty"`
+
+	// total standalone vms count
+	TotalStandaloneVmsCount int32 `json:"totalStandaloneVmsCount,omitempty"`
 }
 
 // Validate validates this project list for Ui dto

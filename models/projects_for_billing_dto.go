@@ -42,6 +42,9 @@ type ProjectsForBillingDto struct {
 
 	// servers
 	Servers []*ServersForBillingDto `json:"servers"`
+
+	// standalone vms
+	StandaloneVms []*StandaloneVmsForBillingDto `json:"standaloneVms"`
 }
 
 // Validate validates this projects for billing dto
@@ -57,6 +60,10 @@ func (m *ProjectsForBillingDto) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateServers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStandaloneVms(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -116,11 +123,41 @@ func (m *ProjectsForBillingDto) validateServers(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *ProjectsForBillingDto) validateStandaloneVms(formats strfmt.Registry) error {
+	if swag.IsZero(m.StandaloneVms) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.StandaloneVms); i++ {
+		if swag.IsZero(m.StandaloneVms[i]) { // not required
+			continue
+		}
+
+		if m.StandaloneVms[i] != nil {
+			if err := m.StandaloneVms[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this projects for billing dto based on the context it is used
 func (m *ProjectsForBillingDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateServers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStandaloneVms(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -140,6 +177,26 @@ func (m *ProjectsForBillingDto) contextValidateServers(ctx context.Context, form
 					return ve.ValidateName("servers" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("servers" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ProjectsForBillingDto) contextValidateStandaloneVms(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.StandaloneVms); i++ {
+
+		if m.StandaloneVms[i] != nil {
+			if err := m.StandaloneVms[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

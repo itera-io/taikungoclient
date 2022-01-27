@@ -65,6 +65,9 @@ type ImagesAzureImagesParams struct {
 	// Format: int32
 	CloudID int32
 
+	// Latest.
+	Latest *bool
+
 	/* Limit.
 
 	   Limits size (by default 50)
@@ -164,6 +167,17 @@ func (o *ImagesAzureImagesParams) WithCloudID(cloudID int32) *ImagesAzureImagesP
 // SetCloudID adds the cloudId to the images azure images params
 func (o *ImagesAzureImagesParams) SetCloudID(cloudID int32) {
 	o.CloudID = cloudID
+}
+
+// WithLatest adds the latest to the images azure images params
+func (o *ImagesAzureImagesParams) WithLatest(latest *bool) *ImagesAzureImagesParams {
+	o.SetLatest(latest)
+	return o
+}
+
+// SetLatest adds the latest to the images azure images params
+func (o *ImagesAzureImagesParams) SetLatest(latest *bool) {
+	o.Latest = latest
 }
 
 // WithLimit adds the limit to the images azure images params
@@ -276,6 +290,23 @@ func (o *ImagesAzureImagesParams) WriteToRequest(r runtime.ClientRequest, reg st
 	// path param cloudId
 	if err := r.SetPathParam("cloudId", swag.FormatInt32(o.CloudID)); err != nil {
 		return err
+	}
+
+	if o.Latest != nil {
+
+		// query param latest
+		var qrLatest bool
+
+		if o.Latest != nil {
+			qrLatest = *o.Latest
+		}
+		qLatest := swag.FormatBool(qrLatest)
+		if qLatest != "" {
+
+			if err := r.SetQueryParam("latest", qLatest); err != nil {
+				return err
+			}
+		}
 	}
 
 	if o.Limit != nil {

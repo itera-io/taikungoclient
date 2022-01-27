@@ -74,20 +74,22 @@ func NewSecurityGroupCreateOK() *SecurityGroupCreateOK {
 Success
 */
 type SecurityGroupCreateOK struct {
-	Payload models.Unit
+	Payload *models.APIResponse
 }
 
 func (o *SecurityGroupCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateOK  %+v", 200, o.Payload)
 }
-func (o *SecurityGroupCreateOK) GetPayload() models.Unit {
+func (o *SecurityGroupCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *SecurityGroupCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.APIResponse)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
