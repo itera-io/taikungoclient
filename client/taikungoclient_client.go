@@ -20,6 +20,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/billing"
 	"github.com/itera-io/taikungoclient/client/checker"
 	"github.com/itera-io/taikungoclient/client/cloud_credentials"
+	"github.com/itera-io/taikungoclient/client/common"
 	"github.com/itera-io/taikungoclient/client/flavors"
 	"github.com/itera-io/taikungoclient/client/images"
 	"github.com/itera-io/taikungoclient/client/keycloak"
@@ -37,6 +38,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/request"
 	"github.com/itera-io/taikungoclient/client/s3_credentials"
 	"github.com/itera-io/taikungoclient/client/search"
+	"github.com/itera-io/taikungoclient/client/security_group"
 	"github.com/itera-io/taikungoclient/client/servers"
 	"github.com/itera-io/taikungoclient/client/showback"
 	"github.com/itera-io/taikungoclient/client/slack"
@@ -120,6 +122,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Billing = billing.New(transport, formats)
 	cli.Checker = checker.New(transport, formats)
 	cli.CloudCredentials = cloud_credentials.New(transport, formats)
+	cli.Common = common.New(transport, formats)
 	cli.Flavors = flavors.New(transport, formats)
 	cli.Images = images.New(transport, formats)
 	cli.Keycloak = keycloak.New(transport, formats)
@@ -137,6 +140,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Request = request.New(transport, formats)
 	cli.S3Credentials = s3_credentials.New(transport, formats)
 	cli.Search = search.New(transport, formats)
+	cli.SecurityGroup = security_group.New(transport, formats)
 	cli.Servers = servers.New(transport, formats)
 	cli.Showback = showback.New(transport, formats)
 	cli.Slack = slack.New(transport, formats)
@@ -213,6 +217,8 @@ type Taikungoclient struct {
 
 	CloudCredentials cloud_credentials.ClientService
 
+	Common common.ClientService
+
 	Flavors flavors.ClientService
 
 	Images images.ClientService
@@ -246,6 +252,8 @@ type Taikungoclient struct {
 	S3Credentials s3_credentials.ClientService
 
 	Search search.ClientService
+
+	SecurityGroup security_group.ClientService
 
 	Servers servers.ClientService
 
@@ -287,6 +295,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Billing.SetTransport(transport)
 	c.Checker.SetTransport(transport)
 	c.CloudCredentials.SetTransport(transport)
+	c.Common.SetTransport(transport)
 	c.Flavors.SetTransport(transport)
 	c.Images.SetTransport(transport)
 	c.Keycloak.SetTransport(transport)
@@ -304,6 +313,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Request.SetTransport(transport)
 	c.S3Credentials.SetTransport(transport)
 	c.Search.SetTransport(transport)
+	c.SecurityGroup.SetTransport(transport)
 	c.Servers.SetTransport(transport)
 	c.Showback.SetTransport(transport)
 	c.Slack.SetTransport(transport)
