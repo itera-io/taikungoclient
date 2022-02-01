@@ -23,6 +23,9 @@ type CredentialChartDto struct {
 	// azure
 	Azure int32 `json:"azure,omitempty"`
 
+	// google
+	Google int32 `json:"google,omitempty"`
+
 	// openstack
 	Openstack int32 `json:"openstack,omitempty"`
 

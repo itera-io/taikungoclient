@@ -34,7 +34,11 @@ type ClientService interface {
 
 	StandAloneProfileDelete(params *StandAloneProfileDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProfileDeleteOK, error)
 
+	StandAloneProfileDropdownList(params *StandAloneProfileDropdownListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProfileDropdownListOK, error)
+
 	StandAloneProfileEdit(params *StandAloneProfileEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProfileEditOK, error)
+
+	StandAloneProfileList(params *StandAloneProfileListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProfileListOK, error)
 
 	StandAloneProfileLockManagement(params *StandAloneProfileLockManagementParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProfileLockManagementOK, error)
 
@@ -120,6 +124,45 @@ func (a *Client) StandAloneProfileDelete(params *StandAloneProfileDeleteParams, 
 }
 
 /*
+  StandAloneProfileDropdownList retrieves dropdown list of stand alone profiles
+*/
+func (a *Client) StandAloneProfileDropdownList(params *StandAloneProfileDropdownListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProfileDropdownListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAloneProfileDropdownListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAloneProfile_DropdownList",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/StandAloneProfile/list",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAloneProfileDropdownListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAloneProfileDropdownListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAloneProfile_DropdownList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   StandAloneProfileEdit updates standalone profile
 */
 func (a *Client) StandAloneProfileEdit(params *StandAloneProfileEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProfileEditOK, error) {
@@ -155,6 +198,45 @@ func (a *Client) StandAloneProfileEdit(params *StandAloneProfileEditParams, auth
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for StandAloneProfile_Edit: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  StandAloneProfileList retrieves a list of stand alone profiles
+*/
+func (a *Client) StandAloneProfileList(params *StandAloneProfileListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProfileListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAloneProfileListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAloneProfile_List",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/StandAloneProfile",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAloneProfileListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAloneProfileListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAloneProfile_List: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

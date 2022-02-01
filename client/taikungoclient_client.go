@@ -18,8 +18,10 @@ import (
 	"github.com/itera-io/taikungoclient/client/azure"
 	"github.com/itera-io/taikungoclient/client/backup"
 	"github.com/itera-io/taikungoclient/client/billing"
+	"github.com/itera-io/taikungoclient/client/checker"
 	"github.com/itera-io/taikungoclient/client/cloud_credentials"
 	"github.com/itera-io/taikungoclient/client/flavors"
+	"github.com/itera-io/taikungoclient/client/images"
 	"github.com/itera-io/taikungoclient/client/keycloak"
 	"github.com/itera-io/taikungoclient/client/kube_config"
 	"github.com/itera-io/taikungoclient/client/kubernetes"
@@ -40,7 +42,11 @@ import (
 	"github.com/itera-io/taikungoclient/client/slack"
 	"github.com/itera-io/taikungoclient/client/ssh_users"
 	"github.com/itera-io/taikungoclient/client/stand_alone"
+	"github.com/itera-io/taikungoclient/client/stand_alone_actions"
 	"github.com/itera-io/taikungoclient/client/stand_alone_profile"
+	"github.com/itera-io/taikungoclient/client/stand_alone_vm_disks"
+	"github.com/itera-io/taikungoclient/client/taikun_groups"
+	"github.com/itera-io/taikungoclient/client/user_groups"
 	"github.com/itera-io/taikungoclient/client/user_projects"
 	"github.com/itera-io/taikungoclient/client/users"
 )
@@ -112,8 +118,10 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Azure = azure.New(transport, formats)
 	cli.Backup = backup.New(transport, formats)
 	cli.Billing = billing.New(transport, formats)
+	cli.Checker = checker.New(transport, formats)
 	cli.CloudCredentials = cloud_credentials.New(transport, formats)
 	cli.Flavors = flavors.New(transport, formats)
+	cli.Images = images.New(transport, formats)
 	cli.Keycloak = keycloak.New(transport, formats)
 	cli.KubeConfig = kube_config.New(transport, formats)
 	cli.Kubernetes = kubernetes.New(transport, formats)
@@ -134,7 +142,11 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Slack = slack.New(transport, formats)
 	cli.SSHUsers = ssh_users.New(transport, formats)
 	cli.StandAlone = stand_alone.New(transport, formats)
+	cli.StandAloneActions = stand_alone_actions.New(transport, formats)
 	cli.StandAloneProfile = stand_alone_profile.New(transport, formats)
+	cli.StandAloneVMDisks = stand_alone_vm_disks.New(transport, formats)
+	cli.TaikunGroups = taikun_groups.New(transport, formats)
+	cli.UserGroups = user_groups.New(transport, formats)
 	cli.UserProjects = user_projects.New(transport, formats)
 	cli.Users = users.New(transport, formats)
 	return cli
@@ -197,9 +209,13 @@ type Taikungoclient struct {
 
 	Billing billing.ClientService
 
+	Checker checker.ClientService
+
 	CloudCredentials cloud_credentials.ClientService
 
 	Flavors flavors.ClientService
+
+	Images images.ClientService
 
 	Keycloak keycloak.ClientService
 
@@ -241,7 +257,15 @@ type Taikungoclient struct {
 
 	StandAlone stand_alone.ClientService
 
+	StandAloneActions stand_alone_actions.ClientService
+
 	StandAloneProfile stand_alone_profile.ClientService
+
+	StandAloneVMDisks stand_alone_vm_disks.ClientService
+
+	TaikunGroups taikun_groups.ClientService
+
+	UserGroups user_groups.ClientService
 
 	UserProjects user_projects.ClientService
 
@@ -261,8 +285,10 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Azure.SetTransport(transport)
 	c.Backup.SetTransport(transport)
 	c.Billing.SetTransport(transport)
+	c.Checker.SetTransport(transport)
 	c.CloudCredentials.SetTransport(transport)
 	c.Flavors.SetTransport(transport)
+	c.Images.SetTransport(transport)
 	c.Keycloak.SetTransport(transport)
 	c.KubeConfig.SetTransport(transport)
 	c.Kubernetes.SetTransport(transport)
@@ -283,7 +309,11 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Slack.SetTransport(transport)
 	c.SSHUsers.SetTransport(transport)
 	c.StandAlone.SetTransport(transport)
+	c.StandAloneActions.SetTransport(transport)
 	c.StandAloneProfile.SetTransport(transport)
+	c.StandAloneVMDisks.SetTransport(transport)
+	c.TaikunGroups.SetTransport(transport)
+	c.UserGroups.SetTransport(transport)
 	c.UserProjects.SetTransport(transport)
 	c.Users.SetTransport(transport)
 }

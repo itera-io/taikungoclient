@@ -74,13 +74,13 @@ func NewOpenstackNetworksOK() *OpenstackNetworksOK {
 Success
 */
 type OpenstackNetworksOK struct {
-	Payload interface{}
+	Payload []*models.CommonStringBasedDropdownDto
 }
 
 func (o *OpenstackNetworksOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksOK  %+v", 200, o.Payload)
 }
-func (o *OpenstackNetworksOK) GetPayload() interface{} {
+func (o *OpenstackNetworksOK) GetPayload() []*models.CommonStringBasedDropdownDto {
 	return o.Payload
 }
 

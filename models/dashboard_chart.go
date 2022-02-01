@@ -29,6 +29,9 @@ type DashboardChart struct {
 
 	// servers
 	Servers *ServerChartDto `json:"servers,omitempty"`
+
+	// stand alone vms
+	StandAloneVms *ServerChartDto `json:"standAloneVms,omitempty"`
 }
 
 // Validate validates this dashboard chart
@@ -48,6 +51,10 @@ func (m *DashboardChart) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateServers(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStandAloneVms(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -133,6 +140,25 @@ func (m *DashboardChart) validateServers(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *DashboardChart) validateStandAloneVms(formats strfmt.Registry) error {
+	if swag.IsZero(m.StandAloneVms) { // not required
+		return nil
+	}
+
+	if m.StandAloneVms != nil {
+		if err := m.StandAloneVms.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("standAloneVms")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("standAloneVms")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this dashboard chart based on the context it is used
 func (m *DashboardChart) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -150,6 +176,10 @@ func (m *DashboardChart) ContextValidate(ctx context.Context, formats strfmt.Reg
 	}
 
 	if err := m.contextValidateServers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStandAloneVms(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -215,6 +245,22 @@ func (m *DashboardChart) contextValidateServers(ctx context.Context, formats str
 				return ve.ValidateName("servers")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("servers")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *DashboardChart) contextValidateStandAloneVms(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StandAloneVms != nil {
+		if err := m.StandAloneVms.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("standAloneVms")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("standAloneVms")
 			}
 			return err
 		}

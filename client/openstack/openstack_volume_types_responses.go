@@ -74,13 +74,13 @@ func NewOpenstackVolumeTypesOK() *OpenstackVolumeTypesOK {
 Success
 */
 type OpenstackVolumeTypesOK struct {
-	Payload interface{}
+	Payload []string
 }
 
 func (o *OpenstackVolumeTypesOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesOK  %+v", 200, o.Payload)
 }
-func (o *OpenstackVolumeTypesOK) GetPayload() interface{} {
+func (o *OpenstackVolumeTypesOK) GetPayload() []string {
 	return o.Payload
 }
 

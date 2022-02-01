@@ -28,9 +28,6 @@ type StandaloneProfileListDto struct {
 	// name
 	Name string `json:"name,omitempty"`
 
-	// public key
-	PublicKey string `json:"publicKey,omitempty"`
-
 	// revision
 	Revision int32 `json:"revision,omitempty"`
 

@@ -38,6 +38,8 @@ type ClientService interface {
 
 	FlavorsGetSelectedFlavorsForProject(params *FlavorsGetSelectedFlavorsForProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsGetSelectedFlavorsForProjectOK, error)
 
+	FlavorsGoogleFlavors(params *FlavorsGoogleFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsGoogleFlavorsOK, error)
+
 	FlavorsOpenstackFlavors(params *FlavorsOpenstackFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsOpenstackFlavorsOK, error)
 
 	FlavorsUnbindFromProject(params *FlavorsUnbindFromProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsUnbindFromProjectOK, error)
@@ -198,6 +200,45 @@ func (a *Client) FlavorsGetSelectedFlavorsForProject(params *FlavorsGetSelectedF
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Flavors_GetSelectedFlavorsForProject: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  FlavorsGoogleFlavors retrieves google flavors
+*/
+func (a *Client) FlavorsGoogleFlavors(params *FlavorsGoogleFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsGoogleFlavorsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewFlavorsGoogleFlavorsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Flavors_GoogleFlavors",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Flavors/google/{cloudId}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &FlavorsGoogleFlavorsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*FlavorsGoogleFlavorsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Flavors_GoogleFlavors: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

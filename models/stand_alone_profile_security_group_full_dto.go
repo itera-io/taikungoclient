@@ -29,6 +29,9 @@ type StandAloneProfileSecurityGroupFullDto struct {
 	// port min range
 	PortMinRange int32 `json:"portMinRange,omitempty"`
 
+	// priority
+	Priority int32 `json:"priority,omitempty"`
+
 	// protocol
 	Protocol string `json:"protocol,omitempty"`
 

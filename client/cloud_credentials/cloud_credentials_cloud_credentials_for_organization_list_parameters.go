@@ -60,9 +60,6 @@ func NewCloudCredentialsCloudCredentialsForOrganizationListParamsWithHTTPClient(
 */
 type CloudCredentialsCloudCredentialsForOrganizationListParams struct {
 
-	// FilterBy.
-	FilterBy *string
-
 	// OrganizationID.
 	//
 	// Format: int32
@@ -124,17 +121,6 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListParams) SetHTTPClien
 	o.HTTPClient = client
 }
 
-// WithFilterBy adds the filterBy to the cloud credentials cloud credentials for organization list params
-func (o *CloudCredentialsCloudCredentialsForOrganizationListParams) WithFilterBy(filterBy *string) *CloudCredentialsCloudCredentialsForOrganizationListParams {
-	o.SetFilterBy(filterBy)
-	return o
-}
-
-// SetFilterBy adds the filterBy to the cloud credentials cloud credentials for organization list params
-func (o *CloudCredentialsCloudCredentialsForOrganizationListParams) SetFilterBy(filterBy *string) {
-	o.FilterBy = filterBy
-}
-
 // WithOrganizationID adds the organizationID to the cloud credentials cloud credentials for organization list params
 func (o *CloudCredentialsCloudCredentialsForOrganizationListParams) WithOrganizationID(organizationID *int32) *CloudCredentialsCloudCredentialsForOrganizationListParams {
 	o.SetOrganizationID(organizationID)
@@ -164,23 +150,6 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListParams) WriteToReque
 		return err
 	}
 	var res []error
-
-	if o.FilterBy != nil {
-
-		// query param filterBy
-		var qrFilterBy string
-
-		if o.FilterBy != nil {
-			qrFilterBy = *o.FilterBy
-		}
-		qFilterBy := qrFilterBy
-		if qFilterBy != "" {
-
-			if err := r.SetQueryParam("filterBy", qFilterBy); err != nil {
-				return err
-			}
-		}
-	}
 
 	if o.OrganizationID != nil {
 

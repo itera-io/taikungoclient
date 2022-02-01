@@ -21,7 +21,7 @@ type StandAloneVMDiskDto struct {
 	DeviceName string `json:"deviceName,omitempty"`
 
 	// lun Id
-	LunID string `json:"lunId,omitempty"`
+	LunID int32 `json:"lunId,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`

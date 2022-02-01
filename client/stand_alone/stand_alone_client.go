@@ -30,9 +30,175 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	StandAloneCommit(params *StandAloneCommitParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneCommitOK, error)
+
+	StandAloneCreate(params *StandAloneCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneCreateOK, error)
+
+	StandAloneDelete(params *StandAloneDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneDeleteOK, error)
+
+	StandAloneDetails(params *StandAloneDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneDetailsOK, error)
+
 	StandAloneList(params *StandAloneListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneListOK, error)
 
+	StandAloneRepair(params *StandAloneRepairParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneRepairOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  StandAloneCommit commits stand alone vm
+*/
+func (a *Client) StandAloneCommit(params *StandAloneCommitParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneCommitOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAloneCommitParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAlone_Commit",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/StandAlone/commit",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAloneCommitReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAloneCommitOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAlone_Commit: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  StandAloneCreate creates stand alone vm
+*/
+func (a *Client) StandAloneCreate(params *StandAloneCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneCreateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAloneCreateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAlone_Create",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/StandAlone/create",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAloneCreateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAloneCreateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAlone_Create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  StandAloneDelete deletes purge stand alone vm
+*/
+func (a *Client) StandAloneDelete(params *StandAloneDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneDeleteOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAloneDeleteParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAlone_Delete",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/StandAlone/delete",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAloneDeleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAloneDeleteOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAlone_Delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  StandAloneDetails retrieves a list of standalone vm with detailed info
+*/
+func (a *Client) StandAloneDetails(params *StandAloneDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneDetailsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAloneDetailsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAlone_Details",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/StandAlone/{projectId}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAloneDetailsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAloneDetailsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAlone_Details: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -71,6 +237,45 @@ func (a *Client) StandAloneList(params *StandAloneListParams, authInfo runtime.C
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for StandAlone_List: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  StandAloneRepair repairs stand alone vm
+*/
+func (a *Client) StandAloneRepair(params *StandAloneRepairParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneRepairOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAloneRepairParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAlone_Repair",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/StandAlone/repair",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAloneRepairReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAloneRepairOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAlone_Repair: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

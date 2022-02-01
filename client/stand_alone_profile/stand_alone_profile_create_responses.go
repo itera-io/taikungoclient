@@ -74,20 +74,22 @@ func NewStandAloneProfileCreateOK() *StandAloneProfileCreateOK {
 Success
 */
 type StandAloneProfileCreateOK struct {
-	Payload models.Unit
+	Payload *models.APIResponse
 }
 
 func (o *StandAloneProfileCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateOK  %+v", 200, o.Payload)
 }
-func (o *StandAloneProfileCreateOK) GetPayload() models.Unit {
+func (o *StandAloneProfileCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *StandAloneProfileCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.APIResponse)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

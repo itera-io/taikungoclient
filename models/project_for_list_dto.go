@@ -35,6 +35,9 @@ type ProjectForListDto struct {
 	// bound users
 	BoundUsers []*UserDto `json:"boundUsers"`
 
+	// cloud credential Id
+	CloudCredentialID int32 `json:"cloudCredentialId,omitempty"`
+
 	// cloud credential name
 	CloudCredentialName string `json:"cloudCredentialName,omitempty"`
 
@@ -155,9 +158,6 @@ type ProjectForListDto struct {
 	// s3 secret key
 	S3SecretKey string `json:"s3SecretKey,omitempty"`
 
-	// standalone vms
-	StandaloneVms []*StandAloneVMFullDto `json:"standaloneVms"`
-
 	// status
 	Status string `json:"status,omitempty"`
 
@@ -178,6 +178,9 @@ type ProjectForListDto struct {
 
 	// token
 	Token string `json:"token,omitempty"`
+
+	// topic name
+	TopicName string `json:"topicName,omitempty"`
 
 	// total servers count
 	TotalServersCount int32 `json:"totalServersCount,omitempty"`
@@ -212,10 +215,6 @@ func (m *ProjectForListDto) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateOpaProfiles(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateStandaloneVms(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -364,32 +363,6 @@ func (m *ProjectForListDto) validateOpaProfiles(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ProjectForListDto) validateStandaloneVms(formats strfmt.Registry) error {
-	if swag.IsZero(m.StandaloneVms) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.StandaloneVms); i++ {
-		if swag.IsZero(m.StandaloneVms[i]) { // not required
-			continue
-		}
-
-		if m.StandaloneVms[i] != nil {
-			if err := m.StandaloneVms[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
 func (m *ProjectForListDto) validateUpdatedAt(formats strfmt.Registry) error {
 	if swag.IsZero(m.UpdatedAt) { // not required
 		return nil
@@ -427,10 +400,6 @@ func (m *ProjectForListDto) ContextValidate(ctx context.Context, formats strfmt.
 	}
 
 	if err := m.contextValidateOpaProfiles(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateStandaloneVms(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -543,26 +512,6 @@ func (m *ProjectForListDto) contextValidateOpaProfiles(ctx context.Context, form
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *ProjectForListDto) contextValidateStandaloneVms(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.StandaloneVms); i++ {
-
-		if m.StandaloneVms[i] != nil {
-			if err := m.StandaloneVms[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil

@@ -17,9 +17,6 @@ import (
 // swagger:model CommitStandAloneVmCommand
 type CommitStandAloneVMCommand struct {
 
-	// mode
-	Mode string `json:"mode,omitempty"`
-
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
 }

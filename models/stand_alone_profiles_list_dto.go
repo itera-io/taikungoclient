@@ -37,18 +37,18 @@ type StandAloneProfilesListDto struct {
 	// partner logo
 	PartnerLogo string `json:"partnerLogo,omitempty"`
 
-	// projects
-	Projects []*ProjectCommonRecordDto `json:"projects"`
-
 	// public key
 	PublicKey string `json:"publicKey,omitempty"`
+
+	// standalone vms
+	StandaloneVms []*StandAloneVMSmallDetailDto `json:"standaloneVms"`
 }
 
 // Validate validates this stand alone profiles list dto
 func (m *StandAloneProfilesListDto) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateProjects(formats); err != nil {
+	if err := m.validateStandaloneVms(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -58,22 +58,22 @@ func (m *StandAloneProfilesListDto) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *StandAloneProfilesListDto) validateProjects(formats strfmt.Registry) error {
-	if swag.IsZero(m.Projects) { // not required
+func (m *StandAloneProfilesListDto) validateStandaloneVms(formats strfmt.Registry) error {
+	if swag.IsZero(m.StandaloneVms) { // not required
 		return nil
 	}
 
-	for i := 0; i < len(m.Projects); i++ {
-		if swag.IsZero(m.Projects[i]) { // not required
+	for i := 0; i < len(m.StandaloneVms); i++ {
+		if swag.IsZero(m.StandaloneVms[i]) { // not required
 			continue
 		}
 
-		if m.Projects[i] != nil {
-			if err := m.Projects[i].Validate(formats); err != nil {
+		if m.StandaloneVms[i] != nil {
+			if err := m.StandaloneVms[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+					return ve.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+					return ce.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -88,7 +88,7 @@ func (m *StandAloneProfilesListDto) validateProjects(formats strfmt.Registry) er
 func (m *StandAloneProfilesListDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateProjects(ctx, formats); err != nil {
+	if err := m.contextValidateStandaloneVms(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -98,16 +98,16 @@ func (m *StandAloneProfilesListDto) ContextValidate(ctx context.Context, formats
 	return nil
 }
 
-func (m *StandAloneProfilesListDto) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
+func (m *StandAloneProfilesListDto) contextValidateStandaloneVms(ctx context.Context, formats strfmt.Registry) error {
 
-	for i := 0; i < len(m.Projects); i++ {
+	for i := 0; i < len(m.StandaloneVms); i++ {
 
-		if m.Projects[i] != nil {
-			if err := m.Projects[i].ContextValidate(ctx, formats); err != nil {
+		if m.StandaloneVms[i] != nil {
+			if err := m.StandaloneVms[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
+					return ve.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
+					return ce.ValidateName("standaloneVms" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

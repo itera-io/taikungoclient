@@ -109,6 +109,9 @@ type StandAloneListParams struct {
 	// Search.
 	Search *string
 
+	// SearchID.
+	SearchID *string
+
 	// SortBy.
 	SortBy *string
 
@@ -283,6 +286,17 @@ func (o *StandAloneListParams) WithSearch(search *string) *StandAloneListParams 
 // SetSearch adds the search to the stand alone list params
 func (o *StandAloneListParams) SetSearch(search *string) {
 	o.Search = search
+}
+
+// WithSearchID adds the searchID to the stand alone list params
+func (o *StandAloneListParams) WithSearchID(searchID *string) *StandAloneListParams {
+	o.SetSearchID(searchID)
+	return o
+}
+
+// SetSearchID adds the searchId to the stand alone list params
+func (o *StandAloneListParams) SetSearchID(searchID *string) {
+	o.SearchID = searchID
 }
 
 // WithSortBy adds the sortBy to the stand alone list params
@@ -507,6 +521,23 @@ func (o *StandAloneListParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		if qSearch != "" {
 
 			if err := r.SetQueryParam("search", qSearch); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SearchID != nil {
+
+		// query param searchId
+		var qrSearchID string
+
+		if o.SearchID != nil {
+			qrSearchID = *o.SearchID
+		}
+		qSearchID := qrSearchID
+		if qSearchID != "" {
+
+			if err := r.SetQueryParam("searchId", qSearchID); err != nil {
 				return err
 			}
 		}

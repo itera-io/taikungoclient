@@ -40,6 +40,9 @@ type ServerListDto struct {
 	// disk size
 	DiskSize int64 `json:"diskSize,omitempty"`
 
+	// google machine type
+	GoogleMachineType string `json:"googleMachineType,omitempty"`
+
 	// id
 	ID int32 `json:"id,omitempty"`
 

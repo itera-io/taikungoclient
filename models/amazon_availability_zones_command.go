@@ -8,7 +8,6 @@ package models
 import (
 	"context"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -25,65 +24,16 @@ type AmazonAvailabilityZonesCommand struct {
 	AwsSecretAccessKey string `json:"awsSecretAccessKey,omitempty"`
 
 	// region
-	Region AwsRegion `json:"region,omitempty"`
+	Region string `json:"region,omitempty"`
 }
 
 // Validate validates this amazon availability zones command
 func (m *AmazonAvailabilityZonesCommand) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateRegion(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
 	return nil
 }
 
-func (m *AmazonAvailabilityZonesCommand) validateRegion(formats strfmt.Registry) error {
-	if swag.IsZero(m.Region) { // not required
-		return nil
-	}
-
-	if err := m.Region.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("region")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("region")
-		}
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this amazon availability zones command based on the context it is used
+// ContextValidate validates this amazon availability zones command based on context it is used
 func (m *AmazonAvailabilityZonesCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateRegion(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *AmazonAvailabilityZonesCommand) contextValidateRegion(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := m.Region.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("region")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("region")
-		}
-		return err
-	}
-
 	return nil
 }
 
