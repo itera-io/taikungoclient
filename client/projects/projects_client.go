@@ -46,6 +46,8 @@ type ClientService interface {
 
 	ProjectsLokiLogs(params *ProjectsLokiLogsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsLokiLogsOK, error)
 
+	ProjectsMonitoringOperations(params *ProjectsMonitoringOperationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsMonitoringOperationsOK, error)
+
 	ProjectsPrometheusMetrics(params *ProjectsPrometheusMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsPrometheusMetricsOK, error)
 
 	ProjectsRepair(params *ProjectsRepairParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsRepairOK, error)
@@ -366,6 +368,45 @@ func (a *Client) ProjectsLokiLogs(params *ProjectsLokiLogsParams, authInfo runti
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Projects_LokiLogs: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ProjectsMonitoringOperations monitorings operations enable disable
+*/
+func (a *Client) ProjectsMonitoringOperations(params *ProjectsMonitoringOperationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsMonitoringOperationsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsMonitoringOperationsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Projects_MonitoringOperations",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Projects/monitoring",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsMonitoringOperationsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ProjectsMonitoringOperationsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Projects_MonitoringOperations: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
