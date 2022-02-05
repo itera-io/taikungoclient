@@ -1,6 +1,6 @@
 # taikungoclient
 
-Go client library for the Taikun API generated using [go-swagger](https://goswagger.io/).
+Go client library for the [Taikun API](https://api.taikun.cloud/) generated using [go-swagger](https://goswagger.io/).
 
 This package is used by the
 [taikun-cli](https://github.com/itera-io/taikun-cli) and
