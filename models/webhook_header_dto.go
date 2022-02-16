@@ -17,6 +17,9 @@ import (
 // swagger:model WebhookHeaderDto
 type WebhookHeaderDto struct {
 
+	// id
+	ID int32 `json:"id,omitempty"`
+
 	// key
 	Key string `json:"key,omitempty"`
 

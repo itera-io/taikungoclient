@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewGoogleCloudRegionListParams creates a new GoogleCloudRegionListParams object,
@@ -61,8 +59,8 @@ func NewGoogleCloudRegionListParamsWithHTTPClient(client *http.Client) *GoogleCl
 */
 type GoogleCloudRegionListParams struct {
 
-	// Body.
-	Body *models.GoogleRegionListCommand
+	// Config.
+	Config runtime.NamedReadCloser
 
 	// V.
 	V string
@@ -120,15 +118,15 @@ func (o *GoogleCloudRegionListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithBody adds the body to the google cloud region list params
-func (o *GoogleCloudRegionListParams) WithBody(body *models.GoogleRegionListCommand) *GoogleCloudRegionListParams {
-	o.SetBody(body)
+// WithConfig adds the config to the google cloud region list params
+func (o *GoogleCloudRegionListParams) WithConfig(config runtime.NamedReadCloser) *GoogleCloudRegionListParams {
+	o.SetConfig(config)
 	return o
 }
 
-// SetBody adds the body to the google cloud region list params
-func (o *GoogleCloudRegionListParams) SetBody(body *models.GoogleRegionListCommand) {
-	o.Body = body
+// SetConfig adds the config to the google cloud region list params
+func (o *GoogleCloudRegionListParams) SetConfig(config runtime.NamedReadCloser) {
+	o.Config = config
 }
 
 // WithV adds the v to the google cloud region list params
@@ -149,9 +147,14 @@ func (o *GoogleCloudRegionListParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
+
+	if o.Config != nil {
+
+		if o.Config != nil {
+			// form file param Config
+			if err := r.SetFileParam("Config", o.Config); err != nil {
+				return err
+			}
 		}
 	}
 

@@ -44,6 +44,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/payment"
 	"github.com/itera-io/taikungoclient/client/pre_defined_queries"
 	"github.com/itera-io/taikungoclient/client/project_actions"
+	"github.com/itera-io/taikungoclient/client/project_groups"
 	"github.com/itera-io/taikungoclient/client/project_quotas"
 	"github.com/itera-io/taikungoclient/client/project_revisions"
 	"github.com/itera-io/taikungoclient/client/projects"
@@ -161,6 +162,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Payment = payment.New(transport, formats)
 	cli.PreDefinedQueries = pre_defined_queries.New(transport, formats)
 	cli.ProjectActions = project_actions.New(transport, formats)
+	cli.ProjectGroups = project_groups.New(transport, formats)
 	cli.ProjectQuotas = project_quotas.New(transport, formats)
 	cli.ProjectRevisions = project_revisions.New(transport, formats)
 	cli.Projects = projects.New(transport, formats)
@@ -295,6 +297,8 @@ type Taikungoclient struct {
 
 	ProjectActions project_actions.ClientService
 
+	ProjectGroups project_groups.ClientService
+
 	ProjectQuotas project_quotas.ClientService
 
 	ProjectRevisions project_revisions.ClientService
@@ -379,6 +383,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Payment.SetTransport(transport)
 	c.PreDefinedQueries.SetTransport(transport)
 	c.ProjectActions.SetTransport(transport)
+	c.ProjectGroups.SetTransport(transport)
 	c.ProjectQuotas.SetTransport(transport)
 	c.ProjectRevisions.SetTransport(transport)
 	c.Projects.SetTransport(transport)

@@ -40,6 +40,12 @@ type CreateStandAloneVMCommand struct {
 	// public Ip enabled
 	PublicIPEnabled bool `json:"publicIpEnabled"`
 
+	// spot instance
+	SpotInstance bool `json:"spotInstance"`
+
+	// spot price
+	SpotPrice float64 `json:"spotPrice,omitempty"`
+
 	// stand alone meta datas
 	StandAloneMetaDatas []*StandAloneMetaDataDto `json:"standAloneMetaDatas"`
 

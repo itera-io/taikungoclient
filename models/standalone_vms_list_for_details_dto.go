@@ -67,6 +67,12 @@ type StandaloneVmsListForDetailsDto struct {
 	// public Ip enabled
 	PublicIPEnabled bool `json:"publicIpEnabled"`
 
+	// spot instance
+	SpotInstance bool `json:"spotInstance"`
+
+	// spot price
+	SpotPrice string `json:"spotPrice,omitempty"`
+
 	// ssh public key
 	SSHPublicKey string `json:"sshPublicKey,omitempty"`
 

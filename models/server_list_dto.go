@@ -85,6 +85,12 @@ type ServerListDto struct {
 	// role
 	Role string `json:"role,omitempty"`
 
+	// spot instance
+	SpotInstance bool `json:"spotInstance"`
+
+	// spot price
+	SpotPrice string `json:"spotPrice,omitempty"`
+
 	// status
 	Status string `json:"status,omitempty"`
 }

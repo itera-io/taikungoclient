@@ -30,92 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	DocumentationCreate(params *DocumentationCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DocumentationCreateOK, error)
-
-	DocumentationDelete(params *DocumentationDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DocumentationDeleteOK, *DocumentationDeleteNoContent, error)
-
 	DocumentationList(params *DocumentationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DocumentationListOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
-}
-
-/*
-  DocumentationCreate upserts documentation
-*/
-func (a *Client) DocumentationCreate(params *DocumentationCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DocumentationCreateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDocumentationCreateParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Documentation_Create",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/Documentation/upsert",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DocumentationCreateReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*DocumentationCreateOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Documentation_Create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  DocumentationDelete deletes documentation
-*/
-func (a *Client) DocumentationDelete(params *DocumentationDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DocumentationDeleteOK, *DocumentationDeleteNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewDocumentationDeleteParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Documentation_Delete",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/Documentation/delete",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &DocumentationDeleteReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, nil, err
-	}
-	switch value := result.(type) {
-	case *DocumentationDeleteOK:
-		return value, nil, nil
-	case *DocumentationDeleteNoContent:
-		return nil, value, nil
-	}
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for doc: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
 }
 
 /*

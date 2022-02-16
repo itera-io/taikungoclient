@@ -50,6 +50,9 @@ type CreateProjectCommand struct {
 	// kubernetes profile Id
 	KubernetesProfileID int32 `json:"kubernetesProfileId,omitempty"`
 
+	// kubernetes version
+	KubernetesVersion string `json:"kubernetesVersion,omitempty"`
+
 	// name
 	Name string `json:"name,omitempty"`
 

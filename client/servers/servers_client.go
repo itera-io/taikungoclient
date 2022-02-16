@@ -30,6 +30,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	ServersConsole(params *ServersConsoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersConsoleOK, error)
+
 	ServersCreate(params *ServersCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersCreateOK, error)
 
 	ServersDelete(params *ServersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersDeleteOK, *ServersDeleteNoContent, error)
@@ -49,6 +51,45 @@ type ClientService interface {
 	ServersUpdateByProjectID(params *ServersUpdateByProjectIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersUpdateByProjectIDOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  ServersConsole consoles servers
+*/
+func (a *Client) ServersConsole(params *ServersConsoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersConsoleOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewServersConsoleParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Servers_Console",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Servers/console",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ServersConsoleReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ServersConsoleOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Servers_Console: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*

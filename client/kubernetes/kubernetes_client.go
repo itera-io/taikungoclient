@@ -110,6 +110,8 @@ type ClientService interface {
 
 	KubernetesGetSts(params *KubernetesGetStsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStsOK, error)
 
+	KubernetesGetSupportedList(params *KubernetesGetSupportedListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetSupportedListOK, error)
+
 	KubernetesOverview(params *KubernetesOverviewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesOverviewOK, error)
 
 	KubernetesRestartDaemonSet(params *KubernetesRestartDaemonSetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesRestartDaemonSetOK, error)
@@ -1682,6 +1684,45 @@ func (a *Client) KubernetesGetSts(params *KubernetesGetStsParams, authInfo runti
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetSts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesGetSupportedList retrieves taikun supported kubernetes version
+*/
+func (a *Client) KubernetesGetSupportedList(params *KubernetesGetSupportedListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetSupportedListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesGetSupportedListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_GetSupportedList",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Kubernetes/supported/list",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesGetSupportedListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesGetSupportedListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetSupportedList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

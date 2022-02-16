@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CronJobCreateKeyPool(params *CronJobCreateKeyPoolParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobCreateKeyPoolOK, error)
 
+	CronJobDeleteAwsSpotInstances(params *CronJobDeleteAwsSpotInstancesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteAwsSpotInstancesOK, error)
+
 	CronJobDeleteExpiredAlerts(params *CronJobDeleteExpiredAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteExpiredAlertsOK, error)
 
 	CronJobDeleteExpiredEvents(params *CronJobDeleteExpiredEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteExpiredEventsOK, error)
@@ -51,6 +53,8 @@ type ClientService interface {
 	CronJobDeletePendingOrganizations(params *CronJobDeletePendingOrganizationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeletePendingOrganizationsOK, error)
 
 	CronJobDeleteRedundantProjectActions(params *CronJobDeleteRedundantProjectActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteRedundantProjectActionsOK, error)
+
+	CronJobFetchAzurePrices(params *CronJobFetchAzurePricesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobFetchAzurePricesOK, error)
 
 	CronJobFetchKubernetesAlerts(params *CronJobFetchKubernetesAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobFetchKubernetesAlertsOK, error)
 
@@ -105,6 +109,45 @@ func (a *Client) CronJobCreateKeyPool(params *CronJobCreateKeyPoolParams, authIn
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for CronJob_CreateKeyPool: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CronJobDeleteAwsSpotInstances deletes removed aws spot instances
+*/
+func (a *Client) CronJobDeleteAwsSpotInstances(params *CronJobDeleteAwsSpotInstancesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteAwsSpotInstancesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCronJobDeleteAwsSpotInstancesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CronJob_DeleteAwsSpotInstances",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/CronJob/delete-aws-spot-instances",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CronJobDeleteAwsSpotInstancesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CronJobDeleteAwsSpotInstancesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CronJob_DeleteAwsSpotInstances: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -495,6 +538,45 @@ func (a *Client) CronJobDeleteRedundantProjectActions(params *CronJobDeleteRedun
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for CronJob_DeleteRedundantProjectActions: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CronJobFetchAzurePrices fetches azure prices
+*/
+func (a *Client) CronJobFetchAzurePrices(params *CronJobFetchAzurePricesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobFetchAzurePricesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCronJobFetchAzurePricesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CronJob_FetchAzurePrices",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/CronJob/fetch-azure-prices",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CronJobFetchAzurePricesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CronJobFetchAzurePricesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CronJob_FetchAzurePrices: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

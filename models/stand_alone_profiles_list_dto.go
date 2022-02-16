@@ -19,6 +19,9 @@ import (
 // swagger:model StandAloneProfilesListDto
 type StandAloneProfilesListDto struct {
 
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
 	// id
 	ID int32 `json:"id,omitempty"`
 

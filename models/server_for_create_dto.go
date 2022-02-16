@@ -39,6 +39,12 @@ type ServerForCreateDto struct {
 
 	// role
 	Role CloudRole `json:"role,omitempty"`
+
+	// spot instance
+	SpotInstance bool `json:"spotInstance"`
+
+	// spot price
+	SpotPrice float64 `json:"spotPrice,omitempty"`
 }
 
 // Validate validates this server for create dto

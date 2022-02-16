@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewGoogleCloudBillingAccountListParams creates a new GoogleCloudBillingAccountListParams object,
@@ -61,8 +59,8 @@ func NewGoogleCloudBillingAccountListParamsWithHTTPClient(client *http.Client) *
 */
 type GoogleCloudBillingAccountListParams struct {
 
-	// Body.
-	Body *models.GoogleBillingAccountListCommand
+	// Config.
+	Config runtime.NamedReadCloser
 
 	// V.
 	V string
@@ -120,15 +118,15 @@ func (o *GoogleCloudBillingAccountListParams) SetHTTPClient(client *http.Client)
 	o.HTTPClient = client
 }
 
-// WithBody adds the body to the google cloud billing account list params
-func (o *GoogleCloudBillingAccountListParams) WithBody(body *models.GoogleBillingAccountListCommand) *GoogleCloudBillingAccountListParams {
-	o.SetBody(body)
+// WithConfig adds the config to the google cloud billing account list params
+func (o *GoogleCloudBillingAccountListParams) WithConfig(config runtime.NamedReadCloser) *GoogleCloudBillingAccountListParams {
+	o.SetConfig(config)
 	return o
 }
 
-// SetBody adds the body to the google cloud billing account list params
-func (o *GoogleCloudBillingAccountListParams) SetBody(body *models.GoogleBillingAccountListCommand) {
-	o.Body = body
+// SetConfig adds the config to the google cloud billing account list params
+func (o *GoogleCloudBillingAccountListParams) SetConfig(config runtime.NamedReadCloser) {
+	o.Config = config
 }
 
 // WithV adds the v to the google cloud billing account list params
@@ -149,9 +147,14 @@ func (o *GoogleCloudBillingAccountListParams) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
+
+	if o.Config != nil {
+
+		if o.Config != nil {
+			// form file param Config
+			if err := r.SetFileParam("Config", o.Config); err != nil {
+				return err
+			}
 		}
 	}
 

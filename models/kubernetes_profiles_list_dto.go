@@ -25,6 +25,9 @@ type KubernetesProfilesListDto struct {
 	// cni
 	Cni string `json:"cni,omitempty"`
 
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
 	// created by
 	CreatedBy string `json:"createdBy,omitempty"`
 

@@ -14,8 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewGoogleCloudZoneListParams creates a new GoogleCloudZoneListParams object,
@@ -61,8 +59,11 @@ func NewGoogleCloudZoneListParamsWithHTTPClient(client *http.Client) *GoogleClou
 */
 type GoogleCloudZoneListParams struct {
 
-	// Body.
-	Body *models.GoogleZoneListCommand
+	// Config.
+	Config runtime.NamedReadCloser
+
+	// Region.
+	Region *string
 
 	// V.
 	V string
@@ -120,15 +121,26 @@ func (o *GoogleCloudZoneListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithBody adds the body to the google cloud zone list params
-func (o *GoogleCloudZoneListParams) WithBody(body *models.GoogleZoneListCommand) *GoogleCloudZoneListParams {
-	o.SetBody(body)
+// WithConfig adds the config to the google cloud zone list params
+func (o *GoogleCloudZoneListParams) WithConfig(config runtime.NamedReadCloser) *GoogleCloudZoneListParams {
+	o.SetConfig(config)
 	return o
 }
 
-// SetBody adds the body to the google cloud zone list params
-func (o *GoogleCloudZoneListParams) SetBody(body *models.GoogleZoneListCommand) {
-	o.Body = body
+// SetConfig adds the config to the google cloud zone list params
+func (o *GoogleCloudZoneListParams) SetConfig(config runtime.NamedReadCloser) {
+	o.Config = config
+}
+
+// WithRegion adds the region to the google cloud zone list params
+func (o *GoogleCloudZoneListParams) WithRegion(region *string) *GoogleCloudZoneListParams {
+	o.SetRegion(region)
+	return o
+}
+
+// SetRegion adds the region to the google cloud zone list params
+func (o *GoogleCloudZoneListParams) SetRegion(region *string) {
+	o.Region = region
 }
 
 // WithV adds the v to the google cloud zone list params
@@ -149,9 +161,29 @@ func (o *GoogleCloudZoneListParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
+
+	if o.Config != nil {
+
+		if o.Config != nil {
+			// form file param Config
+			if err := r.SetFileParam("Config", o.Config); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Region != nil {
+
+		// form param Region
+		var frRegion string
+		if o.Region != nil {
+			frRegion = *o.Region
+		}
+		fRegion := frRegion
+		if fRegion != "" {
+			if err := r.SetFormParam("Region", fRegion); err != nil {
+				return err
+			}
 		}
 	}
 

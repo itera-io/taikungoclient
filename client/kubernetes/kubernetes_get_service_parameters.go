@@ -73,7 +73,7 @@ type KubernetesGetServiceParams struct {
 
 	/* Offset.
 
-	   Page number
+	   Skip elements
 
 	   Format: int32
 	*/

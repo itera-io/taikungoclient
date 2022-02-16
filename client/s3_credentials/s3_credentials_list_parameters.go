@@ -75,7 +75,7 @@ type S3CredentialsListParams struct {
 
 	/* Offset.
 
-	   Page number
+	   Skip elements
 
 	   Format: int32
 	*/

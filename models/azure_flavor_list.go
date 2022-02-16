@@ -20,7 +20,7 @@ import (
 type AzureFlavorList struct {
 
 	// data
-	Data []*AzureFlavorListDto `json:"data"`
+	Data []*AzureFlavorsWithPriceDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`

@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	PreDefinedQueriesCreatePrometheusDashboard(params *PreDefinedQueriesCreatePrometheusDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesCreatePrometheusDashboardOK, error)
 
+	PreDefinedQueriesDeletePrometheusDashboard(params *PreDefinedQueriesDeletePrometheusDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesDeletePrometheusDashboardOK, error)
+
 	PreDefinedQueriesGetPrometheusDashboardList(params *PreDefinedQueriesGetPrometheusDashboardListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesGetPrometheusDashboardListOK, error)
 
 	PreDefinedQueriesUpdatePrometheusDashboard(params *PreDefinedQueriesUpdatePrometheusDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesUpdatePrometheusDashboardOK, error)
@@ -75,6 +77,45 @@ func (a *Client) PreDefinedQueriesCreatePrometheusDashboard(params *PreDefinedQu
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for PreDefinedQueries_CreatePrometheusDashboard: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PreDefinedQueriesDeletePrometheusDashboard deletes prometheus dashboard pre defined query
+*/
+func (a *Client) PreDefinedQueriesDeletePrometheusDashboard(params *PreDefinedQueriesDeletePrometheusDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesDeletePrometheusDashboardOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPreDefinedQueriesDeletePrometheusDashboardParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PreDefinedQueries_DeletePrometheusDashboard",
+		Method:             "DELETE",
+		PathPattern:        "/api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PreDefinedQueriesDeletePrometheusDashboardReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PreDefinedQueriesDeletePrometheusDashboardOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for PreDefinedQueries_DeletePrometheusDashboard: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

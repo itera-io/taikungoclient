@@ -74,13 +74,13 @@ func NewGoogleCloudBillingAccountListOK() *GoogleCloudBillingAccountListOK {
 Success
 */
 type GoogleCloudBillingAccountListOK struct {
-	Payload []string
+	Payload []*models.CommonStringBasedDropdownDto
 }
 
 func (o *GoogleCloudBillingAccountListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListOK  %+v", 200, o.Payload)
 }
-func (o *GoogleCloudBillingAccountListOK) GetPayload() []string {
+func (o *GoogleCloudBillingAccountListOK) GetPayload() []*models.CommonStringBasedDropdownDto {
 	return o.Payload
 }
 

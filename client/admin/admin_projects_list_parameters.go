@@ -70,7 +70,7 @@ type AdminProjectsListParams struct {
 
 	/* Offset.
 
-	   Page number
+	   Skip elements
 
 	   Format: int32
 	*/
