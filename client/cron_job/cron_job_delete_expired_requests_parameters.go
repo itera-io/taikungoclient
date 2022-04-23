@@ -62,7 +62,7 @@ func NewCronJobDeleteExpiredRequestsParamsWithHTTPClient(client *http.Client) *C
 type CronJobDeleteExpiredRequestsParams struct {
 
 	// Body.
-	Body models.DeleteExpiredRequestCommand
+	Body models.DeleteRequestsCommand
 
 	// V.
 	V string
@@ -121,13 +121,13 @@ func (o *CronJobDeleteExpiredRequestsParams) SetHTTPClient(client *http.Client) 
 }
 
 // WithBody adds the body to the cron job delete expired requests params
-func (o *CronJobDeleteExpiredRequestsParams) WithBody(body models.DeleteExpiredRequestCommand) *CronJobDeleteExpiredRequestsParams {
+func (o *CronJobDeleteExpiredRequestsParams) WithBody(body models.DeleteRequestsCommand) *CronJobDeleteExpiredRequestsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job delete expired requests params
-func (o *CronJobDeleteExpiredRequestsParams) SetBody(body models.DeleteExpiredRequestCommand) {
+func (o *CronJobDeleteExpiredRequestsParams) SetBody(body models.DeleteRequestsCommand) {
 	o.Body = body
 }
 

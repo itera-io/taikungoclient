@@ -74,13 +74,13 @@ func NewKubernetesOverviewOK() *KubernetesOverviewOK {
 Success
 */
 type KubernetesOverviewOK struct {
-	Payload interface{}
+	Payload string
 }
 
 func (o *KubernetesOverviewOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewOK  %+v", 200, o.Payload)
 }
-func (o *KubernetesOverviewOK) GetPayload() interface{} {
+func (o *KubernetesOverviewOK) GetPayload() string {
 	return o.Payload
 }
 

@@ -20,6 +20,12 @@ type BoundFlavorsForProjectsListDto struct {
 	// cpu
 	CPU int32 `json:"cpu,omitempty"`
 
+	// has linux spot price
+	HasLinuxSpotPrice bool `json:"hasLinuxSpotPrice"`
+
+	// has windows spot price
+	HasWindowsSpotPrice bool `json:"hasWindowsSpotPrice"`
+
 	// id
 	ID int32 `json:"id,omitempty"`
 

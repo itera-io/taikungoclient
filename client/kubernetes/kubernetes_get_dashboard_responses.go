@@ -74,13 +74,13 @@ func NewKubernetesGetDashboardOK() *KubernetesGetDashboardOK {
 Success
 */
 type KubernetesGetDashboardOK struct {
-	Payload interface{}
+	Payload string
 }
 
 func (o *KubernetesGetDashboardOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardOK  %+v", 200, o.Payload)
 }
-func (o *KubernetesGetDashboardOK) GetPayload() interface{} {
+func (o *KubernetesGetDashboardOK) GetPayload() string {
 	return o.Payload
 }
 

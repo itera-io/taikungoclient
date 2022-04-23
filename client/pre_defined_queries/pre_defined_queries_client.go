@@ -34,6 +34,8 @@ type ClientService interface {
 
 	PreDefinedQueriesDeletePrometheusDashboard(params *PreDefinedQueriesDeletePrometheusDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesDeletePrometheusDashboardOK, error)
 
+	PreDefinedQueriesGetPrometheusCommonDashboardList(params *PreDefinedQueriesGetPrometheusCommonDashboardListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesGetPrometheusCommonDashboardListOK, error)
+
 	PreDefinedQueriesGetPrometheusDashboardList(params *PreDefinedQueriesGetPrometheusDashboardListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesGetPrometheusDashboardListOK, error)
 
 	PreDefinedQueriesUpdatePrometheusDashboard(params *PreDefinedQueriesUpdatePrometheusDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesUpdatePrometheusDashboardOK, error)
@@ -120,7 +122,46 @@ func (a *Client) PreDefinedQueriesDeletePrometheusDashboard(params *PreDefinedQu
 }
 
 /*
-  PreDefinedQueriesGetPrometheusDashboardList gets list of pre defined prometheus dashboard elements
+  PreDefinedQueriesGetPrometheusCommonDashboardList gets list of pre defined common prometheus dashboard elements
+*/
+func (a *Client) PreDefinedQueriesGetPrometheusCommonDashboardList(params *PreDefinedQueriesGetPrometheusCommonDashboardListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesGetPrometheusCommonDashboardListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPreDefinedQueriesGetPrometheusCommonDashboardListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "PreDefinedQueries_GetPrometheusCommonDashboardList",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/PreDefinedQueries/prometheus/dashboard/common",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PreDefinedQueriesGetPrometheusCommonDashboardListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PreDefinedQueriesGetPrometheusCommonDashboardListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for PreDefinedQueries_GetPrometheusCommonDashboardList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PreDefinedQueriesGetPrometheusDashboardList gets list of pre defined organization prometheus dashboard elements
 */
 func (a *Client) PreDefinedQueriesGetPrometheusDashboardList(params *PreDefinedQueriesGetPrometheusDashboardListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesGetPrometheusDashboardListOK, error) {
 	// TODO: Validate the params before sending

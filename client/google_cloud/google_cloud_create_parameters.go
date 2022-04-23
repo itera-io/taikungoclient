@@ -69,6 +69,9 @@ type GoogleCloudCreateParams struct {
 	// FolderID.
 	FolderID *string
 
+	// ImportProject.
+	ImportProject *bool
+
 	// Name.
 	Name *string
 
@@ -172,6 +175,17 @@ func (o *GoogleCloudCreateParams) SetFolderID(folderID *string) {
 	o.FolderID = folderID
 }
 
+// WithImportProject adds the importProject to the google cloud create params
+func (o *GoogleCloudCreateParams) WithImportProject(importProject *bool) *GoogleCloudCreateParams {
+	o.SetImportProject(importProject)
+	return o
+}
+
+// SetImportProject adds the importProject to the google cloud create params
+func (o *GoogleCloudCreateParams) SetImportProject(importProject *bool) {
+	o.ImportProject = importProject
+}
+
 // WithName adds the name to the google cloud create params
 func (o *GoogleCloudCreateParams) WithName(name *string) *GoogleCloudCreateParams {
 	o.SetName(name)
@@ -270,6 +284,21 @@ func (o *GoogleCloudCreateParams) WriteToRequest(r runtime.ClientRequest, reg st
 		fFolderID := frFolderID
 		if fFolderID != "" {
 			if err := r.SetFormParam("FolderId", fFolderID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.ImportProject != nil {
+
+		// form param ImportProject
+		var frImportProject bool
+		if o.ImportProject != nil {
+			frImportProject = *o.ImportProject
+		}
+		fImportProject := swag.FormatBool(frImportProject)
+		if fImportProject != "" {
+			if err := r.SetFormParam("ImportProject", fImportProject); err != nil {
 				return err
 			}
 		}

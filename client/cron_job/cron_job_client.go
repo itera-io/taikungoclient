@@ -347,7 +347,7 @@ func (a *Client) CronJobDeleteExpiredRefreshTokens(params *CronJobDeleteExpiredR
 }
 
 /*
-  CronJobDeleteExpiredRequests deletes expired taikun requests
+  CronJobDeleteExpiredRequests deletes expired requests
 */
 func (a *Client) CronJobDeleteExpiredRequests(params *CronJobDeleteExpiredRequestsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteExpiredRequestsOK, error) {
 	// TODO: Validate the params before sending

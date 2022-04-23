@@ -22,8 +22,8 @@ type EnumList struct {
 	// alert types
 	AlertTypes []*CommonDropdownDto `json:"alertTypes"`
 
-	// alerting inntegration types
-	AlertingInntegrationTypes []*CommonDropdownDto `json:"alertingInntegrationTypes"`
+	// alerting integration types
+	AlertingIntegrationTypes []*CommonDropdownDto `json:"alertingIntegrationTypes"`
 
 	// audit logs
 	AuditLogs []*CommonDropdownDto `json:"auditLogs"`
@@ -81,6 +81,9 @@ type EnumList struct {
 
 	// user roles
 	UserRoles []*CommonDropdownDto `json:"userRoles"`
+
+	// validity periods
+	ValidityPeriods []*CommonDropdownDto `json:"validityPeriods"`
 }
 
 // Validate validates this enum list
@@ -91,7 +94,7 @@ func (m *EnumList) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateAlertingInntegrationTypes(formats); err != nil {
+	if err := m.validateAlertingIntegrationTypes(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -171,6 +174,10 @@ func (m *EnumList) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateValidityPeriods(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -203,22 +210,22 @@ func (m *EnumList) validateAlertTypes(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *EnumList) validateAlertingInntegrationTypes(formats strfmt.Registry) error {
-	if swag.IsZero(m.AlertingInntegrationTypes) { // not required
+func (m *EnumList) validateAlertingIntegrationTypes(formats strfmt.Registry) error {
+	if swag.IsZero(m.AlertingIntegrationTypes) { // not required
 		return nil
 	}
 
-	for i := 0; i < len(m.AlertingInntegrationTypes); i++ {
-		if swag.IsZero(m.AlertingInntegrationTypes[i]) { // not required
+	for i := 0; i < len(m.AlertingIntegrationTypes); i++ {
+		if swag.IsZero(m.AlertingIntegrationTypes[i]) { // not required
 			continue
 		}
 
-		if m.AlertingInntegrationTypes[i] != nil {
-			if err := m.AlertingInntegrationTypes[i].Validate(formats); err != nil {
+		if m.AlertingIntegrationTypes[i] != nil {
+			if err := m.AlertingIntegrationTypes[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("alertingInntegrationTypes" + "." + strconv.Itoa(i))
+					return ve.ValidateName("alertingIntegrationTypes" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("alertingInntegrationTypes" + "." + strconv.Itoa(i))
+					return ce.ValidateName("alertingIntegrationTypes" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -723,6 +730,32 @@ func (m *EnumList) validateUserRoles(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *EnumList) validateValidityPeriods(formats strfmt.Registry) error {
+	if swag.IsZero(m.ValidityPeriods) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ValidityPeriods); i++ {
+		if swag.IsZero(m.ValidityPeriods[i]) { // not required
+			continue
+		}
+
+		if m.ValidityPeriods[i] != nil {
+			if err := m.ValidityPeriods[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("validityPeriods" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("validityPeriods" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this enum list based on the context it is used
 func (m *EnumList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -731,7 +764,7 @@ func (m *EnumList) ContextValidate(ctx context.Context, formats strfmt.Registry)
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateAlertingInntegrationTypes(ctx, formats); err != nil {
+	if err := m.contextValidateAlertingIntegrationTypes(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -811,6 +844,10 @@ func (m *EnumList) ContextValidate(ctx context.Context, formats strfmt.Registry)
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateValidityPeriods(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -837,16 +874,16 @@ func (m *EnumList) contextValidateAlertTypes(ctx context.Context, formats strfmt
 	return nil
 }
 
-func (m *EnumList) contextValidateAlertingInntegrationTypes(ctx context.Context, formats strfmt.Registry) error {
+func (m *EnumList) contextValidateAlertingIntegrationTypes(ctx context.Context, formats strfmt.Registry) error {
 
-	for i := 0; i < len(m.AlertingInntegrationTypes); i++ {
+	for i := 0; i < len(m.AlertingIntegrationTypes); i++ {
 
-		if m.AlertingInntegrationTypes[i] != nil {
-			if err := m.AlertingInntegrationTypes[i].ContextValidate(ctx, formats); err != nil {
+		if m.AlertingIntegrationTypes[i] != nil {
+			if err := m.AlertingIntegrationTypes[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("alertingInntegrationTypes" + "." + strconv.Itoa(i))
+					return ve.ValidateName("alertingIntegrationTypes" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("alertingInntegrationTypes" + "." + strconv.Itoa(i))
+					return ce.ValidateName("alertingIntegrationTypes" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -1227,6 +1264,26 @@ func (m *EnumList) contextValidateUserRoles(ctx context.Context, formats strfmt.
 					return ve.ValidateName("userRoles" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("userRoles" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *EnumList) contextValidateValidityPeriods(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ValidityPeriods); i++ {
+
+		if m.ValidityPeriods[i] != nil {
+			if err := m.ValidityPeriods[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("validityPeriods" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("validityPeriods" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -20,6 +20,9 @@ type StandAloneProfileSecurityGroupForDetailsDto struct {
 	// id
 	ID int32 `json:"id,omitempty"`
 
+	// is rdp port enabled
+	IsRdpPortEnabled bool `json:"isRdpPortEnabled"`
+
 	// name
 	Name string `json:"name,omitempty"`
 

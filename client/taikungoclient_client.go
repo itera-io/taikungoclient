@@ -49,7 +49,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/project_revisions"
 	"github.com/itera-io/taikungoclient/client/projects"
 	"github.com/itera-io/taikungoclient/client/prometheus"
-	"github.com/itera-io/taikungoclient/client/request"
+	"github.com/itera-io/taikungoclient/client/repository"
 	"github.com/itera-io/taikungoclient/client/s3_credentials"
 	"github.com/itera-io/taikungoclient/client/search"
 	"github.com/itera-io/taikungoclient/client/security_group"
@@ -167,7 +167,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.ProjectRevisions = project_revisions.New(transport, formats)
 	cli.Projects = projects.New(transport, formats)
 	cli.Prometheus = prometheus.New(transport, formats)
-	cli.Request = request.New(transport, formats)
+	cli.Repository = repository.New(transport, formats)
 	cli.S3Credentials = s3_credentials.New(transport, formats)
 	cli.Search = search.New(transport, formats)
 	cli.SecurityGroup = security_group.New(transport, formats)
@@ -307,7 +307,7 @@ type Taikungoclient struct {
 
 	Prometheus prometheus.ClientService
 
-	Request request.ClientService
+	Repository repository.ClientService
 
 	S3Credentials s3_credentials.ClientService
 
@@ -388,7 +388,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.ProjectRevisions.SetTransport(transport)
 	c.Projects.SetTransport(transport)
 	c.Prometheus.SetTransport(transport)
-	c.Request.SetTransport(transport)
+	c.Repository.SetTransport(transport)
 	c.S3Credentials.SetTransport(transport)
 	c.Search.SetTransport(transport)
 	c.SecurityGroup.SetTransport(transport)

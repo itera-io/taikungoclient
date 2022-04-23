@@ -81,6 +81,9 @@ type ImagesOpenstackImagesParams struct {
 	*/
 	Offset *int32
 
+	// Personal.
+	Personal *bool
+
 	// Search.
 	Search *string
 
@@ -179,6 +182,17 @@ func (o *ImagesOpenstackImagesParams) SetOffset(offset *int32) {
 	o.Offset = offset
 }
 
+// WithPersonal adds the personal to the images openstack images params
+func (o *ImagesOpenstackImagesParams) WithPersonal(personal *bool) *ImagesOpenstackImagesParams {
+	o.SetPersonal(personal)
+	return o
+}
+
+// SetPersonal adds the personal to the images openstack images params
+func (o *ImagesOpenstackImagesParams) SetPersonal(personal *bool) {
+	o.Personal = personal
+}
+
 // WithSearch adds the search to the images openstack images params
 func (o *ImagesOpenstackImagesParams) WithSearch(search *string) *ImagesOpenstackImagesParams {
 	o.SetSearch(search)
@@ -265,6 +279,23 @@ func (o *ImagesOpenstackImagesParams) WriteToRequest(r runtime.ClientRequest, re
 		if qOffset != "" {
 
 			if err := r.SetQueryParam("offset", qOffset); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Personal != nil {
+
+		// query param personal
+		var qrPersonal bool
+
+		if o.Personal != nil {
+			qrPersonal = *o.Personal
+		}
+		qPersonal := swag.FormatBool(qrPersonal)
+		if qPersonal != "" {
+
+			if err := r.SetQueryParam("personal", qPersonal); err != nil {
 				return err
 			}
 		}

@@ -55,6 +55,9 @@ type GoogleCredentialsListDto struct {
 	// partner name
 	PartnerName string `json:"partnerName,omitempty"`
 
+	// project Id
+	ProjectID string `json:"projectId,omitempty"`
+
 	// projects
 	Projects []*CommonDropdownDto `json:"projects"`
 

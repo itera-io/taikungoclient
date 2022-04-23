@@ -14,20 +14,20 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// TaikunPollerErrorsList taikun poller errors list
+// ArtifactRepositoryList artifact repository list
 //
-// swagger:model TaikunPollerErrorsList
-type TaikunPollerErrorsList struct {
+// swagger:model ArtifactRepositoryList
+type ArtifactRepositoryList struct {
 
 	// data
-	Data []*ElasticTaikunPoller `json:"data"`
+	Data []*ArtifactRepositories `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
 }
 
-// Validate validates this taikun poller errors list
-func (m *TaikunPollerErrorsList) Validate(formats strfmt.Registry) error {
+// Validate validates this artifact repository list
+func (m *ArtifactRepositoryList) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateData(formats); err != nil {
@@ -40,7 +40,7 @@ func (m *TaikunPollerErrorsList) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *TaikunPollerErrorsList) validateData(formats strfmt.Registry) error {
+func (m *ArtifactRepositoryList) validateData(formats strfmt.Registry) error {
 	if swag.IsZero(m.Data) { // not required
 		return nil
 	}
@@ -66,8 +66,8 @@ func (m *TaikunPollerErrorsList) validateData(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this taikun poller errors list based on the context it is used
-func (m *TaikunPollerErrorsList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this artifact repository list based on the context it is used
+func (m *ArtifactRepositoryList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateData(ctx, formats); err != nil {
@@ -80,7 +80,7 @@ func (m *TaikunPollerErrorsList) ContextValidate(ctx context.Context, formats st
 	return nil
 }
 
-func (m *TaikunPollerErrorsList) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+func (m *ArtifactRepositoryList) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Data); i++ {
 
@@ -101,7 +101,7 @@ func (m *TaikunPollerErrorsList) contextValidateData(ctx context.Context, format
 }
 
 // MarshalBinary interface implementation
-func (m *TaikunPollerErrorsList) MarshalBinary() ([]byte, error) {
+func (m *ArtifactRepositoryList) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -109,8 +109,8 @@ func (m *TaikunPollerErrorsList) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *TaikunPollerErrorsList) UnmarshalBinary(b []byte) error {
-	var res TaikunPollerErrorsList
+func (m *ArtifactRepositoryList) UnmarshalBinary(b []byte) error {
+	var res ArtifactRepositoryList
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

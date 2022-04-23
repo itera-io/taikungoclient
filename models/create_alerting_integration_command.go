@@ -18,18 +18,24 @@ import (
 // swagger:model CreateAlertingIntegrationCommand
 type CreateAlertingIntegrationCommand struct {
 
-	// alerting integration
-	AlertingIntegration *AlertingIntegrationDto `json:"alertingIntegration,omitempty"`
+	// alerting integration type
+	AlertingIntegrationType AlertingIntegrationType `json:"alertingIntegrationType,omitempty"`
 
 	// alerting profile Id
 	AlertingProfileID int32 `json:"alertingProfileId,omitempty"`
+
+	// token
+	Token string `json:"token,omitempty"`
+
+	// url
+	URL string `json:"url,omitempty"`
 }
 
 // Validate validates this create alerting integration command
 func (m *CreateAlertingIntegrationCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateAlertingIntegration(formats); err != nil {
+	if err := m.validateAlertingIntegrationType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -39,20 +45,18 @@ func (m *CreateAlertingIntegrationCommand) Validate(formats strfmt.Registry) err
 	return nil
 }
 
-func (m *CreateAlertingIntegrationCommand) validateAlertingIntegration(formats strfmt.Registry) error {
-	if swag.IsZero(m.AlertingIntegration) { // not required
+func (m *CreateAlertingIntegrationCommand) validateAlertingIntegrationType(formats strfmt.Registry) error {
+	if swag.IsZero(m.AlertingIntegrationType) { // not required
 		return nil
 	}
 
-	if m.AlertingIntegration != nil {
-		if err := m.AlertingIntegration.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("alertingIntegration")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("alertingIntegration")
-			}
-			return err
+	if err := m.AlertingIntegrationType.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("alertingIntegrationType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("alertingIntegrationType")
 		}
+		return err
 	}
 
 	return nil
@@ -62,7 +66,7 @@ func (m *CreateAlertingIntegrationCommand) validateAlertingIntegration(formats s
 func (m *CreateAlertingIntegrationCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateAlertingIntegration(ctx, formats); err != nil {
+	if err := m.contextValidateAlertingIntegrationType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -72,17 +76,15 @@ func (m *CreateAlertingIntegrationCommand) ContextValidate(ctx context.Context, 
 	return nil
 }
 
-func (m *CreateAlertingIntegrationCommand) contextValidateAlertingIntegration(ctx context.Context, formats strfmt.Registry) error {
+func (m *CreateAlertingIntegrationCommand) contextValidateAlertingIntegrationType(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.AlertingIntegration != nil {
-		if err := m.AlertingIntegration.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("alertingIntegration")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("alertingIntegration")
-			}
-			return err
+	if err := m.AlertingIntegrationType.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("alertingIntegrationType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("alertingIntegrationType")
 		}
+		return err
 	}
 
 	return nil

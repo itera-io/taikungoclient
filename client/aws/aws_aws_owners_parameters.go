@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewAwsAwsOwnersParams creates a new AwsAwsOwnersParams object,
@@ -59,39 +58,6 @@ func NewAwsAwsOwnersParamsWithHTTPClient(client *http.Client) *AwsAwsOwnersParam
    Typically these are written to a http.Request.
 */
 type AwsAwsOwnersParams struct {
-
-	// CloudID.
-	//
-	// Format: int32
-	CloudID int32
-
-	/* Limit.
-
-	   Limits size (by default 50)
-
-	   Format: int32
-	*/
-	Limit *int32
-
-	/* Offset.
-
-	   Skip elements
-
-	   Format: int32
-	*/
-	Offset *int32
-
-	// Platform.
-	Platform string
-
-	// Search.
-	Search *string
-
-	// SortBy.
-	SortBy *string
-
-	// SortDirection.
-	SortDirection *string
 
 	// V.
 	V string
@@ -149,83 +115,6 @@ func (o *AwsAwsOwnersParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithCloudID adds the cloudID to the aws aws owners params
-func (o *AwsAwsOwnersParams) WithCloudID(cloudID int32) *AwsAwsOwnersParams {
-	o.SetCloudID(cloudID)
-	return o
-}
-
-// SetCloudID adds the cloudId to the aws aws owners params
-func (o *AwsAwsOwnersParams) SetCloudID(cloudID int32) {
-	o.CloudID = cloudID
-}
-
-// WithLimit adds the limit to the aws aws owners params
-func (o *AwsAwsOwnersParams) WithLimit(limit *int32) *AwsAwsOwnersParams {
-	o.SetLimit(limit)
-	return o
-}
-
-// SetLimit adds the limit to the aws aws owners params
-func (o *AwsAwsOwnersParams) SetLimit(limit *int32) {
-	o.Limit = limit
-}
-
-// WithOffset adds the offset to the aws aws owners params
-func (o *AwsAwsOwnersParams) WithOffset(offset *int32) *AwsAwsOwnersParams {
-	o.SetOffset(offset)
-	return o
-}
-
-// SetOffset adds the offset to the aws aws owners params
-func (o *AwsAwsOwnersParams) SetOffset(offset *int32) {
-	o.Offset = offset
-}
-
-// WithPlatform adds the platform to the aws aws owners params
-func (o *AwsAwsOwnersParams) WithPlatform(platform string) *AwsAwsOwnersParams {
-	o.SetPlatform(platform)
-	return o
-}
-
-// SetPlatform adds the platform to the aws aws owners params
-func (o *AwsAwsOwnersParams) SetPlatform(platform string) {
-	o.Platform = platform
-}
-
-// WithSearch adds the search to the aws aws owners params
-func (o *AwsAwsOwnersParams) WithSearch(search *string) *AwsAwsOwnersParams {
-	o.SetSearch(search)
-	return o
-}
-
-// SetSearch adds the search to the aws aws owners params
-func (o *AwsAwsOwnersParams) SetSearch(search *string) {
-	o.Search = search
-}
-
-// WithSortBy adds the sortBy to the aws aws owners params
-func (o *AwsAwsOwnersParams) WithSortBy(sortBy *string) *AwsAwsOwnersParams {
-	o.SetSortBy(sortBy)
-	return o
-}
-
-// SetSortBy adds the sortBy to the aws aws owners params
-func (o *AwsAwsOwnersParams) SetSortBy(sortBy *string) {
-	o.SortBy = sortBy
-}
-
-// WithSortDirection adds the sortDirection to the aws aws owners params
-func (o *AwsAwsOwnersParams) WithSortDirection(sortDirection *string) *AwsAwsOwnersParams {
-	o.SetSortDirection(sortDirection)
-	return o
-}
-
-// SetSortDirection adds the sortDirection to the aws aws owners params
-func (o *AwsAwsOwnersParams) SetSortDirection(sortDirection *string) {
-	o.SortDirection = sortDirection
-}
-
 // WithV adds the v to the aws aws owners params
 func (o *AwsAwsOwnersParams) WithV(v string) *AwsAwsOwnersParams {
 	o.SetV(v)
@@ -244,101 +133,6 @@ func (o *AwsAwsOwnersParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		return err
 	}
 	var res []error
-
-	// path param cloudId
-	if err := r.SetPathParam("cloudId", swag.FormatInt32(o.CloudID)); err != nil {
-		return err
-	}
-
-	if o.Limit != nil {
-
-		// query param limit
-		var qrLimit int32
-
-		if o.Limit != nil {
-			qrLimit = *o.Limit
-		}
-		qLimit := swag.FormatInt32(qrLimit)
-		if qLimit != "" {
-
-			if err := r.SetQueryParam("limit", qLimit); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.Offset != nil {
-
-		// query param offset
-		var qrOffset int32
-
-		if o.Offset != nil {
-			qrOffset = *o.Offset
-		}
-		qOffset := swag.FormatInt32(qrOffset)
-		if qOffset != "" {
-
-			if err := r.SetQueryParam("offset", qOffset); err != nil {
-				return err
-			}
-		}
-	}
-
-	// path param platform
-	if err := r.SetPathParam("platform", o.Platform); err != nil {
-		return err
-	}
-
-	if o.Search != nil {
-
-		// query param search
-		var qrSearch string
-
-		if o.Search != nil {
-			qrSearch = *o.Search
-		}
-		qSearch := qrSearch
-		if qSearch != "" {
-
-			if err := r.SetQueryParam("search", qSearch); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.SortBy != nil {
-
-		// query param sortBy
-		var qrSortBy string
-
-		if o.SortBy != nil {
-			qrSortBy = *o.SortBy
-		}
-		qSortBy := qrSortBy
-		if qSortBy != "" {
-
-			if err := r.SetQueryParam("sortBy", qSortBy); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.SortDirection != nil {
-
-		// query param sortDirection
-		var qrSortDirection string
-
-		if o.SortDirection != nil {
-			qrSortDirection = *o.SortDirection
-		}
-		qSortDirection := qrSortDirection
-		if qSortDirection != "" {
-
-			if err := r.SetQueryParam("sortDirection", qSortDirection); err != nil {
-				return err
-			}
-		}
-	}
 
 	// path param v
 	if err := r.SetPathParam("v", o.V); err != nil {

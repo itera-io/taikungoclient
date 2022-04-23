@@ -23,12 +23,6 @@ type FlavorsListDto struct {
 	// description
 	Description interface{} `json:"description,omitempty"`
 
-	// linux price
-	LinuxPrice string `json:"linuxPrice,omitempty"`
-
-	// linux spot price
-	LinuxSpotPrice string `json:"linuxSpotPrice,omitempty"`
-
 	// max data disk count
 	MaxDataDiskCount float64 `json:"maxDataDiskCount,omitempty"`
 
@@ -37,12 +31,6 @@ type FlavorsListDto struct {
 
 	// ram
 	RAM int64 `json:"ram,omitempty"`
-
-	// windows price
-	WindowsPrice string `json:"windowsPrice,omitempty"`
-
-	// windows spot price
-	WindowsSpotPrice string `json:"windowsSpotPrice,omitempty"`
 }
 
 // Validate validates this flavors list dto

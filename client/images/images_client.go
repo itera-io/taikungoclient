@@ -30,7 +30,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	ImagesAwsImages(params *ImagesAwsImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesAwsImagesOK, error)
+	ImagesAwsImagesAsPost(params *ImagesAwsImagesAsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesAwsImagesAsPostOK, error)
 
 	ImagesAzureImages(params *ImagesAzureImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesAzureImagesOK, error)
 
@@ -60,22 +60,22 @@ type ClientService interface {
 }
 
 /*
-  ImagesAwsImages retrieves aws images
+  ImagesAwsImagesAsPost retrieves aws images
 */
-func (a *Client) ImagesAwsImages(params *ImagesAwsImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesAwsImagesOK, error) {
+func (a *Client) ImagesAwsImagesAsPost(params *ImagesAwsImagesAsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesAwsImagesAsPostOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewImagesAwsImagesParams()
+		params = NewImagesAwsImagesAsPostParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "Images_AwsImages",
-		Method:             "GET",
-		PathPattern:        "/api/v{v}/Images/aws/{cloudId}",
+		ID:                 "Images_AwsImagesAsPost",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Images/aws",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ImagesAwsImagesReader{formats: a.formats},
+		Reader:             &ImagesAwsImagesAsPostReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -88,13 +88,13 @@ func (a *Client) ImagesAwsImages(params *ImagesAwsImagesParams, authInfo runtime
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*ImagesAwsImagesOK)
+	success, ok := result.(*ImagesAwsImagesAsPostOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Images_AwsImages: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for Images_AwsImagesAsPost: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

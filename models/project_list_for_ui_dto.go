@@ -22,8 +22,20 @@ type ProjectListForUIDto struct {
 	// alerts count
 	AlertsCount int32 `json:"alertsCount,omitempty"`
 
+	// allow full spot kubernetes
+	AllowFullSpotKubernetes bool `json:"allowFullSpotKubernetes"`
+
+	// allow spot v ms
+	AllowSpotVMs bool `json:"allowSpotVMs"`
+
+	// allow spot workers
+	AllowSpotWorkers bool `json:"allowSpotWorkers"`
+
 	// bound users
 	BoundUsers []*UserDto `json:"boundUsers"`
+
+	// certification expired at
+	CertificationExpiredAt string `json:"certificationExpiredAt,omitempty"`
 
 	// cloud credential name
 	CloudCredentialName string `json:"cloudCredentialName,omitempty"`
@@ -72,6 +84,9 @@ type ProjectListForUIDto struct {
 
 	// last modified by
 	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
+
+	// max spot price
+	MaxSpotPrice float64 `json:"maxSpotPrice,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`

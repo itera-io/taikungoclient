@@ -30,7 +30,7 @@ type PvcDto struct {
 	Phase string `json:"phase,omitempty"`
 
 	// size
-	Size interface{} `json:"size,omitempty"`
+	Size string `json:"size,omitempty"`
 
 	// storage class name
 	StorageClassName string `json:"storageClassName,omitempty"`

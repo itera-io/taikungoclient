@@ -14,20 +14,20 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// AwsImageList aws image list
+// AwsImagesPostList aws images post list
 //
-// swagger:model AwsImageList
-type AwsImageList struct {
+// swagger:model AwsImagesPostList
+type AwsImagesPostList struct {
 
 	// data
-	Data []*CommonStringBasedDropdownDto `json:"data"`
+	Data []*AwsExtendedImagesListDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
 }
 
-// Validate validates this aws image list
-func (m *AwsImageList) Validate(formats strfmt.Registry) error {
+// Validate validates this aws images post list
+func (m *AwsImagesPostList) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateData(formats); err != nil {
@@ -40,7 +40,7 @@ func (m *AwsImageList) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *AwsImageList) validateData(formats strfmt.Registry) error {
+func (m *AwsImagesPostList) validateData(formats strfmt.Registry) error {
 	if swag.IsZero(m.Data) { // not required
 		return nil
 	}
@@ -66,8 +66,8 @@ func (m *AwsImageList) validateData(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this aws image list based on the context it is used
-func (m *AwsImageList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this aws images post list based on the context it is used
+func (m *AwsImagesPostList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateData(ctx, formats); err != nil {
@@ -80,7 +80,7 @@ func (m *AwsImageList) ContextValidate(ctx context.Context, formats strfmt.Regis
 	return nil
 }
 
-func (m *AwsImageList) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+func (m *AwsImagesPostList) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Data); i++ {
 
@@ -101,7 +101,7 @@ func (m *AwsImageList) contextValidateData(ctx context.Context, formats strfmt.R
 }
 
 // MarshalBinary interface implementation
-func (m *AwsImageList) MarshalBinary() ([]byte, error) {
+func (m *AwsImagesPostList) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -109,8 +109,8 @@ func (m *AwsImageList) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *AwsImageList) UnmarshalBinary(b []byte) error {
-	var res AwsImageList
+func (m *AwsImagesPostList) UnmarshalBinary(b []byte) error {
+	var res AwsImagesPostList
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

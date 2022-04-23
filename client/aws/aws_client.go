@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  AwsAwsOwners retrieves aws owner list
+  AwsAwsOwners retrieves aws verified owner list
 */
 func (a *Client) AwsAwsOwners(params *AwsAwsOwnersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsAwsOwnersOK, error) {
 	// TODO: Validate the params before sending
@@ -56,7 +56,7 @@ func (a *Client) AwsAwsOwners(params *AwsAwsOwnersParams, authInfo runtime.Clien
 	op := &runtime.ClientOperation{
 		ID:                 "Aws_AwsOwners",
 		Method:             "GET",
-		PathPattern:        "/api/v{v}/Aws/owners/{cloudId}/{platform}",
+		PathPattern:        "/api/v{v}/Aws/owners",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},

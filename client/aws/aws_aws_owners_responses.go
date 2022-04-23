@@ -74,22 +74,20 @@ func NewAwsAwsOwnersOK() *AwsAwsOwnersOK {
 Success
 */
 type AwsAwsOwnersOK struct {
-	Payload *models.AwsOwnerList
+	Payload []*models.CommonStringBasedDropdownDto
 }
 
 func (o *AwsAwsOwnersOK) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Aws/owners/{cloudId}/{platform}][%d] awsAwsOwnersOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersOK  %+v", 200, o.Payload)
 }
-func (o *AwsAwsOwnersOK) GetPayload() *models.AwsOwnerList {
+func (o *AwsAwsOwnersOK) GetPayload() []*models.CommonStringBasedDropdownDto {
 	return o.Payload
 }
 
 func (o *AwsAwsOwnersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.AwsOwnerList)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -110,7 +108,7 @@ type AwsAwsOwnersBadRequest struct {
 }
 
 func (o *AwsAwsOwnersBadRequest) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Aws/owners/{cloudId}/{platform}][%d] awsAwsOwnersBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersBadRequest  %+v", 400, o.Payload)
 }
 func (o *AwsAwsOwnersBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
@@ -142,7 +140,7 @@ type AwsAwsOwnersUnauthorized struct {
 }
 
 func (o *AwsAwsOwnersUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Aws/owners/{cloudId}/{platform}][%d] awsAwsOwnersUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersUnauthorized  %+v", 401, o.Payload)
 }
 func (o *AwsAwsOwnersUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -174,7 +172,7 @@ type AwsAwsOwnersForbidden struct {
 }
 
 func (o *AwsAwsOwnersForbidden) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Aws/owners/{cloudId}/{platform}][%d] awsAwsOwnersForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersForbidden  %+v", 403, o.Payload)
 }
 func (o *AwsAwsOwnersForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -206,7 +204,7 @@ type AwsAwsOwnersNotFound struct {
 }
 
 func (o *AwsAwsOwnersNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Aws/owners/{cloudId}/{platform}][%d] awsAwsOwnersNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersNotFound  %+v", 404, o.Payload)
 }
 func (o *AwsAwsOwnersNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -237,7 +235,7 @@ type AwsAwsOwnersInternalServerError struct {
 }
 
 func (o *AwsAwsOwnersInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Aws/owners/{cloudId}/{platform}][%d] awsAwsOwnersInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersInternalServerError ", 500)
 }
 
 func (o *AwsAwsOwnersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
