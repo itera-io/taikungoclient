@@ -76,11 +76,8 @@ type RepositoryListOfRulesParams struct {
 	*/
 	Offset *int32
 
-	// OrgSearch.
-	OrgSearch *string
-
-	// RepoSearch.
-	RepoSearch *string
+	// Search.
+	Search *string
 
 	// V.
 	V string
@@ -160,26 +157,15 @@ func (o *RepositoryListOfRulesParams) SetOffset(offset *int32) {
 	o.Offset = offset
 }
 
-// WithOrgSearch adds the orgSearch to the repository list of rules params
-func (o *RepositoryListOfRulesParams) WithOrgSearch(orgSearch *string) *RepositoryListOfRulesParams {
-	o.SetOrgSearch(orgSearch)
+// WithSearch adds the search to the repository list of rules params
+func (o *RepositoryListOfRulesParams) WithSearch(search *string) *RepositoryListOfRulesParams {
+	o.SetSearch(search)
 	return o
 }
 
-// SetOrgSearch adds the orgSearch to the repository list of rules params
-func (o *RepositoryListOfRulesParams) SetOrgSearch(orgSearch *string) {
-	o.OrgSearch = orgSearch
-}
-
-// WithRepoSearch adds the repoSearch to the repository list of rules params
-func (o *RepositoryListOfRulesParams) WithRepoSearch(repoSearch *string) *RepositoryListOfRulesParams {
-	o.SetRepoSearch(repoSearch)
-	return o
-}
-
-// SetRepoSearch adds the repoSearch to the repository list of rules params
-func (o *RepositoryListOfRulesParams) SetRepoSearch(repoSearch *string) {
-	o.RepoSearch = repoSearch
+// SetSearch adds the search to the repository list of rules params
+func (o *RepositoryListOfRulesParams) SetSearch(search *string) {
+	o.Search = search
 }
 
 // WithV adds the v to the repository list of rules params
@@ -235,35 +221,18 @@ func (o *RepositoryListOfRulesParams) WriteToRequest(r runtime.ClientRequest, re
 		}
 	}
 
-	if o.OrgSearch != nil {
+	if o.Search != nil {
 
-		// query param orgSearch
-		var qrOrgSearch string
+		// query param search
+		var qrSearch string
 
-		if o.OrgSearch != nil {
-			qrOrgSearch = *o.OrgSearch
+		if o.Search != nil {
+			qrSearch = *o.Search
 		}
-		qOrgSearch := qrOrgSearch
-		if qOrgSearch != "" {
+		qSearch := qrSearch
+		if qSearch != "" {
 
-			if err := r.SetQueryParam("orgSearch", qOrgSearch); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.RepoSearch != nil {
-
-		// query param repoSearch
-		var qrRepoSearch string
-
-		if o.RepoSearch != nil {
-			qrRepoSearch = *o.RepoSearch
-		}
-		qRepoSearch := qrRepoSearch
-		if qRepoSearch != "" {
-
-			if err := r.SetQueryParam("repoSearch", qRepoSearch); err != nil {
+			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}

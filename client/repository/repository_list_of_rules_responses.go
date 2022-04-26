@@ -74,19 +74,19 @@ func NewRepositoryListOfRulesOK() *RepositoryListOfRulesOK {
 Success
 */
 type RepositoryListOfRulesOK struct {
-	Payload *models.ArtifactRepositoryList
+	Payload *models.AppRepositoryList
 }
 
 func (o *RepositoryListOfRulesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListOfRulesOK  %+v", 200, o.Payload)
 }
-func (o *RepositoryListOfRulesOK) GetPayload() *models.ArtifactRepositoryList {
+func (o *RepositoryListOfRulesOK) GetPayload() *models.AppRepositoryList {
 	return o.Payload
 }
 
 func (o *RepositoryListOfRulesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ArtifactRepositoryList)
+	o.Payload = new(models.AppRepositoryList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

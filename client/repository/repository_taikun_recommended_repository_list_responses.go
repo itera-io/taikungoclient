@@ -74,13 +74,13 @@ func NewRepositoryTaikunRecommendedRepositoryListOK() *RepositoryTaikunRecommend
 Success
 */
 type RepositoryTaikunRecommendedRepositoryListOK struct {
-	Payload []*models.ArtifactRepositories
+	Payload []*models.ArtifactRepositoryDto
 }
 
 func (o *RepositoryTaikunRecommendedRepositoryListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListOK  %+v", 200, o.Payload)
 }
-func (o *RepositoryTaikunRecommendedRepositoryListOK) GetPayload() []*models.ArtifactRepositories {
+func (o *RepositoryTaikunRecommendedRepositoryListOK) GetPayload() []*models.ArtifactRepositoryDto {
 	return o.Payload
 }
 

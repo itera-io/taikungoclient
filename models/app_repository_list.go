@@ -14,20 +14,20 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ArtifactRepositoryList artifact repository list
+// AppRepositoryList app repository list
 //
-// swagger:model ArtifactRepositoryList
-type ArtifactRepositoryList struct {
+// swagger:model AppRepositoryList
+type AppRepositoryList struct {
 
 	// data
-	Data []*ArtifactRepositories `json:"data"`
+	Data []*ArtifactRepositoryDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
 }
 
-// Validate validates this artifact repository list
-func (m *ArtifactRepositoryList) Validate(formats strfmt.Registry) error {
+// Validate validates this app repository list
+func (m *AppRepositoryList) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateData(formats); err != nil {
@@ -40,7 +40,7 @@ func (m *ArtifactRepositoryList) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ArtifactRepositoryList) validateData(formats strfmt.Registry) error {
+func (m *AppRepositoryList) validateData(formats strfmt.Registry) error {
 	if swag.IsZero(m.Data) { // not required
 		return nil
 	}
@@ -66,8 +66,8 @@ func (m *ArtifactRepositoryList) validateData(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this artifact repository list based on the context it is used
-func (m *ArtifactRepositoryList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this app repository list based on the context it is used
+func (m *AppRepositoryList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateData(ctx, formats); err != nil {
@@ -80,7 +80,7 @@ func (m *ArtifactRepositoryList) ContextValidate(ctx context.Context, formats st
 	return nil
 }
 
-func (m *ArtifactRepositoryList) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+func (m *AppRepositoryList) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Data); i++ {
 
@@ -101,7 +101,7 @@ func (m *ArtifactRepositoryList) contextValidateData(ctx context.Context, format
 }
 
 // MarshalBinary interface implementation
-func (m *ArtifactRepositoryList) MarshalBinary() ([]byte, error) {
+func (m *AppRepositoryList) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -109,8 +109,8 @@ func (m *ArtifactRepositoryList) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *ArtifactRepositoryList) UnmarshalBinary(b []byte) error {
-	var res ArtifactRepositoryList
+func (m *AppRepositoryList) UnmarshalBinary(b []byte) error {
+	var res AppRepositoryList
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
