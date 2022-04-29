@@ -19,6 +19,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/azure"
 	"github.com/itera-io/taikungoclient/client/backup"
 	"github.com/itera-io/taikungoclient/client/billing"
+	"github.com/itera-io/taikungoclient/client/catalog"
 	"github.com/itera-io/taikungoclient/client/checker"
 	"github.com/itera-io/taikungoclient/client/cloud_credentials"
 	"github.com/itera-io/taikungoclient/client/common"
@@ -137,6 +138,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Azure = azure.New(transport, formats)
 	cli.Backup = backup.New(transport, formats)
 	cli.Billing = billing.New(transport, formats)
+	cli.Catalog = catalog.New(transport, formats)
 	cli.Checker = checker.New(transport, formats)
 	cli.CloudCredentials = cloud_credentials.New(transport, formats)
 	cli.Common = common.New(transport, formats)
@@ -246,6 +248,8 @@ type Taikungoclient struct {
 	Backup backup.ClientService
 
 	Billing billing.ClientService
+
+	Catalog catalog.ClientService
 
 	Checker checker.ClientService
 
@@ -358,6 +362,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Azure.SetTransport(transport)
 	c.Backup.SetTransport(transport)
 	c.Billing.SetTransport(transport)
+	c.Catalog.SetTransport(transport)
 	c.Checker.SetTransport(transport)
 	c.CloudCredentials.SetTransport(transport)
 	c.Common.SetTransport(transport)

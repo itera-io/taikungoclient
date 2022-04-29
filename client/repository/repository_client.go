@@ -32,7 +32,7 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	RepositoryCreate(params *RepositoryCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryCreateOK, error)
 
-	RepositoryListOfRules(params *RepositoryListOfRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryListOfRulesOK, error)
+	RepositoryList(params *RepositoryListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryListOK, error)
 
 	RepositoryTaikunRecommendedRepositoryList(params *RepositoryTaikunRecommendedRepositoryListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryTaikunRecommendedRepositoryListOK, error)
 
@@ -79,22 +79,22 @@ func (a *Client) RepositoryCreate(params *RepositoryCreateParams, authInfo runti
 }
 
 /*
-  RepositoryListOfRules retrieves available repository list
+  RepositoryList retrieves available repository list
 */
-func (a *Client) RepositoryListOfRules(params *RepositoryListOfRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryListOfRulesOK, error) {
+func (a *Client) RepositoryList(params *RepositoryListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryListOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewRepositoryListOfRulesParams()
+		params = NewRepositoryListParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "Repository_ListOfRules",
+		ID:                 "Repository_List",
 		Method:             "GET",
 		PathPattern:        "/api/v{v}/Repository/available",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &RepositoryListOfRulesReader{formats: a.formats},
+		Reader:             &RepositoryListReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -107,13 +107,13 @@ func (a *Client) RepositoryListOfRules(params *RepositoryListOfRulesParams, auth
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*RepositoryListOfRulesOK)
+	success, ok := result.(*RepositoryListOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Repository_ListOfRules: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for Repository_List: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

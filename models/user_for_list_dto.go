@@ -34,6 +34,9 @@ type UserForListDto struct {
 	// email
 	Email string `json:"email,omitempty"`
 
+	// has repo
+	HasRepo bool `json:"hasRepo"`
+
 	// id
 	ID string `json:"id,omitempty"`
 
