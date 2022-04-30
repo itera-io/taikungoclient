@@ -21,9 +21,6 @@ type BindAppRepositoryCommand struct {
 
 	// filtering elements
 	FilteringElements []*FilteringElementDto `json:"filteringElements"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
 }
 
 // Validate validates this bind app repository command
