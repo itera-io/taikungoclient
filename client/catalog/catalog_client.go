@@ -34,9 +34,13 @@ type ClientService interface {
 
 	CatalogAvailableVersions(params *CatalogAvailableVersionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogAvailableVersionsOK, error)
 
+	CatalogBindProjects(params *CatalogBindProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogBindProjectsOK, error)
+
 	CatalogCatalogAppValue(params *CatalogCatalogAppValueParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppValueOK, error)
 
 	CatalogCatalogDropdown(params *CatalogCatalogDropdownParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogDropdownOK, error)
+
+	CatalogCatalogList(params *CatalogCatalogListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogListOK, error)
 
 	CatalogCreateCatalog(params *CatalogCreateCatalogParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCreateCatalogOK, error)
 
@@ -132,6 +136,45 @@ func (a *Client) CatalogAvailableVersions(params *CatalogAvailableVersionsParams
 }
 
 /*
+  CatalogBindProjects binds unbind projects to catalog
+*/
+func (a *Client) CatalogBindProjects(params *CatalogBindProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogBindProjectsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCatalogBindProjectsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Catalog_BindProjects",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Catalog/bind-project",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CatalogBindProjectsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CatalogBindProjectsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Catalog_BindProjects: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   CatalogCatalogAppValue gets catalog app yaml value
 */
 func (a *Client) CatalogCatalogAppValue(params *CatalogCatalogAppValueParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppValueOK, error) {
@@ -181,7 +224,7 @@ func (a *Client) CatalogCatalogDropdown(params *CatalogCatalogDropdownParams, au
 	op := &runtime.ClientOperation{
 		ID:                 "Catalog_CatalogDropdown",
 		Method:             "GET",
-		PathPattern:        "/api/v{v}/Catalog/list",
+		PathPattern:        "/api/v{v}/Catalog/dropdown-list",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -206,6 +249,45 @@ func (a *Client) CatalogCatalogDropdown(params *CatalogCatalogDropdownParams, au
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Catalog_CatalogDropdown: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CatalogCatalogList catalogs list for organization
+*/
+func (a *Client) CatalogCatalogList(params *CatalogCatalogListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCatalogCatalogListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Catalog_CatalogList",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Catalog/list",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CatalogCatalogListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CatalogCatalogListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Catalog_CatalogList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

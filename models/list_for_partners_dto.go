@@ -45,6 +45,9 @@ type ListForPartnersDto struct {
 	// is active
 	IsActive bool `json:"isActive"`
 
+	// is demo
+	IsDemo bool `json:"isDemo"`
+
 	// is deprecated
 	IsDeprecated bool `json:"isDeprecated"`
 

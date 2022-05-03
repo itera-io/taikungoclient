@@ -78,7 +78,7 @@ type CatalogCatalogDropdownOK struct {
 }
 
 func (o *CatalogCatalogDropdownOK) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Catalog/list][%d] catalogCatalogDropdownOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/dropdown-list][%d] catalogCatalogDropdownOK  %+v", 200, o.Payload)
 }
 func (o *CatalogCatalogDropdownOK) GetPayload() []*models.CatalogDropdownDto {
 	return o.Payload
@@ -108,7 +108,7 @@ type CatalogCatalogDropdownBadRequest struct {
 }
 
 func (o *CatalogCatalogDropdownBadRequest) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Catalog/list][%d] catalogCatalogDropdownBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/dropdown-list][%d] catalogCatalogDropdownBadRequest  %+v", 400, o.Payload)
 }
 func (o *CatalogCatalogDropdownBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
@@ -140,7 +140,7 @@ type CatalogCatalogDropdownUnauthorized struct {
 }
 
 func (o *CatalogCatalogDropdownUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Catalog/list][%d] catalogCatalogDropdownUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/dropdown-list][%d] catalogCatalogDropdownUnauthorized  %+v", 401, o.Payload)
 }
 func (o *CatalogCatalogDropdownUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -172,7 +172,7 @@ type CatalogCatalogDropdownForbidden struct {
 }
 
 func (o *CatalogCatalogDropdownForbidden) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Catalog/list][%d] catalogCatalogDropdownForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/dropdown-list][%d] catalogCatalogDropdownForbidden  %+v", 403, o.Payload)
 }
 func (o *CatalogCatalogDropdownForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -204,7 +204,7 @@ type CatalogCatalogDropdownNotFound struct {
 }
 
 func (o *CatalogCatalogDropdownNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Catalog/list][%d] catalogCatalogDropdownNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/dropdown-list][%d] catalogCatalogDropdownNotFound  %+v", 404, o.Payload)
 }
 func (o *CatalogCatalogDropdownNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -235,7 +235,7 @@ type CatalogCatalogDropdownInternalServerError struct {
 }
 
 func (o *CatalogCatalogDropdownInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /api/v{v}/Catalog/list][%d] catalogCatalogDropdownInternalServerError ", 500)
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/dropdown-list][%d] catalogCatalogDropdownInternalServerError ", 500)
 }
 
 func (o *CatalogCatalogDropdownInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
