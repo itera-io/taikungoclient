@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // GetToken get token
@@ -20,12 +22,37 @@ type GetToken struct {
 	// refresh token
 	RefreshToken string `json:"refreshToken,omitempty"`
 
+	// refresh token expire time
+	// Format: date-time
+	RefreshTokenExpireTime *strfmt.DateTime `json:"refreshTokenExpireTime,omitempty"`
+
 	// token
 	Token string `json:"token,omitempty"`
 }
 
 // Validate validates this get token
 func (m *GetToken) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateRefreshTokenExpireTime(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *GetToken) validateRefreshTokenExpireTime(formats strfmt.Registry) error {
+	if swag.IsZero(m.RefreshTokenExpireTime) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("refreshTokenExpireTime", "body", "date-time", m.RefreshTokenExpireTime.String(), formats); err != nil {
+		return err
+	}
+
 	return nil
 }
 

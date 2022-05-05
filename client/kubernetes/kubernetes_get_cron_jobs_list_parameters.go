@@ -73,7 +73,7 @@ type KubernetesGetCronJobsListParams struct {
 
 	/* Offset.
 
-	   Page number
+	   Skip elements
 
 	   Format: int32
 	*/

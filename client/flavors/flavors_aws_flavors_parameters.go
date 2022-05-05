@@ -85,16 +85,11 @@ type FlavorsAwsFlavorsParams struct {
 
 	/* Offset.
 
-	   Page number
+	   Skip elements
 
 	   Format: int32
 	*/
 	Offset *int32
-
-	// OrganizationID.
-	//
-	// Format: int32
-	OrganizationID *int32
 
 	// Search.
 	Search *string
@@ -224,17 +219,6 @@ func (o *FlavorsAwsFlavorsParams) WithOffset(offset *int32) *FlavorsAwsFlavorsPa
 // SetOffset adds the offset to the flavors aws flavors params
 func (o *FlavorsAwsFlavorsParams) SetOffset(offset *int32) {
 	o.Offset = offset
-}
-
-// WithOrganizationID adds the organizationID to the flavors aws flavors params
-func (o *FlavorsAwsFlavorsParams) WithOrganizationID(organizationID *int32) *FlavorsAwsFlavorsParams {
-	o.SetOrganizationID(organizationID)
-	return o
-}
-
-// SetOrganizationID adds the organizationId to the flavors aws flavors params
-func (o *FlavorsAwsFlavorsParams) SetOrganizationID(organizationID *int32) {
-	o.OrganizationID = organizationID
 }
 
 // WithSearch adds the search to the flavors aws flavors params
@@ -379,23 +363,6 @@ func (o *FlavorsAwsFlavorsParams) WriteToRequest(r runtime.ClientRequest, reg st
 		if qOffset != "" {
 
 			if err := r.SetQueryParam("offset", qOffset); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.OrganizationID != nil {
-
-		// query param organizationId
-		var qrOrganizationID int32
-
-		if o.OrganizationID != nil {
-			qrOrganizationID = *o.OrganizationID
-		}
-		qOrganizationID := swag.FormatInt32(qrOrganizationID)
-		if qOrganizationID != "" {
-
-			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
 				return err
 			}
 		}

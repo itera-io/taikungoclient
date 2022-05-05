@@ -25,6 +25,9 @@ type KubernetesProfilesListDto struct {
 	// cni
 	Cni string `json:"cni,omitempty"`
 
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
 	// created by
 	CreatedBy string `json:"createdBy,omitempty"`
 
@@ -60,6 +63,9 @@ type KubernetesProfilesListDto struct {
 
 	// taikun l b enabled
 	TaikunLBEnabled bool `json:"taikunLBEnabled"`
+
+	// unique cluster name
+	UniqueClusterName bool `json:"uniqueClusterName"`
 }
 
 // Validate validates this kubernetes profiles list dto

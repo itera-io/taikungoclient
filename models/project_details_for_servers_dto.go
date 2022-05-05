@@ -38,8 +38,20 @@ type ProjectDetailsForServersDto struct {
 	// alerts total count
 	AlertsTotalCount int32 `json:"alertsTotalCount,omitempty"`
 
+	// allow full spot kubernetes
+	AllowFullSpotKubernetes bool `json:"allowFullSpotKubernetes"`
+
+	// allow spot v ms
+	AllowSpotVMs bool `json:"allowSpotVMs"`
+
+	// allow spot workers
+	AllowSpotWorkers bool `json:"allowSpotWorkers"`
+
 	// bastion
 	Bastion int32 `json:"bastion,omitempty"`
+
+	// certification expired at
+	CertificationExpiredAt string `json:"certificationExpiredAt,omitempty"`
 
 	// cloud credential revision
 	CloudCredentialRevision int32 `json:"cloudCredentialRevision,omitempty"`
@@ -124,6 +136,9 @@ type ProjectDetailsForServersDto struct {
 
 	// master ready
 	MasterReady int32 `json:"masterReady,omitempty"`
+
+	// max spot price
+	MaxSpotPrice float64 `json:"maxSpotPrice,omitempty"`
 
 	// opa profile Id
 	OpaProfileID int32 `json:"opaProfileId,omitempty"`

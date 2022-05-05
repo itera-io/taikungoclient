@@ -22,6 +22,9 @@ type OpaProfileListDto struct {
 	// allowed repo
 	AllowedRepo []string `json:"allowedRepo"`
 
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
 	// forbid Http ingress
 	ForbidHTTPIngress bool `json:"forbidHttpIngress"`
 

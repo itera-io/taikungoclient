@@ -25,6 +25,15 @@ type CreateProjectCommand struct {
 	// alerting profile Id
 	AlertingProfileID int32 `json:"alertingProfileId,omitempty"`
 
+	// allow full spot kubernetes
+	AllowFullSpotKubernetes bool `json:"allowFullSpotKubernetes"`
+
+	// allow spot v ms
+	AllowSpotVMs bool `json:"allowSpotVMs"`
+
+	// allow spot workers
+	AllowSpotWorkers bool `json:"allowSpotWorkers"`
+
 	// cloud credential Id
 	CloudCredentialID int32 `json:"cloudCredentialId,omitempty"`
 
@@ -49,6 +58,12 @@ type CreateProjectCommand struct {
 
 	// kubernetes profile Id
 	KubernetesProfileID int32 `json:"kubernetesProfileId,omitempty"`
+
+	// kubernetes version
+	KubernetesVersion string `json:"kubernetesVersion,omitempty"`
+
+	// max spot price
+	MaxSpotPrice float64 `json:"maxSpotPrice,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`

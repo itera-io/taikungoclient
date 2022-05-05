@@ -25,6 +25,9 @@ type CredentialsChart struct {
 	// azure
 	Azure []*AzureCredentialsListDto `json:"azure"`
 
+	// google
+	Google []*GoogleCredentialsListDto `json:"google"`
+
 	// openstack
 	Openstack []*OpenstackCredentialsListDto `json:"openstack"`
 
@@ -33,6 +36,9 @@ type CredentialsChart struct {
 
 	// total count azure
 	TotalCountAzure int32 `json:"totalCountAzure,omitempty"`
+
+	// total count google
+	TotalCountGoogle int32 `json:"totalCountGoogle,omitempty"`
 
 	// total count openstack
 	TotalCountOpenstack int32 `json:"totalCountOpenstack,omitempty"`
@@ -47,6 +53,10 @@ func (m *CredentialsChart) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateAzure(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateGoogle(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -112,6 +122,32 @@ func (m *CredentialsChart) validateAzure(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *CredentialsChart) validateGoogle(formats strfmt.Registry) error {
+	if swag.IsZero(m.Google) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Google); i++ {
+		if swag.IsZero(m.Google[i]) { // not required
+			continue
+		}
+
+		if m.Google[i] != nil {
+			if err := m.Google[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("google" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("google" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 func (m *CredentialsChart) validateOpenstack(formats strfmt.Registry) error {
 	if swag.IsZero(m.Openstack) { // not required
 		return nil
@@ -147,6 +183,10 @@ func (m *CredentialsChart) ContextValidate(ctx context.Context, formats strfmt.R
 	}
 
 	if err := m.contextValidateAzure(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateGoogle(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -190,6 +230,26 @@ func (m *CredentialsChart) contextValidateAzure(ctx context.Context, formats str
 					return ve.ValidateName("azure" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("azure" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CredentialsChart) contextValidateGoogle(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Google); i++ {
+
+		if m.Google[i] != nil {
+			if err := m.Google[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("google" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("google" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

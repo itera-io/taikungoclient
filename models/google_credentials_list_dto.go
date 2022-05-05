@@ -22,11 +22,23 @@ type GoogleCredentialsListDto struct {
 	// billing account Id
 	BillingAccountID string `json:"billingAccountId,omitempty"`
 
+	// billing account name
+	BillingAccountName string `json:"billingAccountName,omitempty"`
+
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
 	// folder Id
 	FolderID string `json:"folderId,omitempty"`
 
 	// id
 	ID int32 `json:"id,omitempty"`
+
+	// is default
+	IsDefault bool `json:"isDefault"`
+
+	// is locked
+	IsLocked bool `json:"isLocked"`
 
 	// name
 	Name string `json:"name,omitempty"`
@@ -42,6 +54,9 @@ type GoogleCredentialsListDto struct {
 
 	// partner name
 	PartnerName string `json:"partnerName,omitempty"`
+
+	// project Id
+	ProjectID string `json:"projectId,omitempty"`
 
 	// projects
 	Projects []*CommonDropdownDto `json:"projects"`

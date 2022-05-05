@@ -30,6 +30,12 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	StandAloneActionsConsole(params *StandAloneActionsConsoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsConsoleOK, error)
+
+	StandAloneActionsExportCsv(params *StandAloneActionsExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsExportCsvOK, error)
+
+	StandAloneActionsInstancePassword(params *StandAloneActionsInstancePasswordParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsInstancePasswordOK, error)
+
 	StandAloneActionsReboot(params *StandAloneActionsRebootParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsRebootOK, error)
 
 	StandAloneActionsShelve(params *StandAloneActionsShelveParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsShelveOK, error)
@@ -43,6 +49,123 @@ type ClientService interface {
 	StandAloneActionsUnshelve(params *StandAloneActionsUnshelveParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsUnshelveOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  StandAloneActionsConsole consoles info standalone vm instance
+*/
+func (a *Client) StandAloneActionsConsole(params *StandAloneActionsConsoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsConsoleOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAloneActionsConsoleParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAloneActions_Console",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/StandAloneActions/console",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAloneActionsConsoleReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAloneActionsConsoleOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAloneActions_Console: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  StandAloneActionsExportCsv downloads r d p file
+*/
+func (a *Client) StandAloneActionsExportCsv(params *StandAloneActionsExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsExportCsvOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAloneActionsExportCsvParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAloneActions_ExportCsv",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/StandAloneActions/download/rdp/{id}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAloneActionsExportCsvReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAloneActionsExportCsvOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAloneActions_ExportCsv: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  StandAloneActionsInstancePassword retrieves aws windows admin instance password
+*/
+func (a *Client) StandAloneActionsInstancePassword(params *StandAloneActionsInstancePasswordParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsInstancePasswordOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAloneActionsInstancePasswordParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAloneActions_InstancePassword",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/StandAloneActions/password",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAloneActionsInstancePasswordReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAloneActionsInstancePasswordOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAloneActions_InstancePassword: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*

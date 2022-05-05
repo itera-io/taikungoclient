@@ -17,6 +17,15 @@ import (
 // swagger:model ProjectDetailsForVmsDto
 type ProjectDetailsForVmsDto struct {
 
+	// allow full spot kubernetes
+	AllowFullSpotKubernetes bool `json:"allowFullSpotKubernetes"`
+
+	// allow spot v ms
+	AllowSpotVMs bool `json:"allowSpotVMs"`
+
+	// allow spot workers
+	AllowSpotWorkers bool `json:"allowSpotWorkers"`
+
 	// cloud credential revision
 	CloudCredentialRevision int32 `json:"cloudCredentialRevision,omitempty"`
 
@@ -37,6 +46,9 @@ type ProjectDetailsForVmsDto struct {
 
 	// is maintenance mode enabled
 	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
+
+	// max spot price
+	MaxSpotPrice float64 `json:"maxSpotPrice,omitempty"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`

@@ -18,16 +18,19 @@ import (
 type FlavorsListDto struct {
 
 	// cpu
-	CPU interface{} `json:"cpu,omitempty"`
+	CPU int32 `json:"cpu,omitempty"`
 
 	// description
 	Description interface{} `json:"description,omitempty"`
 
+	// max data disk count
+	MaxDataDiskCount float64 `json:"maxDataDiskCount,omitempty"`
+
 	// name
-	Name interface{} `json:"name,omitempty"`
+	Name string `json:"name,omitempty"`
 
 	// ram
-	RAM interface{} `json:"ram,omitempty"`
+	RAM int64 `json:"ram,omitempty"`
 }
 
 // Validate validates this flavors list dto

@@ -29,7 +29,7 @@ type CloudCredentialsDropdownRecordDto struct {
 	Name string `json:"name,omitempty"`
 
 	// projects
-	Projects []*CommonDropdownDto `json:"projects"`
+	Projects []*ProjectWithFlavorsAndImagesDto `json:"projects"`
 }
 
 // Validate validates this cloud credentials dropdown record dto

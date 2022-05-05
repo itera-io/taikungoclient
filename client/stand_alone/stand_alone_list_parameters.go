@@ -75,6 +75,9 @@ type StandAloneListParams struct {
 	// Format: int64
 	EndRAM *int64
 
+	// FilterBy.
+	FilterBy *string
+
 	// ID.
 	//
 	// Format: int32
@@ -90,7 +93,7 @@ type StandAloneListParams struct {
 
 	/* Offset.
 
-	   Page number
+	   Skip elements
 
 	   Format: int32
 	*/
@@ -220,6 +223,17 @@ func (o *StandAloneListParams) WithEndRAM(endRAM *int64) *StandAloneListParams {
 // SetEndRAM adds the endRam to the stand alone list params
 func (o *StandAloneListParams) SetEndRAM(endRAM *int64) {
 	o.EndRAM = endRAM
+}
+
+// WithFilterBy adds the filterBy to the stand alone list params
+func (o *StandAloneListParams) WithFilterBy(filterBy *string) *StandAloneListParams {
+	o.SetFilterBy(filterBy)
+	return o
+}
+
+// SetFilterBy adds the filterBy to the stand alone list params
+func (o *StandAloneListParams) SetFilterBy(filterBy *string) {
+	o.FilterBy = filterBy
 }
 
 // WithID adds the id to the stand alone list params
@@ -419,6 +433,23 @@ func (o *StandAloneListParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		if qEndRAM != "" {
 
 			if err := r.SetQueryParam("endRam", qEndRAM); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.FilterBy != nil {
+
+		// query param filterBy
+		var qrFilterBy string
+
+		if o.FilterBy != nil {
+			qrFilterBy = *o.FilterBy
+		}
+		qFilterBy := qrFilterBy
+		if qFilterBy != "" {
+
+			if err := r.SetQueryParam("filterBy", qFilterBy); err != nil {
 				return err
 			}
 		}

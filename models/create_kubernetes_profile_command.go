@@ -34,6 +34,9 @@ type CreateKubernetesProfileCommand struct {
 
 	// taikun l b enabled
 	TaikunLBEnabled bool `json:"taikunLBEnabled"`
+
+	// unique cluster name
+	UniqueClusterName bool `json:"uniqueClusterName"`
 }
 
 // Validate validates this create kubernetes profile command

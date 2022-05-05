@@ -18,6 +18,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/azure"
 	"github.com/itera-io/taikungoclient/client/backup"
 	"github.com/itera-io/taikungoclient/client/billing"
+	"github.com/itera-io/taikungoclient/client/catalog"
 	"github.com/itera-io/taikungoclient/client/checker"
 	"github.com/itera-io/taikungoclient/client/cloud_credentials"
 	"github.com/itera-io/taikungoclient/client/common"
@@ -32,10 +33,12 @@ import (
 	"github.com/itera-io/taikungoclient/client/openstack"
 	"github.com/itera-io/taikungoclient/client/ops_credentials"
 	"github.com/itera-io/taikungoclient/client/organizations"
+	"github.com/itera-io/taikungoclient/client/pre_defined_queries"
+	"github.com/itera-io/taikungoclient/client/project_groups"
 	"github.com/itera-io/taikungoclient/client/project_quotas"
 	"github.com/itera-io/taikungoclient/client/projects"
 	"github.com/itera-io/taikungoclient/client/prometheus"
-	"github.com/itera-io/taikungoclient/client/request"
+	"github.com/itera-io/taikungoclient/client/repository"
 	"github.com/itera-io/taikungoclient/client/s3_credentials"
 	"github.com/itera-io/taikungoclient/client/search"
 	"github.com/itera-io/taikungoclient/client/security_group"
@@ -120,6 +123,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Azure = azure.New(transport, formats)
 	cli.Backup = backup.New(transport, formats)
 	cli.Billing = billing.New(transport, formats)
+	cli.Catalog = catalog.New(transport, formats)
 	cli.Checker = checker.New(transport, formats)
 	cli.CloudCredentials = cloud_credentials.New(transport, formats)
 	cli.Common = common.New(transport, formats)
@@ -134,10 +138,12 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Openstack = openstack.New(transport, formats)
 	cli.OpsCredentials = ops_credentials.New(transport, formats)
 	cli.Organizations = organizations.New(transport, formats)
+	cli.PreDefinedQueries = pre_defined_queries.New(transport, formats)
+	cli.ProjectGroups = project_groups.New(transport, formats)
 	cli.ProjectQuotas = project_quotas.New(transport, formats)
 	cli.Projects = projects.New(transport, formats)
 	cli.Prometheus = prometheus.New(transport, formats)
-	cli.Request = request.New(transport, formats)
+	cli.Repository = repository.New(transport, formats)
 	cli.S3Credentials = s3_credentials.New(transport, formats)
 	cli.Search = search.New(transport, formats)
 	cli.SecurityGroup = security_group.New(transport, formats)
@@ -213,6 +219,8 @@ type Taikungoclient struct {
 
 	Billing billing.ClientService
 
+	Catalog catalog.ClientService
+
 	Checker checker.ClientService
 
 	CloudCredentials cloud_credentials.ClientService
@@ -241,13 +249,17 @@ type Taikungoclient struct {
 
 	Organizations organizations.ClientService
 
+	PreDefinedQueries pre_defined_queries.ClientService
+
+	ProjectGroups project_groups.ClientService
+
 	ProjectQuotas project_quotas.ClientService
 
 	Projects projects.ClientService
 
 	Prometheus prometheus.ClientService
 
-	Request request.ClientService
+	Repository repository.ClientService
 
 	S3Credentials s3_credentials.ClientService
 
@@ -293,6 +305,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Azure.SetTransport(transport)
 	c.Backup.SetTransport(transport)
 	c.Billing.SetTransport(transport)
+	c.Catalog.SetTransport(transport)
 	c.Checker.SetTransport(transport)
 	c.CloudCredentials.SetTransport(transport)
 	c.Common.SetTransport(transport)
@@ -307,10 +320,12 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Openstack.SetTransport(transport)
 	c.OpsCredentials.SetTransport(transport)
 	c.Organizations.SetTransport(transport)
+	c.PreDefinedQueries.SetTransport(transport)
+	c.ProjectGroups.SetTransport(transport)
 	c.ProjectQuotas.SetTransport(transport)
 	c.Projects.SetTransport(transport)
 	c.Prometheus.SetTransport(transport)
-	c.Request.SetTransport(transport)
+	c.Repository.SetTransport(transport)
 	c.S3Credentials.SetTransport(transport)
 	c.Search.SetTransport(transport)
 	c.SecurityGroup.SetTransport(transport)

@@ -29,6 +29,9 @@ type ListForLandingPageDto struct {
 	// id
 	ID int32 `json:"id,omitempty"`
 
+	// is demo
+	IsDemo bool `json:"isDemo"`
+
 	// is deprecated
 	IsDeprecated bool `json:"isDeprecated"`
 

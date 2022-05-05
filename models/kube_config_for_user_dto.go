@@ -23,6 +23,12 @@ type KubeConfigForUserDto struct {
 	// created by
 	CreatedBy string `json:"createdBy,omitempty"`
 
+	// display name
+	DisplayName string `json:"displayName"`
+
+	// expiration date
+	ExpirationDate string `json:"expirationDate,omitempty"`
+
 	// id
 	ID int32 `json:"id,omitempty"`
 
@@ -35,8 +41,8 @@ type KubeConfigForUserDto struct {
 	// kube config role name
 	KubeConfigRoleName string `json:"kubeConfigRoleName,omitempty"`
 
-	// name
-	Name string `json:"name,omitempty"`
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
@@ -44,17 +50,8 @@ type KubeConfigForUserDto struct {
 	// project name
 	ProjectName string `json:"projectName,omitempty"`
 
-	// service account name
-	ServiceAccountName string `json:"serviceAccountName,omitempty"`
-
 	// user Id
 	UserID string `json:"userId,omitempty"`
-
-	// user name
-	UserName string `json:"userName,omitempty"`
-
-	// user role
-	UserRole string `json:"userRole,omitempty"`
 }
 
 // Validate validates this kube config for user dto

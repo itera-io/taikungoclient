@@ -30,15 +30,58 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	UserGroupsBindProjectGroups(params *UserGroupsBindProjectGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserGroupsBindProjectGroupsOK, error)
+
 	UserGroupsCreate(params *UserGroupsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserGroupsCreateOK, error)
 
 	UserGroupsDelete(params *UserGroupsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserGroupsDeleteOK, *UserGroupsDeleteNoContent, error)
 
 	UserGroupsList(params *UserGroupsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserGroupsListOK, error)
 
+	UserGroupsListByProjectGroupID(params *UserGroupsListByProjectGroupIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserGroupsListByProjectGroupIDOK, error)
+
 	UserGroupsUpdate(params *UserGroupsUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserGroupsUpdateOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  UserGroupsBindProjectGroups binds project groups
+*/
+func (a *Client) UserGroupsBindProjectGroups(params *UserGroupsBindProjectGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserGroupsBindProjectGroupsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUserGroupsBindProjectGroupsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UserGroups_BindProjectGroups",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/UserGroups/bind-project-groups",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UserGroupsBindProjectGroupsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UserGroupsBindProjectGroupsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UserGroups_BindProjectGroups: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -156,6 +199,45 @@ func (a *Client) UserGroupsList(params *UserGroupsListParams, authInfo runtime.C
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for UserGroups_List: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UserGroupsListByProjectGroupID retrieves list of user groups by project group id for dropdown
+*/
+func (a *Client) UserGroupsListByProjectGroupID(params *UserGroupsListByProjectGroupIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserGroupsListByProjectGroupIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUserGroupsListByProjectGroupIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UserGroups_ListByProjectGroupId",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/UserGroups/list-by-project-group-id",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UserGroupsListByProjectGroupIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UserGroupsListByProjectGroupIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UserGroups_ListByProjectGroupId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

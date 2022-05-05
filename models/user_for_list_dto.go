@@ -25,11 +25,17 @@ type UserForListDto struct {
 	// created at
 	CreatedAt string `json:"createdAt,omitempty"`
 
+	// customer Id
+	CustomerID string `json:"customerId,omitempty"`
+
 	// display name
 	DisplayName string `json:"displayName"`
 
 	// email
 	Email string `json:"email,omitempty"`
+
+	// has repo
+	HasRepo bool `json:"hasRepo"`
 
 	// id
 	ID string `json:"id,omitempty"`

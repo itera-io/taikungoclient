@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewStandAloneProfileDropdownListParams creates a new StandAloneProfileDropdownListParams object,
@@ -58,6 +59,11 @@ func NewStandAloneProfileDropdownListParamsWithHTTPClient(client *http.Client) *
    Typically these are written to a http.Request.
 */
 type StandAloneProfileDropdownListParams struct {
+
+	// OrganizationID.
+	//
+	// Format: int32
+	OrganizationID *int32
 
 	// V.
 	V string
@@ -115,6 +121,17 @@ func (o *StandAloneProfileDropdownListParams) SetHTTPClient(client *http.Client)
 	o.HTTPClient = client
 }
 
+// WithOrganizationID adds the organizationID to the stand alone profile dropdown list params
+func (o *StandAloneProfileDropdownListParams) WithOrganizationID(organizationID *int32) *StandAloneProfileDropdownListParams {
+	o.SetOrganizationID(organizationID)
+	return o
+}
+
+// SetOrganizationID adds the organizationId to the stand alone profile dropdown list params
+func (o *StandAloneProfileDropdownListParams) SetOrganizationID(organizationID *int32) {
+	o.OrganizationID = organizationID
+}
+
 // WithV adds the v to the stand alone profile dropdown list params
 func (o *StandAloneProfileDropdownListParams) WithV(v string) *StandAloneProfileDropdownListParams {
 	o.SetV(v)
@@ -133,6 +150,23 @@ func (o *StandAloneProfileDropdownListParams) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 	var res []error
+
+	if o.OrganizationID != nil {
+
+		// query param organizationId
+		var qrOrganizationID int32
+
+		if o.OrganizationID != nil {
+			qrOrganizationID = *o.OrganizationID
+		}
+		qOrganizationID := swag.FormatInt32(qrOrganizationID)
+		if qOrganizationID != "" {
+
+			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
+				return err
+			}
+		}
+	}
 
 	// path param v
 	if err := r.SetPathParam("v", o.V); err != nil {

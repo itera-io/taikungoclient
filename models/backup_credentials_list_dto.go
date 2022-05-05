@@ -19,6 +19,9 @@ import (
 // swagger:model BackupCredentialsListDto
 type BackupCredentialsListDto struct {
 
+	// created at
+	CreatedAt string `json:"createdAt,omitempty"`
+
 	// created by
 	CreatedBy string `json:"createdBy,omitempty"`
 

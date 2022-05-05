@@ -22,6 +22,9 @@ type AlertingWebhookDto struct {
 	// headers
 	Headers []*WebhookHeaderDto `json:"headers"`
 
+	// id
+	ID int32 `json:"id,omitempty"`
+
 	// url
 	URL string `json:"url,omitempty"`
 }

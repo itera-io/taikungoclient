@@ -50,6 +50,9 @@ type ProjectForListDto struct {
 	// flavors
 	Flavors []string `json:"flavors"`
 
+	// google project Id
+	GoogleProjectID string `json:"googleProjectId,omitempty"`
+
 	// has kube config file
 	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
 
@@ -113,8 +116,8 @@ type ProjectForListDto struct {
 	// master ready
 	MasterReady int32 `json:"masterReady,omitempty"`
 
-	// monitoring credentials
-	MonitoringCredentials []*MonitoringCredentialsListDto `json:"monitoringCredentials"`
+	// monitoring credential
+	MonitoringCredential *MonitoringCredentialsListDto `json:"monitoringCredential,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`
@@ -210,7 +213,7 @@ func (m *ProjectForListDto) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateMonitoringCredentials(formats); err != nil {
+	if err := m.validateMonitoringCredential(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -318,27 +321,20 @@ func (m *ProjectForListDto) validateKubernetesProfiles(formats strfmt.Registry) 
 	return nil
 }
 
-func (m *ProjectForListDto) validateMonitoringCredentials(formats strfmt.Registry) error {
-	if swag.IsZero(m.MonitoringCredentials) { // not required
+func (m *ProjectForListDto) validateMonitoringCredential(formats strfmt.Registry) error {
+	if swag.IsZero(m.MonitoringCredential) { // not required
 		return nil
 	}
 
-	for i := 0; i < len(m.MonitoringCredentials); i++ {
-		if swag.IsZero(m.MonitoringCredentials[i]) { // not required
-			continue
-		}
-
-		if m.MonitoringCredentials[i] != nil {
-			if err := m.MonitoringCredentials[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
-				}
-				return err
+	if m.MonitoringCredential != nil {
+		if err := m.MonitoringCredential.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("monitoringCredential")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("monitoringCredential")
 			}
+			return err
 		}
-
 	}
 
 	return nil
@@ -395,7 +391,7 @@ func (m *ProjectForListDto) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateMonitoringCredentials(ctx, formats); err != nil {
+	if err := m.contextValidateMonitoringCredential(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -481,21 +477,17 @@ func (m *ProjectForListDto) contextValidateKubernetesProfiles(ctx context.Contex
 	return nil
 }
 
-func (m *ProjectForListDto) contextValidateMonitoringCredentials(ctx context.Context, formats strfmt.Registry) error {
+func (m *ProjectForListDto) contextValidateMonitoringCredential(ctx context.Context, formats strfmt.Registry) error {
 
-	for i := 0; i < len(m.MonitoringCredentials); i++ {
-
-		if m.MonitoringCredentials[i] != nil {
-			if err := m.MonitoringCredentials[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("monitoringCredentials" + "." + strconv.Itoa(i))
-				}
-				return err
+	if m.MonitoringCredential != nil {
+		if err := m.MonitoringCredential.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("monitoringCredential")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("monitoringCredential")
 			}
+			return err
 		}
-
 	}
 
 	return nil

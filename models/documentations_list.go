@@ -20,7 +20,7 @@ import (
 type DocumentationsList struct {
 
 	// data
-	Data []*DocumentationListDto `json:"data"`
+	Data []*DocumentationData `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`

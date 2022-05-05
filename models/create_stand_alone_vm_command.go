@@ -34,11 +34,20 @@ type CreateStandAloneVMCommand struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// password
+	Password string `json:"password,omitempty"`
+
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
 
 	// public Ip enabled
 	PublicIPEnabled bool `json:"publicIpEnabled"`
+
+	// spot instance
+	SpotInstance bool `json:"spotInstance"`
+
+	// spot price
+	SpotPrice float64 `json:"spotPrice,omitempty"`
 
 	// stand alone meta datas
 	StandAloneMetaDatas []*StandAloneMetaDataDto `json:"standAloneMetaDatas"`
@@ -48,6 +57,9 @@ type CreateStandAloneVMCommand struct {
 
 	// stand alone Vm disks
 	StandAloneVMDisks []*StandAloneVMDiskDto `json:"standAloneVmDisks"`
+
+	// username
+	Username string `json:"username,omitempty"`
 
 	// volume size
 	VolumeSize int64 `json:"volumeSize,omitempty"`

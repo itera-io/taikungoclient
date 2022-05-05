@@ -38,7 +38,11 @@ type ClientService interface {
 
 	ProjectsDeleteWholeProject(params *ProjectsDeleteWholeProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsDeleteWholeProjectOK, *ProjectsDeleteWholeProjectNoContent, error)
 
+	ProjectsDescribe(params *ProjectsDescribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsDescribeOK, error)
+
 	ProjectsExtendLifeTime(params *ProjectsExtendLifeTimeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsExtendLifeTimeOK, error)
+
+	ProjectsFullSpotWorkersOperations(params *ProjectsFullSpotWorkersOperationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsFullSpotWorkersOperationsOK, error)
 
 	ProjectsList(params *ProjectsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsListOK, error)
 
@@ -51,6 +55,10 @@ type ClientService interface {
 	ProjectsPrometheusMetrics(params *ProjectsPrometheusMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsPrometheusMetricsOK, error)
 
 	ProjectsRepair(params *ProjectsRepairParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsRepairOK, error)
+
+	ProjectsSpotVmsOperations(params *ProjectsSpotVmsOperationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsSpotVmsOperationsOK, error)
+
+	ProjectsSpotWorkersOperations(params *ProjectsSpotWorkersOperationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsSpotWorkersOperationsOK, error)
 
 	ProjectsUpgrade(params *ProjectsUpgradeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsUpgradeOK, error)
 
@@ -97,7 +105,7 @@ func (a *Client) ProjectsCommit(params *ProjectsCommitParams, authInfo runtime.C
 }
 
 /*
-  ProjectsCreate onlies available for moderators and admin create a new project in the user s organization admin have the possibility to choose the organization for the newly created project
+  ProjectsCreate creates a new project
 */
 func (a *Client) ProjectsCreate(params *ProjectsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -216,6 +224,45 @@ func (a *Client) ProjectsDeleteWholeProject(params *ProjectsDeleteWholeProjectPa
 }
 
 /*
+  ProjectsDescribe describes project by Id
+*/
+func (a *Client) ProjectsDescribe(params *ProjectsDescribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsDescribeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsDescribeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Projects_Describe",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Projects/describe/{projectId}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsDescribeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ProjectsDescribeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Projects_Describe: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   ProjectsExtendLifeTime extends life time of project
 */
 func (a *Client) ProjectsExtendLifeTime(params *ProjectsExtendLifeTimeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsExtendLifeTimeOK, error) {
@@ -251,6 +298,45 @@ func (a *Client) ProjectsExtendLifeTime(params *ProjectsExtendLifeTimeParams, au
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Projects_ExtendLifeTime: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ProjectsFullSpotWorkersOperations fulls spot operations enable disable
+*/
+func (a *Client) ProjectsFullSpotWorkersOperations(params *ProjectsFullSpotWorkersOperationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsFullSpotWorkersOperationsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsFullSpotWorkersOperationsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Projects_FullSpotWorkersOperations",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Projects/toggle-full-spot",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsFullSpotWorkersOperationsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ProjectsFullSpotWorkersOperationsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Projects_FullSpotWorkersOperations: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -485,6 +571,84 @@ func (a *Client) ProjectsRepair(params *ProjectsRepairParams, authInfo runtime.C
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Projects_Repair: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ProjectsSpotVmsOperations spots vm s operations enable disable
+*/
+func (a *Client) ProjectsSpotVmsOperations(params *ProjectsSpotVmsOperationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsSpotVmsOperationsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsSpotVmsOperationsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Projects_SpotVmsOperations",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Projects/toggle-spot-vms",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsSpotVmsOperationsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ProjectsSpotVmsOperationsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Projects_SpotVmsOperations: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  ProjectsSpotWorkersOperations spots worker s operations enable disable
+*/
+func (a *Client) ProjectsSpotWorkersOperations(params *ProjectsSpotWorkersOperationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsSpotWorkersOperationsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsSpotWorkersOperationsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Projects_SpotWorkersOperations",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Projects/toggle-spot-workers",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsSpotWorkersOperationsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ProjectsSpotWorkersOperationsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Projects_SpotWorkersOperations: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

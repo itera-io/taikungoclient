@@ -29,8 +29,14 @@ type CreateKubeConfigCommand struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// namespace
+	Namespace string `json:"namespace,omitempty"`
+
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
+
+	// ttl
+	TTL int32 `json:"ttl,omitempty"`
 
 	// user Id
 	UserID string `json:"userId,omitempty"`
