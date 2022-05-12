@@ -38,7 +38,7 @@ type EnumList struct {
 	AzureQuotas []*CommonDropdownDto `json:"azureQuotas"`
 
 	// cloud types
-	CloudTypes []*CommonDropdownDto `json:"cloudTypes"`
+	CloudTypes interface{} `json:"cloudTypes,omitempty"`
 
 	// cron periods
 	CronPeriods []*CommonStringBasedDropdownDto `json:"cronPeriods"`
@@ -111,10 +111,6 @@ func (m *EnumList) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateAzureQuotas(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateCloudTypes(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -330,32 +326,6 @@ func (m *EnumList) validateAzureQuotas(formats strfmt.Registry) error {
 					return ve.ValidateName("azureQuotas" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("azureQuotas" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *EnumList) validateCloudTypes(formats strfmt.Registry) error {
-	if swag.IsZero(m.CloudTypes) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.CloudTypes); i++ {
-		if swag.IsZero(m.CloudTypes[i]) { // not required
-			continue
-		}
-
-		if m.CloudTypes[i] != nil {
-			if err := m.CloudTypes[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("cloudTypes" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("cloudTypes" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -784,10 +754,6 @@ func (m *EnumList) ContextValidate(ctx context.Context, formats strfmt.Registry)
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateCloudTypes(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateCronPeriods(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -964,26 +930,6 @@ func (m *EnumList) contextValidateAzureQuotas(ctx context.Context, formats strfm
 					return ve.ValidateName("azureQuotas" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("azureQuotas" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (m *EnumList) contextValidateCloudTypes(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.CloudTypes); i++ {
-
-		if m.CloudTypes[i] != nil {
-			if err := m.CloudTypes[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("cloudTypes" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("cloudTypes" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
