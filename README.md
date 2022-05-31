@@ -1,88 +1,69 @@
 # taikungoclient
 
-Go client library for the [Taikun API](https://api.taikun.cloud/) generated using [go-swagger](https://goswagger.io/).
+Go client library for the [Taikun API](https://api.taikun.cloud/) generated
+using [go-swagger](https://goswagger.io/).
 
 This package is used by the
 [taikun-cli](https://github.com/itera-io/taikun-cli) and
 [terraform-provider-taikun](https://github.com/itera-io/terraform-provider-taikun)
 projects.
 
+## API
+The `taikungoclient` package provides the following constants, structs and
+functions.
+
+- `Version`: The API version, must be passed as an argument to client calls
+    using `.WithV()` (see below for an example).
+- `Client`: Wrapper struct around the generated Taikungoclient to include
+    authentication.
+- `NewClient()`: Create a new authenticated Taikungoclient. Taikun or Keycloak
+    credentials environment variables must be set.
+- `Client.AuthenticateRequest(request, ...)`: Authenticate a ClientRequest,
+    obtain a new token if the current one is expired. You probably won't need
+    to use this one as it is called by the client structs located in
+    [./client](./client).
+
 ## Example use
-This example Go program uses the `taikungoclient` package to output your Taikun username.
+The following snippet is from the
+[Taikun CLI](https://github.com/itera-io/taikun-cli). It implements the
+`taikun whoami` command which prints the name of the CLI's authenticated user.
+
 ```go
-package main
+package whoami
 
 import (
-	"fmt"
-	"log"
-
-	"github.com/go-openapi/runtime"
-	"github.com/go-openapi/strfmt"
-	"github.com/itera-io/taikungoclient/client"
-	"github.com/itera-io/taikungoclient/client/auth"
+	"github.com/itera-io/taikun-cli/utils/out"
+	"github.com/itera-io/taikungoclient"
 	"github.com/itera-io/taikungoclient/client/users"
-	"github.com/itera-io/taikungoclient/models"
+	"github.com/spf13/cobra"
 )
 
-// Taikun API version
-const taikunApiVersion = "1"
-
-// Wrapper around the Taikungoclient struct to include authentication data
-type taikunClient struct {
-	// Taikun API client
-	Client *client.Taikungoclient
-
-	email    string
-	password string
-
-	token string
-}
-
-func main() {
-	// Initialize Taikun API client with Taikun credentials
-	taikunClient := &taikunClient{
-		Client:   client.NewHTTPClient(nil), // default client
-		email:    "jdoe@example.com",
-		password: "taikunPassword123",
+func NewCmdWhoAmI() *cobra.Command {
+	cmd := cobra.Command{
+		Use:   "whoami",
+		Short: "Print username",
+		Args:  cobra.NoArgs,
+		RunE: func(cmd *cobra.Command, args []string) error {
+			return whoAmIRun()
+		},
 	}
 
-	// User information parameters
-	params := users.NewUsersDetailsParams().WithV(taikunApiVersion)
+	return &cmd
+}
 
-	// Send user info request
-	response, err := taikunClient.Client.Users.UsersDetails(params, taikunClient)
+func whoAmIRun() (err error) {
+	apiClient, err := taikungoclient.NewClient()
 	if err != nil {
-		log.Fatal(err)
+		return
 	}
 
-	// Print username
-	fmt.Println(response.Payload.Data.Username)
-}
+	params := users.NewUsersDetailsParams().WithV(taikungoclient.Version)
 
-// Taikun authentication function used by go-openapi
-func (c *taikunClient) AuthenticateRequest(request runtime.ClientRequest, _ strfmt.Registry) error {
-	if len(c.token) == 0 {
-		// Authentication request body
-		authBody := models.LoginCommand{
-			Email:    c.email,
-			Password: c.password,
-		}
-
-		// Authentication request parameters
-		authParams := auth.NewAuthLoginParams().WithV(taikunApiVersion)
-		authParams = authParams.WithBody(&authBody)
-
-		// Send authentication request
-		authResult, err := c.Client.Auth.AuthLogin(authParams, nil)
-		if err != nil {
-			return err
-		}
-
-		// Save authentication token
-		c.token = authResult.Payload.Token
+	response, err := apiClient.Client.Users.UsersDetails(params, apiClient)
+	if err == nil {
+		out.Println(response.Payload.Data.Username)
 	}
 
-	// Add authorization header to request
-	return request.SetHeaderParam("Authorization", fmt.Sprintf("Bearer %s", c.token))
+	return
 }
 ```
