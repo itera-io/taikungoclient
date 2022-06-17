@@ -65,6 +65,9 @@ type OpsCredentialsOperationCredentialsForOrganizationListParams struct {
 	// Format: int32
 	OrganizationID *int32
 
+	// Search.
+	Search *string
+
 	// V.
 	V string
 
@@ -132,6 +135,17 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListParams) SetOrganiz
 	o.OrganizationID = organizationID
 }
 
+// WithSearch adds the search to the ops credentials operation credentials for organization list params
+func (o *OpsCredentialsOperationCredentialsForOrganizationListParams) WithSearch(search *string) *OpsCredentialsOperationCredentialsForOrganizationListParams {
+	o.SetSearch(search)
+	return o
+}
+
+// SetSearch adds the search to the ops credentials operation credentials for organization list params
+func (o *OpsCredentialsOperationCredentialsForOrganizationListParams) SetSearch(search *string) {
+	o.Search = search
+}
+
 // WithV adds the v to the ops credentials operation credentials for organization list params
 func (o *OpsCredentialsOperationCredentialsForOrganizationListParams) WithV(v string) *OpsCredentialsOperationCredentialsForOrganizationListParams {
 	o.SetV(v)
@@ -163,6 +177,23 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListParams) WriteToReq
 		if qOrganizationID != "" {
 
 			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Search != nil {
+
+		// query param search
+		var qrSearch string
+
+		if o.Search != nil {
+			qrSearch = *o.Search
+		}
+		qSearch := qrSearch
+		if qSearch != "" {
+
+			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}

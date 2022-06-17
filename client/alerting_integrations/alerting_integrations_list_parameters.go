@@ -65,6 +65,9 @@ type AlertingIntegrationsListParams struct {
 	// Format: int32
 	AlertingProfileID int32
 
+	// Search.
+	Search *string
+
 	// V.
 	V string
 
@@ -132,6 +135,17 @@ func (o *AlertingIntegrationsListParams) SetAlertingProfileID(alertingProfileID 
 	o.AlertingProfileID = alertingProfileID
 }
 
+// WithSearch adds the search to the alerting integrations list params
+func (o *AlertingIntegrationsListParams) WithSearch(search *string) *AlertingIntegrationsListParams {
+	o.SetSearch(search)
+	return o
+}
+
+// SetSearch adds the search to the alerting integrations list params
+func (o *AlertingIntegrationsListParams) SetSearch(search *string) {
+	o.Search = search
+}
+
 // WithV adds the v to the alerting integrations list params
 func (o *AlertingIntegrationsListParams) WithV(v string) *AlertingIntegrationsListParams {
 	o.SetV(v)
@@ -154,6 +168,23 @@ func (o *AlertingIntegrationsListParams) WriteToRequest(r runtime.ClientRequest,
 	// path param alertingProfileId
 	if err := r.SetPathParam("alertingProfileId", swag.FormatInt32(o.AlertingProfileID)); err != nil {
 		return err
+	}
+
+	if o.Search != nil {
+
+		// query param search
+		var qrSearch string
+
+		if o.Search != nil {
+			qrSearch = *o.Search
+		}
+		qSearch := qrSearch
+		if qSearch != "" {
+
+			if err := r.SetQueryParam("search", qSearch); err != nil {
+				return err
+			}
+		}
 	}
 
 	// path param v

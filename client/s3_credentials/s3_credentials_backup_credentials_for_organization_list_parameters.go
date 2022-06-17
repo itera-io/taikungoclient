@@ -65,6 +65,9 @@ type S3CredentialsBackupCredentialsForOrganizationListParams struct {
 	// Format: int32
 	OrganizationID *int32
 
+	// Search.
+	Search *string
+
 	// V.
 	V string
 
@@ -132,6 +135,17 @@ func (o *S3CredentialsBackupCredentialsForOrganizationListParams) SetOrganizatio
 	o.OrganizationID = organizationID
 }
 
+// WithSearch adds the search to the s3 credentials backup credentials for organization list params
+func (o *S3CredentialsBackupCredentialsForOrganizationListParams) WithSearch(search *string) *S3CredentialsBackupCredentialsForOrganizationListParams {
+	o.SetSearch(search)
+	return o
+}
+
+// SetSearch adds the search to the s3 credentials backup credentials for organization list params
+func (o *S3CredentialsBackupCredentialsForOrganizationListParams) SetSearch(search *string) {
+	o.Search = search
+}
+
 // WithV adds the v to the s3 credentials backup credentials for organization list params
 func (o *S3CredentialsBackupCredentialsForOrganizationListParams) WithV(v string) *S3CredentialsBackupCredentialsForOrganizationListParams {
 	o.SetV(v)
@@ -163,6 +177,23 @@ func (o *S3CredentialsBackupCredentialsForOrganizationListParams) WriteToRequest
 		if qOrganizationID != "" {
 
 			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Search != nil {
+
+		// query param search
+		var qrSearch string
+
+		if o.Search != nil {
+			qrSearch = *o.Search
+		}
+		qSearch := qrSearch
+		if qSearch != "" {
+
+			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}

@@ -27,6 +27,9 @@ type AvailablePackagesDto struct {
 	// description
 	Description string `json:"description,omitempty"`
 
+	// id
+	ID int32 `json:"id,omitempty"`
+
 	// logo image Id
 	LogoImageID string `json:"logoImageId,omitempty"`
 

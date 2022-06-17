@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CommonGetCountryList(params *CommonGetCountryListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommonGetCountryListOK, error)
 
+	CommonGetEnumValues(params *CommonGetEnumValuesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommonGetEnumValuesOK, error)
+
 	CommonGetSortingElements(params *CommonGetSortingElementsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommonGetSortingElementsOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -73,6 +75,45 @@ func (a *Client) CommonGetCountryList(params *CommonGetCountryListParams, authIn
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Common_GetCountryList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CommonGetEnumValues retrieves enum values
+*/
+func (a *Client) CommonGetEnumValues(params *CommonGetEnumValuesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommonGetEnumValuesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCommonGetEnumValuesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Common_GetEnumValues",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Common/enumvalues",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CommonGetEnumValuesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CommonGetEnumValuesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Common_GetEnumValues: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

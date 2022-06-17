@@ -30,6 +30,10 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	NotificationsCreate(params *NotificationsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsCreateOK, error)
+
+	NotificationsDelete(params *NotificationsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsDeleteOK, *NotificationsDeleteNoContent, error)
+
 	NotificationsExportCsv(params *NotificationsExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsExportCsvOK, error)
 
 	NotificationsGetProjectOperationMessages(params *NotificationsGetProjectOperationMessagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsGetProjectOperationMessagesOK, error)
@@ -38,7 +42,90 @@ type ClientService interface {
 
 	NotificationsListByUser(params *NotificationsListByUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsListByUserOK, error)
 
+	NotificationsNotifyOwner(params *NotificationsNotifyOwnerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsNotifyOwnerOK, error)
+
+	NotificationsUpdate(params *NotificationsUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsUpdateOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  NotificationsCreate sends notification to signal r
+*/
+func (a *Client) NotificationsCreate(params *NotificationsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsCreateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewNotificationsCreateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Notifications_Create",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Notifications/add",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &NotificationsCreateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*NotificationsCreateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Notifications_Create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  NotificationsDelete deletes notification
+*/
+func (a *Client) NotificationsDelete(params *NotificationsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsDeleteOK, *NotificationsDeleteNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewNotificationsDeleteParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Notifications_Delete",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Notifications/delete",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &NotificationsDeleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *NotificationsDeleteOK:
+		return value, nil, nil
+	case *NotificationsDeleteNoContent:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for notifications: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -194,6 +281,84 @@ func (a *Client) NotificationsListByUser(params *NotificationsListByUserParams, 
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Notifications_ListByUser: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  NotificationsNotifyOwner notifies owner
+*/
+func (a *Client) NotificationsNotifyOwner(params *NotificationsNotifyOwnerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsNotifyOwnerOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewNotificationsNotifyOwnerParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Notifications_NotifyOwner",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Notifications/notifyowner",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &NotificationsNotifyOwnerReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*NotificationsNotifyOwnerOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Notifications_NotifyOwner: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  NotificationsUpdate updates notification
+*/
+func (a *Client) NotificationsUpdate(params *NotificationsUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewNotificationsUpdateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Notifications_Update",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Notifications/update",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &NotificationsUpdateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*NotificationsUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Notifications_Update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

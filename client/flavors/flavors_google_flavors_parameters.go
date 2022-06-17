@@ -72,8 +72,8 @@ type FlavorsGoogleFlavorsParams struct {
 
 	// EndRAM.
 	//
-	// Format: int64
-	EndRAM *int64
+	// Format: double
+	EndRAM *float64
 
 	/* Limit.
 
@@ -107,8 +107,8 @@ type FlavorsGoogleFlavorsParams struct {
 
 	// StartRAM.
 	//
-	// Format: int64
-	StartRAM *int64
+	// Format: double
+	StartRAM *float64
 
 	// V.
 	V string
@@ -189,13 +189,13 @@ func (o *FlavorsGoogleFlavorsParams) SetEndCPU(endCPU *int32) {
 }
 
 // WithEndRAM adds the endRAM to the flavors google flavors params
-func (o *FlavorsGoogleFlavorsParams) WithEndRAM(endRAM *int64) *FlavorsGoogleFlavorsParams {
+func (o *FlavorsGoogleFlavorsParams) WithEndRAM(endRAM *float64) *FlavorsGoogleFlavorsParams {
 	o.SetEndRAM(endRAM)
 	return o
 }
 
 // SetEndRAM adds the endRam to the flavors google flavors params
-func (o *FlavorsGoogleFlavorsParams) SetEndRAM(endRAM *int64) {
+func (o *FlavorsGoogleFlavorsParams) SetEndRAM(endRAM *float64) {
 	o.EndRAM = endRAM
 }
 
@@ -266,13 +266,13 @@ func (o *FlavorsGoogleFlavorsParams) SetStartCPU(startCPU *int32) {
 }
 
 // WithStartRAM adds the startRAM to the flavors google flavors params
-func (o *FlavorsGoogleFlavorsParams) WithStartRAM(startRAM *int64) *FlavorsGoogleFlavorsParams {
+func (o *FlavorsGoogleFlavorsParams) WithStartRAM(startRAM *float64) *FlavorsGoogleFlavorsParams {
 	o.SetStartRAM(startRAM)
 	return o
 }
 
 // SetStartRAM adds the startRam to the flavors google flavors params
-func (o *FlavorsGoogleFlavorsParams) SetStartRAM(startRAM *int64) {
+func (o *FlavorsGoogleFlavorsParams) SetStartRAM(startRAM *float64) {
 	o.StartRAM = startRAM
 }
 
@@ -320,12 +320,12 @@ func (o *FlavorsGoogleFlavorsParams) WriteToRequest(r runtime.ClientRequest, reg
 	if o.EndRAM != nil {
 
 		// query param endRam
-		var qrEndRAM int64
+		var qrEndRAM float64
 
 		if o.EndRAM != nil {
 			qrEndRAM = *o.EndRAM
 		}
-		qEndRAM := swag.FormatInt64(qrEndRAM)
+		qEndRAM := swag.FormatFloat64(qrEndRAM)
 		if qEndRAM != "" {
 
 			if err := r.SetQueryParam("endRam", qEndRAM); err != nil {
@@ -439,12 +439,12 @@ func (o *FlavorsGoogleFlavorsParams) WriteToRequest(r runtime.ClientRequest, reg
 	if o.StartRAM != nil {
 
 		// query param startRam
-		var qrStartRAM int64
+		var qrStartRAM float64
 
 		if o.StartRAM != nil {
 			qrStartRAM = *o.StartRAM
 		}
-		qStartRAM := swag.FormatInt64(qrStartRAM)
+		qStartRAM := swag.FormatFloat64(qrStartRAM)
 		if qStartRAM != "" {
 
 			if err := r.SetQueryParam("startRam", qStartRAM); err != nil {

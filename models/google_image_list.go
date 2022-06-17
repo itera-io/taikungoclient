@@ -20,7 +20,7 @@ import (
 type GoogleImageList struct {
 
 	// data
-	Data []*GoogleImageDto `json:"data"`
+	Data []*CommonStringBasedDropdownDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`

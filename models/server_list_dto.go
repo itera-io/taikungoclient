@@ -85,6 +85,9 @@ type ServerListDto struct {
 	// role
 	Role string `json:"role,omitempty"`
 
+	// shut off
+	ShutOff bool `json:"shutOff"`
+
 	// spot instance
 	SpotInstance bool `json:"spotInstance"`
 

@@ -24,6 +24,9 @@ type CredentialsForProjectList struct {
 	// azure
 	Azure *AzureCredentialsForProjectDto `json:"azure,omitempty"`
 
+	// billing enabled
+	BillingEnabled bool `json:"billingEnabled"`
+
 	// cloud credential revision
 	CloudCredentialRevision int32 `json:"cloudCredentialRevision,omitempty"`
 

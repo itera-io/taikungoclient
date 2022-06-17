@@ -65,6 +65,9 @@ type AccessProfilesAccessProfilesForOrganizationListParams struct {
 	// Format: int32
 	OrganizationID *int32
 
+	// Search.
+	Search *string
+
 	// V.
 	V string
 
@@ -132,6 +135,17 @@ func (o *AccessProfilesAccessProfilesForOrganizationListParams) SetOrganizationI
 	o.OrganizationID = organizationID
 }
 
+// WithSearch adds the search to the access profiles access profiles for organization list params
+func (o *AccessProfilesAccessProfilesForOrganizationListParams) WithSearch(search *string) *AccessProfilesAccessProfilesForOrganizationListParams {
+	o.SetSearch(search)
+	return o
+}
+
+// SetSearch adds the search to the access profiles access profiles for organization list params
+func (o *AccessProfilesAccessProfilesForOrganizationListParams) SetSearch(search *string) {
+	o.Search = search
+}
+
 // WithV adds the v to the access profiles access profiles for organization list params
 func (o *AccessProfilesAccessProfilesForOrganizationListParams) WithV(v string) *AccessProfilesAccessProfilesForOrganizationListParams {
 	o.SetV(v)
@@ -163,6 +177,23 @@ func (o *AccessProfilesAccessProfilesForOrganizationListParams) WriteToRequest(r
 		if qOrganizationID != "" {
 
 			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Search != nil {
+
+		// query param search
+		var qrSearch string
+
+		if o.Search != nil {
+			qrSearch = *o.Search
+		}
+		qSearch := qrSearch
+		if qSearch != "" {
+
+			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}

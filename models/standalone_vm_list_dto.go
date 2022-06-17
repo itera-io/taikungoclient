@@ -51,6 +51,12 @@ type StandaloneVMListDto struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
 

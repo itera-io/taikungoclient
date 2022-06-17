@@ -44,6 +44,10 @@ type ClientService interface {
 
 	OpaProfilesMakeDefault(params *OpaProfilesMakeDefaultParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesMakeDefaultOK, error)
 
+	OpaProfilesOpaProfilesForOrganizationList(params *OpaProfilesOpaProfilesForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesOpaProfilesForOrganizationListOK, error)
+
+	OpaProfilesSync(params *OpaProfilesSyncParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesSyncOK, error)
+
 	OpaProfilesUpdate(params *OpaProfilesUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesUpdateOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -319,6 +323,84 @@ func (a *Client) OpaProfilesMakeDefault(params *OpaProfilesMakeDefaultParams, au
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for OpaProfiles_MakeDefault: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  OpaProfilesOpaProfilesForOrganizationList retrieves policy profiles by organization Id
+*/
+func (a *Client) OpaProfilesOpaProfilesForOrganizationList(params *OpaProfilesOpaProfilesForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesOpaProfilesForOrganizationListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOpaProfilesOpaProfilesForOrganizationListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "OpaProfiles_OpaProfilesForOrganizationList",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/OpaProfiles/list",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OpaProfilesOpaProfilesForOrganizationListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OpaProfilesOpaProfilesForOrganizationListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for OpaProfiles_OpaProfilesForOrganizationList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  OpaProfilesSync syncs policy profile
+*/
+func (a *Client) OpaProfilesSync(params *OpaProfilesSyncParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesSyncOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOpaProfilesSyncParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "OpaProfiles_Sync",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/OpaProfiles/sync",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OpaProfilesSyncReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OpaProfilesSyncOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for OpaProfiles_Sync: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -11,6 +11,7 @@ import (
 	"github.com/go-openapi/strfmt"
 
 	"github.com/itera-io/taikungoclient/client/access_profiles"
+	"github.com/itera-io/taikungoclient/client/admin"
 	"github.com/itera-io/taikungoclient/client/alerting_integrations"
 	"github.com/itera-io/taikungoclient/client/alerting_profiles"
 	"github.com/itera-io/taikungoclient/client/auth"
@@ -22,20 +23,34 @@ import (
 	"github.com/itera-io/taikungoclient/client/checker"
 	"github.com/itera-io/taikungoclient/client/cloud_credentials"
 	"github.com/itera-io/taikungoclient/client/common"
+	"github.com/itera-io/taikungoclient/client/cron_job"
+	"github.com/itera-io/taikungoclient/client/dns_servers"
+	"github.com/itera-io/taikungoclient/client/doc"
 	"github.com/itera-io/taikungoclient/client/flavors"
+	"github.com/itera-io/taikungoclient/client/google_cloud"
 	"github.com/itera-io/taikungoclient/client/images"
+	"github.com/itera-io/taikungoclient/client/invoices"
 	"github.com/itera-io/taikungoclient/client/keycloak"
 	"github.com/itera-io/taikungoclient/client/kube_config"
+	"github.com/itera-io/taikungoclient/client/kube_config_role"
 	"github.com/itera-io/taikungoclient/client/kubernetes"
 	"github.com/itera-io/taikungoclient/client/kubernetes_profiles"
+	"github.com/itera-io/taikungoclient/client/kubespray"
 	"github.com/itera-io/taikungoclient/client/notifications"
+	"github.com/itera-io/taikungoclient/client/ntp_servers"
 	"github.com/itera-io/taikungoclient/client/opa_profiles"
 	"github.com/itera-io/taikungoclient/client/openstack"
 	"github.com/itera-io/taikungoclient/client/ops_credentials"
+	"github.com/itera-io/taikungoclient/client/organization_subscriptions"
 	"github.com/itera-io/taikungoclient/client/organizations"
+	"github.com/itera-io/taikungoclient/client/partner"
+	"github.com/itera-io/taikungoclient/client/payment"
 	"github.com/itera-io/taikungoclient/client/pre_defined_queries"
+	"github.com/itera-io/taikungoclient/client/project_actions"
+	"github.com/itera-io/taikungoclient/client/project_app"
 	"github.com/itera-io/taikungoclient/client/project_groups"
 	"github.com/itera-io/taikungoclient/client/project_quotas"
+	"github.com/itera-io/taikungoclient/client/project_revisions"
 	"github.com/itera-io/taikungoclient/client/projects"
 	"github.com/itera-io/taikungoclient/client/prometheus"
 	"github.com/itera-io/taikungoclient/client/repository"
@@ -50,7 +65,9 @@ import (
 	"github.com/itera-io/taikungoclient/client/stand_alone_actions"
 	"github.com/itera-io/taikungoclient/client/stand_alone_profile"
 	"github.com/itera-io/taikungoclient/client/stand_alone_vm_disks"
+	"github.com/itera-io/taikungoclient/client/subscription"
 	"github.com/itera-io/taikungoclient/client/taikun_groups"
+	"github.com/itera-io/taikungoclient/client/ticket"
 	"github.com/itera-io/taikungoclient/client/user_groups"
 	"github.com/itera-io/taikungoclient/client/user_projects"
 	"github.com/itera-io/taikungoclient/client/users"
@@ -62,7 +79,7 @@ var Default = NewHTTPClient(nil)
 const (
 	// DefaultHost is the default Host
 	// found in Meta (info) section of spec file
-	DefaultHost string = "api.taikun.cloud"
+	DefaultHost string = "api.taikun.dev"
 	// DefaultBasePath is the default BasePath
 	// found in Meta (info) section of spec file
 	DefaultBasePath string = "/"
@@ -116,6 +133,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli := new(Taikungoclient)
 	cli.Transport = transport
 	cli.AccessProfiles = access_profiles.New(transport, formats)
+	cli.Admin = admin.New(transport, formats)
 	cli.AlertingIntegrations = alerting_integrations.New(transport, formats)
 	cli.AlertingProfiles = alerting_profiles.New(transport, formats)
 	cli.Auth = auth.New(transport, formats)
@@ -127,20 +145,34 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Checker = checker.New(transport, formats)
 	cli.CloudCredentials = cloud_credentials.New(transport, formats)
 	cli.Common = common.New(transport, formats)
+	cli.CronJob = cron_job.New(transport, formats)
+	cli.DNSServers = dns_servers.New(transport, formats)
+	cli.Doc = doc.New(transport, formats)
 	cli.Flavors = flavors.New(transport, formats)
+	cli.GoogleCloud = google_cloud.New(transport, formats)
 	cli.Images = images.New(transport, formats)
+	cli.Invoices = invoices.New(transport, formats)
 	cli.Keycloak = keycloak.New(transport, formats)
 	cli.KubeConfig = kube_config.New(transport, formats)
+	cli.KubeConfigRole = kube_config_role.New(transport, formats)
 	cli.Kubernetes = kubernetes.New(transport, formats)
 	cli.KubernetesProfiles = kubernetes_profiles.New(transport, formats)
+	cli.Kubespray = kubespray.New(transport, formats)
 	cli.Notifications = notifications.New(transport, formats)
+	cli.NtpServers = ntp_servers.New(transport, formats)
 	cli.OpaProfiles = opa_profiles.New(transport, formats)
 	cli.Openstack = openstack.New(transport, formats)
 	cli.OpsCredentials = ops_credentials.New(transport, formats)
+	cli.OrganizationSubscriptions = organization_subscriptions.New(transport, formats)
 	cli.Organizations = organizations.New(transport, formats)
+	cli.Partner = partner.New(transport, formats)
+	cli.Payment = payment.New(transport, formats)
 	cli.PreDefinedQueries = pre_defined_queries.New(transport, formats)
+	cli.ProjectActions = project_actions.New(transport, formats)
+	cli.ProjectApp = project_app.New(transport, formats)
 	cli.ProjectGroups = project_groups.New(transport, formats)
 	cli.ProjectQuotas = project_quotas.New(transport, formats)
+	cli.ProjectRevisions = project_revisions.New(transport, formats)
 	cli.Projects = projects.New(transport, formats)
 	cli.Prometheus = prometheus.New(transport, formats)
 	cli.Repository = repository.New(transport, formats)
@@ -155,7 +187,9 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.StandAloneActions = stand_alone_actions.New(transport, formats)
 	cli.StandAloneProfile = stand_alone_profile.New(transport, formats)
 	cli.StandAloneVMDisks = stand_alone_vm_disks.New(transport, formats)
+	cli.Subscription = subscription.New(transport, formats)
 	cli.TaikunGroups = taikun_groups.New(transport, formats)
+	cli.Ticket = ticket.New(transport, formats)
 	cli.UserGroups = user_groups.New(transport, formats)
 	cli.UserProjects = user_projects.New(transport, formats)
 	cli.Users = users.New(transport, formats)
@@ -205,6 +239,8 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 type Taikungoclient struct {
 	AccessProfiles access_profiles.ClientService
 
+	Admin admin.ClientService
+
 	AlertingIntegrations alerting_integrations.ClientService
 
 	AlertingProfiles alerting_profiles.ClientService
@@ -227,19 +263,35 @@ type Taikungoclient struct {
 
 	Common common.ClientService
 
+	CronJob cron_job.ClientService
+
+	DNSServers dns_servers.ClientService
+
+	Doc doc.ClientService
+
 	Flavors flavors.ClientService
 
+	GoogleCloud google_cloud.ClientService
+
 	Images images.ClientService
+
+	Invoices invoices.ClientService
 
 	Keycloak keycloak.ClientService
 
 	KubeConfig kube_config.ClientService
 
+	KubeConfigRole kube_config_role.ClientService
+
 	Kubernetes kubernetes.ClientService
 
 	KubernetesProfiles kubernetes_profiles.ClientService
 
+	Kubespray kubespray.ClientService
+
 	Notifications notifications.ClientService
+
+	NtpServers ntp_servers.ClientService
 
 	OpaProfiles opa_profiles.ClientService
 
@@ -247,13 +299,25 @@ type Taikungoclient struct {
 
 	OpsCredentials ops_credentials.ClientService
 
+	OrganizationSubscriptions organization_subscriptions.ClientService
+
 	Organizations organizations.ClientService
 
+	Partner partner.ClientService
+
+	Payment payment.ClientService
+
 	PreDefinedQueries pre_defined_queries.ClientService
+
+	ProjectActions project_actions.ClientService
+
+	ProjectApp project_app.ClientService
 
 	ProjectGroups project_groups.ClientService
 
 	ProjectQuotas project_quotas.ClientService
+
+	ProjectRevisions project_revisions.ClientService
 
 	Projects projects.ClientService
 
@@ -283,7 +347,11 @@ type Taikungoclient struct {
 
 	StandAloneVMDisks stand_alone_vm_disks.ClientService
 
+	Subscription subscription.ClientService
+
 	TaikunGroups taikun_groups.ClientService
+
+	Ticket ticket.ClientService
 
 	UserGroups user_groups.ClientService
 
@@ -298,6 +366,7 @@ type Taikungoclient struct {
 func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.AccessProfiles.SetTransport(transport)
+	c.Admin.SetTransport(transport)
 	c.AlertingIntegrations.SetTransport(transport)
 	c.AlertingProfiles.SetTransport(transport)
 	c.Auth.SetTransport(transport)
@@ -309,20 +378,34 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Checker.SetTransport(transport)
 	c.CloudCredentials.SetTransport(transport)
 	c.Common.SetTransport(transport)
+	c.CronJob.SetTransport(transport)
+	c.DNSServers.SetTransport(transport)
+	c.Doc.SetTransport(transport)
 	c.Flavors.SetTransport(transport)
+	c.GoogleCloud.SetTransport(transport)
 	c.Images.SetTransport(transport)
+	c.Invoices.SetTransport(transport)
 	c.Keycloak.SetTransport(transport)
 	c.KubeConfig.SetTransport(transport)
+	c.KubeConfigRole.SetTransport(transport)
 	c.Kubernetes.SetTransport(transport)
 	c.KubernetesProfiles.SetTransport(transport)
+	c.Kubespray.SetTransport(transport)
 	c.Notifications.SetTransport(transport)
+	c.NtpServers.SetTransport(transport)
 	c.OpaProfiles.SetTransport(transport)
 	c.Openstack.SetTransport(transport)
 	c.OpsCredentials.SetTransport(transport)
+	c.OrganizationSubscriptions.SetTransport(transport)
 	c.Organizations.SetTransport(transport)
+	c.Partner.SetTransport(transport)
+	c.Payment.SetTransport(transport)
 	c.PreDefinedQueries.SetTransport(transport)
+	c.ProjectActions.SetTransport(transport)
+	c.ProjectApp.SetTransport(transport)
 	c.ProjectGroups.SetTransport(transport)
 	c.ProjectQuotas.SetTransport(transport)
+	c.ProjectRevisions.SetTransport(transport)
 	c.Projects.SetTransport(transport)
 	c.Prometheus.SetTransport(transport)
 	c.Repository.SetTransport(transport)
@@ -337,7 +420,9 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.StandAloneActions.SetTransport(transport)
 	c.StandAloneProfile.SetTransport(transport)
 	c.StandAloneVMDisks.SetTransport(transport)
+	c.Subscription.SetTransport(transport)
 	c.TaikunGroups.SetTransport(transport)
+	c.Ticket.SetTransport(transport)
 	c.UserGroups.SetTransport(transport)
 	c.UserProjects.SetTransport(transport)
 	c.Users.SetTransport(transport)

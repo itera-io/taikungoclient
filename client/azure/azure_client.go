@@ -34,6 +34,8 @@ type ClientService interface {
 
 	AzureDashboard(params *AzureDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureDashboardOK, error)
 
+	AzureList(params *AzureListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureListOK, error)
+
 	AzureLocations(params *AzureLocationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureLocationsOK, error)
 
 	AzureOffers(params *AzureOffersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureOffersOK, error)
@@ -126,6 +128,45 @@ func (a *Client) AzureDashboard(params *AzureDashboardParams, authInfo runtime.C
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Azure_Dashboard: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  AzureList retrieves list of azure cloud credentials
+*/
+func (a *Client) AzureList(params *AzureListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAzureListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Azure_List",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Azure/list",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AzureListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AzureListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Azure_List: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

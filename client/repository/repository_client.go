@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	RepositoryCreate(params *RepositoryCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryCreateOK, error)
 
+	RepositoryDelete(params *RepositoryDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryDeleteOK, error)
+
 	RepositoryList(params *RepositoryListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryListOK, error)
 
 	RepositoryTaikunRecommendedRepositoryList(params *RepositoryTaikunRecommendedRepositoryListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryTaikunRecommendedRepositoryListOK, error)
@@ -75,6 +77,45 @@ func (a *Client) RepositoryCreate(params *RepositoryCreateParams, authInfo runti
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Repository_Create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  RepositoryDelete unbinds repo from organization
+*/
+func (a *Client) RepositoryDelete(params *RepositoryDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryDeleteOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewRepositoryDeleteParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Repository_Delete",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Repository/unbind",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &RepositoryDeleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*RepositoryDeleteOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Repository_Delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

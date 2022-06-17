@@ -59,6 +59,9 @@ func NewCommonGetCountryListParamsWithHTTPClient(client *http.Client) *CommonGet
 */
 type CommonGetCountryListParams struct {
 
+	// Search.
+	Search *string
+
 	// V.
 	V string
 
@@ -115,6 +118,17 @@ func (o *CommonGetCountryListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithSearch adds the search to the common get country list params
+func (o *CommonGetCountryListParams) WithSearch(search *string) *CommonGetCountryListParams {
+	o.SetSearch(search)
+	return o
+}
+
+// SetSearch adds the search to the common get country list params
+func (o *CommonGetCountryListParams) SetSearch(search *string) {
+	o.Search = search
+}
+
 // WithV adds the v to the common get country list params
 func (o *CommonGetCountryListParams) WithV(v string) *CommonGetCountryListParams {
 	o.SetV(v)
@@ -133,6 +147,23 @@ func (o *CommonGetCountryListParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
+
+	if o.Search != nil {
+
+		// query param search
+		var qrSearch string
+
+		if o.Search != nil {
+			qrSearch = *o.Search
+		}
+		qSearch := qrSearch
+		if qSearch != "" {
+
+			if err := r.SetQueryParam("search", qSearch); err != nil {
+				return err
+			}
+		}
+	}
 
 	// path param v
 	if err := r.SetPathParam("v", o.V); err != nil {

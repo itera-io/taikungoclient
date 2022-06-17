@@ -38,7 +38,7 @@ type UpsertAccessProfileCommand struct {
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
 	// ssh users
-	SSHUsers []*SSHUserCreateDto `json:"sshUsers"`
+	SSHUsers []*SSHUserUpsertDto `json:"sshUsers"`
 }
 
 // Validate validates this upsert access profile command

@@ -7,7 +7,9 @@ package models
 
 import (
 	"context"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -16,6 +18,12 @@ import (
 //
 // swagger:model CatalogListDto
 type CatalogListDto struct {
+
+	// bound applications
+	BoundApplications []*AvailablePackagesDto `json:"boundApplications"`
+
+	// bound projects
+	BoundProjects []*CommonDropdownDto `json:"boundProjects"`
 
 	// description
 	Description string `json:"description,omitempty"`
@@ -29,17 +37,138 @@ type CatalogListDto struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
 	// package ids
 	PackageIds []string `json:"packageIds"`
 }
 
 // Validate validates this catalog list dto
 func (m *CatalogListDto) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateBoundApplications(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateBoundProjects(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this catalog list dto based on context it is used
+func (m *CatalogListDto) validateBoundApplications(formats strfmt.Registry) error {
+	if swag.IsZero(m.BoundApplications) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.BoundApplications); i++ {
+		if swag.IsZero(m.BoundApplications[i]) { // not required
+			continue
+		}
+
+		if m.BoundApplications[i] != nil {
+			if err := m.BoundApplications[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("boundApplications" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundApplications" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CatalogListDto) validateBoundProjects(formats strfmt.Registry) error {
+	if swag.IsZero(m.BoundProjects) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.BoundProjects); i++ {
+		if swag.IsZero(m.BoundProjects[i]) { // not required
+			continue
+		}
+
+		if m.BoundProjects[i] != nil {
+			if err := m.BoundProjects[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("boundProjects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundProjects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this catalog list dto based on the context it is used
 func (m *CatalogListDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateBoundApplications(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateBoundProjects(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CatalogListDto) contextValidateBoundApplications(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.BoundApplications); i++ {
+
+		if m.BoundApplications[i] != nil {
+			if err := m.BoundApplications[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("boundApplications" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundApplications" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *CatalogListDto) contextValidateBoundProjects(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.BoundProjects); i++ {
+
+		if m.BoundProjects[i] != nil {
+			if err := m.BoundProjects[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("boundProjects" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundProjects" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

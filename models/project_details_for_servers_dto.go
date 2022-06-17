@@ -71,6 +71,9 @@ type ProjectDetailsForServersDto struct {
 	// cpu limit
 	CPULimit int64 `json:"cpuLimit,omitempty"`
 
+	// delete on expiration
+	DeleteOnExpiration bool `json:"deleteOnExpiration"`
+
 	// disk size limit
 	DiskSizeLimit int64 `json:"diskSizeLimit,omitempty"`
 
@@ -106,6 +109,9 @@ type ProjectDetailsForServersDto struct {
 
 	// is kubernetes
 	IsKubernetes bool `json:"isKubernetes"`
+
+	// is lightweight k8s
+	IsLightweightK8s bool `json:"isLightweightK8s"`
 
 	// is locked
 	IsLocked bool `json:"isLocked"`

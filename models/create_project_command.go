@@ -37,6 +37,9 @@ type CreateProjectCommand struct {
 	// cloud credential Id
 	CloudCredentialID int32 `json:"cloudCredentialId,omitempty"`
 
+	// delete on expiration
+	DeleteOnExpiration bool `json:"deleteOnExpiration"`
+
 	// expired at
 	// Format: date-time
 	ExpiredAt *strfmt.DateTime `json:"expiredAt,omitempty"`
@@ -52,6 +55,9 @@ type CreateProjectCommand struct {
 
 	// is kubernetes
 	IsKubernetes bool `json:"isKubernetes"`
+
+	// is lightweight k8s
+	IsLightweightK8s bool `json:"isLightweightK8s"`
 
 	// is monitoring enabled
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`

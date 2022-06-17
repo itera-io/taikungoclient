@@ -12,30 +12,30 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// GoogleImageDto google image dto
+// SourceRef source ref
 //
-// swagger:model GoogleImageDto
-type GoogleImageDto struct {
+// swagger:model SourceRef
+type SourceRef struct {
 
-	// id
-	ID string `json:"id,omitempty"`
+	// kind
+	Kind string `json:"kind,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`
 }
 
-// Validate validates this google image dto
-func (m *GoogleImageDto) Validate(formats strfmt.Registry) error {
+// Validate validates this source ref
+func (m *SourceRef) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this google image dto based on context it is used
-func (m *GoogleImageDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this source ref based on context it is used
+func (m *SourceRef) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *GoogleImageDto) MarshalBinary() ([]byte, error) {
+func (m *SourceRef) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -43,8 +43,8 @@ func (m *GoogleImageDto) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *GoogleImageDto) UnmarshalBinary(b []byte) error {
-	var res GoogleImageDto
+func (m *SourceRef) UnmarshalBinary(b []byte) error {
+	var res SourceRef
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

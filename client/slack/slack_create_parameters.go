@@ -62,7 +62,7 @@ func NewSlackCreateParamsWithHTTPClient(client *http.Client) *SlackCreateParams 
 type SlackCreateParams struct {
 
 	// Body.
-	Body *models.UpsertSlackConfigurationCommand
+	Body *models.CreateSlackConfigurationCommand
 
 	// V.
 	V string
@@ -121,13 +121,13 @@ func (o *SlackCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the slack create params
-func (o *SlackCreateParams) WithBody(body *models.UpsertSlackConfigurationCommand) *SlackCreateParams {
+func (o *SlackCreateParams) WithBody(body *models.CreateSlackConfigurationCommand) *SlackCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the slack create params
-func (o *SlackCreateParams) SetBody(body *models.UpsertSlackConfigurationCommand) {
+func (o *SlackCreateParams) SetBody(body *models.CreateSlackConfigurationCommand) {
 	o.Body = body
 }
 

@@ -42,6 +42,10 @@ type ClientService interface {
 
 	CheckerDNS(params *CheckerDNSParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerDNSOK, error)
 
+	CheckerGoogle(params *CheckerGoogleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerGoogleOK, error)
+
+	CheckerNode(params *CheckerNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerNodeOK, error)
+
 	CheckerNtp(params *CheckerNtpParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerNtpOK, error)
 
 	CheckerOpenstack(params *CheckerOpenstackParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOpenstackOK, error)
@@ -50,11 +54,15 @@ type ClientService interface {
 
 	CheckerOpenstackTaikunLbImage(params *CheckerOpenstackTaikunLbImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOpenstackTaikunLbImageOK, error)
 
+	CheckerOrganization(params *CheckerOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOrganizationOK, error)
+
 	CheckerPrometheus(params *CheckerPrometheusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerPrometheusOK, error)
 
 	CheckerS3(params *CheckerS3Params, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerS3OK, error)
 
 	CheckerSSH(params *CheckerSSHParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerSSHOK, error)
+
+	CheckerUserChecker(params *CheckerUserCheckerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerUserCheckerOK, error)
 
 	CheckerYaml(params *CheckerYamlParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerYamlOK, error)
 
@@ -296,6 +304,84 @@ func (a *Client) CheckerDNS(params *CheckerDNSParams, authInfo runtime.ClientAut
 }
 
 /*
+  CheckerGoogle checks aws credentials
+*/
+func (a *Client) CheckerGoogle(params *CheckerGoogleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerGoogleOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCheckerGoogleParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Checker_Google",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Checker/google",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CheckerGoogleReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CheckerGoogleOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Checker_Google: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CheckerNode duplicates server name checker
+*/
+func (a *Client) CheckerNode(params *CheckerNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerNodeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCheckerNodeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Checker_Node",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Checker/node",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CheckerNodeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CheckerNodeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Checker_Node: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   CheckerNtp checks valid ntp format
 */
 func (a *Client) CheckerNtp(params *CheckerNtpParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerNtpOK, error) {
@@ -452,6 +538,45 @@ func (a *Client) CheckerOpenstackTaikunLbImage(params *CheckerOpenstackTaikunLbI
 }
 
 /*
+  CheckerOrganization checks duplicate org name
+*/
+func (a *Client) CheckerOrganization(params *CheckerOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOrganizationOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCheckerOrganizationParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Checker_Organization",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Checker/organization",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CheckerOrganizationReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CheckerOrganizationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Checker_Organization: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   CheckerPrometheus checks prometheus credentials
 */
 func (a *Client) CheckerPrometheus(params *CheckerPrometheusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerPrometheusOK, error) {
@@ -565,6 +690,45 @@ func (a *Client) CheckerSSH(params *CheckerSSHParams, authInfo runtime.ClientAut
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Checker_Ssh: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CheckerUserChecker checks duplicate username
+*/
+func (a *Client) CheckerUserChecker(params *CheckerUserCheckerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerUserCheckerOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCheckerUserCheckerParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Checker_UserChecker",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Checker/user",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CheckerUserCheckerReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CheckerUserCheckerOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Checker_UserChecker: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

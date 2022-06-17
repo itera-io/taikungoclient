@@ -36,7 +36,11 @@ type ClientService interface {
 
 	CatalogBindProjects(params *CatalogBindProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogBindProjectsOK, error)
 
+	CatalogCatalogAppDetails(params *CatalogCatalogAppDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppDetailsOK, error)
+
 	CatalogCatalogAppValue(params *CatalogCatalogAppValueParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppValueOK, error)
+
+	CatalogCatalogAppValueAutocomplete(params *CatalogCatalogAppValueAutocompleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppValueAutocompleteOK, error)
 
 	CatalogCatalogDropdown(params *CatalogCatalogDropdownParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogDropdownOK, error)
 
@@ -49,6 +53,12 @@ type ClientService interface {
 	CatalogDeleteCatalog(params *CatalogDeleteCatalogParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogDeleteCatalogOK, error)
 
 	CatalogDeleteCatalogApp(params *CatalogDeleteCatalogAppParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogDeleteCatalogAppOK, error)
+
+	CatalogEditCatalog(params *CatalogEditCatalogParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogEditCatalogOK, error)
+
+	CatalogEditCatalogAppParams(params *CatalogEditCatalogAppParamsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogEditCatalogAppParamsOK, error)
+
+	CatalogEditCatalogAppVersion(params *CatalogEditCatalogAppVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogEditCatalogAppVersionOK, error)
 
 	CatalogList(params *CatalogListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogListOK, error)
 
@@ -175,6 +185,45 @@ func (a *Client) CatalogBindProjects(params *CatalogBindProjectsParams, authInfo
 }
 
 /*
+  CatalogCatalogAppDetails catalogs app details
+*/
+func (a *Client) CatalogCatalogAppDetails(params *CatalogCatalogAppDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppDetailsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCatalogCatalogAppDetailsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Catalog_CatalogAppDetails",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Catalog/catalog-app/{id}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CatalogCatalogAppDetailsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CatalogCatalogAppDetailsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Catalog_CatalogAppDetails: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   CatalogCatalogAppValue gets catalog app yaml value
 */
 func (a *Client) CatalogCatalogAppValue(params *CatalogCatalogAppValueParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppValueOK, error) {
@@ -210,6 +259,45 @@ func (a *Client) CatalogCatalogAppValue(params *CatalogCatalogAppValueParams, au
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Catalog_CatalogAppValue: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CatalogCatalogAppValueAutocomplete gets autocomplete dictionary for catalog app value
+*/
+func (a *Client) CatalogCatalogAppValueAutocomplete(params *CatalogCatalogAppValueAutocompleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppValueAutocompleteOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCatalogCatalogAppValueAutocompleteParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Catalog_CatalogAppValueAutocomplete",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Catalog/package-value-autocomplete",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CatalogCatalogAppValueAutocompleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CatalogCatalogAppValueAutocompleteOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Catalog_CatalogAppValueAutocomplete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -409,7 +497,7 @@ func (a *Client) CatalogDeleteCatalog(params *CatalogDeleteCatalogParams, authIn
 }
 
 /*
-  CatalogDeleteCatalogApp deletes catalog app
+  CatalogDeleteCatalogApp deletes catalog app by package Id
 */
 func (a *Client) CatalogDeleteCatalogApp(params *CatalogDeleteCatalogAppParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogDeleteCatalogAppOK, error) {
 	// TODO: Validate the params before sending
@@ -444,6 +532,123 @@ func (a *Client) CatalogDeleteCatalogApp(params *CatalogDeleteCatalogAppParams, 
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Catalog_DeleteCatalogApp: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CatalogEditCatalog edits catalog for organization
+*/
+func (a *Client) CatalogEditCatalog(params *CatalogEditCatalogParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogEditCatalogOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCatalogEditCatalogParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Catalog_EditCatalog",
+		Method:             "PUT",
+		PathPattern:        "/api/v{v}/Catalog/edit-catalog",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CatalogEditCatalogReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CatalogEditCatalogOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Catalog_EditCatalog: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CatalogEditCatalogAppParams edits catalog app params
+*/
+func (a *Client) CatalogEditCatalogAppParams(params *CatalogEditCatalogAppParamsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogEditCatalogAppParamsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCatalogEditCatalogAppParamsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Catalog_EditCatalogAppParams",
+		Method:             "PUT",
+		PathPattern:        "/api/v{v}/Catalog/edit-catalogapp-params",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CatalogEditCatalogAppParamsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CatalogEditCatalogAppParamsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Catalog_EditCatalogAppParams: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CatalogEditCatalogAppVersion edits catalog app version
+*/
+func (a *Client) CatalogEditCatalogAppVersion(params *CatalogEditCatalogAppVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogEditCatalogAppVersionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCatalogEditCatalogAppVersionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Catalog_EditCatalogAppVersion",
+		Method:             "PUT",
+		PathPattern:        "/api/v{v}/Catalog/edit-catalogapp-version",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CatalogEditCatalogAppVersionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CatalogEditCatalogAppVersionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Catalog_EditCatalogAppVersion: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

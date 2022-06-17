@@ -21,6 +21,9 @@ type ProjectForUpdateDto struct {
 	// access Ip
 	AccessIP string `json:"accessIp,omitempty"`
 
+	// app enabled
+	AppEnabled bool `json:"appEnabled"`
+
 	// health
 	Health ProjectHealth `json:"health,omitempty"`
 

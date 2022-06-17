@@ -27,6 +27,9 @@ type CBackupDto struct {
 	// Format: date-time
 	Expiration *strfmt.DateTime `json:"expiration,omitempty"`
 
+	// location
+	Location string `json:"location,omitempty"`
+
 	// metadata name
 	MetadataName string `json:"metadataName,omitempty"`
 

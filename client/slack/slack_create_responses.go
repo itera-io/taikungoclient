@@ -74,20 +74,22 @@ func NewSlackCreateOK() *SlackCreateOK {
 Success
 */
 type SlackCreateOK struct {
-	Payload int32
+	Payload *models.APIResponse
 }
 
 func (o *SlackCreateOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack][%d] slackCreateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateOK  %+v", 200, o.Payload)
 }
-func (o *SlackCreateOK) GetPayload() int32 {
+func (o *SlackCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *SlackCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.APIResponse)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -108,7 +110,7 @@ type SlackCreateBadRequest struct {
 }
 
 func (o *SlackCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack][%d] slackCreateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateBadRequest  %+v", 400, o.Payload)
 }
 func (o *SlackCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
@@ -140,7 +142,7 @@ type SlackCreateUnauthorized struct {
 }
 
 func (o *SlackCreateUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack][%d] slackCreateUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateUnauthorized  %+v", 401, o.Payload)
 }
 func (o *SlackCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -172,7 +174,7 @@ type SlackCreateForbidden struct {
 }
 
 func (o *SlackCreateForbidden) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack][%d] slackCreateForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateForbidden  %+v", 403, o.Payload)
 }
 func (o *SlackCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -204,7 +206,7 @@ type SlackCreateNotFound struct {
 }
 
 func (o *SlackCreateNotFound) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack][%d] slackCreateNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateNotFound  %+v", 404, o.Payload)
 }
 func (o *SlackCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -235,7 +237,7 @@ type SlackCreateInternalServerError struct {
 }
 
 func (o *SlackCreateInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack][%d] slackCreateInternalServerError ", 500)
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateInternalServerError ", 500)
 }
 
 func (o *SlackCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

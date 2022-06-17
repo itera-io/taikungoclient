@@ -62,7 +62,7 @@ func NewAccessProfilesCreateParamsWithHTTPClient(client *http.Client) *AccessPro
 type AccessProfilesCreateParams struct {
 
 	// Body.
-	Body *models.UpsertAccessProfileCommand
+	Body *models.CreateAccessProfileCommand
 
 	// V.
 	V string
@@ -121,13 +121,13 @@ func (o *AccessProfilesCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the access profiles create params
-func (o *AccessProfilesCreateParams) WithBody(body *models.UpsertAccessProfileCommand) *AccessProfilesCreateParams {
+func (o *AccessProfilesCreateParams) WithBody(body *models.CreateAccessProfileCommand) *AccessProfilesCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the access profiles create params
-func (o *AccessProfilesCreateParams) SetBody(body *models.UpsertAccessProfileCommand) {
+func (o *AccessProfilesCreateParams) SetBody(body *models.CreateAccessProfileCommand) {
 	o.Body = body
 }
 

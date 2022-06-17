@@ -14,10 +14,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ProjectListForUIDto project list for Ui dto
+// ProjectListDetailDto project list detail dto
 //
-// swagger:model ProjectListForUiDto
-type ProjectListForUIDto struct {
+// swagger:model ProjectListDetailDto
+type ProjectListDetailDto struct {
 
 	// alerts count
 	AlertsCount int32 `json:"alertsCount,omitempty"`
@@ -49,6 +49,9 @@ type ProjectListForUIDto struct {
 	// created by
 	CreatedBy string `json:"createdBy,omitempty"`
 
+	// delete on expiration
+	DeleteOnExpiration bool `json:"deleteOnExpiration"`
+
 	// expired at
 	ExpiredAt string `json:"expiredAt,omitempty"`
 
@@ -63,6 +66,9 @@ type ProjectListForUIDto struct {
 
 	// is kubernetes
 	IsKubernetes bool `json:"isKubernetes"`
+
+	// is lightweight k8s
+	IsLightweightK8s bool `json:"isLightweightK8s"`
 
 	// is locked
 	IsLocked bool `json:"isLocked"`
@@ -110,8 +116,8 @@ type ProjectListForUIDto struct {
 	TotalStandaloneVmsCount int32 `json:"totalStandaloneVmsCount,omitempty"`
 }
 
-// Validate validates this project list for Ui dto
-func (m *ProjectListForUIDto) Validate(formats strfmt.Registry) error {
+// Validate validates this project list detail dto
+func (m *ProjectListDetailDto) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateBoundUsers(formats); err != nil {
@@ -124,7 +130,7 @@ func (m *ProjectListForUIDto) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ProjectListForUIDto) validateBoundUsers(formats strfmt.Registry) error {
+func (m *ProjectListDetailDto) validateBoundUsers(formats strfmt.Registry) error {
 	if swag.IsZero(m.BoundUsers) { // not required
 		return nil
 	}
@@ -150,8 +156,8 @@ func (m *ProjectListForUIDto) validateBoundUsers(formats strfmt.Registry) error 
 	return nil
 }
 
-// ContextValidate validate this project list for Ui dto based on the context it is used
-func (m *ProjectListForUIDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this project list detail dto based on the context it is used
+func (m *ProjectListDetailDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateBoundUsers(ctx, formats); err != nil {
@@ -164,7 +170,7 @@ func (m *ProjectListForUIDto) ContextValidate(ctx context.Context, formats strfm
 	return nil
 }
 
-func (m *ProjectListForUIDto) contextValidateBoundUsers(ctx context.Context, formats strfmt.Registry) error {
+func (m *ProjectListDetailDto) contextValidateBoundUsers(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.BoundUsers); i++ {
 
@@ -185,7 +191,7 @@ func (m *ProjectListForUIDto) contextValidateBoundUsers(ctx context.Context, for
 }
 
 // MarshalBinary interface implementation
-func (m *ProjectListForUIDto) MarshalBinary() ([]byte, error) {
+func (m *ProjectListDetailDto) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -193,8 +199,8 @@ func (m *ProjectListForUIDto) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *ProjectListForUIDto) UnmarshalBinary(b []byte) error {
-	var res ProjectListForUIDto
+func (m *ProjectListDetailDto) UnmarshalBinary(b []byte) error {
+	var res ProjectListDetailDto
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

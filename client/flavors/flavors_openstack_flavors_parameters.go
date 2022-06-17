@@ -72,8 +72,8 @@ type FlavorsOpenstackFlavorsParams struct {
 
 	// EndRAM.
 	//
-	// Format: int32
-	EndRAM *int32
+	// Format: double
+	EndRAM *float64
 
 	/* Limit.
 
@@ -107,8 +107,8 @@ type FlavorsOpenstackFlavorsParams struct {
 
 	// StartRAM.
 	//
-	// Format: int32
-	StartRAM *int32
+	// Format: double
+	StartRAM *float64
 
 	// V.
 	V string
@@ -189,13 +189,13 @@ func (o *FlavorsOpenstackFlavorsParams) SetEndCPU(endCPU *int32) {
 }
 
 // WithEndRAM adds the endRAM to the flavors openstack flavors params
-func (o *FlavorsOpenstackFlavorsParams) WithEndRAM(endRAM *int32) *FlavorsOpenstackFlavorsParams {
+func (o *FlavorsOpenstackFlavorsParams) WithEndRAM(endRAM *float64) *FlavorsOpenstackFlavorsParams {
 	o.SetEndRAM(endRAM)
 	return o
 }
 
 // SetEndRAM adds the endRam to the flavors openstack flavors params
-func (o *FlavorsOpenstackFlavorsParams) SetEndRAM(endRAM *int32) {
+func (o *FlavorsOpenstackFlavorsParams) SetEndRAM(endRAM *float64) {
 	o.EndRAM = endRAM
 }
 
@@ -266,13 +266,13 @@ func (o *FlavorsOpenstackFlavorsParams) SetStartCPU(startCPU *int32) {
 }
 
 // WithStartRAM adds the startRAM to the flavors openstack flavors params
-func (o *FlavorsOpenstackFlavorsParams) WithStartRAM(startRAM *int32) *FlavorsOpenstackFlavorsParams {
+func (o *FlavorsOpenstackFlavorsParams) WithStartRAM(startRAM *float64) *FlavorsOpenstackFlavorsParams {
 	o.SetStartRAM(startRAM)
 	return o
 }
 
 // SetStartRAM adds the startRam to the flavors openstack flavors params
-func (o *FlavorsOpenstackFlavorsParams) SetStartRAM(startRAM *int32) {
+func (o *FlavorsOpenstackFlavorsParams) SetStartRAM(startRAM *float64) {
 	o.StartRAM = startRAM
 }
 
@@ -320,12 +320,12 @@ func (o *FlavorsOpenstackFlavorsParams) WriteToRequest(r runtime.ClientRequest, 
 	if o.EndRAM != nil {
 
 		// query param endRam
-		var qrEndRAM int32
+		var qrEndRAM float64
 
 		if o.EndRAM != nil {
 			qrEndRAM = *o.EndRAM
 		}
-		qEndRAM := swag.FormatInt32(qrEndRAM)
+		qEndRAM := swag.FormatFloat64(qrEndRAM)
 		if qEndRAM != "" {
 
 			if err := r.SetQueryParam("endRam", qEndRAM); err != nil {
@@ -439,12 +439,12 @@ func (o *FlavorsOpenstackFlavorsParams) WriteToRequest(r runtime.ClientRequest, 
 	if o.StartRAM != nil {
 
 		// query param startRam
-		var qrStartRAM int32
+		var qrStartRAM float64
 
 		if o.StartRAM != nil {
 			qrStartRAM = *o.StartRAM
 		}
-		qStartRAM := swag.FormatInt32(qrStartRAM)
+		qStartRAM := swag.FormatFloat64(qrStartRAM)
 		if qStartRAM != "" {
 
 			if err := r.SetQueryParam("startRam", qStartRAM); err != nil {

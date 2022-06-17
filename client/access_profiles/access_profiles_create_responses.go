@@ -78,7 +78,7 @@ type AccessProfilesCreateOK struct {
 }
 
 func (o *AccessProfilesCreateOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles][%d] accessProfilesCreateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateOK  %+v", 200, o.Payload)
 }
 func (o *AccessProfilesCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
@@ -110,7 +110,7 @@ type AccessProfilesCreateBadRequest struct {
 }
 
 func (o *AccessProfilesCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles][%d] accessProfilesCreateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
 func (o *AccessProfilesCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
@@ -142,7 +142,7 @@ type AccessProfilesCreateUnauthorized struct {
 }
 
 func (o *AccessProfilesCreateUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles][%d] accessProfilesCreateUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateUnauthorized  %+v", 401, o.Payload)
 }
 func (o *AccessProfilesCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -174,7 +174,7 @@ type AccessProfilesCreateForbidden struct {
 }
 
 func (o *AccessProfilesCreateForbidden) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles][%d] accessProfilesCreateForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateForbidden  %+v", 403, o.Payload)
 }
 func (o *AccessProfilesCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -206,7 +206,7 @@ type AccessProfilesCreateNotFound struct {
 }
 
 func (o *AccessProfilesCreateNotFound) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles][%d] accessProfilesCreateNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateNotFound  %+v", 404, o.Payload)
 }
 func (o *AccessProfilesCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -237,7 +237,7 @@ type AccessProfilesCreateInternalServerError struct {
 }
 
 func (o *AccessProfilesCreateInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles][%d] accessProfilesCreateInternalServerError ", 500)
+	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateInternalServerError ", 500)
 }
 
 func (o *AccessProfilesCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
