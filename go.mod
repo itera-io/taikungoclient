@@ -1,6 +1,6 @@
 module github.com/itera-io/taikungoclient
 
-go 1.18
+go 1.17
 
 require (
 	github.com/go-openapi/errors v0.20.2
