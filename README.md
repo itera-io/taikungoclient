@@ -67,3 +67,7 @@ func whoAmIRun() (err error) {
 	return
 }
 ```
+
+## Contributing
+Please check out the [contributing page](.github/CONTRIBUTING.md) for instructions on how
+to contribute to this project.
