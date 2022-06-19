@@ -46,8 +46,6 @@ type ClientService interface {
 
 	AccessProfilesUpdate(params *AccessProfilesUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesUpdateOK, error)
 
-	AccessProfilesUpsert(params *AccessProfilesUpsertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesUpsertOK, error)
-
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -361,45 +359,6 @@ func (a *Client) AccessProfilesUpdate(params *AccessProfilesUpdateParams, authIn
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for AccessProfiles_Update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  AccessProfilesUpsert upserts access profile
-*/
-func (a *Client) AccessProfilesUpsert(params *AccessProfilesUpsertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesUpsertOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAccessProfilesUpsertParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "AccessProfiles_Upsert",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/AccessProfiles",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AccessProfilesUpsertReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AccessProfilesUpsertOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for AccessProfiles_Upsert: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
