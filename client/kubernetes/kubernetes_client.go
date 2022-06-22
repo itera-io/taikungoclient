@@ -118,6 +118,8 @@ type ClientService interface {
 
 	KubernetesPatchConfigMap(params *KubernetesPatchConfigMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchConfigMapOK, error)
 
+	KubernetesPatchCrd(params *KubernetesPatchCrdParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchCrdOK, error)
+
 	KubernetesPatchDeployment(params *KubernetesPatchDeploymentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchDeploymentOK, error)
 
 	KubernetesPatchIngress(params *KubernetesPatchIngressParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchIngressOK, error)
@@ -125,6 +127,10 @@ type ClientService interface {
 	KubernetesPatchPdb(params *KubernetesPatchPdbParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchPdbOK, error)
 
 	KubernetesPatchPvc(params *KubernetesPatchPvcParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchPvcOK, error)
+
+	KubernetesPatchSecret(params *KubernetesPatchSecretParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchSecretOK, error)
+
+	KubernetesPatchSts(params *KubernetesPatchStsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchStsOK, error)
 
 	KubernetesRestartDaemonSet(params *KubernetesRestartDaemonSetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesRestartDaemonSetOK, error)
 
@@ -1856,6 +1862,45 @@ func (a *Client) KubernetesPatchConfigMap(params *KubernetesPatchConfigMapParams
 }
 
 /*
+  KubernetesPatchCrd patches crd
+*/
+func (a *Client) KubernetesPatchCrd(params *KubernetesPatchCrdParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchCrdOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesPatchCrdParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_PatchCrd",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Kubernetes/patch/crd",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesPatchCrdReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesPatchCrdOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_PatchCrd: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   KubernetesPatchDeployment patches deployment
 */
 func (a *Client) KubernetesPatchDeployment(params *KubernetesPatchDeploymentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchDeploymentOK, error) {
@@ -2008,6 +2053,84 @@ func (a *Client) KubernetesPatchPvc(params *KubernetesPatchPvcParams, authInfo r
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_PatchPvc: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesPatchSecret patches secret
+*/
+func (a *Client) KubernetesPatchSecret(params *KubernetesPatchSecretParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchSecretOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesPatchSecretParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_PatchSecret",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Kubernetes/patch/secret",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesPatchSecretReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesPatchSecretOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_PatchSecret: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesPatchSts patches sts
+*/
+func (a *Client) KubernetesPatchSts(params *KubernetesPatchStsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchStsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesPatchStsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_PatchSts",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Kubernetes/patch/sts",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesPatchStsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesPatchStsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_PatchSts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
