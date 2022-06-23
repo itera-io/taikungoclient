@@ -19,6 +19,9 @@ import (
 // swagger:model ServerForCreateDto
 type ServerForCreateDto struct {
 
+	// autoscaling group
+	AutoscalingGroup string `json:"autoscalingGroup,omitempty"`
+
 	// count
 	Count int32 `json:"count,omitempty"`
 

@@ -54,6 +54,8 @@ type ClientService interface {
 
 	KubernetesDescribeJob(params *KubernetesDescribeJobParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeJobOK, error)
 
+	KubernetesDescribeNode(params *KubernetesDescribeNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeNodeOK, error)
+
 	KubernetesDescribePdb(params *KubernetesDescribePdbParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribePdbOK, error)
 
 	KubernetesDescribePod(params *KubernetesDescribePodParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribePodOK, error)
@@ -120,9 +122,13 @@ type ClientService interface {
 
 	KubernetesPatchCrd(params *KubernetesPatchCrdParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchCrdOK, error)
 
+	KubernetesPatchCronJob(params *KubernetesPatchCronJobParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchCronJobOK, error)
+
 	KubernetesPatchDeployment(params *KubernetesPatchDeploymentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchDeploymentOK, error)
 
 	KubernetesPatchIngress(params *KubernetesPatchIngressParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchIngressOK, error)
+
+	KubernetesPatchNode(params *KubernetesPatchNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchNodeOK, error)
 
 	KubernetesPatchPdb(params *KubernetesPatchPdbParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchPdbOK, error)
 
@@ -610,6 +616,45 @@ func (a *Client) KubernetesDescribeJob(params *KubernetesDescribeJobParams, auth
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_DescribeJob: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesDescribeNode describes node
+*/
+func (a *Client) KubernetesDescribeNode(params *KubernetesDescribeNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeNodeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesDescribeNodeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_DescribeNode",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Kubernetes/describe/node",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesDescribeNodeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesDescribeNodeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_DescribeNode: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1901,6 +1946,45 @@ func (a *Client) KubernetesPatchCrd(params *KubernetesPatchCrdParams, authInfo r
 }
 
 /*
+  KubernetesPatchCronJob patches cronjob
+*/
+func (a *Client) KubernetesPatchCronJob(params *KubernetesPatchCronJobParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchCronJobOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesPatchCronJobParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_PatchCronJob",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Kubernetes/patch/cronjob",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesPatchCronJobReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesPatchCronJobOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_PatchCronJob: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   KubernetesPatchDeployment patches deployment
 */
 func (a *Client) KubernetesPatchDeployment(params *KubernetesPatchDeploymentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchDeploymentOK, error) {
@@ -1975,6 +2059,45 @@ func (a *Client) KubernetesPatchIngress(params *KubernetesPatchIngressParams, au
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_PatchIngress: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesPatchNode patches node
+*/
+func (a *Client) KubernetesPatchNode(params *KubernetesPatchNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchNodeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesPatchNodeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_PatchNode",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Kubernetes/patch/node",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesPatchNodeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesPatchNodeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_PatchNode: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

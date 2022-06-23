@@ -58,7 +58,6 @@ import (
 	"github.com/itera-io/taikungoclient/client/search"
 	"github.com/itera-io/taikungoclient/client/security_group"
 	"github.com/itera-io/taikungoclient/client/servers"
-	"github.com/itera-io/taikungoclient/client/showback"
 	"github.com/itera-io/taikungoclient/client/slack"
 	"github.com/itera-io/taikungoclient/client/ssh_users"
 	"github.com/itera-io/taikungoclient/client/stand_alone"
@@ -180,7 +179,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Search = search.New(transport, formats)
 	cli.SecurityGroup = security_group.New(transport, formats)
 	cli.Servers = servers.New(transport, formats)
-	cli.Showback = showback.New(transport, formats)
 	cli.Slack = slack.New(transport, formats)
 	cli.SSHUsers = ssh_users.New(transport, formats)
 	cli.StandAlone = stand_alone.New(transport, formats)
@@ -333,8 +331,6 @@ type Taikungoclient struct {
 
 	Servers servers.ClientService
 
-	Showback showback.ClientService
-
 	Slack slack.ClientService
 
 	SSHUsers ssh_users.ClientService
@@ -413,7 +409,6 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Search.SetTransport(transport)
 	c.SecurityGroup.SetTransport(transport)
 	c.Servers.SetTransport(transport)
-	c.Showback.SetTransport(transport)
 	c.Slack.SetTransport(transport)
 	c.SSHUsers.SetTransport(transport)
 	c.StandAlone.SetTransport(transport)

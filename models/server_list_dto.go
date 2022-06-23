@@ -19,6 +19,9 @@ import (
 // swagger:model ServerListDto
 type ServerListDto struct {
 
+	// autoscaling group
+	AutoscalingGroup string `json:"autoscalingGroup,omitempty"`
+
 	// aws instance type
 	AwsInstanceType string `json:"awsInstanceType,omitempty"`
 
