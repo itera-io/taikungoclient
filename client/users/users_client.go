@@ -138,7 +138,7 @@ func (a *Client) UsersConfirmEmail(params *UsersConfirmEmailParams, authInfo run
 }
 
 /*
-  UsersCreate creates a new user only valid for admin and moderators moderators don t need to fill the organization Id parameter for admin also by default his organization Id
+  UsersCreate creates a new user
 */
 func (a *Client) UsersCreate(params *UsersCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersCreateOK, error) {
 	// TODO: Validate the params before sending

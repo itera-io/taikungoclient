@@ -63,6 +63,9 @@ type FlavorsGetSelectedFlavorsForProjectParams struct {
 	// FilterBy.
 	FilterBy *string
 
+	// FlavorName.
+	FlavorName *string
+
 	// Limit.
 	//
 	// Format: int32
@@ -157,6 +160,17 @@ func (o *FlavorsGetSelectedFlavorsForProjectParams) WithFilterBy(filterBy *strin
 // SetFilterBy adds the filterBy to the flavors get selected flavors for project params
 func (o *FlavorsGetSelectedFlavorsForProjectParams) SetFilterBy(filterBy *string) {
 	o.FilterBy = filterBy
+}
+
+// WithFlavorName adds the flavorName to the flavors get selected flavors for project params
+func (o *FlavorsGetSelectedFlavorsForProjectParams) WithFlavorName(flavorName *string) *FlavorsGetSelectedFlavorsForProjectParams {
+	o.SetFlavorName(flavorName)
+	return o
+}
+
+// SetFlavorName adds the flavorName to the flavors get selected flavors for project params
+func (o *FlavorsGetSelectedFlavorsForProjectParams) SetFlavorName(flavorName *string) {
+	o.FlavorName = flavorName
 }
 
 // WithLimit adds the limit to the flavors get selected flavors for project params
@@ -267,6 +281,23 @@ func (o *FlavorsGetSelectedFlavorsForProjectParams) WriteToRequest(r runtime.Cli
 		if qFilterBy != "" {
 
 			if err := r.SetQueryParam("filterBy", qFilterBy); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.FlavorName != nil {
+
+		// query param flavorName
+		var qrFlavorName string
+
+		if o.FlavorName != nil {
+			qrFlavorName = *o.FlavorName
+		}
+		qFlavorName := qrFlavorName
+		if qFlavorName != "" {
+
+			if err := r.SetQueryParam("flavorName", qFlavorName); err != nil {
 				return err
 			}
 		}

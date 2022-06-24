@@ -36,10 +36,6 @@ type ClientService interface {
 
 	AccessProfilesDelete(params *AccessProfilesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesDeleteOK, *AccessProfilesDeleteNoContent, error)
 
-	AccessProfilesDeleteDNSServer(params *AccessProfilesDeleteDNSServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesDeleteDNSServerOK, error)
-
-	AccessProfilesDeleteNtpServer(params *AccessProfilesDeleteNtpServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesDeleteNtpServerOK, error)
-
 	AccessProfilesList(params *AccessProfilesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesListOK, error)
 
 	AccessProfilesLockManager(params *AccessProfilesLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesLockManagerOK, error)
@@ -164,84 +160,6 @@ func (a *Client) AccessProfilesDelete(params *AccessProfilesDeleteParams, authIn
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for access_profiles: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  AccessProfilesDeleteDNSServer deletes dns server
-*/
-func (a *Client) AccessProfilesDeleteDNSServer(params *AccessProfilesDeleteDNSServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesDeleteDNSServerOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAccessProfilesDeleteDNSServerParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "AccessProfiles_DeleteDnsServer",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/AccessProfiles/dnsserver",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AccessProfilesDeleteDNSServerReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AccessProfilesDeleteDNSServerOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for AccessProfiles_DeleteDnsServer: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  AccessProfilesDeleteNtpServer deletes ntp server
-*/
-func (a *Client) AccessProfilesDeleteNtpServer(params *AccessProfilesDeleteNtpServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesDeleteNtpServerOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAccessProfilesDeleteNtpServerParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "AccessProfiles_DeleteNtpServer",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/AccessProfiles/ntpserver",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AccessProfilesDeleteNtpServerReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AccessProfilesDeleteNtpServerOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for AccessProfiles_DeleteNtpServer: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

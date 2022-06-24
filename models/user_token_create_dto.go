@@ -12,39 +12,30 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// LoginCommand login command
+// UserTokenCreateDto user token create dto
 //
-// swagger:model LoginCommand
-type LoginCommand struct {
+// swagger:model UserTokenCreateDto
+type UserTokenCreateDto struct {
 
 	// access key
 	AccessKey string `json:"accessKey,omitempty"`
 
-	// email
-	Email string `json:"email,omitempty"`
-
-	// password
-	Password string `json:"password,omitempty"`
-
 	// secret key
 	SecretKey string `json:"secretKey,omitempty"`
-
-	// token based
-	TokenBased bool `json:"tokenBased"`
 }
 
-// Validate validates this login command
-func (m *LoginCommand) Validate(formats strfmt.Registry) error {
+// Validate validates this user token create dto
+func (m *UserTokenCreateDto) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this login command based on context it is used
-func (m *LoginCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this user token create dto based on context it is used
+func (m *UserTokenCreateDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *LoginCommand) MarshalBinary() ([]byte, error) {
+func (m *UserTokenCreateDto) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -52,8 +43,8 @@ func (m *LoginCommand) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *LoginCommand) UnmarshalBinary(b []byte) error {
-	var res LoginCommand
+func (m *UserTokenCreateDto) UnmarshalBinary(b []byte) error {
+	var res UserTokenCreateDto
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

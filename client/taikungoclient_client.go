@@ -69,6 +69,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/ticket"
 	"github.com/itera-io/taikungoclient/client/user_groups"
 	"github.com/itera-io/taikungoclient/client/user_projects"
+	"github.com/itera-io/taikungoclient/client/user_token"
 	"github.com/itera-io/taikungoclient/client/users"
 )
 
@@ -190,6 +191,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Ticket = ticket.New(transport, formats)
 	cli.UserGroups = user_groups.New(transport, formats)
 	cli.UserProjects = user_projects.New(transport, formats)
+	cli.UserToken = user_token.New(transport, formats)
 	cli.Users = users.New(transport, formats)
 	return cli
 }
@@ -353,6 +355,8 @@ type Taikungoclient struct {
 
 	UserProjects user_projects.ClientService
 
+	UserToken user_token.ClientService
+
 	Users users.ClientService
 
 	Transport runtime.ClientTransport
@@ -420,5 +424,6 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Ticket.SetTransport(transport)
 	c.UserGroups.SetTransport(transport)
 	c.UserProjects.SetTransport(transport)
+	c.UserToken.SetTransport(transport)
 	c.Users.SetTransport(transport)
 }
