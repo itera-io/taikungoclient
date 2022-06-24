@@ -128,9 +128,13 @@ type ClientService interface {
 
 	KubernetesPatchIngress(params *KubernetesPatchIngressParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchIngressOK, error)
 
+	KubernetesPatchJob(params *KubernetesPatchJobParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchJobOK, error)
+
 	KubernetesPatchNode(params *KubernetesPatchNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchNodeOK, error)
 
 	KubernetesPatchPdb(params *KubernetesPatchPdbParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchPdbOK, error)
+
+	KubernetesPatchPod(params *KubernetesPatchPodParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchPodOK, error)
 
 	KubernetesPatchPvc(params *KubernetesPatchPvcParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchPvcOK, error)
 
@@ -2063,6 +2067,45 @@ func (a *Client) KubernetesPatchIngress(params *KubernetesPatchIngressParams, au
 }
 
 /*
+  KubernetesPatchJob patches job
+*/
+func (a *Client) KubernetesPatchJob(params *KubernetesPatchJobParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchJobOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesPatchJobParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_PatchJob",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Kubernetes/patch/job",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesPatchJobReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesPatchJobOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_PatchJob: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   KubernetesPatchNode patches node
 */
 func (a *Client) KubernetesPatchNode(params *KubernetesPatchNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchNodeOK, error) {
@@ -2137,6 +2180,45 @@ func (a *Client) KubernetesPatchPdb(params *KubernetesPatchPdbParams, authInfo r
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_PatchPdb: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesPatchPod patches pod
+*/
+func (a *Client) KubernetesPatchPod(params *KubernetesPatchPodParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchPodOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesPatchPodParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_PatchPod",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Kubernetes/patch/pod",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesPatchPodReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesPatchPodOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_PatchPod: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -60,6 +60,9 @@ func NewServersListParamsWithHTTPClient(client *http.Client) *ServersListParams 
 */
 type ServersListParams struct {
 
+	// AutoscalingGroup.
+	AutoscalingGroup *string
+
 	// EndCPU.
 	//
 	// Format: int32
@@ -187,6 +190,17 @@ func (o *ServersListParams) WithHTTPClient(client *http.Client) *ServersListPara
 // SetHTTPClient adds the HTTPClient to the servers list params
 func (o *ServersListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithAutoscalingGroup adds the autoscalingGroup to the servers list params
+func (o *ServersListParams) WithAutoscalingGroup(autoscalingGroup *string) *ServersListParams {
+	o.SetAutoscalingGroup(autoscalingGroup)
+	return o
+}
+
+// SetAutoscalingGroup adds the autoscalingGroup to the servers list params
+func (o *ServersListParams) SetAutoscalingGroup(autoscalingGroup *string) {
+	o.AutoscalingGroup = autoscalingGroup
 }
 
 // WithEndCPU adds the endCPU to the servers list params
@@ -372,6 +386,23 @@ func (o *ServersListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
+
+	if o.AutoscalingGroup != nil {
+
+		// query param autoscalingGroup
+		var qrAutoscalingGroup string
+
+		if o.AutoscalingGroup != nil {
+			qrAutoscalingGroup = *o.AutoscalingGroup
+		}
+		qAutoscalingGroup := qrAutoscalingGroup
+		if qAutoscalingGroup != "" {
+
+			if err := r.SetQueryParam("autoscalingGroup", qAutoscalingGroup); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.EndCPU != nil {
 
