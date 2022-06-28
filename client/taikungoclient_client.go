@@ -65,7 +65,6 @@ import (
 	"github.com/itera-io/taikungoclient/client/stand_alone_profile"
 	"github.com/itera-io/taikungoclient/client/stand_alone_vm_disks"
 	"github.com/itera-io/taikungoclient/client/subscription"
-	"github.com/itera-io/taikungoclient/client/taikun_groups"
 	"github.com/itera-io/taikungoclient/client/ticket"
 	"github.com/itera-io/taikungoclient/client/user_groups"
 	"github.com/itera-io/taikungoclient/client/user_projects"
@@ -187,7 +186,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.StandAloneProfile = stand_alone_profile.New(transport, formats)
 	cli.StandAloneVMDisks = stand_alone_vm_disks.New(transport, formats)
 	cli.Subscription = subscription.New(transport, formats)
-	cli.TaikunGroups = taikun_groups.New(transport, formats)
 	cli.Ticket = ticket.New(transport, formats)
 	cli.UserGroups = user_groups.New(transport, formats)
 	cli.UserProjects = user_projects.New(transport, formats)
@@ -347,8 +345,6 @@ type Taikungoclient struct {
 
 	Subscription subscription.ClientService
 
-	TaikunGroups taikun_groups.ClientService
-
 	Ticket ticket.ClientService
 
 	UserGroups user_groups.ClientService
@@ -420,7 +416,6 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.StandAloneProfile.SetTransport(transport)
 	c.StandAloneVMDisks.SetTransport(transport)
 	c.Subscription.SetTransport(transport)
-	c.TaikunGroups.SetTransport(transport)
 	c.Ticket.SetTransport(transport)
 	c.UserGroups.SetTransport(transport)
 	c.UserProjects.SetTransport(transport)

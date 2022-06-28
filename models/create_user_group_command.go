@@ -20,8 +20,8 @@ type CreateUserGroupCommand struct {
 	// name
 	Name string `json:"name,omitempty"`
 
-	// taikun group Id
-	TaikunGroupID int32 `json:"taikunGroupId,omitempty"`
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
 
 	// user ids
 	UserIds []string `json:"userIds"`

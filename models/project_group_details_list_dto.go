@@ -25,14 +25,14 @@ type ProjectGroupDetailsListDto struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
+	// organization name
+	OrganizationName string `json:"organizationName,omitempty"`
+
 	// projects
 	Projects []*ProjectListDto `json:"projects"`
-
-	// taikun group Id
-	TaikunGroupID int32 `json:"taikunGroupId,omitempty"`
-
-	// taikun group name
-	TaikunGroupName string `json:"taikunGroupName,omitempty"`
 
 	// user groups
 	UserGroups []*UserGroupEntityListDto `json:"userGroups"`

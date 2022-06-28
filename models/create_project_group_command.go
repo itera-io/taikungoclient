@@ -20,11 +20,11 @@ type CreateProjectGroupCommand struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
+
 	// project ids
 	ProjectIds []int32 `json:"projectIds"`
-
-	// taikun group Id
-	TaikunGroupID int32 `json:"taikunGroupId,omitempty"`
 }
 
 // Validate validates this create project group command
