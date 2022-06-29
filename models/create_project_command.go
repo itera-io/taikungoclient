@@ -34,11 +34,26 @@ type CreateProjectCommand struct {
 	// allow spot workers
 	AllowSpotWorkers bool `json:"allowSpotWorkers"`
 
+	// autoscaling enabled
+	AutoscalingEnabled bool `json:"autoscalingEnabled"`
+
+	// autoscaling flavor
+	AutoscalingFlavor string `json:"autoscalingFlavor,omitempty"`
+
+	// autoscaling group name
+	AutoscalingGroupName string `json:"autoscalingGroupName,omitempty"`
+
+	// autoscaling spot enabled
+	AutoscalingSpotEnabled bool `json:"autoscalingSpotEnabled"`
+
 	// cloud credential Id
 	CloudCredentialID int32 `json:"cloudCredentialId,omitempty"`
 
 	// delete on expiration
 	DeleteOnExpiration bool `json:"deleteOnExpiration"`
+
+	// disk size
+	DiskSize float64 `json:"diskSize,omitempty"`
 
 	// expired at
 	// Format: date-time
@@ -68,8 +83,14 @@ type CreateProjectCommand struct {
 	// kubernetes version
 	KubernetesVersion string `json:"kubernetesVersion,omitempty"`
 
+	// max size
+	MaxSize int32 `json:"maxSize,omitempty"`
+
 	// max spot price
 	MaxSpotPrice float64 `json:"maxSpotPrice,omitempty"`
+
+	// min size
+	MinSize int32 `json:"minSize,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`

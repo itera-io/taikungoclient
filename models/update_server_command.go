@@ -25,6 +25,9 @@ type UpdateServerCommand struct {
 
 	// ip
 	IP string `json:"ip,omitempty"`
+
+	// provider ID
+	ProviderID string `json:"providerID,omitempty"`
 }
 
 // Validate validates this update server command

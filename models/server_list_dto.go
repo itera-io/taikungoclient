@@ -82,6 +82,9 @@ type ServerListDto struct {
 	// project name
 	ProjectName string `json:"projectName,omitempty"`
 
+	// provider ID
+	ProviderID string `json:"providerID,omitempty"`
+
 	// ram
 	RAM int64 `json:"ram,omitempty"`
 
