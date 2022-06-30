@@ -143,6 +143,9 @@ type ProjectForListDto struct {
 	// organization name
 	OrganizationName string `json:"organizationName,omitempty"`
 
+	// partner Id
+	PartnerID int32 `json:"partnerId,omitempty"`
+
 	// quota Id
 	QuotaID int32 `json:"quotaId,omitempty"`
 
