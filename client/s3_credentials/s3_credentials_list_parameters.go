@@ -92,6 +92,12 @@ type S3CredentialsListParams struct {
 	// SearchID.
 	SearchID *string
 
+	// SortBy.
+	SortBy *string
+
+	// SortDirection.
+	SortDirection *string
+
 	// V.
 	V string
 
@@ -214,6 +220,28 @@ func (o *S3CredentialsListParams) SetSearchID(searchID *string) {
 	o.SearchID = searchID
 }
 
+// WithSortBy adds the sortBy to the s3 credentials list params
+func (o *S3CredentialsListParams) WithSortBy(sortBy *string) *S3CredentialsListParams {
+	o.SetSortBy(sortBy)
+	return o
+}
+
+// SetSortBy adds the sortBy to the s3 credentials list params
+func (o *S3CredentialsListParams) SetSortBy(sortBy *string) {
+	o.SortBy = sortBy
+}
+
+// WithSortDirection adds the sortDirection to the s3 credentials list params
+func (o *S3CredentialsListParams) WithSortDirection(sortDirection *string) *S3CredentialsListParams {
+	o.SetSortDirection(sortDirection)
+	return o
+}
+
+// SetSortDirection adds the sortDirection to the s3 credentials list params
+func (o *S3CredentialsListParams) SetSortDirection(sortDirection *string) {
+	o.SortDirection = sortDirection
+}
+
 // WithV adds the v to the s3 credentials list params
 func (o *S3CredentialsListParams) WithV(v string) *S3CredentialsListParams {
 	o.SetV(v)
@@ -330,6 +358,40 @@ func (o *S3CredentialsListParams) WriteToRequest(r runtime.ClientRequest, reg st
 		if qSearchID != "" {
 
 			if err := r.SetQueryParam("searchId", qSearchID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SortBy != nil {
+
+		// query param sortBy
+		var qrSortBy string
+
+		if o.SortBy != nil {
+			qrSortBy = *o.SortBy
+		}
+		qSortBy := qrSortBy
+		if qSortBy != "" {
+
+			if err := r.SetQueryParam("sortBy", qSortBy); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SortDirection != nil {
+
+		// query param sortDirection
+		var qrSortDirection string
+
+		if o.SortDirection != nil {
+			qrSortDirection = *o.SortDirection
+		}
+		qSortDirection := qrSortDirection
+		if qSortDirection != "" {
+
+			if err := r.SetQueryParam("sortDirection", qSortDirection); err != nil {
 				return err
 			}
 		}

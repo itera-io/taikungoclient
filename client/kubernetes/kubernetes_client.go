@@ -66,6 +66,8 @@ type ClientService interface {
 
 	KubernetesDescribeService(params *KubernetesDescribeServiceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeServiceOK, error)
 
+	KubernetesDescribeStorageClass(params *KubernetesDescribeStorageClassParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeStorageClassOK, error)
+
 	KubernetesDescribeSts(params *KubernetesDescribeStsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeStsOK, error)
 
 	KubernetesDownload(params *KubernetesDownloadParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDownloadOK, error)
@@ -111,6 +113,8 @@ type ClientService interface {
 	KubernetesGetSecret(params *KubernetesGetSecretParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetSecretOK, error)
 
 	KubernetesGetService(params *KubernetesGetServiceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetServiceOK, error)
+
+	KubernetesGetStorageClasses(params *KubernetesGetStorageClassesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStorageClassesOK, error)
 
 	KubernetesGetSts(params *KubernetesGetStsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStsOK, error)
 
@@ -854,6 +858,45 @@ func (a *Client) KubernetesDescribeService(params *KubernetesDescribeServicePara
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_DescribeService: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesDescribeStorageClass describes storage class
+*/
+func (a *Client) KubernetesDescribeStorageClass(params *KubernetesDescribeStorageClassParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeStorageClassOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesDescribeStorageClassParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_DescribeStorageClass",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Kubernetes/describe/storageclass",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesDescribeStorageClassReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesDescribeStorageClassOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_DescribeStorageClass: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1751,6 +1794,45 @@ func (a *Client) KubernetesGetService(params *KubernetesGetServiceParams, authIn
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetService: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesGetStorageClasses retrieves a list of k8s storage classes
+*/
+func (a *Client) KubernetesGetStorageClasses(params *KubernetesGetStorageClassesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStorageClassesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesGetStorageClassesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_GetStorageClasses",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Kubernetes/{projectId}/storageclass",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesGetStorageClassesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesGetStorageClassesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetStorageClasses: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
