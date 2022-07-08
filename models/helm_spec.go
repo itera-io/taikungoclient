@@ -24,6 +24,9 @@ type HelmSpec struct {
 	// interval
 	Interval string `json:"interval,omitempty"`
 
+	// storage namespace
+	StorageNamespace string `json:"storageNamespace,omitempty"`
+
 	// target namespace
 	TargetNamespace string `json:"targetNamespace,omitempty"`
 

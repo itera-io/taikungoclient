@@ -30,6 +30,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	UserTokenAvailableEndpointList(params *UserTokenAvailableEndpointListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserTokenAvailableEndpointListOK, error)
+
 	UserTokenCreate(params *UserTokenCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserTokenCreateOK, error)
 
 	UserTokenDelete(params *UserTokenDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserTokenDeleteOK, error)
@@ -37,6 +39,45 @@ type ClientService interface {
 	UserTokenList(params *UserTokenListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserTokenListOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  UserTokenAvailableEndpointList gets available endpoints list
+*/
+func (a *Client) UserTokenAvailableEndpointList(params *UserTokenAvailableEndpointListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserTokenAvailableEndpointListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUserTokenAvailableEndpointListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UserToken_AvailableEndpointList",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/UserToken/available-endpoints",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UserTokenAvailableEndpointListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UserTokenAvailableEndpointListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UserToken_AvailableEndpointList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*

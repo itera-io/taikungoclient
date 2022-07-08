@@ -54,6 +54,8 @@ type ClientService interface {
 
 	KubernetesDescribeJob(params *KubernetesDescribeJobParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeJobOK, error)
 
+	KubernetesDescribeNetworkPolicy(params *KubernetesDescribeNetworkPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeNetworkPolicyOK, error)
+
 	KubernetesDescribeNode(params *KubernetesDescribeNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeNodeOK, error)
 
 	KubernetesDescribePdb(params *KubernetesDescribePdbParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribePdbOK, error)
@@ -99,6 +101,8 @@ type ClientService interface {
 	KubernetesGetKubernetesEventsList(params *KubernetesGetKubernetesEventsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetKubernetesEventsListOK, error)
 
 	KubernetesGetNamespacesList(params *KubernetesGetNamespacesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetNamespacesListOK, error)
+
+	KubernetesGetNetworkPolicies(params *KubernetesGetNetworkPoliciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetNetworkPoliciesOK, error)
 
 	KubernetesGetNodeList(params *KubernetesGetNodeListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetNodeListOK, error)
 
@@ -624,6 +628,45 @@ func (a *Client) KubernetesDescribeJob(params *KubernetesDescribeJobParams, auth
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_DescribeJob: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesDescribeNetworkPolicy describes network policy
+*/
+func (a *Client) KubernetesDescribeNetworkPolicy(params *KubernetesDescribeNetworkPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeNetworkPolicyOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesDescribeNetworkPolicyParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_DescribeNetworkPolicy",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Kubernetes/describe/network-policy",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesDescribeNetworkPolicyReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesDescribeNetworkPolicyOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_DescribeNetworkPolicy: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -1521,6 +1564,45 @@ func (a *Client) KubernetesGetNamespacesList(params *KubernetesGetNamespacesList
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetNamespacesList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  KubernetesGetNetworkPolicies retrieves a list of k8s network policies for all namespaces
+*/
+func (a *Client) KubernetesGetNetworkPolicies(params *KubernetesGetNetworkPoliciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetNetworkPoliciesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesGetNetworkPoliciesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_GetNetworkPolicies",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Kubernetes/{projectId}/network-policies",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesGetNetworkPoliciesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesGetNetworkPoliciesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetNetworkPolicies: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
