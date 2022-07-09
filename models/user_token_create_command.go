@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -18,6 +19,9 @@ import (
 //
 // swagger:model UserTokenCreateCommand
 type UserTokenCreateCommand struct {
+
+	// endpoints
+	Endpoints []*AvailableEndpointData `json:"endpoints"`
 
 	// expire date
 	// Format: date-time
@@ -34,6 +38,10 @@ type UserTokenCreateCommand struct {
 func (m *UserTokenCreateCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateEndpoints(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateExpireDate(formats); err != nil {
 		res = append(res, err)
 	}
@@ -41,6 +49,32 @@ func (m *UserTokenCreateCommand) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *UserTokenCreateCommand) validateEndpoints(formats strfmt.Registry) error {
+	if swag.IsZero(m.Endpoints) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Endpoints); i++ {
+		if swag.IsZero(m.Endpoints[i]) { // not required
+			continue
+		}
+
+		if m.Endpoints[i] != nil {
+			if err := m.Endpoints[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("endpoints" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("endpoints" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -56,8 +90,37 @@ func (m *UserTokenCreateCommand) validateExpireDate(formats strfmt.Registry) err
 	return nil
 }
 
-// ContextValidate validates this user token create command based on context it is used
+// ContextValidate validate this user token create command based on the context it is used
 func (m *UserTokenCreateCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateEndpoints(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UserTokenCreateCommand) contextValidateEndpoints(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Endpoints); i++ {
+
+		if m.Endpoints[i] != nil {
+			if err := m.Endpoints[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("endpoints" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("endpoints" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
