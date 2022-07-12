@@ -12,16 +12,19 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// EndpointData endpoint data
+// EndpointElements endpoint elements
 //
-// swagger:model EndpointData
-type EndpointData struct {
+// swagger:model EndpointElements
+type EndpointElements struct {
 
 	// controller
 	Controller string `json:"controller,omitempty"`
 
 	// description
 	Description string `json:"description,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
 
 	// method
 	Method string `json:"method,omitempty"`
@@ -30,18 +33,18 @@ type EndpointData struct {
 	Path string `json:"path,omitempty"`
 }
 
-// Validate validates this endpoint data
-func (m *EndpointData) Validate(formats strfmt.Registry) error {
+// Validate validates this endpoint elements
+func (m *EndpointElements) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this endpoint data based on context it is used
-func (m *EndpointData) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this endpoint elements based on context it is used
+func (m *EndpointElements) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *EndpointData) MarshalBinary() ([]byte, error) {
+func (m *EndpointElements) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -49,8 +52,8 @@ func (m *EndpointData) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *EndpointData) UnmarshalBinary(b []byte) error {
-	var res EndpointData
+func (m *EndpointElements) UnmarshalBinary(b []byte) error {
+	var res EndpointElements
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

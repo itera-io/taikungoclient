@@ -19,6 +19,9 @@ import (
 // swagger:model CreateAccessProfileCommand
 type CreateAccessProfileCommand struct {
 
+	// allowed hosts
+	AllowedHosts []*AllowedHostCreateDto `json:"allowedHosts"`
+
 	// dns servers
 	DNSServers []*DNSServerCreateDto `json:"dnsServers"`
 
@@ -42,6 +45,10 @@ type CreateAccessProfileCommand struct {
 func (m *CreateAccessProfileCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateAllowedHosts(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDNSServers(formats); err != nil {
 		res = append(res, err)
 	}
@@ -57,6 +64,32 @@ func (m *CreateAccessProfileCommand) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CreateAccessProfileCommand) validateAllowedHosts(formats strfmt.Registry) error {
+	if swag.IsZero(m.AllowedHosts) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.AllowedHosts); i++ {
+		if swag.IsZero(m.AllowedHosts[i]) { // not required
+			continue
+		}
+
+		if m.AllowedHosts[i] != nil {
+			if err := m.AllowedHosts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("allowedHosts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("allowedHosts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -142,6 +175,10 @@ func (m *CreateAccessProfileCommand) validateSSHUsers(formats strfmt.Registry) e
 func (m *CreateAccessProfileCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateAllowedHosts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateDNSServers(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -157,6 +194,26 @@ func (m *CreateAccessProfileCommand) ContextValidate(ctx context.Context, format
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CreateAccessProfileCommand) contextValidateAllowedHosts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AllowedHosts); i++ {
+
+		if m.AllowedHosts[i] != nil {
+			if err := m.AllowedHosts[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("allowedHosts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("allowedHosts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

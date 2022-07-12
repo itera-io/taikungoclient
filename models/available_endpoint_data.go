@@ -17,11 +17,17 @@ import (
 // swagger:model AvailableEndpointData
 type AvailableEndpointData struct {
 
+	// controller
+	Controller string `json:"controller,omitempty"`
+
 	// description
 	Description string `json:"description,omitempty"`
 
 	// http method
 	HTTPMethod string `json:"httpMethod,omitempty"`
+
+	// id
+	ID int32 `json:"id,omitempty"`
 
 	// path
 	Path string `json:"path,omitempty"`

@@ -14,20 +14,20 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// AvailableEndpointsList available endpoints list
+// BindUnbindEndpointToTokenCommand bind unbind endpoint to token command
 //
-// swagger:model AvailableEndpointsList
-type AvailableEndpointsList struct {
+// swagger:model BindUnbindEndpointToTokenCommand
+type BindUnbindEndpointToTokenCommand struct {
 
 	// data
-	Data []*EndpointElements `json:"data"`
+	Data []*AvailableEndpointData `json:"data"`
 
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
+	// token Id
+	TokenID string `json:"tokenId,omitempty"`
 }
 
-// Validate validates this available endpoints list
-func (m *AvailableEndpointsList) Validate(formats strfmt.Registry) error {
+// Validate validates this bind unbind endpoint to token command
+func (m *BindUnbindEndpointToTokenCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateData(formats); err != nil {
@@ -40,7 +40,7 @@ func (m *AvailableEndpointsList) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *AvailableEndpointsList) validateData(formats strfmt.Registry) error {
+func (m *BindUnbindEndpointToTokenCommand) validateData(formats strfmt.Registry) error {
 	if swag.IsZero(m.Data) { // not required
 		return nil
 	}
@@ -66,8 +66,8 @@ func (m *AvailableEndpointsList) validateData(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this available endpoints list based on the context it is used
-func (m *AvailableEndpointsList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this bind unbind endpoint to token command based on the context it is used
+func (m *BindUnbindEndpointToTokenCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateData(ctx, formats); err != nil {
@@ -80,7 +80,7 @@ func (m *AvailableEndpointsList) ContextValidate(ctx context.Context, formats st
 	return nil
 }
 
-func (m *AvailableEndpointsList) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+func (m *BindUnbindEndpointToTokenCommand) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Data); i++ {
 
@@ -101,7 +101,7 @@ func (m *AvailableEndpointsList) contextValidateData(ctx context.Context, format
 }
 
 // MarshalBinary interface implementation
-func (m *AvailableEndpointsList) MarshalBinary() ([]byte, error) {
+func (m *BindUnbindEndpointToTokenCommand) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -109,8 +109,8 @@ func (m *AvailableEndpointsList) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *AvailableEndpointsList) UnmarshalBinary(b []byte) error {
-	var res AvailableEndpointsList
+func (m *BindUnbindEndpointToTokenCommand) UnmarshalBinary(b []byte) error {
+	var res BindUnbindEndpointToTokenCommand
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

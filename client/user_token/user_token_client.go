@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	UserTokenAvailableEndpointList(params *UserTokenAvailableEndpointListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserTokenAvailableEndpointListOK, error)
 
+	UserTokenBindUnbind(params *UserTokenBindUnbindParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserTokenBindUnbindOK, error)
+
 	UserTokenCreate(params *UserTokenCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserTokenCreateOK, error)
 
 	UserTokenDelete(params *UserTokenDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserTokenDeleteOK, error)
@@ -77,6 +79,45 @@ func (a *Client) UserTokenAvailableEndpointList(params *UserTokenAvailableEndpoi
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for UserToken_AvailableEndpointList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  UserTokenBindUnbind binds and unbind endpoints
+*/
+func (a *Client) UserTokenBindUnbind(params *UserTokenBindUnbindParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserTokenBindUnbindOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUserTokenBindUnbindParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "UserToken_BindUnbind",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/UserToken/bind-unbind",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UserTokenBindUnbindReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UserTokenBindUnbindOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for UserToken_BindUnbind: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -60,6 +60,12 @@ func NewUserTokenAvailableEndpointListParamsWithHTTPClient(client *http.Client) 
 */
 type UserTokenAvailableEndpointListParams struct {
 
+	// ID.
+	ID *string
+
+	// IsAdd.
+	IsAdd *bool
+
 	// Limit.
 	//
 	// Format: int32
@@ -135,6 +141,28 @@ func (o *UserTokenAvailableEndpointListParams) SetHTTPClient(client *http.Client
 	o.HTTPClient = client
 }
 
+// WithID adds the id to the user token available endpoint list params
+func (o *UserTokenAvailableEndpointListParams) WithID(id *string) *UserTokenAvailableEndpointListParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the user token available endpoint list params
+func (o *UserTokenAvailableEndpointListParams) SetID(id *string) {
+	o.ID = id
+}
+
+// WithIsAdd adds the isAdd to the user token available endpoint list params
+func (o *UserTokenAvailableEndpointListParams) WithIsAdd(isAdd *bool) *UserTokenAvailableEndpointListParams {
+	o.SetIsAdd(isAdd)
+	return o
+}
+
+// SetIsAdd adds the isAdd to the user token available endpoint list params
+func (o *UserTokenAvailableEndpointListParams) SetIsAdd(isAdd *bool) {
+	o.IsAdd = isAdd
+}
+
 // WithLimit adds the limit to the user token available endpoint list params
 func (o *UserTokenAvailableEndpointListParams) WithLimit(limit *int32) *UserTokenAvailableEndpointListParams {
 	o.SetLimit(limit)
@@ -208,6 +236,40 @@ func (o *UserTokenAvailableEndpointListParams) WriteToRequest(r runtime.ClientRe
 		return err
 	}
 	var res []error
+
+	if o.ID != nil {
+
+		// query param id
+		var qrID string
+
+		if o.ID != nil {
+			qrID = *o.ID
+		}
+		qID := qrID
+		if qID != "" {
+
+			if err := r.SetQueryParam("id", qID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.IsAdd != nil {
+
+		// query param isAdd
+		var qrIsAdd bool
+
+		if o.IsAdd != nil {
+			qrIsAdd = *o.IsAdd
+		}
+		qIsAdd := swag.FormatBool(qrIsAdd)
+		if qIsAdd != "" {
+
+			if err := r.SetQueryParam("isAdd", qIsAdd); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.Limit != nil {
 
