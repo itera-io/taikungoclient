@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CatalogAppLockManager(params *CatalogAppLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogAppLockManagerOK, error)
 
+	CatalogAvailablePackageDetails(params *CatalogAvailablePackageDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogAvailablePackageDetailsOK, error)
+
 	CatalogAvailableVersions(params *CatalogAvailableVersionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogAvailableVersionsOK, error)
 
 	CatalogBindProjects(params *CatalogBindProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogBindProjectsOK, error)
@@ -103,6 +105,45 @@ func (a *Client) CatalogAppLockManager(params *CatalogAppLockManagerParams, auth
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Catalog_AppLockManager: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  CatalogAvailablePackageDetails availables helm package details
+*/
+func (a *Client) CatalogAvailablePackageDetails(params *CatalogAvailablePackageDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogAvailablePackageDetailsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCatalogAvailablePackageDetailsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Catalog_AvailablePackageDetails",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Catalog/available/{repoName}/{packageName}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CatalogAvailablePackageDetailsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CatalogAvailablePackageDetailsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Catalog_AvailablePackageDetails: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

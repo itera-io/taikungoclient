@@ -14,6 +14,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/admin"
 	"github.com/itera-io/taikungoclient/client/alerting_integrations"
 	"github.com/itera-io/taikungoclient/client/alerting_profiles"
+	"github.com/itera-io/taikungoclient/client/allowed_host"
 	"github.com/itera-io/taikungoclient/client/auth"
 	"github.com/itera-io/taikungoclient/client/aws"
 	"github.com/itera-io/taikungoclient/client/azure"
@@ -135,6 +136,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Admin = admin.New(transport, formats)
 	cli.AlertingIntegrations = alerting_integrations.New(transport, formats)
 	cli.AlertingProfiles = alerting_profiles.New(transport, formats)
+	cli.AllowedHost = allowed_host.New(transport, formats)
 	cli.Auth = auth.New(transport, formats)
 	cli.Aws = aws.New(transport, formats)
 	cli.Azure = azure.New(transport, formats)
@@ -242,6 +244,8 @@ type Taikungoclient struct {
 	AlertingIntegrations alerting_integrations.ClientService
 
 	AlertingProfiles alerting_profiles.ClientService
+
+	AllowedHost allowed_host.ClientService
 
 	Auth auth.ClientService
 
@@ -365,6 +369,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Admin.SetTransport(transport)
 	c.AlertingIntegrations.SetTransport(transport)
 	c.AlertingProfiles.SetTransport(transport)
+	c.AllowedHost.SetTransport(transport)
 	c.Auth.SetTransport(transport)
 	c.Aws.SetTransport(transport)
 	c.Azure.SetTransport(transport)

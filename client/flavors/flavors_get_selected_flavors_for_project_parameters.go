@@ -98,6 +98,9 @@ type FlavorsGetSelectedFlavorsForProjectParams struct {
 	// V.
 	V string
 
+	// WithPrice.
+	WithPrice *bool
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -259,6 +262,17 @@ func (o *FlavorsGetSelectedFlavorsForProjectParams) WithV(v string) *FlavorsGetS
 // SetV adds the v to the flavors get selected flavors for project params
 func (o *FlavorsGetSelectedFlavorsForProjectParams) SetV(v string) {
 	o.V = v
+}
+
+// WithWithPrice adds the withPrice to the flavors get selected flavors for project params
+func (o *FlavorsGetSelectedFlavorsForProjectParams) WithWithPrice(withPrice *bool) *FlavorsGetSelectedFlavorsForProjectParams {
+	o.SetWithPrice(withPrice)
+	return o
+}
+
+// SetWithPrice adds the withPrice to the flavors get selected flavors for project params
+func (o *FlavorsGetSelectedFlavorsForProjectParams) SetWithPrice(withPrice *bool) {
+	o.WithPrice = withPrice
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -425,6 +439,23 @@ func (o *FlavorsGetSelectedFlavorsForProjectParams) WriteToRequest(r runtime.Cli
 	// path param v
 	if err := r.SetPathParam("v", o.V); err != nil {
 		return err
+	}
+
+	if o.WithPrice != nil {
+
+		// query param withPrice
+		var qrWithPrice bool
+
+		if o.WithPrice != nil {
+			qrWithPrice = *o.WithPrice
+		}
+		qWithPrice := swag.FormatBool(qrWithPrice)
+		if qWithPrice != "" {
+
+			if err := r.SetQueryParam("withPrice", qWithPrice); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {
