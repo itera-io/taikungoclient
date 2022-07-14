@@ -60,9 +60,12 @@ func NewCatalogCatalogAppDetailsParamsWithHTTPClient(client *http.Client) *Catal
 */
 type CatalogCatalogAppDetailsParams struct {
 
-	// ID.
-	//
-	// Format: int32
+	/* ID.
+
+	   catalog app id
+
+	   Format: int32
+	*/
 	ID int32
 
 	// V.

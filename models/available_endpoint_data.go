@@ -23,11 +23,11 @@ type AvailableEndpointData struct {
 	// description
 	Description string `json:"description,omitempty"`
 
-	// http method
-	HTTPMethod string `json:"httpMethod,omitempty"`
-
 	// id
 	ID int32 `json:"id,omitempty"`
+
+	// method
+	Method string `json:"method,omitempty"`
 
 	// path
 	Path string `json:"path,omitempty"`
