@@ -17,6 +17,9 @@ import (
 // swagger:model ProjectAppDto
 type ProjectAppDto struct {
 
+	// id
+	ID int32 `json:"id,omitempty"`
+
 	// is locked
 	IsLocked bool `json:"isLocked"`
 

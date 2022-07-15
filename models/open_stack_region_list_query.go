@@ -17,6 +17,9 @@ import (
 // swagger:model OpenStackRegionListQuery
 type OpenStackRegionListQuery struct {
 
+	// application cred enabled
+	ApplicationCredEnabled bool `json:"applicationCredEnabled"`
+
 	// open stack domain
 	OpenStackDomain string `json:"openStackDomain,omitempty"`
 

@@ -17,6 +17,9 @@ import (
 // swagger:model OpenStackProjectListQuery
 type OpenStackProjectListQuery struct {
 
+	// application cred enabled
+	ApplicationCredEnabled bool `json:"applicationCredEnabled"`
+
 	// open stack domain
 	OpenStackDomain string `json:"openStackDomain,omitempty"`
 

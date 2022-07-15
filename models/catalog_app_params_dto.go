@@ -17,6 +17,9 @@ import (
 // swagger:model CatalogAppParamsDto
 type CatalogAppParamsDto struct {
 
+	// is changeable
+	IsChangeable bool `json:"isChangeable"`
+
 	// is readonly
 	IsReadonly bool `json:"isReadonly"`
 

@@ -12,10 +12,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ProjectAppParamsDto project app params dto
+// ProjectAppParamDto project app param dto
 //
-// swagger:model ProjectAppParamsDto
-type ProjectAppParamsDto struct {
+// swagger:model ProjectAppParamDto
+type ProjectAppParamDto struct {
 
 	// is changeable
 	IsChangeable bool `json:"isChangeable"`
@@ -26,22 +26,28 @@ type ProjectAppParamsDto struct {
 	// key
 	Key string `json:"key,omitempty"`
 
+	// project app Id
+	ProjectAppID int32 `json:"projectAppId,omitempty"`
+
+	// project app name
+	ProjectAppName string `json:"projectAppName,omitempty"`
+
 	// value
 	Value string `json:"value,omitempty"`
 }
 
-// Validate validates this project app params dto
-func (m *ProjectAppParamsDto) Validate(formats strfmt.Registry) error {
+// Validate validates this project app param dto
+func (m *ProjectAppParamDto) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this project app params dto based on context it is used
-func (m *ProjectAppParamsDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this project app param dto based on context it is used
+func (m *ProjectAppParamDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ProjectAppParamsDto) MarshalBinary() ([]byte, error) {
+func (m *ProjectAppParamDto) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -49,8 +55,8 @@ func (m *ProjectAppParamsDto) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *ProjectAppParamsDto) UnmarshalBinary(b []byte) error {
-	var res ProjectAppParamsDto
+func (m *ProjectAppParamDto) UnmarshalBinary(b []byte) error {
+	var res ProjectAppParamDto
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

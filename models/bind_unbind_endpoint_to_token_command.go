@@ -19,8 +19,8 @@ import (
 // swagger:model BindUnbindEndpointToTokenCommand
 type BindUnbindEndpointToTokenCommand struct {
 
-	// data
-	Data []*AvailableEndpointData `json:"data"`
+	// endpoints
+	Endpoints []*AvailableEndpointData `json:"endpoints"`
 
 	// token Id
 	TokenID string `json:"tokenId,omitempty"`
@@ -30,7 +30,7 @@ type BindUnbindEndpointToTokenCommand struct {
 func (m *BindUnbindEndpointToTokenCommand) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateData(formats); err != nil {
+	if err := m.validateEndpoints(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -40,22 +40,22 @@ func (m *BindUnbindEndpointToTokenCommand) Validate(formats strfmt.Registry) err
 	return nil
 }
 
-func (m *BindUnbindEndpointToTokenCommand) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(m.Data) { // not required
+func (m *BindUnbindEndpointToTokenCommand) validateEndpoints(formats strfmt.Registry) error {
+	if swag.IsZero(m.Endpoints) { // not required
 		return nil
 	}
 
-	for i := 0; i < len(m.Data); i++ {
-		if swag.IsZero(m.Data[i]) { // not required
+	for i := 0; i < len(m.Endpoints); i++ {
+		if swag.IsZero(m.Endpoints[i]) { // not required
 			continue
 		}
 
-		if m.Data[i] != nil {
-			if err := m.Data[i].Validate(formats); err != nil {
+		if m.Endpoints[i] != nil {
+			if err := m.Endpoints[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+					return ve.ValidateName("endpoints" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("data" + "." + strconv.Itoa(i))
+					return ce.ValidateName("endpoints" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -70,7 +70,7 @@ func (m *BindUnbindEndpointToTokenCommand) validateData(formats strfmt.Registry)
 func (m *BindUnbindEndpointToTokenCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateData(ctx, formats); err != nil {
+	if err := m.contextValidateEndpoints(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -80,16 +80,16 @@ func (m *BindUnbindEndpointToTokenCommand) ContextValidate(ctx context.Context, 
 	return nil
 }
 
-func (m *BindUnbindEndpointToTokenCommand) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+func (m *BindUnbindEndpointToTokenCommand) contextValidateEndpoints(ctx context.Context, formats strfmt.Registry) error {
 
-	for i := 0; i < len(m.Data); i++ {
+	for i := 0; i < len(m.Endpoints); i++ {
 
-		if m.Data[i] != nil {
-			if err := m.Data[i].ContextValidate(ctx, formats); err != nil {
+		if m.Endpoints[i] != nil {
+			if err := m.Endpoints[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+					return ve.ValidateName("endpoints" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("data" + "." + strconv.Itoa(i))
+					return ce.ValidateName("endpoints" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

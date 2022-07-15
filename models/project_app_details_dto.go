@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -57,6 +58,12 @@ type ProjectAppDetailsDto struct {
 	// namespace
 	Namespace string `json:"namespace,omitempty"`
 
+	// project app params
+	ProjectAppParams []*ProjectAppParamDto `json:"projectAppParams"`
+
+	// release notes
+	ReleaseNotes string `json:"releaseNotes,omitempty"`
+
 	// status
 	Status string `json:"status,omitempty"`
 
@@ -76,6 +83,10 @@ func (m *ProjectAppDetailsDto) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateLastModified(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProjectAppParams(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -109,8 +120,63 @@ func (m *ProjectAppDetailsDto) validateLastModified(formats strfmt.Registry) err
 	return nil
 }
 
-// ContextValidate validates this project app details dto based on context it is used
+func (m *ProjectAppDetailsDto) validateProjectAppParams(formats strfmt.Registry) error {
+	if swag.IsZero(m.ProjectAppParams) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ProjectAppParams); i++ {
+		if swag.IsZero(m.ProjectAppParams[i]) { // not required
+			continue
+		}
+
+		if m.ProjectAppParams[i] != nil {
+			if err := m.ProjectAppParams[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectAppParams" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectAppParams" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this project app details dto based on the context it is used
 func (m *ProjectAppDetailsDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateProjectAppParams(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ProjectAppDetailsDto) contextValidateProjectAppParams(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ProjectAppParams); i++ {
+
+		if m.ProjectAppParams[i] != nil {
+			if err := m.ProjectAppParams[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("projectAppParams" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("projectAppParams" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
