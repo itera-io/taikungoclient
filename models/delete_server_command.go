@@ -17,6 +17,9 @@ import (
 // swagger:model DeleteServerCommand
 type DeleteServerCommand struct {
 
+	// delete autoscaling servers
+	DeleteAutoscalingServers bool `json:"deleteAutoscalingServers"`
+
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
 
