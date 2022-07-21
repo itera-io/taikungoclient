@@ -61,6 +61,12 @@ type ProjectAppDetailsDto struct {
 	// project app params
 	ProjectAppParams []*ProjectAppParamDto `json:"projectAppParams"`
 
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
 	// release notes
 	ReleaseNotes string `json:"releaseNotes,omitempty"`
 

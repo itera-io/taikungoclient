@@ -23,6 +23,9 @@ type CatalogAppParamsDetailsDto struct {
 	// id
 	ID int32 `json:"id,omitempty"`
 
+	// is changeable
+	IsChangeable bool `json:"isChangeable"`
+
 	// is readonly
 	IsReadonly bool `json:"isReadonly"`
 

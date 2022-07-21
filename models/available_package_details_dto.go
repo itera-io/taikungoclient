@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -30,6 +31,9 @@ type AvailablePackageDetailsDto struct {
 	// app version
 	AppVersion string `json:"appVersion,omitempty"`
 
+	// bound catalogs
+	BoundCatalogs []*CommonDropdownDto `json:"boundCatalogs"`
+
 	// description
 	Description string `json:"description,omitempty"`
 
@@ -38,6 +42,9 @@ type AvailablePackageDetailsDto struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	// official
+	Official bool `json:"official"`
 
 	// package Id
 	PackageID string `json:"packageId,omitempty"`
@@ -50,11 +57,18 @@ type AvailablePackageDetailsDto struct {
 
 	// stars
 	Stars int32 `json:"stars,omitempty"`
+
+	// verified publisher
+	VerifiedPublisher bool `json:"verifiedPublisher"`
 }
 
 // Validate validates this available package details dto
 func (m *AvailablePackageDetailsDto) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateBoundCatalogs(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateSecurityReport(formats); err != nil {
 		res = append(res, err)
@@ -63,6 +77,32 @@ func (m *AvailablePackageDetailsDto) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *AvailablePackageDetailsDto) validateBoundCatalogs(formats strfmt.Registry) error {
+	if swag.IsZero(m.BoundCatalogs) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.BoundCatalogs); i++ {
+		if swag.IsZero(m.BoundCatalogs[i]) { // not required
+			continue
+		}
+
+		if m.BoundCatalogs[i] != nil {
+			if err := m.BoundCatalogs[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("boundCatalogs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundCatalogs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -89,6 +129,10 @@ func (m *AvailablePackageDetailsDto) validateSecurityReport(formats strfmt.Regis
 func (m *AvailablePackageDetailsDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateBoundCatalogs(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateSecurityReport(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -96,6 +140,26 @@ func (m *AvailablePackageDetailsDto) ContextValidate(ctx context.Context, format
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *AvailablePackageDetailsDto) contextValidateBoundCatalogs(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.BoundCatalogs); i++ {
+
+		if m.BoundCatalogs[i] != nil {
+			if err := m.BoundCatalogs[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("boundCatalogs" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("boundCatalogs" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

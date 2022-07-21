@@ -62,7 +62,7 @@ func NewProjectAppEditParamsParamsWithHTTPClient(client *http.Client) *ProjectAp
 type ProjectAppEditParamsParams struct {
 
 	// Body.
-	Body *models.EditCatalogAppParamCommand
+	Body *models.EditProjectAppParamCommand
 
 	// V.
 	V string
@@ -121,13 +121,13 @@ func (o *ProjectAppEditParamsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the project app edit params params
-func (o *ProjectAppEditParamsParams) WithBody(body *models.EditCatalogAppParamCommand) *ProjectAppEditParamsParams {
+func (o *ProjectAppEditParamsParams) WithBody(body *models.EditProjectAppParamCommand) *ProjectAppEditParamsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the project app edit params params
-func (o *ProjectAppEditParamsParams) SetBody(body *models.EditCatalogAppParamCommand) {
+func (o *ProjectAppEditParamsParams) SetBody(body *models.EditProjectAppParamCommand) {
 	o.Body = body
 }
 

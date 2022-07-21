@@ -49,6 +49,9 @@ type CatalogAppDetailsDto struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// official
+	Official bool `json:"official"`
+
 	// package Id
 	PackageID string `json:"packageId,omitempty"`
 
@@ -63,6 +66,9 @@ type CatalogAppDetailsDto struct {
 
 	// stars
 	Stars int32 `json:"stars,omitempty"`
+
+	// verified publisher
+	VerifiedPublisher bool `json:"verifiedPublisher"`
 
 	// version
 	Version string `json:"version,omitempty"`
