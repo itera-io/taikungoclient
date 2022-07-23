@@ -17,14 +17,8 @@ import (
 // swagger:model UnbindAppRepositoryCommand
 type UnbindAppRepositoryCommand struct {
 
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
+	// ids
+	Ids []string `json:"ids"`
 }
 
 // Validate validates this unbind app repository command
