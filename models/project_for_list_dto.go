@@ -38,6 +38,9 @@ type ProjectForListDto struct {
 	// bound users
 	BoundUsers []*UserDto `json:"boundUsers"`
 
+	// cidr
+	Cidr string `json:"cidr,omitempty"`
+
 	// cloud credential Id
 	CloudCredentialID int32 `json:"cloudCredentialId,omitempty"`
 
@@ -128,6 +131,9 @@ type ProjectForListDto struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// net mask
+	NetMask int32 `json:"netMask,omitempty"`
+
 	// opa profile revision
 	OpaProfileRevision int32 `json:"opaProfileRevision,omitempty"`
 
@@ -145,6 +151,12 @@ type ProjectForListDto struct {
 
 	// partner Id
 	PartnerID int32 `json:"partnerId,omitempty"`
+
+	// private Ip
+	PrivateIP string `json:"privateIp,omitempty"`
+
+	// public Ip
+	PublicIP string `json:"publicIp,omitempty"`
 
 	// quota Id
 	QuotaID int32 `json:"quotaId,omitempty"`

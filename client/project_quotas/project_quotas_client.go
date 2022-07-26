@@ -48,7 +48,7 @@ func (a *Client) ProjectQuotasEdit(params *ProjectQuotasEditParams, authInfo run
 	op := &runtime.ClientOperation{
 		ID:                 "ProjectQuotas_Edit",
 		Method:             "POST",
-		PathPattern:        "/api/v{v}/ProjectQuotas/update/{quotaId}",
+		PathPattern:        "/api/v{v}/ProjectQuotas/update",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
 		Schemes:            []string{"https"},

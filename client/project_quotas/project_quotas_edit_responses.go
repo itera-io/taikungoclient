@@ -78,7 +78,7 @@ type ProjectQuotasEditOK struct {
 }
 
 func (o *ProjectQuotasEditOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update/{quotaId}][%d] projectQuotasEditOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditOK  %+v", 200, o.Payload)
 }
 func (o *ProjectQuotasEditOK) GetPayload() models.Unit {
 	return o.Payload
@@ -108,7 +108,7 @@ type ProjectQuotasEditBadRequest struct {
 }
 
 func (o *ProjectQuotasEditBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update/{quotaId}][%d] projectQuotasEditBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditBadRequest  %+v", 400, o.Payload)
 }
 func (o *ProjectQuotasEditBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
@@ -140,7 +140,7 @@ type ProjectQuotasEditUnauthorized struct {
 }
 
 func (o *ProjectQuotasEditUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update/{quotaId}][%d] projectQuotasEditUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditUnauthorized  %+v", 401, o.Payload)
 }
 func (o *ProjectQuotasEditUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -172,7 +172,7 @@ type ProjectQuotasEditForbidden struct {
 }
 
 func (o *ProjectQuotasEditForbidden) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update/{quotaId}][%d] projectQuotasEditForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditForbidden  %+v", 403, o.Payload)
 }
 func (o *ProjectQuotasEditForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -204,7 +204,7 @@ type ProjectQuotasEditNotFound struct {
 }
 
 func (o *ProjectQuotasEditNotFound) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update/{quotaId}][%d] projectQuotasEditNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditNotFound  %+v", 404, o.Payload)
 }
 func (o *ProjectQuotasEditNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
@@ -235,7 +235,7 @@ type ProjectQuotasEditInternalServerError struct {
 }
 
 func (o *ProjectQuotasEditInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update/{quotaId}][%d] projectQuotasEditInternalServerError ", 500)
+	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditInternalServerError ", 500)
 }
 
 func (o *ProjectQuotasEditInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

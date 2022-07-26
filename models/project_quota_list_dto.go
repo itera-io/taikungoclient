@@ -17,32 +17,29 @@ import (
 // swagger:model ProjectQuotaListDto
 type ProjectQuotaListDto struct {
 
-	// cpu
-	CPU int64 `json:"cpu,omitempty"`
-
-	// disk size
-	DiskSize int64 `json:"diskSize,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// is Cpu unlimited
-	IsCPUUnlimited bool `json:"isCpuUnlimited"`
-
-	// is disk size unlimited
-	IsDiskSizeUnlimited bool `json:"isDiskSizeUnlimited"`
-
-	// is Ram unlimited
-	IsRAMUnlimited bool `json:"isRamUnlimited"`
-
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
 
 	// project name
 	ProjectName string `json:"projectName,omitempty"`
 
-	// ram
-	RAM int64 `json:"ram,omitempty"`
+	// server Cpu
+	ServerCPU int32 `json:"serverCpu,omitempty"`
+
+	// server disk size
+	ServerDiskSize int32 `json:"serverDiskSize,omitempty"`
+
+	// server Ram
+	ServerRAM int32 `json:"serverRam,omitempty"`
+
+	// vm Cpu
+	VMCPU int32 `json:"vmCpu,omitempty"`
+
+	// vm Ram
+	VMRAM int32 `json:"vmRam,omitempty"`
+
+	// vm volume size
+	VMVolumeSize int32 `json:"vmVolumeSize,omitempty"`
 }
 
 // Validate validates this project quota list dto

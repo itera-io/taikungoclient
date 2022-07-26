@@ -46,6 +46,9 @@ type CreateProjectCommand struct {
 	// autoscaling spot enabled
 	AutoscalingSpotEnabled bool `json:"autoscalingSpotEnabled"`
 
+	// cidr
+	Cidr string `json:"cidr,omitempty"`
+
 	// cloud credential Id
 	CloudCredentialID int32 `json:"cloudCredentialId,omitempty"`
 
@@ -94,6 +97,9 @@ type CreateProjectCommand struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	// net mask
+	NetMask int32 `json:"netMask,omitempty"`
 
 	// opa profile Id
 	OpaProfileID int32 `json:"opaProfileId,omitempty"`
