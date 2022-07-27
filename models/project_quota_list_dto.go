@@ -24,22 +24,22 @@ type ProjectQuotaListDto struct {
 	ProjectName string `json:"projectName,omitempty"`
 
 	// server Cpu
-	ServerCPU int32 `json:"serverCpu,omitempty"`
+	ServerCPU int64 `json:"serverCpu,omitempty"`
 
 	// server disk size
-	ServerDiskSize int32 `json:"serverDiskSize,omitempty"`
+	ServerDiskSize int64 `json:"serverDiskSize,omitempty"`
 
 	// server Ram
-	ServerRAM int32 `json:"serverRam,omitempty"`
+	ServerRAM int64 `json:"serverRam,omitempty"`
 
 	// vm Cpu
-	VMCPU int32 `json:"vmCpu,omitempty"`
+	VMCPU int64 `json:"vmCpu,omitempty"`
 
 	// vm Ram
-	VMRAM int32 `json:"vmRam,omitempty"`
+	VMRAM int64 `json:"vmRam,omitempty"`
 
 	// vm volume size
-	VMVolumeSize int32 `json:"vmVolumeSize,omitempty"`
+	VMVolumeSize int64 `json:"vmVolumeSize,omitempty"`
 }
 
 // Validate validates this project quota list dto
