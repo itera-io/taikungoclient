@@ -13,6 +13,8 @@ on:
         required: true
       url:
         required: true
+      showback_url:
+        required: true
 
 jobs:
   build:
