@@ -13,3 +13,4 @@ jobs:
       username: ${{ secrets.SWAGGER_USERNAME }}
       password: ${{ secrets.SWAGGER_PASSWORD }}
       url: ${{ secrets.SWAGGER_DEV_URL }}
+      showback_url: ${{ secrets.SHOWBACK_SWAGGER_DEV_URL }}
