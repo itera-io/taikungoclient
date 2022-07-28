@@ -6,7 +6,7 @@ on:
 
 jobs:
   generate-client:
-    uses: itera-io/taikungoclient/.github/workflows/generate.yml@main
+    uses: itera-io/taikungoclient/.github/workflows/generate.yml@dev
     with:
       branch: dev
     secrets:
