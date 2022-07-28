@@ -14,20 +14,20 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ProjectsList projects list
+// ShowbackCredentialsList showback credentials list
 //
-// swagger:model ProjectsList
-type ProjectsList struct {
+// swagger:model ShowbackCredentialsList
+type ShowbackCredentialsList struct {
 
 	// data
-	Data []*ProjectsListDto `json:"data"`
+	Data []*ShowbackCredentialsListDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
 }
 
-// Validate validates this projects list
-func (m *ProjectsList) Validate(formats strfmt.Registry) error {
+// Validate validates this showback credentials list
+func (m *ShowbackCredentialsList) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateData(formats); err != nil {
@@ -40,7 +40,7 @@ func (m *ProjectsList) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ProjectsList) validateData(formats strfmt.Registry) error {
+func (m *ShowbackCredentialsList) validateData(formats strfmt.Registry) error {
 	if swag.IsZero(m.Data) { // not required
 		return nil
 	}
@@ -66,8 +66,8 @@ func (m *ProjectsList) validateData(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this projects list based on the context it is used
-func (m *ProjectsList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this showback credentials list based on the context it is used
+func (m *ShowbackCredentialsList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateData(ctx, formats); err != nil {
@@ -80,7 +80,7 @@ func (m *ProjectsList) ContextValidate(ctx context.Context, formats strfmt.Regis
 	return nil
 }
 
-func (m *ProjectsList) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+func (m *ShowbackCredentialsList) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Data); i++ {
 
@@ -101,7 +101,7 @@ func (m *ProjectsList) contextValidateData(ctx context.Context, formats strfmt.R
 }
 
 // MarshalBinary interface implementation
-func (m *ProjectsList) MarshalBinary() ([]byte, error) {
+func (m *ShowbackCredentialsList) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -109,8 +109,8 @@ func (m *ProjectsList) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *ProjectsList) UnmarshalBinary(b []byte) error {
-	var res ProjectsList
+func (m *ShowbackCredentialsList) UnmarshalBinary(b []byte) error {
+	var res ShowbackCredentialsList
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
