@@ -7,6 +7,7 @@ module_name="github.com/itera-io/taikungoclient"
 
 # Application name
 app_name="taikungoclient"
+showback_app_name="showbackgoclient"
 
 # Delete client/ and models/ directories if they already exist
 rm -rfv client/
@@ -44,15 +45,19 @@ go mod init "${module_name}"
 
 # Generate the client
 ./swagger generate client -f swagger-patch.json -A "${app_name}" $@
-./swagger generate client -f showback-swagger-patch.json -A "${app_name}" $@
+./swagger generate client -f showback-swagger-patch.json -A "${showback_app_name}" $@
 rm -f swagger-patch.json
 rm -f showback-swagger-patch.json
 
 # Insert code to support extra media types
 refline="transport := httptransport.New"
 client_definition_file="client/${app_name}_client.go"
+showback_client_definition_file="client/${showback_app_name}_client.go"
 sed -i "/${refline}/r .github/codegen/media_type_support_code.go" "${client_definition_file}"
 go fmt "${client_definition_file}"
+
+sed -i "/${refline}/r .github/codegen/media_type_support_code.go" "${showback_client_definition_file}"
+go fmt "${showback_client_definition_file}"
 
 # Tidy go module
 go mod tidy

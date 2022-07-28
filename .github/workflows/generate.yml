@@ -77,6 +77,11 @@ jobs:
         run: rm swagger.json
         shell: bash
 
+      - name: Delete showback-swagger.json
+              if: steps.check.outcome == 'success'
+              run: rm showback-swagger.json
+              shell: bash
+
       - name: Delete go-swagger
         if: steps.check.outcome == 'success'
         run: rm swagger
