@@ -53,7 +53,7 @@ rm -f showback-swagger-patch.json
 # Insert code to support extra media types
 refline="transport := httptransport.New"
 client_definition_file="client/${app_name}_client.go"
-showback_client_definition_file="client/${showback_app_name}_client.go"
+showback_client_definition_file="${showback_package_name}/${showback_app_name}_client.go"
 sed -i "/${refline}/r .github/codegen/media_type_support_code.go" "${client_definition_file}"
 go fmt "${client_definition_file}"
 
