@@ -60,14 +60,6 @@ func NewProjectsListParamsWithHTTPClient(client *http.Client) *ProjectsListParam
 */
 type ProjectsListParams struct {
 
-	// BackupCredentialID.
-	//
-	// Format: int32
-	BackupCredentialID *int32
-
-	// Healthy.
-	Healthy *bool
-
 	// ID.
 	//
 	// Format: int32
@@ -94,25 +86,14 @@ type ProjectsListParams struct {
 	// Format: int32
 	OrganizationID *int32
 
-	/* Search.
-
-	   Keyword for searching
-	*/
+	// Search.
 	Search *string
-
-	// SearchID.
-	SearchID *string
 
 	// SortBy.
 	SortBy *string
 
 	// SortDirection.
 	SortDirection *string
-
-	// UpdatedAt.
-	//
-	// Format: date-time
-	UpdatedAt *strfmt.DateTime
 
 	// V.
 	V string
@@ -170,28 +151,6 @@ func (o *ProjectsListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithBackupCredentialID adds the backupCredentialID to the projects list params
-func (o *ProjectsListParams) WithBackupCredentialID(backupCredentialID *int32) *ProjectsListParams {
-	o.SetBackupCredentialID(backupCredentialID)
-	return o
-}
-
-// SetBackupCredentialID adds the backupCredentialId to the projects list params
-func (o *ProjectsListParams) SetBackupCredentialID(backupCredentialID *int32) {
-	o.BackupCredentialID = backupCredentialID
-}
-
-// WithHealthy adds the healthy to the projects list params
-func (o *ProjectsListParams) WithHealthy(healthy *bool) *ProjectsListParams {
-	o.SetHealthy(healthy)
-	return o
-}
-
-// SetHealthy adds the healthy to the projects list params
-func (o *ProjectsListParams) SetHealthy(healthy *bool) {
-	o.Healthy = healthy
-}
-
 // WithID adds the id to the projects list params
 func (o *ProjectsListParams) WithID(id *int32) *ProjectsListParams {
 	o.SetID(id)
@@ -247,17 +206,6 @@ func (o *ProjectsListParams) SetSearch(search *string) {
 	o.Search = search
 }
 
-// WithSearchID adds the searchID to the projects list params
-func (o *ProjectsListParams) WithSearchID(searchID *string) *ProjectsListParams {
-	o.SetSearchID(searchID)
-	return o
-}
-
-// SetSearchID adds the searchId to the projects list params
-func (o *ProjectsListParams) SetSearchID(searchID *string) {
-	o.SearchID = searchID
-}
-
 // WithSortBy adds the sortBy to the projects list params
 func (o *ProjectsListParams) WithSortBy(sortBy *string) *ProjectsListParams {
 	o.SetSortBy(sortBy)
@@ -280,17 +228,6 @@ func (o *ProjectsListParams) SetSortDirection(sortDirection *string) {
 	o.SortDirection = sortDirection
 }
 
-// WithUpdatedAt adds the updatedAt to the projects list params
-func (o *ProjectsListParams) WithUpdatedAt(updatedAt *strfmt.DateTime) *ProjectsListParams {
-	o.SetUpdatedAt(updatedAt)
-	return o
-}
-
-// SetUpdatedAt adds the updatedAt to the projects list params
-func (o *ProjectsListParams) SetUpdatedAt(updatedAt *strfmt.DateTime) {
-	o.UpdatedAt = updatedAt
-}
-
 // WithV adds the v to the projects list params
 func (o *ProjectsListParams) WithV(v string) *ProjectsListParams {
 	o.SetV(v)
@@ -309,40 +246,6 @@ func (o *ProjectsListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		return err
 	}
 	var res []error
-
-	if o.BackupCredentialID != nil {
-
-		// query param backupCredentialId
-		var qrBackupCredentialID int32
-
-		if o.BackupCredentialID != nil {
-			qrBackupCredentialID = *o.BackupCredentialID
-		}
-		qBackupCredentialID := swag.FormatInt32(qrBackupCredentialID)
-		if qBackupCredentialID != "" {
-
-			if err := r.SetQueryParam("backupCredentialId", qBackupCredentialID); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.Healthy != nil {
-
-		// query param healthy
-		var qrHealthy bool
-
-		if o.Healthy != nil {
-			qrHealthy = *o.Healthy
-		}
-		qHealthy := swag.FormatBool(qrHealthy)
-		if qHealthy != "" {
-
-			if err := r.SetQueryParam("healthy", qHealthy); err != nil {
-				return err
-			}
-		}
-	}
 
 	if o.ID != nil {
 
@@ -429,23 +332,6 @@ func (o *ProjectsListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		}
 	}
 
-	if o.SearchID != nil {
-
-		// query param searchId
-		var qrSearchID string
-
-		if o.SearchID != nil {
-			qrSearchID = *o.SearchID
-		}
-		qSearchID := qrSearchID
-		if qSearchID != "" {
-
-			if err := r.SetQueryParam("searchId", qSearchID); err != nil {
-				return err
-			}
-		}
-	}
-
 	if o.SortBy != nil {
 
 		// query param sortBy
@@ -475,23 +361,6 @@ func (o *ProjectsListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		if qSortDirection != "" {
 
 			if err := r.SetQueryParam("sortDirection", qSortDirection); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.UpdatedAt != nil {
-
-		// query param updatedAt
-		var qrUpdatedAt strfmt.DateTime
-
-		if o.UpdatedAt != nil {
-			qrUpdatedAt = *o.UpdatedAt
-		}
-		qUpdatedAt := qrUpdatedAt.String()
-		if qUpdatedAt != "" {
-
-			if err := r.SetQueryParam("updatedAt", qUpdatedAt); err != nil {
 				return err
 			}
 		}
