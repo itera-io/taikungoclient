@@ -8,6 +8,7 @@ module_name="github.com/itera-io/taikungoclient"
 # Application name
 app_name="taikungoclient"
 showback_app_name="showbackgoclient"
+showback_package_name="showbackclient"
 
 # Delete client/ and models/ directories if they already exist
 rm -rfv client/
@@ -45,7 +46,7 @@ go mod init "${module_name}"
 
 # Generate the client
 ./swagger generate client -f swagger-patch.json -A "${app_name}" $@
-./swagger generate client -f showback-swagger-patch.json -A "${showback_app_name}" $@
+./swagger generate client -f showback-swagger-patch.json -c "${showback_package_name}" -A "${showback_app_name}" $@
 rm -f swagger-patch.json
 rm -f showback-swagger-patch.json
 
