@@ -17,6 +17,9 @@ import (
 // swagger:model UpdateServerCommand
 type UpdateServerCommand struct {
 
+	// aws host name
+	AwsHostName string `json:"awsHostName,omitempty"`
+
 	// id
 	ID int32 `json:"id,omitempty"`
 
