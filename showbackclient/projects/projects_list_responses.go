@@ -44,19 +44,19 @@ func NewProjectsListOK() *ProjectsListOK {
 Success
 */
 type ProjectsListOK struct {
-	Payload *models.ProjectsList
+	Payload *models.ShowbackProjectsList
 }
 
 func (o *ProjectsListOK) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/Projects][%d] projectsListOK  %+v", 200, o.Payload)
 }
-func (o *ProjectsListOK) GetPayload() *models.ProjectsList {
+func (o *ProjectsListOK) GetPayload() *models.ShowbackProjectsList {
 	return o.Payload
 }
 
 func (o *ProjectsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProjectsList)
+	o.Payload = new(models.ShowbackProjectsList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

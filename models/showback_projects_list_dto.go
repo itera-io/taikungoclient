@@ -12,10 +12,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// ProjectsListDto projects list dto
+// ShowbackProjectsListDto showback projects list dto
 //
-// swagger:model ProjectsListDto
-type ProjectsListDto struct {
+// swagger:model ShowbackProjectsListDto
+type ShowbackProjectsListDto struct {
 
 	// id
 	ID int32 `json:"id,omitempty"`
@@ -33,18 +33,18 @@ type ProjectsListDto struct {
 	Name string `json:"name,omitempty"`
 }
 
-// Validate validates this projects list dto
-func (m *ProjectsListDto) Validate(formats strfmt.Registry) error {
+// Validate validates this showback projects list dto
+func (m *ShowbackProjectsListDto) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this projects list dto based on context it is used
-func (m *ProjectsListDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this showback projects list dto based on context it is used
+func (m *ShowbackProjectsListDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *ProjectsListDto) MarshalBinary() ([]byte, error) {
+func (m *ShowbackProjectsListDto) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -52,8 +52,8 @@ func (m *ProjectsListDto) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *ProjectsListDto) UnmarshalBinary(b []byte) error {
-	var res ProjectsListDto
+func (m *ShowbackProjectsListDto) UnmarshalBinary(b []byte) error {
+	var res ShowbackProjectsListDto
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
