@@ -60,6 +60,11 @@ func NewProjectsListSelectorParamsWithHTTPClient(client *http.Client) *ProjectsL
 */
 type ProjectsListSelectorParams struct {
 
+	// CatalogID.
+	//
+	// Format: int32
+	CatalogID *int32
+
 	// OrganizationID.
 	//
 	// Format: int32
@@ -124,6 +129,17 @@ func (o *ProjectsListSelectorParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithCatalogID adds the catalogID to the projects list selector params
+func (o *ProjectsListSelectorParams) WithCatalogID(catalogID *int32) *ProjectsListSelectorParams {
+	o.SetCatalogID(catalogID)
+	return o
+}
+
+// SetCatalogID adds the catalogId to the projects list selector params
+func (o *ProjectsListSelectorParams) SetCatalogID(catalogID *int32) {
+	o.CatalogID = catalogID
+}
+
 // WithOrganizationID adds the organizationID to the projects list selector params
 func (o *ProjectsListSelectorParams) WithOrganizationID(organizationID *int32) *ProjectsListSelectorParams {
 	o.SetOrganizationID(organizationID)
@@ -164,6 +180,23 @@ func (o *ProjectsListSelectorParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
+
+	if o.CatalogID != nil {
+
+		// query param catalogId
+		var qrCatalogID int32
+
+		if o.CatalogID != nil {
+			qrCatalogID = *o.CatalogID
+		}
+		qCatalogID := swag.FormatInt32(qrCatalogID)
+		if qCatalogID != "" {
+
+			if err := r.SetQueryParam("catalogId", qCatalogID); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.OrganizationID != nil {
 
