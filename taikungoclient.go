@@ -40,8 +40,8 @@ type Client struct {
 	refreshToken string
 }
 
-// Create a new authenticated Taikungoclient, Taikun or Keycloak credentials
-// environment variables must be set
+// Create a new authenticated Taikungoclient from environment variables.
+// Taikun or Keycloak credentials environment variables must be set
 func NewClient() (*Client, error) {
 	email, keycloakEnabled := os.LookupEnv(TaikunKeycloakEmailEnvVar)
 	password := os.Getenv(TaikunKeycloakPasswordEnvVar)
@@ -74,9 +74,15 @@ To override the default API host, set the following environment variable:
 		)
 	}
 
+	apiHost := os.Getenv(TaikunApiHostEnvVar)
+
+	return NewClientFromCredentials(email, password, keycloakEnabled, apiHost)
+}
+
+func NewClientFromCredentials(email string, password string, keycloakEnabled bool, apiHost string) (*Client, error) {
 	transportConfig := client.DefaultTransportConfig()
 	showbackTransportConfig := showbackclient.DefaultTransportConfig()
-	if apiHost, apiHostIsSet := os.LookupEnv(TaikunApiHostEnvVar); apiHostIsSet {
+	if apiHost != "" {
 		transportConfig = transportConfig.WithHost(apiHost)
 		showbackTransportConfig = showbackTransportConfig.WithHost(apiHost).WithBasePath("/showback")
 	}
