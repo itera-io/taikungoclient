@@ -84,7 +84,7 @@ func NewClientFromCredentials(email string, password string, keycloakEnabled boo
 	showbackTransportConfig := showbackclient.DefaultTransportConfig()
 	if apiHost != "" {
 		transportConfig = transportConfig.WithHost(apiHost)
-		showbackTransportConfig = showbackTransportConfig.WithHost(apiHost).WithBasePath("/showback")
+		showbackTransportConfig = showbackTransportConfig.WithHost(apiHost)
 	}
 
 	return &Client{
