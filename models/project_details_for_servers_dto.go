@@ -200,6 +200,24 @@ type ProjectDetailsForServersDto struct {
 	// used Ram
 	UsedRAM int64 `json:"usedRam,omitempty"`
 
+	// vm Cpu limit
+	VMCPULimit int64 `json:"vmCpuLimit,omitempty"`
+
+	// vm Ram limit
+	VMRAMLimit int64 `json:"vmRamLimit,omitempty"`
+
+	// vm used Cpu
+	VMUsedCPU int64 `json:"vmUsedCpu,omitempty"`
+
+	// vm used Ram
+	VMUsedRAM int64 `json:"vmUsedRam,omitempty"`
+
+	// vm used volume size
+	VMUsedVolumeSize int64 `json:"vmUsedVolumeSize,omitempty"`
+
+	// vm volume size limit
+	VMVolumeSizeLimit int64 `json:"vmVolumeSizeLimit,omitempty"`
+
 	// worker
 	Worker int32 `json:"worker,omitempty"`
 }

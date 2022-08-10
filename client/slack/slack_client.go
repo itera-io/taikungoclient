@@ -40,8 +40,6 @@ type ClientService interface {
 
 	SlackUpdate(params *SlackUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SlackUpdateOK, error)
 
-	SlackUpsert(params *SlackUpsertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SlackUpsertOK, error)
-
 	SlackVerifySlackCredentials(params *SlackVerifySlackCredentialsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SlackVerifySlackCredentialsOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -239,45 +237,6 @@ func (a *Client) SlackUpdate(params *SlackUpdateParams, authInfo runtime.ClientA
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Slack_Update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  SlackUpsert updates or add slack configuration
-*/
-func (a *Client) SlackUpsert(params *SlackUpsertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SlackUpsertOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewSlackUpsertParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "Slack_Upsert",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/Slack",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &SlackUpsertReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*SlackUpsertOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for Slack_Upsert: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
