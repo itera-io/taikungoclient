@@ -61,4 +61,4 @@ sed -i "/${refline}/r .github/codegen/media_type_support_code.go" "${showback_cl
 go fmt "${showback_client_definition_file}"
 
 # Tidy go module
-go mod tidy
+go mod tidy -compat=1.17
