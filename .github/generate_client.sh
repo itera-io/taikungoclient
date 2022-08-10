@@ -60,5 +60,11 @@ go fmt "${client_definition_file}"
 sed -i "/${refline}/r .github/codegen/media_type_support_code.go" "${showback_client_definition_file}"
 go fmt "${showback_client_definition_file}"
 
+# Set default scheme of showback client to HTTPS from HTTP
+showbackclient="./showbackclient/showbackgoclient_client.go"
+if [[ -f "${showbackclient}" ]]; then
+  sed -i 's/var DefaultSchemes = \[\]string{"http"}/var DefaultSchemes = []string{"https"}/' "${showbackclient}"
+fi
+
 # Tidy go module
 go mod tidy -compat=1.17
