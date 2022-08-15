@@ -7,9 +7,12 @@ package showback_credentials
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ShowbackCredentialsDeleteReader is a Reader for the ShowbackCredentialsDelete structure.
@@ -20,15 +23,81 @@ type ShowbackCredentialsDeleteReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ShowbackCredentialsDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
+	case 200:
+		result := NewShowbackCredentialsDeleteOK()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 	case 204:
 		result := NewShowbackCredentialsDeleteNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewShowbackCredentialsDeleteBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 401:
+		result := NewShowbackCredentialsDeleteUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewShowbackCredentialsDeleteForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewShowbackCredentialsDeleteNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewShowbackCredentialsDeleteInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
+}
+
+// NewShowbackCredentialsDeleteOK creates a ShowbackCredentialsDeleteOK with default headers values
+func NewShowbackCredentialsDeleteOK() *ShowbackCredentialsDeleteOK {
+	return &ShowbackCredentialsDeleteOK{}
+}
+
+/* ShowbackCredentialsDeleteOK describes a response with status code 200, with default header values.
+
+Success
+*/
+type ShowbackCredentialsDeleteOK struct {
+	Payload models.Unit
+}
+
+func (o *ShowbackCredentialsDeleteOK) Error() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteOK  %+v", 200, o.Payload)
+}
+func (o *ShowbackCredentialsDeleteOK) GetPayload() models.Unit {
+	return o.Payload
+}
+
+func (o *ShowbackCredentialsDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
 }
 
 // NewShowbackCredentialsDeleteNoContent creates a ShowbackCredentialsDeleteNoContent with default headers values
@@ -48,6 +117,155 @@ func (o *ShowbackCredentialsDeleteNoContent) Error() string {
 }
 
 func (o *ShowbackCredentialsDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewShowbackCredentialsDeleteBadRequest creates a ShowbackCredentialsDeleteBadRequest with default headers values
+func NewShowbackCredentialsDeleteBadRequest() *ShowbackCredentialsDeleteBadRequest {
+	return &ShowbackCredentialsDeleteBadRequest{}
+}
+
+/* ShowbackCredentialsDeleteBadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
+type ShowbackCredentialsDeleteBadRequest struct {
+	Payload *models.ValidationProblemDetails
+}
+
+func (o *ShowbackCredentialsDeleteBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteBadRequest  %+v", 400, o.Payload)
+}
+func (o *ShowbackCredentialsDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackCredentialsDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ValidationProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackCredentialsDeleteUnauthorized creates a ShowbackCredentialsDeleteUnauthorized with default headers values
+func NewShowbackCredentialsDeleteUnauthorized() *ShowbackCredentialsDeleteUnauthorized {
+	return &ShowbackCredentialsDeleteUnauthorized{}
+}
+
+/* ShowbackCredentialsDeleteUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type ShowbackCredentialsDeleteUnauthorized struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackCredentialsDeleteUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteUnauthorized  %+v", 401, o.Payload)
+}
+func (o *ShowbackCredentialsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackCredentialsDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackCredentialsDeleteForbidden creates a ShowbackCredentialsDeleteForbidden with default headers values
+func NewShowbackCredentialsDeleteForbidden() *ShowbackCredentialsDeleteForbidden {
+	return &ShowbackCredentialsDeleteForbidden{}
+}
+
+/* ShowbackCredentialsDeleteForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type ShowbackCredentialsDeleteForbidden struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackCredentialsDeleteForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteForbidden  %+v", 403, o.Payload)
+}
+func (o *ShowbackCredentialsDeleteForbidden) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackCredentialsDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackCredentialsDeleteNotFound creates a ShowbackCredentialsDeleteNotFound with default headers values
+func NewShowbackCredentialsDeleteNotFound() *ShowbackCredentialsDeleteNotFound {
+	return &ShowbackCredentialsDeleteNotFound{}
+}
+
+/* ShowbackCredentialsDeleteNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type ShowbackCredentialsDeleteNotFound struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackCredentialsDeleteNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteNotFound  %+v", 404, o.Payload)
+}
+func (o *ShowbackCredentialsDeleteNotFound) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackCredentialsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackCredentialsDeleteInternalServerError creates a ShowbackCredentialsDeleteInternalServerError with default headers values
+func NewShowbackCredentialsDeleteInternalServerError() *ShowbackCredentialsDeleteInternalServerError {
+	return &ShowbackCredentialsDeleteInternalServerError{}
+}
+
+/* ShowbackCredentialsDeleteInternalServerError describes a response with status code 500, with default header values.
+
+Server Error
+*/
+type ShowbackCredentialsDeleteInternalServerError struct {
+}
+
+func (o *ShowbackCredentialsDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteInternalServerError ", 500)
+}
+
+func (o *ShowbackCredentialsDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

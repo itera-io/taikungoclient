@@ -29,6 +29,36 @@ func (o *ShowbackSummariesCreateReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewShowbackSummariesCreateBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 401:
+		result := NewShowbackSummariesCreateUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewShowbackSummariesCreateForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewShowbackSummariesCreateNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewShowbackSummariesCreateInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -60,6 +90,155 @@ func (o *ShowbackSummariesCreateOK) readResponse(response runtime.ClientResponse
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewShowbackSummariesCreateBadRequest creates a ShowbackSummariesCreateBadRequest with default headers values
+func NewShowbackSummariesCreateBadRequest() *ShowbackSummariesCreateBadRequest {
+	return &ShowbackSummariesCreateBadRequest{}
+}
+
+/* ShowbackSummariesCreateBadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
+type ShowbackSummariesCreateBadRequest struct {
+	Payload *models.ValidationProblemDetails
+}
+
+func (o *ShowbackSummariesCreateBadRequest) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateBadRequest  %+v", 400, o.Payload)
+}
+func (o *ShowbackSummariesCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackSummariesCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ValidationProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackSummariesCreateUnauthorized creates a ShowbackSummariesCreateUnauthorized with default headers values
+func NewShowbackSummariesCreateUnauthorized() *ShowbackSummariesCreateUnauthorized {
+	return &ShowbackSummariesCreateUnauthorized{}
+}
+
+/* ShowbackSummariesCreateUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type ShowbackSummariesCreateUnauthorized struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackSummariesCreateUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateUnauthorized  %+v", 401, o.Payload)
+}
+func (o *ShowbackSummariesCreateUnauthorized) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackSummariesCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackSummariesCreateForbidden creates a ShowbackSummariesCreateForbidden with default headers values
+func NewShowbackSummariesCreateForbidden() *ShowbackSummariesCreateForbidden {
+	return &ShowbackSummariesCreateForbidden{}
+}
+
+/* ShowbackSummariesCreateForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type ShowbackSummariesCreateForbidden struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackSummariesCreateForbidden) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateForbidden  %+v", 403, o.Payload)
+}
+func (o *ShowbackSummariesCreateForbidden) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackSummariesCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackSummariesCreateNotFound creates a ShowbackSummariesCreateNotFound with default headers values
+func NewShowbackSummariesCreateNotFound() *ShowbackSummariesCreateNotFound {
+	return &ShowbackSummariesCreateNotFound{}
+}
+
+/* ShowbackSummariesCreateNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type ShowbackSummariesCreateNotFound struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackSummariesCreateNotFound) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateNotFound  %+v", 404, o.Payload)
+}
+func (o *ShowbackSummariesCreateNotFound) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackSummariesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackSummariesCreateInternalServerError creates a ShowbackSummariesCreateInternalServerError with default headers values
+func NewShowbackSummariesCreateInternalServerError() *ShowbackSummariesCreateInternalServerError {
+	return &ShowbackSummariesCreateInternalServerError{}
+}
+
+/* ShowbackSummariesCreateInternalServerError describes a response with status code 500, with default header values.
+
+Server Error
+*/
+type ShowbackSummariesCreateInternalServerError struct {
+}
+
+func (o *ShowbackSummariesCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateInternalServerError ", 500)
+}
+
+func (o *ShowbackSummariesCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

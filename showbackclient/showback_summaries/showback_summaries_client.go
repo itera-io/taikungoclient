@@ -92,7 +92,7 @@ func (a *Client) ShowbackSummariesExportCsv(params *ShowbackSummariesExportCsvPa
 		ID:                 "ShowbackSummaries_ExportCsv",
 		Method:             "GET",
 		PathPattern:        "/showback/v{v}/ShowbackSummaries/export",
-		ProducesMediaTypes: []string{"application/json"},
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,

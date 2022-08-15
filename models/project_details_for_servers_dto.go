@@ -110,8 +110,11 @@ type ProjectDetailsForServersDto struct {
 	// is kubernetes
 	IsKubernetes bool `json:"isKubernetes"`
 
-	// is lightweight k8s
-	IsLightweightK8s bool `json:"isLightweightK8s"`
+	// is kubernetes current version kubevap enabled
+	IsKubernetesCurrentVersionKubevapEnabled bool `json:"isKubernetesCurrentVersionKubevapEnabled"`
+
+	// is kubevap enabled
+	IsKubevapEnabled bool `json:"isKubevapEnabled"`
 
 	// is locked
 	IsLocked bool `json:"isLocked"`

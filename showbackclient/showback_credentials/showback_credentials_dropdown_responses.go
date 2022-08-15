@@ -29,6 +29,36 @@ func (o *ShowbackCredentialsDropdownReader) ReadResponse(response runtime.Client
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewShowbackCredentialsDropdownBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 401:
+		result := NewShowbackCredentialsDropdownUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewShowbackCredentialsDropdownForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewShowbackCredentialsDropdownNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewShowbackCredentialsDropdownInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -60,6 +90,155 @@ func (o *ShowbackCredentialsDropdownOK) readResponse(response runtime.ClientResp
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewShowbackCredentialsDropdownBadRequest creates a ShowbackCredentialsDropdownBadRequest with default headers values
+func NewShowbackCredentialsDropdownBadRequest() *ShowbackCredentialsDropdownBadRequest {
+	return &ShowbackCredentialsDropdownBadRequest{}
+}
+
+/* ShowbackCredentialsDropdownBadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
+type ShowbackCredentialsDropdownBadRequest struct {
+	Payload *models.ValidationProblemDetails
+}
+
+func (o *ShowbackCredentialsDropdownBadRequest) Error() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownBadRequest  %+v", 400, o.Payload)
+}
+func (o *ShowbackCredentialsDropdownBadRequest) GetPayload() *models.ValidationProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackCredentialsDropdownBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ValidationProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackCredentialsDropdownUnauthorized creates a ShowbackCredentialsDropdownUnauthorized with default headers values
+func NewShowbackCredentialsDropdownUnauthorized() *ShowbackCredentialsDropdownUnauthorized {
+	return &ShowbackCredentialsDropdownUnauthorized{}
+}
+
+/* ShowbackCredentialsDropdownUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type ShowbackCredentialsDropdownUnauthorized struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackCredentialsDropdownUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownUnauthorized  %+v", 401, o.Payload)
+}
+func (o *ShowbackCredentialsDropdownUnauthorized) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackCredentialsDropdownUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackCredentialsDropdownForbidden creates a ShowbackCredentialsDropdownForbidden with default headers values
+func NewShowbackCredentialsDropdownForbidden() *ShowbackCredentialsDropdownForbidden {
+	return &ShowbackCredentialsDropdownForbidden{}
+}
+
+/* ShowbackCredentialsDropdownForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type ShowbackCredentialsDropdownForbidden struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackCredentialsDropdownForbidden) Error() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownForbidden  %+v", 403, o.Payload)
+}
+func (o *ShowbackCredentialsDropdownForbidden) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackCredentialsDropdownForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackCredentialsDropdownNotFound creates a ShowbackCredentialsDropdownNotFound with default headers values
+func NewShowbackCredentialsDropdownNotFound() *ShowbackCredentialsDropdownNotFound {
+	return &ShowbackCredentialsDropdownNotFound{}
+}
+
+/* ShowbackCredentialsDropdownNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type ShowbackCredentialsDropdownNotFound struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackCredentialsDropdownNotFound) Error() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownNotFound  %+v", 404, o.Payload)
+}
+func (o *ShowbackCredentialsDropdownNotFound) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackCredentialsDropdownNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackCredentialsDropdownInternalServerError creates a ShowbackCredentialsDropdownInternalServerError with default headers values
+func NewShowbackCredentialsDropdownInternalServerError() *ShowbackCredentialsDropdownInternalServerError {
+	return &ShowbackCredentialsDropdownInternalServerError{}
+}
+
+/* ShowbackCredentialsDropdownInternalServerError describes a response with status code 500, with default header values.
+
+Server Error
+*/
+type ShowbackCredentialsDropdownInternalServerError struct {
+}
+
+func (o *ShowbackCredentialsDropdownInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownInternalServerError ", 500)
+}
+
+func (o *ShowbackCredentialsDropdownInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

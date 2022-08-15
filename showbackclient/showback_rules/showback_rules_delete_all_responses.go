@@ -29,6 +29,36 @@ func (o *ShowbackRulesDeleteAllReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewShowbackRulesDeleteAllBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 401:
+		result := NewShowbackRulesDeleteAllUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewShowbackRulesDeleteAllForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewShowbackRulesDeleteAllNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewShowbackRulesDeleteAllInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -60,6 +90,155 @@ func (o *ShowbackRulesDeleteAllOK) readResponse(response runtime.ClientResponse,
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewShowbackRulesDeleteAllBadRequest creates a ShowbackRulesDeleteAllBadRequest with default headers values
+func NewShowbackRulesDeleteAllBadRequest() *ShowbackRulesDeleteAllBadRequest {
+	return &ShowbackRulesDeleteAllBadRequest{}
+}
+
+/* ShowbackRulesDeleteAllBadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
+type ShowbackRulesDeleteAllBadRequest struct {
+	Payload *models.ValidationProblemDetails
+}
+
+func (o *ShowbackRulesDeleteAllBadRequest) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllBadRequest  %+v", 400, o.Payload)
+}
+func (o *ShowbackRulesDeleteAllBadRequest) GetPayload() *models.ValidationProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackRulesDeleteAllBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ValidationProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackRulesDeleteAllUnauthorized creates a ShowbackRulesDeleteAllUnauthorized with default headers values
+func NewShowbackRulesDeleteAllUnauthorized() *ShowbackRulesDeleteAllUnauthorized {
+	return &ShowbackRulesDeleteAllUnauthorized{}
+}
+
+/* ShowbackRulesDeleteAllUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type ShowbackRulesDeleteAllUnauthorized struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackRulesDeleteAllUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllUnauthorized  %+v", 401, o.Payload)
+}
+func (o *ShowbackRulesDeleteAllUnauthorized) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackRulesDeleteAllUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackRulesDeleteAllForbidden creates a ShowbackRulesDeleteAllForbidden with default headers values
+func NewShowbackRulesDeleteAllForbidden() *ShowbackRulesDeleteAllForbidden {
+	return &ShowbackRulesDeleteAllForbidden{}
+}
+
+/* ShowbackRulesDeleteAllForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type ShowbackRulesDeleteAllForbidden struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackRulesDeleteAllForbidden) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllForbidden  %+v", 403, o.Payload)
+}
+func (o *ShowbackRulesDeleteAllForbidden) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackRulesDeleteAllForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackRulesDeleteAllNotFound creates a ShowbackRulesDeleteAllNotFound with default headers values
+func NewShowbackRulesDeleteAllNotFound() *ShowbackRulesDeleteAllNotFound {
+	return &ShowbackRulesDeleteAllNotFound{}
+}
+
+/* ShowbackRulesDeleteAllNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type ShowbackRulesDeleteAllNotFound struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackRulesDeleteAllNotFound) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllNotFound  %+v", 404, o.Payload)
+}
+func (o *ShowbackRulesDeleteAllNotFound) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackRulesDeleteAllNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackRulesDeleteAllInternalServerError creates a ShowbackRulesDeleteAllInternalServerError with default headers values
+func NewShowbackRulesDeleteAllInternalServerError() *ShowbackRulesDeleteAllInternalServerError {
+	return &ShowbackRulesDeleteAllInternalServerError{}
+}
+
+/* ShowbackRulesDeleteAllInternalServerError describes a response with status code 500, with default header values.
+
+Server Error
+*/
+type ShowbackRulesDeleteAllInternalServerError struct {
+}
+
+func (o *ShowbackRulesDeleteAllInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllInternalServerError ", 500)
+}
+
+func (o *ShowbackRulesDeleteAllInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -29,6 +29,36 @@ func (o *ShowbackSummariesGroupedShowbackSummaryListReader) ReadResponse(respons
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewShowbackSummariesGroupedShowbackSummaryListBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 401:
+		result := NewShowbackSummariesGroupedShowbackSummaryListUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewShowbackSummariesGroupedShowbackSummaryListForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewShowbackSummariesGroupedShowbackSummaryListNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewShowbackSummariesGroupedShowbackSummaryListInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -60,6 +90,155 @@ func (o *ShowbackSummariesGroupedShowbackSummaryListOK) readResponse(response ru
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewShowbackSummariesGroupedShowbackSummaryListBadRequest creates a ShowbackSummariesGroupedShowbackSummaryListBadRequest with default headers values
+func NewShowbackSummariesGroupedShowbackSummaryListBadRequest() *ShowbackSummariesGroupedShowbackSummaryListBadRequest {
+	return &ShowbackSummariesGroupedShowbackSummaryListBadRequest{}
+}
+
+/* ShowbackSummariesGroupedShowbackSummaryListBadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
+type ShowbackSummariesGroupedShowbackSummaryListBadRequest struct {
+	Payload *models.ValidationProblemDetails
+}
+
+func (o *ShowbackSummariesGroupedShowbackSummaryListBadRequest) Error() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/list][%d] showbackSummariesGroupedShowbackSummaryListBadRequest  %+v", 400, o.Payload)
+}
+func (o *ShowbackSummariesGroupedShowbackSummaryListBadRequest) GetPayload() *models.ValidationProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackSummariesGroupedShowbackSummaryListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ValidationProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackSummariesGroupedShowbackSummaryListUnauthorized creates a ShowbackSummariesGroupedShowbackSummaryListUnauthorized with default headers values
+func NewShowbackSummariesGroupedShowbackSummaryListUnauthorized() *ShowbackSummariesGroupedShowbackSummaryListUnauthorized {
+	return &ShowbackSummariesGroupedShowbackSummaryListUnauthorized{}
+}
+
+/* ShowbackSummariesGroupedShowbackSummaryListUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type ShowbackSummariesGroupedShowbackSummaryListUnauthorized struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackSummariesGroupedShowbackSummaryListUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/list][%d] showbackSummariesGroupedShowbackSummaryListUnauthorized  %+v", 401, o.Payload)
+}
+func (o *ShowbackSummariesGroupedShowbackSummaryListUnauthorized) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackSummariesGroupedShowbackSummaryListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackSummariesGroupedShowbackSummaryListForbidden creates a ShowbackSummariesGroupedShowbackSummaryListForbidden with default headers values
+func NewShowbackSummariesGroupedShowbackSummaryListForbidden() *ShowbackSummariesGroupedShowbackSummaryListForbidden {
+	return &ShowbackSummariesGroupedShowbackSummaryListForbidden{}
+}
+
+/* ShowbackSummariesGroupedShowbackSummaryListForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type ShowbackSummariesGroupedShowbackSummaryListForbidden struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackSummariesGroupedShowbackSummaryListForbidden) Error() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/list][%d] showbackSummariesGroupedShowbackSummaryListForbidden  %+v", 403, o.Payload)
+}
+func (o *ShowbackSummariesGroupedShowbackSummaryListForbidden) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackSummariesGroupedShowbackSummaryListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackSummariesGroupedShowbackSummaryListNotFound creates a ShowbackSummariesGroupedShowbackSummaryListNotFound with default headers values
+func NewShowbackSummariesGroupedShowbackSummaryListNotFound() *ShowbackSummariesGroupedShowbackSummaryListNotFound {
+	return &ShowbackSummariesGroupedShowbackSummaryListNotFound{}
+}
+
+/* ShowbackSummariesGroupedShowbackSummaryListNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type ShowbackSummariesGroupedShowbackSummaryListNotFound struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackSummariesGroupedShowbackSummaryListNotFound) Error() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/list][%d] showbackSummariesGroupedShowbackSummaryListNotFound  %+v", 404, o.Payload)
+}
+func (o *ShowbackSummariesGroupedShowbackSummaryListNotFound) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackSummariesGroupedShowbackSummaryListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackSummariesGroupedShowbackSummaryListInternalServerError creates a ShowbackSummariesGroupedShowbackSummaryListInternalServerError with default headers values
+func NewShowbackSummariesGroupedShowbackSummaryListInternalServerError() *ShowbackSummariesGroupedShowbackSummaryListInternalServerError {
+	return &ShowbackSummariesGroupedShowbackSummaryListInternalServerError{}
+}
+
+/* ShowbackSummariesGroupedShowbackSummaryListInternalServerError describes a response with status code 500, with default header values.
+
+Server Error
+*/
+type ShowbackSummariesGroupedShowbackSummaryListInternalServerError struct {
+}
+
+func (o *ShowbackSummariesGroupedShowbackSummaryListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/list][%d] showbackSummariesGroupedShowbackSummaryListInternalServerError ", 500)
+}
+
+func (o *ShowbackSummariesGroupedShowbackSummaryListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

@@ -29,6 +29,36 @@ func (o *ShowbackCredentialsLockManagerReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewShowbackCredentialsLockManagerBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 401:
+		result := NewShowbackCredentialsLockManagerUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewShowbackCredentialsLockManagerForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewShowbackCredentialsLockManagerNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewShowbackCredentialsLockManagerInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -60,6 +90,155 @@ func (o *ShowbackCredentialsLockManagerOK) readResponse(response runtime.ClientR
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewShowbackCredentialsLockManagerBadRequest creates a ShowbackCredentialsLockManagerBadRequest with default headers values
+func NewShowbackCredentialsLockManagerBadRequest() *ShowbackCredentialsLockManagerBadRequest {
+	return &ShowbackCredentialsLockManagerBadRequest{}
+}
+
+/* ShowbackCredentialsLockManagerBadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
+type ShowbackCredentialsLockManagerBadRequest struct {
+	Payload *models.ValidationProblemDetails
+}
+
+func (o *ShowbackCredentialsLockManagerBadRequest) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerBadRequest  %+v", 400, o.Payload)
+}
+func (o *ShowbackCredentialsLockManagerBadRequest) GetPayload() *models.ValidationProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackCredentialsLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ValidationProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackCredentialsLockManagerUnauthorized creates a ShowbackCredentialsLockManagerUnauthorized with default headers values
+func NewShowbackCredentialsLockManagerUnauthorized() *ShowbackCredentialsLockManagerUnauthorized {
+	return &ShowbackCredentialsLockManagerUnauthorized{}
+}
+
+/* ShowbackCredentialsLockManagerUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type ShowbackCredentialsLockManagerUnauthorized struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackCredentialsLockManagerUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
+}
+func (o *ShowbackCredentialsLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackCredentialsLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackCredentialsLockManagerForbidden creates a ShowbackCredentialsLockManagerForbidden with default headers values
+func NewShowbackCredentialsLockManagerForbidden() *ShowbackCredentialsLockManagerForbidden {
+	return &ShowbackCredentialsLockManagerForbidden{}
+}
+
+/* ShowbackCredentialsLockManagerForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type ShowbackCredentialsLockManagerForbidden struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackCredentialsLockManagerForbidden) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerForbidden  %+v", 403, o.Payload)
+}
+func (o *ShowbackCredentialsLockManagerForbidden) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackCredentialsLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackCredentialsLockManagerNotFound creates a ShowbackCredentialsLockManagerNotFound with default headers values
+func NewShowbackCredentialsLockManagerNotFound() *ShowbackCredentialsLockManagerNotFound {
+	return &ShowbackCredentialsLockManagerNotFound{}
+}
+
+/* ShowbackCredentialsLockManagerNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type ShowbackCredentialsLockManagerNotFound struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackCredentialsLockManagerNotFound) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerNotFound  %+v", 404, o.Payload)
+}
+func (o *ShowbackCredentialsLockManagerNotFound) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackCredentialsLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackCredentialsLockManagerInternalServerError creates a ShowbackCredentialsLockManagerInternalServerError with default headers values
+func NewShowbackCredentialsLockManagerInternalServerError() *ShowbackCredentialsLockManagerInternalServerError {
+	return &ShowbackCredentialsLockManagerInternalServerError{}
+}
+
+/* ShowbackCredentialsLockManagerInternalServerError describes a response with status code 500, with default header values.
+
+Server Error
+*/
+type ShowbackCredentialsLockManagerInternalServerError struct {
+}
+
+func (o *ShowbackCredentialsLockManagerInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerInternalServerError ", 500)
+}
+
+func (o *ShowbackCredentialsLockManagerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

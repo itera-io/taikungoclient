@@ -36,6 +36,9 @@ type ProjectForUpdateDto struct {
 	// is backup enabled
 	IsBackupEnabled bool `json:"isBackupEnabled"`
 
+	// is kubevap enabled
+	IsKubevapEnabled bool `json:"isKubevapEnabled"`
+
 	// is monitoring enabled
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
 

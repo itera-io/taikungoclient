@@ -7,9 +7,12 @@ package showback_rules
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ShowbackRulesDeleteReader is a Reader for the ShowbackRulesDelete structure.
@@ -20,15 +23,81 @@ type ShowbackRulesDeleteReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *ShowbackRulesDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
+	case 200:
+		result := NewShowbackRulesDeleteOK()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 	case 204:
 		result := NewShowbackRulesDeleteNoContent()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewShowbackRulesDeleteBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 401:
+		result := NewShowbackRulesDeleteUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewShowbackRulesDeleteForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewShowbackRulesDeleteNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewShowbackRulesDeleteInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
+}
+
+// NewShowbackRulesDeleteOK creates a ShowbackRulesDeleteOK with default headers values
+func NewShowbackRulesDeleteOK() *ShowbackRulesDeleteOK {
+	return &ShowbackRulesDeleteOK{}
+}
+
+/* ShowbackRulesDeleteOK describes a response with status code 200, with default header values.
+
+Success
+*/
+type ShowbackRulesDeleteOK struct {
+	Payload models.Unit
+}
+
+func (o *ShowbackRulesDeleteOK) Error() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteOK  %+v", 200, o.Payload)
+}
+func (o *ShowbackRulesDeleteOK) GetPayload() models.Unit {
+	return o.Payload
+}
+
+func (o *ShowbackRulesDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
 }
 
 // NewShowbackRulesDeleteNoContent creates a ShowbackRulesDeleteNoContent with default headers values
@@ -48,6 +117,155 @@ func (o *ShowbackRulesDeleteNoContent) Error() string {
 }
 
 func (o *ShowbackRulesDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewShowbackRulesDeleteBadRequest creates a ShowbackRulesDeleteBadRequest with default headers values
+func NewShowbackRulesDeleteBadRequest() *ShowbackRulesDeleteBadRequest {
+	return &ShowbackRulesDeleteBadRequest{}
+}
+
+/* ShowbackRulesDeleteBadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
+type ShowbackRulesDeleteBadRequest struct {
+	Payload *models.ValidationProblemDetails
+}
+
+func (o *ShowbackRulesDeleteBadRequest) Error() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteBadRequest  %+v", 400, o.Payload)
+}
+func (o *ShowbackRulesDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackRulesDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ValidationProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackRulesDeleteUnauthorized creates a ShowbackRulesDeleteUnauthorized with default headers values
+func NewShowbackRulesDeleteUnauthorized() *ShowbackRulesDeleteUnauthorized {
+	return &ShowbackRulesDeleteUnauthorized{}
+}
+
+/* ShowbackRulesDeleteUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type ShowbackRulesDeleteUnauthorized struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackRulesDeleteUnauthorized) Error() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteUnauthorized  %+v", 401, o.Payload)
+}
+func (o *ShowbackRulesDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackRulesDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackRulesDeleteForbidden creates a ShowbackRulesDeleteForbidden with default headers values
+func NewShowbackRulesDeleteForbidden() *ShowbackRulesDeleteForbidden {
+	return &ShowbackRulesDeleteForbidden{}
+}
+
+/* ShowbackRulesDeleteForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type ShowbackRulesDeleteForbidden struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackRulesDeleteForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteForbidden  %+v", 403, o.Payload)
+}
+func (o *ShowbackRulesDeleteForbidden) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackRulesDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackRulesDeleteNotFound creates a ShowbackRulesDeleteNotFound with default headers values
+func NewShowbackRulesDeleteNotFound() *ShowbackRulesDeleteNotFound {
+	return &ShowbackRulesDeleteNotFound{}
+}
+
+/* ShowbackRulesDeleteNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type ShowbackRulesDeleteNotFound struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackRulesDeleteNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteNotFound  %+v", 404, o.Payload)
+}
+func (o *ShowbackRulesDeleteNotFound) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackRulesDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackRulesDeleteInternalServerError creates a ShowbackRulesDeleteInternalServerError with default headers values
+func NewShowbackRulesDeleteInternalServerError() *ShowbackRulesDeleteInternalServerError {
+	return &ShowbackRulesDeleteInternalServerError{}
+}
+
+/* ShowbackRulesDeleteInternalServerError describes a response with status code 500, with default header values.
+
+Server Error
+*/
+type ShowbackRulesDeleteInternalServerError struct {
+}
+
+func (o *ShowbackRulesDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteInternalServerError ", 500)
+}
+
+func (o *ShowbackRulesDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

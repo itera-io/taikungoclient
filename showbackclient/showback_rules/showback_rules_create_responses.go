@@ -29,6 +29,36 @@ func (o *ShowbackRulesCreateReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return result, nil
+	case 400:
+		result := NewShowbackRulesCreateBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 401:
+		result := NewShowbackRulesCreateUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewShowbackRulesCreateForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewShowbackRulesCreateNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 500:
+		result := NewShowbackRulesCreateInternalServerError()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
 	}
@@ -62,6 +92,155 @@ func (o *ShowbackRulesCreateOK) readResponse(response runtime.ClientResponse, co
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
+
+	return nil
+}
+
+// NewShowbackRulesCreateBadRequest creates a ShowbackRulesCreateBadRequest with default headers values
+func NewShowbackRulesCreateBadRequest() *ShowbackRulesCreateBadRequest {
+	return &ShowbackRulesCreateBadRequest{}
+}
+
+/* ShowbackRulesCreateBadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
+type ShowbackRulesCreateBadRequest struct {
+	Payload *models.ValidationProblemDetails
+}
+
+func (o *ShowbackRulesCreateBadRequest) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateBadRequest  %+v", 400, o.Payload)
+}
+func (o *ShowbackRulesCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackRulesCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ValidationProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackRulesCreateUnauthorized creates a ShowbackRulesCreateUnauthorized with default headers values
+func NewShowbackRulesCreateUnauthorized() *ShowbackRulesCreateUnauthorized {
+	return &ShowbackRulesCreateUnauthorized{}
+}
+
+/* ShowbackRulesCreateUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type ShowbackRulesCreateUnauthorized struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackRulesCreateUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateUnauthorized  %+v", 401, o.Payload)
+}
+func (o *ShowbackRulesCreateUnauthorized) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackRulesCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackRulesCreateForbidden creates a ShowbackRulesCreateForbidden with default headers values
+func NewShowbackRulesCreateForbidden() *ShowbackRulesCreateForbidden {
+	return &ShowbackRulesCreateForbidden{}
+}
+
+/* ShowbackRulesCreateForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type ShowbackRulesCreateForbidden struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackRulesCreateForbidden) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateForbidden  %+v", 403, o.Payload)
+}
+func (o *ShowbackRulesCreateForbidden) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackRulesCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackRulesCreateNotFound creates a ShowbackRulesCreateNotFound with default headers values
+func NewShowbackRulesCreateNotFound() *ShowbackRulesCreateNotFound {
+	return &ShowbackRulesCreateNotFound{}
+}
+
+/* ShowbackRulesCreateNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type ShowbackRulesCreateNotFound struct {
+	Payload *models.ProblemDetails
+}
+
+func (o *ShowbackRulesCreateNotFound) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateNotFound  %+v", 404, o.Payload)
+}
+func (o *ShowbackRulesCreateNotFound) GetPayload() *models.ProblemDetails {
+	return o.Payload
+}
+
+func (o *ShowbackRulesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.ProblemDetails)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewShowbackRulesCreateInternalServerError creates a ShowbackRulesCreateInternalServerError with default headers values
+func NewShowbackRulesCreateInternalServerError() *ShowbackRulesCreateInternalServerError {
+	return &ShowbackRulesCreateInternalServerError{}
+}
+
+/* ShowbackRulesCreateInternalServerError describes a response with status code 500, with default header values.
+
+Server Error
+*/
+type ShowbackRulesCreateInternalServerError struct {
+}
+
+func (o *ShowbackRulesCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateInternalServerError ", 500)
+}
+
+func (o *ShowbackRulesCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

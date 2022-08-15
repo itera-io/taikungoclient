@@ -60,6 +60,9 @@ func NewProjectsDescribeParamsWithHTTPClient(client *http.Client) *ProjectsDescr
 */
 type ProjectsDescribeParams struct {
 
+	// IsYaml.
+	IsYaml *bool
+
 	// ProjectID.
 	//
 	// Format: int32
@@ -121,6 +124,17 @@ func (o *ProjectsDescribeParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithIsYaml adds the isYaml to the projects describe params
+func (o *ProjectsDescribeParams) WithIsYaml(isYaml *bool) *ProjectsDescribeParams {
+	o.SetIsYaml(isYaml)
+	return o
+}
+
+// SetIsYaml adds the isYaml to the projects describe params
+func (o *ProjectsDescribeParams) SetIsYaml(isYaml *bool) {
+	o.IsYaml = isYaml
+}
+
 // WithProjectID adds the projectID to the projects describe params
 func (o *ProjectsDescribeParams) WithProjectID(projectID int32) *ProjectsDescribeParams {
 	o.SetProjectID(projectID)
@@ -150,6 +164,23 @@ func (o *ProjectsDescribeParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
+
+	if o.IsYaml != nil {
+
+		// query param isYaml
+		var qrIsYaml bool
+
+		if o.IsYaml != nil {
+			qrIsYaml = *o.IsYaml
+		}
+		qIsYaml := swag.FormatBool(qrIsYaml)
+		if qIsYaml != "" {
+
+			if err := r.SetQueryParam("isYaml", qIsYaml); err != nil {
+				return err
+			}
+		}
+	}
 
 	// path param projectId
 	if err := r.SetPathParam("projectId", swag.FormatInt32(o.ProjectID)); err != nil {

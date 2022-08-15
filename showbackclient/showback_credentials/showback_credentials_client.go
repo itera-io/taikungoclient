@@ -32,7 +32,7 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	ShowbackCredentialsCreate(params *ShowbackCredentialsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackCredentialsCreateOK, error)
 
-	ShowbackCredentialsDelete(params *ShowbackCredentialsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackCredentialsDeleteNoContent, error)
+	ShowbackCredentialsDelete(params *ShowbackCredentialsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackCredentialsDeleteOK, *ShowbackCredentialsDeleteNoContent, error)
 
 	ShowbackCredentialsDropdown(params *ShowbackCredentialsDropdownParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackCredentialsDropdownOK, error)
 
@@ -85,7 +85,7 @@ func (a *Client) ShowbackCredentialsCreate(params *ShowbackCredentialsCreatePara
 /*
   ShowbackCredentialsDelete deletes showback credential
 */
-func (a *Client) ShowbackCredentialsDelete(params *ShowbackCredentialsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackCredentialsDeleteNoContent, error) {
+func (a *Client) ShowbackCredentialsDelete(params *ShowbackCredentialsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackCredentialsDeleteOK, *ShowbackCredentialsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewShowbackCredentialsDeleteParams()
@@ -94,7 +94,7 @@ func (a *Client) ShowbackCredentialsDelete(params *ShowbackCredentialsDeletePara
 		ID:                 "ShowbackCredentials_Delete",
 		Method:             "DELETE",
 		PathPattern:        "/showback/v{v}/ShowbackCredentials/{id}",
-		ProducesMediaTypes: []string{"application/json"},
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
@@ -109,15 +109,16 @@ func (a *Client) ShowbackCredentialsDelete(params *ShowbackCredentialsDeletePara
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*ShowbackCredentialsDeleteNoContent)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *ShowbackCredentialsDeleteOK:
+		return value, nil, nil
+	case *ShowbackCredentialsDeleteNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for ShowbackCredentials_Delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for showback_credentials: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

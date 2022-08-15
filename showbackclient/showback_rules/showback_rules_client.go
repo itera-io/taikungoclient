@@ -32,7 +32,7 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	ShowbackRulesCreate(params *ShowbackRulesCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackRulesCreateOK, error)
 
-	ShowbackRulesDelete(params *ShowbackRulesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackRulesDeleteNoContent, error)
+	ShowbackRulesDelete(params *ShowbackRulesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackRulesDeleteOK, *ShowbackRulesDeleteNoContent, error)
 
 	ShowbackRulesDeleteAll(params *ShowbackRulesDeleteAllParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackRulesDeleteAllOK, error)
 
@@ -85,7 +85,7 @@ func (a *Client) ShowbackRulesCreate(params *ShowbackRulesCreateParams, authInfo
 /*
   ShowbackRulesDelete deletes showback rule
 */
-func (a *Client) ShowbackRulesDelete(params *ShowbackRulesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackRulesDeleteNoContent, error) {
+func (a *Client) ShowbackRulesDelete(params *ShowbackRulesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackRulesDeleteOK, *ShowbackRulesDeleteNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewShowbackRulesDeleteParams()
@@ -94,7 +94,7 @@ func (a *Client) ShowbackRulesDelete(params *ShowbackRulesDeleteParams, authInfo
 		ID:                 "ShowbackRules_Delete",
 		Method:             "DELETE",
 		PathPattern:        "/showback/v{v}/ShowbackRules/{id}",
-		ProducesMediaTypes: []string{"application/json"},
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
@@ -109,15 +109,16 @@ func (a *Client) ShowbackRulesDelete(params *ShowbackRulesDeleteParams, authInfo
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*ShowbackRulesDeleteNoContent)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *ShowbackRulesDeleteOK:
+		return value, nil, nil
+	case *ShowbackRulesDeleteNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for ShowbackRules_Delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for showback_rules: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

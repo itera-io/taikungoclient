@@ -62,6 +62,9 @@ type ProjectFullListDto struct {
 	// is kubernetes
 	IsKubernetes bool `json:"isKubernetes"`
 
+	// is kubevap enabled
+	IsKubevapEnabled bool `json:"isKubevapEnabled"`
+
 	// is locked
 	IsLocked bool `json:"isLocked"`
 

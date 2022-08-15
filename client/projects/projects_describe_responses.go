@@ -74,13 +74,13 @@ func NewProjectsDescribeOK() *ProjectsDescribeOK {
 Success
 */
 type ProjectsDescribeOK struct {
-	Payload string
+	Payload interface{}
 }
 
 func (o *ProjectsDescribeOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/describe/{projectId}][%d] projectsDescribeOK  %+v", 200, o.Payload)
 }
-func (o *ProjectsDescribeOK) GetPayload() string {
+func (o *ProjectsDescribeOK) GetPayload() interface{} {
 	return o.Payload
 }
 

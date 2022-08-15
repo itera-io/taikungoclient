@@ -67,9 +67,6 @@ type ProjectListDetailDto struct {
 	// is kubernetes
 	IsKubernetes bool `json:"isKubernetes"`
 
-	// is lightweight k8s
-	IsLightweightK8s bool `json:"isLightweightK8s"`
-
 	// is locked
 	IsLocked bool `json:"isLocked"`
 
