@@ -69,7 +69,8 @@ func NewCronJobSyncProjectAppsOK() *CronJobSyncProjectAppsOK {
 	return &CronJobSyncProjectAppsOK{}
 }
 
-/* CronJobSyncProjectAppsOK describes a response with status code 200, with default header values.
+/*
+CronJobSyncProjectAppsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CronJobSyncProjectAppsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this cron job sync project apps o k response has a 2xx status code
+func (o *CronJobSyncProjectAppsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cron job sync project apps o k response has a 3xx status code
+func (o *CronJobSyncProjectAppsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync project apps o k response has a 4xx status code
+func (o *CronJobSyncProjectAppsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job sync project apps o k response has a 5xx status code
+func (o *CronJobSyncProjectAppsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job sync project apps o k response a status code equal to that given
+func (o *CronJobSyncProjectAppsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CronJobSyncProjectAppsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsOK  %+v", 200, o.Payload)
 }
+
+func (o *CronJobSyncProjectAppsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsOK  %+v", 200, o.Payload)
+}
+
 func (o *CronJobSyncProjectAppsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCronJobSyncProjectAppsBadRequest() *CronJobSyncProjectAppsBadRequest {
 	return &CronJobSyncProjectAppsBadRequest{}
 }
 
-/* CronJobSyncProjectAppsBadRequest describes a response with status code 400, with default header values.
+/*
+CronJobSyncProjectAppsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CronJobSyncProjectAppsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cron job sync project apps bad request response has a 2xx status code
+func (o *CronJobSyncProjectAppsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job sync project apps bad request response has a 3xx status code
+func (o *CronJobSyncProjectAppsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync project apps bad request response has a 4xx status code
+func (o *CronJobSyncProjectAppsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job sync project apps bad request response has a 5xx status code
+func (o *CronJobSyncProjectAppsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job sync project apps bad request response a status code equal to that given
+func (o *CronJobSyncProjectAppsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CronJobSyncProjectAppsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CronJobSyncProjectAppsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CronJobSyncProjectAppsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCronJobSyncProjectAppsUnauthorized() *CronJobSyncProjectAppsUnauthorized
 	return &CronJobSyncProjectAppsUnauthorized{}
 }
 
-/* CronJobSyncProjectAppsUnauthorized describes a response with status code 401, with default header values.
+/*
+CronJobSyncProjectAppsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CronJobSyncProjectAppsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job sync project apps unauthorized response has a 2xx status code
+func (o *CronJobSyncProjectAppsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job sync project apps unauthorized response has a 3xx status code
+func (o *CronJobSyncProjectAppsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync project apps unauthorized response has a 4xx status code
+func (o *CronJobSyncProjectAppsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job sync project apps unauthorized response has a 5xx status code
+func (o *CronJobSyncProjectAppsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job sync project apps unauthorized response a status code equal to that given
+func (o *CronJobSyncProjectAppsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CronJobSyncProjectAppsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CronJobSyncProjectAppsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CronJobSyncProjectAppsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCronJobSyncProjectAppsForbidden() *CronJobSyncProjectAppsForbidden {
 	return &CronJobSyncProjectAppsForbidden{}
 }
 
-/* CronJobSyncProjectAppsForbidden describes a response with status code 403, with default header values.
+/*
+CronJobSyncProjectAppsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CronJobSyncProjectAppsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job sync project apps forbidden response has a 2xx status code
+func (o *CronJobSyncProjectAppsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job sync project apps forbidden response has a 3xx status code
+func (o *CronJobSyncProjectAppsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync project apps forbidden response has a 4xx status code
+func (o *CronJobSyncProjectAppsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job sync project apps forbidden response has a 5xx status code
+func (o *CronJobSyncProjectAppsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job sync project apps forbidden response a status code equal to that given
+func (o *CronJobSyncProjectAppsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CronJobSyncProjectAppsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CronJobSyncProjectAppsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CronJobSyncProjectAppsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCronJobSyncProjectAppsNotFound() *CronJobSyncProjectAppsNotFound {
 	return &CronJobSyncProjectAppsNotFound{}
 }
 
-/* CronJobSyncProjectAppsNotFound describes a response with status code 404, with default header values.
+/*
+CronJobSyncProjectAppsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CronJobSyncProjectAppsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job sync project apps not found response has a 2xx status code
+func (o *CronJobSyncProjectAppsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job sync project apps not found response has a 3xx status code
+func (o *CronJobSyncProjectAppsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync project apps not found response has a 4xx status code
+func (o *CronJobSyncProjectAppsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job sync project apps not found response has a 5xx status code
+func (o *CronJobSyncProjectAppsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job sync project apps not found response a status code equal to that given
+func (o *CronJobSyncProjectAppsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CronJobSyncProjectAppsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CronJobSyncProjectAppsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CronJobSyncProjectAppsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCronJobSyncProjectAppsInternalServerError() *CronJobSyncProjectAppsInter
 	return &CronJobSyncProjectAppsInternalServerError{}
 }
 
-/* CronJobSyncProjectAppsInternalServerError describes a response with status code 500, with default header values.
+/*
+CronJobSyncProjectAppsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CronJobSyncProjectAppsInternalServerError struct {
 }
 
+// IsSuccess returns true when this cron job sync project apps internal server error response has a 2xx status code
+func (o *CronJobSyncProjectAppsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job sync project apps internal server error response has a 3xx status code
+func (o *CronJobSyncProjectAppsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync project apps internal server error response has a 4xx status code
+func (o *CronJobSyncProjectAppsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job sync project apps internal server error response has a 5xx status code
+func (o *CronJobSyncProjectAppsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cron job sync project apps internal server error response a status code equal to that given
+func (o *CronJobSyncProjectAppsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CronJobSyncProjectAppsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsInternalServerError ", 500)
+}
+
+func (o *CronJobSyncProjectAppsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsInternalServerError ", 500)
 }
 

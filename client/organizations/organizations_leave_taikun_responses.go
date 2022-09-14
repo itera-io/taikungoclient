@@ -69,7 +69,8 @@ func NewOrganizationsLeaveTaikunOK() *OrganizationsLeaveTaikunOK {
 	return &OrganizationsLeaveTaikunOK{}
 }
 
-/* OrganizationsLeaveTaikunOK describes a response with status code 200, with default header values.
+/*
+OrganizationsLeaveTaikunOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OrganizationsLeaveTaikunOK struct {
 	Payload *models.LeaveTaikunDto
 }
 
+// IsSuccess returns true when this organizations leave taikun o k response has a 2xx status code
+func (o *OrganizationsLeaveTaikunOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this organizations leave taikun o k response has a 3xx status code
+func (o *OrganizationsLeaveTaikunOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations leave taikun o k response has a 4xx status code
+func (o *OrganizationsLeaveTaikunOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations leave taikun o k response has a 5xx status code
+func (o *OrganizationsLeaveTaikunOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations leave taikun o k response a status code equal to that given
+func (o *OrganizationsLeaveTaikunOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OrganizationsLeaveTaikunOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunOK  %+v", 200, o.Payload)
 }
+
+func (o *OrganizationsLeaveTaikunOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunOK  %+v", 200, o.Payload)
+}
+
 func (o *OrganizationsLeaveTaikunOK) GetPayload() *models.LeaveTaikunDto {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewOrganizationsLeaveTaikunBadRequest() *OrganizationsLeaveTaikunBadRequest
 	return &OrganizationsLeaveTaikunBadRequest{}
 }
 
-/* OrganizationsLeaveTaikunBadRequest describes a response with status code 400, with default header values.
+/*
+OrganizationsLeaveTaikunBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type OrganizationsLeaveTaikunBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this organizations leave taikun bad request response has a 2xx status code
+func (o *OrganizationsLeaveTaikunBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations leave taikun bad request response has a 3xx status code
+func (o *OrganizationsLeaveTaikunBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations leave taikun bad request response has a 4xx status code
+func (o *OrganizationsLeaveTaikunBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations leave taikun bad request response has a 5xx status code
+func (o *OrganizationsLeaveTaikunBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations leave taikun bad request response a status code equal to that given
+func (o *OrganizationsLeaveTaikunBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OrganizationsLeaveTaikunBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OrganizationsLeaveTaikunBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OrganizationsLeaveTaikunBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewOrganizationsLeaveTaikunUnauthorized() *OrganizationsLeaveTaikunUnauthor
 	return &OrganizationsLeaveTaikunUnauthorized{}
 }
 
-/* OrganizationsLeaveTaikunUnauthorized describes a response with status code 401, with default header values.
+/*
+OrganizationsLeaveTaikunUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type OrganizationsLeaveTaikunUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations leave taikun unauthorized response has a 2xx status code
+func (o *OrganizationsLeaveTaikunUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations leave taikun unauthorized response has a 3xx status code
+func (o *OrganizationsLeaveTaikunUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations leave taikun unauthorized response has a 4xx status code
+func (o *OrganizationsLeaveTaikunUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations leave taikun unauthorized response has a 5xx status code
+func (o *OrganizationsLeaveTaikunUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations leave taikun unauthorized response a status code equal to that given
+func (o *OrganizationsLeaveTaikunUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OrganizationsLeaveTaikunUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OrganizationsLeaveTaikunUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OrganizationsLeaveTaikunUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewOrganizationsLeaveTaikunForbidden() *OrganizationsLeaveTaikunForbidden {
 	return &OrganizationsLeaveTaikunForbidden{}
 }
 
-/* OrganizationsLeaveTaikunForbidden describes a response with status code 403, with default header values.
+/*
+OrganizationsLeaveTaikunForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type OrganizationsLeaveTaikunForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations leave taikun forbidden response has a 2xx status code
+func (o *OrganizationsLeaveTaikunForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations leave taikun forbidden response has a 3xx status code
+func (o *OrganizationsLeaveTaikunForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations leave taikun forbidden response has a 4xx status code
+func (o *OrganizationsLeaveTaikunForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations leave taikun forbidden response has a 5xx status code
+func (o *OrganizationsLeaveTaikunForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations leave taikun forbidden response a status code equal to that given
+func (o *OrganizationsLeaveTaikunForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OrganizationsLeaveTaikunForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OrganizationsLeaveTaikunForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OrganizationsLeaveTaikunForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewOrganizationsLeaveTaikunNotFound() *OrganizationsLeaveTaikunNotFound {
 	return &OrganizationsLeaveTaikunNotFound{}
 }
 
-/* OrganizationsLeaveTaikunNotFound describes a response with status code 404, with default header values.
+/*
+OrganizationsLeaveTaikunNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type OrganizationsLeaveTaikunNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations leave taikun not found response has a 2xx status code
+func (o *OrganizationsLeaveTaikunNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations leave taikun not found response has a 3xx status code
+func (o *OrganizationsLeaveTaikunNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations leave taikun not found response has a 4xx status code
+func (o *OrganizationsLeaveTaikunNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations leave taikun not found response has a 5xx status code
+func (o *OrganizationsLeaveTaikunNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations leave taikun not found response a status code equal to that given
+func (o *OrganizationsLeaveTaikunNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OrganizationsLeaveTaikunNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OrganizationsLeaveTaikunNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OrganizationsLeaveTaikunNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewOrganizationsLeaveTaikunInternalServerError() *OrganizationsLeaveTaikunI
 	return &OrganizationsLeaveTaikunInternalServerError{}
 }
 
-/* OrganizationsLeaveTaikunInternalServerError describes a response with status code 500, with default header values.
+/*
+OrganizationsLeaveTaikunInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OrganizationsLeaveTaikunInternalServerError struct {
 }
 
+// IsSuccess returns true when this organizations leave taikun internal server error response has a 2xx status code
+func (o *OrganizationsLeaveTaikunInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations leave taikun internal server error response has a 3xx status code
+func (o *OrganizationsLeaveTaikunInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations leave taikun internal server error response has a 4xx status code
+func (o *OrganizationsLeaveTaikunInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations leave taikun internal server error response has a 5xx status code
+func (o *OrganizationsLeaveTaikunInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this organizations leave taikun internal server error response a status code equal to that given
+func (o *OrganizationsLeaveTaikunInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OrganizationsLeaveTaikunInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunInternalServerError ", 500)
+}
+
+func (o *OrganizationsLeaveTaikunInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunInternalServerError ", 500)
 }
 

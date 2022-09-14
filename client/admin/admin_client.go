@@ -64,7 +64,7 @@ type ClientService interface {
 }
 
 /*
-  AdminAddBalance adds balance for organization
+AdminAddBalance adds balance for organization
 */
 func (a *Client) AdminAddBalance(params *AdminAddBalanceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminAddBalanceOK, error) {
 	// TODO: Validate the params before sending
@@ -103,7 +103,7 @@ func (a *Client) AdminAddBalance(params *AdminAddBalanceParams, authInfo runtime
 }
 
 /*
-  AdminBillingOperations billings operations enable disable billing
+AdminBillingOperations billings operations enable disable billing
 */
 func (a *Client) AdminBillingOperations(params *AdminBillingOperationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminBillingOperationsOK, error) {
 	// TODO: Validate the params before sending
@@ -142,7 +142,7 @@ func (a *Client) AdminBillingOperations(params *AdminBillingOperationsParams, au
 }
 
 /*
-  AdminCreateUser users creation for admin
+AdminCreateUser users creation for admin
 */
 func (a *Client) AdminCreateUser(params *AdminCreateUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminCreateUserOK, error) {
 	// TODO: Validate the params before sending
@@ -181,7 +181,7 @@ func (a *Client) AdminCreateUser(params *AdminCreateUserParams, authInfo runtime
 }
 
 /*
-  AdminDeleteOrganization deletes organization
+AdminDeleteOrganization deletes organization
 */
 func (a *Client) AdminDeleteOrganization(params *AdminDeleteOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminDeleteOrganizationOK, error) {
 	// TODO: Validate the params before sending
@@ -220,7 +220,7 @@ func (a *Client) AdminDeleteOrganization(params *AdminDeleteOrganizationParams, 
 }
 
 /*
-  AdminKeycloakList keycloaks list for admin
+AdminKeycloakList keycloaks list for admin
 */
 func (a *Client) AdminKeycloakList(params *AdminKeycloakListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminKeycloakListOK, error) {
 	// TODO: Validate the params before sending
@@ -259,7 +259,7 @@ func (a *Client) AdminKeycloakList(params *AdminKeycloakListParams, authInfo run
 }
 
 /*
-  AdminMakeCsmUser users csm update for admin
+AdminMakeCsmUser users csm update for admin
 */
 func (a *Client) AdminMakeCsmUser(params *AdminMakeCsmUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminMakeCsmUserOK, error) {
 	// TODO: Validate the params before sending
@@ -298,7 +298,7 @@ func (a *Client) AdminMakeCsmUser(params *AdminMakeCsmUserParams, authInfo runti
 }
 
 /*
-  AdminMakeOwner users choose owner for admin
+AdminMakeOwner users choose owner for admin
 */
 func (a *Client) AdminMakeOwner(params *AdminMakeOwnerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminMakeOwnerOK, error) {
 	// TODO: Validate the params before sending
@@ -337,7 +337,7 @@ func (a *Client) AdminMakeOwner(params *AdminMakeOwnerParams, authInfo runtime.C
 }
 
 /*
-  AdminOrganizations organizations for admin
+AdminOrganizations organizations for admin
 */
 func (a *Client) AdminOrganizations(params *AdminOrganizationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminOrganizationsOK, error) {
 	// TODO: Validate the params before sending
@@ -376,7 +376,7 @@ func (a *Client) AdminOrganizations(params *AdminOrganizationsParams, authInfo r
 }
 
 /*
-  AdminProjectsList projects for admin
+AdminProjectsList projects for admin
 */
 func (a *Client) AdminProjectsList(params *AdminProjectsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminProjectsListOK, error) {
 	// TODO: Validate the params before sending
@@ -415,7 +415,7 @@ func (a *Client) AdminProjectsList(params *AdminProjectsListParams, authInfo run
 }
 
 /*
-  AdminUpdateProjectKubeConfig projects update for admin
+AdminUpdateProjectKubeConfig projects update for admin
 */
 func (a *Client) AdminUpdateProjectKubeConfig(params *AdminUpdateProjectKubeConfigParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminUpdateProjectKubeConfigOK, error) {
 	// TODO: Validate the params before sending
@@ -454,7 +454,7 @@ func (a *Client) AdminUpdateProjectKubeConfig(params *AdminUpdateProjectKubeConf
 }
 
 /*
-  AdminUpdateProjectVersion projects update for admin
+AdminUpdateProjectVersion projects update for admin
 */
 func (a *Client) AdminUpdateProjectVersion(params *AdminUpdateProjectVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminUpdateProjectVersionOK, error) {
 	// TODO: Validate the params before sending
@@ -493,7 +493,7 @@ func (a *Client) AdminUpdateProjectVersion(params *AdminUpdateProjectVersionPara
 }
 
 /*
-  AdminUpdateUserEmail users email update for admin
+AdminUpdateUserEmail users email update for admin
 */
 func (a *Client) AdminUpdateUserEmail(params *AdminUpdateUserEmailParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminUpdateUserEmailOK, error) {
 	// TODO: Validate the params before sending
@@ -532,7 +532,7 @@ func (a *Client) AdminUpdateUserEmail(params *AdminUpdateUserEmailParams, authIn
 }
 
 /*
-  AdminUpdateUserKubeConfig projects update for admin
+AdminUpdateUserKubeConfig projects update for admin
 */
 func (a *Client) AdminUpdateUserKubeConfig(params *AdminUpdateUserKubeConfigParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminUpdateUserKubeConfigOK, error) {
 	// TODO: Validate the params before sending
@@ -571,7 +571,7 @@ func (a *Client) AdminUpdateUserKubeConfig(params *AdminUpdateUserKubeConfigPara
 }
 
 /*
-  AdminUpdateUserPassword users password update for admin
+AdminUpdateUserPassword users password update for admin
 */
 func (a *Client) AdminUpdateUserPassword(params *AdminUpdateUserPasswordParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminUpdateUserPasswordOK, error) {
 	// TODO: Validate the params before sending
@@ -610,7 +610,7 @@ func (a *Client) AdminUpdateUserPassword(params *AdminUpdateUserPasswordParams, 
 }
 
 /*
-  AdminUsersList users for admin
+AdminUsersList users for admin
 */
 func (a *Client) AdminUsersList(params *AdminUsersListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AdminUsersListOK, error) {
 	// TODO: Validate the params before sending

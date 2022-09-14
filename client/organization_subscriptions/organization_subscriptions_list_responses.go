@@ -69,7 +69,8 @@ func NewOrganizationSubscriptionsListOK() *OrganizationSubscriptionsListOK {
 	return &OrganizationSubscriptionsListOK{}
 }
 
-/* OrganizationSubscriptionsListOK describes a response with status code 200, with default header values.
+/*
+OrganizationSubscriptionsListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OrganizationSubscriptionsListOK struct {
 	Payload *models.OrganizationSubscriptionList
 }
 
+// IsSuccess returns true when this organization subscriptions list o k response has a 2xx status code
+func (o *OrganizationSubscriptionsListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this organization subscriptions list o k response has a 3xx status code
+func (o *OrganizationSubscriptionsListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organization subscriptions list o k response has a 4xx status code
+func (o *OrganizationSubscriptionsListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organization subscriptions list o k response has a 5xx status code
+func (o *OrganizationSubscriptionsListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organization subscriptions list o k response a status code equal to that given
+func (o *OrganizationSubscriptionsListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OrganizationSubscriptionsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListOK  %+v", 200, o.Payload)
 }
+
+func (o *OrganizationSubscriptionsListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListOK  %+v", 200, o.Payload)
+}
+
 func (o *OrganizationSubscriptionsListOK) GetPayload() *models.OrganizationSubscriptionList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewOrganizationSubscriptionsListBadRequest() *OrganizationSubscriptionsList
 	return &OrganizationSubscriptionsListBadRequest{}
 }
 
-/* OrganizationSubscriptionsListBadRequest describes a response with status code 400, with default header values.
+/*
+OrganizationSubscriptionsListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type OrganizationSubscriptionsListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this organization subscriptions list bad request response has a 2xx status code
+func (o *OrganizationSubscriptionsListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organization subscriptions list bad request response has a 3xx status code
+func (o *OrganizationSubscriptionsListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organization subscriptions list bad request response has a 4xx status code
+func (o *OrganizationSubscriptionsListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organization subscriptions list bad request response has a 5xx status code
+func (o *OrganizationSubscriptionsListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organization subscriptions list bad request response a status code equal to that given
+func (o *OrganizationSubscriptionsListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OrganizationSubscriptionsListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OrganizationSubscriptionsListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OrganizationSubscriptionsListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewOrganizationSubscriptionsListUnauthorized() *OrganizationSubscriptionsLi
 	return &OrganizationSubscriptionsListUnauthorized{}
 }
 
-/* OrganizationSubscriptionsListUnauthorized describes a response with status code 401, with default header values.
+/*
+OrganizationSubscriptionsListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type OrganizationSubscriptionsListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organization subscriptions list unauthorized response has a 2xx status code
+func (o *OrganizationSubscriptionsListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organization subscriptions list unauthorized response has a 3xx status code
+func (o *OrganizationSubscriptionsListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organization subscriptions list unauthorized response has a 4xx status code
+func (o *OrganizationSubscriptionsListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organization subscriptions list unauthorized response has a 5xx status code
+func (o *OrganizationSubscriptionsListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organization subscriptions list unauthorized response a status code equal to that given
+func (o *OrganizationSubscriptionsListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OrganizationSubscriptionsListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OrganizationSubscriptionsListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OrganizationSubscriptionsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewOrganizationSubscriptionsListForbidden() *OrganizationSubscriptionsListF
 	return &OrganizationSubscriptionsListForbidden{}
 }
 
-/* OrganizationSubscriptionsListForbidden describes a response with status code 403, with default header values.
+/*
+OrganizationSubscriptionsListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type OrganizationSubscriptionsListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organization subscriptions list forbidden response has a 2xx status code
+func (o *OrganizationSubscriptionsListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organization subscriptions list forbidden response has a 3xx status code
+func (o *OrganizationSubscriptionsListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organization subscriptions list forbidden response has a 4xx status code
+func (o *OrganizationSubscriptionsListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organization subscriptions list forbidden response has a 5xx status code
+func (o *OrganizationSubscriptionsListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organization subscriptions list forbidden response a status code equal to that given
+func (o *OrganizationSubscriptionsListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OrganizationSubscriptionsListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OrganizationSubscriptionsListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OrganizationSubscriptionsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewOrganizationSubscriptionsListNotFound() *OrganizationSubscriptionsListNo
 	return &OrganizationSubscriptionsListNotFound{}
 }
 
-/* OrganizationSubscriptionsListNotFound describes a response with status code 404, with default header values.
+/*
+OrganizationSubscriptionsListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type OrganizationSubscriptionsListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organization subscriptions list not found response has a 2xx status code
+func (o *OrganizationSubscriptionsListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organization subscriptions list not found response has a 3xx status code
+func (o *OrganizationSubscriptionsListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organization subscriptions list not found response has a 4xx status code
+func (o *OrganizationSubscriptionsListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organization subscriptions list not found response has a 5xx status code
+func (o *OrganizationSubscriptionsListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organization subscriptions list not found response a status code equal to that given
+func (o *OrganizationSubscriptionsListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OrganizationSubscriptionsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OrganizationSubscriptionsListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OrganizationSubscriptionsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewOrganizationSubscriptionsListInternalServerError() *OrganizationSubscrip
 	return &OrganizationSubscriptionsListInternalServerError{}
 }
 
-/* OrganizationSubscriptionsListInternalServerError describes a response with status code 500, with default header values.
+/*
+OrganizationSubscriptionsListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OrganizationSubscriptionsListInternalServerError struct {
 }
 
+// IsSuccess returns true when this organization subscriptions list internal server error response has a 2xx status code
+func (o *OrganizationSubscriptionsListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organization subscriptions list internal server error response has a 3xx status code
+func (o *OrganizationSubscriptionsListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organization subscriptions list internal server error response has a 4xx status code
+func (o *OrganizationSubscriptionsListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organization subscriptions list internal server error response has a 5xx status code
+func (o *OrganizationSubscriptionsListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this organization subscriptions list internal server error response a status code equal to that given
+func (o *OrganizationSubscriptionsListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OrganizationSubscriptionsListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListInternalServerError ", 500)
+}
+
+func (o *OrganizationSubscriptionsListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListInternalServerError ", 500)
 }
 

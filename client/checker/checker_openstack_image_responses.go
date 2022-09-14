@@ -69,7 +69,8 @@ func NewCheckerOpenstackImageOK() *CheckerOpenstackImageOK {
 	return &CheckerOpenstackImageOK{}
 }
 
-/* CheckerOpenstackImageOK describes a response with status code 200, with default header values.
+/*
+CheckerOpenstackImageOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CheckerOpenstackImageOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this checker openstack image o k response has a 2xx status code
+func (o *CheckerOpenstackImageOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this checker openstack image o k response has a 3xx status code
+func (o *CheckerOpenstackImageOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker openstack image o k response has a 4xx status code
+func (o *CheckerOpenstackImageOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this checker openstack image o k response has a 5xx status code
+func (o *CheckerOpenstackImageOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker openstack image o k response a status code equal to that given
+func (o *CheckerOpenstackImageOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CheckerOpenstackImageOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageOK  %+v", 200, o.Payload)
 }
+
+func (o *CheckerOpenstackImageOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageOK  %+v", 200, o.Payload)
+}
+
 func (o *CheckerOpenstackImageOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCheckerOpenstackImageBadRequest() *CheckerOpenstackImageBadRequest {
 	return &CheckerOpenstackImageBadRequest{}
 }
 
-/* CheckerOpenstackImageBadRequest describes a response with status code 400, with default header values.
+/*
+CheckerOpenstackImageBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CheckerOpenstackImageBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this checker openstack image bad request response has a 2xx status code
+func (o *CheckerOpenstackImageBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker openstack image bad request response has a 3xx status code
+func (o *CheckerOpenstackImageBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker openstack image bad request response has a 4xx status code
+func (o *CheckerOpenstackImageBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker openstack image bad request response has a 5xx status code
+func (o *CheckerOpenstackImageBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker openstack image bad request response a status code equal to that given
+func (o *CheckerOpenstackImageBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CheckerOpenstackImageBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CheckerOpenstackImageBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CheckerOpenstackImageBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCheckerOpenstackImageUnauthorized() *CheckerOpenstackImageUnauthorized {
 	return &CheckerOpenstackImageUnauthorized{}
 }
 
-/* CheckerOpenstackImageUnauthorized describes a response with status code 401, with default header values.
+/*
+CheckerOpenstackImageUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CheckerOpenstackImageUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker openstack image unauthorized response has a 2xx status code
+func (o *CheckerOpenstackImageUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker openstack image unauthorized response has a 3xx status code
+func (o *CheckerOpenstackImageUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker openstack image unauthorized response has a 4xx status code
+func (o *CheckerOpenstackImageUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker openstack image unauthorized response has a 5xx status code
+func (o *CheckerOpenstackImageUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker openstack image unauthorized response a status code equal to that given
+func (o *CheckerOpenstackImageUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CheckerOpenstackImageUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CheckerOpenstackImageUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CheckerOpenstackImageUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCheckerOpenstackImageForbidden() *CheckerOpenstackImageForbidden {
 	return &CheckerOpenstackImageForbidden{}
 }
 
-/* CheckerOpenstackImageForbidden describes a response with status code 403, with default header values.
+/*
+CheckerOpenstackImageForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CheckerOpenstackImageForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker openstack image forbidden response has a 2xx status code
+func (o *CheckerOpenstackImageForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker openstack image forbidden response has a 3xx status code
+func (o *CheckerOpenstackImageForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker openstack image forbidden response has a 4xx status code
+func (o *CheckerOpenstackImageForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker openstack image forbidden response has a 5xx status code
+func (o *CheckerOpenstackImageForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker openstack image forbidden response a status code equal to that given
+func (o *CheckerOpenstackImageForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CheckerOpenstackImageForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CheckerOpenstackImageForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CheckerOpenstackImageForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCheckerOpenstackImageNotFound() *CheckerOpenstackImageNotFound {
 	return &CheckerOpenstackImageNotFound{}
 }
 
-/* CheckerOpenstackImageNotFound describes a response with status code 404, with default header values.
+/*
+CheckerOpenstackImageNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CheckerOpenstackImageNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker openstack image not found response has a 2xx status code
+func (o *CheckerOpenstackImageNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker openstack image not found response has a 3xx status code
+func (o *CheckerOpenstackImageNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker openstack image not found response has a 4xx status code
+func (o *CheckerOpenstackImageNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker openstack image not found response has a 5xx status code
+func (o *CheckerOpenstackImageNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker openstack image not found response a status code equal to that given
+func (o *CheckerOpenstackImageNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CheckerOpenstackImageNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CheckerOpenstackImageNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CheckerOpenstackImageNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCheckerOpenstackImageInternalServerError() *CheckerOpenstackImageInterna
 	return &CheckerOpenstackImageInternalServerError{}
 }
 
-/* CheckerOpenstackImageInternalServerError describes a response with status code 500, with default header values.
+/*
+CheckerOpenstackImageInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CheckerOpenstackImageInternalServerError struct {
 }
 
+// IsSuccess returns true when this checker openstack image internal server error response has a 2xx status code
+func (o *CheckerOpenstackImageInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker openstack image internal server error response has a 3xx status code
+func (o *CheckerOpenstackImageInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker openstack image internal server error response has a 4xx status code
+func (o *CheckerOpenstackImageInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this checker openstack image internal server error response has a 5xx status code
+func (o *CheckerOpenstackImageInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this checker openstack image internal server error response a status code equal to that given
+func (o *CheckerOpenstackImageInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CheckerOpenstackImageInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageInternalServerError ", 500)
+}
+
+func (o *CheckerOpenstackImageInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageInternalServerError ", 500)
 }
 

@@ -54,10 +54,12 @@ func NewAuthTryDemoParamsWithHTTPClient(client *http.Client) *AuthTryDemoParams 
 	}
 }
 
-/* AuthTryDemoParams contains all the parameters to send to the API endpoint
-   for the auth try demo operation.
+/*
+AuthTryDemoParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the auth try demo operation.
+
+	Typically these are written to a http.Request.
 */
 type AuthTryDemoParams struct {
 

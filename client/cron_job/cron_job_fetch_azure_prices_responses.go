@@ -69,7 +69,8 @@ func NewCronJobFetchAzurePricesOK() *CronJobFetchAzurePricesOK {
 	return &CronJobFetchAzurePricesOK{}
 }
 
-/* CronJobFetchAzurePricesOK describes a response with status code 200, with default header values.
+/*
+CronJobFetchAzurePricesOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CronJobFetchAzurePricesOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this cron job fetch azure prices o k response has a 2xx status code
+func (o *CronJobFetchAzurePricesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cron job fetch azure prices o k response has a 3xx status code
+func (o *CronJobFetchAzurePricesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job fetch azure prices o k response has a 4xx status code
+func (o *CronJobFetchAzurePricesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job fetch azure prices o k response has a 5xx status code
+func (o *CronJobFetchAzurePricesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job fetch azure prices o k response a status code equal to that given
+func (o *CronJobFetchAzurePricesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CronJobFetchAzurePricesOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesOK  %+v", 200, o.Payload)
 }
+
+func (o *CronJobFetchAzurePricesOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesOK  %+v", 200, o.Payload)
+}
+
 func (o *CronJobFetchAzurePricesOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCronJobFetchAzurePricesBadRequest() *CronJobFetchAzurePricesBadRequest {
 	return &CronJobFetchAzurePricesBadRequest{}
 }
 
-/* CronJobFetchAzurePricesBadRequest describes a response with status code 400, with default header values.
+/*
+CronJobFetchAzurePricesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CronJobFetchAzurePricesBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cron job fetch azure prices bad request response has a 2xx status code
+func (o *CronJobFetchAzurePricesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job fetch azure prices bad request response has a 3xx status code
+func (o *CronJobFetchAzurePricesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job fetch azure prices bad request response has a 4xx status code
+func (o *CronJobFetchAzurePricesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job fetch azure prices bad request response has a 5xx status code
+func (o *CronJobFetchAzurePricesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job fetch azure prices bad request response a status code equal to that given
+func (o *CronJobFetchAzurePricesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CronJobFetchAzurePricesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CronJobFetchAzurePricesBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CronJobFetchAzurePricesBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCronJobFetchAzurePricesUnauthorized() *CronJobFetchAzurePricesUnauthoriz
 	return &CronJobFetchAzurePricesUnauthorized{}
 }
 
-/* CronJobFetchAzurePricesUnauthorized describes a response with status code 401, with default header values.
+/*
+CronJobFetchAzurePricesUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CronJobFetchAzurePricesUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job fetch azure prices unauthorized response has a 2xx status code
+func (o *CronJobFetchAzurePricesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job fetch azure prices unauthorized response has a 3xx status code
+func (o *CronJobFetchAzurePricesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job fetch azure prices unauthorized response has a 4xx status code
+func (o *CronJobFetchAzurePricesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job fetch azure prices unauthorized response has a 5xx status code
+func (o *CronJobFetchAzurePricesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job fetch azure prices unauthorized response a status code equal to that given
+func (o *CronJobFetchAzurePricesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CronJobFetchAzurePricesUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CronJobFetchAzurePricesUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CronJobFetchAzurePricesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCronJobFetchAzurePricesForbidden() *CronJobFetchAzurePricesForbidden {
 	return &CronJobFetchAzurePricesForbidden{}
 }
 
-/* CronJobFetchAzurePricesForbidden describes a response with status code 403, with default header values.
+/*
+CronJobFetchAzurePricesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CronJobFetchAzurePricesForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job fetch azure prices forbidden response has a 2xx status code
+func (o *CronJobFetchAzurePricesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job fetch azure prices forbidden response has a 3xx status code
+func (o *CronJobFetchAzurePricesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job fetch azure prices forbidden response has a 4xx status code
+func (o *CronJobFetchAzurePricesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job fetch azure prices forbidden response has a 5xx status code
+func (o *CronJobFetchAzurePricesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job fetch azure prices forbidden response a status code equal to that given
+func (o *CronJobFetchAzurePricesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CronJobFetchAzurePricesForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CronJobFetchAzurePricesForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CronJobFetchAzurePricesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCronJobFetchAzurePricesNotFound() *CronJobFetchAzurePricesNotFound {
 	return &CronJobFetchAzurePricesNotFound{}
 }
 
-/* CronJobFetchAzurePricesNotFound describes a response with status code 404, with default header values.
+/*
+CronJobFetchAzurePricesNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CronJobFetchAzurePricesNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job fetch azure prices not found response has a 2xx status code
+func (o *CronJobFetchAzurePricesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job fetch azure prices not found response has a 3xx status code
+func (o *CronJobFetchAzurePricesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job fetch azure prices not found response has a 4xx status code
+func (o *CronJobFetchAzurePricesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job fetch azure prices not found response has a 5xx status code
+func (o *CronJobFetchAzurePricesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job fetch azure prices not found response a status code equal to that given
+func (o *CronJobFetchAzurePricesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CronJobFetchAzurePricesNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CronJobFetchAzurePricesNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CronJobFetchAzurePricesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCronJobFetchAzurePricesInternalServerError() *CronJobFetchAzurePricesInt
 	return &CronJobFetchAzurePricesInternalServerError{}
 }
 
-/* CronJobFetchAzurePricesInternalServerError describes a response with status code 500, with default header values.
+/*
+CronJobFetchAzurePricesInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CronJobFetchAzurePricesInternalServerError struct {
 }
 
+// IsSuccess returns true when this cron job fetch azure prices internal server error response has a 2xx status code
+func (o *CronJobFetchAzurePricesInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job fetch azure prices internal server error response has a 3xx status code
+func (o *CronJobFetchAzurePricesInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job fetch azure prices internal server error response has a 4xx status code
+func (o *CronJobFetchAzurePricesInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job fetch azure prices internal server error response has a 5xx status code
+func (o *CronJobFetchAzurePricesInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cron job fetch azure prices internal server error response a status code equal to that given
+func (o *CronJobFetchAzurePricesInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CronJobFetchAzurePricesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesInternalServerError ", 500)
+}
+
+func (o *CronJobFetchAzurePricesInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesInternalServerError ", 500)
 }
 

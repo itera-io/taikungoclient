@@ -53,10 +53,12 @@ func NewDNSServersDeleteParamsWithHTTPClient(client *http.Client) *DNSServersDel
 	}
 }
 
-/* DNSServersDeleteParams contains all the parameters to send to the API endpoint
-   for the Dns servers delete operation.
+/*
+DNSServersDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the Dns servers delete operation.
+
+	Typically these are written to a http.Request.
 */
 type DNSServersDeleteParams struct {
 

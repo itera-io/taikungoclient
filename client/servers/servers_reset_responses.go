@@ -69,7 +69,8 @@ func NewServersResetOK() *ServersResetOK {
 	return &ServersResetOK{}
 }
 
-/* ServersResetOK describes a response with status code 200, with default header values.
+/*
+ServersResetOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ServersResetOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this servers reset o k response has a 2xx status code
+func (o *ServersResetOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this servers reset o k response has a 3xx status code
+func (o *ServersResetOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers reset o k response has a 4xx status code
+func (o *ServersResetOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this servers reset o k response has a 5xx status code
+func (o *ServersResetOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this servers reset o k response a status code equal to that given
+func (o *ServersResetOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ServersResetOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetOK  %+v", 200, o.Payload)
 }
+
+func (o *ServersResetOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetOK  %+v", 200, o.Payload)
+}
+
 func (o *ServersResetOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewServersResetBadRequest() *ServersResetBadRequest {
 	return &ServersResetBadRequest{}
 }
 
-/* ServersResetBadRequest describes a response with status code 400, with default header values.
+/*
+ServersResetBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ServersResetBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this servers reset bad request response has a 2xx status code
+func (o *ServersResetBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this servers reset bad request response has a 3xx status code
+func (o *ServersResetBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers reset bad request response has a 4xx status code
+func (o *ServersResetBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this servers reset bad request response has a 5xx status code
+func (o *ServersResetBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this servers reset bad request response a status code equal to that given
+func (o *ServersResetBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ServersResetBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ServersResetBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ServersResetBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewServersResetUnauthorized() *ServersResetUnauthorized {
 	return &ServersResetUnauthorized{}
 }
 
-/* ServersResetUnauthorized describes a response with status code 401, with default header values.
+/*
+ServersResetUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ServersResetUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this servers reset unauthorized response has a 2xx status code
+func (o *ServersResetUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this servers reset unauthorized response has a 3xx status code
+func (o *ServersResetUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers reset unauthorized response has a 4xx status code
+func (o *ServersResetUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this servers reset unauthorized response has a 5xx status code
+func (o *ServersResetUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this servers reset unauthorized response a status code equal to that given
+func (o *ServersResetUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ServersResetUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ServersResetUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ServersResetUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewServersResetForbidden() *ServersResetForbidden {
 	return &ServersResetForbidden{}
 }
 
-/* ServersResetForbidden describes a response with status code 403, with default header values.
+/*
+ServersResetForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ServersResetForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this servers reset forbidden response has a 2xx status code
+func (o *ServersResetForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this servers reset forbidden response has a 3xx status code
+func (o *ServersResetForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers reset forbidden response has a 4xx status code
+func (o *ServersResetForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this servers reset forbidden response has a 5xx status code
+func (o *ServersResetForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this servers reset forbidden response a status code equal to that given
+func (o *ServersResetForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ServersResetForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ServersResetForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ServersResetForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewServersResetNotFound() *ServersResetNotFound {
 	return &ServersResetNotFound{}
 }
 
-/* ServersResetNotFound describes a response with status code 404, with default header values.
+/*
+ServersResetNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ServersResetNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this servers reset not found response has a 2xx status code
+func (o *ServersResetNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this servers reset not found response has a 3xx status code
+func (o *ServersResetNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers reset not found response has a 4xx status code
+func (o *ServersResetNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this servers reset not found response has a 5xx status code
+func (o *ServersResetNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this servers reset not found response a status code equal to that given
+func (o *ServersResetNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ServersResetNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ServersResetNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ServersResetNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewServersResetInternalServerError() *ServersResetInternalServerError {
 	return &ServersResetInternalServerError{}
 }
 
-/* ServersResetInternalServerError describes a response with status code 500, with default header values.
+/*
+ServersResetInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ServersResetInternalServerError struct {
 }
 
+// IsSuccess returns true when this servers reset internal server error response has a 2xx status code
+func (o *ServersResetInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this servers reset internal server error response has a 3xx status code
+func (o *ServersResetInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers reset internal server error response has a 4xx status code
+func (o *ServersResetInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this servers reset internal server error response has a 5xx status code
+func (o *ServersResetInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this servers reset internal server error response a status code equal to that given
+func (o *ServersResetInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ServersResetInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetInternalServerError ", 500)
+}
+
+func (o *ServersResetInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetInternalServerError ", 500)
 }
 

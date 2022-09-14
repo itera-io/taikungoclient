@@ -54,10 +54,12 @@ func NewCatalogEditCatalogAppVersionParamsWithHTTPClient(client *http.Client) *C
 	}
 }
 
-/* CatalogEditCatalogAppVersionParams contains all the parameters to send to the API endpoint
-   for the catalog edit catalog app version operation.
+/*
+CatalogEditCatalogAppVersionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the catalog edit catalog app version operation.
+
+	Typically these are written to a http.Request.
 */
 type CatalogEditCatalogAppVersionParams struct {
 

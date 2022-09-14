@@ -53,10 +53,12 @@ func NewProjectsListSelectorParamsWithHTTPClient(client *http.Client) *ProjectsL
 	}
 }
 
-/* ProjectsListSelectorParams contains all the parameters to send to the API endpoint
-   for the projects list selector operation.
+/*
+ProjectsListSelectorParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects list selector operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsListSelectorParams struct {
 
@@ -64,6 +66,9 @@ type ProjectsListSelectorParams struct {
 	//
 	// Format: int32
 	CatalogID *int32
+
+	// Healthy.
+	Healthy *bool
 
 	// OrganizationID.
 	//
@@ -140,6 +145,17 @@ func (o *ProjectsListSelectorParams) SetCatalogID(catalogID *int32) {
 	o.CatalogID = catalogID
 }
 
+// WithHealthy adds the healthy to the projects list selector params
+func (o *ProjectsListSelectorParams) WithHealthy(healthy *bool) *ProjectsListSelectorParams {
+	o.SetHealthy(healthy)
+	return o
+}
+
+// SetHealthy adds the healthy to the projects list selector params
+func (o *ProjectsListSelectorParams) SetHealthy(healthy *bool) {
+	o.Healthy = healthy
+}
+
 // WithOrganizationID adds the organizationID to the projects list selector params
 func (o *ProjectsListSelectorParams) WithOrganizationID(organizationID *int32) *ProjectsListSelectorParams {
 	o.SetOrganizationID(organizationID)
@@ -193,6 +209,23 @@ func (o *ProjectsListSelectorParams) WriteToRequest(r runtime.ClientRequest, reg
 		if qCatalogID != "" {
 
 			if err := r.SetQueryParam("catalogId", qCatalogID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Healthy != nil {
+
+		// query param healthy
+		var qrHealthy bool
+
+		if o.Healthy != nil {
+			qrHealthy = *o.Healthy
+		}
+		qHealthy := swag.FormatBool(qrHealthy)
+		if qHealthy != "" {
+
+			if err := r.SetQueryParam("healthy", qHealthy); err != nil {
 				return err
 			}
 		}

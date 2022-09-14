@@ -69,7 +69,8 @@ func NewProjectsEditOK() *ProjectsEditOK {
 	return &ProjectsEditOK{}
 }
 
-/* ProjectsEditOK describes a response with status code 200, with default header values.
+/*
+ProjectsEditOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsEditOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this projects edit o k response has a 2xx status code
+func (o *ProjectsEditOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects edit o k response has a 3xx status code
+func (o *ProjectsEditOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects edit o k response has a 4xx status code
+func (o *ProjectsEditOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects edit o k response has a 5xx status code
+func (o *ProjectsEditOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects edit o k response a status code equal to that given
+func (o *ProjectsEditOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsEditOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsEditOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsEditOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectsEditBadRequest() *ProjectsEditBadRequest {
 	return &ProjectsEditBadRequest{}
 }
 
-/* ProjectsEditBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsEditBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectsEditBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects edit bad request response has a 2xx status code
+func (o *ProjectsEditBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects edit bad request response has a 3xx status code
+func (o *ProjectsEditBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects edit bad request response has a 4xx status code
+func (o *ProjectsEditBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects edit bad request response has a 5xx status code
+func (o *ProjectsEditBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects edit bad request response a status code equal to that given
+func (o *ProjectsEditBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsEditBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsEditBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsEditBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectsEditUnauthorized() *ProjectsEditUnauthorized {
 	return &ProjectsEditUnauthorized{}
 }
 
-/* ProjectsEditUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsEditUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectsEditUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects edit unauthorized response has a 2xx status code
+func (o *ProjectsEditUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects edit unauthorized response has a 3xx status code
+func (o *ProjectsEditUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects edit unauthorized response has a 4xx status code
+func (o *ProjectsEditUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects edit unauthorized response has a 5xx status code
+func (o *ProjectsEditUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects edit unauthorized response a status code equal to that given
+func (o *ProjectsEditUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsEditUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsEditUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsEditUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectsEditForbidden() *ProjectsEditForbidden {
 	return &ProjectsEditForbidden{}
 }
 
-/* ProjectsEditForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsEditForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectsEditForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects edit forbidden response has a 2xx status code
+func (o *ProjectsEditForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects edit forbidden response has a 3xx status code
+func (o *ProjectsEditForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects edit forbidden response has a 4xx status code
+func (o *ProjectsEditForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects edit forbidden response has a 5xx status code
+func (o *ProjectsEditForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects edit forbidden response a status code equal to that given
+func (o *ProjectsEditForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsEditForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsEditForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsEditForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectsEditNotFound() *ProjectsEditNotFound {
 	return &ProjectsEditNotFound{}
 }
 
-/* ProjectsEditNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsEditNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectsEditNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects edit not found response has a 2xx status code
+func (o *ProjectsEditNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects edit not found response has a 3xx status code
+func (o *ProjectsEditNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects edit not found response has a 4xx status code
+func (o *ProjectsEditNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects edit not found response has a 5xx status code
+func (o *ProjectsEditNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects edit not found response a status code equal to that given
+func (o *ProjectsEditNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsEditNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsEditNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsEditNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectsEditInternalServerError() *ProjectsEditInternalServerError {
 	return &ProjectsEditInternalServerError{}
 }
 
-/* ProjectsEditInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsEditInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsEditInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects edit internal server error response has a 2xx status code
+func (o *ProjectsEditInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects edit internal server error response has a 3xx status code
+func (o *ProjectsEditInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects edit internal server error response has a 4xx status code
+func (o *ProjectsEditInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects edit internal server error response has a 5xx status code
+func (o *ProjectsEditInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects edit internal server error response a status code equal to that given
+func (o *ProjectsEditInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsEditInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditInternalServerError ", 500)
+}
+
+func (o *ProjectsEditInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditInternalServerError ", 500)
 }
 

@@ -54,10 +54,12 @@ func NewPartnerBecomePartnerParamsWithHTTPClient(client *http.Client) *PartnerBe
 	}
 }
 
-/* PartnerBecomePartnerParams contains all the parameters to send to the API endpoint
-   for the partner become partner operation.
+/*
+PartnerBecomePartnerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the partner become partner operation.
+
+	Typically these are written to a http.Request.
 */
 type PartnerBecomePartnerParams struct {
 

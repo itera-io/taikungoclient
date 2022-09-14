@@ -52,10 +52,12 @@ func NewUsersToggleNotificationModeParamsWithHTTPClient(client *http.Client) *Us
 	}
 }
 
-/* UsersToggleNotificationModeParams contains all the parameters to send to the API endpoint
-   for the users toggle notification mode operation.
+/*
+UsersToggleNotificationModeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the users toggle notification mode operation.
+
+	Typically these are written to a http.Request.
 */
 type UsersToggleNotificationModeParams struct {
 

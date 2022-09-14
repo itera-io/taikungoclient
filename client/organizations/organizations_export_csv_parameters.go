@@ -52,10 +52,12 @@ func NewOrganizationsExportCsvParamsWithHTTPClient(client *http.Client) *Organiz
 	}
 }
 
-/* OrganizationsExportCsvParams contains all the parameters to send to the API endpoint
-   for the organizations export csv operation.
+/*
+OrganizationsExportCsvParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the organizations export csv operation.
+
+	Typically these are written to a http.Request.
 */
 type OrganizationsExportCsvParams struct {
 

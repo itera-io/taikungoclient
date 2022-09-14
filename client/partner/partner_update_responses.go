@@ -69,7 +69,8 @@ func NewPartnerUpdateOK() *PartnerUpdateOK {
 	return &PartnerUpdateOK{}
 }
 
-/* PartnerUpdateOK describes a response with status code 200, with default header values.
+/*
+PartnerUpdateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type PartnerUpdateOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this partner update o k response has a 2xx status code
+func (o *PartnerUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this partner update o k response has a 3xx status code
+func (o *PartnerUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner update o k response has a 4xx status code
+func (o *PartnerUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this partner update o k response has a 5xx status code
+func (o *PartnerUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner update o k response a status code equal to that given
+func (o *PartnerUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PartnerUpdateOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *PartnerUpdateOK) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *PartnerUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewPartnerUpdateBadRequest() *PartnerUpdateBadRequest {
 	return &PartnerUpdateBadRequest{}
 }
 
-/* PartnerUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+PartnerUpdateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type PartnerUpdateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this partner update bad request response has a 2xx status code
+func (o *PartnerUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner update bad request response has a 3xx status code
+func (o *PartnerUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner update bad request response has a 4xx status code
+func (o *PartnerUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner update bad request response has a 5xx status code
+func (o *PartnerUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner update bad request response a status code equal to that given
+func (o *PartnerUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PartnerUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PartnerUpdateBadRequest) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PartnerUpdateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewPartnerUpdateUnauthorized() *PartnerUpdateUnauthorized {
 	return &PartnerUpdateUnauthorized{}
 }
 
-/* PartnerUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+PartnerUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type PartnerUpdateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this partner update unauthorized response has a 2xx status code
+func (o *PartnerUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner update unauthorized response has a 3xx status code
+func (o *PartnerUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner update unauthorized response has a 4xx status code
+func (o *PartnerUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner update unauthorized response has a 5xx status code
+func (o *PartnerUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner update unauthorized response a status code equal to that given
+func (o *PartnerUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PartnerUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *PartnerUpdateUnauthorized) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *PartnerUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewPartnerUpdateForbidden() *PartnerUpdateForbidden {
 	return &PartnerUpdateForbidden{}
 }
 
-/* PartnerUpdateForbidden describes a response with status code 403, with default header values.
+/*
+PartnerUpdateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type PartnerUpdateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this partner update forbidden response has a 2xx status code
+func (o *PartnerUpdateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner update forbidden response has a 3xx status code
+func (o *PartnerUpdateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner update forbidden response has a 4xx status code
+func (o *PartnerUpdateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner update forbidden response has a 5xx status code
+func (o *PartnerUpdateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner update forbidden response a status code equal to that given
+func (o *PartnerUpdateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PartnerUpdateForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PartnerUpdateForbidden) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PartnerUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewPartnerUpdateNotFound() *PartnerUpdateNotFound {
 	return &PartnerUpdateNotFound{}
 }
 
-/* PartnerUpdateNotFound describes a response with status code 404, with default header values.
+/*
+PartnerUpdateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type PartnerUpdateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this partner update not found response has a 2xx status code
+func (o *PartnerUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner update not found response has a 3xx status code
+func (o *PartnerUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner update not found response has a 4xx status code
+func (o *PartnerUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner update not found response has a 5xx status code
+func (o *PartnerUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner update not found response a status code equal to that given
+func (o *PartnerUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PartnerUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PartnerUpdateNotFound) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PartnerUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewPartnerUpdateInternalServerError() *PartnerUpdateInternalServerError {
 	return &PartnerUpdateInternalServerError{}
 }
 
-/* PartnerUpdateInternalServerError describes a response with status code 500, with default header values.
+/*
+PartnerUpdateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PartnerUpdateInternalServerError struct {
 }
 
+// IsSuccess returns true when this partner update internal server error response has a 2xx status code
+func (o *PartnerUpdateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner update internal server error response has a 3xx status code
+func (o *PartnerUpdateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner update internal server error response has a 4xx status code
+func (o *PartnerUpdateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this partner update internal server error response has a 5xx status code
+func (o *PartnerUpdateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this partner update internal server error response a status code equal to that given
+func (o *PartnerUpdateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PartnerUpdateInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateInternalServerError ", 500)
+}
+
+func (o *PartnerUpdateInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateInternalServerError ", 500)
 }
 

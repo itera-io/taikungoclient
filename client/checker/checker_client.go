@@ -70,7 +70,7 @@ type ClientService interface {
 }
 
 /*
-  CheckerAws checks aws credentials
+CheckerAws checks aws credentials
 */
 func (a *Client) CheckerAws(params *CheckerAwsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerAwsOK, error) {
 	// TODO: Validate the params before sending
@@ -109,7 +109,7 @@ func (a *Client) CheckerAws(params *CheckerAwsParams, authInfo runtime.ClientAut
 }
 
 /*
-  CheckerAzure checks valid azure credentials
+CheckerAzure checks valid azure credentials
 */
 func (a *Client) CheckerAzure(params *CheckerAzureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerAzureOK, error) {
 	// TODO: Validate the params before sending
@@ -148,7 +148,7 @@ func (a *Client) CheckerAzure(params *CheckerAzureParams, authInfo runtime.Clien
 }
 
 /*
-  CheckerAzureCPUQuota checks azure cpu quota limit
+CheckerAzureCPUQuota checks azure cpu quota limit
 */
 func (a *Client) CheckerAzureCPUQuota(params *CheckerAzureCPUQuotaParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerAzureCPUQuotaOK, error) {
 	// TODO: Validate the params before sending
@@ -187,7 +187,7 @@ func (a *Client) CheckerAzureCPUQuota(params *CheckerAzureCPUQuotaParams, authIn
 }
 
 /*
-  CheckerCidr checks valid cidr format
+CheckerCidr checks valid cidr format
 */
 func (a *Client) CheckerCidr(params *CheckerCidrParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerCidrOK, error) {
 	// TODO: Validate the params before sending
@@ -226,7 +226,7 @@ func (a *Client) CheckerCidr(params *CheckerCidrParams, authInfo runtime.ClientA
 }
 
 /*
-  CheckerCron checks valid cron job format
+CheckerCron checks valid cron job format
 */
 func (a *Client) CheckerCron(params *CheckerCronParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerCronOK, error) {
 	// TODO: Validate the params before sending
@@ -265,7 +265,7 @@ func (a *Client) CheckerCron(params *CheckerCronParams, authInfo runtime.ClientA
 }
 
 /*
-  CheckerDNS checks valid dns format
+CheckerDNS checks valid dns format
 */
 func (a *Client) CheckerDNS(params *CheckerDNSParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerDNSOK, error) {
 	// TODO: Validate the params before sending
@@ -304,7 +304,7 @@ func (a *Client) CheckerDNS(params *CheckerDNSParams, authInfo runtime.ClientAut
 }
 
 /*
-  CheckerGoogle checks aws credentials
+CheckerGoogle checks aws credentials
 */
 func (a *Client) CheckerGoogle(params *CheckerGoogleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerGoogleOK, error) {
 	// TODO: Validate the params before sending
@@ -343,7 +343,7 @@ func (a *Client) CheckerGoogle(params *CheckerGoogleParams, authInfo runtime.Cli
 }
 
 /*
-  CheckerNode duplicates server name checker
+CheckerNode duplicates server name checker
 */
 func (a *Client) CheckerNode(params *CheckerNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerNodeOK, error) {
 	// TODO: Validate the params before sending
@@ -382,7 +382,7 @@ func (a *Client) CheckerNode(params *CheckerNodeParams, authInfo runtime.ClientA
 }
 
 /*
-  CheckerNtp checks valid ntp format
+CheckerNtp checks valid ntp format
 */
 func (a *Client) CheckerNtp(params *CheckerNtpParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerNtpOK, error) {
 	// TODO: Validate the params before sending
@@ -421,7 +421,7 @@ func (a *Client) CheckerNtp(params *CheckerNtpParams, authInfo runtime.ClientAut
 }
 
 /*
-  CheckerOpenstack checks openstack credentials
+CheckerOpenstack checks openstack credentials
 */
 func (a *Client) CheckerOpenstack(params *CheckerOpenstackParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOpenstackOK, error) {
 	// TODO: Validate the params before sending
@@ -460,7 +460,7 @@ func (a *Client) CheckerOpenstack(params *CheckerOpenstackParams, authInfo runti
 }
 
 /*
-  CheckerOpenstackImage checks openstack taikun image
+CheckerOpenstackImage checks openstack taikun image
 */
 func (a *Client) CheckerOpenstackImage(params *CheckerOpenstackImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOpenstackImageOK, error) {
 	// TODO: Validate the params before sending
@@ -499,7 +499,7 @@ func (a *Client) CheckerOpenstackImage(params *CheckerOpenstackImageParams, auth
 }
 
 /*
-  CheckerOpenstackTaikunLbImage checks openstack taikun lb image
+CheckerOpenstackTaikunLbImage checks openstack taikun lb image
 */
 func (a *Client) CheckerOpenstackTaikunLbImage(params *CheckerOpenstackTaikunLbImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOpenstackTaikunLbImageOK, error) {
 	// TODO: Validate the params before sending
@@ -538,7 +538,7 @@ func (a *Client) CheckerOpenstackTaikunLbImage(params *CheckerOpenstackTaikunLbI
 }
 
 /*
-  CheckerOrganization checks duplicate org name
+CheckerOrganization checks duplicate org name
 */
 func (a *Client) CheckerOrganization(params *CheckerOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOrganizationOK, error) {
 	// TODO: Validate the params before sending
@@ -577,7 +577,7 @@ func (a *Client) CheckerOrganization(params *CheckerOrganizationParams, authInfo
 }
 
 /*
-  CheckerPrometheus checks prometheus credentials
+CheckerPrometheus checks prometheus credentials
 */
 func (a *Client) CheckerPrometheus(params *CheckerPrometheusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerPrometheusOK, error) {
 	// TODO: Validate the params before sending
@@ -616,7 +616,7 @@ func (a *Client) CheckerPrometheus(params *CheckerPrometheusParams, authInfo run
 }
 
 /*
-  CheckerS3 checks s3 credentials
+CheckerS3 checks s3 credentials
 */
 func (a *Client) CheckerS3(params *CheckerS3Params, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerS3OK, error) {
 	// TODO: Validate the params before sending
@@ -655,7 +655,7 @@ func (a *Client) CheckerS3(params *CheckerS3Params, authInfo runtime.ClientAuthI
 }
 
 /*
-  CheckerSSH checks valid ssh key format
+CheckerSSH checks valid ssh key format
 */
 func (a *Client) CheckerSSH(params *CheckerSSHParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerSSHOK, error) {
 	// TODO: Validate the params before sending
@@ -694,7 +694,7 @@ func (a *Client) CheckerSSH(params *CheckerSSHParams, authInfo runtime.ClientAut
 }
 
 /*
-  CheckerUserChecker checks duplicate username
+CheckerUserChecker checks duplicate username
 */
 func (a *Client) CheckerUserChecker(params *CheckerUserCheckerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerUserCheckerOK, error) {
 	// TODO: Validate the params before sending
@@ -733,7 +733,7 @@ func (a *Client) CheckerUserChecker(params *CheckerUserCheckerParams, authInfo r
 }
 
 /*
-  CheckerYaml checks yaml file
+CheckerYaml checks yaml file
 */
 func (a *Client) CheckerYaml(params *CheckerYamlParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerYamlOK, error) {
 	// TODO: Validate the params before sending

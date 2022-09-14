@@ -54,10 +54,12 @@ func NewOrganizationsAcceptOfferParamsWithHTTPClient(client *http.Client) *Organ
 	}
 }
 
-/* OrganizationsAcceptOfferParams contains all the parameters to send to the API endpoint
-   for the organizations accept offer operation.
+/*
+OrganizationsAcceptOfferParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the organizations accept offer operation.
+
+	Typically these are written to a http.Request.
 */
 type OrganizationsAcceptOfferParams struct {
 

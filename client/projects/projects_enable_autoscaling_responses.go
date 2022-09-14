@@ -69,7 +69,8 @@ func NewProjectsEnableAutoscalingOK() *ProjectsEnableAutoscalingOK {
 	return &ProjectsEnableAutoscalingOK{}
 }
 
-/* ProjectsEnableAutoscalingOK describes a response with status code 200, with default header values.
+/*
+ProjectsEnableAutoscalingOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsEnableAutoscalingOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this projects enable autoscaling o k response has a 2xx status code
+func (o *ProjectsEnableAutoscalingOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects enable autoscaling o k response has a 3xx status code
+func (o *ProjectsEnableAutoscalingOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects enable autoscaling o k response has a 4xx status code
+func (o *ProjectsEnableAutoscalingOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects enable autoscaling o k response has a 5xx status code
+func (o *ProjectsEnableAutoscalingOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects enable autoscaling o k response a status code equal to that given
+func (o *ProjectsEnableAutoscalingOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsEnableAutoscalingOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsEnableAutoscalingOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsEnableAutoscalingOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectsEnableAutoscalingBadRequest() *ProjectsEnableAutoscalingBadReque
 	return &ProjectsEnableAutoscalingBadRequest{}
 }
 
-/* ProjectsEnableAutoscalingBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsEnableAutoscalingBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectsEnableAutoscalingBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects enable autoscaling bad request response has a 2xx status code
+func (o *ProjectsEnableAutoscalingBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects enable autoscaling bad request response has a 3xx status code
+func (o *ProjectsEnableAutoscalingBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects enable autoscaling bad request response has a 4xx status code
+func (o *ProjectsEnableAutoscalingBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects enable autoscaling bad request response has a 5xx status code
+func (o *ProjectsEnableAutoscalingBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects enable autoscaling bad request response a status code equal to that given
+func (o *ProjectsEnableAutoscalingBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsEnableAutoscalingBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsEnableAutoscalingBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsEnableAutoscalingBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectsEnableAutoscalingUnauthorized() *ProjectsEnableAutoscalingUnauth
 	return &ProjectsEnableAutoscalingUnauthorized{}
 }
 
-/* ProjectsEnableAutoscalingUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsEnableAutoscalingUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectsEnableAutoscalingUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects enable autoscaling unauthorized response has a 2xx status code
+func (o *ProjectsEnableAutoscalingUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects enable autoscaling unauthorized response has a 3xx status code
+func (o *ProjectsEnableAutoscalingUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects enable autoscaling unauthorized response has a 4xx status code
+func (o *ProjectsEnableAutoscalingUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects enable autoscaling unauthorized response has a 5xx status code
+func (o *ProjectsEnableAutoscalingUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects enable autoscaling unauthorized response a status code equal to that given
+func (o *ProjectsEnableAutoscalingUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsEnableAutoscalingUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsEnableAutoscalingUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsEnableAutoscalingUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectsEnableAutoscalingForbidden() *ProjectsEnableAutoscalingForbidden
 	return &ProjectsEnableAutoscalingForbidden{}
 }
 
-/* ProjectsEnableAutoscalingForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsEnableAutoscalingForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectsEnableAutoscalingForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects enable autoscaling forbidden response has a 2xx status code
+func (o *ProjectsEnableAutoscalingForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects enable autoscaling forbidden response has a 3xx status code
+func (o *ProjectsEnableAutoscalingForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects enable autoscaling forbidden response has a 4xx status code
+func (o *ProjectsEnableAutoscalingForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects enable autoscaling forbidden response has a 5xx status code
+func (o *ProjectsEnableAutoscalingForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects enable autoscaling forbidden response a status code equal to that given
+func (o *ProjectsEnableAutoscalingForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsEnableAutoscalingForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsEnableAutoscalingForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsEnableAutoscalingForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectsEnableAutoscalingNotFound() *ProjectsEnableAutoscalingNotFound {
 	return &ProjectsEnableAutoscalingNotFound{}
 }
 
-/* ProjectsEnableAutoscalingNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsEnableAutoscalingNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectsEnableAutoscalingNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects enable autoscaling not found response has a 2xx status code
+func (o *ProjectsEnableAutoscalingNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects enable autoscaling not found response has a 3xx status code
+func (o *ProjectsEnableAutoscalingNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects enable autoscaling not found response has a 4xx status code
+func (o *ProjectsEnableAutoscalingNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects enable autoscaling not found response has a 5xx status code
+func (o *ProjectsEnableAutoscalingNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects enable autoscaling not found response a status code equal to that given
+func (o *ProjectsEnableAutoscalingNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsEnableAutoscalingNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsEnableAutoscalingNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsEnableAutoscalingNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectsEnableAutoscalingInternalServerError() *ProjectsEnableAutoscalin
 	return &ProjectsEnableAutoscalingInternalServerError{}
 }
 
-/* ProjectsEnableAutoscalingInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsEnableAutoscalingInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsEnableAutoscalingInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects enable autoscaling internal server error response has a 2xx status code
+func (o *ProjectsEnableAutoscalingInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects enable autoscaling internal server error response has a 3xx status code
+func (o *ProjectsEnableAutoscalingInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects enable autoscaling internal server error response has a 4xx status code
+func (o *ProjectsEnableAutoscalingInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects enable autoscaling internal server error response has a 5xx status code
+func (o *ProjectsEnableAutoscalingInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects enable autoscaling internal server error response a status code equal to that given
+func (o *ProjectsEnableAutoscalingInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsEnableAutoscalingInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingInternalServerError ", 500)
+}
+
+func (o *ProjectsEnableAutoscalingInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingInternalServerError ", 500)
 }
 

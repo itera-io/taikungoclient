@@ -53,10 +53,12 @@ func NewDNSServersListParamsWithHTTPClient(client *http.Client) *DNSServersListP
 	}
 }
 
-/* DNSServersListParams contains all the parameters to send to the API endpoint
-   for the Dns servers list operation.
+/*
+DNSServersListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the Dns servers list operation.
+
+	Typically these are written to a http.Request.
 */
 type DNSServersListParams struct {
 

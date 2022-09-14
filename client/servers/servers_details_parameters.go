@@ -53,10 +53,12 @@ func NewServersDetailsParamsWithHTTPClient(client *http.Client) *ServersDetailsP
 	}
 }
 
-/* ServersDetailsParams contains all the parameters to send to the API endpoint
-   for the servers details operation.
+/*
+ServersDetailsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the servers details operation.
+
+	Typically these are written to a http.Request.
 */
 type ServersDetailsParams struct {
 

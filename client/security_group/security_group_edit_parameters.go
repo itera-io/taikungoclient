@@ -54,10 +54,12 @@ func NewSecurityGroupEditParamsWithHTTPClient(client *http.Client) *SecurityGrou
 	}
 }
 
-/* SecurityGroupEditParams contains all the parameters to send to the API endpoint
-   for the security group edit operation.
+/*
+SecurityGroupEditParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the security group edit operation.
+
+	Typically these are written to a http.Request.
 */
 type SecurityGroupEditParams struct {
 

@@ -53,10 +53,12 @@ func NewStandAloneProjectDetailsParamsWithHTTPClient(client *http.Client) *Stand
 	}
 }
 
-/* StandAloneProjectDetailsParams contains all the parameters to send to the API endpoint
-   for the stand alone project details operation.
+/*
+StandAloneProjectDetailsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone project details operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneProjectDetailsParams struct {
 

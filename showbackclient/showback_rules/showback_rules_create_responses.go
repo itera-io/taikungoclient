@@ -69,7 +69,8 @@ func NewShowbackRulesCreateOK() *ShowbackRulesCreateOK {
 	return &ShowbackRulesCreateOK{}
 }
 
-/* ShowbackRulesCreateOK describes a response with status code 200, with default header values.
+/*
+ShowbackRulesCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ShowbackRulesCreateOK struct {
 	Payload *models.APIResponse
 }
 
+// IsSuccess returns true when this showback rules create o k response has a 2xx status code
+func (o *ShowbackRulesCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this showback rules create o k response has a 3xx status code
+func (o *ShowbackRulesCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules create o k response has a 4xx status code
+func (o *ShowbackRulesCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this showback rules create o k response has a 5xx status code
+func (o *ShowbackRulesCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules create o k response a status code equal to that given
+func (o *ShowbackRulesCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ShowbackRulesCreateOK) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *ShowbackRulesCreateOK) String() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *ShowbackRulesCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewShowbackRulesCreateBadRequest() *ShowbackRulesCreateBadRequest {
 	return &ShowbackRulesCreateBadRequest{}
 }
 
-/* ShowbackRulesCreateBadRequest describes a response with status code 400, with default header values.
+/*
+ShowbackRulesCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type ShowbackRulesCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this showback rules create bad request response has a 2xx status code
+func (o *ShowbackRulesCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback rules create bad request response has a 3xx status code
+func (o *ShowbackRulesCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules create bad request response has a 4xx status code
+func (o *ShowbackRulesCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback rules create bad request response has a 5xx status code
+func (o *ShowbackRulesCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules create bad request response a status code equal to that given
+func (o *ShowbackRulesCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ShowbackRulesCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ShowbackRulesCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ShowbackRulesCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewShowbackRulesCreateUnauthorized() *ShowbackRulesCreateUnauthorized {
 	return &ShowbackRulesCreateUnauthorized{}
 }
 
-/* ShowbackRulesCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+ShowbackRulesCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type ShowbackRulesCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback rules create unauthorized response has a 2xx status code
+func (o *ShowbackRulesCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback rules create unauthorized response has a 3xx status code
+func (o *ShowbackRulesCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules create unauthorized response has a 4xx status code
+func (o *ShowbackRulesCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback rules create unauthorized response has a 5xx status code
+func (o *ShowbackRulesCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules create unauthorized response a status code equal to that given
+func (o *ShowbackRulesCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ShowbackRulesCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ShowbackRulesCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ShowbackRulesCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewShowbackRulesCreateForbidden() *ShowbackRulesCreateForbidden {
 	return &ShowbackRulesCreateForbidden{}
 }
 
-/* ShowbackRulesCreateForbidden describes a response with status code 403, with default header values.
+/*
+ShowbackRulesCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type ShowbackRulesCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback rules create forbidden response has a 2xx status code
+func (o *ShowbackRulesCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback rules create forbidden response has a 3xx status code
+func (o *ShowbackRulesCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules create forbidden response has a 4xx status code
+func (o *ShowbackRulesCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback rules create forbidden response has a 5xx status code
+func (o *ShowbackRulesCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules create forbidden response a status code equal to that given
+func (o *ShowbackRulesCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ShowbackRulesCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ShowbackRulesCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ShowbackRulesCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewShowbackRulesCreateNotFound() *ShowbackRulesCreateNotFound {
 	return &ShowbackRulesCreateNotFound{}
 }
 
-/* ShowbackRulesCreateNotFound describes a response with status code 404, with default header values.
+/*
+ShowbackRulesCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type ShowbackRulesCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback rules create not found response has a 2xx status code
+func (o *ShowbackRulesCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback rules create not found response has a 3xx status code
+func (o *ShowbackRulesCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules create not found response has a 4xx status code
+func (o *ShowbackRulesCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback rules create not found response has a 5xx status code
+func (o *ShowbackRulesCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules create not found response a status code equal to that given
+func (o *ShowbackRulesCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ShowbackRulesCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ShowbackRulesCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ShowbackRulesCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewShowbackRulesCreateInternalServerError() *ShowbackRulesCreateInternalSer
 	return &ShowbackRulesCreateInternalServerError{}
 }
 
-/* ShowbackRulesCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+ShowbackRulesCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ShowbackRulesCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this showback rules create internal server error response has a 2xx status code
+func (o *ShowbackRulesCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback rules create internal server error response has a 3xx status code
+func (o *ShowbackRulesCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules create internal server error response has a 4xx status code
+func (o *ShowbackRulesCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this showback rules create internal server error response has a 5xx status code
+func (o *ShowbackRulesCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this showback rules create internal server error response a status code equal to that given
+func (o *ShowbackRulesCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ShowbackRulesCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateInternalServerError ", 500)
+}
+
+func (o *ShowbackRulesCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateInternalServerError ", 500)
 }
 

@@ -54,10 +54,12 @@ func NewShowbackCredentialsCreateParamsWithHTTPClient(client *http.Client) *Show
 	}
 }
 
-/* ShowbackCredentialsCreateParams contains all the parameters to send to the API endpoint
-   for the showback credentials create operation.
+/*
+ShowbackCredentialsCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the showback credentials create operation.
+
+	Typically these are written to a http.Request.
 */
 type ShowbackCredentialsCreateParams struct {
 

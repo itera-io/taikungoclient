@@ -54,10 +54,12 @@ func NewPrometheusBindRulesParamsWithHTTPClient(client *http.Client) *Prometheus
 	}
 }
 
-/* PrometheusBindRulesParams contains all the parameters to send to the API endpoint
-   for the prometheus bind rules operation.
+/*
+PrometheusBindRulesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the prometheus bind rules operation.
+
+	Typically these are written to a http.Request.
 */
 type PrometheusBindRulesParams struct {
 

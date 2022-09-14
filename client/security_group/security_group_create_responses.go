@@ -69,7 +69,8 @@ func NewSecurityGroupCreateOK() *SecurityGroupCreateOK {
 	return &SecurityGroupCreateOK{}
 }
 
-/* SecurityGroupCreateOK describes a response with status code 200, with default header values.
+/*
+SecurityGroupCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SecurityGroupCreateOK struct {
 	Payload *models.APIResponse
 }
 
+// IsSuccess returns true when this security group create o k response has a 2xx status code
+func (o *SecurityGroupCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this security group create o k response has a 3xx status code
+func (o *SecurityGroupCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group create o k response has a 4xx status code
+func (o *SecurityGroupCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this security group create o k response has a 5xx status code
+func (o *SecurityGroupCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this security group create o k response a status code equal to that given
+func (o *SecurityGroupCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SecurityGroupCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *SecurityGroupCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *SecurityGroupCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewSecurityGroupCreateBadRequest() *SecurityGroupCreateBadRequest {
 	return &SecurityGroupCreateBadRequest{}
 }
 
-/* SecurityGroupCreateBadRequest describes a response with status code 400, with default header values.
+/*
+SecurityGroupCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type SecurityGroupCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this security group create bad request response has a 2xx status code
+func (o *SecurityGroupCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this security group create bad request response has a 3xx status code
+func (o *SecurityGroupCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group create bad request response has a 4xx status code
+func (o *SecurityGroupCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this security group create bad request response has a 5xx status code
+func (o *SecurityGroupCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this security group create bad request response a status code equal to that given
+func (o *SecurityGroupCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SecurityGroupCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SecurityGroupCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SecurityGroupCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewSecurityGroupCreateUnauthorized() *SecurityGroupCreateUnauthorized {
 	return &SecurityGroupCreateUnauthorized{}
 }
 
-/* SecurityGroupCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+SecurityGroupCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type SecurityGroupCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this security group create unauthorized response has a 2xx status code
+func (o *SecurityGroupCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this security group create unauthorized response has a 3xx status code
+func (o *SecurityGroupCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group create unauthorized response has a 4xx status code
+func (o *SecurityGroupCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this security group create unauthorized response has a 5xx status code
+func (o *SecurityGroupCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this security group create unauthorized response a status code equal to that given
+func (o *SecurityGroupCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SecurityGroupCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SecurityGroupCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SecurityGroupCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewSecurityGroupCreateForbidden() *SecurityGroupCreateForbidden {
 	return &SecurityGroupCreateForbidden{}
 }
 
-/* SecurityGroupCreateForbidden describes a response with status code 403, with default header values.
+/*
+SecurityGroupCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type SecurityGroupCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this security group create forbidden response has a 2xx status code
+func (o *SecurityGroupCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this security group create forbidden response has a 3xx status code
+func (o *SecurityGroupCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group create forbidden response has a 4xx status code
+func (o *SecurityGroupCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this security group create forbidden response has a 5xx status code
+func (o *SecurityGroupCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this security group create forbidden response a status code equal to that given
+func (o *SecurityGroupCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SecurityGroupCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SecurityGroupCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SecurityGroupCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewSecurityGroupCreateNotFound() *SecurityGroupCreateNotFound {
 	return &SecurityGroupCreateNotFound{}
 }
 
-/* SecurityGroupCreateNotFound describes a response with status code 404, with default header values.
+/*
+SecurityGroupCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type SecurityGroupCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this security group create not found response has a 2xx status code
+func (o *SecurityGroupCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this security group create not found response has a 3xx status code
+func (o *SecurityGroupCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group create not found response has a 4xx status code
+func (o *SecurityGroupCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this security group create not found response has a 5xx status code
+func (o *SecurityGroupCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this security group create not found response a status code equal to that given
+func (o *SecurityGroupCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SecurityGroupCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SecurityGroupCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SecurityGroupCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewSecurityGroupCreateInternalServerError() *SecurityGroupCreateInternalSer
 	return &SecurityGroupCreateInternalServerError{}
 }
 
-/* SecurityGroupCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+SecurityGroupCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SecurityGroupCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this security group create internal server error response has a 2xx status code
+func (o *SecurityGroupCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this security group create internal server error response has a 3xx status code
+func (o *SecurityGroupCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group create internal server error response has a 4xx status code
+func (o *SecurityGroupCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this security group create internal server error response has a 5xx status code
+func (o *SecurityGroupCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this security group create internal server error response a status code equal to that given
+func (o *SecurityGroupCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SecurityGroupCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateInternalServerError ", 500)
+}
+
+func (o *SecurityGroupCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateInternalServerError ", 500)
 }
 

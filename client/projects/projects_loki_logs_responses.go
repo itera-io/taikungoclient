@@ -69,14 +69,44 @@ func NewProjectsLokiLogsOK() *ProjectsLokiLogsOK {
 	return &ProjectsLokiLogsOK{}
 }
 
-/* ProjectsLokiLogsOK describes a response with status code 200, with default header values.
+/*
+ProjectsLokiLogsOK describes a response with status code 200, with default header values.
 
 Success
 */
 type ProjectsLokiLogsOK struct {
 }
 
+// IsSuccess returns true when this projects loki logs o k response has a 2xx status code
+func (o *ProjectsLokiLogsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects loki logs o k response has a 3xx status code
+func (o *ProjectsLokiLogsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects loki logs o k response has a 4xx status code
+func (o *ProjectsLokiLogsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects loki logs o k response has a 5xx status code
+func (o *ProjectsLokiLogsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects loki logs o k response a status code equal to that given
+func (o *ProjectsLokiLogsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsLokiLogsOK) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsOK ", 200)
+}
+
+func (o *ProjectsLokiLogsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsOK ", 200)
 }
 
@@ -90,7 +120,8 @@ func NewProjectsLokiLogsBadRequest() *ProjectsLokiLogsBadRequest {
 	return &ProjectsLokiLogsBadRequest{}
 }
 
-/* ProjectsLokiLogsBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsLokiLogsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -98,9 +129,39 @@ type ProjectsLokiLogsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects loki logs bad request response has a 2xx status code
+func (o *ProjectsLokiLogsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects loki logs bad request response has a 3xx status code
+func (o *ProjectsLokiLogsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects loki logs bad request response has a 4xx status code
+func (o *ProjectsLokiLogsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects loki logs bad request response has a 5xx status code
+func (o *ProjectsLokiLogsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects loki logs bad request response a status code equal to that given
+func (o *ProjectsLokiLogsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsLokiLogsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsLokiLogsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsLokiLogsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -122,7 +183,8 @@ func NewProjectsLokiLogsUnauthorized() *ProjectsLokiLogsUnauthorized {
 	return &ProjectsLokiLogsUnauthorized{}
 }
 
-/* ProjectsLokiLogsUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsLokiLogsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -130,9 +192,39 @@ type ProjectsLokiLogsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects loki logs unauthorized response has a 2xx status code
+func (o *ProjectsLokiLogsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects loki logs unauthorized response has a 3xx status code
+func (o *ProjectsLokiLogsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects loki logs unauthorized response has a 4xx status code
+func (o *ProjectsLokiLogsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects loki logs unauthorized response has a 5xx status code
+func (o *ProjectsLokiLogsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects loki logs unauthorized response a status code equal to that given
+func (o *ProjectsLokiLogsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsLokiLogsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsLokiLogsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsLokiLogsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -154,7 +246,8 @@ func NewProjectsLokiLogsForbidden() *ProjectsLokiLogsForbidden {
 	return &ProjectsLokiLogsForbidden{}
 }
 
-/* ProjectsLokiLogsForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsLokiLogsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -162,9 +255,39 @@ type ProjectsLokiLogsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects loki logs forbidden response has a 2xx status code
+func (o *ProjectsLokiLogsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects loki logs forbidden response has a 3xx status code
+func (o *ProjectsLokiLogsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects loki logs forbidden response has a 4xx status code
+func (o *ProjectsLokiLogsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects loki logs forbidden response has a 5xx status code
+func (o *ProjectsLokiLogsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects loki logs forbidden response a status code equal to that given
+func (o *ProjectsLokiLogsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsLokiLogsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsLokiLogsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsLokiLogsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -186,7 +309,8 @@ func NewProjectsLokiLogsNotFound() *ProjectsLokiLogsNotFound {
 	return &ProjectsLokiLogsNotFound{}
 }
 
-/* ProjectsLokiLogsNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsLokiLogsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -194,9 +318,39 @@ type ProjectsLokiLogsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects loki logs not found response has a 2xx status code
+func (o *ProjectsLokiLogsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects loki logs not found response has a 3xx status code
+func (o *ProjectsLokiLogsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects loki logs not found response has a 4xx status code
+func (o *ProjectsLokiLogsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects loki logs not found response has a 5xx status code
+func (o *ProjectsLokiLogsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects loki logs not found response a status code equal to that given
+func (o *ProjectsLokiLogsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsLokiLogsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsLokiLogsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsLokiLogsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -218,14 +372,44 @@ func NewProjectsLokiLogsInternalServerError() *ProjectsLokiLogsInternalServerErr
 	return &ProjectsLokiLogsInternalServerError{}
 }
 
-/* ProjectsLokiLogsInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsLokiLogsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsLokiLogsInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects loki logs internal server error response has a 2xx status code
+func (o *ProjectsLokiLogsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects loki logs internal server error response has a 3xx status code
+func (o *ProjectsLokiLogsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects loki logs internal server error response has a 4xx status code
+func (o *ProjectsLokiLogsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects loki logs internal server error response has a 5xx status code
+func (o *ProjectsLokiLogsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects loki logs internal server error response a status code equal to that given
+func (o *ProjectsLokiLogsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsLokiLogsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsInternalServerError ", 500)
+}
+
+func (o *ProjectsLokiLogsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsInternalServerError ", 500)
 }
 

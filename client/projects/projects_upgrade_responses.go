@@ -69,7 +69,8 @@ func NewProjectsUpgradeOK() *ProjectsUpgradeOK {
 	return &ProjectsUpgradeOK{}
 }
 
-/* ProjectsUpgradeOK describes a response with status code 200, with default header values.
+/*
+ProjectsUpgradeOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsUpgradeOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this projects upgrade o k response has a 2xx status code
+func (o *ProjectsUpgradeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects upgrade o k response has a 3xx status code
+func (o *ProjectsUpgradeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects upgrade o k response has a 4xx status code
+func (o *ProjectsUpgradeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects upgrade o k response has a 5xx status code
+func (o *ProjectsUpgradeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects upgrade o k response a status code equal to that given
+func (o *ProjectsUpgradeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsUpgradeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsUpgradeOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsUpgradeOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectsUpgradeBadRequest() *ProjectsUpgradeBadRequest {
 	return &ProjectsUpgradeBadRequest{}
 }
 
-/* ProjectsUpgradeBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsUpgradeBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectsUpgradeBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects upgrade bad request response has a 2xx status code
+func (o *ProjectsUpgradeBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects upgrade bad request response has a 3xx status code
+func (o *ProjectsUpgradeBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects upgrade bad request response has a 4xx status code
+func (o *ProjectsUpgradeBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects upgrade bad request response has a 5xx status code
+func (o *ProjectsUpgradeBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects upgrade bad request response a status code equal to that given
+func (o *ProjectsUpgradeBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsUpgradeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsUpgradeBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsUpgradeBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectsUpgradeUnauthorized() *ProjectsUpgradeUnauthorized {
 	return &ProjectsUpgradeUnauthorized{}
 }
 
-/* ProjectsUpgradeUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsUpgradeUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectsUpgradeUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects upgrade unauthorized response has a 2xx status code
+func (o *ProjectsUpgradeUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects upgrade unauthorized response has a 3xx status code
+func (o *ProjectsUpgradeUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects upgrade unauthorized response has a 4xx status code
+func (o *ProjectsUpgradeUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects upgrade unauthorized response has a 5xx status code
+func (o *ProjectsUpgradeUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects upgrade unauthorized response a status code equal to that given
+func (o *ProjectsUpgradeUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsUpgradeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsUpgradeUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsUpgradeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectsUpgradeForbidden() *ProjectsUpgradeForbidden {
 	return &ProjectsUpgradeForbidden{}
 }
 
-/* ProjectsUpgradeForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsUpgradeForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectsUpgradeForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects upgrade forbidden response has a 2xx status code
+func (o *ProjectsUpgradeForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects upgrade forbidden response has a 3xx status code
+func (o *ProjectsUpgradeForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects upgrade forbidden response has a 4xx status code
+func (o *ProjectsUpgradeForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects upgrade forbidden response has a 5xx status code
+func (o *ProjectsUpgradeForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects upgrade forbidden response a status code equal to that given
+func (o *ProjectsUpgradeForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsUpgradeForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsUpgradeForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsUpgradeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectsUpgradeNotFound() *ProjectsUpgradeNotFound {
 	return &ProjectsUpgradeNotFound{}
 }
 
-/* ProjectsUpgradeNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsUpgradeNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectsUpgradeNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects upgrade not found response has a 2xx status code
+func (o *ProjectsUpgradeNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects upgrade not found response has a 3xx status code
+func (o *ProjectsUpgradeNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects upgrade not found response has a 4xx status code
+func (o *ProjectsUpgradeNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects upgrade not found response has a 5xx status code
+func (o *ProjectsUpgradeNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects upgrade not found response a status code equal to that given
+func (o *ProjectsUpgradeNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsUpgradeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsUpgradeNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsUpgradeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectsUpgradeInternalServerError() *ProjectsUpgradeInternalServerError
 	return &ProjectsUpgradeInternalServerError{}
 }
 
-/* ProjectsUpgradeInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsUpgradeInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsUpgradeInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects upgrade internal server error response has a 2xx status code
+func (o *ProjectsUpgradeInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects upgrade internal server error response has a 3xx status code
+func (o *ProjectsUpgradeInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects upgrade internal server error response has a 4xx status code
+func (o *ProjectsUpgradeInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects upgrade internal server error response has a 5xx status code
+func (o *ProjectsUpgradeInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects upgrade internal server error response a status code equal to that given
+func (o *ProjectsUpgradeInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsUpgradeInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeInternalServerError ", 500)
+}
+
+func (o *ProjectsUpgradeInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeInternalServerError ", 500)
 }
 

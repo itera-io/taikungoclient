@@ -69,7 +69,8 @@ func NewKubernetesProfilesListOK() *KubernetesProfilesListOK {
 	return &KubernetesProfilesListOK{}
 }
 
-/* KubernetesProfilesListOK describes a response with status code 200, with default header values.
+/*
+KubernetesProfilesListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesProfilesListOK struct {
 	Payload *models.KubernetesProfilesList
 }
 
+// IsSuccess returns true when this kubernetes profiles list o k response has a 2xx status code
+func (o *KubernetesProfilesListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes profiles list o k response has a 3xx status code
+func (o *KubernetesProfilesListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles list o k response has a 4xx status code
+func (o *KubernetesProfilesListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes profiles list o k response has a 5xx status code
+func (o *KubernetesProfilesListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes profiles list o k response a status code equal to that given
+func (o *KubernetesProfilesListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesProfilesListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesProfilesListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesProfilesListOK) GetPayload() *models.KubernetesProfilesList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewKubernetesProfilesListBadRequest() *KubernetesProfilesListBadRequest {
 	return &KubernetesProfilesListBadRequest{}
 }
 
-/* KubernetesProfilesListBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesProfilesListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type KubernetesProfilesListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes profiles list bad request response has a 2xx status code
+func (o *KubernetesProfilesListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes profiles list bad request response has a 3xx status code
+func (o *KubernetesProfilesListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles list bad request response has a 4xx status code
+func (o *KubernetesProfilesListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes profiles list bad request response has a 5xx status code
+func (o *KubernetesProfilesListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes profiles list bad request response a status code equal to that given
+func (o *KubernetesProfilesListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesProfilesListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesProfilesListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesProfilesListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewKubernetesProfilesListUnauthorized() *KubernetesProfilesListUnauthorized
 	return &KubernetesProfilesListUnauthorized{}
 }
 
-/* KubernetesProfilesListUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesProfilesListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type KubernetesProfilesListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes profiles list unauthorized response has a 2xx status code
+func (o *KubernetesProfilesListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes profiles list unauthorized response has a 3xx status code
+func (o *KubernetesProfilesListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles list unauthorized response has a 4xx status code
+func (o *KubernetesProfilesListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes profiles list unauthorized response has a 5xx status code
+func (o *KubernetesProfilesListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes profiles list unauthorized response a status code equal to that given
+func (o *KubernetesProfilesListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesProfilesListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesProfilesListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewKubernetesProfilesListForbidden() *KubernetesProfilesListForbidden {
 	return &KubernetesProfilesListForbidden{}
 }
 
-/* KubernetesProfilesListForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesProfilesListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type KubernetesProfilesListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes profiles list forbidden response has a 2xx status code
+func (o *KubernetesProfilesListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes profiles list forbidden response has a 3xx status code
+func (o *KubernetesProfilesListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles list forbidden response has a 4xx status code
+func (o *KubernetesProfilesListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes profiles list forbidden response has a 5xx status code
+func (o *KubernetesProfilesListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes profiles list forbidden response a status code equal to that given
+func (o *KubernetesProfilesListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesProfilesListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesProfilesListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesProfilesListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewKubernetesProfilesListNotFound() *KubernetesProfilesListNotFound {
 	return &KubernetesProfilesListNotFound{}
 }
 
-/* KubernetesProfilesListNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesProfilesListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type KubernetesProfilesListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes profiles list not found response has a 2xx status code
+func (o *KubernetesProfilesListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes profiles list not found response has a 3xx status code
+func (o *KubernetesProfilesListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles list not found response has a 4xx status code
+func (o *KubernetesProfilesListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes profiles list not found response has a 5xx status code
+func (o *KubernetesProfilesListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes profiles list not found response a status code equal to that given
+func (o *KubernetesProfilesListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesProfilesListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesProfilesListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesProfilesListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewKubernetesProfilesListInternalServerError() *KubernetesProfilesListInter
 	return &KubernetesProfilesListInternalServerError{}
 }
 
-/* KubernetesProfilesListInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesProfilesListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesProfilesListInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes profiles list internal server error response has a 2xx status code
+func (o *KubernetesProfilesListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes profiles list internal server error response has a 3xx status code
+func (o *KubernetesProfilesListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles list internal server error response has a 4xx status code
+func (o *KubernetesProfilesListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes profiles list internal server error response has a 5xx status code
+func (o *KubernetesProfilesListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes profiles list internal server error response a status code equal to that given
+func (o *KubernetesProfilesListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesProfilesListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListInternalServerError ", 500)
+}
+
+func (o *KubernetesProfilesListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListInternalServerError ", 500)
 }
 

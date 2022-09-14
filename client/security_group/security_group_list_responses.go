@@ -69,7 +69,8 @@ func NewSecurityGroupListOK() *SecurityGroupListOK {
 	return &SecurityGroupListOK{}
 }
 
-/* SecurityGroupListOK describes a response with status code 200, with default header values.
+/*
+SecurityGroupListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SecurityGroupListOK struct {
 	Payload []*models.SecurityGroupListDto
 }
 
+// IsSuccess returns true when this security group list o k response has a 2xx status code
+func (o *SecurityGroupListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this security group list o k response has a 3xx status code
+func (o *SecurityGroupListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group list o k response has a 4xx status code
+func (o *SecurityGroupListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this security group list o k response has a 5xx status code
+func (o *SecurityGroupListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this security group list o k response a status code equal to that given
+func (o *SecurityGroupListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SecurityGroupListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListOK  %+v", 200, o.Payload)
 }
+
+func (o *SecurityGroupListOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListOK  %+v", 200, o.Payload)
+}
+
 func (o *SecurityGroupListOK) GetPayload() []*models.SecurityGroupListDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewSecurityGroupListBadRequest() *SecurityGroupListBadRequest {
 	return &SecurityGroupListBadRequest{}
 }
 
-/* SecurityGroupListBadRequest describes a response with status code 400, with default header values.
+/*
+SecurityGroupListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type SecurityGroupListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this security group list bad request response has a 2xx status code
+func (o *SecurityGroupListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this security group list bad request response has a 3xx status code
+func (o *SecurityGroupListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group list bad request response has a 4xx status code
+func (o *SecurityGroupListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this security group list bad request response has a 5xx status code
+func (o *SecurityGroupListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this security group list bad request response a status code equal to that given
+func (o *SecurityGroupListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SecurityGroupListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SecurityGroupListBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SecurityGroupListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewSecurityGroupListUnauthorized() *SecurityGroupListUnauthorized {
 	return &SecurityGroupListUnauthorized{}
 }
 
-/* SecurityGroupListUnauthorized describes a response with status code 401, with default header values.
+/*
+SecurityGroupListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type SecurityGroupListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this security group list unauthorized response has a 2xx status code
+func (o *SecurityGroupListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this security group list unauthorized response has a 3xx status code
+func (o *SecurityGroupListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group list unauthorized response has a 4xx status code
+func (o *SecurityGroupListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this security group list unauthorized response has a 5xx status code
+func (o *SecurityGroupListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this security group list unauthorized response a status code equal to that given
+func (o *SecurityGroupListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SecurityGroupListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SecurityGroupListUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SecurityGroupListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewSecurityGroupListForbidden() *SecurityGroupListForbidden {
 	return &SecurityGroupListForbidden{}
 }
 
-/* SecurityGroupListForbidden describes a response with status code 403, with default header values.
+/*
+SecurityGroupListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type SecurityGroupListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this security group list forbidden response has a 2xx status code
+func (o *SecurityGroupListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this security group list forbidden response has a 3xx status code
+func (o *SecurityGroupListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group list forbidden response has a 4xx status code
+func (o *SecurityGroupListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this security group list forbidden response has a 5xx status code
+func (o *SecurityGroupListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this security group list forbidden response a status code equal to that given
+func (o *SecurityGroupListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SecurityGroupListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SecurityGroupListForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SecurityGroupListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewSecurityGroupListNotFound() *SecurityGroupListNotFound {
 	return &SecurityGroupListNotFound{}
 }
 
-/* SecurityGroupListNotFound describes a response with status code 404, with default header values.
+/*
+SecurityGroupListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type SecurityGroupListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this security group list not found response has a 2xx status code
+func (o *SecurityGroupListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this security group list not found response has a 3xx status code
+func (o *SecurityGroupListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group list not found response has a 4xx status code
+func (o *SecurityGroupListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this security group list not found response has a 5xx status code
+func (o *SecurityGroupListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this security group list not found response a status code equal to that given
+func (o *SecurityGroupListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SecurityGroupListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SecurityGroupListNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SecurityGroupListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewSecurityGroupListInternalServerError() *SecurityGroupListInternalServerE
 	return &SecurityGroupListInternalServerError{}
 }
 
-/* SecurityGroupListInternalServerError describes a response with status code 500, with default header values.
+/*
+SecurityGroupListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SecurityGroupListInternalServerError struct {
 }
 
+// IsSuccess returns true when this security group list internal server error response has a 2xx status code
+func (o *SecurityGroupListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this security group list internal server error response has a 3xx status code
+func (o *SecurityGroupListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group list internal server error response has a 4xx status code
+func (o *SecurityGroupListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this security group list internal server error response has a 5xx status code
+func (o *SecurityGroupListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this security group list internal server error response a status code equal to that given
+func (o *SecurityGroupListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SecurityGroupListInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListInternalServerError ", 500)
+}
+
+func (o *SecurityGroupListInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListInternalServerError ", 500)
 }
 

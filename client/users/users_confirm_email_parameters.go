@@ -54,10 +54,12 @@ func NewUsersConfirmEmailParamsWithHTTPClient(client *http.Client) *UsersConfirm
 	}
 }
 
-/* UsersConfirmEmailParams contains all the parameters to send to the API endpoint
-   for the users confirm email operation.
+/*
+UsersConfirmEmailParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the users confirm email operation.
+
+	Typically these are written to a http.Request.
 */
 type UsersConfirmEmailParams struct {
 

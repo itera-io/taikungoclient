@@ -69,7 +69,8 @@ func NewServersConsoleOK() *ServersConsoleOK {
 	return &ServersConsoleOK{}
 }
 
-/* ServersConsoleOK describes a response with status code 200, with default header values.
+/*
+ServersConsoleOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ServersConsoleOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this servers console o k response has a 2xx status code
+func (o *ServersConsoleOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this servers console o k response has a 3xx status code
+func (o *ServersConsoleOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers console o k response has a 4xx status code
+func (o *ServersConsoleOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this servers console o k response has a 5xx status code
+func (o *ServersConsoleOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this servers console o k response a status code equal to that given
+func (o *ServersConsoleOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ServersConsoleOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleOK  %+v", 200, o.Payload)
 }
+
+func (o *ServersConsoleOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleOK  %+v", 200, o.Payload)
+}
+
 func (o *ServersConsoleOK) GetPayload() string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewServersConsoleBadRequest() *ServersConsoleBadRequest {
 	return &ServersConsoleBadRequest{}
 }
 
-/* ServersConsoleBadRequest describes a response with status code 400, with default header values.
+/*
+ServersConsoleBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ServersConsoleBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this servers console bad request response has a 2xx status code
+func (o *ServersConsoleBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this servers console bad request response has a 3xx status code
+func (o *ServersConsoleBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers console bad request response has a 4xx status code
+func (o *ServersConsoleBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this servers console bad request response has a 5xx status code
+func (o *ServersConsoleBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this servers console bad request response a status code equal to that given
+func (o *ServersConsoleBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ServersConsoleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ServersConsoleBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ServersConsoleBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewServersConsoleUnauthorized() *ServersConsoleUnauthorized {
 	return &ServersConsoleUnauthorized{}
 }
 
-/* ServersConsoleUnauthorized describes a response with status code 401, with default header values.
+/*
+ServersConsoleUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ServersConsoleUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this servers console unauthorized response has a 2xx status code
+func (o *ServersConsoleUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this servers console unauthorized response has a 3xx status code
+func (o *ServersConsoleUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers console unauthorized response has a 4xx status code
+func (o *ServersConsoleUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this servers console unauthorized response has a 5xx status code
+func (o *ServersConsoleUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this servers console unauthorized response a status code equal to that given
+func (o *ServersConsoleUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ServersConsoleUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ServersConsoleUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ServersConsoleUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewServersConsoleForbidden() *ServersConsoleForbidden {
 	return &ServersConsoleForbidden{}
 }
 
-/* ServersConsoleForbidden describes a response with status code 403, with default header values.
+/*
+ServersConsoleForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ServersConsoleForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this servers console forbidden response has a 2xx status code
+func (o *ServersConsoleForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this servers console forbidden response has a 3xx status code
+func (o *ServersConsoleForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers console forbidden response has a 4xx status code
+func (o *ServersConsoleForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this servers console forbidden response has a 5xx status code
+func (o *ServersConsoleForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this servers console forbidden response a status code equal to that given
+func (o *ServersConsoleForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ServersConsoleForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ServersConsoleForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ServersConsoleForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewServersConsoleNotFound() *ServersConsoleNotFound {
 	return &ServersConsoleNotFound{}
 }
 
-/* ServersConsoleNotFound describes a response with status code 404, with default header values.
+/*
+ServersConsoleNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ServersConsoleNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this servers console not found response has a 2xx status code
+func (o *ServersConsoleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this servers console not found response has a 3xx status code
+func (o *ServersConsoleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers console not found response has a 4xx status code
+func (o *ServersConsoleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this servers console not found response has a 5xx status code
+func (o *ServersConsoleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this servers console not found response a status code equal to that given
+func (o *ServersConsoleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ServersConsoleNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ServersConsoleNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ServersConsoleNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewServersConsoleInternalServerError() *ServersConsoleInternalServerError {
 	return &ServersConsoleInternalServerError{}
 }
 
-/* ServersConsoleInternalServerError describes a response with status code 500, with default header values.
+/*
+ServersConsoleInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ServersConsoleInternalServerError struct {
 }
 
+// IsSuccess returns true when this servers console internal server error response has a 2xx status code
+func (o *ServersConsoleInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this servers console internal server error response has a 3xx status code
+func (o *ServersConsoleInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers console internal server error response has a 4xx status code
+func (o *ServersConsoleInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this servers console internal server error response has a 5xx status code
+func (o *ServersConsoleInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this servers console internal server error response a status code equal to that given
+func (o *ServersConsoleInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ServersConsoleInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleInternalServerError ", 500)
+}
+
+func (o *ServersConsoleInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleInternalServerError ", 500)
 }
 

@@ -54,10 +54,12 @@ func NewKubernetesPatchPodParamsWithHTTPClient(client *http.Client) *KubernetesP
 	}
 }
 
-/* KubernetesPatchPodParams contains all the parameters to send to the API endpoint
-   for the kubernetes patch pod operation.
+/*
+KubernetesPatchPodParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes patch pod operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesPatchPodParams struct {
 

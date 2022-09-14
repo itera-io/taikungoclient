@@ -54,10 +54,12 @@ func NewOpaProfilesDeleteParamsWithHTTPClient(client *http.Client) *OpaProfilesD
 	}
 }
 
-/* OpaProfilesDeleteParams contains all the parameters to send to the API endpoint
-   for the opa profiles delete operation.
+/*
+OpaProfilesDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the opa profiles delete operation.
+
+	Typically these are written to a http.Request.
 */
 type OpaProfilesDeleteParams struct {
 

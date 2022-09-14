@@ -69,7 +69,8 @@ func NewCloudCredentialsMakeDefaultOK() *CloudCredentialsMakeDefaultOK {
 	return &CloudCredentialsMakeDefaultOK{}
 }
 
-/* CloudCredentialsMakeDefaultOK describes a response with status code 200, with default header values.
+/*
+CloudCredentialsMakeDefaultOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CloudCredentialsMakeDefaultOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this cloud credentials make default o k response has a 2xx status code
+func (o *CloudCredentialsMakeDefaultOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cloud credentials make default o k response has a 3xx status code
+func (o *CloudCredentialsMakeDefaultOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials make default o k response has a 4xx status code
+func (o *CloudCredentialsMakeDefaultOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cloud credentials make default o k response has a 5xx status code
+func (o *CloudCredentialsMakeDefaultOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials make default o k response a status code equal to that given
+func (o *CloudCredentialsMakeDefaultOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CloudCredentialsMakeDefaultOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultOK  %+v", 200, o.Payload)
 }
+
+func (o *CloudCredentialsMakeDefaultOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultOK  %+v", 200, o.Payload)
+}
+
 func (o *CloudCredentialsMakeDefaultOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCloudCredentialsMakeDefaultBadRequest() *CloudCredentialsMakeDefaultBadR
 	return &CloudCredentialsMakeDefaultBadRequest{}
 }
 
-/* CloudCredentialsMakeDefaultBadRequest describes a response with status code 400, with default header values.
+/*
+CloudCredentialsMakeDefaultBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CloudCredentialsMakeDefaultBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials make default bad request response has a 2xx status code
+func (o *CloudCredentialsMakeDefaultBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials make default bad request response has a 3xx status code
+func (o *CloudCredentialsMakeDefaultBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials make default bad request response has a 4xx status code
+func (o *CloudCredentialsMakeDefaultBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials make default bad request response has a 5xx status code
+func (o *CloudCredentialsMakeDefaultBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials make default bad request response a status code equal to that given
+func (o *CloudCredentialsMakeDefaultBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CloudCredentialsMakeDefaultBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CloudCredentialsMakeDefaultBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CloudCredentialsMakeDefaultBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCloudCredentialsMakeDefaultUnauthorized() *CloudCredentialsMakeDefaultUn
 	return &CloudCredentialsMakeDefaultUnauthorized{}
 }
 
-/* CloudCredentialsMakeDefaultUnauthorized describes a response with status code 401, with default header values.
+/*
+CloudCredentialsMakeDefaultUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CloudCredentialsMakeDefaultUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials make default unauthorized response has a 2xx status code
+func (o *CloudCredentialsMakeDefaultUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials make default unauthorized response has a 3xx status code
+func (o *CloudCredentialsMakeDefaultUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials make default unauthorized response has a 4xx status code
+func (o *CloudCredentialsMakeDefaultUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials make default unauthorized response has a 5xx status code
+func (o *CloudCredentialsMakeDefaultUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials make default unauthorized response a status code equal to that given
+func (o *CloudCredentialsMakeDefaultUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CloudCredentialsMakeDefaultUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CloudCredentialsMakeDefaultUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CloudCredentialsMakeDefaultUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCloudCredentialsMakeDefaultForbidden() *CloudCredentialsMakeDefaultForbi
 	return &CloudCredentialsMakeDefaultForbidden{}
 }
 
-/* CloudCredentialsMakeDefaultForbidden describes a response with status code 403, with default header values.
+/*
+CloudCredentialsMakeDefaultForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CloudCredentialsMakeDefaultForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials make default forbidden response has a 2xx status code
+func (o *CloudCredentialsMakeDefaultForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials make default forbidden response has a 3xx status code
+func (o *CloudCredentialsMakeDefaultForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials make default forbidden response has a 4xx status code
+func (o *CloudCredentialsMakeDefaultForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials make default forbidden response has a 5xx status code
+func (o *CloudCredentialsMakeDefaultForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials make default forbidden response a status code equal to that given
+func (o *CloudCredentialsMakeDefaultForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CloudCredentialsMakeDefaultForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CloudCredentialsMakeDefaultForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CloudCredentialsMakeDefaultForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCloudCredentialsMakeDefaultNotFound() *CloudCredentialsMakeDefaultNotFou
 	return &CloudCredentialsMakeDefaultNotFound{}
 }
 
-/* CloudCredentialsMakeDefaultNotFound describes a response with status code 404, with default header values.
+/*
+CloudCredentialsMakeDefaultNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CloudCredentialsMakeDefaultNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials make default not found response has a 2xx status code
+func (o *CloudCredentialsMakeDefaultNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials make default not found response has a 3xx status code
+func (o *CloudCredentialsMakeDefaultNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials make default not found response has a 4xx status code
+func (o *CloudCredentialsMakeDefaultNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials make default not found response has a 5xx status code
+func (o *CloudCredentialsMakeDefaultNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials make default not found response a status code equal to that given
+func (o *CloudCredentialsMakeDefaultNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CloudCredentialsMakeDefaultNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CloudCredentialsMakeDefaultNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CloudCredentialsMakeDefaultNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCloudCredentialsMakeDefaultInternalServerError() *CloudCredentialsMakeDe
 	return &CloudCredentialsMakeDefaultInternalServerError{}
 }
 
-/* CloudCredentialsMakeDefaultInternalServerError describes a response with status code 500, with default header values.
+/*
+CloudCredentialsMakeDefaultInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CloudCredentialsMakeDefaultInternalServerError struct {
 }
 
+// IsSuccess returns true when this cloud credentials make default internal server error response has a 2xx status code
+func (o *CloudCredentialsMakeDefaultInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials make default internal server error response has a 3xx status code
+func (o *CloudCredentialsMakeDefaultInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials make default internal server error response has a 4xx status code
+func (o *CloudCredentialsMakeDefaultInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cloud credentials make default internal server error response has a 5xx status code
+func (o *CloudCredentialsMakeDefaultInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cloud credentials make default internal server error response a status code equal to that given
+func (o *CloudCredentialsMakeDefaultInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CloudCredentialsMakeDefaultInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultInternalServerError ", 500)
+}
+
+func (o *CloudCredentialsMakeDefaultInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultInternalServerError ", 500)
 }
 

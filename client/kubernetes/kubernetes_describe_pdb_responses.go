@@ -69,7 +69,8 @@ func NewKubernetesDescribePdbOK() *KubernetesDescribePdbOK {
 	return &KubernetesDescribePdbOK{}
 }
 
-/* KubernetesDescribePdbOK describes a response with status code 200, with default header values.
+/*
+KubernetesDescribePdbOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesDescribePdbOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this kubernetes describe pdb o k response has a 2xx status code
+func (o *KubernetesDescribePdbOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes describe pdb o k response has a 3xx status code
+func (o *KubernetesDescribePdbOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe pdb o k response has a 4xx status code
+func (o *KubernetesDescribePdbOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes describe pdb o k response has a 5xx status code
+func (o *KubernetesDescribePdbOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe pdb o k response a status code equal to that given
+func (o *KubernetesDescribePdbOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesDescribePdbOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesDescribePdbOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesDescribePdbOK) GetPayload() string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesDescribePdbBadRequest() *KubernetesDescribePdbBadRequest {
 	return &KubernetesDescribePdbBadRequest{}
 }
 
-/* KubernetesDescribePdbBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesDescribePdbBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesDescribePdbBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe pdb bad request response has a 2xx status code
+func (o *KubernetesDescribePdbBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe pdb bad request response has a 3xx status code
+func (o *KubernetesDescribePdbBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe pdb bad request response has a 4xx status code
+func (o *KubernetesDescribePdbBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe pdb bad request response has a 5xx status code
+func (o *KubernetesDescribePdbBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe pdb bad request response a status code equal to that given
+func (o *KubernetesDescribePdbBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesDescribePdbBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesDescribePdbBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesDescribePdbBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesDescribePdbUnauthorized() *KubernetesDescribePdbUnauthorized {
 	return &KubernetesDescribePdbUnauthorized{}
 }
 
-/* KubernetesDescribePdbUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesDescribePdbUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesDescribePdbUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe pdb unauthorized response has a 2xx status code
+func (o *KubernetesDescribePdbUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe pdb unauthorized response has a 3xx status code
+func (o *KubernetesDescribePdbUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe pdb unauthorized response has a 4xx status code
+func (o *KubernetesDescribePdbUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe pdb unauthorized response has a 5xx status code
+func (o *KubernetesDescribePdbUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe pdb unauthorized response a status code equal to that given
+func (o *KubernetesDescribePdbUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesDescribePdbUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesDescribePdbUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesDescribePdbUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesDescribePdbForbidden() *KubernetesDescribePdbForbidden {
 	return &KubernetesDescribePdbForbidden{}
 }
 
-/* KubernetesDescribePdbForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesDescribePdbForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesDescribePdbForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe pdb forbidden response has a 2xx status code
+func (o *KubernetesDescribePdbForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe pdb forbidden response has a 3xx status code
+func (o *KubernetesDescribePdbForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe pdb forbidden response has a 4xx status code
+func (o *KubernetesDescribePdbForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe pdb forbidden response has a 5xx status code
+func (o *KubernetesDescribePdbForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe pdb forbidden response a status code equal to that given
+func (o *KubernetesDescribePdbForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesDescribePdbForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesDescribePdbForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesDescribePdbForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesDescribePdbNotFound() *KubernetesDescribePdbNotFound {
 	return &KubernetesDescribePdbNotFound{}
 }
 
-/* KubernetesDescribePdbNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesDescribePdbNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesDescribePdbNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe pdb not found response has a 2xx status code
+func (o *KubernetesDescribePdbNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe pdb not found response has a 3xx status code
+func (o *KubernetesDescribePdbNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe pdb not found response has a 4xx status code
+func (o *KubernetesDescribePdbNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe pdb not found response has a 5xx status code
+func (o *KubernetesDescribePdbNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe pdb not found response a status code equal to that given
+func (o *KubernetesDescribePdbNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesDescribePdbNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesDescribePdbNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesDescribePdbNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesDescribePdbInternalServerError() *KubernetesDescribePdbInterna
 	return &KubernetesDescribePdbInternalServerError{}
 }
 
-/* KubernetesDescribePdbInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesDescribePdbInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesDescribePdbInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes describe pdb internal server error response has a 2xx status code
+func (o *KubernetesDescribePdbInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe pdb internal server error response has a 3xx status code
+func (o *KubernetesDescribePdbInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe pdb internal server error response has a 4xx status code
+func (o *KubernetesDescribePdbInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes describe pdb internal server error response has a 5xx status code
+func (o *KubernetesDescribePdbInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes describe pdb internal server error response a status code equal to that given
+func (o *KubernetesDescribePdbInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesDescribePdbInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbInternalServerError ", 500)
+}
+
+func (o *KubernetesDescribePdbInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbInternalServerError ", 500)
 }
 

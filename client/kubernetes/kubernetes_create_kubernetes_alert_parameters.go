@@ -55,10 +55,12 @@ func NewKubernetesCreateKubernetesAlertParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* KubernetesCreateKubernetesAlertParams contains all the parameters to send to the API endpoint
-   for the kubernetes create kubernetes alert operation.
+/*
+KubernetesCreateKubernetesAlertParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes create kubernetes alert operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesCreateKubernetesAlertParams struct {
 

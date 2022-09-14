@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  RepositoryCreate binds repo to organization
+RepositoryCreate binds repo to organization
 */
 func (a *Client) RepositoryCreate(params *RepositoryCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +81,7 @@ func (a *Client) RepositoryCreate(params *RepositoryCreateParams, authInfo runti
 }
 
 /*
-  RepositoryDelete unbinds repo from organization
+RepositoryDelete unbinds repo from organization
 */
 func (a *Client) RepositoryDelete(params *RepositoryDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) RepositoryDelete(params *RepositoryDeleteParams, authInfo runti
 }
 
 /*
-  RepositoryList retrieves available repository list
+RepositoryList retrieves available repository list
 */
 func (a *Client) RepositoryList(params *RepositoryListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryListOK, error) {
 	// TODO: Validate the params before sending
@@ -159,7 +159,7 @@ func (a *Client) RepositoryList(params *RepositoryListParams, authInfo runtime.C
 }
 
 /*
-  RepositoryTaikunRecommendedRepositoryList retrieves taikun recommended repository list
+RepositoryTaikunRecommendedRepositoryList retrieves taikun recommended repository list
 */
 func (a *Client) RepositoryTaikunRecommendedRepositoryList(params *RepositoryTaikunRecommendedRepositoryListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*RepositoryTaikunRecommendedRepositoryListOK, error) {
 	// TODO: Validate the params before sending

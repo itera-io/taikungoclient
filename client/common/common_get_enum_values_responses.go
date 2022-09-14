@@ -69,7 +69,8 @@ func NewCommonGetEnumValuesOK() *CommonGetEnumValuesOK {
 	return &CommonGetEnumValuesOK{}
 }
 
-/* CommonGetEnumValuesOK describes a response with status code 200, with default header values.
+/*
+CommonGetEnumValuesOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CommonGetEnumValuesOK struct {
 	Payload *models.EnumList
 }
 
+// IsSuccess returns true when this common get enum values o k response has a 2xx status code
+func (o *CommonGetEnumValuesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this common get enum values o k response has a 3xx status code
+func (o *CommonGetEnumValuesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get enum values o k response has a 4xx status code
+func (o *CommonGetEnumValuesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this common get enum values o k response has a 5xx status code
+func (o *CommonGetEnumValuesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this common get enum values o k response a status code equal to that given
+func (o *CommonGetEnumValuesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CommonGetEnumValuesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesOK  %+v", 200, o.Payload)
 }
+
+func (o *CommonGetEnumValuesOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesOK  %+v", 200, o.Payload)
+}
+
 func (o *CommonGetEnumValuesOK) GetPayload() *models.EnumList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewCommonGetEnumValuesBadRequest() *CommonGetEnumValuesBadRequest {
 	return &CommonGetEnumValuesBadRequest{}
 }
 
-/* CommonGetEnumValuesBadRequest describes a response with status code 400, with default header values.
+/*
+CommonGetEnumValuesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type CommonGetEnumValuesBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this common get enum values bad request response has a 2xx status code
+func (o *CommonGetEnumValuesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this common get enum values bad request response has a 3xx status code
+func (o *CommonGetEnumValuesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get enum values bad request response has a 4xx status code
+func (o *CommonGetEnumValuesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this common get enum values bad request response has a 5xx status code
+func (o *CommonGetEnumValuesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this common get enum values bad request response a status code equal to that given
+func (o *CommonGetEnumValuesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CommonGetEnumValuesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CommonGetEnumValuesBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CommonGetEnumValuesBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewCommonGetEnumValuesUnauthorized() *CommonGetEnumValuesUnauthorized {
 	return &CommonGetEnumValuesUnauthorized{}
 }
 
-/* CommonGetEnumValuesUnauthorized describes a response with status code 401, with default header values.
+/*
+CommonGetEnumValuesUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type CommonGetEnumValuesUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this common get enum values unauthorized response has a 2xx status code
+func (o *CommonGetEnumValuesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this common get enum values unauthorized response has a 3xx status code
+func (o *CommonGetEnumValuesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get enum values unauthorized response has a 4xx status code
+func (o *CommonGetEnumValuesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this common get enum values unauthorized response has a 5xx status code
+func (o *CommonGetEnumValuesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this common get enum values unauthorized response a status code equal to that given
+func (o *CommonGetEnumValuesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CommonGetEnumValuesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CommonGetEnumValuesUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CommonGetEnumValuesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewCommonGetEnumValuesForbidden() *CommonGetEnumValuesForbidden {
 	return &CommonGetEnumValuesForbidden{}
 }
 
-/* CommonGetEnumValuesForbidden describes a response with status code 403, with default header values.
+/*
+CommonGetEnumValuesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type CommonGetEnumValuesForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this common get enum values forbidden response has a 2xx status code
+func (o *CommonGetEnumValuesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this common get enum values forbidden response has a 3xx status code
+func (o *CommonGetEnumValuesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get enum values forbidden response has a 4xx status code
+func (o *CommonGetEnumValuesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this common get enum values forbidden response has a 5xx status code
+func (o *CommonGetEnumValuesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this common get enum values forbidden response a status code equal to that given
+func (o *CommonGetEnumValuesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CommonGetEnumValuesForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CommonGetEnumValuesForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CommonGetEnumValuesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewCommonGetEnumValuesNotFound() *CommonGetEnumValuesNotFound {
 	return &CommonGetEnumValuesNotFound{}
 }
 
-/* CommonGetEnumValuesNotFound describes a response with status code 404, with default header values.
+/*
+CommonGetEnumValuesNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type CommonGetEnumValuesNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this common get enum values not found response has a 2xx status code
+func (o *CommonGetEnumValuesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this common get enum values not found response has a 3xx status code
+func (o *CommonGetEnumValuesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get enum values not found response has a 4xx status code
+func (o *CommonGetEnumValuesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this common get enum values not found response has a 5xx status code
+func (o *CommonGetEnumValuesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this common get enum values not found response a status code equal to that given
+func (o *CommonGetEnumValuesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CommonGetEnumValuesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CommonGetEnumValuesNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CommonGetEnumValuesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewCommonGetEnumValuesInternalServerError() *CommonGetEnumValuesInternalSer
 	return &CommonGetEnumValuesInternalServerError{}
 }
 
-/* CommonGetEnumValuesInternalServerError describes a response with status code 500, with default header values.
+/*
+CommonGetEnumValuesInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CommonGetEnumValuesInternalServerError struct {
 }
 
+// IsSuccess returns true when this common get enum values internal server error response has a 2xx status code
+func (o *CommonGetEnumValuesInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this common get enum values internal server error response has a 3xx status code
+func (o *CommonGetEnumValuesInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get enum values internal server error response has a 4xx status code
+func (o *CommonGetEnumValuesInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this common get enum values internal server error response has a 5xx status code
+func (o *CommonGetEnumValuesInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this common get enum values internal server error response a status code equal to that given
+func (o *CommonGetEnumValuesInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CommonGetEnumValuesInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesInternalServerError ", 500)
+}
+
+func (o *CommonGetEnumValuesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesInternalServerError ", 500)
 }
 

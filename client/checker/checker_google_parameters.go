@@ -52,10 +52,12 @@ func NewCheckerGoogleParamsWithHTTPClient(client *http.Client) *CheckerGooglePar
 	}
 }
 
-/* CheckerGoogleParams contains all the parameters to send to the API endpoint
-   for the checker google operation.
+/*
+CheckerGoogleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checker google operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckerGoogleParams struct {
 

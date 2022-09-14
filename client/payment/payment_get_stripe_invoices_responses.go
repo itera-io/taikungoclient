@@ -69,7 +69,8 @@ func NewPaymentGetStripeInvoicesOK() *PaymentGetStripeInvoicesOK {
 	return &PaymentGetStripeInvoicesOK{}
 }
 
-/* PaymentGetStripeInvoicesOK describes a response with status code 200, with default header values.
+/*
+PaymentGetStripeInvoicesOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type PaymentGetStripeInvoicesOK struct {
 	Payload *models.StripeInvoices
 }
 
+// IsSuccess returns true when this payment get stripe invoices o k response has a 2xx status code
+func (o *PaymentGetStripeInvoicesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this payment get stripe invoices o k response has a 3xx status code
+func (o *PaymentGetStripeInvoicesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment get stripe invoices o k response has a 4xx status code
+func (o *PaymentGetStripeInvoicesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this payment get stripe invoices o k response has a 5xx status code
+func (o *PaymentGetStripeInvoicesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this payment get stripe invoices o k response a status code equal to that given
+func (o *PaymentGetStripeInvoicesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PaymentGetStripeInvoicesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesOK  %+v", 200, o.Payload)
 }
+
+func (o *PaymentGetStripeInvoicesOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesOK  %+v", 200, o.Payload)
+}
+
 func (o *PaymentGetStripeInvoicesOK) GetPayload() *models.StripeInvoices {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewPaymentGetStripeInvoicesBadRequest() *PaymentGetStripeInvoicesBadRequest
 	return &PaymentGetStripeInvoicesBadRequest{}
 }
 
-/* PaymentGetStripeInvoicesBadRequest describes a response with status code 400, with default header values.
+/*
+PaymentGetStripeInvoicesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type PaymentGetStripeInvoicesBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this payment get stripe invoices bad request response has a 2xx status code
+func (o *PaymentGetStripeInvoicesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this payment get stripe invoices bad request response has a 3xx status code
+func (o *PaymentGetStripeInvoicesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment get stripe invoices bad request response has a 4xx status code
+func (o *PaymentGetStripeInvoicesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this payment get stripe invoices bad request response has a 5xx status code
+func (o *PaymentGetStripeInvoicesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this payment get stripe invoices bad request response a status code equal to that given
+func (o *PaymentGetStripeInvoicesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PaymentGetStripeInvoicesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PaymentGetStripeInvoicesBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PaymentGetStripeInvoicesBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewPaymentGetStripeInvoicesUnauthorized() *PaymentGetStripeInvoicesUnauthor
 	return &PaymentGetStripeInvoicesUnauthorized{}
 }
 
-/* PaymentGetStripeInvoicesUnauthorized describes a response with status code 401, with default header values.
+/*
+PaymentGetStripeInvoicesUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type PaymentGetStripeInvoicesUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this payment get stripe invoices unauthorized response has a 2xx status code
+func (o *PaymentGetStripeInvoicesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this payment get stripe invoices unauthorized response has a 3xx status code
+func (o *PaymentGetStripeInvoicesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment get stripe invoices unauthorized response has a 4xx status code
+func (o *PaymentGetStripeInvoicesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this payment get stripe invoices unauthorized response has a 5xx status code
+func (o *PaymentGetStripeInvoicesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this payment get stripe invoices unauthorized response a status code equal to that given
+func (o *PaymentGetStripeInvoicesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PaymentGetStripeInvoicesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *PaymentGetStripeInvoicesUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *PaymentGetStripeInvoicesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewPaymentGetStripeInvoicesForbidden() *PaymentGetStripeInvoicesForbidden {
 	return &PaymentGetStripeInvoicesForbidden{}
 }
 
-/* PaymentGetStripeInvoicesForbidden describes a response with status code 403, with default header values.
+/*
+PaymentGetStripeInvoicesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type PaymentGetStripeInvoicesForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this payment get stripe invoices forbidden response has a 2xx status code
+func (o *PaymentGetStripeInvoicesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this payment get stripe invoices forbidden response has a 3xx status code
+func (o *PaymentGetStripeInvoicesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment get stripe invoices forbidden response has a 4xx status code
+func (o *PaymentGetStripeInvoicesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this payment get stripe invoices forbidden response has a 5xx status code
+func (o *PaymentGetStripeInvoicesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this payment get stripe invoices forbidden response a status code equal to that given
+func (o *PaymentGetStripeInvoicesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PaymentGetStripeInvoicesForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PaymentGetStripeInvoicesForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PaymentGetStripeInvoicesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewPaymentGetStripeInvoicesNotFound() *PaymentGetStripeInvoicesNotFound {
 	return &PaymentGetStripeInvoicesNotFound{}
 }
 
-/* PaymentGetStripeInvoicesNotFound describes a response with status code 404, with default header values.
+/*
+PaymentGetStripeInvoicesNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type PaymentGetStripeInvoicesNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this payment get stripe invoices not found response has a 2xx status code
+func (o *PaymentGetStripeInvoicesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this payment get stripe invoices not found response has a 3xx status code
+func (o *PaymentGetStripeInvoicesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment get stripe invoices not found response has a 4xx status code
+func (o *PaymentGetStripeInvoicesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this payment get stripe invoices not found response has a 5xx status code
+func (o *PaymentGetStripeInvoicesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this payment get stripe invoices not found response a status code equal to that given
+func (o *PaymentGetStripeInvoicesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PaymentGetStripeInvoicesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PaymentGetStripeInvoicesNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PaymentGetStripeInvoicesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewPaymentGetStripeInvoicesInternalServerError() *PaymentGetStripeInvoicesI
 	return &PaymentGetStripeInvoicesInternalServerError{}
 }
 
-/* PaymentGetStripeInvoicesInternalServerError describes a response with status code 500, with default header values.
+/*
+PaymentGetStripeInvoicesInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PaymentGetStripeInvoicesInternalServerError struct {
 }
 
+// IsSuccess returns true when this payment get stripe invoices internal server error response has a 2xx status code
+func (o *PaymentGetStripeInvoicesInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this payment get stripe invoices internal server error response has a 3xx status code
+func (o *PaymentGetStripeInvoicesInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment get stripe invoices internal server error response has a 4xx status code
+func (o *PaymentGetStripeInvoicesInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this payment get stripe invoices internal server error response has a 5xx status code
+func (o *PaymentGetStripeInvoicesInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this payment get stripe invoices internal server error response a status code equal to that given
+func (o *PaymentGetStripeInvoicesInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PaymentGetStripeInvoicesInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesInternalServerError ", 500)
+}
+
+func (o *PaymentGetStripeInvoicesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesInternalServerError ", 500)
 }
 

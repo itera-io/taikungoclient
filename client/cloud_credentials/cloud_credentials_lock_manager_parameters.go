@@ -54,10 +54,12 @@ func NewCloudCredentialsLockManagerParamsWithHTTPClient(client *http.Client) *Cl
 	}
 }
 
-/* CloudCredentialsLockManagerParams contains all the parameters to send to the API endpoint
-   for the cloud credentials lock manager operation.
+/*
+CloudCredentialsLockManagerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cloud credentials lock manager operation.
+
+	Typically these are written to a http.Request.
 */
 type CloudCredentialsLockManagerParams struct {
 

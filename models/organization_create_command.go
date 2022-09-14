@@ -20,6 +20,9 @@ type OrganizationCreateCommand struct {
 	// address
 	Address string `json:"address,omitempty"`
 
+	// admin cloud credential Id
+	AdminCloudCredentialID int32 `json:"adminCloudCredentialId,omitempty"`
+
 	// billing email
 	BillingEmail string `json:"billingEmail,omitempty"`
 

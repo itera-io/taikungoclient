@@ -55,10 +55,12 @@ func NewAllowedHostEditParamsWithHTTPClient(client *http.Client) *AllowedHostEdi
 	}
 }
 
-/* AllowedHostEditParams contains all the parameters to send to the API endpoint
-   for the allowed host edit operation.
+/*
+AllowedHostEditParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the allowed host edit operation.
+
+	Typically these are written to a http.Request.
 */
 type AllowedHostEditParams struct {
 

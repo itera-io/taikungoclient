@@ -52,10 +52,12 @@ func NewPartnerPartnerInfoRegistrationParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* PartnerPartnerInfoRegistrationParams contains all the parameters to send to the API endpoint
-   for the partner partner info registration operation.
+/*
+PartnerPartnerInfoRegistrationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the partner partner info registration operation.
+
+	Typically these are written to a http.Request.
 */
 type PartnerPartnerInfoRegistrationParams struct {
 

@@ -54,10 +54,12 @@ func NewProjectAppAutoSyncParamsWithHTTPClient(client *http.Client) *ProjectAppA
 	}
 }
 
-/* ProjectAppAutoSyncParams contains all the parameters to send to the API endpoint
-   for the project app auto sync operation.
+/*
+ProjectAppAutoSyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the project app auto sync operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectAppAutoSyncParams struct {
 

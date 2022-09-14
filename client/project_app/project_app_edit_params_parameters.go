@@ -54,10 +54,12 @@ func NewProjectAppEditParamsParamsWithHTTPClient(client *http.Client) *ProjectAp
 	}
 }
 
-/* ProjectAppEditParamsParams contains all the parameters to send to the API endpoint
-   for the project app edit params operation.
+/*
+ProjectAppEditParamsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the project app edit params operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectAppEditParamsParams struct {
 

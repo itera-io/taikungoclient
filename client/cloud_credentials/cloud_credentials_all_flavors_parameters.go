@@ -53,10 +53,12 @@ func NewCloudCredentialsAllFlavorsParamsWithHTTPClient(client *http.Client) *Clo
 	}
 }
 
-/* CloudCredentialsAllFlavorsParams contains all the parameters to send to the API endpoint
-   for the cloud credentials all flavors operation.
+/*
+CloudCredentialsAllFlavorsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cloud credentials all flavors operation.
+
+	Typically these are written to a http.Request.
 */
 type CloudCredentialsAllFlavorsParams struct {
 

@@ -54,10 +54,12 @@ func NewProjectsResetProjectStatusParamsWithHTTPClient(client *http.Client) *Pro
 	}
 }
 
-/* ProjectsResetProjectStatusParams contains all the parameters to send to the API endpoint
-   for the projects reset project status operation.
+/*
+ProjectsResetProjectStatusParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects reset project status operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsResetProjectStatusParams struct {
 

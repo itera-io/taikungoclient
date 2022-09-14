@@ -69,7 +69,8 @@ func NewKubernetesGetCrdListOK() *KubernetesGetCrdListOK {
 	return &KubernetesGetCrdListOK{}
 }
 
-/* KubernetesGetCrdListOK describes a response with status code 200, with default header values.
+/*
+KubernetesGetCrdListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesGetCrdListOK struct {
 	Payload interface{}
 }
 
+// IsSuccess returns true when this kubernetes get crd list o k response has a 2xx status code
+func (o *KubernetesGetCrdListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes get crd list o k response has a 3xx status code
+func (o *KubernetesGetCrdListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get crd list o k response has a 4xx status code
+func (o *KubernetesGetCrdListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get crd list o k response has a 5xx status code
+func (o *KubernetesGetCrdListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get crd list o k response a status code equal to that given
+func (o *KubernetesGetCrdListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesGetCrdListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesGetCrdListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesGetCrdListOK) GetPayload() interface{} {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesGetCrdListBadRequest() *KubernetesGetCrdListBadRequest {
 	return &KubernetesGetCrdListBadRequest{}
 }
 
-/* KubernetesGetCrdListBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesGetCrdListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesGetCrdListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get crd list bad request response has a 2xx status code
+func (o *KubernetesGetCrdListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get crd list bad request response has a 3xx status code
+func (o *KubernetesGetCrdListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get crd list bad request response has a 4xx status code
+func (o *KubernetesGetCrdListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get crd list bad request response has a 5xx status code
+func (o *KubernetesGetCrdListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get crd list bad request response a status code equal to that given
+func (o *KubernetesGetCrdListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesGetCrdListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesGetCrdListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesGetCrdListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesGetCrdListUnauthorized() *KubernetesGetCrdListUnauthorized {
 	return &KubernetesGetCrdListUnauthorized{}
 }
 
-/* KubernetesGetCrdListUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesGetCrdListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesGetCrdListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get crd list unauthorized response has a 2xx status code
+func (o *KubernetesGetCrdListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get crd list unauthorized response has a 3xx status code
+func (o *KubernetesGetCrdListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get crd list unauthorized response has a 4xx status code
+func (o *KubernetesGetCrdListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get crd list unauthorized response has a 5xx status code
+func (o *KubernetesGetCrdListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get crd list unauthorized response a status code equal to that given
+func (o *KubernetesGetCrdListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesGetCrdListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesGetCrdListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesGetCrdListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesGetCrdListForbidden() *KubernetesGetCrdListForbidden {
 	return &KubernetesGetCrdListForbidden{}
 }
 
-/* KubernetesGetCrdListForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesGetCrdListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesGetCrdListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get crd list forbidden response has a 2xx status code
+func (o *KubernetesGetCrdListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get crd list forbidden response has a 3xx status code
+func (o *KubernetesGetCrdListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get crd list forbidden response has a 4xx status code
+func (o *KubernetesGetCrdListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get crd list forbidden response has a 5xx status code
+func (o *KubernetesGetCrdListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get crd list forbidden response a status code equal to that given
+func (o *KubernetesGetCrdListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesGetCrdListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesGetCrdListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesGetCrdListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesGetCrdListNotFound() *KubernetesGetCrdListNotFound {
 	return &KubernetesGetCrdListNotFound{}
 }
 
-/* KubernetesGetCrdListNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesGetCrdListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesGetCrdListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get crd list not found response has a 2xx status code
+func (o *KubernetesGetCrdListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get crd list not found response has a 3xx status code
+func (o *KubernetesGetCrdListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get crd list not found response has a 4xx status code
+func (o *KubernetesGetCrdListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get crd list not found response has a 5xx status code
+func (o *KubernetesGetCrdListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get crd list not found response a status code equal to that given
+func (o *KubernetesGetCrdListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesGetCrdListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesGetCrdListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesGetCrdListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesGetCrdListInternalServerError() *KubernetesGetCrdListInternalS
 	return &KubernetesGetCrdListInternalServerError{}
 }
 
-/* KubernetesGetCrdListInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesGetCrdListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesGetCrdListInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes get crd list internal server error response has a 2xx status code
+func (o *KubernetesGetCrdListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get crd list internal server error response has a 3xx status code
+func (o *KubernetesGetCrdListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get crd list internal server error response has a 4xx status code
+func (o *KubernetesGetCrdListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get crd list internal server error response has a 5xx status code
+func (o *KubernetesGetCrdListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes get crd list internal server error response a status code equal to that given
+func (o *KubernetesGetCrdListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesGetCrdListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListInternalServerError ", 500)
+}
+
+func (o *KubernetesGetCrdListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListInternalServerError ", 500)
 }
 

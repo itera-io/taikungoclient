@@ -69,7 +69,8 @@ func NewOpaProfilesSyncOK() *OpaProfilesSyncOK {
 	return &OpaProfilesSyncOK{}
 }
 
-/* OpaProfilesSyncOK describes a response with status code 200, with default header values.
+/*
+OpaProfilesSyncOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OpaProfilesSyncOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this opa profiles sync o k response has a 2xx status code
+func (o *OpaProfilesSyncOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this opa profiles sync o k response has a 3xx status code
+func (o *OpaProfilesSyncOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles sync o k response has a 4xx status code
+func (o *OpaProfilesSyncOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this opa profiles sync o k response has a 5xx status code
+func (o *OpaProfilesSyncOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this opa profiles sync o k response a status code equal to that given
+func (o *OpaProfilesSyncOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OpaProfilesSyncOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncOK  %+v", 200, o.Payload)
 }
+
+func (o *OpaProfilesSyncOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncOK  %+v", 200, o.Payload)
+}
+
 func (o *OpaProfilesSyncOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewOpaProfilesSyncBadRequest() *OpaProfilesSyncBadRequest {
 	return &OpaProfilesSyncBadRequest{}
 }
 
-/* OpaProfilesSyncBadRequest describes a response with status code 400, with default header values.
+/*
+OpaProfilesSyncBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type OpaProfilesSyncBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this opa profiles sync bad request response has a 2xx status code
+func (o *OpaProfilesSyncBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this opa profiles sync bad request response has a 3xx status code
+func (o *OpaProfilesSyncBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles sync bad request response has a 4xx status code
+func (o *OpaProfilesSyncBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this opa profiles sync bad request response has a 5xx status code
+func (o *OpaProfilesSyncBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this opa profiles sync bad request response a status code equal to that given
+func (o *OpaProfilesSyncBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OpaProfilesSyncBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OpaProfilesSyncBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OpaProfilesSyncBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewOpaProfilesSyncUnauthorized() *OpaProfilesSyncUnauthorized {
 	return &OpaProfilesSyncUnauthorized{}
 }
 
-/* OpaProfilesSyncUnauthorized describes a response with status code 401, with default header values.
+/*
+OpaProfilesSyncUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type OpaProfilesSyncUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this opa profiles sync unauthorized response has a 2xx status code
+func (o *OpaProfilesSyncUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this opa profiles sync unauthorized response has a 3xx status code
+func (o *OpaProfilesSyncUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles sync unauthorized response has a 4xx status code
+func (o *OpaProfilesSyncUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this opa profiles sync unauthorized response has a 5xx status code
+func (o *OpaProfilesSyncUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this opa profiles sync unauthorized response a status code equal to that given
+func (o *OpaProfilesSyncUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OpaProfilesSyncUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OpaProfilesSyncUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OpaProfilesSyncUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewOpaProfilesSyncForbidden() *OpaProfilesSyncForbidden {
 	return &OpaProfilesSyncForbidden{}
 }
 
-/* OpaProfilesSyncForbidden describes a response with status code 403, with default header values.
+/*
+OpaProfilesSyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type OpaProfilesSyncForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this opa profiles sync forbidden response has a 2xx status code
+func (o *OpaProfilesSyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this opa profiles sync forbidden response has a 3xx status code
+func (o *OpaProfilesSyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles sync forbidden response has a 4xx status code
+func (o *OpaProfilesSyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this opa profiles sync forbidden response has a 5xx status code
+func (o *OpaProfilesSyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this opa profiles sync forbidden response a status code equal to that given
+func (o *OpaProfilesSyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OpaProfilesSyncForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OpaProfilesSyncForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OpaProfilesSyncForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewOpaProfilesSyncNotFound() *OpaProfilesSyncNotFound {
 	return &OpaProfilesSyncNotFound{}
 }
 
-/* OpaProfilesSyncNotFound describes a response with status code 404, with default header values.
+/*
+OpaProfilesSyncNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type OpaProfilesSyncNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this opa profiles sync not found response has a 2xx status code
+func (o *OpaProfilesSyncNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this opa profiles sync not found response has a 3xx status code
+func (o *OpaProfilesSyncNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles sync not found response has a 4xx status code
+func (o *OpaProfilesSyncNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this opa profiles sync not found response has a 5xx status code
+func (o *OpaProfilesSyncNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this opa profiles sync not found response a status code equal to that given
+func (o *OpaProfilesSyncNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OpaProfilesSyncNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OpaProfilesSyncNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OpaProfilesSyncNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewOpaProfilesSyncInternalServerError() *OpaProfilesSyncInternalServerError
 	return &OpaProfilesSyncInternalServerError{}
 }
 
-/* OpaProfilesSyncInternalServerError describes a response with status code 500, with default header values.
+/*
+OpaProfilesSyncInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OpaProfilesSyncInternalServerError struct {
 }
 
+// IsSuccess returns true when this opa profiles sync internal server error response has a 2xx status code
+func (o *OpaProfilesSyncInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this opa profiles sync internal server error response has a 3xx status code
+func (o *OpaProfilesSyncInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles sync internal server error response has a 4xx status code
+func (o *OpaProfilesSyncInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this opa profiles sync internal server error response has a 5xx status code
+func (o *OpaProfilesSyncInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this opa profiles sync internal server error response a status code equal to that given
+func (o *OpaProfilesSyncInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OpaProfilesSyncInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncInternalServerError ", 500)
+}
+
+func (o *OpaProfilesSyncInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncInternalServerError ", 500)
 }
 

@@ -54,10 +54,12 @@ func NewKubernetesDescribeServiceParamsWithHTTPClient(client *http.Client) *Kube
 	}
 }
 
-/* KubernetesDescribeServiceParams contains all the parameters to send to the API endpoint
-   for the kubernetes describe service operation.
+/*
+KubernetesDescribeServiceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes describe service operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesDescribeServiceParams struct {
 

@@ -53,10 +53,12 @@ func NewProjectsDescribeParamsWithHTTPClient(client *http.Client) *ProjectsDescr
 	}
 }
 
-/* ProjectsDescribeParams contains all the parameters to send to the API endpoint
-   for the projects describe operation.
+/*
+ProjectsDescribeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects describe operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsDescribeParams struct {
 

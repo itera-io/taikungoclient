@@ -53,10 +53,12 @@ func NewPrometheusDetailsParamsWithHTTPClient(client *http.Client) *PrometheusDe
 	}
 }
 
-/* PrometheusDetailsParams contains all the parameters to send to the API endpoint
-   for the prometheus details operation.
+/*
+PrometheusDetailsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the prometheus details operation.
+
+	Typically these are written to a http.Request.
 */
 type PrometheusDetailsParams struct {
 

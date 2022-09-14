@@ -54,10 +54,12 @@ func NewAlertingProfilesVerifyWebhookParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* AlertingProfilesVerifyWebhookParams contains all the parameters to send to the API endpoint
-   for the alerting profiles verify webhook operation.
+/*
+AlertingProfilesVerifyWebhookParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the alerting profiles verify webhook operation.
+
+	Typically these are written to a http.Request.
 */
 type AlertingProfilesVerifyWebhookParams struct {
 

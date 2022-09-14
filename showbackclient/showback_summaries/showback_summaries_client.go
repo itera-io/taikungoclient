@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  ShowbackSummariesCreate creates showback summary
+ShowbackSummariesCreate creates showback summary
 */
 func (a *Client) ShowbackSummariesCreate(params *ShowbackSummariesCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackSummariesCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +81,7 @@ func (a *Client) ShowbackSummariesCreate(params *ShowbackSummariesCreateParams, 
 }
 
 /*
-  ShowbackSummariesExportCsv exports csv
+ShowbackSummariesExportCsv exports csv
 */
 func (a *Client) ShowbackSummariesExportCsv(params *ShowbackSummariesExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackSummariesExportCsvOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) ShowbackSummariesExportCsv(params *ShowbackSummariesExportCsvPa
 }
 
 /*
-  ShowbackSummariesGroupedList retrieves a grouped list of showback summaries
+ShowbackSummariesGroupedList retrieves a grouped list of showback summaries
 */
 func (a *Client) ShowbackSummariesGroupedList(params *ShowbackSummariesGroupedListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackSummariesGroupedListOK, error) {
 	// TODO: Validate the params before sending
@@ -159,7 +159,7 @@ func (a *Client) ShowbackSummariesGroupedList(params *ShowbackSummariesGroupedLi
 }
 
 /*
-  ShowbackSummariesGroupedShowbackSummaryList retrieves grouped showback summary
+ShowbackSummariesGroupedShowbackSummaryList retrieves grouped showback summary
 */
 func (a *Client) ShowbackSummariesGroupedShowbackSummaryList(params *ShowbackSummariesGroupedShowbackSummaryListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackSummariesGroupedShowbackSummaryListOK, error) {
 	// TODO: Validate the params before sending

@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  DocumentationList retrieves all documentation links available only for admins
+DocumentationList retrieves all documentation links available only for admins
 */
 func (a *Client) DocumentationList(params *DocumentationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DocumentationListOK, error) {
 	// TODO: Validate the params before sending

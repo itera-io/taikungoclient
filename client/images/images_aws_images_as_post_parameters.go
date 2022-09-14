@@ -54,10 +54,12 @@ func NewImagesAwsImagesAsPostParamsWithHTTPClient(client *http.Client) *ImagesAw
 	}
 }
 
-/* ImagesAwsImagesAsPostParams contains all the parameters to send to the API endpoint
-   for the images aws images as post operation.
+/*
+ImagesAwsImagesAsPostParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the images aws images as post operation.
+
+	Typically these are written to a http.Request.
 */
 type ImagesAwsImagesAsPostParams struct {
 

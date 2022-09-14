@@ -69,7 +69,8 @@ func NewCronJobDeletePendingOrganizationsOK() *CronJobDeletePendingOrganizations
 	return &CronJobDeletePendingOrganizationsOK{}
 }
 
-/* CronJobDeletePendingOrganizationsOK describes a response with status code 200, with default header values.
+/*
+CronJobDeletePendingOrganizationsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CronJobDeletePendingOrganizationsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this cron job delete pending organizations o k response has a 2xx status code
+func (o *CronJobDeletePendingOrganizationsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cron job delete pending organizations o k response has a 3xx status code
+func (o *CronJobDeletePendingOrganizationsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete pending organizations o k response has a 4xx status code
+func (o *CronJobDeletePendingOrganizationsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job delete pending organizations o k response has a 5xx status code
+func (o *CronJobDeletePendingOrganizationsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete pending organizations o k response a status code equal to that given
+func (o *CronJobDeletePendingOrganizationsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CronJobDeletePendingOrganizationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsOK  %+v", 200, o.Payload)
 }
+
+func (o *CronJobDeletePendingOrganizationsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsOK  %+v", 200, o.Payload)
+}
+
 func (o *CronJobDeletePendingOrganizationsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCronJobDeletePendingOrganizationsBadRequest() *CronJobDeletePendingOrgan
 	return &CronJobDeletePendingOrganizationsBadRequest{}
 }
 
-/* CronJobDeletePendingOrganizationsBadRequest describes a response with status code 400, with default header values.
+/*
+CronJobDeletePendingOrganizationsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CronJobDeletePendingOrganizationsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete pending organizations bad request response has a 2xx status code
+func (o *CronJobDeletePendingOrganizationsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete pending organizations bad request response has a 3xx status code
+func (o *CronJobDeletePendingOrganizationsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete pending organizations bad request response has a 4xx status code
+func (o *CronJobDeletePendingOrganizationsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete pending organizations bad request response has a 5xx status code
+func (o *CronJobDeletePendingOrganizationsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete pending organizations bad request response a status code equal to that given
+func (o *CronJobDeletePendingOrganizationsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CronJobDeletePendingOrganizationsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CronJobDeletePendingOrganizationsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CronJobDeletePendingOrganizationsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCronJobDeletePendingOrganizationsUnauthorized() *CronJobDeletePendingOrg
 	return &CronJobDeletePendingOrganizationsUnauthorized{}
 }
 
-/* CronJobDeletePendingOrganizationsUnauthorized describes a response with status code 401, with default header values.
+/*
+CronJobDeletePendingOrganizationsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CronJobDeletePendingOrganizationsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete pending organizations unauthorized response has a 2xx status code
+func (o *CronJobDeletePendingOrganizationsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete pending organizations unauthorized response has a 3xx status code
+func (o *CronJobDeletePendingOrganizationsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete pending organizations unauthorized response has a 4xx status code
+func (o *CronJobDeletePendingOrganizationsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete pending organizations unauthorized response has a 5xx status code
+func (o *CronJobDeletePendingOrganizationsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete pending organizations unauthorized response a status code equal to that given
+func (o *CronJobDeletePendingOrganizationsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CronJobDeletePendingOrganizationsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CronJobDeletePendingOrganizationsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CronJobDeletePendingOrganizationsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCronJobDeletePendingOrganizationsForbidden() *CronJobDeletePendingOrgani
 	return &CronJobDeletePendingOrganizationsForbidden{}
 }
 
-/* CronJobDeletePendingOrganizationsForbidden describes a response with status code 403, with default header values.
+/*
+CronJobDeletePendingOrganizationsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CronJobDeletePendingOrganizationsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete pending organizations forbidden response has a 2xx status code
+func (o *CronJobDeletePendingOrganizationsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete pending organizations forbidden response has a 3xx status code
+func (o *CronJobDeletePendingOrganizationsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete pending organizations forbidden response has a 4xx status code
+func (o *CronJobDeletePendingOrganizationsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete pending organizations forbidden response has a 5xx status code
+func (o *CronJobDeletePendingOrganizationsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete pending organizations forbidden response a status code equal to that given
+func (o *CronJobDeletePendingOrganizationsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CronJobDeletePendingOrganizationsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CronJobDeletePendingOrganizationsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CronJobDeletePendingOrganizationsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCronJobDeletePendingOrganizationsNotFound() *CronJobDeletePendingOrganiz
 	return &CronJobDeletePendingOrganizationsNotFound{}
 }
 
-/* CronJobDeletePendingOrganizationsNotFound describes a response with status code 404, with default header values.
+/*
+CronJobDeletePendingOrganizationsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CronJobDeletePendingOrganizationsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete pending organizations not found response has a 2xx status code
+func (o *CronJobDeletePendingOrganizationsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete pending organizations not found response has a 3xx status code
+func (o *CronJobDeletePendingOrganizationsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete pending organizations not found response has a 4xx status code
+func (o *CronJobDeletePendingOrganizationsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete pending organizations not found response has a 5xx status code
+func (o *CronJobDeletePendingOrganizationsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete pending organizations not found response a status code equal to that given
+func (o *CronJobDeletePendingOrganizationsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CronJobDeletePendingOrganizationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CronJobDeletePendingOrganizationsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CronJobDeletePendingOrganizationsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCronJobDeletePendingOrganizationsInternalServerError() *CronJobDeletePen
 	return &CronJobDeletePendingOrganizationsInternalServerError{}
 }
 
-/* CronJobDeletePendingOrganizationsInternalServerError describes a response with status code 500, with default header values.
+/*
+CronJobDeletePendingOrganizationsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CronJobDeletePendingOrganizationsInternalServerError struct {
 }
 
+// IsSuccess returns true when this cron job delete pending organizations internal server error response has a 2xx status code
+func (o *CronJobDeletePendingOrganizationsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete pending organizations internal server error response has a 3xx status code
+func (o *CronJobDeletePendingOrganizationsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete pending organizations internal server error response has a 4xx status code
+func (o *CronJobDeletePendingOrganizationsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job delete pending organizations internal server error response has a 5xx status code
+func (o *CronJobDeletePendingOrganizationsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cron job delete pending organizations internal server error response a status code equal to that given
+func (o *CronJobDeletePendingOrganizationsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CronJobDeletePendingOrganizationsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsInternalServerError ", 500)
+}
+
+func (o *CronJobDeletePendingOrganizationsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsInternalServerError ", 500)
 }
 

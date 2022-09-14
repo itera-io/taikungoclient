@@ -53,10 +53,12 @@ func NewProjectAppDetailsParamsWithHTTPClient(client *http.Client) *ProjectAppDe
 	}
 }
 
-/* ProjectAppDetailsParams contains all the parameters to send to the API endpoint
-   for the project app details operation.
+/*
+ProjectAppDetailsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the project app details operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectAppDetailsParams struct {
 

@@ -69,7 +69,8 @@ func NewSSHUsersDeleteOK() *SSHUsersDeleteOK {
 	return &SSHUsersDeleteOK{}
 }
 
-/* SSHUsersDeleteOK describes a response with status code 200, with default header values.
+/*
+SSHUsersDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SSHUsersDeleteOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this ssh users delete o k response has a 2xx status code
+func (o *SSHUsersDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this ssh users delete o k response has a 3xx status code
+func (o *SSHUsersDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ssh users delete o k response has a 4xx status code
+func (o *SSHUsersDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ssh users delete o k response has a 5xx status code
+func (o *SSHUsersDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ssh users delete o k response a status code equal to that given
+func (o *SSHUsersDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SSHUsersDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *SSHUsersDeleteOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *SSHUsersDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewSSHUsersDeleteBadRequest() *SSHUsersDeleteBadRequest {
 	return &SSHUsersDeleteBadRequest{}
 }
 
-/* SSHUsersDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+SSHUsersDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type SSHUsersDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this ssh users delete bad request response has a 2xx status code
+func (o *SSHUsersDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ssh users delete bad request response has a 3xx status code
+func (o *SSHUsersDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ssh users delete bad request response has a 4xx status code
+func (o *SSHUsersDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ssh users delete bad request response has a 5xx status code
+func (o *SSHUsersDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ssh users delete bad request response a status code equal to that given
+func (o *SSHUsersDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SSHUsersDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SSHUsersDeleteBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SSHUsersDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewSSHUsersDeleteUnauthorized() *SSHUsersDeleteUnauthorized {
 	return &SSHUsersDeleteUnauthorized{}
 }
 
-/* SSHUsersDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+SSHUsersDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type SSHUsersDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ssh users delete unauthorized response has a 2xx status code
+func (o *SSHUsersDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ssh users delete unauthorized response has a 3xx status code
+func (o *SSHUsersDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ssh users delete unauthorized response has a 4xx status code
+func (o *SSHUsersDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ssh users delete unauthorized response has a 5xx status code
+func (o *SSHUsersDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ssh users delete unauthorized response a status code equal to that given
+func (o *SSHUsersDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SSHUsersDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SSHUsersDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SSHUsersDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewSSHUsersDeleteForbidden() *SSHUsersDeleteForbidden {
 	return &SSHUsersDeleteForbidden{}
 }
 
-/* SSHUsersDeleteForbidden describes a response with status code 403, with default header values.
+/*
+SSHUsersDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type SSHUsersDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ssh users delete forbidden response has a 2xx status code
+func (o *SSHUsersDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ssh users delete forbidden response has a 3xx status code
+func (o *SSHUsersDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ssh users delete forbidden response has a 4xx status code
+func (o *SSHUsersDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ssh users delete forbidden response has a 5xx status code
+func (o *SSHUsersDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ssh users delete forbidden response a status code equal to that given
+func (o *SSHUsersDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SSHUsersDeleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SSHUsersDeleteForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SSHUsersDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewSSHUsersDeleteNotFound() *SSHUsersDeleteNotFound {
 	return &SSHUsersDeleteNotFound{}
 }
 
-/* SSHUsersDeleteNotFound describes a response with status code 404, with default header values.
+/*
+SSHUsersDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type SSHUsersDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ssh users delete not found response has a 2xx status code
+func (o *SSHUsersDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ssh users delete not found response has a 3xx status code
+func (o *SSHUsersDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ssh users delete not found response has a 4xx status code
+func (o *SSHUsersDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ssh users delete not found response has a 5xx status code
+func (o *SSHUsersDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ssh users delete not found response a status code equal to that given
+func (o *SSHUsersDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SSHUsersDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SSHUsersDeleteNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SSHUsersDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewSSHUsersDeleteInternalServerError() *SSHUsersDeleteInternalServerError {
 	return &SSHUsersDeleteInternalServerError{}
 }
 
-/* SSHUsersDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+SSHUsersDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SSHUsersDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this ssh users delete internal server error response has a 2xx status code
+func (o *SSHUsersDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ssh users delete internal server error response has a 3xx status code
+func (o *SSHUsersDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ssh users delete internal server error response has a 4xx status code
+func (o *SSHUsersDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ssh users delete internal server error response has a 5xx status code
+func (o *SSHUsersDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this ssh users delete internal server error response a status code equal to that given
+func (o *SSHUsersDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SSHUsersDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteInternalServerError ", 500)
+}
+
+func (o *SSHUsersDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteInternalServerError ", 500)
 }
 

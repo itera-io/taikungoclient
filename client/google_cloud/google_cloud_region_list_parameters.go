@@ -52,10 +52,12 @@ func NewGoogleCloudRegionListParamsWithHTTPClient(client *http.Client) *GoogleCl
 	}
 }
 
-/* GoogleCloudRegionListParams contains all the parameters to send to the API endpoint
-   for the google cloud region list operation.
+/*
+GoogleCloudRegionListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the google cloud region list operation.
+
+	Typically these are written to a http.Request.
 */
 type GoogleCloudRegionListParams struct {
 

@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  ShowbackRulesCreate creates showback rule
+ShowbackRulesCreate creates showback rule
 */
 func (a *Client) ShowbackRulesCreate(params *ShowbackRulesCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackRulesCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -83,7 +83,7 @@ func (a *Client) ShowbackRulesCreate(params *ShowbackRulesCreateParams, authInfo
 }
 
 /*
-  ShowbackRulesDelete deletes showback rule
+ShowbackRulesDelete deletes showback rule
 */
 func (a *Client) ShowbackRulesDelete(params *ShowbackRulesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackRulesDeleteOK, *ShowbackRulesDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -123,7 +123,7 @@ func (a *Client) ShowbackRulesDelete(params *ShowbackRulesDeleteParams, authInfo
 }
 
 /*
-  ShowbackRulesDeleteAll deletes multiple showback rule
+ShowbackRulesDeleteAll deletes multiple showback rule
 */
 func (a *Client) ShowbackRulesDeleteAll(params *ShowbackRulesDeleteAllParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackRulesDeleteAllOK, error) {
 	// TODO: Validate the params before sending
@@ -162,7 +162,7 @@ func (a *Client) ShowbackRulesDeleteAll(params *ShowbackRulesDeleteAllParams, au
 }
 
 /*
-  ShowbackRulesList retrieves all showback rules
+ShowbackRulesList retrieves all showback rules
 */
 func (a *Client) ShowbackRulesList(params *ShowbackRulesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackRulesListOK, error) {
 	// TODO: Validate the params before sending
@@ -201,7 +201,7 @@ func (a *Client) ShowbackRulesList(params *ShowbackRulesListParams, authInfo run
 }
 
 /*
-  ShowbackRulesUpdate updates showback rule
+ShowbackRulesUpdate updates showback rule
 */
 func (a *Client) ShowbackRulesUpdate(params *ShowbackRulesUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackRulesUpdateOK, error) {
 	// TODO: Validate the params before sending

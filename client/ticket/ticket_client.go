@@ -60,7 +60,7 @@ type ClientService interface {
 }
 
 /*
-  TicketArchive archives ticket
+TicketArchive archives ticket
 */
 func (a *Client) TicketArchive(params *TicketArchiveParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketArchiveOK, error) {
 	// TODO: Validate the params before sending
@@ -99,7 +99,7 @@ func (a *Client) TicketArchive(params *TicketArchiveParams, authInfo runtime.Cli
 }
 
 /*
-  TicketArticleList retrieves articles of ticket
+TicketArticleList retrieves articles of ticket
 */
 func (a *Client) TicketArticleList(params *TicketArticleListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketArticleListOK, error) {
 	// TODO: Validate the params before sending
@@ -138,7 +138,7 @@ func (a *Client) TicketArticleList(params *TicketArticleListParams, authInfo run
 }
 
 /*
-  TicketClose closes ticket
+TicketClose closes ticket
 */
 func (a *Client) TicketClose(params *TicketCloseParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketCloseOK, error) {
 	// TODO: Validate the params before sending
@@ -177,7 +177,7 @@ func (a *Client) TicketClose(params *TicketCloseParams, authInfo runtime.ClientA
 }
 
 /*
-  TicketCreate creates ticket
+TicketCreate creates ticket
 */
 func (a *Client) TicketCreate(params *TicketCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -216,7 +216,7 @@ func (a *Client) TicketCreate(params *TicketCreateParams, authInfo runtime.Clien
 }
 
 /*
-  TicketDelete deletes ticket
+TicketDelete deletes ticket
 */
 func (a *Client) TicketDelete(params *TicketDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -255,7 +255,7 @@ func (a *Client) TicketDelete(params *TicketDeleteParams, authInfo runtime.Clien
 }
 
 /*
-  TicketDeleteMessage deletes ticket message
+TicketDeleteMessage deletes ticket message
 */
 func (a *Client) TicketDeleteMessage(params *TicketDeleteMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketDeleteMessageOK, error) {
 	// TODO: Validate the params before sending
@@ -294,7 +294,7 @@ func (a *Client) TicketDeleteMessage(params *TicketDeleteMessageParams, authInfo
 }
 
 /*
-  TicketEdit edits ticket
+TicketEdit edits ticket
 */
 func (a *Client) TicketEdit(params *TicketEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketEditOK, error) {
 	// TODO: Validate the params before sending
@@ -333,7 +333,7 @@ func (a *Client) TicketEdit(params *TicketEditParams, authInfo runtime.ClientAut
 }
 
 /*
-  TicketOpen opens ticket
+TicketOpen opens ticket
 */
 func (a *Client) TicketOpen(params *TicketOpenParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketOpenOK, error) {
 	// TODO: Validate the params before sending
@@ -372,7 +372,7 @@ func (a *Client) TicketOpen(params *TicketOpenParams, authInfo runtime.ClientAut
 }
 
 /*
-  TicketReply replies message
+TicketReply replies message
 */
 func (a *Client) TicketReply(params *TicketReplyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketReplyOK, error) {
 	// TODO: Validate the params before sending
@@ -411,7 +411,7 @@ func (a *Client) TicketReply(params *TicketReplyParams, authInfo runtime.ClientA
 }
 
 /*
-  TicketTicketList retrieves a list of tickets
+TicketTicketList retrieves a list of tickets
 */
 func (a *Client) TicketTicketList(params *TicketTicketListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketTicketListOK, error) {
 	// TODO: Validate the params before sending
@@ -450,7 +450,7 @@ func (a *Client) TicketTicketList(params *TicketTicketListParams, authInfo runti
 }
 
 /*
-  TicketTransfer transfers ticket
+TicketTransfer transfers ticket
 */
 func (a *Client) TicketTransfer(params *TicketTransferParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketTransferOK, error) {
 	// TODO: Validate the params before sending
@@ -489,7 +489,7 @@ func (a *Client) TicketTransfer(params *TicketTransferParams, authInfo runtime.C
 }
 
 /*
-  TicketTransferList retrieves organization managers
+TicketTransferList retrieves organization managers
 */
 func (a *Client) TicketTransferList(params *TicketTransferListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketTransferListOK, error) {
 	// TODO: Validate the params before sending
@@ -528,7 +528,7 @@ func (a *Client) TicketTransferList(params *TicketTransferListParams, authInfo r
 }
 
 /*
-  TicketUpdateMessage edits ticket message
+TicketUpdateMessage edits ticket message
 */
 func (a *Client) TicketUpdateMessage(params *TicketUpdateMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TicketUpdateMessageOK, error) {
 	// TODO: Validate the params before sending

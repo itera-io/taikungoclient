@@ -69,7 +69,8 @@ func NewGoogleCloudListOK() *GoogleCloudListOK {
 	return &GoogleCloudListOK{}
 }
 
-/* GoogleCloudListOK describes a response with status code 200, with default header values.
+/*
+GoogleCloudListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type GoogleCloudListOK struct {
 	Payload *models.GoogleCredentialList
 }
 
+// IsSuccess returns true when this google cloud list o k response has a 2xx status code
+func (o *GoogleCloudListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this google cloud list o k response has a 3xx status code
+func (o *GoogleCloudListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud list o k response has a 4xx status code
+func (o *GoogleCloudListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this google cloud list o k response has a 5xx status code
+func (o *GoogleCloudListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud list o k response a status code equal to that given
+func (o *GoogleCloudListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GoogleCloudListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListOK  %+v", 200, o.Payload)
 }
+
+func (o *GoogleCloudListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListOK  %+v", 200, o.Payload)
+}
+
 func (o *GoogleCloudListOK) GetPayload() *models.GoogleCredentialList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewGoogleCloudListBadRequest() *GoogleCloudListBadRequest {
 	return &GoogleCloudListBadRequest{}
 }
 
-/* GoogleCloudListBadRequest describes a response with status code 400, with default header values.
+/*
+GoogleCloudListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type GoogleCloudListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this google cloud list bad request response has a 2xx status code
+func (o *GoogleCloudListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud list bad request response has a 3xx status code
+func (o *GoogleCloudListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud list bad request response has a 4xx status code
+func (o *GoogleCloudListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud list bad request response has a 5xx status code
+func (o *GoogleCloudListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud list bad request response a status code equal to that given
+func (o *GoogleCloudListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GoogleCloudListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *GoogleCloudListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *GoogleCloudListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewGoogleCloudListUnauthorized() *GoogleCloudListUnauthorized {
 	return &GoogleCloudListUnauthorized{}
 }
 
-/* GoogleCloudListUnauthorized describes a response with status code 401, with default header values.
+/*
+GoogleCloudListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type GoogleCloudListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this google cloud list unauthorized response has a 2xx status code
+func (o *GoogleCloudListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud list unauthorized response has a 3xx status code
+func (o *GoogleCloudListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud list unauthorized response has a 4xx status code
+func (o *GoogleCloudListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud list unauthorized response has a 5xx status code
+func (o *GoogleCloudListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud list unauthorized response a status code equal to that given
+func (o *GoogleCloudListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GoogleCloudListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *GoogleCloudListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *GoogleCloudListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewGoogleCloudListForbidden() *GoogleCloudListForbidden {
 	return &GoogleCloudListForbidden{}
 }
 
-/* GoogleCloudListForbidden describes a response with status code 403, with default header values.
+/*
+GoogleCloudListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type GoogleCloudListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this google cloud list forbidden response has a 2xx status code
+func (o *GoogleCloudListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud list forbidden response has a 3xx status code
+func (o *GoogleCloudListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud list forbidden response has a 4xx status code
+func (o *GoogleCloudListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud list forbidden response has a 5xx status code
+func (o *GoogleCloudListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud list forbidden response a status code equal to that given
+func (o *GoogleCloudListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GoogleCloudListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GoogleCloudListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GoogleCloudListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewGoogleCloudListNotFound() *GoogleCloudListNotFound {
 	return &GoogleCloudListNotFound{}
 }
 
-/* GoogleCloudListNotFound describes a response with status code 404, with default header values.
+/*
+GoogleCloudListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type GoogleCloudListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this google cloud list not found response has a 2xx status code
+func (o *GoogleCloudListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud list not found response has a 3xx status code
+func (o *GoogleCloudListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud list not found response has a 4xx status code
+func (o *GoogleCloudListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud list not found response has a 5xx status code
+func (o *GoogleCloudListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud list not found response a status code equal to that given
+func (o *GoogleCloudListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GoogleCloudListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GoogleCloudListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GoogleCloudListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewGoogleCloudListInternalServerError() *GoogleCloudListInternalServerError
 	return &GoogleCloudListInternalServerError{}
 }
 
-/* GoogleCloudListInternalServerError describes a response with status code 500, with default header values.
+/*
+GoogleCloudListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GoogleCloudListInternalServerError struct {
 }
 
+// IsSuccess returns true when this google cloud list internal server error response has a 2xx status code
+func (o *GoogleCloudListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud list internal server error response has a 3xx status code
+func (o *GoogleCloudListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud list internal server error response has a 4xx status code
+func (o *GoogleCloudListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this google cloud list internal server error response has a 5xx status code
+func (o *GoogleCloudListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this google cloud list internal server error response a status code equal to that given
+func (o *GoogleCloudListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GoogleCloudListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListInternalServerError ", 500)
+}
+
+func (o *GoogleCloudListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListInternalServerError ", 500)
 }
 

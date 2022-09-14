@@ -69,14 +69,44 @@ func NewBillingExportCsvOK() *BillingExportCsvOK {
 	return &BillingExportCsvOK{}
 }
 
-/* BillingExportCsvOK describes a response with status code 200, with default header values.
+/*
+BillingExportCsvOK describes a response with status code 200, with default header values.
 
 Success
 */
 type BillingExportCsvOK struct {
 }
 
+// IsSuccess returns true when this billing export csv o k response has a 2xx status code
+func (o *BillingExportCsvOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this billing export csv o k response has a 3xx status code
+func (o *BillingExportCsvOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this billing export csv o k response has a 4xx status code
+func (o *BillingExportCsvOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this billing export csv o k response has a 5xx status code
+func (o *BillingExportCsvOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this billing export csv o k response a status code equal to that given
+func (o *BillingExportCsvOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *BillingExportCsvOK) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvOK ", 200)
+}
+
+func (o *BillingExportCsvOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvOK ", 200)
 }
 
@@ -90,7 +120,8 @@ func NewBillingExportCsvBadRequest() *BillingExportCsvBadRequest {
 	return &BillingExportCsvBadRequest{}
 }
 
-/* BillingExportCsvBadRequest describes a response with status code 400, with default header values.
+/*
+BillingExportCsvBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -98,9 +129,39 @@ type BillingExportCsvBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this billing export csv bad request response has a 2xx status code
+func (o *BillingExportCsvBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this billing export csv bad request response has a 3xx status code
+func (o *BillingExportCsvBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this billing export csv bad request response has a 4xx status code
+func (o *BillingExportCsvBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this billing export csv bad request response has a 5xx status code
+func (o *BillingExportCsvBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this billing export csv bad request response a status code equal to that given
+func (o *BillingExportCsvBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BillingExportCsvBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BillingExportCsvBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BillingExportCsvBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -122,7 +183,8 @@ func NewBillingExportCsvUnauthorized() *BillingExportCsvUnauthorized {
 	return &BillingExportCsvUnauthorized{}
 }
 
-/* BillingExportCsvUnauthorized describes a response with status code 401, with default header values.
+/*
+BillingExportCsvUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -130,9 +192,39 @@ type BillingExportCsvUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this billing export csv unauthorized response has a 2xx status code
+func (o *BillingExportCsvUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this billing export csv unauthorized response has a 3xx status code
+func (o *BillingExportCsvUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this billing export csv unauthorized response has a 4xx status code
+func (o *BillingExportCsvUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this billing export csv unauthorized response has a 5xx status code
+func (o *BillingExportCsvUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this billing export csv unauthorized response a status code equal to that given
+func (o *BillingExportCsvUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BillingExportCsvUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BillingExportCsvUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BillingExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -154,7 +246,8 @@ func NewBillingExportCsvForbidden() *BillingExportCsvForbidden {
 	return &BillingExportCsvForbidden{}
 }
 
-/* BillingExportCsvForbidden describes a response with status code 403, with default header values.
+/*
+BillingExportCsvForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -162,9 +255,39 @@ type BillingExportCsvForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this billing export csv forbidden response has a 2xx status code
+func (o *BillingExportCsvForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this billing export csv forbidden response has a 3xx status code
+func (o *BillingExportCsvForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this billing export csv forbidden response has a 4xx status code
+func (o *BillingExportCsvForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this billing export csv forbidden response has a 5xx status code
+func (o *BillingExportCsvForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this billing export csv forbidden response a status code equal to that given
+func (o *BillingExportCsvForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *BillingExportCsvForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvForbidden  %+v", 403, o.Payload)
 }
+
+func (o *BillingExportCsvForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvForbidden  %+v", 403, o.Payload)
+}
+
 func (o *BillingExportCsvForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -186,7 +309,8 @@ func NewBillingExportCsvNotFound() *BillingExportCsvNotFound {
 	return &BillingExportCsvNotFound{}
 }
 
-/* BillingExportCsvNotFound describes a response with status code 404, with default header values.
+/*
+BillingExportCsvNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -194,9 +318,39 @@ type BillingExportCsvNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this billing export csv not found response has a 2xx status code
+func (o *BillingExportCsvNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this billing export csv not found response has a 3xx status code
+func (o *BillingExportCsvNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this billing export csv not found response has a 4xx status code
+func (o *BillingExportCsvNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this billing export csv not found response has a 5xx status code
+func (o *BillingExportCsvNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this billing export csv not found response a status code equal to that given
+func (o *BillingExportCsvNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BillingExportCsvNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BillingExportCsvNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BillingExportCsvNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -218,14 +372,44 @@ func NewBillingExportCsvInternalServerError() *BillingExportCsvInternalServerErr
 	return &BillingExportCsvInternalServerError{}
 }
 
-/* BillingExportCsvInternalServerError describes a response with status code 500, with default header values.
+/*
+BillingExportCsvInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type BillingExportCsvInternalServerError struct {
 }
 
+// IsSuccess returns true when this billing export csv internal server error response has a 2xx status code
+func (o *BillingExportCsvInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this billing export csv internal server error response has a 3xx status code
+func (o *BillingExportCsvInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this billing export csv internal server error response has a 4xx status code
+func (o *BillingExportCsvInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this billing export csv internal server error response has a 5xx status code
+func (o *BillingExportCsvInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this billing export csv internal server error response a status code equal to that given
+func (o *BillingExportCsvInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BillingExportCsvInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvInternalServerError ", 500)
+}
+
+func (o *BillingExportCsvInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvInternalServerError ", 500)
 }
 

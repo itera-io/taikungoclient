@@ -54,7 +54,7 @@ type ClientService interface {
 }
 
 /*
-  PartnerAddWhiteListDomain partner add white list domain API
+PartnerAddWhiteListDomain partner add white list domain API
 */
 func (a *Client) PartnerAddWhiteListDomain(params *PartnerAddWhiteListDomainParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerAddWhiteListDomainOK, error) {
 	// TODO: Validate the params before sending
@@ -93,7 +93,7 @@ func (a *Client) PartnerAddWhiteListDomain(params *PartnerAddWhiteListDomainPara
 }
 
 /*
-  PartnerBecomePartner partner become partner API
+PartnerBecomePartner partner become partner API
 */
 func (a *Client) PartnerBecomePartner(params *PartnerBecomePartnerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerBecomePartnerOK, error) {
 	// TODO: Validate the params before sending
@@ -132,7 +132,7 @@ func (a *Client) PartnerBecomePartner(params *PartnerBecomePartnerParams, authIn
 }
 
 /*
-  PartnerBindOrganizations partner bind organizations API
+PartnerBindOrganizations partner bind organizations API
 */
 func (a *Client) PartnerBindOrganizations(params *PartnerBindOrganizationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerBindOrganizationsOK, error) {
 	// TODO: Validate the params before sending
@@ -171,7 +171,7 @@ func (a *Client) PartnerBindOrganizations(params *PartnerBindOrganizationsParams
 }
 
 /*
-  PartnerCreate adds partner
+PartnerCreate adds partner
 */
 func (a *Client) PartnerCreate(params *PartnerCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -210,7 +210,7 @@ func (a *Client) PartnerCreate(params *PartnerCreateParams, authInfo runtime.Cli
 }
 
 /*
-  PartnerDeleteWhiteListDomain partner delete white list domain API
+PartnerDeleteWhiteListDomain partner delete white list domain API
 */
 func (a *Client) PartnerDeleteWhiteListDomain(params *PartnerDeleteWhiteListDomainParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerDeleteWhiteListDomainOK, error) {
 	// TODO: Validate the params before sending
@@ -249,7 +249,7 @@ func (a *Client) PartnerDeleteWhiteListDomain(params *PartnerDeleteWhiteListDoma
 }
 
 /*
-  PartnerDetails details of partners
+PartnerDetails details of partners
 */
 func (a *Client) PartnerDetails(params *PartnerDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -288,7 +288,7 @@ func (a *Client) PartnerDetails(params *PartnerDetailsParams, authInfo runtime.C
 }
 
 /*
-  PartnerList gets partners
+PartnerList gets partners
 */
 func (a *Client) PartnerList(params *PartnerListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerListOK, error) {
 	// TODO: Validate the params before sending
@@ -327,7 +327,7 @@ func (a *Client) PartnerList(params *PartnerListParams, authInfo runtime.ClientA
 }
 
 /*
-  PartnerPartnerInfoRegistration partner partner info registration API
+PartnerPartnerInfoRegistration partner partner info registration API
 */
 func (a *Client) PartnerPartnerInfoRegistration(params *PartnerPartnerInfoRegistrationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerPartnerInfoRegistrationOK, error) {
 	// TODO: Validate the params before sending
@@ -366,7 +366,7 @@ func (a *Client) PartnerPartnerInfoRegistration(params *PartnerPartnerInfoRegist
 }
 
 /*
-  PartnerPartnerList gets partners dropdown
+PartnerPartnerList gets partners dropdown
 */
 func (a *Client) PartnerPartnerList(params *PartnerPartnerListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerPartnerListOK, error) {
 	// TODO: Validate the params before sending
@@ -405,7 +405,7 @@ func (a *Client) PartnerPartnerList(params *PartnerPartnerListParams, authInfo r
 }
 
 /*
-  PartnerUpdate edits partner data by Id
+PartnerUpdate edits partner data by Id
 */
 func (a *Client) PartnerUpdate(params *PartnerUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PartnerUpdateOK, error) {
 	// TODO: Validate the params before sending

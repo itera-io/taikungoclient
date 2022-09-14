@@ -69,7 +69,8 @@ func NewProjectsMonitoringOperationsOK() *ProjectsMonitoringOperationsOK {
 	return &ProjectsMonitoringOperationsOK{}
 }
 
-/* ProjectsMonitoringOperationsOK describes a response with status code 200, with default header values.
+/*
+ProjectsMonitoringOperationsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsMonitoringOperationsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this projects monitoring operations o k response has a 2xx status code
+func (o *ProjectsMonitoringOperationsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects monitoring operations o k response has a 3xx status code
+func (o *ProjectsMonitoringOperationsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects monitoring operations o k response has a 4xx status code
+func (o *ProjectsMonitoringOperationsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects monitoring operations o k response has a 5xx status code
+func (o *ProjectsMonitoringOperationsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects monitoring operations o k response a status code equal to that given
+func (o *ProjectsMonitoringOperationsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsMonitoringOperationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsMonitoringOperationsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsMonitoringOperationsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectsMonitoringOperationsBadRequest() *ProjectsMonitoringOperationsBa
 	return &ProjectsMonitoringOperationsBadRequest{}
 }
 
-/* ProjectsMonitoringOperationsBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsMonitoringOperationsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectsMonitoringOperationsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects monitoring operations bad request response has a 2xx status code
+func (o *ProjectsMonitoringOperationsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects monitoring operations bad request response has a 3xx status code
+func (o *ProjectsMonitoringOperationsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects monitoring operations bad request response has a 4xx status code
+func (o *ProjectsMonitoringOperationsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects monitoring operations bad request response has a 5xx status code
+func (o *ProjectsMonitoringOperationsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects monitoring operations bad request response a status code equal to that given
+func (o *ProjectsMonitoringOperationsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsMonitoringOperationsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsMonitoringOperationsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsMonitoringOperationsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectsMonitoringOperationsUnauthorized() *ProjectsMonitoringOperations
 	return &ProjectsMonitoringOperationsUnauthorized{}
 }
 
-/* ProjectsMonitoringOperationsUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsMonitoringOperationsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectsMonitoringOperationsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects monitoring operations unauthorized response has a 2xx status code
+func (o *ProjectsMonitoringOperationsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects monitoring operations unauthorized response has a 3xx status code
+func (o *ProjectsMonitoringOperationsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects monitoring operations unauthorized response has a 4xx status code
+func (o *ProjectsMonitoringOperationsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects monitoring operations unauthorized response has a 5xx status code
+func (o *ProjectsMonitoringOperationsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects monitoring operations unauthorized response a status code equal to that given
+func (o *ProjectsMonitoringOperationsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsMonitoringOperationsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsMonitoringOperationsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsMonitoringOperationsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectsMonitoringOperationsForbidden() *ProjectsMonitoringOperationsFor
 	return &ProjectsMonitoringOperationsForbidden{}
 }
 
-/* ProjectsMonitoringOperationsForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsMonitoringOperationsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectsMonitoringOperationsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects monitoring operations forbidden response has a 2xx status code
+func (o *ProjectsMonitoringOperationsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects monitoring operations forbidden response has a 3xx status code
+func (o *ProjectsMonitoringOperationsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects monitoring operations forbidden response has a 4xx status code
+func (o *ProjectsMonitoringOperationsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects monitoring operations forbidden response has a 5xx status code
+func (o *ProjectsMonitoringOperationsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects monitoring operations forbidden response a status code equal to that given
+func (o *ProjectsMonitoringOperationsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsMonitoringOperationsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsMonitoringOperationsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsMonitoringOperationsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectsMonitoringOperationsNotFound() *ProjectsMonitoringOperationsNotF
 	return &ProjectsMonitoringOperationsNotFound{}
 }
 
-/* ProjectsMonitoringOperationsNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsMonitoringOperationsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectsMonitoringOperationsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects monitoring operations not found response has a 2xx status code
+func (o *ProjectsMonitoringOperationsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects monitoring operations not found response has a 3xx status code
+func (o *ProjectsMonitoringOperationsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects monitoring operations not found response has a 4xx status code
+func (o *ProjectsMonitoringOperationsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects monitoring operations not found response has a 5xx status code
+func (o *ProjectsMonitoringOperationsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects monitoring operations not found response a status code equal to that given
+func (o *ProjectsMonitoringOperationsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsMonitoringOperationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsMonitoringOperationsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsMonitoringOperationsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectsMonitoringOperationsInternalServerError() *ProjectsMonitoringOpe
 	return &ProjectsMonitoringOperationsInternalServerError{}
 }
 
-/* ProjectsMonitoringOperationsInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsMonitoringOperationsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsMonitoringOperationsInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects monitoring operations internal server error response has a 2xx status code
+func (o *ProjectsMonitoringOperationsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects monitoring operations internal server error response has a 3xx status code
+func (o *ProjectsMonitoringOperationsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects monitoring operations internal server error response has a 4xx status code
+func (o *ProjectsMonitoringOperationsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects monitoring operations internal server error response has a 5xx status code
+func (o *ProjectsMonitoringOperationsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects monitoring operations internal server error response a status code equal to that given
+func (o *ProjectsMonitoringOperationsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsMonitoringOperationsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsInternalServerError ", 500)
+}
+
+func (o *ProjectsMonitoringOperationsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsInternalServerError ", 500)
 }
 

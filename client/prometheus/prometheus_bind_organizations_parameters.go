@@ -54,10 +54,12 @@ func NewPrometheusBindOrganizationsParamsWithHTTPClient(client *http.Client) *Pr
 	}
 }
 
-/* PrometheusBindOrganizationsParams contains all the parameters to send to the API endpoint
-   for the prometheus bind organizations operation.
+/*
+PrometheusBindOrganizationsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the prometheus bind organizations operation.
+
+	Typically these are written to a http.Request.
 */
 type PrometheusBindOrganizationsParams struct {
 

@@ -53,10 +53,12 @@ func NewStandAloneListForPollerParamsWithHTTPClient(client *http.Client) *StandA
 	}
 }
 
-/* StandAloneListForPollerParams contains all the parameters to send to the API endpoint
-   for the stand alone list for poller operation.
+/*
+StandAloneListForPollerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone list for poller operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneListForPollerParams struct {
 

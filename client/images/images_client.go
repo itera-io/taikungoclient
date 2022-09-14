@@ -60,7 +60,7 @@ type ClientService interface {
 }
 
 /*
-  ImagesAwsImagesAsPost retrieves aws images
+ImagesAwsImagesAsPost retrieves aws images
 */
 func (a *Client) ImagesAwsImagesAsPost(params *ImagesAwsImagesAsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesAwsImagesAsPostOK, error) {
 	// TODO: Validate the params before sending
@@ -99,7 +99,7 @@ func (a *Client) ImagesAwsImagesAsPost(params *ImagesAwsImagesAsPostParams, auth
 }
 
 /*
-  ImagesAzureImages retrieves azure images
+ImagesAzureImages retrieves azure images
 */
 func (a *Client) ImagesAzureImages(params *ImagesAzureImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesAzureImagesOK, error) {
 	// TODO: Validate the params before sending
@@ -138,7 +138,7 @@ func (a *Client) ImagesAzureImages(params *ImagesAzureImagesParams, authInfo run
 }
 
 /*
-  ImagesBindImagesToProject binds images to project
+ImagesBindImagesToProject binds images to project
 */
 func (a *Client) ImagesBindImagesToProject(params *ImagesBindImagesToProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesBindImagesToProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -177,7 +177,7 @@ func (a *Client) ImagesBindImagesToProject(params *ImagesBindImagesToProjectPara
 }
 
 /*
-  ImagesCommonAwsImages commonlies used aws images
+ImagesCommonAwsImages commonlies used aws images
 */
 func (a *Client) ImagesCommonAwsImages(params *ImagesCommonAwsImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesCommonAwsImagesOK, error) {
 	// TODO: Validate the params before sending
@@ -216,7 +216,7 @@ func (a *Client) ImagesCommonAwsImages(params *ImagesCommonAwsImagesParams, auth
 }
 
 /*
-  ImagesCommonAzureImages commonlies used azure images
+ImagesCommonAzureImages commonlies used azure images
 */
 func (a *Client) ImagesCommonAzureImages(params *ImagesCommonAzureImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesCommonAzureImagesOK, error) {
 	// TODO: Validate the params before sending
@@ -255,7 +255,7 @@ func (a *Client) ImagesCommonAzureImages(params *ImagesCommonAzureImagesParams, 
 }
 
 /*
-  ImagesCommonGoogleImages commonlies used google images
+ImagesCommonGoogleImages commonlies used google images
 */
 func (a *Client) ImagesCommonGoogleImages(params *ImagesCommonGoogleImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesCommonGoogleImagesOK, error) {
 	// TODO: Validate the params before sending
@@ -294,7 +294,7 @@ func (a *Client) ImagesCommonGoogleImages(params *ImagesCommonGoogleImagesParams
 }
 
 /*
-  ImagesGetImageDetailsByID unbinds images from project
+ImagesGetImageDetailsByID unbinds images from project
 */
 func (a *Client) ImagesGetImageDetailsByID(params *ImagesGetImageDetailsByIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesGetImageDetailsByIDOK, error) {
 	// TODO: Validate the params before sending
@@ -333,7 +333,7 @@ func (a *Client) ImagesGetImageDetailsByID(params *ImagesGetImageDetailsByIDPara
 }
 
 /*
-  ImagesGetSelectedImagesForProject retrieves selected images for projects
+ImagesGetSelectedImagesForProject retrieves selected images for projects
 */
 func (a *Client) ImagesGetSelectedImagesForProject(params *ImagesGetSelectedImagesForProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesGetSelectedImagesForProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -372,7 +372,7 @@ func (a *Client) ImagesGetSelectedImagesForProject(params *ImagesGetSelectedImag
 }
 
 /*
-  ImagesGoogleImages retrieves google images
+ImagesGoogleImages retrieves google images
 */
 func (a *Client) ImagesGoogleImages(params *ImagesGoogleImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesGoogleImagesOK, error) {
 	// TODO: Validate the params before sending
@@ -411,7 +411,7 @@ func (a *Client) ImagesGoogleImages(params *ImagesGoogleImagesParams, authInfo r
 }
 
 /*
-  ImagesOpenstackImages retrieves openstack images
+ImagesOpenstackImages retrieves openstack images
 */
 func (a *Client) ImagesOpenstackImages(params *ImagesOpenstackImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesOpenstackImagesOK, error) {
 	// TODO: Validate the params before sending
@@ -450,7 +450,7 @@ func (a *Client) ImagesOpenstackImages(params *ImagesOpenstackImagesParams, auth
 }
 
 /*
-  ImagesPersonalAwsImages personals aws images
+ImagesPersonalAwsImages personals aws images
 */
 func (a *Client) ImagesPersonalAwsImages(params *ImagesPersonalAwsImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesPersonalAwsImagesOK, error) {
 	// TODO: Validate the params before sending
@@ -489,7 +489,7 @@ func (a *Client) ImagesPersonalAwsImages(params *ImagesPersonalAwsImagesParams, 
 }
 
 /*
-  ImagesPersonalAzureImages personals azure images
+ImagesPersonalAzureImages personals azure images
 */
 func (a *Client) ImagesPersonalAzureImages(params *ImagesPersonalAzureImagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesPersonalAzureImagesOK, error) {
 	// TODO: Validate the params before sending
@@ -528,7 +528,7 @@ func (a *Client) ImagesPersonalAzureImages(params *ImagesPersonalAzureImagesPara
 }
 
 /*
-  ImagesUnbindImagesFromProject unbinds images from project
+ImagesUnbindImagesFromProject unbinds images from project
 */
 func (a *Client) ImagesUnbindImagesFromProject(params *ImagesUnbindImagesFromProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ImagesUnbindImagesFromProjectOK, error) {
 	// TODO: Validate the params before sending

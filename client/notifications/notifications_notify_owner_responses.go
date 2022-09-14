@@ -69,7 +69,8 @@ func NewNotificationsNotifyOwnerOK() *NotificationsNotifyOwnerOK {
 	return &NotificationsNotifyOwnerOK{}
 }
 
-/* NotificationsNotifyOwnerOK describes a response with status code 200, with default header values.
+/*
+NotificationsNotifyOwnerOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type NotificationsNotifyOwnerOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this notifications notify owner o k response has a 2xx status code
+func (o *NotificationsNotifyOwnerOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this notifications notify owner o k response has a 3xx status code
+func (o *NotificationsNotifyOwnerOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications notify owner o k response has a 4xx status code
+func (o *NotificationsNotifyOwnerOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this notifications notify owner o k response has a 5xx status code
+func (o *NotificationsNotifyOwnerOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications notify owner o k response a status code equal to that given
+func (o *NotificationsNotifyOwnerOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *NotificationsNotifyOwnerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerOK  %+v", 200, o.Payload)
 }
+
+func (o *NotificationsNotifyOwnerOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerOK  %+v", 200, o.Payload)
+}
+
 func (o *NotificationsNotifyOwnerOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewNotificationsNotifyOwnerBadRequest() *NotificationsNotifyOwnerBadRequest
 	return &NotificationsNotifyOwnerBadRequest{}
 }
 
-/* NotificationsNotifyOwnerBadRequest describes a response with status code 400, with default header values.
+/*
+NotificationsNotifyOwnerBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type NotificationsNotifyOwnerBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this notifications notify owner bad request response has a 2xx status code
+func (o *NotificationsNotifyOwnerBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications notify owner bad request response has a 3xx status code
+func (o *NotificationsNotifyOwnerBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications notify owner bad request response has a 4xx status code
+func (o *NotificationsNotifyOwnerBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications notify owner bad request response has a 5xx status code
+func (o *NotificationsNotifyOwnerBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications notify owner bad request response a status code equal to that given
+func (o *NotificationsNotifyOwnerBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *NotificationsNotifyOwnerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *NotificationsNotifyOwnerBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *NotificationsNotifyOwnerBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewNotificationsNotifyOwnerUnauthorized() *NotificationsNotifyOwnerUnauthor
 	return &NotificationsNotifyOwnerUnauthorized{}
 }
 
-/* NotificationsNotifyOwnerUnauthorized describes a response with status code 401, with default header values.
+/*
+NotificationsNotifyOwnerUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type NotificationsNotifyOwnerUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this notifications notify owner unauthorized response has a 2xx status code
+func (o *NotificationsNotifyOwnerUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications notify owner unauthorized response has a 3xx status code
+func (o *NotificationsNotifyOwnerUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications notify owner unauthorized response has a 4xx status code
+func (o *NotificationsNotifyOwnerUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications notify owner unauthorized response has a 5xx status code
+func (o *NotificationsNotifyOwnerUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications notify owner unauthorized response a status code equal to that given
+func (o *NotificationsNotifyOwnerUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *NotificationsNotifyOwnerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *NotificationsNotifyOwnerUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *NotificationsNotifyOwnerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewNotificationsNotifyOwnerForbidden() *NotificationsNotifyOwnerForbidden {
 	return &NotificationsNotifyOwnerForbidden{}
 }
 
-/* NotificationsNotifyOwnerForbidden describes a response with status code 403, with default header values.
+/*
+NotificationsNotifyOwnerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type NotificationsNotifyOwnerForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this notifications notify owner forbidden response has a 2xx status code
+func (o *NotificationsNotifyOwnerForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications notify owner forbidden response has a 3xx status code
+func (o *NotificationsNotifyOwnerForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications notify owner forbidden response has a 4xx status code
+func (o *NotificationsNotifyOwnerForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications notify owner forbidden response has a 5xx status code
+func (o *NotificationsNotifyOwnerForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications notify owner forbidden response a status code equal to that given
+func (o *NotificationsNotifyOwnerForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *NotificationsNotifyOwnerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerForbidden  %+v", 403, o.Payload)
 }
+
+func (o *NotificationsNotifyOwnerForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerForbidden  %+v", 403, o.Payload)
+}
+
 func (o *NotificationsNotifyOwnerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewNotificationsNotifyOwnerNotFound() *NotificationsNotifyOwnerNotFound {
 	return &NotificationsNotifyOwnerNotFound{}
 }
 
-/* NotificationsNotifyOwnerNotFound describes a response with status code 404, with default header values.
+/*
+NotificationsNotifyOwnerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type NotificationsNotifyOwnerNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this notifications notify owner not found response has a 2xx status code
+func (o *NotificationsNotifyOwnerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications notify owner not found response has a 3xx status code
+func (o *NotificationsNotifyOwnerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications notify owner not found response has a 4xx status code
+func (o *NotificationsNotifyOwnerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications notify owner not found response has a 5xx status code
+func (o *NotificationsNotifyOwnerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications notify owner not found response a status code equal to that given
+func (o *NotificationsNotifyOwnerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *NotificationsNotifyOwnerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *NotificationsNotifyOwnerNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *NotificationsNotifyOwnerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewNotificationsNotifyOwnerInternalServerError() *NotificationsNotifyOwnerI
 	return &NotificationsNotifyOwnerInternalServerError{}
 }
 
-/* NotificationsNotifyOwnerInternalServerError describes a response with status code 500, with default header values.
+/*
+NotificationsNotifyOwnerInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type NotificationsNotifyOwnerInternalServerError struct {
 }
 
+// IsSuccess returns true when this notifications notify owner internal server error response has a 2xx status code
+func (o *NotificationsNotifyOwnerInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications notify owner internal server error response has a 3xx status code
+func (o *NotificationsNotifyOwnerInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications notify owner internal server error response has a 4xx status code
+func (o *NotificationsNotifyOwnerInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this notifications notify owner internal server error response has a 5xx status code
+func (o *NotificationsNotifyOwnerInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this notifications notify owner internal server error response a status code equal to that given
+func (o *NotificationsNotifyOwnerInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *NotificationsNotifyOwnerInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerInternalServerError ", 500)
+}
+
+func (o *NotificationsNotifyOwnerInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerInternalServerError ", 500)
 }
 

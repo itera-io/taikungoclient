@@ -54,10 +54,12 @@ func NewSearchAccessProfilesListParamsWithHTTPClient(client *http.Client) *Searc
 	}
 }
 
-/* SearchAccessProfilesListParams contains all the parameters to send to the API endpoint
-   for the search access profiles list operation.
+/*
+SearchAccessProfilesListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search access profiles list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchAccessProfilesListParams struct {
 

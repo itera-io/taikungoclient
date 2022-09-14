@@ -54,10 +54,12 @@ func NewBillingCreateParamsWithHTTPClient(client *http.Client) *BillingCreatePar
 	}
 }
 
-/* BillingCreateParams contains all the parameters to send to the API endpoint
-   for the billing create operation.
+/*
+BillingCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the billing create operation.
+
+	Typically these are written to a http.Request.
 */
 type BillingCreateParams struct {
 

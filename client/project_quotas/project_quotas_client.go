@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  ProjectQuotasEdit edits project quota
+ProjectQuotasEdit edits project quota
 */
 func (a *Client) ProjectQuotasEdit(params *ProjectQuotasEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectQuotasEditOK, error) {
 	// TODO: Validate the params before sending
@@ -77,7 +77,7 @@ func (a *Client) ProjectQuotasEdit(params *ProjectQuotasEditParams, authInfo run
 }
 
 /*
-  ProjectQuotasList retrieves all project quotas
+ProjectQuotasList retrieves all project quotas
 */
 func (a *Client) ProjectQuotasList(params *ProjectQuotasListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectQuotasListOK, error) {
 	// TODO: Validate the params before sending

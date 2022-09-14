@@ -69,7 +69,8 @@ func NewCheckerCidrOK() *CheckerCidrOK {
 	return &CheckerCidrOK{}
 }
 
-/* CheckerCidrOK describes a response with status code 200, with default header values.
+/*
+CheckerCidrOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CheckerCidrOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this checker cidr o k response has a 2xx status code
+func (o *CheckerCidrOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this checker cidr o k response has a 3xx status code
+func (o *CheckerCidrOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker cidr o k response has a 4xx status code
+func (o *CheckerCidrOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this checker cidr o k response has a 5xx status code
+func (o *CheckerCidrOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker cidr o k response a status code equal to that given
+func (o *CheckerCidrOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CheckerCidrOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrOK  %+v", 200, o.Payload)
 }
+
+func (o *CheckerCidrOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrOK  %+v", 200, o.Payload)
+}
+
 func (o *CheckerCidrOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCheckerCidrBadRequest() *CheckerCidrBadRequest {
 	return &CheckerCidrBadRequest{}
 }
 
-/* CheckerCidrBadRequest describes a response with status code 400, with default header values.
+/*
+CheckerCidrBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CheckerCidrBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this checker cidr bad request response has a 2xx status code
+func (o *CheckerCidrBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker cidr bad request response has a 3xx status code
+func (o *CheckerCidrBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker cidr bad request response has a 4xx status code
+func (o *CheckerCidrBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker cidr bad request response has a 5xx status code
+func (o *CheckerCidrBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker cidr bad request response a status code equal to that given
+func (o *CheckerCidrBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CheckerCidrBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CheckerCidrBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CheckerCidrBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCheckerCidrUnauthorized() *CheckerCidrUnauthorized {
 	return &CheckerCidrUnauthorized{}
 }
 
-/* CheckerCidrUnauthorized describes a response with status code 401, with default header values.
+/*
+CheckerCidrUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CheckerCidrUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker cidr unauthorized response has a 2xx status code
+func (o *CheckerCidrUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker cidr unauthorized response has a 3xx status code
+func (o *CheckerCidrUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker cidr unauthorized response has a 4xx status code
+func (o *CheckerCidrUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker cidr unauthorized response has a 5xx status code
+func (o *CheckerCidrUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker cidr unauthorized response a status code equal to that given
+func (o *CheckerCidrUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CheckerCidrUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CheckerCidrUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CheckerCidrUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCheckerCidrForbidden() *CheckerCidrForbidden {
 	return &CheckerCidrForbidden{}
 }
 
-/* CheckerCidrForbidden describes a response with status code 403, with default header values.
+/*
+CheckerCidrForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CheckerCidrForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker cidr forbidden response has a 2xx status code
+func (o *CheckerCidrForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker cidr forbidden response has a 3xx status code
+func (o *CheckerCidrForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker cidr forbidden response has a 4xx status code
+func (o *CheckerCidrForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker cidr forbidden response has a 5xx status code
+func (o *CheckerCidrForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker cidr forbidden response a status code equal to that given
+func (o *CheckerCidrForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CheckerCidrForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CheckerCidrForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CheckerCidrForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCheckerCidrNotFound() *CheckerCidrNotFound {
 	return &CheckerCidrNotFound{}
 }
 
-/* CheckerCidrNotFound describes a response with status code 404, with default header values.
+/*
+CheckerCidrNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CheckerCidrNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker cidr not found response has a 2xx status code
+func (o *CheckerCidrNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker cidr not found response has a 3xx status code
+func (o *CheckerCidrNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker cidr not found response has a 4xx status code
+func (o *CheckerCidrNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker cidr not found response has a 5xx status code
+func (o *CheckerCidrNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker cidr not found response a status code equal to that given
+func (o *CheckerCidrNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CheckerCidrNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CheckerCidrNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CheckerCidrNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCheckerCidrInternalServerError() *CheckerCidrInternalServerError {
 	return &CheckerCidrInternalServerError{}
 }
 
-/* CheckerCidrInternalServerError describes a response with status code 500, with default header values.
+/*
+CheckerCidrInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CheckerCidrInternalServerError struct {
 }
 
+// IsSuccess returns true when this checker cidr internal server error response has a 2xx status code
+func (o *CheckerCidrInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker cidr internal server error response has a 3xx status code
+func (o *CheckerCidrInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker cidr internal server error response has a 4xx status code
+func (o *CheckerCidrInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this checker cidr internal server error response has a 5xx status code
+func (o *CheckerCidrInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this checker cidr internal server error response a status code equal to that given
+func (o *CheckerCidrInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CheckerCidrInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrInternalServerError ", 500)
+}
+
+func (o *CheckerCidrInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrInternalServerError ", 500)
 }
 

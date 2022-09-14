@@ -69,7 +69,8 @@ func NewAzureListOK() *AzureListOK {
 	return &AzureListOK{}
 }
 
-/* AzureListOK describes a response with status code 200, with default header values.
+/*
+AzureListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AzureListOK struct {
 	Payload *models.AzureCredentialList
 }
 
+// IsSuccess returns true when this azure list o k response has a 2xx status code
+func (o *AzureListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this azure list o k response has a 3xx status code
+func (o *AzureListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure list o k response has a 4xx status code
+func (o *AzureListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this azure list o k response has a 5xx status code
+func (o *AzureListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure list o k response a status code equal to that given
+func (o *AzureListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AzureListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListOK  %+v", 200, o.Payload)
 }
+
+func (o *AzureListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListOK  %+v", 200, o.Payload)
+}
+
 func (o *AzureListOK) GetPayload() *models.AzureCredentialList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewAzureListBadRequest() *AzureListBadRequest {
 	return &AzureListBadRequest{}
 }
 
-/* AzureListBadRequest describes a response with status code 400, with default header values.
+/*
+AzureListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type AzureListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this azure list bad request response has a 2xx status code
+func (o *AzureListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure list bad request response has a 3xx status code
+func (o *AzureListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure list bad request response has a 4xx status code
+func (o *AzureListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure list bad request response has a 5xx status code
+func (o *AzureListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure list bad request response a status code equal to that given
+func (o *AzureListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AzureListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AzureListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AzureListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewAzureListUnauthorized() *AzureListUnauthorized {
 	return &AzureListUnauthorized{}
 }
 
-/* AzureListUnauthorized describes a response with status code 401, with default header values.
+/*
+AzureListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type AzureListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this azure list unauthorized response has a 2xx status code
+func (o *AzureListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure list unauthorized response has a 3xx status code
+func (o *AzureListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure list unauthorized response has a 4xx status code
+func (o *AzureListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure list unauthorized response has a 5xx status code
+func (o *AzureListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure list unauthorized response a status code equal to that given
+func (o *AzureListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AzureListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AzureListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AzureListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewAzureListForbidden() *AzureListForbidden {
 	return &AzureListForbidden{}
 }
 
-/* AzureListForbidden describes a response with status code 403, with default header values.
+/*
+AzureListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type AzureListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this azure list forbidden response has a 2xx status code
+func (o *AzureListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure list forbidden response has a 3xx status code
+func (o *AzureListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure list forbidden response has a 4xx status code
+func (o *AzureListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure list forbidden response has a 5xx status code
+func (o *AzureListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure list forbidden response a status code equal to that given
+func (o *AzureListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AzureListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AzureListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AzureListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewAzureListNotFound() *AzureListNotFound {
 	return &AzureListNotFound{}
 }
 
-/* AzureListNotFound describes a response with status code 404, with default header values.
+/*
+AzureListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type AzureListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this azure list not found response has a 2xx status code
+func (o *AzureListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure list not found response has a 3xx status code
+func (o *AzureListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure list not found response has a 4xx status code
+func (o *AzureListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure list not found response has a 5xx status code
+func (o *AzureListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure list not found response a status code equal to that given
+func (o *AzureListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AzureListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AzureListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AzureListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewAzureListInternalServerError() *AzureListInternalServerError {
 	return &AzureListInternalServerError{}
 }
 
-/* AzureListInternalServerError describes a response with status code 500, with default header values.
+/*
+AzureListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AzureListInternalServerError struct {
 }
 
+// IsSuccess returns true when this azure list internal server error response has a 2xx status code
+func (o *AzureListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure list internal server error response has a 3xx status code
+func (o *AzureListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure list internal server error response has a 4xx status code
+func (o *AzureListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this azure list internal server error response has a 5xx status code
+func (o *AzureListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this azure list internal server error response a status code equal to that given
+func (o *AzureListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AzureListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListInternalServerError ", 500)
+}
+
+func (o *AzureListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListInternalServerError ", 500)
 }
 

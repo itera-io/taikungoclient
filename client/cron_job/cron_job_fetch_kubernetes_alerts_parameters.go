@@ -54,10 +54,12 @@ func NewCronJobFetchKubernetesAlertsParamsWithHTTPClient(client *http.Client) *C
 	}
 }
 
-/* CronJobFetchKubernetesAlertsParams contains all the parameters to send to the API endpoint
-   for the cron job fetch kubernetes alerts operation.
+/*
+CronJobFetchKubernetesAlertsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job fetch kubernetes alerts operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobFetchKubernetesAlertsParams struct {
 

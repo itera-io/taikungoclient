@@ -50,7 +50,7 @@ type ClientService interface {
 }
 
 /*
-  NotificationsCreate sends notification to signal r
+NotificationsCreate sends notification to signal r
 */
 func (a *Client) NotificationsCreate(params *NotificationsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -89,7 +89,7 @@ func (a *Client) NotificationsCreate(params *NotificationsCreateParams, authInfo
 }
 
 /*
-  NotificationsDelete deletes notification
+NotificationsDelete deletes notification
 */
 func (a *Client) NotificationsDelete(params *NotificationsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsDeleteOK, *NotificationsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -129,7 +129,7 @@ func (a *Client) NotificationsDelete(params *NotificationsDeleteParams, authInfo
 }
 
 /*
-  NotificationsExportCsv exports csv
+NotificationsExportCsv exports csv
 */
 func (a *Client) NotificationsExportCsv(params *NotificationsExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsExportCsvOK, error) {
 	// TODO: Validate the params before sending
@@ -168,7 +168,7 @@ func (a *Client) NotificationsExportCsv(params *NotificationsExportCsvParams, au
 }
 
 /*
-  NotificationsGetProjectOperationMessages gets project operations
+NotificationsGetProjectOperationMessages gets project operations
 */
 func (a *Client) NotificationsGetProjectOperationMessages(params *NotificationsGetProjectOperationMessagesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsGetProjectOperationMessagesOK, error) {
 	// TODO: Validate the params before sending
@@ -207,7 +207,7 @@ func (a *Client) NotificationsGetProjectOperationMessages(params *NotificationsG
 }
 
 /*
-  NotificationsList retrieves all notifications
+NotificationsList retrieves all notifications
 */
 func (a *Client) NotificationsList(params *NotificationsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsListOK, error) {
 	// TODO: Validate the params before sending
@@ -246,7 +246,7 @@ func (a *Client) NotificationsList(params *NotificationsListParams, authInfo run
 }
 
 /*
-  NotificationsListByUser gets notification for current user
+NotificationsListByUser gets notification for current user
 */
 func (a *Client) NotificationsListByUser(params *NotificationsListByUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsListByUserOK, error) {
 	// TODO: Validate the params before sending
@@ -285,7 +285,7 @@ func (a *Client) NotificationsListByUser(params *NotificationsListByUserParams, 
 }
 
 /*
-  NotificationsNotifyOwner notifies owner
+NotificationsNotifyOwner notifies owner
 */
 func (a *Client) NotificationsNotifyOwner(params *NotificationsNotifyOwnerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsNotifyOwnerOK, error) {
 	// TODO: Validate the params before sending
@@ -324,7 +324,7 @@ func (a *Client) NotificationsNotifyOwner(params *NotificationsNotifyOwnerParams
 }
 
 /*
-  NotificationsUpdate updates notification
+NotificationsUpdate updates notification
 */
 func (a *Client) NotificationsUpdate(params *NotificationsUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NotificationsUpdateOK, error) {
 	// TODO: Validate the params before sending

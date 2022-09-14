@@ -69,7 +69,8 @@ func NewPrometheusBindRulesOK() *PrometheusBindRulesOK {
 	return &PrometheusBindRulesOK{}
 }
 
-/* PrometheusBindRulesOK describes a response with status code 200, with default header values.
+/*
+PrometheusBindRulesOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type PrometheusBindRulesOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this prometheus bind rules o k response has a 2xx status code
+func (o *PrometheusBindRulesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this prometheus bind rules o k response has a 3xx status code
+func (o *PrometheusBindRulesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus bind rules o k response has a 4xx status code
+func (o *PrometheusBindRulesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this prometheus bind rules o k response has a 5xx status code
+func (o *PrometheusBindRulesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus bind rules o k response a status code equal to that given
+func (o *PrometheusBindRulesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PrometheusBindRulesOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesOK  %+v", 200, o.Payload)
 }
+
+func (o *PrometheusBindRulesOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesOK  %+v", 200, o.Payload)
+}
+
 func (o *PrometheusBindRulesOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewPrometheusBindRulesBadRequest() *PrometheusBindRulesBadRequest {
 	return &PrometheusBindRulesBadRequest{}
 }
 
-/* PrometheusBindRulesBadRequest describes a response with status code 400, with default header values.
+/*
+PrometheusBindRulesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type PrometheusBindRulesBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this prometheus bind rules bad request response has a 2xx status code
+func (o *PrometheusBindRulesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus bind rules bad request response has a 3xx status code
+func (o *PrometheusBindRulesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus bind rules bad request response has a 4xx status code
+func (o *PrometheusBindRulesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus bind rules bad request response has a 5xx status code
+func (o *PrometheusBindRulesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus bind rules bad request response a status code equal to that given
+func (o *PrometheusBindRulesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PrometheusBindRulesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PrometheusBindRulesBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PrometheusBindRulesBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewPrometheusBindRulesUnauthorized() *PrometheusBindRulesUnauthorized {
 	return &PrometheusBindRulesUnauthorized{}
 }
 
-/* PrometheusBindRulesUnauthorized describes a response with status code 401, with default header values.
+/*
+PrometheusBindRulesUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type PrometheusBindRulesUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus bind rules unauthorized response has a 2xx status code
+func (o *PrometheusBindRulesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus bind rules unauthorized response has a 3xx status code
+func (o *PrometheusBindRulesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus bind rules unauthorized response has a 4xx status code
+func (o *PrometheusBindRulesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus bind rules unauthorized response has a 5xx status code
+func (o *PrometheusBindRulesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus bind rules unauthorized response a status code equal to that given
+func (o *PrometheusBindRulesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PrometheusBindRulesUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *PrometheusBindRulesUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *PrometheusBindRulesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewPrometheusBindRulesForbidden() *PrometheusBindRulesForbidden {
 	return &PrometheusBindRulesForbidden{}
 }
 
-/* PrometheusBindRulesForbidden describes a response with status code 403, with default header values.
+/*
+PrometheusBindRulesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type PrometheusBindRulesForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus bind rules forbidden response has a 2xx status code
+func (o *PrometheusBindRulesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus bind rules forbidden response has a 3xx status code
+func (o *PrometheusBindRulesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus bind rules forbidden response has a 4xx status code
+func (o *PrometheusBindRulesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus bind rules forbidden response has a 5xx status code
+func (o *PrometheusBindRulesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus bind rules forbidden response a status code equal to that given
+func (o *PrometheusBindRulesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PrometheusBindRulesForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PrometheusBindRulesForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PrometheusBindRulesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewPrometheusBindRulesNotFound() *PrometheusBindRulesNotFound {
 	return &PrometheusBindRulesNotFound{}
 }
 
-/* PrometheusBindRulesNotFound describes a response with status code 404, with default header values.
+/*
+PrometheusBindRulesNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type PrometheusBindRulesNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus bind rules not found response has a 2xx status code
+func (o *PrometheusBindRulesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus bind rules not found response has a 3xx status code
+func (o *PrometheusBindRulesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus bind rules not found response has a 4xx status code
+func (o *PrometheusBindRulesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus bind rules not found response has a 5xx status code
+func (o *PrometheusBindRulesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus bind rules not found response a status code equal to that given
+func (o *PrometheusBindRulesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PrometheusBindRulesNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PrometheusBindRulesNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PrometheusBindRulesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewPrometheusBindRulesInternalServerError() *PrometheusBindRulesInternalSer
 	return &PrometheusBindRulesInternalServerError{}
 }
 
-/* PrometheusBindRulesInternalServerError describes a response with status code 500, with default header values.
+/*
+PrometheusBindRulesInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PrometheusBindRulesInternalServerError struct {
 }
 
+// IsSuccess returns true when this prometheus bind rules internal server error response has a 2xx status code
+func (o *PrometheusBindRulesInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus bind rules internal server error response has a 3xx status code
+func (o *PrometheusBindRulesInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus bind rules internal server error response has a 4xx status code
+func (o *PrometheusBindRulesInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this prometheus bind rules internal server error response has a 5xx status code
+func (o *PrometheusBindRulesInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this prometheus bind rules internal server error response a status code equal to that given
+func (o *PrometheusBindRulesInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PrometheusBindRulesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesInternalServerError ", 500)
+}
+
+func (o *PrometheusBindRulesInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesInternalServerError ", 500)
 }
 

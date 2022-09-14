@@ -69,7 +69,8 @@ func NewCatalogAvailablePackageDetailsOK() *CatalogAvailablePackageDetailsOK {
 	return &CatalogAvailablePackageDetailsOK{}
 }
 
-/* CatalogAvailablePackageDetailsOK describes a response with status code 200, with default header values.
+/*
+CatalogAvailablePackageDetailsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CatalogAvailablePackageDetailsOK struct {
 	Payload *models.AvailablePackageDetailsDto
 }
 
+// IsSuccess returns true when this catalog available package details o k response has a 2xx status code
+func (o *CatalogAvailablePackageDetailsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this catalog available package details o k response has a 3xx status code
+func (o *CatalogAvailablePackageDetailsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog available package details o k response has a 4xx status code
+func (o *CatalogAvailablePackageDetailsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this catalog available package details o k response has a 5xx status code
+func (o *CatalogAvailablePackageDetailsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog available package details o k response a status code equal to that given
+func (o *CatalogAvailablePackageDetailsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CatalogAvailablePackageDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsOK  %+v", 200, o.Payload)
 }
+
+func (o *CatalogAvailablePackageDetailsOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsOK  %+v", 200, o.Payload)
+}
+
 func (o *CatalogAvailablePackageDetailsOK) GetPayload() *models.AvailablePackageDetailsDto {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewCatalogAvailablePackageDetailsBadRequest() *CatalogAvailablePackageDetai
 	return &CatalogAvailablePackageDetailsBadRequest{}
 }
 
-/* CatalogAvailablePackageDetailsBadRequest describes a response with status code 400, with default header values.
+/*
+CatalogAvailablePackageDetailsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type CatalogAvailablePackageDetailsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this catalog available package details bad request response has a 2xx status code
+func (o *CatalogAvailablePackageDetailsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog available package details bad request response has a 3xx status code
+func (o *CatalogAvailablePackageDetailsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog available package details bad request response has a 4xx status code
+func (o *CatalogAvailablePackageDetailsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog available package details bad request response has a 5xx status code
+func (o *CatalogAvailablePackageDetailsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog available package details bad request response a status code equal to that given
+func (o *CatalogAvailablePackageDetailsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CatalogAvailablePackageDetailsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CatalogAvailablePackageDetailsBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CatalogAvailablePackageDetailsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewCatalogAvailablePackageDetailsUnauthorized() *CatalogAvailablePackageDet
 	return &CatalogAvailablePackageDetailsUnauthorized{}
 }
 
-/* CatalogAvailablePackageDetailsUnauthorized describes a response with status code 401, with default header values.
+/*
+CatalogAvailablePackageDetailsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type CatalogAvailablePackageDetailsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog available package details unauthorized response has a 2xx status code
+func (o *CatalogAvailablePackageDetailsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog available package details unauthorized response has a 3xx status code
+func (o *CatalogAvailablePackageDetailsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog available package details unauthorized response has a 4xx status code
+func (o *CatalogAvailablePackageDetailsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog available package details unauthorized response has a 5xx status code
+func (o *CatalogAvailablePackageDetailsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog available package details unauthorized response a status code equal to that given
+func (o *CatalogAvailablePackageDetailsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CatalogAvailablePackageDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CatalogAvailablePackageDetailsUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CatalogAvailablePackageDetailsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewCatalogAvailablePackageDetailsForbidden() *CatalogAvailablePackageDetail
 	return &CatalogAvailablePackageDetailsForbidden{}
 }
 
-/* CatalogAvailablePackageDetailsForbidden describes a response with status code 403, with default header values.
+/*
+CatalogAvailablePackageDetailsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type CatalogAvailablePackageDetailsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog available package details forbidden response has a 2xx status code
+func (o *CatalogAvailablePackageDetailsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog available package details forbidden response has a 3xx status code
+func (o *CatalogAvailablePackageDetailsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog available package details forbidden response has a 4xx status code
+func (o *CatalogAvailablePackageDetailsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog available package details forbidden response has a 5xx status code
+func (o *CatalogAvailablePackageDetailsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog available package details forbidden response a status code equal to that given
+func (o *CatalogAvailablePackageDetailsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CatalogAvailablePackageDetailsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CatalogAvailablePackageDetailsForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CatalogAvailablePackageDetailsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewCatalogAvailablePackageDetailsNotFound() *CatalogAvailablePackageDetails
 	return &CatalogAvailablePackageDetailsNotFound{}
 }
 
-/* CatalogAvailablePackageDetailsNotFound describes a response with status code 404, with default header values.
+/*
+CatalogAvailablePackageDetailsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type CatalogAvailablePackageDetailsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog available package details not found response has a 2xx status code
+func (o *CatalogAvailablePackageDetailsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog available package details not found response has a 3xx status code
+func (o *CatalogAvailablePackageDetailsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog available package details not found response has a 4xx status code
+func (o *CatalogAvailablePackageDetailsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog available package details not found response has a 5xx status code
+func (o *CatalogAvailablePackageDetailsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog available package details not found response a status code equal to that given
+func (o *CatalogAvailablePackageDetailsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CatalogAvailablePackageDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CatalogAvailablePackageDetailsNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CatalogAvailablePackageDetailsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewCatalogAvailablePackageDetailsInternalServerError() *CatalogAvailablePac
 	return &CatalogAvailablePackageDetailsInternalServerError{}
 }
 
-/* CatalogAvailablePackageDetailsInternalServerError describes a response with status code 500, with default header values.
+/*
+CatalogAvailablePackageDetailsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CatalogAvailablePackageDetailsInternalServerError struct {
 }
 
+// IsSuccess returns true when this catalog available package details internal server error response has a 2xx status code
+func (o *CatalogAvailablePackageDetailsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog available package details internal server error response has a 3xx status code
+func (o *CatalogAvailablePackageDetailsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog available package details internal server error response has a 4xx status code
+func (o *CatalogAvailablePackageDetailsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this catalog available package details internal server error response has a 5xx status code
+func (o *CatalogAvailablePackageDetailsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this catalog available package details internal server error response a status code equal to that given
+func (o *CatalogAvailablePackageDetailsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CatalogAvailablePackageDetailsInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsInternalServerError ", 500)
+}
+
+func (o *CatalogAvailablePackageDetailsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsInternalServerError ", 500)
 }
 

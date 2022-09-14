@@ -72,7 +72,7 @@ type ClientService interface {
 }
 
 /*
-  BackupClearProject deletes unfinished backup for project
+BackupClearProject deletes unfinished backup for project
 */
 func (a *Client) BackupClearProject(params *BackupClearProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupClearProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -111,7 +111,7 @@ func (a *Client) BackupClearProject(params *BackupClearProjectParams, authInfo r
 }
 
 /*
-  BackupCreate adds backup policy
+BackupCreate adds backup policy
 */
 func (a *Client) BackupCreate(params *BackupCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -150,7 +150,7 @@ func (a *Client) BackupCreate(params *BackupCreateParams, authInfo runtime.Clien
 }
 
 /*
-  BackupDeleteBackup removes policy backup
+BackupDeleteBackup removes policy backup
 */
 func (a *Client) BackupDeleteBackup(params *BackupDeleteBackupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDeleteBackupOK, error) {
 	// TODO: Validate the params before sending
@@ -189,7 +189,7 @@ func (a *Client) BackupDeleteBackup(params *BackupDeleteBackupParams, authInfo r
 }
 
 /*
-  BackupDeleteBackupLocation removes backup location from project
+BackupDeleteBackupLocation removes backup location from project
 */
 func (a *Client) BackupDeleteBackupLocation(params *BackupDeleteBackupLocationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDeleteBackupLocationOK, error) {
 	// TODO: Validate the params before sending
@@ -228,7 +228,7 @@ func (a *Client) BackupDeleteBackupLocation(params *BackupDeleteBackupLocationPa
 }
 
 /*
-  BackupDeleteRestore removes policy restore
+BackupDeleteRestore removes policy restore
 */
 func (a *Client) BackupDeleteRestore(params *BackupDeleteRestoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDeleteRestoreOK, error) {
 	// TODO: Validate the params before sending
@@ -267,7 +267,7 @@ func (a *Client) BackupDeleteRestore(params *BackupDeleteRestoreParams, authInfo
 }
 
 /*
-  BackupDeleteSchedule removes policy schedule
+BackupDeleteSchedule removes policy schedule
 */
 func (a *Client) BackupDeleteSchedule(params *BackupDeleteScheduleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDeleteScheduleOK, error) {
 	// TODO: Validate the params before sending
@@ -306,7 +306,7 @@ func (a *Client) BackupDeleteSchedule(params *BackupDeleteScheduleParams, authIn
 }
 
 /*
-  BackupDescribeBackup gets backup info by name
+BackupDescribeBackup gets backup info by name
 */
 func (a *Client) BackupDescribeBackup(params *BackupDescribeBackupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDescribeBackupOK, error) {
 	// TODO: Validate the params before sending
@@ -345,7 +345,7 @@ func (a *Client) BackupDescribeBackup(params *BackupDescribeBackupParams, authIn
 }
 
 /*
-  BackupDescribeRestore gets restore info by name
+BackupDescribeRestore gets restore info by name
 */
 func (a *Client) BackupDescribeRestore(params *BackupDescribeRestoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDescribeRestoreOK, error) {
 	// TODO: Validate the params before sending
@@ -384,7 +384,7 @@ func (a *Client) BackupDescribeRestore(params *BackupDescribeRestoreParams, auth
 }
 
 /*
-  BackupDescribeSchedule gets schedule info by name
+BackupDescribeSchedule gets schedule info by name
 */
 func (a *Client) BackupDescribeSchedule(params *BackupDescribeScheduleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDescribeScheduleOK, error) {
 	// TODO: Validate the params before sending
@@ -423,7 +423,7 @@ func (a *Client) BackupDescribeSchedule(params *BackupDescribeScheduleParams, au
 }
 
 /*
-  BackupDisableBackup disables backup by the project Id
+BackupDisableBackup disables backup by the project Id
 */
 func (a *Client) BackupDisableBackup(params *BackupDisableBackupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDisableBackupOK, error) {
 	// TODO: Validate the params before sending
@@ -462,7 +462,7 @@ func (a *Client) BackupDisableBackup(params *BackupDisableBackupParams, authInfo
 }
 
 /*
-  BackupEnableBackup enables backup by the project Id
+BackupEnableBackup enables backup by the project Id
 */
 func (a *Client) BackupEnableBackup(params *BackupEnableBackupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupEnableBackupOK, error) {
 	// TODO: Validate the params before sending
@@ -501,7 +501,7 @@ func (a *Client) BackupEnableBackup(params *BackupEnableBackupParams, authInfo r
 }
 
 /*
-  BackupImportBackupStorage imports backup storage from source project to target project
+BackupImportBackupStorage imports backup storage from source project to target project
 */
 func (a *Client) BackupImportBackupStorage(params *BackupImportBackupStorageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupImportBackupStorageOK, error) {
 	// TODO: Validate the params before sending
@@ -540,7 +540,7 @@ func (a *Client) BackupImportBackupStorage(params *BackupImportBackupStoragePara
 }
 
 /*
-  BackupListAllBackupStorages lists all backup locations
+BackupListAllBackupStorages lists all backup locations
 */
 func (a *Client) BackupListAllBackupStorages(params *BackupListAllBackupStoragesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupListAllBackupStoragesOK, error) {
 	// TODO: Validate the params before sending
@@ -579,7 +579,7 @@ func (a *Client) BackupListAllBackupStorages(params *BackupListAllBackupStorages
 }
 
 /*
-  BackupListAllBackups lists all backups
+BackupListAllBackups lists all backups
 */
 func (a *Client) BackupListAllBackups(params *BackupListAllBackupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupListAllBackupsOK, error) {
 	// TODO: Validate the params before sending
@@ -618,7 +618,7 @@ func (a *Client) BackupListAllBackups(params *BackupListAllBackupsParams, authIn
 }
 
 /*
-  BackupListAllDeleteBackupRequests lists all delete backup requests
+BackupListAllDeleteBackupRequests lists all delete backup requests
 */
 func (a *Client) BackupListAllDeleteBackupRequests(params *BackupListAllDeleteBackupRequestsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupListAllDeleteBackupRequestsOK, error) {
 	// TODO: Validate the params before sending
@@ -657,7 +657,7 @@ func (a *Client) BackupListAllDeleteBackupRequests(params *BackupListAllDeleteBa
 }
 
 /*
-  BackupListAllRestores lists all restores
+BackupListAllRestores lists all restores
 */
 func (a *Client) BackupListAllRestores(params *BackupListAllRestoresParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupListAllRestoresOK, error) {
 	// TODO: Validate the params before sending
@@ -696,7 +696,7 @@ func (a *Client) BackupListAllRestores(params *BackupListAllRestoresParams, auth
 }
 
 /*
-  BackupListAllSchedules lists all schedules
+BackupListAllSchedules lists all schedules
 */
 func (a *Client) BackupListAllSchedules(params *BackupListAllSchedulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupListAllSchedulesOK, error) {
 	// TODO: Validate the params before sending
@@ -735,7 +735,7 @@ func (a *Client) BackupListAllSchedules(params *BackupListAllSchedulesParams, au
 }
 
 /*
-  BackupRestoreBackup restores backup
+BackupRestoreBackup restores backup
 */
 func (a *Client) BackupRestoreBackup(params *BackupRestoreBackupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupRestoreBackupOK, error) {
 	// TODO: Validate the params before sending
@@ -774,7 +774,7 @@ func (a *Client) BackupRestoreBackup(params *BackupRestoreBackupParams, authInfo
 }
 
 /*
-  BackupScheduleByName gets schedule info by name
+BackupScheduleByName gets schedule info by name
 */
 func (a *Client) BackupScheduleByName(params *BackupScheduleByNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupScheduleByNameOK, error) {
 	// TODO: Validate the params before sending

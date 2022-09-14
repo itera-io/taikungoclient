@@ -69,7 +69,8 @@ func NewTicketDeleteMessageOK() *TicketDeleteMessageOK {
 	return &TicketDeleteMessageOK{}
 }
 
-/* TicketDeleteMessageOK describes a response with status code 200, with default header values.
+/*
+TicketDeleteMessageOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type TicketDeleteMessageOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this ticket delete message o k response has a 2xx status code
+func (o *TicketDeleteMessageOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this ticket delete message o k response has a 3xx status code
+func (o *TicketDeleteMessageOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket delete message o k response has a 4xx status code
+func (o *TicketDeleteMessageOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ticket delete message o k response has a 5xx status code
+func (o *TicketDeleteMessageOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket delete message o k response a status code equal to that given
+func (o *TicketDeleteMessageOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *TicketDeleteMessageOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageOK  %+v", 200, o.Payload)
 }
+
+func (o *TicketDeleteMessageOK) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageOK  %+v", 200, o.Payload)
+}
+
 func (o *TicketDeleteMessageOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewTicketDeleteMessageBadRequest() *TicketDeleteMessageBadRequest {
 	return &TicketDeleteMessageBadRequest{}
 }
 
-/* TicketDeleteMessageBadRequest describes a response with status code 400, with default header values.
+/*
+TicketDeleteMessageBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type TicketDeleteMessageBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this ticket delete message bad request response has a 2xx status code
+func (o *TicketDeleteMessageBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket delete message bad request response has a 3xx status code
+func (o *TicketDeleteMessageBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket delete message bad request response has a 4xx status code
+func (o *TicketDeleteMessageBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket delete message bad request response has a 5xx status code
+func (o *TicketDeleteMessageBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket delete message bad request response a status code equal to that given
+func (o *TicketDeleteMessageBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *TicketDeleteMessageBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *TicketDeleteMessageBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *TicketDeleteMessageBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewTicketDeleteMessageUnauthorized() *TicketDeleteMessageUnauthorized {
 	return &TicketDeleteMessageUnauthorized{}
 }
 
-/* TicketDeleteMessageUnauthorized describes a response with status code 401, with default header values.
+/*
+TicketDeleteMessageUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type TicketDeleteMessageUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ticket delete message unauthorized response has a 2xx status code
+func (o *TicketDeleteMessageUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket delete message unauthorized response has a 3xx status code
+func (o *TicketDeleteMessageUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket delete message unauthorized response has a 4xx status code
+func (o *TicketDeleteMessageUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket delete message unauthorized response has a 5xx status code
+func (o *TicketDeleteMessageUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket delete message unauthorized response a status code equal to that given
+func (o *TicketDeleteMessageUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *TicketDeleteMessageUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *TicketDeleteMessageUnauthorized) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *TicketDeleteMessageUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewTicketDeleteMessageForbidden() *TicketDeleteMessageForbidden {
 	return &TicketDeleteMessageForbidden{}
 }
 
-/* TicketDeleteMessageForbidden describes a response with status code 403, with default header values.
+/*
+TicketDeleteMessageForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type TicketDeleteMessageForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ticket delete message forbidden response has a 2xx status code
+func (o *TicketDeleteMessageForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket delete message forbidden response has a 3xx status code
+func (o *TicketDeleteMessageForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket delete message forbidden response has a 4xx status code
+func (o *TicketDeleteMessageForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket delete message forbidden response has a 5xx status code
+func (o *TicketDeleteMessageForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket delete message forbidden response a status code equal to that given
+func (o *TicketDeleteMessageForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *TicketDeleteMessageForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageForbidden  %+v", 403, o.Payload)
 }
+
+func (o *TicketDeleteMessageForbidden) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageForbidden  %+v", 403, o.Payload)
+}
+
 func (o *TicketDeleteMessageForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewTicketDeleteMessageNotFound() *TicketDeleteMessageNotFound {
 	return &TicketDeleteMessageNotFound{}
 }
 
-/* TicketDeleteMessageNotFound describes a response with status code 404, with default header values.
+/*
+TicketDeleteMessageNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type TicketDeleteMessageNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ticket delete message not found response has a 2xx status code
+func (o *TicketDeleteMessageNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket delete message not found response has a 3xx status code
+func (o *TicketDeleteMessageNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket delete message not found response has a 4xx status code
+func (o *TicketDeleteMessageNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket delete message not found response has a 5xx status code
+func (o *TicketDeleteMessageNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket delete message not found response a status code equal to that given
+func (o *TicketDeleteMessageNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *TicketDeleteMessageNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageNotFound  %+v", 404, o.Payload)
 }
+
+func (o *TicketDeleteMessageNotFound) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageNotFound  %+v", 404, o.Payload)
+}
+
 func (o *TicketDeleteMessageNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewTicketDeleteMessageInternalServerError() *TicketDeleteMessageInternalSer
 	return &TicketDeleteMessageInternalServerError{}
 }
 
-/* TicketDeleteMessageInternalServerError describes a response with status code 500, with default header values.
+/*
+TicketDeleteMessageInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type TicketDeleteMessageInternalServerError struct {
 }
 
+// IsSuccess returns true when this ticket delete message internal server error response has a 2xx status code
+func (o *TicketDeleteMessageInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket delete message internal server error response has a 3xx status code
+func (o *TicketDeleteMessageInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket delete message internal server error response has a 4xx status code
+func (o *TicketDeleteMessageInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ticket delete message internal server error response has a 5xx status code
+func (o *TicketDeleteMessageInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this ticket delete message internal server error response a status code equal to that given
+func (o *TicketDeleteMessageInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *TicketDeleteMessageInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageInternalServerError ", 500)
+}
+
+func (o *TicketDeleteMessageInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/message/{messageId}][%d] ticketDeleteMessageInternalServerError ", 500)
 }
 

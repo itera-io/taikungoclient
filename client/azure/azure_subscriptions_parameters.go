@@ -54,10 +54,12 @@ func NewAzureSubscriptionsParamsWithHTTPClient(client *http.Client) *AzureSubscr
 	}
 }
 
-/* AzureSubscriptionsParams contains all the parameters to send to the API endpoint
-   for the azure subscriptions operation.
+/*
+AzureSubscriptionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the azure subscriptions operation.
+
+	Typically these are written to a http.Request.
 */
 type AzureSubscriptionsParams struct {
 

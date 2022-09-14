@@ -54,10 +54,12 @@ func NewTicketReplyParamsWithHTTPClient(client *http.Client) *TicketReplyParams 
 	}
 }
 
-/* TicketReplyParams contains all the parameters to send to the API endpoint
-   for the ticket reply operation.
+/*
+TicketReplyParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ticket reply operation.
+
+	Typically these are written to a http.Request.
 */
 type TicketReplyParams struct {
 

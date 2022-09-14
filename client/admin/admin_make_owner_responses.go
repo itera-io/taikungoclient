@@ -69,7 +69,8 @@ func NewAdminMakeOwnerOK() *AdminMakeOwnerOK {
 	return &AdminMakeOwnerOK{}
 }
 
-/* AdminMakeOwnerOK describes a response with status code 200, with default header values.
+/*
+AdminMakeOwnerOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AdminMakeOwnerOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this admin make owner o k response has a 2xx status code
+func (o *AdminMakeOwnerOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this admin make owner o k response has a 3xx status code
+func (o *AdminMakeOwnerOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin make owner o k response has a 4xx status code
+func (o *AdminMakeOwnerOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin make owner o k response has a 5xx status code
+func (o *AdminMakeOwnerOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin make owner o k response a status code equal to that given
+func (o *AdminMakeOwnerOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AdminMakeOwnerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerOK  %+v", 200, o.Payload)
 }
+
+func (o *AdminMakeOwnerOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerOK  %+v", 200, o.Payload)
+}
+
 func (o *AdminMakeOwnerOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAdminMakeOwnerBadRequest() *AdminMakeOwnerBadRequest {
 	return &AdminMakeOwnerBadRequest{}
 }
 
-/* AdminMakeOwnerBadRequest describes a response with status code 400, with default header values.
+/*
+AdminMakeOwnerBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AdminMakeOwnerBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this admin make owner bad request response has a 2xx status code
+func (o *AdminMakeOwnerBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin make owner bad request response has a 3xx status code
+func (o *AdminMakeOwnerBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin make owner bad request response has a 4xx status code
+func (o *AdminMakeOwnerBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin make owner bad request response has a 5xx status code
+func (o *AdminMakeOwnerBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin make owner bad request response a status code equal to that given
+func (o *AdminMakeOwnerBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AdminMakeOwnerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AdminMakeOwnerBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AdminMakeOwnerBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAdminMakeOwnerUnauthorized() *AdminMakeOwnerUnauthorized {
 	return &AdminMakeOwnerUnauthorized{}
 }
 
-/* AdminMakeOwnerUnauthorized describes a response with status code 401, with default header values.
+/*
+AdminMakeOwnerUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AdminMakeOwnerUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin make owner unauthorized response has a 2xx status code
+func (o *AdminMakeOwnerUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin make owner unauthorized response has a 3xx status code
+func (o *AdminMakeOwnerUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin make owner unauthorized response has a 4xx status code
+func (o *AdminMakeOwnerUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin make owner unauthorized response has a 5xx status code
+func (o *AdminMakeOwnerUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin make owner unauthorized response a status code equal to that given
+func (o *AdminMakeOwnerUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AdminMakeOwnerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AdminMakeOwnerUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AdminMakeOwnerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAdminMakeOwnerForbidden() *AdminMakeOwnerForbidden {
 	return &AdminMakeOwnerForbidden{}
 }
 
-/* AdminMakeOwnerForbidden describes a response with status code 403, with default header values.
+/*
+AdminMakeOwnerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AdminMakeOwnerForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin make owner forbidden response has a 2xx status code
+func (o *AdminMakeOwnerForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin make owner forbidden response has a 3xx status code
+func (o *AdminMakeOwnerForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin make owner forbidden response has a 4xx status code
+func (o *AdminMakeOwnerForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin make owner forbidden response has a 5xx status code
+func (o *AdminMakeOwnerForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin make owner forbidden response a status code equal to that given
+func (o *AdminMakeOwnerForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AdminMakeOwnerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AdminMakeOwnerForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AdminMakeOwnerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAdminMakeOwnerNotFound() *AdminMakeOwnerNotFound {
 	return &AdminMakeOwnerNotFound{}
 }
 
-/* AdminMakeOwnerNotFound describes a response with status code 404, with default header values.
+/*
+AdminMakeOwnerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AdminMakeOwnerNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin make owner not found response has a 2xx status code
+func (o *AdminMakeOwnerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin make owner not found response has a 3xx status code
+func (o *AdminMakeOwnerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin make owner not found response has a 4xx status code
+func (o *AdminMakeOwnerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin make owner not found response has a 5xx status code
+func (o *AdminMakeOwnerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin make owner not found response a status code equal to that given
+func (o *AdminMakeOwnerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AdminMakeOwnerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AdminMakeOwnerNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AdminMakeOwnerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAdminMakeOwnerInternalServerError() *AdminMakeOwnerInternalServerError {
 	return &AdminMakeOwnerInternalServerError{}
 }
 
-/* AdminMakeOwnerInternalServerError describes a response with status code 500, with default header values.
+/*
+AdminMakeOwnerInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AdminMakeOwnerInternalServerError struct {
 }
 
+// IsSuccess returns true when this admin make owner internal server error response has a 2xx status code
+func (o *AdminMakeOwnerInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin make owner internal server error response has a 3xx status code
+func (o *AdminMakeOwnerInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin make owner internal server error response has a 4xx status code
+func (o *AdminMakeOwnerInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin make owner internal server error response has a 5xx status code
+func (o *AdminMakeOwnerInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this admin make owner internal server error response a status code equal to that given
+func (o *AdminMakeOwnerInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AdminMakeOwnerInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerInternalServerError ", 500)
+}
+
+func (o *AdminMakeOwnerInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerInternalServerError ", 500)
 }
 

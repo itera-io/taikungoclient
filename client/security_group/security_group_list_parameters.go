@@ -53,10 +53,12 @@ func NewSecurityGroupListParamsWithHTTPClient(client *http.Client) *SecurityGrou
 	}
 }
 
-/* SecurityGroupListParams contains all the parameters to send to the API endpoint
-   for the security group list operation.
+/*
+SecurityGroupListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the security group list operation.
+
+	Typically these are written to a http.Request.
 */
 type SecurityGroupListParams struct {
 

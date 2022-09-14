@@ -54,10 +54,12 @@ func NewKubernetesRestartDeploymentParamsWithHTTPClient(client *http.Client) *Ku
 	}
 }
 
-/* KubernetesRestartDeploymentParams contains all the parameters to send to the API endpoint
-   for the kubernetes restart deployment operation.
+/*
+KubernetesRestartDeploymentParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes restart deployment operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesRestartDeploymentParams struct {
 

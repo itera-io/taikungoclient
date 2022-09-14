@@ -69,7 +69,8 @@ func NewAwsRegionListOK() *AwsRegionListOK {
 	return &AwsRegionListOK{}
 }
 
-/* AwsRegionListOK describes a response with status code 200, with default header values.
+/*
+AwsRegionListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AwsRegionListOK struct {
 	Payload []*models.AwsRegionDto
 }
 
+// IsSuccess returns true when this aws region list o k response has a 2xx status code
+func (o *AwsRegionListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this aws region list o k response has a 3xx status code
+func (o *AwsRegionListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this aws region list o k response has a 4xx status code
+func (o *AwsRegionListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this aws region list o k response has a 5xx status code
+func (o *AwsRegionListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this aws region list o k response a status code equal to that given
+func (o *AwsRegionListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AwsRegionListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListOK  %+v", 200, o.Payload)
 }
+
+func (o *AwsRegionListOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListOK  %+v", 200, o.Payload)
+}
+
 func (o *AwsRegionListOK) GetPayload() []*models.AwsRegionDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAwsRegionListBadRequest() *AwsRegionListBadRequest {
 	return &AwsRegionListBadRequest{}
 }
 
-/* AwsRegionListBadRequest describes a response with status code 400, with default header values.
+/*
+AwsRegionListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AwsRegionListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this aws region list bad request response has a 2xx status code
+func (o *AwsRegionListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this aws region list bad request response has a 3xx status code
+func (o *AwsRegionListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this aws region list bad request response has a 4xx status code
+func (o *AwsRegionListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this aws region list bad request response has a 5xx status code
+func (o *AwsRegionListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this aws region list bad request response a status code equal to that given
+func (o *AwsRegionListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AwsRegionListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AwsRegionListBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AwsRegionListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAwsRegionListUnauthorized() *AwsRegionListUnauthorized {
 	return &AwsRegionListUnauthorized{}
 }
 
-/* AwsRegionListUnauthorized describes a response with status code 401, with default header values.
+/*
+AwsRegionListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AwsRegionListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this aws region list unauthorized response has a 2xx status code
+func (o *AwsRegionListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this aws region list unauthorized response has a 3xx status code
+func (o *AwsRegionListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this aws region list unauthorized response has a 4xx status code
+func (o *AwsRegionListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this aws region list unauthorized response has a 5xx status code
+func (o *AwsRegionListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this aws region list unauthorized response a status code equal to that given
+func (o *AwsRegionListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AwsRegionListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AwsRegionListUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AwsRegionListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAwsRegionListForbidden() *AwsRegionListForbidden {
 	return &AwsRegionListForbidden{}
 }
 
-/* AwsRegionListForbidden describes a response with status code 403, with default header values.
+/*
+AwsRegionListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AwsRegionListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this aws region list forbidden response has a 2xx status code
+func (o *AwsRegionListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this aws region list forbidden response has a 3xx status code
+func (o *AwsRegionListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this aws region list forbidden response has a 4xx status code
+func (o *AwsRegionListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this aws region list forbidden response has a 5xx status code
+func (o *AwsRegionListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this aws region list forbidden response a status code equal to that given
+func (o *AwsRegionListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AwsRegionListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AwsRegionListForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AwsRegionListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAwsRegionListNotFound() *AwsRegionListNotFound {
 	return &AwsRegionListNotFound{}
 }
 
-/* AwsRegionListNotFound describes a response with status code 404, with default header values.
+/*
+AwsRegionListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AwsRegionListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this aws region list not found response has a 2xx status code
+func (o *AwsRegionListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this aws region list not found response has a 3xx status code
+func (o *AwsRegionListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this aws region list not found response has a 4xx status code
+func (o *AwsRegionListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this aws region list not found response has a 5xx status code
+func (o *AwsRegionListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this aws region list not found response a status code equal to that given
+func (o *AwsRegionListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AwsRegionListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AwsRegionListNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AwsRegionListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAwsRegionListInternalServerError() *AwsRegionListInternalServerError {
 	return &AwsRegionListInternalServerError{}
 }
 
-/* AwsRegionListInternalServerError describes a response with status code 500, with default header values.
+/*
+AwsRegionListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AwsRegionListInternalServerError struct {
 }
 
+// IsSuccess returns true when this aws region list internal server error response has a 2xx status code
+func (o *AwsRegionListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this aws region list internal server error response has a 3xx status code
+func (o *AwsRegionListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this aws region list internal server error response has a 4xx status code
+func (o *AwsRegionListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this aws region list internal server error response has a 5xx status code
+func (o *AwsRegionListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this aws region list internal server error response a status code equal to that given
+func (o *AwsRegionListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AwsRegionListInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListInternalServerError ", 500)
+}
+
+func (o *AwsRegionListInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListInternalServerError ", 500)
 }
 

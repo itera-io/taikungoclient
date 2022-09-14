@@ -69,7 +69,8 @@ func NewBackupDeleteBackupLocationOK() *BackupDeleteBackupLocationOK {
 	return &BackupDeleteBackupLocationOK{}
 }
 
-/* BackupDeleteBackupLocationOK describes a response with status code 200, with default header values.
+/*
+BackupDeleteBackupLocationOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type BackupDeleteBackupLocationOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this backup delete backup location o k response has a 2xx status code
+func (o *BackupDeleteBackupLocationOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this backup delete backup location o k response has a 3xx status code
+func (o *BackupDeleteBackupLocationOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup delete backup location o k response has a 4xx status code
+func (o *BackupDeleteBackupLocationOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this backup delete backup location o k response has a 5xx status code
+func (o *BackupDeleteBackupLocationOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup delete backup location o k response a status code equal to that given
+func (o *BackupDeleteBackupLocationOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *BackupDeleteBackupLocationOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationOK  %+v", 200, o.Payload)
 }
+
+func (o *BackupDeleteBackupLocationOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationOK  %+v", 200, o.Payload)
+}
+
 func (o *BackupDeleteBackupLocationOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewBackupDeleteBackupLocationBadRequest() *BackupDeleteBackupLocationBadReq
 	return &BackupDeleteBackupLocationBadRequest{}
 }
 
-/* BackupDeleteBackupLocationBadRequest describes a response with status code 400, with default header values.
+/*
+BackupDeleteBackupLocationBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type BackupDeleteBackupLocationBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this backup delete backup location bad request response has a 2xx status code
+func (o *BackupDeleteBackupLocationBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup delete backup location bad request response has a 3xx status code
+func (o *BackupDeleteBackupLocationBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup delete backup location bad request response has a 4xx status code
+func (o *BackupDeleteBackupLocationBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup delete backup location bad request response has a 5xx status code
+func (o *BackupDeleteBackupLocationBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup delete backup location bad request response a status code equal to that given
+func (o *BackupDeleteBackupLocationBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BackupDeleteBackupLocationBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BackupDeleteBackupLocationBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BackupDeleteBackupLocationBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewBackupDeleteBackupLocationUnauthorized() *BackupDeleteBackupLocationUnau
 	return &BackupDeleteBackupLocationUnauthorized{}
 }
 
-/* BackupDeleteBackupLocationUnauthorized describes a response with status code 401, with default header values.
+/*
+BackupDeleteBackupLocationUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type BackupDeleteBackupLocationUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup delete backup location unauthorized response has a 2xx status code
+func (o *BackupDeleteBackupLocationUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup delete backup location unauthorized response has a 3xx status code
+func (o *BackupDeleteBackupLocationUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup delete backup location unauthorized response has a 4xx status code
+func (o *BackupDeleteBackupLocationUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup delete backup location unauthorized response has a 5xx status code
+func (o *BackupDeleteBackupLocationUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup delete backup location unauthorized response a status code equal to that given
+func (o *BackupDeleteBackupLocationUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BackupDeleteBackupLocationUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BackupDeleteBackupLocationUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BackupDeleteBackupLocationUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewBackupDeleteBackupLocationForbidden() *BackupDeleteBackupLocationForbidd
 	return &BackupDeleteBackupLocationForbidden{}
 }
 
-/* BackupDeleteBackupLocationForbidden describes a response with status code 403, with default header values.
+/*
+BackupDeleteBackupLocationForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type BackupDeleteBackupLocationForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup delete backup location forbidden response has a 2xx status code
+func (o *BackupDeleteBackupLocationForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup delete backup location forbidden response has a 3xx status code
+func (o *BackupDeleteBackupLocationForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup delete backup location forbidden response has a 4xx status code
+func (o *BackupDeleteBackupLocationForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup delete backup location forbidden response has a 5xx status code
+func (o *BackupDeleteBackupLocationForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup delete backup location forbidden response a status code equal to that given
+func (o *BackupDeleteBackupLocationForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *BackupDeleteBackupLocationForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationForbidden  %+v", 403, o.Payload)
 }
+
+func (o *BackupDeleteBackupLocationForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationForbidden  %+v", 403, o.Payload)
+}
+
 func (o *BackupDeleteBackupLocationForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewBackupDeleteBackupLocationNotFound() *BackupDeleteBackupLocationNotFound
 	return &BackupDeleteBackupLocationNotFound{}
 }
 
-/* BackupDeleteBackupLocationNotFound describes a response with status code 404, with default header values.
+/*
+BackupDeleteBackupLocationNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type BackupDeleteBackupLocationNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup delete backup location not found response has a 2xx status code
+func (o *BackupDeleteBackupLocationNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup delete backup location not found response has a 3xx status code
+func (o *BackupDeleteBackupLocationNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup delete backup location not found response has a 4xx status code
+func (o *BackupDeleteBackupLocationNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup delete backup location not found response has a 5xx status code
+func (o *BackupDeleteBackupLocationNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup delete backup location not found response a status code equal to that given
+func (o *BackupDeleteBackupLocationNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BackupDeleteBackupLocationNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BackupDeleteBackupLocationNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BackupDeleteBackupLocationNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewBackupDeleteBackupLocationInternalServerError() *BackupDeleteBackupLocat
 	return &BackupDeleteBackupLocationInternalServerError{}
 }
 
-/* BackupDeleteBackupLocationInternalServerError describes a response with status code 500, with default header values.
+/*
+BackupDeleteBackupLocationInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type BackupDeleteBackupLocationInternalServerError struct {
 }
 
+// IsSuccess returns true when this backup delete backup location internal server error response has a 2xx status code
+func (o *BackupDeleteBackupLocationInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup delete backup location internal server error response has a 3xx status code
+func (o *BackupDeleteBackupLocationInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup delete backup location internal server error response has a 4xx status code
+func (o *BackupDeleteBackupLocationInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this backup delete backup location internal server error response has a 5xx status code
+func (o *BackupDeleteBackupLocationInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this backup delete backup location internal server error response a status code equal to that given
+func (o *BackupDeleteBackupLocationInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BackupDeleteBackupLocationInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationInternalServerError ", 500)
+}
+
+func (o *BackupDeleteBackupLocationInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationInternalServerError ", 500)
 }
 

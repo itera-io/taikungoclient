@@ -54,10 +54,12 @@ func NewPrometheusCreateParamsWithHTTPClient(client *http.Client) *PrometheusCre
 	}
 }
 
-/* PrometheusCreateParams contains all the parameters to send to the API endpoint
-   for the prometheus create operation.
+/*
+PrometheusCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the prometheus create operation.
+
+	Typically these are written to a http.Request.
 */
 type PrometheusCreateParams struct {
 

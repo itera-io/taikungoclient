@@ -53,10 +53,12 @@ func NewKubernetesGetHelmReleaseListParamsWithHTTPClient(client *http.Client) *K
 	}
 }
 
-/* KubernetesGetHelmReleaseListParams contains all the parameters to send to the API endpoint
-   for the kubernetes get helm release list operation.
+/*
+KubernetesGetHelmReleaseListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes get helm release list operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesGetHelmReleaseListParams struct {
 

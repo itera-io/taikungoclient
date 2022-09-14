@@ -69,7 +69,8 @@ func NewCatalogListOK() *CatalogListOK {
 	return &CatalogListOK{}
 }
 
-/* CatalogListOK describes a response with status code 200, with default header values.
+/*
+CatalogListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CatalogListOK struct {
 	Payload *models.AvailablePackagesList
 }
 
+// IsSuccess returns true when this catalog list o k response has a 2xx status code
+func (o *CatalogListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this catalog list o k response has a 3xx status code
+func (o *CatalogListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog list o k response has a 4xx status code
+func (o *CatalogListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this catalog list o k response has a 5xx status code
+func (o *CatalogListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog list o k response a status code equal to that given
+func (o *CatalogListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CatalogListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListOK  %+v", 200, o.Payload)
 }
+
+func (o *CatalogListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListOK  %+v", 200, o.Payload)
+}
+
 func (o *CatalogListOK) GetPayload() *models.AvailablePackagesList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewCatalogListBadRequest() *CatalogListBadRequest {
 	return &CatalogListBadRequest{}
 }
 
-/* CatalogListBadRequest describes a response with status code 400, with default header values.
+/*
+CatalogListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type CatalogListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this catalog list bad request response has a 2xx status code
+func (o *CatalogListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog list bad request response has a 3xx status code
+func (o *CatalogListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog list bad request response has a 4xx status code
+func (o *CatalogListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog list bad request response has a 5xx status code
+func (o *CatalogListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog list bad request response a status code equal to that given
+func (o *CatalogListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CatalogListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CatalogListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CatalogListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewCatalogListUnauthorized() *CatalogListUnauthorized {
 	return &CatalogListUnauthorized{}
 }
 
-/* CatalogListUnauthorized describes a response with status code 401, with default header values.
+/*
+CatalogListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type CatalogListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog list unauthorized response has a 2xx status code
+func (o *CatalogListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog list unauthorized response has a 3xx status code
+func (o *CatalogListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog list unauthorized response has a 4xx status code
+func (o *CatalogListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog list unauthorized response has a 5xx status code
+func (o *CatalogListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog list unauthorized response a status code equal to that given
+func (o *CatalogListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CatalogListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CatalogListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CatalogListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewCatalogListForbidden() *CatalogListForbidden {
 	return &CatalogListForbidden{}
 }
 
-/* CatalogListForbidden describes a response with status code 403, with default header values.
+/*
+CatalogListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type CatalogListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog list forbidden response has a 2xx status code
+func (o *CatalogListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog list forbidden response has a 3xx status code
+func (o *CatalogListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog list forbidden response has a 4xx status code
+func (o *CatalogListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog list forbidden response has a 5xx status code
+func (o *CatalogListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog list forbidden response a status code equal to that given
+func (o *CatalogListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CatalogListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CatalogListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CatalogListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewCatalogListNotFound() *CatalogListNotFound {
 	return &CatalogListNotFound{}
 }
 
-/* CatalogListNotFound describes a response with status code 404, with default header values.
+/*
+CatalogListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type CatalogListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog list not found response has a 2xx status code
+func (o *CatalogListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog list not found response has a 3xx status code
+func (o *CatalogListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog list not found response has a 4xx status code
+func (o *CatalogListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog list not found response has a 5xx status code
+func (o *CatalogListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog list not found response a status code equal to that given
+func (o *CatalogListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CatalogListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CatalogListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CatalogListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewCatalogListInternalServerError() *CatalogListInternalServerError {
 	return &CatalogListInternalServerError{}
 }
 
-/* CatalogListInternalServerError describes a response with status code 500, with default header values.
+/*
+CatalogListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CatalogListInternalServerError struct {
 }
 
+// IsSuccess returns true when this catalog list internal server error response has a 2xx status code
+func (o *CatalogListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog list internal server error response has a 3xx status code
+func (o *CatalogListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog list internal server error response has a 4xx status code
+func (o *CatalogListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this catalog list internal server error response has a 5xx status code
+func (o *CatalogListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this catalog list internal server error response a status code equal to that given
+func (o *CatalogListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CatalogListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListInternalServerError ", 500)
+}
+
+func (o *CatalogListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListInternalServerError ", 500)
 }
 

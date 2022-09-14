@@ -69,7 +69,8 @@ func NewUserGroupsBindProjectGroupsOK() *UserGroupsBindProjectGroupsOK {
 	return &UserGroupsBindProjectGroupsOK{}
 }
 
-/* UserGroupsBindProjectGroupsOK describes a response with status code 200, with default header values.
+/*
+UserGroupsBindProjectGroupsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type UserGroupsBindProjectGroupsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this user groups bind project groups o k response has a 2xx status code
+func (o *UserGroupsBindProjectGroupsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this user groups bind project groups o k response has a 3xx status code
+func (o *UserGroupsBindProjectGroupsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user groups bind project groups o k response has a 4xx status code
+func (o *UserGroupsBindProjectGroupsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user groups bind project groups o k response has a 5xx status code
+func (o *UserGroupsBindProjectGroupsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user groups bind project groups o k response a status code equal to that given
+func (o *UserGroupsBindProjectGroupsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UserGroupsBindProjectGroupsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsOK  %+v", 200, o.Payload)
 }
+
+func (o *UserGroupsBindProjectGroupsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsOK  %+v", 200, o.Payload)
+}
+
 func (o *UserGroupsBindProjectGroupsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewUserGroupsBindProjectGroupsBadRequest() *UserGroupsBindProjectGroupsBadR
 	return &UserGroupsBindProjectGroupsBadRequest{}
 }
 
-/* UserGroupsBindProjectGroupsBadRequest describes a response with status code 400, with default header values.
+/*
+UserGroupsBindProjectGroupsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type UserGroupsBindProjectGroupsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this user groups bind project groups bad request response has a 2xx status code
+func (o *UserGroupsBindProjectGroupsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user groups bind project groups bad request response has a 3xx status code
+func (o *UserGroupsBindProjectGroupsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user groups bind project groups bad request response has a 4xx status code
+func (o *UserGroupsBindProjectGroupsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user groups bind project groups bad request response has a 5xx status code
+func (o *UserGroupsBindProjectGroupsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user groups bind project groups bad request response a status code equal to that given
+func (o *UserGroupsBindProjectGroupsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UserGroupsBindProjectGroupsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UserGroupsBindProjectGroupsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UserGroupsBindProjectGroupsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewUserGroupsBindProjectGroupsUnauthorized() *UserGroupsBindProjectGroupsUn
 	return &UserGroupsBindProjectGroupsUnauthorized{}
 }
 
-/* UserGroupsBindProjectGroupsUnauthorized describes a response with status code 401, with default header values.
+/*
+UserGroupsBindProjectGroupsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type UserGroupsBindProjectGroupsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user groups bind project groups unauthorized response has a 2xx status code
+func (o *UserGroupsBindProjectGroupsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user groups bind project groups unauthorized response has a 3xx status code
+func (o *UserGroupsBindProjectGroupsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user groups bind project groups unauthorized response has a 4xx status code
+func (o *UserGroupsBindProjectGroupsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user groups bind project groups unauthorized response has a 5xx status code
+func (o *UserGroupsBindProjectGroupsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user groups bind project groups unauthorized response a status code equal to that given
+func (o *UserGroupsBindProjectGroupsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UserGroupsBindProjectGroupsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *UserGroupsBindProjectGroupsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *UserGroupsBindProjectGroupsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewUserGroupsBindProjectGroupsForbidden() *UserGroupsBindProjectGroupsForbi
 	return &UserGroupsBindProjectGroupsForbidden{}
 }
 
-/* UserGroupsBindProjectGroupsForbidden describes a response with status code 403, with default header values.
+/*
+UserGroupsBindProjectGroupsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type UserGroupsBindProjectGroupsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user groups bind project groups forbidden response has a 2xx status code
+func (o *UserGroupsBindProjectGroupsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user groups bind project groups forbidden response has a 3xx status code
+func (o *UserGroupsBindProjectGroupsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user groups bind project groups forbidden response has a 4xx status code
+func (o *UserGroupsBindProjectGroupsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user groups bind project groups forbidden response has a 5xx status code
+func (o *UserGroupsBindProjectGroupsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user groups bind project groups forbidden response a status code equal to that given
+func (o *UserGroupsBindProjectGroupsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UserGroupsBindProjectGroupsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UserGroupsBindProjectGroupsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UserGroupsBindProjectGroupsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewUserGroupsBindProjectGroupsNotFound() *UserGroupsBindProjectGroupsNotFou
 	return &UserGroupsBindProjectGroupsNotFound{}
 }
 
-/* UserGroupsBindProjectGroupsNotFound describes a response with status code 404, with default header values.
+/*
+UserGroupsBindProjectGroupsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type UserGroupsBindProjectGroupsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user groups bind project groups not found response has a 2xx status code
+func (o *UserGroupsBindProjectGroupsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user groups bind project groups not found response has a 3xx status code
+func (o *UserGroupsBindProjectGroupsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user groups bind project groups not found response has a 4xx status code
+func (o *UserGroupsBindProjectGroupsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user groups bind project groups not found response has a 5xx status code
+func (o *UserGroupsBindProjectGroupsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user groups bind project groups not found response a status code equal to that given
+func (o *UserGroupsBindProjectGroupsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UserGroupsBindProjectGroupsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UserGroupsBindProjectGroupsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UserGroupsBindProjectGroupsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewUserGroupsBindProjectGroupsInternalServerError() *UserGroupsBindProjectG
 	return &UserGroupsBindProjectGroupsInternalServerError{}
 }
 
-/* UserGroupsBindProjectGroupsInternalServerError describes a response with status code 500, with default header values.
+/*
+UserGroupsBindProjectGroupsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UserGroupsBindProjectGroupsInternalServerError struct {
 }
 
+// IsSuccess returns true when this user groups bind project groups internal server error response has a 2xx status code
+func (o *UserGroupsBindProjectGroupsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user groups bind project groups internal server error response has a 3xx status code
+func (o *UserGroupsBindProjectGroupsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user groups bind project groups internal server error response has a 4xx status code
+func (o *UserGroupsBindProjectGroupsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user groups bind project groups internal server error response has a 5xx status code
+func (o *UserGroupsBindProjectGroupsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this user groups bind project groups internal server error response a status code equal to that given
+func (o *UserGroupsBindProjectGroupsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UserGroupsBindProjectGroupsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsInternalServerError ", 500)
+}
+
+func (o *UserGroupsBindProjectGroupsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsInternalServerError ", 500)
 }
 

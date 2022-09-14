@@ -54,10 +54,12 @@ func NewSlackVerifySlackCredentialsParamsWithHTTPClient(client *http.Client) *Sl
 	}
 }
 
-/* SlackVerifySlackCredentialsParams contains all the parameters to send to the API endpoint
-   for the slack verify slack credentials operation.
+/*
+SlackVerifySlackCredentialsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the slack verify slack credentials operation.
+
+	Typically these are written to a http.Request.
 */
 type SlackVerifySlackCredentialsParams struct {
 

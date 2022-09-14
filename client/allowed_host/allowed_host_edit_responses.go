@@ -69,7 +69,8 @@ func NewAllowedHostEditOK() *AllowedHostEditOK {
 	return &AllowedHostEditOK{}
 }
 
-/* AllowedHostEditOK describes a response with status code 200, with default header values.
+/*
+AllowedHostEditOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AllowedHostEditOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this allowed host edit o k response has a 2xx status code
+func (o *AllowedHostEditOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this allowed host edit o k response has a 3xx status code
+func (o *AllowedHostEditOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host edit o k response has a 4xx status code
+func (o *AllowedHostEditOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this allowed host edit o k response has a 5xx status code
+func (o *AllowedHostEditOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host edit o k response a status code equal to that given
+func (o *AllowedHostEditOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AllowedHostEditOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditOK  %+v", 200, o.Payload)
 }
+
+func (o *AllowedHostEditOK) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditOK  %+v", 200, o.Payload)
+}
+
 func (o *AllowedHostEditOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAllowedHostEditBadRequest() *AllowedHostEditBadRequest {
 	return &AllowedHostEditBadRequest{}
 }
 
-/* AllowedHostEditBadRequest describes a response with status code 400, with default header values.
+/*
+AllowedHostEditBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AllowedHostEditBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this allowed host edit bad request response has a 2xx status code
+func (o *AllowedHostEditBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this allowed host edit bad request response has a 3xx status code
+func (o *AllowedHostEditBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host edit bad request response has a 4xx status code
+func (o *AllowedHostEditBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this allowed host edit bad request response has a 5xx status code
+func (o *AllowedHostEditBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host edit bad request response a status code equal to that given
+func (o *AllowedHostEditBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AllowedHostEditBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AllowedHostEditBadRequest) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AllowedHostEditBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAllowedHostEditUnauthorized() *AllowedHostEditUnauthorized {
 	return &AllowedHostEditUnauthorized{}
 }
 
-/* AllowedHostEditUnauthorized describes a response with status code 401, with default header values.
+/*
+AllowedHostEditUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AllowedHostEditUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this allowed host edit unauthorized response has a 2xx status code
+func (o *AllowedHostEditUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this allowed host edit unauthorized response has a 3xx status code
+func (o *AllowedHostEditUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host edit unauthorized response has a 4xx status code
+func (o *AllowedHostEditUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this allowed host edit unauthorized response has a 5xx status code
+func (o *AllowedHostEditUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host edit unauthorized response a status code equal to that given
+func (o *AllowedHostEditUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AllowedHostEditUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AllowedHostEditUnauthorized) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AllowedHostEditUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAllowedHostEditForbidden() *AllowedHostEditForbidden {
 	return &AllowedHostEditForbidden{}
 }
 
-/* AllowedHostEditForbidden describes a response with status code 403, with default header values.
+/*
+AllowedHostEditForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AllowedHostEditForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this allowed host edit forbidden response has a 2xx status code
+func (o *AllowedHostEditForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this allowed host edit forbidden response has a 3xx status code
+func (o *AllowedHostEditForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host edit forbidden response has a 4xx status code
+func (o *AllowedHostEditForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this allowed host edit forbidden response has a 5xx status code
+func (o *AllowedHostEditForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host edit forbidden response a status code equal to that given
+func (o *AllowedHostEditForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AllowedHostEditForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AllowedHostEditForbidden) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AllowedHostEditForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAllowedHostEditNotFound() *AllowedHostEditNotFound {
 	return &AllowedHostEditNotFound{}
 }
 
-/* AllowedHostEditNotFound describes a response with status code 404, with default header values.
+/*
+AllowedHostEditNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AllowedHostEditNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this allowed host edit not found response has a 2xx status code
+func (o *AllowedHostEditNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this allowed host edit not found response has a 3xx status code
+func (o *AllowedHostEditNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host edit not found response has a 4xx status code
+func (o *AllowedHostEditNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this allowed host edit not found response has a 5xx status code
+func (o *AllowedHostEditNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host edit not found response a status code equal to that given
+func (o *AllowedHostEditNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AllowedHostEditNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AllowedHostEditNotFound) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AllowedHostEditNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAllowedHostEditInternalServerError() *AllowedHostEditInternalServerError
 	return &AllowedHostEditInternalServerError{}
 }
 
-/* AllowedHostEditInternalServerError describes a response with status code 500, with default header values.
+/*
+AllowedHostEditInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AllowedHostEditInternalServerError struct {
 }
 
+// IsSuccess returns true when this allowed host edit internal server error response has a 2xx status code
+func (o *AllowedHostEditInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this allowed host edit internal server error response has a 3xx status code
+func (o *AllowedHostEditInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host edit internal server error response has a 4xx status code
+func (o *AllowedHostEditInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this allowed host edit internal server error response has a 5xx status code
+func (o *AllowedHostEditInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this allowed host edit internal server error response a status code equal to that given
+func (o *AllowedHostEditInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AllowedHostEditInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditInternalServerError ", 500)
+}
+
+func (o *AllowedHostEditInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditInternalServerError ", 500)
 }
 

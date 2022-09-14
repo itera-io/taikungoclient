@@ -54,10 +54,12 @@ func NewPartnerDeleteWhiteListDomainParamsWithHTTPClient(client *http.Client) *P
 	}
 }
 
-/* PartnerDeleteWhiteListDomainParams contains all the parameters to send to the API endpoint
-   for the partner delete white list domain operation.
+/*
+PartnerDeleteWhiteListDomainParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the partner delete white list domain operation.
+
+	Typically these are written to a http.Request.
 */
 type PartnerDeleteWhiteListDomainParams struct {
 

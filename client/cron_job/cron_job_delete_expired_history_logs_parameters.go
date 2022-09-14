@@ -54,10 +54,12 @@ func NewCronJobDeleteExpiredHistoryLogsParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* CronJobDeleteExpiredHistoryLogsParams contains all the parameters to send to the API endpoint
-   for the cron job delete expired history logs operation.
+/*
+CronJobDeleteExpiredHistoryLogsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job delete expired history logs operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobDeleteExpiredHistoryLogsParams struct {
 

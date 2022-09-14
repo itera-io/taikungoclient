@@ -69,7 +69,8 @@ func NewUserProjectsBindProjectsOK() *UserProjectsBindProjectsOK {
 	return &UserProjectsBindProjectsOK{}
 }
 
-/* UserProjectsBindProjectsOK describes a response with status code 200, with default header values.
+/*
+UserProjectsBindProjectsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type UserProjectsBindProjectsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this user projects bind projects o k response has a 2xx status code
+func (o *UserProjectsBindProjectsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this user projects bind projects o k response has a 3xx status code
+func (o *UserProjectsBindProjectsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user projects bind projects o k response has a 4xx status code
+func (o *UserProjectsBindProjectsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user projects bind projects o k response has a 5xx status code
+func (o *UserProjectsBindProjectsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user projects bind projects o k response a status code equal to that given
+func (o *UserProjectsBindProjectsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UserProjectsBindProjectsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsOK  %+v", 200, o.Payload)
 }
+
+func (o *UserProjectsBindProjectsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsOK  %+v", 200, o.Payload)
+}
+
 func (o *UserProjectsBindProjectsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewUserProjectsBindProjectsBadRequest() *UserProjectsBindProjectsBadRequest
 	return &UserProjectsBindProjectsBadRequest{}
 }
 
-/* UserProjectsBindProjectsBadRequest describes a response with status code 400, with default header values.
+/*
+UserProjectsBindProjectsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type UserProjectsBindProjectsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this user projects bind projects bad request response has a 2xx status code
+func (o *UserProjectsBindProjectsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user projects bind projects bad request response has a 3xx status code
+func (o *UserProjectsBindProjectsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user projects bind projects bad request response has a 4xx status code
+func (o *UserProjectsBindProjectsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user projects bind projects bad request response has a 5xx status code
+func (o *UserProjectsBindProjectsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user projects bind projects bad request response a status code equal to that given
+func (o *UserProjectsBindProjectsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UserProjectsBindProjectsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UserProjectsBindProjectsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UserProjectsBindProjectsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewUserProjectsBindProjectsUnauthorized() *UserProjectsBindProjectsUnauthor
 	return &UserProjectsBindProjectsUnauthorized{}
 }
 
-/* UserProjectsBindProjectsUnauthorized describes a response with status code 401, with default header values.
+/*
+UserProjectsBindProjectsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type UserProjectsBindProjectsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user projects bind projects unauthorized response has a 2xx status code
+func (o *UserProjectsBindProjectsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user projects bind projects unauthorized response has a 3xx status code
+func (o *UserProjectsBindProjectsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user projects bind projects unauthorized response has a 4xx status code
+func (o *UserProjectsBindProjectsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user projects bind projects unauthorized response has a 5xx status code
+func (o *UserProjectsBindProjectsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user projects bind projects unauthorized response a status code equal to that given
+func (o *UserProjectsBindProjectsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UserProjectsBindProjectsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *UserProjectsBindProjectsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *UserProjectsBindProjectsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewUserProjectsBindProjectsForbidden() *UserProjectsBindProjectsForbidden {
 	return &UserProjectsBindProjectsForbidden{}
 }
 
-/* UserProjectsBindProjectsForbidden describes a response with status code 403, with default header values.
+/*
+UserProjectsBindProjectsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type UserProjectsBindProjectsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user projects bind projects forbidden response has a 2xx status code
+func (o *UserProjectsBindProjectsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user projects bind projects forbidden response has a 3xx status code
+func (o *UserProjectsBindProjectsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user projects bind projects forbidden response has a 4xx status code
+func (o *UserProjectsBindProjectsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user projects bind projects forbidden response has a 5xx status code
+func (o *UserProjectsBindProjectsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user projects bind projects forbidden response a status code equal to that given
+func (o *UserProjectsBindProjectsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UserProjectsBindProjectsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UserProjectsBindProjectsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UserProjectsBindProjectsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewUserProjectsBindProjectsNotFound() *UserProjectsBindProjectsNotFound {
 	return &UserProjectsBindProjectsNotFound{}
 }
 
-/* UserProjectsBindProjectsNotFound describes a response with status code 404, with default header values.
+/*
+UserProjectsBindProjectsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type UserProjectsBindProjectsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user projects bind projects not found response has a 2xx status code
+func (o *UserProjectsBindProjectsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user projects bind projects not found response has a 3xx status code
+func (o *UserProjectsBindProjectsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user projects bind projects not found response has a 4xx status code
+func (o *UserProjectsBindProjectsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user projects bind projects not found response has a 5xx status code
+func (o *UserProjectsBindProjectsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user projects bind projects not found response a status code equal to that given
+func (o *UserProjectsBindProjectsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UserProjectsBindProjectsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UserProjectsBindProjectsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UserProjectsBindProjectsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewUserProjectsBindProjectsInternalServerError() *UserProjectsBindProjectsI
 	return &UserProjectsBindProjectsInternalServerError{}
 }
 
-/* UserProjectsBindProjectsInternalServerError describes a response with status code 500, with default header values.
+/*
+UserProjectsBindProjectsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UserProjectsBindProjectsInternalServerError struct {
 }
 
+// IsSuccess returns true when this user projects bind projects internal server error response has a 2xx status code
+func (o *UserProjectsBindProjectsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user projects bind projects internal server error response has a 3xx status code
+func (o *UserProjectsBindProjectsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user projects bind projects internal server error response has a 4xx status code
+func (o *UserProjectsBindProjectsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user projects bind projects internal server error response has a 5xx status code
+func (o *UserProjectsBindProjectsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this user projects bind projects internal server error response a status code equal to that given
+func (o *UserProjectsBindProjectsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UserProjectsBindProjectsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsInternalServerError ", 500)
+}
+
+func (o *UserProjectsBindProjectsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsInternalServerError ", 500)
 }
 

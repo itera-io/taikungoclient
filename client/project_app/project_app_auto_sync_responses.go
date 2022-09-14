@@ -69,7 +69,8 @@ func NewProjectAppAutoSyncOK() *ProjectAppAutoSyncOK {
 	return &ProjectAppAutoSyncOK{}
 }
 
-/* ProjectAppAutoSyncOK describes a response with status code 200, with default header values.
+/*
+ProjectAppAutoSyncOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectAppAutoSyncOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this project app auto sync o k response has a 2xx status code
+func (o *ProjectAppAutoSyncOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this project app auto sync o k response has a 3xx status code
+func (o *ProjectAppAutoSyncOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app auto sync o k response has a 4xx status code
+func (o *ProjectAppAutoSyncOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this project app auto sync o k response has a 5xx status code
+func (o *ProjectAppAutoSyncOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project app auto sync o k response a status code equal to that given
+func (o *ProjectAppAutoSyncOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectAppAutoSyncOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectAppAutoSyncOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectAppAutoSyncOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectAppAutoSyncBadRequest() *ProjectAppAutoSyncBadRequest {
 	return &ProjectAppAutoSyncBadRequest{}
 }
 
-/* ProjectAppAutoSyncBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectAppAutoSyncBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectAppAutoSyncBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this project app auto sync bad request response has a 2xx status code
+func (o *ProjectAppAutoSyncBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project app auto sync bad request response has a 3xx status code
+func (o *ProjectAppAutoSyncBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app auto sync bad request response has a 4xx status code
+func (o *ProjectAppAutoSyncBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project app auto sync bad request response has a 5xx status code
+func (o *ProjectAppAutoSyncBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project app auto sync bad request response a status code equal to that given
+func (o *ProjectAppAutoSyncBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectAppAutoSyncBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectAppAutoSyncBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectAppAutoSyncBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectAppAutoSyncUnauthorized() *ProjectAppAutoSyncUnauthorized {
 	return &ProjectAppAutoSyncUnauthorized{}
 }
 
-/* ProjectAppAutoSyncUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectAppAutoSyncUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectAppAutoSyncUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project app auto sync unauthorized response has a 2xx status code
+func (o *ProjectAppAutoSyncUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project app auto sync unauthorized response has a 3xx status code
+func (o *ProjectAppAutoSyncUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app auto sync unauthorized response has a 4xx status code
+func (o *ProjectAppAutoSyncUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project app auto sync unauthorized response has a 5xx status code
+func (o *ProjectAppAutoSyncUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project app auto sync unauthorized response a status code equal to that given
+func (o *ProjectAppAutoSyncUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectAppAutoSyncUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectAppAutoSyncUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectAppAutoSyncUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectAppAutoSyncForbidden() *ProjectAppAutoSyncForbidden {
 	return &ProjectAppAutoSyncForbidden{}
 }
 
-/* ProjectAppAutoSyncForbidden describes a response with status code 403, with default header values.
+/*
+ProjectAppAutoSyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectAppAutoSyncForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project app auto sync forbidden response has a 2xx status code
+func (o *ProjectAppAutoSyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project app auto sync forbidden response has a 3xx status code
+func (o *ProjectAppAutoSyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app auto sync forbidden response has a 4xx status code
+func (o *ProjectAppAutoSyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project app auto sync forbidden response has a 5xx status code
+func (o *ProjectAppAutoSyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project app auto sync forbidden response a status code equal to that given
+func (o *ProjectAppAutoSyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectAppAutoSyncForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectAppAutoSyncForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectAppAutoSyncForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectAppAutoSyncNotFound() *ProjectAppAutoSyncNotFound {
 	return &ProjectAppAutoSyncNotFound{}
 }
 
-/* ProjectAppAutoSyncNotFound describes a response with status code 404, with default header values.
+/*
+ProjectAppAutoSyncNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectAppAutoSyncNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project app auto sync not found response has a 2xx status code
+func (o *ProjectAppAutoSyncNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project app auto sync not found response has a 3xx status code
+func (o *ProjectAppAutoSyncNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app auto sync not found response has a 4xx status code
+func (o *ProjectAppAutoSyncNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project app auto sync not found response has a 5xx status code
+func (o *ProjectAppAutoSyncNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project app auto sync not found response a status code equal to that given
+func (o *ProjectAppAutoSyncNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectAppAutoSyncNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectAppAutoSyncNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectAppAutoSyncNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectAppAutoSyncInternalServerError() *ProjectAppAutoSyncInternalServe
 	return &ProjectAppAutoSyncInternalServerError{}
 }
 
-/* ProjectAppAutoSyncInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectAppAutoSyncInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectAppAutoSyncInternalServerError struct {
 }
 
+// IsSuccess returns true when this project app auto sync internal server error response has a 2xx status code
+func (o *ProjectAppAutoSyncInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project app auto sync internal server error response has a 3xx status code
+func (o *ProjectAppAutoSyncInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app auto sync internal server error response has a 4xx status code
+func (o *ProjectAppAutoSyncInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this project app auto sync internal server error response has a 5xx status code
+func (o *ProjectAppAutoSyncInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this project app auto sync internal server error response a status code equal to that given
+func (o *ProjectAppAutoSyncInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectAppAutoSyncInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncInternalServerError ", 500)
+}
+
+func (o *ProjectAppAutoSyncInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncInternalServerError ", 500)
 }
 

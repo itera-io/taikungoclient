@@ -52,7 +52,7 @@ type ClientService interface {
 }
 
 /*
-  CloudCredentialsAllFlavors retrieves all flavors
+CloudCredentialsAllFlavors retrieves all flavors
 */
 func (a *Client) CloudCredentialsAllFlavors(params *CloudCredentialsAllFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsAllFlavorsOK, error) {
 	// TODO: Validate the params before sending
@@ -91,7 +91,7 @@ func (a *Client) CloudCredentialsAllFlavors(params *CloudCredentialsAllFlavorsPa
 }
 
 /*
-  CloudCredentialsCloudCredentialsForOrganizationList retrieves a list of cloud credentials by organization Id
+CloudCredentialsCloudCredentialsForOrganizationList retrieves a list of cloud credentials by organization Id
 */
 func (a *Client) CloudCredentialsCloudCredentialsForOrganizationList(params *CloudCredentialsCloudCredentialsForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsCloudCredentialsForOrganizationListOK, error) {
 	// TODO: Validate the params before sending
@@ -130,7 +130,7 @@ func (a *Client) CloudCredentialsCloudCredentialsForOrganizationList(params *Clo
 }
 
 /*
-  CloudCredentialsDashboardList retrieves all cloud credentials
+CloudCredentialsDashboardList retrieves all cloud credentials
 */
 func (a *Client) CloudCredentialsDashboardList(params *CloudCredentialsDashboardListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsDashboardListOK, error) {
 	// TODO: Validate the params before sending
@@ -169,7 +169,7 @@ func (a *Client) CloudCredentialsDashboardList(params *CloudCredentialsDashboard
 }
 
 /*
-  CloudCredentialsDelete removes cloud credential by cloud Id
+CloudCredentialsDelete removes cloud credential by cloud Id
 */
 func (a *Client) CloudCredentialsDelete(params *CloudCredentialsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsDeleteOK, *CloudCredentialsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -209,7 +209,7 @@ func (a *Client) CloudCredentialsDelete(params *CloudCredentialsDeleteParams, au
 }
 
 /*
-  CloudCredentialsExceededQuotas retrieves cloud credentials exceeded quotas
+CloudCredentialsExceededQuotas retrieves cloud credentials exceeded quotas
 */
 func (a *Client) CloudCredentialsExceededQuotas(params *CloudCredentialsExceededQuotasParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsExceededQuotasOK, error) {
 	// TODO: Validate the params before sending
@@ -248,7 +248,7 @@ func (a *Client) CloudCredentialsExceededQuotas(params *CloudCredentialsExceeded
 }
 
 /*
-  CloudCredentialsForCli retrieves cloud credentials for c l i
+CloudCredentialsForCli retrieves cloud credentials for c l i
 */
 func (a *Client) CloudCredentialsForCli(params *CloudCredentialsForCliParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsForCliOK, error) {
 	// TODO: Validate the params before sending
@@ -287,7 +287,7 @@ func (a *Client) CloudCredentialsForCli(params *CloudCredentialsForCliParams, au
 }
 
 /*
-  CloudCredentialsForProject retrieves cloud credential details by cloud Id
+CloudCredentialsForProject retrieves cloud credential details by cloud Id
 */
 func (a *Client) CloudCredentialsForProject(params *CloudCredentialsForProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsForProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -326,7 +326,7 @@ func (a *Client) CloudCredentialsForProject(params *CloudCredentialsForProjectPa
 }
 
 /*
-  CloudCredentialsLockManager locks unlock cloud credential
+CloudCredentialsLockManager locks unlock cloud credential
 */
 func (a *Client) CloudCredentialsLockManager(params *CloudCredentialsLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsLockManagerOK, error) {
 	// TODO: Validate the params before sending
@@ -365,7 +365,7 @@ func (a *Client) CloudCredentialsLockManager(params *CloudCredentialsLockManager
 }
 
 /*
-  CloudCredentialsMakeDefault makes cloud credentials default
+CloudCredentialsMakeDefault makes cloud credentials default
 */
 func (a *Client) CloudCredentialsMakeDefault(params *CloudCredentialsMakeDefaultParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsMakeDefaultOK, error) {
 	// TODO: Validate the params before sending

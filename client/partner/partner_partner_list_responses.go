@@ -69,7 +69,8 @@ func NewPartnerPartnerListOK() *PartnerPartnerListOK {
 	return &PartnerPartnerListOK{}
 }
 
-/* PartnerPartnerListOK describes a response with status code 200, with default header values.
+/*
+PartnerPartnerListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type PartnerPartnerListOK struct {
 	Payload []*models.PartnerEntity
 }
 
+// IsSuccess returns true when this partner partner list o k response has a 2xx status code
+func (o *PartnerPartnerListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this partner partner list o k response has a 3xx status code
+func (o *PartnerPartnerListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner partner list o k response has a 4xx status code
+func (o *PartnerPartnerListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this partner partner list o k response has a 5xx status code
+func (o *PartnerPartnerListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner partner list o k response a status code equal to that given
+func (o *PartnerPartnerListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PartnerPartnerListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListOK  %+v", 200, o.Payload)
 }
+
+func (o *PartnerPartnerListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListOK  %+v", 200, o.Payload)
+}
+
 func (o *PartnerPartnerListOK) GetPayload() []*models.PartnerEntity {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewPartnerPartnerListBadRequest() *PartnerPartnerListBadRequest {
 	return &PartnerPartnerListBadRequest{}
 }
 
-/* PartnerPartnerListBadRequest describes a response with status code 400, with default header values.
+/*
+PartnerPartnerListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type PartnerPartnerListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this partner partner list bad request response has a 2xx status code
+func (o *PartnerPartnerListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner partner list bad request response has a 3xx status code
+func (o *PartnerPartnerListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner partner list bad request response has a 4xx status code
+func (o *PartnerPartnerListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner partner list bad request response has a 5xx status code
+func (o *PartnerPartnerListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner partner list bad request response a status code equal to that given
+func (o *PartnerPartnerListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PartnerPartnerListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PartnerPartnerListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PartnerPartnerListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewPartnerPartnerListUnauthorized() *PartnerPartnerListUnauthorized {
 	return &PartnerPartnerListUnauthorized{}
 }
 
-/* PartnerPartnerListUnauthorized describes a response with status code 401, with default header values.
+/*
+PartnerPartnerListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type PartnerPartnerListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this partner partner list unauthorized response has a 2xx status code
+func (o *PartnerPartnerListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner partner list unauthorized response has a 3xx status code
+func (o *PartnerPartnerListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner partner list unauthorized response has a 4xx status code
+func (o *PartnerPartnerListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner partner list unauthorized response has a 5xx status code
+func (o *PartnerPartnerListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner partner list unauthorized response a status code equal to that given
+func (o *PartnerPartnerListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PartnerPartnerListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *PartnerPartnerListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *PartnerPartnerListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewPartnerPartnerListForbidden() *PartnerPartnerListForbidden {
 	return &PartnerPartnerListForbidden{}
 }
 
-/* PartnerPartnerListForbidden describes a response with status code 403, with default header values.
+/*
+PartnerPartnerListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type PartnerPartnerListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this partner partner list forbidden response has a 2xx status code
+func (o *PartnerPartnerListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner partner list forbidden response has a 3xx status code
+func (o *PartnerPartnerListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner partner list forbidden response has a 4xx status code
+func (o *PartnerPartnerListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner partner list forbidden response has a 5xx status code
+func (o *PartnerPartnerListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner partner list forbidden response a status code equal to that given
+func (o *PartnerPartnerListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PartnerPartnerListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PartnerPartnerListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PartnerPartnerListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewPartnerPartnerListNotFound() *PartnerPartnerListNotFound {
 	return &PartnerPartnerListNotFound{}
 }
 
-/* PartnerPartnerListNotFound describes a response with status code 404, with default header values.
+/*
+PartnerPartnerListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type PartnerPartnerListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this partner partner list not found response has a 2xx status code
+func (o *PartnerPartnerListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner partner list not found response has a 3xx status code
+func (o *PartnerPartnerListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner partner list not found response has a 4xx status code
+func (o *PartnerPartnerListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner partner list not found response has a 5xx status code
+func (o *PartnerPartnerListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner partner list not found response a status code equal to that given
+func (o *PartnerPartnerListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PartnerPartnerListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PartnerPartnerListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PartnerPartnerListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewPartnerPartnerListInternalServerError() *PartnerPartnerListInternalServe
 	return &PartnerPartnerListInternalServerError{}
 }
 
-/* PartnerPartnerListInternalServerError describes a response with status code 500, with default header values.
+/*
+PartnerPartnerListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PartnerPartnerListInternalServerError struct {
 }
 
+// IsSuccess returns true when this partner partner list internal server error response has a 2xx status code
+func (o *PartnerPartnerListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner partner list internal server error response has a 3xx status code
+func (o *PartnerPartnerListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner partner list internal server error response has a 4xx status code
+func (o *PartnerPartnerListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this partner partner list internal server error response has a 5xx status code
+func (o *PartnerPartnerListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this partner partner list internal server error response a status code equal to that given
+func (o *PartnerPartnerListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PartnerPartnerListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListInternalServerError ", 500)
+}
+
+func (o *PartnerPartnerListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListInternalServerError ", 500)
 }
 

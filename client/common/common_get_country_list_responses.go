@@ -69,7 +69,8 @@ func NewCommonGetCountryListOK() *CommonGetCountryListOK {
 	return &CommonGetCountryListOK{}
 }
 
-/* CommonGetCountryListOK describes a response with status code 200, with default header values.
+/*
+CommonGetCountryListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CommonGetCountryListOK struct {
 	Payload []*models.CountryListDto
 }
 
+// IsSuccess returns true when this common get country list o k response has a 2xx status code
+func (o *CommonGetCountryListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this common get country list o k response has a 3xx status code
+func (o *CommonGetCountryListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get country list o k response has a 4xx status code
+func (o *CommonGetCountryListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this common get country list o k response has a 5xx status code
+func (o *CommonGetCountryListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this common get country list o k response a status code equal to that given
+func (o *CommonGetCountryListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CommonGetCountryListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListOK  %+v", 200, o.Payload)
 }
+
+func (o *CommonGetCountryListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListOK  %+v", 200, o.Payload)
+}
+
 func (o *CommonGetCountryListOK) GetPayload() []*models.CountryListDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCommonGetCountryListBadRequest() *CommonGetCountryListBadRequest {
 	return &CommonGetCountryListBadRequest{}
 }
 
-/* CommonGetCountryListBadRequest describes a response with status code 400, with default header values.
+/*
+CommonGetCountryListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CommonGetCountryListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this common get country list bad request response has a 2xx status code
+func (o *CommonGetCountryListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this common get country list bad request response has a 3xx status code
+func (o *CommonGetCountryListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get country list bad request response has a 4xx status code
+func (o *CommonGetCountryListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this common get country list bad request response has a 5xx status code
+func (o *CommonGetCountryListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this common get country list bad request response a status code equal to that given
+func (o *CommonGetCountryListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CommonGetCountryListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CommonGetCountryListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CommonGetCountryListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCommonGetCountryListUnauthorized() *CommonGetCountryListUnauthorized {
 	return &CommonGetCountryListUnauthorized{}
 }
 
-/* CommonGetCountryListUnauthorized describes a response with status code 401, with default header values.
+/*
+CommonGetCountryListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CommonGetCountryListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this common get country list unauthorized response has a 2xx status code
+func (o *CommonGetCountryListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this common get country list unauthorized response has a 3xx status code
+func (o *CommonGetCountryListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get country list unauthorized response has a 4xx status code
+func (o *CommonGetCountryListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this common get country list unauthorized response has a 5xx status code
+func (o *CommonGetCountryListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this common get country list unauthorized response a status code equal to that given
+func (o *CommonGetCountryListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CommonGetCountryListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CommonGetCountryListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CommonGetCountryListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCommonGetCountryListForbidden() *CommonGetCountryListForbidden {
 	return &CommonGetCountryListForbidden{}
 }
 
-/* CommonGetCountryListForbidden describes a response with status code 403, with default header values.
+/*
+CommonGetCountryListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CommonGetCountryListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this common get country list forbidden response has a 2xx status code
+func (o *CommonGetCountryListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this common get country list forbidden response has a 3xx status code
+func (o *CommonGetCountryListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get country list forbidden response has a 4xx status code
+func (o *CommonGetCountryListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this common get country list forbidden response has a 5xx status code
+func (o *CommonGetCountryListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this common get country list forbidden response a status code equal to that given
+func (o *CommonGetCountryListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CommonGetCountryListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CommonGetCountryListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CommonGetCountryListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCommonGetCountryListNotFound() *CommonGetCountryListNotFound {
 	return &CommonGetCountryListNotFound{}
 }
 
-/* CommonGetCountryListNotFound describes a response with status code 404, with default header values.
+/*
+CommonGetCountryListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CommonGetCountryListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this common get country list not found response has a 2xx status code
+func (o *CommonGetCountryListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this common get country list not found response has a 3xx status code
+func (o *CommonGetCountryListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get country list not found response has a 4xx status code
+func (o *CommonGetCountryListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this common get country list not found response has a 5xx status code
+func (o *CommonGetCountryListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this common get country list not found response a status code equal to that given
+func (o *CommonGetCountryListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CommonGetCountryListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CommonGetCountryListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CommonGetCountryListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCommonGetCountryListInternalServerError() *CommonGetCountryListInternalS
 	return &CommonGetCountryListInternalServerError{}
 }
 
-/* CommonGetCountryListInternalServerError describes a response with status code 500, with default header values.
+/*
+CommonGetCountryListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CommonGetCountryListInternalServerError struct {
 }
 
+// IsSuccess returns true when this common get country list internal server error response has a 2xx status code
+func (o *CommonGetCountryListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this common get country list internal server error response has a 3xx status code
+func (o *CommonGetCountryListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get country list internal server error response has a 4xx status code
+func (o *CommonGetCountryListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this common get country list internal server error response has a 5xx status code
+func (o *CommonGetCountryListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this common get country list internal server error response a status code equal to that given
+func (o *CommonGetCountryListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CommonGetCountryListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListInternalServerError ", 500)
+}
+
+func (o *CommonGetCountryListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListInternalServerError ", 500)
 }
 

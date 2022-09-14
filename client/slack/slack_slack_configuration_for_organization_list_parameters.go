@@ -53,10 +53,12 @@ func NewSlackSlackConfigurationForOrganizationListParamsWithHTTPClient(client *h
 	}
 }
 
-/* SlackSlackConfigurationForOrganizationListParams contains all the parameters to send to the API endpoint
-   for the slack slack configuration for organization list operation.
+/*
+SlackSlackConfigurationForOrganizationListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the slack slack configuration for organization list operation.
+
+	Typically these are written to a http.Request.
 */
 type SlackSlackConfigurationForOrganizationListParams struct {
 

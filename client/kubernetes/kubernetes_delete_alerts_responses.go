@@ -69,7 +69,8 @@ func NewKubernetesDeleteAlertsOK() *KubernetesDeleteAlertsOK {
 	return &KubernetesDeleteAlertsOK{}
 }
 
-/* KubernetesDeleteAlertsOK describes a response with status code 200, with default header values.
+/*
+KubernetesDeleteAlertsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesDeleteAlertsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this kubernetes delete alerts o k response has a 2xx status code
+func (o *KubernetesDeleteAlertsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes delete alerts o k response has a 3xx status code
+func (o *KubernetesDeleteAlertsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes delete alerts o k response has a 4xx status code
+func (o *KubernetesDeleteAlertsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes delete alerts o k response has a 5xx status code
+func (o *KubernetesDeleteAlertsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes delete alerts o k response a status code equal to that given
+func (o *KubernetesDeleteAlertsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesDeleteAlertsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesDeleteAlertsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesDeleteAlertsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesDeleteAlertsBadRequest() *KubernetesDeleteAlertsBadRequest {
 	return &KubernetesDeleteAlertsBadRequest{}
 }
 
-/* KubernetesDeleteAlertsBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesDeleteAlertsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesDeleteAlertsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes delete alerts bad request response has a 2xx status code
+func (o *KubernetesDeleteAlertsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes delete alerts bad request response has a 3xx status code
+func (o *KubernetesDeleteAlertsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes delete alerts bad request response has a 4xx status code
+func (o *KubernetesDeleteAlertsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes delete alerts bad request response has a 5xx status code
+func (o *KubernetesDeleteAlertsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes delete alerts bad request response a status code equal to that given
+func (o *KubernetesDeleteAlertsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesDeleteAlertsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesDeleteAlertsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesDeleteAlertsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesDeleteAlertsUnauthorized() *KubernetesDeleteAlertsUnauthorized
 	return &KubernetesDeleteAlertsUnauthorized{}
 }
 
-/* KubernetesDeleteAlertsUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesDeleteAlertsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesDeleteAlertsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes delete alerts unauthorized response has a 2xx status code
+func (o *KubernetesDeleteAlertsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes delete alerts unauthorized response has a 3xx status code
+func (o *KubernetesDeleteAlertsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes delete alerts unauthorized response has a 4xx status code
+func (o *KubernetesDeleteAlertsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes delete alerts unauthorized response has a 5xx status code
+func (o *KubernetesDeleteAlertsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes delete alerts unauthorized response a status code equal to that given
+func (o *KubernetesDeleteAlertsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesDeleteAlertsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesDeleteAlertsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesDeleteAlertsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesDeleteAlertsForbidden() *KubernetesDeleteAlertsForbidden {
 	return &KubernetesDeleteAlertsForbidden{}
 }
 
-/* KubernetesDeleteAlertsForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesDeleteAlertsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesDeleteAlertsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes delete alerts forbidden response has a 2xx status code
+func (o *KubernetesDeleteAlertsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes delete alerts forbidden response has a 3xx status code
+func (o *KubernetesDeleteAlertsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes delete alerts forbidden response has a 4xx status code
+func (o *KubernetesDeleteAlertsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes delete alerts forbidden response has a 5xx status code
+func (o *KubernetesDeleteAlertsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes delete alerts forbidden response a status code equal to that given
+func (o *KubernetesDeleteAlertsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesDeleteAlertsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesDeleteAlertsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesDeleteAlertsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesDeleteAlertsNotFound() *KubernetesDeleteAlertsNotFound {
 	return &KubernetesDeleteAlertsNotFound{}
 }
 
-/* KubernetesDeleteAlertsNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesDeleteAlertsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesDeleteAlertsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes delete alerts not found response has a 2xx status code
+func (o *KubernetesDeleteAlertsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes delete alerts not found response has a 3xx status code
+func (o *KubernetesDeleteAlertsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes delete alerts not found response has a 4xx status code
+func (o *KubernetesDeleteAlertsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes delete alerts not found response has a 5xx status code
+func (o *KubernetesDeleteAlertsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes delete alerts not found response a status code equal to that given
+func (o *KubernetesDeleteAlertsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesDeleteAlertsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesDeleteAlertsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesDeleteAlertsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesDeleteAlertsInternalServerError() *KubernetesDeleteAlertsInter
 	return &KubernetesDeleteAlertsInternalServerError{}
 }
 
-/* KubernetesDeleteAlertsInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesDeleteAlertsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesDeleteAlertsInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes delete alerts internal server error response has a 2xx status code
+func (o *KubernetesDeleteAlertsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes delete alerts internal server error response has a 3xx status code
+func (o *KubernetesDeleteAlertsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes delete alerts internal server error response has a 4xx status code
+func (o *KubernetesDeleteAlertsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes delete alerts internal server error response has a 5xx status code
+func (o *KubernetesDeleteAlertsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes delete alerts internal server error response a status code equal to that given
+func (o *KubernetesDeleteAlertsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesDeleteAlertsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsInternalServerError ", 500)
+}
+
+func (o *KubernetesDeleteAlertsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsInternalServerError ", 500)
 }
 

@@ -69,7 +69,8 @@ func NewProjectsCreateOK() *ProjectsCreateOK {
 	return &ProjectsCreateOK{}
 }
 
-/* ProjectsCreateOK describes a response with status code 200, with default header values.
+/*
+ProjectsCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsCreateOK struct {
 	Payload *models.APIResponse
 }
 
+// IsSuccess returns true when this projects create o k response has a 2xx status code
+func (o *ProjectsCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects create o k response has a 3xx status code
+func (o *ProjectsCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects create o k response has a 4xx status code
+func (o *ProjectsCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects create o k response has a 5xx status code
+func (o *ProjectsCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects create o k response a status code equal to that given
+func (o *ProjectsCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewProjectsCreateBadRequest() *ProjectsCreateBadRequest {
 	return &ProjectsCreateBadRequest{}
 }
 
-/* ProjectsCreateBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type ProjectsCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects create bad request response has a 2xx status code
+func (o *ProjectsCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects create bad request response has a 3xx status code
+func (o *ProjectsCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects create bad request response has a 4xx status code
+func (o *ProjectsCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects create bad request response has a 5xx status code
+func (o *ProjectsCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects create bad request response a status code equal to that given
+func (o *ProjectsCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewProjectsCreateUnauthorized() *ProjectsCreateUnauthorized {
 	return &ProjectsCreateUnauthorized{}
 }
 
-/* ProjectsCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type ProjectsCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects create unauthorized response has a 2xx status code
+func (o *ProjectsCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects create unauthorized response has a 3xx status code
+func (o *ProjectsCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects create unauthorized response has a 4xx status code
+func (o *ProjectsCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects create unauthorized response has a 5xx status code
+func (o *ProjectsCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects create unauthorized response a status code equal to that given
+func (o *ProjectsCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewProjectsCreateForbidden() *ProjectsCreateForbidden {
 	return &ProjectsCreateForbidden{}
 }
 
-/* ProjectsCreateForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type ProjectsCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects create forbidden response has a 2xx status code
+func (o *ProjectsCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects create forbidden response has a 3xx status code
+func (o *ProjectsCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects create forbidden response has a 4xx status code
+func (o *ProjectsCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects create forbidden response has a 5xx status code
+func (o *ProjectsCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects create forbidden response a status code equal to that given
+func (o *ProjectsCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewProjectsCreateNotFound() *ProjectsCreateNotFound {
 	return &ProjectsCreateNotFound{}
 }
 
-/* ProjectsCreateNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type ProjectsCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects create not found response has a 2xx status code
+func (o *ProjectsCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects create not found response has a 3xx status code
+func (o *ProjectsCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects create not found response has a 4xx status code
+func (o *ProjectsCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects create not found response has a 5xx status code
+func (o *ProjectsCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects create not found response a status code equal to that given
+func (o *ProjectsCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewProjectsCreateInternalServerError() *ProjectsCreateInternalServerError {
 	return &ProjectsCreateInternalServerError{}
 }
 
-/* ProjectsCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects create internal server error response has a 2xx status code
+func (o *ProjectsCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects create internal server error response has a 3xx status code
+func (o *ProjectsCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects create internal server error response has a 4xx status code
+func (o *ProjectsCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects create internal server error response has a 5xx status code
+func (o *ProjectsCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects create internal server error response a status code equal to that given
+func (o *ProjectsCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateInternalServerError ", 500)
+}
+
+func (o *ProjectsCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateInternalServerError ", 500)
 }
 

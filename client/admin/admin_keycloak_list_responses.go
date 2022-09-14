@@ -69,7 +69,8 @@ func NewAdminKeycloakListOK() *AdminKeycloakListOK {
 	return &AdminKeycloakListOK{}
 }
 
-/* AdminKeycloakListOK describes a response with status code 200, with default header values.
+/*
+AdminKeycloakListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AdminKeycloakListOK struct {
 	Payload *models.AdminKeycloakList
 }
 
+// IsSuccess returns true when this admin keycloak list o k response has a 2xx status code
+func (o *AdminKeycloakListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this admin keycloak list o k response has a 3xx status code
+func (o *AdminKeycloakListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin keycloak list o k response has a 4xx status code
+func (o *AdminKeycloakListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin keycloak list o k response has a 5xx status code
+func (o *AdminKeycloakListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin keycloak list o k response a status code equal to that given
+func (o *AdminKeycloakListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AdminKeycloakListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListOK  %+v", 200, o.Payload)
 }
+
+func (o *AdminKeycloakListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListOK  %+v", 200, o.Payload)
+}
+
 func (o *AdminKeycloakListOK) GetPayload() *models.AdminKeycloakList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewAdminKeycloakListBadRequest() *AdminKeycloakListBadRequest {
 	return &AdminKeycloakListBadRequest{}
 }
 
-/* AdminKeycloakListBadRequest describes a response with status code 400, with default header values.
+/*
+AdminKeycloakListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type AdminKeycloakListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this admin keycloak list bad request response has a 2xx status code
+func (o *AdminKeycloakListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin keycloak list bad request response has a 3xx status code
+func (o *AdminKeycloakListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin keycloak list bad request response has a 4xx status code
+func (o *AdminKeycloakListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin keycloak list bad request response has a 5xx status code
+func (o *AdminKeycloakListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin keycloak list bad request response a status code equal to that given
+func (o *AdminKeycloakListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AdminKeycloakListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AdminKeycloakListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AdminKeycloakListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewAdminKeycloakListUnauthorized() *AdminKeycloakListUnauthorized {
 	return &AdminKeycloakListUnauthorized{}
 }
 
-/* AdminKeycloakListUnauthorized describes a response with status code 401, with default header values.
+/*
+AdminKeycloakListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type AdminKeycloakListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin keycloak list unauthorized response has a 2xx status code
+func (o *AdminKeycloakListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin keycloak list unauthorized response has a 3xx status code
+func (o *AdminKeycloakListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin keycloak list unauthorized response has a 4xx status code
+func (o *AdminKeycloakListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin keycloak list unauthorized response has a 5xx status code
+func (o *AdminKeycloakListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin keycloak list unauthorized response a status code equal to that given
+func (o *AdminKeycloakListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AdminKeycloakListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AdminKeycloakListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AdminKeycloakListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewAdminKeycloakListForbidden() *AdminKeycloakListForbidden {
 	return &AdminKeycloakListForbidden{}
 }
 
-/* AdminKeycloakListForbidden describes a response with status code 403, with default header values.
+/*
+AdminKeycloakListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type AdminKeycloakListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin keycloak list forbidden response has a 2xx status code
+func (o *AdminKeycloakListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin keycloak list forbidden response has a 3xx status code
+func (o *AdminKeycloakListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin keycloak list forbidden response has a 4xx status code
+func (o *AdminKeycloakListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin keycloak list forbidden response has a 5xx status code
+func (o *AdminKeycloakListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin keycloak list forbidden response a status code equal to that given
+func (o *AdminKeycloakListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AdminKeycloakListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AdminKeycloakListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AdminKeycloakListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewAdminKeycloakListNotFound() *AdminKeycloakListNotFound {
 	return &AdminKeycloakListNotFound{}
 }
 
-/* AdminKeycloakListNotFound describes a response with status code 404, with default header values.
+/*
+AdminKeycloakListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type AdminKeycloakListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin keycloak list not found response has a 2xx status code
+func (o *AdminKeycloakListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin keycloak list not found response has a 3xx status code
+func (o *AdminKeycloakListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin keycloak list not found response has a 4xx status code
+func (o *AdminKeycloakListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin keycloak list not found response has a 5xx status code
+func (o *AdminKeycloakListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin keycloak list not found response a status code equal to that given
+func (o *AdminKeycloakListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AdminKeycloakListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AdminKeycloakListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AdminKeycloakListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewAdminKeycloakListInternalServerError() *AdminKeycloakListInternalServerE
 	return &AdminKeycloakListInternalServerError{}
 }
 
-/* AdminKeycloakListInternalServerError describes a response with status code 500, with default header values.
+/*
+AdminKeycloakListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AdminKeycloakListInternalServerError struct {
 }
 
+// IsSuccess returns true when this admin keycloak list internal server error response has a 2xx status code
+func (o *AdminKeycloakListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin keycloak list internal server error response has a 3xx status code
+func (o *AdminKeycloakListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin keycloak list internal server error response has a 4xx status code
+func (o *AdminKeycloakListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin keycloak list internal server error response has a 5xx status code
+func (o *AdminKeycloakListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this admin keycloak list internal server error response a status code equal to that given
+func (o *AdminKeycloakListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AdminKeycloakListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListInternalServerError ", 500)
+}
+
+func (o *AdminKeycloakListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListInternalServerError ", 500)
 }
 

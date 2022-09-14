@@ -52,10 +52,12 @@ func NewCommonGetCountryListParamsWithHTTPClient(client *http.Client) *CommonGet
 	}
 }
 
-/* CommonGetCountryListParams contains all the parameters to send to the API endpoint
-   for the common get country list operation.
+/*
+CommonGetCountryListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the common get country list operation.
+
+	Typically these are written to a http.Request.
 */
 type CommonGetCountryListParams struct {
 

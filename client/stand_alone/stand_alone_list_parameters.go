@@ -53,10 +53,12 @@ func NewStandAloneListParamsWithHTTPClient(client *http.Client) *StandAloneListP
 	}
 }
 
-/* StandAloneListParams contains all the parameters to send to the API endpoint
-   for the stand alone list operation.
+/*
+StandAloneListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone list operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneListParams struct {
 

@@ -54,10 +54,12 @@ func NewOrganizationsUpdatePaymentMethodParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* OrganizationsUpdatePaymentMethodParams contains all the parameters to send to the API endpoint
-   for the organizations update payment method operation.
+/*
+OrganizationsUpdatePaymentMethodParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the organizations update payment method operation.
+
+	Typically these are written to a http.Request.
 */
 type OrganizationsUpdatePaymentMethodParams struct {
 

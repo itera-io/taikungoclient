@@ -69,7 +69,8 @@ func NewSlackDeleteMultipleOK() *SlackDeleteMultipleOK {
 	return &SlackDeleteMultipleOK{}
 }
 
-/* SlackDeleteMultipleOK describes a response with status code 200, with default header values.
+/*
+SlackDeleteMultipleOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SlackDeleteMultipleOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this slack delete multiple o k response has a 2xx status code
+func (o *SlackDeleteMultipleOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this slack delete multiple o k response has a 3xx status code
+func (o *SlackDeleteMultipleOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack delete multiple o k response has a 4xx status code
+func (o *SlackDeleteMultipleOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this slack delete multiple o k response has a 5xx status code
+func (o *SlackDeleteMultipleOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack delete multiple o k response a status code equal to that given
+func (o *SlackDeleteMultipleOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SlackDeleteMultipleOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleOK  %+v", 200, o.Payload)
 }
+
+func (o *SlackDeleteMultipleOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleOK  %+v", 200, o.Payload)
+}
+
 func (o *SlackDeleteMultipleOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewSlackDeleteMultipleBadRequest() *SlackDeleteMultipleBadRequest {
 	return &SlackDeleteMultipleBadRequest{}
 }
 
-/* SlackDeleteMultipleBadRequest describes a response with status code 400, with default header values.
+/*
+SlackDeleteMultipleBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type SlackDeleteMultipleBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this slack delete multiple bad request response has a 2xx status code
+func (o *SlackDeleteMultipleBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack delete multiple bad request response has a 3xx status code
+func (o *SlackDeleteMultipleBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack delete multiple bad request response has a 4xx status code
+func (o *SlackDeleteMultipleBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack delete multiple bad request response has a 5xx status code
+func (o *SlackDeleteMultipleBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack delete multiple bad request response a status code equal to that given
+func (o *SlackDeleteMultipleBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SlackDeleteMultipleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SlackDeleteMultipleBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SlackDeleteMultipleBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewSlackDeleteMultipleUnauthorized() *SlackDeleteMultipleUnauthorized {
 	return &SlackDeleteMultipleUnauthorized{}
 }
 
-/* SlackDeleteMultipleUnauthorized describes a response with status code 401, with default header values.
+/*
+SlackDeleteMultipleUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type SlackDeleteMultipleUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this slack delete multiple unauthorized response has a 2xx status code
+func (o *SlackDeleteMultipleUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack delete multiple unauthorized response has a 3xx status code
+func (o *SlackDeleteMultipleUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack delete multiple unauthorized response has a 4xx status code
+func (o *SlackDeleteMultipleUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack delete multiple unauthorized response has a 5xx status code
+func (o *SlackDeleteMultipleUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack delete multiple unauthorized response a status code equal to that given
+func (o *SlackDeleteMultipleUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SlackDeleteMultipleUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SlackDeleteMultipleUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SlackDeleteMultipleUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewSlackDeleteMultipleForbidden() *SlackDeleteMultipleForbidden {
 	return &SlackDeleteMultipleForbidden{}
 }
 
-/* SlackDeleteMultipleForbidden describes a response with status code 403, with default header values.
+/*
+SlackDeleteMultipleForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type SlackDeleteMultipleForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this slack delete multiple forbidden response has a 2xx status code
+func (o *SlackDeleteMultipleForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack delete multiple forbidden response has a 3xx status code
+func (o *SlackDeleteMultipleForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack delete multiple forbidden response has a 4xx status code
+func (o *SlackDeleteMultipleForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack delete multiple forbidden response has a 5xx status code
+func (o *SlackDeleteMultipleForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack delete multiple forbidden response a status code equal to that given
+func (o *SlackDeleteMultipleForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SlackDeleteMultipleForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SlackDeleteMultipleForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SlackDeleteMultipleForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewSlackDeleteMultipleNotFound() *SlackDeleteMultipleNotFound {
 	return &SlackDeleteMultipleNotFound{}
 }
 
-/* SlackDeleteMultipleNotFound describes a response with status code 404, with default header values.
+/*
+SlackDeleteMultipleNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type SlackDeleteMultipleNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this slack delete multiple not found response has a 2xx status code
+func (o *SlackDeleteMultipleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack delete multiple not found response has a 3xx status code
+func (o *SlackDeleteMultipleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack delete multiple not found response has a 4xx status code
+func (o *SlackDeleteMultipleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack delete multiple not found response has a 5xx status code
+func (o *SlackDeleteMultipleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack delete multiple not found response a status code equal to that given
+func (o *SlackDeleteMultipleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SlackDeleteMultipleNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SlackDeleteMultipleNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SlackDeleteMultipleNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewSlackDeleteMultipleInternalServerError() *SlackDeleteMultipleInternalSer
 	return &SlackDeleteMultipleInternalServerError{}
 }
 
-/* SlackDeleteMultipleInternalServerError describes a response with status code 500, with default header values.
+/*
+SlackDeleteMultipleInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SlackDeleteMultipleInternalServerError struct {
 }
 
+// IsSuccess returns true when this slack delete multiple internal server error response has a 2xx status code
+func (o *SlackDeleteMultipleInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack delete multiple internal server error response has a 3xx status code
+func (o *SlackDeleteMultipleInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack delete multiple internal server error response has a 4xx status code
+func (o *SlackDeleteMultipleInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this slack delete multiple internal server error response has a 5xx status code
+func (o *SlackDeleteMultipleInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this slack delete multiple internal server error response a status code equal to that given
+func (o *SlackDeleteMultipleInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SlackDeleteMultipleInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleInternalServerError ", 500)
+}
+
+func (o *SlackDeleteMultipleInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleInternalServerError ", 500)
 }
 

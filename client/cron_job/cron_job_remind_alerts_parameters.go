@@ -54,10 +54,12 @@ func NewCronJobRemindAlertsParamsWithHTTPClient(client *http.Client) *CronJobRem
 	}
 }
 
-/* CronJobRemindAlertsParams contains all the parameters to send to the API endpoint
-   for the cron job remind alerts operation.
+/*
+CronJobRemindAlertsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job remind alerts operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobRemindAlertsParams struct {
 

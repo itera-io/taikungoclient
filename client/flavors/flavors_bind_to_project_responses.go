@@ -69,7 +69,8 @@ func NewFlavorsBindToProjectOK() *FlavorsBindToProjectOK {
 	return &FlavorsBindToProjectOK{}
 }
 
-/* FlavorsBindToProjectOK describes a response with status code 200, with default header values.
+/*
+FlavorsBindToProjectOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type FlavorsBindToProjectOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this flavors bind to project o k response has a 2xx status code
+func (o *FlavorsBindToProjectOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this flavors bind to project o k response has a 3xx status code
+func (o *FlavorsBindToProjectOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors bind to project o k response has a 4xx status code
+func (o *FlavorsBindToProjectOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this flavors bind to project o k response has a 5xx status code
+func (o *FlavorsBindToProjectOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors bind to project o k response a status code equal to that given
+func (o *FlavorsBindToProjectOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *FlavorsBindToProjectOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectOK  %+v", 200, o.Payload)
 }
+
+func (o *FlavorsBindToProjectOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectOK  %+v", 200, o.Payload)
+}
+
 func (o *FlavorsBindToProjectOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewFlavorsBindToProjectBadRequest() *FlavorsBindToProjectBadRequest {
 	return &FlavorsBindToProjectBadRequest{}
 }
 
-/* FlavorsBindToProjectBadRequest describes a response with status code 400, with default header values.
+/*
+FlavorsBindToProjectBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type FlavorsBindToProjectBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this flavors bind to project bad request response has a 2xx status code
+func (o *FlavorsBindToProjectBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors bind to project bad request response has a 3xx status code
+func (o *FlavorsBindToProjectBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors bind to project bad request response has a 4xx status code
+func (o *FlavorsBindToProjectBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors bind to project bad request response has a 5xx status code
+func (o *FlavorsBindToProjectBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors bind to project bad request response a status code equal to that given
+func (o *FlavorsBindToProjectBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *FlavorsBindToProjectBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *FlavorsBindToProjectBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *FlavorsBindToProjectBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewFlavorsBindToProjectUnauthorized() *FlavorsBindToProjectUnauthorized {
 	return &FlavorsBindToProjectUnauthorized{}
 }
 
-/* FlavorsBindToProjectUnauthorized describes a response with status code 401, with default header values.
+/*
+FlavorsBindToProjectUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type FlavorsBindToProjectUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this flavors bind to project unauthorized response has a 2xx status code
+func (o *FlavorsBindToProjectUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors bind to project unauthorized response has a 3xx status code
+func (o *FlavorsBindToProjectUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors bind to project unauthorized response has a 4xx status code
+func (o *FlavorsBindToProjectUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors bind to project unauthorized response has a 5xx status code
+func (o *FlavorsBindToProjectUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors bind to project unauthorized response a status code equal to that given
+func (o *FlavorsBindToProjectUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *FlavorsBindToProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *FlavorsBindToProjectUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *FlavorsBindToProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewFlavorsBindToProjectForbidden() *FlavorsBindToProjectForbidden {
 	return &FlavorsBindToProjectForbidden{}
 }
 
-/* FlavorsBindToProjectForbidden describes a response with status code 403, with default header values.
+/*
+FlavorsBindToProjectForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type FlavorsBindToProjectForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this flavors bind to project forbidden response has a 2xx status code
+func (o *FlavorsBindToProjectForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors bind to project forbidden response has a 3xx status code
+func (o *FlavorsBindToProjectForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors bind to project forbidden response has a 4xx status code
+func (o *FlavorsBindToProjectForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors bind to project forbidden response has a 5xx status code
+func (o *FlavorsBindToProjectForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors bind to project forbidden response a status code equal to that given
+func (o *FlavorsBindToProjectForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *FlavorsBindToProjectForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectForbidden  %+v", 403, o.Payload)
 }
+
+func (o *FlavorsBindToProjectForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectForbidden  %+v", 403, o.Payload)
+}
+
 func (o *FlavorsBindToProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewFlavorsBindToProjectNotFound() *FlavorsBindToProjectNotFound {
 	return &FlavorsBindToProjectNotFound{}
 }
 
-/* FlavorsBindToProjectNotFound describes a response with status code 404, with default header values.
+/*
+FlavorsBindToProjectNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type FlavorsBindToProjectNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this flavors bind to project not found response has a 2xx status code
+func (o *FlavorsBindToProjectNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors bind to project not found response has a 3xx status code
+func (o *FlavorsBindToProjectNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors bind to project not found response has a 4xx status code
+func (o *FlavorsBindToProjectNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors bind to project not found response has a 5xx status code
+func (o *FlavorsBindToProjectNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors bind to project not found response a status code equal to that given
+func (o *FlavorsBindToProjectNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *FlavorsBindToProjectNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectNotFound  %+v", 404, o.Payload)
 }
+
+func (o *FlavorsBindToProjectNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectNotFound  %+v", 404, o.Payload)
+}
+
 func (o *FlavorsBindToProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewFlavorsBindToProjectInternalServerError() *FlavorsBindToProjectInternalS
 	return &FlavorsBindToProjectInternalServerError{}
 }
 
-/* FlavorsBindToProjectInternalServerError describes a response with status code 500, with default header values.
+/*
+FlavorsBindToProjectInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type FlavorsBindToProjectInternalServerError struct {
 }
 
+// IsSuccess returns true when this flavors bind to project internal server error response has a 2xx status code
+func (o *FlavorsBindToProjectInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors bind to project internal server error response has a 3xx status code
+func (o *FlavorsBindToProjectInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors bind to project internal server error response has a 4xx status code
+func (o *FlavorsBindToProjectInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this flavors bind to project internal server error response has a 5xx status code
+func (o *FlavorsBindToProjectInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this flavors bind to project internal server error response a status code equal to that given
+func (o *FlavorsBindToProjectInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *FlavorsBindToProjectInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectInternalServerError ", 500)
+}
+
+func (o *FlavorsBindToProjectInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/bind][%d] flavorsBindToProjectInternalServerError ", 500)
 }
 

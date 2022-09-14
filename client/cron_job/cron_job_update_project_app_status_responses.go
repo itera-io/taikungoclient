@@ -69,7 +69,8 @@ func NewCronJobUpdateProjectAppStatusOK() *CronJobUpdateProjectAppStatusOK {
 	return &CronJobUpdateProjectAppStatusOK{}
 }
 
-/* CronJobUpdateProjectAppStatusOK describes a response with status code 200, with default header values.
+/*
+CronJobUpdateProjectAppStatusOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CronJobUpdateProjectAppStatusOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this cron job update project app status o k response has a 2xx status code
+func (o *CronJobUpdateProjectAppStatusOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cron job update project app status o k response has a 3xx status code
+func (o *CronJobUpdateProjectAppStatusOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job update project app status o k response has a 4xx status code
+func (o *CronJobUpdateProjectAppStatusOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job update project app status o k response has a 5xx status code
+func (o *CronJobUpdateProjectAppStatusOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job update project app status o k response a status code equal to that given
+func (o *CronJobUpdateProjectAppStatusOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CronJobUpdateProjectAppStatusOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusOK  %+v", 200, o.Payload)
 }
+
+func (o *CronJobUpdateProjectAppStatusOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusOK  %+v", 200, o.Payload)
+}
+
 func (o *CronJobUpdateProjectAppStatusOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCronJobUpdateProjectAppStatusBadRequest() *CronJobUpdateProjectAppStatus
 	return &CronJobUpdateProjectAppStatusBadRequest{}
 }
 
-/* CronJobUpdateProjectAppStatusBadRequest describes a response with status code 400, with default header values.
+/*
+CronJobUpdateProjectAppStatusBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CronJobUpdateProjectAppStatusBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cron job update project app status bad request response has a 2xx status code
+func (o *CronJobUpdateProjectAppStatusBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job update project app status bad request response has a 3xx status code
+func (o *CronJobUpdateProjectAppStatusBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job update project app status bad request response has a 4xx status code
+func (o *CronJobUpdateProjectAppStatusBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job update project app status bad request response has a 5xx status code
+func (o *CronJobUpdateProjectAppStatusBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job update project app status bad request response a status code equal to that given
+func (o *CronJobUpdateProjectAppStatusBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CronJobUpdateProjectAppStatusBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CronJobUpdateProjectAppStatusBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CronJobUpdateProjectAppStatusBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCronJobUpdateProjectAppStatusUnauthorized() *CronJobUpdateProjectAppStat
 	return &CronJobUpdateProjectAppStatusUnauthorized{}
 }
 
-/* CronJobUpdateProjectAppStatusUnauthorized describes a response with status code 401, with default header values.
+/*
+CronJobUpdateProjectAppStatusUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CronJobUpdateProjectAppStatusUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job update project app status unauthorized response has a 2xx status code
+func (o *CronJobUpdateProjectAppStatusUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job update project app status unauthorized response has a 3xx status code
+func (o *CronJobUpdateProjectAppStatusUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job update project app status unauthorized response has a 4xx status code
+func (o *CronJobUpdateProjectAppStatusUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job update project app status unauthorized response has a 5xx status code
+func (o *CronJobUpdateProjectAppStatusUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job update project app status unauthorized response a status code equal to that given
+func (o *CronJobUpdateProjectAppStatusUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CronJobUpdateProjectAppStatusUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CronJobUpdateProjectAppStatusUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CronJobUpdateProjectAppStatusUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCronJobUpdateProjectAppStatusForbidden() *CronJobUpdateProjectAppStatusF
 	return &CronJobUpdateProjectAppStatusForbidden{}
 }
 
-/* CronJobUpdateProjectAppStatusForbidden describes a response with status code 403, with default header values.
+/*
+CronJobUpdateProjectAppStatusForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CronJobUpdateProjectAppStatusForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job update project app status forbidden response has a 2xx status code
+func (o *CronJobUpdateProjectAppStatusForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job update project app status forbidden response has a 3xx status code
+func (o *CronJobUpdateProjectAppStatusForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job update project app status forbidden response has a 4xx status code
+func (o *CronJobUpdateProjectAppStatusForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job update project app status forbidden response has a 5xx status code
+func (o *CronJobUpdateProjectAppStatusForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job update project app status forbidden response a status code equal to that given
+func (o *CronJobUpdateProjectAppStatusForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CronJobUpdateProjectAppStatusForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CronJobUpdateProjectAppStatusForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CronJobUpdateProjectAppStatusForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCronJobUpdateProjectAppStatusNotFound() *CronJobUpdateProjectAppStatusNo
 	return &CronJobUpdateProjectAppStatusNotFound{}
 }
 
-/* CronJobUpdateProjectAppStatusNotFound describes a response with status code 404, with default header values.
+/*
+CronJobUpdateProjectAppStatusNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CronJobUpdateProjectAppStatusNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job update project app status not found response has a 2xx status code
+func (o *CronJobUpdateProjectAppStatusNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job update project app status not found response has a 3xx status code
+func (o *CronJobUpdateProjectAppStatusNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job update project app status not found response has a 4xx status code
+func (o *CronJobUpdateProjectAppStatusNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job update project app status not found response has a 5xx status code
+func (o *CronJobUpdateProjectAppStatusNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job update project app status not found response a status code equal to that given
+func (o *CronJobUpdateProjectAppStatusNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CronJobUpdateProjectAppStatusNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CronJobUpdateProjectAppStatusNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CronJobUpdateProjectAppStatusNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCronJobUpdateProjectAppStatusInternalServerError() *CronJobUpdateProject
 	return &CronJobUpdateProjectAppStatusInternalServerError{}
 }
 
-/* CronJobUpdateProjectAppStatusInternalServerError describes a response with status code 500, with default header values.
+/*
+CronJobUpdateProjectAppStatusInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CronJobUpdateProjectAppStatusInternalServerError struct {
 }
 
+// IsSuccess returns true when this cron job update project app status internal server error response has a 2xx status code
+func (o *CronJobUpdateProjectAppStatusInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job update project app status internal server error response has a 3xx status code
+func (o *CronJobUpdateProjectAppStatusInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job update project app status internal server error response has a 4xx status code
+func (o *CronJobUpdateProjectAppStatusInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job update project app status internal server error response has a 5xx status code
+func (o *CronJobUpdateProjectAppStatusInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cron job update project app status internal server error response a status code equal to that given
+func (o *CronJobUpdateProjectAppStatusInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CronJobUpdateProjectAppStatusInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusInternalServerError ", 500)
+}
+
+func (o *CronJobUpdateProjectAppStatusInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusInternalServerError ", 500)
 }
 

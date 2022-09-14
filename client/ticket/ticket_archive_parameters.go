@@ -54,10 +54,12 @@ func NewTicketArchiveParamsWithHTTPClient(client *http.Client) *TicketArchivePar
 	}
 }
 
-/* TicketArchiveParams contains all the parameters to send to the API endpoint
-   for the ticket archive operation.
+/*
+TicketArchiveParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ticket archive operation.
+
+	Typically these are written to a http.Request.
 */
 type TicketArchiveParams struct {
 

@@ -120,6 +120,8 @@ type ClientService interface {
 
 	KubernetesGetStorageClasses(params *KubernetesGetStorageClassesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStorageClassesOK, error)
 
+	KubernetesGetStreamPodLogsList(params *KubernetesGetStreamPodLogsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStreamPodLogsListOK, error)
+
 	KubernetesGetSts(params *KubernetesGetStsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStsOK, error)
 
 	KubernetesGetSupportedList(params *KubernetesGetSupportedListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetSupportedListOK, error)
@@ -164,7 +166,7 @@ type ClientService interface {
 }
 
 /*
-  KubernetesCreateKubernetesAlert adds k8s alert
+KubernetesCreateKubernetesAlert adds k8s alert
 */
 func (a *Client) KubernetesCreateKubernetesAlert(params *KubernetesCreateKubernetesAlertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesCreateKubernetesAlertOK, error) {
 	// TODO: Validate the params before sending
@@ -203,7 +205,7 @@ func (a *Client) KubernetesCreateKubernetesAlert(params *KubernetesCreateKuberne
 }
 
 /*
-  KubernetesCreateKubernetesEvent adds k8s event opsgenie
+KubernetesCreateKubernetesEvent adds k8s event opsgenie
 */
 func (a *Client) KubernetesCreateKubernetesEvent(params *KubernetesCreateKubernetesEventParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesCreateKubernetesEventOK, error) {
 	// TODO: Validate the params before sending
@@ -242,7 +244,7 @@ func (a *Client) KubernetesCreateKubernetesEvent(params *KubernetesCreateKuberne
 }
 
 /*
-  KubernetesDeleteAlerts removes k8s alerts
+KubernetesDeleteAlerts removes k8s alerts
 */
 func (a *Client) KubernetesDeleteAlerts(params *KubernetesDeleteAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDeleteAlertsOK, error) {
 	// TODO: Validate the params before sending
@@ -281,7 +283,7 @@ func (a *Client) KubernetesDeleteAlerts(params *KubernetesDeleteAlertsParams, au
 }
 
 /*
-  KubernetesDeleteEvents removes k8s events
+KubernetesDeleteEvents removes k8s events
 */
 func (a *Client) KubernetesDeleteEvents(params *KubernetesDeleteEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDeleteEventsOK, error) {
 	// TODO: Validate the params before sending
@@ -320,7 +322,7 @@ func (a *Client) KubernetesDeleteEvents(params *KubernetesDeleteEventsParams, au
 }
 
 /*
-  KubernetesDeletePod removes k8s namespaced pod
+KubernetesDeletePod removes k8s namespaced pod
 */
 func (a *Client) KubernetesDeletePod(params *KubernetesDeletePodParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDeletePodOK, error) {
 	// TODO: Validate the params before sending
@@ -359,7 +361,7 @@ func (a *Client) KubernetesDeletePod(params *KubernetesDeletePodParams, authInfo
 }
 
 /*
-  KubernetesDescribeConfigMap describes config map
+KubernetesDescribeConfigMap describes config map
 */
 func (a *Client) KubernetesDescribeConfigMap(params *KubernetesDescribeConfigMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeConfigMapOK, error) {
 	// TODO: Validate the params before sending
@@ -398,7 +400,7 @@ func (a *Client) KubernetesDescribeConfigMap(params *KubernetesDescribeConfigMap
 }
 
 /*
-  KubernetesDescribeCrd describes crd
+KubernetesDescribeCrd describes crd
 */
 func (a *Client) KubernetesDescribeCrd(params *KubernetesDescribeCrdParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeCrdOK, error) {
 	// TODO: Validate the params before sending
@@ -437,7 +439,7 @@ func (a *Client) KubernetesDescribeCrd(params *KubernetesDescribeCrdParams, auth
 }
 
 /*
-  KubernetesDescribeCronJob describes cronjob
+KubernetesDescribeCronJob describes cronjob
 */
 func (a *Client) KubernetesDescribeCronJob(params *KubernetesDescribeCronJobParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeCronJobOK, error) {
 	// TODO: Validate the params before sending
@@ -476,7 +478,7 @@ func (a *Client) KubernetesDescribeCronJob(params *KubernetesDescribeCronJobPara
 }
 
 /*
-  KubernetesDescribeDaemonSet describes daemonset
+KubernetesDescribeDaemonSet describes daemonset
 */
 func (a *Client) KubernetesDescribeDaemonSet(params *KubernetesDescribeDaemonSetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeDaemonSetOK, error) {
 	// TODO: Validate the params before sending
@@ -515,7 +517,7 @@ func (a *Client) KubernetesDescribeDaemonSet(params *KubernetesDescribeDaemonSet
 }
 
 /*
-  KubernetesDescribeDeployment describes deployment
+KubernetesDescribeDeployment describes deployment
 */
 func (a *Client) KubernetesDescribeDeployment(params *KubernetesDescribeDeploymentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeDeploymentOK, error) {
 	// TODO: Validate the params before sending
@@ -554,7 +556,7 @@ func (a *Client) KubernetesDescribeDeployment(params *KubernetesDescribeDeployme
 }
 
 /*
-  KubernetesDescribeIngress describes ingress
+KubernetesDescribeIngress describes ingress
 */
 func (a *Client) KubernetesDescribeIngress(params *KubernetesDescribeIngressParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeIngressOK, error) {
 	// TODO: Validate the params before sending
@@ -593,7 +595,7 @@ func (a *Client) KubernetesDescribeIngress(params *KubernetesDescribeIngressPara
 }
 
 /*
-  KubernetesDescribeJob describes job
+KubernetesDescribeJob describes job
 */
 func (a *Client) KubernetesDescribeJob(params *KubernetesDescribeJobParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeJobOK, error) {
 	// TODO: Validate the params before sending
@@ -632,7 +634,7 @@ func (a *Client) KubernetesDescribeJob(params *KubernetesDescribeJobParams, auth
 }
 
 /*
-  KubernetesDescribeNetworkPolicy describes network policy
+KubernetesDescribeNetworkPolicy describes network policy
 */
 func (a *Client) KubernetesDescribeNetworkPolicy(params *KubernetesDescribeNetworkPolicyParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeNetworkPolicyOK, error) {
 	// TODO: Validate the params before sending
@@ -671,7 +673,7 @@ func (a *Client) KubernetesDescribeNetworkPolicy(params *KubernetesDescribeNetwo
 }
 
 /*
-  KubernetesDescribeNode describes node
+KubernetesDescribeNode describes node
 */
 func (a *Client) KubernetesDescribeNode(params *KubernetesDescribeNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeNodeOK, error) {
 	// TODO: Validate the params before sending
@@ -710,7 +712,7 @@ func (a *Client) KubernetesDescribeNode(params *KubernetesDescribeNodeParams, au
 }
 
 /*
-  KubernetesDescribePdb describes pdb
+KubernetesDescribePdb describes pdb
 */
 func (a *Client) KubernetesDescribePdb(params *KubernetesDescribePdbParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribePdbOK, error) {
 	// TODO: Validate the params before sending
@@ -749,7 +751,7 @@ func (a *Client) KubernetesDescribePdb(params *KubernetesDescribePdbParams, auth
 }
 
 /*
-  KubernetesDescribePod describes pod
+KubernetesDescribePod describes pod
 */
 func (a *Client) KubernetesDescribePod(params *KubernetesDescribePodParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribePodOK, error) {
 	// TODO: Validate the params before sending
@@ -788,7 +790,7 @@ func (a *Client) KubernetesDescribePod(params *KubernetesDescribePodParams, auth
 }
 
 /*
-  KubernetesDescribePvc describes pvc
+KubernetesDescribePvc describes pvc
 */
 func (a *Client) KubernetesDescribePvc(params *KubernetesDescribePvcParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribePvcOK, error) {
 	// TODO: Validate the params before sending
@@ -827,7 +829,7 @@ func (a *Client) KubernetesDescribePvc(params *KubernetesDescribePvcParams, auth
 }
 
 /*
-  KubernetesDescribeSecret describes secret
+KubernetesDescribeSecret describes secret
 */
 func (a *Client) KubernetesDescribeSecret(params *KubernetesDescribeSecretParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeSecretOK, error) {
 	// TODO: Validate the params before sending
@@ -866,7 +868,7 @@ func (a *Client) KubernetesDescribeSecret(params *KubernetesDescribeSecretParams
 }
 
 /*
-  KubernetesDescribeService describes service
+KubernetesDescribeService describes service
 */
 func (a *Client) KubernetesDescribeService(params *KubernetesDescribeServiceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeServiceOK, error) {
 	// TODO: Validate the params before sending
@@ -905,7 +907,7 @@ func (a *Client) KubernetesDescribeService(params *KubernetesDescribeServicePara
 }
 
 /*
-  KubernetesDescribeStorageClass describes storage class
+KubernetesDescribeStorageClass describes storage class
 */
 func (a *Client) KubernetesDescribeStorageClass(params *KubernetesDescribeStorageClassParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeStorageClassOK, error) {
 	// TODO: Validate the params before sending
@@ -944,7 +946,7 @@ func (a *Client) KubernetesDescribeStorageClass(params *KubernetesDescribeStorag
 }
 
 /*
-  KubernetesDescribeSts describes stateful set
+KubernetesDescribeSts describes stateful set
 */
 func (a *Client) KubernetesDescribeSts(params *KubernetesDescribeStsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDescribeStsOK, error) {
 	// TODO: Validate the params before sending
@@ -983,7 +985,7 @@ func (a *Client) KubernetesDescribeSts(params *KubernetesDescribeStsParams, auth
 }
 
 /*
-  KubernetesDownload downloads kube config file bu project Id
+KubernetesDownload downloads kube config file bu project Id
 */
 func (a *Client) KubernetesDownload(params *KubernetesDownloadParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesDownloadOK, error) {
 	// TODO: Validate the params before sending
@@ -1022,7 +1024,7 @@ func (a *Client) KubernetesDownload(params *KubernetesDownloadParams, authInfo r
 }
 
 /*
-  KubernetesExecCli executes k8s web socket namespaced pod
+KubernetesExecCli executes k8s web socket namespaced pod
 */
 func (a *Client) KubernetesExecCli(params *KubernetesExecCliParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesExecCliOK, error) {
 	// TODO: Validate the params before sending
@@ -1061,7 +1063,7 @@ func (a *Client) KubernetesExecCli(params *KubernetesExecCliParams, authInfo run
 }
 
 /*
-  KubernetesGetConfigMap retrieves a list of k8s config map for all namespaces
+KubernetesGetConfigMap retrieves a list of k8s config map for all namespaces
 */
 func (a *Client) KubernetesGetConfigMap(params *KubernetesGetConfigMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetConfigMapOK, error) {
 	// TODO: Validate the params before sending
@@ -1100,7 +1102,7 @@ func (a *Client) KubernetesGetConfigMap(params *KubernetesGetConfigMapParams, au
 }
 
 /*
-  KubernetesGetCrdList retrieves a list of k8s custom resource definition
+KubernetesGetCrdList retrieves a list of k8s custom resource definition
 */
 func (a *Client) KubernetesGetCrdList(params *KubernetesGetCrdListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetCrdListOK, error) {
 	// TODO: Validate the params before sending
@@ -1139,7 +1141,7 @@ func (a *Client) KubernetesGetCrdList(params *KubernetesGetCrdListParams, authIn
 }
 
 /*
-  KubernetesGetCronJobsList retrieves a list of k8s cron jobs for all namespaces
+KubernetesGetCronJobsList retrieves a list of k8s cron jobs for all namespaces
 */
 func (a *Client) KubernetesGetCronJobsList(params *KubernetesGetCronJobsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetCronJobsListOK, error) {
 	// TODO: Validate the params before sending
@@ -1178,7 +1180,7 @@ func (a *Client) KubernetesGetCronJobsList(params *KubernetesGetCronJobsListPara
 }
 
 /*
-  KubernetesGetDaemonSet retrieves a list of k8s daemon set for all namespaces
+KubernetesGetDaemonSet retrieves a list of k8s daemon set for all namespaces
 */
 func (a *Client) KubernetesGetDaemonSet(params *KubernetesGetDaemonSetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetDaemonSetOK, error) {
 	// TODO: Validate the params before sending
@@ -1217,7 +1219,7 @@ func (a *Client) KubernetesGetDaemonSet(params *KubernetesGetDaemonSetParams, au
 }
 
 /*
-  KubernetesGetDashboard retrieves all data of the k8s by project Id
+KubernetesGetDashboard retrieves all data of the k8s by project Id
 */
 func (a *Client) KubernetesGetDashboard(params *KubernetesGetDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetDashboardOK, error) {
 	// TODO: Validate the params before sending
@@ -1256,7 +1258,7 @@ func (a *Client) KubernetesGetDashboard(params *KubernetesGetDashboardParams, au
 }
 
 /*
-  KubernetesGetDeploymentList retrieves a list of k8s deployment for all namespaces
+KubernetesGetDeploymentList retrieves a list of k8s deployment for all namespaces
 */
 func (a *Client) KubernetesGetDeploymentList(params *KubernetesGetDeploymentListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetDeploymentListOK, error) {
 	// TODO: Validate the params before sending
@@ -1295,7 +1297,7 @@ func (a *Client) KubernetesGetDeploymentList(params *KubernetesGetDeploymentList
 }
 
 /*
-  KubernetesGetHelmReleaseList retrieves a list of k8s helm releases for all namespaces
+KubernetesGetHelmReleaseList retrieves a list of k8s helm releases for all namespaces
 */
 func (a *Client) KubernetesGetHelmReleaseList(params *KubernetesGetHelmReleaseListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetHelmReleaseListOK, error) {
 	// TODO: Validate the params before sending
@@ -1334,7 +1336,7 @@ func (a *Client) KubernetesGetHelmReleaseList(params *KubernetesGetHelmReleaseLi
 }
 
 /*
-  KubernetesGetIngresses retrieves a list of k8s ingresses for all namespaces
+KubernetesGetIngresses retrieves a list of k8s ingresses for all namespaces
 */
 func (a *Client) KubernetesGetIngresses(params *KubernetesGetIngressesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetIngressesOK, error) {
 	// TODO: Validate the params before sending
@@ -1373,7 +1375,7 @@ func (a *Client) KubernetesGetIngresses(params *KubernetesGetIngressesParams, au
 }
 
 /*
-  KubernetesGetJobsList retrieves a list of k8s jobs for all namespaces
+KubernetesGetJobsList retrieves a list of k8s jobs for all namespaces
 */
 func (a *Client) KubernetesGetJobsList(params *KubernetesGetJobsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetJobsListOK, error) {
 	// TODO: Validate the params before sending
@@ -1412,7 +1414,7 @@ func (a *Client) KubernetesGetJobsList(params *KubernetesGetJobsListParams, auth
 }
 
 /*
-  KubernetesGetKubeConfigFile retrieves kube config file
+KubernetesGetKubeConfigFile retrieves kube config file
 */
 func (a *Client) KubernetesGetKubeConfigFile(params *KubernetesGetKubeConfigFileParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetKubeConfigFileOK, error) {
 	// TODO: Validate the params before sending
@@ -1451,7 +1453,7 @@ func (a *Client) KubernetesGetKubeConfigFile(params *KubernetesGetKubeConfigFile
 }
 
 /*
-  KubernetesGetKubernetesAlertsList retrieves all k8s alerts by project Id
+KubernetesGetKubernetesAlertsList retrieves all k8s alerts by project Id
 */
 func (a *Client) KubernetesGetKubernetesAlertsList(params *KubernetesGetKubernetesAlertsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetKubernetesAlertsListOK, error) {
 	// TODO: Validate the params before sending
@@ -1490,7 +1492,7 @@ func (a *Client) KubernetesGetKubernetesAlertsList(params *KubernetesGetKubernet
 }
 
 /*
-  KubernetesGetKubernetesEventsList retrieves all k8s events by project Id
+KubernetesGetKubernetesEventsList retrieves all k8s events by project Id
 */
 func (a *Client) KubernetesGetKubernetesEventsList(params *KubernetesGetKubernetesEventsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetKubernetesEventsListOK, error) {
 	// TODO: Validate the params before sending
@@ -1529,7 +1531,7 @@ func (a *Client) KubernetesGetKubernetesEventsList(params *KubernetesGetKubernet
 }
 
 /*
-  KubernetesGetNamespacesList retrieves kube config file
+KubernetesGetNamespacesList retrieves kube config file
 */
 func (a *Client) KubernetesGetNamespacesList(params *KubernetesGetNamespacesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetNamespacesListOK, error) {
 	// TODO: Validate the params before sending
@@ -1568,7 +1570,7 @@ func (a *Client) KubernetesGetNamespacesList(params *KubernetesGetNamespacesList
 }
 
 /*
-  KubernetesGetNetworkPolicies retrieves a list of k8s network policies for all namespaces
+KubernetesGetNetworkPolicies retrieves a list of k8s network policies for all namespaces
 */
 func (a *Client) KubernetesGetNetworkPolicies(params *KubernetesGetNetworkPoliciesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetNetworkPoliciesOK, error) {
 	// TODO: Validate the params before sending
@@ -1607,7 +1609,7 @@ func (a *Client) KubernetesGetNetworkPolicies(params *KubernetesGetNetworkPolici
 }
 
 /*
-  KubernetesGetNodeList retrieves a list of k8s node
+KubernetesGetNodeList retrieves a list of k8s node
 */
 func (a *Client) KubernetesGetNodeList(params *KubernetesGetNodeListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetNodeListOK, error) {
 	// TODO: Validate the params before sending
@@ -1646,7 +1648,7 @@ func (a *Client) KubernetesGetNodeList(params *KubernetesGetNodeListParams, auth
 }
 
 /*
-  KubernetesGetPdbList retrieves a list of k8s pdb for all namespaces
+KubernetesGetPdbList retrieves a list of k8s pdb for all namespaces
 */
 func (a *Client) KubernetesGetPdbList(params *KubernetesGetPdbListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetPdbListOK, error) {
 	// TODO: Validate the params before sending
@@ -1685,7 +1687,7 @@ func (a *Client) KubernetesGetPdbList(params *KubernetesGetPdbListParams, authIn
 }
 
 /*
-  KubernetesGetPersistentVolumeClaim retrieves a list of k8s persistent volume claim for all namespaces
+KubernetesGetPersistentVolumeClaim retrieves a list of k8s persistent volume claim for all namespaces
 */
 func (a *Client) KubernetesGetPersistentVolumeClaim(params *KubernetesGetPersistentVolumeClaimParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetPersistentVolumeClaimOK, error) {
 	// TODO: Validate the params before sending
@@ -1724,7 +1726,7 @@ func (a *Client) KubernetesGetPersistentVolumeClaim(params *KubernetesGetPersist
 }
 
 /*
-  KubernetesGetPodList retrieves a list of k8s pod for all namespaces
+KubernetesGetPodList retrieves a list of k8s pod for all namespaces
 */
 func (a *Client) KubernetesGetPodList(params *KubernetesGetPodListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetPodListOK, error) {
 	// TODO: Validate the params before sending
@@ -1763,7 +1765,7 @@ func (a *Client) KubernetesGetPodList(params *KubernetesGetPodListParams, authIn
 }
 
 /*
-  KubernetesGetPodLogsList retrieves k8s pod logs
+KubernetesGetPodLogsList retrieves k8s pod logs
 */
 func (a *Client) KubernetesGetPodLogsList(params *KubernetesGetPodLogsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetPodLogsListOK, error) {
 	// TODO: Validate the params before sending
@@ -1802,7 +1804,7 @@ func (a *Client) KubernetesGetPodLogsList(params *KubernetesGetPodLogsListParams
 }
 
 /*
-  KubernetesGetSecret retrieves a list of k8s secret for all namespaces
+KubernetesGetSecret retrieves a list of k8s secret for all namespaces
 */
 func (a *Client) KubernetesGetSecret(params *KubernetesGetSecretParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetSecretOK, error) {
 	// TODO: Validate the params before sending
@@ -1841,7 +1843,7 @@ func (a *Client) KubernetesGetSecret(params *KubernetesGetSecretParams, authInfo
 }
 
 /*
-  KubernetesGetService retrieves a list of k8s service for all namespaces
+KubernetesGetService retrieves a list of k8s service for all namespaces
 */
 func (a *Client) KubernetesGetService(params *KubernetesGetServiceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetServiceOK, error) {
 	// TODO: Validate the params before sending
@@ -1880,7 +1882,7 @@ func (a *Client) KubernetesGetService(params *KubernetesGetServiceParams, authIn
 }
 
 /*
-  KubernetesGetStorageClasses retrieves a list of k8s storage classes
+KubernetesGetStorageClasses retrieves a list of k8s storage classes
 */
 func (a *Client) KubernetesGetStorageClasses(params *KubernetesGetStorageClassesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStorageClassesOK, error) {
 	// TODO: Validate the params before sending
@@ -1919,7 +1921,46 @@ func (a *Client) KubernetesGetStorageClasses(params *KubernetesGetStorageClasses
 }
 
 /*
-  KubernetesGetSts retrieves a list of k8s stateful set for all namespaces
+KubernetesGetStreamPodLogsList retrieves k8s pod logs as stream
+*/
+func (a *Client) KubernetesGetStreamPodLogsList(params *KubernetesGetStreamPodLogsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStreamPodLogsListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubernetesGetStreamPodLogsListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Kubernetes_GetStreamPodLogsList",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Kubernetes/podlogs-stream",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubernetesGetStreamPodLogsListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubernetesGetStreamPodLogsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Kubernetes_GetStreamPodLogsList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+KubernetesGetSts retrieves a list of k8s stateful set for all namespaces
 */
 func (a *Client) KubernetesGetSts(params *KubernetesGetStsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetStsOK, error) {
 	// TODO: Validate the params before sending
@@ -1958,7 +1999,7 @@ func (a *Client) KubernetesGetSts(params *KubernetesGetStsParams, authInfo runti
 }
 
 /*
-  KubernetesGetSupportedList retrieves taikun supported kubernetes version
+KubernetesGetSupportedList retrieves taikun supported kubernetes version
 */
 func (a *Client) KubernetesGetSupportedList(params *KubernetesGetSupportedListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesGetSupportedListOK, error) {
 	// TODO: Validate the params before sending
@@ -1997,7 +2038,7 @@ func (a *Client) KubernetesGetSupportedList(params *KubernetesGetSupportedListPa
 }
 
 /*
-  KubernetesOverview overviews kubernetes nodes and pods by organization id
+KubernetesOverview overviews kubernetes nodes and pods by organization id
 */
 func (a *Client) KubernetesOverview(params *KubernetesOverviewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesOverviewOK, error) {
 	// TODO: Validate the params before sending
@@ -2036,7 +2077,7 @@ func (a *Client) KubernetesOverview(params *KubernetesOverviewParams, authInfo r
 }
 
 /*
-  KubernetesPatchConfigMap patches config map
+KubernetesPatchConfigMap patches config map
 */
 func (a *Client) KubernetesPatchConfigMap(params *KubernetesPatchConfigMapParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchConfigMapOK, error) {
 	// TODO: Validate the params before sending
@@ -2075,7 +2116,7 @@ func (a *Client) KubernetesPatchConfigMap(params *KubernetesPatchConfigMapParams
 }
 
 /*
-  KubernetesPatchCrd patches crd
+KubernetesPatchCrd patches crd
 */
 func (a *Client) KubernetesPatchCrd(params *KubernetesPatchCrdParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchCrdOK, error) {
 	// TODO: Validate the params before sending
@@ -2114,7 +2155,7 @@ func (a *Client) KubernetesPatchCrd(params *KubernetesPatchCrdParams, authInfo r
 }
 
 /*
-  KubernetesPatchCronJob patches cronjob
+KubernetesPatchCronJob patches cronjob
 */
 func (a *Client) KubernetesPatchCronJob(params *KubernetesPatchCronJobParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchCronJobOK, error) {
 	// TODO: Validate the params before sending
@@ -2153,7 +2194,7 @@ func (a *Client) KubernetesPatchCronJob(params *KubernetesPatchCronJobParams, au
 }
 
 /*
-  KubernetesPatchDeployment patches deployment
+KubernetesPatchDeployment patches deployment
 */
 func (a *Client) KubernetesPatchDeployment(params *KubernetesPatchDeploymentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchDeploymentOK, error) {
 	// TODO: Validate the params before sending
@@ -2192,7 +2233,7 @@ func (a *Client) KubernetesPatchDeployment(params *KubernetesPatchDeploymentPara
 }
 
 /*
-  KubernetesPatchIngress patches ingress
+KubernetesPatchIngress patches ingress
 */
 func (a *Client) KubernetesPatchIngress(params *KubernetesPatchIngressParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchIngressOK, error) {
 	// TODO: Validate the params before sending
@@ -2231,7 +2272,7 @@ func (a *Client) KubernetesPatchIngress(params *KubernetesPatchIngressParams, au
 }
 
 /*
-  KubernetesPatchJob patches job
+KubernetesPatchJob patches job
 */
 func (a *Client) KubernetesPatchJob(params *KubernetesPatchJobParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchJobOK, error) {
 	// TODO: Validate the params before sending
@@ -2270,7 +2311,7 @@ func (a *Client) KubernetesPatchJob(params *KubernetesPatchJobParams, authInfo r
 }
 
 /*
-  KubernetesPatchNode patches node
+KubernetesPatchNode patches node
 */
 func (a *Client) KubernetesPatchNode(params *KubernetesPatchNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchNodeOK, error) {
 	// TODO: Validate the params before sending
@@ -2309,7 +2350,7 @@ func (a *Client) KubernetesPatchNode(params *KubernetesPatchNodeParams, authInfo
 }
 
 /*
-  KubernetesPatchPdb patches pdb
+KubernetesPatchPdb patches pdb
 */
 func (a *Client) KubernetesPatchPdb(params *KubernetesPatchPdbParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchPdbOK, error) {
 	// TODO: Validate the params before sending
@@ -2348,7 +2389,7 @@ func (a *Client) KubernetesPatchPdb(params *KubernetesPatchPdbParams, authInfo r
 }
 
 /*
-  KubernetesPatchPod patches pod
+KubernetesPatchPod patches pod
 */
 func (a *Client) KubernetesPatchPod(params *KubernetesPatchPodParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchPodOK, error) {
 	// TODO: Validate the params before sending
@@ -2387,7 +2428,7 @@ func (a *Client) KubernetesPatchPod(params *KubernetesPatchPodParams, authInfo r
 }
 
 /*
-  KubernetesPatchPvc patches pvc
+KubernetesPatchPvc patches pvc
 */
 func (a *Client) KubernetesPatchPvc(params *KubernetesPatchPvcParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchPvcOK, error) {
 	// TODO: Validate the params before sending
@@ -2426,7 +2467,7 @@ func (a *Client) KubernetesPatchPvc(params *KubernetesPatchPvcParams, authInfo r
 }
 
 /*
-  KubernetesPatchSecret patches secret
+KubernetesPatchSecret patches secret
 */
 func (a *Client) KubernetesPatchSecret(params *KubernetesPatchSecretParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchSecretOK, error) {
 	// TODO: Validate the params before sending
@@ -2465,7 +2506,7 @@ func (a *Client) KubernetesPatchSecret(params *KubernetesPatchSecretParams, auth
 }
 
 /*
-  KubernetesPatchSts patches sts
+KubernetesPatchSts patches sts
 */
 func (a *Client) KubernetesPatchSts(params *KubernetesPatchStsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesPatchStsOK, error) {
 	// TODO: Validate the params before sending
@@ -2504,7 +2545,7 @@ func (a *Client) KubernetesPatchSts(params *KubernetesPatchStsParams, authInfo r
 }
 
 /*
-  KubernetesRestartDaemonSet restarts daemon set
+KubernetesRestartDaemonSet restarts daemon set
 */
 func (a *Client) KubernetesRestartDaemonSet(params *KubernetesRestartDaemonSetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesRestartDaemonSetOK, error) {
 	// TODO: Validate the params before sending
@@ -2543,7 +2584,7 @@ func (a *Client) KubernetesRestartDaemonSet(params *KubernetesRestartDaemonSetPa
 }
 
 /*
-  KubernetesRestartDeployment restarts deployment
+KubernetesRestartDeployment restarts deployment
 */
 func (a *Client) KubernetesRestartDeployment(params *KubernetesRestartDeploymentParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesRestartDeploymentOK, error) {
 	// TODO: Validate the params before sending
@@ -2582,7 +2623,7 @@ func (a *Client) KubernetesRestartDeployment(params *KubernetesRestartDeployment
 }
 
 /*
-  KubernetesRestartSts restarts stateful set
+KubernetesRestartSts restarts stateful set
 */
 func (a *Client) KubernetesRestartSts(params *KubernetesRestartStsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesRestartStsOK, error) {
 	// TODO: Validate the params before sending
@@ -2621,7 +2662,7 @@ func (a *Client) KubernetesRestartSts(params *KubernetesRestartStsParams, authIn
 }
 
 /*
-  KubernetesSilenceManager silences management for k8s alerts
+KubernetesSilenceManager silences management for k8s alerts
 */
 func (a *Client) KubernetesSilenceManager(params *KubernetesSilenceManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesSilenceManagerOK, error) {
 	// TODO: Validate the params before sending
@@ -2660,7 +2701,7 @@ func (a *Client) KubernetesSilenceManager(params *KubernetesSilenceManagerParams
 }
 
 /*
-  KubernetesUpdateKubernetesAlert updates k8s alert
+KubernetesUpdateKubernetesAlert updates k8s alert
 */
 func (a *Client) KubernetesUpdateKubernetesAlert(params *KubernetesUpdateKubernetesAlertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesUpdateKubernetesAlertOK, error) {
 	// TODO: Validate the params before sending

@@ -75,14 +75,44 @@ func NewProjectActionsDeleteOK() *ProjectActionsDeleteOK {
 	return &ProjectActionsDeleteOK{}
 }
 
-/* ProjectActionsDeleteOK describes a response with status code 200, with default header values.
+/*
+ProjectActionsDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
 type ProjectActionsDeleteOK struct {
 }
 
+// IsSuccess returns true when this project actions delete o k response has a 2xx status code
+func (o *ProjectActionsDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this project actions delete o k response has a 3xx status code
+func (o *ProjectActionsDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project actions delete o k response has a 4xx status code
+func (o *ProjectActionsDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this project actions delete o k response has a 5xx status code
+func (o *ProjectActionsDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project actions delete o k response a status code equal to that given
+func (o *ProjectActionsDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectActionsDeleteOK) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteOK ", 200)
+}
+
+func (o *ProjectActionsDeleteOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteOK ", 200)
 }
 
@@ -96,14 +126,44 @@ func NewProjectActionsDeleteNoContent() *ProjectActionsDeleteNoContent {
 	return &ProjectActionsDeleteNoContent{}
 }
 
-/* ProjectActionsDeleteNoContent describes a response with status code 204, with default header values.
+/*
+ProjectActionsDeleteNoContent describes a response with status code 204, with default header values.
 
 Success
 */
 type ProjectActionsDeleteNoContent struct {
 }
 
+// IsSuccess returns true when this project actions delete no content response has a 2xx status code
+func (o *ProjectActionsDeleteNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this project actions delete no content response has a 3xx status code
+func (o *ProjectActionsDeleteNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project actions delete no content response has a 4xx status code
+func (o *ProjectActionsDeleteNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this project actions delete no content response has a 5xx status code
+func (o *ProjectActionsDeleteNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project actions delete no content response a status code equal to that given
+func (o *ProjectActionsDeleteNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *ProjectActionsDeleteNoContent) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteNoContent ", 204)
+}
+
+func (o *ProjectActionsDeleteNoContent) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteNoContent ", 204)
 }
 
@@ -117,7 +177,8 @@ func NewProjectActionsDeleteBadRequest() *ProjectActionsDeleteBadRequest {
 	return &ProjectActionsDeleteBadRequest{}
 }
 
-/* ProjectActionsDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectActionsDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -125,9 +186,39 @@ type ProjectActionsDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this project actions delete bad request response has a 2xx status code
+func (o *ProjectActionsDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project actions delete bad request response has a 3xx status code
+func (o *ProjectActionsDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project actions delete bad request response has a 4xx status code
+func (o *ProjectActionsDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project actions delete bad request response has a 5xx status code
+func (o *ProjectActionsDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project actions delete bad request response a status code equal to that given
+func (o *ProjectActionsDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectActionsDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectActionsDeleteBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectActionsDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -149,7 +240,8 @@ func NewProjectActionsDeleteUnauthorized() *ProjectActionsDeleteUnauthorized {
 	return &ProjectActionsDeleteUnauthorized{}
 }
 
-/* ProjectActionsDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectActionsDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -157,9 +249,39 @@ type ProjectActionsDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project actions delete unauthorized response has a 2xx status code
+func (o *ProjectActionsDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project actions delete unauthorized response has a 3xx status code
+func (o *ProjectActionsDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project actions delete unauthorized response has a 4xx status code
+func (o *ProjectActionsDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project actions delete unauthorized response has a 5xx status code
+func (o *ProjectActionsDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project actions delete unauthorized response a status code equal to that given
+func (o *ProjectActionsDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectActionsDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectActionsDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectActionsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -181,7 +303,8 @@ func NewProjectActionsDeleteForbidden() *ProjectActionsDeleteForbidden {
 	return &ProjectActionsDeleteForbidden{}
 }
 
-/* ProjectActionsDeleteForbidden describes a response with status code 403, with default header values.
+/*
+ProjectActionsDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -189,9 +312,39 @@ type ProjectActionsDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project actions delete forbidden response has a 2xx status code
+func (o *ProjectActionsDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project actions delete forbidden response has a 3xx status code
+func (o *ProjectActionsDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project actions delete forbidden response has a 4xx status code
+func (o *ProjectActionsDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project actions delete forbidden response has a 5xx status code
+func (o *ProjectActionsDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project actions delete forbidden response a status code equal to that given
+func (o *ProjectActionsDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectActionsDeleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectActionsDeleteForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectActionsDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -213,7 +366,8 @@ func NewProjectActionsDeleteNotFound() *ProjectActionsDeleteNotFound {
 	return &ProjectActionsDeleteNotFound{}
 }
 
-/* ProjectActionsDeleteNotFound describes a response with status code 404, with default header values.
+/*
+ProjectActionsDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -221,9 +375,39 @@ type ProjectActionsDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project actions delete not found response has a 2xx status code
+func (o *ProjectActionsDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project actions delete not found response has a 3xx status code
+func (o *ProjectActionsDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project actions delete not found response has a 4xx status code
+func (o *ProjectActionsDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project actions delete not found response has a 5xx status code
+func (o *ProjectActionsDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project actions delete not found response a status code equal to that given
+func (o *ProjectActionsDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectActionsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectActionsDeleteNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectActionsDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -245,14 +429,44 @@ func NewProjectActionsDeleteInternalServerError() *ProjectActionsDeleteInternalS
 	return &ProjectActionsDeleteInternalServerError{}
 }
 
-/* ProjectActionsDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectActionsDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectActionsDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this project actions delete internal server error response has a 2xx status code
+func (o *ProjectActionsDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project actions delete internal server error response has a 3xx status code
+func (o *ProjectActionsDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project actions delete internal server error response has a 4xx status code
+func (o *ProjectActionsDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this project actions delete internal server error response has a 5xx status code
+func (o *ProjectActionsDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this project actions delete internal server error response a status code equal to that given
+func (o *ProjectActionsDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectActionsDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteInternalServerError ", 500)
+}
+
+func (o *ProjectActionsDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteInternalServerError ", 500)
 }
 

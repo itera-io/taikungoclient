@@ -69,7 +69,8 @@ func NewUserTokenCreateOK() *UserTokenCreateOK {
 	return &UserTokenCreateOK{}
 }
 
-/* UserTokenCreateOK describes a response with status code 200, with default header values.
+/*
+UserTokenCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type UserTokenCreateOK struct {
 	Payload *models.UserTokenCreateDto
 }
 
+// IsSuccess returns true when this user token create o k response has a 2xx status code
+func (o *UserTokenCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this user token create o k response has a 3xx status code
+func (o *UserTokenCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token create o k response has a 4xx status code
+func (o *UserTokenCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user token create o k response has a 5xx status code
+func (o *UserTokenCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user token create o k response a status code equal to that given
+func (o *UserTokenCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UserTokenCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *UserTokenCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *UserTokenCreateOK) GetPayload() *models.UserTokenCreateDto {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewUserTokenCreateBadRequest() *UserTokenCreateBadRequest {
 	return &UserTokenCreateBadRequest{}
 }
 
-/* UserTokenCreateBadRequest describes a response with status code 400, with default header values.
+/*
+UserTokenCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type UserTokenCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this user token create bad request response has a 2xx status code
+func (o *UserTokenCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user token create bad request response has a 3xx status code
+func (o *UserTokenCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token create bad request response has a 4xx status code
+func (o *UserTokenCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user token create bad request response has a 5xx status code
+func (o *UserTokenCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user token create bad request response a status code equal to that given
+func (o *UserTokenCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UserTokenCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UserTokenCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UserTokenCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewUserTokenCreateUnauthorized() *UserTokenCreateUnauthorized {
 	return &UserTokenCreateUnauthorized{}
 }
 
-/* UserTokenCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+UserTokenCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type UserTokenCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user token create unauthorized response has a 2xx status code
+func (o *UserTokenCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user token create unauthorized response has a 3xx status code
+func (o *UserTokenCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token create unauthorized response has a 4xx status code
+func (o *UserTokenCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user token create unauthorized response has a 5xx status code
+func (o *UserTokenCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user token create unauthorized response a status code equal to that given
+func (o *UserTokenCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UserTokenCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *UserTokenCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *UserTokenCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewUserTokenCreateForbidden() *UserTokenCreateForbidden {
 	return &UserTokenCreateForbidden{}
 }
 
-/* UserTokenCreateForbidden describes a response with status code 403, with default header values.
+/*
+UserTokenCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type UserTokenCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user token create forbidden response has a 2xx status code
+func (o *UserTokenCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user token create forbidden response has a 3xx status code
+func (o *UserTokenCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token create forbidden response has a 4xx status code
+func (o *UserTokenCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user token create forbidden response has a 5xx status code
+func (o *UserTokenCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user token create forbidden response a status code equal to that given
+func (o *UserTokenCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UserTokenCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UserTokenCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UserTokenCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewUserTokenCreateNotFound() *UserTokenCreateNotFound {
 	return &UserTokenCreateNotFound{}
 }
 
-/* UserTokenCreateNotFound describes a response with status code 404, with default header values.
+/*
+UserTokenCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type UserTokenCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user token create not found response has a 2xx status code
+func (o *UserTokenCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user token create not found response has a 3xx status code
+func (o *UserTokenCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token create not found response has a 4xx status code
+func (o *UserTokenCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user token create not found response has a 5xx status code
+func (o *UserTokenCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user token create not found response a status code equal to that given
+func (o *UserTokenCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UserTokenCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UserTokenCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UserTokenCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewUserTokenCreateInternalServerError() *UserTokenCreateInternalServerError
 	return &UserTokenCreateInternalServerError{}
 }
 
-/* UserTokenCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+UserTokenCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UserTokenCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this user token create internal server error response has a 2xx status code
+func (o *UserTokenCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user token create internal server error response has a 3xx status code
+func (o *UserTokenCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token create internal server error response has a 4xx status code
+func (o *UserTokenCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user token create internal server error response has a 5xx status code
+func (o *UserTokenCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this user token create internal server error response a status code equal to that given
+func (o *UserTokenCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UserTokenCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateInternalServerError ", 500)
+}
+
+func (o *UserTokenCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateInternalServerError ", 500)
 }
 

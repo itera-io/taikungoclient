@@ -69,7 +69,8 @@ func NewStandAloneProjectDetailsOK() *StandAloneProjectDetailsOK {
 	return &StandAloneProjectDetailsOK{}
 }
 
-/* StandAloneProjectDetailsOK describes a response with status code 200, with default header values.
+/*
+StandAloneProjectDetailsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type StandAloneProjectDetailsOK struct {
 	Payload *models.ProjectFullListDto
 }
 
+// IsSuccess returns true when this stand alone project details o k response has a 2xx status code
+func (o *StandAloneProjectDetailsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this stand alone project details o k response has a 3xx status code
+func (o *StandAloneProjectDetailsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone project details o k response has a 4xx status code
+func (o *StandAloneProjectDetailsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone project details o k response has a 5xx status code
+func (o *StandAloneProjectDetailsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone project details o k response a status code equal to that given
+func (o *StandAloneProjectDetailsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *StandAloneProjectDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsOK  %+v", 200, o.Payload)
 }
+
+func (o *StandAloneProjectDetailsOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsOK  %+v", 200, o.Payload)
+}
+
 func (o *StandAloneProjectDetailsOK) GetPayload() *models.ProjectFullListDto {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewStandAloneProjectDetailsBadRequest() *StandAloneProjectDetailsBadRequest
 	return &StandAloneProjectDetailsBadRequest{}
 }
 
-/* StandAloneProjectDetailsBadRequest describes a response with status code 400, with default header values.
+/*
+StandAloneProjectDetailsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type StandAloneProjectDetailsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this stand alone project details bad request response has a 2xx status code
+func (o *StandAloneProjectDetailsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone project details bad request response has a 3xx status code
+func (o *StandAloneProjectDetailsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone project details bad request response has a 4xx status code
+func (o *StandAloneProjectDetailsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone project details bad request response has a 5xx status code
+func (o *StandAloneProjectDetailsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone project details bad request response a status code equal to that given
+func (o *StandAloneProjectDetailsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *StandAloneProjectDetailsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *StandAloneProjectDetailsBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *StandAloneProjectDetailsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewStandAloneProjectDetailsUnauthorized() *StandAloneProjectDetailsUnauthor
 	return &StandAloneProjectDetailsUnauthorized{}
 }
 
-/* StandAloneProjectDetailsUnauthorized describes a response with status code 401, with default header values.
+/*
+StandAloneProjectDetailsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type StandAloneProjectDetailsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone project details unauthorized response has a 2xx status code
+func (o *StandAloneProjectDetailsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone project details unauthorized response has a 3xx status code
+func (o *StandAloneProjectDetailsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone project details unauthorized response has a 4xx status code
+func (o *StandAloneProjectDetailsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone project details unauthorized response has a 5xx status code
+func (o *StandAloneProjectDetailsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone project details unauthorized response a status code equal to that given
+func (o *StandAloneProjectDetailsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *StandAloneProjectDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *StandAloneProjectDetailsUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *StandAloneProjectDetailsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewStandAloneProjectDetailsForbidden() *StandAloneProjectDetailsForbidden {
 	return &StandAloneProjectDetailsForbidden{}
 }
 
-/* StandAloneProjectDetailsForbidden describes a response with status code 403, with default header values.
+/*
+StandAloneProjectDetailsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type StandAloneProjectDetailsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone project details forbidden response has a 2xx status code
+func (o *StandAloneProjectDetailsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone project details forbidden response has a 3xx status code
+func (o *StandAloneProjectDetailsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone project details forbidden response has a 4xx status code
+func (o *StandAloneProjectDetailsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone project details forbidden response has a 5xx status code
+func (o *StandAloneProjectDetailsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone project details forbidden response a status code equal to that given
+func (o *StandAloneProjectDetailsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *StandAloneProjectDetailsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *StandAloneProjectDetailsForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *StandAloneProjectDetailsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewStandAloneProjectDetailsNotFound() *StandAloneProjectDetailsNotFound {
 	return &StandAloneProjectDetailsNotFound{}
 }
 
-/* StandAloneProjectDetailsNotFound describes a response with status code 404, with default header values.
+/*
+StandAloneProjectDetailsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type StandAloneProjectDetailsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone project details not found response has a 2xx status code
+func (o *StandAloneProjectDetailsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone project details not found response has a 3xx status code
+func (o *StandAloneProjectDetailsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone project details not found response has a 4xx status code
+func (o *StandAloneProjectDetailsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone project details not found response has a 5xx status code
+func (o *StandAloneProjectDetailsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone project details not found response a status code equal to that given
+func (o *StandAloneProjectDetailsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *StandAloneProjectDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *StandAloneProjectDetailsNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *StandAloneProjectDetailsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewStandAloneProjectDetailsInternalServerError() *StandAloneProjectDetailsI
 	return &StandAloneProjectDetailsInternalServerError{}
 }
 
-/* StandAloneProjectDetailsInternalServerError describes a response with status code 500, with default header values.
+/*
+StandAloneProjectDetailsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type StandAloneProjectDetailsInternalServerError struct {
 }
 
+// IsSuccess returns true when this stand alone project details internal server error response has a 2xx status code
+func (o *StandAloneProjectDetailsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone project details internal server error response has a 3xx status code
+func (o *StandAloneProjectDetailsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone project details internal server error response has a 4xx status code
+func (o *StandAloneProjectDetailsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone project details internal server error response has a 5xx status code
+func (o *StandAloneProjectDetailsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this stand alone project details internal server error response a status code equal to that given
+func (o *StandAloneProjectDetailsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *StandAloneProjectDetailsInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsInternalServerError ", 500)
+}
+
+func (o *StandAloneProjectDetailsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsInternalServerError ", 500)
 }
 

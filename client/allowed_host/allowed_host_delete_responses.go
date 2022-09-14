@@ -75,7 +75,8 @@ func NewAllowedHostDeleteOK() *AllowedHostDeleteOK {
 	return &AllowedHostDeleteOK{}
 }
 
-/* AllowedHostDeleteOK describes a response with status code 200, with default header values.
+/*
+AllowedHostDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -83,9 +84,39 @@ type AllowedHostDeleteOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this allowed host delete o k response has a 2xx status code
+func (o *AllowedHostDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this allowed host delete o k response has a 3xx status code
+func (o *AllowedHostDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host delete o k response has a 4xx status code
+func (o *AllowedHostDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this allowed host delete o k response has a 5xx status code
+func (o *AllowedHostDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host delete o k response a status code equal to that given
+func (o *AllowedHostDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AllowedHostDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *AllowedHostDeleteOK) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *AllowedHostDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -105,14 +136,44 @@ func NewAllowedHostDeleteNoContent() *AllowedHostDeleteNoContent {
 	return &AllowedHostDeleteNoContent{}
 }
 
-/* AllowedHostDeleteNoContent describes a response with status code 204, with default header values.
+/*
+AllowedHostDeleteNoContent describes a response with status code 204, with default header values.
 
 Success
 */
 type AllowedHostDeleteNoContent struct {
 }
 
+// IsSuccess returns true when this allowed host delete no content response has a 2xx status code
+func (o *AllowedHostDeleteNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this allowed host delete no content response has a 3xx status code
+func (o *AllowedHostDeleteNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host delete no content response has a 4xx status code
+func (o *AllowedHostDeleteNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this allowed host delete no content response has a 5xx status code
+func (o *AllowedHostDeleteNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host delete no content response a status code equal to that given
+func (o *AllowedHostDeleteNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *AllowedHostDeleteNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteNoContent ", 204)
+}
+
+func (o *AllowedHostDeleteNoContent) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteNoContent ", 204)
 }
 
@@ -126,7 +187,8 @@ func NewAllowedHostDeleteBadRequest() *AllowedHostDeleteBadRequest {
 	return &AllowedHostDeleteBadRequest{}
 }
 
-/* AllowedHostDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+AllowedHostDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -134,9 +196,39 @@ type AllowedHostDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this allowed host delete bad request response has a 2xx status code
+func (o *AllowedHostDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this allowed host delete bad request response has a 3xx status code
+func (o *AllowedHostDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host delete bad request response has a 4xx status code
+func (o *AllowedHostDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this allowed host delete bad request response has a 5xx status code
+func (o *AllowedHostDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host delete bad request response a status code equal to that given
+func (o *AllowedHostDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AllowedHostDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AllowedHostDeleteBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AllowedHostDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -158,7 +250,8 @@ func NewAllowedHostDeleteUnauthorized() *AllowedHostDeleteUnauthorized {
 	return &AllowedHostDeleteUnauthorized{}
 }
 
-/* AllowedHostDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+AllowedHostDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -166,9 +259,39 @@ type AllowedHostDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this allowed host delete unauthorized response has a 2xx status code
+func (o *AllowedHostDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this allowed host delete unauthorized response has a 3xx status code
+func (o *AllowedHostDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host delete unauthorized response has a 4xx status code
+func (o *AllowedHostDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this allowed host delete unauthorized response has a 5xx status code
+func (o *AllowedHostDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host delete unauthorized response a status code equal to that given
+func (o *AllowedHostDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AllowedHostDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AllowedHostDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AllowedHostDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -190,7 +313,8 @@ func NewAllowedHostDeleteForbidden() *AllowedHostDeleteForbidden {
 	return &AllowedHostDeleteForbidden{}
 }
 
-/* AllowedHostDeleteForbidden describes a response with status code 403, with default header values.
+/*
+AllowedHostDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -198,9 +322,39 @@ type AllowedHostDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this allowed host delete forbidden response has a 2xx status code
+func (o *AllowedHostDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this allowed host delete forbidden response has a 3xx status code
+func (o *AllowedHostDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host delete forbidden response has a 4xx status code
+func (o *AllowedHostDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this allowed host delete forbidden response has a 5xx status code
+func (o *AllowedHostDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host delete forbidden response a status code equal to that given
+func (o *AllowedHostDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AllowedHostDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AllowedHostDeleteForbidden) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AllowedHostDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -222,7 +376,8 @@ func NewAllowedHostDeleteNotFound() *AllowedHostDeleteNotFound {
 	return &AllowedHostDeleteNotFound{}
 }
 
-/* AllowedHostDeleteNotFound describes a response with status code 404, with default header values.
+/*
+AllowedHostDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -230,9 +385,39 @@ type AllowedHostDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this allowed host delete not found response has a 2xx status code
+func (o *AllowedHostDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this allowed host delete not found response has a 3xx status code
+func (o *AllowedHostDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host delete not found response has a 4xx status code
+func (o *AllowedHostDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this allowed host delete not found response has a 5xx status code
+func (o *AllowedHostDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host delete not found response a status code equal to that given
+func (o *AllowedHostDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AllowedHostDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AllowedHostDeleteNotFound) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AllowedHostDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -254,14 +439,44 @@ func NewAllowedHostDeleteInternalServerError() *AllowedHostDeleteInternalServerE
 	return &AllowedHostDeleteInternalServerError{}
 }
 
-/* AllowedHostDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+AllowedHostDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AllowedHostDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this allowed host delete internal server error response has a 2xx status code
+func (o *AllowedHostDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this allowed host delete internal server error response has a 3xx status code
+func (o *AllowedHostDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host delete internal server error response has a 4xx status code
+func (o *AllowedHostDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this allowed host delete internal server error response has a 5xx status code
+func (o *AllowedHostDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this allowed host delete internal server error response a status code equal to that given
+func (o *AllowedHostDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AllowedHostDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteInternalServerError ", 500)
+}
+
+func (o *AllowedHostDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteInternalServerError ", 500)
 }
 

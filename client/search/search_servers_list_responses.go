@@ -69,7 +69,8 @@ func NewSearchServersListOK() *SearchServersListOK {
 	return &SearchServersListOK{}
 }
 
-/* SearchServersListOK describes a response with status code 200, with default header values.
+/*
+SearchServersListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SearchServersListOK struct {
 	Payload *models.ServersSearchList
 }
 
+// IsSuccess returns true when this search servers list o k response has a 2xx status code
+func (o *SearchServersListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this search servers list o k response has a 3xx status code
+func (o *SearchServersListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search servers list o k response has a 4xx status code
+func (o *SearchServersListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search servers list o k response has a 5xx status code
+func (o *SearchServersListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search servers list o k response a status code equal to that given
+func (o *SearchServersListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SearchServersListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/servers][%d] searchServersListOK  %+v", 200, o.Payload)
 }
+
+func (o *SearchServersListOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/servers][%d] searchServersListOK  %+v", 200, o.Payload)
+}
+
 func (o *SearchServersListOK) GetPayload() *models.ServersSearchList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewSearchServersListBadRequest() *SearchServersListBadRequest {
 	return &SearchServersListBadRequest{}
 }
 
-/* SearchServersListBadRequest describes a response with status code 400, with default header values.
+/*
+SearchServersListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type SearchServersListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this search servers list bad request response has a 2xx status code
+func (o *SearchServersListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search servers list bad request response has a 3xx status code
+func (o *SearchServersListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search servers list bad request response has a 4xx status code
+func (o *SearchServersListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search servers list bad request response has a 5xx status code
+func (o *SearchServersListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search servers list bad request response a status code equal to that given
+func (o *SearchServersListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SearchServersListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/servers][%d] searchServersListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SearchServersListBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/servers][%d] searchServersListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SearchServersListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewSearchServersListUnauthorized() *SearchServersListUnauthorized {
 	return &SearchServersListUnauthorized{}
 }
 
-/* SearchServersListUnauthorized describes a response with status code 401, with default header values.
+/*
+SearchServersListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type SearchServersListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search servers list unauthorized response has a 2xx status code
+func (o *SearchServersListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search servers list unauthorized response has a 3xx status code
+func (o *SearchServersListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search servers list unauthorized response has a 4xx status code
+func (o *SearchServersListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search servers list unauthorized response has a 5xx status code
+func (o *SearchServersListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search servers list unauthorized response a status code equal to that given
+func (o *SearchServersListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SearchServersListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/servers][%d] searchServersListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SearchServersListUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/servers][%d] searchServersListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SearchServersListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewSearchServersListForbidden() *SearchServersListForbidden {
 	return &SearchServersListForbidden{}
 }
 
-/* SearchServersListForbidden describes a response with status code 403, with default header values.
+/*
+SearchServersListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type SearchServersListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search servers list forbidden response has a 2xx status code
+func (o *SearchServersListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search servers list forbidden response has a 3xx status code
+func (o *SearchServersListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search servers list forbidden response has a 4xx status code
+func (o *SearchServersListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search servers list forbidden response has a 5xx status code
+func (o *SearchServersListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search servers list forbidden response a status code equal to that given
+func (o *SearchServersListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SearchServersListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/servers][%d] searchServersListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SearchServersListForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/servers][%d] searchServersListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SearchServersListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewSearchServersListNotFound() *SearchServersListNotFound {
 	return &SearchServersListNotFound{}
 }
 
-/* SearchServersListNotFound describes a response with status code 404, with default header values.
+/*
+SearchServersListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type SearchServersListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search servers list not found response has a 2xx status code
+func (o *SearchServersListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search servers list not found response has a 3xx status code
+func (o *SearchServersListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search servers list not found response has a 4xx status code
+func (o *SearchServersListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search servers list not found response has a 5xx status code
+func (o *SearchServersListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search servers list not found response a status code equal to that given
+func (o *SearchServersListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SearchServersListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/servers][%d] searchServersListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SearchServersListNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/servers][%d] searchServersListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SearchServersListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewSearchServersListInternalServerError() *SearchServersListInternalServerE
 	return &SearchServersListInternalServerError{}
 }
 
-/* SearchServersListInternalServerError describes a response with status code 500, with default header values.
+/*
+SearchServersListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SearchServersListInternalServerError struct {
 }
 
+// IsSuccess returns true when this search servers list internal server error response has a 2xx status code
+func (o *SearchServersListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search servers list internal server error response has a 3xx status code
+func (o *SearchServersListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search servers list internal server error response has a 4xx status code
+func (o *SearchServersListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search servers list internal server error response has a 5xx status code
+func (o *SearchServersListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this search servers list internal server error response a status code equal to that given
+func (o *SearchServersListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SearchServersListInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/servers][%d] searchServersListInternalServerError ", 500)
+}
+
+func (o *SearchServersListInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/servers][%d] searchServersListInternalServerError ", 500)
 }
 

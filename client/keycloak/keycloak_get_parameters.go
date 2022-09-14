@@ -52,10 +52,12 @@ func NewKeycloakGetParamsWithHTTPClient(client *http.Client) *KeycloakGetParams 
 	}
 }
 
-/* KeycloakGetParams contains all the parameters to send to the API endpoint
-   for the keycloak get operation.
+/*
+KeycloakGetParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the keycloak get operation.
+
+	Typically these are written to a http.Request.
 */
 type KeycloakGetParams struct {
 

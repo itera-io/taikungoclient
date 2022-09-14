@@ -52,10 +52,12 @@ func NewCommonGetSortingElementsParamsWithHTTPClient(client *http.Client) *Commo
 	}
 }
 
-/* CommonGetSortingElementsParams contains all the parameters to send to the API endpoint
-   for the common get sorting elements operation.
+/*
+CommonGetSortingElementsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the common get sorting elements operation.
+
+	Typically these are written to a http.Request.
 */
 type CommonGetSortingElementsParams struct {
 

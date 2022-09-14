@@ -69,7 +69,8 @@ func NewSlackUpdateOK() *SlackUpdateOK {
 	return &SlackUpdateOK{}
 }
 
-/* SlackUpdateOK describes a response with status code 200, with default header values.
+/*
+SlackUpdateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SlackUpdateOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this slack update o k response has a 2xx status code
+func (o *SlackUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this slack update o k response has a 3xx status code
+func (o *SlackUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack update o k response has a 4xx status code
+func (o *SlackUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this slack update o k response has a 5xx status code
+func (o *SlackUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack update o k response a status code equal to that given
+func (o *SlackUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SlackUpdateOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *SlackUpdateOK) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *SlackUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewSlackUpdateBadRequest() *SlackUpdateBadRequest {
 	return &SlackUpdateBadRequest{}
 }
 
-/* SlackUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+SlackUpdateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type SlackUpdateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this slack update bad request response has a 2xx status code
+func (o *SlackUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack update bad request response has a 3xx status code
+func (o *SlackUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack update bad request response has a 4xx status code
+func (o *SlackUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack update bad request response has a 5xx status code
+func (o *SlackUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack update bad request response a status code equal to that given
+func (o *SlackUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SlackUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SlackUpdateBadRequest) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SlackUpdateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewSlackUpdateUnauthorized() *SlackUpdateUnauthorized {
 	return &SlackUpdateUnauthorized{}
 }
 
-/* SlackUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+SlackUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type SlackUpdateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this slack update unauthorized response has a 2xx status code
+func (o *SlackUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack update unauthorized response has a 3xx status code
+func (o *SlackUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack update unauthorized response has a 4xx status code
+func (o *SlackUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack update unauthorized response has a 5xx status code
+func (o *SlackUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack update unauthorized response a status code equal to that given
+func (o *SlackUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SlackUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SlackUpdateUnauthorized) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SlackUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewSlackUpdateForbidden() *SlackUpdateForbidden {
 	return &SlackUpdateForbidden{}
 }
 
-/* SlackUpdateForbidden describes a response with status code 403, with default header values.
+/*
+SlackUpdateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type SlackUpdateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this slack update forbidden response has a 2xx status code
+func (o *SlackUpdateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack update forbidden response has a 3xx status code
+func (o *SlackUpdateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack update forbidden response has a 4xx status code
+func (o *SlackUpdateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack update forbidden response has a 5xx status code
+func (o *SlackUpdateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack update forbidden response a status code equal to that given
+func (o *SlackUpdateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SlackUpdateForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SlackUpdateForbidden) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SlackUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewSlackUpdateNotFound() *SlackUpdateNotFound {
 	return &SlackUpdateNotFound{}
 }
 
-/* SlackUpdateNotFound describes a response with status code 404, with default header values.
+/*
+SlackUpdateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type SlackUpdateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this slack update not found response has a 2xx status code
+func (o *SlackUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack update not found response has a 3xx status code
+func (o *SlackUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack update not found response has a 4xx status code
+func (o *SlackUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack update not found response has a 5xx status code
+func (o *SlackUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack update not found response a status code equal to that given
+func (o *SlackUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SlackUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SlackUpdateNotFound) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SlackUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewSlackUpdateInternalServerError() *SlackUpdateInternalServerError {
 	return &SlackUpdateInternalServerError{}
 }
 
-/* SlackUpdateInternalServerError describes a response with status code 500, with default header values.
+/*
+SlackUpdateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SlackUpdateInternalServerError struct {
 }
 
+// IsSuccess returns true when this slack update internal server error response has a 2xx status code
+func (o *SlackUpdateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack update internal server error response has a 3xx status code
+func (o *SlackUpdateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack update internal server error response has a 4xx status code
+func (o *SlackUpdateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this slack update internal server error response has a 5xx status code
+func (o *SlackUpdateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this slack update internal server error response a status code equal to that given
+func (o *SlackUpdateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SlackUpdateInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateInternalServerError ", 500)
+}
+
+func (o *SlackUpdateInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateInternalServerError ", 500)
 }
 

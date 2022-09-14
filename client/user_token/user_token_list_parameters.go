@@ -52,10 +52,12 @@ func NewUserTokenListParamsWithHTTPClient(client *http.Client) *UserTokenListPar
 	}
 }
 
-/* UserTokenListParams contains all the parameters to send to the API endpoint
-   for the user token list operation.
+/*
+UserTokenListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the user token list operation.
+
+	Typically these are written to a http.Request.
 */
 type UserTokenListParams struct {
 

@@ -69,7 +69,8 @@ func NewShowbackCredentialsDropdownOK() *ShowbackCredentialsDropdownOK {
 	return &ShowbackCredentialsDropdownOK{}
 }
 
-/* ShowbackCredentialsDropdownOK describes a response with status code 200, with default header values.
+/*
+ShowbackCredentialsDropdownOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ShowbackCredentialsDropdownOK struct {
 	Payload []*models.ShowbackCredentialsDetailsDto
 }
 
+// IsSuccess returns true when this showback credentials dropdown o k response has a 2xx status code
+func (o *ShowbackCredentialsDropdownOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this showback credentials dropdown o k response has a 3xx status code
+func (o *ShowbackCredentialsDropdownOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback credentials dropdown o k response has a 4xx status code
+func (o *ShowbackCredentialsDropdownOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this showback credentials dropdown o k response has a 5xx status code
+func (o *ShowbackCredentialsDropdownOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback credentials dropdown o k response a status code equal to that given
+func (o *ShowbackCredentialsDropdownOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ShowbackCredentialsDropdownOK) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownOK  %+v", 200, o.Payload)
 }
+
+func (o *ShowbackCredentialsDropdownOK) String() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownOK  %+v", 200, o.Payload)
+}
+
 func (o *ShowbackCredentialsDropdownOK) GetPayload() []*models.ShowbackCredentialsDetailsDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewShowbackCredentialsDropdownBadRequest() *ShowbackCredentialsDropdownBadR
 	return &ShowbackCredentialsDropdownBadRequest{}
 }
 
-/* ShowbackCredentialsDropdownBadRequest describes a response with status code 400, with default header values.
+/*
+ShowbackCredentialsDropdownBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ShowbackCredentialsDropdownBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this showback credentials dropdown bad request response has a 2xx status code
+func (o *ShowbackCredentialsDropdownBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback credentials dropdown bad request response has a 3xx status code
+func (o *ShowbackCredentialsDropdownBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback credentials dropdown bad request response has a 4xx status code
+func (o *ShowbackCredentialsDropdownBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback credentials dropdown bad request response has a 5xx status code
+func (o *ShowbackCredentialsDropdownBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback credentials dropdown bad request response a status code equal to that given
+func (o *ShowbackCredentialsDropdownBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ShowbackCredentialsDropdownBadRequest) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ShowbackCredentialsDropdownBadRequest) String() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ShowbackCredentialsDropdownBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewShowbackCredentialsDropdownUnauthorized() *ShowbackCredentialsDropdownUn
 	return &ShowbackCredentialsDropdownUnauthorized{}
 }
 
-/* ShowbackCredentialsDropdownUnauthorized describes a response with status code 401, with default header values.
+/*
+ShowbackCredentialsDropdownUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ShowbackCredentialsDropdownUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback credentials dropdown unauthorized response has a 2xx status code
+func (o *ShowbackCredentialsDropdownUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback credentials dropdown unauthorized response has a 3xx status code
+func (o *ShowbackCredentialsDropdownUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback credentials dropdown unauthorized response has a 4xx status code
+func (o *ShowbackCredentialsDropdownUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback credentials dropdown unauthorized response has a 5xx status code
+func (o *ShowbackCredentialsDropdownUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback credentials dropdown unauthorized response a status code equal to that given
+func (o *ShowbackCredentialsDropdownUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ShowbackCredentialsDropdownUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ShowbackCredentialsDropdownUnauthorized) String() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ShowbackCredentialsDropdownUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewShowbackCredentialsDropdownForbidden() *ShowbackCredentialsDropdownForbi
 	return &ShowbackCredentialsDropdownForbidden{}
 }
 
-/* ShowbackCredentialsDropdownForbidden describes a response with status code 403, with default header values.
+/*
+ShowbackCredentialsDropdownForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ShowbackCredentialsDropdownForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback credentials dropdown forbidden response has a 2xx status code
+func (o *ShowbackCredentialsDropdownForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback credentials dropdown forbidden response has a 3xx status code
+func (o *ShowbackCredentialsDropdownForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback credentials dropdown forbidden response has a 4xx status code
+func (o *ShowbackCredentialsDropdownForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback credentials dropdown forbidden response has a 5xx status code
+func (o *ShowbackCredentialsDropdownForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback credentials dropdown forbidden response a status code equal to that given
+func (o *ShowbackCredentialsDropdownForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ShowbackCredentialsDropdownForbidden) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ShowbackCredentialsDropdownForbidden) String() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ShowbackCredentialsDropdownForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewShowbackCredentialsDropdownNotFound() *ShowbackCredentialsDropdownNotFou
 	return &ShowbackCredentialsDropdownNotFound{}
 }
 
-/* ShowbackCredentialsDropdownNotFound describes a response with status code 404, with default header values.
+/*
+ShowbackCredentialsDropdownNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ShowbackCredentialsDropdownNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback credentials dropdown not found response has a 2xx status code
+func (o *ShowbackCredentialsDropdownNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback credentials dropdown not found response has a 3xx status code
+func (o *ShowbackCredentialsDropdownNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback credentials dropdown not found response has a 4xx status code
+func (o *ShowbackCredentialsDropdownNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback credentials dropdown not found response has a 5xx status code
+func (o *ShowbackCredentialsDropdownNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback credentials dropdown not found response a status code equal to that given
+func (o *ShowbackCredentialsDropdownNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ShowbackCredentialsDropdownNotFound) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ShowbackCredentialsDropdownNotFound) String() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ShowbackCredentialsDropdownNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewShowbackCredentialsDropdownInternalServerError() *ShowbackCredentialsDro
 	return &ShowbackCredentialsDropdownInternalServerError{}
 }
 
-/* ShowbackCredentialsDropdownInternalServerError describes a response with status code 500, with default header values.
+/*
+ShowbackCredentialsDropdownInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ShowbackCredentialsDropdownInternalServerError struct {
 }
 
+// IsSuccess returns true when this showback credentials dropdown internal server error response has a 2xx status code
+func (o *ShowbackCredentialsDropdownInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback credentials dropdown internal server error response has a 3xx status code
+func (o *ShowbackCredentialsDropdownInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback credentials dropdown internal server error response has a 4xx status code
+func (o *ShowbackCredentialsDropdownInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this showback credentials dropdown internal server error response has a 5xx status code
+func (o *ShowbackCredentialsDropdownInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this showback credentials dropdown internal server error response a status code equal to that given
+func (o *ShowbackCredentialsDropdownInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ShowbackCredentialsDropdownInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownInternalServerError ", 500)
+}
+
+func (o *ShowbackCredentialsDropdownInternalServerError) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownInternalServerError ", 500)
 }
 

@@ -54,10 +54,12 @@ func NewProjectsPurgeParamsWithHTTPClient(client *http.Client) *ProjectsPurgePar
 	}
 }
 
-/* ProjectsPurgeParams contains all the parameters to send to the API endpoint
-   for the projects purge operation.
+/*
+ProjectsPurgeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects purge operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsPurgeParams struct {
 

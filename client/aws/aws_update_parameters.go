@@ -54,10 +54,12 @@ func NewAwsUpdateParamsWithHTTPClient(client *http.Client) *AwsUpdateParams {
 	}
 }
 
-/* AwsUpdateParams contains all the parameters to send to the API endpoint
-   for the aws update operation.
+/*
+AwsUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the aws update operation.
+
+	Typically these are written to a http.Request.
 */
 type AwsUpdateParams struct {
 

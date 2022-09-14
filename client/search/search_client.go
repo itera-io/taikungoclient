@@ -78,7 +78,7 @@ type ClientService interface {
 }
 
 /*
-  SearchAccessProfilesList globals search for access profiles
+SearchAccessProfilesList globals search for access profiles
 */
 func (a *Client) SearchAccessProfilesList(params *SearchAccessProfilesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchAccessProfilesListOK, error) {
 	// TODO: Validate the params before sending
@@ -117,7 +117,7 @@ func (a *Client) SearchAccessProfilesList(params *SearchAccessProfilesListParams
 }
 
 /*
-  SearchBackupCredentialsList globals search for backup credentials
+SearchBackupCredentialsList globals search for backup credentials
 */
 func (a *Client) SearchBackupCredentialsList(params *SearchBackupCredentialsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchBackupCredentialsListOK, error) {
 	// TODO: Validate the params before sending
@@ -156,7 +156,7 @@ func (a *Client) SearchBackupCredentialsList(params *SearchBackupCredentialsList
 }
 
 /*
-  SearchBillingCredentialsList globals search for billing credentials
+SearchBillingCredentialsList globals search for billing credentials
 */
 func (a *Client) SearchBillingCredentialsList(params *SearchBillingCredentialsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchBillingCredentialsListOK, error) {
 	// TODO: Validate the params before sending
@@ -195,7 +195,7 @@ func (a *Client) SearchBillingCredentialsList(params *SearchBillingCredentialsLi
 }
 
 /*
-  SearchCloudCredentialsList globals search for cloud credentials
+SearchCloudCredentialsList globals search for cloud credentials
 */
 func (a *Client) SearchCloudCredentialsList(params *SearchCloudCredentialsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchCloudCredentialsListOK, error) {
 	// TODO: Validate the params before sending
@@ -234,7 +234,7 @@ func (a *Client) SearchCloudCredentialsList(params *SearchCloudCredentialsListPa
 }
 
 /*
-  SearchConfigMapList globals search for kubernetes config maps
+SearchConfigMapList globals search for kubernetes config maps
 */
 func (a *Client) SearchConfigMapList(params *SearchConfigMapListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchConfigMapListOK, error) {
 	// TODO: Validate the params before sending
@@ -273,7 +273,7 @@ func (a *Client) SearchConfigMapList(params *SearchConfigMapListParams, authInfo
 }
 
 /*
-  SearchDaemonSetList globals search for kubernetes daemon sets
+SearchDaemonSetList globals search for kubernetes daemon sets
 */
 func (a *Client) SearchDaemonSetList(params *SearchDaemonSetListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchDaemonSetListOK, error) {
 	// TODO: Validate the params before sending
@@ -312,7 +312,7 @@ func (a *Client) SearchDaemonSetList(params *SearchDaemonSetListParams, authInfo
 }
 
 /*
-  SearchDeploymentList globals search for kubernetes deployments
+SearchDeploymentList globals search for kubernetes deployments
 */
 func (a *Client) SearchDeploymentList(params *SearchDeploymentListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchDeploymentListOK, error) {
 	// TODO: Validate the params before sending
@@ -351,7 +351,7 @@ func (a *Client) SearchDeploymentList(params *SearchDeploymentListParams, authIn
 }
 
 /*
-  SearchIngressList globals search for kubernetes ingress
+SearchIngressList globals search for kubernetes ingress
 */
 func (a *Client) SearchIngressList(params *SearchIngressListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchIngressListOK, error) {
 	// TODO: Validate the params before sending
@@ -390,7 +390,7 @@ func (a *Client) SearchIngressList(params *SearchIngressListParams, authInfo run
 }
 
 /*
-  SearchKubernetesProfilesList globals search for kubernetes profiles
+SearchKubernetesProfilesList globals search for kubernetes profiles
 */
 func (a *Client) SearchKubernetesProfilesList(params *SearchKubernetesProfilesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchKubernetesProfilesListOK, error) {
 	// TODO: Validate the params before sending
@@ -429,7 +429,7 @@ func (a *Client) SearchKubernetesProfilesList(params *SearchKubernetesProfilesLi
 }
 
 /*
-  SearchNodesList globals search for kubernetes nodes
+SearchNodesList globals search for kubernetes nodes
 */
 func (a *Client) SearchNodesList(params *SearchNodesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchNodesListOK, error) {
 	// TODO: Validate the params before sending
@@ -468,7 +468,7 @@ func (a *Client) SearchNodesList(params *SearchNodesListParams, authInfo runtime
 }
 
 /*
-  SearchOrganizationsList globals search for organizations
+SearchOrganizationsList globals search for organizations
 */
 func (a *Client) SearchOrganizationsList(params *SearchOrganizationsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchOrganizationsListOK, error) {
 	// TODO: Validate the params before sending
@@ -507,7 +507,7 @@ func (a *Client) SearchOrganizationsList(params *SearchOrganizationsListParams, 
 }
 
 /*
-  SearchPartnersList globals search for partners
+SearchPartnersList globals search for partners
 */
 func (a *Client) SearchPartnersList(params *SearchPartnersListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchPartnersListOK, error) {
 	// TODO: Validate the params before sending
@@ -546,7 +546,7 @@ func (a *Client) SearchPartnersList(params *SearchPartnersListParams, authInfo r
 }
 
 /*
-  SearchPersistenceVolumeClaimList globals search for kubernetes persistent volume claims
+SearchPersistenceVolumeClaimList globals search for kubernetes persistent volume claims
 */
 func (a *Client) SearchPersistenceVolumeClaimList(params *SearchPersistenceVolumeClaimListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchPersistenceVolumeClaimListOK, error) {
 	// TODO: Validate the params before sending
@@ -585,7 +585,7 @@ func (a *Client) SearchPersistenceVolumeClaimList(params *SearchPersistenceVolum
 }
 
 /*
-  SearchPodsList globals search for kubernetes pods
+SearchPodsList globals search for kubernetes pods
 */
 func (a *Client) SearchPodsList(params *SearchPodsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchPodsListOK, error) {
 	// TODO: Validate the params before sending
@@ -624,7 +624,7 @@ func (a *Client) SearchPodsList(params *SearchPodsListParams, authInfo runtime.C
 }
 
 /*
-  SearchProjectsList globals search for projects
+SearchProjectsList globals search for projects
 */
 func (a *Client) SearchProjectsList(params *SearchProjectsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchProjectsListOK, error) {
 	// TODO: Validate the params before sending
@@ -663,7 +663,7 @@ func (a *Client) SearchProjectsList(params *SearchProjectsListParams, authInfo r
 }
 
 /*
-  SearchPrometheusRulesList globals search for prometheus rules
+SearchPrometheusRulesList globals search for prometheus rules
 */
 func (a *Client) SearchPrometheusRulesList(params *SearchPrometheusRulesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchPrometheusRulesListOK, error) {
 	// TODO: Validate the params before sending
@@ -702,7 +702,7 @@ func (a *Client) SearchPrometheusRulesList(params *SearchPrometheusRulesListPara
 }
 
 /*
-  SearchSecretList globals search for kubernetes secrets
+SearchSecretList globals search for kubernetes secrets
 */
 func (a *Client) SearchSecretList(params *SearchSecretListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchSecretListOK, error) {
 	// TODO: Validate the params before sending
@@ -741,7 +741,7 @@ func (a *Client) SearchSecretList(params *SearchSecretListParams, authInfo runti
 }
 
 /*
-  SearchServersList globals search for servers
+SearchServersList globals search for servers
 */
 func (a *Client) SearchServersList(params *SearchServersListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchServersListOK, error) {
 	// TODO: Validate the params before sending
@@ -780,7 +780,7 @@ func (a *Client) SearchServersList(params *SearchServersListParams, authInfo run
 }
 
 /*
-  SearchServiceList globals search for kubernetes services
+SearchServiceList globals search for kubernetes services
 */
 func (a *Client) SearchServiceList(params *SearchServiceListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchServiceListOK, error) {
 	// TODO: Validate the params before sending
@@ -819,7 +819,7 @@ func (a *Client) SearchServiceList(params *SearchServiceListParams, authInfo run
 }
 
 /*
-  SearchStandAloneProfilesList globals search for stand alone profiles
+SearchStandAloneProfilesList globals search for stand alone profiles
 */
 func (a *Client) SearchStandAloneProfilesList(params *SearchStandAloneProfilesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchStandAloneProfilesListOK, error) {
 	// TODO: Validate the params before sending
@@ -858,7 +858,7 @@ func (a *Client) SearchStandAloneProfilesList(params *SearchStandAloneProfilesLi
 }
 
 /*
-  SearchStsList globals search for kubernetes stateful sets
+SearchStsList globals search for kubernetes stateful sets
 */
 func (a *Client) SearchStsList(params *SearchStsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchStsListOK, error) {
 	// TODO: Validate the params before sending
@@ -897,7 +897,7 @@ func (a *Client) SearchStsList(params *SearchStsListParams, authInfo runtime.Cli
 }
 
 /*
-  SearchUsersList globals search for users
+SearchUsersList globals search for users
 */
 func (a *Client) SearchUsersList(params *SearchUsersListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SearchUsersListOK, error) {
 	// TODO: Validate the params before sending

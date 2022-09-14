@@ -69,7 +69,8 @@ func NewDNSServersEditOK() *DNSServersEditOK {
 	return &DNSServersEditOK{}
 }
 
-/* DNSServersEditOK describes a response with status code 200, with default header values.
+/*
+DNSServersEditOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type DNSServersEditOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this dns servers edit o k response has a 2xx status code
+func (o *DNSServersEditOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this dns servers edit o k response has a 3xx status code
+func (o *DNSServersEditOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this dns servers edit o k response has a 4xx status code
+func (o *DNSServersEditOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this dns servers edit o k response has a 5xx status code
+func (o *DNSServersEditOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this dns servers edit o k response a status code equal to that given
+func (o *DNSServersEditOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DNSServersEditOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditOK  %+v", 200, o.Payload)
 }
+
+func (o *DNSServersEditOK) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditOK  %+v", 200, o.Payload)
+}
+
 func (o *DNSServersEditOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewDNSServersEditBadRequest() *DNSServersEditBadRequest {
 	return &DNSServersEditBadRequest{}
 }
 
-/* DNSServersEditBadRequest describes a response with status code 400, with default header values.
+/*
+DNSServersEditBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type DNSServersEditBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this dns servers edit bad request response has a 2xx status code
+func (o *DNSServersEditBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this dns servers edit bad request response has a 3xx status code
+func (o *DNSServersEditBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this dns servers edit bad request response has a 4xx status code
+func (o *DNSServersEditBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this dns servers edit bad request response has a 5xx status code
+func (o *DNSServersEditBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this dns servers edit bad request response a status code equal to that given
+func (o *DNSServersEditBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *DNSServersEditBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *DNSServersEditBadRequest) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *DNSServersEditBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewDNSServersEditUnauthorized() *DNSServersEditUnauthorized {
 	return &DNSServersEditUnauthorized{}
 }
 
-/* DNSServersEditUnauthorized describes a response with status code 401, with default header values.
+/*
+DNSServersEditUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type DNSServersEditUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this dns servers edit unauthorized response has a 2xx status code
+func (o *DNSServersEditUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this dns servers edit unauthorized response has a 3xx status code
+func (o *DNSServersEditUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this dns servers edit unauthorized response has a 4xx status code
+func (o *DNSServersEditUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this dns servers edit unauthorized response has a 5xx status code
+func (o *DNSServersEditUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this dns servers edit unauthorized response a status code equal to that given
+func (o *DNSServersEditUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DNSServersEditUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *DNSServersEditUnauthorized) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *DNSServersEditUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewDNSServersEditForbidden() *DNSServersEditForbidden {
 	return &DNSServersEditForbidden{}
 }
 
-/* DNSServersEditForbidden describes a response with status code 403, with default header values.
+/*
+DNSServersEditForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type DNSServersEditForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this dns servers edit forbidden response has a 2xx status code
+func (o *DNSServersEditForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this dns servers edit forbidden response has a 3xx status code
+func (o *DNSServersEditForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this dns servers edit forbidden response has a 4xx status code
+func (o *DNSServersEditForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this dns servers edit forbidden response has a 5xx status code
+func (o *DNSServersEditForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this dns servers edit forbidden response a status code equal to that given
+func (o *DNSServersEditForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DNSServersEditForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DNSServersEditForbidden) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DNSServersEditForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewDNSServersEditNotFound() *DNSServersEditNotFound {
 	return &DNSServersEditNotFound{}
 }
 
-/* DNSServersEditNotFound describes a response with status code 404, with default header values.
+/*
+DNSServersEditNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type DNSServersEditNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this dns servers edit not found response has a 2xx status code
+func (o *DNSServersEditNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this dns servers edit not found response has a 3xx status code
+func (o *DNSServersEditNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this dns servers edit not found response has a 4xx status code
+func (o *DNSServersEditNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this dns servers edit not found response has a 5xx status code
+func (o *DNSServersEditNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this dns servers edit not found response a status code equal to that given
+func (o *DNSServersEditNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DNSServersEditNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DNSServersEditNotFound) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DNSServersEditNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewDNSServersEditInternalServerError() *DNSServersEditInternalServerError {
 	return &DNSServersEditInternalServerError{}
 }
 
-/* DNSServersEditInternalServerError describes a response with status code 500, with default header values.
+/*
+DNSServersEditInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DNSServersEditInternalServerError struct {
 }
 
+// IsSuccess returns true when this dns servers edit internal server error response has a 2xx status code
+func (o *DNSServersEditInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this dns servers edit internal server error response has a 3xx status code
+func (o *DNSServersEditInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this dns servers edit internal server error response has a 4xx status code
+func (o *DNSServersEditInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this dns servers edit internal server error response has a 5xx status code
+func (o *DNSServersEditInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this dns servers edit internal server error response a status code equal to that given
+func (o *DNSServersEditInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DNSServersEditInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditInternalServerError ", 500)
+}
+
+func (o *DNSServersEditInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditInternalServerError ", 500)
 }
 

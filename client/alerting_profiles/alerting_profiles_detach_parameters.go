@@ -54,10 +54,12 @@ func NewAlertingProfilesDetachParamsWithHTTPClient(client *http.Client) *Alertin
 	}
 }
 
-/* AlertingProfilesDetachParams contains all the parameters to send to the API endpoint
-   for the alerting profiles detach operation.
+/*
+AlertingProfilesDetachParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the alerting profiles detach operation.
+
+	Typically these are written to a http.Request.
 */
 type AlertingProfilesDetachParams struct {
 

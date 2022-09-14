@@ -53,10 +53,12 @@ func NewPartnerCreateParamsWithHTTPClient(client *http.Client) *PartnerCreatePar
 	}
 }
 
-/* PartnerCreateParams contains all the parameters to send to the API endpoint
-   for the partner create operation.
+/*
+PartnerCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the partner create operation.
+
+	Typically these are written to a http.Request.
 */
 type PartnerCreateParams struct {
 

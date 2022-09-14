@@ -54,10 +54,12 @@ func NewUserTokenBindUnbindParamsWithHTTPClient(client *http.Client) *UserTokenB
 	}
 }
 
-/* UserTokenBindUnbindParams contains all the parameters to send to the API endpoint
-   for the user token bind unbind operation.
+/*
+UserTokenBindUnbindParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the user token bind unbind operation.
+
+	Typically these are written to a http.Request.
 */
 type UserTokenBindUnbindParams struct {
 

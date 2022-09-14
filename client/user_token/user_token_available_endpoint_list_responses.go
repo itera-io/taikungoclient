@@ -69,7 +69,8 @@ func NewUserTokenAvailableEndpointListOK() *UserTokenAvailableEndpointListOK {
 	return &UserTokenAvailableEndpointListOK{}
 }
 
-/* UserTokenAvailableEndpointListOK describes a response with status code 200, with default header values.
+/*
+UserTokenAvailableEndpointListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type UserTokenAvailableEndpointListOK struct {
 	Payload *models.AvailableEndpointsList
 }
 
+// IsSuccess returns true when this user token available endpoint list o k response has a 2xx status code
+func (o *UserTokenAvailableEndpointListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this user token available endpoint list o k response has a 3xx status code
+func (o *UserTokenAvailableEndpointListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token available endpoint list o k response has a 4xx status code
+func (o *UserTokenAvailableEndpointListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user token available endpoint list o k response has a 5xx status code
+func (o *UserTokenAvailableEndpointListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user token available endpoint list o k response a status code equal to that given
+func (o *UserTokenAvailableEndpointListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UserTokenAvailableEndpointListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListOK  %+v", 200, o.Payload)
 }
+
+func (o *UserTokenAvailableEndpointListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListOK  %+v", 200, o.Payload)
+}
+
 func (o *UserTokenAvailableEndpointListOK) GetPayload() *models.AvailableEndpointsList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewUserTokenAvailableEndpointListBadRequest() *UserTokenAvailableEndpointLi
 	return &UserTokenAvailableEndpointListBadRequest{}
 }
 
-/* UserTokenAvailableEndpointListBadRequest describes a response with status code 400, with default header values.
+/*
+UserTokenAvailableEndpointListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type UserTokenAvailableEndpointListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this user token available endpoint list bad request response has a 2xx status code
+func (o *UserTokenAvailableEndpointListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user token available endpoint list bad request response has a 3xx status code
+func (o *UserTokenAvailableEndpointListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token available endpoint list bad request response has a 4xx status code
+func (o *UserTokenAvailableEndpointListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user token available endpoint list bad request response has a 5xx status code
+func (o *UserTokenAvailableEndpointListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user token available endpoint list bad request response a status code equal to that given
+func (o *UserTokenAvailableEndpointListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UserTokenAvailableEndpointListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UserTokenAvailableEndpointListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UserTokenAvailableEndpointListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewUserTokenAvailableEndpointListUnauthorized() *UserTokenAvailableEndpoint
 	return &UserTokenAvailableEndpointListUnauthorized{}
 }
 
-/* UserTokenAvailableEndpointListUnauthorized describes a response with status code 401, with default header values.
+/*
+UserTokenAvailableEndpointListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type UserTokenAvailableEndpointListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user token available endpoint list unauthorized response has a 2xx status code
+func (o *UserTokenAvailableEndpointListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user token available endpoint list unauthorized response has a 3xx status code
+func (o *UserTokenAvailableEndpointListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token available endpoint list unauthorized response has a 4xx status code
+func (o *UserTokenAvailableEndpointListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user token available endpoint list unauthorized response has a 5xx status code
+func (o *UserTokenAvailableEndpointListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user token available endpoint list unauthorized response a status code equal to that given
+func (o *UserTokenAvailableEndpointListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UserTokenAvailableEndpointListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *UserTokenAvailableEndpointListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *UserTokenAvailableEndpointListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewUserTokenAvailableEndpointListForbidden() *UserTokenAvailableEndpointLis
 	return &UserTokenAvailableEndpointListForbidden{}
 }
 
-/* UserTokenAvailableEndpointListForbidden describes a response with status code 403, with default header values.
+/*
+UserTokenAvailableEndpointListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type UserTokenAvailableEndpointListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user token available endpoint list forbidden response has a 2xx status code
+func (o *UserTokenAvailableEndpointListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user token available endpoint list forbidden response has a 3xx status code
+func (o *UserTokenAvailableEndpointListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token available endpoint list forbidden response has a 4xx status code
+func (o *UserTokenAvailableEndpointListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user token available endpoint list forbidden response has a 5xx status code
+func (o *UserTokenAvailableEndpointListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user token available endpoint list forbidden response a status code equal to that given
+func (o *UserTokenAvailableEndpointListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UserTokenAvailableEndpointListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UserTokenAvailableEndpointListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UserTokenAvailableEndpointListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewUserTokenAvailableEndpointListNotFound() *UserTokenAvailableEndpointList
 	return &UserTokenAvailableEndpointListNotFound{}
 }
 
-/* UserTokenAvailableEndpointListNotFound describes a response with status code 404, with default header values.
+/*
+UserTokenAvailableEndpointListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type UserTokenAvailableEndpointListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user token available endpoint list not found response has a 2xx status code
+func (o *UserTokenAvailableEndpointListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user token available endpoint list not found response has a 3xx status code
+func (o *UserTokenAvailableEndpointListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token available endpoint list not found response has a 4xx status code
+func (o *UserTokenAvailableEndpointListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user token available endpoint list not found response has a 5xx status code
+func (o *UserTokenAvailableEndpointListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user token available endpoint list not found response a status code equal to that given
+func (o *UserTokenAvailableEndpointListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UserTokenAvailableEndpointListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UserTokenAvailableEndpointListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UserTokenAvailableEndpointListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewUserTokenAvailableEndpointListInternalServerError() *UserTokenAvailableE
 	return &UserTokenAvailableEndpointListInternalServerError{}
 }
 
-/* UserTokenAvailableEndpointListInternalServerError describes a response with status code 500, with default header values.
+/*
+UserTokenAvailableEndpointListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UserTokenAvailableEndpointListInternalServerError struct {
 }
 
+// IsSuccess returns true when this user token available endpoint list internal server error response has a 2xx status code
+func (o *UserTokenAvailableEndpointListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user token available endpoint list internal server error response has a 3xx status code
+func (o *UserTokenAvailableEndpointListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token available endpoint list internal server error response has a 4xx status code
+func (o *UserTokenAvailableEndpointListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user token available endpoint list internal server error response has a 5xx status code
+func (o *UserTokenAvailableEndpointListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this user token available endpoint list internal server error response a status code equal to that given
+func (o *UserTokenAvailableEndpointListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UserTokenAvailableEndpointListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListInternalServerError ", 500)
+}
+
+func (o *UserTokenAvailableEndpointListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListInternalServerError ", 500)
 }
 

@@ -54,10 +54,12 @@ func NewKubernetesDeleteAlertsParamsWithHTTPClient(client *http.Client) *Kuberne
 	}
 }
 
-/* KubernetesDeleteAlertsParams contains all the parameters to send to the API endpoint
-   for the kubernetes delete alerts operation.
+/*
+KubernetesDeleteAlertsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes delete alerts operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesDeleteAlertsParams struct {
 

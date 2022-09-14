@@ -55,10 +55,12 @@ func NewDNSServersEditParamsWithHTTPClient(client *http.Client) *DNSServersEditP
 	}
 }
 
-/* DNSServersEditParams contains all the parameters to send to the API endpoint
-   for the Dns servers edit operation.
+/*
+DNSServersEditParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the Dns servers edit operation.
+
+	Typically these are written to a http.Request.
 */
 type DNSServersEditParams struct {
 

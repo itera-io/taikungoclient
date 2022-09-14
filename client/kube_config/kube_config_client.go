@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  KubeConfigCreate creates kube config
+KubeConfigCreate creates kube config
 */
 func (a *Client) KubeConfigCreate(params *KubeConfigCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -83,7 +83,7 @@ func (a *Client) KubeConfigCreate(params *KubeConfigCreateParams, authInfo runti
 }
 
 /*
-  KubeConfigDelete deletes kube config
+KubeConfigDelete deletes kube config
 */
 func (a *Client) KubeConfigDelete(params *KubeConfigDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +122,7 @@ func (a *Client) KubeConfigDelete(params *KubeConfigDeleteParams, authInfo runti
 }
 
 /*
-  KubeConfigDeleteByProjectID deletes kube config by project id
+KubeConfigDeleteByProjectID deletes kube config by project id
 */
 func (a *Client) KubeConfigDeleteByProjectID(params *KubeConfigDeleteByProjectIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigDeleteByProjectIDOK, error) {
 	// TODO: Validate the params before sending
@@ -161,7 +161,7 @@ func (a *Client) KubeConfigDeleteByProjectID(params *KubeConfigDeleteByProjectID
 }
 
 /*
-  KubeConfigDownload downloads kube config file for user by project Id
+KubeConfigDownload downloads kube config file for user by project Id
 */
 func (a *Client) KubeConfigDownload(params *KubeConfigDownloadParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigDownloadOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +200,7 @@ func (a *Client) KubeConfigDownload(params *KubeConfigDownloadParams, authInfo r
 }
 
 /*
-  KubeConfigList retrieves a list of kube configs for project it s possible to filter and select kube configs by project
+KubeConfigList retrieves a list of kube configs for project it s possible to filter and select kube configs by project
 */
 func (a *Client) KubeConfigList(params *KubeConfigListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigListOK, error) {
 	// TODO: Validate the params before sending

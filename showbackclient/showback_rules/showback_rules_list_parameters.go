@@ -53,10 +53,12 @@ func NewShowbackRulesListParamsWithHTTPClient(client *http.Client) *ShowbackRule
 	}
 }
 
-/* ShowbackRulesListParams contains all the parameters to send to the API endpoint
-   for the showback rules list operation.
+/*
+ShowbackRulesListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the showback rules list operation.
+
+	Typically these are written to a http.Request.
 */
 type ShowbackRulesListParams struct {
 

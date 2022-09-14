@@ -69,7 +69,8 @@ func NewStandAloneUpdateFlavorOK() *StandAloneUpdateFlavorOK {
 	return &StandAloneUpdateFlavorOK{}
 }
 
-/* StandAloneUpdateFlavorOK describes a response with status code 200, with default header values.
+/*
+StandAloneUpdateFlavorOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type StandAloneUpdateFlavorOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this stand alone update flavor o k response has a 2xx status code
+func (o *StandAloneUpdateFlavorOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this stand alone update flavor o k response has a 3xx status code
+func (o *StandAloneUpdateFlavorOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone update flavor o k response has a 4xx status code
+func (o *StandAloneUpdateFlavorOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone update flavor o k response has a 5xx status code
+func (o *StandAloneUpdateFlavorOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone update flavor o k response a status code equal to that given
+func (o *StandAloneUpdateFlavorOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *StandAloneUpdateFlavorOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorOK  %+v", 200, o.Payload)
 }
+
+func (o *StandAloneUpdateFlavorOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorOK  %+v", 200, o.Payload)
+}
+
 func (o *StandAloneUpdateFlavorOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewStandAloneUpdateFlavorBadRequest() *StandAloneUpdateFlavorBadRequest {
 	return &StandAloneUpdateFlavorBadRequest{}
 }
 
-/* StandAloneUpdateFlavorBadRequest describes a response with status code 400, with default header values.
+/*
+StandAloneUpdateFlavorBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type StandAloneUpdateFlavorBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this stand alone update flavor bad request response has a 2xx status code
+func (o *StandAloneUpdateFlavorBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone update flavor bad request response has a 3xx status code
+func (o *StandAloneUpdateFlavorBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone update flavor bad request response has a 4xx status code
+func (o *StandAloneUpdateFlavorBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone update flavor bad request response has a 5xx status code
+func (o *StandAloneUpdateFlavorBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone update flavor bad request response a status code equal to that given
+func (o *StandAloneUpdateFlavorBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *StandAloneUpdateFlavorBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *StandAloneUpdateFlavorBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *StandAloneUpdateFlavorBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewStandAloneUpdateFlavorUnauthorized() *StandAloneUpdateFlavorUnauthorized
 	return &StandAloneUpdateFlavorUnauthorized{}
 }
 
-/* StandAloneUpdateFlavorUnauthorized describes a response with status code 401, with default header values.
+/*
+StandAloneUpdateFlavorUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type StandAloneUpdateFlavorUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone update flavor unauthorized response has a 2xx status code
+func (o *StandAloneUpdateFlavorUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone update flavor unauthorized response has a 3xx status code
+func (o *StandAloneUpdateFlavorUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone update flavor unauthorized response has a 4xx status code
+func (o *StandAloneUpdateFlavorUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone update flavor unauthorized response has a 5xx status code
+func (o *StandAloneUpdateFlavorUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone update flavor unauthorized response a status code equal to that given
+func (o *StandAloneUpdateFlavorUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *StandAloneUpdateFlavorUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *StandAloneUpdateFlavorUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *StandAloneUpdateFlavorUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewStandAloneUpdateFlavorForbidden() *StandAloneUpdateFlavorForbidden {
 	return &StandAloneUpdateFlavorForbidden{}
 }
 
-/* StandAloneUpdateFlavorForbidden describes a response with status code 403, with default header values.
+/*
+StandAloneUpdateFlavorForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type StandAloneUpdateFlavorForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone update flavor forbidden response has a 2xx status code
+func (o *StandAloneUpdateFlavorForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone update flavor forbidden response has a 3xx status code
+func (o *StandAloneUpdateFlavorForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone update flavor forbidden response has a 4xx status code
+func (o *StandAloneUpdateFlavorForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone update flavor forbidden response has a 5xx status code
+func (o *StandAloneUpdateFlavorForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone update flavor forbidden response a status code equal to that given
+func (o *StandAloneUpdateFlavorForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *StandAloneUpdateFlavorForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorForbidden  %+v", 403, o.Payload)
 }
+
+func (o *StandAloneUpdateFlavorForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorForbidden  %+v", 403, o.Payload)
+}
+
 func (o *StandAloneUpdateFlavorForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewStandAloneUpdateFlavorNotFound() *StandAloneUpdateFlavorNotFound {
 	return &StandAloneUpdateFlavorNotFound{}
 }
 
-/* StandAloneUpdateFlavorNotFound describes a response with status code 404, with default header values.
+/*
+StandAloneUpdateFlavorNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type StandAloneUpdateFlavorNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone update flavor not found response has a 2xx status code
+func (o *StandAloneUpdateFlavorNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone update flavor not found response has a 3xx status code
+func (o *StandAloneUpdateFlavorNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone update flavor not found response has a 4xx status code
+func (o *StandAloneUpdateFlavorNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone update flavor not found response has a 5xx status code
+func (o *StandAloneUpdateFlavorNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone update flavor not found response a status code equal to that given
+func (o *StandAloneUpdateFlavorNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *StandAloneUpdateFlavorNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorNotFound  %+v", 404, o.Payload)
 }
+
+func (o *StandAloneUpdateFlavorNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorNotFound  %+v", 404, o.Payload)
+}
+
 func (o *StandAloneUpdateFlavorNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewStandAloneUpdateFlavorInternalServerError() *StandAloneUpdateFlavorInter
 	return &StandAloneUpdateFlavorInternalServerError{}
 }
 
-/* StandAloneUpdateFlavorInternalServerError describes a response with status code 500, with default header values.
+/*
+StandAloneUpdateFlavorInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type StandAloneUpdateFlavorInternalServerError struct {
 }
 
+// IsSuccess returns true when this stand alone update flavor internal server error response has a 2xx status code
+func (o *StandAloneUpdateFlavorInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone update flavor internal server error response has a 3xx status code
+func (o *StandAloneUpdateFlavorInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone update flavor internal server error response has a 4xx status code
+func (o *StandAloneUpdateFlavorInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone update flavor internal server error response has a 5xx status code
+func (o *StandAloneUpdateFlavorInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this stand alone update flavor internal server error response a status code equal to that given
+func (o *StandAloneUpdateFlavorInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *StandAloneUpdateFlavorInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorInternalServerError ", 500)
+}
+
+func (o *StandAloneUpdateFlavorInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorInternalServerError ", 500)
 }
 

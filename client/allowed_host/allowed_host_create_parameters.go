@@ -54,10 +54,12 @@ func NewAllowedHostCreateParamsWithHTTPClient(client *http.Client) *AllowedHostC
 	}
 }
 
-/* AllowedHostCreateParams contains all the parameters to send to the API endpoint
-   for the allowed host create operation.
+/*
+AllowedHostCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the allowed host create operation.
+
+	Typically these are written to a http.Request.
 */
 type AllowedHostCreateParams struct {
 

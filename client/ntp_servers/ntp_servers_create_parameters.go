@@ -54,10 +54,12 @@ func NewNtpServersCreateParamsWithHTTPClient(client *http.Client) *NtpServersCre
 	}
 }
 
-/* NtpServersCreateParams contains all the parameters to send to the API endpoint
-   for the ntp servers create operation.
+/*
+NtpServersCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ntp servers create operation.
+
+	Typically these are written to a http.Request.
 */
 type NtpServersCreateParams struct {
 

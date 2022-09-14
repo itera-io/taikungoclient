@@ -69,7 +69,8 @@ func NewAdminUpdateProjectKubeConfigOK() *AdminUpdateProjectKubeConfigOK {
 	return &AdminUpdateProjectKubeConfigOK{}
 }
 
-/* AdminUpdateProjectKubeConfigOK describes a response with status code 200, with default header values.
+/*
+AdminUpdateProjectKubeConfigOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AdminUpdateProjectKubeConfigOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this admin update project kube config o k response has a 2xx status code
+func (o *AdminUpdateProjectKubeConfigOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this admin update project kube config o k response has a 3xx status code
+func (o *AdminUpdateProjectKubeConfigOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update project kube config o k response has a 4xx status code
+func (o *AdminUpdateProjectKubeConfigOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin update project kube config o k response has a 5xx status code
+func (o *AdminUpdateProjectKubeConfigOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin update project kube config o k response a status code equal to that given
+func (o *AdminUpdateProjectKubeConfigOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AdminUpdateProjectKubeConfigOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigOK  %+v", 200, o.Payload)
 }
+
+func (o *AdminUpdateProjectKubeConfigOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigOK  %+v", 200, o.Payload)
+}
+
 func (o *AdminUpdateProjectKubeConfigOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAdminUpdateProjectKubeConfigBadRequest() *AdminUpdateProjectKubeConfigBa
 	return &AdminUpdateProjectKubeConfigBadRequest{}
 }
 
-/* AdminUpdateProjectKubeConfigBadRequest describes a response with status code 400, with default header values.
+/*
+AdminUpdateProjectKubeConfigBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AdminUpdateProjectKubeConfigBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this admin update project kube config bad request response has a 2xx status code
+func (o *AdminUpdateProjectKubeConfigBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin update project kube config bad request response has a 3xx status code
+func (o *AdminUpdateProjectKubeConfigBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update project kube config bad request response has a 4xx status code
+func (o *AdminUpdateProjectKubeConfigBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin update project kube config bad request response has a 5xx status code
+func (o *AdminUpdateProjectKubeConfigBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin update project kube config bad request response a status code equal to that given
+func (o *AdminUpdateProjectKubeConfigBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AdminUpdateProjectKubeConfigBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AdminUpdateProjectKubeConfigBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AdminUpdateProjectKubeConfigBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAdminUpdateProjectKubeConfigUnauthorized() *AdminUpdateProjectKubeConfig
 	return &AdminUpdateProjectKubeConfigUnauthorized{}
 }
 
-/* AdminUpdateProjectKubeConfigUnauthorized describes a response with status code 401, with default header values.
+/*
+AdminUpdateProjectKubeConfigUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AdminUpdateProjectKubeConfigUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin update project kube config unauthorized response has a 2xx status code
+func (o *AdminUpdateProjectKubeConfigUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin update project kube config unauthorized response has a 3xx status code
+func (o *AdminUpdateProjectKubeConfigUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update project kube config unauthorized response has a 4xx status code
+func (o *AdminUpdateProjectKubeConfigUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin update project kube config unauthorized response has a 5xx status code
+func (o *AdminUpdateProjectKubeConfigUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin update project kube config unauthorized response a status code equal to that given
+func (o *AdminUpdateProjectKubeConfigUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AdminUpdateProjectKubeConfigUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AdminUpdateProjectKubeConfigUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AdminUpdateProjectKubeConfigUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAdminUpdateProjectKubeConfigForbidden() *AdminUpdateProjectKubeConfigFor
 	return &AdminUpdateProjectKubeConfigForbidden{}
 }
 
-/* AdminUpdateProjectKubeConfigForbidden describes a response with status code 403, with default header values.
+/*
+AdminUpdateProjectKubeConfigForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AdminUpdateProjectKubeConfigForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin update project kube config forbidden response has a 2xx status code
+func (o *AdminUpdateProjectKubeConfigForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin update project kube config forbidden response has a 3xx status code
+func (o *AdminUpdateProjectKubeConfigForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update project kube config forbidden response has a 4xx status code
+func (o *AdminUpdateProjectKubeConfigForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin update project kube config forbidden response has a 5xx status code
+func (o *AdminUpdateProjectKubeConfigForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin update project kube config forbidden response a status code equal to that given
+func (o *AdminUpdateProjectKubeConfigForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AdminUpdateProjectKubeConfigForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AdminUpdateProjectKubeConfigForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AdminUpdateProjectKubeConfigForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAdminUpdateProjectKubeConfigNotFound() *AdminUpdateProjectKubeConfigNotF
 	return &AdminUpdateProjectKubeConfigNotFound{}
 }
 
-/* AdminUpdateProjectKubeConfigNotFound describes a response with status code 404, with default header values.
+/*
+AdminUpdateProjectKubeConfigNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AdminUpdateProjectKubeConfigNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin update project kube config not found response has a 2xx status code
+func (o *AdminUpdateProjectKubeConfigNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin update project kube config not found response has a 3xx status code
+func (o *AdminUpdateProjectKubeConfigNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update project kube config not found response has a 4xx status code
+func (o *AdminUpdateProjectKubeConfigNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin update project kube config not found response has a 5xx status code
+func (o *AdminUpdateProjectKubeConfigNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin update project kube config not found response a status code equal to that given
+func (o *AdminUpdateProjectKubeConfigNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AdminUpdateProjectKubeConfigNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AdminUpdateProjectKubeConfigNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AdminUpdateProjectKubeConfigNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAdminUpdateProjectKubeConfigInternalServerError() *AdminUpdateProjectKub
 	return &AdminUpdateProjectKubeConfigInternalServerError{}
 }
 
-/* AdminUpdateProjectKubeConfigInternalServerError describes a response with status code 500, with default header values.
+/*
+AdminUpdateProjectKubeConfigInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AdminUpdateProjectKubeConfigInternalServerError struct {
 }
 
+// IsSuccess returns true when this admin update project kube config internal server error response has a 2xx status code
+func (o *AdminUpdateProjectKubeConfigInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin update project kube config internal server error response has a 3xx status code
+func (o *AdminUpdateProjectKubeConfigInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update project kube config internal server error response has a 4xx status code
+func (o *AdminUpdateProjectKubeConfigInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin update project kube config internal server error response has a 5xx status code
+func (o *AdminUpdateProjectKubeConfigInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this admin update project kube config internal server error response a status code equal to that given
+func (o *AdminUpdateProjectKubeConfigInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AdminUpdateProjectKubeConfigInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigInternalServerError ", 500)
+}
+
+func (o *AdminUpdateProjectKubeConfigInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigInternalServerError ", 500)
 }
 

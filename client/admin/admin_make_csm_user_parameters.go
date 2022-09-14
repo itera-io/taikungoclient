@@ -54,10 +54,12 @@ func NewAdminMakeCsmUserParamsWithHTTPClient(client *http.Client) *AdminMakeCsmU
 	}
 }
 
-/* AdminMakeCsmUserParams contains all the parameters to send to the API endpoint
-   for the admin make csm user operation.
+/*
+AdminMakeCsmUserParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the admin make csm user operation.
+
+	Typically these are written to a http.Request.
 */
 type AdminMakeCsmUserParams struct {
 

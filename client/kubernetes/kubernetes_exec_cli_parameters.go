@@ -54,10 +54,12 @@ func NewKubernetesExecCliParamsWithHTTPClient(client *http.Client) *KubernetesEx
 	}
 }
 
-/* KubernetesExecCliParams contains all the parameters to send to the API endpoint
-   for the kubernetes exec cli operation.
+/*
+KubernetesExecCliParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes exec cli operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesExecCliParams struct {
 

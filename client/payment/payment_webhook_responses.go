@@ -69,7 +69,8 @@ func NewPaymentWebhookOK() *PaymentWebhookOK {
 	return &PaymentWebhookOK{}
 }
 
-/* PaymentWebhookOK describes a response with status code 200, with default header values.
+/*
+PaymentWebhookOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type PaymentWebhookOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this payment webhook o k response has a 2xx status code
+func (o *PaymentWebhookOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this payment webhook o k response has a 3xx status code
+func (o *PaymentWebhookOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment webhook o k response has a 4xx status code
+func (o *PaymentWebhookOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this payment webhook o k response has a 5xx status code
+func (o *PaymentWebhookOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this payment webhook o k response a status code equal to that given
+func (o *PaymentWebhookOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PaymentWebhookOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookOK  %+v", 200, o.Payload)
 }
+
+func (o *PaymentWebhookOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookOK  %+v", 200, o.Payload)
+}
+
 func (o *PaymentWebhookOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewPaymentWebhookBadRequest() *PaymentWebhookBadRequest {
 	return &PaymentWebhookBadRequest{}
 }
 
-/* PaymentWebhookBadRequest describes a response with status code 400, with default header values.
+/*
+PaymentWebhookBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type PaymentWebhookBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this payment webhook bad request response has a 2xx status code
+func (o *PaymentWebhookBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this payment webhook bad request response has a 3xx status code
+func (o *PaymentWebhookBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment webhook bad request response has a 4xx status code
+func (o *PaymentWebhookBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this payment webhook bad request response has a 5xx status code
+func (o *PaymentWebhookBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this payment webhook bad request response a status code equal to that given
+func (o *PaymentWebhookBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PaymentWebhookBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PaymentWebhookBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PaymentWebhookBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewPaymentWebhookUnauthorized() *PaymentWebhookUnauthorized {
 	return &PaymentWebhookUnauthorized{}
 }
 
-/* PaymentWebhookUnauthorized describes a response with status code 401, with default header values.
+/*
+PaymentWebhookUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type PaymentWebhookUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this payment webhook unauthorized response has a 2xx status code
+func (o *PaymentWebhookUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this payment webhook unauthorized response has a 3xx status code
+func (o *PaymentWebhookUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment webhook unauthorized response has a 4xx status code
+func (o *PaymentWebhookUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this payment webhook unauthorized response has a 5xx status code
+func (o *PaymentWebhookUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this payment webhook unauthorized response a status code equal to that given
+func (o *PaymentWebhookUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PaymentWebhookUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *PaymentWebhookUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *PaymentWebhookUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewPaymentWebhookForbidden() *PaymentWebhookForbidden {
 	return &PaymentWebhookForbidden{}
 }
 
-/* PaymentWebhookForbidden describes a response with status code 403, with default header values.
+/*
+PaymentWebhookForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type PaymentWebhookForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this payment webhook forbidden response has a 2xx status code
+func (o *PaymentWebhookForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this payment webhook forbidden response has a 3xx status code
+func (o *PaymentWebhookForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment webhook forbidden response has a 4xx status code
+func (o *PaymentWebhookForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this payment webhook forbidden response has a 5xx status code
+func (o *PaymentWebhookForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this payment webhook forbidden response a status code equal to that given
+func (o *PaymentWebhookForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PaymentWebhookForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PaymentWebhookForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PaymentWebhookForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewPaymentWebhookNotFound() *PaymentWebhookNotFound {
 	return &PaymentWebhookNotFound{}
 }
 
-/* PaymentWebhookNotFound describes a response with status code 404, with default header values.
+/*
+PaymentWebhookNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type PaymentWebhookNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this payment webhook not found response has a 2xx status code
+func (o *PaymentWebhookNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this payment webhook not found response has a 3xx status code
+func (o *PaymentWebhookNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment webhook not found response has a 4xx status code
+func (o *PaymentWebhookNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this payment webhook not found response has a 5xx status code
+func (o *PaymentWebhookNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this payment webhook not found response a status code equal to that given
+func (o *PaymentWebhookNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PaymentWebhookNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PaymentWebhookNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PaymentWebhookNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewPaymentWebhookInternalServerError() *PaymentWebhookInternalServerError {
 	return &PaymentWebhookInternalServerError{}
 }
 
-/* PaymentWebhookInternalServerError describes a response with status code 500, with default header values.
+/*
+PaymentWebhookInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PaymentWebhookInternalServerError struct {
 }
 
+// IsSuccess returns true when this payment webhook internal server error response has a 2xx status code
+func (o *PaymentWebhookInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this payment webhook internal server error response has a 3xx status code
+func (o *PaymentWebhookInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment webhook internal server error response has a 4xx status code
+func (o *PaymentWebhookInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this payment webhook internal server error response has a 5xx status code
+func (o *PaymentWebhookInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this payment webhook internal server error response a status code equal to that given
+func (o *PaymentWebhookInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PaymentWebhookInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookInternalServerError ", 500)
+}
+
+func (o *PaymentWebhookInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookInternalServerError ", 500)
 }
 

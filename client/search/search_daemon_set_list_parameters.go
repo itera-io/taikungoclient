@@ -54,10 +54,12 @@ func NewSearchDaemonSetListParamsWithHTTPClient(client *http.Client) *SearchDaem
 	}
 }
 
-/* SearchDaemonSetListParams contains all the parameters to send to the API endpoint
-   for the search daemon set list operation.
+/*
+SearchDaemonSetListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search daemon set list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchDaemonSetListParams struct {
 

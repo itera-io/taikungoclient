@@ -54,10 +54,12 @@ func NewPaymentCreateCustomerParamsWithHTTPClient(client *http.Client) *PaymentC
 	}
 }
 
-/* PaymentCreateCustomerParams contains all the parameters to send to the API endpoint
-   for the payment create customer operation.
+/*
+PaymentCreateCustomerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the payment create customer operation.
+
+	Typically these are written to a http.Request.
 */
 type PaymentCreateCustomerParams struct {
 

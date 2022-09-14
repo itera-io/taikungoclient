@@ -54,10 +54,12 @@ func NewServersResetParamsWithHTTPClient(client *http.Client) *ServersResetParam
 	}
 }
 
-/* ServersResetParams contains all the parameters to send to the API endpoint
-   for the servers reset operation.
+/*
+ServersResetParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the servers reset operation.
+
+	Typically these are written to a http.Request.
 */
 type ServersResetParams struct {
 

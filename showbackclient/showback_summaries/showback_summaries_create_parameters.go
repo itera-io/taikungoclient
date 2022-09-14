@@ -54,10 +54,12 @@ func NewShowbackSummariesCreateParamsWithHTTPClient(client *http.Client) *Showba
 	}
 }
 
-/* ShowbackSummariesCreateParams contains all the parameters to send to the API endpoint
-   for the showback summaries create operation.
+/*
+ShowbackSummariesCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the showback summaries create operation.
+
+	Typically these are written to a http.Request.
 */
 type ShowbackSummariesCreateParams struct {
 

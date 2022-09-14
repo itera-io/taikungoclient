@@ -53,10 +53,12 @@ func NewBackupListAllSchedulesParamsWithHTTPClient(client *http.Client) *BackupL
 	}
 }
 
-/* BackupListAllSchedulesParams contains all the parameters to send to the API endpoint
-   for the backup list all schedules operation.
+/*
+BackupListAllSchedulesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the backup list all schedules operation.
+
+	Typically these are written to a http.Request.
 */
 type BackupListAllSchedulesParams struct {
 

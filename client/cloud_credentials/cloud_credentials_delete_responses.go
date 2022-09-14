@@ -75,7 +75,8 @@ func NewCloudCredentialsDeleteOK() *CloudCredentialsDeleteOK {
 	return &CloudCredentialsDeleteOK{}
 }
 
-/* CloudCredentialsDeleteOK describes a response with status code 200, with default header values.
+/*
+CloudCredentialsDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -83,9 +84,39 @@ type CloudCredentialsDeleteOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this cloud credentials delete o k response has a 2xx status code
+func (o *CloudCredentialsDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cloud credentials delete o k response has a 3xx status code
+func (o *CloudCredentialsDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials delete o k response has a 4xx status code
+func (o *CloudCredentialsDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cloud credentials delete o k response has a 5xx status code
+func (o *CloudCredentialsDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials delete o k response a status code equal to that given
+func (o *CloudCredentialsDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CloudCredentialsDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *CloudCredentialsDeleteOK) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *CloudCredentialsDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -105,14 +136,44 @@ func NewCloudCredentialsDeleteNoContent() *CloudCredentialsDeleteNoContent {
 	return &CloudCredentialsDeleteNoContent{}
 }
 
-/* CloudCredentialsDeleteNoContent describes a response with status code 204, with default header values.
+/*
+CloudCredentialsDeleteNoContent describes a response with status code 204, with default header values.
 
 Success
 */
 type CloudCredentialsDeleteNoContent struct {
 }
 
+// IsSuccess returns true when this cloud credentials delete no content response has a 2xx status code
+func (o *CloudCredentialsDeleteNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cloud credentials delete no content response has a 3xx status code
+func (o *CloudCredentialsDeleteNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials delete no content response has a 4xx status code
+func (o *CloudCredentialsDeleteNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cloud credentials delete no content response has a 5xx status code
+func (o *CloudCredentialsDeleteNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials delete no content response a status code equal to that given
+func (o *CloudCredentialsDeleteNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *CloudCredentialsDeleteNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteNoContent ", 204)
+}
+
+func (o *CloudCredentialsDeleteNoContent) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteNoContent ", 204)
 }
 
@@ -126,7 +187,8 @@ func NewCloudCredentialsDeleteBadRequest() *CloudCredentialsDeleteBadRequest {
 	return &CloudCredentialsDeleteBadRequest{}
 }
 
-/* CloudCredentialsDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+CloudCredentialsDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -134,9 +196,39 @@ type CloudCredentialsDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials delete bad request response has a 2xx status code
+func (o *CloudCredentialsDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials delete bad request response has a 3xx status code
+func (o *CloudCredentialsDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials delete bad request response has a 4xx status code
+func (o *CloudCredentialsDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials delete bad request response has a 5xx status code
+func (o *CloudCredentialsDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials delete bad request response a status code equal to that given
+func (o *CloudCredentialsDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CloudCredentialsDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CloudCredentialsDeleteBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CloudCredentialsDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -158,7 +250,8 @@ func NewCloudCredentialsDeleteUnauthorized() *CloudCredentialsDeleteUnauthorized
 	return &CloudCredentialsDeleteUnauthorized{}
 }
 
-/* CloudCredentialsDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+CloudCredentialsDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -166,9 +259,39 @@ type CloudCredentialsDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials delete unauthorized response has a 2xx status code
+func (o *CloudCredentialsDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials delete unauthorized response has a 3xx status code
+func (o *CloudCredentialsDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials delete unauthorized response has a 4xx status code
+func (o *CloudCredentialsDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials delete unauthorized response has a 5xx status code
+func (o *CloudCredentialsDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials delete unauthorized response a status code equal to that given
+func (o *CloudCredentialsDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CloudCredentialsDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CloudCredentialsDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CloudCredentialsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -190,7 +313,8 @@ func NewCloudCredentialsDeleteForbidden() *CloudCredentialsDeleteForbidden {
 	return &CloudCredentialsDeleteForbidden{}
 }
 
-/* CloudCredentialsDeleteForbidden describes a response with status code 403, with default header values.
+/*
+CloudCredentialsDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -198,9 +322,39 @@ type CloudCredentialsDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials delete forbidden response has a 2xx status code
+func (o *CloudCredentialsDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials delete forbidden response has a 3xx status code
+func (o *CloudCredentialsDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials delete forbidden response has a 4xx status code
+func (o *CloudCredentialsDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials delete forbidden response has a 5xx status code
+func (o *CloudCredentialsDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials delete forbidden response a status code equal to that given
+func (o *CloudCredentialsDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CloudCredentialsDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CloudCredentialsDeleteForbidden) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CloudCredentialsDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -222,7 +376,8 @@ func NewCloudCredentialsDeleteNotFound() *CloudCredentialsDeleteNotFound {
 	return &CloudCredentialsDeleteNotFound{}
 }
 
-/* CloudCredentialsDeleteNotFound describes a response with status code 404, with default header values.
+/*
+CloudCredentialsDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -230,9 +385,39 @@ type CloudCredentialsDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials delete not found response has a 2xx status code
+func (o *CloudCredentialsDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials delete not found response has a 3xx status code
+func (o *CloudCredentialsDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials delete not found response has a 4xx status code
+func (o *CloudCredentialsDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials delete not found response has a 5xx status code
+func (o *CloudCredentialsDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials delete not found response a status code equal to that given
+func (o *CloudCredentialsDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CloudCredentialsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CloudCredentialsDeleteNotFound) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CloudCredentialsDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -254,14 +439,44 @@ func NewCloudCredentialsDeleteInternalServerError() *CloudCredentialsDeleteInter
 	return &CloudCredentialsDeleteInternalServerError{}
 }
 
-/* CloudCredentialsDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+CloudCredentialsDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CloudCredentialsDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this cloud credentials delete internal server error response has a 2xx status code
+func (o *CloudCredentialsDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials delete internal server error response has a 3xx status code
+func (o *CloudCredentialsDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials delete internal server error response has a 4xx status code
+func (o *CloudCredentialsDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cloud credentials delete internal server error response has a 5xx status code
+func (o *CloudCredentialsDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cloud credentials delete internal server error response a status code equal to that given
+func (o *CloudCredentialsDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CloudCredentialsDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteInternalServerError ", 500)
+}
+
+func (o *CloudCredentialsDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteInternalServerError ", 500)
 }
 

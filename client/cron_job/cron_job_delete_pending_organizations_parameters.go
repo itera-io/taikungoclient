@@ -54,10 +54,12 @@ func NewCronJobDeletePendingOrganizationsParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* CronJobDeletePendingOrganizationsParams contains all the parameters to send to the API endpoint
-   for the cron job delete pending organizations operation.
+/*
+CronJobDeletePendingOrganizationsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job delete pending organizations operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobDeletePendingOrganizationsParams struct {
 

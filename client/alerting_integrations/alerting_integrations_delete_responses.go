@@ -75,7 +75,8 @@ func NewAlertingIntegrationsDeleteOK() *AlertingIntegrationsDeleteOK {
 	return &AlertingIntegrationsDeleteOK{}
 }
 
-/* AlertingIntegrationsDeleteOK describes a response with status code 200, with default header values.
+/*
+AlertingIntegrationsDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -83,9 +84,39 @@ type AlertingIntegrationsDeleteOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this alerting integrations delete o k response has a 2xx status code
+func (o *AlertingIntegrationsDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this alerting integrations delete o k response has a 3xx status code
+func (o *AlertingIntegrationsDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations delete o k response has a 4xx status code
+func (o *AlertingIntegrationsDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting integrations delete o k response has a 5xx status code
+func (o *AlertingIntegrationsDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations delete o k response a status code equal to that given
+func (o *AlertingIntegrationsDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AlertingIntegrationsDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *AlertingIntegrationsDeleteOK) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *AlertingIntegrationsDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -105,14 +136,44 @@ func NewAlertingIntegrationsDeleteNoContent() *AlertingIntegrationsDeleteNoConte
 	return &AlertingIntegrationsDeleteNoContent{}
 }
 
-/* AlertingIntegrationsDeleteNoContent describes a response with status code 204, with default header values.
+/*
+AlertingIntegrationsDeleteNoContent describes a response with status code 204, with default header values.
 
 Success
 */
 type AlertingIntegrationsDeleteNoContent struct {
 }
 
+// IsSuccess returns true when this alerting integrations delete no content response has a 2xx status code
+func (o *AlertingIntegrationsDeleteNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this alerting integrations delete no content response has a 3xx status code
+func (o *AlertingIntegrationsDeleteNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations delete no content response has a 4xx status code
+func (o *AlertingIntegrationsDeleteNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting integrations delete no content response has a 5xx status code
+func (o *AlertingIntegrationsDeleteNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations delete no content response a status code equal to that given
+func (o *AlertingIntegrationsDeleteNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *AlertingIntegrationsDeleteNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteNoContent ", 204)
+}
+
+func (o *AlertingIntegrationsDeleteNoContent) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteNoContent ", 204)
 }
 
@@ -126,7 +187,8 @@ func NewAlertingIntegrationsDeleteBadRequest() *AlertingIntegrationsDeleteBadReq
 	return &AlertingIntegrationsDeleteBadRequest{}
 }
 
-/* AlertingIntegrationsDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+AlertingIntegrationsDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -134,9 +196,39 @@ type AlertingIntegrationsDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations delete bad request response has a 2xx status code
+func (o *AlertingIntegrationsDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations delete bad request response has a 3xx status code
+func (o *AlertingIntegrationsDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations delete bad request response has a 4xx status code
+func (o *AlertingIntegrationsDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations delete bad request response has a 5xx status code
+func (o *AlertingIntegrationsDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations delete bad request response a status code equal to that given
+func (o *AlertingIntegrationsDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AlertingIntegrationsDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AlertingIntegrationsDeleteBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AlertingIntegrationsDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -158,7 +250,8 @@ func NewAlertingIntegrationsDeleteUnauthorized() *AlertingIntegrationsDeleteUnau
 	return &AlertingIntegrationsDeleteUnauthorized{}
 }
 
-/* AlertingIntegrationsDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+AlertingIntegrationsDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -166,9 +259,39 @@ type AlertingIntegrationsDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations delete unauthorized response has a 2xx status code
+func (o *AlertingIntegrationsDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations delete unauthorized response has a 3xx status code
+func (o *AlertingIntegrationsDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations delete unauthorized response has a 4xx status code
+func (o *AlertingIntegrationsDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations delete unauthorized response has a 5xx status code
+func (o *AlertingIntegrationsDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations delete unauthorized response a status code equal to that given
+func (o *AlertingIntegrationsDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AlertingIntegrationsDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AlertingIntegrationsDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AlertingIntegrationsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -190,7 +313,8 @@ func NewAlertingIntegrationsDeleteForbidden() *AlertingIntegrationsDeleteForbidd
 	return &AlertingIntegrationsDeleteForbidden{}
 }
 
-/* AlertingIntegrationsDeleteForbidden describes a response with status code 403, with default header values.
+/*
+AlertingIntegrationsDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -198,9 +322,39 @@ type AlertingIntegrationsDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations delete forbidden response has a 2xx status code
+func (o *AlertingIntegrationsDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations delete forbidden response has a 3xx status code
+func (o *AlertingIntegrationsDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations delete forbidden response has a 4xx status code
+func (o *AlertingIntegrationsDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations delete forbidden response has a 5xx status code
+func (o *AlertingIntegrationsDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations delete forbidden response a status code equal to that given
+func (o *AlertingIntegrationsDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AlertingIntegrationsDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AlertingIntegrationsDeleteForbidden) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AlertingIntegrationsDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -222,7 +376,8 @@ func NewAlertingIntegrationsDeleteNotFound() *AlertingIntegrationsDeleteNotFound
 	return &AlertingIntegrationsDeleteNotFound{}
 }
 
-/* AlertingIntegrationsDeleteNotFound describes a response with status code 404, with default header values.
+/*
+AlertingIntegrationsDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -230,9 +385,39 @@ type AlertingIntegrationsDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations delete not found response has a 2xx status code
+func (o *AlertingIntegrationsDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations delete not found response has a 3xx status code
+func (o *AlertingIntegrationsDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations delete not found response has a 4xx status code
+func (o *AlertingIntegrationsDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations delete not found response has a 5xx status code
+func (o *AlertingIntegrationsDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations delete not found response a status code equal to that given
+func (o *AlertingIntegrationsDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AlertingIntegrationsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AlertingIntegrationsDeleteNotFound) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AlertingIntegrationsDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -254,14 +439,44 @@ func NewAlertingIntegrationsDeleteInternalServerError() *AlertingIntegrationsDel
 	return &AlertingIntegrationsDeleteInternalServerError{}
 }
 
-/* AlertingIntegrationsDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+AlertingIntegrationsDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AlertingIntegrationsDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this alerting integrations delete internal server error response has a 2xx status code
+func (o *AlertingIntegrationsDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations delete internal server error response has a 3xx status code
+func (o *AlertingIntegrationsDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations delete internal server error response has a 4xx status code
+func (o *AlertingIntegrationsDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting integrations delete internal server error response has a 5xx status code
+func (o *AlertingIntegrationsDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this alerting integrations delete internal server error response a status code equal to that given
+func (o *AlertingIntegrationsDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AlertingIntegrationsDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteInternalServerError ", 500)
+}
+
+func (o *AlertingIntegrationsDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteInternalServerError ", 500)
 }
 

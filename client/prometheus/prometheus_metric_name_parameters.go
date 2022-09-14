@@ -54,10 +54,12 @@ func NewPrometheusMetricNameParamsWithHTTPClient(client *http.Client) *Prometheu
 	}
 }
 
-/* PrometheusMetricNameParams contains all the parameters to send to the API endpoint
-   for the prometheus metric name operation.
+/*
+PrometheusMetricNameParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the prometheus metric name operation.
+
+	Typically these are written to a http.Request.
 */
 type PrometheusMetricNameParams struct {
 

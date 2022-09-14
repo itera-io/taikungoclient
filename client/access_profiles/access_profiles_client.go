@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  AccessProfilesAccessProfilesForOrganizationList retrieves access profiles by organization Id
+AccessProfilesAccessProfilesForOrganizationList retrieves access profiles by organization Id
 */
 func (a *Client) AccessProfilesAccessProfilesForOrganizationList(params *AccessProfilesAccessProfilesForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesAccessProfilesForOrganizationListOK, error) {
 	// TODO: Validate the params before sending
@@ -85,7 +85,7 @@ func (a *Client) AccessProfilesAccessProfilesForOrganizationList(params *AccessP
 }
 
 /*
-  AccessProfilesCreate creates access profile
+AccessProfilesCreate creates access profile
 */
 func (a *Client) AccessProfilesCreate(params *AccessProfilesCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) AccessProfilesCreate(params *AccessProfilesCreateParams, authIn
 }
 
 /*
-  AccessProfilesDelete deletes access profile by Id
+AccessProfilesDelete deletes access profile by Id
 */
 func (a *Client) AccessProfilesDelete(params *AccessProfilesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesDeleteOK, *AccessProfilesDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -164,7 +164,7 @@ func (a *Client) AccessProfilesDelete(params *AccessProfilesDeleteParams, authIn
 }
 
 /*
-  AccessProfilesList retrieves all access profiles
+AccessProfilesList retrieves all access profiles
 */
 func (a *Client) AccessProfilesList(params *AccessProfilesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesListOK, error) {
 	// TODO: Validate the params before sending
@@ -203,7 +203,7 @@ func (a *Client) AccessProfilesList(params *AccessProfilesListParams, authInfo r
 }
 
 /*
-  AccessProfilesLockManager locks unlock access profiles
+AccessProfilesLockManager locks unlock access profiles
 */
 func (a *Client) AccessProfilesLockManager(params *AccessProfilesLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesLockManagerOK, error) {
 	// TODO: Validate the params before sending
@@ -242,7 +242,7 @@ func (a *Client) AccessProfilesLockManager(params *AccessProfilesLockManagerPara
 }
 
 /*
-  AccessProfilesUpdate updates access profile
+AccessProfilesUpdate updates access profile
 */
 func (a *Client) AccessProfilesUpdate(params *AccessProfilesUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesUpdateOK, error) {
 	// TODO: Validate the params before sending

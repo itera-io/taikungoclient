@@ -53,10 +53,12 @@ func NewGoogleCloudListParamsWithHTTPClient(client *http.Client) *GoogleCloudLis
 	}
 }
 
-/* GoogleCloudListParams contains all the parameters to send to the API endpoint
-   for the google cloud list operation.
+/*
+GoogleCloudListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the google cloud list operation.
+
+	Typically these are written to a http.Request.
 */
 type GoogleCloudListParams struct {
 

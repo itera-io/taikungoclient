@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  StandAloneVMDisksCreate adds disk for stand alone vm
+StandAloneVMDisksCreate adds disk for stand alone vm
 */
 func (a *Client) StandAloneVMDisksCreate(params *StandAloneVMDisksCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneVMDisksCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -85,7 +85,7 @@ func (a *Client) StandAloneVMDisksCreate(params *StandAloneVMDisksCreateParams, 
 }
 
 /*
-  StandAloneVMDisksDelete deletes disk by id
+StandAloneVMDisksDelete deletes disk by id
 */
 func (a *Client) StandAloneVMDisksDelete(params *StandAloneVMDisksDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneVMDisksDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) StandAloneVMDisksDelete(params *StandAloneVMDisksDeleteParams, 
 }
 
 /*
-  StandAloneVMDisksPurge purges disks by id
+StandAloneVMDisksPurge purges disks by id
 */
 func (a *Client) StandAloneVMDisksPurge(params *StandAloneVMDisksPurgeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneVMDisksPurgeOK, error) {
 	// TODO: Validate the params before sending
@@ -163,7 +163,7 @@ func (a *Client) StandAloneVMDisksPurge(params *StandAloneVMDisksPurgeParams, au
 }
 
 /*
-  StandAloneVMDisksReset updates statuses of disks by vm Id
+StandAloneVMDisksReset updates statuses of disks by vm Id
 */
 func (a *Client) StandAloneVMDisksReset(params *StandAloneVMDisksResetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneVMDisksResetOK, error) {
 	// TODO: Validate the params before sending
@@ -202,7 +202,7 @@ func (a *Client) StandAloneVMDisksReset(params *StandAloneVMDisksResetParams, au
 }
 
 /*
-  StandAloneVMDisksUpdate updates disk by id
+StandAloneVMDisksUpdate updates disk by id
 */
 func (a *Client) StandAloneVMDisksUpdate(params *StandAloneVMDisksUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneVMDisksUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -241,7 +241,7 @@ func (a *Client) StandAloneVMDisksUpdate(params *StandAloneVMDisksUpdateParams, 
 }
 
 /*
-  StandAloneVMDisksUpdateDiskSize updates disk size by id
+StandAloneVMDisksUpdateDiskSize updates disk size by id
 */
 func (a *Client) StandAloneVMDisksUpdateDiskSize(params *StandAloneVMDisksUpdateDiskSizeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneVMDisksUpdateDiskSizeOK, error) {
 	// TODO: Validate the params before sending

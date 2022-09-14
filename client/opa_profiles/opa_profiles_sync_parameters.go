@@ -54,10 +54,12 @@ func NewOpaProfilesSyncParamsWithHTTPClient(client *http.Client) *OpaProfilesSyn
 	}
 }
 
-/* OpaProfilesSyncParams contains all the parameters to send to the API endpoint
-   for the opa profiles sync operation.
+/*
+OpaProfilesSyncParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the opa profiles sync operation.
+
+	Typically these are written to a http.Request.
 */
 type OpaProfilesSyncParams struct {
 

@@ -69,7 +69,8 @@ func NewBackupCreateOK() *BackupCreateOK {
 	return &BackupCreateOK{}
 }
 
-/* BackupCreateOK describes a response with status code 200, with default header values.
+/*
+BackupCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type BackupCreateOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this backup create o k response has a 2xx status code
+func (o *BackupCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this backup create o k response has a 3xx status code
+func (o *BackupCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup create o k response has a 4xx status code
+func (o *BackupCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this backup create o k response has a 5xx status code
+func (o *BackupCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup create o k response a status code equal to that given
+func (o *BackupCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *BackupCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *BackupCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *BackupCreateOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewBackupCreateBadRequest() *BackupCreateBadRequest {
 	return &BackupCreateBadRequest{}
 }
 
-/* BackupCreateBadRequest describes a response with status code 400, with default header values.
+/*
+BackupCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type BackupCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this backup create bad request response has a 2xx status code
+func (o *BackupCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup create bad request response has a 3xx status code
+func (o *BackupCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup create bad request response has a 4xx status code
+func (o *BackupCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup create bad request response has a 5xx status code
+func (o *BackupCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup create bad request response a status code equal to that given
+func (o *BackupCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BackupCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BackupCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BackupCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewBackupCreateUnauthorized() *BackupCreateUnauthorized {
 	return &BackupCreateUnauthorized{}
 }
 
-/* BackupCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+BackupCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type BackupCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup create unauthorized response has a 2xx status code
+func (o *BackupCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup create unauthorized response has a 3xx status code
+func (o *BackupCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup create unauthorized response has a 4xx status code
+func (o *BackupCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup create unauthorized response has a 5xx status code
+func (o *BackupCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup create unauthorized response a status code equal to that given
+func (o *BackupCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BackupCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BackupCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BackupCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewBackupCreateForbidden() *BackupCreateForbidden {
 	return &BackupCreateForbidden{}
 }
 
-/* BackupCreateForbidden describes a response with status code 403, with default header values.
+/*
+BackupCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type BackupCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup create forbidden response has a 2xx status code
+func (o *BackupCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup create forbidden response has a 3xx status code
+func (o *BackupCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup create forbidden response has a 4xx status code
+func (o *BackupCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup create forbidden response has a 5xx status code
+func (o *BackupCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup create forbidden response a status code equal to that given
+func (o *BackupCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *BackupCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *BackupCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *BackupCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewBackupCreateNotFound() *BackupCreateNotFound {
 	return &BackupCreateNotFound{}
 }
 
-/* BackupCreateNotFound describes a response with status code 404, with default header values.
+/*
+BackupCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type BackupCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup create not found response has a 2xx status code
+func (o *BackupCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup create not found response has a 3xx status code
+func (o *BackupCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup create not found response has a 4xx status code
+func (o *BackupCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup create not found response has a 5xx status code
+func (o *BackupCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup create not found response a status code equal to that given
+func (o *BackupCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BackupCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BackupCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BackupCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewBackupCreateInternalServerError() *BackupCreateInternalServerError {
 	return &BackupCreateInternalServerError{}
 }
 
-/* BackupCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+BackupCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type BackupCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this backup create internal server error response has a 2xx status code
+func (o *BackupCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup create internal server error response has a 3xx status code
+func (o *BackupCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup create internal server error response has a 4xx status code
+func (o *BackupCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this backup create internal server error response has a 5xx status code
+func (o *BackupCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this backup create internal server error response a status code equal to that given
+func (o *BackupCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BackupCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateInternalServerError ", 500)
+}
+
+func (o *BackupCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateInternalServerError ", 500)
 }
 

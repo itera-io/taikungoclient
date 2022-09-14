@@ -69,7 +69,8 @@ func NewKubernetesDescribeDaemonSetOK() *KubernetesDescribeDaemonSetOK {
 	return &KubernetesDescribeDaemonSetOK{}
 }
 
-/* KubernetesDescribeDaemonSetOK describes a response with status code 200, with default header values.
+/*
+KubernetesDescribeDaemonSetOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesDescribeDaemonSetOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this kubernetes describe daemon set o k response has a 2xx status code
+func (o *KubernetesDescribeDaemonSetOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes describe daemon set o k response has a 3xx status code
+func (o *KubernetesDescribeDaemonSetOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe daemon set o k response has a 4xx status code
+func (o *KubernetesDescribeDaemonSetOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes describe daemon set o k response has a 5xx status code
+func (o *KubernetesDescribeDaemonSetOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe daemon set o k response a status code equal to that given
+func (o *KubernetesDescribeDaemonSetOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesDescribeDaemonSetOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesDescribeDaemonSetOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesDescribeDaemonSetOK) GetPayload() string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesDescribeDaemonSetBadRequest() *KubernetesDescribeDaemonSetBadR
 	return &KubernetesDescribeDaemonSetBadRequest{}
 }
 
-/* KubernetesDescribeDaemonSetBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesDescribeDaemonSetBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesDescribeDaemonSetBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe daemon set bad request response has a 2xx status code
+func (o *KubernetesDescribeDaemonSetBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe daemon set bad request response has a 3xx status code
+func (o *KubernetesDescribeDaemonSetBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe daemon set bad request response has a 4xx status code
+func (o *KubernetesDescribeDaemonSetBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe daemon set bad request response has a 5xx status code
+func (o *KubernetesDescribeDaemonSetBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe daemon set bad request response a status code equal to that given
+func (o *KubernetesDescribeDaemonSetBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesDescribeDaemonSetBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesDescribeDaemonSetBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesDescribeDaemonSetBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesDescribeDaemonSetUnauthorized() *KubernetesDescribeDaemonSetUn
 	return &KubernetesDescribeDaemonSetUnauthorized{}
 }
 
-/* KubernetesDescribeDaemonSetUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesDescribeDaemonSetUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesDescribeDaemonSetUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe daemon set unauthorized response has a 2xx status code
+func (o *KubernetesDescribeDaemonSetUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe daemon set unauthorized response has a 3xx status code
+func (o *KubernetesDescribeDaemonSetUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe daemon set unauthorized response has a 4xx status code
+func (o *KubernetesDescribeDaemonSetUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe daemon set unauthorized response has a 5xx status code
+func (o *KubernetesDescribeDaemonSetUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe daemon set unauthorized response a status code equal to that given
+func (o *KubernetesDescribeDaemonSetUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesDescribeDaemonSetUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesDescribeDaemonSetUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesDescribeDaemonSetUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesDescribeDaemonSetForbidden() *KubernetesDescribeDaemonSetForbi
 	return &KubernetesDescribeDaemonSetForbidden{}
 }
 
-/* KubernetesDescribeDaemonSetForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesDescribeDaemonSetForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesDescribeDaemonSetForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe daemon set forbidden response has a 2xx status code
+func (o *KubernetesDescribeDaemonSetForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe daemon set forbidden response has a 3xx status code
+func (o *KubernetesDescribeDaemonSetForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe daemon set forbidden response has a 4xx status code
+func (o *KubernetesDescribeDaemonSetForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe daemon set forbidden response has a 5xx status code
+func (o *KubernetesDescribeDaemonSetForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe daemon set forbidden response a status code equal to that given
+func (o *KubernetesDescribeDaemonSetForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesDescribeDaemonSetForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesDescribeDaemonSetForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesDescribeDaemonSetForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesDescribeDaemonSetNotFound() *KubernetesDescribeDaemonSetNotFou
 	return &KubernetesDescribeDaemonSetNotFound{}
 }
 
-/* KubernetesDescribeDaemonSetNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesDescribeDaemonSetNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesDescribeDaemonSetNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe daemon set not found response has a 2xx status code
+func (o *KubernetesDescribeDaemonSetNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe daemon set not found response has a 3xx status code
+func (o *KubernetesDescribeDaemonSetNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe daemon set not found response has a 4xx status code
+func (o *KubernetesDescribeDaemonSetNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe daemon set not found response has a 5xx status code
+func (o *KubernetesDescribeDaemonSetNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe daemon set not found response a status code equal to that given
+func (o *KubernetesDescribeDaemonSetNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesDescribeDaemonSetNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesDescribeDaemonSetNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesDescribeDaemonSetNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesDescribeDaemonSetInternalServerError() *KubernetesDescribeDaem
 	return &KubernetesDescribeDaemonSetInternalServerError{}
 }
 
-/* KubernetesDescribeDaemonSetInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesDescribeDaemonSetInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesDescribeDaemonSetInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes describe daemon set internal server error response has a 2xx status code
+func (o *KubernetesDescribeDaemonSetInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe daemon set internal server error response has a 3xx status code
+func (o *KubernetesDescribeDaemonSetInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe daemon set internal server error response has a 4xx status code
+func (o *KubernetesDescribeDaemonSetInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes describe daemon set internal server error response has a 5xx status code
+func (o *KubernetesDescribeDaemonSetInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes describe daemon set internal server error response a status code equal to that given
+func (o *KubernetesDescribeDaemonSetInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesDescribeDaemonSetInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetInternalServerError ", 500)
+}
+
+func (o *KubernetesDescribeDaemonSetInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetInternalServerError ", 500)
 }
 

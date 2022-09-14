@@ -54,10 +54,12 @@ func NewProjectQuotasEditParamsWithHTTPClient(client *http.Client) *ProjectQuota
 	}
 }
 
-/* ProjectQuotasEditParams contains all the parameters to send to the API endpoint
-   for the project quotas edit operation.
+/*
+ProjectQuotasEditParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the project quotas edit operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectQuotasEditParams struct {
 

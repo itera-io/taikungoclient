@@ -55,10 +55,12 @@ func NewProjectsEditHealthStatusParamsWithHTTPClient(client *http.Client) *Proje
 	}
 }
 
-/* ProjectsEditHealthStatusParams contains all the parameters to send to the API endpoint
-   for the projects edit health status operation.
+/*
+ProjectsEditHealthStatusParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects edit health status operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsEditHealthStatusParams struct {
 

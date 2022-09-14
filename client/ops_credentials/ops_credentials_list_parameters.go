@@ -53,10 +53,12 @@ func NewOpsCredentialsListParamsWithHTTPClient(client *http.Client) *OpsCredenti
 	}
 }
 
-/* OpsCredentialsListParams contains all the parameters to send to the API endpoint
-   for the ops credentials list operation.
+/*
+OpsCredentialsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ops credentials list operation.
+
+	Typically these are written to a http.Request.
 */
 type OpsCredentialsListParams struct {
 

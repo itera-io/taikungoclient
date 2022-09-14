@@ -53,10 +53,12 @@ func NewUserProjectsUsersListByProjectParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* UserProjectsUsersListByProjectParams contains all the parameters to send to the API endpoint
-   for the user projects users list by project operation.
+/*
+UserProjectsUsersListByProjectParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the user projects users list by project operation.
+
+	Typically these are written to a http.Request.
 */
 type UserProjectsUsersListByProjectParams struct {
 

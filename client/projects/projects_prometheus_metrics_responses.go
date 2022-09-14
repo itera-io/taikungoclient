@@ -69,7 +69,8 @@ func NewProjectsPrometheusMetricsOK() *ProjectsPrometheusMetricsOK {
 	return &ProjectsPrometheusMetricsOK{}
 }
 
-/* ProjectsPrometheusMetricsOK describes a response with status code 200, with default header values.
+/*
+ProjectsPrometheusMetricsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsPrometheusMetricsOK struct {
 	Payload interface{}
 }
 
+// IsSuccess returns true when this projects prometheus metrics o k response has a 2xx status code
+func (o *ProjectsPrometheusMetricsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects prometheus metrics o k response has a 3xx status code
+func (o *ProjectsPrometheusMetricsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects prometheus metrics o k response has a 4xx status code
+func (o *ProjectsPrometheusMetricsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects prometheus metrics o k response has a 5xx status code
+func (o *ProjectsPrometheusMetricsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects prometheus metrics o k response a status code equal to that given
+func (o *ProjectsPrometheusMetricsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsPrometheusMetricsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsPrometheusMetricsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsPrometheusMetricsOK) GetPayload() interface{} {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectsPrometheusMetricsBadRequest() *ProjectsPrometheusMetricsBadReque
 	return &ProjectsPrometheusMetricsBadRequest{}
 }
 
-/* ProjectsPrometheusMetricsBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsPrometheusMetricsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectsPrometheusMetricsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects prometheus metrics bad request response has a 2xx status code
+func (o *ProjectsPrometheusMetricsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects prometheus metrics bad request response has a 3xx status code
+func (o *ProjectsPrometheusMetricsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects prometheus metrics bad request response has a 4xx status code
+func (o *ProjectsPrometheusMetricsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects prometheus metrics bad request response has a 5xx status code
+func (o *ProjectsPrometheusMetricsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects prometheus metrics bad request response a status code equal to that given
+func (o *ProjectsPrometheusMetricsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsPrometheusMetricsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsPrometheusMetricsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsPrometheusMetricsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectsPrometheusMetricsUnauthorized() *ProjectsPrometheusMetricsUnauth
 	return &ProjectsPrometheusMetricsUnauthorized{}
 }
 
-/* ProjectsPrometheusMetricsUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsPrometheusMetricsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectsPrometheusMetricsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects prometheus metrics unauthorized response has a 2xx status code
+func (o *ProjectsPrometheusMetricsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects prometheus metrics unauthorized response has a 3xx status code
+func (o *ProjectsPrometheusMetricsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects prometheus metrics unauthorized response has a 4xx status code
+func (o *ProjectsPrometheusMetricsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects prometheus metrics unauthorized response has a 5xx status code
+func (o *ProjectsPrometheusMetricsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects prometheus metrics unauthorized response a status code equal to that given
+func (o *ProjectsPrometheusMetricsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsPrometheusMetricsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsPrometheusMetricsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsPrometheusMetricsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectsPrometheusMetricsForbidden() *ProjectsPrometheusMetricsForbidden
 	return &ProjectsPrometheusMetricsForbidden{}
 }
 
-/* ProjectsPrometheusMetricsForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsPrometheusMetricsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectsPrometheusMetricsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects prometheus metrics forbidden response has a 2xx status code
+func (o *ProjectsPrometheusMetricsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects prometheus metrics forbidden response has a 3xx status code
+func (o *ProjectsPrometheusMetricsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects prometheus metrics forbidden response has a 4xx status code
+func (o *ProjectsPrometheusMetricsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects prometheus metrics forbidden response has a 5xx status code
+func (o *ProjectsPrometheusMetricsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects prometheus metrics forbidden response a status code equal to that given
+func (o *ProjectsPrometheusMetricsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsPrometheusMetricsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsPrometheusMetricsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsPrometheusMetricsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectsPrometheusMetricsNotFound() *ProjectsPrometheusMetricsNotFound {
 	return &ProjectsPrometheusMetricsNotFound{}
 }
 
-/* ProjectsPrometheusMetricsNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsPrometheusMetricsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectsPrometheusMetricsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects prometheus metrics not found response has a 2xx status code
+func (o *ProjectsPrometheusMetricsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects prometheus metrics not found response has a 3xx status code
+func (o *ProjectsPrometheusMetricsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects prometheus metrics not found response has a 4xx status code
+func (o *ProjectsPrometheusMetricsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects prometheus metrics not found response has a 5xx status code
+func (o *ProjectsPrometheusMetricsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects prometheus metrics not found response a status code equal to that given
+func (o *ProjectsPrometheusMetricsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsPrometheusMetricsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsPrometheusMetricsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsPrometheusMetricsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectsPrometheusMetricsInternalServerError() *ProjectsPrometheusMetric
 	return &ProjectsPrometheusMetricsInternalServerError{}
 }
 
-/* ProjectsPrometheusMetricsInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsPrometheusMetricsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsPrometheusMetricsInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects prometheus metrics internal server error response has a 2xx status code
+func (o *ProjectsPrometheusMetricsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects prometheus metrics internal server error response has a 3xx status code
+func (o *ProjectsPrometheusMetricsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects prometheus metrics internal server error response has a 4xx status code
+func (o *ProjectsPrometheusMetricsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects prometheus metrics internal server error response has a 5xx status code
+func (o *ProjectsPrometheusMetricsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects prometheus metrics internal server error response a status code equal to that given
+func (o *ProjectsPrometheusMetricsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsPrometheusMetricsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsInternalServerError ", 500)
+}
+
+func (o *ProjectsPrometheusMetricsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsInternalServerError ", 500)
 }
 

@@ -53,10 +53,12 @@ func NewNotificationsListByUserParamsWithHTTPClient(client *http.Client) *Notifi
 	}
 }
 
-/* NotificationsListByUserParams contains all the parameters to send to the API endpoint
-   for the notifications list by user operation.
+/*
+NotificationsListByUserParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the notifications list by user operation.
+
+	Typically these are written to a http.Request.
 */
 type NotificationsListByUserParams struct {
 

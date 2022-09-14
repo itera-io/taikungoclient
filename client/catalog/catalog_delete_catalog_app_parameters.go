@@ -53,10 +53,12 @@ func NewCatalogDeleteCatalogAppParamsWithHTTPClient(client *http.Client) *Catalo
 	}
 }
 
-/* CatalogDeleteCatalogAppParams contains all the parameters to send to the API endpoint
-   for the catalog delete catalog app operation.
+/*
+CatalogDeleteCatalogAppParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the catalog delete catalog app operation.
+
+	Typically these are written to a http.Request.
 */
 type CatalogDeleteCatalogAppParams struct {
 

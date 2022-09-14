@@ -69,7 +69,8 @@ func NewInvoicesEditOK() *InvoicesEditOK {
 	return &InvoicesEditOK{}
 }
 
-/* InvoicesEditOK describes a response with status code 200, with default header values.
+/*
+InvoicesEditOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type InvoicesEditOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this invoices edit o k response has a 2xx status code
+func (o *InvoicesEditOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this invoices edit o k response has a 3xx status code
+func (o *InvoicesEditOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this invoices edit o k response has a 4xx status code
+func (o *InvoicesEditOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this invoices edit o k response has a 5xx status code
+func (o *InvoicesEditOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this invoices edit o k response a status code equal to that given
+func (o *InvoicesEditOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *InvoicesEditOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditOK  %+v", 200, o.Payload)
 }
+
+func (o *InvoicesEditOK) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditOK  %+v", 200, o.Payload)
+}
+
 func (o *InvoicesEditOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewInvoicesEditBadRequest() *InvoicesEditBadRequest {
 	return &InvoicesEditBadRequest{}
 }
 
-/* InvoicesEditBadRequest describes a response with status code 400, with default header values.
+/*
+InvoicesEditBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type InvoicesEditBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this invoices edit bad request response has a 2xx status code
+func (o *InvoicesEditBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this invoices edit bad request response has a 3xx status code
+func (o *InvoicesEditBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this invoices edit bad request response has a 4xx status code
+func (o *InvoicesEditBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this invoices edit bad request response has a 5xx status code
+func (o *InvoicesEditBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this invoices edit bad request response a status code equal to that given
+func (o *InvoicesEditBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *InvoicesEditBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *InvoicesEditBadRequest) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *InvoicesEditBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewInvoicesEditUnauthorized() *InvoicesEditUnauthorized {
 	return &InvoicesEditUnauthorized{}
 }
 
-/* InvoicesEditUnauthorized describes a response with status code 401, with default header values.
+/*
+InvoicesEditUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type InvoicesEditUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this invoices edit unauthorized response has a 2xx status code
+func (o *InvoicesEditUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this invoices edit unauthorized response has a 3xx status code
+func (o *InvoicesEditUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this invoices edit unauthorized response has a 4xx status code
+func (o *InvoicesEditUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this invoices edit unauthorized response has a 5xx status code
+func (o *InvoicesEditUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this invoices edit unauthorized response a status code equal to that given
+func (o *InvoicesEditUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *InvoicesEditUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *InvoicesEditUnauthorized) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *InvoicesEditUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewInvoicesEditForbidden() *InvoicesEditForbidden {
 	return &InvoicesEditForbidden{}
 }
 
-/* InvoicesEditForbidden describes a response with status code 403, with default header values.
+/*
+InvoicesEditForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type InvoicesEditForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this invoices edit forbidden response has a 2xx status code
+func (o *InvoicesEditForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this invoices edit forbidden response has a 3xx status code
+func (o *InvoicesEditForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this invoices edit forbidden response has a 4xx status code
+func (o *InvoicesEditForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this invoices edit forbidden response has a 5xx status code
+func (o *InvoicesEditForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this invoices edit forbidden response a status code equal to that given
+func (o *InvoicesEditForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *InvoicesEditForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditForbidden  %+v", 403, o.Payload)
 }
+
+func (o *InvoicesEditForbidden) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditForbidden  %+v", 403, o.Payload)
+}
+
 func (o *InvoicesEditForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewInvoicesEditNotFound() *InvoicesEditNotFound {
 	return &InvoicesEditNotFound{}
 }
 
-/* InvoicesEditNotFound describes a response with status code 404, with default header values.
+/*
+InvoicesEditNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type InvoicesEditNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this invoices edit not found response has a 2xx status code
+func (o *InvoicesEditNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this invoices edit not found response has a 3xx status code
+func (o *InvoicesEditNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this invoices edit not found response has a 4xx status code
+func (o *InvoicesEditNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this invoices edit not found response has a 5xx status code
+func (o *InvoicesEditNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this invoices edit not found response a status code equal to that given
+func (o *InvoicesEditNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *InvoicesEditNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditNotFound  %+v", 404, o.Payload)
 }
+
+func (o *InvoicesEditNotFound) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditNotFound  %+v", 404, o.Payload)
+}
+
 func (o *InvoicesEditNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewInvoicesEditInternalServerError() *InvoicesEditInternalServerError {
 	return &InvoicesEditInternalServerError{}
 }
 
-/* InvoicesEditInternalServerError describes a response with status code 500, with default header values.
+/*
+InvoicesEditInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type InvoicesEditInternalServerError struct {
 }
 
+// IsSuccess returns true when this invoices edit internal server error response has a 2xx status code
+func (o *InvoicesEditInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this invoices edit internal server error response has a 3xx status code
+func (o *InvoicesEditInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this invoices edit internal server error response has a 4xx status code
+func (o *InvoicesEditInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this invoices edit internal server error response has a 5xx status code
+func (o *InvoicesEditInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this invoices edit internal server error response a status code equal to that given
+func (o *InvoicesEditInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *InvoicesEditInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditInternalServerError ", 500)
+}
+
+func (o *InvoicesEditInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditInternalServerError ", 500)
 }
 

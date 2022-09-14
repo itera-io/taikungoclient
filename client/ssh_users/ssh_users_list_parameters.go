@@ -53,10 +53,12 @@ func NewSSHUsersListParamsWithHTTPClient(client *http.Client) *SSHUsersListParam
 	}
 }
 
-/* SSHUsersListParams contains all the parameters to send to the API endpoint
-   for the Ssh users list operation.
+/*
+SSHUsersListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the Ssh users list operation.
+
+	Typically these are written to a http.Request.
 */
 type SSHUsersListParams struct {
 

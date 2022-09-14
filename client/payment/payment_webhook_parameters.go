@@ -52,10 +52,12 @@ func NewPaymentWebhookParamsWithHTTPClient(client *http.Client) *PaymentWebhookP
 	}
 }
 
-/* PaymentWebhookParams contains all the parameters to send to the API endpoint
-   for the payment webhook operation.
+/*
+PaymentWebhookParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the payment webhook operation.
+
+	Typically these are written to a http.Request.
 */
 type PaymentWebhookParams struct {
 

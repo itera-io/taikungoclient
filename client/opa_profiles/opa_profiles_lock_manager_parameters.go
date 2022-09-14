@@ -54,10 +54,12 @@ func NewOpaProfilesLockManagerParamsWithHTTPClient(client *http.Client) *OpaProf
 	}
 }
 
-/* OpaProfilesLockManagerParams contains all the parameters to send to the API endpoint
-   for the opa profiles lock manager operation.
+/*
+OpaProfilesLockManagerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the opa profiles lock manager operation.
+
+	Typically these are written to a http.Request.
 */
 type OpaProfilesLockManagerParams struct {
 

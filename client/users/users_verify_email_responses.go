@@ -69,7 +69,8 @@ func NewUsersVerifyEmailOK() *UsersVerifyEmailOK {
 	return &UsersVerifyEmailOK{}
 }
 
-/* UsersVerifyEmailOK describes a response with status code 200, with default header values.
+/*
+UsersVerifyEmailOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type UsersVerifyEmailOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this users verify email o k response has a 2xx status code
+func (o *UsersVerifyEmailOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this users verify email o k response has a 3xx status code
+func (o *UsersVerifyEmailOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users verify email o k response has a 4xx status code
+func (o *UsersVerifyEmailOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this users verify email o k response has a 5xx status code
+func (o *UsersVerifyEmailOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users verify email o k response a status code equal to that given
+func (o *UsersVerifyEmailOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UsersVerifyEmailOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailOK  %+v", 200, o.Payload)
 }
+
+func (o *UsersVerifyEmailOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailOK  %+v", 200, o.Payload)
+}
+
 func (o *UsersVerifyEmailOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewUsersVerifyEmailBadRequest() *UsersVerifyEmailBadRequest {
 	return &UsersVerifyEmailBadRequest{}
 }
 
-/* UsersVerifyEmailBadRequest describes a response with status code 400, with default header values.
+/*
+UsersVerifyEmailBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type UsersVerifyEmailBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this users verify email bad request response has a 2xx status code
+func (o *UsersVerifyEmailBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users verify email bad request response has a 3xx status code
+func (o *UsersVerifyEmailBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users verify email bad request response has a 4xx status code
+func (o *UsersVerifyEmailBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users verify email bad request response has a 5xx status code
+func (o *UsersVerifyEmailBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users verify email bad request response a status code equal to that given
+func (o *UsersVerifyEmailBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UsersVerifyEmailBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UsersVerifyEmailBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UsersVerifyEmailBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewUsersVerifyEmailUnauthorized() *UsersVerifyEmailUnauthorized {
 	return &UsersVerifyEmailUnauthorized{}
 }
 
-/* UsersVerifyEmailUnauthorized describes a response with status code 401, with default header values.
+/*
+UsersVerifyEmailUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type UsersVerifyEmailUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this users verify email unauthorized response has a 2xx status code
+func (o *UsersVerifyEmailUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users verify email unauthorized response has a 3xx status code
+func (o *UsersVerifyEmailUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users verify email unauthorized response has a 4xx status code
+func (o *UsersVerifyEmailUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users verify email unauthorized response has a 5xx status code
+func (o *UsersVerifyEmailUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users verify email unauthorized response a status code equal to that given
+func (o *UsersVerifyEmailUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UsersVerifyEmailUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *UsersVerifyEmailUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *UsersVerifyEmailUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewUsersVerifyEmailForbidden() *UsersVerifyEmailForbidden {
 	return &UsersVerifyEmailForbidden{}
 }
 
-/* UsersVerifyEmailForbidden describes a response with status code 403, with default header values.
+/*
+UsersVerifyEmailForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type UsersVerifyEmailForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this users verify email forbidden response has a 2xx status code
+func (o *UsersVerifyEmailForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users verify email forbidden response has a 3xx status code
+func (o *UsersVerifyEmailForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users verify email forbidden response has a 4xx status code
+func (o *UsersVerifyEmailForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users verify email forbidden response has a 5xx status code
+func (o *UsersVerifyEmailForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users verify email forbidden response a status code equal to that given
+func (o *UsersVerifyEmailForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UsersVerifyEmailForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UsersVerifyEmailForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UsersVerifyEmailForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewUsersVerifyEmailNotFound() *UsersVerifyEmailNotFound {
 	return &UsersVerifyEmailNotFound{}
 }
 
-/* UsersVerifyEmailNotFound describes a response with status code 404, with default header values.
+/*
+UsersVerifyEmailNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type UsersVerifyEmailNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this users verify email not found response has a 2xx status code
+func (o *UsersVerifyEmailNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users verify email not found response has a 3xx status code
+func (o *UsersVerifyEmailNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users verify email not found response has a 4xx status code
+func (o *UsersVerifyEmailNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users verify email not found response has a 5xx status code
+func (o *UsersVerifyEmailNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users verify email not found response a status code equal to that given
+func (o *UsersVerifyEmailNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UsersVerifyEmailNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UsersVerifyEmailNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UsersVerifyEmailNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewUsersVerifyEmailInternalServerError() *UsersVerifyEmailInternalServerErr
 	return &UsersVerifyEmailInternalServerError{}
 }
 
-/* UsersVerifyEmailInternalServerError describes a response with status code 500, with default header values.
+/*
+UsersVerifyEmailInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UsersVerifyEmailInternalServerError struct {
 }
 
+// IsSuccess returns true when this users verify email internal server error response has a 2xx status code
+func (o *UsersVerifyEmailInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users verify email internal server error response has a 3xx status code
+func (o *UsersVerifyEmailInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users verify email internal server error response has a 4xx status code
+func (o *UsersVerifyEmailInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this users verify email internal server error response has a 5xx status code
+func (o *UsersVerifyEmailInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this users verify email internal server error response a status code equal to that given
+func (o *UsersVerifyEmailInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UsersVerifyEmailInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailInternalServerError ", 500)
+}
+
+func (o *UsersVerifyEmailInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailInternalServerError ", 500)
 }
 

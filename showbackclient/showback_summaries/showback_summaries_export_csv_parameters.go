@@ -53,10 +53,12 @@ func NewShowbackSummariesExportCsvParamsWithHTTPClient(client *http.Client) *Sho
 	}
 }
 
-/* ShowbackSummariesExportCsvParams contains all the parameters to send to the API endpoint
-   for the showback summaries export csv operation.
+/*
+ShowbackSummariesExportCsvParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the showback summaries export csv operation.
+
+	Typically these are written to a http.Request.
 */
 type ShowbackSummariesExportCsvParams struct {
 

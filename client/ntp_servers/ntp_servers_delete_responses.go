@@ -75,7 +75,8 @@ func NewNtpServersDeleteOK() *NtpServersDeleteOK {
 	return &NtpServersDeleteOK{}
 }
 
-/* NtpServersDeleteOK describes a response with status code 200, with default header values.
+/*
+NtpServersDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -83,9 +84,39 @@ type NtpServersDeleteOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this ntp servers delete o k response has a 2xx status code
+func (o *NtpServersDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this ntp servers delete o k response has a 3xx status code
+func (o *NtpServersDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ntp servers delete o k response has a 4xx status code
+func (o *NtpServersDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ntp servers delete o k response has a 5xx status code
+func (o *NtpServersDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ntp servers delete o k response a status code equal to that given
+func (o *NtpServersDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *NtpServersDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *NtpServersDeleteOK) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *NtpServersDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -105,14 +136,44 @@ func NewNtpServersDeleteNoContent() *NtpServersDeleteNoContent {
 	return &NtpServersDeleteNoContent{}
 }
 
-/* NtpServersDeleteNoContent describes a response with status code 204, with default header values.
+/*
+NtpServersDeleteNoContent describes a response with status code 204, with default header values.
 
 Success
 */
 type NtpServersDeleteNoContent struct {
 }
 
+// IsSuccess returns true when this ntp servers delete no content response has a 2xx status code
+func (o *NtpServersDeleteNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this ntp servers delete no content response has a 3xx status code
+func (o *NtpServersDeleteNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ntp servers delete no content response has a 4xx status code
+func (o *NtpServersDeleteNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ntp servers delete no content response has a 5xx status code
+func (o *NtpServersDeleteNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ntp servers delete no content response a status code equal to that given
+func (o *NtpServersDeleteNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *NtpServersDeleteNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteNoContent ", 204)
+}
+
+func (o *NtpServersDeleteNoContent) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteNoContent ", 204)
 }
 
@@ -126,7 +187,8 @@ func NewNtpServersDeleteBadRequest() *NtpServersDeleteBadRequest {
 	return &NtpServersDeleteBadRequest{}
 }
 
-/* NtpServersDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+NtpServersDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -134,9 +196,39 @@ type NtpServersDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this ntp servers delete bad request response has a 2xx status code
+func (o *NtpServersDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ntp servers delete bad request response has a 3xx status code
+func (o *NtpServersDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ntp servers delete bad request response has a 4xx status code
+func (o *NtpServersDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ntp servers delete bad request response has a 5xx status code
+func (o *NtpServersDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ntp servers delete bad request response a status code equal to that given
+func (o *NtpServersDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *NtpServersDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *NtpServersDeleteBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *NtpServersDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -158,7 +250,8 @@ func NewNtpServersDeleteUnauthorized() *NtpServersDeleteUnauthorized {
 	return &NtpServersDeleteUnauthorized{}
 }
 
-/* NtpServersDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+NtpServersDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -166,9 +259,39 @@ type NtpServersDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ntp servers delete unauthorized response has a 2xx status code
+func (o *NtpServersDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ntp servers delete unauthorized response has a 3xx status code
+func (o *NtpServersDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ntp servers delete unauthorized response has a 4xx status code
+func (o *NtpServersDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ntp servers delete unauthorized response has a 5xx status code
+func (o *NtpServersDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ntp servers delete unauthorized response a status code equal to that given
+func (o *NtpServersDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *NtpServersDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *NtpServersDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *NtpServersDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -190,7 +313,8 @@ func NewNtpServersDeleteForbidden() *NtpServersDeleteForbidden {
 	return &NtpServersDeleteForbidden{}
 }
 
-/* NtpServersDeleteForbidden describes a response with status code 403, with default header values.
+/*
+NtpServersDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -198,9 +322,39 @@ type NtpServersDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ntp servers delete forbidden response has a 2xx status code
+func (o *NtpServersDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ntp servers delete forbidden response has a 3xx status code
+func (o *NtpServersDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ntp servers delete forbidden response has a 4xx status code
+func (o *NtpServersDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ntp servers delete forbidden response has a 5xx status code
+func (o *NtpServersDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ntp servers delete forbidden response a status code equal to that given
+func (o *NtpServersDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *NtpServersDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *NtpServersDeleteForbidden) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *NtpServersDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -222,7 +376,8 @@ func NewNtpServersDeleteNotFound() *NtpServersDeleteNotFound {
 	return &NtpServersDeleteNotFound{}
 }
 
-/* NtpServersDeleteNotFound describes a response with status code 404, with default header values.
+/*
+NtpServersDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -230,9 +385,39 @@ type NtpServersDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ntp servers delete not found response has a 2xx status code
+func (o *NtpServersDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ntp servers delete not found response has a 3xx status code
+func (o *NtpServersDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ntp servers delete not found response has a 4xx status code
+func (o *NtpServersDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ntp servers delete not found response has a 5xx status code
+func (o *NtpServersDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ntp servers delete not found response a status code equal to that given
+func (o *NtpServersDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *NtpServersDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *NtpServersDeleteNotFound) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *NtpServersDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -254,14 +439,44 @@ func NewNtpServersDeleteInternalServerError() *NtpServersDeleteInternalServerErr
 	return &NtpServersDeleteInternalServerError{}
 }
 
-/* NtpServersDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+NtpServersDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type NtpServersDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this ntp servers delete internal server error response has a 2xx status code
+func (o *NtpServersDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ntp servers delete internal server error response has a 3xx status code
+func (o *NtpServersDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ntp servers delete internal server error response has a 4xx status code
+func (o *NtpServersDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ntp servers delete internal server error response has a 5xx status code
+func (o *NtpServersDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this ntp servers delete internal server error response a status code equal to that given
+func (o *NtpServersDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *NtpServersDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteInternalServerError ", 500)
+}
+
+func (o *NtpServersDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteInternalServerError ", 500)
 }
 

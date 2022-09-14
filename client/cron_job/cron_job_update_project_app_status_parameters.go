@@ -54,10 +54,12 @@ func NewCronJobUpdateProjectAppStatusParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* CronJobUpdateProjectAppStatusParams contains all the parameters to send to the API endpoint
-   for the cron job update project app status operation.
+/*
+CronJobUpdateProjectAppStatusParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job update project app status operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobUpdateProjectAppStatusParams struct {
 

@@ -69,7 +69,8 @@ func NewGoogleCloudCreateOK() *GoogleCloudCreateOK {
 	return &GoogleCloudCreateOK{}
 }
 
-/* GoogleCloudCreateOK describes a response with status code 200, with default header values.
+/*
+GoogleCloudCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type GoogleCloudCreateOK struct {
 	Payload *models.APIResponse
 }
 
+// IsSuccess returns true when this google cloud create o k response has a 2xx status code
+func (o *GoogleCloudCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this google cloud create o k response has a 3xx status code
+func (o *GoogleCloudCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud create o k response has a 4xx status code
+func (o *GoogleCloudCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this google cloud create o k response has a 5xx status code
+func (o *GoogleCloudCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud create o k response a status code equal to that given
+func (o *GoogleCloudCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GoogleCloudCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *GoogleCloudCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *GoogleCloudCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewGoogleCloudCreateBadRequest() *GoogleCloudCreateBadRequest {
 	return &GoogleCloudCreateBadRequest{}
 }
 
-/* GoogleCloudCreateBadRequest describes a response with status code 400, with default header values.
+/*
+GoogleCloudCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type GoogleCloudCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this google cloud create bad request response has a 2xx status code
+func (o *GoogleCloudCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud create bad request response has a 3xx status code
+func (o *GoogleCloudCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud create bad request response has a 4xx status code
+func (o *GoogleCloudCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud create bad request response has a 5xx status code
+func (o *GoogleCloudCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud create bad request response a status code equal to that given
+func (o *GoogleCloudCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GoogleCloudCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *GoogleCloudCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *GoogleCloudCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewGoogleCloudCreateUnauthorized() *GoogleCloudCreateUnauthorized {
 	return &GoogleCloudCreateUnauthorized{}
 }
 
-/* GoogleCloudCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+GoogleCloudCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type GoogleCloudCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this google cloud create unauthorized response has a 2xx status code
+func (o *GoogleCloudCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud create unauthorized response has a 3xx status code
+func (o *GoogleCloudCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud create unauthorized response has a 4xx status code
+func (o *GoogleCloudCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud create unauthorized response has a 5xx status code
+func (o *GoogleCloudCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud create unauthorized response a status code equal to that given
+func (o *GoogleCloudCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GoogleCloudCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *GoogleCloudCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *GoogleCloudCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewGoogleCloudCreateForbidden() *GoogleCloudCreateForbidden {
 	return &GoogleCloudCreateForbidden{}
 }
 
-/* GoogleCloudCreateForbidden describes a response with status code 403, with default header values.
+/*
+GoogleCloudCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type GoogleCloudCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this google cloud create forbidden response has a 2xx status code
+func (o *GoogleCloudCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud create forbidden response has a 3xx status code
+func (o *GoogleCloudCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud create forbidden response has a 4xx status code
+func (o *GoogleCloudCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud create forbidden response has a 5xx status code
+func (o *GoogleCloudCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud create forbidden response a status code equal to that given
+func (o *GoogleCloudCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GoogleCloudCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GoogleCloudCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GoogleCloudCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewGoogleCloudCreateNotFound() *GoogleCloudCreateNotFound {
 	return &GoogleCloudCreateNotFound{}
 }
 
-/* GoogleCloudCreateNotFound describes a response with status code 404, with default header values.
+/*
+GoogleCloudCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type GoogleCloudCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this google cloud create not found response has a 2xx status code
+func (o *GoogleCloudCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud create not found response has a 3xx status code
+func (o *GoogleCloudCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud create not found response has a 4xx status code
+func (o *GoogleCloudCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud create not found response has a 5xx status code
+func (o *GoogleCloudCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud create not found response a status code equal to that given
+func (o *GoogleCloudCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GoogleCloudCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GoogleCloudCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GoogleCloudCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewGoogleCloudCreateInternalServerError() *GoogleCloudCreateInternalServerE
 	return &GoogleCloudCreateInternalServerError{}
 }
 
-/* GoogleCloudCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+GoogleCloudCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GoogleCloudCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this google cloud create internal server error response has a 2xx status code
+func (o *GoogleCloudCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud create internal server error response has a 3xx status code
+func (o *GoogleCloudCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud create internal server error response has a 4xx status code
+func (o *GoogleCloudCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this google cloud create internal server error response has a 5xx status code
+func (o *GoogleCloudCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this google cloud create internal server error response a status code equal to that given
+func (o *GoogleCloudCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GoogleCloudCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateInternalServerError ", 500)
+}
+
+func (o *GoogleCloudCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateInternalServerError ", 500)
 }
 

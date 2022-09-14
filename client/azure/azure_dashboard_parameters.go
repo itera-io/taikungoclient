@@ -54,10 +54,12 @@ func NewAzureDashboardParamsWithHTTPClient(client *http.Client) *AzureDashboardP
 	}
 }
 
-/* AzureDashboardParams contains all the parameters to send to the API endpoint
-   for the azure dashboard operation.
+/*
+AzureDashboardParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the azure dashboard operation.
+
+	Typically these are written to a http.Request.
 */
 type AzureDashboardParams struct {
 

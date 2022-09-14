@@ -54,10 +54,12 @@ func NewCronJobSyncBackupCredentialsParamsWithHTTPClient(client *http.Client) *C
 	}
 }
 
-/* CronJobSyncBackupCredentialsParams contains all the parameters to send to the API endpoint
-   for the cron job sync backup credentials operation.
+/*
+CronJobSyncBackupCredentialsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job sync backup credentials operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobSyncBackupCredentialsParams struct {
 

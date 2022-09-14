@@ -54,10 +54,12 @@ func NewCronJobDeleteExpiredRefreshTokensParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* CronJobDeleteExpiredRefreshTokensParams contains all the parameters to send to the API endpoint
-   for the cron job delete expired refresh tokens operation.
+/*
+CronJobDeleteExpiredRefreshTokensParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job delete expired refresh tokens operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobDeleteExpiredRefreshTokensParams struct {
 

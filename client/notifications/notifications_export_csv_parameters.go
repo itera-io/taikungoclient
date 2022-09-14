@@ -53,10 +53,12 @@ func NewNotificationsExportCsvParamsWithHTTPClient(client *http.Client) *Notific
 	}
 }
 
-/* NotificationsExportCsvParams contains all the parameters to send to the API endpoint
-   for the notifications export csv operation.
+/*
+NotificationsExportCsvParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the notifications export csv operation.
+
+	Typically these are written to a http.Request.
 */
 type NotificationsExportCsvParams struct {
 

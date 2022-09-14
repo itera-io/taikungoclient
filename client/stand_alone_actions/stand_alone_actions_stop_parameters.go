@@ -54,10 +54,12 @@ func NewStandAloneActionsStopParamsWithHTTPClient(client *http.Client) *StandAlo
 	}
 }
 
-/* StandAloneActionsStopParams contains all the parameters to send to the API endpoint
-   for the stand alone actions stop operation.
+/*
+StandAloneActionsStopParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone actions stop operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneActionsStopParams struct {
 

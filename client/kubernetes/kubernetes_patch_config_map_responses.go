@@ -69,7 +69,8 @@ func NewKubernetesPatchConfigMapOK() *KubernetesPatchConfigMapOK {
 	return &KubernetesPatchConfigMapOK{}
 }
 
-/* KubernetesPatchConfigMapOK describes a response with status code 200, with default header values.
+/*
+KubernetesPatchConfigMapOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesPatchConfigMapOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this kubernetes patch config map o k response has a 2xx status code
+func (o *KubernetesPatchConfigMapOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes patch config map o k response has a 3xx status code
+func (o *KubernetesPatchConfigMapOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch config map o k response has a 4xx status code
+func (o *KubernetesPatchConfigMapOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes patch config map o k response has a 5xx status code
+func (o *KubernetesPatchConfigMapOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch config map o k response a status code equal to that given
+func (o *KubernetesPatchConfigMapOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesPatchConfigMapOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesPatchConfigMapOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesPatchConfigMapOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesPatchConfigMapBadRequest() *KubernetesPatchConfigMapBadRequest
 	return &KubernetesPatchConfigMapBadRequest{}
 }
 
-/* KubernetesPatchConfigMapBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesPatchConfigMapBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesPatchConfigMapBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch config map bad request response has a 2xx status code
+func (o *KubernetesPatchConfigMapBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch config map bad request response has a 3xx status code
+func (o *KubernetesPatchConfigMapBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch config map bad request response has a 4xx status code
+func (o *KubernetesPatchConfigMapBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch config map bad request response has a 5xx status code
+func (o *KubernetesPatchConfigMapBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch config map bad request response a status code equal to that given
+func (o *KubernetesPatchConfigMapBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesPatchConfigMapBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesPatchConfigMapBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesPatchConfigMapBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesPatchConfigMapUnauthorized() *KubernetesPatchConfigMapUnauthor
 	return &KubernetesPatchConfigMapUnauthorized{}
 }
 
-/* KubernetesPatchConfigMapUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesPatchConfigMapUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesPatchConfigMapUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch config map unauthorized response has a 2xx status code
+func (o *KubernetesPatchConfigMapUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch config map unauthorized response has a 3xx status code
+func (o *KubernetesPatchConfigMapUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch config map unauthorized response has a 4xx status code
+func (o *KubernetesPatchConfigMapUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch config map unauthorized response has a 5xx status code
+func (o *KubernetesPatchConfigMapUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch config map unauthorized response a status code equal to that given
+func (o *KubernetesPatchConfigMapUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesPatchConfigMapUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesPatchConfigMapUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesPatchConfigMapUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesPatchConfigMapForbidden() *KubernetesPatchConfigMapForbidden {
 	return &KubernetesPatchConfigMapForbidden{}
 }
 
-/* KubernetesPatchConfigMapForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesPatchConfigMapForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesPatchConfigMapForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch config map forbidden response has a 2xx status code
+func (o *KubernetesPatchConfigMapForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch config map forbidden response has a 3xx status code
+func (o *KubernetesPatchConfigMapForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch config map forbidden response has a 4xx status code
+func (o *KubernetesPatchConfigMapForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch config map forbidden response has a 5xx status code
+func (o *KubernetesPatchConfigMapForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch config map forbidden response a status code equal to that given
+func (o *KubernetesPatchConfigMapForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesPatchConfigMapForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesPatchConfigMapForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesPatchConfigMapForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesPatchConfigMapNotFound() *KubernetesPatchConfigMapNotFound {
 	return &KubernetesPatchConfigMapNotFound{}
 }
 
-/* KubernetesPatchConfigMapNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesPatchConfigMapNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesPatchConfigMapNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch config map not found response has a 2xx status code
+func (o *KubernetesPatchConfigMapNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch config map not found response has a 3xx status code
+func (o *KubernetesPatchConfigMapNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch config map not found response has a 4xx status code
+func (o *KubernetesPatchConfigMapNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch config map not found response has a 5xx status code
+func (o *KubernetesPatchConfigMapNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch config map not found response a status code equal to that given
+func (o *KubernetesPatchConfigMapNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesPatchConfigMapNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesPatchConfigMapNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesPatchConfigMapNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesPatchConfigMapInternalServerError() *KubernetesPatchConfigMapI
 	return &KubernetesPatchConfigMapInternalServerError{}
 }
 
-/* KubernetesPatchConfigMapInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesPatchConfigMapInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesPatchConfigMapInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes patch config map internal server error response has a 2xx status code
+func (o *KubernetesPatchConfigMapInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch config map internal server error response has a 3xx status code
+func (o *KubernetesPatchConfigMapInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch config map internal server error response has a 4xx status code
+func (o *KubernetesPatchConfigMapInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes patch config map internal server error response has a 5xx status code
+func (o *KubernetesPatchConfigMapInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes patch config map internal server error response a status code equal to that given
+func (o *KubernetesPatchConfigMapInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesPatchConfigMapInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapInternalServerError ", 500)
+}
+
+func (o *KubernetesPatchConfigMapInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapInternalServerError ", 500)
 }
 

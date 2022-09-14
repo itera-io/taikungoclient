@@ -53,10 +53,12 @@ func NewShowbackCredentialsDropdownParamsWithHTTPClient(client *http.Client) *Sh
 	}
 }
 
-/* ShowbackCredentialsDropdownParams contains all the parameters to send to the API endpoint
-   for the showback credentials dropdown operation.
+/*
+ShowbackCredentialsDropdownParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the showback credentials dropdown operation.
+
+	Typically these are written to a http.Request.
 */
 type ShowbackCredentialsDropdownParams struct {
 

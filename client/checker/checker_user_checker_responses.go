@@ -69,7 +69,8 @@ func NewCheckerUserCheckerOK() *CheckerUserCheckerOK {
 	return &CheckerUserCheckerOK{}
 }
 
-/* CheckerUserCheckerOK describes a response with status code 200, with default header values.
+/*
+CheckerUserCheckerOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CheckerUserCheckerOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this checker user checker o k response has a 2xx status code
+func (o *CheckerUserCheckerOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this checker user checker o k response has a 3xx status code
+func (o *CheckerUserCheckerOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker user checker o k response has a 4xx status code
+func (o *CheckerUserCheckerOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this checker user checker o k response has a 5xx status code
+func (o *CheckerUserCheckerOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker user checker o k response a status code equal to that given
+func (o *CheckerUserCheckerOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CheckerUserCheckerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerOK  %+v", 200, o.Payload)
 }
+
+func (o *CheckerUserCheckerOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerOK  %+v", 200, o.Payload)
+}
+
 func (o *CheckerUserCheckerOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCheckerUserCheckerBadRequest() *CheckerUserCheckerBadRequest {
 	return &CheckerUserCheckerBadRequest{}
 }
 
-/* CheckerUserCheckerBadRequest describes a response with status code 400, with default header values.
+/*
+CheckerUserCheckerBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CheckerUserCheckerBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this checker user checker bad request response has a 2xx status code
+func (o *CheckerUserCheckerBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker user checker bad request response has a 3xx status code
+func (o *CheckerUserCheckerBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker user checker bad request response has a 4xx status code
+func (o *CheckerUserCheckerBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker user checker bad request response has a 5xx status code
+func (o *CheckerUserCheckerBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker user checker bad request response a status code equal to that given
+func (o *CheckerUserCheckerBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CheckerUserCheckerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CheckerUserCheckerBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CheckerUserCheckerBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCheckerUserCheckerUnauthorized() *CheckerUserCheckerUnauthorized {
 	return &CheckerUserCheckerUnauthorized{}
 }
 
-/* CheckerUserCheckerUnauthorized describes a response with status code 401, with default header values.
+/*
+CheckerUserCheckerUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CheckerUserCheckerUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker user checker unauthorized response has a 2xx status code
+func (o *CheckerUserCheckerUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker user checker unauthorized response has a 3xx status code
+func (o *CheckerUserCheckerUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker user checker unauthorized response has a 4xx status code
+func (o *CheckerUserCheckerUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker user checker unauthorized response has a 5xx status code
+func (o *CheckerUserCheckerUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker user checker unauthorized response a status code equal to that given
+func (o *CheckerUserCheckerUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CheckerUserCheckerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CheckerUserCheckerUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CheckerUserCheckerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCheckerUserCheckerForbidden() *CheckerUserCheckerForbidden {
 	return &CheckerUserCheckerForbidden{}
 }
 
-/* CheckerUserCheckerForbidden describes a response with status code 403, with default header values.
+/*
+CheckerUserCheckerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CheckerUserCheckerForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker user checker forbidden response has a 2xx status code
+func (o *CheckerUserCheckerForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker user checker forbidden response has a 3xx status code
+func (o *CheckerUserCheckerForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker user checker forbidden response has a 4xx status code
+func (o *CheckerUserCheckerForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker user checker forbidden response has a 5xx status code
+func (o *CheckerUserCheckerForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker user checker forbidden response a status code equal to that given
+func (o *CheckerUserCheckerForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CheckerUserCheckerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CheckerUserCheckerForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CheckerUserCheckerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCheckerUserCheckerNotFound() *CheckerUserCheckerNotFound {
 	return &CheckerUserCheckerNotFound{}
 }
 
-/* CheckerUserCheckerNotFound describes a response with status code 404, with default header values.
+/*
+CheckerUserCheckerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CheckerUserCheckerNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker user checker not found response has a 2xx status code
+func (o *CheckerUserCheckerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker user checker not found response has a 3xx status code
+func (o *CheckerUserCheckerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker user checker not found response has a 4xx status code
+func (o *CheckerUserCheckerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker user checker not found response has a 5xx status code
+func (o *CheckerUserCheckerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker user checker not found response a status code equal to that given
+func (o *CheckerUserCheckerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CheckerUserCheckerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CheckerUserCheckerNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CheckerUserCheckerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCheckerUserCheckerInternalServerError() *CheckerUserCheckerInternalServe
 	return &CheckerUserCheckerInternalServerError{}
 }
 
-/* CheckerUserCheckerInternalServerError describes a response with status code 500, with default header values.
+/*
+CheckerUserCheckerInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CheckerUserCheckerInternalServerError struct {
 }
 
+// IsSuccess returns true when this checker user checker internal server error response has a 2xx status code
+func (o *CheckerUserCheckerInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker user checker internal server error response has a 3xx status code
+func (o *CheckerUserCheckerInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker user checker internal server error response has a 4xx status code
+func (o *CheckerUserCheckerInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this checker user checker internal server error response has a 5xx status code
+func (o *CheckerUserCheckerInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this checker user checker internal server error response a status code equal to that given
+func (o *CheckerUserCheckerInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CheckerUserCheckerInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerInternalServerError ", 500)
+}
+
+func (o *CheckerUserCheckerInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerInternalServerError ", 500)
 }
 

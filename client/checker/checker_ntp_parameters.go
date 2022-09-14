@@ -54,10 +54,12 @@ func NewCheckerNtpParamsWithHTTPClient(client *http.Client) *CheckerNtpParams {
 	}
 }
 
-/* CheckerNtpParams contains all the parameters to send to the API endpoint
-   for the checker ntp operation.
+/*
+CheckerNtpParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checker ntp operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckerNtpParams struct {
 

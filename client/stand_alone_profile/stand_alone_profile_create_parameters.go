@@ -54,10 +54,12 @@ func NewStandAloneProfileCreateParamsWithHTTPClient(client *http.Client) *StandA
 	}
 }
 
-/* StandAloneProfileCreateParams contains all the parameters to send to the API endpoint
-   for the stand alone profile create operation.
+/*
+StandAloneProfileCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone profile create operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneProfileCreateParams struct {
 

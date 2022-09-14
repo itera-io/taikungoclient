@@ -53,10 +53,12 @@ func NewKubernetesProfilesKubernetesProfilesForOrganizationListParamsWithHTTPCli
 	}
 }
 
-/* KubernetesProfilesKubernetesProfilesForOrganizationListParams contains all the parameters to send to the API endpoint
-   for the kubernetes profiles kubernetes profiles for organization list operation.
+/*
+KubernetesProfilesKubernetesProfilesForOrganizationListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes profiles kubernetes profiles for organization list operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesProfilesKubernetesProfilesForOrganizationListParams struct {
 

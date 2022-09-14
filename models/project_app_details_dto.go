@@ -12,7 +12,6 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // ProjectAppDetailsDto project app details dto
@@ -23,6 +22,9 @@ type ProjectAppDetailsDto struct {
 	// app repo name
 	AppRepoName string `json:"appRepoName,omitempty"`
 
+	// auto sync
+	AutoSync bool `json:"autoSync"`
+
 	// catalog app name
 	CatalogAppName string `json:"catalogAppName,omitempty"`
 
@@ -32,22 +34,11 @@ type ProjectAppDetailsDto struct {
 	// catalog name
 	CatalogName string `json:"catalogName,omitempty"`
 
-	// created
-	// Format: date-time
-	Created *strfmt.DateTime `json:"created,omitempty"`
-
-	// created by
-	CreatedBy string `json:"createdBy,omitempty"`
+	// helm result
+	HelmResult string `json:"helmResult,omitempty"`
 
 	// id
 	ID int32 `json:"id,omitempty"`
-
-	// last modified
-	// Format: date-time
-	LastModified *strfmt.DateTime `json:"lastModified,omitempty"`
-
-	// last modified by
-	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
 
 	// logo
 	Logo string `json:"logo,omitempty"`
@@ -84,14 +75,6 @@ type ProjectAppDetailsDto struct {
 func (m *ProjectAppDetailsDto) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateCreated(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateLastModified(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateProjectAppParams(formats); err != nil {
 		res = append(res, err)
 	}
@@ -99,30 +82,6 @@ func (m *ProjectAppDetailsDto) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *ProjectAppDetailsDto) validateCreated(formats strfmt.Registry) error {
-	if swag.IsZero(m.Created) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("created", "body", "date-time", m.Created.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *ProjectAppDetailsDto) validateLastModified(formats strfmt.Registry) error {
-	if swag.IsZero(m.LastModified) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("lastModified", "body", "date-time", m.LastModified.String(), formats); err != nil {
-		return err
-	}
-
 	return nil
 }
 

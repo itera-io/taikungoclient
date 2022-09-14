@@ -54,10 +54,12 @@ func NewCheckerUserCheckerParamsWithHTTPClient(client *http.Client) *CheckerUser
 	}
 }
 
-/* CheckerUserCheckerParams contains all the parameters to send to the API endpoint
-   for the checker user checker operation.
+/*
+CheckerUserCheckerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checker user checker operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckerUserCheckerParams struct {
 

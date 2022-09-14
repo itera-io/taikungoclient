@@ -69,7 +69,8 @@ func NewCommonGetSortingElementsOK() *CommonGetSortingElementsOK {
 	return &CommonGetSortingElementsOK{}
 }
 
-/* CommonGetSortingElementsOK describes a response with status code 200, with default header values.
+/*
+CommonGetSortingElementsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CommonGetSortingElementsOK struct {
 	Payload []string
 }
 
+// IsSuccess returns true when this common get sorting elements o k response has a 2xx status code
+func (o *CommonGetSortingElementsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this common get sorting elements o k response has a 3xx status code
+func (o *CommonGetSortingElementsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get sorting elements o k response has a 4xx status code
+func (o *CommonGetSortingElementsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this common get sorting elements o k response has a 5xx status code
+func (o *CommonGetSortingElementsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this common get sorting elements o k response a status code equal to that given
+func (o *CommonGetSortingElementsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CommonGetSortingElementsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsOK  %+v", 200, o.Payload)
 }
+
+func (o *CommonGetSortingElementsOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsOK  %+v", 200, o.Payload)
+}
+
 func (o *CommonGetSortingElementsOK) GetPayload() []string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCommonGetSortingElementsBadRequest() *CommonGetSortingElementsBadRequest
 	return &CommonGetSortingElementsBadRequest{}
 }
 
-/* CommonGetSortingElementsBadRequest describes a response with status code 400, with default header values.
+/*
+CommonGetSortingElementsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CommonGetSortingElementsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this common get sorting elements bad request response has a 2xx status code
+func (o *CommonGetSortingElementsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this common get sorting elements bad request response has a 3xx status code
+func (o *CommonGetSortingElementsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get sorting elements bad request response has a 4xx status code
+func (o *CommonGetSortingElementsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this common get sorting elements bad request response has a 5xx status code
+func (o *CommonGetSortingElementsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this common get sorting elements bad request response a status code equal to that given
+func (o *CommonGetSortingElementsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CommonGetSortingElementsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CommonGetSortingElementsBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CommonGetSortingElementsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCommonGetSortingElementsUnauthorized() *CommonGetSortingElementsUnauthor
 	return &CommonGetSortingElementsUnauthorized{}
 }
 
-/* CommonGetSortingElementsUnauthorized describes a response with status code 401, with default header values.
+/*
+CommonGetSortingElementsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CommonGetSortingElementsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this common get sorting elements unauthorized response has a 2xx status code
+func (o *CommonGetSortingElementsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this common get sorting elements unauthorized response has a 3xx status code
+func (o *CommonGetSortingElementsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get sorting elements unauthorized response has a 4xx status code
+func (o *CommonGetSortingElementsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this common get sorting elements unauthorized response has a 5xx status code
+func (o *CommonGetSortingElementsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this common get sorting elements unauthorized response a status code equal to that given
+func (o *CommonGetSortingElementsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CommonGetSortingElementsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CommonGetSortingElementsUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CommonGetSortingElementsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCommonGetSortingElementsForbidden() *CommonGetSortingElementsForbidden {
 	return &CommonGetSortingElementsForbidden{}
 }
 
-/* CommonGetSortingElementsForbidden describes a response with status code 403, with default header values.
+/*
+CommonGetSortingElementsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CommonGetSortingElementsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this common get sorting elements forbidden response has a 2xx status code
+func (o *CommonGetSortingElementsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this common get sorting elements forbidden response has a 3xx status code
+func (o *CommonGetSortingElementsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get sorting elements forbidden response has a 4xx status code
+func (o *CommonGetSortingElementsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this common get sorting elements forbidden response has a 5xx status code
+func (o *CommonGetSortingElementsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this common get sorting elements forbidden response a status code equal to that given
+func (o *CommonGetSortingElementsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CommonGetSortingElementsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CommonGetSortingElementsForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CommonGetSortingElementsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCommonGetSortingElementsNotFound() *CommonGetSortingElementsNotFound {
 	return &CommonGetSortingElementsNotFound{}
 }
 
-/* CommonGetSortingElementsNotFound describes a response with status code 404, with default header values.
+/*
+CommonGetSortingElementsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CommonGetSortingElementsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this common get sorting elements not found response has a 2xx status code
+func (o *CommonGetSortingElementsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this common get sorting elements not found response has a 3xx status code
+func (o *CommonGetSortingElementsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get sorting elements not found response has a 4xx status code
+func (o *CommonGetSortingElementsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this common get sorting elements not found response has a 5xx status code
+func (o *CommonGetSortingElementsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this common get sorting elements not found response a status code equal to that given
+func (o *CommonGetSortingElementsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CommonGetSortingElementsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CommonGetSortingElementsNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CommonGetSortingElementsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCommonGetSortingElementsInternalServerError() *CommonGetSortingElementsI
 	return &CommonGetSortingElementsInternalServerError{}
 }
 
-/* CommonGetSortingElementsInternalServerError describes a response with status code 500, with default header values.
+/*
+CommonGetSortingElementsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CommonGetSortingElementsInternalServerError struct {
 }
 
+// IsSuccess returns true when this common get sorting elements internal server error response has a 2xx status code
+func (o *CommonGetSortingElementsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this common get sorting elements internal server error response has a 3xx status code
+func (o *CommonGetSortingElementsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this common get sorting elements internal server error response has a 4xx status code
+func (o *CommonGetSortingElementsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this common get sorting elements internal server error response has a 5xx status code
+func (o *CommonGetSortingElementsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this common get sorting elements internal server error response a status code equal to that given
+func (o *CommonGetSortingElementsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CommonGetSortingElementsInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsInternalServerError ", 500)
+}
+
+func (o *CommonGetSortingElementsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsInternalServerError ", 500)
 }
 

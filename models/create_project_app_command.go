@@ -19,6 +19,9 @@ import (
 // swagger:model CreateProjectAppCommand
 type CreateProjectAppCommand struct {
 
+	// auto sync
+	AutoSync bool `json:"autoSync"`
+
 	// catalog app Id
 	CatalogAppID int32 `json:"catalogAppId,omitempty"`
 

@@ -69,7 +69,8 @@ func NewCronJobDeleteAwsSpotInstancesOK() *CronJobDeleteAwsSpotInstancesOK {
 	return &CronJobDeleteAwsSpotInstancesOK{}
 }
 
-/* CronJobDeleteAwsSpotInstancesOK describes a response with status code 200, with default header values.
+/*
+CronJobDeleteAwsSpotInstancesOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CronJobDeleteAwsSpotInstancesOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this cron job delete aws spot instances o k response has a 2xx status code
+func (o *CronJobDeleteAwsSpotInstancesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cron job delete aws spot instances o k response has a 3xx status code
+func (o *CronJobDeleteAwsSpotInstancesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete aws spot instances o k response has a 4xx status code
+func (o *CronJobDeleteAwsSpotInstancesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job delete aws spot instances o k response has a 5xx status code
+func (o *CronJobDeleteAwsSpotInstancesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete aws spot instances o k response a status code equal to that given
+func (o *CronJobDeleteAwsSpotInstancesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CronJobDeleteAwsSpotInstancesOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesOK  %+v", 200, o.Payload)
 }
+
+func (o *CronJobDeleteAwsSpotInstancesOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesOK  %+v", 200, o.Payload)
+}
+
 func (o *CronJobDeleteAwsSpotInstancesOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCronJobDeleteAwsSpotInstancesBadRequest() *CronJobDeleteAwsSpotInstances
 	return &CronJobDeleteAwsSpotInstancesBadRequest{}
 }
 
-/* CronJobDeleteAwsSpotInstancesBadRequest describes a response with status code 400, with default header values.
+/*
+CronJobDeleteAwsSpotInstancesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CronJobDeleteAwsSpotInstancesBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete aws spot instances bad request response has a 2xx status code
+func (o *CronJobDeleteAwsSpotInstancesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete aws spot instances bad request response has a 3xx status code
+func (o *CronJobDeleteAwsSpotInstancesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete aws spot instances bad request response has a 4xx status code
+func (o *CronJobDeleteAwsSpotInstancesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete aws spot instances bad request response has a 5xx status code
+func (o *CronJobDeleteAwsSpotInstancesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete aws spot instances bad request response a status code equal to that given
+func (o *CronJobDeleteAwsSpotInstancesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CronJobDeleteAwsSpotInstancesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CronJobDeleteAwsSpotInstancesBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CronJobDeleteAwsSpotInstancesBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCronJobDeleteAwsSpotInstancesUnauthorized() *CronJobDeleteAwsSpotInstanc
 	return &CronJobDeleteAwsSpotInstancesUnauthorized{}
 }
 
-/* CronJobDeleteAwsSpotInstancesUnauthorized describes a response with status code 401, with default header values.
+/*
+CronJobDeleteAwsSpotInstancesUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CronJobDeleteAwsSpotInstancesUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete aws spot instances unauthorized response has a 2xx status code
+func (o *CronJobDeleteAwsSpotInstancesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete aws spot instances unauthorized response has a 3xx status code
+func (o *CronJobDeleteAwsSpotInstancesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete aws spot instances unauthorized response has a 4xx status code
+func (o *CronJobDeleteAwsSpotInstancesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete aws spot instances unauthorized response has a 5xx status code
+func (o *CronJobDeleteAwsSpotInstancesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete aws spot instances unauthorized response a status code equal to that given
+func (o *CronJobDeleteAwsSpotInstancesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CronJobDeleteAwsSpotInstancesUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CronJobDeleteAwsSpotInstancesUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CronJobDeleteAwsSpotInstancesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCronJobDeleteAwsSpotInstancesForbidden() *CronJobDeleteAwsSpotInstancesF
 	return &CronJobDeleteAwsSpotInstancesForbidden{}
 }
 
-/* CronJobDeleteAwsSpotInstancesForbidden describes a response with status code 403, with default header values.
+/*
+CronJobDeleteAwsSpotInstancesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CronJobDeleteAwsSpotInstancesForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete aws spot instances forbidden response has a 2xx status code
+func (o *CronJobDeleteAwsSpotInstancesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete aws spot instances forbidden response has a 3xx status code
+func (o *CronJobDeleteAwsSpotInstancesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete aws spot instances forbidden response has a 4xx status code
+func (o *CronJobDeleteAwsSpotInstancesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete aws spot instances forbidden response has a 5xx status code
+func (o *CronJobDeleteAwsSpotInstancesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete aws spot instances forbidden response a status code equal to that given
+func (o *CronJobDeleteAwsSpotInstancesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CronJobDeleteAwsSpotInstancesForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CronJobDeleteAwsSpotInstancesForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CronJobDeleteAwsSpotInstancesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCronJobDeleteAwsSpotInstancesNotFound() *CronJobDeleteAwsSpotInstancesNo
 	return &CronJobDeleteAwsSpotInstancesNotFound{}
 }
 
-/* CronJobDeleteAwsSpotInstancesNotFound describes a response with status code 404, with default header values.
+/*
+CronJobDeleteAwsSpotInstancesNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CronJobDeleteAwsSpotInstancesNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete aws spot instances not found response has a 2xx status code
+func (o *CronJobDeleteAwsSpotInstancesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete aws spot instances not found response has a 3xx status code
+func (o *CronJobDeleteAwsSpotInstancesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete aws spot instances not found response has a 4xx status code
+func (o *CronJobDeleteAwsSpotInstancesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete aws spot instances not found response has a 5xx status code
+func (o *CronJobDeleteAwsSpotInstancesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete aws spot instances not found response a status code equal to that given
+func (o *CronJobDeleteAwsSpotInstancesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CronJobDeleteAwsSpotInstancesNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CronJobDeleteAwsSpotInstancesNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CronJobDeleteAwsSpotInstancesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCronJobDeleteAwsSpotInstancesInternalServerError() *CronJobDeleteAwsSpot
 	return &CronJobDeleteAwsSpotInstancesInternalServerError{}
 }
 
-/* CronJobDeleteAwsSpotInstancesInternalServerError describes a response with status code 500, with default header values.
+/*
+CronJobDeleteAwsSpotInstancesInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CronJobDeleteAwsSpotInstancesInternalServerError struct {
 }
 
+// IsSuccess returns true when this cron job delete aws spot instances internal server error response has a 2xx status code
+func (o *CronJobDeleteAwsSpotInstancesInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete aws spot instances internal server error response has a 3xx status code
+func (o *CronJobDeleteAwsSpotInstancesInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete aws spot instances internal server error response has a 4xx status code
+func (o *CronJobDeleteAwsSpotInstancesInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job delete aws spot instances internal server error response has a 5xx status code
+func (o *CronJobDeleteAwsSpotInstancesInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cron job delete aws spot instances internal server error response a status code equal to that given
+func (o *CronJobDeleteAwsSpotInstancesInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CronJobDeleteAwsSpotInstancesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesInternalServerError ", 500)
+}
+
+func (o *CronJobDeleteAwsSpotInstancesInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesInternalServerError ", 500)
 }
 

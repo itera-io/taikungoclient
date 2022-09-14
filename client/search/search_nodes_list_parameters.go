@@ -54,10 +54,12 @@ func NewSearchNodesListParamsWithHTTPClient(client *http.Client) *SearchNodesLis
 	}
 }
 
-/* SearchNodesListParams contains all the parameters to send to the API endpoint
-   for the search nodes list operation.
+/*
+SearchNodesListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search nodes list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchNodesListParams struct {
 

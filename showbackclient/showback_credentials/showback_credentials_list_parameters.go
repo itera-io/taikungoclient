@@ -53,10 +53,12 @@ func NewShowbackCredentialsListParamsWithHTTPClient(client *http.Client) *Showba
 	}
 }
 
-/* ShowbackCredentialsListParams contains all the parameters to send to the API endpoint
-   for the showback credentials list operation.
+/*
+ShowbackCredentialsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the showback credentials list operation.
+
+	Typically these are written to a http.Request.
 */
 type ShowbackCredentialsListParams struct {
 

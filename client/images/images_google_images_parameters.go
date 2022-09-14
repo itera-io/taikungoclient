@@ -53,10 +53,12 @@ func NewImagesGoogleImagesParamsWithHTTPClient(client *http.Client) *ImagesGoogl
 	}
 }
 
-/* ImagesGoogleImagesParams contains all the parameters to send to the API endpoint
-   for the images google images operation.
+/*
+ImagesGoogleImagesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the images google images operation.
+
+	Typically these are written to a http.Request.
 */
 type ImagesGoogleImagesParams struct {
 

@@ -69,7 +69,8 @@ func NewTicketArticleListOK() *TicketArticleListOK {
 	return &TicketArticleListOK{}
 }
 
-/* TicketArticleListOK describes a response with status code 200, with default header values.
+/*
+TicketArticleListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type TicketArticleListOK struct {
 	Payload *models.ArticleList
 }
 
+// IsSuccess returns true when this ticket article list o k response has a 2xx status code
+func (o *TicketArticleListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this ticket article list o k response has a 3xx status code
+func (o *TicketArticleListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket article list o k response has a 4xx status code
+func (o *TicketArticleListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ticket article list o k response has a 5xx status code
+func (o *TicketArticleListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket article list o k response a status code equal to that given
+func (o *TicketArticleListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *TicketArticleListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListOK  %+v", 200, o.Payload)
 }
+
+func (o *TicketArticleListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListOK  %+v", 200, o.Payload)
+}
+
 func (o *TicketArticleListOK) GetPayload() *models.ArticleList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewTicketArticleListBadRequest() *TicketArticleListBadRequest {
 	return &TicketArticleListBadRequest{}
 }
 
-/* TicketArticleListBadRequest describes a response with status code 400, with default header values.
+/*
+TicketArticleListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type TicketArticleListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this ticket article list bad request response has a 2xx status code
+func (o *TicketArticleListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket article list bad request response has a 3xx status code
+func (o *TicketArticleListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket article list bad request response has a 4xx status code
+func (o *TicketArticleListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket article list bad request response has a 5xx status code
+func (o *TicketArticleListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket article list bad request response a status code equal to that given
+func (o *TicketArticleListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *TicketArticleListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *TicketArticleListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *TicketArticleListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewTicketArticleListUnauthorized() *TicketArticleListUnauthorized {
 	return &TicketArticleListUnauthorized{}
 }
 
-/* TicketArticleListUnauthorized describes a response with status code 401, with default header values.
+/*
+TicketArticleListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type TicketArticleListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ticket article list unauthorized response has a 2xx status code
+func (o *TicketArticleListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket article list unauthorized response has a 3xx status code
+func (o *TicketArticleListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket article list unauthorized response has a 4xx status code
+func (o *TicketArticleListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket article list unauthorized response has a 5xx status code
+func (o *TicketArticleListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket article list unauthorized response a status code equal to that given
+func (o *TicketArticleListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *TicketArticleListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *TicketArticleListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *TicketArticleListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewTicketArticleListForbidden() *TicketArticleListForbidden {
 	return &TicketArticleListForbidden{}
 }
 
-/* TicketArticleListForbidden describes a response with status code 403, with default header values.
+/*
+TicketArticleListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type TicketArticleListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ticket article list forbidden response has a 2xx status code
+func (o *TicketArticleListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket article list forbidden response has a 3xx status code
+func (o *TicketArticleListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket article list forbidden response has a 4xx status code
+func (o *TicketArticleListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket article list forbidden response has a 5xx status code
+func (o *TicketArticleListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket article list forbidden response a status code equal to that given
+func (o *TicketArticleListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *TicketArticleListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *TicketArticleListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *TicketArticleListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewTicketArticleListNotFound() *TicketArticleListNotFound {
 	return &TicketArticleListNotFound{}
 }
 
-/* TicketArticleListNotFound describes a response with status code 404, with default header values.
+/*
+TicketArticleListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type TicketArticleListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ticket article list not found response has a 2xx status code
+func (o *TicketArticleListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket article list not found response has a 3xx status code
+func (o *TicketArticleListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket article list not found response has a 4xx status code
+func (o *TicketArticleListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket article list not found response has a 5xx status code
+func (o *TicketArticleListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket article list not found response a status code equal to that given
+func (o *TicketArticleListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *TicketArticleListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *TicketArticleListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *TicketArticleListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewTicketArticleListInternalServerError() *TicketArticleListInternalServerE
 	return &TicketArticleListInternalServerError{}
 }
 
-/* TicketArticleListInternalServerError describes a response with status code 500, with default header values.
+/*
+TicketArticleListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type TicketArticleListInternalServerError struct {
 }
 
+// IsSuccess returns true when this ticket article list internal server error response has a 2xx status code
+func (o *TicketArticleListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket article list internal server error response has a 3xx status code
+func (o *TicketArticleListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket article list internal server error response has a 4xx status code
+func (o *TicketArticleListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ticket article list internal server error response has a 5xx status code
+func (o *TicketArticleListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this ticket article list internal server error response a status code equal to that given
+func (o *TicketArticleListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *TicketArticleListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListInternalServerError ", 500)
+}
+
+func (o *TicketArticleListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListInternalServerError ", 500)
 }
 

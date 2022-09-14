@@ -72,7 +72,7 @@ type ClientService interface {
 }
 
 /*
-  CatalogAppLockManager locks unlock catalog app
+CatalogAppLockManager locks unlock catalog app
 */
 func (a *Client) CatalogAppLockManager(params *CatalogAppLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogAppLockManagerOK, error) {
 	// TODO: Validate the params before sending
@@ -111,7 +111,7 @@ func (a *Client) CatalogAppLockManager(params *CatalogAppLockManagerParams, auth
 }
 
 /*
-  CatalogAvailablePackageDetails availables helm package details
+CatalogAvailablePackageDetails availables helm package details
 */
 func (a *Client) CatalogAvailablePackageDetails(params *CatalogAvailablePackageDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogAvailablePackageDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -150,7 +150,7 @@ func (a *Client) CatalogAvailablePackageDetails(params *CatalogAvailablePackageD
 }
 
 /*
-  CatalogAvailableVersions gets available versions for catalog app
+CatalogAvailableVersions gets available versions for catalog app
 */
 func (a *Client) CatalogAvailableVersions(params *CatalogAvailableVersionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogAvailableVersionsOK, error) {
 	// TODO: Validate the params before sending
@@ -189,7 +189,7 @@ func (a *Client) CatalogAvailableVersions(params *CatalogAvailableVersionsParams
 }
 
 /*
-  CatalogBindProjects binds unbind projects to catalog
+CatalogBindProjects binds unbind projects to catalog
 */
 func (a *Client) CatalogBindProjects(params *CatalogBindProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogBindProjectsOK, error) {
 	// TODO: Validate the params before sending
@@ -228,7 +228,7 @@ func (a *Client) CatalogBindProjects(params *CatalogBindProjectsParams, authInfo
 }
 
 /*
-  CatalogCatalogAppDetails catalogs app details
+CatalogCatalogAppDetails catalogs app details
 */
 func (a *Client) CatalogCatalogAppDetails(params *CatalogCatalogAppDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -267,7 +267,7 @@ func (a *Client) CatalogCatalogAppDetails(params *CatalogCatalogAppDetailsParams
 }
 
 /*
-  CatalogCatalogAppParamsDetails catalogs app params details
+CatalogCatalogAppParamsDetails catalogs app params details
 */
 func (a *Client) CatalogCatalogAppParamsDetails(params *CatalogCatalogAppParamsDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppParamsDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -306,7 +306,7 @@ func (a *Client) CatalogCatalogAppParamsDetails(params *CatalogCatalogAppParamsD
 }
 
 /*
-  CatalogCatalogAppValue gets catalog app yaml value
+CatalogCatalogAppValue gets catalog app yaml value
 */
 func (a *Client) CatalogCatalogAppValue(params *CatalogCatalogAppValueParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppValueOK, error) {
 	// TODO: Validate the params before sending
@@ -345,7 +345,7 @@ func (a *Client) CatalogCatalogAppValue(params *CatalogCatalogAppValueParams, au
 }
 
 /*
-  CatalogCatalogAppValueAutocomplete gets autocomplete dictionary for catalog app value
+CatalogCatalogAppValueAutocomplete gets autocomplete dictionary for catalog app value
 */
 func (a *Client) CatalogCatalogAppValueAutocomplete(params *CatalogCatalogAppValueAutocompleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppValueAutocompleteOK, error) {
 	// TODO: Validate the params before sending
@@ -384,7 +384,7 @@ func (a *Client) CatalogCatalogAppValueAutocomplete(params *CatalogCatalogAppVal
 }
 
 /*
-  CatalogCatalogDropdown catalogs dropdown list for organization
+CatalogCatalogDropdown catalogs dropdown list for organization
 */
 func (a *Client) CatalogCatalogDropdown(params *CatalogCatalogDropdownParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogDropdownOK, error) {
 	// TODO: Validate the params before sending
@@ -423,7 +423,7 @@ func (a *Client) CatalogCatalogDropdown(params *CatalogCatalogDropdownParams, au
 }
 
 /*
-  CatalogCatalogList catalogs list for organization
+CatalogCatalogList catalogs list for organization
 */
 func (a *Client) CatalogCatalogList(params *CatalogCatalogListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogListOK, error) {
 	// TODO: Validate the params before sending
@@ -462,7 +462,7 @@ func (a *Client) CatalogCatalogList(params *CatalogCatalogListParams, authInfo r
 }
 
 /*
-  CatalogCreateCatalog creates catalog for organization
+CatalogCreateCatalog creates catalog for organization
 */
 func (a *Client) CatalogCreateCatalog(params *CatalogCreateCatalogParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCreateCatalogOK, error) {
 	// TODO: Validate the params before sending
@@ -501,7 +501,7 @@ func (a *Client) CatalogCreateCatalog(params *CatalogCreateCatalogParams, authIn
 }
 
 /*
-  CatalogCreateCatalogApp adds application to catalog
+CatalogCreateCatalogApp adds application to catalog
 */
 func (a *Client) CatalogCreateCatalogApp(params *CatalogCreateCatalogAppParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCreateCatalogAppOK, error) {
 	// TODO: Validate the params before sending
@@ -540,7 +540,7 @@ func (a *Client) CatalogCreateCatalogApp(params *CatalogCreateCatalogAppParams, 
 }
 
 /*
-  CatalogDeleteCatalog deletes catalog
+CatalogDeleteCatalog deletes catalog
 */
 func (a *Client) CatalogDeleteCatalog(params *CatalogDeleteCatalogParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogDeleteCatalogOK, error) {
 	// TODO: Validate the params before sending
@@ -579,7 +579,7 @@ func (a *Client) CatalogDeleteCatalog(params *CatalogDeleteCatalogParams, authIn
 }
 
 /*
-  CatalogDeleteCatalogApp deletes catalog app by catalog app Id
+CatalogDeleteCatalogApp deletes catalog app by catalog app Id
 */
 func (a *Client) CatalogDeleteCatalogApp(params *CatalogDeleteCatalogAppParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogDeleteCatalogAppOK, error) {
 	// TODO: Validate the params before sending
@@ -618,7 +618,7 @@ func (a *Client) CatalogDeleteCatalogApp(params *CatalogDeleteCatalogAppParams, 
 }
 
 /*
-  CatalogEditCatalog edits catalog for organization
+CatalogEditCatalog edits catalog for organization
 */
 func (a *Client) CatalogEditCatalog(params *CatalogEditCatalogParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogEditCatalogOK, error) {
 	// TODO: Validate the params before sending
@@ -657,7 +657,7 @@ func (a *Client) CatalogEditCatalog(params *CatalogEditCatalogParams, authInfo r
 }
 
 /*
-  CatalogEditCatalogAppParams edits catalog app params
+CatalogEditCatalogAppParams edits catalog app params
 */
 func (a *Client) CatalogEditCatalogAppParams(params *CatalogEditCatalogAppParamsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogEditCatalogAppParamsOK, error) {
 	// TODO: Validate the params before sending
@@ -696,7 +696,7 @@ func (a *Client) CatalogEditCatalogAppParams(params *CatalogEditCatalogAppParams
 }
 
 /*
-  CatalogEditCatalogAppVersion edits catalog app version
+CatalogEditCatalogAppVersion edits catalog app version
 */
 func (a *Client) CatalogEditCatalogAppVersion(params *CatalogEditCatalogAppVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogEditCatalogAppVersionOK, error) {
 	// TODO: Validate the params before sending
@@ -735,7 +735,7 @@ func (a *Client) CatalogEditCatalogAppVersion(params *CatalogEditCatalogAppVersi
 }
 
 /*
-  CatalogList retrieves all available packages
+CatalogList retrieves all available packages
 */
 func (a *Client) CatalogList(params *CatalogListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogListOK, error) {
 	// TODO: Validate the params before sending
@@ -774,7 +774,7 @@ func (a *Client) CatalogList(params *CatalogListParams, authInfo runtime.ClientA
 }
 
 /*
-  CatalogLockManager locks unlock catalog
+CatalogLockManager locks unlock catalog
 */
 func (a *Client) CatalogLockManager(params *CatalogLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogLockManagerOK, error) {
 	// TODO: Validate the params before sending

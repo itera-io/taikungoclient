@@ -54,10 +54,12 @@ func NewStandAlonePurgeParamsWithHTTPClient(client *http.Client) *StandAlonePurg
 	}
 }
 
-/* StandAlonePurgeParams contains all the parameters to send to the API endpoint
-   for the stand alone purge operation.
+/*
+StandAlonePurgeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone purge operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAlonePurgeParams struct {
 

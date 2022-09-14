@@ -69,7 +69,8 @@ func NewKubernetesDownloadOK() *KubernetesDownloadOK {
 	return &KubernetesDownloadOK{}
 }
 
-/* KubernetesDownloadOK describes a response with status code 200, with default header values.
+/*
+KubernetesDownloadOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesDownloadOK struct {
 	Payload interface{}
 }
 
+// IsSuccess returns true when this kubernetes download o k response has a 2xx status code
+func (o *KubernetesDownloadOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes download o k response has a 3xx status code
+func (o *KubernetesDownloadOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes download o k response has a 4xx status code
+func (o *KubernetesDownloadOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes download o k response has a 5xx status code
+func (o *KubernetesDownloadOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes download o k response a status code equal to that given
+func (o *KubernetesDownloadOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesDownloadOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesDownloadOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesDownloadOK) GetPayload() interface{} {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesDownloadBadRequest() *KubernetesDownloadBadRequest {
 	return &KubernetesDownloadBadRequest{}
 }
 
-/* KubernetesDownloadBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesDownloadBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesDownloadBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes download bad request response has a 2xx status code
+func (o *KubernetesDownloadBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes download bad request response has a 3xx status code
+func (o *KubernetesDownloadBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes download bad request response has a 4xx status code
+func (o *KubernetesDownloadBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes download bad request response has a 5xx status code
+func (o *KubernetesDownloadBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes download bad request response a status code equal to that given
+func (o *KubernetesDownloadBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesDownloadBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesDownloadBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesDownloadBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesDownloadUnauthorized() *KubernetesDownloadUnauthorized {
 	return &KubernetesDownloadUnauthorized{}
 }
 
-/* KubernetesDownloadUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesDownloadUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesDownloadUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes download unauthorized response has a 2xx status code
+func (o *KubernetesDownloadUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes download unauthorized response has a 3xx status code
+func (o *KubernetesDownloadUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes download unauthorized response has a 4xx status code
+func (o *KubernetesDownloadUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes download unauthorized response has a 5xx status code
+func (o *KubernetesDownloadUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes download unauthorized response a status code equal to that given
+func (o *KubernetesDownloadUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesDownloadUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesDownloadUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesDownloadUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesDownloadForbidden() *KubernetesDownloadForbidden {
 	return &KubernetesDownloadForbidden{}
 }
 
-/* KubernetesDownloadForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesDownloadForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesDownloadForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes download forbidden response has a 2xx status code
+func (o *KubernetesDownloadForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes download forbidden response has a 3xx status code
+func (o *KubernetesDownloadForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes download forbidden response has a 4xx status code
+func (o *KubernetesDownloadForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes download forbidden response has a 5xx status code
+func (o *KubernetesDownloadForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes download forbidden response a status code equal to that given
+func (o *KubernetesDownloadForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesDownloadForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesDownloadForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesDownloadForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesDownloadNotFound() *KubernetesDownloadNotFound {
 	return &KubernetesDownloadNotFound{}
 }
 
-/* KubernetesDownloadNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesDownloadNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesDownloadNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes download not found response has a 2xx status code
+func (o *KubernetesDownloadNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes download not found response has a 3xx status code
+func (o *KubernetesDownloadNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes download not found response has a 4xx status code
+func (o *KubernetesDownloadNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes download not found response has a 5xx status code
+func (o *KubernetesDownloadNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes download not found response a status code equal to that given
+func (o *KubernetesDownloadNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesDownloadNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesDownloadNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesDownloadNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesDownloadInternalServerError() *KubernetesDownloadInternalServe
 	return &KubernetesDownloadInternalServerError{}
 }
 
-/* KubernetesDownloadInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesDownloadInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesDownloadInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes download internal server error response has a 2xx status code
+func (o *KubernetesDownloadInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes download internal server error response has a 3xx status code
+func (o *KubernetesDownloadInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes download internal server error response has a 4xx status code
+func (o *KubernetesDownloadInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes download internal server error response has a 5xx status code
+func (o *KubernetesDownloadInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes download internal server error response a status code equal to that given
+func (o *KubernetesDownloadInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesDownloadInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadInternalServerError ", 500)
+}
+
+func (o *KubernetesDownloadInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadInternalServerError ", 500)
 }
 

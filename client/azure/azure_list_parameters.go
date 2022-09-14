@@ -53,10 +53,12 @@ func NewAzureListParamsWithHTTPClient(client *http.Client) *AzureListParams {
 	}
 }
 
-/* AzureListParams contains all the parameters to send to the API endpoint
-   for the azure list operation.
+/*
+AzureListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the azure list operation.
+
+	Typically these are written to a http.Request.
 */
 type AzureListParams struct {
 

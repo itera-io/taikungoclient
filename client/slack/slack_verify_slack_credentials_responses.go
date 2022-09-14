@@ -69,7 +69,8 @@ func NewSlackVerifySlackCredentialsOK() *SlackVerifySlackCredentialsOK {
 	return &SlackVerifySlackCredentialsOK{}
 }
 
-/* SlackVerifySlackCredentialsOK describes a response with status code 200, with default header values.
+/*
+SlackVerifySlackCredentialsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SlackVerifySlackCredentialsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this slack verify slack credentials o k response has a 2xx status code
+func (o *SlackVerifySlackCredentialsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this slack verify slack credentials o k response has a 3xx status code
+func (o *SlackVerifySlackCredentialsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack verify slack credentials o k response has a 4xx status code
+func (o *SlackVerifySlackCredentialsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this slack verify slack credentials o k response has a 5xx status code
+func (o *SlackVerifySlackCredentialsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack verify slack credentials o k response a status code equal to that given
+func (o *SlackVerifySlackCredentialsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SlackVerifySlackCredentialsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsOK  %+v", 200, o.Payload)
 }
+
+func (o *SlackVerifySlackCredentialsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsOK  %+v", 200, o.Payload)
+}
+
 func (o *SlackVerifySlackCredentialsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewSlackVerifySlackCredentialsBadRequest() *SlackVerifySlackCredentialsBadR
 	return &SlackVerifySlackCredentialsBadRequest{}
 }
 
-/* SlackVerifySlackCredentialsBadRequest describes a response with status code 400, with default header values.
+/*
+SlackVerifySlackCredentialsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type SlackVerifySlackCredentialsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this slack verify slack credentials bad request response has a 2xx status code
+func (o *SlackVerifySlackCredentialsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack verify slack credentials bad request response has a 3xx status code
+func (o *SlackVerifySlackCredentialsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack verify slack credentials bad request response has a 4xx status code
+func (o *SlackVerifySlackCredentialsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack verify slack credentials bad request response has a 5xx status code
+func (o *SlackVerifySlackCredentialsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack verify slack credentials bad request response a status code equal to that given
+func (o *SlackVerifySlackCredentialsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SlackVerifySlackCredentialsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SlackVerifySlackCredentialsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SlackVerifySlackCredentialsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewSlackVerifySlackCredentialsUnauthorized() *SlackVerifySlackCredentialsUn
 	return &SlackVerifySlackCredentialsUnauthorized{}
 }
 
-/* SlackVerifySlackCredentialsUnauthorized describes a response with status code 401, with default header values.
+/*
+SlackVerifySlackCredentialsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type SlackVerifySlackCredentialsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this slack verify slack credentials unauthorized response has a 2xx status code
+func (o *SlackVerifySlackCredentialsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack verify slack credentials unauthorized response has a 3xx status code
+func (o *SlackVerifySlackCredentialsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack verify slack credentials unauthorized response has a 4xx status code
+func (o *SlackVerifySlackCredentialsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack verify slack credentials unauthorized response has a 5xx status code
+func (o *SlackVerifySlackCredentialsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack verify slack credentials unauthorized response a status code equal to that given
+func (o *SlackVerifySlackCredentialsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SlackVerifySlackCredentialsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SlackVerifySlackCredentialsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SlackVerifySlackCredentialsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewSlackVerifySlackCredentialsForbidden() *SlackVerifySlackCredentialsForbi
 	return &SlackVerifySlackCredentialsForbidden{}
 }
 
-/* SlackVerifySlackCredentialsForbidden describes a response with status code 403, with default header values.
+/*
+SlackVerifySlackCredentialsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type SlackVerifySlackCredentialsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this slack verify slack credentials forbidden response has a 2xx status code
+func (o *SlackVerifySlackCredentialsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack verify slack credentials forbidden response has a 3xx status code
+func (o *SlackVerifySlackCredentialsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack verify slack credentials forbidden response has a 4xx status code
+func (o *SlackVerifySlackCredentialsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack verify slack credentials forbidden response has a 5xx status code
+func (o *SlackVerifySlackCredentialsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack verify slack credentials forbidden response a status code equal to that given
+func (o *SlackVerifySlackCredentialsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SlackVerifySlackCredentialsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SlackVerifySlackCredentialsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SlackVerifySlackCredentialsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewSlackVerifySlackCredentialsNotFound() *SlackVerifySlackCredentialsNotFou
 	return &SlackVerifySlackCredentialsNotFound{}
 }
 
-/* SlackVerifySlackCredentialsNotFound describes a response with status code 404, with default header values.
+/*
+SlackVerifySlackCredentialsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type SlackVerifySlackCredentialsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this slack verify slack credentials not found response has a 2xx status code
+func (o *SlackVerifySlackCredentialsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack verify slack credentials not found response has a 3xx status code
+func (o *SlackVerifySlackCredentialsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack verify slack credentials not found response has a 4xx status code
+func (o *SlackVerifySlackCredentialsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack verify slack credentials not found response has a 5xx status code
+func (o *SlackVerifySlackCredentialsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack verify slack credentials not found response a status code equal to that given
+func (o *SlackVerifySlackCredentialsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SlackVerifySlackCredentialsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SlackVerifySlackCredentialsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SlackVerifySlackCredentialsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewSlackVerifySlackCredentialsInternalServerError() *SlackVerifySlackCreden
 	return &SlackVerifySlackCredentialsInternalServerError{}
 }
 
-/* SlackVerifySlackCredentialsInternalServerError describes a response with status code 500, with default header values.
+/*
+SlackVerifySlackCredentialsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SlackVerifySlackCredentialsInternalServerError struct {
 }
 
+// IsSuccess returns true when this slack verify slack credentials internal server error response has a 2xx status code
+func (o *SlackVerifySlackCredentialsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack verify slack credentials internal server error response has a 3xx status code
+func (o *SlackVerifySlackCredentialsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack verify slack credentials internal server error response has a 4xx status code
+func (o *SlackVerifySlackCredentialsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this slack verify slack credentials internal server error response has a 5xx status code
+func (o *SlackVerifySlackCredentialsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this slack verify slack credentials internal server error response a status code equal to that given
+func (o *SlackVerifySlackCredentialsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SlackVerifySlackCredentialsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsInternalServerError ", 500)
+}
+
+func (o *SlackVerifySlackCredentialsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsInternalServerError ", 500)
 }
 

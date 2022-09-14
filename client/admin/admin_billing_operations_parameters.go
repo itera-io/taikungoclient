@@ -54,10 +54,12 @@ func NewAdminBillingOperationsParamsWithHTTPClient(client *http.Client) *AdminBi
 	}
 }
 
-/* AdminBillingOperationsParams contains all the parameters to send to the API endpoint
-   for the admin billing operations operation.
+/*
+AdminBillingOperationsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the admin billing operations operation.
+
+	Typically these are written to a http.Request.
 */
 type AdminBillingOperationsParams struct {
 

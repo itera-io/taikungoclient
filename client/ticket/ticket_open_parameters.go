@@ -54,10 +54,12 @@ func NewTicketOpenParamsWithHTTPClient(client *http.Client) *TicketOpenParams {
 	}
 }
 
-/* TicketOpenParams contains all the parameters to send to the API endpoint
-   for the ticket open operation.
+/*
+TicketOpenParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ticket open operation.
+
+	Typically these are written to a http.Request.
 */
 type TicketOpenParams struct {
 

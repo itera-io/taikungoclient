@@ -69,7 +69,8 @@ func NewSearchBackupCredentialsListOK() *SearchBackupCredentialsListOK {
 	return &SearchBackupCredentialsListOK{}
 }
 
-/* SearchBackupCredentialsListOK describes a response with status code 200, with default header values.
+/*
+SearchBackupCredentialsListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SearchBackupCredentialsListOK struct {
 	Payload *models.BackupCredentialsSearchList
 }
 
+// IsSuccess returns true when this search backup credentials list o k response has a 2xx status code
+func (o *SearchBackupCredentialsListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this search backup credentials list o k response has a 3xx status code
+func (o *SearchBackupCredentialsListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search backup credentials list o k response has a 4xx status code
+func (o *SearchBackupCredentialsListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search backup credentials list o k response has a 5xx status code
+func (o *SearchBackupCredentialsListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search backup credentials list o k response a status code equal to that given
+func (o *SearchBackupCredentialsListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SearchBackupCredentialsListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListOK  %+v", 200, o.Payload)
 }
+
+func (o *SearchBackupCredentialsListOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListOK  %+v", 200, o.Payload)
+}
+
 func (o *SearchBackupCredentialsListOK) GetPayload() *models.BackupCredentialsSearchList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewSearchBackupCredentialsListBadRequest() *SearchBackupCredentialsListBadR
 	return &SearchBackupCredentialsListBadRequest{}
 }
 
-/* SearchBackupCredentialsListBadRequest describes a response with status code 400, with default header values.
+/*
+SearchBackupCredentialsListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type SearchBackupCredentialsListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this search backup credentials list bad request response has a 2xx status code
+func (o *SearchBackupCredentialsListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search backup credentials list bad request response has a 3xx status code
+func (o *SearchBackupCredentialsListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search backup credentials list bad request response has a 4xx status code
+func (o *SearchBackupCredentialsListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search backup credentials list bad request response has a 5xx status code
+func (o *SearchBackupCredentialsListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search backup credentials list bad request response a status code equal to that given
+func (o *SearchBackupCredentialsListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SearchBackupCredentialsListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SearchBackupCredentialsListBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SearchBackupCredentialsListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewSearchBackupCredentialsListUnauthorized() *SearchBackupCredentialsListUn
 	return &SearchBackupCredentialsListUnauthorized{}
 }
 
-/* SearchBackupCredentialsListUnauthorized describes a response with status code 401, with default header values.
+/*
+SearchBackupCredentialsListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type SearchBackupCredentialsListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search backup credentials list unauthorized response has a 2xx status code
+func (o *SearchBackupCredentialsListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search backup credentials list unauthorized response has a 3xx status code
+func (o *SearchBackupCredentialsListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search backup credentials list unauthorized response has a 4xx status code
+func (o *SearchBackupCredentialsListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search backup credentials list unauthorized response has a 5xx status code
+func (o *SearchBackupCredentialsListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search backup credentials list unauthorized response a status code equal to that given
+func (o *SearchBackupCredentialsListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SearchBackupCredentialsListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SearchBackupCredentialsListUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SearchBackupCredentialsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewSearchBackupCredentialsListForbidden() *SearchBackupCredentialsListForbi
 	return &SearchBackupCredentialsListForbidden{}
 }
 
-/* SearchBackupCredentialsListForbidden describes a response with status code 403, with default header values.
+/*
+SearchBackupCredentialsListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type SearchBackupCredentialsListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search backup credentials list forbidden response has a 2xx status code
+func (o *SearchBackupCredentialsListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search backup credentials list forbidden response has a 3xx status code
+func (o *SearchBackupCredentialsListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search backup credentials list forbidden response has a 4xx status code
+func (o *SearchBackupCredentialsListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search backup credentials list forbidden response has a 5xx status code
+func (o *SearchBackupCredentialsListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search backup credentials list forbidden response a status code equal to that given
+func (o *SearchBackupCredentialsListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SearchBackupCredentialsListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SearchBackupCredentialsListForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SearchBackupCredentialsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewSearchBackupCredentialsListNotFound() *SearchBackupCredentialsListNotFou
 	return &SearchBackupCredentialsListNotFound{}
 }
 
-/* SearchBackupCredentialsListNotFound describes a response with status code 404, with default header values.
+/*
+SearchBackupCredentialsListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type SearchBackupCredentialsListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search backup credentials list not found response has a 2xx status code
+func (o *SearchBackupCredentialsListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search backup credentials list not found response has a 3xx status code
+func (o *SearchBackupCredentialsListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search backup credentials list not found response has a 4xx status code
+func (o *SearchBackupCredentialsListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search backup credentials list not found response has a 5xx status code
+func (o *SearchBackupCredentialsListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search backup credentials list not found response a status code equal to that given
+func (o *SearchBackupCredentialsListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SearchBackupCredentialsListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SearchBackupCredentialsListNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SearchBackupCredentialsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewSearchBackupCredentialsListInternalServerError() *SearchBackupCredential
 	return &SearchBackupCredentialsListInternalServerError{}
 }
 
-/* SearchBackupCredentialsListInternalServerError describes a response with status code 500, with default header values.
+/*
+SearchBackupCredentialsListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SearchBackupCredentialsListInternalServerError struct {
 }
 
+// IsSuccess returns true when this search backup credentials list internal server error response has a 2xx status code
+func (o *SearchBackupCredentialsListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search backup credentials list internal server error response has a 3xx status code
+func (o *SearchBackupCredentialsListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search backup credentials list internal server error response has a 4xx status code
+func (o *SearchBackupCredentialsListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search backup credentials list internal server error response has a 5xx status code
+func (o *SearchBackupCredentialsListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this search backup credentials list internal server error response a status code equal to that given
+func (o *SearchBackupCredentialsListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SearchBackupCredentialsListInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListInternalServerError ", 500)
+}
+
+func (o *SearchBackupCredentialsListInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListInternalServerError ", 500)
 }
 

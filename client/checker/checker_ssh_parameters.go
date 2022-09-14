@@ -54,10 +54,12 @@ func NewCheckerSSHParamsWithHTTPClient(client *http.Client) *CheckerSSHParams {
 	}
 }
 
-/* CheckerSSHParams contains all the parameters to send to the API endpoint
-   for the checker Ssh operation.
+/*
+CheckerSSHParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checker Ssh operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckerSSHParams struct {
 

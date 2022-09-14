@@ -69,7 +69,8 @@ func NewAdminAddBalanceOK() *AdminAddBalanceOK {
 	return &AdminAddBalanceOK{}
 }
 
-/* AdminAddBalanceOK describes a response with status code 200, with default header values.
+/*
+AdminAddBalanceOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AdminAddBalanceOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this admin add balance o k response has a 2xx status code
+func (o *AdminAddBalanceOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this admin add balance o k response has a 3xx status code
+func (o *AdminAddBalanceOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin add balance o k response has a 4xx status code
+func (o *AdminAddBalanceOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin add balance o k response has a 5xx status code
+func (o *AdminAddBalanceOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin add balance o k response a status code equal to that given
+func (o *AdminAddBalanceOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AdminAddBalanceOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceOK  %+v", 200, o.Payload)
 }
+
+func (o *AdminAddBalanceOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceOK  %+v", 200, o.Payload)
+}
+
 func (o *AdminAddBalanceOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAdminAddBalanceBadRequest() *AdminAddBalanceBadRequest {
 	return &AdminAddBalanceBadRequest{}
 }
 
-/* AdminAddBalanceBadRequest describes a response with status code 400, with default header values.
+/*
+AdminAddBalanceBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AdminAddBalanceBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this admin add balance bad request response has a 2xx status code
+func (o *AdminAddBalanceBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin add balance bad request response has a 3xx status code
+func (o *AdminAddBalanceBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin add balance bad request response has a 4xx status code
+func (o *AdminAddBalanceBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin add balance bad request response has a 5xx status code
+func (o *AdminAddBalanceBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin add balance bad request response a status code equal to that given
+func (o *AdminAddBalanceBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AdminAddBalanceBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AdminAddBalanceBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AdminAddBalanceBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAdminAddBalanceUnauthorized() *AdminAddBalanceUnauthorized {
 	return &AdminAddBalanceUnauthorized{}
 }
 
-/* AdminAddBalanceUnauthorized describes a response with status code 401, with default header values.
+/*
+AdminAddBalanceUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AdminAddBalanceUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin add balance unauthorized response has a 2xx status code
+func (o *AdminAddBalanceUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin add balance unauthorized response has a 3xx status code
+func (o *AdminAddBalanceUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin add balance unauthorized response has a 4xx status code
+func (o *AdminAddBalanceUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin add balance unauthorized response has a 5xx status code
+func (o *AdminAddBalanceUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin add balance unauthorized response a status code equal to that given
+func (o *AdminAddBalanceUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AdminAddBalanceUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AdminAddBalanceUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AdminAddBalanceUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAdminAddBalanceForbidden() *AdminAddBalanceForbidden {
 	return &AdminAddBalanceForbidden{}
 }
 
-/* AdminAddBalanceForbidden describes a response with status code 403, with default header values.
+/*
+AdminAddBalanceForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AdminAddBalanceForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin add balance forbidden response has a 2xx status code
+func (o *AdminAddBalanceForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin add balance forbidden response has a 3xx status code
+func (o *AdminAddBalanceForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin add balance forbidden response has a 4xx status code
+func (o *AdminAddBalanceForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin add balance forbidden response has a 5xx status code
+func (o *AdminAddBalanceForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin add balance forbidden response a status code equal to that given
+func (o *AdminAddBalanceForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AdminAddBalanceForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AdminAddBalanceForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AdminAddBalanceForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAdminAddBalanceNotFound() *AdminAddBalanceNotFound {
 	return &AdminAddBalanceNotFound{}
 }
 
-/* AdminAddBalanceNotFound describes a response with status code 404, with default header values.
+/*
+AdminAddBalanceNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AdminAddBalanceNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin add balance not found response has a 2xx status code
+func (o *AdminAddBalanceNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin add balance not found response has a 3xx status code
+func (o *AdminAddBalanceNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin add balance not found response has a 4xx status code
+func (o *AdminAddBalanceNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin add balance not found response has a 5xx status code
+func (o *AdminAddBalanceNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin add balance not found response a status code equal to that given
+func (o *AdminAddBalanceNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AdminAddBalanceNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AdminAddBalanceNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AdminAddBalanceNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAdminAddBalanceInternalServerError() *AdminAddBalanceInternalServerError
 	return &AdminAddBalanceInternalServerError{}
 }
 
-/* AdminAddBalanceInternalServerError describes a response with status code 500, with default header values.
+/*
+AdminAddBalanceInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AdminAddBalanceInternalServerError struct {
 }
 
+// IsSuccess returns true when this admin add balance internal server error response has a 2xx status code
+func (o *AdminAddBalanceInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin add balance internal server error response has a 3xx status code
+func (o *AdminAddBalanceInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin add balance internal server error response has a 4xx status code
+func (o *AdminAddBalanceInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin add balance internal server error response has a 5xx status code
+func (o *AdminAddBalanceInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this admin add balance internal server error response a status code equal to that given
+func (o *AdminAddBalanceInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AdminAddBalanceInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceInternalServerError ", 500)
+}
+
+func (o *AdminAddBalanceInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceInternalServerError ", 500)
 }
 

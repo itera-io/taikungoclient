@@ -69,7 +69,8 @@ func NewShowbackRulesUpdateOK() *ShowbackRulesUpdateOK {
 	return &ShowbackRulesUpdateOK{}
 }
 
-/* ShowbackRulesUpdateOK describes a response with status code 200, with default header values.
+/*
+ShowbackRulesUpdateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ShowbackRulesUpdateOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this showback rules update o k response has a 2xx status code
+func (o *ShowbackRulesUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this showback rules update o k response has a 3xx status code
+func (o *ShowbackRulesUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules update o k response has a 4xx status code
+func (o *ShowbackRulesUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this showback rules update o k response has a 5xx status code
+func (o *ShowbackRulesUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules update o k response a status code equal to that given
+func (o *ShowbackRulesUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ShowbackRulesUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *ShowbackRulesUpdateOK) String() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *ShowbackRulesUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewShowbackRulesUpdateBadRequest() *ShowbackRulesUpdateBadRequest {
 	return &ShowbackRulesUpdateBadRequest{}
 }
 
-/* ShowbackRulesUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+ShowbackRulesUpdateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ShowbackRulesUpdateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this showback rules update bad request response has a 2xx status code
+func (o *ShowbackRulesUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback rules update bad request response has a 3xx status code
+func (o *ShowbackRulesUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules update bad request response has a 4xx status code
+func (o *ShowbackRulesUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback rules update bad request response has a 5xx status code
+func (o *ShowbackRulesUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules update bad request response a status code equal to that given
+func (o *ShowbackRulesUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ShowbackRulesUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ShowbackRulesUpdateBadRequest) String() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ShowbackRulesUpdateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewShowbackRulesUpdateUnauthorized() *ShowbackRulesUpdateUnauthorized {
 	return &ShowbackRulesUpdateUnauthorized{}
 }
 
-/* ShowbackRulesUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+ShowbackRulesUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ShowbackRulesUpdateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback rules update unauthorized response has a 2xx status code
+func (o *ShowbackRulesUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback rules update unauthorized response has a 3xx status code
+func (o *ShowbackRulesUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules update unauthorized response has a 4xx status code
+func (o *ShowbackRulesUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback rules update unauthorized response has a 5xx status code
+func (o *ShowbackRulesUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules update unauthorized response a status code equal to that given
+func (o *ShowbackRulesUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ShowbackRulesUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ShowbackRulesUpdateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ShowbackRulesUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewShowbackRulesUpdateForbidden() *ShowbackRulesUpdateForbidden {
 	return &ShowbackRulesUpdateForbidden{}
 }
 
-/* ShowbackRulesUpdateForbidden describes a response with status code 403, with default header values.
+/*
+ShowbackRulesUpdateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ShowbackRulesUpdateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback rules update forbidden response has a 2xx status code
+func (o *ShowbackRulesUpdateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback rules update forbidden response has a 3xx status code
+func (o *ShowbackRulesUpdateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules update forbidden response has a 4xx status code
+func (o *ShowbackRulesUpdateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback rules update forbidden response has a 5xx status code
+func (o *ShowbackRulesUpdateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules update forbidden response a status code equal to that given
+func (o *ShowbackRulesUpdateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ShowbackRulesUpdateForbidden) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ShowbackRulesUpdateForbidden) String() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ShowbackRulesUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewShowbackRulesUpdateNotFound() *ShowbackRulesUpdateNotFound {
 	return &ShowbackRulesUpdateNotFound{}
 }
 
-/* ShowbackRulesUpdateNotFound describes a response with status code 404, with default header values.
+/*
+ShowbackRulesUpdateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ShowbackRulesUpdateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback rules update not found response has a 2xx status code
+func (o *ShowbackRulesUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback rules update not found response has a 3xx status code
+func (o *ShowbackRulesUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules update not found response has a 4xx status code
+func (o *ShowbackRulesUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback rules update not found response has a 5xx status code
+func (o *ShowbackRulesUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules update not found response a status code equal to that given
+func (o *ShowbackRulesUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ShowbackRulesUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ShowbackRulesUpdateNotFound) String() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ShowbackRulesUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewShowbackRulesUpdateInternalServerError() *ShowbackRulesUpdateInternalSer
 	return &ShowbackRulesUpdateInternalServerError{}
 }
 
-/* ShowbackRulesUpdateInternalServerError describes a response with status code 500, with default header values.
+/*
+ShowbackRulesUpdateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ShowbackRulesUpdateInternalServerError struct {
 }
 
+// IsSuccess returns true when this showback rules update internal server error response has a 2xx status code
+func (o *ShowbackRulesUpdateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback rules update internal server error response has a 3xx status code
+func (o *ShowbackRulesUpdateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules update internal server error response has a 4xx status code
+func (o *ShowbackRulesUpdateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this showback rules update internal server error response has a 5xx status code
+func (o *ShowbackRulesUpdateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this showback rules update internal server error response a status code equal to that given
+func (o *ShowbackRulesUpdateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ShowbackRulesUpdateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateInternalServerError ", 500)
+}
+
+func (o *ShowbackRulesUpdateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateInternalServerError ", 500)
 }
 

@@ -69,7 +69,8 @@ func NewNtpServersListOK() *NtpServersListOK {
 	return &NtpServersListOK{}
 }
 
-/* NtpServersListOK describes a response with status code 200, with default header values.
+/*
+NtpServersListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type NtpServersListOK struct {
 	Payload []*models.NtpServersListDto
 }
 
+// IsSuccess returns true when this ntp servers list o k response has a 2xx status code
+func (o *NtpServersListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this ntp servers list o k response has a 3xx status code
+func (o *NtpServersListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ntp servers list o k response has a 4xx status code
+func (o *NtpServersListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ntp servers list o k response has a 5xx status code
+func (o *NtpServersListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ntp servers list o k response a status code equal to that given
+func (o *NtpServersListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *NtpServersListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListOK  %+v", 200, o.Payload)
 }
+
+func (o *NtpServersListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListOK  %+v", 200, o.Payload)
+}
+
 func (o *NtpServersListOK) GetPayload() []*models.NtpServersListDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewNtpServersListBadRequest() *NtpServersListBadRequest {
 	return &NtpServersListBadRequest{}
 }
 
-/* NtpServersListBadRequest describes a response with status code 400, with default header values.
+/*
+NtpServersListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type NtpServersListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this ntp servers list bad request response has a 2xx status code
+func (o *NtpServersListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ntp servers list bad request response has a 3xx status code
+func (o *NtpServersListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ntp servers list bad request response has a 4xx status code
+func (o *NtpServersListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ntp servers list bad request response has a 5xx status code
+func (o *NtpServersListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ntp servers list bad request response a status code equal to that given
+func (o *NtpServersListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *NtpServersListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *NtpServersListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *NtpServersListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewNtpServersListUnauthorized() *NtpServersListUnauthorized {
 	return &NtpServersListUnauthorized{}
 }
 
-/* NtpServersListUnauthorized describes a response with status code 401, with default header values.
+/*
+NtpServersListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type NtpServersListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ntp servers list unauthorized response has a 2xx status code
+func (o *NtpServersListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ntp servers list unauthorized response has a 3xx status code
+func (o *NtpServersListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ntp servers list unauthorized response has a 4xx status code
+func (o *NtpServersListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ntp servers list unauthorized response has a 5xx status code
+func (o *NtpServersListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ntp servers list unauthorized response a status code equal to that given
+func (o *NtpServersListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *NtpServersListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *NtpServersListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *NtpServersListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewNtpServersListForbidden() *NtpServersListForbidden {
 	return &NtpServersListForbidden{}
 }
 
-/* NtpServersListForbidden describes a response with status code 403, with default header values.
+/*
+NtpServersListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type NtpServersListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ntp servers list forbidden response has a 2xx status code
+func (o *NtpServersListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ntp servers list forbidden response has a 3xx status code
+func (o *NtpServersListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ntp servers list forbidden response has a 4xx status code
+func (o *NtpServersListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ntp servers list forbidden response has a 5xx status code
+func (o *NtpServersListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ntp servers list forbidden response a status code equal to that given
+func (o *NtpServersListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *NtpServersListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *NtpServersListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *NtpServersListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewNtpServersListNotFound() *NtpServersListNotFound {
 	return &NtpServersListNotFound{}
 }
 
-/* NtpServersListNotFound describes a response with status code 404, with default header values.
+/*
+NtpServersListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type NtpServersListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ntp servers list not found response has a 2xx status code
+func (o *NtpServersListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ntp servers list not found response has a 3xx status code
+func (o *NtpServersListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ntp servers list not found response has a 4xx status code
+func (o *NtpServersListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ntp servers list not found response has a 5xx status code
+func (o *NtpServersListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ntp servers list not found response a status code equal to that given
+func (o *NtpServersListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *NtpServersListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *NtpServersListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *NtpServersListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewNtpServersListInternalServerError() *NtpServersListInternalServerError {
 	return &NtpServersListInternalServerError{}
 }
 
-/* NtpServersListInternalServerError describes a response with status code 500, with default header values.
+/*
+NtpServersListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type NtpServersListInternalServerError struct {
 }
 
+// IsSuccess returns true when this ntp servers list internal server error response has a 2xx status code
+func (o *NtpServersListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ntp servers list internal server error response has a 3xx status code
+func (o *NtpServersListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ntp servers list internal server error response has a 4xx status code
+func (o *NtpServersListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ntp servers list internal server error response has a 5xx status code
+func (o *NtpServersListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this ntp servers list internal server error response a status code equal to that given
+func (o *NtpServersListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *NtpServersListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListInternalServerError ", 500)
+}
+
+func (o *NtpServersListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/NtpServers/list/{accessProfileId}][%d] ntpServersListInternalServerError ", 500)
 }
 

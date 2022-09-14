@@ -54,10 +54,12 @@ func NewSlackDeleteMultipleParamsWithHTTPClient(client *http.Client) *SlackDelet
 	}
 }
 
-/* SlackDeleteMultipleParams contains all the parameters to send to the API endpoint
-   for the slack delete multiple operation.
+/*
+SlackDeleteMultipleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the slack delete multiple operation.
+
+	Typically these are written to a http.Request.
 */
 type SlackDeleteMultipleParams struct {
 

@@ -69,7 +69,8 @@ func NewGoogleCloudBillingAccountListOK() *GoogleCloudBillingAccountListOK {
 	return &GoogleCloudBillingAccountListOK{}
 }
 
-/* GoogleCloudBillingAccountListOK describes a response with status code 200, with default header values.
+/*
+GoogleCloudBillingAccountListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type GoogleCloudBillingAccountListOK struct {
 	Payload []*models.CommonStringBasedDropdownDto
 }
 
+// IsSuccess returns true when this google cloud billing account list o k response has a 2xx status code
+func (o *GoogleCloudBillingAccountListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this google cloud billing account list o k response has a 3xx status code
+func (o *GoogleCloudBillingAccountListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud billing account list o k response has a 4xx status code
+func (o *GoogleCloudBillingAccountListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this google cloud billing account list o k response has a 5xx status code
+func (o *GoogleCloudBillingAccountListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud billing account list o k response a status code equal to that given
+func (o *GoogleCloudBillingAccountListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GoogleCloudBillingAccountListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListOK  %+v", 200, o.Payload)
 }
+
+func (o *GoogleCloudBillingAccountListOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListOK  %+v", 200, o.Payload)
+}
+
 func (o *GoogleCloudBillingAccountListOK) GetPayload() []*models.CommonStringBasedDropdownDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGoogleCloudBillingAccountListBadRequest() *GoogleCloudBillingAccountList
 	return &GoogleCloudBillingAccountListBadRequest{}
 }
 
-/* GoogleCloudBillingAccountListBadRequest describes a response with status code 400, with default header values.
+/*
+GoogleCloudBillingAccountListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type GoogleCloudBillingAccountListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this google cloud billing account list bad request response has a 2xx status code
+func (o *GoogleCloudBillingAccountListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud billing account list bad request response has a 3xx status code
+func (o *GoogleCloudBillingAccountListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud billing account list bad request response has a 4xx status code
+func (o *GoogleCloudBillingAccountListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud billing account list bad request response has a 5xx status code
+func (o *GoogleCloudBillingAccountListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud billing account list bad request response a status code equal to that given
+func (o *GoogleCloudBillingAccountListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GoogleCloudBillingAccountListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *GoogleCloudBillingAccountListBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *GoogleCloudBillingAccountListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewGoogleCloudBillingAccountListUnauthorized() *GoogleCloudBillingAccountLi
 	return &GoogleCloudBillingAccountListUnauthorized{}
 }
 
-/* GoogleCloudBillingAccountListUnauthorized describes a response with status code 401, with default header values.
+/*
+GoogleCloudBillingAccountListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type GoogleCloudBillingAccountListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this google cloud billing account list unauthorized response has a 2xx status code
+func (o *GoogleCloudBillingAccountListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud billing account list unauthorized response has a 3xx status code
+func (o *GoogleCloudBillingAccountListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud billing account list unauthorized response has a 4xx status code
+func (o *GoogleCloudBillingAccountListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud billing account list unauthorized response has a 5xx status code
+func (o *GoogleCloudBillingAccountListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud billing account list unauthorized response a status code equal to that given
+func (o *GoogleCloudBillingAccountListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GoogleCloudBillingAccountListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *GoogleCloudBillingAccountListUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *GoogleCloudBillingAccountListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewGoogleCloudBillingAccountListForbidden() *GoogleCloudBillingAccountListF
 	return &GoogleCloudBillingAccountListForbidden{}
 }
 
-/* GoogleCloudBillingAccountListForbidden describes a response with status code 403, with default header values.
+/*
+GoogleCloudBillingAccountListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type GoogleCloudBillingAccountListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this google cloud billing account list forbidden response has a 2xx status code
+func (o *GoogleCloudBillingAccountListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud billing account list forbidden response has a 3xx status code
+func (o *GoogleCloudBillingAccountListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud billing account list forbidden response has a 4xx status code
+func (o *GoogleCloudBillingAccountListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud billing account list forbidden response has a 5xx status code
+func (o *GoogleCloudBillingAccountListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud billing account list forbidden response a status code equal to that given
+func (o *GoogleCloudBillingAccountListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GoogleCloudBillingAccountListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GoogleCloudBillingAccountListForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GoogleCloudBillingAccountListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewGoogleCloudBillingAccountListNotFound() *GoogleCloudBillingAccountListNo
 	return &GoogleCloudBillingAccountListNotFound{}
 }
 
-/* GoogleCloudBillingAccountListNotFound describes a response with status code 404, with default header values.
+/*
+GoogleCloudBillingAccountListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type GoogleCloudBillingAccountListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this google cloud billing account list not found response has a 2xx status code
+func (o *GoogleCloudBillingAccountListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud billing account list not found response has a 3xx status code
+func (o *GoogleCloudBillingAccountListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud billing account list not found response has a 4xx status code
+func (o *GoogleCloudBillingAccountListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud billing account list not found response has a 5xx status code
+func (o *GoogleCloudBillingAccountListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud billing account list not found response a status code equal to that given
+func (o *GoogleCloudBillingAccountListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GoogleCloudBillingAccountListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GoogleCloudBillingAccountListNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GoogleCloudBillingAccountListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewGoogleCloudBillingAccountListInternalServerError() *GoogleCloudBillingAc
 	return &GoogleCloudBillingAccountListInternalServerError{}
 }
 
-/* GoogleCloudBillingAccountListInternalServerError describes a response with status code 500, with default header values.
+/*
+GoogleCloudBillingAccountListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GoogleCloudBillingAccountListInternalServerError struct {
 }
 
+// IsSuccess returns true when this google cloud billing account list internal server error response has a 2xx status code
+func (o *GoogleCloudBillingAccountListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud billing account list internal server error response has a 3xx status code
+func (o *GoogleCloudBillingAccountListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud billing account list internal server error response has a 4xx status code
+func (o *GoogleCloudBillingAccountListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this google cloud billing account list internal server error response has a 5xx status code
+func (o *GoogleCloudBillingAccountListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this google cloud billing account list internal server error response a status code equal to that given
+func (o *GoogleCloudBillingAccountListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GoogleCloudBillingAccountListInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListInternalServerError ", 500)
+}
+
+func (o *GoogleCloudBillingAccountListInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/billing-accounts][%d] googleCloudBillingAccountListInternalServerError ", 500)
 }
 

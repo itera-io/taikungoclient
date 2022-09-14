@@ -69,7 +69,8 @@ func NewAdminUpdateUserPasswordOK() *AdminUpdateUserPasswordOK {
 	return &AdminUpdateUserPasswordOK{}
 }
 
-/* AdminUpdateUserPasswordOK describes a response with status code 200, with default header values.
+/*
+AdminUpdateUserPasswordOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AdminUpdateUserPasswordOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this admin update user password o k response has a 2xx status code
+func (o *AdminUpdateUserPasswordOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this admin update user password o k response has a 3xx status code
+func (o *AdminUpdateUserPasswordOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update user password o k response has a 4xx status code
+func (o *AdminUpdateUserPasswordOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin update user password o k response has a 5xx status code
+func (o *AdminUpdateUserPasswordOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin update user password o k response a status code equal to that given
+func (o *AdminUpdateUserPasswordOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AdminUpdateUserPasswordOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordOK  %+v", 200, o.Payload)
 }
+
+func (o *AdminUpdateUserPasswordOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordOK  %+v", 200, o.Payload)
+}
+
 func (o *AdminUpdateUserPasswordOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAdminUpdateUserPasswordBadRequest() *AdminUpdateUserPasswordBadRequest {
 	return &AdminUpdateUserPasswordBadRequest{}
 }
 
-/* AdminUpdateUserPasswordBadRequest describes a response with status code 400, with default header values.
+/*
+AdminUpdateUserPasswordBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AdminUpdateUserPasswordBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this admin update user password bad request response has a 2xx status code
+func (o *AdminUpdateUserPasswordBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin update user password bad request response has a 3xx status code
+func (o *AdminUpdateUserPasswordBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update user password bad request response has a 4xx status code
+func (o *AdminUpdateUserPasswordBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin update user password bad request response has a 5xx status code
+func (o *AdminUpdateUserPasswordBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin update user password bad request response a status code equal to that given
+func (o *AdminUpdateUserPasswordBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AdminUpdateUserPasswordBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AdminUpdateUserPasswordBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AdminUpdateUserPasswordBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAdminUpdateUserPasswordUnauthorized() *AdminUpdateUserPasswordUnauthoriz
 	return &AdminUpdateUserPasswordUnauthorized{}
 }
 
-/* AdminUpdateUserPasswordUnauthorized describes a response with status code 401, with default header values.
+/*
+AdminUpdateUserPasswordUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AdminUpdateUserPasswordUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin update user password unauthorized response has a 2xx status code
+func (o *AdminUpdateUserPasswordUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin update user password unauthorized response has a 3xx status code
+func (o *AdminUpdateUserPasswordUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update user password unauthorized response has a 4xx status code
+func (o *AdminUpdateUserPasswordUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin update user password unauthorized response has a 5xx status code
+func (o *AdminUpdateUserPasswordUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin update user password unauthorized response a status code equal to that given
+func (o *AdminUpdateUserPasswordUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AdminUpdateUserPasswordUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AdminUpdateUserPasswordUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AdminUpdateUserPasswordUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAdminUpdateUserPasswordForbidden() *AdminUpdateUserPasswordForbidden {
 	return &AdminUpdateUserPasswordForbidden{}
 }
 
-/* AdminUpdateUserPasswordForbidden describes a response with status code 403, with default header values.
+/*
+AdminUpdateUserPasswordForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AdminUpdateUserPasswordForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin update user password forbidden response has a 2xx status code
+func (o *AdminUpdateUserPasswordForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin update user password forbidden response has a 3xx status code
+func (o *AdminUpdateUserPasswordForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update user password forbidden response has a 4xx status code
+func (o *AdminUpdateUserPasswordForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin update user password forbidden response has a 5xx status code
+func (o *AdminUpdateUserPasswordForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin update user password forbidden response a status code equal to that given
+func (o *AdminUpdateUserPasswordForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AdminUpdateUserPasswordForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AdminUpdateUserPasswordForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AdminUpdateUserPasswordForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAdminUpdateUserPasswordNotFound() *AdminUpdateUserPasswordNotFound {
 	return &AdminUpdateUserPasswordNotFound{}
 }
 
-/* AdminUpdateUserPasswordNotFound describes a response with status code 404, with default header values.
+/*
+AdminUpdateUserPasswordNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AdminUpdateUserPasswordNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin update user password not found response has a 2xx status code
+func (o *AdminUpdateUserPasswordNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin update user password not found response has a 3xx status code
+func (o *AdminUpdateUserPasswordNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update user password not found response has a 4xx status code
+func (o *AdminUpdateUserPasswordNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin update user password not found response has a 5xx status code
+func (o *AdminUpdateUserPasswordNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin update user password not found response a status code equal to that given
+func (o *AdminUpdateUserPasswordNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AdminUpdateUserPasswordNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AdminUpdateUserPasswordNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AdminUpdateUserPasswordNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAdminUpdateUserPasswordInternalServerError() *AdminUpdateUserPasswordInt
 	return &AdminUpdateUserPasswordInternalServerError{}
 }
 
-/* AdminUpdateUserPasswordInternalServerError describes a response with status code 500, with default header values.
+/*
+AdminUpdateUserPasswordInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AdminUpdateUserPasswordInternalServerError struct {
 }
 
+// IsSuccess returns true when this admin update user password internal server error response has a 2xx status code
+func (o *AdminUpdateUserPasswordInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin update user password internal server error response has a 3xx status code
+func (o *AdminUpdateUserPasswordInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update user password internal server error response has a 4xx status code
+func (o *AdminUpdateUserPasswordInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin update user password internal server error response has a 5xx status code
+func (o *AdminUpdateUserPasswordInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this admin update user password internal server error response a status code equal to that given
+func (o *AdminUpdateUserPasswordInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AdminUpdateUserPasswordInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordInternalServerError ", 500)
+}
+
+func (o *AdminUpdateUserPasswordInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordInternalServerError ", 500)
 }
 

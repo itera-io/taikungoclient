@@ -69,7 +69,8 @@ func NewOpenstackListOK() *OpenstackListOK {
 	return &OpenstackListOK{}
 }
 
-/* OpenstackListOK describes a response with status code 200, with default header values.
+/*
+OpenstackListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OpenstackListOK struct {
 	Payload *models.OpenstackCredentialList
 }
 
+// IsSuccess returns true when this openstack list o k response has a 2xx status code
+func (o *OpenstackListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this openstack list o k response has a 3xx status code
+func (o *OpenstackListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack list o k response has a 4xx status code
+func (o *OpenstackListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this openstack list o k response has a 5xx status code
+func (o *OpenstackListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack list o k response a status code equal to that given
+func (o *OpenstackListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OpenstackListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListOK  %+v", 200, o.Payload)
 }
+
+func (o *OpenstackListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListOK  %+v", 200, o.Payload)
+}
+
 func (o *OpenstackListOK) GetPayload() *models.OpenstackCredentialList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewOpenstackListBadRequest() *OpenstackListBadRequest {
 	return &OpenstackListBadRequest{}
 }
 
-/* OpenstackListBadRequest describes a response with status code 400, with default header values.
+/*
+OpenstackListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type OpenstackListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this openstack list bad request response has a 2xx status code
+func (o *OpenstackListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack list bad request response has a 3xx status code
+func (o *OpenstackListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack list bad request response has a 4xx status code
+func (o *OpenstackListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack list bad request response has a 5xx status code
+func (o *OpenstackListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack list bad request response a status code equal to that given
+func (o *OpenstackListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OpenstackListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OpenstackListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OpenstackListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewOpenstackListUnauthorized() *OpenstackListUnauthorized {
 	return &OpenstackListUnauthorized{}
 }
 
-/* OpenstackListUnauthorized describes a response with status code 401, with default header values.
+/*
+OpenstackListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type OpenstackListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack list unauthorized response has a 2xx status code
+func (o *OpenstackListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack list unauthorized response has a 3xx status code
+func (o *OpenstackListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack list unauthorized response has a 4xx status code
+func (o *OpenstackListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack list unauthorized response has a 5xx status code
+func (o *OpenstackListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack list unauthorized response a status code equal to that given
+func (o *OpenstackListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OpenstackListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OpenstackListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OpenstackListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewOpenstackListForbidden() *OpenstackListForbidden {
 	return &OpenstackListForbidden{}
 }
 
-/* OpenstackListForbidden describes a response with status code 403, with default header values.
+/*
+OpenstackListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type OpenstackListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack list forbidden response has a 2xx status code
+func (o *OpenstackListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack list forbidden response has a 3xx status code
+func (o *OpenstackListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack list forbidden response has a 4xx status code
+func (o *OpenstackListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack list forbidden response has a 5xx status code
+func (o *OpenstackListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack list forbidden response a status code equal to that given
+func (o *OpenstackListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OpenstackListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OpenstackListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OpenstackListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewOpenstackListNotFound() *OpenstackListNotFound {
 	return &OpenstackListNotFound{}
 }
 
-/* OpenstackListNotFound describes a response with status code 404, with default header values.
+/*
+OpenstackListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type OpenstackListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack list not found response has a 2xx status code
+func (o *OpenstackListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack list not found response has a 3xx status code
+func (o *OpenstackListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack list not found response has a 4xx status code
+func (o *OpenstackListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack list not found response has a 5xx status code
+func (o *OpenstackListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack list not found response a status code equal to that given
+func (o *OpenstackListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OpenstackListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OpenstackListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OpenstackListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewOpenstackListInternalServerError() *OpenstackListInternalServerError {
 	return &OpenstackListInternalServerError{}
 }
 
-/* OpenstackListInternalServerError describes a response with status code 500, with default header values.
+/*
+OpenstackListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OpenstackListInternalServerError struct {
 }
 
+// IsSuccess returns true when this openstack list internal server error response has a 2xx status code
+func (o *OpenstackListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack list internal server error response has a 3xx status code
+func (o *OpenstackListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack list internal server error response has a 4xx status code
+func (o *OpenstackListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this openstack list internal server error response has a 5xx status code
+func (o *OpenstackListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this openstack list internal server error response a status code equal to that given
+func (o *OpenstackListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OpenstackListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListInternalServerError ", 500)
+}
+
+func (o *OpenstackListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListInternalServerError ", 500)
 }
 

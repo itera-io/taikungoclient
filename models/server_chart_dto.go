@@ -34,9 +34,6 @@ type ServerChartDto struct {
 	// openstack
 	Openstack []*ServerCommonRecordDto `json:"openstack"`
 
-	// pending
-	Pending []*ServerCommonRecordDto `json:"pending"`
-
 	// succeeded
 	Succeeded []*ServerCommonRecordDto `json:"succeeded"`
 
@@ -81,6 +78,9 @@ type ServerChartDto struct {
 
 	// used resources
 	UsedResources []*UserResourceChartDto `json:"usedResources"`
+
+	// waiting
+	Waiting []*ServerCommonRecordDto `json:"waiting"`
 }
 
 // Validate validates this server chart dto
@@ -107,10 +107,6 @@ func (m *ServerChartDto) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validatePending(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateSucceeded(formats); err != nil {
 		res = append(res, err)
 	}
@@ -120,6 +116,10 @@ func (m *ServerChartDto) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateUsedResources(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateWaiting(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -259,32 +259,6 @@ func (m *ServerChartDto) validateOpenstack(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ServerChartDto) validatePending(formats strfmt.Registry) error {
-	if swag.IsZero(m.Pending) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.Pending); i++ {
-		if swag.IsZero(m.Pending[i]) { // not required
-			continue
-		}
-
-		if m.Pending[i] != nil {
-			if err := m.Pending[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("pending" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("pending" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
 func (m *ServerChartDto) validateSucceeded(formats strfmt.Registry) error {
 	if swag.IsZero(m.Succeeded) { // not required
 		return nil
@@ -363,6 +337,32 @@ func (m *ServerChartDto) validateUsedResources(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *ServerChartDto) validateWaiting(formats strfmt.Registry) error {
+	if swag.IsZero(m.Waiting) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Waiting); i++ {
+		if swag.IsZero(m.Waiting[i]) { // not required
+			continue
+		}
+
+		if m.Waiting[i] != nil {
+			if err := m.Waiting[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("waiting" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("waiting" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this server chart dto based on the context it is used
 func (m *ServerChartDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -387,10 +387,6 @@ func (m *ServerChartDto) ContextValidate(ctx context.Context, formats strfmt.Reg
 		res = append(res, err)
 	}
 
-	if err := m.contextValidatePending(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateSucceeded(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -400,6 +396,10 @@ func (m *ServerChartDto) ContextValidate(ctx context.Context, formats strfmt.Reg
 	}
 
 	if err := m.contextValidateUsedResources(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateWaiting(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -509,26 +509,6 @@ func (m *ServerChartDto) contextValidateOpenstack(ctx context.Context, formats s
 	return nil
 }
 
-func (m *ServerChartDto) contextValidatePending(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.Pending); i++ {
-
-		if m.Pending[i] != nil {
-			if err := m.Pending[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("pending" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("pending" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
 func (m *ServerChartDto) contextValidateSucceeded(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Succeeded); i++ {
@@ -579,6 +559,26 @@ func (m *ServerChartDto) contextValidateUsedResources(ctx context.Context, forma
 					return ve.ValidateName("usedResources" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("usedResources" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *ServerChartDto) contextValidateWaiting(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Waiting); i++ {
+
+		if m.Waiting[i] != nil {
+			if err := m.Waiting[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("waiting" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("waiting" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

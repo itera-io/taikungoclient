@@ -69,7 +69,8 @@ func NewCronJobDeleteKubeConfigsOK() *CronJobDeleteKubeConfigsOK {
 	return &CronJobDeleteKubeConfigsOK{}
 }
 
-/* CronJobDeleteKubeConfigsOK describes a response with status code 200, with default header values.
+/*
+CronJobDeleteKubeConfigsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CronJobDeleteKubeConfigsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this cron job delete kube configs o k response has a 2xx status code
+func (o *CronJobDeleteKubeConfigsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cron job delete kube configs o k response has a 3xx status code
+func (o *CronJobDeleteKubeConfigsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete kube configs o k response has a 4xx status code
+func (o *CronJobDeleteKubeConfigsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job delete kube configs o k response has a 5xx status code
+func (o *CronJobDeleteKubeConfigsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete kube configs o k response a status code equal to that given
+func (o *CronJobDeleteKubeConfigsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CronJobDeleteKubeConfigsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsOK  %+v", 200, o.Payload)
 }
+
+func (o *CronJobDeleteKubeConfigsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsOK  %+v", 200, o.Payload)
+}
+
 func (o *CronJobDeleteKubeConfigsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCronJobDeleteKubeConfigsBadRequest() *CronJobDeleteKubeConfigsBadRequest
 	return &CronJobDeleteKubeConfigsBadRequest{}
 }
 
-/* CronJobDeleteKubeConfigsBadRequest describes a response with status code 400, with default header values.
+/*
+CronJobDeleteKubeConfigsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CronJobDeleteKubeConfigsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete kube configs bad request response has a 2xx status code
+func (o *CronJobDeleteKubeConfigsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete kube configs bad request response has a 3xx status code
+func (o *CronJobDeleteKubeConfigsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete kube configs bad request response has a 4xx status code
+func (o *CronJobDeleteKubeConfigsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete kube configs bad request response has a 5xx status code
+func (o *CronJobDeleteKubeConfigsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete kube configs bad request response a status code equal to that given
+func (o *CronJobDeleteKubeConfigsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CronJobDeleteKubeConfigsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CronJobDeleteKubeConfigsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CronJobDeleteKubeConfigsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCronJobDeleteKubeConfigsUnauthorized() *CronJobDeleteKubeConfigsUnauthor
 	return &CronJobDeleteKubeConfigsUnauthorized{}
 }
 
-/* CronJobDeleteKubeConfigsUnauthorized describes a response with status code 401, with default header values.
+/*
+CronJobDeleteKubeConfigsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CronJobDeleteKubeConfigsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete kube configs unauthorized response has a 2xx status code
+func (o *CronJobDeleteKubeConfigsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete kube configs unauthorized response has a 3xx status code
+func (o *CronJobDeleteKubeConfigsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete kube configs unauthorized response has a 4xx status code
+func (o *CronJobDeleteKubeConfigsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete kube configs unauthorized response has a 5xx status code
+func (o *CronJobDeleteKubeConfigsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete kube configs unauthorized response a status code equal to that given
+func (o *CronJobDeleteKubeConfigsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CronJobDeleteKubeConfigsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CronJobDeleteKubeConfigsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CronJobDeleteKubeConfigsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCronJobDeleteKubeConfigsForbidden() *CronJobDeleteKubeConfigsForbidden {
 	return &CronJobDeleteKubeConfigsForbidden{}
 }
 
-/* CronJobDeleteKubeConfigsForbidden describes a response with status code 403, with default header values.
+/*
+CronJobDeleteKubeConfigsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CronJobDeleteKubeConfigsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete kube configs forbidden response has a 2xx status code
+func (o *CronJobDeleteKubeConfigsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete kube configs forbidden response has a 3xx status code
+func (o *CronJobDeleteKubeConfigsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete kube configs forbidden response has a 4xx status code
+func (o *CronJobDeleteKubeConfigsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete kube configs forbidden response has a 5xx status code
+func (o *CronJobDeleteKubeConfigsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete kube configs forbidden response a status code equal to that given
+func (o *CronJobDeleteKubeConfigsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CronJobDeleteKubeConfigsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CronJobDeleteKubeConfigsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CronJobDeleteKubeConfigsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCronJobDeleteKubeConfigsNotFound() *CronJobDeleteKubeConfigsNotFound {
 	return &CronJobDeleteKubeConfigsNotFound{}
 }
 
-/* CronJobDeleteKubeConfigsNotFound describes a response with status code 404, with default header values.
+/*
+CronJobDeleteKubeConfigsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CronJobDeleteKubeConfigsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete kube configs not found response has a 2xx status code
+func (o *CronJobDeleteKubeConfigsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete kube configs not found response has a 3xx status code
+func (o *CronJobDeleteKubeConfigsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete kube configs not found response has a 4xx status code
+func (o *CronJobDeleteKubeConfigsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete kube configs not found response has a 5xx status code
+func (o *CronJobDeleteKubeConfigsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete kube configs not found response a status code equal to that given
+func (o *CronJobDeleteKubeConfigsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CronJobDeleteKubeConfigsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CronJobDeleteKubeConfigsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CronJobDeleteKubeConfigsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCronJobDeleteKubeConfigsInternalServerError() *CronJobDeleteKubeConfigsI
 	return &CronJobDeleteKubeConfigsInternalServerError{}
 }
 
-/* CronJobDeleteKubeConfigsInternalServerError describes a response with status code 500, with default header values.
+/*
+CronJobDeleteKubeConfigsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CronJobDeleteKubeConfigsInternalServerError struct {
 }
 
+// IsSuccess returns true when this cron job delete kube configs internal server error response has a 2xx status code
+func (o *CronJobDeleteKubeConfigsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete kube configs internal server error response has a 3xx status code
+func (o *CronJobDeleteKubeConfigsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete kube configs internal server error response has a 4xx status code
+func (o *CronJobDeleteKubeConfigsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job delete kube configs internal server error response has a 5xx status code
+func (o *CronJobDeleteKubeConfigsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cron job delete kube configs internal server error response a status code equal to that given
+func (o *CronJobDeleteKubeConfigsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CronJobDeleteKubeConfigsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsInternalServerError ", 500)
+}
+
+func (o *CronJobDeleteKubeConfigsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsInternalServerError ", 500)
 }
 

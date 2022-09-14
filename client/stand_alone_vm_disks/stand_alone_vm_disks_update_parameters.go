@@ -54,10 +54,12 @@ func NewStandAloneVMDisksUpdateParamsWithHTTPClient(client *http.Client) *StandA
 	}
 }
 
-/* StandAloneVMDisksUpdateParams contains all the parameters to send to the API endpoint
-   for the stand alone Vm disks update operation.
+/*
+StandAloneVMDisksUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone Vm disks update operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneVMDisksUpdateParams struct {
 

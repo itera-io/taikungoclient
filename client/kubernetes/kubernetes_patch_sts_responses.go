@@ -69,7 +69,8 @@ func NewKubernetesPatchStsOK() *KubernetesPatchStsOK {
 	return &KubernetesPatchStsOK{}
 }
 
-/* KubernetesPatchStsOK describes a response with status code 200, with default header values.
+/*
+KubernetesPatchStsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesPatchStsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this kubernetes patch sts o k response has a 2xx status code
+func (o *KubernetesPatchStsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes patch sts o k response has a 3xx status code
+func (o *KubernetesPatchStsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch sts o k response has a 4xx status code
+func (o *KubernetesPatchStsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes patch sts o k response has a 5xx status code
+func (o *KubernetesPatchStsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch sts o k response a status code equal to that given
+func (o *KubernetesPatchStsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesPatchStsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/sts][%d] kubernetesPatchStsOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesPatchStsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/sts][%d] kubernetesPatchStsOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesPatchStsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesPatchStsBadRequest() *KubernetesPatchStsBadRequest {
 	return &KubernetesPatchStsBadRequest{}
 }
 
-/* KubernetesPatchStsBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesPatchStsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesPatchStsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch sts bad request response has a 2xx status code
+func (o *KubernetesPatchStsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch sts bad request response has a 3xx status code
+func (o *KubernetesPatchStsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch sts bad request response has a 4xx status code
+func (o *KubernetesPatchStsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch sts bad request response has a 5xx status code
+func (o *KubernetesPatchStsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch sts bad request response a status code equal to that given
+func (o *KubernetesPatchStsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesPatchStsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/sts][%d] kubernetesPatchStsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesPatchStsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/sts][%d] kubernetesPatchStsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesPatchStsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesPatchStsUnauthorized() *KubernetesPatchStsUnauthorized {
 	return &KubernetesPatchStsUnauthorized{}
 }
 
-/* KubernetesPatchStsUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesPatchStsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesPatchStsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch sts unauthorized response has a 2xx status code
+func (o *KubernetesPatchStsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch sts unauthorized response has a 3xx status code
+func (o *KubernetesPatchStsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch sts unauthorized response has a 4xx status code
+func (o *KubernetesPatchStsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch sts unauthorized response has a 5xx status code
+func (o *KubernetesPatchStsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch sts unauthorized response a status code equal to that given
+func (o *KubernetesPatchStsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesPatchStsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/sts][%d] kubernetesPatchStsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesPatchStsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/sts][%d] kubernetesPatchStsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesPatchStsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesPatchStsForbidden() *KubernetesPatchStsForbidden {
 	return &KubernetesPatchStsForbidden{}
 }
 
-/* KubernetesPatchStsForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesPatchStsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesPatchStsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch sts forbidden response has a 2xx status code
+func (o *KubernetesPatchStsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch sts forbidden response has a 3xx status code
+func (o *KubernetesPatchStsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch sts forbidden response has a 4xx status code
+func (o *KubernetesPatchStsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch sts forbidden response has a 5xx status code
+func (o *KubernetesPatchStsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch sts forbidden response a status code equal to that given
+func (o *KubernetesPatchStsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesPatchStsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/sts][%d] kubernetesPatchStsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesPatchStsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/sts][%d] kubernetesPatchStsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesPatchStsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesPatchStsNotFound() *KubernetesPatchStsNotFound {
 	return &KubernetesPatchStsNotFound{}
 }
 
-/* KubernetesPatchStsNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesPatchStsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesPatchStsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch sts not found response has a 2xx status code
+func (o *KubernetesPatchStsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch sts not found response has a 3xx status code
+func (o *KubernetesPatchStsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch sts not found response has a 4xx status code
+func (o *KubernetesPatchStsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch sts not found response has a 5xx status code
+func (o *KubernetesPatchStsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch sts not found response a status code equal to that given
+func (o *KubernetesPatchStsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesPatchStsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/sts][%d] kubernetesPatchStsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesPatchStsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/sts][%d] kubernetesPatchStsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesPatchStsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesPatchStsInternalServerError() *KubernetesPatchStsInternalServe
 	return &KubernetesPatchStsInternalServerError{}
 }
 
-/* KubernetesPatchStsInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesPatchStsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesPatchStsInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes patch sts internal server error response has a 2xx status code
+func (o *KubernetesPatchStsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch sts internal server error response has a 3xx status code
+func (o *KubernetesPatchStsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch sts internal server error response has a 4xx status code
+func (o *KubernetesPatchStsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes patch sts internal server error response has a 5xx status code
+func (o *KubernetesPatchStsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes patch sts internal server error response a status code equal to that given
+func (o *KubernetesPatchStsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesPatchStsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/sts][%d] kubernetesPatchStsInternalServerError ", 500)
+}
+
+func (o *KubernetesPatchStsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/sts][%d] kubernetesPatchStsInternalServerError ", 500)
 }
 

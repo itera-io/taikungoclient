@@ -75,7 +75,8 @@ func NewShowbackRulesDeleteOK() *ShowbackRulesDeleteOK {
 	return &ShowbackRulesDeleteOK{}
 }
 
-/* ShowbackRulesDeleteOK describes a response with status code 200, with default header values.
+/*
+ShowbackRulesDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -83,9 +84,39 @@ type ShowbackRulesDeleteOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this showback rules delete o k response has a 2xx status code
+func (o *ShowbackRulesDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this showback rules delete o k response has a 3xx status code
+func (o *ShowbackRulesDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules delete o k response has a 4xx status code
+func (o *ShowbackRulesDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this showback rules delete o k response has a 5xx status code
+func (o *ShowbackRulesDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules delete o k response a status code equal to that given
+func (o *ShowbackRulesDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ShowbackRulesDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *ShowbackRulesDeleteOK) String() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *ShowbackRulesDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -105,14 +136,44 @@ func NewShowbackRulesDeleteNoContent() *ShowbackRulesDeleteNoContent {
 	return &ShowbackRulesDeleteNoContent{}
 }
 
-/* ShowbackRulesDeleteNoContent describes a response with status code 204, with default header values.
+/*
+ShowbackRulesDeleteNoContent describes a response with status code 204, with default header values.
 
 No Content
 */
 type ShowbackRulesDeleteNoContent struct {
 }
 
+// IsSuccess returns true when this showback rules delete no content response has a 2xx status code
+func (o *ShowbackRulesDeleteNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this showback rules delete no content response has a 3xx status code
+func (o *ShowbackRulesDeleteNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules delete no content response has a 4xx status code
+func (o *ShowbackRulesDeleteNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this showback rules delete no content response has a 5xx status code
+func (o *ShowbackRulesDeleteNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules delete no content response a status code equal to that given
+func (o *ShowbackRulesDeleteNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *ShowbackRulesDeleteNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteNoContent ", 204)
+}
+
+func (o *ShowbackRulesDeleteNoContent) String() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteNoContent ", 204)
 }
 
@@ -126,7 +187,8 @@ func NewShowbackRulesDeleteBadRequest() *ShowbackRulesDeleteBadRequest {
 	return &ShowbackRulesDeleteBadRequest{}
 }
 
-/* ShowbackRulesDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+ShowbackRulesDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -134,9 +196,39 @@ type ShowbackRulesDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this showback rules delete bad request response has a 2xx status code
+func (o *ShowbackRulesDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback rules delete bad request response has a 3xx status code
+func (o *ShowbackRulesDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules delete bad request response has a 4xx status code
+func (o *ShowbackRulesDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback rules delete bad request response has a 5xx status code
+func (o *ShowbackRulesDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules delete bad request response a status code equal to that given
+func (o *ShowbackRulesDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ShowbackRulesDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ShowbackRulesDeleteBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ShowbackRulesDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -158,7 +250,8 @@ func NewShowbackRulesDeleteUnauthorized() *ShowbackRulesDeleteUnauthorized {
 	return &ShowbackRulesDeleteUnauthorized{}
 }
 
-/* ShowbackRulesDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+ShowbackRulesDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -166,9 +259,39 @@ type ShowbackRulesDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback rules delete unauthorized response has a 2xx status code
+func (o *ShowbackRulesDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback rules delete unauthorized response has a 3xx status code
+func (o *ShowbackRulesDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules delete unauthorized response has a 4xx status code
+func (o *ShowbackRulesDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback rules delete unauthorized response has a 5xx status code
+func (o *ShowbackRulesDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules delete unauthorized response a status code equal to that given
+func (o *ShowbackRulesDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ShowbackRulesDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ShowbackRulesDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ShowbackRulesDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -190,7 +313,8 @@ func NewShowbackRulesDeleteForbidden() *ShowbackRulesDeleteForbidden {
 	return &ShowbackRulesDeleteForbidden{}
 }
 
-/* ShowbackRulesDeleteForbidden describes a response with status code 403, with default header values.
+/*
+ShowbackRulesDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -198,9 +322,39 @@ type ShowbackRulesDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback rules delete forbidden response has a 2xx status code
+func (o *ShowbackRulesDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback rules delete forbidden response has a 3xx status code
+func (o *ShowbackRulesDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules delete forbidden response has a 4xx status code
+func (o *ShowbackRulesDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback rules delete forbidden response has a 5xx status code
+func (o *ShowbackRulesDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules delete forbidden response a status code equal to that given
+func (o *ShowbackRulesDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ShowbackRulesDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ShowbackRulesDeleteForbidden) String() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ShowbackRulesDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -222,7 +376,8 @@ func NewShowbackRulesDeleteNotFound() *ShowbackRulesDeleteNotFound {
 	return &ShowbackRulesDeleteNotFound{}
 }
 
-/* ShowbackRulesDeleteNotFound describes a response with status code 404, with default header values.
+/*
+ShowbackRulesDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -230,9 +385,39 @@ type ShowbackRulesDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback rules delete not found response has a 2xx status code
+func (o *ShowbackRulesDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback rules delete not found response has a 3xx status code
+func (o *ShowbackRulesDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules delete not found response has a 4xx status code
+func (o *ShowbackRulesDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback rules delete not found response has a 5xx status code
+func (o *ShowbackRulesDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback rules delete not found response a status code equal to that given
+func (o *ShowbackRulesDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ShowbackRulesDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ShowbackRulesDeleteNotFound) String() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ShowbackRulesDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -254,14 +439,44 @@ func NewShowbackRulesDeleteInternalServerError() *ShowbackRulesDeleteInternalSer
 	return &ShowbackRulesDeleteInternalServerError{}
 }
 
-/* ShowbackRulesDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+ShowbackRulesDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ShowbackRulesDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this showback rules delete internal server error response has a 2xx status code
+func (o *ShowbackRulesDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback rules delete internal server error response has a 3xx status code
+func (o *ShowbackRulesDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback rules delete internal server error response has a 4xx status code
+func (o *ShowbackRulesDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this showback rules delete internal server error response has a 5xx status code
+func (o *ShowbackRulesDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this showback rules delete internal server error response a status code equal to that given
+func (o *ShowbackRulesDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ShowbackRulesDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteInternalServerError ", 500)
+}
+
+func (o *ShowbackRulesDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackRules/{id}][%d] showbackRulesDeleteInternalServerError ", 500)
 }
 

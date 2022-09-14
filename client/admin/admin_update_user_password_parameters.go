@@ -54,10 +54,12 @@ func NewAdminUpdateUserPasswordParamsWithHTTPClient(client *http.Client) *AdminU
 	}
 }
 
-/* AdminUpdateUserPasswordParams contains all the parameters to send to the API endpoint
-   for the admin update user password operation.
+/*
+AdminUpdateUserPasswordParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the admin update user password operation.
+
+	Typically these are written to a http.Request.
 */
 type AdminUpdateUserPasswordParams struct {
 

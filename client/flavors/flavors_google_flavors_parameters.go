@@ -53,10 +53,12 @@ func NewFlavorsGoogleFlavorsParamsWithHTTPClient(client *http.Client) *FlavorsGo
 	}
 }
 
-/* FlavorsGoogleFlavorsParams contains all the parameters to send to the API endpoint
-   for the flavors google flavors operation.
+/*
+FlavorsGoogleFlavorsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the flavors google flavors operation.
+
+	Typically these are written to a http.Request.
 */
 type FlavorsGoogleFlavorsParams struct {
 

@@ -53,10 +53,12 @@ func NewStandAloneProfileDropdownListParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* StandAloneProfileDropdownListParams contains all the parameters to send to the API endpoint
-   for the stand alone profile dropdown list operation.
+/*
+StandAloneProfileDropdownListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone profile dropdown list operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneProfileDropdownListParams struct {
 

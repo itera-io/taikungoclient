@@ -69,7 +69,8 @@ func NewOpenstackVolumeTypesOK() *OpenstackVolumeTypesOK {
 	return &OpenstackVolumeTypesOK{}
 }
 
-/* OpenstackVolumeTypesOK describes a response with status code 200, with default header values.
+/*
+OpenstackVolumeTypesOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OpenstackVolumeTypesOK struct {
 	Payload []string
 }
 
+// IsSuccess returns true when this openstack volume types o k response has a 2xx status code
+func (o *OpenstackVolumeTypesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this openstack volume types o k response has a 3xx status code
+func (o *OpenstackVolumeTypesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack volume types o k response has a 4xx status code
+func (o *OpenstackVolumeTypesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this openstack volume types o k response has a 5xx status code
+func (o *OpenstackVolumeTypesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack volume types o k response a status code equal to that given
+func (o *OpenstackVolumeTypesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OpenstackVolumeTypesOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesOK  %+v", 200, o.Payload)
 }
+
+func (o *OpenstackVolumeTypesOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesOK  %+v", 200, o.Payload)
+}
+
 func (o *OpenstackVolumeTypesOK) GetPayload() []string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewOpenstackVolumeTypesBadRequest() *OpenstackVolumeTypesBadRequest {
 	return &OpenstackVolumeTypesBadRequest{}
 }
 
-/* OpenstackVolumeTypesBadRequest describes a response with status code 400, with default header values.
+/*
+OpenstackVolumeTypesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type OpenstackVolumeTypesBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this openstack volume types bad request response has a 2xx status code
+func (o *OpenstackVolumeTypesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack volume types bad request response has a 3xx status code
+func (o *OpenstackVolumeTypesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack volume types bad request response has a 4xx status code
+func (o *OpenstackVolumeTypesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack volume types bad request response has a 5xx status code
+func (o *OpenstackVolumeTypesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack volume types bad request response a status code equal to that given
+func (o *OpenstackVolumeTypesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OpenstackVolumeTypesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OpenstackVolumeTypesBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OpenstackVolumeTypesBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewOpenstackVolumeTypesUnauthorized() *OpenstackVolumeTypesUnauthorized {
 	return &OpenstackVolumeTypesUnauthorized{}
 }
 
-/* OpenstackVolumeTypesUnauthorized describes a response with status code 401, with default header values.
+/*
+OpenstackVolumeTypesUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type OpenstackVolumeTypesUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack volume types unauthorized response has a 2xx status code
+func (o *OpenstackVolumeTypesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack volume types unauthorized response has a 3xx status code
+func (o *OpenstackVolumeTypesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack volume types unauthorized response has a 4xx status code
+func (o *OpenstackVolumeTypesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack volume types unauthorized response has a 5xx status code
+func (o *OpenstackVolumeTypesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack volume types unauthorized response a status code equal to that given
+func (o *OpenstackVolumeTypesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OpenstackVolumeTypesUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OpenstackVolumeTypesUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OpenstackVolumeTypesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewOpenstackVolumeTypesForbidden() *OpenstackVolumeTypesForbidden {
 	return &OpenstackVolumeTypesForbidden{}
 }
 
-/* OpenstackVolumeTypesForbidden describes a response with status code 403, with default header values.
+/*
+OpenstackVolumeTypesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type OpenstackVolumeTypesForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack volume types forbidden response has a 2xx status code
+func (o *OpenstackVolumeTypesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack volume types forbidden response has a 3xx status code
+func (o *OpenstackVolumeTypesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack volume types forbidden response has a 4xx status code
+func (o *OpenstackVolumeTypesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack volume types forbidden response has a 5xx status code
+func (o *OpenstackVolumeTypesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack volume types forbidden response a status code equal to that given
+func (o *OpenstackVolumeTypesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OpenstackVolumeTypesForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OpenstackVolumeTypesForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OpenstackVolumeTypesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewOpenstackVolumeTypesNotFound() *OpenstackVolumeTypesNotFound {
 	return &OpenstackVolumeTypesNotFound{}
 }
 
-/* OpenstackVolumeTypesNotFound describes a response with status code 404, with default header values.
+/*
+OpenstackVolumeTypesNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type OpenstackVolumeTypesNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack volume types not found response has a 2xx status code
+func (o *OpenstackVolumeTypesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack volume types not found response has a 3xx status code
+func (o *OpenstackVolumeTypesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack volume types not found response has a 4xx status code
+func (o *OpenstackVolumeTypesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack volume types not found response has a 5xx status code
+func (o *OpenstackVolumeTypesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack volume types not found response a status code equal to that given
+func (o *OpenstackVolumeTypesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OpenstackVolumeTypesNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OpenstackVolumeTypesNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OpenstackVolumeTypesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewOpenstackVolumeTypesInternalServerError() *OpenstackVolumeTypesInternalS
 	return &OpenstackVolumeTypesInternalServerError{}
 }
 
-/* OpenstackVolumeTypesInternalServerError describes a response with status code 500, with default header values.
+/*
+OpenstackVolumeTypesInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OpenstackVolumeTypesInternalServerError struct {
 }
 
+// IsSuccess returns true when this openstack volume types internal server error response has a 2xx status code
+func (o *OpenstackVolumeTypesInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack volume types internal server error response has a 3xx status code
+func (o *OpenstackVolumeTypesInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack volume types internal server error response has a 4xx status code
+func (o *OpenstackVolumeTypesInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this openstack volume types internal server error response has a 5xx status code
+func (o *OpenstackVolumeTypesInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this openstack volume types internal server error response a status code equal to that given
+func (o *OpenstackVolumeTypesInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OpenstackVolumeTypesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesInternalServerError ", 500)
+}
+
+func (o *OpenstackVolumeTypesInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesInternalServerError ", 500)
 }
 

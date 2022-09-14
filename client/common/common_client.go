@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  CommonGetCountryList retrieves country list
+CommonGetCountryList retrieves country list
 */
 func (a *Client) CommonGetCountryList(params *CommonGetCountryListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommonGetCountryListOK, error) {
 	// TODO: Validate the params before sending
@@ -79,7 +79,7 @@ func (a *Client) CommonGetCountryList(params *CommonGetCountryListParams, authIn
 }
 
 /*
-  CommonGetEnumValues retrieves enum values
+CommonGetEnumValues retrieves enum values
 */
 func (a *Client) CommonGetEnumValues(params *CommonGetEnumValuesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommonGetEnumValuesOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +118,7 @@ func (a *Client) CommonGetEnumValues(params *CommonGetEnumValuesParams, authInfo
 }
 
 /*
-  CommonGetSortingElements retrieves country list
+CommonGetSortingElements retrieves country list
 */
 func (a *Client) CommonGetSortingElements(params *CommonGetSortingElementsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CommonGetSortingElementsOK, error) {
 	// TODO: Validate the params before sending

@@ -53,10 +53,12 @@ func NewKubernetesGetServiceParamsWithHTTPClient(client *http.Client) *Kubernete
 	}
 }
 
-/* KubernetesGetServiceParams contains all the parameters to send to the API endpoint
-   for the kubernetes get service operation.
+/*
+KubernetesGetServiceParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes get service operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesGetServiceParams struct {
 

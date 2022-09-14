@@ -54,10 +54,12 @@ func NewTicketEditParamsWithHTTPClient(client *http.Client) *TicketEditParams {
 	}
 }
 
-/* TicketEditParams contains all the parameters to send to the API endpoint
-   for the ticket edit operation.
+/*
+TicketEditParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ticket edit operation.
+
+	Typically these are written to a http.Request.
 */
 type TicketEditParams struct {
 

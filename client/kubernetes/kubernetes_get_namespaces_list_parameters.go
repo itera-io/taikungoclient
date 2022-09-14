@@ -53,10 +53,12 @@ func NewKubernetesGetNamespacesListParamsWithHTTPClient(client *http.Client) *Ku
 	}
 }
 
-/* KubernetesGetNamespacesListParams contains all the parameters to send to the API endpoint
-   for the kubernetes get namespaces list operation.
+/*
+KubernetesGetNamespacesListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes get namespaces list operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesGetNamespacesListParams struct {
 

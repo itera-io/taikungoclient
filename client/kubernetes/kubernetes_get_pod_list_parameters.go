@@ -53,10 +53,12 @@ func NewKubernetesGetPodListParamsWithHTTPClient(client *http.Client) *Kubernete
 	}
 }
 
-/* KubernetesGetPodListParams contains all the parameters to send to the API endpoint
-   for the kubernetes get pod list operation.
+/*
+KubernetesGetPodListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes get pod list operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesGetPodListParams struct {
 

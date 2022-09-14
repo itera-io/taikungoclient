@@ -54,10 +54,12 @@ func NewProjectsDeleteWholeProjectParamsWithHTTPClient(client *http.Client) *Pro
 	}
 }
 
-/* ProjectsDeleteWholeProjectParams contains all the parameters to send to the API endpoint
-   for the projects delete whole project operation.
+/*
+ProjectsDeleteWholeProjectParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects delete whole project operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsDeleteWholeProjectParams struct {
 

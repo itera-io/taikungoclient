@@ -53,10 +53,12 @@ func NewAllowedHostListParamsWithHTTPClient(client *http.Client) *AllowedHostLis
 	}
 }
 
-/* AllowedHostListParams contains all the parameters to send to the API endpoint
-   for the allowed host list operation.
+/*
+AllowedHostListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the allowed host list operation.
+
+	Typically these are written to a http.Request.
 */
 type AllowedHostListParams struct {
 

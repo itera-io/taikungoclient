@@ -53,10 +53,12 @@ func NewKubernetesDownloadParamsWithHTTPClient(client *http.Client) *KubernetesD
 	}
 }
 
-/* KubernetesDownloadParams contains all the parameters to send to the API endpoint
-   for the kubernetes download operation.
+/*
+KubernetesDownloadParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes download operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesDownloadParams struct {
 

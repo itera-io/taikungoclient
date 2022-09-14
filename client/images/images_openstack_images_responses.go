@@ -69,7 +69,8 @@ func NewImagesOpenstackImagesOK() *ImagesOpenstackImagesOK {
 	return &ImagesOpenstackImagesOK{}
 }
 
-/* ImagesOpenstackImagesOK describes a response with status code 200, with default header values.
+/*
+ImagesOpenstackImagesOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ImagesOpenstackImagesOK struct {
 	Payload *models.OpenstackImageList
 }
 
+// IsSuccess returns true when this images openstack images o k response has a 2xx status code
+func (o *ImagesOpenstackImagesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this images openstack images o k response has a 3xx status code
+func (o *ImagesOpenstackImagesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images openstack images o k response has a 4xx status code
+func (o *ImagesOpenstackImagesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this images openstack images o k response has a 5xx status code
+func (o *ImagesOpenstackImagesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images openstack images o k response a status code equal to that given
+func (o *ImagesOpenstackImagesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ImagesOpenstackImagesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesOK  %+v", 200, o.Payload)
 }
+
+func (o *ImagesOpenstackImagesOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesOK  %+v", 200, o.Payload)
+}
+
 func (o *ImagesOpenstackImagesOK) GetPayload() *models.OpenstackImageList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewImagesOpenstackImagesBadRequest() *ImagesOpenstackImagesBadRequest {
 	return &ImagesOpenstackImagesBadRequest{}
 }
 
-/* ImagesOpenstackImagesBadRequest describes a response with status code 400, with default header values.
+/*
+ImagesOpenstackImagesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type ImagesOpenstackImagesBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this images openstack images bad request response has a 2xx status code
+func (o *ImagesOpenstackImagesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images openstack images bad request response has a 3xx status code
+func (o *ImagesOpenstackImagesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images openstack images bad request response has a 4xx status code
+func (o *ImagesOpenstackImagesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images openstack images bad request response has a 5xx status code
+func (o *ImagesOpenstackImagesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images openstack images bad request response a status code equal to that given
+func (o *ImagesOpenstackImagesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ImagesOpenstackImagesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ImagesOpenstackImagesBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ImagesOpenstackImagesBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewImagesOpenstackImagesUnauthorized() *ImagesOpenstackImagesUnauthorized {
 	return &ImagesOpenstackImagesUnauthorized{}
 }
 
-/* ImagesOpenstackImagesUnauthorized describes a response with status code 401, with default header values.
+/*
+ImagesOpenstackImagesUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type ImagesOpenstackImagesUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this images openstack images unauthorized response has a 2xx status code
+func (o *ImagesOpenstackImagesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images openstack images unauthorized response has a 3xx status code
+func (o *ImagesOpenstackImagesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images openstack images unauthorized response has a 4xx status code
+func (o *ImagesOpenstackImagesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images openstack images unauthorized response has a 5xx status code
+func (o *ImagesOpenstackImagesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images openstack images unauthorized response a status code equal to that given
+func (o *ImagesOpenstackImagesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ImagesOpenstackImagesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ImagesOpenstackImagesUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ImagesOpenstackImagesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewImagesOpenstackImagesForbidden() *ImagesOpenstackImagesForbidden {
 	return &ImagesOpenstackImagesForbidden{}
 }
 
-/* ImagesOpenstackImagesForbidden describes a response with status code 403, with default header values.
+/*
+ImagesOpenstackImagesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type ImagesOpenstackImagesForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this images openstack images forbidden response has a 2xx status code
+func (o *ImagesOpenstackImagesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images openstack images forbidden response has a 3xx status code
+func (o *ImagesOpenstackImagesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images openstack images forbidden response has a 4xx status code
+func (o *ImagesOpenstackImagesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images openstack images forbidden response has a 5xx status code
+func (o *ImagesOpenstackImagesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images openstack images forbidden response a status code equal to that given
+func (o *ImagesOpenstackImagesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ImagesOpenstackImagesForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ImagesOpenstackImagesForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ImagesOpenstackImagesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewImagesOpenstackImagesNotFound() *ImagesOpenstackImagesNotFound {
 	return &ImagesOpenstackImagesNotFound{}
 }
 
-/* ImagesOpenstackImagesNotFound describes a response with status code 404, with default header values.
+/*
+ImagesOpenstackImagesNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type ImagesOpenstackImagesNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this images openstack images not found response has a 2xx status code
+func (o *ImagesOpenstackImagesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images openstack images not found response has a 3xx status code
+func (o *ImagesOpenstackImagesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images openstack images not found response has a 4xx status code
+func (o *ImagesOpenstackImagesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images openstack images not found response has a 5xx status code
+func (o *ImagesOpenstackImagesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images openstack images not found response a status code equal to that given
+func (o *ImagesOpenstackImagesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ImagesOpenstackImagesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ImagesOpenstackImagesNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ImagesOpenstackImagesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewImagesOpenstackImagesInternalServerError() *ImagesOpenstackImagesInterna
 	return &ImagesOpenstackImagesInternalServerError{}
 }
 
-/* ImagesOpenstackImagesInternalServerError describes a response with status code 500, with default header values.
+/*
+ImagesOpenstackImagesInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ImagesOpenstackImagesInternalServerError struct {
 }
 
+// IsSuccess returns true when this images openstack images internal server error response has a 2xx status code
+func (o *ImagesOpenstackImagesInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images openstack images internal server error response has a 3xx status code
+func (o *ImagesOpenstackImagesInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images openstack images internal server error response has a 4xx status code
+func (o *ImagesOpenstackImagesInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this images openstack images internal server error response has a 5xx status code
+func (o *ImagesOpenstackImagesInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this images openstack images internal server error response a status code equal to that given
+func (o *ImagesOpenstackImagesInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ImagesOpenstackImagesInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesInternalServerError ", 500)
+}
+
+func (o *ImagesOpenstackImagesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesInternalServerError ", 500)
 }
 

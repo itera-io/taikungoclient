@@ -69,7 +69,8 @@ func NewCronJobSyncBackupCredentialsOK() *CronJobSyncBackupCredentialsOK {
 	return &CronJobSyncBackupCredentialsOK{}
 }
 
-/* CronJobSyncBackupCredentialsOK describes a response with status code 200, with default header values.
+/*
+CronJobSyncBackupCredentialsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CronJobSyncBackupCredentialsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this cron job sync backup credentials o k response has a 2xx status code
+func (o *CronJobSyncBackupCredentialsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cron job sync backup credentials o k response has a 3xx status code
+func (o *CronJobSyncBackupCredentialsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync backup credentials o k response has a 4xx status code
+func (o *CronJobSyncBackupCredentialsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job sync backup credentials o k response has a 5xx status code
+func (o *CronJobSyncBackupCredentialsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job sync backup credentials o k response a status code equal to that given
+func (o *CronJobSyncBackupCredentialsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CronJobSyncBackupCredentialsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsOK  %+v", 200, o.Payload)
 }
+
+func (o *CronJobSyncBackupCredentialsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsOK  %+v", 200, o.Payload)
+}
+
 func (o *CronJobSyncBackupCredentialsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCronJobSyncBackupCredentialsBadRequest() *CronJobSyncBackupCredentialsBa
 	return &CronJobSyncBackupCredentialsBadRequest{}
 }
 
-/* CronJobSyncBackupCredentialsBadRequest describes a response with status code 400, with default header values.
+/*
+CronJobSyncBackupCredentialsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CronJobSyncBackupCredentialsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cron job sync backup credentials bad request response has a 2xx status code
+func (o *CronJobSyncBackupCredentialsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job sync backup credentials bad request response has a 3xx status code
+func (o *CronJobSyncBackupCredentialsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync backup credentials bad request response has a 4xx status code
+func (o *CronJobSyncBackupCredentialsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job sync backup credentials bad request response has a 5xx status code
+func (o *CronJobSyncBackupCredentialsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job sync backup credentials bad request response a status code equal to that given
+func (o *CronJobSyncBackupCredentialsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CronJobSyncBackupCredentialsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CronJobSyncBackupCredentialsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CronJobSyncBackupCredentialsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCronJobSyncBackupCredentialsUnauthorized() *CronJobSyncBackupCredentials
 	return &CronJobSyncBackupCredentialsUnauthorized{}
 }
 
-/* CronJobSyncBackupCredentialsUnauthorized describes a response with status code 401, with default header values.
+/*
+CronJobSyncBackupCredentialsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CronJobSyncBackupCredentialsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job sync backup credentials unauthorized response has a 2xx status code
+func (o *CronJobSyncBackupCredentialsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job sync backup credentials unauthorized response has a 3xx status code
+func (o *CronJobSyncBackupCredentialsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync backup credentials unauthorized response has a 4xx status code
+func (o *CronJobSyncBackupCredentialsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job sync backup credentials unauthorized response has a 5xx status code
+func (o *CronJobSyncBackupCredentialsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job sync backup credentials unauthorized response a status code equal to that given
+func (o *CronJobSyncBackupCredentialsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CronJobSyncBackupCredentialsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CronJobSyncBackupCredentialsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CronJobSyncBackupCredentialsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCronJobSyncBackupCredentialsForbidden() *CronJobSyncBackupCredentialsFor
 	return &CronJobSyncBackupCredentialsForbidden{}
 }
 
-/* CronJobSyncBackupCredentialsForbidden describes a response with status code 403, with default header values.
+/*
+CronJobSyncBackupCredentialsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CronJobSyncBackupCredentialsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job sync backup credentials forbidden response has a 2xx status code
+func (o *CronJobSyncBackupCredentialsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job sync backup credentials forbidden response has a 3xx status code
+func (o *CronJobSyncBackupCredentialsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync backup credentials forbidden response has a 4xx status code
+func (o *CronJobSyncBackupCredentialsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job sync backup credentials forbidden response has a 5xx status code
+func (o *CronJobSyncBackupCredentialsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job sync backup credentials forbidden response a status code equal to that given
+func (o *CronJobSyncBackupCredentialsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CronJobSyncBackupCredentialsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CronJobSyncBackupCredentialsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CronJobSyncBackupCredentialsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCronJobSyncBackupCredentialsNotFound() *CronJobSyncBackupCredentialsNotF
 	return &CronJobSyncBackupCredentialsNotFound{}
 }
 
-/* CronJobSyncBackupCredentialsNotFound describes a response with status code 404, with default header values.
+/*
+CronJobSyncBackupCredentialsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CronJobSyncBackupCredentialsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job sync backup credentials not found response has a 2xx status code
+func (o *CronJobSyncBackupCredentialsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job sync backup credentials not found response has a 3xx status code
+func (o *CronJobSyncBackupCredentialsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync backup credentials not found response has a 4xx status code
+func (o *CronJobSyncBackupCredentialsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job sync backup credentials not found response has a 5xx status code
+func (o *CronJobSyncBackupCredentialsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job sync backup credentials not found response a status code equal to that given
+func (o *CronJobSyncBackupCredentialsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CronJobSyncBackupCredentialsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CronJobSyncBackupCredentialsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CronJobSyncBackupCredentialsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCronJobSyncBackupCredentialsInternalServerError() *CronJobSyncBackupCred
 	return &CronJobSyncBackupCredentialsInternalServerError{}
 }
 
-/* CronJobSyncBackupCredentialsInternalServerError describes a response with status code 500, with default header values.
+/*
+CronJobSyncBackupCredentialsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CronJobSyncBackupCredentialsInternalServerError struct {
 }
 
+// IsSuccess returns true when this cron job sync backup credentials internal server error response has a 2xx status code
+func (o *CronJobSyncBackupCredentialsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job sync backup credentials internal server error response has a 3xx status code
+func (o *CronJobSyncBackupCredentialsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync backup credentials internal server error response has a 4xx status code
+func (o *CronJobSyncBackupCredentialsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job sync backup credentials internal server error response has a 5xx status code
+func (o *CronJobSyncBackupCredentialsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cron job sync backup credentials internal server error response a status code equal to that given
+func (o *CronJobSyncBackupCredentialsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CronJobSyncBackupCredentialsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsInternalServerError ", 500)
+}
+
+func (o *CronJobSyncBackupCredentialsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsInternalServerError ", 500)
 }
 

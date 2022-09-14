@@ -54,10 +54,12 @@ func NewCronJobDeleteAwsSpotInstancesParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* CronJobDeleteAwsSpotInstancesParams contains all the parameters to send to the API endpoint
-   for the cron job delete aws spot instances operation.
+/*
+CronJobDeleteAwsSpotInstancesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job delete aws spot instances operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobDeleteAwsSpotInstancesParams struct {
 

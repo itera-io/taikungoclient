@@ -53,10 +53,12 @@ func NewAlertingIntegrationsListParamsWithHTTPClient(client *http.Client) *Alert
 	}
 }
 
-/* AlertingIntegrationsListParams contains all the parameters to send to the API endpoint
-   for the alerting integrations list operation.
+/*
+AlertingIntegrationsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the alerting integrations list operation.
+
+	Typically these are written to a http.Request.
 */
 type AlertingIntegrationsListParams struct {
 

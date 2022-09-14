@@ -54,10 +54,12 @@ func NewCronJobCreateKeyPoolParamsWithHTTPClient(client *http.Client) *CronJobCr
 	}
 }
 
-/* CronJobCreateKeyPoolParams contains all the parameters to send to the API endpoint
-   for the cron job create key pool operation.
+/*
+CronJobCreateKeyPoolParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job create key pool operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobCreateKeyPoolParams struct {
 

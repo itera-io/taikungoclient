@@ -55,10 +55,12 @@ func NewInvoicesEditParamsWithHTTPClient(client *http.Client) *InvoicesEditParam
 	}
 }
 
-/* InvoicesEditParams contains all the parameters to send to the API endpoint
-   for the invoices edit operation.
+/*
+InvoicesEditParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the invoices edit operation.
+
+	Typically these are written to a http.Request.
 */
 type InvoicesEditParams struct {
 

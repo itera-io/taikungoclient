@@ -69,7 +69,8 @@ func NewKubernetesGetKubeConfigFileOK() *KubernetesGetKubeConfigFileOK {
 	return &KubernetesGetKubeConfigFileOK{}
 }
 
-/* KubernetesGetKubeConfigFileOK describes a response with status code 200, with default header values.
+/*
+KubernetesGetKubeConfigFileOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesGetKubeConfigFileOK struct {
 	Payload *models.KubeConfigResponse
 }
 
+// IsSuccess returns true when this kubernetes get kube config file o k response has a 2xx status code
+func (o *KubernetesGetKubeConfigFileOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes get kube config file o k response has a 3xx status code
+func (o *KubernetesGetKubeConfigFileOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get kube config file o k response has a 4xx status code
+func (o *KubernetesGetKubeConfigFileOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get kube config file o k response has a 5xx status code
+func (o *KubernetesGetKubeConfigFileOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get kube config file o k response a status code equal to that given
+func (o *KubernetesGetKubeConfigFileOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesGetKubeConfigFileOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesGetKubeConfigFileOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesGetKubeConfigFileOK) GetPayload() *models.KubeConfigResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewKubernetesGetKubeConfigFileBadRequest() *KubernetesGetKubeConfigFileBadR
 	return &KubernetesGetKubeConfigFileBadRequest{}
 }
 
-/* KubernetesGetKubeConfigFileBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesGetKubeConfigFileBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type KubernetesGetKubeConfigFileBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get kube config file bad request response has a 2xx status code
+func (o *KubernetesGetKubeConfigFileBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get kube config file bad request response has a 3xx status code
+func (o *KubernetesGetKubeConfigFileBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get kube config file bad request response has a 4xx status code
+func (o *KubernetesGetKubeConfigFileBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get kube config file bad request response has a 5xx status code
+func (o *KubernetesGetKubeConfigFileBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get kube config file bad request response a status code equal to that given
+func (o *KubernetesGetKubeConfigFileBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesGetKubeConfigFileBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesGetKubeConfigFileBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesGetKubeConfigFileBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewKubernetesGetKubeConfigFileUnauthorized() *KubernetesGetKubeConfigFileUn
 	return &KubernetesGetKubeConfigFileUnauthorized{}
 }
 
-/* KubernetesGetKubeConfigFileUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesGetKubeConfigFileUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type KubernetesGetKubeConfigFileUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get kube config file unauthorized response has a 2xx status code
+func (o *KubernetesGetKubeConfigFileUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get kube config file unauthorized response has a 3xx status code
+func (o *KubernetesGetKubeConfigFileUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get kube config file unauthorized response has a 4xx status code
+func (o *KubernetesGetKubeConfigFileUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get kube config file unauthorized response has a 5xx status code
+func (o *KubernetesGetKubeConfigFileUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get kube config file unauthorized response a status code equal to that given
+func (o *KubernetesGetKubeConfigFileUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesGetKubeConfigFileUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesGetKubeConfigFileUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesGetKubeConfigFileUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewKubernetesGetKubeConfigFileForbidden() *KubernetesGetKubeConfigFileForbi
 	return &KubernetesGetKubeConfigFileForbidden{}
 }
 
-/* KubernetesGetKubeConfigFileForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesGetKubeConfigFileForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type KubernetesGetKubeConfigFileForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get kube config file forbidden response has a 2xx status code
+func (o *KubernetesGetKubeConfigFileForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get kube config file forbidden response has a 3xx status code
+func (o *KubernetesGetKubeConfigFileForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get kube config file forbidden response has a 4xx status code
+func (o *KubernetesGetKubeConfigFileForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get kube config file forbidden response has a 5xx status code
+func (o *KubernetesGetKubeConfigFileForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get kube config file forbidden response a status code equal to that given
+func (o *KubernetesGetKubeConfigFileForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesGetKubeConfigFileForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesGetKubeConfigFileForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesGetKubeConfigFileForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewKubernetesGetKubeConfigFileNotFound() *KubernetesGetKubeConfigFileNotFou
 	return &KubernetesGetKubeConfigFileNotFound{}
 }
 
-/* KubernetesGetKubeConfigFileNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesGetKubeConfigFileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type KubernetesGetKubeConfigFileNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get kube config file not found response has a 2xx status code
+func (o *KubernetesGetKubeConfigFileNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get kube config file not found response has a 3xx status code
+func (o *KubernetesGetKubeConfigFileNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get kube config file not found response has a 4xx status code
+func (o *KubernetesGetKubeConfigFileNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get kube config file not found response has a 5xx status code
+func (o *KubernetesGetKubeConfigFileNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get kube config file not found response a status code equal to that given
+func (o *KubernetesGetKubeConfigFileNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesGetKubeConfigFileNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesGetKubeConfigFileNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesGetKubeConfigFileNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewKubernetesGetKubeConfigFileInternalServerError() *KubernetesGetKubeConfi
 	return &KubernetesGetKubeConfigFileInternalServerError{}
 }
 
-/* KubernetesGetKubeConfigFileInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesGetKubeConfigFileInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesGetKubeConfigFileInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes get kube config file internal server error response has a 2xx status code
+func (o *KubernetesGetKubeConfigFileInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get kube config file internal server error response has a 3xx status code
+func (o *KubernetesGetKubeConfigFileInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get kube config file internal server error response has a 4xx status code
+func (o *KubernetesGetKubeConfigFileInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get kube config file internal server error response has a 5xx status code
+func (o *KubernetesGetKubeConfigFileInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes get kube config file internal server error response a status code equal to that given
+func (o *KubernetesGetKubeConfigFileInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesGetKubeConfigFileInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileInternalServerError ", 500)
+}
+
+func (o *KubernetesGetKubeConfigFileInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileInternalServerError ", 500)
 }
 

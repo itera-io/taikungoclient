@@ -69,7 +69,8 @@ func NewProjectsLockManagerOK() *ProjectsLockManagerOK {
 	return &ProjectsLockManagerOK{}
 }
 
-/* ProjectsLockManagerOK describes a response with status code 200, with default header values.
+/*
+ProjectsLockManagerOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsLockManagerOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this projects lock manager o k response has a 2xx status code
+func (o *ProjectsLockManagerOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects lock manager o k response has a 3xx status code
+func (o *ProjectsLockManagerOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects lock manager o k response has a 4xx status code
+func (o *ProjectsLockManagerOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects lock manager o k response has a 5xx status code
+func (o *ProjectsLockManagerOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects lock manager o k response a status code equal to that given
+func (o *ProjectsLockManagerOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsLockManagerOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsLockManagerOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectsLockManagerBadRequest() *ProjectsLockManagerBadRequest {
 	return &ProjectsLockManagerBadRequest{}
 }
 
-/* ProjectsLockManagerBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsLockManagerBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectsLockManagerBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects lock manager bad request response has a 2xx status code
+func (o *ProjectsLockManagerBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects lock manager bad request response has a 3xx status code
+func (o *ProjectsLockManagerBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects lock manager bad request response has a 4xx status code
+func (o *ProjectsLockManagerBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects lock manager bad request response has a 5xx status code
+func (o *ProjectsLockManagerBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects lock manager bad request response a status code equal to that given
+func (o *ProjectsLockManagerBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsLockManagerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsLockManagerBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsLockManagerBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectsLockManagerUnauthorized() *ProjectsLockManagerUnauthorized {
 	return &ProjectsLockManagerUnauthorized{}
 }
 
-/* ProjectsLockManagerUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsLockManagerUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectsLockManagerUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects lock manager unauthorized response has a 2xx status code
+func (o *ProjectsLockManagerUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects lock manager unauthorized response has a 3xx status code
+func (o *ProjectsLockManagerUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects lock manager unauthorized response has a 4xx status code
+func (o *ProjectsLockManagerUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects lock manager unauthorized response has a 5xx status code
+func (o *ProjectsLockManagerUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects lock manager unauthorized response a status code equal to that given
+func (o *ProjectsLockManagerUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsLockManagerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsLockManagerUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectsLockManagerForbidden() *ProjectsLockManagerForbidden {
 	return &ProjectsLockManagerForbidden{}
 }
 
-/* ProjectsLockManagerForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsLockManagerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectsLockManagerForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects lock manager forbidden response has a 2xx status code
+func (o *ProjectsLockManagerForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects lock manager forbidden response has a 3xx status code
+func (o *ProjectsLockManagerForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects lock manager forbidden response has a 4xx status code
+func (o *ProjectsLockManagerForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects lock manager forbidden response has a 5xx status code
+func (o *ProjectsLockManagerForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects lock manager forbidden response a status code equal to that given
+func (o *ProjectsLockManagerForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsLockManagerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsLockManagerForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsLockManagerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectsLockManagerNotFound() *ProjectsLockManagerNotFound {
 	return &ProjectsLockManagerNotFound{}
 }
 
-/* ProjectsLockManagerNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsLockManagerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectsLockManagerNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects lock manager not found response has a 2xx status code
+func (o *ProjectsLockManagerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects lock manager not found response has a 3xx status code
+func (o *ProjectsLockManagerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects lock manager not found response has a 4xx status code
+func (o *ProjectsLockManagerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects lock manager not found response has a 5xx status code
+func (o *ProjectsLockManagerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects lock manager not found response a status code equal to that given
+func (o *ProjectsLockManagerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsLockManagerNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsLockManagerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectsLockManagerInternalServerError() *ProjectsLockManagerInternalSer
 	return &ProjectsLockManagerInternalServerError{}
 }
 
-/* ProjectsLockManagerInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsLockManagerInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsLockManagerInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects lock manager internal server error response has a 2xx status code
+func (o *ProjectsLockManagerInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects lock manager internal server error response has a 3xx status code
+func (o *ProjectsLockManagerInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects lock manager internal server error response has a 4xx status code
+func (o *ProjectsLockManagerInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects lock manager internal server error response has a 5xx status code
+func (o *ProjectsLockManagerInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects lock manager internal server error response a status code equal to that given
+func (o *ProjectsLockManagerInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsLockManagerInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerInternalServerError ", 500)
+}
+
+func (o *ProjectsLockManagerInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerInternalServerError ", 500)
 }
 

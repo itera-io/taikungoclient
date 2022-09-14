@@ -54,10 +54,12 @@ func NewCheckerCidrParamsWithHTTPClient(client *http.Client) *CheckerCidrParams 
 	}
 }
 
-/* CheckerCidrParams contains all the parameters to send to the API endpoint
-   for the checker cidr operation.
+/*
+CheckerCidrParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checker cidr operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckerCidrParams struct {
 

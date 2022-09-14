@@ -55,10 +55,12 @@ func NewPrometheusUpdateParamsWithHTTPClient(client *http.Client) *PrometheusUpd
 	}
 }
 
-/* PrometheusUpdateParams contains all the parameters to send to the API endpoint
-   for the prometheus update operation.
+/*
+PrometheusUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the prometheus update operation.
+
+	Typically these are written to a http.Request.
 */
 type PrometheusUpdateParams struct {
 

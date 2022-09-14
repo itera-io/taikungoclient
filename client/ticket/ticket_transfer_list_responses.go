@@ -69,7 +69,8 @@ func NewTicketTransferListOK() *TicketTransferListOK {
 	return &TicketTransferListOK{}
 }
 
-/* TicketTransferListOK describes a response with status code 200, with default header values.
+/*
+TicketTransferListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type TicketTransferListOK struct {
 	Payload []*models.TransferList
 }
 
+// IsSuccess returns true when this ticket transfer list o k response has a 2xx status code
+func (o *TicketTransferListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this ticket transfer list o k response has a 3xx status code
+func (o *TicketTransferListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket transfer list o k response has a 4xx status code
+func (o *TicketTransferListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ticket transfer list o k response has a 5xx status code
+func (o *TicketTransferListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket transfer list o k response a status code equal to that given
+func (o *TicketTransferListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *TicketTransferListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListOK  %+v", 200, o.Payload)
 }
+
+func (o *TicketTransferListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListOK  %+v", 200, o.Payload)
+}
+
 func (o *TicketTransferListOK) GetPayload() []*models.TransferList {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewTicketTransferListBadRequest() *TicketTransferListBadRequest {
 	return &TicketTransferListBadRequest{}
 }
 
-/* TicketTransferListBadRequest describes a response with status code 400, with default header values.
+/*
+TicketTransferListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type TicketTransferListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this ticket transfer list bad request response has a 2xx status code
+func (o *TicketTransferListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket transfer list bad request response has a 3xx status code
+func (o *TicketTransferListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket transfer list bad request response has a 4xx status code
+func (o *TicketTransferListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket transfer list bad request response has a 5xx status code
+func (o *TicketTransferListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket transfer list bad request response a status code equal to that given
+func (o *TicketTransferListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *TicketTransferListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *TicketTransferListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *TicketTransferListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewTicketTransferListUnauthorized() *TicketTransferListUnauthorized {
 	return &TicketTransferListUnauthorized{}
 }
 
-/* TicketTransferListUnauthorized describes a response with status code 401, with default header values.
+/*
+TicketTransferListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type TicketTransferListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ticket transfer list unauthorized response has a 2xx status code
+func (o *TicketTransferListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket transfer list unauthorized response has a 3xx status code
+func (o *TicketTransferListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket transfer list unauthorized response has a 4xx status code
+func (o *TicketTransferListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket transfer list unauthorized response has a 5xx status code
+func (o *TicketTransferListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket transfer list unauthorized response a status code equal to that given
+func (o *TicketTransferListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *TicketTransferListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *TicketTransferListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *TicketTransferListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewTicketTransferListForbidden() *TicketTransferListForbidden {
 	return &TicketTransferListForbidden{}
 }
 
-/* TicketTransferListForbidden describes a response with status code 403, with default header values.
+/*
+TicketTransferListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type TicketTransferListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ticket transfer list forbidden response has a 2xx status code
+func (o *TicketTransferListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket transfer list forbidden response has a 3xx status code
+func (o *TicketTransferListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket transfer list forbidden response has a 4xx status code
+func (o *TicketTransferListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket transfer list forbidden response has a 5xx status code
+func (o *TicketTransferListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket transfer list forbidden response a status code equal to that given
+func (o *TicketTransferListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *TicketTransferListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *TicketTransferListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *TicketTransferListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewTicketTransferListNotFound() *TicketTransferListNotFound {
 	return &TicketTransferListNotFound{}
 }
 
-/* TicketTransferListNotFound describes a response with status code 404, with default header values.
+/*
+TicketTransferListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type TicketTransferListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ticket transfer list not found response has a 2xx status code
+func (o *TicketTransferListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket transfer list not found response has a 3xx status code
+func (o *TicketTransferListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket transfer list not found response has a 4xx status code
+func (o *TicketTransferListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket transfer list not found response has a 5xx status code
+func (o *TicketTransferListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket transfer list not found response a status code equal to that given
+func (o *TicketTransferListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *TicketTransferListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *TicketTransferListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *TicketTransferListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewTicketTransferListInternalServerError() *TicketTransferListInternalServe
 	return &TicketTransferListInternalServerError{}
 }
 
-/* TicketTransferListInternalServerError describes a response with status code 500, with default header values.
+/*
+TicketTransferListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type TicketTransferListInternalServerError struct {
 }
 
+// IsSuccess returns true when this ticket transfer list internal server error response has a 2xx status code
+func (o *TicketTransferListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket transfer list internal server error response has a 3xx status code
+func (o *TicketTransferListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket transfer list internal server error response has a 4xx status code
+func (o *TicketTransferListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ticket transfer list internal server error response has a 5xx status code
+func (o *TicketTransferListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this ticket transfer list internal server error response a status code equal to that given
+func (o *TicketTransferListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *TicketTransferListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListInternalServerError ", 500)
+}
+
+func (o *TicketTransferListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListInternalServerError ", 500)
 }
 

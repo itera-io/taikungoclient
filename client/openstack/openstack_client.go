@@ -54,7 +54,7 @@ type ClientService interface {
 }
 
 /*
-  OpenstackCreate adds openstack credentials
+OpenstackCreate adds openstack credentials
 */
 func (a *Client) OpenstackCreate(params *OpenstackCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpenstackCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -93,7 +93,7 @@ func (a *Client) OpenstackCreate(params *OpenstackCreateParams, authInfo runtime
 }
 
 /*
-  OpenstackList retrieves list of azure cloud credentials
+OpenstackList retrieves list of azure cloud credentials
 */
 func (a *Client) OpenstackList(params *OpenstackListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpenstackListOK, error) {
 	// TODO: Validate the params before sending
@@ -132,7 +132,7 @@ func (a *Client) OpenstackList(params *OpenstackListParams, authInfo runtime.Cli
 }
 
 /*
-  OpenstackNetworks retrieves a list of openstack network
+OpenstackNetworks retrieves a list of openstack network
 */
 func (a *Client) OpenstackNetworks(params *OpenstackNetworksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpenstackNetworksOK, error) {
 	// TODO: Validate the params before sending
@@ -171,7 +171,7 @@ func (a *Client) OpenstackNetworks(params *OpenstackNetworksParams, authInfo run
 }
 
 /*
-  OpenstackProjects retrieves a list of openstack project
+OpenstackProjects retrieves a list of openstack project
 */
 func (a *Client) OpenstackProjects(params *OpenstackProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpenstackProjectsOK, error) {
 	// TODO: Validate the params before sending
@@ -210,7 +210,7 @@ func (a *Client) OpenstackProjects(params *OpenstackProjectsParams, authInfo run
 }
 
 /*
-  OpenstackQuotas retrieves a list of openstack quotas
+OpenstackQuotas retrieves a list of openstack quotas
 */
 func (a *Client) OpenstackQuotas(params *OpenstackQuotasParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpenstackQuotasOK, error) {
 	// TODO: Validate the params before sending
@@ -249,7 +249,7 @@ func (a *Client) OpenstackQuotas(params *OpenstackQuotasParams, authInfo runtime
 }
 
 /*
-  OpenstackRegions retrieves openstack regions
+OpenstackRegions retrieves openstack regions
 */
 func (a *Client) OpenstackRegions(params *OpenstackRegionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpenstackRegionsOK, error) {
 	// TODO: Validate the params before sending
@@ -288,7 +288,7 @@ func (a *Client) OpenstackRegions(params *OpenstackRegionsParams, authInfo runti
 }
 
 /*
-  OpenstackSubnets retrieves a list of openstack subnet
+OpenstackSubnets retrieves a list of openstack subnet
 */
 func (a *Client) OpenstackSubnets(params *OpenstackSubnetsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpenstackSubnetsOK, error) {
 	// TODO: Validate the params before sending
@@ -327,7 +327,7 @@ func (a *Client) OpenstackSubnets(params *OpenstackSubnetsParams, authInfo runti
 }
 
 /*
-  OpenstackUpdate updates openstack credentials
+OpenstackUpdate updates openstack credentials
 */
 func (a *Client) OpenstackUpdate(params *OpenstackUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpenstackUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -366,7 +366,7 @@ func (a *Client) OpenstackUpdate(params *OpenstackUpdateParams, authInfo runtime
 }
 
 /*
-  OpenstackVolumeTypes retrieves a list of openstack volume type
+OpenstackVolumeTypes retrieves a list of openstack volume type
 */
 func (a *Client) OpenstackVolumeTypes(params *OpenstackVolumeTypesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpenstackVolumeTypesOK, error) {
 	// TODO: Validate the params before sending
@@ -405,7 +405,7 @@ func (a *Client) OpenstackVolumeTypes(params *OpenstackVolumeTypesParams, authIn
 }
 
 /*
-  OpenstackZoneList fetches openstack zone list
+OpenstackZoneList fetches openstack zone list
 */
 func (a *Client) OpenstackZoneList(params *OpenstackZoneListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpenstackZoneListOK, error) {
 	// TODO: Validate the params before sending

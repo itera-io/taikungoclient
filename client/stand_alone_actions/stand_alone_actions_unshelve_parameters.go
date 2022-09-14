@@ -54,10 +54,12 @@ func NewStandAloneActionsUnshelveParamsWithHTTPClient(client *http.Client) *Stan
 	}
 }
 
-/* StandAloneActionsUnshelveParams contains all the parameters to send to the API endpoint
-   for the stand alone actions unshelve operation.
+/*
+StandAloneActionsUnshelveParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone actions unshelve operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneActionsUnshelveParams struct {
 

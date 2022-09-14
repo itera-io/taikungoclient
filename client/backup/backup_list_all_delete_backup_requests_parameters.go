@@ -53,10 +53,12 @@ func NewBackupListAllDeleteBackupRequestsParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* BackupListAllDeleteBackupRequestsParams contains all the parameters to send to the API endpoint
-   for the backup list all delete backup requests operation.
+/*
+BackupListAllDeleteBackupRequestsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the backup list all delete backup requests operation.
+
+	Typically these are written to a http.Request.
 */
 type BackupListAllDeleteBackupRequestsParams struct {
 

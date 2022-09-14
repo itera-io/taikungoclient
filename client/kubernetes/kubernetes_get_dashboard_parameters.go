@@ -53,10 +53,12 @@ func NewKubernetesGetDashboardParamsWithHTTPClient(client *http.Client) *Kuberne
 	}
 }
 
-/* KubernetesGetDashboardParams contains all the parameters to send to the API endpoint
-   for the kubernetes get dashboard operation.
+/*
+KubernetesGetDashboardParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes get dashboard operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesGetDashboardParams struct {
 

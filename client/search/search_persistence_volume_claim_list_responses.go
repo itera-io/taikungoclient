@@ -69,7 +69,8 @@ func NewSearchPersistenceVolumeClaimListOK() *SearchPersistenceVolumeClaimListOK
 	return &SearchPersistenceVolumeClaimListOK{}
 }
 
-/* SearchPersistenceVolumeClaimListOK describes a response with status code 200, with default header values.
+/*
+SearchPersistenceVolumeClaimListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SearchPersistenceVolumeClaimListOK struct {
 	Payload *models.PvcSearchList
 }
 
+// IsSuccess returns true when this search persistence volume claim list o k response has a 2xx status code
+func (o *SearchPersistenceVolumeClaimListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this search persistence volume claim list o k response has a 3xx status code
+func (o *SearchPersistenceVolumeClaimListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search persistence volume claim list o k response has a 4xx status code
+func (o *SearchPersistenceVolumeClaimListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search persistence volume claim list o k response has a 5xx status code
+func (o *SearchPersistenceVolumeClaimListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search persistence volume claim list o k response a status code equal to that given
+func (o *SearchPersistenceVolumeClaimListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SearchPersistenceVolumeClaimListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListOK  %+v", 200, o.Payload)
 }
+
+func (o *SearchPersistenceVolumeClaimListOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListOK  %+v", 200, o.Payload)
+}
+
 func (o *SearchPersistenceVolumeClaimListOK) GetPayload() *models.PvcSearchList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewSearchPersistenceVolumeClaimListBadRequest() *SearchPersistenceVolumeCla
 	return &SearchPersistenceVolumeClaimListBadRequest{}
 }
 
-/* SearchPersistenceVolumeClaimListBadRequest describes a response with status code 400, with default header values.
+/*
+SearchPersistenceVolumeClaimListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type SearchPersistenceVolumeClaimListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this search persistence volume claim list bad request response has a 2xx status code
+func (o *SearchPersistenceVolumeClaimListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search persistence volume claim list bad request response has a 3xx status code
+func (o *SearchPersistenceVolumeClaimListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search persistence volume claim list bad request response has a 4xx status code
+func (o *SearchPersistenceVolumeClaimListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search persistence volume claim list bad request response has a 5xx status code
+func (o *SearchPersistenceVolumeClaimListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search persistence volume claim list bad request response a status code equal to that given
+func (o *SearchPersistenceVolumeClaimListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SearchPersistenceVolumeClaimListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SearchPersistenceVolumeClaimListBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SearchPersistenceVolumeClaimListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewSearchPersistenceVolumeClaimListUnauthorized() *SearchPersistenceVolumeC
 	return &SearchPersistenceVolumeClaimListUnauthorized{}
 }
 
-/* SearchPersistenceVolumeClaimListUnauthorized describes a response with status code 401, with default header values.
+/*
+SearchPersistenceVolumeClaimListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type SearchPersistenceVolumeClaimListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search persistence volume claim list unauthorized response has a 2xx status code
+func (o *SearchPersistenceVolumeClaimListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search persistence volume claim list unauthorized response has a 3xx status code
+func (o *SearchPersistenceVolumeClaimListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search persistence volume claim list unauthorized response has a 4xx status code
+func (o *SearchPersistenceVolumeClaimListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search persistence volume claim list unauthorized response has a 5xx status code
+func (o *SearchPersistenceVolumeClaimListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search persistence volume claim list unauthorized response a status code equal to that given
+func (o *SearchPersistenceVolumeClaimListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SearchPersistenceVolumeClaimListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SearchPersistenceVolumeClaimListUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SearchPersistenceVolumeClaimListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewSearchPersistenceVolumeClaimListForbidden() *SearchPersistenceVolumeClai
 	return &SearchPersistenceVolumeClaimListForbidden{}
 }
 
-/* SearchPersistenceVolumeClaimListForbidden describes a response with status code 403, with default header values.
+/*
+SearchPersistenceVolumeClaimListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type SearchPersistenceVolumeClaimListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search persistence volume claim list forbidden response has a 2xx status code
+func (o *SearchPersistenceVolumeClaimListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search persistence volume claim list forbidden response has a 3xx status code
+func (o *SearchPersistenceVolumeClaimListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search persistence volume claim list forbidden response has a 4xx status code
+func (o *SearchPersistenceVolumeClaimListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search persistence volume claim list forbidden response has a 5xx status code
+func (o *SearchPersistenceVolumeClaimListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search persistence volume claim list forbidden response a status code equal to that given
+func (o *SearchPersistenceVolumeClaimListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SearchPersistenceVolumeClaimListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SearchPersistenceVolumeClaimListForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SearchPersistenceVolumeClaimListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewSearchPersistenceVolumeClaimListNotFound() *SearchPersistenceVolumeClaim
 	return &SearchPersistenceVolumeClaimListNotFound{}
 }
 
-/* SearchPersistenceVolumeClaimListNotFound describes a response with status code 404, with default header values.
+/*
+SearchPersistenceVolumeClaimListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type SearchPersistenceVolumeClaimListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search persistence volume claim list not found response has a 2xx status code
+func (o *SearchPersistenceVolumeClaimListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search persistence volume claim list not found response has a 3xx status code
+func (o *SearchPersistenceVolumeClaimListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search persistence volume claim list not found response has a 4xx status code
+func (o *SearchPersistenceVolumeClaimListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search persistence volume claim list not found response has a 5xx status code
+func (o *SearchPersistenceVolumeClaimListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search persistence volume claim list not found response a status code equal to that given
+func (o *SearchPersistenceVolumeClaimListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SearchPersistenceVolumeClaimListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SearchPersistenceVolumeClaimListNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SearchPersistenceVolumeClaimListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewSearchPersistenceVolumeClaimListInternalServerError() *SearchPersistence
 	return &SearchPersistenceVolumeClaimListInternalServerError{}
 }
 
-/* SearchPersistenceVolumeClaimListInternalServerError describes a response with status code 500, with default header values.
+/*
+SearchPersistenceVolumeClaimListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SearchPersistenceVolumeClaimListInternalServerError struct {
 }
 
+// IsSuccess returns true when this search persistence volume claim list internal server error response has a 2xx status code
+func (o *SearchPersistenceVolumeClaimListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search persistence volume claim list internal server error response has a 3xx status code
+func (o *SearchPersistenceVolumeClaimListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search persistence volume claim list internal server error response has a 4xx status code
+func (o *SearchPersistenceVolumeClaimListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search persistence volume claim list internal server error response has a 5xx status code
+func (o *SearchPersistenceVolumeClaimListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this search persistence volume claim list internal server error response a status code equal to that given
+func (o *SearchPersistenceVolumeClaimListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SearchPersistenceVolumeClaimListInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListInternalServerError ", 500)
+}
+
+func (o *SearchPersistenceVolumeClaimListInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListInternalServerError ", 500)
 }
 

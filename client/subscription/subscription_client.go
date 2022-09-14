@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  SubscriptionCreate adds new subscription package
+SubscriptionCreate adds new subscription package
 */
 func (a *Client) SubscriptionCreate(params *SubscriptionCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -85,7 +85,7 @@ func (a *Client) SubscriptionCreate(params *SubscriptionCreateParams, authInfo r
 }
 
 /*
-  SubscriptionDelete deletes subscription package
+SubscriptionDelete deletes subscription package
 */
 func (a *Client) SubscriptionDelete(params *SubscriptionDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionDeleteOK, *SubscriptionDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -125,7 +125,7 @@ func (a *Client) SubscriptionDelete(params *SubscriptionDeleteParams, authInfo r
 }
 
 /*
-  SubscriptionList retrieves private subscription list for partners
+SubscriptionList retrieves private subscription list for partners
 */
 func (a *Client) SubscriptionList(params *SubscriptionListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionListOK, error) {
 	// TODO: Validate the params before sending
@@ -164,7 +164,7 @@ func (a *Client) SubscriptionList(params *SubscriptionListParams, authInfo runti
 }
 
 /*
-  SubscriptionSubscriptionForLandingPage retrieves public subscription list for landing page
+SubscriptionSubscriptionForLandingPage retrieves public subscription list for landing page
 */
 func (a *Client) SubscriptionSubscriptionForLandingPage(params *SubscriptionSubscriptionForLandingPageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionSubscriptionForLandingPageOK, error) {
 	// TODO: Validate the params before sending
@@ -203,7 +203,7 @@ func (a *Client) SubscriptionSubscriptionForLandingPage(params *SubscriptionSubs
 }
 
 /*
-  SubscriptionSubscriptionForOrganizationList retrieves subscription for organization bound
+SubscriptionSubscriptionForOrganizationList retrieves subscription for organization bound
 */
 func (a *Client) SubscriptionSubscriptionForOrganizationList(params *SubscriptionSubscriptionForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionSubscriptionForOrganizationListOK, error) {
 	// TODO: Validate the params before sending
@@ -242,7 +242,7 @@ func (a *Client) SubscriptionSubscriptionForOrganizationList(params *Subscriptio
 }
 
 /*
-  SubscriptionUpdate adds new subscription package
+SubscriptionUpdate adds new subscription package
 */
 func (a *Client) SubscriptionUpdate(params *SubscriptionUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SubscriptionUpdateOK, error) {
 	// TODO: Validate the params before sending

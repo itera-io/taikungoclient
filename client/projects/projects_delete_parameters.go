@@ -54,10 +54,12 @@ func NewProjectsDeleteParamsWithHTTPClient(client *http.Client) *ProjectsDeleteP
 	}
 }
 
-/* ProjectsDeleteParams contains all the parameters to send to the API endpoint
-   for the projects delete operation.
+/*
+ProjectsDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects delete operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsDeleteParams struct {
 

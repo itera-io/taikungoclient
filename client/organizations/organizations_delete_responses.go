@@ -75,7 +75,8 @@ func NewOrganizationsDeleteOK() *OrganizationsDeleteOK {
 	return &OrganizationsDeleteOK{}
 }
 
-/* OrganizationsDeleteOK describes a response with status code 200, with default header values.
+/*
+OrganizationsDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -83,9 +84,39 @@ type OrganizationsDeleteOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this organizations delete o k response has a 2xx status code
+func (o *OrganizationsDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this organizations delete o k response has a 3xx status code
+func (o *OrganizationsDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations delete o k response has a 4xx status code
+func (o *OrganizationsDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations delete o k response has a 5xx status code
+func (o *OrganizationsDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations delete o k response a status code equal to that given
+func (o *OrganizationsDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OrganizationsDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *OrganizationsDeleteOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *OrganizationsDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -105,14 +136,44 @@ func NewOrganizationsDeleteNoContent() *OrganizationsDeleteNoContent {
 	return &OrganizationsDeleteNoContent{}
 }
 
-/* OrganizationsDeleteNoContent describes a response with status code 204, with default header values.
+/*
+OrganizationsDeleteNoContent describes a response with status code 204, with default header values.
 
 Success
 */
 type OrganizationsDeleteNoContent struct {
 }
 
+// IsSuccess returns true when this organizations delete no content response has a 2xx status code
+func (o *OrganizationsDeleteNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this organizations delete no content response has a 3xx status code
+func (o *OrganizationsDeleteNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations delete no content response has a 4xx status code
+func (o *OrganizationsDeleteNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations delete no content response has a 5xx status code
+func (o *OrganizationsDeleteNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations delete no content response a status code equal to that given
+func (o *OrganizationsDeleteNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *OrganizationsDeleteNoContent) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteNoContent ", 204)
+}
+
+func (o *OrganizationsDeleteNoContent) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteNoContent ", 204)
 }
 
@@ -126,7 +187,8 @@ func NewOrganizationsDeleteBadRequest() *OrganizationsDeleteBadRequest {
 	return &OrganizationsDeleteBadRequest{}
 }
 
-/* OrganizationsDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+OrganizationsDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -134,9 +196,39 @@ type OrganizationsDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this organizations delete bad request response has a 2xx status code
+func (o *OrganizationsDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations delete bad request response has a 3xx status code
+func (o *OrganizationsDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations delete bad request response has a 4xx status code
+func (o *OrganizationsDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations delete bad request response has a 5xx status code
+func (o *OrganizationsDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations delete bad request response a status code equal to that given
+func (o *OrganizationsDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OrganizationsDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OrganizationsDeleteBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OrganizationsDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -158,7 +250,8 @@ func NewOrganizationsDeleteUnauthorized() *OrganizationsDeleteUnauthorized {
 	return &OrganizationsDeleteUnauthorized{}
 }
 
-/* OrganizationsDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+OrganizationsDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -166,9 +259,39 @@ type OrganizationsDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations delete unauthorized response has a 2xx status code
+func (o *OrganizationsDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations delete unauthorized response has a 3xx status code
+func (o *OrganizationsDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations delete unauthorized response has a 4xx status code
+func (o *OrganizationsDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations delete unauthorized response has a 5xx status code
+func (o *OrganizationsDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations delete unauthorized response a status code equal to that given
+func (o *OrganizationsDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OrganizationsDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OrganizationsDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OrganizationsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -190,7 +313,8 @@ func NewOrganizationsDeleteForbidden() *OrganizationsDeleteForbidden {
 	return &OrganizationsDeleteForbidden{}
 }
 
-/* OrganizationsDeleteForbidden describes a response with status code 403, with default header values.
+/*
+OrganizationsDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -198,9 +322,39 @@ type OrganizationsDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations delete forbidden response has a 2xx status code
+func (o *OrganizationsDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations delete forbidden response has a 3xx status code
+func (o *OrganizationsDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations delete forbidden response has a 4xx status code
+func (o *OrganizationsDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations delete forbidden response has a 5xx status code
+func (o *OrganizationsDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations delete forbidden response a status code equal to that given
+func (o *OrganizationsDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OrganizationsDeleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OrganizationsDeleteForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OrganizationsDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -222,7 +376,8 @@ func NewOrganizationsDeleteNotFound() *OrganizationsDeleteNotFound {
 	return &OrganizationsDeleteNotFound{}
 }
 
-/* OrganizationsDeleteNotFound describes a response with status code 404, with default header values.
+/*
+OrganizationsDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -230,9 +385,39 @@ type OrganizationsDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations delete not found response has a 2xx status code
+func (o *OrganizationsDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations delete not found response has a 3xx status code
+func (o *OrganizationsDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations delete not found response has a 4xx status code
+func (o *OrganizationsDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations delete not found response has a 5xx status code
+func (o *OrganizationsDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations delete not found response a status code equal to that given
+func (o *OrganizationsDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OrganizationsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OrganizationsDeleteNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OrganizationsDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -254,14 +439,44 @@ func NewOrganizationsDeleteInternalServerError() *OrganizationsDeleteInternalSer
 	return &OrganizationsDeleteInternalServerError{}
 }
 
-/* OrganizationsDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+OrganizationsDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OrganizationsDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this organizations delete internal server error response has a 2xx status code
+func (o *OrganizationsDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations delete internal server error response has a 3xx status code
+func (o *OrganizationsDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations delete internal server error response has a 4xx status code
+func (o *OrganizationsDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations delete internal server error response has a 5xx status code
+func (o *OrganizationsDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this organizations delete internal server error response a status code equal to that given
+func (o *OrganizationsDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OrganizationsDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteInternalServerError ", 500)
+}
+
+func (o *OrganizationsDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteInternalServerError ", 500)
 }
 

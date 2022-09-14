@@ -69,7 +69,8 @@ func NewProjectsListWithAlertsOK() *ProjectsListWithAlertsOK {
 	return &ProjectsListWithAlertsOK{}
 }
 
-/* ProjectsListWithAlertsOK describes a response with status code 200, with default header values.
+/*
+ProjectsListWithAlertsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsListWithAlertsOK struct {
 	Payload []*models.ProjectListForAlert
 }
 
+// IsSuccess returns true when this projects list with alerts o k response has a 2xx status code
+func (o *ProjectsListWithAlertsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects list with alerts o k response has a 3xx status code
+func (o *ProjectsListWithAlertsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects list with alerts o k response has a 4xx status code
+func (o *ProjectsListWithAlertsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects list with alerts o k response has a 5xx status code
+func (o *ProjectsListWithAlertsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects list with alerts o k response a status code equal to that given
+func (o *ProjectsListWithAlertsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsListWithAlertsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsListWithAlertsOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsListWithAlertsOK) GetPayload() []*models.ProjectListForAlert {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectsListWithAlertsBadRequest() *ProjectsListWithAlertsBadRequest {
 	return &ProjectsListWithAlertsBadRequest{}
 }
 
-/* ProjectsListWithAlertsBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsListWithAlertsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectsListWithAlertsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects list with alerts bad request response has a 2xx status code
+func (o *ProjectsListWithAlertsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects list with alerts bad request response has a 3xx status code
+func (o *ProjectsListWithAlertsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects list with alerts bad request response has a 4xx status code
+func (o *ProjectsListWithAlertsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects list with alerts bad request response has a 5xx status code
+func (o *ProjectsListWithAlertsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects list with alerts bad request response a status code equal to that given
+func (o *ProjectsListWithAlertsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsListWithAlertsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsListWithAlertsBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsListWithAlertsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectsListWithAlertsUnauthorized() *ProjectsListWithAlertsUnauthorized
 	return &ProjectsListWithAlertsUnauthorized{}
 }
 
-/* ProjectsListWithAlertsUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsListWithAlertsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectsListWithAlertsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects list with alerts unauthorized response has a 2xx status code
+func (o *ProjectsListWithAlertsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects list with alerts unauthorized response has a 3xx status code
+func (o *ProjectsListWithAlertsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects list with alerts unauthorized response has a 4xx status code
+func (o *ProjectsListWithAlertsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects list with alerts unauthorized response has a 5xx status code
+func (o *ProjectsListWithAlertsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects list with alerts unauthorized response a status code equal to that given
+func (o *ProjectsListWithAlertsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsListWithAlertsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsListWithAlertsUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsListWithAlertsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectsListWithAlertsForbidden() *ProjectsListWithAlertsForbidden {
 	return &ProjectsListWithAlertsForbidden{}
 }
 
-/* ProjectsListWithAlertsForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsListWithAlertsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectsListWithAlertsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects list with alerts forbidden response has a 2xx status code
+func (o *ProjectsListWithAlertsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects list with alerts forbidden response has a 3xx status code
+func (o *ProjectsListWithAlertsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects list with alerts forbidden response has a 4xx status code
+func (o *ProjectsListWithAlertsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects list with alerts forbidden response has a 5xx status code
+func (o *ProjectsListWithAlertsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects list with alerts forbidden response a status code equal to that given
+func (o *ProjectsListWithAlertsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsListWithAlertsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsListWithAlertsForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsListWithAlertsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectsListWithAlertsNotFound() *ProjectsListWithAlertsNotFound {
 	return &ProjectsListWithAlertsNotFound{}
 }
 
-/* ProjectsListWithAlertsNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsListWithAlertsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectsListWithAlertsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects list with alerts not found response has a 2xx status code
+func (o *ProjectsListWithAlertsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects list with alerts not found response has a 3xx status code
+func (o *ProjectsListWithAlertsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects list with alerts not found response has a 4xx status code
+func (o *ProjectsListWithAlertsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects list with alerts not found response has a 5xx status code
+func (o *ProjectsListWithAlertsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects list with alerts not found response a status code equal to that given
+func (o *ProjectsListWithAlertsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsListWithAlertsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsListWithAlertsNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsListWithAlertsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectsListWithAlertsInternalServerError() *ProjectsListWithAlertsInter
 	return &ProjectsListWithAlertsInternalServerError{}
 }
 
-/* ProjectsListWithAlertsInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsListWithAlertsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsListWithAlertsInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects list with alerts internal server error response has a 2xx status code
+func (o *ProjectsListWithAlertsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects list with alerts internal server error response has a 3xx status code
+func (o *ProjectsListWithAlertsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects list with alerts internal server error response has a 4xx status code
+func (o *ProjectsListWithAlertsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects list with alerts internal server error response has a 5xx status code
+func (o *ProjectsListWithAlertsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects list with alerts internal server error response a status code equal to that given
+func (o *ProjectsListWithAlertsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsListWithAlertsInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsInternalServerError ", 500)
+}
+
+func (o *ProjectsListWithAlertsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsInternalServerError ", 500)
 }
 

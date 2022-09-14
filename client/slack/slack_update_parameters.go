@@ -55,10 +55,12 @@ func NewSlackUpdateParamsWithHTTPClient(client *http.Client) *SlackUpdateParams 
 	}
 }
 
-/* SlackUpdateParams contains all the parameters to send to the API endpoint
-   for the slack update operation.
+/*
+SlackUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the slack update operation.
+
+	Typically these are written to a http.Request.
 */
 type SlackUpdateParams struct {
 

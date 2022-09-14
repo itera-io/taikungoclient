@@ -69,7 +69,8 @@ func NewProjectAppEditParamsOK() *ProjectAppEditParamsOK {
 	return &ProjectAppEditParamsOK{}
 }
 
-/* ProjectAppEditParamsOK describes a response with status code 200, with default header values.
+/*
+ProjectAppEditParamsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectAppEditParamsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this project app edit params o k response has a 2xx status code
+func (o *ProjectAppEditParamsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this project app edit params o k response has a 3xx status code
+func (o *ProjectAppEditParamsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app edit params o k response has a 4xx status code
+func (o *ProjectAppEditParamsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this project app edit params o k response has a 5xx status code
+func (o *ProjectAppEditParamsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project app edit params o k response a status code equal to that given
+func (o *ProjectAppEditParamsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectAppEditParamsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectAppEditParamsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectAppEditParamsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectAppEditParamsBadRequest() *ProjectAppEditParamsBadRequest {
 	return &ProjectAppEditParamsBadRequest{}
 }
 
-/* ProjectAppEditParamsBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectAppEditParamsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectAppEditParamsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this project app edit params bad request response has a 2xx status code
+func (o *ProjectAppEditParamsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project app edit params bad request response has a 3xx status code
+func (o *ProjectAppEditParamsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app edit params bad request response has a 4xx status code
+func (o *ProjectAppEditParamsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project app edit params bad request response has a 5xx status code
+func (o *ProjectAppEditParamsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project app edit params bad request response a status code equal to that given
+func (o *ProjectAppEditParamsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectAppEditParamsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectAppEditParamsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectAppEditParamsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectAppEditParamsUnauthorized() *ProjectAppEditParamsUnauthorized {
 	return &ProjectAppEditParamsUnauthorized{}
 }
 
-/* ProjectAppEditParamsUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectAppEditParamsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectAppEditParamsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project app edit params unauthorized response has a 2xx status code
+func (o *ProjectAppEditParamsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project app edit params unauthorized response has a 3xx status code
+func (o *ProjectAppEditParamsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app edit params unauthorized response has a 4xx status code
+func (o *ProjectAppEditParamsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project app edit params unauthorized response has a 5xx status code
+func (o *ProjectAppEditParamsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project app edit params unauthorized response a status code equal to that given
+func (o *ProjectAppEditParamsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectAppEditParamsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectAppEditParamsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectAppEditParamsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectAppEditParamsForbidden() *ProjectAppEditParamsForbidden {
 	return &ProjectAppEditParamsForbidden{}
 }
 
-/* ProjectAppEditParamsForbidden describes a response with status code 403, with default header values.
+/*
+ProjectAppEditParamsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectAppEditParamsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project app edit params forbidden response has a 2xx status code
+func (o *ProjectAppEditParamsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project app edit params forbidden response has a 3xx status code
+func (o *ProjectAppEditParamsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app edit params forbidden response has a 4xx status code
+func (o *ProjectAppEditParamsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project app edit params forbidden response has a 5xx status code
+func (o *ProjectAppEditParamsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project app edit params forbidden response a status code equal to that given
+func (o *ProjectAppEditParamsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectAppEditParamsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectAppEditParamsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectAppEditParamsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectAppEditParamsNotFound() *ProjectAppEditParamsNotFound {
 	return &ProjectAppEditParamsNotFound{}
 }
 
-/* ProjectAppEditParamsNotFound describes a response with status code 404, with default header values.
+/*
+ProjectAppEditParamsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectAppEditParamsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project app edit params not found response has a 2xx status code
+func (o *ProjectAppEditParamsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project app edit params not found response has a 3xx status code
+func (o *ProjectAppEditParamsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app edit params not found response has a 4xx status code
+func (o *ProjectAppEditParamsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project app edit params not found response has a 5xx status code
+func (o *ProjectAppEditParamsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project app edit params not found response a status code equal to that given
+func (o *ProjectAppEditParamsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectAppEditParamsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectAppEditParamsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectAppEditParamsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectAppEditParamsInternalServerError() *ProjectAppEditParamsInternalS
 	return &ProjectAppEditParamsInternalServerError{}
 }
 
-/* ProjectAppEditParamsInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectAppEditParamsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectAppEditParamsInternalServerError struct {
 }
 
+// IsSuccess returns true when this project app edit params internal server error response has a 2xx status code
+func (o *ProjectAppEditParamsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project app edit params internal server error response has a 3xx status code
+func (o *ProjectAppEditParamsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app edit params internal server error response has a 4xx status code
+func (o *ProjectAppEditParamsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this project app edit params internal server error response has a 5xx status code
+func (o *ProjectAppEditParamsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this project app edit params internal server error response a status code equal to that given
+func (o *ProjectAppEditParamsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectAppEditParamsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsInternalServerError ", 500)
+}
+
+func (o *ProjectAppEditParamsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsInternalServerError ", 500)
 }
 

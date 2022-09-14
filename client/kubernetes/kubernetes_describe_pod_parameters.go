@@ -54,10 +54,12 @@ func NewKubernetesDescribePodParamsWithHTTPClient(client *http.Client) *Kubernet
 	}
 }
 
-/* KubernetesDescribePodParams contains all the parameters to send to the API endpoint
-   for the kubernetes describe pod operation.
+/*
+KubernetesDescribePodParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes describe pod operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesDescribePodParams struct {
 

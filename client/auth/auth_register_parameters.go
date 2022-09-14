@@ -54,10 +54,12 @@ func NewAuthRegisterParamsWithHTTPClient(client *http.Client) *AuthRegisterParam
 	}
 }
 
-/* AuthRegisterParams contains all the parameters to send to the API endpoint
-   for the auth register operation.
+/*
+AuthRegisterParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the auth register operation.
+
+	Typically these are written to a http.Request.
 */
 type AuthRegisterParams struct {
 

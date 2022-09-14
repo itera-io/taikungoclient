@@ -69,7 +69,8 @@ func NewKubernetesGetPersistentVolumeClaimOK() *KubernetesGetPersistentVolumeCla
 	return &KubernetesGetPersistentVolumeClaimOK{}
 }
 
-/* KubernetesGetPersistentVolumeClaimOK describes a response with status code 200, with default header values.
+/*
+KubernetesGetPersistentVolumeClaimOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesGetPersistentVolumeClaimOK struct {
 	Payload *models.Pvcs
 }
 
+// IsSuccess returns true when this kubernetes get persistent volume claim o k response has a 2xx status code
+func (o *KubernetesGetPersistentVolumeClaimOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes get persistent volume claim o k response has a 3xx status code
+func (o *KubernetesGetPersistentVolumeClaimOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get persistent volume claim o k response has a 4xx status code
+func (o *KubernetesGetPersistentVolumeClaimOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get persistent volume claim o k response has a 5xx status code
+func (o *KubernetesGetPersistentVolumeClaimOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get persistent volume claim o k response a status code equal to that given
+func (o *KubernetesGetPersistentVolumeClaimOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesGetPersistentVolumeClaimOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesGetPersistentVolumeClaimOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesGetPersistentVolumeClaimOK) GetPayload() *models.Pvcs {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewKubernetesGetPersistentVolumeClaimBadRequest() *KubernetesGetPersistentV
 	return &KubernetesGetPersistentVolumeClaimBadRequest{}
 }
 
-/* KubernetesGetPersistentVolumeClaimBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesGetPersistentVolumeClaimBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type KubernetesGetPersistentVolumeClaimBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get persistent volume claim bad request response has a 2xx status code
+func (o *KubernetesGetPersistentVolumeClaimBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get persistent volume claim bad request response has a 3xx status code
+func (o *KubernetesGetPersistentVolumeClaimBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get persistent volume claim bad request response has a 4xx status code
+func (o *KubernetesGetPersistentVolumeClaimBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get persistent volume claim bad request response has a 5xx status code
+func (o *KubernetesGetPersistentVolumeClaimBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get persistent volume claim bad request response a status code equal to that given
+func (o *KubernetesGetPersistentVolumeClaimBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesGetPersistentVolumeClaimBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesGetPersistentVolumeClaimBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesGetPersistentVolumeClaimBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewKubernetesGetPersistentVolumeClaimUnauthorized() *KubernetesGetPersisten
 	return &KubernetesGetPersistentVolumeClaimUnauthorized{}
 }
 
-/* KubernetesGetPersistentVolumeClaimUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesGetPersistentVolumeClaimUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type KubernetesGetPersistentVolumeClaimUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get persistent volume claim unauthorized response has a 2xx status code
+func (o *KubernetesGetPersistentVolumeClaimUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get persistent volume claim unauthorized response has a 3xx status code
+func (o *KubernetesGetPersistentVolumeClaimUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get persistent volume claim unauthorized response has a 4xx status code
+func (o *KubernetesGetPersistentVolumeClaimUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get persistent volume claim unauthorized response has a 5xx status code
+func (o *KubernetesGetPersistentVolumeClaimUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get persistent volume claim unauthorized response a status code equal to that given
+func (o *KubernetesGetPersistentVolumeClaimUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesGetPersistentVolumeClaimUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesGetPersistentVolumeClaimUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesGetPersistentVolumeClaimUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewKubernetesGetPersistentVolumeClaimForbidden() *KubernetesGetPersistentVo
 	return &KubernetesGetPersistentVolumeClaimForbidden{}
 }
 
-/* KubernetesGetPersistentVolumeClaimForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesGetPersistentVolumeClaimForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type KubernetesGetPersistentVolumeClaimForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get persistent volume claim forbidden response has a 2xx status code
+func (o *KubernetesGetPersistentVolumeClaimForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get persistent volume claim forbidden response has a 3xx status code
+func (o *KubernetesGetPersistentVolumeClaimForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get persistent volume claim forbidden response has a 4xx status code
+func (o *KubernetesGetPersistentVolumeClaimForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get persistent volume claim forbidden response has a 5xx status code
+func (o *KubernetesGetPersistentVolumeClaimForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get persistent volume claim forbidden response a status code equal to that given
+func (o *KubernetesGetPersistentVolumeClaimForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesGetPersistentVolumeClaimForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesGetPersistentVolumeClaimForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesGetPersistentVolumeClaimForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewKubernetesGetPersistentVolumeClaimNotFound() *KubernetesGetPersistentVol
 	return &KubernetesGetPersistentVolumeClaimNotFound{}
 }
 
-/* KubernetesGetPersistentVolumeClaimNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesGetPersistentVolumeClaimNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type KubernetesGetPersistentVolumeClaimNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get persistent volume claim not found response has a 2xx status code
+func (o *KubernetesGetPersistentVolumeClaimNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get persistent volume claim not found response has a 3xx status code
+func (o *KubernetesGetPersistentVolumeClaimNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get persistent volume claim not found response has a 4xx status code
+func (o *KubernetesGetPersistentVolumeClaimNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get persistent volume claim not found response has a 5xx status code
+func (o *KubernetesGetPersistentVolumeClaimNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get persistent volume claim not found response a status code equal to that given
+func (o *KubernetesGetPersistentVolumeClaimNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesGetPersistentVolumeClaimNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesGetPersistentVolumeClaimNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesGetPersistentVolumeClaimNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewKubernetesGetPersistentVolumeClaimInternalServerError() *KubernetesGetPe
 	return &KubernetesGetPersistentVolumeClaimInternalServerError{}
 }
 
-/* KubernetesGetPersistentVolumeClaimInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesGetPersistentVolumeClaimInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesGetPersistentVolumeClaimInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes get persistent volume claim internal server error response has a 2xx status code
+func (o *KubernetesGetPersistentVolumeClaimInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get persistent volume claim internal server error response has a 3xx status code
+func (o *KubernetesGetPersistentVolumeClaimInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get persistent volume claim internal server error response has a 4xx status code
+func (o *KubernetesGetPersistentVolumeClaimInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get persistent volume claim internal server error response has a 5xx status code
+func (o *KubernetesGetPersistentVolumeClaimInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes get persistent volume claim internal server error response a status code equal to that given
+func (o *KubernetesGetPersistentVolumeClaimInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesGetPersistentVolumeClaimInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimInternalServerError ", 500)
+}
+
+func (o *KubernetesGetPersistentVolumeClaimInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimInternalServerError ", 500)
 }
 

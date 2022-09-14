@@ -54,10 +54,12 @@ func NewSSHUsersEditParamsWithHTTPClient(client *http.Client) *SSHUsersEditParam
 	}
 }
 
-/* SSHUsersEditParams contains all the parameters to send to the API endpoint
-   for the Ssh users edit operation.
+/*
+SSHUsersEditParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the Ssh users edit operation.
+
+	Typically these are written to a http.Request.
 */
 type SSHUsersEditParams struct {
 

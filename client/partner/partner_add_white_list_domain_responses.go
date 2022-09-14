@@ -69,7 +69,8 @@ func NewPartnerAddWhiteListDomainOK() *PartnerAddWhiteListDomainOK {
 	return &PartnerAddWhiteListDomainOK{}
 }
 
-/* PartnerAddWhiteListDomainOK describes a response with status code 200, with default header values.
+/*
+PartnerAddWhiteListDomainOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type PartnerAddWhiteListDomainOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this partner add white list domain o k response has a 2xx status code
+func (o *PartnerAddWhiteListDomainOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this partner add white list domain o k response has a 3xx status code
+func (o *PartnerAddWhiteListDomainOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner add white list domain o k response has a 4xx status code
+func (o *PartnerAddWhiteListDomainOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this partner add white list domain o k response has a 5xx status code
+func (o *PartnerAddWhiteListDomainOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner add white list domain o k response a status code equal to that given
+func (o *PartnerAddWhiteListDomainOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PartnerAddWhiteListDomainOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainOK  %+v", 200, o.Payload)
 }
+
+func (o *PartnerAddWhiteListDomainOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainOK  %+v", 200, o.Payload)
+}
+
 func (o *PartnerAddWhiteListDomainOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewPartnerAddWhiteListDomainBadRequest() *PartnerAddWhiteListDomainBadReque
 	return &PartnerAddWhiteListDomainBadRequest{}
 }
 
-/* PartnerAddWhiteListDomainBadRequest describes a response with status code 400, with default header values.
+/*
+PartnerAddWhiteListDomainBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type PartnerAddWhiteListDomainBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this partner add white list domain bad request response has a 2xx status code
+func (o *PartnerAddWhiteListDomainBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner add white list domain bad request response has a 3xx status code
+func (o *PartnerAddWhiteListDomainBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner add white list domain bad request response has a 4xx status code
+func (o *PartnerAddWhiteListDomainBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner add white list domain bad request response has a 5xx status code
+func (o *PartnerAddWhiteListDomainBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner add white list domain bad request response a status code equal to that given
+func (o *PartnerAddWhiteListDomainBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PartnerAddWhiteListDomainBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PartnerAddWhiteListDomainBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PartnerAddWhiteListDomainBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewPartnerAddWhiteListDomainUnauthorized() *PartnerAddWhiteListDomainUnauth
 	return &PartnerAddWhiteListDomainUnauthorized{}
 }
 
-/* PartnerAddWhiteListDomainUnauthorized describes a response with status code 401, with default header values.
+/*
+PartnerAddWhiteListDomainUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type PartnerAddWhiteListDomainUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this partner add white list domain unauthorized response has a 2xx status code
+func (o *PartnerAddWhiteListDomainUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner add white list domain unauthorized response has a 3xx status code
+func (o *PartnerAddWhiteListDomainUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner add white list domain unauthorized response has a 4xx status code
+func (o *PartnerAddWhiteListDomainUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner add white list domain unauthorized response has a 5xx status code
+func (o *PartnerAddWhiteListDomainUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner add white list domain unauthorized response a status code equal to that given
+func (o *PartnerAddWhiteListDomainUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PartnerAddWhiteListDomainUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *PartnerAddWhiteListDomainUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *PartnerAddWhiteListDomainUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewPartnerAddWhiteListDomainForbidden() *PartnerAddWhiteListDomainForbidden
 	return &PartnerAddWhiteListDomainForbidden{}
 }
 
-/* PartnerAddWhiteListDomainForbidden describes a response with status code 403, with default header values.
+/*
+PartnerAddWhiteListDomainForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type PartnerAddWhiteListDomainForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this partner add white list domain forbidden response has a 2xx status code
+func (o *PartnerAddWhiteListDomainForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner add white list domain forbidden response has a 3xx status code
+func (o *PartnerAddWhiteListDomainForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner add white list domain forbidden response has a 4xx status code
+func (o *PartnerAddWhiteListDomainForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner add white list domain forbidden response has a 5xx status code
+func (o *PartnerAddWhiteListDomainForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner add white list domain forbidden response a status code equal to that given
+func (o *PartnerAddWhiteListDomainForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PartnerAddWhiteListDomainForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PartnerAddWhiteListDomainForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PartnerAddWhiteListDomainForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewPartnerAddWhiteListDomainNotFound() *PartnerAddWhiteListDomainNotFound {
 	return &PartnerAddWhiteListDomainNotFound{}
 }
 
-/* PartnerAddWhiteListDomainNotFound describes a response with status code 404, with default header values.
+/*
+PartnerAddWhiteListDomainNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type PartnerAddWhiteListDomainNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this partner add white list domain not found response has a 2xx status code
+func (o *PartnerAddWhiteListDomainNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner add white list domain not found response has a 3xx status code
+func (o *PartnerAddWhiteListDomainNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner add white list domain not found response has a 4xx status code
+func (o *PartnerAddWhiteListDomainNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner add white list domain not found response has a 5xx status code
+func (o *PartnerAddWhiteListDomainNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner add white list domain not found response a status code equal to that given
+func (o *PartnerAddWhiteListDomainNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PartnerAddWhiteListDomainNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PartnerAddWhiteListDomainNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PartnerAddWhiteListDomainNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewPartnerAddWhiteListDomainInternalServerError() *PartnerAddWhiteListDomai
 	return &PartnerAddWhiteListDomainInternalServerError{}
 }
 
-/* PartnerAddWhiteListDomainInternalServerError describes a response with status code 500, with default header values.
+/*
+PartnerAddWhiteListDomainInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PartnerAddWhiteListDomainInternalServerError struct {
 }
 
+// IsSuccess returns true when this partner add white list domain internal server error response has a 2xx status code
+func (o *PartnerAddWhiteListDomainInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner add white list domain internal server error response has a 3xx status code
+func (o *PartnerAddWhiteListDomainInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner add white list domain internal server error response has a 4xx status code
+func (o *PartnerAddWhiteListDomainInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this partner add white list domain internal server error response has a 5xx status code
+func (o *PartnerAddWhiteListDomainInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this partner add white list domain internal server error response a status code equal to that given
+func (o *PartnerAddWhiteListDomainInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PartnerAddWhiteListDomainInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainInternalServerError ", 500)
+}
+
+func (o *PartnerAddWhiteListDomainInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainInternalServerError ", 500)
 }
 

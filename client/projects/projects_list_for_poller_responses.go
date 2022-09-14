@@ -69,7 +69,8 @@ func NewProjectsListForPollerOK() *ProjectsListForPollerOK {
 	return &ProjectsListForPollerOK{}
 }
 
-/* ProjectsListForPollerOK describes a response with status code 200, with default header values.
+/*
+ProjectsListForPollerOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsListForPollerOK struct {
 	Payload *models.ProjectListForPoller
 }
 
+// IsSuccess returns true when this projects list for poller o k response has a 2xx status code
+func (o *ProjectsListForPollerOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects list for poller o k response has a 3xx status code
+func (o *ProjectsListForPollerOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects list for poller o k response has a 4xx status code
+func (o *ProjectsListForPollerOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects list for poller o k response has a 5xx status code
+func (o *ProjectsListForPollerOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects list for poller o k response a status code equal to that given
+func (o *ProjectsListForPollerOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsListForPollerOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsListForPollerOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsListForPollerOK) GetPayload() *models.ProjectListForPoller {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewProjectsListForPollerBadRequest() *ProjectsListForPollerBadRequest {
 	return &ProjectsListForPollerBadRequest{}
 }
 
-/* ProjectsListForPollerBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsListForPollerBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type ProjectsListForPollerBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects list for poller bad request response has a 2xx status code
+func (o *ProjectsListForPollerBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects list for poller bad request response has a 3xx status code
+func (o *ProjectsListForPollerBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects list for poller bad request response has a 4xx status code
+func (o *ProjectsListForPollerBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects list for poller bad request response has a 5xx status code
+func (o *ProjectsListForPollerBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects list for poller bad request response a status code equal to that given
+func (o *ProjectsListForPollerBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsListForPollerBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsListForPollerBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsListForPollerBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewProjectsListForPollerUnauthorized() *ProjectsListForPollerUnauthorized {
 	return &ProjectsListForPollerUnauthorized{}
 }
 
-/* ProjectsListForPollerUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsListForPollerUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type ProjectsListForPollerUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects list for poller unauthorized response has a 2xx status code
+func (o *ProjectsListForPollerUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects list for poller unauthorized response has a 3xx status code
+func (o *ProjectsListForPollerUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects list for poller unauthorized response has a 4xx status code
+func (o *ProjectsListForPollerUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects list for poller unauthorized response has a 5xx status code
+func (o *ProjectsListForPollerUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects list for poller unauthorized response a status code equal to that given
+func (o *ProjectsListForPollerUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsListForPollerUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsListForPollerUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsListForPollerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewProjectsListForPollerForbidden() *ProjectsListForPollerForbidden {
 	return &ProjectsListForPollerForbidden{}
 }
 
-/* ProjectsListForPollerForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsListForPollerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type ProjectsListForPollerForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects list for poller forbidden response has a 2xx status code
+func (o *ProjectsListForPollerForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects list for poller forbidden response has a 3xx status code
+func (o *ProjectsListForPollerForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects list for poller forbidden response has a 4xx status code
+func (o *ProjectsListForPollerForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects list for poller forbidden response has a 5xx status code
+func (o *ProjectsListForPollerForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects list for poller forbidden response a status code equal to that given
+func (o *ProjectsListForPollerForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsListForPollerForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsListForPollerForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsListForPollerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewProjectsListForPollerNotFound() *ProjectsListForPollerNotFound {
 	return &ProjectsListForPollerNotFound{}
 }
 
-/* ProjectsListForPollerNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsListForPollerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type ProjectsListForPollerNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects list for poller not found response has a 2xx status code
+func (o *ProjectsListForPollerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects list for poller not found response has a 3xx status code
+func (o *ProjectsListForPollerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects list for poller not found response has a 4xx status code
+func (o *ProjectsListForPollerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects list for poller not found response has a 5xx status code
+func (o *ProjectsListForPollerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects list for poller not found response a status code equal to that given
+func (o *ProjectsListForPollerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsListForPollerNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsListForPollerNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsListForPollerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewProjectsListForPollerInternalServerError() *ProjectsListForPollerInterna
 	return &ProjectsListForPollerInternalServerError{}
 }
 
-/* ProjectsListForPollerInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsListForPollerInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsListForPollerInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects list for poller internal server error response has a 2xx status code
+func (o *ProjectsListForPollerInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects list for poller internal server error response has a 3xx status code
+func (o *ProjectsListForPollerInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects list for poller internal server error response has a 4xx status code
+func (o *ProjectsListForPollerInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects list for poller internal server error response has a 5xx status code
+func (o *ProjectsListForPollerInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects list for poller internal server error response a status code equal to that given
+func (o *ProjectsListForPollerInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsListForPollerInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerInternalServerError ", 500)
+}
+
+func (o *ProjectsListForPollerInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerInternalServerError ", 500)
 }
 

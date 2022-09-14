@@ -54,10 +54,12 @@ func NewSearchStsListParamsWithHTTPClient(client *http.Client) *SearchStsListPar
 	}
 }
 
-/* SearchStsListParams contains all the parameters to send to the API endpoint
-   for the search sts list operation.
+/*
+SearchStsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search sts list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchStsListParams struct {
 

@@ -50,7 +50,7 @@ type ClientService interface {
 }
 
 /*
-  ProjectAppAutoSync autos sync management
+ProjectAppAutoSync autos sync management
 */
 func (a *Client) ProjectAppAutoSync(params *ProjectAppAutoSyncParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectAppAutoSyncOK, error) {
 	// TODO: Validate the params before sending
@@ -89,7 +89,7 @@ func (a *Client) ProjectAppAutoSync(params *ProjectAppAutoSyncParams, authInfo r
 }
 
 /*
-  ProjectAppDetails projects app details
+ProjectAppDetails projects app details
 */
 func (a *Client) ProjectAppDetails(params *ProjectAppDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectAppDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -128,7 +128,7 @@ func (a *Client) ProjectAppDetails(params *ProjectAppDetailsParams, authInfo run
 }
 
 /*
-  ProjectAppEditParams edits project app params
+ProjectAppEditParams edits project app params
 */
 func (a *Client) ProjectAppEditParams(params *ProjectAppEditParamsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectAppEditParamsOK, error) {
 	// TODO: Validate the params before sending
@@ -167,7 +167,7 @@ func (a *Client) ProjectAppEditParams(params *ProjectAppEditParamsParams, authIn
 }
 
 /*
-  ProjectAppInstall installs application
+ProjectAppInstall installs application
 */
 func (a *Client) ProjectAppInstall(params *ProjectAppInstallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectAppInstallOK, error) {
 	// TODO: Validate the params before sending
@@ -206,7 +206,7 @@ func (a *Client) ProjectAppInstall(params *ProjectAppInstallParams, authInfo run
 }
 
 /*
-  ProjectAppList projects app list for organization
+ProjectAppList projects app list for organization
 */
 func (a *Client) ProjectAppList(params *ProjectAppListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectAppListOK, error) {
 	// TODO: Validate the params before sending
@@ -245,7 +245,7 @@ func (a *Client) ProjectAppList(params *ProjectAppListParams, authInfo runtime.C
 }
 
 /*
-  ProjectAppLockManager locks unlock project app
+ProjectAppLockManager locks unlock project app
 */
 func (a *Client) ProjectAppLockManager(params *ProjectAppLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectAppLockManagerOK, error) {
 	// TODO: Validate the params before sending
@@ -284,7 +284,7 @@ func (a *Client) ProjectAppLockManager(params *ProjectAppLockManagerParams, auth
 }
 
 /*
-  ProjectAppSync syncs application
+ProjectAppSync syncs application
 */
 func (a *Client) ProjectAppSync(params *ProjectAppSyncParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectAppSyncOK, error) {
 	// TODO: Validate the params before sending
@@ -323,7 +323,7 @@ func (a *Client) ProjectAppSync(params *ProjectAppSyncParams, authInfo runtime.C
 }
 
 /*
-  ProjectAppUninstall uninstalls application
+ProjectAppUninstall uninstalls application
 */
 func (a *Client) ProjectAppUninstall(params *ProjectAppUninstallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectAppUninstallOK, error) {
 	// TODO: Validate the params before sending

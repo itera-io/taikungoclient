@@ -54,10 +54,12 @@ func NewSearchPersistenceVolumeClaimListParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* SearchPersistenceVolumeClaimListParams contains all the parameters to send to the API endpoint
-   for the search persistence volume claim list operation.
+/*
+SearchPersistenceVolumeClaimListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search persistence volume claim list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchPersistenceVolumeClaimListParams struct {
 

@@ -69,7 +69,8 @@ func NewStandAloneActionsUnshelveOK() *StandAloneActionsUnshelveOK {
 	return &StandAloneActionsUnshelveOK{}
 }
 
-/* StandAloneActionsUnshelveOK describes a response with status code 200, with default header values.
+/*
+StandAloneActionsUnshelveOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type StandAloneActionsUnshelveOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this stand alone actions unshelve o k response has a 2xx status code
+func (o *StandAloneActionsUnshelveOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this stand alone actions unshelve o k response has a 3xx status code
+func (o *StandAloneActionsUnshelveOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions unshelve o k response has a 4xx status code
+func (o *StandAloneActionsUnshelveOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone actions unshelve o k response has a 5xx status code
+func (o *StandAloneActionsUnshelveOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions unshelve o k response a status code equal to that given
+func (o *StandAloneActionsUnshelveOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *StandAloneActionsUnshelveOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveOK  %+v", 200, o.Payload)
 }
+
+func (o *StandAloneActionsUnshelveOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveOK  %+v", 200, o.Payload)
+}
+
 func (o *StandAloneActionsUnshelveOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewStandAloneActionsUnshelveBadRequest() *StandAloneActionsUnshelveBadReque
 	return &StandAloneActionsUnshelveBadRequest{}
 }
 
-/* StandAloneActionsUnshelveBadRequest describes a response with status code 400, with default header values.
+/*
+StandAloneActionsUnshelveBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type StandAloneActionsUnshelveBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions unshelve bad request response has a 2xx status code
+func (o *StandAloneActionsUnshelveBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions unshelve bad request response has a 3xx status code
+func (o *StandAloneActionsUnshelveBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions unshelve bad request response has a 4xx status code
+func (o *StandAloneActionsUnshelveBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions unshelve bad request response has a 5xx status code
+func (o *StandAloneActionsUnshelveBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions unshelve bad request response a status code equal to that given
+func (o *StandAloneActionsUnshelveBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *StandAloneActionsUnshelveBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *StandAloneActionsUnshelveBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *StandAloneActionsUnshelveBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewStandAloneActionsUnshelveUnauthorized() *StandAloneActionsUnshelveUnauth
 	return &StandAloneActionsUnshelveUnauthorized{}
 }
 
-/* StandAloneActionsUnshelveUnauthorized describes a response with status code 401, with default header values.
+/*
+StandAloneActionsUnshelveUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type StandAloneActionsUnshelveUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions unshelve unauthorized response has a 2xx status code
+func (o *StandAloneActionsUnshelveUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions unshelve unauthorized response has a 3xx status code
+func (o *StandAloneActionsUnshelveUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions unshelve unauthorized response has a 4xx status code
+func (o *StandAloneActionsUnshelveUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions unshelve unauthorized response has a 5xx status code
+func (o *StandAloneActionsUnshelveUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions unshelve unauthorized response a status code equal to that given
+func (o *StandAloneActionsUnshelveUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *StandAloneActionsUnshelveUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *StandAloneActionsUnshelveUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *StandAloneActionsUnshelveUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewStandAloneActionsUnshelveForbidden() *StandAloneActionsUnshelveForbidden
 	return &StandAloneActionsUnshelveForbidden{}
 }
 
-/* StandAloneActionsUnshelveForbidden describes a response with status code 403, with default header values.
+/*
+StandAloneActionsUnshelveForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type StandAloneActionsUnshelveForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions unshelve forbidden response has a 2xx status code
+func (o *StandAloneActionsUnshelveForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions unshelve forbidden response has a 3xx status code
+func (o *StandAloneActionsUnshelveForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions unshelve forbidden response has a 4xx status code
+func (o *StandAloneActionsUnshelveForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions unshelve forbidden response has a 5xx status code
+func (o *StandAloneActionsUnshelveForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions unshelve forbidden response a status code equal to that given
+func (o *StandAloneActionsUnshelveForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *StandAloneActionsUnshelveForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveForbidden  %+v", 403, o.Payload)
 }
+
+func (o *StandAloneActionsUnshelveForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveForbidden  %+v", 403, o.Payload)
+}
+
 func (o *StandAloneActionsUnshelveForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewStandAloneActionsUnshelveNotFound() *StandAloneActionsUnshelveNotFound {
 	return &StandAloneActionsUnshelveNotFound{}
 }
 
-/* StandAloneActionsUnshelveNotFound describes a response with status code 404, with default header values.
+/*
+StandAloneActionsUnshelveNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type StandAloneActionsUnshelveNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions unshelve not found response has a 2xx status code
+func (o *StandAloneActionsUnshelveNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions unshelve not found response has a 3xx status code
+func (o *StandAloneActionsUnshelveNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions unshelve not found response has a 4xx status code
+func (o *StandAloneActionsUnshelveNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions unshelve not found response has a 5xx status code
+func (o *StandAloneActionsUnshelveNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions unshelve not found response a status code equal to that given
+func (o *StandAloneActionsUnshelveNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *StandAloneActionsUnshelveNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveNotFound  %+v", 404, o.Payload)
 }
+
+func (o *StandAloneActionsUnshelveNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveNotFound  %+v", 404, o.Payload)
+}
+
 func (o *StandAloneActionsUnshelveNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewStandAloneActionsUnshelveInternalServerError() *StandAloneActionsUnshelv
 	return &StandAloneActionsUnshelveInternalServerError{}
 }
 
-/* StandAloneActionsUnshelveInternalServerError describes a response with status code 500, with default header values.
+/*
+StandAloneActionsUnshelveInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type StandAloneActionsUnshelveInternalServerError struct {
 }
 
+// IsSuccess returns true when this stand alone actions unshelve internal server error response has a 2xx status code
+func (o *StandAloneActionsUnshelveInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions unshelve internal server error response has a 3xx status code
+func (o *StandAloneActionsUnshelveInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions unshelve internal server error response has a 4xx status code
+func (o *StandAloneActionsUnshelveInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone actions unshelve internal server error response has a 5xx status code
+func (o *StandAloneActionsUnshelveInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this stand alone actions unshelve internal server error response a status code equal to that given
+func (o *StandAloneActionsUnshelveInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *StandAloneActionsUnshelveInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveInternalServerError ", 500)
+}
+
+func (o *StandAloneActionsUnshelveInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveInternalServerError ", 500)
 }
 

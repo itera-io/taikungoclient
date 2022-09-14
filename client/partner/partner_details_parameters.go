@@ -52,10 +52,12 @@ func NewPartnerDetailsParamsWithHTTPClient(client *http.Client) *PartnerDetailsP
 	}
 }
 
-/* PartnerDetailsParams contains all the parameters to send to the API endpoint
-   for the partner details operation.
+/*
+PartnerDetailsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the partner details operation.
+
+	Typically these are written to a http.Request.
 */
 type PartnerDetailsParams struct {
 

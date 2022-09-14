@@ -119,6 +119,9 @@ type ProjectForListDto struct {
 	// kubespray target version
 	KubesprayTargetVersion string `json:"kubesprayTargetVersion,omitempty"`
 
+	// kubevap enabeled kubernetes versions
+	KubevapEnabeledKubernetesVersions []string `json:"kubevapEnabeledKubernetesVersions"`
+
 	// master
 	Master int32 `json:"master,omitempty"`
 

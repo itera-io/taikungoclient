@@ -54,10 +54,12 @@ func NewOpenstackNetworksParamsWithHTTPClient(client *http.Client) *OpenstackNet
 	}
 }
 
-/* OpenstackNetworksParams contains all the parameters to send to the API endpoint
-   for the openstack networks operation.
+/*
+OpenstackNetworksParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the openstack networks operation.
+
+	Typically these are written to a http.Request.
 */
 type OpenstackNetworksParams struct {
 

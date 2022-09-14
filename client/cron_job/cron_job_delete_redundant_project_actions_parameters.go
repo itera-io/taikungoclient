@@ -54,10 +54,12 @@ func NewCronJobDeleteRedundantProjectActionsParamsWithHTTPClient(client *http.Cl
 	}
 }
 
-/* CronJobDeleteRedundantProjectActionsParams contains all the parameters to send to the API endpoint
-   for the cron job delete redundant project actions operation.
+/*
+CronJobDeleteRedundantProjectActionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job delete redundant project actions operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobDeleteRedundantProjectActionsParams struct {
 

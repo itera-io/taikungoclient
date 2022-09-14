@@ -54,10 +54,12 @@ func NewStandAloneRepairParamsWithHTTPClient(client *http.Client) *StandAloneRep
 	}
 }
 
-/* StandAloneRepairParams contains all the parameters to send to the API endpoint
-   for the stand alone repair operation.
+/*
+StandAloneRepairParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone repair operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneRepairParams struct {
 

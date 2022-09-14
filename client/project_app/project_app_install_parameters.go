@@ -54,10 +54,12 @@ func NewProjectAppInstallParamsWithHTTPClient(client *http.Client) *ProjectAppIn
 	}
 }
 
-/* ProjectAppInstallParams contains all the parameters to send to the API endpoint
-   for the project app install operation.
+/*
+ProjectAppInstallParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the project app install operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectAppInstallParams struct {
 

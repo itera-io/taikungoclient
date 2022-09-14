@@ -54,10 +54,12 @@ func NewProjectsEnableAutoscalingParamsWithHTTPClient(client *http.Client) *Proj
 	}
 }
 
-/* ProjectsEnableAutoscalingParams contains all the parameters to send to the API endpoint
-   for the projects enable autoscaling operation.
+/*
+ProjectsEnableAutoscalingParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects enable autoscaling operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsEnableAutoscalingParams struct {
 

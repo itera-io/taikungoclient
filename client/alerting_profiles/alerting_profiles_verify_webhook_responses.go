@@ -69,7 +69,8 @@ func NewAlertingProfilesVerifyWebhookOK() *AlertingProfilesVerifyWebhookOK {
 	return &AlertingProfilesVerifyWebhookOK{}
 }
 
-/* AlertingProfilesVerifyWebhookOK describes a response with status code 200, with default header values.
+/*
+AlertingProfilesVerifyWebhookOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AlertingProfilesVerifyWebhookOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this alerting profiles verify webhook o k response has a 2xx status code
+func (o *AlertingProfilesVerifyWebhookOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this alerting profiles verify webhook o k response has a 3xx status code
+func (o *AlertingProfilesVerifyWebhookOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles verify webhook o k response has a 4xx status code
+func (o *AlertingProfilesVerifyWebhookOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting profiles verify webhook o k response has a 5xx status code
+func (o *AlertingProfilesVerifyWebhookOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles verify webhook o k response a status code equal to that given
+func (o *AlertingProfilesVerifyWebhookOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AlertingProfilesVerifyWebhookOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookOK  %+v", 200, o.Payload)
 }
+
+func (o *AlertingProfilesVerifyWebhookOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookOK  %+v", 200, o.Payload)
+}
+
 func (o *AlertingProfilesVerifyWebhookOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAlertingProfilesVerifyWebhookBadRequest() *AlertingProfilesVerifyWebhook
 	return &AlertingProfilesVerifyWebhookBadRequest{}
 }
 
-/* AlertingProfilesVerifyWebhookBadRequest describes a response with status code 400, with default header values.
+/*
+AlertingProfilesVerifyWebhookBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AlertingProfilesVerifyWebhookBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles verify webhook bad request response has a 2xx status code
+func (o *AlertingProfilesVerifyWebhookBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles verify webhook bad request response has a 3xx status code
+func (o *AlertingProfilesVerifyWebhookBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles verify webhook bad request response has a 4xx status code
+func (o *AlertingProfilesVerifyWebhookBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles verify webhook bad request response has a 5xx status code
+func (o *AlertingProfilesVerifyWebhookBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles verify webhook bad request response a status code equal to that given
+func (o *AlertingProfilesVerifyWebhookBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AlertingProfilesVerifyWebhookBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AlertingProfilesVerifyWebhookBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AlertingProfilesVerifyWebhookBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAlertingProfilesVerifyWebhookUnauthorized() *AlertingProfilesVerifyWebho
 	return &AlertingProfilesVerifyWebhookUnauthorized{}
 }
 
-/* AlertingProfilesVerifyWebhookUnauthorized describes a response with status code 401, with default header values.
+/*
+AlertingProfilesVerifyWebhookUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AlertingProfilesVerifyWebhookUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles verify webhook unauthorized response has a 2xx status code
+func (o *AlertingProfilesVerifyWebhookUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles verify webhook unauthorized response has a 3xx status code
+func (o *AlertingProfilesVerifyWebhookUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles verify webhook unauthorized response has a 4xx status code
+func (o *AlertingProfilesVerifyWebhookUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles verify webhook unauthorized response has a 5xx status code
+func (o *AlertingProfilesVerifyWebhookUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles verify webhook unauthorized response a status code equal to that given
+func (o *AlertingProfilesVerifyWebhookUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AlertingProfilesVerifyWebhookUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AlertingProfilesVerifyWebhookUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AlertingProfilesVerifyWebhookUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAlertingProfilesVerifyWebhookForbidden() *AlertingProfilesVerifyWebhookF
 	return &AlertingProfilesVerifyWebhookForbidden{}
 }
 
-/* AlertingProfilesVerifyWebhookForbidden describes a response with status code 403, with default header values.
+/*
+AlertingProfilesVerifyWebhookForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AlertingProfilesVerifyWebhookForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles verify webhook forbidden response has a 2xx status code
+func (o *AlertingProfilesVerifyWebhookForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles verify webhook forbidden response has a 3xx status code
+func (o *AlertingProfilesVerifyWebhookForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles verify webhook forbidden response has a 4xx status code
+func (o *AlertingProfilesVerifyWebhookForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles verify webhook forbidden response has a 5xx status code
+func (o *AlertingProfilesVerifyWebhookForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles verify webhook forbidden response a status code equal to that given
+func (o *AlertingProfilesVerifyWebhookForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AlertingProfilesVerifyWebhookForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AlertingProfilesVerifyWebhookForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AlertingProfilesVerifyWebhookForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAlertingProfilesVerifyWebhookNotFound() *AlertingProfilesVerifyWebhookNo
 	return &AlertingProfilesVerifyWebhookNotFound{}
 }
 
-/* AlertingProfilesVerifyWebhookNotFound describes a response with status code 404, with default header values.
+/*
+AlertingProfilesVerifyWebhookNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AlertingProfilesVerifyWebhookNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles verify webhook not found response has a 2xx status code
+func (o *AlertingProfilesVerifyWebhookNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles verify webhook not found response has a 3xx status code
+func (o *AlertingProfilesVerifyWebhookNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles verify webhook not found response has a 4xx status code
+func (o *AlertingProfilesVerifyWebhookNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles verify webhook not found response has a 5xx status code
+func (o *AlertingProfilesVerifyWebhookNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles verify webhook not found response a status code equal to that given
+func (o *AlertingProfilesVerifyWebhookNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AlertingProfilesVerifyWebhookNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AlertingProfilesVerifyWebhookNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AlertingProfilesVerifyWebhookNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAlertingProfilesVerifyWebhookInternalServerError() *AlertingProfilesVeri
 	return &AlertingProfilesVerifyWebhookInternalServerError{}
 }
 
-/* AlertingProfilesVerifyWebhookInternalServerError describes a response with status code 500, with default header values.
+/*
+AlertingProfilesVerifyWebhookInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AlertingProfilesVerifyWebhookInternalServerError struct {
 }
 
+// IsSuccess returns true when this alerting profiles verify webhook internal server error response has a 2xx status code
+func (o *AlertingProfilesVerifyWebhookInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles verify webhook internal server error response has a 3xx status code
+func (o *AlertingProfilesVerifyWebhookInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles verify webhook internal server error response has a 4xx status code
+func (o *AlertingProfilesVerifyWebhookInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting profiles verify webhook internal server error response has a 5xx status code
+func (o *AlertingProfilesVerifyWebhookInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this alerting profiles verify webhook internal server error response a status code equal to that given
+func (o *AlertingProfilesVerifyWebhookInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AlertingProfilesVerifyWebhookInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookInternalServerError ", 500)
+}
+
+func (o *AlertingProfilesVerifyWebhookInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookInternalServerError ", 500)
 }
 

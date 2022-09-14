@@ -69,7 +69,8 @@ func NewAllowedHostListOK() *AllowedHostListOK {
 	return &AllowedHostListOK{}
 }
 
-/* AllowedHostListOK describes a response with status code 200, with default header values.
+/*
+AllowedHostListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AllowedHostListOK struct {
 	Payload *models.AllowedHostList
 }
 
+// IsSuccess returns true when this allowed host list o k response has a 2xx status code
+func (o *AllowedHostListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this allowed host list o k response has a 3xx status code
+func (o *AllowedHostListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host list o k response has a 4xx status code
+func (o *AllowedHostListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this allowed host list o k response has a 5xx status code
+func (o *AllowedHostListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host list o k response a status code equal to that given
+func (o *AllowedHostListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AllowedHostListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListOK  %+v", 200, o.Payload)
 }
+
+func (o *AllowedHostListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListOK  %+v", 200, o.Payload)
+}
+
 func (o *AllowedHostListOK) GetPayload() *models.AllowedHostList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewAllowedHostListBadRequest() *AllowedHostListBadRequest {
 	return &AllowedHostListBadRequest{}
 }
 
-/* AllowedHostListBadRequest describes a response with status code 400, with default header values.
+/*
+AllowedHostListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type AllowedHostListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this allowed host list bad request response has a 2xx status code
+func (o *AllowedHostListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this allowed host list bad request response has a 3xx status code
+func (o *AllowedHostListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host list bad request response has a 4xx status code
+func (o *AllowedHostListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this allowed host list bad request response has a 5xx status code
+func (o *AllowedHostListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host list bad request response a status code equal to that given
+func (o *AllowedHostListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AllowedHostListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AllowedHostListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AllowedHostListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewAllowedHostListUnauthorized() *AllowedHostListUnauthorized {
 	return &AllowedHostListUnauthorized{}
 }
 
-/* AllowedHostListUnauthorized describes a response with status code 401, with default header values.
+/*
+AllowedHostListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type AllowedHostListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this allowed host list unauthorized response has a 2xx status code
+func (o *AllowedHostListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this allowed host list unauthorized response has a 3xx status code
+func (o *AllowedHostListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host list unauthorized response has a 4xx status code
+func (o *AllowedHostListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this allowed host list unauthorized response has a 5xx status code
+func (o *AllowedHostListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host list unauthorized response a status code equal to that given
+func (o *AllowedHostListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AllowedHostListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AllowedHostListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AllowedHostListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewAllowedHostListForbidden() *AllowedHostListForbidden {
 	return &AllowedHostListForbidden{}
 }
 
-/* AllowedHostListForbidden describes a response with status code 403, with default header values.
+/*
+AllowedHostListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type AllowedHostListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this allowed host list forbidden response has a 2xx status code
+func (o *AllowedHostListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this allowed host list forbidden response has a 3xx status code
+func (o *AllowedHostListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host list forbidden response has a 4xx status code
+func (o *AllowedHostListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this allowed host list forbidden response has a 5xx status code
+func (o *AllowedHostListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host list forbidden response a status code equal to that given
+func (o *AllowedHostListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AllowedHostListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AllowedHostListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AllowedHostListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewAllowedHostListNotFound() *AllowedHostListNotFound {
 	return &AllowedHostListNotFound{}
 }
 
-/* AllowedHostListNotFound describes a response with status code 404, with default header values.
+/*
+AllowedHostListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type AllowedHostListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this allowed host list not found response has a 2xx status code
+func (o *AllowedHostListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this allowed host list not found response has a 3xx status code
+func (o *AllowedHostListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host list not found response has a 4xx status code
+func (o *AllowedHostListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this allowed host list not found response has a 5xx status code
+func (o *AllowedHostListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this allowed host list not found response a status code equal to that given
+func (o *AllowedHostListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AllowedHostListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AllowedHostListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AllowedHostListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewAllowedHostListInternalServerError() *AllowedHostListInternalServerError
 	return &AllowedHostListInternalServerError{}
 }
 
-/* AllowedHostListInternalServerError describes a response with status code 500, with default header values.
+/*
+AllowedHostListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AllowedHostListInternalServerError struct {
 }
 
+// IsSuccess returns true when this allowed host list internal server error response has a 2xx status code
+func (o *AllowedHostListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this allowed host list internal server error response has a 3xx status code
+func (o *AllowedHostListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this allowed host list internal server error response has a 4xx status code
+func (o *AllowedHostListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this allowed host list internal server error response has a 5xx status code
+func (o *AllowedHostListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this allowed host list internal server error response a status code equal to that given
+func (o *AllowedHostListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AllowedHostListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListInternalServerError ", 500)
+}
+
+func (o *AllowedHostListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AllowedHost/list/{accessProfileId}][%d] allowedHostListInternalServerError ", 500)
 }
 

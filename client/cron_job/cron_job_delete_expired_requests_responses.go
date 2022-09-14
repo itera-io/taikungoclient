@@ -69,7 +69,8 @@ func NewCronJobDeleteExpiredRequestsOK() *CronJobDeleteExpiredRequestsOK {
 	return &CronJobDeleteExpiredRequestsOK{}
 }
 
-/* CronJobDeleteExpiredRequestsOK describes a response with status code 200, with default header values.
+/*
+CronJobDeleteExpiredRequestsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CronJobDeleteExpiredRequestsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this cron job delete expired requests o k response has a 2xx status code
+func (o *CronJobDeleteExpiredRequestsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cron job delete expired requests o k response has a 3xx status code
+func (o *CronJobDeleteExpiredRequestsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete expired requests o k response has a 4xx status code
+func (o *CronJobDeleteExpiredRequestsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job delete expired requests o k response has a 5xx status code
+func (o *CronJobDeleteExpiredRequestsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete expired requests o k response a status code equal to that given
+func (o *CronJobDeleteExpiredRequestsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CronJobDeleteExpiredRequestsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsOK  %+v", 200, o.Payload)
 }
+
+func (o *CronJobDeleteExpiredRequestsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsOK  %+v", 200, o.Payload)
+}
+
 func (o *CronJobDeleteExpiredRequestsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCronJobDeleteExpiredRequestsBadRequest() *CronJobDeleteExpiredRequestsBa
 	return &CronJobDeleteExpiredRequestsBadRequest{}
 }
 
-/* CronJobDeleteExpiredRequestsBadRequest describes a response with status code 400, with default header values.
+/*
+CronJobDeleteExpiredRequestsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CronJobDeleteExpiredRequestsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete expired requests bad request response has a 2xx status code
+func (o *CronJobDeleteExpiredRequestsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete expired requests bad request response has a 3xx status code
+func (o *CronJobDeleteExpiredRequestsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete expired requests bad request response has a 4xx status code
+func (o *CronJobDeleteExpiredRequestsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete expired requests bad request response has a 5xx status code
+func (o *CronJobDeleteExpiredRequestsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete expired requests bad request response a status code equal to that given
+func (o *CronJobDeleteExpiredRequestsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CronJobDeleteExpiredRequestsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CronJobDeleteExpiredRequestsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CronJobDeleteExpiredRequestsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCronJobDeleteExpiredRequestsUnauthorized() *CronJobDeleteExpiredRequests
 	return &CronJobDeleteExpiredRequestsUnauthorized{}
 }
 
-/* CronJobDeleteExpiredRequestsUnauthorized describes a response with status code 401, with default header values.
+/*
+CronJobDeleteExpiredRequestsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CronJobDeleteExpiredRequestsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete expired requests unauthorized response has a 2xx status code
+func (o *CronJobDeleteExpiredRequestsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete expired requests unauthorized response has a 3xx status code
+func (o *CronJobDeleteExpiredRequestsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete expired requests unauthorized response has a 4xx status code
+func (o *CronJobDeleteExpiredRequestsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete expired requests unauthorized response has a 5xx status code
+func (o *CronJobDeleteExpiredRequestsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete expired requests unauthorized response a status code equal to that given
+func (o *CronJobDeleteExpiredRequestsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CronJobDeleteExpiredRequestsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CronJobDeleteExpiredRequestsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CronJobDeleteExpiredRequestsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCronJobDeleteExpiredRequestsForbidden() *CronJobDeleteExpiredRequestsFor
 	return &CronJobDeleteExpiredRequestsForbidden{}
 }
 
-/* CronJobDeleteExpiredRequestsForbidden describes a response with status code 403, with default header values.
+/*
+CronJobDeleteExpiredRequestsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CronJobDeleteExpiredRequestsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete expired requests forbidden response has a 2xx status code
+func (o *CronJobDeleteExpiredRequestsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete expired requests forbidden response has a 3xx status code
+func (o *CronJobDeleteExpiredRequestsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete expired requests forbidden response has a 4xx status code
+func (o *CronJobDeleteExpiredRequestsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete expired requests forbidden response has a 5xx status code
+func (o *CronJobDeleteExpiredRequestsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete expired requests forbidden response a status code equal to that given
+func (o *CronJobDeleteExpiredRequestsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CronJobDeleteExpiredRequestsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CronJobDeleteExpiredRequestsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CronJobDeleteExpiredRequestsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCronJobDeleteExpiredRequestsNotFound() *CronJobDeleteExpiredRequestsNotF
 	return &CronJobDeleteExpiredRequestsNotFound{}
 }
 
-/* CronJobDeleteExpiredRequestsNotFound describes a response with status code 404, with default header values.
+/*
+CronJobDeleteExpiredRequestsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CronJobDeleteExpiredRequestsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete expired requests not found response has a 2xx status code
+func (o *CronJobDeleteExpiredRequestsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete expired requests not found response has a 3xx status code
+func (o *CronJobDeleteExpiredRequestsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete expired requests not found response has a 4xx status code
+func (o *CronJobDeleteExpiredRequestsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete expired requests not found response has a 5xx status code
+func (o *CronJobDeleteExpiredRequestsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete expired requests not found response a status code equal to that given
+func (o *CronJobDeleteExpiredRequestsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CronJobDeleteExpiredRequestsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CronJobDeleteExpiredRequestsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CronJobDeleteExpiredRequestsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCronJobDeleteExpiredRequestsInternalServerError() *CronJobDeleteExpiredR
 	return &CronJobDeleteExpiredRequestsInternalServerError{}
 }
 
-/* CronJobDeleteExpiredRequestsInternalServerError describes a response with status code 500, with default header values.
+/*
+CronJobDeleteExpiredRequestsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CronJobDeleteExpiredRequestsInternalServerError struct {
 }
 
+// IsSuccess returns true when this cron job delete expired requests internal server error response has a 2xx status code
+func (o *CronJobDeleteExpiredRequestsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete expired requests internal server error response has a 3xx status code
+func (o *CronJobDeleteExpiredRequestsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete expired requests internal server error response has a 4xx status code
+func (o *CronJobDeleteExpiredRequestsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job delete expired requests internal server error response has a 5xx status code
+func (o *CronJobDeleteExpiredRequestsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cron job delete expired requests internal server error response a status code equal to that given
+func (o *CronJobDeleteExpiredRequestsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CronJobDeleteExpiredRequestsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsInternalServerError ", 500)
+}
+
+func (o *CronJobDeleteExpiredRequestsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsInternalServerError ", 500)
 }
 

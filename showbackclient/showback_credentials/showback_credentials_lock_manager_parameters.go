@@ -54,10 +54,12 @@ func NewShowbackCredentialsLockManagerParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* ShowbackCredentialsLockManagerParams contains all the parameters to send to the API endpoint
-   for the showback credentials lock manager operation.
+/*
+ShowbackCredentialsLockManagerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the showback credentials lock manager operation.
+
+	Typically these are written to a http.Request.
 */
 type ShowbackCredentialsLockManagerParams struct {
 

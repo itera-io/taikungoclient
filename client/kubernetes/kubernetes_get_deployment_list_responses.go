@@ -69,7 +69,8 @@ func NewKubernetesGetDeploymentListOK() *KubernetesGetDeploymentListOK {
 	return &KubernetesGetDeploymentListOK{}
 }
 
-/* KubernetesGetDeploymentListOK describes a response with status code 200, with default header values.
+/*
+KubernetesGetDeploymentListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesGetDeploymentListOK struct {
 	Payload *models.Deployments
 }
 
+// IsSuccess returns true when this kubernetes get deployment list o k response has a 2xx status code
+func (o *KubernetesGetDeploymentListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes get deployment list o k response has a 3xx status code
+func (o *KubernetesGetDeploymentListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get deployment list o k response has a 4xx status code
+func (o *KubernetesGetDeploymentListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get deployment list o k response has a 5xx status code
+func (o *KubernetesGetDeploymentListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get deployment list o k response a status code equal to that given
+func (o *KubernetesGetDeploymentListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesGetDeploymentListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesGetDeploymentListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesGetDeploymentListOK) GetPayload() *models.Deployments {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewKubernetesGetDeploymentListBadRequest() *KubernetesGetDeploymentListBadR
 	return &KubernetesGetDeploymentListBadRequest{}
 }
 
-/* KubernetesGetDeploymentListBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesGetDeploymentListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type KubernetesGetDeploymentListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get deployment list bad request response has a 2xx status code
+func (o *KubernetesGetDeploymentListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get deployment list bad request response has a 3xx status code
+func (o *KubernetesGetDeploymentListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get deployment list bad request response has a 4xx status code
+func (o *KubernetesGetDeploymentListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get deployment list bad request response has a 5xx status code
+func (o *KubernetesGetDeploymentListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get deployment list bad request response a status code equal to that given
+func (o *KubernetesGetDeploymentListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesGetDeploymentListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesGetDeploymentListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesGetDeploymentListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewKubernetesGetDeploymentListUnauthorized() *KubernetesGetDeploymentListUn
 	return &KubernetesGetDeploymentListUnauthorized{}
 }
 
-/* KubernetesGetDeploymentListUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesGetDeploymentListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type KubernetesGetDeploymentListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get deployment list unauthorized response has a 2xx status code
+func (o *KubernetesGetDeploymentListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get deployment list unauthorized response has a 3xx status code
+func (o *KubernetesGetDeploymentListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get deployment list unauthorized response has a 4xx status code
+func (o *KubernetesGetDeploymentListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get deployment list unauthorized response has a 5xx status code
+func (o *KubernetesGetDeploymentListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get deployment list unauthorized response a status code equal to that given
+func (o *KubernetesGetDeploymentListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesGetDeploymentListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesGetDeploymentListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesGetDeploymentListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewKubernetesGetDeploymentListForbidden() *KubernetesGetDeploymentListForbi
 	return &KubernetesGetDeploymentListForbidden{}
 }
 
-/* KubernetesGetDeploymentListForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesGetDeploymentListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type KubernetesGetDeploymentListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get deployment list forbidden response has a 2xx status code
+func (o *KubernetesGetDeploymentListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get deployment list forbidden response has a 3xx status code
+func (o *KubernetesGetDeploymentListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get deployment list forbidden response has a 4xx status code
+func (o *KubernetesGetDeploymentListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get deployment list forbidden response has a 5xx status code
+func (o *KubernetesGetDeploymentListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get deployment list forbidden response a status code equal to that given
+func (o *KubernetesGetDeploymentListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesGetDeploymentListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesGetDeploymentListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesGetDeploymentListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewKubernetesGetDeploymentListNotFound() *KubernetesGetDeploymentListNotFou
 	return &KubernetesGetDeploymentListNotFound{}
 }
 
-/* KubernetesGetDeploymentListNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesGetDeploymentListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type KubernetesGetDeploymentListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get deployment list not found response has a 2xx status code
+func (o *KubernetesGetDeploymentListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get deployment list not found response has a 3xx status code
+func (o *KubernetesGetDeploymentListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get deployment list not found response has a 4xx status code
+func (o *KubernetesGetDeploymentListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get deployment list not found response has a 5xx status code
+func (o *KubernetesGetDeploymentListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get deployment list not found response a status code equal to that given
+func (o *KubernetesGetDeploymentListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesGetDeploymentListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesGetDeploymentListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesGetDeploymentListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewKubernetesGetDeploymentListInternalServerError() *KubernetesGetDeploymen
 	return &KubernetesGetDeploymentListInternalServerError{}
 }
 
-/* KubernetesGetDeploymentListInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesGetDeploymentListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesGetDeploymentListInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes get deployment list internal server error response has a 2xx status code
+func (o *KubernetesGetDeploymentListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get deployment list internal server error response has a 3xx status code
+func (o *KubernetesGetDeploymentListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get deployment list internal server error response has a 4xx status code
+func (o *KubernetesGetDeploymentListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get deployment list internal server error response has a 5xx status code
+func (o *KubernetesGetDeploymentListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes get deployment list internal server error response a status code equal to that given
+func (o *KubernetesGetDeploymentListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesGetDeploymentListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListInternalServerError ", 500)
+}
+
+func (o *KubernetesGetDeploymentListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListInternalServerError ", 500)
 }
 

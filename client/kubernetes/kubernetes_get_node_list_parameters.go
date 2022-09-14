@@ -53,10 +53,12 @@ func NewKubernetesGetNodeListParamsWithHTTPClient(client *http.Client) *Kubernet
 	}
 }
 
-/* KubernetesGetNodeListParams contains all the parameters to send to the API endpoint
-   for the kubernetes get node list operation.
+/*
+KubernetesGetNodeListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes get node list operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesGetNodeListParams struct {
 

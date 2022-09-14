@@ -53,10 +53,12 @@ func NewImagesGetSelectedImagesForProjectParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* ImagesGetSelectedImagesForProjectParams contains all the parameters to send to the API endpoint
-   for the images get selected images for project operation.
+/*
+ImagesGetSelectedImagesForProjectParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the images get selected images for project operation.
+
+	Typically these are written to a http.Request.
 */
 type ImagesGetSelectedImagesForProjectParams struct {
 

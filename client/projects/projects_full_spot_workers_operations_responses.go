@@ -69,7 +69,8 @@ func NewProjectsFullSpotWorkersOperationsOK() *ProjectsFullSpotWorkersOperations
 	return &ProjectsFullSpotWorkersOperationsOK{}
 }
 
-/* ProjectsFullSpotWorkersOperationsOK describes a response with status code 200, with default header values.
+/*
+ProjectsFullSpotWorkersOperationsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsFullSpotWorkersOperationsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this projects full spot workers operations o k response has a 2xx status code
+func (o *ProjectsFullSpotWorkersOperationsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects full spot workers operations o k response has a 3xx status code
+func (o *ProjectsFullSpotWorkersOperationsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects full spot workers operations o k response has a 4xx status code
+func (o *ProjectsFullSpotWorkersOperationsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects full spot workers operations o k response has a 5xx status code
+func (o *ProjectsFullSpotWorkersOperationsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects full spot workers operations o k response a status code equal to that given
+func (o *ProjectsFullSpotWorkersOperationsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsFullSpotWorkersOperationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsFullSpotWorkersOperationsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsFullSpotWorkersOperationsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectsFullSpotWorkersOperationsBadRequest() *ProjectsFullSpotWorkersOp
 	return &ProjectsFullSpotWorkersOperationsBadRequest{}
 }
 
-/* ProjectsFullSpotWorkersOperationsBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsFullSpotWorkersOperationsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectsFullSpotWorkersOperationsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects full spot workers operations bad request response has a 2xx status code
+func (o *ProjectsFullSpotWorkersOperationsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects full spot workers operations bad request response has a 3xx status code
+func (o *ProjectsFullSpotWorkersOperationsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects full spot workers operations bad request response has a 4xx status code
+func (o *ProjectsFullSpotWorkersOperationsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects full spot workers operations bad request response has a 5xx status code
+func (o *ProjectsFullSpotWorkersOperationsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects full spot workers operations bad request response a status code equal to that given
+func (o *ProjectsFullSpotWorkersOperationsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsFullSpotWorkersOperationsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsFullSpotWorkersOperationsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsFullSpotWorkersOperationsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectsFullSpotWorkersOperationsUnauthorized() *ProjectsFullSpotWorkers
 	return &ProjectsFullSpotWorkersOperationsUnauthorized{}
 }
 
-/* ProjectsFullSpotWorkersOperationsUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsFullSpotWorkersOperationsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectsFullSpotWorkersOperationsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects full spot workers operations unauthorized response has a 2xx status code
+func (o *ProjectsFullSpotWorkersOperationsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects full spot workers operations unauthorized response has a 3xx status code
+func (o *ProjectsFullSpotWorkersOperationsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects full spot workers operations unauthorized response has a 4xx status code
+func (o *ProjectsFullSpotWorkersOperationsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects full spot workers operations unauthorized response has a 5xx status code
+func (o *ProjectsFullSpotWorkersOperationsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects full spot workers operations unauthorized response a status code equal to that given
+func (o *ProjectsFullSpotWorkersOperationsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsFullSpotWorkersOperationsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsFullSpotWorkersOperationsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsFullSpotWorkersOperationsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectsFullSpotWorkersOperationsForbidden() *ProjectsFullSpotWorkersOpe
 	return &ProjectsFullSpotWorkersOperationsForbidden{}
 }
 
-/* ProjectsFullSpotWorkersOperationsForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsFullSpotWorkersOperationsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectsFullSpotWorkersOperationsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects full spot workers operations forbidden response has a 2xx status code
+func (o *ProjectsFullSpotWorkersOperationsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects full spot workers operations forbidden response has a 3xx status code
+func (o *ProjectsFullSpotWorkersOperationsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects full spot workers operations forbidden response has a 4xx status code
+func (o *ProjectsFullSpotWorkersOperationsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects full spot workers operations forbidden response has a 5xx status code
+func (o *ProjectsFullSpotWorkersOperationsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects full spot workers operations forbidden response a status code equal to that given
+func (o *ProjectsFullSpotWorkersOperationsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsFullSpotWorkersOperationsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsFullSpotWorkersOperationsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsFullSpotWorkersOperationsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectsFullSpotWorkersOperationsNotFound() *ProjectsFullSpotWorkersOper
 	return &ProjectsFullSpotWorkersOperationsNotFound{}
 }
 
-/* ProjectsFullSpotWorkersOperationsNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsFullSpotWorkersOperationsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectsFullSpotWorkersOperationsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects full spot workers operations not found response has a 2xx status code
+func (o *ProjectsFullSpotWorkersOperationsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects full spot workers operations not found response has a 3xx status code
+func (o *ProjectsFullSpotWorkersOperationsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects full spot workers operations not found response has a 4xx status code
+func (o *ProjectsFullSpotWorkersOperationsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects full spot workers operations not found response has a 5xx status code
+func (o *ProjectsFullSpotWorkersOperationsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects full spot workers operations not found response a status code equal to that given
+func (o *ProjectsFullSpotWorkersOperationsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsFullSpotWorkersOperationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsFullSpotWorkersOperationsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsFullSpotWorkersOperationsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectsFullSpotWorkersOperationsInternalServerError() *ProjectsFullSpot
 	return &ProjectsFullSpotWorkersOperationsInternalServerError{}
 }
 
-/* ProjectsFullSpotWorkersOperationsInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsFullSpotWorkersOperationsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsFullSpotWorkersOperationsInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects full spot workers operations internal server error response has a 2xx status code
+func (o *ProjectsFullSpotWorkersOperationsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects full spot workers operations internal server error response has a 3xx status code
+func (o *ProjectsFullSpotWorkersOperationsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects full spot workers operations internal server error response has a 4xx status code
+func (o *ProjectsFullSpotWorkersOperationsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects full spot workers operations internal server error response has a 5xx status code
+func (o *ProjectsFullSpotWorkersOperationsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects full spot workers operations internal server error response a status code equal to that given
+func (o *ProjectsFullSpotWorkersOperationsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsFullSpotWorkersOperationsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsInternalServerError ", 500)
+}
+
+func (o *ProjectsFullSpotWorkersOperationsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsInternalServerError ", 500)
 }
 

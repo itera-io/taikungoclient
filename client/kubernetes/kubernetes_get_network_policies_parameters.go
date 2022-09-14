@@ -53,10 +53,12 @@ func NewKubernetesGetNetworkPoliciesParamsWithHTTPClient(client *http.Client) *K
 	}
 }
 
-/* KubernetesGetNetworkPoliciesParams contains all the parameters to send to the API endpoint
-   for the kubernetes get network policies operation.
+/*
+KubernetesGetNetworkPoliciesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes get network policies operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesGetNetworkPoliciesParams struct {
 

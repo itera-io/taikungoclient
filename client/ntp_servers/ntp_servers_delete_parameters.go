@@ -53,10 +53,12 @@ func NewNtpServersDeleteParamsWithHTTPClient(client *http.Client) *NtpServersDel
 	}
 }
 
-/* NtpServersDeleteParams contains all the parameters to send to the API endpoint
-   for the ntp servers delete operation.
+/*
+NtpServersDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ntp servers delete operation.
+
+	Typically these are written to a http.Request.
 */
 type NtpServersDeleteParams struct {
 

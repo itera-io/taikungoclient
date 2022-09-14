@@ -53,10 +53,12 @@ func NewProjectAppListParamsWithHTTPClient(client *http.Client) *ProjectAppListP
 	}
 }
 
-/* ProjectAppListParams contains all the parameters to send to the API endpoint
-   for the project app list operation.
+/*
+ProjectAppListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the project app list operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectAppListParams struct {
 

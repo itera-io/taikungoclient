@@ -54,10 +54,12 @@ func NewCronJobPurgeExpiredProjectsParamsWithHTTPClient(client *http.Client) *Cr
 	}
 }
 
-/* CronJobPurgeExpiredProjectsParams contains all the parameters to send to the API endpoint
-   for the cron job purge expired projects operation.
+/*
+CronJobPurgeExpiredProjectsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job purge expired projects operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobPurgeExpiredProjectsParams struct {
 

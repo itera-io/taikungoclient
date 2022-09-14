@@ -54,10 +54,12 @@ func NewPaymentUpdateCardParamsWithHTTPClient(client *http.Client) *PaymentUpdat
 	}
 }
 
-/* PaymentUpdateCardParams contains all the parameters to send to the API endpoint
-   for the payment update card operation.
+/*
+PaymentUpdateCardParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the payment update card operation.
+
+	Typically these are written to a http.Request.
 */
 type PaymentUpdateCardParams struct {
 

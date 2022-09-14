@@ -54,10 +54,12 @@ func NewKubernetesPatchConfigMapParamsWithHTTPClient(client *http.Client) *Kuber
 	}
 }
 
-/* KubernetesPatchConfigMapParams contains all the parameters to send to the API endpoint
-   for the kubernetes patch config map operation.
+/*
+KubernetesPatchConfigMapParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes patch config map operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesPatchConfigMapParams struct {
 

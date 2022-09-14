@@ -54,10 +54,12 @@ func NewOpaProfilesMakeDefaultParamsWithHTTPClient(client *http.Client) *OpaProf
 	}
 }
 
-/* OpaProfilesMakeDefaultParams contains all the parameters to send to the API endpoint
-   for the opa profiles make default operation.
+/*
+OpaProfilesMakeDefaultParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the opa profiles make default operation.
+
+	Typically these are written to a http.Request.
 */
 type OpaProfilesMakeDefaultParams struct {
 

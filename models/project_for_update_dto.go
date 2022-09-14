@@ -24,6 +24,9 @@ type ProjectForUpdateDto struct {
 	// app enabled
 	AppEnabled bool `json:"appEnabled"`
 
+	// failure reason
+	FailureReason string `json:"failureReason,omitempty"`
+
 	// health
 	Health ProjectHealth `json:"health,omitempty"`
 

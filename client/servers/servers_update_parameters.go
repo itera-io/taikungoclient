@@ -54,10 +54,12 @@ func NewServersUpdateParamsWithHTTPClient(client *http.Client) *ServersUpdatePar
 	}
 }
 
-/* ServersUpdateParams contains all the parameters to send to the API endpoint
-   for the servers update operation.
+/*
+ServersUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the servers update operation.
+
+	Typically these are written to a http.Request.
 */
 type ServersUpdateParams struct {
 

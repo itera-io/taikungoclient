@@ -53,10 +53,12 @@ func NewKubernetesGetCronJobsListParamsWithHTTPClient(client *http.Client) *Kube
 	}
 }
 
-/* KubernetesGetCronJobsListParams contains all the parameters to send to the API endpoint
-   for the kubernetes get cron jobs list operation.
+/*
+KubernetesGetCronJobsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes get cron jobs list operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesGetCronJobsListParams struct {
 

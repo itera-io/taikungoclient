@@ -69,7 +69,8 @@ func NewImagesGoogleImagesOK() *ImagesGoogleImagesOK {
 	return &ImagesGoogleImagesOK{}
 }
 
-/* ImagesGoogleImagesOK describes a response with status code 200, with default header values.
+/*
+ImagesGoogleImagesOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ImagesGoogleImagesOK struct {
 	Payload *models.GoogleImageList
 }
 
+// IsSuccess returns true when this images google images o k response has a 2xx status code
+func (o *ImagesGoogleImagesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this images google images o k response has a 3xx status code
+func (o *ImagesGoogleImagesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images google images o k response has a 4xx status code
+func (o *ImagesGoogleImagesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this images google images o k response has a 5xx status code
+func (o *ImagesGoogleImagesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images google images o k response a status code equal to that given
+func (o *ImagesGoogleImagesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ImagesGoogleImagesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesOK  %+v", 200, o.Payload)
 }
+
+func (o *ImagesGoogleImagesOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesOK  %+v", 200, o.Payload)
+}
+
 func (o *ImagesGoogleImagesOK) GetPayload() *models.GoogleImageList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewImagesGoogleImagesBadRequest() *ImagesGoogleImagesBadRequest {
 	return &ImagesGoogleImagesBadRequest{}
 }
 
-/* ImagesGoogleImagesBadRequest describes a response with status code 400, with default header values.
+/*
+ImagesGoogleImagesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type ImagesGoogleImagesBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this images google images bad request response has a 2xx status code
+func (o *ImagesGoogleImagesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images google images bad request response has a 3xx status code
+func (o *ImagesGoogleImagesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images google images bad request response has a 4xx status code
+func (o *ImagesGoogleImagesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images google images bad request response has a 5xx status code
+func (o *ImagesGoogleImagesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images google images bad request response a status code equal to that given
+func (o *ImagesGoogleImagesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ImagesGoogleImagesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ImagesGoogleImagesBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ImagesGoogleImagesBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewImagesGoogleImagesUnauthorized() *ImagesGoogleImagesUnauthorized {
 	return &ImagesGoogleImagesUnauthorized{}
 }
 
-/* ImagesGoogleImagesUnauthorized describes a response with status code 401, with default header values.
+/*
+ImagesGoogleImagesUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type ImagesGoogleImagesUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this images google images unauthorized response has a 2xx status code
+func (o *ImagesGoogleImagesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images google images unauthorized response has a 3xx status code
+func (o *ImagesGoogleImagesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images google images unauthorized response has a 4xx status code
+func (o *ImagesGoogleImagesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images google images unauthorized response has a 5xx status code
+func (o *ImagesGoogleImagesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images google images unauthorized response a status code equal to that given
+func (o *ImagesGoogleImagesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ImagesGoogleImagesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ImagesGoogleImagesUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ImagesGoogleImagesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewImagesGoogleImagesForbidden() *ImagesGoogleImagesForbidden {
 	return &ImagesGoogleImagesForbidden{}
 }
 
-/* ImagesGoogleImagesForbidden describes a response with status code 403, with default header values.
+/*
+ImagesGoogleImagesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type ImagesGoogleImagesForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this images google images forbidden response has a 2xx status code
+func (o *ImagesGoogleImagesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images google images forbidden response has a 3xx status code
+func (o *ImagesGoogleImagesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images google images forbidden response has a 4xx status code
+func (o *ImagesGoogleImagesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images google images forbidden response has a 5xx status code
+func (o *ImagesGoogleImagesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images google images forbidden response a status code equal to that given
+func (o *ImagesGoogleImagesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ImagesGoogleImagesForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ImagesGoogleImagesForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ImagesGoogleImagesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewImagesGoogleImagesNotFound() *ImagesGoogleImagesNotFound {
 	return &ImagesGoogleImagesNotFound{}
 }
 
-/* ImagesGoogleImagesNotFound describes a response with status code 404, with default header values.
+/*
+ImagesGoogleImagesNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type ImagesGoogleImagesNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this images google images not found response has a 2xx status code
+func (o *ImagesGoogleImagesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images google images not found response has a 3xx status code
+func (o *ImagesGoogleImagesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images google images not found response has a 4xx status code
+func (o *ImagesGoogleImagesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images google images not found response has a 5xx status code
+func (o *ImagesGoogleImagesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images google images not found response a status code equal to that given
+func (o *ImagesGoogleImagesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ImagesGoogleImagesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ImagesGoogleImagesNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ImagesGoogleImagesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewImagesGoogleImagesInternalServerError() *ImagesGoogleImagesInternalServe
 	return &ImagesGoogleImagesInternalServerError{}
 }
 
-/* ImagesGoogleImagesInternalServerError describes a response with status code 500, with default header values.
+/*
+ImagesGoogleImagesInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ImagesGoogleImagesInternalServerError struct {
 }
 
+// IsSuccess returns true when this images google images internal server error response has a 2xx status code
+func (o *ImagesGoogleImagesInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images google images internal server error response has a 3xx status code
+func (o *ImagesGoogleImagesInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images google images internal server error response has a 4xx status code
+func (o *ImagesGoogleImagesInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this images google images internal server error response has a 5xx status code
+func (o *ImagesGoogleImagesInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this images google images internal server error response a status code equal to that given
+func (o *ImagesGoogleImagesInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ImagesGoogleImagesInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesInternalServerError ", 500)
+}
+
+func (o *ImagesGoogleImagesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesInternalServerError ", 500)
 }
 

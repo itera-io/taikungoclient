@@ -69,7 +69,8 @@ func NewCatalogCatalogAppParamsDetailsOK() *CatalogCatalogAppParamsDetailsOK {
 	return &CatalogCatalogAppParamsDetailsOK{}
 }
 
-/* CatalogCatalogAppParamsDetailsOK describes a response with status code 200, with default header values.
+/*
+CatalogCatalogAppParamsDetailsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CatalogCatalogAppParamsDetailsOK struct {
 	Payload []*models.CatalogAppParamsDetailsDto
 }
 
+// IsSuccess returns true when this catalog catalog app params details o k response has a 2xx status code
+func (o *CatalogCatalogAppParamsDetailsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this catalog catalog app params details o k response has a 3xx status code
+func (o *CatalogCatalogAppParamsDetailsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog catalog app params details o k response has a 4xx status code
+func (o *CatalogCatalogAppParamsDetailsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this catalog catalog app params details o k response has a 5xx status code
+func (o *CatalogCatalogAppParamsDetailsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog catalog app params details o k response a status code equal to that given
+func (o *CatalogCatalogAppParamsDetailsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CatalogCatalogAppParamsDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsOK  %+v", 200, o.Payload)
 }
+
+func (o *CatalogCatalogAppParamsDetailsOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsOK  %+v", 200, o.Payload)
+}
+
 func (o *CatalogCatalogAppParamsDetailsOK) GetPayload() []*models.CatalogAppParamsDetailsDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCatalogCatalogAppParamsDetailsBadRequest() *CatalogCatalogAppParamsDetai
 	return &CatalogCatalogAppParamsDetailsBadRequest{}
 }
 
-/* CatalogCatalogAppParamsDetailsBadRequest describes a response with status code 400, with default header values.
+/*
+CatalogCatalogAppParamsDetailsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CatalogCatalogAppParamsDetailsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this catalog catalog app params details bad request response has a 2xx status code
+func (o *CatalogCatalogAppParamsDetailsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog catalog app params details bad request response has a 3xx status code
+func (o *CatalogCatalogAppParamsDetailsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog catalog app params details bad request response has a 4xx status code
+func (o *CatalogCatalogAppParamsDetailsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog catalog app params details bad request response has a 5xx status code
+func (o *CatalogCatalogAppParamsDetailsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog catalog app params details bad request response a status code equal to that given
+func (o *CatalogCatalogAppParamsDetailsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CatalogCatalogAppParamsDetailsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CatalogCatalogAppParamsDetailsBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CatalogCatalogAppParamsDetailsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCatalogCatalogAppParamsDetailsUnauthorized() *CatalogCatalogAppParamsDet
 	return &CatalogCatalogAppParamsDetailsUnauthorized{}
 }
 
-/* CatalogCatalogAppParamsDetailsUnauthorized describes a response with status code 401, with default header values.
+/*
+CatalogCatalogAppParamsDetailsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CatalogCatalogAppParamsDetailsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog catalog app params details unauthorized response has a 2xx status code
+func (o *CatalogCatalogAppParamsDetailsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog catalog app params details unauthorized response has a 3xx status code
+func (o *CatalogCatalogAppParamsDetailsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog catalog app params details unauthorized response has a 4xx status code
+func (o *CatalogCatalogAppParamsDetailsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog catalog app params details unauthorized response has a 5xx status code
+func (o *CatalogCatalogAppParamsDetailsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog catalog app params details unauthorized response a status code equal to that given
+func (o *CatalogCatalogAppParamsDetailsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CatalogCatalogAppParamsDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CatalogCatalogAppParamsDetailsUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CatalogCatalogAppParamsDetailsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCatalogCatalogAppParamsDetailsForbidden() *CatalogCatalogAppParamsDetail
 	return &CatalogCatalogAppParamsDetailsForbidden{}
 }
 
-/* CatalogCatalogAppParamsDetailsForbidden describes a response with status code 403, with default header values.
+/*
+CatalogCatalogAppParamsDetailsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CatalogCatalogAppParamsDetailsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog catalog app params details forbidden response has a 2xx status code
+func (o *CatalogCatalogAppParamsDetailsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog catalog app params details forbidden response has a 3xx status code
+func (o *CatalogCatalogAppParamsDetailsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog catalog app params details forbidden response has a 4xx status code
+func (o *CatalogCatalogAppParamsDetailsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog catalog app params details forbidden response has a 5xx status code
+func (o *CatalogCatalogAppParamsDetailsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog catalog app params details forbidden response a status code equal to that given
+func (o *CatalogCatalogAppParamsDetailsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CatalogCatalogAppParamsDetailsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CatalogCatalogAppParamsDetailsForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CatalogCatalogAppParamsDetailsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCatalogCatalogAppParamsDetailsNotFound() *CatalogCatalogAppParamsDetails
 	return &CatalogCatalogAppParamsDetailsNotFound{}
 }
 
-/* CatalogCatalogAppParamsDetailsNotFound describes a response with status code 404, with default header values.
+/*
+CatalogCatalogAppParamsDetailsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CatalogCatalogAppParamsDetailsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog catalog app params details not found response has a 2xx status code
+func (o *CatalogCatalogAppParamsDetailsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog catalog app params details not found response has a 3xx status code
+func (o *CatalogCatalogAppParamsDetailsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog catalog app params details not found response has a 4xx status code
+func (o *CatalogCatalogAppParamsDetailsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog catalog app params details not found response has a 5xx status code
+func (o *CatalogCatalogAppParamsDetailsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog catalog app params details not found response a status code equal to that given
+func (o *CatalogCatalogAppParamsDetailsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CatalogCatalogAppParamsDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CatalogCatalogAppParamsDetailsNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CatalogCatalogAppParamsDetailsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCatalogCatalogAppParamsDetailsInternalServerError() *CatalogCatalogAppPa
 	return &CatalogCatalogAppParamsDetailsInternalServerError{}
 }
 
-/* CatalogCatalogAppParamsDetailsInternalServerError describes a response with status code 500, with default header values.
+/*
+CatalogCatalogAppParamsDetailsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CatalogCatalogAppParamsDetailsInternalServerError struct {
 }
 
+// IsSuccess returns true when this catalog catalog app params details internal server error response has a 2xx status code
+func (o *CatalogCatalogAppParamsDetailsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog catalog app params details internal server error response has a 3xx status code
+func (o *CatalogCatalogAppParamsDetailsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog catalog app params details internal server error response has a 4xx status code
+func (o *CatalogCatalogAppParamsDetailsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this catalog catalog app params details internal server error response has a 5xx status code
+func (o *CatalogCatalogAppParamsDetailsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this catalog catalog app params details internal server error response a status code equal to that given
+func (o *CatalogCatalogAppParamsDetailsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CatalogCatalogAppParamsDetailsInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsInternalServerError ", 500)
+}
+
+func (o *CatalogCatalogAppParamsDetailsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsInternalServerError ", 500)
 }
 

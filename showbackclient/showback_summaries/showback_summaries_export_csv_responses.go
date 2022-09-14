@@ -69,14 +69,44 @@ func NewShowbackSummariesExportCsvOK() *ShowbackSummariesExportCsvOK {
 	return &ShowbackSummariesExportCsvOK{}
 }
 
-/* ShowbackSummariesExportCsvOK describes a response with status code 200, with default header values.
+/*
+ShowbackSummariesExportCsvOK describes a response with status code 200, with default header values.
 
 Success
 */
 type ShowbackSummariesExportCsvOK struct {
 }
 
+// IsSuccess returns true when this showback summaries export csv o k response has a 2xx status code
+func (o *ShowbackSummariesExportCsvOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this showback summaries export csv o k response has a 3xx status code
+func (o *ShowbackSummariesExportCsvOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries export csv o k response has a 4xx status code
+func (o *ShowbackSummariesExportCsvOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this showback summaries export csv o k response has a 5xx status code
+func (o *ShowbackSummariesExportCsvOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback summaries export csv o k response a status code equal to that given
+func (o *ShowbackSummariesExportCsvOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ShowbackSummariesExportCsvOK) Error() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvOK ", 200)
+}
+
+func (o *ShowbackSummariesExportCsvOK) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvOK ", 200)
 }
 
@@ -90,7 +120,8 @@ func NewShowbackSummariesExportCsvBadRequest() *ShowbackSummariesExportCsvBadReq
 	return &ShowbackSummariesExportCsvBadRequest{}
 }
 
-/* ShowbackSummariesExportCsvBadRequest describes a response with status code 400, with default header values.
+/*
+ShowbackSummariesExportCsvBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -98,9 +129,39 @@ type ShowbackSummariesExportCsvBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this showback summaries export csv bad request response has a 2xx status code
+func (o *ShowbackSummariesExportCsvBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback summaries export csv bad request response has a 3xx status code
+func (o *ShowbackSummariesExportCsvBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries export csv bad request response has a 4xx status code
+func (o *ShowbackSummariesExportCsvBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback summaries export csv bad request response has a 5xx status code
+func (o *ShowbackSummariesExportCsvBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback summaries export csv bad request response a status code equal to that given
+func (o *ShowbackSummariesExportCsvBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ShowbackSummariesExportCsvBadRequest) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ShowbackSummariesExportCsvBadRequest) String() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ShowbackSummariesExportCsvBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -122,7 +183,8 @@ func NewShowbackSummariesExportCsvUnauthorized() *ShowbackSummariesExportCsvUnau
 	return &ShowbackSummariesExportCsvUnauthorized{}
 }
 
-/* ShowbackSummariesExportCsvUnauthorized describes a response with status code 401, with default header values.
+/*
+ShowbackSummariesExportCsvUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -130,9 +192,39 @@ type ShowbackSummariesExportCsvUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback summaries export csv unauthorized response has a 2xx status code
+func (o *ShowbackSummariesExportCsvUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback summaries export csv unauthorized response has a 3xx status code
+func (o *ShowbackSummariesExportCsvUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries export csv unauthorized response has a 4xx status code
+func (o *ShowbackSummariesExportCsvUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback summaries export csv unauthorized response has a 5xx status code
+func (o *ShowbackSummariesExportCsvUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback summaries export csv unauthorized response a status code equal to that given
+func (o *ShowbackSummariesExportCsvUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ShowbackSummariesExportCsvUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ShowbackSummariesExportCsvUnauthorized) String() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ShowbackSummariesExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -154,7 +246,8 @@ func NewShowbackSummariesExportCsvForbidden() *ShowbackSummariesExportCsvForbidd
 	return &ShowbackSummariesExportCsvForbidden{}
 }
 
-/* ShowbackSummariesExportCsvForbidden describes a response with status code 403, with default header values.
+/*
+ShowbackSummariesExportCsvForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -162,9 +255,39 @@ type ShowbackSummariesExportCsvForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback summaries export csv forbidden response has a 2xx status code
+func (o *ShowbackSummariesExportCsvForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback summaries export csv forbidden response has a 3xx status code
+func (o *ShowbackSummariesExportCsvForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries export csv forbidden response has a 4xx status code
+func (o *ShowbackSummariesExportCsvForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback summaries export csv forbidden response has a 5xx status code
+func (o *ShowbackSummariesExportCsvForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback summaries export csv forbidden response a status code equal to that given
+func (o *ShowbackSummariesExportCsvForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ShowbackSummariesExportCsvForbidden) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ShowbackSummariesExportCsvForbidden) String() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ShowbackSummariesExportCsvForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -186,7 +309,8 @@ func NewShowbackSummariesExportCsvNotFound() *ShowbackSummariesExportCsvNotFound
 	return &ShowbackSummariesExportCsvNotFound{}
 }
 
-/* ShowbackSummariesExportCsvNotFound describes a response with status code 404, with default header values.
+/*
+ShowbackSummariesExportCsvNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -194,9 +318,39 @@ type ShowbackSummariesExportCsvNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback summaries export csv not found response has a 2xx status code
+func (o *ShowbackSummariesExportCsvNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback summaries export csv not found response has a 3xx status code
+func (o *ShowbackSummariesExportCsvNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries export csv not found response has a 4xx status code
+func (o *ShowbackSummariesExportCsvNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback summaries export csv not found response has a 5xx status code
+func (o *ShowbackSummariesExportCsvNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback summaries export csv not found response a status code equal to that given
+func (o *ShowbackSummariesExportCsvNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ShowbackSummariesExportCsvNotFound) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ShowbackSummariesExportCsvNotFound) String() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ShowbackSummariesExportCsvNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -218,14 +372,44 @@ func NewShowbackSummariesExportCsvInternalServerError() *ShowbackSummariesExport
 	return &ShowbackSummariesExportCsvInternalServerError{}
 }
 
-/* ShowbackSummariesExportCsvInternalServerError describes a response with status code 500, with default header values.
+/*
+ShowbackSummariesExportCsvInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ShowbackSummariesExportCsvInternalServerError struct {
 }
 
+// IsSuccess returns true when this showback summaries export csv internal server error response has a 2xx status code
+func (o *ShowbackSummariesExportCsvInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback summaries export csv internal server error response has a 3xx status code
+func (o *ShowbackSummariesExportCsvInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries export csv internal server error response has a 4xx status code
+func (o *ShowbackSummariesExportCsvInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this showback summaries export csv internal server error response has a 5xx status code
+func (o *ShowbackSummariesExportCsvInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this showback summaries export csv internal server error response a status code equal to that given
+func (o *ShowbackSummariesExportCsvInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ShowbackSummariesExportCsvInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvInternalServerError ", 500)
+}
+
+func (o *ShowbackSummariesExportCsvInternalServerError) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvInternalServerError ", 500)
 }
 

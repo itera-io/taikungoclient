@@ -53,10 +53,12 @@ func NewCloudCredentialsForCliParamsWithHTTPClient(client *http.Client) *CloudCr
 	}
 }
 
-/* CloudCredentialsForCliParams contains all the parameters to send to the API endpoint
-   for the cloud credentials for cli operation.
+/*
+CloudCredentialsForCliParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cloud credentials for cli operation.
+
+	Typically these are written to a http.Request.
 */
 type CloudCredentialsForCliParams struct {
 

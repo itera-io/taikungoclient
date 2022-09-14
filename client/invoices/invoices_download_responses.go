@@ -69,14 +69,44 @@ func NewInvoicesDownloadOK() *InvoicesDownloadOK {
 	return &InvoicesDownloadOK{}
 }
 
-/* InvoicesDownloadOK describes a response with status code 200, with default header values.
+/*
+InvoicesDownloadOK describes a response with status code 200, with default header values.
 
 Success
 */
 type InvoicesDownloadOK struct {
 }
 
+// IsSuccess returns true when this invoices download o k response has a 2xx status code
+func (o *InvoicesDownloadOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this invoices download o k response has a 3xx status code
+func (o *InvoicesDownloadOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this invoices download o k response has a 4xx status code
+func (o *InvoicesDownloadOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this invoices download o k response has a 5xx status code
+func (o *InvoicesDownloadOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this invoices download o k response a status code equal to that given
+func (o *InvoicesDownloadOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *InvoicesDownloadOK) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadOK ", 200)
+}
+
+func (o *InvoicesDownloadOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadOK ", 200)
 }
 
@@ -90,7 +120,8 @@ func NewInvoicesDownloadBadRequest() *InvoicesDownloadBadRequest {
 	return &InvoicesDownloadBadRequest{}
 }
 
-/* InvoicesDownloadBadRequest describes a response with status code 400, with default header values.
+/*
+InvoicesDownloadBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -98,9 +129,39 @@ type InvoicesDownloadBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this invoices download bad request response has a 2xx status code
+func (o *InvoicesDownloadBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this invoices download bad request response has a 3xx status code
+func (o *InvoicesDownloadBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this invoices download bad request response has a 4xx status code
+func (o *InvoicesDownloadBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this invoices download bad request response has a 5xx status code
+func (o *InvoicesDownloadBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this invoices download bad request response a status code equal to that given
+func (o *InvoicesDownloadBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *InvoicesDownloadBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *InvoicesDownloadBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *InvoicesDownloadBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -122,7 +183,8 @@ func NewInvoicesDownloadUnauthorized() *InvoicesDownloadUnauthorized {
 	return &InvoicesDownloadUnauthorized{}
 }
 
-/* InvoicesDownloadUnauthorized describes a response with status code 401, with default header values.
+/*
+InvoicesDownloadUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -130,9 +192,39 @@ type InvoicesDownloadUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this invoices download unauthorized response has a 2xx status code
+func (o *InvoicesDownloadUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this invoices download unauthorized response has a 3xx status code
+func (o *InvoicesDownloadUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this invoices download unauthorized response has a 4xx status code
+func (o *InvoicesDownloadUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this invoices download unauthorized response has a 5xx status code
+func (o *InvoicesDownloadUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this invoices download unauthorized response a status code equal to that given
+func (o *InvoicesDownloadUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *InvoicesDownloadUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *InvoicesDownloadUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *InvoicesDownloadUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -154,7 +246,8 @@ func NewInvoicesDownloadForbidden() *InvoicesDownloadForbidden {
 	return &InvoicesDownloadForbidden{}
 }
 
-/* InvoicesDownloadForbidden describes a response with status code 403, with default header values.
+/*
+InvoicesDownloadForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -162,9 +255,39 @@ type InvoicesDownloadForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this invoices download forbidden response has a 2xx status code
+func (o *InvoicesDownloadForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this invoices download forbidden response has a 3xx status code
+func (o *InvoicesDownloadForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this invoices download forbidden response has a 4xx status code
+func (o *InvoicesDownloadForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this invoices download forbidden response has a 5xx status code
+func (o *InvoicesDownloadForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this invoices download forbidden response a status code equal to that given
+func (o *InvoicesDownloadForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *InvoicesDownloadForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadForbidden  %+v", 403, o.Payload)
 }
+
+func (o *InvoicesDownloadForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadForbidden  %+v", 403, o.Payload)
+}
+
 func (o *InvoicesDownloadForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -186,7 +309,8 @@ func NewInvoicesDownloadNotFound() *InvoicesDownloadNotFound {
 	return &InvoicesDownloadNotFound{}
 }
 
-/* InvoicesDownloadNotFound describes a response with status code 404, with default header values.
+/*
+InvoicesDownloadNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -194,9 +318,39 @@ type InvoicesDownloadNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this invoices download not found response has a 2xx status code
+func (o *InvoicesDownloadNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this invoices download not found response has a 3xx status code
+func (o *InvoicesDownloadNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this invoices download not found response has a 4xx status code
+func (o *InvoicesDownloadNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this invoices download not found response has a 5xx status code
+func (o *InvoicesDownloadNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this invoices download not found response a status code equal to that given
+func (o *InvoicesDownloadNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *InvoicesDownloadNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadNotFound  %+v", 404, o.Payload)
 }
+
+func (o *InvoicesDownloadNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadNotFound  %+v", 404, o.Payload)
+}
+
 func (o *InvoicesDownloadNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -218,14 +372,44 @@ func NewInvoicesDownloadInternalServerError() *InvoicesDownloadInternalServerErr
 	return &InvoicesDownloadInternalServerError{}
 }
 
-/* InvoicesDownloadInternalServerError describes a response with status code 500, with default header values.
+/*
+InvoicesDownloadInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type InvoicesDownloadInternalServerError struct {
 }
 
+// IsSuccess returns true when this invoices download internal server error response has a 2xx status code
+func (o *InvoicesDownloadInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this invoices download internal server error response has a 3xx status code
+func (o *InvoicesDownloadInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this invoices download internal server error response has a 4xx status code
+func (o *InvoicesDownloadInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this invoices download internal server error response has a 5xx status code
+func (o *InvoicesDownloadInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this invoices download internal server error response a status code equal to that given
+func (o *InvoicesDownloadInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *InvoicesDownloadInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadInternalServerError ", 500)
+}
+
+func (o *InvoicesDownloadInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadInternalServerError ", 500)
 }
 

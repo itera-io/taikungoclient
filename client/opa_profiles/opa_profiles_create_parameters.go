@@ -54,10 +54,12 @@ func NewOpaProfilesCreateParamsWithHTTPClient(client *http.Client) *OpaProfilesC
 	}
 }
 
-/* OpaProfilesCreateParams contains all the parameters to send to the API endpoint
-   for the opa profiles create operation.
+/*
+OpaProfilesCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the opa profiles create operation.
+
+	Typically these are written to a http.Request.
 */
 type OpaProfilesCreateParams struct {
 

@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  AwsAwsOwners retrieves aws verified owner list
+AwsAwsOwners retrieves aws verified owner list
 */
 func (a *Client) AwsAwsOwners(params *AwsAwsOwnersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsAwsOwnersOK, error) {
 	// TODO: Validate the params before sending
@@ -85,7 +85,7 @@ func (a *Client) AwsAwsOwners(params *AwsAwsOwnersParams, authInfo runtime.Clien
 }
 
 /*
-  AwsAwsZoneList fetches aws zones
+AwsAwsZoneList fetches aws zones
 */
 func (a *Client) AwsAwsZoneList(params *AwsAwsZoneListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsAwsZoneListOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) AwsAwsZoneList(params *AwsAwsZoneListParams, authInfo runtime.C
 }
 
 /*
-  AwsCreate adds aws credentials
+AwsCreate adds aws credentials
 */
 func (a *Client) AwsCreate(params *AwsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -163,7 +163,7 @@ func (a *Client) AwsCreate(params *AwsCreateParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  AwsList retrieves list of aws cloud credentials
+AwsList retrieves list of aws cloud credentials
 */
 func (a *Client) AwsList(params *AwsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsListOK, error) {
 	// TODO: Validate the params before sending
@@ -202,7 +202,7 @@ func (a *Client) AwsList(params *AwsListParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  AwsRegionList retrieves aws regions list
+AwsRegionList retrieves aws regions list
 */
 func (a *Client) AwsRegionList(params *AwsRegionListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsRegionListOK, error) {
 	// TODO: Validate the params before sending
@@ -241,7 +241,7 @@ func (a *Client) AwsRegionList(params *AwsRegionListParams, authInfo runtime.Cli
 }
 
 /*
-  AwsUpdate updates a w s credentials
+AwsUpdate updates a w s credentials
 */
 func (a *Client) AwsUpdate(params *AwsUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsUpdateOK, error) {
 	// TODO: Validate the params before sending

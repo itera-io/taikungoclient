@@ -53,10 +53,12 @@ func NewImagesCommonAwsImagesParamsWithHTTPClient(client *http.Client) *ImagesCo
 	}
 }
 
-/* ImagesCommonAwsImagesParams contains all the parameters to send to the API endpoint
-   for the images common aws images operation.
+/*
+ImagesCommonAwsImagesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the images common aws images operation.
+
+	Typically these are written to a http.Request.
 */
 type ImagesCommonAwsImagesParams struct {
 

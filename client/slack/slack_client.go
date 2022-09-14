@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  SlackCreate creates slack configuration
+SlackCreate creates slack configuration
 */
 func (a *Client) SlackCreate(params *SlackCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SlackCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -85,7 +85,7 @@ func (a *Client) SlackCreate(params *SlackCreateParams, authInfo runtime.ClientA
 }
 
 /*
-  SlackDeleteMultiple deletes slack configurations s
+SlackDeleteMultiple deletes slack configurations s
 */
 func (a *Client) SlackDeleteMultiple(params *SlackDeleteMultipleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SlackDeleteMultipleOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) SlackDeleteMultiple(params *SlackDeleteMultipleParams, authInfo
 }
 
 /*
-  SlackList retrieves a list of slack configs
+SlackList retrieves a list of slack configs
 */
 func (a *Client) SlackList(params *SlackListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SlackListOK, error) {
 	// TODO: Validate the params before sending
@@ -163,7 +163,7 @@ func (a *Client) SlackList(params *SlackListParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  SlackSlackConfigurationForOrganizationList retrieves all slack configs for organization
+SlackSlackConfigurationForOrganizationList retrieves all slack configs for organization
 */
 func (a *Client) SlackSlackConfigurationForOrganizationList(params *SlackSlackConfigurationForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SlackSlackConfigurationForOrganizationListOK, error) {
 	// TODO: Validate the params before sending
@@ -202,7 +202,7 @@ func (a *Client) SlackSlackConfigurationForOrganizationList(params *SlackSlackCo
 }
 
 /*
-  SlackUpdate updates slack configuration
+SlackUpdate updates slack configuration
 */
 func (a *Client) SlackUpdate(params *SlackUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SlackUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -241,7 +241,7 @@ func (a *Client) SlackUpdate(params *SlackUpdateParams, authInfo runtime.ClientA
 }
 
 /*
-  SlackVerifySlackCredentials verifies slack credentials
+SlackVerifySlackCredentials verifies slack credentials
 */
 func (a *Client) SlackVerifySlackCredentials(params *SlackVerifySlackCredentialsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SlackVerifySlackCredentialsOK, error) {
 	// TODO: Validate the params before sending

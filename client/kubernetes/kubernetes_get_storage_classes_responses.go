@@ -69,7 +69,8 @@ func NewKubernetesGetStorageClassesOK() *KubernetesGetStorageClassesOK {
 	return &KubernetesGetStorageClassesOK{}
 }
 
-/* KubernetesGetStorageClassesOK describes a response with status code 200, with default header values.
+/*
+KubernetesGetStorageClassesOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesGetStorageClassesOK struct {
 	Payload *models.StorageClasses
 }
 
+// IsSuccess returns true when this kubernetes get storage classes o k response has a 2xx status code
+func (o *KubernetesGetStorageClassesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes get storage classes o k response has a 3xx status code
+func (o *KubernetesGetStorageClassesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get storage classes o k response has a 4xx status code
+func (o *KubernetesGetStorageClassesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get storage classes o k response has a 5xx status code
+func (o *KubernetesGetStorageClassesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get storage classes o k response a status code equal to that given
+func (o *KubernetesGetStorageClassesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesGetStorageClassesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesGetStorageClassesOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesGetStorageClassesOK) GetPayload() *models.StorageClasses {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewKubernetesGetStorageClassesBadRequest() *KubernetesGetStorageClassesBadR
 	return &KubernetesGetStorageClassesBadRequest{}
 }
 
-/* KubernetesGetStorageClassesBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesGetStorageClassesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type KubernetesGetStorageClassesBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get storage classes bad request response has a 2xx status code
+func (o *KubernetesGetStorageClassesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get storage classes bad request response has a 3xx status code
+func (o *KubernetesGetStorageClassesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get storage classes bad request response has a 4xx status code
+func (o *KubernetesGetStorageClassesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get storage classes bad request response has a 5xx status code
+func (o *KubernetesGetStorageClassesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get storage classes bad request response a status code equal to that given
+func (o *KubernetesGetStorageClassesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesGetStorageClassesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesGetStorageClassesBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesGetStorageClassesBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewKubernetesGetStorageClassesUnauthorized() *KubernetesGetStorageClassesUn
 	return &KubernetesGetStorageClassesUnauthorized{}
 }
 
-/* KubernetesGetStorageClassesUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesGetStorageClassesUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type KubernetesGetStorageClassesUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get storage classes unauthorized response has a 2xx status code
+func (o *KubernetesGetStorageClassesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get storage classes unauthorized response has a 3xx status code
+func (o *KubernetesGetStorageClassesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get storage classes unauthorized response has a 4xx status code
+func (o *KubernetesGetStorageClassesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get storage classes unauthorized response has a 5xx status code
+func (o *KubernetesGetStorageClassesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get storage classes unauthorized response a status code equal to that given
+func (o *KubernetesGetStorageClassesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesGetStorageClassesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesGetStorageClassesUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesGetStorageClassesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewKubernetesGetStorageClassesForbidden() *KubernetesGetStorageClassesForbi
 	return &KubernetesGetStorageClassesForbidden{}
 }
 
-/* KubernetesGetStorageClassesForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesGetStorageClassesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type KubernetesGetStorageClassesForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get storage classes forbidden response has a 2xx status code
+func (o *KubernetesGetStorageClassesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get storage classes forbidden response has a 3xx status code
+func (o *KubernetesGetStorageClassesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get storage classes forbidden response has a 4xx status code
+func (o *KubernetesGetStorageClassesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get storage classes forbidden response has a 5xx status code
+func (o *KubernetesGetStorageClassesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get storage classes forbidden response a status code equal to that given
+func (o *KubernetesGetStorageClassesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesGetStorageClassesForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesGetStorageClassesForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesGetStorageClassesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewKubernetesGetStorageClassesNotFound() *KubernetesGetStorageClassesNotFou
 	return &KubernetesGetStorageClassesNotFound{}
 }
 
-/* KubernetesGetStorageClassesNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesGetStorageClassesNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type KubernetesGetStorageClassesNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get storage classes not found response has a 2xx status code
+func (o *KubernetesGetStorageClassesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get storage classes not found response has a 3xx status code
+func (o *KubernetesGetStorageClassesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get storage classes not found response has a 4xx status code
+func (o *KubernetesGetStorageClassesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get storage classes not found response has a 5xx status code
+func (o *KubernetesGetStorageClassesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get storage classes not found response a status code equal to that given
+func (o *KubernetesGetStorageClassesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesGetStorageClassesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesGetStorageClassesNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesGetStorageClassesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewKubernetesGetStorageClassesInternalServerError() *KubernetesGetStorageCl
 	return &KubernetesGetStorageClassesInternalServerError{}
 }
 
-/* KubernetesGetStorageClassesInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesGetStorageClassesInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesGetStorageClassesInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes get storage classes internal server error response has a 2xx status code
+func (o *KubernetesGetStorageClassesInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get storage classes internal server error response has a 3xx status code
+func (o *KubernetesGetStorageClassesInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get storage classes internal server error response has a 4xx status code
+func (o *KubernetesGetStorageClassesInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get storage classes internal server error response has a 5xx status code
+func (o *KubernetesGetStorageClassesInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes get storage classes internal server error response a status code equal to that given
+func (o *KubernetesGetStorageClassesInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesGetStorageClassesInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesInternalServerError ", 500)
+}
+
+func (o *KubernetesGetStorageClassesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesInternalServerError ", 500)
 }
 

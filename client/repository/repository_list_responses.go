@@ -69,7 +69,8 @@ func NewRepositoryListOK() *RepositoryListOK {
 	return &RepositoryListOK{}
 }
 
-/* RepositoryListOK describes a response with status code 200, with default header values.
+/*
+RepositoryListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type RepositoryListOK struct {
 	Payload *models.AppRepositoryList
 }
 
+// IsSuccess returns true when this repository list o k response has a 2xx status code
+func (o *RepositoryListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this repository list o k response has a 3xx status code
+func (o *RepositoryListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository list o k response has a 4xx status code
+func (o *RepositoryListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this repository list o k response has a 5xx status code
+func (o *RepositoryListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this repository list o k response a status code equal to that given
+func (o *RepositoryListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *RepositoryListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListOK  %+v", 200, o.Payload)
 }
+
+func (o *RepositoryListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListOK  %+v", 200, o.Payload)
+}
+
 func (o *RepositoryListOK) GetPayload() *models.AppRepositoryList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewRepositoryListBadRequest() *RepositoryListBadRequest {
 	return &RepositoryListBadRequest{}
 }
 
-/* RepositoryListBadRequest describes a response with status code 400, with default header values.
+/*
+RepositoryListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type RepositoryListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this repository list bad request response has a 2xx status code
+func (o *RepositoryListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this repository list bad request response has a 3xx status code
+func (o *RepositoryListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository list bad request response has a 4xx status code
+func (o *RepositoryListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this repository list bad request response has a 5xx status code
+func (o *RepositoryListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this repository list bad request response a status code equal to that given
+func (o *RepositoryListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *RepositoryListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *RepositoryListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *RepositoryListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewRepositoryListUnauthorized() *RepositoryListUnauthorized {
 	return &RepositoryListUnauthorized{}
 }
 
-/* RepositoryListUnauthorized describes a response with status code 401, with default header values.
+/*
+RepositoryListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type RepositoryListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this repository list unauthorized response has a 2xx status code
+func (o *RepositoryListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this repository list unauthorized response has a 3xx status code
+func (o *RepositoryListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository list unauthorized response has a 4xx status code
+func (o *RepositoryListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this repository list unauthorized response has a 5xx status code
+func (o *RepositoryListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this repository list unauthorized response a status code equal to that given
+func (o *RepositoryListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *RepositoryListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *RepositoryListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *RepositoryListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewRepositoryListForbidden() *RepositoryListForbidden {
 	return &RepositoryListForbidden{}
 }
 
-/* RepositoryListForbidden describes a response with status code 403, with default header values.
+/*
+RepositoryListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type RepositoryListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this repository list forbidden response has a 2xx status code
+func (o *RepositoryListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this repository list forbidden response has a 3xx status code
+func (o *RepositoryListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository list forbidden response has a 4xx status code
+func (o *RepositoryListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this repository list forbidden response has a 5xx status code
+func (o *RepositoryListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this repository list forbidden response a status code equal to that given
+func (o *RepositoryListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *RepositoryListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *RepositoryListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *RepositoryListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewRepositoryListNotFound() *RepositoryListNotFound {
 	return &RepositoryListNotFound{}
 }
 
-/* RepositoryListNotFound describes a response with status code 404, with default header values.
+/*
+RepositoryListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type RepositoryListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this repository list not found response has a 2xx status code
+func (o *RepositoryListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this repository list not found response has a 3xx status code
+func (o *RepositoryListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository list not found response has a 4xx status code
+func (o *RepositoryListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this repository list not found response has a 5xx status code
+func (o *RepositoryListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this repository list not found response a status code equal to that given
+func (o *RepositoryListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *RepositoryListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *RepositoryListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *RepositoryListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewRepositoryListInternalServerError() *RepositoryListInternalServerError {
 	return &RepositoryListInternalServerError{}
 }
 
-/* RepositoryListInternalServerError describes a response with status code 500, with default header values.
+/*
+RepositoryListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type RepositoryListInternalServerError struct {
 }
 
+// IsSuccess returns true when this repository list internal server error response has a 2xx status code
+func (o *RepositoryListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this repository list internal server error response has a 3xx status code
+func (o *RepositoryListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository list internal server error response has a 4xx status code
+func (o *RepositoryListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this repository list internal server error response has a 5xx status code
+func (o *RepositoryListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this repository list internal server error response a status code equal to that given
+func (o *RepositoryListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *RepositoryListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListInternalServerError ", 500)
+}
+
+func (o *RepositoryListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListInternalServerError ", 500)
 }
 

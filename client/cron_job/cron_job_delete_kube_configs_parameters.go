@@ -54,10 +54,12 @@ func NewCronJobDeleteKubeConfigsParamsWithHTTPClient(client *http.Client) *CronJ
 	}
 }
 
-/* CronJobDeleteKubeConfigsParams contains all the parameters to send to the API endpoint
-   for the cron job delete kube configs operation.
+/*
+CronJobDeleteKubeConfigsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job delete kube configs operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobDeleteKubeConfigsParams struct {
 

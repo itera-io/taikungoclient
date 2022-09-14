@@ -69,7 +69,8 @@ func NewStandAloneVMDisksPurgeOK() *StandAloneVMDisksPurgeOK {
 	return &StandAloneVMDisksPurgeOK{}
 }
 
-/* StandAloneVMDisksPurgeOK describes a response with status code 200, with default header values.
+/*
+StandAloneVMDisksPurgeOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type StandAloneVMDisksPurgeOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this stand alone Vm disks purge o k response has a 2xx status code
+func (o *StandAloneVMDisksPurgeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this stand alone Vm disks purge o k response has a 3xx status code
+func (o *StandAloneVMDisksPurgeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone Vm disks purge o k response has a 4xx status code
+func (o *StandAloneVMDisksPurgeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone Vm disks purge o k response has a 5xx status code
+func (o *StandAloneVMDisksPurgeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone Vm disks purge o k response a status code equal to that given
+func (o *StandAloneVMDisksPurgeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *StandAloneVMDisksPurgeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeOK  %+v", 200, o.Payload)
 }
+
+func (o *StandAloneVMDisksPurgeOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeOK  %+v", 200, o.Payload)
+}
+
 func (o *StandAloneVMDisksPurgeOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewStandAloneVMDisksPurgeBadRequest() *StandAloneVMDisksPurgeBadRequest {
 	return &StandAloneVMDisksPurgeBadRequest{}
 }
 
-/* StandAloneVMDisksPurgeBadRequest describes a response with status code 400, with default header values.
+/*
+StandAloneVMDisksPurgeBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type StandAloneVMDisksPurgeBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this stand alone Vm disks purge bad request response has a 2xx status code
+func (o *StandAloneVMDisksPurgeBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone Vm disks purge bad request response has a 3xx status code
+func (o *StandAloneVMDisksPurgeBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone Vm disks purge bad request response has a 4xx status code
+func (o *StandAloneVMDisksPurgeBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone Vm disks purge bad request response has a 5xx status code
+func (o *StandAloneVMDisksPurgeBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone Vm disks purge bad request response a status code equal to that given
+func (o *StandAloneVMDisksPurgeBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *StandAloneVMDisksPurgeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *StandAloneVMDisksPurgeBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *StandAloneVMDisksPurgeBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewStandAloneVMDisksPurgeUnauthorized() *StandAloneVMDisksPurgeUnauthorized
 	return &StandAloneVMDisksPurgeUnauthorized{}
 }
 
-/* StandAloneVMDisksPurgeUnauthorized describes a response with status code 401, with default header values.
+/*
+StandAloneVMDisksPurgeUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type StandAloneVMDisksPurgeUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone Vm disks purge unauthorized response has a 2xx status code
+func (o *StandAloneVMDisksPurgeUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone Vm disks purge unauthorized response has a 3xx status code
+func (o *StandAloneVMDisksPurgeUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone Vm disks purge unauthorized response has a 4xx status code
+func (o *StandAloneVMDisksPurgeUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone Vm disks purge unauthorized response has a 5xx status code
+func (o *StandAloneVMDisksPurgeUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone Vm disks purge unauthorized response a status code equal to that given
+func (o *StandAloneVMDisksPurgeUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *StandAloneVMDisksPurgeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *StandAloneVMDisksPurgeUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *StandAloneVMDisksPurgeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewStandAloneVMDisksPurgeForbidden() *StandAloneVMDisksPurgeForbidden {
 	return &StandAloneVMDisksPurgeForbidden{}
 }
 
-/* StandAloneVMDisksPurgeForbidden describes a response with status code 403, with default header values.
+/*
+StandAloneVMDisksPurgeForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type StandAloneVMDisksPurgeForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone Vm disks purge forbidden response has a 2xx status code
+func (o *StandAloneVMDisksPurgeForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone Vm disks purge forbidden response has a 3xx status code
+func (o *StandAloneVMDisksPurgeForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone Vm disks purge forbidden response has a 4xx status code
+func (o *StandAloneVMDisksPurgeForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone Vm disks purge forbidden response has a 5xx status code
+func (o *StandAloneVMDisksPurgeForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone Vm disks purge forbidden response a status code equal to that given
+func (o *StandAloneVMDisksPurgeForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *StandAloneVMDisksPurgeForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeForbidden  %+v", 403, o.Payload)
 }
+
+func (o *StandAloneVMDisksPurgeForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeForbidden  %+v", 403, o.Payload)
+}
+
 func (o *StandAloneVMDisksPurgeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewStandAloneVMDisksPurgeNotFound() *StandAloneVMDisksPurgeNotFound {
 	return &StandAloneVMDisksPurgeNotFound{}
 }
 
-/* StandAloneVMDisksPurgeNotFound describes a response with status code 404, with default header values.
+/*
+StandAloneVMDisksPurgeNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type StandAloneVMDisksPurgeNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone Vm disks purge not found response has a 2xx status code
+func (o *StandAloneVMDisksPurgeNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone Vm disks purge not found response has a 3xx status code
+func (o *StandAloneVMDisksPurgeNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone Vm disks purge not found response has a 4xx status code
+func (o *StandAloneVMDisksPurgeNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone Vm disks purge not found response has a 5xx status code
+func (o *StandAloneVMDisksPurgeNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone Vm disks purge not found response a status code equal to that given
+func (o *StandAloneVMDisksPurgeNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *StandAloneVMDisksPurgeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeNotFound  %+v", 404, o.Payload)
 }
+
+func (o *StandAloneVMDisksPurgeNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeNotFound  %+v", 404, o.Payload)
+}
+
 func (o *StandAloneVMDisksPurgeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewStandAloneVMDisksPurgeInternalServerError() *StandAloneVMDisksPurgeInter
 	return &StandAloneVMDisksPurgeInternalServerError{}
 }
 
-/* StandAloneVMDisksPurgeInternalServerError describes a response with status code 500, with default header values.
+/*
+StandAloneVMDisksPurgeInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type StandAloneVMDisksPurgeInternalServerError struct {
 }
 
+// IsSuccess returns true when this stand alone Vm disks purge internal server error response has a 2xx status code
+func (o *StandAloneVMDisksPurgeInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone Vm disks purge internal server error response has a 3xx status code
+func (o *StandAloneVMDisksPurgeInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone Vm disks purge internal server error response has a 4xx status code
+func (o *StandAloneVMDisksPurgeInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone Vm disks purge internal server error response has a 5xx status code
+func (o *StandAloneVMDisksPurgeInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this stand alone Vm disks purge internal server error response a status code equal to that given
+func (o *StandAloneVMDisksPurgeInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *StandAloneVMDisksPurgeInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeInternalServerError ", 500)
+}
+
+func (o *StandAloneVMDisksPurgeInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeInternalServerError ", 500)
 }
 

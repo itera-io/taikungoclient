@@ -69,7 +69,8 @@ func NewAccessProfilesListOK() *AccessProfilesListOK {
 	return &AccessProfilesListOK{}
 }
 
-/* AccessProfilesListOK describes a response with status code 200, with default header values.
+/*
+AccessProfilesListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AccessProfilesListOK struct {
 	Payload *models.AccessProfilesList
 }
 
+// IsSuccess returns true when this access profiles list o k response has a 2xx status code
+func (o *AccessProfilesListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this access profiles list o k response has a 3xx status code
+func (o *AccessProfilesListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles list o k response has a 4xx status code
+func (o *AccessProfilesListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this access profiles list o k response has a 5xx status code
+func (o *AccessProfilesListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this access profiles list o k response a status code equal to that given
+func (o *AccessProfilesListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AccessProfilesListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListOK  %+v", 200, o.Payload)
 }
+
+func (o *AccessProfilesListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListOK  %+v", 200, o.Payload)
+}
+
 func (o *AccessProfilesListOK) GetPayload() *models.AccessProfilesList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewAccessProfilesListBadRequest() *AccessProfilesListBadRequest {
 	return &AccessProfilesListBadRequest{}
 }
 
-/* AccessProfilesListBadRequest describes a response with status code 400, with default header values.
+/*
+AccessProfilesListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type AccessProfilesListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this access profiles list bad request response has a 2xx status code
+func (o *AccessProfilesListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this access profiles list bad request response has a 3xx status code
+func (o *AccessProfilesListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles list bad request response has a 4xx status code
+func (o *AccessProfilesListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this access profiles list bad request response has a 5xx status code
+func (o *AccessProfilesListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this access profiles list bad request response a status code equal to that given
+func (o *AccessProfilesListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AccessProfilesListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AccessProfilesListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AccessProfilesListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewAccessProfilesListUnauthorized() *AccessProfilesListUnauthorized {
 	return &AccessProfilesListUnauthorized{}
 }
 
-/* AccessProfilesListUnauthorized describes a response with status code 401, with default header values.
+/*
+AccessProfilesListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type AccessProfilesListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this access profiles list unauthorized response has a 2xx status code
+func (o *AccessProfilesListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this access profiles list unauthorized response has a 3xx status code
+func (o *AccessProfilesListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles list unauthorized response has a 4xx status code
+func (o *AccessProfilesListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this access profiles list unauthorized response has a 5xx status code
+func (o *AccessProfilesListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this access profiles list unauthorized response a status code equal to that given
+func (o *AccessProfilesListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AccessProfilesListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AccessProfilesListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AccessProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewAccessProfilesListForbidden() *AccessProfilesListForbidden {
 	return &AccessProfilesListForbidden{}
 }
 
-/* AccessProfilesListForbidden describes a response with status code 403, with default header values.
+/*
+AccessProfilesListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type AccessProfilesListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this access profiles list forbidden response has a 2xx status code
+func (o *AccessProfilesListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this access profiles list forbidden response has a 3xx status code
+func (o *AccessProfilesListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles list forbidden response has a 4xx status code
+func (o *AccessProfilesListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this access profiles list forbidden response has a 5xx status code
+func (o *AccessProfilesListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this access profiles list forbidden response a status code equal to that given
+func (o *AccessProfilesListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AccessProfilesListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AccessProfilesListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AccessProfilesListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewAccessProfilesListNotFound() *AccessProfilesListNotFound {
 	return &AccessProfilesListNotFound{}
 }
 
-/* AccessProfilesListNotFound describes a response with status code 404, with default header values.
+/*
+AccessProfilesListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type AccessProfilesListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this access profiles list not found response has a 2xx status code
+func (o *AccessProfilesListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this access profiles list not found response has a 3xx status code
+func (o *AccessProfilesListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles list not found response has a 4xx status code
+func (o *AccessProfilesListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this access profiles list not found response has a 5xx status code
+func (o *AccessProfilesListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this access profiles list not found response a status code equal to that given
+func (o *AccessProfilesListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AccessProfilesListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AccessProfilesListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AccessProfilesListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewAccessProfilesListInternalServerError() *AccessProfilesListInternalServe
 	return &AccessProfilesListInternalServerError{}
 }
 
-/* AccessProfilesListInternalServerError describes a response with status code 500, with default header values.
+/*
+AccessProfilesListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AccessProfilesListInternalServerError struct {
 }
 
+// IsSuccess returns true when this access profiles list internal server error response has a 2xx status code
+func (o *AccessProfilesListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this access profiles list internal server error response has a 3xx status code
+func (o *AccessProfilesListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles list internal server error response has a 4xx status code
+func (o *AccessProfilesListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this access profiles list internal server error response has a 5xx status code
+func (o *AccessProfilesListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this access profiles list internal server error response a status code equal to that given
+func (o *AccessProfilesListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AccessProfilesListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListInternalServerError ", 500)
+}
+
+func (o *AccessProfilesListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListInternalServerError ", 500)
 }
 

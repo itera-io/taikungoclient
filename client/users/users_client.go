@@ -60,7 +60,7 @@ type ClientService interface {
 }
 
 /*
-  UsersChangePassword changes user password
+UsersChangePassword changes user password
 */
 func (a *Client) UsersChangePassword(params *UsersChangePasswordParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersChangePasswordOK, error) {
 	// TODO: Validate the params before sending
@@ -99,7 +99,7 @@ func (a *Client) UsersChangePassword(params *UsersChangePasswordParams, authInfo
 }
 
 /*
-  UsersConfirmEmail confirms user email
+UsersConfirmEmail confirms user email
 */
 func (a *Client) UsersConfirmEmail(params *UsersConfirmEmailParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersConfirmEmailOK, error) {
 	// TODO: Validate the params before sending
@@ -138,7 +138,7 @@ func (a *Client) UsersConfirmEmail(params *UsersConfirmEmailParams, authInfo run
 }
 
 /*
-  UsersCreate creates a new user
+UsersCreate creates a new user
 */
 func (a *Client) UsersCreate(params *UsersCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -177,7 +177,7 @@ func (a *Client) UsersCreate(params *UsersCreateParams, authInfo runtime.ClientA
 }
 
 /*
-  UsersDelete deletes user only valid for admin moderators and partner reminder moderators can delete users from their organization only
+UsersDelete deletes user only valid for admin moderators and partner reminder moderators can delete users from their organization only
 */
 func (a *Client) UsersDelete(params *UsersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersDeleteOK, *UsersDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -217,7 +217,7 @@ func (a *Client) UsersDelete(params *UsersDeleteParams, authInfo runtime.ClientA
 }
 
 /*
-  UsersDeleteMyAccount deletes my account
+UsersDeleteMyAccount deletes my account
 */
 func (a *Client) UsersDeleteMyAccount(params *UsersDeleteMyAccountParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersDeleteMyAccountOK, error) {
 	// TODO: Validate the params before sending
@@ -256,7 +256,7 @@ func (a *Client) UsersDeleteMyAccount(params *UsersDeleteMyAccountParams, authIn
 }
 
 /*
-  UsersDetails users details API
+UsersDetails users details API
 */
 func (a *Client) UsersDetails(params *UsersDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -295,7 +295,7 @@ func (a *Client) UsersDetails(params *UsersDetailsParams, authInfo runtime.Clien
 }
 
 /*
-  UsersExportCsv exports csv file
+UsersExportCsv exports csv file
 */
 func (a *Client) UsersExportCsv(params *UsersExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersExportCsvOK, error) {
 	// TODO: Validate the params before sending
@@ -334,7 +334,7 @@ func (a *Client) UsersExportCsv(params *UsersExportCsvParams, authInfo runtime.C
 }
 
 /*
-  UsersList retrieves all users only valid for admin
+UsersList retrieves all users only valid for admin
 */
 func (a *Client) UsersList(params *UsersListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersListOK, error) {
 	// TODO: Validate the params before sending
@@ -373,7 +373,7 @@ func (a *Client) UsersList(params *UsersListParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  UsersListSelector retrieves projects according to user role
+UsersListSelector retrieves projects according to user role
 */
 func (a *Client) UsersListSelector(params *UsersListSelectorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersListSelectorOK, error) {
 	// TODO: Validate the params before sending
@@ -412,7 +412,7 @@ func (a *Client) UsersListSelector(params *UsersListSelectorParams, authInfo run
 }
 
 /*
-  UsersToggleMaintenanceMode users toggle maintenance mode API
+UsersToggleMaintenanceMode users toggle maintenance mode API
 */
 func (a *Client) UsersToggleMaintenanceMode(params *UsersToggleMaintenanceModeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersToggleMaintenanceModeOK, error) {
 	// TODO: Validate the params before sending
@@ -451,7 +451,7 @@ func (a *Client) UsersToggleMaintenanceMode(params *UsersToggleMaintenanceModePa
 }
 
 /*
-  UsersToggleNotificationMode users toggle notification mode API
+UsersToggleNotificationMode users toggle notification mode API
 */
 func (a *Client) UsersToggleNotificationMode(params *UsersToggleNotificationModeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersToggleNotificationModeOK, error) {
 	// TODO: Validate the params before sending
@@ -490,7 +490,7 @@ func (a *Client) UsersToggleNotificationMode(params *UsersToggleNotificationMode
 }
 
 /*
-  UsersUpdateUser updates user credential
+UsersUpdateUser updates user credential
 */
 func (a *Client) UsersUpdateUser(params *UsersUpdateUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersUpdateUserOK, error) {
 	// TODO: Validate the params before sending
@@ -529,7 +529,7 @@ func (a *Client) UsersUpdateUser(params *UsersUpdateUserParams, authInfo runtime
 }
 
 /*
-  UsersVerifyEmail verifies user email
+UsersVerifyEmail verifies user email
 */
 func (a *Client) UsersVerifyEmail(params *UsersVerifyEmailParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersVerifyEmailOK, error) {
 	// TODO: Validate the params before sending

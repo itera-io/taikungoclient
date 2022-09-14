@@ -53,10 +53,12 @@ func NewShowbackSummariesGroupedListParamsWithHTTPClient(client *http.Client) *S
 	}
 }
 
-/* ShowbackSummariesGroupedListParams contains all the parameters to send to the API endpoint
-   for the showback summaries grouped list operation.
+/*
+ShowbackSummariesGroupedListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the showback summaries grouped list operation.
+
+	Typically these are written to a http.Request.
 */
 type ShowbackSummariesGroupedListParams struct {
 

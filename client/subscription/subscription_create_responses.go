@@ -69,7 +69,8 @@ func NewSubscriptionCreateOK() *SubscriptionCreateOK {
 	return &SubscriptionCreateOK{}
 }
 
-/* SubscriptionCreateOK describes a response with status code 200, with default header values.
+/*
+SubscriptionCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SubscriptionCreateOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this subscription create o k response has a 2xx status code
+func (o *SubscriptionCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this subscription create o k response has a 3xx status code
+func (o *SubscriptionCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription create o k response has a 4xx status code
+func (o *SubscriptionCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this subscription create o k response has a 5xx status code
+func (o *SubscriptionCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription create o k response a status code equal to that given
+func (o *SubscriptionCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SubscriptionCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *SubscriptionCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *SubscriptionCreateOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewSubscriptionCreateBadRequest() *SubscriptionCreateBadRequest {
 	return &SubscriptionCreateBadRequest{}
 }
 
-/* SubscriptionCreateBadRequest describes a response with status code 400, with default header values.
+/*
+SubscriptionCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type SubscriptionCreateBadRequest struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this subscription create bad request response has a 2xx status code
+func (o *SubscriptionCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this subscription create bad request response has a 3xx status code
+func (o *SubscriptionCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription create bad request response has a 4xx status code
+func (o *SubscriptionCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this subscription create bad request response has a 5xx status code
+func (o *SubscriptionCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription create bad request response a status code equal to that given
+func (o *SubscriptionCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SubscriptionCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SubscriptionCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SubscriptionCreateBadRequest) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewSubscriptionCreateUnauthorized() *SubscriptionCreateUnauthorized {
 	return &SubscriptionCreateUnauthorized{}
 }
 
-/* SubscriptionCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+SubscriptionCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type SubscriptionCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this subscription create unauthorized response has a 2xx status code
+func (o *SubscriptionCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this subscription create unauthorized response has a 3xx status code
+func (o *SubscriptionCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription create unauthorized response has a 4xx status code
+func (o *SubscriptionCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this subscription create unauthorized response has a 5xx status code
+func (o *SubscriptionCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription create unauthorized response a status code equal to that given
+func (o *SubscriptionCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SubscriptionCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SubscriptionCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SubscriptionCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewSubscriptionCreateForbidden() *SubscriptionCreateForbidden {
 	return &SubscriptionCreateForbidden{}
 }
 
-/* SubscriptionCreateForbidden describes a response with status code 403, with default header values.
+/*
+SubscriptionCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type SubscriptionCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this subscription create forbidden response has a 2xx status code
+func (o *SubscriptionCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this subscription create forbidden response has a 3xx status code
+func (o *SubscriptionCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription create forbidden response has a 4xx status code
+func (o *SubscriptionCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this subscription create forbidden response has a 5xx status code
+func (o *SubscriptionCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription create forbidden response a status code equal to that given
+func (o *SubscriptionCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SubscriptionCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SubscriptionCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SubscriptionCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewSubscriptionCreateNotFound() *SubscriptionCreateNotFound {
 	return &SubscriptionCreateNotFound{}
 }
 
-/* SubscriptionCreateNotFound describes a response with status code 404, with default header values.
+/*
+SubscriptionCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type SubscriptionCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this subscription create not found response has a 2xx status code
+func (o *SubscriptionCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this subscription create not found response has a 3xx status code
+func (o *SubscriptionCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription create not found response has a 4xx status code
+func (o *SubscriptionCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this subscription create not found response has a 5xx status code
+func (o *SubscriptionCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription create not found response a status code equal to that given
+func (o *SubscriptionCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SubscriptionCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SubscriptionCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SubscriptionCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewSubscriptionCreateInternalServerError() *SubscriptionCreateInternalServe
 	return &SubscriptionCreateInternalServerError{}
 }
 
-/* SubscriptionCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+SubscriptionCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SubscriptionCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this subscription create internal server error response has a 2xx status code
+func (o *SubscriptionCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this subscription create internal server error response has a 3xx status code
+func (o *SubscriptionCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription create internal server error response has a 4xx status code
+func (o *SubscriptionCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this subscription create internal server error response has a 5xx status code
+func (o *SubscriptionCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this subscription create internal server error response a status code equal to that given
+func (o *SubscriptionCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SubscriptionCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateInternalServerError ", 500)
+}
+
+func (o *SubscriptionCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/create][%d] subscriptionCreateInternalServerError ", 500)
 }
 

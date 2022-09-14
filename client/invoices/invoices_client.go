@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  InvoicesCreate creates invoice
+InvoicesCreate creates invoice
 */
 func (a *Client) InvoicesCreate(params *InvoicesCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InvoicesCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +81,7 @@ func (a *Client) InvoicesCreate(params *InvoicesCreateParams, authInfo runtime.C
 }
 
 /*
-  InvoicesDownload downloads invoice
+InvoicesDownload downloads invoice
 */
 func (a *Client) InvoicesDownload(params *InvoicesDownloadParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InvoicesDownloadOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) InvoicesDownload(params *InvoicesDownloadParams, authInfo runti
 }
 
 /*
-  InvoicesEdit updates invoice
+InvoicesEdit updates invoice
 */
 func (a *Client) InvoicesEdit(params *InvoicesEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InvoicesEditOK, error) {
 	// TODO: Validate the params before sending
@@ -159,7 +159,7 @@ func (a *Client) InvoicesEdit(params *InvoicesEditParams, authInfo runtime.Clien
 }
 
 /*
-  InvoicesInvoices gets invoices list
+InvoicesInvoices gets invoices list
 */
 func (a *Client) InvoicesInvoices(params *InvoicesInvoicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InvoicesInvoicesOK, error) {
 	// TODO: Validate the params before sending

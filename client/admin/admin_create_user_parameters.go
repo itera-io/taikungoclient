@@ -54,10 +54,12 @@ func NewAdminCreateUserParamsWithHTTPClient(client *http.Client) *AdminCreateUse
 	}
 }
 
-/* AdminCreateUserParams contains all the parameters to send to the API endpoint
-   for the admin create user operation.
+/*
+AdminCreateUserParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the admin create user operation.
+
+	Typically these are written to a http.Request.
 */
 type AdminCreateUserParams struct {
 

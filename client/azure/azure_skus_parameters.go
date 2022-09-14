@@ -53,10 +53,12 @@ func NewAzureSkusParamsWithHTTPClient(client *http.Client) *AzureSkusParams {
 	}
 }
 
-/* AzureSkusParams contains all the parameters to send to the API endpoint
-   for the azure skus operation.
+/*
+AzureSkusParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the azure skus operation.
+
+	Typically these are written to a http.Request.
 */
 type AzureSkusParams struct {
 

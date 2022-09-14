@@ -69,7 +69,8 @@ func NewKubeConfigDownloadOK() *KubeConfigDownloadOK {
 	return &KubeConfigDownloadOK{}
 }
 
-/* KubeConfigDownloadOK describes a response with status code 200, with default header values.
+/*
+KubeConfigDownloadOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubeConfigDownloadOK struct {
 	Payload interface{}
 }
 
+// IsSuccess returns true when this kube config download o k response has a 2xx status code
+func (o *KubeConfigDownloadOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kube config download o k response has a 3xx status code
+func (o *KubeConfigDownloadOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kube config download o k response has a 4xx status code
+func (o *KubeConfigDownloadOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kube config download o k response has a 5xx status code
+func (o *KubeConfigDownloadOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kube config download o k response a status code equal to that given
+func (o *KubeConfigDownloadOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubeConfigDownloadOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadOK  %+v", 200, o.Payload)
 }
+
+func (o *KubeConfigDownloadOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadOK  %+v", 200, o.Payload)
+}
+
 func (o *KubeConfigDownloadOK) GetPayload() interface{} {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubeConfigDownloadBadRequest() *KubeConfigDownloadBadRequest {
 	return &KubeConfigDownloadBadRequest{}
 }
 
-/* KubeConfigDownloadBadRequest describes a response with status code 400, with default header values.
+/*
+KubeConfigDownloadBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubeConfigDownloadBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kube config download bad request response has a 2xx status code
+func (o *KubeConfigDownloadBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kube config download bad request response has a 3xx status code
+func (o *KubeConfigDownloadBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kube config download bad request response has a 4xx status code
+func (o *KubeConfigDownloadBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kube config download bad request response has a 5xx status code
+func (o *KubeConfigDownloadBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kube config download bad request response a status code equal to that given
+func (o *KubeConfigDownloadBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubeConfigDownloadBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubeConfigDownloadBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubeConfigDownloadBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubeConfigDownloadUnauthorized() *KubeConfigDownloadUnauthorized {
 	return &KubeConfigDownloadUnauthorized{}
 }
 
-/* KubeConfigDownloadUnauthorized describes a response with status code 401, with default header values.
+/*
+KubeConfigDownloadUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubeConfigDownloadUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kube config download unauthorized response has a 2xx status code
+func (o *KubeConfigDownloadUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kube config download unauthorized response has a 3xx status code
+func (o *KubeConfigDownloadUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kube config download unauthorized response has a 4xx status code
+func (o *KubeConfigDownloadUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kube config download unauthorized response has a 5xx status code
+func (o *KubeConfigDownloadUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kube config download unauthorized response a status code equal to that given
+func (o *KubeConfigDownloadUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubeConfigDownloadUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubeConfigDownloadUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubeConfigDownloadUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubeConfigDownloadForbidden() *KubeConfigDownloadForbidden {
 	return &KubeConfigDownloadForbidden{}
 }
 
-/* KubeConfigDownloadForbidden describes a response with status code 403, with default header values.
+/*
+KubeConfigDownloadForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubeConfigDownloadForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kube config download forbidden response has a 2xx status code
+func (o *KubeConfigDownloadForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kube config download forbidden response has a 3xx status code
+func (o *KubeConfigDownloadForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kube config download forbidden response has a 4xx status code
+func (o *KubeConfigDownloadForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kube config download forbidden response has a 5xx status code
+func (o *KubeConfigDownloadForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kube config download forbidden response a status code equal to that given
+func (o *KubeConfigDownloadForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubeConfigDownloadForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubeConfigDownloadForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubeConfigDownloadForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubeConfigDownloadNotFound() *KubeConfigDownloadNotFound {
 	return &KubeConfigDownloadNotFound{}
 }
 
-/* KubeConfigDownloadNotFound describes a response with status code 404, with default header values.
+/*
+KubeConfigDownloadNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubeConfigDownloadNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kube config download not found response has a 2xx status code
+func (o *KubeConfigDownloadNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kube config download not found response has a 3xx status code
+func (o *KubeConfigDownloadNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kube config download not found response has a 4xx status code
+func (o *KubeConfigDownloadNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kube config download not found response has a 5xx status code
+func (o *KubeConfigDownloadNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kube config download not found response a status code equal to that given
+func (o *KubeConfigDownloadNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubeConfigDownloadNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubeConfigDownloadNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubeConfigDownloadNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubeConfigDownloadInternalServerError() *KubeConfigDownloadInternalServe
 	return &KubeConfigDownloadInternalServerError{}
 }
 
-/* KubeConfigDownloadInternalServerError describes a response with status code 500, with default header values.
+/*
+KubeConfigDownloadInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubeConfigDownloadInternalServerError struct {
 }
 
+// IsSuccess returns true when this kube config download internal server error response has a 2xx status code
+func (o *KubeConfigDownloadInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kube config download internal server error response has a 3xx status code
+func (o *KubeConfigDownloadInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kube config download internal server error response has a 4xx status code
+func (o *KubeConfigDownloadInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kube config download internal server error response has a 5xx status code
+func (o *KubeConfigDownloadInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kube config download internal server error response a status code equal to that given
+func (o *KubeConfigDownloadInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubeConfigDownloadInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadInternalServerError ", 500)
+}
+
+func (o *KubeConfigDownloadInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadInternalServerError ", 500)
 }
 

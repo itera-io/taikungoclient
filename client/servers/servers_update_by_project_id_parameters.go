@@ -55,10 +55,12 @@ func NewServersUpdateByProjectIDParamsWithHTTPClient(client *http.Client) *Serve
 	}
 }
 
-/* ServersUpdateByProjectIDParams contains all the parameters to send to the API endpoint
-   for the servers update by project Id operation.
+/*
+ServersUpdateByProjectIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the servers update by project Id operation.
+
+	Typically these are written to a http.Request.
 */
 type ServersUpdateByProjectIDParams struct {
 

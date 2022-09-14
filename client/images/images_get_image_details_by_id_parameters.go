@@ -54,10 +54,12 @@ func NewImagesGetImageDetailsByIDParamsWithHTTPClient(client *http.Client) *Imag
 	}
 }
 
-/* ImagesGetImageDetailsByIDParams contains all the parameters to send to the API endpoint
-   for the images get image details by Id operation.
+/*
+ImagesGetImageDetailsByIDParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the images get image details by Id operation.
+
+	Typically these are written to a http.Request.
 */
 type ImagesGetImageDetailsByIDParams struct {
 

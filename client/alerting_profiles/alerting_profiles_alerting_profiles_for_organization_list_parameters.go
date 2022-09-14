@@ -53,10 +53,12 @@ func NewAlertingProfilesAlertingProfilesForOrganizationListParamsWithHTTPClient(
 	}
 }
 
-/* AlertingProfilesAlertingProfilesForOrganizationListParams contains all the parameters to send to the API endpoint
-   for the alerting profiles alerting profiles for organization list operation.
+/*
+AlertingProfilesAlertingProfilesForOrganizationListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the alerting profiles alerting profiles for organization list operation.
+
+	Typically these are written to a http.Request.
 */
 type AlertingProfilesAlertingProfilesForOrganizationListParams struct {
 

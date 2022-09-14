@@ -69,7 +69,8 @@ func NewProjectsCommitOK() *ProjectsCommitOK {
 	return &ProjectsCommitOK{}
 }
 
-/* ProjectsCommitOK describes a response with status code 200, with default header values.
+/*
+ProjectsCommitOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsCommitOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this projects commit o k response has a 2xx status code
+func (o *ProjectsCommitOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects commit o k response has a 3xx status code
+func (o *ProjectsCommitOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects commit o k response has a 4xx status code
+func (o *ProjectsCommitOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects commit o k response has a 5xx status code
+func (o *ProjectsCommitOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects commit o k response a status code equal to that given
+func (o *ProjectsCommitOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsCommitOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsCommitOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsCommitOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectsCommitBadRequest() *ProjectsCommitBadRequest {
 	return &ProjectsCommitBadRequest{}
 }
 
-/* ProjectsCommitBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsCommitBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectsCommitBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects commit bad request response has a 2xx status code
+func (o *ProjectsCommitBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects commit bad request response has a 3xx status code
+func (o *ProjectsCommitBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects commit bad request response has a 4xx status code
+func (o *ProjectsCommitBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects commit bad request response has a 5xx status code
+func (o *ProjectsCommitBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects commit bad request response a status code equal to that given
+func (o *ProjectsCommitBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsCommitBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsCommitBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsCommitBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectsCommitUnauthorized() *ProjectsCommitUnauthorized {
 	return &ProjectsCommitUnauthorized{}
 }
 
-/* ProjectsCommitUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsCommitUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectsCommitUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects commit unauthorized response has a 2xx status code
+func (o *ProjectsCommitUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects commit unauthorized response has a 3xx status code
+func (o *ProjectsCommitUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects commit unauthorized response has a 4xx status code
+func (o *ProjectsCommitUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects commit unauthorized response has a 5xx status code
+func (o *ProjectsCommitUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects commit unauthorized response a status code equal to that given
+func (o *ProjectsCommitUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsCommitUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsCommitUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsCommitUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectsCommitForbidden() *ProjectsCommitForbidden {
 	return &ProjectsCommitForbidden{}
 }
 
-/* ProjectsCommitForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsCommitForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectsCommitForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects commit forbidden response has a 2xx status code
+func (o *ProjectsCommitForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects commit forbidden response has a 3xx status code
+func (o *ProjectsCommitForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects commit forbidden response has a 4xx status code
+func (o *ProjectsCommitForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects commit forbidden response has a 5xx status code
+func (o *ProjectsCommitForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects commit forbidden response a status code equal to that given
+func (o *ProjectsCommitForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsCommitForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsCommitForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsCommitForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectsCommitNotFound() *ProjectsCommitNotFound {
 	return &ProjectsCommitNotFound{}
 }
 
-/* ProjectsCommitNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsCommitNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectsCommitNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects commit not found response has a 2xx status code
+func (o *ProjectsCommitNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects commit not found response has a 3xx status code
+func (o *ProjectsCommitNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects commit not found response has a 4xx status code
+func (o *ProjectsCommitNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects commit not found response has a 5xx status code
+func (o *ProjectsCommitNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects commit not found response a status code equal to that given
+func (o *ProjectsCommitNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsCommitNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsCommitNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsCommitNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectsCommitInternalServerError() *ProjectsCommitInternalServerError {
 	return &ProjectsCommitInternalServerError{}
 }
 
-/* ProjectsCommitInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsCommitInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsCommitInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects commit internal server error response has a 2xx status code
+func (o *ProjectsCommitInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects commit internal server error response has a 3xx status code
+func (o *ProjectsCommitInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects commit internal server error response has a 4xx status code
+func (o *ProjectsCommitInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects commit internal server error response has a 5xx status code
+func (o *ProjectsCommitInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects commit internal server error response a status code equal to that given
+func (o *ProjectsCommitInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsCommitInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitInternalServerError ", 500)
+}
+
+func (o *ProjectsCommitInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitInternalServerError ", 500)
 }
 

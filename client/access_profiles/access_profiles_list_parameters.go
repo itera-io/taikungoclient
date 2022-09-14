@@ -53,10 +53,12 @@ func NewAccessProfilesListParamsWithHTTPClient(client *http.Client) *AccessProfi
 	}
 }
 
-/* AccessProfilesListParams contains all the parameters to send to the API endpoint
-   for the access profiles list operation.
+/*
+AccessProfilesListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the access profiles list operation.
+
+	Typically these are written to a http.Request.
 */
 type AccessProfilesListParams struct {
 

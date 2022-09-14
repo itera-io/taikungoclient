@@ -54,10 +54,12 @@ func NewImagesUnbindImagesFromProjectParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* ImagesUnbindImagesFromProjectParams contains all the parameters to send to the API endpoint
-   for the images unbind images from project operation.
+/*
+ImagesUnbindImagesFromProjectParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the images unbind images from project operation.
+
+	Typically these are written to a http.Request.
 */
 type ImagesUnbindImagesFromProjectParams struct {
 

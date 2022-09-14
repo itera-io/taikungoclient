@@ -54,10 +54,12 @@ func NewKubesprayCreateParamsWithHTTPClient(client *http.Client) *KubesprayCreat
 	}
 }
 
-/* KubesprayCreateParams contains all the parameters to send to the API endpoint
-   for the kubespray create operation.
+/*
+KubesprayCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubespray create operation.
+
+	Typically these are written to a http.Request.
 */
 type KubesprayCreateParams struct {
 

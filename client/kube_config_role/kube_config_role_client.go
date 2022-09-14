@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  KubeConfigRoleList retrieves list of kubeconfig role
+KubeConfigRoleList retrieves list of kubeconfig role
 */
 func (a *Client) KubeConfigRoleList(params *KubeConfigRoleListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigRoleListOK, error) {
 	// TODO: Validate the params before sending

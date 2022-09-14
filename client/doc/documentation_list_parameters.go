@@ -53,10 +53,12 @@ func NewDocumentationListParamsWithHTTPClient(client *http.Client) *Documentatio
 	}
 }
 
-/* DocumentationListParams contains all the parameters to send to the API endpoint
-   for the documentation list operation.
+/*
+DocumentationListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the documentation list operation.
+
+	Typically these are written to a http.Request.
 */
 type DocumentationListParams struct {
 

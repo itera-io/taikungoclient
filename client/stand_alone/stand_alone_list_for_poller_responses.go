@@ -69,7 +69,8 @@ func NewStandAloneListForPollerOK() *StandAloneListForPollerOK {
 	return &StandAloneListForPollerOK{}
 }
 
-/* StandAloneListForPollerOK describes a response with status code 200, with default header values.
+/*
+StandAloneListForPollerOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type StandAloneListForPollerOK struct {
 	Payload *models.StandaloneVmsListForPoller
 }
 
+// IsSuccess returns true when this stand alone list for poller o k response has a 2xx status code
+func (o *StandAloneListForPollerOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this stand alone list for poller o k response has a 3xx status code
+func (o *StandAloneListForPollerOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone list for poller o k response has a 4xx status code
+func (o *StandAloneListForPollerOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone list for poller o k response has a 5xx status code
+func (o *StandAloneListForPollerOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone list for poller o k response a status code equal to that given
+func (o *StandAloneListForPollerOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *StandAloneListForPollerOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerOK  %+v", 200, o.Payload)
 }
+
+func (o *StandAloneListForPollerOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerOK  %+v", 200, o.Payload)
+}
+
 func (o *StandAloneListForPollerOK) GetPayload() *models.StandaloneVmsListForPoller {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewStandAloneListForPollerBadRequest() *StandAloneListForPollerBadRequest {
 	return &StandAloneListForPollerBadRequest{}
 }
 
-/* StandAloneListForPollerBadRequest describes a response with status code 400, with default header values.
+/*
+StandAloneListForPollerBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type StandAloneListForPollerBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this stand alone list for poller bad request response has a 2xx status code
+func (o *StandAloneListForPollerBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone list for poller bad request response has a 3xx status code
+func (o *StandAloneListForPollerBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone list for poller bad request response has a 4xx status code
+func (o *StandAloneListForPollerBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone list for poller bad request response has a 5xx status code
+func (o *StandAloneListForPollerBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone list for poller bad request response a status code equal to that given
+func (o *StandAloneListForPollerBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *StandAloneListForPollerBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *StandAloneListForPollerBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *StandAloneListForPollerBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewStandAloneListForPollerUnauthorized() *StandAloneListForPollerUnauthoriz
 	return &StandAloneListForPollerUnauthorized{}
 }
 
-/* StandAloneListForPollerUnauthorized describes a response with status code 401, with default header values.
+/*
+StandAloneListForPollerUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type StandAloneListForPollerUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone list for poller unauthorized response has a 2xx status code
+func (o *StandAloneListForPollerUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone list for poller unauthorized response has a 3xx status code
+func (o *StandAloneListForPollerUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone list for poller unauthorized response has a 4xx status code
+func (o *StandAloneListForPollerUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone list for poller unauthorized response has a 5xx status code
+func (o *StandAloneListForPollerUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone list for poller unauthorized response a status code equal to that given
+func (o *StandAloneListForPollerUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *StandAloneListForPollerUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *StandAloneListForPollerUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *StandAloneListForPollerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewStandAloneListForPollerForbidden() *StandAloneListForPollerForbidden {
 	return &StandAloneListForPollerForbidden{}
 }
 
-/* StandAloneListForPollerForbidden describes a response with status code 403, with default header values.
+/*
+StandAloneListForPollerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type StandAloneListForPollerForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone list for poller forbidden response has a 2xx status code
+func (o *StandAloneListForPollerForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone list for poller forbidden response has a 3xx status code
+func (o *StandAloneListForPollerForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone list for poller forbidden response has a 4xx status code
+func (o *StandAloneListForPollerForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone list for poller forbidden response has a 5xx status code
+func (o *StandAloneListForPollerForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone list for poller forbidden response a status code equal to that given
+func (o *StandAloneListForPollerForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *StandAloneListForPollerForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerForbidden  %+v", 403, o.Payload)
 }
+
+func (o *StandAloneListForPollerForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerForbidden  %+v", 403, o.Payload)
+}
+
 func (o *StandAloneListForPollerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewStandAloneListForPollerNotFound() *StandAloneListForPollerNotFound {
 	return &StandAloneListForPollerNotFound{}
 }
 
-/* StandAloneListForPollerNotFound describes a response with status code 404, with default header values.
+/*
+StandAloneListForPollerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type StandAloneListForPollerNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone list for poller not found response has a 2xx status code
+func (o *StandAloneListForPollerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone list for poller not found response has a 3xx status code
+func (o *StandAloneListForPollerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone list for poller not found response has a 4xx status code
+func (o *StandAloneListForPollerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone list for poller not found response has a 5xx status code
+func (o *StandAloneListForPollerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone list for poller not found response a status code equal to that given
+func (o *StandAloneListForPollerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *StandAloneListForPollerNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *StandAloneListForPollerNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *StandAloneListForPollerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewStandAloneListForPollerInternalServerError() *StandAloneListForPollerInt
 	return &StandAloneListForPollerInternalServerError{}
 }
 
-/* StandAloneListForPollerInternalServerError describes a response with status code 500, with default header values.
+/*
+StandAloneListForPollerInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type StandAloneListForPollerInternalServerError struct {
 }
 
+// IsSuccess returns true when this stand alone list for poller internal server error response has a 2xx status code
+func (o *StandAloneListForPollerInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone list for poller internal server error response has a 3xx status code
+func (o *StandAloneListForPollerInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone list for poller internal server error response has a 4xx status code
+func (o *StandAloneListForPollerInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone list for poller internal server error response has a 5xx status code
+func (o *StandAloneListForPollerInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this stand alone list for poller internal server error response a status code equal to that given
+func (o *StandAloneListForPollerInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *StandAloneListForPollerInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerInternalServerError ", 500)
+}
+
+func (o *StandAloneListForPollerInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerInternalServerError ", 500)
 }
 

@@ -52,10 +52,12 @@ func NewAwsAwsOwnersParamsWithHTTPClient(client *http.Client) *AwsAwsOwnersParam
 	}
 }
 
-/* AwsAwsOwnersParams contains all the parameters to send to the API endpoint
-   for the aws aws owners operation.
+/*
+AwsAwsOwnersParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the aws aws owners operation.
+
+	Typically these are written to a http.Request.
 */
 type AwsAwsOwnersParams struct {
 

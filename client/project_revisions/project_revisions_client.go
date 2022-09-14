@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  ProjectRevisionsEdit updates project revision by project Id for poller
+ProjectRevisionsEdit updates project revision by project Id for poller
 */
 func (a *Client) ProjectRevisionsEdit(params *ProjectRevisionsEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectRevisionsEditOK, error) {
 	// TODO: Validate the params before sending

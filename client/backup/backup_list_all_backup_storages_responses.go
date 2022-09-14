@@ -69,7 +69,8 @@ func NewBackupListAllBackupStoragesOK() *BackupListAllBackupStoragesOK {
 	return &BackupListAllBackupStoragesOK{}
 }
 
-/* BackupListAllBackupStoragesOK describes a response with status code 200, with default header values.
+/*
+BackupListAllBackupStoragesOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type BackupListAllBackupStoragesOK struct {
 	Payload *models.ListAllBackupStorageLocations
 }
 
+// IsSuccess returns true when this backup list all backup storages o k response has a 2xx status code
+func (o *BackupListAllBackupStoragesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this backup list all backup storages o k response has a 3xx status code
+func (o *BackupListAllBackupStoragesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup list all backup storages o k response has a 4xx status code
+func (o *BackupListAllBackupStoragesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this backup list all backup storages o k response has a 5xx status code
+func (o *BackupListAllBackupStoragesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup list all backup storages o k response a status code equal to that given
+func (o *BackupListAllBackupStoragesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *BackupListAllBackupStoragesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesOK  %+v", 200, o.Payload)
 }
+
+func (o *BackupListAllBackupStoragesOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesOK  %+v", 200, o.Payload)
+}
+
 func (o *BackupListAllBackupStoragesOK) GetPayload() *models.ListAllBackupStorageLocations {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewBackupListAllBackupStoragesBadRequest() *BackupListAllBackupStoragesBadR
 	return &BackupListAllBackupStoragesBadRequest{}
 }
 
-/* BackupListAllBackupStoragesBadRequest describes a response with status code 400, with default header values.
+/*
+BackupListAllBackupStoragesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type BackupListAllBackupStoragesBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this backup list all backup storages bad request response has a 2xx status code
+func (o *BackupListAllBackupStoragesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup list all backup storages bad request response has a 3xx status code
+func (o *BackupListAllBackupStoragesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup list all backup storages bad request response has a 4xx status code
+func (o *BackupListAllBackupStoragesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup list all backup storages bad request response has a 5xx status code
+func (o *BackupListAllBackupStoragesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup list all backup storages bad request response a status code equal to that given
+func (o *BackupListAllBackupStoragesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BackupListAllBackupStoragesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BackupListAllBackupStoragesBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BackupListAllBackupStoragesBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewBackupListAllBackupStoragesUnauthorized() *BackupListAllBackupStoragesUn
 	return &BackupListAllBackupStoragesUnauthorized{}
 }
 
-/* BackupListAllBackupStoragesUnauthorized describes a response with status code 401, with default header values.
+/*
+BackupListAllBackupStoragesUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type BackupListAllBackupStoragesUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup list all backup storages unauthorized response has a 2xx status code
+func (o *BackupListAllBackupStoragesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup list all backup storages unauthorized response has a 3xx status code
+func (o *BackupListAllBackupStoragesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup list all backup storages unauthorized response has a 4xx status code
+func (o *BackupListAllBackupStoragesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup list all backup storages unauthorized response has a 5xx status code
+func (o *BackupListAllBackupStoragesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup list all backup storages unauthorized response a status code equal to that given
+func (o *BackupListAllBackupStoragesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BackupListAllBackupStoragesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BackupListAllBackupStoragesUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BackupListAllBackupStoragesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewBackupListAllBackupStoragesForbidden() *BackupListAllBackupStoragesForbi
 	return &BackupListAllBackupStoragesForbidden{}
 }
 
-/* BackupListAllBackupStoragesForbidden describes a response with status code 403, with default header values.
+/*
+BackupListAllBackupStoragesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type BackupListAllBackupStoragesForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup list all backup storages forbidden response has a 2xx status code
+func (o *BackupListAllBackupStoragesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup list all backup storages forbidden response has a 3xx status code
+func (o *BackupListAllBackupStoragesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup list all backup storages forbidden response has a 4xx status code
+func (o *BackupListAllBackupStoragesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup list all backup storages forbidden response has a 5xx status code
+func (o *BackupListAllBackupStoragesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup list all backup storages forbidden response a status code equal to that given
+func (o *BackupListAllBackupStoragesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *BackupListAllBackupStoragesForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *BackupListAllBackupStoragesForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *BackupListAllBackupStoragesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewBackupListAllBackupStoragesNotFound() *BackupListAllBackupStoragesNotFou
 	return &BackupListAllBackupStoragesNotFound{}
 }
 
-/* BackupListAllBackupStoragesNotFound describes a response with status code 404, with default header values.
+/*
+BackupListAllBackupStoragesNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type BackupListAllBackupStoragesNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup list all backup storages not found response has a 2xx status code
+func (o *BackupListAllBackupStoragesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup list all backup storages not found response has a 3xx status code
+func (o *BackupListAllBackupStoragesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup list all backup storages not found response has a 4xx status code
+func (o *BackupListAllBackupStoragesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup list all backup storages not found response has a 5xx status code
+func (o *BackupListAllBackupStoragesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup list all backup storages not found response a status code equal to that given
+func (o *BackupListAllBackupStoragesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BackupListAllBackupStoragesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BackupListAllBackupStoragesNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BackupListAllBackupStoragesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewBackupListAllBackupStoragesInternalServerError() *BackupListAllBackupSto
 	return &BackupListAllBackupStoragesInternalServerError{}
 }
 
-/* BackupListAllBackupStoragesInternalServerError describes a response with status code 500, with default header values.
+/*
+BackupListAllBackupStoragesInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type BackupListAllBackupStoragesInternalServerError struct {
 }
 
+// IsSuccess returns true when this backup list all backup storages internal server error response has a 2xx status code
+func (o *BackupListAllBackupStoragesInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup list all backup storages internal server error response has a 3xx status code
+func (o *BackupListAllBackupStoragesInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup list all backup storages internal server error response has a 4xx status code
+func (o *BackupListAllBackupStoragesInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this backup list all backup storages internal server error response has a 5xx status code
+func (o *BackupListAllBackupStoragesInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this backup list all backup storages internal server error response a status code equal to that given
+func (o *BackupListAllBackupStoragesInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BackupListAllBackupStoragesInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesInternalServerError ", 500)
+}
+
+func (o *BackupListAllBackupStoragesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesInternalServerError ", 500)
 }
 

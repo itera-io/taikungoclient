@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  NtpServersCreate creates access profile ntp server
+NtpServersCreate creates access profile ntp server
 */
 func (a *Client) NtpServersCreate(params *NtpServersCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NtpServersCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +81,7 @@ func (a *Client) NtpServersCreate(params *NtpServersCreateParams, authInfo runti
 }
 
 /*
-  NtpServersDelete deletes access profile ntp server
+NtpServersDelete deletes access profile ntp server
 */
 func (a *Client) NtpServersDelete(params *NtpServersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NtpServersDeleteOK, *NtpServersDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -121,7 +121,7 @@ func (a *Client) NtpServersDelete(params *NtpServersDeleteParams, authInfo runti
 }
 
 /*
-  NtpServersEdit edits access profile ntp server
+NtpServersEdit edits access profile ntp server
 */
 func (a *Client) NtpServersEdit(params *NtpServersEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NtpServersEditOK, error) {
 	// TODO: Validate the params before sending
@@ -160,7 +160,7 @@ func (a *Client) NtpServersEdit(params *NtpServersEditParams, authInfo runtime.C
 }
 
 /*
-  NtpServersList lists ntp servers by profile id
+NtpServersList lists ntp servers by profile id
 */
 func (a *Client) NtpServersList(params *NtpServersListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*NtpServersListOK, error) {
 	// TODO: Validate the params before sending

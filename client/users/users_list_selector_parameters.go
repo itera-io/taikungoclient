@@ -53,10 +53,12 @@ func NewUsersListSelectorParamsWithHTTPClient(client *http.Client) *UsersListSel
 	}
 }
 
-/* UsersListSelectorParams contains all the parameters to send to the API endpoint
-   for the users list selector operation.
+/*
+UsersListSelectorParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the users list selector operation.
+
+	Typically these are written to a http.Request.
 */
 type UsersListSelectorParams struct {
 

@@ -53,10 +53,12 @@ func NewFlavorsOpenstackFlavorsParamsWithHTTPClient(client *http.Client) *Flavor
 	}
 }
 
-/* FlavorsOpenstackFlavorsParams contains all the parameters to send to the API endpoint
-   for the flavors openstack flavors operation.
+/*
+FlavorsOpenstackFlavorsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the flavors openstack flavors operation.
+
+	Typically these are written to a http.Request.
 */
 type FlavorsOpenstackFlavorsParams struct {
 

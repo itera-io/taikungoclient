@@ -69,7 +69,8 @@ func NewProjectGroupsCreateOK() *ProjectGroupsCreateOK {
 	return &ProjectGroupsCreateOK{}
 }
 
-/* ProjectGroupsCreateOK describes a response with status code 200, with default header values.
+/*
+ProjectGroupsCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectGroupsCreateOK struct {
 	Payload *models.APIResponse
 }
 
+// IsSuccess returns true when this project groups create o k response has a 2xx status code
+func (o *ProjectGroupsCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this project groups create o k response has a 3xx status code
+func (o *ProjectGroupsCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project groups create o k response has a 4xx status code
+func (o *ProjectGroupsCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this project groups create o k response has a 5xx status code
+func (o *ProjectGroupsCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project groups create o k response a status code equal to that given
+func (o *ProjectGroupsCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectGroupsCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectGroupsCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectGroupsCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewProjectGroupsCreateBadRequest() *ProjectGroupsCreateBadRequest {
 	return &ProjectGroupsCreateBadRequest{}
 }
 
-/* ProjectGroupsCreateBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectGroupsCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type ProjectGroupsCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this project groups create bad request response has a 2xx status code
+func (o *ProjectGroupsCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project groups create bad request response has a 3xx status code
+func (o *ProjectGroupsCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project groups create bad request response has a 4xx status code
+func (o *ProjectGroupsCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project groups create bad request response has a 5xx status code
+func (o *ProjectGroupsCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project groups create bad request response a status code equal to that given
+func (o *ProjectGroupsCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectGroupsCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectGroupsCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectGroupsCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewProjectGroupsCreateUnauthorized() *ProjectGroupsCreateUnauthorized {
 	return &ProjectGroupsCreateUnauthorized{}
 }
 
-/* ProjectGroupsCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectGroupsCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type ProjectGroupsCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project groups create unauthorized response has a 2xx status code
+func (o *ProjectGroupsCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project groups create unauthorized response has a 3xx status code
+func (o *ProjectGroupsCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project groups create unauthorized response has a 4xx status code
+func (o *ProjectGroupsCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project groups create unauthorized response has a 5xx status code
+func (o *ProjectGroupsCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project groups create unauthorized response a status code equal to that given
+func (o *ProjectGroupsCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectGroupsCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectGroupsCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectGroupsCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewProjectGroupsCreateForbidden() *ProjectGroupsCreateForbidden {
 	return &ProjectGroupsCreateForbidden{}
 }
 
-/* ProjectGroupsCreateForbidden describes a response with status code 403, with default header values.
+/*
+ProjectGroupsCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type ProjectGroupsCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project groups create forbidden response has a 2xx status code
+func (o *ProjectGroupsCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project groups create forbidden response has a 3xx status code
+func (o *ProjectGroupsCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project groups create forbidden response has a 4xx status code
+func (o *ProjectGroupsCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project groups create forbidden response has a 5xx status code
+func (o *ProjectGroupsCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project groups create forbidden response a status code equal to that given
+func (o *ProjectGroupsCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectGroupsCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectGroupsCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectGroupsCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewProjectGroupsCreateNotFound() *ProjectGroupsCreateNotFound {
 	return &ProjectGroupsCreateNotFound{}
 }
 
-/* ProjectGroupsCreateNotFound describes a response with status code 404, with default header values.
+/*
+ProjectGroupsCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type ProjectGroupsCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project groups create not found response has a 2xx status code
+func (o *ProjectGroupsCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project groups create not found response has a 3xx status code
+func (o *ProjectGroupsCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project groups create not found response has a 4xx status code
+func (o *ProjectGroupsCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project groups create not found response has a 5xx status code
+func (o *ProjectGroupsCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project groups create not found response a status code equal to that given
+func (o *ProjectGroupsCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectGroupsCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectGroupsCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectGroupsCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewProjectGroupsCreateInternalServerError() *ProjectGroupsCreateInternalSer
 	return &ProjectGroupsCreateInternalServerError{}
 }
 
-/* ProjectGroupsCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectGroupsCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectGroupsCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this project groups create internal server error response has a 2xx status code
+func (o *ProjectGroupsCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project groups create internal server error response has a 3xx status code
+func (o *ProjectGroupsCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project groups create internal server error response has a 4xx status code
+func (o *ProjectGroupsCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this project groups create internal server error response has a 5xx status code
+func (o *ProjectGroupsCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this project groups create internal server error response a status code equal to that given
+func (o *ProjectGroupsCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectGroupsCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateInternalServerError ", 500)
+}
+
+func (o *ProjectGroupsCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectGroups/create][%d] projectGroupsCreateInternalServerError ", 500)
 }
 

@@ -53,10 +53,12 @@ func NewS3CredentialsListParamsWithHTTPClient(client *http.Client) *S3Credential
 	}
 }
 
-/* S3CredentialsListParams contains all the parameters to send to the API endpoint
-   for the s3 credentials list operation.
+/*
+S3CredentialsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the s3 credentials list operation.
+
+	Typically these are written to a http.Request.
 */
 type S3CredentialsListParams struct {
 

@@ -69,7 +69,8 @@ func NewSearchStandAloneProfilesListOK() *SearchStandAloneProfilesListOK {
 	return &SearchStandAloneProfilesListOK{}
 }
 
-/* SearchStandAloneProfilesListOK describes a response with status code 200, with default header values.
+/*
+SearchStandAloneProfilesListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SearchStandAloneProfilesListOK struct {
 	Payload *models.StandAloneProfilesSearchList
 }
 
+// IsSuccess returns true when this search stand alone profiles list o k response has a 2xx status code
+func (o *SearchStandAloneProfilesListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this search stand alone profiles list o k response has a 3xx status code
+func (o *SearchStandAloneProfilesListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search stand alone profiles list o k response has a 4xx status code
+func (o *SearchStandAloneProfilesListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search stand alone profiles list o k response has a 5xx status code
+func (o *SearchStandAloneProfilesListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search stand alone profiles list o k response a status code equal to that given
+func (o *SearchStandAloneProfilesListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SearchStandAloneProfilesListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListOK  %+v", 200, o.Payload)
 }
+
+func (o *SearchStandAloneProfilesListOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListOK  %+v", 200, o.Payload)
+}
+
 func (o *SearchStandAloneProfilesListOK) GetPayload() *models.StandAloneProfilesSearchList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewSearchStandAloneProfilesListBadRequest() *SearchStandAloneProfilesListBa
 	return &SearchStandAloneProfilesListBadRequest{}
 }
 
-/* SearchStandAloneProfilesListBadRequest describes a response with status code 400, with default header values.
+/*
+SearchStandAloneProfilesListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type SearchStandAloneProfilesListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this search stand alone profiles list bad request response has a 2xx status code
+func (o *SearchStandAloneProfilesListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search stand alone profiles list bad request response has a 3xx status code
+func (o *SearchStandAloneProfilesListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search stand alone profiles list bad request response has a 4xx status code
+func (o *SearchStandAloneProfilesListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search stand alone profiles list bad request response has a 5xx status code
+func (o *SearchStandAloneProfilesListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search stand alone profiles list bad request response a status code equal to that given
+func (o *SearchStandAloneProfilesListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SearchStandAloneProfilesListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SearchStandAloneProfilesListBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SearchStandAloneProfilesListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewSearchStandAloneProfilesListUnauthorized() *SearchStandAloneProfilesList
 	return &SearchStandAloneProfilesListUnauthorized{}
 }
 
-/* SearchStandAloneProfilesListUnauthorized describes a response with status code 401, with default header values.
+/*
+SearchStandAloneProfilesListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type SearchStandAloneProfilesListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search stand alone profiles list unauthorized response has a 2xx status code
+func (o *SearchStandAloneProfilesListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search stand alone profiles list unauthorized response has a 3xx status code
+func (o *SearchStandAloneProfilesListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search stand alone profiles list unauthorized response has a 4xx status code
+func (o *SearchStandAloneProfilesListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search stand alone profiles list unauthorized response has a 5xx status code
+func (o *SearchStandAloneProfilesListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search stand alone profiles list unauthorized response a status code equal to that given
+func (o *SearchStandAloneProfilesListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SearchStandAloneProfilesListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SearchStandAloneProfilesListUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SearchStandAloneProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewSearchStandAloneProfilesListForbidden() *SearchStandAloneProfilesListFor
 	return &SearchStandAloneProfilesListForbidden{}
 }
 
-/* SearchStandAloneProfilesListForbidden describes a response with status code 403, with default header values.
+/*
+SearchStandAloneProfilesListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type SearchStandAloneProfilesListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search stand alone profiles list forbidden response has a 2xx status code
+func (o *SearchStandAloneProfilesListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search stand alone profiles list forbidden response has a 3xx status code
+func (o *SearchStandAloneProfilesListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search stand alone profiles list forbidden response has a 4xx status code
+func (o *SearchStandAloneProfilesListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search stand alone profiles list forbidden response has a 5xx status code
+func (o *SearchStandAloneProfilesListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search stand alone profiles list forbidden response a status code equal to that given
+func (o *SearchStandAloneProfilesListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SearchStandAloneProfilesListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SearchStandAloneProfilesListForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SearchStandAloneProfilesListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewSearchStandAloneProfilesListNotFound() *SearchStandAloneProfilesListNotF
 	return &SearchStandAloneProfilesListNotFound{}
 }
 
-/* SearchStandAloneProfilesListNotFound describes a response with status code 404, with default header values.
+/*
+SearchStandAloneProfilesListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type SearchStandAloneProfilesListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search stand alone profiles list not found response has a 2xx status code
+func (o *SearchStandAloneProfilesListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search stand alone profiles list not found response has a 3xx status code
+func (o *SearchStandAloneProfilesListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search stand alone profiles list not found response has a 4xx status code
+func (o *SearchStandAloneProfilesListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search stand alone profiles list not found response has a 5xx status code
+func (o *SearchStandAloneProfilesListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search stand alone profiles list not found response a status code equal to that given
+func (o *SearchStandAloneProfilesListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SearchStandAloneProfilesListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SearchStandAloneProfilesListNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SearchStandAloneProfilesListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewSearchStandAloneProfilesListInternalServerError() *SearchStandAloneProfi
 	return &SearchStandAloneProfilesListInternalServerError{}
 }
 
-/* SearchStandAloneProfilesListInternalServerError describes a response with status code 500, with default header values.
+/*
+SearchStandAloneProfilesListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SearchStandAloneProfilesListInternalServerError struct {
 }
 
+// IsSuccess returns true when this search stand alone profiles list internal server error response has a 2xx status code
+func (o *SearchStandAloneProfilesListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search stand alone profiles list internal server error response has a 3xx status code
+func (o *SearchStandAloneProfilesListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search stand alone profiles list internal server error response has a 4xx status code
+func (o *SearchStandAloneProfilesListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search stand alone profiles list internal server error response has a 5xx status code
+func (o *SearchStandAloneProfilesListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this search stand alone profiles list internal server error response a status code equal to that given
+func (o *SearchStandAloneProfilesListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SearchStandAloneProfilesListInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListInternalServerError ", 500)
+}
+
+func (o *SearchStandAloneProfilesListInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListInternalServerError ", 500)
 }
 

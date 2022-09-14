@@ -54,10 +54,12 @@ func NewBackupCreateParamsWithHTTPClient(client *http.Client) *BackupCreateParam
 	}
 }
 
-/* BackupCreateParams contains all the parameters to send to the API endpoint
-   for the backup create operation.
+/*
+BackupCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the backup create operation.
+
+	Typically these are written to a http.Request.
 */
 type BackupCreateParams struct {
 

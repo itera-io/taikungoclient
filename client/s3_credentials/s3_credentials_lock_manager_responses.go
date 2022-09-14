@@ -69,7 +69,8 @@ func NewS3CredentialsLockManagerOK() *S3CredentialsLockManagerOK {
 	return &S3CredentialsLockManagerOK{}
 }
 
-/* S3CredentialsLockManagerOK describes a response with status code 200, with default header values.
+/*
+S3CredentialsLockManagerOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type S3CredentialsLockManagerOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this s3 credentials lock manager o k response has a 2xx status code
+func (o *S3CredentialsLockManagerOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this s3 credentials lock manager o k response has a 3xx status code
+func (o *S3CredentialsLockManagerOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials lock manager o k response has a 4xx status code
+func (o *S3CredentialsLockManagerOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this s3 credentials lock manager o k response has a 5xx status code
+func (o *S3CredentialsLockManagerOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this s3 credentials lock manager o k response a status code equal to that given
+func (o *S3CredentialsLockManagerOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *S3CredentialsLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerOK  %+v", 200, o.Payload)
 }
+
+func (o *S3CredentialsLockManagerOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerOK  %+v", 200, o.Payload)
+}
+
 func (o *S3CredentialsLockManagerOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewS3CredentialsLockManagerBadRequest() *S3CredentialsLockManagerBadRequest
 	return &S3CredentialsLockManagerBadRequest{}
 }
 
-/* S3CredentialsLockManagerBadRequest describes a response with status code 400, with default header values.
+/*
+S3CredentialsLockManagerBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type S3CredentialsLockManagerBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this s3 credentials lock manager bad request response has a 2xx status code
+func (o *S3CredentialsLockManagerBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this s3 credentials lock manager bad request response has a 3xx status code
+func (o *S3CredentialsLockManagerBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials lock manager bad request response has a 4xx status code
+func (o *S3CredentialsLockManagerBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this s3 credentials lock manager bad request response has a 5xx status code
+func (o *S3CredentialsLockManagerBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this s3 credentials lock manager bad request response a status code equal to that given
+func (o *S3CredentialsLockManagerBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *S3CredentialsLockManagerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *S3CredentialsLockManagerBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *S3CredentialsLockManagerBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewS3CredentialsLockManagerUnauthorized() *S3CredentialsLockManagerUnauthor
 	return &S3CredentialsLockManagerUnauthorized{}
 }
 
-/* S3CredentialsLockManagerUnauthorized describes a response with status code 401, with default header values.
+/*
+S3CredentialsLockManagerUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type S3CredentialsLockManagerUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this s3 credentials lock manager unauthorized response has a 2xx status code
+func (o *S3CredentialsLockManagerUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this s3 credentials lock manager unauthorized response has a 3xx status code
+func (o *S3CredentialsLockManagerUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials lock manager unauthorized response has a 4xx status code
+func (o *S3CredentialsLockManagerUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this s3 credentials lock manager unauthorized response has a 5xx status code
+func (o *S3CredentialsLockManagerUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this s3 credentials lock manager unauthorized response a status code equal to that given
+func (o *S3CredentialsLockManagerUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *S3CredentialsLockManagerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *S3CredentialsLockManagerUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *S3CredentialsLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewS3CredentialsLockManagerForbidden() *S3CredentialsLockManagerForbidden {
 	return &S3CredentialsLockManagerForbidden{}
 }
 
-/* S3CredentialsLockManagerForbidden describes a response with status code 403, with default header values.
+/*
+S3CredentialsLockManagerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type S3CredentialsLockManagerForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this s3 credentials lock manager forbidden response has a 2xx status code
+func (o *S3CredentialsLockManagerForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this s3 credentials lock manager forbidden response has a 3xx status code
+func (o *S3CredentialsLockManagerForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials lock manager forbidden response has a 4xx status code
+func (o *S3CredentialsLockManagerForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this s3 credentials lock manager forbidden response has a 5xx status code
+func (o *S3CredentialsLockManagerForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this s3 credentials lock manager forbidden response a status code equal to that given
+func (o *S3CredentialsLockManagerForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *S3CredentialsLockManagerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerForbidden  %+v", 403, o.Payload)
 }
+
+func (o *S3CredentialsLockManagerForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerForbidden  %+v", 403, o.Payload)
+}
+
 func (o *S3CredentialsLockManagerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewS3CredentialsLockManagerNotFound() *S3CredentialsLockManagerNotFound {
 	return &S3CredentialsLockManagerNotFound{}
 }
 
-/* S3CredentialsLockManagerNotFound describes a response with status code 404, with default header values.
+/*
+S3CredentialsLockManagerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type S3CredentialsLockManagerNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this s3 credentials lock manager not found response has a 2xx status code
+func (o *S3CredentialsLockManagerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this s3 credentials lock manager not found response has a 3xx status code
+func (o *S3CredentialsLockManagerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials lock manager not found response has a 4xx status code
+func (o *S3CredentialsLockManagerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this s3 credentials lock manager not found response has a 5xx status code
+func (o *S3CredentialsLockManagerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this s3 credentials lock manager not found response a status code equal to that given
+func (o *S3CredentialsLockManagerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *S3CredentialsLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *S3CredentialsLockManagerNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *S3CredentialsLockManagerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewS3CredentialsLockManagerInternalServerError() *S3CredentialsLockManagerI
 	return &S3CredentialsLockManagerInternalServerError{}
 }
 
-/* S3CredentialsLockManagerInternalServerError describes a response with status code 500, with default header values.
+/*
+S3CredentialsLockManagerInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type S3CredentialsLockManagerInternalServerError struct {
 }
 
+// IsSuccess returns true when this s3 credentials lock manager internal server error response has a 2xx status code
+func (o *S3CredentialsLockManagerInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this s3 credentials lock manager internal server error response has a 3xx status code
+func (o *S3CredentialsLockManagerInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials lock manager internal server error response has a 4xx status code
+func (o *S3CredentialsLockManagerInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this s3 credentials lock manager internal server error response has a 5xx status code
+func (o *S3CredentialsLockManagerInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this s3 credentials lock manager internal server error response a status code equal to that given
+func (o *S3CredentialsLockManagerInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *S3CredentialsLockManagerInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerInternalServerError ", 500)
+}
+
+func (o *S3CredentialsLockManagerInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/lockmanager][%d] s3CredentialsLockManagerInternalServerError ", 500)
 }
 

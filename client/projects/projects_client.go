@@ -90,7 +90,7 @@ type ClientService interface {
 }
 
 /*
-  ProjectsCommit commits changes for the given project the changes will then be applied and the project will be updated the project must be in the r e a d y state
+ProjectsCommit commits changes for the given project the changes will then be applied and the project will be updated the project must be in the r e a d y state
 */
 func (a *Client) ProjectsCommit(params *ProjectsCommitParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsCommitOK, error) {
 	// TODO: Validate the params before sending
@@ -129,7 +129,7 @@ func (a *Client) ProjectsCommit(params *ProjectsCommitParams, authInfo runtime.C
 }
 
 /*
-  ProjectsCreate creates a new project
+ProjectsCreate creates a new project
 */
 func (a *Client) ProjectsCreate(params *ProjectsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -168,7 +168,7 @@ func (a *Client) ProjectsCreate(params *ProjectsCreateParams, authInfo runtime.C
 }
 
 /*
-  ProjectsDelete deletes the project the project must be empty no server and in r e a d y state
+ProjectsDelete deletes the project the project must be empty no server and in r e a d y state
 */
 func (a *Client) ProjectsDelete(params *ProjectsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsDeleteOK, *ProjectsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -208,7 +208,7 @@ func (a *Client) ProjectsDelete(params *ProjectsDeleteParams, authInfo runtime.C
 }
 
 /*
-  ProjectsDeleteWholeProject deletes whole project by project Id
+ProjectsDeleteWholeProject deletes whole project by project Id
 */
 func (a *Client) ProjectsDeleteWholeProject(params *ProjectsDeleteWholeProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsDeleteWholeProjectOK, *ProjectsDeleteWholeProjectNoContent, error) {
 	// TODO: Validate the params before sending
@@ -248,7 +248,7 @@ func (a *Client) ProjectsDeleteWholeProject(params *ProjectsDeleteWholeProjectPa
 }
 
 /*
-  ProjectsDescribe describes project by Id
+ProjectsDescribe describes project by Id
 */
 func (a *Client) ProjectsDescribe(params *ProjectsDescribeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsDescribeOK, error) {
 	// TODO: Validate the params before sending
@@ -287,7 +287,7 @@ func (a *Client) ProjectsDescribe(params *ProjectsDescribeParams, authInfo runti
 }
 
 /*
-  ProjectsDetails retrieves details of the project by Id
+ProjectsDetails retrieves details of the project by Id
 */
 func (a *Client) ProjectsDetails(params *ProjectsDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -326,7 +326,7 @@ func (a *Client) ProjectsDetails(params *ProjectsDetailsParams, authInfo runtime
 }
 
 /*
-  ProjectsEdit updates project by Id for poller
+ProjectsEdit updates project by Id for poller
 */
 func (a *Client) ProjectsEdit(params *ProjectsEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsEditOK, error) {
 	// TODO: Validate the params before sending
@@ -365,7 +365,7 @@ func (a *Client) ProjectsEdit(params *ProjectsEditParams, authInfo runtime.Clien
 }
 
 /*
-  ProjectsEditHealthStatus updates health status of the project by Id
+ProjectsEditHealthStatus updates health status of the project by Id
 */
 func (a *Client) ProjectsEditHealthStatus(params *ProjectsEditHealthStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsEditHealthStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -404,7 +404,7 @@ func (a *Client) ProjectsEditHealthStatus(params *ProjectsEditHealthStatusParams
 }
 
 /*
-  ProjectsEnableAutoscaling enables autoscaling
+ProjectsEnableAutoscaling enables autoscaling
 */
 func (a *Client) ProjectsEnableAutoscaling(params *ProjectsEnableAutoscalingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsEnableAutoscalingOK, error) {
 	// TODO: Validate the params before sending
@@ -443,7 +443,7 @@ func (a *Client) ProjectsEnableAutoscaling(params *ProjectsEnableAutoscalingPara
 }
 
 /*
-  ProjectsExtendLifeTime extends life time of project
+ProjectsExtendLifeTime extends life time of project
 */
 func (a *Client) ProjectsExtendLifeTime(params *ProjectsExtendLifeTimeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsExtendLifeTimeOK, error) {
 	// TODO: Validate the params before sending
@@ -482,7 +482,7 @@ func (a *Client) ProjectsExtendLifeTime(params *ProjectsExtendLifeTimeParams, au
 }
 
 /*
-  ProjectsFullSpotWorkersOperations fulls spot operations enable disable
+ProjectsFullSpotWorkersOperations fulls spot operations enable disable
 */
 func (a *Client) ProjectsFullSpotWorkersOperations(params *ProjectsFullSpotWorkersOperationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsFullSpotWorkersOperationsOK, error) {
 	// TODO: Validate the params before sending
@@ -521,7 +521,7 @@ func (a *Client) ProjectsFullSpotWorkersOperations(params *ProjectsFullSpotWorke
 }
 
 /*
-  ProjectsList retrieves a list of projects
+ProjectsList retrieves a list of projects
 */
 func (a *Client) ProjectsList(params *ProjectsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsListOK, error) {
 	// TODO: Validate the params before sending
@@ -560,7 +560,7 @@ func (a *Client) ProjectsList(params *ProjectsListParams, authInfo runtime.Clien
 }
 
 /*
-  ProjectsListForBilling retrieves projects for billing
+ProjectsListForBilling retrieves projects for billing
 */
 func (a *Client) ProjectsListForBilling(params *ProjectsListForBillingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsListForBillingOK, error) {
 	// TODO: Validate the params before sending
@@ -599,7 +599,7 @@ func (a *Client) ProjectsListForBilling(params *ProjectsListForBillingParams, au
 }
 
 /*
-  ProjectsListForPoller retrieves a list of projects for poller only available for admins
+ProjectsListForPoller retrieves a list of projects for poller only available for admins
 */
 func (a *Client) ProjectsListForPoller(params *ProjectsListForPollerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsListForPollerOK, error) {
 	// TODO: Validate the params before sending
@@ -638,7 +638,7 @@ func (a *Client) ProjectsListForPoller(params *ProjectsListForPollerParams, auth
 }
 
 /*
-  ProjectsListSelector projects list selector API
+ProjectsListSelector projects list selector API
 */
 func (a *Client) ProjectsListSelector(params *ProjectsListSelectorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsListSelectorOK, error) {
 	// TODO: Validate the params before sending
@@ -677,7 +677,7 @@ func (a *Client) ProjectsListSelector(params *ProjectsListSelectorParams, authIn
 }
 
 /*
-  ProjectsListWithAlerts retrieves a list of projects for alert poller only available for admins
+ProjectsListWithAlerts retrieves a list of projects for alert poller only available for admins
 */
 func (a *Client) ProjectsListWithAlerts(params *ProjectsListWithAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsListWithAlertsOK, error) {
 	// TODO: Validate the params before sending
@@ -716,7 +716,7 @@ func (a *Client) ProjectsListWithAlerts(params *ProjectsListWithAlertsParams, au
 }
 
 /*
-  ProjectsLockManager locks unlock project
+ProjectsLockManager locks unlock project
 */
 func (a *Client) ProjectsLockManager(params *ProjectsLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsLockManagerOK, error) {
 	// TODO: Validate the params before sending
@@ -755,7 +755,7 @@ func (a *Client) ProjectsLockManager(params *ProjectsLockManagerParams, authInfo
 }
 
 /*
-  ProjectsLokiLogs retrieves loki logs
+ProjectsLokiLogs retrieves loki logs
 */
 func (a *Client) ProjectsLokiLogs(params *ProjectsLokiLogsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsLokiLogsOK, error) {
 	// TODO: Validate the params before sending
@@ -794,7 +794,7 @@ func (a *Client) ProjectsLokiLogs(params *ProjectsLokiLogsParams, authInfo runti
 }
 
 /*
-  ProjectsMonitoringOperations monitorings operations enable disable
+ProjectsMonitoringOperations monitorings operations enable disable
 */
 func (a *Client) ProjectsMonitoringOperations(params *ProjectsMonitoringOperationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsMonitoringOperationsOK, error) {
 	// TODO: Validate the params before sending
@@ -833,7 +833,7 @@ func (a *Client) ProjectsMonitoringOperations(params *ProjectsMonitoringOperatio
 }
 
 /*
-  ProjectsProjectMonitoringAlerts monitorings alerts for project
+ProjectsProjectMonitoringAlerts monitorings alerts for project
 */
 func (a *Client) ProjectsProjectMonitoringAlerts(params *ProjectsProjectMonitoringAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsProjectMonitoringAlertsOK, error) {
 	// TODO: Validate the params before sending
@@ -872,7 +872,7 @@ func (a *Client) ProjectsProjectMonitoringAlerts(params *ProjectsProjectMonitori
 }
 
 /*
-  ProjectsPrometheusMetrics prometheus metrics data project
+ProjectsPrometheusMetrics prometheus metrics data project
 */
 func (a *Client) ProjectsPrometheusMetrics(params *ProjectsPrometheusMetricsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsPrometheusMetricsOK, error) {
 	// TODO: Validate the params before sending
@@ -911,7 +911,7 @@ func (a *Client) ProjectsPrometheusMetrics(params *ProjectsPrometheusMetricsPara
 }
 
 /*
-  ProjectsPurge purges a list of servers from project by project Id
+ProjectsPurge purges a list of servers from project by project Id
 */
 func (a *Client) ProjectsPurge(params *ProjectsPurgeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsPurgeOK, error) {
 	// TODO: Validate the params before sending
@@ -950,7 +950,7 @@ func (a *Client) ProjectsPurge(params *ProjectsPurgeParams, authInfo runtime.Cli
 }
 
 /*
-  ProjectsPurgeWholeProject purges a whole project by project Id
+ProjectsPurgeWholeProject purges a whole project by project Id
 */
 func (a *Client) ProjectsPurgeWholeProject(params *ProjectsPurgeWholeProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsPurgeWholeProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -989,7 +989,7 @@ func (a *Client) ProjectsPurgeWholeProject(params *ProjectsPurgeWholeProjectPara
 }
 
 /*
-  ProjectsRepair repairs project by Id
+ProjectsRepair repairs project by Id
 */
 func (a *Client) ProjectsRepair(params *ProjectsRepairParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsRepairOK, error) {
 	// TODO: Validate the params before sending
@@ -1028,7 +1028,7 @@ func (a *Client) ProjectsRepair(params *ProjectsRepairParams, authInfo runtime.C
 }
 
 /*
-  ProjectsResetProjectStatus changes the project status for the given project only available for admin
+ProjectsResetProjectStatus changes the project status for the given project only available for admin
 */
 func (a *Client) ProjectsResetProjectStatus(params *ProjectsResetProjectStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsResetProjectStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -1067,7 +1067,7 @@ func (a *Client) ProjectsResetProjectStatus(params *ProjectsResetProjectStatusPa
 }
 
 /*
-  ProjectsSpotVmsOperations spots vm s operations enable disable
+ProjectsSpotVmsOperations spots vm s operations enable disable
 */
 func (a *Client) ProjectsSpotVmsOperations(params *ProjectsSpotVmsOperationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsSpotVmsOperationsOK, error) {
 	// TODO: Validate the params before sending
@@ -1106,7 +1106,7 @@ func (a *Client) ProjectsSpotVmsOperations(params *ProjectsSpotVmsOperationsPara
 }
 
 /*
-  ProjectsSpotWorkersOperations spots worker s operations enable disable
+ProjectsSpotWorkersOperations spots worker s operations enable disable
 */
 func (a *Client) ProjectsSpotWorkersOperations(params *ProjectsSpotWorkersOperationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsSpotWorkersOperationsOK, error) {
 	// TODO: Validate the params before sending
@@ -1145,7 +1145,7 @@ func (a *Client) ProjectsSpotWorkersOperations(params *ProjectsSpotWorkersOperat
 }
 
 /*
-  ProjectsUpgrade upgrades the project s kubernetes to the next available version project must be r e a d y
+ProjectsUpgrade upgrades the project s kubernetes to the next available version project must be r e a d y
 */
 func (a *Client) ProjectsUpgrade(params *ProjectsUpgradeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsUpgradeOK, error) {
 	// TODO: Validate the params before sending

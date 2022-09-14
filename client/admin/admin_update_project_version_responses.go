@@ -69,7 +69,8 @@ func NewAdminUpdateProjectVersionOK() *AdminUpdateProjectVersionOK {
 	return &AdminUpdateProjectVersionOK{}
 }
 
-/* AdminUpdateProjectVersionOK describes a response with status code 200, with default header values.
+/*
+AdminUpdateProjectVersionOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AdminUpdateProjectVersionOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this admin update project version o k response has a 2xx status code
+func (o *AdminUpdateProjectVersionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this admin update project version o k response has a 3xx status code
+func (o *AdminUpdateProjectVersionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update project version o k response has a 4xx status code
+func (o *AdminUpdateProjectVersionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin update project version o k response has a 5xx status code
+func (o *AdminUpdateProjectVersionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin update project version o k response a status code equal to that given
+func (o *AdminUpdateProjectVersionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AdminUpdateProjectVersionOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionOK  %+v", 200, o.Payload)
 }
+
+func (o *AdminUpdateProjectVersionOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionOK  %+v", 200, o.Payload)
+}
+
 func (o *AdminUpdateProjectVersionOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAdminUpdateProjectVersionBadRequest() *AdminUpdateProjectVersionBadReque
 	return &AdminUpdateProjectVersionBadRequest{}
 }
 
-/* AdminUpdateProjectVersionBadRequest describes a response with status code 400, with default header values.
+/*
+AdminUpdateProjectVersionBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AdminUpdateProjectVersionBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this admin update project version bad request response has a 2xx status code
+func (o *AdminUpdateProjectVersionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin update project version bad request response has a 3xx status code
+func (o *AdminUpdateProjectVersionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update project version bad request response has a 4xx status code
+func (o *AdminUpdateProjectVersionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin update project version bad request response has a 5xx status code
+func (o *AdminUpdateProjectVersionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin update project version bad request response a status code equal to that given
+func (o *AdminUpdateProjectVersionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AdminUpdateProjectVersionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AdminUpdateProjectVersionBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AdminUpdateProjectVersionBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAdminUpdateProjectVersionUnauthorized() *AdminUpdateProjectVersionUnauth
 	return &AdminUpdateProjectVersionUnauthorized{}
 }
 
-/* AdminUpdateProjectVersionUnauthorized describes a response with status code 401, with default header values.
+/*
+AdminUpdateProjectVersionUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AdminUpdateProjectVersionUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin update project version unauthorized response has a 2xx status code
+func (o *AdminUpdateProjectVersionUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin update project version unauthorized response has a 3xx status code
+func (o *AdminUpdateProjectVersionUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update project version unauthorized response has a 4xx status code
+func (o *AdminUpdateProjectVersionUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin update project version unauthorized response has a 5xx status code
+func (o *AdminUpdateProjectVersionUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin update project version unauthorized response a status code equal to that given
+func (o *AdminUpdateProjectVersionUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AdminUpdateProjectVersionUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AdminUpdateProjectVersionUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AdminUpdateProjectVersionUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAdminUpdateProjectVersionForbidden() *AdminUpdateProjectVersionForbidden
 	return &AdminUpdateProjectVersionForbidden{}
 }
 
-/* AdminUpdateProjectVersionForbidden describes a response with status code 403, with default header values.
+/*
+AdminUpdateProjectVersionForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AdminUpdateProjectVersionForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin update project version forbidden response has a 2xx status code
+func (o *AdminUpdateProjectVersionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin update project version forbidden response has a 3xx status code
+func (o *AdminUpdateProjectVersionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update project version forbidden response has a 4xx status code
+func (o *AdminUpdateProjectVersionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin update project version forbidden response has a 5xx status code
+func (o *AdminUpdateProjectVersionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin update project version forbidden response a status code equal to that given
+func (o *AdminUpdateProjectVersionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AdminUpdateProjectVersionForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AdminUpdateProjectVersionForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AdminUpdateProjectVersionForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAdminUpdateProjectVersionNotFound() *AdminUpdateProjectVersionNotFound {
 	return &AdminUpdateProjectVersionNotFound{}
 }
 
-/* AdminUpdateProjectVersionNotFound describes a response with status code 404, with default header values.
+/*
+AdminUpdateProjectVersionNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AdminUpdateProjectVersionNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin update project version not found response has a 2xx status code
+func (o *AdminUpdateProjectVersionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin update project version not found response has a 3xx status code
+func (o *AdminUpdateProjectVersionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update project version not found response has a 4xx status code
+func (o *AdminUpdateProjectVersionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin update project version not found response has a 5xx status code
+func (o *AdminUpdateProjectVersionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin update project version not found response a status code equal to that given
+func (o *AdminUpdateProjectVersionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AdminUpdateProjectVersionNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AdminUpdateProjectVersionNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AdminUpdateProjectVersionNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAdminUpdateProjectVersionInternalServerError() *AdminUpdateProjectVersio
 	return &AdminUpdateProjectVersionInternalServerError{}
 }
 
-/* AdminUpdateProjectVersionInternalServerError describes a response with status code 500, with default header values.
+/*
+AdminUpdateProjectVersionInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AdminUpdateProjectVersionInternalServerError struct {
 }
 
+// IsSuccess returns true when this admin update project version internal server error response has a 2xx status code
+func (o *AdminUpdateProjectVersionInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin update project version internal server error response has a 3xx status code
+func (o *AdminUpdateProjectVersionInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin update project version internal server error response has a 4xx status code
+func (o *AdminUpdateProjectVersionInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin update project version internal server error response has a 5xx status code
+func (o *AdminUpdateProjectVersionInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this admin update project version internal server error response a status code equal to that given
+func (o *AdminUpdateProjectVersionInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AdminUpdateProjectVersionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionInternalServerError ", 500)
+}
+
+func (o *AdminUpdateProjectVersionInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionInternalServerError ", 500)
 }
 

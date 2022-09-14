@@ -54,10 +54,12 @@ func NewUserProjectsBindProjectsParamsWithHTTPClient(client *http.Client) *UserP
 	}
 }
 
-/* UserProjectsBindProjectsParams contains all the parameters to send to the API endpoint
-   for the user projects bind projects operation.
+/*
+UserProjectsBindProjectsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the user projects bind projects operation.
+
+	Typically these are written to a http.Request.
 */
 type UserProjectsBindProjectsParams struct {
 

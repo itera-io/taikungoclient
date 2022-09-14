@@ -75,7 +75,8 @@ func NewSubscriptionDeleteOK() *SubscriptionDeleteOK {
 	return &SubscriptionDeleteOK{}
 }
 
-/* SubscriptionDeleteOK describes a response with status code 200, with default header values.
+/*
+SubscriptionDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -83,9 +84,39 @@ type SubscriptionDeleteOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this subscription delete o k response has a 2xx status code
+func (o *SubscriptionDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this subscription delete o k response has a 3xx status code
+func (o *SubscriptionDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription delete o k response has a 4xx status code
+func (o *SubscriptionDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this subscription delete o k response has a 5xx status code
+func (o *SubscriptionDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription delete o k response a status code equal to that given
+func (o *SubscriptionDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SubscriptionDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *SubscriptionDeleteOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *SubscriptionDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -105,14 +136,44 @@ func NewSubscriptionDeleteNoContent() *SubscriptionDeleteNoContent {
 	return &SubscriptionDeleteNoContent{}
 }
 
-/* SubscriptionDeleteNoContent describes a response with status code 204, with default header values.
+/*
+SubscriptionDeleteNoContent describes a response with status code 204, with default header values.
 
 Success
 */
 type SubscriptionDeleteNoContent struct {
 }
 
+// IsSuccess returns true when this subscription delete no content response has a 2xx status code
+func (o *SubscriptionDeleteNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this subscription delete no content response has a 3xx status code
+func (o *SubscriptionDeleteNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription delete no content response has a 4xx status code
+func (o *SubscriptionDeleteNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this subscription delete no content response has a 5xx status code
+func (o *SubscriptionDeleteNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription delete no content response a status code equal to that given
+func (o *SubscriptionDeleteNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *SubscriptionDeleteNoContent) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteNoContent ", 204)
+}
+
+func (o *SubscriptionDeleteNoContent) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteNoContent ", 204)
 }
 
@@ -126,7 +187,8 @@ func NewSubscriptionDeleteBadRequest() *SubscriptionDeleteBadRequest {
 	return &SubscriptionDeleteBadRequest{}
 }
 
-/* SubscriptionDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+SubscriptionDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -134,9 +196,39 @@ type SubscriptionDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this subscription delete bad request response has a 2xx status code
+func (o *SubscriptionDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this subscription delete bad request response has a 3xx status code
+func (o *SubscriptionDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription delete bad request response has a 4xx status code
+func (o *SubscriptionDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this subscription delete bad request response has a 5xx status code
+func (o *SubscriptionDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription delete bad request response a status code equal to that given
+func (o *SubscriptionDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SubscriptionDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SubscriptionDeleteBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SubscriptionDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -158,7 +250,8 @@ func NewSubscriptionDeleteUnauthorized() *SubscriptionDeleteUnauthorized {
 	return &SubscriptionDeleteUnauthorized{}
 }
 
-/* SubscriptionDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+SubscriptionDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -166,9 +259,39 @@ type SubscriptionDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this subscription delete unauthorized response has a 2xx status code
+func (o *SubscriptionDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this subscription delete unauthorized response has a 3xx status code
+func (o *SubscriptionDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription delete unauthorized response has a 4xx status code
+func (o *SubscriptionDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this subscription delete unauthorized response has a 5xx status code
+func (o *SubscriptionDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription delete unauthorized response a status code equal to that given
+func (o *SubscriptionDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SubscriptionDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SubscriptionDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SubscriptionDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -190,7 +313,8 @@ func NewSubscriptionDeleteForbidden() *SubscriptionDeleteForbidden {
 	return &SubscriptionDeleteForbidden{}
 }
 
-/* SubscriptionDeleteForbidden describes a response with status code 403, with default header values.
+/*
+SubscriptionDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -198,9 +322,39 @@ type SubscriptionDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this subscription delete forbidden response has a 2xx status code
+func (o *SubscriptionDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this subscription delete forbidden response has a 3xx status code
+func (o *SubscriptionDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription delete forbidden response has a 4xx status code
+func (o *SubscriptionDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this subscription delete forbidden response has a 5xx status code
+func (o *SubscriptionDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription delete forbidden response a status code equal to that given
+func (o *SubscriptionDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SubscriptionDeleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SubscriptionDeleteForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SubscriptionDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -222,7 +376,8 @@ func NewSubscriptionDeleteNotFound() *SubscriptionDeleteNotFound {
 	return &SubscriptionDeleteNotFound{}
 }
 
-/* SubscriptionDeleteNotFound describes a response with status code 404, with default header values.
+/*
+SubscriptionDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -230,9 +385,39 @@ type SubscriptionDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this subscription delete not found response has a 2xx status code
+func (o *SubscriptionDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this subscription delete not found response has a 3xx status code
+func (o *SubscriptionDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription delete not found response has a 4xx status code
+func (o *SubscriptionDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this subscription delete not found response has a 5xx status code
+func (o *SubscriptionDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription delete not found response a status code equal to that given
+func (o *SubscriptionDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SubscriptionDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SubscriptionDeleteNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SubscriptionDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -254,14 +439,44 @@ func NewSubscriptionDeleteInternalServerError() *SubscriptionDeleteInternalServe
 	return &SubscriptionDeleteInternalServerError{}
 }
 
-/* SubscriptionDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+SubscriptionDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SubscriptionDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this subscription delete internal server error response has a 2xx status code
+func (o *SubscriptionDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this subscription delete internal server error response has a 3xx status code
+func (o *SubscriptionDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription delete internal server error response has a 4xx status code
+func (o *SubscriptionDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this subscription delete internal server error response has a 5xx status code
+func (o *SubscriptionDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this subscription delete internal server error response a status code equal to that given
+func (o *SubscriptionDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SubscriptionDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteInternalServerError ", 500)
+}
+
+func (o *SubscriptionDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteInternalServerError ", 500)
 }
 

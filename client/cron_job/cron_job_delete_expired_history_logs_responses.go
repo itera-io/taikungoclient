@@ -69,7 +69,8 @@ func NewCronJobDeleteExpiredHistoryLogsOK() *CronJobDeleteExpiredHistoryLogsOK {
 	return &CronJobDeleteExpiredHistoryLogsOK{}
 }
 
-/* CronJobDeleteExpiredHistoryLogsOK describes a response with status code 200, with default header values.
+/*
+CronJobDeleteExpiredHistoryLogsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CronJobDeleteExpiredHistoryLogsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this cron job delete expired history logs o k response has a 2xx status code
+func (o *CronJobDeleteExpiredHistoryLogsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cron job delete expired history logs o k response has a 3xx status code
+func (o *CronJobDeleteExpiredHistoryLogsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete expired history logs o k response has a 4xx status code
+func (o *CronJobDeleteExpiredHistoryLogsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job delete expired history logs o k response has a 5xx status code
+func (o *CronJobDeleteExpiredHistoryLogsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete expired history logs o k response a status code equal to that given
+func (o *CronJobDeleteExpiredHistoryLogsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CronJobDeleteExpiredHistoryLogsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsOK  %+v", 200, o.Payload)
 }
+
+func (o *CronJobDeleteExpiredHistoryLogsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsOK  %+v", 200, o.Payload)
+}
+
 func (o *CronJobDeleteExpiredHistoryLogsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCronJobDeleteExpiredHistoryLogsBadRequest() *CronJobDeleteExpiredHistory
 	return &CronJobDeleteExpiredHistoryLogsBadRequest{}
 }
 
-/* CronJobDeleteExpiredHistoryLogsBadRequest describes a response with status code 400, with default header values.
+/*
+CronJobDeleteExpiredHistoryLogsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CronJobDeleteExpiredHistoryLogsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete expired history logs bad request response has a 2xx status code
+func (o *CronJobDeleteExpiredHistoryLogsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete expired history logs bad request response has a 3xx status code
+func (o *CronJobDeleteExpiredHistoryLogsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete expired history logs bad request response has a 4xx status code
+func (o *CronJobDeleteExpiredHistoryLogsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete expired history logs bad request response has a 5xx status code
+func (o *CronJobDeleteExpiredHistoryLogsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete expired history logs bad request response a status code equal to that given
+func (o *CronJobDeleteExpiredHistoryLogsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CronJobDeleteExpiredHistoryLogsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CronJobDeleteExpiredHistoryLogsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CronJobDeleteExpiredHistoryLogsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCronJobDeleteExpiredHistoryLogsUnauthorized() *CronJobDeleteExpiredHisto
 	return &CronJobDeleteExpiredHistoryLogsUnauthorized{}
 }
 
-/* CronJobDeleteExpiredHistoryLogsUnauthorized describes a response with status code 401, with default header values.
+/*
+CronJobDeleteExpiredHistoryLogsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CronJobDeleteExpiredHistoryLogsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete expired history logs unauthorized response has a 2xx status code
+func (o *CronJobDeleteExpiredHistoryLogsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete expired history logs unauthorized response has a 3xx status code
+func (o *CronJobDeleteExpiredHistoryLogsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete expired history logs unauthorized response has a 4xx status code
+func (o *CronJobDeleteExpiredHistoryLogsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete expired history logs unauthorized response has a 5xx status code
+func (o *CronJobDeleteExpiredHistoryLogsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete expired history logs unauthorized response a status code equal to that given
+func (o *CronJobDeleteExpiredHistoryLogsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CronJobDeleteExpiredHistoryLogsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CronJobDeleteExpiredHistoryLogsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CronJobDeleteExpiredHistoryLogsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCronJobDeleteExpiredHistoryLogsForbidden() *CronJobDeleteExpiredHistoryL
 	return &CronJobDeleteExpiredHistoryLogsForbidden{}
 }
 
-/* CronJobDeleteExpiredHistoryLogsForbidden describes a response with status code 403, with default header values.
+/*
+CronJobDeleteExpiredHistoryLogsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CronJobDeleteExpiredHistoryLogsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete expired history logs forbidden response has a 2xx status code
+func (o *CronJobDeleteExpiredHistoryLogsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete expired history logs forbidden response has a 3xx status code
+func (o *CronJobDeleteExpiredHistoryLogsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete expired history logs forbidden response has a 4xx status code
+func (o *CronJobDeleteExpiredHistoryLogsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete expired history logs forbidden response has a 5xx status code
+func (o *CronJobDeleteExpiredHistoryLogsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete expired history logs forbidden response a status code equal to that given
+func (o *CronJobDeleteExpiredHistoryLogsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CronJobDeleteExpiredHistoryLogsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CronJobDeleteExpiredHistoryLogsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CronJobDeleteExpiredHistoryLogsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCronJobDeleteExpiredHistoryLogsNotFound() *CronJobDeleteExpiredHistoryLo
 	return &CronJobDeleteExpiredHistoryLogsNotFound{}
 }
 
-/* CronJobDeleteExpiredHistoryLogsNotFound describes a response with status code 404, with default header values.
+/*
+CronJobDeleteExpiredHistoryLogsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CronJobDeleteExpiredHistoryLogsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job delete expired history logs not found response has a 2xx status code
+func (o *CronJobDeleteExpiredHistoryLogsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete expired history logs not found response has a 3xx status code
+func (o *CronJobDeleteExpiredHistoryLogsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete expired history logs not found response has a 4xx status code
+func (o *CronJobDeleteExpiredHistoryLogsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job delete expired history logs not found response has a 5xx status code
+func (o *CronJobDeleteExpiredHistoryLogsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job delete expired history logs not found response a status code equal to that given
+func (o *CronJobDeleteExpiredHistoryLogsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CronJobDeleteExpiredHistoryLogsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CronJobDeleteExpiredHistoryLogsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CronJobDeleteExpiredHistoryLogsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCronJobDeleteExpiredHistoryLogsInternalServerError() *CronJobDeleteExpir
 	return &CronJobDeleteExpiredHistoryLogsInternalServerError{}
 }
 
-/* CronJobDeleteExpiredHistoryLogsInternalServerError describes a response with status code 500, with default header values.
+/*
+CronJobDeleteExpiredHistoryLogsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CronJobDeleteExpiredHistoryLogsInternalServerError struct {
 }
 
+// IsSuccess returns true when this cron job delete expired history logs internal server error response has a 2xx status code
+func (o *CronJobDeleteExpiredHistoryLogsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job delete expired history logs internal server error response has a 3xx status code
+func (o *CronJobDeleteExpiredHistoryLogsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job delete expired history logs internal server error response has a 4xx status code
+func (o *CronJobDeleteExpiredHistoryLogsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job delete expired history logs internal server error response has a 5xx status code
+func (o *CronJobDeleteExpiredHistoryLogsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cron job delete expired history logs internal server error response a status code equal to that given
+func (o *CronJobDeleteExpiredHistoryLogsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CronJobDeleteExpiredHistoryLogsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsInternalServerError ", 500)
+}
+
+func (o *CronJobDeleteExpiredHistoryLogsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsInternalServerError ", 500)
 }
 

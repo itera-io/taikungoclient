@@ -58,7 +58,7 @@ type ClientService interface {
 }
 
 /*
-  PrometheusBillingList retrieves all prometheus billing
+PrometheusBillingList retrieves all prometheus billing
 */
 func (a *Client) PrometheusBillingList(params *PrometheusBillingListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusBillingListOK, error) {
 	// TODO: Validate the params before sending
@@ -97,7 +97,7 @@ func (a *Client) PrometheusBillingList(params *PrometheusBillingListParams, auth
 }
 
 /*
-  PrometheusBindOrganizations binds organizations to prometheus rule
+PrometheusBindOrganizations binds organizations to prometheus rule
 */
 func (a *Client) PrometheusBindOrganizations(params *PrometheusBindOrganizationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusBindOrganizationsOK, error) {
 	// TODO: Validate the params before sending
@@ -136,7 +136,7 @@ func (a *Client) PrometheusBindOrganizations(params *PrometheusBindOrganizations
 }
 
 /*
-  PrometheusBindRules binds rules to organizations
+PrometheusBindRules binds rules to organizations
 */
 func (a *Client) PrometheusBindRules(params *PrometheusBindRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusBindRulesOK, error) {
 	// TODO: Validate the params before sending
@@ -175,7 +175,7 @@ func (a *Client) PrometheusBindRules(params *PrometheusBindRulesParams, authInfo
 }
 
 /*
-  PrometheusCreate adds prometheus rule
+PrometheusCreate adds prometheus rule
 */
 func (a *Client) PrometheusCreate(params *PrometheusCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -214,7 +214,7 @@ func (a *Client) PrometheusCreate(params *PrometheusCreateParams, authInfo runti
 }
 
 /*
-  PrometheusCreateBilling adds prometheus billing
+PrometheusCreateBilling adds prometheus billing
 */
 func (a *Client) PrometheusCreateBilling(params *PrometheusCreateBillingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusCreateBillingOK, error) {
 	// TODO: Validate the params before sending
@@ -253,7 +253,7 @@ func (a *Client) PrometheusCreateBilling(params *PrometheusCreateBillingParams, 
 }
 
 /*
-  PrometheusDelete removes prometheus rule
+PrometheusDelete removes prometheus rule
 */
 func (a *Client) PrometheusDelete(params *PrometheusDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -292,7 +292,7 @@ func (a *Client) PrometheusDelete(params *PrometheusDeleteParams, authInfo runti
 }
 
 /*
-  PrometheusDetails retrieves all prometheus rules with detailed info
+PrometheusDetails retrieves all prometheus rules with detailed info
 */
 func (a *Client) PrometheusDetails(params *PrometheusDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -331,7 +331,7 @@ func (a *Client) PrometheusDetails(params *PrometheusDetailsParams, authInfo run
 }
 
 /*
-  PrometheusExportCsv exports csv file
+PrometheusExportCsv exports csv file
 */
 func (a *Client) PrometheusExportCsv(params *PrometheusExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusExportCsvOK, error) {
 	// TODO: Validate the params before sending
@@ -370,7 +370,7 @@ func (a *Client) PrometheusExportCsv(params *PrometheusExportCsvParams, authInfo
 }
 
 /*
-  PrometheusGroupedList retrieves a list of grouped prometheus billing
+PrometheusGroupedList retrieves a list of grouped prometheus billing
 */
 func (a *Client) PrometheusGroupedList(params *PrometheusGroupedListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusGroupedListOK, error) {
 	// TODO: Validate the params before sending
@@ -409,7 +409,7 @@ func (a *Client) PrometheusGroupedList(params *PrometheusGroupedListParams, auth
 }
 
 /*
-  PrometheusListOfRules retrieves a list of prometheus rules
+PrometheusListOfRules retrieves a list of prometheus rules
 */
 func (a *Client) PrometheusListOfRules(params *PrometheusListOfRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusListOfRulesOK, error) {
 	// TODO: Validate the params before sending
@@ -448,7 +448,7 @@ func (a *Client) PrometheusListOfRules(params *PrometheusListOfRulesParams, auth
 }
 
 /*
-  PrometheusMetricName fetches prometheus metric names
+PrometheusMetricName fetches prometheus metric names
 */
 func (a *Client) PrometheusMetricName(params *PrometheusMetricNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusMetricNameOK, error) {
 	// TODO: Validate the params before sending
@@ -487,7 +487,7 @@ func (a *Client) PrometheusMetricName(params *PrometheusMetricNameParams, authIn
 }
 
 /*
-  PrometheusUpdate edits prometheus rule
+PrometheusUpdate edits prometheus rule
 */
 func (a *Client) PrometheusUpdate(params *PrometheusUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusUpdateOK, error) {
 	// TODO: Validate the params before sending

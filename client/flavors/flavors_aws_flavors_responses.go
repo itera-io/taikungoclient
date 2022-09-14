@@ -69,7 +69,8 @@ func NewFlavorsAwsFlavorsOK() *FlavorsAwsFlavorsOK {
 	return &FlavorsAwsFlavorsOK{}
 }
 
-/* FlavorsAwsFlavorsOK describes a response with status code 200, with default header values.
+/*
+FlavorsAwsFlavorsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type FlavorsAwsFlavorsOK struct {
 	Payload *models.AwsFlavorList
 }
 
+// IsSuccess returns true when this flavors aws flavors o k response has a 2xx status code
+func (o *FlavorsAwsFlavorsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this flavors aws flavors o k response has a 3xx status code
+func (o *FlavorsAwsFlavorsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors aws flavors o k response has a 4xx status code
+func (o *FlavorsAwsFlavorsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this flavors aws flavors o k response has a 5xx status code
+func (o *FlavorsAwsFlavorsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors aws flavors o k response a status code equal to that given
+func (o *FlavorsAwsFlavorsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *FlavorsAwsFlavorsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsOK  %+v", 200, o.Payload)
 }
+
+func (o *FlavorsAwsFlavorsOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsOK  %+v", 200, o.Payload)
+}
+
 func (o *FlavorsAwsFlavorsOK) GetPayload() *models.AwsFlavorList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewFlavorsAwsFlavorsBadRequest() *FlavorsAwsFlavorsBadRequest {
 	return &FlavorsAwsFlavorsBadRequest{}
 }
 
-/* FlavorsAwsFlavorsBadRequest describes a response with status code 400, with default header values.
+/*
+FlavorsAwsFlavorsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type FlavorsAwsFlavorsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this flavors aws flavors bad request response has a 2xx status code
+func (o *FlavorsAwsFlavorsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors aws flavors bad request response has a 3xx status code
+func (o *FlavorsAwsFlavorsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors aws flavors bad request response has a 4xx status code
+func (o *FlavorsAwsFlavorsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors aws flavors bad request response has a 5xx status code
+func (o *FlavorsAwsFlavorsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors aws flavors bad request response a status code equal to that given
+func (o *FlavorsAwsFlavorsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *FlavorsAwsFlavorsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *FlavorsAwsFlavorsBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *FlavorsAwsFlavorsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewFlavorsAwsFlavorsUnauthorized() *FlavorsAwsFlavorsUnauthorized {
 	return &FlavorsAwsFlavorsUnauthorized{}
 }
 
-/* FlavorsAwsFlavorsUnauthorized describes a response with status code 401, with default header values.
+/*
+FlavorsAwsFlavorsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type FlavorsAwsFlavorsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this flavors aws flavors unauthorized response has a 2xx status code
+func (o *FlavorsAwsFlavorsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors aws flavors unauthorized response has a 3xx status code
+func (o *FlavorsAwsFlavorsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors aws flavors unauthorized response has a 4xx status code
+func (o *FlavorsAwsFlavorsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors aws flavors unauthorized response has a 5xx status code
+func (o *FlavorsAwsFlavorsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors aws flavors unauthorized response a status code equal to that given
+func (o *FlavorsAwsFlavorsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *FlavorsAwsFlavorsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *FlavorsAwsFlavorsUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *FlavorsAwsFlavorsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewFlavorsAwsFlavorsForbidden() *FlavorsAwsFlavorsForbidden {
 	return &FlavorsAwsFlavorsForbidden{}
 }
 
-/* FlavorsAwsFlavorsForbidden describes a response with status code 403, with default header values.
+/*
+FlavorsAwsFlavorsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type FlavorsAwsFlavorsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this flavors aws flavors forbidden response has a 2xx status code
+func (o *FlavorsAwsFlavorsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors aws flavors forbidden response has a 3xx status code
+func (o *FlavorsAwsFlavorsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors aws flavors forbidden response has a 4xx status code
+func (o *FlavorsAwsFlavorsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors aws flavors forbidden response has a 5xx status code
+func (o *FlavorsAwsFlavorsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors aws flavors forbidden response a status code equal to that given
+func (o *FlavorsAwsFlavorsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *FlavorsAwsFlavorsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *FlavorsAwsFlavorsForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *FlavorsAwsFlavorsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewFlavorsAwsFlavorsNotFound() *FlavorsAwsFlavorsNotFound {
 	return &FlavorsAwsFlavorsNotFound{}
 }
 
-/* FlavorsAwsFlavorsNotFound describes a response with status code 404, with default header values.
+/*
+FlavorsAwsFlavorsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type FlavorsAwsFlavorsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this flavors aws flavors not found response has a 2xx status code
+func (o *FlavorsAwsFlavorsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors aws flavors not found response has a 3xx status code
+func (o *FlavorsAwsFlavorsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors aws flavors not found response has a 4xx status code
+func (o *FlavorsAwsFlavorsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors aws flavors not found response has a 5xx status code
+func (o *FlavorsAwsFlavorsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors aws flavors not found response a status code equal to that given
+func (o *FlavorsAwsFlavorsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *FlavorsAwsFlavorsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *FlavorsAwsFlavorsNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *FlavorsAwsFlavorsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewFlavorsAwsFlavorsInternalServerError() *FlavorsAwsFlavorsInternalServerE
 	return &FlavorsAwsFlavorsInternalServerError{}
 }
 
-/* FlavorsAwsFlavorsInternalServerError describes a response with status code 500, with default header values.
+/*
+FlavorsAwsFlavorsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type FlavorsAwsFlavorsInternalServerError struct {
 }
 
+// IsSuccess returns true when this flavors aws flavors internal server error response has a 2xx status code
+func (o *FlavorsAwsFlavorsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors aws flavors internal server error response has a 3xx status code
+func (o *FlavorsAwsFlavorsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors aws flavors internal server error response has a 4xx status code
+func (o *FlavorsAwsFlavorsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this flavors aws flavors internal server error response has a 5xx status code
+func (o *FlavorsAwsFlavorsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this flavors aws flavors internal server error response a status code equal to that given
+func (o *FlavorsAwsFlavorsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *FlavorsAwsFlavorsInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsInternalServerError ", 500)
+}
+
+func (o *FlavorsAwsFlavorsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsInternalServerError ", 500)
 }
 

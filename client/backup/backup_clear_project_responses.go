@@ -69,7 +69,8 @@ func NewBackupClearProjectOK() *BackupClearProjectOK {
 	return &BackupClearProjectOK{}
 }
 
-/* BackupClearProjectOK describes a response with status code 200, with default header values.
+/*
+BackupClearProjectOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type BackupClearProjectOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this backup clear project o k response has a 2xx status code
+func (o *BackupClearProjectOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this backup clear project o k response has a 3xx status code
+func (o *BackupClearProjectOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup clear project o k response has a 4xx status code
+func (o *BackupClearProjectOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this backup clear project o k response has a 5xx status code
+func (o *BackupClearProjectOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup clear project o k response a status code equal to that given
+func (o *BackupClearProjectOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *BackupClearProjectOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectOK  %+v", 200, o.Payload)
 }
+
+func (o *BackupClearProjectOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectOK  %+v", 200, o.Payload)
+}
+
 func (o *BackupClearProjectOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewBackupClearProjectBadRequest() *BackupClearProjectBadRequest {
 	return &BackupClearProjectBadRequest{}
 }
 
-/* BackupClearProjectBadRequest describes a response with status code 400, with default header values.
+/*
+BackupClearProjectBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type BackupClearProjectBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this backup clear project bad request response has a 2xx status code
+func (o *BackupClearProjectBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup clear project bad request response has a 3xx status code
+func (o *BackupClearProjectBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup clear project bad request response has a 4xx status code
+func (o *BackupClearProjectBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup clear project bad request response has a 5xx status code
+func (o *BackupClearProjectBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup clear project bad request response a status code equal to that given
+func (o *BackupClearProjectBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BackupClearProjectBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BackupClearProjectBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BackupClearProjectBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewBackupClearProjectUnauthorized() *BackupClearProjectUnauthorized {
 	return &BackupClearProjectUnauthorized{}
 }
 
-/* BackupClearProjectUnauthorized describes a response with status code 401, with default header values.
+/*
+BackupClearProjectUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type BackupClearProjectUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup clear project unauthorized response has a 2xx status code
+func (o *BackupClearProjectUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup clear project unauthorized response has a 3xx status code
+func (o *BackupClearProjectUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup clear project unauthorized response has a 4xx status code
+func (o *BackupClearProjectUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup clear project unauthorized response has a 5xx status code
+func (o *BackupClearProjectUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup clear project unauthorized response a status code equal to that given
+func (o *BackupClearProjectUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BackupClearProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BackupClearProjectUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BackupClearProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewBackupClearProjectForbidden() *BackupClearProjectForbidden {
 	return &BackupClearProjectForbidden{}
 }
 
-/* BackupClearProjectForbidden describes a response with status code 403, with default header values.
+/*
+BackupClearProjectForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type BackupClearProjectForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup clear project forbidden response has a 2xx status code
+func (o *BackupClearProjectForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup clear project forbidden response has a 3xx status code
+func (o *BackupClearProjectForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup clear project forbidden response has a 4xx status code
+func (o *BackupClearProjectForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup clear project forbidden response has a 5xx status code
+func (o *BackupClearProjectForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup clear project forbidden response a status code equal to that given
+func (o *BackupClearProjectForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *BackupClearProjectForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectForbidden  %+v", 403, o.Payload)
 }
+
+func (o *BackupClearProjectForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectForbidden  %+v", 403, o.Payload)
+}
+
 func (o *BackupClearProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewBackupClearProjectNotFound() *BackupClearProjectNotFound {
 	return &BackupClearProjectNotFound{}
 }
 
-/* BackupClearProjectNotFound describes a response with status code 404, with default header values.
+/*
+BackupClearProjectNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type BackupClearProjectNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup clear project not found response has a 2xx status code
+func (o *BackupClearProjectNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup clear project not found response has a 3xx status code
+func (o *BackupClearProjectNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup clear project not found response has a 4xx status code
+func (o *BackupClearProjectNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup clear project not found response has a 5xx status code
+func (o *BackupClearProjectNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup clear project not found response a status code equal to that given
+func (o *BackupClearProjectNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BackupClearProjectNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BackupClearProjectNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BackupClearProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewBackupClearProjectInternalServerError() *BackupClearProjectInternalServe
 	return &BackupClearProjectInternalServerError{}
 }
 
-/* BackupClearProjectInternalServerError describes a response with status code 500, with default header values.
+/*
+BackupClearProjectInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type BackupClearProjectInternalServerError struct {
 }
 
+// IsSuccess returns true when this backup clear project internal server error response has a 2xx status code
+func (o *BackupClearProjectInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup clear project internal server error response has a 3xx status code
+func (o *BackupClearProjectInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup clear project internal server error response has a 4xx status code
+func (o *BackupClearProjectInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this backup clear project internal server error response has a 5xx status code
+func (o *BackupClearProjectInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this backup clear project internal server error response a status code equal to that given
+func (o *BackupClearProjectInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BackupClearProjectInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectInternalServerError ", 500)
+}
+
+func (o *BackupClearProjectInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectInternalServerError ", 500)
 }
 

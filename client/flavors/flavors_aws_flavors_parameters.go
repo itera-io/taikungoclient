@@ -53,10 +53,12 @@ func NewFlavorsAwsFlavorsParamsWithHTTPClient(client *http.Client) *FlavorsAwsFl
 	}
 }
 
-/* FlavorsAwsFlavorsParams contains all the parameters to send to the API endpoint
-   for the flavors aws flavors operation.
+/*
+FlavorsAwsFlavorsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the flavors aws flavors operation.
+
+	Typically these are written to a http.Request.
 */
 type FlavorsAwsFlavorsParams struct {
 

@@ -54,10 +54,12 @@ func NewSubscriptionUpdateParamsWithHTTPClient(client *http.Client) *Subscriptio
 	}
 }
 
-/* SubscriptionUpdateParams contains all the parameters to send to the API endpoint
-   for the subscription update operation.
+/*
+SubscriptionUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the subscription update operation.
+
+	Typically these are written to a http.Request.
 */
 type SubscriptionUpdateParams struct {
 

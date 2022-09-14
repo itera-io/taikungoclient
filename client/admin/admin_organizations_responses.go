@@ -69,7 +69,8 @@ func NewAdminOrganizationsOK() *AdminOrganizationsOK {
 	return &AdminOrganizationsOK{}
 }
 
-/* AdminOrganizationsOK describes a response with status code 200, with default header values.
+/*
+AdminOrganizationsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AdminOrganizationsOK struct {
 	Payload *models.AdminOrganizationsList
 }
 
+// IsSuccess returns true when this admin organizations o k response has a 2xx status code
+func (o *AdminOrganizationsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this admin organizations o k response has a 3xx status code
+func (o *AdminOrganizationsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin organizations o k response has a 4xx status code
+func (o *AdminOrganizationsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin organizations o k response has a 5xx status code
+func (o *AdminOrganizationsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin organizations o k response a status code equal to that given
+func (o *AdminOrganizationsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AdminOrganizationsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsOK  %+v", 200, o.Payload)
 }
+
+func (o *AdminOrganizationsOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsOK  %+v", 200, o.Payload)
+}
+
 func (o *AdminOrganizationsOK) GetPayload() *models.AdminOrganizationsList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewAdminOrganizationsBadRequest() *AdminOrganizationsBadRequest {
 	return &AdminOrganizationsBadRequest{}
 }
 
-/* AdminOrganizationsBadRequest describes a response with status code 400, with default header values.
+/*
+AdminOrganizationsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type AdminOrganizationsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this admin organizations bad request response has a 2xx status code
+func (o *AdminOrganizationsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin organizations bad request response has a 3xx status code
+func (o *AdminOrganizationsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin organizations bad request response has a 4xx status code
+func (o *AdminOrganizationsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin organizations bad request response has a 5xx status code
+func (o *AdminOrganizationsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin organizations bad request response a status code equal to that given
+func (o *AdminOrganizationsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AdminOrganizationsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AdminOrganizationsBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AdminOrganizationsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewAdminOrganizationsUnauthorized() *AdminOrganizationsUnauthorized {
 	return &AdminOrganizationsUnauthorized{}
 }
 
-/* AdminOrganizationsUnauthorized describes a response with status code 401, with default header values.
+/*
+AdminOrganizationsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type AdminOrganizationsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin organizations unauthorized response has a 2xx status code
+func (o *AdminOrganizationsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin organizations unauthorized response has a 3xx status code
+func (o *AdminOrganizationsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin organizations unauthorized response has a 4xx status code
+func (o *AdminOrganizationsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin organizations unauthorized response has a 5xx status code
+func (o *AdminOrganizationsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin organizations unauthorized response a status code equal to that given
+func (o *AdminOrganizationsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AdminOrganizationsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AdminOrganizationsUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AdminOrganizationsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewAdminOrganizationsForbidden() *AdminOrganizationsForbidden {
 	return &AdminOrganizationsForbidden{}
 }
 
-/* AdminOrganizationsForbidden describes a response with status code 403, with default header values.
+/*
+AdminOrganizationsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type AdminOrganizationsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin organizations forbidden response has a 2xx status code
+func (o *AdminOrganizationsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin organizations forbidden response has a 3xx status code
+func (o *AdminOrganizationsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin organizations forbidden response has a 4xx status code
+func (o *AdminOrganizationsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin organizations forbidden response has a 5xx status code
+func (o *AdminOrganizationsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin organizations forbidden response a status code equal to that given
+func (o *AdminOrganizationsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AdminOrganizationsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AdminOrganizationsForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AdminOrganizationsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewAdminOrganizationsNotFound() *AdminOrganizationsNotFound {
 	return &AdminOrganizationsNotFound{}
 }
 
-/* AdminOrganizationsNotFound describes a response with status code 404, with default header values.
+/*
+AdminOrganizationsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type AdminOrganizationsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin organizations not found response has a 2xx status code
+func (o *AdminOrganizationsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin organizations not found response has a 3xx status code
+func (o *AdminOrganizationsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin organizations not found response has a 4xx status code
+func (o *AdminOrganizationsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin organizations not found response has a 5xx status code
+func (o *AdminOrganizationsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin organizations not found response a status code equal to that given
+func (o *AdminOrganizationsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AdminOrganizationsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AdminOrganizationsNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AdminOrganizationsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewAdminOrganizationsInternalServerError() *AdminOrganizationsInternalServe
 	return &AdminOrganizationsInternalServerError{}
 }
 
-/* AdminOrganizationsInternalServerError describes a response with status code 500, with default header values.
+/*
+AdminOrganizationsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AdminOrganizationsInternalServerError struct {
 }
 
+// IsSuccess returns true when this admin organizations internal server error response has a 2xx status code
+func (o *AdminOrganizationsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin organizations internal server error response has a 3xx status code
+func (o *AdminOrganizationsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin organizations internal server error response has a 4xx status code
+func (o *AdminOrganizationsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin organizations internal server error response has a 5xx status code
+func (o *AdminOrganizationsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this admin organizations internal server error response a status code equal to that given
+func (o *AdminOrganizationsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AdminOrganizationsInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsInternalServerError ", 500)
+}
+
+func (o *AdminOrganizationsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsInternalServerError ", 500)
 }
 

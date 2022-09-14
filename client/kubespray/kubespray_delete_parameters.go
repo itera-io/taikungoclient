@@ -53,10 +53,12 @@ func NewKubesprayDeleteParamsWithHTTPClient(client *http.Client) *KubesprayDelet
 	}
 }
 
-/* KubesprayDeleteParams contains all the parameters to send to the API endpoint
-   for the kubespray delete operation.
+/*
+KubesprayDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubespray delete operation.
+
+	Typically these are written to a http.Request.
 */
 type KubesprayDeleteParams struct {
 

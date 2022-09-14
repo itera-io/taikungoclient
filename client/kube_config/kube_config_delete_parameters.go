@@ -54,10 +54,12 @@ func NewKubeConfigDeleteParamsWithHTTPClient(client *http.Client) *KubeConfigDel
 	}
 }
 
-/* KubeConfigDeleteParams contains all the parameters to send to the API endpoint
-   for the kube config delete operation.
+/*
+KubeConfigDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kube config delete operation.
+
+	Typically these are written to a http.Request.
 */
 type KubeConfigDeleteParams struct {
 

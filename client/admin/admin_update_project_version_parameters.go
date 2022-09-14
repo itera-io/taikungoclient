@@ -54,10 +54,12 @@ func NewAdminUpdateProjectVersionParamsWithHTTPClient(client *http.Client) *Admi
 	}
 }
 
-/* AdminUpdateProjectVersionParams contains all the parameters to send to the API endpoint
-   for the admin update project version operation.
+/*
+AdminUpdateProjectVersionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the admin update project version operation.
+
+	Typically these are written to a http.Request.
 */
 type AdminUpdateProjectVersionParams struct {
 

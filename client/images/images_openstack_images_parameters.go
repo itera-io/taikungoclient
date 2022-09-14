@@ -53,10 +53,12 @@ func NewImagesOpenstackImagesParamsWithHTTPClient(client *http.Client) *ImagesOp
 	}
 }
 
-/* ImagesOpenstackImagesParams contains all the parameters to send to the API endpoint
-   for the images openstack images operation.
+/*
+ImagesOpenstackImagesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the images openstack images operation.
+
+	Typically these are written to a http.Request.
 */
 type ImagesOpenstackImagesParams struct {
 

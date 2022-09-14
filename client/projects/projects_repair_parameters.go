@@ -53,10 +53,12 @@ func NewProjectsRepairParamsWithHTTPClient(client *http.Client) *ProjectsRepairP
 	}
 }
 
-/* ProjectsRepairParams contains all the parameters to send to the API endpoint
-   for the projects repair operation.
+/*
+ProjectsRepairParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects repair operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsRepairParams struct {
 

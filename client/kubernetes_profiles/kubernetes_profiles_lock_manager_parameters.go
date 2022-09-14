@@ -54,10 +54,12 @@ func NewKubernetesProfilesLockManagerParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* KubernetesProfilesLockManagerParams contains all the parameters to send to the API endpoint
-   for the kubernetes profiles lock manager operation.
+/*
+KubernetesProfilesLockManagerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes profiles lock manager operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesProfilesLockManagerParams struct {
 

@@ -52,10 +52,12 @@ func NewUsersExportCsvParamsWithHTTPClient(client *http.Client) *UsersExportCsvP
 	}
 }
 
-/* UsersExportCsvParams contains all the parameters to send to the API endpoint
-   for the users export csv operation.
+/*
+UsersExportCsvParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the users export csv operation.
+
+	Typically these are written to a http.Request.
 */
 type UsersExportCsvParams struct {
 

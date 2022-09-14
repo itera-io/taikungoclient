@@ -54,10 +54,12 @@ func NewPaymentClearParamsWithHTTPClient(client *http.Client) *PaymentClearParam
 	}
 }
 
-/* PaymentClearParams contains all the parameters to send to the API endpoint
-   for the payment clear operation.
+/*
+PaymentClearParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the payment clear operation.
+
+	Typically these are written to a http.Request.
 */
 type PaymentClearParams struct {
 

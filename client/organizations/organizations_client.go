@@ -60,7 +60,7 @@ type ClientService interface {
 }
 
 /*
-  OrganizationsAcceptOffer accepts discount offer
+OrganizationsAcceptOffer accepts discount offer
 */
 func (a *Client) OrganizationsAcceptOffer(params *OrganizationsAcceptOfferParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsAcceptOfferOK, error) {
 	// TODO: Validate the params before sending
@@ -99,7 +99,7 @@ func (a *Client) OrganizationsAcceptOffer(params *OrganizationsAcceptOfferParams
 }
 
 /*
-  OrganizationsCreate creates a new organization only available for admins
+OrganizationsCreate creates a new organization only available for admins
 */
 func (a *Client) OrganizationsCreate(params *OrganizationsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -138,7 +138,7 @@ func (a *Client) OrganizationsCreate(params *OrganizationsCreateParams, authInfo
 }
 
 /*
-  OrganizationsCreateDefaultProfilers creates default profilers by organization Uuid
+OrganizationsCreateDefaultProfilers creates default profilers by organization Uuid
 */
 func (a *Client) OrganizationsCreateDefaultProfilers(params *OrganizationsCreateDefaultProfilersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsCreateDefaultProfilersOK, error) {
 	// TODO: Validate the params before sending
@@ -177,7 +177,7 @@ func (a *Client) OrganizationsCreateDefaultProfilers(params *OrganizationsCreate
 }
 
 /*
-  OrganizationsDelete deletes the specified organization only available for admins
+OrganizationsDelete deletes the specified organization only available for admins
 */
 func (a *Client) OrganizationsDelete(params *OrganizationsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsDeleteOK, *OrganizationsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -217,7 +217,7 @@ func (a *Client) OrganizationsDelete(params *OrganizationsDeleteParams, authInfo
 }
 
 /*
-  OrganizationsDetails retrieves all data about current organization by Id
+OrganizationsDetails retrieves all data about current organization by Id
 */
 func (a *Client) OrganizationsDetails(params *OrganizationsDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -256,7 +256,7 @@ func (a *Client) OrganizationsDetails(params *OrganizationsDetailsParams, authIn
 }
 
 /*
-  OrganizationsExportCsv exports csv file
+OrganizationsExportCsv exports csv file
 */
 func (a *Client) OrganizationsExportCsv(params *OrganizationsExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsExportCsvOK, error) {
 	// TODO: Validate the params before sending
@@ -295,7 +295,7 @@ func (a *Client) OrganizationsExportCsv(params *OrganizationsExportCsvParams, au
 }
 
 /*
-  OrganizationsLeaveTaikun leaves taikun
+OrganizationsLeaveTaikun leaves taikun
 */
 func (a *Client) OrganizationsLeaveTaikun(params *OrganizationsLeaveTaikunParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsLeaveTaikunOK, error) {
 	// TODO: Validate the params before sending
@@ -334,7 +334,7 @@ func (a *Client) OrganizationsLeaveTaikun(params *OrganizationsLeaveTaikunParams
 }
 
 /*
-  OrganizationsList retrieves all organizations
+OrganizationsList retrieves all organizations
 */
 func (a *Client) OrganizationsList(params *OrganizationsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsListOK, error) {
 	// TODO: Validate the params before sending
@@ -373,7 +373,7 @@ func (a *Client) OrganizationsList(params *OrganizationsListParams, authInfo run
 }
 
 /*
-  OrganizationsOrganizationList retrieves organizations
+OrganizationsOrganizationList retrieves organizations
 */
 func (a *Client) OrganizationsOrganizationList(params *OrganizationsOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsOrganizationListOK, error) {
 	// TODO: Validate the params before sending
@@ -412,7 +412,7 @@ func (a *Client) OrganizationsOrganizationList(params *OrganizationsOrganization
 }
 
 /*
-  OrganizationsToggleKeycloak toggles keycloak login option
+OrganizationsToggleKeycloak toggles keycloak login option
 */
 func (a *Client) OrganizationsToggleKeycloak(params *OrganizationsToggleKeycloakParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsToggleKeycloakOK, error) {
 	// TODO: Validate the params before sending
@@ -451,7 +451,7 @@ func (a *Client) OrganizationsToggleKeycloak(params *OrganizationsToggleKeycloak
 }
 
 /*
-  OrganizationsUpdate updates organization by Id
+OrganizationsUpdate updates organization by Id
 */
 func (a *Client) OrganizationsUpdate(params *OrganizationsUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -490,7 +490,7 @@ func (a *Client) OrganizationsUpdate(params *OrganizationsUpdateParams, authInfo
 }
 
 /*
-  OrganizationsUpdatePaymentMethod updates organization payment Id
+OrganizationsUpdatePaymentMethod updates organization payment Id
 */
 func (a *Client) OrganizationsUpdatePaymentMethod(params *OrganizationsUpdatePaymentMethodParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsUpdatePaymentMethodOK, error) {
 	// TODO: Validate the params before sending
@@ -529,7 +529,7 @@ func (a *Client) OrganizationsUpdatePaymentMethod(params *OrganizationsUpdatePay
 }
 
 /*
-  OrganizationsUpdateSubscription updates subscription
+OrganizationsUpdateSubscription updates subscription
 */
 func (a *Client) OrganizationsUpdateSubscription(params *OrganizationsUpdateSubscriptionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsUpdateSubscriptionOK, error) {
 	// TODO: Validate the params before sending

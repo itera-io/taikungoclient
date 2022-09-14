@@ -54,10 +54,12 @@ func NewPartnerBindOrganizationsParamsWithHTTPClient(client *http.Client) *Partn
 	}
 }
 
-/* PartnerBindOrganizationsParams contains all the parameters to send to the API endpoint
-   for the partner bind organizations operation.
+/*
+PartnerBindOrganizationsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the partner bind organizations operation.
+
+	Typically these are written to a http.Request.
 */
 type PartnerBindOrganizationsParams struct {
 

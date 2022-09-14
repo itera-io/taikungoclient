@@ -8,10 +8,8 @@ package models
 import (
 	"context"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // ProjectAppListDto project app list dto
@@ -21,6 +19,9 @@ type ProjectAppListDto struct {
 
 	// app repo name
 	AppRepoName string `json:"appRepoName,omitempty"`
+
+	// auto sync
+	AutoSync bool `json:"autoSync"`
 
 	// catalog app name
 	CatalogAppName string `json:"catalogAppName,omitempty"`
@@ -32,8 +33,7 @@ type ProjectAppListDto struct {
 	CatalogName string `json:"catalogName,omitempty"`
 
 	// created
-	// Format: date-time
-	Created *strfmt.DateTime `json:"created,omitempty"`
+	Created string `json:"created,omitempty"`
 
 	// created by
 	CreatedBy string `json:"createdBy,omitempty"`
@@ -42,8 +42,7 @@ type ProjectAppListDto struct {
 	ID int32 `json:"id,omitempty"`
 
 	// last modified
-	// Format: date-time
-	LastModified *strfmt.DateTime `json:"lastModified,omitempty"`
+	LastModified string `json:"lastModified,omitempty"`
 
 	// last modified by
 	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
@@ -57,6 +56,12 @@ type ProjectAppListDto struct {
 	// namespace
 	Namespace string `json:"namespace,omitempty"`
 
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
+
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
+
 	// status
 	Status string `json:"status,omitempty"`
 
@@ -66,43 +71,6 @@ type ProjectAppListDto struct {
 
 // Validate validates this project app list dto
 func (m *ProjectAppListDto) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateCreated(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateLastModified(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ProjectAppListDto) validateCreated(formats strfmt.Registry) error {
-	if swag.IsZero(m.Created) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("created", "body", "date-time", m.Created.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *ProjectAppListDto) validateLastModified(formats strfmt.Registry) error {
-	if swag.IsZero(m.LastModified) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("lastModified", "body", "date-time", m.LastModified.String(), formats); err != nil {
-		return err
-	}
-
 	return nil
 }
 

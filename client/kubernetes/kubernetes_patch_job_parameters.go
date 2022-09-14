@@ -54,10 +54,12 @@ func NewKubernetesPatchJobParamsWithHTTPClient(client *http.Client) *KubernetesP
 	}
 }
 
-/* KubernetesPatchJobParams contains all the parameters to send to the API endpoint
-   for the kubernetes patch job operation.
+/*
+KubernetesPatchJobParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes patch job operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesPatchJobParams struct {
 

@@ -69,7 +69,8 @@ func NewProjectsPurgeOK() *ProjectsPurgeOK {
 	return &ProjectsPurgeOK{}
 }
 
-/* ProjectsPurgeOK describes a response with status code 200, with default header values.
+/*
+ProjectsPurgeOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsPurgeOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this projects purge o k response has a 2xx status code
+func (o *ProjectsPurgeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects purge o k response has a 3xx status code
+func (o *ProjectsPurgeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects purge o k response has a 4xx status code
+func (o *ProjectsPurgeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects purge o k response has a 5xx status code
+func (o *ProjectsPurgeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects purge o k response a status code equal to that given
+func (o *ProjectsPurgeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsPurgeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsPurgeOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsPurgeOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectsPurgeBadRequest() *ProjectsPurgeBadRequest {
 	return &ProjectsPurgeBadRequest{}
 }
 
-/* ProjectsPurgeBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsPurgeBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectsPurgeBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects purge bad request response has a 2xx status code
+func (o *ProjectsPurgeBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects purge bad request response has a 3xx status code
+func (o *ProjectsPurgeBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects purge bad request response has a 4xx status code
+func (o *ProjectsPurgeBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects purge bad request response has a 5xx status code
+func (o *ProjectsPurgeBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects purge bad request response a status code equal to that given
+func (o *ProjectsPurgeBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsPurgeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsPurgeBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsPurgeBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectsPurgeUnauthorized() *ProjectsPurgeUnauthorized {
 	return &ProjectsPurgeUnauthorized{}
 }
 
-/* ProjectsPurgeUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsPurgeUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectsPurgeUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects purge unauthorized response has a 2xx status code
+func (o *ProjectsPurgeUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects purge unauthorized response has a 3xx status code
+func (o *ProjectsPurgeUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects purge unauthorized response has a 4xx status code
+func (o *ProjectsPurgeUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects purge unauthorized response has a 5xx status code
+func (o *ProjectsPurgeUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects purge unauthorized response a status code equal to that given
+func (o *ProjectsPurgeUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsPurgeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsPurgeUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsPurgeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectsPurgeForbidden() *ProjectsPurgeForbidden {
 	return &ProjectsPurgeForbidden{}
 }
 
-/* ProjectsPurgeForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsPurgeForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectsPurgeForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects purge forbidden response has a 2xx status code
+func (o *ProjectsPurgeForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects purge forbidden response has a 3xx status code
+func (o *ProjectsPurgeForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects purge forbidden response has a 4xx status code
+func (o *ProjectsPurgeForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects purge forbidden response has a 5xx status code
+func (o *ProjectsPurgeForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects purge forbidden response a status code equal to that given
+func (o *ProjectsPurgeForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsPurgeForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsPurgeForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsPurgeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectsPurgeNotFound() *ProjectsPurgeNotFound {
 	return &ProjectsPurgeNotFound{}
 }
 
-/* ProjectsPurgeNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsPurgeNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectsPurgeNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects purge not found response has a 2xx status code
+func (o *ProjectsPurgeNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects purge not found response has a 3xx status code
+func (o *ProjectsPurgeNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects purge not found response has a 4xx status code
+func (o *ProjectsPurgeNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects purge not found response has a 5xx status code
+func (o *ProjectsPurgeNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects purge not found response a status code equal to that given
+func (o *ProjectsPurgeNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsPurgeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsPurgeNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsPurgeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectsPurgeInternalServerError() *ProjectsPurgeInternalServerError {
 	return &ProjectsPurgeInternalServerError{}
 }
 
-/* ProjectsPurgeInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsPurgeInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsPurgeInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects purge internal server error response has a 2xx status code
+func (o *ProjectsPurgeInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects purge internal server error response has a 3xx status code
+func (o *ProjectsPurgeInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects purge internal server error response has a 4xx status code
+func (o *ProjectsPurgeInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects purge internal server error response has a 5xx status code
+func (o *ProjectsPurgeInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects purge internal server error response a status code equal to that given
+func (o *ProjectsPurgeInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsPurgeInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeInternalServerError ", 500)
+}
+
+func (o *ProjectsPurgeInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeInternalServerError ", 500)
 }
 

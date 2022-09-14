@@ -53,10 +53,12 @@ func NewCatalogListParamsWithHTTPClient(client *http.Client) *CatalogListParams 
 	}
 }
 
-/* CatalogListParams contains all the parameters to send to the API endpoint
-   for the catalog list operation.
+/*
+CatalogListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the catalog list operation.
+
+	Typically these are written to a http.Request.
 */
 type CatalogListParams struct {
 

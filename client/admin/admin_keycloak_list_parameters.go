@@ -53,10 +53,12 @@ func NewAdminKeycloakListParamsWithHTTPClient(client *http.Client) *AdminKeycloa
 	}
 }
 
-/* AdminKeycloakListParams contains all the parameters to send to the API endpoint
-   for the admin keycloak list operation.
+/*
+AdminKeycloakListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the admin keycloak list operation.
+
+	Typically these are written to a http.Request.
 */
 type AdminKeycloakListParams struct {
 

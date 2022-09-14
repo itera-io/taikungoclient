@@ -69,7 +69,8 @@ func NewTicketCreateOK() *TicketCreateOK {
 	return &TicketCreateOK{}
 }
 
-/* TicketCreateOK describes a response with status code 200, with default header values.
+/*
+TicketCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type TicketCreateOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this ticket create o k response has a 2xx status code
+func (o *TicketCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this ticket create o k response has a 3xx status code
+func (o *TicketCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket create o k response has a 4xx status code
+func (o *TicketCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ticket create o k response has a 5xx status code
+func (o *TicketCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket create o k response a status code equal to that given
+func (o *TicketCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *TicketCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *TicketCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *TicketCreateOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewTicketCreateBadRequest() *TicketCreateBadRequest {
 	return &TicketCreateBadRequest{}
 }
 
-/* TicketCreateBadRequest describes a response with status code 400, with default header values.
+/*
+TicketCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type TicketCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this ticket create bad request response has a 2xx status code
+func (o *TicketCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket create bad request response has a 3xx status code
+func (o *TicketCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket create bad request response has a 4xx status code
+func (o *TicketCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket create bad request response has a 5xx status code
+func (o *TicketCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket create bad request response a status code equal to that given
+func (o *TicketCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *TicketCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *TicketCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *TicketCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewTicketCreateUnauthorized() *TicketCreateUnauthorized {
 	return &TicketCreateUnauthorized{}
 }
 
-/* TicketCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+TicketCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type TicketCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ticket create unauthorized response has a 2xx status code
+func (o *TicketCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket create unauthorized response has a 3xx status code
+func (o *TicketCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket create unauthorized response has a 4xx status code
+func (o *TicketCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket create unauthorized response has a 5xx status code
+func (o *TicketCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket create unauthorized response a status code equal to that given
+func (o *TicketCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *TicketCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *TicketCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *TicketCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewTicketCreateForbidden() *TicketCreateForbidden {
 	return &TicketCreateForbidden{}
 }
 
-/* TicketCreateForbidden describes a response with status code 403, with default header values.
+/*
+TicketCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type TicketCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ticket create forbidden response has a 2xx status code
+func (o *TicketCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket create forbidden response has a 3xx status code
+func (o *TicketCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket create forbidden response has a 4xx status code
+func (o *TicketCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket create forbidden response has a 5xx status code
+func (o *TicketCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket create forbidden response a status code equal to that given
+func (o *TicketCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *TicketCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *TicketCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *TicketCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewTicketCreateNotFound() *TicketCreateNotFound {
 	return &TicketCreateNotFound{}
 }
 
-/* TicketCreateNotFound describes a response with status code 404, with default header values.
+/*
+TicketCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type TicketCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ticket create not found response has a 2xx status code
+func (o *TicketCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket create not found response has a 3xx status code
+func (o *TicketCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket create not found response has a 4xx status code
+func (o *TicketCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket create not found response has a 5xx status code
+func (o *TicketCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket create not found response a status code equal to that given
+func (o *TicketCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *TicketCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *TicketCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *TicketCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewTicketCreateInternalServerError() *TicketCreateInternalServerError {
 	return &TicketCreateInternalServerError{}
 }
 
-/* TicketCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+TicketCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type TicketCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this ticket create internal server error response has a 2xx status code
+func (o *TicketCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket create internal server error response has a 3xx status code
+func (o *TicketCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket create internal server error response has a 4xx status code
+func (o *TicketCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ticket create internal server error response has a 5xx status code
+func (o *TicketCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this ticket create internal server error response a status code equal to that given
+func (o *TicketCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *TicketCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateInternalServerError ", 500)
+}
+
+func (o *TicketCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateInternalServerError ", 500)
 }
 

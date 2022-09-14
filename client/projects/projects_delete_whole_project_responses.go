@@ -75,7 +75,8 @@ func NewProjectsDeleteWholeProjectOK() *ProjectsDeleteWholeProjectOK {
 	return &ProjectsDeleteWholeProjectOK{}
 }
 
-/* ProjectsDeleteWholeProjectOK describes a response with status code 200, with default header values.
+/*
+ProjectsDeleteWholeProjectOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -83,9 +84,39 @@ type ProjectsDeleteWholeProjectOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this projects delete whole project o k response has a 2xx status code
+func (o *ProjectsDeleteWholeProjectOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects delete whole project o k response has a 3xx status code
+func (o *ProjectsDeleteWholeProjectOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects delete whole project o k response has a 4xx status code
+func (o *ProjectsDeleteWholeProjectOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects delete whole project o k response has a 5xx status code
+func (o *ProjectsDeleteWholeProjectOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects delete whole project o k response a status code equal to that given
+func (o *ProjectsDeleteWholeProjectOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsDeleteWholeProjectOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsDeleteWholeProjectOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsDeleteWholeProjectOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -105,14 +136,44 @@ func NewProjectsDeleteWholeProjectNoContent() *ProjectsDeleteWholeProjectNoConte
 	return &ProjectsDeleteWholeProjectNoContent{}
 }
 
-/* ProjectsDeleteWholeProjectNoContent describes a response with status code 204, with default header values.
+/*
+ProjectsDeleteWholeProjectNoContent describes a response with status code 204, with default header values.
 
 Success
 */
 type ProjectsDeleteWholeProjectNoContent struct {
 }
 
+// IsSuccess returns true when this projects delete whole project no content response has a 2xx status code
+func (o *ProjectsDeleteWholeProjectNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects delete whole project no content response has a 3xx status code
+func (o *ProjectsDeleteWholeProjectNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects delete whole project no content response has a 4xx status code
+func (o *ProjectsDeleteWholeProjectNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects delete whole project no content response has a 5xx status code
+func (o *ProjectsDeleteWholeProjectNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects delete whole project no content response a status code equal to that given
+func (o *ProjectsDeleteWholeProjectNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *ProjectsDeleteWholeProjectNoContent) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectNoContent ", 204)
+}
+
+func (o *ProjectsDeleteWholeProjectNoContent) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectNoContent ", 204)
 }
 
@@ -126,7 +187,8 @@ func NewProjectsDeleteWholeProjectBadRequest() *ProjectsDeleteWholeProjectBadReq
 	return &ProjectsDeleteWholeProjectBadRequest{}
 }
 
-/* ProjectsDeleteWholeProjectBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsDeleteWholeProjectBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -134,9 +196,39 @@ type ProjectsDeleteWholeProjectBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects delete whole project bad request response has a 2xx status code
+func (o *ProjectsDeleteWholeProjectBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects delete whole project bad request response has a 3xx status code
+func (o *ProjectsDeleteWholeProjectBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects delete whole project bad request response has a 4xx status code
+func (o *ProjectsDeleteWholeProjectBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects delete whole project bad request response has a 5xx status code
+func (o *ProjectsDeleteWholeProjectBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects delete whole project bad request response a status code equal to that given
+func (o *ProjectsDeleteWholeProjectBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsDeleteWholeProjectBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsDeleteWholeProjectBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsDeleteWholeProjectBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -158,7 +250,8 @@ func NewProjectsDeleteWholeProjectUnauthorized() *ProjectsDeleteWholeProjectUnau
 	return &ProjectsDeleteWholeProjectUnauthorized{}
 }
 
-/* ProjectsDeleteWholeProjectUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsDeleteWholeProjectUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -166,9 +259,39 @@ type ProjectsDeleteWholeProjectUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects delete whole project unauthorized response has a 2xx status code
+func (o *ProjectsDeleteWholeProjectUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects delete whole project unauthorized response has a 3xx status code
+func (o *ProjectsDeleteWholeProjectUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects delete whole project unauthorized response has a 4xx status code
+func (o *ProjectsDeleteWholeProjectUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects delete whole project unauthorized response has a 5xx status code
+func (o *ProjectsDeleteWholeProjectUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects delete whole project unauthorized response a status code equal to that given
+func (o *ProjectsDeleteWholeProjectUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsDeleteWholeProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsDeleteWholeProjectUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsDeleteWholeProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -190,7 +313,8 @@ func NewProjectsDeleteWholeProjectForbidden() *ProjectsDeleteWholeProjectForbidd
 	return &ProjectsDeleteWholeProjectForbidden{}
 }
 
-/* ProjectsDeleteWholeProjectForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsDeleteWholeProjectForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -198,9 +322,39 @@ type ProjectsDeleteWholeProjectForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects delete whole project forbidden response has a 2xx status code
+func (o *ProjectsDeleteWholeProjectForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects delete whole project forbidden response has a 3xx status code
+func (o *ProjectsDeleteWholeProjectForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects delete whole project forbidden response has a 4xx status code
+func (o *ProjectsDeleteWholeProjectForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects delete whole project forbidden response has a 5xx status code
+func (o *ProjectsDeleteWholeProjectForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects delete whole project forbidden response a status code equal to that given
+func (o *ProjectsDeleteWholeProjectForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsDeleteWholeProjectForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsDeleteWholeProjectForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsDeleteWholeProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -222,7 +376,8 @@ func NewProjectsDeleteWholeProjectNotFound() *ProjectsDeleteWholeProjectNotFound
 	return &ProjectsDeleteWholeProjectNotFound{}
 }
 
-/* ProjectsDeleteWholeProjectNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsDeleteWholeProjectNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -230,9 +385,39 @@ type ProjectsDeleteWholeProjectNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects delete whole project not found response has a 2xx status code
+func (o *ProjectsDeleteWholeProjectNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects delete whole project not found response has a 3xx status code
+func (o *ProjectsDeleteWholeProjectNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects delete whole project not found response has a 4xx status code
+func (o *ProjectsDeleteWholeProjectNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects delete whole project not found response has a 5xx status code
+func (o *ProjectsDeleteWholeProjectNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects delete whole project not found response a status code equal to that given
+func (o *ProjectsDeleteWholeProjectNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsDeleteWholeProjectNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsDeleteWholeProjectNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsDeleteWholeProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -254,14 +439,44 @@ func NewProjectsDeleteWholeProjectInternalServerError() *ProjectsDeleteWholeProj
 	return &ProjectsDeleteWholeProjectInternalServerError{}
 }
 
-/* ProjectsDeleteWholeProjectInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsDeleteWholeProjectInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsDeleteWholeProjectInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects delete whole project internal server error response has a 2xx status code
+func (o *ProjectsDeleteWholeProjectInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects delete whole project internal server error response has a 3xx status code
+func (o *ProjectsDeleteWholeProjectInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects delete whole project internal server error response has a 4xx status code
+func (o *ProjectsDeleteWholeProjectInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects delete whole project internal server error response has a 5xx status code
+func (o *ProjectsDeleteWholeProjectInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects delete whole project internal server error response a status code equal to that given
+func (o *ProjectsDeleteWholeProjectInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsDeleteWholeProjectInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectInternalServerError ", 500)
+}
+
+func (o *ProjectsDeleteWholeProjectInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectInternalServerError ", 500)
 }
 

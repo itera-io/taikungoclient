@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  OrganizationSubscriptionsList retrieves all org subscriptions
+OrganizationSubscriptionsList retrieves all org subscriptions
 */
 func (a *Client) OrganizationSubscriptionsList(params *OrganizationSubscriptionsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationSubscriptionsListOK, error) {
 	// TODO: Validate the params before sending

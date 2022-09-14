@@ -54,10 +54,12 @@ func NewAlertingProfilesEditParamsWithHTTPClient(client *http.Client) *AlertingP
 	}
 }
 
-/* AlertingProfilesEditParams contains all the parameters to send to the API endpoint
-   for the alerting profiles edit operation.
+/*
+AlertingProfilesEditParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the alerting profiles edit operation.
+
+	Typically these are written to a http.Request.
 */
 type AlertingProfilesEditParams struct {
 

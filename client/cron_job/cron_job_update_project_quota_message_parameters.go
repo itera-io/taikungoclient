@@ -54,10 +54,12 @@ func NewCronJobUpdateProjectQuotaMessageParamsWithHTTPClient(client *http.Client
 	}
 }
 
-/* CronJobUpdateProjectQuotaMessageParams contains all the parameters to send to the API endpoint
-   for the cron job update project quota message operation.
+/*
+CronJobUpdateProjectQuotaMessageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job update project quota message operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobUpdateProjectQuotaMessageParams struct {
 

@@ -54,10 +54,12 @@ func NewOrganizationsUpdateSubscriptionParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* OrganizationsUpdateSubscriptionParams contains all the parameters to send to the API endpoint
-   for the organizations update subscription operation.
+/*
+OrganizationsUpdateSubscriptionParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the organizations update subscription operation.
+
+	Typically these are written to a http.Request.
 */
 type OrganizationsUpdateSubscriptionParams struct {
 

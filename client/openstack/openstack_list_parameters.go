@@ -53,10 +53,12 @@ func NewOpenstackListParamsWithHTTPClient(client *http.Client) *OpenstackListPar
 	}
 }
 
-/* OpenstackListParams contains all the parameters to send to the API endpoint
-   for the openstack list operation.
+/*
+OpenstackListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the openstack list operation.
+
+	Typically these are written to a http.Request.
 */
 type OpenstackListParams struct {
 

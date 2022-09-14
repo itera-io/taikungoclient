@@ -52,10 +52,12 @@ func NewUsersToggleMaintenanceModeParamsWithHTTPClient(client *http.Client) *Use
 	}
 }
 
-/* UsersToggleMaintenanceModeParams contains all the parameters to send to the API endpoint
-   for the users toggle maintenance mode operation.
+/*
+UsersToggleMaintenanceModeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the users toggle maintenance mode operation.
+
+	Typically these are written to a http.Request.
 */
 type UsersToggleMaintenanceModeParams struct {
 

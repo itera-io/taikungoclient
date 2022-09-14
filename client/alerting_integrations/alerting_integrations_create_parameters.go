@@ -54,10 +54,12 @@ func NewAlertingIntegrationsCreateParamsWithHTTPClient(client *http.Client) *Ale
 	}
 }
 
-/* AlertingIntegrationsCreateParams contains all the parameters to send to the API endpoint
-   for the alerting integrations create operation.
+/*
+AlertingIntegrationsCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the alerting integrations create operation.
+
+	Typically these are written to a http.Request.
 */
 type AlertingIntegrationsCreateParams struct {
 

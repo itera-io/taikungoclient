@@ -60,7 +60,7 @@ type ClientService interface {
 }
 
 /*
-  StandAloneCommit commits stand alone vm
+StandAloneCommit commits stand alone vm
 */
 func (a *Client) StandAloneCommit(params *StandAloneCommitParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneCommitOK, error) {
 	// TODO: Validate the params before sending
@@ -99,7 +99,7 @@ func (a *Client) StandAloneCommit(params *StandAloneCommitParams, authInfo runti
 }
 
 /*
-  StandAloneCreate creates stand alone vm
+StandAloneCreate creates stand alone vm
 */
 func (a *Client) StandAloneCreate(params *StandAloneCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -138,7 +138,7 @@ func (a *Client) StandAloneCreate(params *StandAloneCreateParams, authInfo runti
 }
 
 /*
-  StandAloneDelete deletes purge stand alone vm
+StandAloneDelete deletes purge stand alone vm
 */
 func (a *Client) StandAloneDelete(params *StandAloneDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -177,7 +177,7 @@ func (a *Client) StandAloneDelete(params *StandAloneDeleteParams, authInfo runti
 }
 
 /*
-  StandAloneDetails retrieves a list of standalone vm with detailed info
+StandAloneDetails retrieves a list of standalone vm with detailed info
 */
 func (a *Client) StandAloneDetails(params *StandAloneDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -216,7 +216,7 @@ func (a *Client) StandAloneDetails(params *StandAloneDetailsParams, authInfo run
 }
 
 /*
-  StandAloneIPManagement enables disable stand alone public ip
+StandAloneIPManagement enables disable stand alone public ip
 */
 func (a *Client) StandAloneIPManagement(params *StandAloneIPManagementParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneIPManagementOK, error) {
 	// TODO: Validate the params before sending
@@ -255,7 +255,7 @@ func (a *Client) StandAloneIPManagement(params *StandAloneIPManagementParams, au
 }
 
 /*
-  StandAloneList lists all standalone vms according to roles
+StandAloneList lists all standalone vms according to roles
 */
 func (a *Client) StandAloneList(params *StandAloneListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneListOK, error) {
 	// TODO: Validate the params before sending
@@ -294,7 +294,7 @@ func (a *Client) StandAloneList(params *StandAloneListParams, authInfo runtime.C
 }
 
 /*
-  StandAloneListForPoller lists all standalone vms for poller
+StandAloneListForPoller lists all standalone vms for poller
 */
 func (a *Client) StandAloneListForPoller(params *StandAloneListForPollerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneListForPollerOK, error) {
 	// TODO: Validate the params before sending
@@ -333,7 +333,7 @@ func (a *Client) StandAloneListForPoller(params *StandAloneListForPollerParams, 
 }
 
 /*
-  StandAloneProjectDetails retrieves details of the project by Id
+StandAloneProjectDetails retrieves details of the project by Id
 */
 func (a *Client) StandAloneProjectDetails(params *StandAloneProjectDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProjectDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -372,7 +372,7 @@ func (a *Client) StandAloneProjectDetails(params *StandAloneProjectDetailsParams
 }
 
 /*
-  StandAlonePurge purges stand alone based project
+StandAlonePurge purges stand alone based project
 */
 func (a *Client) StandAlonePurge(params *StandAlonePurgeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAlonePurgeOK, error) {
 	// TODO: Validate the params before sending
@@ -411,7 +411,7 @@ func (a *Client) StandAlonePurge(params *StandAlonePurgeParams, authInfo runtime
 }
 
 /*
-  StandAloneRepair repairs stand alone vm
+StandAloneRepair repairs stand alone vm
 */
 func (a *Client) StandAloneRepair(params *StandAloneRepairParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneRepairOK, error) {
 	// TODO: Validate the params before sending
@@ -450,7 +450,7 @@ func (a *Client) StandAloneRepair(params *StandAloneRepairParams, authInfo runti
 }
 
 /*
-  StandAloneReset resets stand alone vm status
+StandAloneReset resets stand alone vm status
 */
 func (a *Client) StandAloneReset(params *StandAloneResetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneResetOK, error) {
 	// TODO: Validate the params before sending
@@ -489,7 +489,7 @@ func (a *Client) StandAloneReset(params *StandAloneResetParams, authInfo runtime
 }
 
 /*
-  StandAloneUpdate updates stand alone vm
+StandAloneUpdate updates stand alone vm
 */
 func (a *Client) StandAloneUpdate(params *StandAloneUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -528,7 +528,7 @@ func (a *Client) StandAloneUpdate(params *StandAloneUpdateParams, authInfo runti
 }
 
 /*
-  StandAloneUpdateFlavor updates stand alone vm flavor
+StandAloneUpdateFlavor updates stand alone vm flavor
 */
 func (a *Client) StandAloneUpdateFlavor(params *StandAloneUpdateFlavorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneUpdateFlavorOK, error) {
 	// TODO: Validate the params before sending

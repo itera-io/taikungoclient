@@ -69,7 +69,8 @@ func NewProjectsProjectMonitoringAlertsOK() *ProjectsProjectMonitoringAlertsOK {
 	return &ProjectsProjectMonitoringAlertsOK{}
 }
 
-/* ProjectsProjectMonitoringAlertsOK describes a response with status code 200, with default header values.
+/*
+ProjectsProjectMonitoringAlertsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsProjectMonitoringAlertsOK struct {
 	Payload interface{}
 }
 
+// IsSuccess returns true when this projects project monitoring alerts o k response has a 2xx status code
+func (o *ProjectsProjectMonitoringAlertsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects project monitoring alerts o k response has a 3xx status code
+func (o *ProjectsProjectMonitoringAlertsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects project monitoring alerts o k response has a 4xx status code
+func (o *ProjectsProjectMonitoringAlertsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects project monitoring alerts o k response has a 5xx status code
+func (o *ProjectsProjectMonitoringAlertsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects project monitoring alerts o k response a status code equal to that given
+func (o *ProjectsProjectMonitoringAlertsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsProjectMonitoringAlertsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsProjectMonitoringAlertsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsProjectMonitoringAlertsOK) GetPayload() interface{} {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectsProjectMonitoringAlertsBadRequest() *ProjectsProjectMonitoringAl
 	return &ProjectsProjectMonitoringAlertsBadRequest{}
 }
 
-/* ProjectsProjectMonitoringAlertsBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsProjectMonitoringAlertsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectsProjectMonitoringAlertsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects project monitoring alerts bad request response has a 2xx status code
+func (o *ProjectsProjectMonitoringAlertsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects project monitoring alerts bad request response has a 3xx status code
+func (o *ProjectsProjectMonitoringAlertsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects project monitoring alerts bad request response has a 4xx status code
+func (o *ProjectsProjectMonitoringAlertsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects project monitoring alerts bad request response has a 5xx status code
+func (o *ProjectsProjectMonitoringAlertsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects project monitoring alerts bad request response a status code equal to that given
+func (o *ProjectsProjectMonitoringAlertsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsProjectMonitoringAlertsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsProjectMonitoringAlertsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsProjectMonitoringAlertsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectsProjectMonitoringAlertsUnauthorized() *ProjectsProjectMonitoring
 	return &ProjectsProjectMonitoringAlertsUnauthorized{}
 }
 
-/* ProjectsProjectMonitoringAlertsUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsProjectMonitoringAlertsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectsProjectMonitoringAlertsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects project monitoring alerts unauthorized response has a 2xx status code
+func (o *ProjectsProjectMonitoringAlertsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects project monitoring alerts unauthorized response has a 3xx status code
+func (o *ProjectsProjectMonitoringAlertsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects project monitoring alerts unauthorized response has a 4xx status code
+func (o *ProjectsProjectMonitoringAlertsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects project monitoring alerts unauthorized response has a 5xx status code
+func (o *ProjectsProjectMonitoringAlertsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects project monitoring alerts unauthorized response a status code equal to that given
+func (o *ProjectsProjectMonitoringAlertsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsProjectMonitoringAlertsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsProjectMonitoringAlertsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsProjectMonitoringAlertsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectsProjectMonitoringAlertsForbidden() *ProjectsProjectMonitoringAle
 	return &ProjectsProjectMonitoringAlertsForbidden{}
 }
 
-/* ProjectsProjectMonitoringAlertsForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsProjectMonitoringAlertsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectsProjectMonitoringAlertsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects project monitoring alerts forbidden response has a 2xx status code
+func (o *ProjectsProjectMonitoringAlertsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects project monitoring alerts forbidden response has a 3xx status code
+func (o *ProjectsProjectMonitoringAlertsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects project monitoring alerts forbidden response has a 4xx status code
+func (o *ProjectsProjectMonitoringAlertsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects project monitoring alerts forbidden response has a 5xx status code
+func (o *ProjectsProjectMonitoringAlertsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects project monitoring alerts forbidden response a status code equal to that given
+func (o *ProjectsProjectMonitoringAlertsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsProjectMonitoringAlertsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsProjectMonitoringAlertsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsProjectMonitoringAlertsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectsProjectMonitoringAlertsNotFound() *ProjectsProjectMonitoringAler
 	return &ProjectsProjectMonitoringAlertsNotFound{}
 }
 
-/* ProjectsProjectMonitoringAlertsNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsProjectMonitoringAlertsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectsProjectMonitoringAlertsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects project monitoring alerts not found response has a 2xx status code
+func (o *ProjectsProjectMonitoringAlertsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects project monitoring alerts not found response has a 3xx status code
+func (o *ProjectsProjectMonitoringAlertsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects project monitoring alerts not found response has a 4xx status code
+func (o *ProjectsProjectMonitoringAlertsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects project monitoring alerts not found response has a 5xx status code
+func (o *ProjectsProjectMonitoringAlertsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects project monitoring alerts not found response a status code equal to that given
+func (o *ProjectsProjectMonitoringAlertsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsProjectMonitoringAlertsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsProjectMonitoringAlertsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsProjectMonitoringAlertsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectsProjectMonitoringAlertsInternalServerError() *ProjectsProjectMon
 	return &ProjectsProjectMonitoringAlertsInternalServerError{}
 }
 
-/* ProjectsProjectMonitoringAlertsInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsProjectMonitoringAlertsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsProjectMonitoringAlertsInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects project monitoring alerts internal server error response has a 2xx status code
+func (o *ProjectsProjectMonitoringAlertsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects project monitoring alerts internal server error response has a 3xx status code
+func (o *ProjectsProjectMonitoringAlertsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects project monitoring alerts internal server error response has a 4xx status code
+func (o *ProjectsProjectMonitoringAlertsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects project monitoring alerts internal server error response has a 5xx status code
+func (o *ProjectsProjectMonitoringAlertsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects project monitoring alerts internal server error response a status code equal to that given
+func (o *ProjectsProjectMonitoringAlertsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsProjectMonitoringAlertsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsInternalServerError ", 500)
+}
+
+func (o *ProjectsProjectMonitoringAlertsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsInternalServerError ", 500)
 }
 

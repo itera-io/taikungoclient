@@ -69,7 +69,8 @@ func NewKubernetesPatchNodeOK() *KubernetesPatchNodeOK {
 	return &KubernetesPatchNodeOK{}
 }
 
-/* KubernetesPatchNodeOK describes a response with status code 200, with default header values.
+/*
+KubernetesPatchNodeOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesPatchNodeOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this kubernetes patch node o k response has a 2xx status code
+func (o *KubernetesPatchNodeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes patch node o k response has a 3xx status code
+func (o *KubernetesPatchNodeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch node o k response has a 4xx status code
+func (o *KubernetesPatchNodeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes patch node o k response has a 5xx status code
+func (o *KubernetesPatchNodeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch node o k response a status code equal to that given
+func (o *KubernetesPatchNodeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesPatchNodeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesPatchNodeOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesPatchNodeOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesPatchNodeBadRequest() *KubernetesPatchNodeBadRequest {
 	return &KubernetesPatchNodeBadRequest{}
 }
 
-/* KubernetesPatchNodeBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesPatchNodeBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesPatchNodeBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch node bad request response has a 2xx status code
+func (o *KubernetesPatchNodeBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch node bad request response has a 3xx status code
+func (o *KubernetesPatchNodeBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch node bad request response has a 4xx status code
+func (o *KubernetesPatchNodeBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch node bad request response has a 5xx status code
+func (o *KubernetesPatchNodeBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch node bad request response a status code equal to that given
+func (o *KubernetesPatchNodeBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesPatchNodeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesPatchNodeBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesPatchNodeBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesPatchNodeUnauthorized() *KubernetesPatchNodeUnauthorized {
 	return &KubernetesPatchNodeUnauthorized{}
 }
 
-/* KubernetesPatchNodeUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesPatchNodeUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesPatchNodeUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch node unauthorized response has a 2xx status code
+func (o *KubernetesPatchNodeUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch node unauthorized response has a 3xx status code
+func (o *KubernetesPatchNodeUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch node unauthorized response has a 4xx status code
+func (o *KubernetesPatchNodeUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch node unauthorized response has a 5xx status code
+func (o *KubernetesPatchNodeUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch node unauthorized response a status code equal to that given
+func (o *KubernetesPatchNodeUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesPatchNodeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesPatchNodeUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesPatchNodeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesPatchNodeForbidden() *KubernetesPatchNodeForbidden {
 	return &KubernetesPatchNodeForbidden{}
 }
 
-/* KubernetesPatchNodeForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesPatchNodeForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesPatchNodeForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch node forbidden response has a 2xx status code
+func (o *KubernetesPatchNodeForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch node forbidden response has a 3xx status code
+func (o *KubernetesPatchNodeForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch node forbidden response has a 4xx status code
+func (o *KubernetesPatchNodeForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch node forbidden response has a 5xx status code
+func (o *KubernetesPatchNodeForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch node forbidden response a status code equal to that given
+func (o *KubernetesPatchNodeForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesPatchNodeForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesPatchNodeForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesPatchNodeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesPatchNodeNotFound() *KubernetesPatchNodeNotFound {
 	return &KubernetesPatchNodeNotFound{}
 }
 
-/* KubernetesPatchNodeNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesPatchNodeNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesPatchNodeNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch node not found response has a 2xx status code
+func (o *KubernetesPatchNodeNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch node not found response has a 3xx status code
+func (o *KubernetesPatchNodeNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch node not found response has a 4xx status code
+func (o *KubernetesPatchNodeNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch node not found response has a 5xx status code
+func (o *KubernetesPatchNodeNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch node not found response a status code equal to that given
+func (o *KubernetesPatchNodeNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesPatchNodeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesPatchNodeNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesPatchNodeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesPatchNodeInternalServerError() *KubernetesPatchNodeInternalSer
 	return &KubernetesPatchNodeInternalServerError{}
 }
 
-/* KubernetesPatchNodeInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesPatchNodeInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesPatchNodeInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes patch node internal server error response has a 2xx status code
+func (o *KubernetesPatchNodeInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch node internal server error response has a 3xx status code
+func (o *KubernetesPatchNodeInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch node internal server error response has a 4xx status code
+func (o *KubernetesPatchNodeInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes patch node internal server error response has a 5xx status code
+func (o *KubernetesPatchNodeInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes patch node internal server error response a status code equal to that given
+func (o *KubernetesPatchNodeInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesPatchNodeInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeInternalServerError ", 500)
+}
+
+func (o *KubernetesPatchNodeInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeInternalServerError ", 500)
 }
 

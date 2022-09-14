@@ -69,7 +69,8 @@ func NewCatalogEditCatalogAppVersionOK() *CatalogEditCatalogAppVersionOK {
 	return &CatalogEditCatalogAppVersionOK{}
 }
 
-/* CatalogEditCatalogAppVersionOK describes a response with status code 200, with default header values.
+/*
+CatalogEditCatalogAppVersionOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CatalogEditCatalogAppVersionOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this catalog edit catalog app version o k response has a 2xx status code
+func (o *CatalogEditCatalogAppVersionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this catalog edit catalog app version o k response has a 3xx status code
+func (o *CatalogEditCatalogAppVersionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog edit catalog app version o k response has a 4xx status code
+func (o *CatalogEditCatalogAppVersionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this catalog edit catalog app version o k response has a 5xx status code
+func (o *CatalogEditCatalogAppVersionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog edit catalog app version o k response a status code equal to that given
+func (o *CatalogEditCatalogAppVersionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CatalogEditCatalogAppVersionOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionOK  %+v", 200, o.Payload)
 }
+
+func (o *CatalogEditCatalogAppVersionOK) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionOK  %+v", 200, o.Payload)
+}
+
 func (o *CatalogEditCatalogAppVersionOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCatalogEditCatalogAppVersionBadRequest() *CatalogEditCatalogAppVersionBa
 	return &CatalogEditCatalogAppVersionBadRequest{}
 }
 
-/* CatalogEditCatalogAppVersionBadRequest describes a response with status code 400, with default header values.
+/*
+CatalogEditCatalogAppVersionBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CatalogEditCatalogAppVersionBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this catalog edit catalog app version bad request response has a 2xx status code
+func (o *CatalogEditCatalogAppVersionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog edit catalog app version bad request response has a 3xx status code
+func (o *CatalogEditCatalogAppVersionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog edit catalog app version bad request response has a 4xx status code
+func (o *CatalogEditCatalogAppVersionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog edit catalog app version bad request response has a 5xx status code
+func (o *CatalogEditCatalogAppVersionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog edit catalog app version bad request response a status code equal to that given
+func (o *CatalogEditCatalogAppVersionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CatalogEditCatalogAppVersionBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CatalogEditCatalogAppVersionBadRequest) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CatalogEditCatalogAppVersionBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCatalogEditCatalogAppVersionUnauthorized() *CatalogEditCatalogAppVersion
 	return &CatalogEditCatalogAppVersionUnauthorized{}
 }
 
-/* CatalogEditCatalogAppVersionUnauthorized describes a response with status code 401, with default header values.
+/*
+CatalogEditCatalogAppVersionUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CatalogEditCatalogAppVersionUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog edit catalog app version unauthorized response has a 2xx status code
+func (o *CatalogEditCatalogAppVersionUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog edit catalog app version unauthorized response has a 3xx status code
+func (o *CatalogEditCatalogAppVersionUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog edit catalog app version unauthorized response has a 4xx status code
+func (o *CatalogEditCatalogAppVersionUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog edit catalog app version unauthorized response has a 5xx status code
+func (o *CatalogEditCatalogAppVersionUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog edit catalog app version unauthorized response a status code equal to that given
+func (o *CatalogEditCatalogAppVersionUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CatalogEditCatalogAppVersionUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CatalogEditCatalogAppVersionUnauthorized) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CatalogEditCatalogAppVersionUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCatalogEditCatalogAppVersionForbidden() *CatalogEditCatalogAppVersionFor
 	return &CatalogEditCatalogAppVersionForbidden{}
 }
 
-/* CatalogEditCatalogAppVersionForbidden describes a response with status code 403, with default header values.
+/*
+CatalogEditCatalogAppVersionForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CatalogEditCatalogAppVersionForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog edit catalog app version forbidden response has a 2xx status code
+func (o *CatalogEditCatalogAppVersionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog edit catalog app version forbidden response has a 3xx status code
+func (o *CatalogEditCatalogAppVersionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog edit catalog app version forbidden response has a 4xx status code
+func (o *CatalogEditCatalogAppVersionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog edit catalog app version forbidden response has a 5xx status code
+func (o *CatalogEditCatalogAppVersionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog edit catalog app version forbidden response a status code equal to that given
+func (o *CatalogEditCatalogAppVersionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CatalogEditCatalogAppVersionForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CatalogEditCatalogAppVersionForbidden) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CatalogEditCatalogAppVersionForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCatalogEditCatalogAppVersionNotFound() *CatalogEditCatalogAppVersionNotF
 	return &CatalogEditCatalogAppVersionNotFound{}
 }
 
-/* CatalogEditCatalogAppVersionNotFound describes a response with status code 404, with default header values.
+/*
+CatalogEditCatalogAppVersionNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CatalogEditCatalogAppVersionNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog edit catalog app version not found response has a 2xx status code
+func (o *CatalogEditCatalogAppVersionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog edit catalog app version not found response has a 3xx status code
+func (o *CatalogEditCatalogAppVersionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog edit catalog app version not found response has a 4xx status code
+func (o *CatalogEditCatalogAppVersionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog edit catalog app version not found response has a 5xx status code
+func (o *CatalogEditCatalogAppVersionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog edit catalog app version not found response a status code equal to that given
+func (o *CatalogEditCatalogAppVersionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CatalogEditCatalogAppVersionNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CatalogEditCatalogAppVersionNotFound) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CatalogEditCatalogAppVersionNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCatalogEditCatalogAppVersionInternalServerError() *CatalogEditCatalogApp
 	return &CatalogEditCatalogAppVersionInternalServerError{}
 }
 
-/* CatalogEditCatalogAppVersionInternalServerError describes a response with status code 500, with default header values.
+/*
+CatalogEditCatalogAppVersionInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CatalogEditCatalogAppVersionInternalServerError struct {
 }
 
+// IsSuccess returns true when this catalog edit catalog app version internal server error response has a 2xx status code
+func (o *CatalogEditCatalogAppVersionInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog edit catalog app version internal server error response has a 3xx status code
+func (o *CatalogEditCatalogAppVersionInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog edit catalog app version internal server error response has a 4xx status code
+func (o *CatalogEditCatalogAppVersionInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this catalog edit catalog app version internal server error response has a 5xx status code
+func (o *CatalogEditCatalogAppVersionInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this catalog edit catalog app version internal server error response a status code equal to that given
+func (o *CatalogEditCatalogAppVersionInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CatalogEditCatalogAppVersionInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionInternalServerError ", 500)
+}
+
+func (o *CatalogEditCatalogAppVersionInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionInternalServerError ", 500)
 }
 

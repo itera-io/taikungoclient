@@ -54,10 +54,12 @@ func NewProjectsMonitoringOperationsParamsWithHTTPClient(client *http.Client) *P
 	}
 }
 
-/* ProjectsMonitoringOperationsParams contains all the parameters to send to the API endpoint
-   for the projects monitoring operations operation.
+/*
+ProjectsMonitoringOperationsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects monitoring operations operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsMonitoringOperationsParams struct {
 

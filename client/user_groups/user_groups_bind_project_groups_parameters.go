@@ -54,10 +54,12 @@ func NewUserGroupsBindProjectGroupsParamsWithHTTPClient(client *http.Client) *Us
 	}
 }
 
-/* UserGroupsBindProjectGroupsParams contains all the parameters to send to the API endpoint
-   for the user groups bind project groups operation.
+/*
+UserGroupsBindProjectGroupsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the user groups bind project groups operation.
+
+	Typically these are written to a http.Request.
 */
 type UserGroupsBindProjectGroupsParams struct {
 

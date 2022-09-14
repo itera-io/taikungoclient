@@ -53,10 +53,12 @@ func NewBillingGroupedListParamsWithHTTPClient(client *http.Client) *BillingGrou
 	}
 }
 
-/* BillingGroupedListParams contains all the parameters to send to the API endpoint
-   for the billing grouped list operation.
+/*
+BillingGroupedListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the billing grouped list operation.
+
+	Typically these are written to a http.Request.
 */
 type BillingGroupedListParams struct {
 

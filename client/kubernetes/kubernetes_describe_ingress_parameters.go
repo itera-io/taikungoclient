@@ -54,10 +54,12 @@ func NewKubernetesDescribeIngressParamsWithHTTPClient(client *http.Client) *Kube
 	}
 }
 
-/* KubernetesDescribeIngressParams contains all the parameters to send to the API endpoint
-   for the kubernetes describe ingress operation.
+/*
+KubernetesDescribeIngressParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes describe ingress operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesDescribeIngressParams struct {
 

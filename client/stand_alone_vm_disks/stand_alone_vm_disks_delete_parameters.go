@@ -54,10 +54,12 @@ func NewStandAloneVMDisksDeleteParamsWithHTTPClient(client *http.Client) *StandA
 	}
 }
 
-/* StandAloneVMDisksDeleteParams contains all the parameters to send to the API endpoint
-   for the stand alone Vm disks delete operation.
+/*
+StandAloneVMDisksDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone Vm disks delete operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneVMDisksDeleteParams struct {
 

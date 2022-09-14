@@ -54,10 +54,12 @@ func NewCheckerNodeParamsWithHTTPClient(client *http.Client) *CheckerNodeParams 
 	}
 }
 
-/* CheckerNodeParams contains all the parameters to send to the API endpoint
-   for the checker node operation.
+/*
+CheckerNodeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checker node operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckerNodeParams struct {
 

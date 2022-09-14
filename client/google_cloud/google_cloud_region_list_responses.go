@@ -69,7 +69,8 @@ func NewGoogleCloudRegionListOK() *GoogleCloudRegionListOK {
 	return &GoogleCloudRegionListOK{}
 }
 
-/* GoogleCloudRegionListOK describes a response with status code 200, with default header values.
+/*
+GoogleCloudRegionListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type GoogleCloudRegionListOK struct {
 	Payload []string
 }
 
+// IsSuccess returns true when this google cloud region list o k response has a 2xx status code
+func (o *GoogleCloudRegionListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this google cloud region list o k response has a 3xx status code
+func (o *GoogleCloudRegionListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud region list o k response has a 4xx status code
+func (o *GoogleCloudRegionListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this google cloud region list o k response has a 5xx status code
+func (o *GoogleCloudRegionListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud region list o k response a status code equal to that given
+func (o *GoogleCloudRegionListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GoogleCloudRegionListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListOK  %+v", 200, o.Payload)
 }
+
+func (o *GoogleCloudRegionListOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListOK  %+v", 200, o.Payload)
+}
+
 func (o *GoogleCloudRegionListOK) GetPayload() []string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewGoogleCloudRegionListBadRequest() *GoogleCloudRegionListBadRequest {
 	return &GoogleCloudRegionListBadRequest{}
 }
 
-/* GoogleCloudRegionListBadRequest describes a response with status code 400, with default header values.
+/*
+GoogleCloudRegionListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type GoogleCloudRegionListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this google cloud region list bad request response has a 2xx status code
+func (o *GoogleCloudRegionListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud region list bad request response has a 3xx status code
+func (o *GoogleCloudRegionListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud region list bad request response has a 4xx status code
+func (o *GoogleCloudRegionListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud region list bad request response has a 5xx status code
+func (o *GoogleCloudRegionListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud region list bad request response a status code equal to that given
+func (o *GoogleCloudRegionListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GoogleCloudRegionListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *GoogleCloudRegionListBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *GoogleCloudRegionListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewGoogleCloudRegionListUnauthorized() *GoogleCloudRegionListUnauthorized {
 	return &GoogleCloudRegionListUnauthorized{}
 }
 
-/* GoogleCloudRegionListUnauthorized describes a response with status code 401, with default header values.
+/*
+GoogleCloudRegionListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type GoogleCloudRegionListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this google cloud region list unauthorized response has a 2xx status code
+func (o *GoogleCloudRegionListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud region list unauthorized response has a 3xx status code
+func (o *GoogleCloudRegionListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud region list unauthorized response has a 4xx status code
+func (o *GoogleCloudRegionListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud region list unauthorized response has a 5xx status code
+func (o *GoogleCloudRegionListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud region list unauthorized response a status code equal to that given
+func (o *GoogleCloudRegionListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GoogleCloudRegionListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *GoogleCloudRegionListUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *GoogleCloudRegionListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewGoogleCloudRegionListForbidden() *GoogleCloudRegionListForbidden {
 	return &GoogleCloudRegionListForbidden{}
 }
 
-/* GoogleCloudRegionListForbidden describes a response with status code 403, with default header values.
+/*
+GoogleCloudRegionListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type GoogleCloudRegionListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this google cloud region list forbidden response has a 2xx status code
+func (o *GoogleCloudRegionListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud region list forbidden response has a 3xx status code
+func (o *GoogleCloudRegionListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud region list forbidden response has a 4xx status code
+func (o *GoogleCloudRegionListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud region list forbidden response has a 5xx status code
+func (o *GoogleCloudRegionListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud region list forbidden response a status code equal to that given
+func (o *GoogleCloudRegionListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *GoogleCloudRegionListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *GoogleCloudRegionListForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *GoogleCloudRegionListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewGoogleCloudRegionListNotFound() *GoogleCloudRegionListNotFound {
 	return &GoogleCloudRegionListNotFound{}
 }
 
-/* GoogleCloudRegionListNotFound describes a response with status code 404, with default header values.
+/*
+GoogleCloudRegionListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type GoogleCloudRegionListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this google cloud region list not found response has a 2xx status code
+func (o *GoogleCloudRegionListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud region list not found response has a 3xx status code
+func (o *GoogleCloudRegionListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud region list not found response has a 4xx status code
+func (o *GoogleCloudRegionListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this google cloud region list not found response has a 5xx status code
+func (o *GoogleCloudRegionListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this google cloud region list not found response a status code equal to that given
+func (o *GoogleCloudRegionListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GoogleCloudRegionListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GoogleCloudRegionListNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GoogleCloudRegionListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewGoogleCloudRegionListInternalServerError() *GoogleCloudRegionListInterna
 	return &GoogleCloudRegionListInternalServerError{}
 }
 
-/* GoogleCloudRegionListInternalServerError describes a response with status code 500, with default header values.
+/*
+GoogleCloudRegionListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type GoogleCloudRegionListInternalServerError struct {
 }
 
+// IsSuccess returns true when this google cloud region list internal server error response has a 2xx status code
+func (o *GoogleCloudRegionListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this google cloud region list internal server error response has a 3xx status code
+func (o *GoogleCloudRegionListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this google cloud region list internal server error response has a 4xx status code
+func (o *GoogleCloudRegionListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this google cloud region list internal server error response has a 5xx status code
+func (o *GoogleCloudRegionListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this google cloud region list internal server error response a status code equal to that given
+func (o *GoogleCloudRegionListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GoogleCloudRegionListInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListInternalServerError ", 500)
+}
+
+func (o *GoogleCloudRegionListInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListInternalServerError ", 500)
 }
 

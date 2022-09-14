@@ -54,10 +54,12 @@ func NewSearchStandAloneProfilesListParamsWithHTTPClient(client *http.Client) *S
 	}
 }
 
-/* SearchStandAloneProfilesListParams contains all the parameters to send to the API endpoint
-   for the search stand alone profiles list operation.
+/*
+SearchStandAloneProfilesListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search stand alone profiles list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchStandAloneProfilesListParams struct {
 

@@ -53,10 +53,12 @@ func NewProjectAppUninstallParamsWithHTTPClient(client *http.Client) *ProjectApp
 	}
 }
 
-/* ProjectAppUninstallParams contains all the parameters to send to the API endpoint
-   for the project app uninstall operation.
+/*
+ProjectAppUninstallParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the project app uninstall operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectAppUninstallParams struct {
 

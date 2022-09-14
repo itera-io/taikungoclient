@@ -69,7 +69,8 @@ func NewOpenstackCreateOK() *OpenstackCreateOK {
 	return &OpenstackCreateOK{}
 }
 
-/* OpenstackCreateOK describes a response with status code 200, with default header values.
+/*
+OpenstackCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OpenstackCreateOK struct {
 	Payload *models.APIResponse
 }
 
+// IsSuccess returns true when this openstack create o k response has a 2xx status code
+func (o *OpenstackCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this openstack create o k response has a 3xx status code
+func (o *OpenstackCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack create o k response has a 4xx status code
+func (o *OpenstackCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this openstack create o k response has a 5xx status code
+func (o *OpenstackCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack create o k response a status code equal to that given
+func (o *OpenstackCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OpenstackCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *OpenstackCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *OpenstackCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewOpenstackCreateBadRequest() *OpenstackCreateBadRequest {
 	return &OpenstackCreateBadRequest{}
 }
 
-/* OpenstackCreateBadRequest describes a response with status code 400, with default header values.
+/*
+OpenstackCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type OpenstackCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this openstack create bad request response has a 2xx status code
+func (o *OpenstackCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack create bad request response has a 3xx status code
+func (o *OpenstackCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack create bad request response has a 4xx status code
+func (o *OpenstackCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack create bad request response has a 5xx status code
+func (o *OpenstackCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack create bad request response a status code equal to that given
+func (o *OpenstackCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OpenstackCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OpenstackCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OpenstackCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewOpenstackCreateUnauthorized() *OpenstackCreateUnauthorized {
 	return &OpenstackCreateUnauthorized{}
 }
 
-/* OpenstackCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+OpenstackCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type OpenstackCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack create unauthorized response has a 2xx status code
+func (o *OpenstackCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack create unauthorized response has a 3xx status code
+func (o *OpenstackCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack create unauthorized response has a 4xx status code
+func (o *OpenstackCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack create unauthorized response has a 5xx status code
+func (o *OpenstackCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack create unauthorized response a status code equal to that given
+func (o *OpenstackCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OpenstackCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OpenstackCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OpenstackCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewOpenstackCreateForbidden() *OpenstackCreateForbidden {
 	return &OpenstackCreateForbidden{}
 }
 
-/* OpenstackCreateForbidden describes a response with status code 403, with default header values.
+/*
+OpenstackCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type OpenstackCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack create forbidden response has a 2xx status code
+func (o *OpenstackCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack create forbidden response has a 3xx status code
+func (o *OpenstackCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack create forbidden response has a 4xx status code
+func (o *OpenstackCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack create forbidden response has a 5xx status code
+func (o *OpenstackCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack create forbidden response a status code equal to that given
+func (o *OpenstackCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OpenstackCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OpenstackCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OpenstackCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewOpenstackCreateNotFound() *OpenstackCreateNotFound {
 	return &OpenstackCreateNotFound{}
 }
 
-/* OpenstackCreateNotFound describes a response with status code 404, with default header values.
+/*
+OpenstackCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type OpenstackCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack create not found response has a 2xx status code
+func (o *OpenstackCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack create not found response has a 3xx status code
+func (o *OpenstackCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack create not found response has a 4xx status code
+func (o *OpenstackCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack create not found response has a 5xx status code
+func (o *OpenstackCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack create not found response a status code equal to that given
+func (o *OpenstackCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OpenstackCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OpenstackCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OpenstackCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewOpenstackCreateInternalServerError() *OpenstackCreateInternalServerError
 	return &OpenstackCreateInternalServerError{}
 }
 
-/* OpenstackCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+OpenstackCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OpenstackCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this openstack create internal server error response has a 2xx status code
+func (o *OpenstackCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack create internal server error response has a 3xx status code
+func (o *OpenstackCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack create internal server error response has a 4xx status code
+func (o *OpenstackCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this openstack create internal server error response has a 5xx status code
+func (o *OpenstackCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this openstack create internal server error response a status code equal to that given
+func (o *OpenstackCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OpenstackCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateInternalServerError ", 500)
+}
+
+func (o *OpenstackCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/create][%d] openstackCreateInternalServerError ", 500)
 }
 

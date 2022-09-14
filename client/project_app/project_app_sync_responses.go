@@ -69,7 +69,8 @@ func NewProjectAppSyncOK() *ProjectAppSyncOK {
 	return &ProjectAppSyncOK{}
 }
 
-/* ProjectAppSyncOK describes a response with status code 200, with default header values.
+/*
+ProjectAppSyncOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectAppSyncOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this project app sync o k response has a 2xx status code
+func (o *ProjectAppSyncOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this project app sync o k response has a 3xx status code
+func (o *ProjectAppSyncOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app sync o k response has a 4xx status code
+func (o *ProjectAppSyncOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this project app sync o k response has a 5xx status code
+func (o *ProjectAppSyncOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project app sync o k response a status code equal to that given
+func (o *ProjectAppSyncOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectAppSyncOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectAppSyncOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectAppSyncOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectAppSyncBadRequest() *ProjectAppSyncBadRequest {
 	return &ProjectAppSyncBadRequest{}
 }
 
-/* ProjectAppSyncBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectAppSyncBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectAppSyncBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this project app sync bad request response has a 2xx status code
+func (o *ProjectAppSyncBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project app sync bad request response has a 3xx status code
+func (o *ProjectAppSyncBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app sync bad request response has a 4xx status code
+func (o *ProjectAppSyncBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project app sync bad request response has a 5xx status code
+func (o *ProjectAppSyncBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project app sync bad request response a status code equal to that given
+func (o *ProjectAppSyncBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectAppSyncBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectAppSyncBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectAppSyncBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectAppSyncUnauthorized() *ProjectAppSyncUnauthorized {
 	return &ProjectAppSyncUnauthorized{}
 }
 
-/* ProjectAppSyncUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectAppSyncUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectAppSyncUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project app sync unauthorized response has a 2xx status code
+func (o *ProjectAppSyncUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project app sync unauthorized response has a 3xx status code
+func (o *ProjectAppSyncUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app sync unauthorized response has a 4xx status code
+func (o *ProjectAppSyncUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project app sync unauthorized response has a 5xx status code
+func (o *ProjectAppSyncUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project app sync unauthorized response a status code equal to that given
+func (o *ProjectAppSyncUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectAppSyncUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectAppSyncUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectAppSyncUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectAppSyncForbidden() *ProjectAppSyncForbidden {
 	return &ProjectAppSyncForbidden{}
 }
 
-/* ProjectAppSyncForbidden describes a response with status code 403, with default header values.
+/*
+ProjectAppSyncForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectAppSyncForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project app sync forbidden response has a 2xx status code
+func (o *ProjectAppSyncForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project app sync forbidden response has a 3xx status code
+func (o *ProjectAppSyncForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app sync forbidden response has a 4xx status code
+func (o *ProjectAppSyncForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project app sync forbidden response has a 5xx status code
+func (o *ProjectAppSyncForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project app sync forbidden response a status code equal to that given
+func (o *ProjectAppSyncForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectAppSyncForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectAppSyncForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectAppSyncForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectAppSyncNotFound() *ProjectAppSyncNotFound {
 	return &ProjectAppSyncNotFound{}
 }
 
-/* ProjectAppSyncNotFound describes a response with status code 404, with default header values.
+/*
+ProjectAppSyncNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectAppSyncNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project app sync not found response has a 2xx status code
+func (o *ProjectAppSyncNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project app sync not found response has a 3xx status code
+func (o *ProjectAppSyncNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app sync not found response has a 4xx status code
+func (o *ProjectAppSyncNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project app sync not found response has a 5xx status code
+func (o *ProjectAppSyncNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project app sync not found response a status code equal to that given
+func (o *ProjectAppSyncNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectAppSyncNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectAppSyncNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectAppSyncNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectAppSyncInternalServerError() *ProjectAppSyncInternalServerError {
 	return &ProjectAppSyncInternalServerError{}
 }
 
-/* ProjectAppSyncInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectAppSyncInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectAppSyncInternalServerError struct {
 }
 
+// IsSuccess returns true when this project app sync internal server error response has a 2xx status code
+func (o *ProjectAppSyncInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project app sync internal server error response has a 3xx status code
+func (o *ProjectAppSyncInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project app sync internal server error response has a 4xx status code
+func (o *ProjectAppSyncInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this project app sync internal server error response has a 5xx status code
+func (o *ProjectAppSyncInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this project app sync internal server error response a status code equal to that given
+func (o *ProjectAppSyncInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectAppSyncInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncInternalServerError ", 500)
+}
+
+func (o *ProjectAppSyncInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncInternalServerError ", 500)
 }
 

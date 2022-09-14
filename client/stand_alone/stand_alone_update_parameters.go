@@ -54,10 +54,12 @@ func NewStandAloneUpdateParamsWithHTTPClient(client *http.Client) *StandAloneUpd
 	}
 }
 
-/* StandAloneUpdateParams contains all the parameters to send to the API endpoint
-   for the stand alone update operation.
+/*
+StandAloneUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone update operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneUpdateParams struct {
 

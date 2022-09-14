@@ -69,7 +69,8 @@ func NewKubernetesGetDaemonSetOK() *KubernetesGetDaemonSetOK {
 	return &KubernetesGetDaemonSetOK{}
 }
 
-/* KubernetesGetDaemonSetOK describes a response with status code 200, with default header values.
+/*
+KubernetesGetDaemonSetOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesGetDaemonSetOK struct {
 	Payload *models.DaemonSets
 }
 
+// IsSuccess returns true when this kubernetes get daemon set o k response has a 2xx status code
+func (o *KubernetesGetDaemonSetOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes get daemon set o k response has a 3xx status code
+func (o *KubernetesGetDaemonSetOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get daemon set o k response has a 4xx status code
+func (o *KubernetesGetDaemonSetOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get daemon set o k response has a 5xx status code
+func (o *KubernetesGetDaemonSetOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get daemon set o k response a status code equal to that given
+func (o *KubernetesGetDaemonSetOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesGetDaemonSetOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesGetDaemonSetOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesGetDaemonSetOK) GetPayload() *models.DaemonSets {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewKubernetesGetDaemonSetBadRequest() *KubernetesGetDaemonSetBadRequest {
 	return &KubernetesGetDaemonSetBadRequest{}
 }
 
-/* KubernetesGetDaemonSetBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesGetDaemonSetBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type KubernetesGetDaemonSetBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get daemon set bad request response has a 2xx status code
+func (o *KubernetesGetDaemonSetBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get daemon set bad request response has a 3xx status code
+func (o *KubernetesGetDaemonSetBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get daemon set bad request response has a 4xx status code
+func (o *KubernetesGetDaemonSetBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get daemon set bad request response has a 5xx status code
+func (o *KubernetesGetDaemonSetBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get daemon set bad request response a status code equal to that given
+func (o *KubernetesGetDaemonSetBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesGetDaemonSetBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesGetDaemonSetBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesGetDaemonSetBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewKubernetesGetDaemonSetUnauthorized() *KubernetesGetDaemonSetUnauthorized
 	return &KubernetesGetDaemonSetUnauthorized{}
 }
 
-/* KubernetesGetDaemonSetUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesGetDaemonSetUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type KubernetesGetDaemonSetUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get daemon set unauthorized response has a 2xx status code
+func (o *KubernetesGetDaemonSetUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get daemon set unauthorized response has a 3xx status code
+func (o *KubernetesGetDaemonSetUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get daemon set unauthorized response has a 4xx status code
+func (o *KubernetesGetDaemonSetUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get daemon set unauthorized response has a 5xx status code
+func (o *KubernetesGetDaemonSetUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get daemon set unauthorized response a status code equal to that given
+func (o *KubernetesGetDaemonSetUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesGetDaemonSetUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesGetDaemonSetUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesGetDaemonSetUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewKubernetesGetDaemonSetForbidden() *KubernetesGetDaemonSetForbidden {
 	return &KubernetesGetDaemonSetForbidden{}
 }
 
-/* KubernetesGetDaemonSetForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesGetDaemonSetForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type KubernetesGetDaemonSetForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get daemon set forbidden response has a 2xx status code
+func (o *KubernetesGetDaemonSetForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get daemon set forbidden response has a 3xx status code
+func (o *KubernetesGetDaemonSetForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get daemon set forbidden response has a 4xx status code
+func (o *KubernetesGetDaemonSetForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get daemon set forbidden response has a 5xx status code
+func (o *KubernetesGetDaemonSetForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get daemon set forbidden response a status code equal to that given
+func (o *KubernetesGetDaemonSetForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesGetDaemonSetForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesGetDaemonSetForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesGetDaemonSetForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewKubernetesGetDaemonSetNotFound() *KubernetesGetDaemonSetNotFound {
 	return &KubernetesGetDaemonSetNotFound{}
 }
 
-/* KubernetesGetDaemonSetNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesGetDaemonSetNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type KubernetesGetDaemonSetNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get daemon set not found response has a 2xx status code
+func (o *KubernetesGetDaemonSetNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get daemon set not found response has a 3xx status code
+func (o *KubernetesGetDaemonSetNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get daemon set not found response has a 4xx status code
+func (o *KubernetesGetDaemonSetNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get daemon set not found response has a 5xx status code
+func (o *KubernetesGetDaemonSetNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get daemon set not found response a status code equal to that given
+func (o *KubernetesGetDaemonSetNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesGetDaemonSetNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesGetDaemonSetNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesGetDaemonSetNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewKubernetesGetDaemonSetInternalServerError() *KubernetesGetDaemonSetInter
 	return &KubernetesGetDaemonSetInternalServerError{}
 }
 
-/* KubernetesGetDaemonSetInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesGetDaemonSetInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesGetDaemonSetInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes get daemon set internal server error response has a 2xx status code
+func (o *KubernetesGetDaemonSetInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get daemon set internal server error response has a 3xx status code
+func (o *KubernetesGetDaemonSetInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get daemon set internal server error response has a 4xx status code
+func (o *KubernetesGetDaemonSetInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get daemon set internal server error response has a 5xx status code
+func (o *KubernetesGetDaemonSetInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes get daemon set internal server error response a status code equal to that given
+func (o *KubernetesGetDaemonSetInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesGetDaemonSetInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetInternalServerError ", 500)
+}
+
+func (o *KubernetesGetDaemonSetInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetInternalServerError ", 500)
 }
 

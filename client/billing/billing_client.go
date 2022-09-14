@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  BillingCreate adds billing summary
+BillingCreate adds billing summary
 */
 func (a *Client) BillingCreate(params *BillingCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BillingCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +81,7 @@ func (a *Client) BillingCreate(params *BillingCreateParams, authInfo runtime.Cli
 }
 
 /*
-  BillingExportCsv exports csv
+BillingExportCsv exports csv
 */
 func (a *Client) BillingExportCsv(params *BillingExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BillingExportCsvOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) BillingExportCsv(params *BillingExportCsvParams, authInfo runti
 }
 
 /*
-  BillingGroupedList retrieves a grouped list of billing summaries
+BillingGroupedList retrieves a grouped list of billing summaries
 */
 func (a *Client) BillingGroupedList(params *BillingGroupedListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BillingGroupedListOK, error) {
 	// TODO: Validate the params before sending
@@ -159,7 +159,7 @@ func (a *Client) BillingGroupedList(params *BillingGroupedListParams, authInfo r
 }
 
 /*
-  BillingList retrieves billing info
+BillingList retrieves billing info
 */
 func (a *Client) BillingList(params *BillingListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BillingListOK, error) {
 	// TODO: Validate the params before sending

@@ -54,10 +54,12 @@ func NewBackupImportBackupStorageParamsWithHTTPClient(client *http.Client) *Back
 	}
 }
 
-/* BackupImportBackupStorageParams contains all the parameters to send to the API endpoint
-   for the backup import backup storage operation.
+/*
+BackupImportBackupStorageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the backup import backup storage operation.
+
+	Typically these are written to a http.Request.
 */
 type BackupImportBackupStorageParams struct {
 

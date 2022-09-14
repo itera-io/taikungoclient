@@ -50,7 +50,7 @@ type ClientService interface {
 }
 
 /*
-  PaymentClear clears stripe items
+PaymentClear clears stripe items
 */
 func (a *Client) PaymentClear(params *PaymentClearParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentClearOK, error) {
 	// TODO: Validate the params before sending
@@ -89,7 +89,7 @@ func (a *Client) PaymentClear(params *PaymentClearParams, authInfo runtime.Clien
 }
 
 /*
-  PaymentCreateCustomer creates customer
+PaymentCreateCustomer creates customer
 */
 func (a *Client) PaymentCreateCustomer(params *PaymentCreateCustomerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentCreateCustomerOK, error) {
 	// TODO: Validate the params before sending
@@ -128,7 +128,7 @@ func (a *Client) PaymentCreateCustomer(params *PaymentCreateCustomerParams, auth
 }
 
 /*
-  PaymentGetCardInfo gets card information
+PaymentGetCardInfo gets card information
 */
 func (a *Client) PaymentGetCardInfo(params *PaymentGetCardInfoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentGetCardInfoOK, error) {
 	// TODO: Validate the params before sending
@@ -167,7 +167,7 @@ func (a *Client) PaymentGetCardInfo(params *PaymentGetCardInfoParams, authInfo r
 }
 
 /*
-  PaymentGetFinalPrice updates your card
+PaymentGetFinalPrice updates your card
 */
 func (a *Client) PaymentGetFinalPrice(params *PaymentGetFinalPriceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentGetFinalPriceOK, error) {
 	// TODO: Validate the params before sending
@@ -206,7 +206,7 @@ func (a *Client) PaymentGetFinalPrice(params *PaymentGetFinalPriceParams, authIn
 }
 
 /*
-  PaymentGetStripeInvoices gets required stripe invoices by stripe subscription id
+PaymentGetStripeInvoices gets required stripe invoices by stripe subscription id
 */
 func (a *Client) PaymentGetStripeInvoices(params *PaymentGetStripeInvoicesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentGetStripeInvoicesOK, error) {
 	// TODO: Validate the params before sending
@@ -245,7 +245,7 @@ func (a *Client) PaymentGetStripeInvoices(params *PaymentGetStripeInvoicesParams
 }
 
 /*
-  PaymentPayInvoice pays invoice
+PaymentPayInvoice pays invoice
 */
 func (a *Client) PaymentPayInvoice(params *PaymentPayInvoiceParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentPayInvoiceOK, error) {
 	// TODO: Validate the params before sending
@@ -284,7 +284,7 @@ func (a *Client) PaymentPayInvoice(params *PaymentPayInvoiceParams, authInfo run
 }
 
 /*
-  PaymentUpdateCard updates your card
+PaymentUpdateCard updates your card
 */
 func (a *Client) PaymentUpdateCard(params *PaymentUpdateCardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentUpdateCardOK, error) {
 	// TODO: Validate the params before sending
@@ -323,7 +323,7 @@ func (a *Client) PaymentUpdateCard(params *PaymentUpdateCardParams, authInfo run
 }
 
 /*
-  PaymentWebhook listens to payment webhook
+PaymentWebhook listens to payment webhook
 */
 func (a *Client) PaymentWebhook(params *PaymentWebhookParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PaymentWebhookOK, error) {
 	// TODO: Validate the params before sending

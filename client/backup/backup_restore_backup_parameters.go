@@ -54,10 +54,12 @@ func NewBackupRestoreBackupParamsWithHTTPClient(client *http.Client) *BackupRest
 	}
 }
 
-/* BackupRestoreBackupParams contains all the parameters to send to the API endpoint
-   for the backup restore backup operation.
+/*
+BackupRestoreBackupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the backup restore backup operation.
+
+	Typically these are written to a http.Request.
 */
 type BackupRestoreBackupParams struct {
 

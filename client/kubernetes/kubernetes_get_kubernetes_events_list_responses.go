@@ -69,7 +69,8 @@ func NewKubernetesGetKubernetesEventsListOK() *KubernetesGetKubernetesEventsList
 	return &KubernetesGetKubernetesEventsListOK{}
 }
 
-/* KubernetesGetKubernetesEventsListOK describes a response with status code 200, with default header values.
+/*
+KubernetesGetKubernetesEventsListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesGetKubernetesEventsListOK struct {
 	Payload *models.KubernetesEventsList
 }
 
+// IsSuccess returns true when this kubernetes get kubernetes events list o k response has a 2xx status code
+func (o *KubernetesGetKubernetesEventsListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes get kubernetes events list o k response has a 3xx status code
+func (o *KubernetesGetKubernetesEventsListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get kubernetes events list o k response has a 4xx status code
+func (o *KubernetesGetKubernetesEventsListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get kubernetes events list o k response has a 5xx status code
+func (o *KubernetesGetKubernetesEventsListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get kubernetes events list o k response a status code equal to that given
+func (o *KubernetesGetKubernetesEventsListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesGetKubernetesEventsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/events][%d] kubernetesGetKubernetesEventsListOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesGetKubernetesEventsListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/events][%d] kubernetesGetKubernetesEventsListOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesGetKubernetesEventsListOK) GetPayload() *models.KubernetesEventsList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewKubernetesGetKubernetesEventsListBadRequest() *KubernetesGetKubernetesEv
 	return &KubernetesGetKubernetesEventsListBadRequest{}
 }
 
-/* KubernetesGetKubernetesEventsListBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesGetKubernetesEventsListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type KubernetesGetKubernetesEventsListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get kubernetes events list bad request response has a 2xx status code
+func (o *KubernetesGetKubernetesEventsListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get kubernetes events list bad request response has a 3xx status code
+func (o *KubernetesGetKubernetesEventsListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get kubernetes events list bad request response has a 4xx status code
+func (o *KubernetesGetKubernetesEventsListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get kubernetes events list bad request response has a 5xx status code
+func (o *KubernetesGetKubernetesEventsListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get kubernetes events list bad request response a status code equal to that given
+func (o *KubernetesGetKubernetesEventsListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesGetKubernetesEventsListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/events][%d] kubernetesGetKubernetesEventsListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesGetKubernetesEventsListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/events][%d] kubernetesGetKubernetesEventsListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesGetKubernetesEventsListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewKubernetesGetKubernetesEventsListUnauthorized() *KubernetesGetKubernetes
 	return &KubernetesGetKubernetesEventsListUnauthorized{}
 }
 
-/* KubernetesGetKubernetesEventsListUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesGetKubernetesEventsListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type KubernetesGetKubernetesEventsListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get kubernetes events list unauthorized response has a 2xx status code
+func (o *KubernetesGetKubernetesEventsListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get kubernetes events list unauthorized response has a 3xx status code
+func (o *KubernetesGetKubernetesEventsListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get kubernetes events list unauthorized response has a 4xx status code
+func (o *KubernetesGetKubernetesEventsListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get kubernetes events list unauthorized response has a 5xx status code
+func (o *KubernetesGetKubernetesEventsListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get kubernetes events list unauthorized response a status code equal to that given
+func (o *KubernetesGetKubernetesEventsListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesGetKubernetesEventsListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/events][%d] kubernetesGetKubernetesEventsListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesGetKubernetesEventsListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/events][%d] kubernetesGetKubernetesEventsListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesGetKubernetesEventsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewKubernetesGetKubernetesEventsListForbidden() *KubernetesGetKubernetesEve
 	return &KubernetesGetKubernetesEventsListForbidden{}
 }
 
-/* KubernetesGetKubernetesEventsListForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesGetKubernetesEventsListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type KubernetesGetKubernetesEventsListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get kubernetes events list forbidden response has a 2xx status code
+func (o *KubernetesGetKubernetesEventsListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get kubernetes events list forbidden response has a 3xx status code
+func (o *KubernetesGetKubernetesEventsListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get kubernetes events list forbidden response has a 4xx status code
+func (o *KubernetesGetKubernetesEventsListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get kubernetes events list forbidden response has a 5xx status code
+func (o *KubernetesGetKubernetesEventsListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get kubernetes events list forbidden response a status code equal to that given
+func (o *KubernetesGetKubernetesEventsListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesGetKubernetesEventsListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/events][%d] kubernetesGetKubernetesEventsListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesGetKubernetesEventsListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/events][%d] kubernetesGetKubernetesEventsListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesGetKubernetesEventsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewKubernetesGetKubernetesEventsListNotFound() *KubernetesGetKubernetesEven
 	return &KubernetesGetKubernetesEventsListNotFound{}
 }
 
-/* KubernetesGetKubernetesEventsListNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesGetKubernetesEventsListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type KubernetesGetKubernetesEventsListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get kubernetes events list not found response has a 2xx status code
+func (o *KubernetesGetKubernetesEventsListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get kubernetes events list not found response has a 3xx status code
+func (o *KubernetesGetKubernetesEventsListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get kubernetes events list not found response has a 4xx status code
+func (o *KubernetesGetKubernetesEventsListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get kubernetes events list not found response has a 5xx status code
+func (o *KubernetesGetKubernetesEventsListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get kubernetes events list not found response a status code equal to that given
+func (o *KubernetesGetKubernetesEventsListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesGetKubernetesEventsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/events][%d] kubernetesGetKubernetesEventsListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesGetKubernetesEventsListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/events][%d] kubernetesGetKubernetesEventsListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesGetKubernetesEventsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewKubernetesGetKubernetesEventsListInternalServerError() *KubernetesGetKub
 	return &KubernetesGetKubernetesEventsListInternalServerError{}
 }
 
-/* KubernetesGetKubernetesEventsListInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesGetKubernetesEventsListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesGetKubernetesEventsListInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes get kubernetes events list internal server error response has a 2xx status code
+func (o *KubernetesGetKubernetesEventsListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get kubernetes events list internal server error response has a 3xx status code
+func (o *KubernetesGetKubernetesEventsListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get kubernetes events list internal server error response has a 4xx status code
+func (o *KubernetesGetKubernetesEventsListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get kubernetes events list internal server error response has a 5xx status code
+func (o *KubernetesGetKubernetesEventsListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes get kubernetes events list internal server error response a status code equal to that given
+func (o *KubernetesGetKubernetesEventsListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesGetKubernetesEventsListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/events][%d] kubernetesGetKubernetesEventsListInternalServerError ", 500)
+}
+
+func (o *KubernetesGetKubernetesEventsListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/events][%d] kubernetesGetKubernetesEventsListInternalServerError ", 500)
 }
 

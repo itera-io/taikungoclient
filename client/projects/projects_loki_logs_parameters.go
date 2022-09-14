@@ -54,10 +54,12 @@ func NewProjectsLokiLogsParamsWithHTTPClient(client *http.Client) *ProjectsLokiL
 	}
 }
 
-/* ProjectsLokiLogsParams contains all the parameters to send to the API endpoint
-   for the projects loki logs operation.
+/*
+ProjectsLokiLogsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects loki logs operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsLokiLogsParams struct {
 

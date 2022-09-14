@@ -54,10 +54,12 @@ func NewKeycloakCreateParamsWithHTTPClient(client *http.Client) *KeycloakCreateP
 	}
 }
 
-/* KeycloakCreateParams contains all the parameters to send to the API endpoint
-   for the keycloak create operation.
+/*
+KeycloakCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the keycloak create operation.
+
+	Typically these are written to a http.Request.
 */
 type KeycloakCreateParams struct {
 

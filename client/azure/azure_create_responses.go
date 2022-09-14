@@ -69,7 +69,8 @@ func NewAzureCreateOK() *AzureCreateOK {
 	return &AzureCreateOK{}
 }
 
-/* AzureCreateOK describes a response with status code 200, with default header values.
+/*
+AzureCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AzureCreateOK struct {
 	Payload *models.APIResponse
 }
 
+// IsSuccess returns true when this azure create o k response has a 2xx status code
+func (o *AzureCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this azure create o k response has a 3xx status code
+func (o *AzureCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure create o k response has a 4xx status code
+func (o *AzureCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this azure create o k response has a 5xx status code
+func (o *AzureCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure create o k response a status code equal to that given
+func (o *AzureCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AzureCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *AzureCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *AzureCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewAzureCreateBadRequest() *AzureCreateBadRequest {
 	return &AzureCreateBadRequest{}
 }
 
-/* AzureCreateBadRequest describes a response with status code 400, with default header values.
+/*
+AzureCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type AzureCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this azure create bad request response has a 2xx status code
+func (o *AzureCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure create bad request response has a 3xx status code
+func (o *AzureCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure create bad request response has a 4xx status code
+func (o *AzureCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure create bad request response has a 5xx status code
+func (o *AzureCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure create bad request response a status code equal to that given
+func (o *AzureCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AzureCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AzureCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AzureCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewAzureCreateUnauthorized() *AzureCreateUnauthorized {
 	return &AzureCreateUnauthorized{}
 }
 
-/* AzureCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+AzureCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type AzureCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this azure create unauthorized response has a 2xx status code
+func (o *AzureCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure create unauthorized response has a 3xx status code
+func (o *AzureCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure create unauthorized response has a 4xx status code
+func (o *AzureCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure create unauthorized response has a 5xx status code
+func (o *AzureCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure create unauthorized response a status code equal to that given
+func (o *AzureCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AzureCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AzureCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AzureCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewAzureCreateForbidden() *AzureCreateForbidden {
 	return &AzureCreateForbidden{}
 }
 
-/* AzureCreateForbidden describes a response with status code 403, with default header values.
+/*
+AzureCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type AzureCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this azure create forbidden response has a 2xx status code
+func (o *AzureCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure create forbidden response has a 3xx status code
+func (o *AzureCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure create forbidden response has a 4xx status code
+func (o *AzureCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure create forbidden response has a 5xx status code
+func (o *AzureCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure create forbidden response a status code equal to that given
+func (o *AzureCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AzureCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AzureCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AzureCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewAzureCreateNotFound() *AzureCreateNotFound {
 	return &AzureCreateNotFound{}
 }
 
-/* AzureCreateNotFound describes a response with status code 404, with default header values.
+/*
+AzureCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type AzureCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this azure create not found response has a 2xx status code
+func (o *AzureCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure create not found response has a 3xx status code
+func (o *AzureCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure create not found response has a 4xx status code
+func (o *AzureCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure create not found response has a 5xx status code
+func (o *AzureCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure create not found response a status code equal to that given
+func (o *AzureCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AzureCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AzureCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AzureCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewAzureCreateInternalServerError() *AzureCreateInternalServerError {
 	return &AzureCreateInternalServerError{}
 }
 
-/* AzureCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+AzureCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AzureCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this azure create internal server error response has a 2xx status code
+func (o *AzureCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure create internal server error response has a 3xx status code
+func (o *AzureCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure create internal server error response has a 4xx status code
+func (o *AzureCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this azure create internal server error response has a 5xx status code
+func (o *AzureCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this azure create internal server error response a status code equal to that given
+func (o *AzureCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AzureCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateInternalServerError ", 500)
+}
+
+func (o *AzureCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateInternalServerError ", 500)
 }
 

@@ -69,7 +69,8 @@ func NewCronJobSyncOpaProfilesOK() *CronJobSyncOpaProfilesOK {
 	return &CronJobSyncOpaProfilesOK{}
 }
 
-/* CronJobSyncOpaProfilesOK describes a response with status code 200, with default header values.
+/*
+CronJobSyncOpaProfilesOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CronJobSyncOpaProfilesOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this cron job sync opa profiles o k response has a 2xx status code
+func (o *CronJobSyncOpaProfilesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cron job sync opa profiles o k response has a 3xx status code
+func (o *CronJobSyncOpaProfilesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync opa profiles o k response has a 4xx status code
+func (o *CronJobSyncOpaProfilesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job sync opa profiles o k response has a 5xx status code
+func (o *CronJobSyncOpaProfilesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job sync opa profiles o k response a status code equal to that given
+func (o *CronJobSyncOpaProfilesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CronJobSyncOpaProfilesOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesOK  %+v", 200, o.Payload)
 }
+
+func (o *CronJobSyncOpaProfilesOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesOK  %+v", 200, o.Payload)
+}
+
 func (o *CronJobSyncOpaProfilesOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCronJobSyncOpaProfilesBadRequest() *CronJobSyncOpaProfilesBadRequest {
 	return &CronJobSyncOpaProfilesBadRequest{}
 }
 
-/* CronJobSyncOpaProfilesBadRequest describes a response with status code 400, with default header values.
+/*
+CronJobSyncOpaProfilesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CronJobSyncOpaProfilesBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cron job sync opa profiles bad request response has a 2xx status code
+func (o *CronJobSyncOpaProfilesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job sync opa profiles bad request response has a 3xx status code
+func (o *CronJobSyncOpaProfilesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync opa profiles bad request response has a 4xx status code
+func (o *CronJobSyncOpaProfilesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job sync opa profiles bad request response has a 5xx status code
+func (o *CronJobSyncOpaProfilesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job sync opa profiles bad request response a status code equal to that given
+func (o *CronJobSyncOpaProfilesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CronJobSyncOpaProfilesBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CronJobSyncOpaProfilesBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CronJobSyncOpaProfilesBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCronJobSyncOpaProfilesUnauthorized() *CronJobSyncOpaProfilesUnauthorized
 	return &CronJobSyncOpaProfilesUnauthorized{}
 }
 
-/* CronJobSyncOpaProfilesUnauthorized describes a response with status code 401, with default header values.
+/*
+CronJobSyncOpaProfilesUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CronJobSyncOpaProfilesUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job sync opa profiles unauthorized response has a 2xx status code
+func (o *CronJobSyncOpaProfilesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job sync opa profiles unauthorized response has a 3xx status code
+func (o *CronJobSyncOpaProfilesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync opa profiles unauthorized response has a 4xx status code
+func (o *CronJobSyncOpaProfilesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job sync opa profiles unauthorized response has a 5xx status code
+func (o *CronJobSyncOpaProfilesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job sync opa profiles unauthorized response a status code equal to that given
+func (o *CronJobSyncOpaProfilesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CronJobSyncOpaProfilesUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CronJobSyncOpaProfilesUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CronJobSyncOpaProfilesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCronJobSyncOpaProfilesForbidden() *CronJobSyncOpaProfilesForbidden {
 	return &CronJobSyncOpaProfilesForbidden{}
 }
 
-/* CronJobSyncOpaProfilesForbidden describes a response with status code 403, with default header values.
+/*
+CronJobSyncOpaProfilesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CronJobSyncOpaProfilesForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job sync opa profiles forbidden response has a 2xx status code
+func (o *CronJobSyncOpaProfilesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job sync opa profiles forbidden response has a 3xx status code
+func (o *CronJobSyncOpaProfilesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync opa profiles forbidden response has a 4xx status code
+func (o *CronJobSyncOpaProfilesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job sync opa profiles forbidden response has a 5xx status code
+func (o *CronJobSyncOpaProfilesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job sync opa profiles forbidden response a status code equal to that given
+func (o *CronJobSyncOpaProfilesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CronJobSyncOpaProfilesForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CronJobSyncOpaProfilesForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CronJobSyncOpaProfilesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCronJobSyncOpaProfilesNotFound() *CronJobSyncOpaProfilesNotFound {
 	return &CronJobSyncOpaProfilesNotFound{}
 }
 
-/* CronJobSyncOpaProfilesNotFound describes a response with status code 404, with default header values.
+/*
+CronJobSyncOpaProfilesNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CronJobSyncOpaProfilesNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job sync opa profiles not found response has a 2xx status code
+func (o *CronJobSyncOpaProfilesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job sync opa profiles not found response has a 3xx status code
+func (o *CronJobSyncOpaProfilesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync opa profiles not found response has a 4xx status code
+func (o *CronJobSyncOpaProfilesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job sync opa profiles not found response has a 5xx status code
+func (o *CronJobSyncOpaProfilesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job sync opa profiles not found response a status code equal to that given
+func (o *CronJobSyncOpaProfilesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CronJobSyncOpaProfilesNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CronJobSyncOpaProfilesNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CronJobSyncOpaProfilesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCronJobSyncOpaProfilesInternalServerError() *CronJobSyncOpaProfilesInter
 	return &CronJobSyncOpaProfilesInternalServerError{}
 }
 
-/* CronJobSyncOpaProfilesInternalServerError describes a response with status code 500, with default header values.
+/*
+CronJobSyncOpaProfilesInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CronJobSyncOpaProfilesInternalServerError struct {
 }
 
+// IsSuccess returns true when this cron job sync opa profiles internal server error response has a 2xx status code
+func (o *CronJobSyncOpaProfilesInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job sync opa profiles internal server error response has a 3xx status code
+func (o *CronJobSyncOpaProfilesInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job sync opa profiles internal server error response has a 4xx status code
+func (o *CronJobSyncOpaProfilesInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job sync opa profiles internal server error response has a 5xx status code
+func (o *CronJobSyncOpaProfilesInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cron job sync opa profiles internal server error response a status code equal to that given
+func (o *CronJobSyncOpaProfilesInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CronJobSyncOpaProfilesInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesInternalServerError ", 500)
+}
+
+func (o *CronJobSyncOpaProfilesInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesInternalServerError ", 500)
 }
 

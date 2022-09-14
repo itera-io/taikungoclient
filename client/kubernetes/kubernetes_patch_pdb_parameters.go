@@ -54,10 +54,12 @@ func NewKubernetesPatchPdbParamsWithHTTPClient(client *http.Client) *KubernetesP
 	}
 }
 
-/* KubernetesPatchPdbParams contains all the parameters to send to the API endpoint
-   for the kubernetes patch pdb operation.
+/*
+KubernetesPatchPdbParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes patch pdb operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesPatchPdbParams struct {
 

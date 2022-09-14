@@ -69,7 +69,8 @@ func NewAccessProfilesUpdateOK() *AccessProfilesUpdateOK {
 	return &AccessProfilesUpdateOK{}
 }
 
-/* AccessProfilesUpdateOK describes a response with status code 200, with default header values.
+/*
+AccessProfilesUpdateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AccessProfilesUpdateOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this access profiles update o k response has a 2xx status code
+func (o *AccessProfilesUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this access profiles update o k response has a 3xx status code
+func (o *AccessProfilesUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles update o k response has a 4xx status code
+func (o *AccessProfilesUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this access profiles update o k response has a 5xx status code
+func (o *AccessProfilesUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this access profiles update o k response a status code equal to that given
+func (o *AccessProfilesUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AccessProfilesUpdateOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *AccessProfilesUpdateOK) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *AccessProfilesUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAccessProfilesUpdateBadRequest() *AccessProfilesUpdateBadRequest {
 	return &AccessProfilesUpdateBadRequest{}
 }
 
-/* AccessProfilesUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+AccessProfilesUpdateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AccessProfilesUpdateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this access profiles update bad request response has a 2xx status code
+func (o *AccessProfilesUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this access profiles update bad request response has a 3xx status code
+func (o *AccessProfilesUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles update bad request response has a 4xx status code
+func (o *AccessProfilesUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this access profiles update bad request response has a 5xx status code
+func (o *AccessProfilesUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this access profiles update bad request response a status code equal to that given
+func (o *AccessProfilesUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AccessProfilesUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AccessProfilesUpdateBadRequest) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AccessProfilesUpdateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAccessProfilesUpdateUnauthorized() *AccessProfilesUpdateUnauthorized {
 	return &AccessProfilesUpdateUnauthorized{}
 }
 
-/* AccessProfilesUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+AccessProfilesUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AccessProfilesUpdateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this access profiles update unauthorized response has a 2xx status code
+func (o *AccessProfilesUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this access profiles update unauthorized response has a 3xx status code
+func (o *AccessProfilesUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles update unauthorized response has a 4xx status code
+func (o *AccessProfilesUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this access profiles update unauthorized response has a 5xx status code
+func (o *AccessProfilesUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this access profiles update unauthorized response a status code equal to that given
+func (o *AccessProfilesUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AccessProfilesUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AccessProfilesUpdateUnauthorized) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AccessProfilesUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAccessProfilesUpdateForbidden() *AccessProfilesUpdateForbidden {
 	return &AccessProfilesUpdateForbidden{}
 }
 
-/* AccessProfilesUpdateForbidden describes a response with status code 403, with default header values.
+/*
+AccessProfilesUpdateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AccessProfilesUpdateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this access profiles update forbidden response has a 2xx status code
+func (o *AccessProfilesUpdateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this access profiles update forbidden response has a 3xx status code
+func (o *AccessProfilesUpdateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles update forbidden response has a 4xx status code
+func (o *AccessProfilesUpdateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this access profiles update forbidden response has a 5xx status code
+func (o *AccessProfilesUpdateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this access profiles update forbidden response a status code equal to that given
+func (o *AccessProfilesUpdateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AccessProfilesUpdateForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AccessProfilesUpdateForbidden) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AccessProfilesUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAccessProfilesUpdateNotFound() *AccessProfilesUpdateNotFound {
 	return &AccessProfilesUpdateNotFound{}
 }
 
-/* AccessProfilesUpdateNotFound describes a response with status code 404, with default header values.
+/*
+AccessProfilesUpdateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AccessProfilesUpdateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this access profiles update not found response has a 2xx status code
+func (o *AccessProfilesUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this access profiles update not found response has a 3xx status code
+func (o *AccessProfilesUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles update not found response has a 4xx status code
+func (o *AccessProfilesUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this access profiles update not found response has a 5xx status code
+func (o *AccessProfilesUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this access profiles update not found response a status code equal to that given
+func (o *AccessProfilesUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AccessProfilesUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AccessProfilesUpdateNotFound) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AccessProfilesUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAccessProfilesUpdateInternalServerError() *AccessProfilesUpdateInternalS
 	return &AccessProfilesUpdateInternalServerError{}
 }
 
-/* AccessProfilesUpdateInternalServerError describes a response with status code 500, with default header values.
+/*
+AccessProfilesUpdateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AccessProfilesUpdateInternalServerError struct {
 }
 
+// IsSuccess returns true when this access profiles update internal server error response has a 2xx status code
+func (o *AccessProfilesUpdateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this access profiles update internal server error response has a 3xx status code
+func (o *AccessProfilesUpdateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles update internal server error response has a 4xx status code
+func (o *AccessProfilesUpdateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this access profiles update internal server error response has a 5xx status code
+func (o *AccessProfilesUpdateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this access profiles update internal server error response a status code equal to that given
+func (o *AccessProfilesUpdateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AccessProfilesUpdateInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateInternalServerError ", 500)
+}
+
+func (o *AccessProfilesUpdateInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateInternalServerError ", 500)
 }
 

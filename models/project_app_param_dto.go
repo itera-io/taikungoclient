@@ -26,12 +26,6 @@ type ProjectAppParamDto struct {
 	// key
 	Key string `json:"key,omitempty"`
 
-	// project app Id
-	ProjectAppID int32 `json:"projectAppId,omitempty"`
-
-	// project app name
-	ProjectAppName string `json:"projectAppName,omitempty"`
-
 	// value
 	Value string `json:"value,omitempty"`
 }

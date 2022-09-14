@@ -82,7 +82,7 @@ type ClientService interface {
 }
 
 /*
-  CronJobAutoUpgradeProjects upgrades projects that auto upgrade option enabled
+CronJobAutoUpgradeProjects upgrades projects that auto upgrade option enabled
 */
 func (a *Client) CronJobAutoUpgradeProjects(params *CronJobAutoUpgradeProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobAutoUpgradeProjectsOK, error) {
 	// TODO: Validate the params before sending
@@ -121,7 +121,7 @@ func (a *Client) CronJobAutoUpgradeProjects(params *CronJobAutoUpgradeProjectsPa
 }
 
 /*
-  CronJobCreateKeyPool creates key pool
+CronJobCreateKeyPool creates key pool
 */
 func (a *Client) CronJobCreateKeyPool(params *CronJobCreateKeyPoolParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobCreateKeyPoolOK, error) {
 	// TODO: Validate the params before sending
@@ -160,7 +160,7 @@ func (a *Client) CronJobCreateKeyPool(params *CronJobCreateKeyPoolParams, authIn
 }
 
 /*
-  CronJobDeleteAwsSpotInstances deletes removed aws spot instances
+CronJobDeleteAwsSpotInstances deletes removed aws spot instances
 */
 func (a *Client) CronJobDeleteAwsSpotInstances(params *CronJobDeleteAwsSpotInstancesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteAwsSpotInstancesOK, error) {
 	// TODO: Validate the params before sending
@@ -199,7 +199,7 @@ func (a *Client) CronJobDeleteAwsSpotInstances(params *CronJobDeleteAwsSpotInsta
 }
 
 /*
-  CronJobDeleteExpiredAlerts deletes expired alerts
+CronJobDeleteExpiredAlerts deletes expired alerts
 */
 func (a *Client) CronJobDeleteExpiredAlerts(params *CronJobDeleteExpiredAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteExpiredAlertsOK, error) {
 	// TODO: Validate the params before sending
@@ -238,7 +238,7 @@ func (a *Client) CronJobDeleteExpiredAlerts(params *CronJobDeleteExpiredAlertsPa
 }
 
 /*
-  CronJobDeleteExpiredEvents deletes expired events
+CronJobDeleteExpiredEvents deletes expired events
 */
 func (a *Client) CronJobDeleteExpiredEvents(params *CronJobDeleteExpiredEventsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteExpiredEventsOK, error) {
 	// TODO: Validate the params before sending
@@ -277,7 +277,7 @@ func (a *Client) CronJobDeleteExpiredEvents(params *CronJobDeleteExpiredEventsPa
 }
 
 /*
-  CronJobDeleteExpiredHistoryLogs deletes expired history logs
+CronJobDeleteExpiredHistoryLogs deletes expired history logs
 */
 func (a *Client) CronJobDeleteExpiredHistoryLogs(params *CronJobDeleteExpiredHistoryLogsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteExpiredHistoryLogsOK, error) {
 	// TODO: Validate the params before sending
@@ -316,7 +316,7 @@ func (a *Client) CronJobDeleteExpiredHistoryLogs(params *CronJobDeleteExpiredHis
 }
 
 /*
-  CronJobDeleteExpiredRefreshTokens deletes expired refresh tokens
+CronJobDeleteExpiredRefreshTokens deletes expired refresh tokens
 */
 func (a *Client) CronJobDeleteExpiredRefreshTokens(params *CronJobDeleteExpiredRefreshTokensParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteExpiredRefreshTokensOK, error) {
 	// TODO: Validate the params before sending
@@ -355,7 +355,7 @@ func (a *Client) CronJobDeleteExpiredRefreshTokens(params *CronJobDeleteExpiredR
 }
 
 /*
-  CronJobDeleteExpiredRequests deletes expired requests
+CronJobDeleteExpiredRequests deletes expired requests
 */
 func (a *Client) CronJobDeleteExpiredRequests(params *CronJobDeleteExpiredRequestsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteExpiredRequestsOK, error) {
 	// TODO: Validate the params before sending
@@ -394,7 +394,7 @@ func (a *Client) CronJobDeleteExpiredRequests(params *CronJobDeleteExpiredReques
 }
 
 /*
-  CronJobDeleteExpiredServers deletes expired servers
+CronJobDeleteExpiredServers deletes expired servers
 */
 func (a *Client) CronJobDeleteExpiredServers(params *CronJobDeleteExpiredServersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteExpiredServersOK, error) {
 	// TODO: Validate the params before sending
@@ -433,7 +433,7 @@ func (a *Client) CronJobDeleteExpiredServers(params *CronJobDeleteExpiredServers
 }
 
 /*
-  CronJobDeleteKubeConfigs removes deleted user s kube configs
+CronJobDeleteKubeConfigs removes deleted user s kube configs
 */
 func (a *Client) CronJobDeleteKubeConfigs(params *CronJobDeleteKubeConfigsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteKubeConfigsOK, error) {
 	// TODO: Validate the params before sending
@@ -472,7 +472,7 @@ func (a *Client) CronJobDeleteKubeConfigs(params *CronJobDeleteKubeConfigsParams
 }
 
 /*
-  CronJobDeletePendingOrganizations deletes pending organizations
+CronJobDeletePendingOrganizations deletes pending organizations
 */
 func (a *Client) CronJobDeletePendingOrganizations(params *CronJobDeletePendingOrganizationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeletePendingOrganizationsOK, error) {
 	// TODO: Validate the params before sending
@@ -511,7 +511,7 @@ func (a *Client) CronJobDeletePendingOrganizations(params *CronJobDeletePendingO
 }
 
 /*
-  CronJobDeleteRedundantProjectActions deletes useless project actions
+CronJobDeleteRedundantProjectActions deletes useless project actions
 */
 func (a *Client) CronJobDeleteRedundantProjectActions(params *CronJobDeleteRedundantProjectActionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobDeleteRedundantProjectActionsOK, error) {
 	// TODO: Validate the params before sending
@@ -550,7 +550,7 @@ func (a *Client) CronJobDeleteRedundantProjectActions(params *CronJobDeleteRedun
 }
 
 /*
-  CronJobFetchAzureEuroPrices fetches azure euro prices
+CronJobFetchAzureEuroPrices fetches azure euro prices
 */
 func (a *Client) CronJobFetchAzureEuroPrices(params *CronJobFetchAzureEuroPricesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobFetchAzureEuroPricesOK, error) {
 	// TODO: Validate the params before sending
@@ -589,7 +589,7 @@ func (a *Client) CronJobFetchAzureEuroPrices(params *CronJobFetchAzureEuroPrices
 }
 
 /*
-  CronJobFetchAzurePrices fetches azure prices
+CronJobFetchAzurePrices fetches azure prices
 */
 func (a *Client) CronJobFetchAzurePrices(params *CronJobFetchAzurePricesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobFetchAzurePricesOK, error) {
 	// TODO: Validate the params before sending
@@ -628,7 +628,7 @@ func (a *Client) CronJobFetchAzurePrices(params *CronJobFetchAzurePricesParams, 
 }
 
 /*
-  CronJobFetchKubernetesAlerts fetches kubernetes alerts for organization
+CronJobFetchKubernetesAlerts fetches kubernetes alerts for organization
 */
 func (a *Client) CronJobFetchKubernetesAlerts(params *CronJobFetchKubernetesAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobFetchKubernetesAlertsOK, error) {
 	// TODO: Validate the params before sending
@@ -667,7 +667,7 @@ func (a *Client) CronJobFetchKubernetesAlerts(params *CronJobFetchKubernetesAler
 }
 
 /*
-  CronJobFetchKubernetesOverview fetches kubernetes overview for organization
+CronJobFetchKubernetesOverview fetches kubernetes overview for organization
 */
 func (a *Client) CronJobFetchKubernetesOverview(params *CronJobFetchKubernetesOverviewParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobFetchKubernetesOverviewOK, error) {
 	// TODO: Validate the params before sending
@@ -706,7 +706,7 @@ func (a *Client) CronJobFetchKubernetesOverview(params *CronJobFetchKubernetesOv
 }
 
 /*
-  CronJobFetchOrganizationDetails fetches details of organizations
+CronJobFetchOrganizationDetails fetches details of organizations
 */
 func (a *Client) CronJobFetchOrganizationDetails(params *CronJobFetchOrganizationDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobFetchOrganizationDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -745,7 +745,7 @@ func (a *Client) CronJobFetchOrganizationDetails(params *CronJobFetchOrganizatio
 }
 
 /*
-  CronJobPurgeExpiredProjects purges expired projects
+CronJobPurgeExpiredProjects purges expired projects
 */
 func (a *Client) CronJobPurgeExpiredProjects(params *CronJobPurgeExpiredProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobPurgeExpiredProjectsOK, error) {
 	// TODO: Validate the params before sending
@@ -784,7 +784,7 @@ func (a *Client) CronJobPurgeExpiredProjects(params *CronJobPurgeExpiredProjects
 }
 
 /*
-  CronJobRemindAlerts reminds alerts
+CronJobRemindAlerts reminds alerts
 */
 func (a *Client) CronJobRemindAlerts(params *CronJobRemindAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobRemindAlertsOK, error) {
 	// TODO: Validate the params before sending
@@ -823,7 +823,7 @@ func (a *Client) CronJobRemindAlerts(params *CronJobRemindAlertsParams, authInfo
 }
 
 /*
-  CronJobSyncBackupCredentials syncs backup credentials
+CronJobSyncBackupCredentials syncs backup credentials
 */
 func (a *Client) CronJobSyncBackupCredentials(params *CronJobSyncBackupCredentialsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobSyncBackupCredentialsOK, error) {
 	// TODO: Validate the params before sending
@@ -862,7 +862,7 @@ func (a *Client) CronJobSyncBackupCredentials(params *CronJobSyncBackupCredentia
 }
 
 /*
-  CronJobSyncOpaProfiles syncs opa profiles
+CronJobSyncOpaProfiles syncs opa profiles
 */
 func (a *Client) CronJobSyncOpaProfiles(params *CronJobSyncOpaProfilesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobSyncOpaProfilesOK, error) {
 	// TODO: Validate the params before sending
@@ -901,7 +901,7 @@ func (a *Client) CronJobSyncOpaProfiles(params *CronJobSyncOpaProfilesParams, au
 }
 
 /*
-  CronJobSyncProjectApps syncs project apps
+CronJobSyncProjectApps syncs project apps
 */
 func (a *Client) CronJobSyncProjectApps(params *CronJobSyncProjectAppsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobSyncProjectAppsOK, error) {
 	// TODO: Validate the params before sending
@@ -940,7 +940,7 @@ func (a *Client) CronJobSyncProjectApps(params *CronJobSyncProjectAppsParams, au
 }
 
 /*
-  CronJobUpdateProjectAppStatus updates project app status
+CronJobUpdateProjectAppStatus updates project app status
 */
 func (a *Client) CronJobUpdateProjectAppStatus(params *CronJobUpdateProjectAppStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobUpdateProjectAppStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -979,7 +979,7 @@ func (a *Client) CronJobUpdateProjectAppStatus(params *CronJobUpdateProjectAppSt
 }
 
 /*
-  CronJobUpdateProjectQuotaMessage updates project quota message
+CronJobUpdateProjectQuotaMessage updates project quota message
 */
 func (a *Client) CronJobUpdateProjectQuotaMessage(params *CronJobUpdateProjectQuotaMessageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobUpdateProjectQuotaMessageOK, error) {
 	// TODO: Validate the params before sending

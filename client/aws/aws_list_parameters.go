@@ -53,10 +53,12 @@ func NewAwsListParamsWithHTTPClient(client *http.Client) *AwsListParams {
 	}
 }
 
-/* AwsListParams contains all the parameters to send to the API endpoint
-   for the aws list operation.
+/*
+AwsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the aws list operation.
+
+	Typically these are written to a http.Request.
 */
 type AwsListParams struct {
 

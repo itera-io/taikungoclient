@@ -54,10 +54,12 @@ func NewKubernetesPatchPvcParamsWithHTTPClient(client *http.Client) *KubernetesP
 	}
 }
 
-/* KubernetesPatchPvcParams contains all the parameters to send to the API endpoint
-   for the kubernetes patch pvc operation.
+/*
+KubernetesPatchPvcParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes patch pvc operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesPatchPvcParams struct {
 

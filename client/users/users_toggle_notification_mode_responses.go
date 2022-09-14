@@ -69,7 +69,8 @@ func NewUsersToggleNotificationModeOK() *UsersToggleNotificationModeOK {
 	return &UsersToggleNotificationModeOK{}
 }
 
-/* UsersToggleNotificationModeOK describes a response with status code 200, with default header values.
+/*
+UsersToggleNotificationModeOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type UsersToggleNotificationModeOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this users toggle notification mode o k response has a 2xx status code
+func (o *UsersToggleNotificationModeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this users toggle notification mode o k response has a 3xx status code
+func (o *UsersToggleNotificationModeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users toggle notification mode o k response has a 4xx status code
+func (o *UsersToggleNotificationModeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this users toggle notification mode o k response has a 5xx status code
+func (o *UsersToggleNotificationModeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users toggle notification mode o k response a status code equal to that given
+func (o *UsersToggleNotificationModeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UsersToggleNotificationModeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeOK  %+v", 200, o.Payload)
 }
+
+func (o *UsersToggleNotificationModeOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeOK  %+v", 200, o.Payload)
+}
+
 func (o *UsersToggleNotificationModeOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewUsersToggleNotificationModeBadRequest() *UsersToggleNotificationModeBadR
 	return &UsersToggleNotificationModeBadRequest{}
 }
 
-/* UsersToggleNotificationModeBadRequest describes a response with status code 400, with default header values.
+/*
+UsersToggleNotificationModeBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type UsersToggleNotificationModeBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this users toggle notification mode bad request response has a 2xx status code
+func (o *UsersToggleNotificationModeBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users toggle notification mode bad request response has a 3xx status code
+func (o *UsersToggleNotificationModeBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users toggle notification mode bad request response has a 4xx status code
+func (o *UsersToggleNotificationModeBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users toggle notification mode bad request response has a 5xx status code
+func (o *UsersToggleNotificationModeBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users toggle notification mode bad request response a status code equal to that given
+func (o *UsersToggleNotificationModeBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UsersToggleNotificationModeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UsersToggleNotificationModeBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UsersToggleNotificationModeBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewUsersToggleNotificationModeUnauthorized() *UsersToggleNotificationModeUn
 	return &UsersToggleNotificationModeUnauthorized{}
 }
 
-/* UsersToggleNotificationModeUnauthorized describes a response with status code 401, with default header values.
+/*
+UsersToggleNotificationModeUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type UsersToggleNotificationModeUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this users toggle notification mode unauthorized response has a 2xx status code
+func (o *UsersToggleNotificationModeUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users toggle notification mode unauthorized response has a 3xx status code
+func (o *UsersToggleNotificationModeUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users toggle notification mode unauthorized response has a 4xx status code
+func (o *UsersToggleNotificationModeUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users toggle notification mode unauthorized response has a 5xx status code
+func (o *UsersToggleNotificationModeUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users toggle notification mode unauthorized response a status code equal to that given
+func (o *UsersToggleNotificationModeUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UsersToggleNotificationModeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *UsersToggleNotificationModeUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *UsersToggleNotificationModeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewUsersToggleNotificationModeForbidden() *UsersToggleNotificationModeForbi
 	return &UsersToggleNotificationModeForbidden{}
 }
 
-/* UsersToggleNotificationModeForbidden describes a response with status code 403, with default header values.
+/*
+UsersToggleNotificationModeForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type UsersToggleNotificationModeForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this users toggle notification mode forbidden response has a 2xx status code
+func (o *UsersToggleNotificationModeForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users toggle notification mode forbidden response has a 3xx status code
+func (o *UsersToggleNotificationModeForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users toggle notification mode forbidden response has a 4xx status code
+func (o *UsersToggleNotificationModeForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users toggle notification mode forbidden response has a 5xx status code
+func (o *UsersToggleNotificationModeForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users toggle notification mode forbidden response a status code equal to that given
+func (o *UsersToggleNotificationModeForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UsersToggleNotificationModeForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UsersToggleNotificationModeForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UsersToggleNotificationModeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewUsersToggleNotificationModeNotFound() *UsersToggleNotificationModeNotFou
 	return &UsersToggleNotificationModeNotFound{}
 }
 
-/* UsersToggleNotificationModeNotFound describes a response with status code 404, with default header values.
+/*
+UsersToggleNotificationModeNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type UsersToggleNotificationModeNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this users toggle notification mode not found response has a 2xx status code
+func (o *UsersToggleNotificationModeNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users toggle notification mode not found response has a 3xx status code
+func (o *UsersToggleNotificationModeNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users toggle notification mode not found response has a 4xx status code
+func (o *UsersToggleNotificationModeNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users toggle notification mode not found response has a 5xx status code
+func (o *UsersToggleNotificationModeNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users toggle notification mode not found response a status code equal to that given
+func (o *UsersToggleNotificationModeNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UsersToggleNotificationModeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UsersToggleNotificationModeNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UsersToggleNotificationModeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewUsersToggleNotificationModeInternalServerError() *UsersToggleNotificatio
 	return &UsersToggleNotificationModeInternalServerError{}
 }
 
-/* UsersToggleNotificationModeInternalServerError describes a response with status code 500, with default header values.
+/*
+UsersToggleNotificationModeInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UsersToggleNotificationModeInternalServerError struct {
 }
 
+// IsSuccess returns true when this users toggle notification mode internal server error response has a 2xx status code
+func (o *UsersToggleNotificationModeInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users toggle notification mode internal server error response has a 3xx status code
+func (o *UsersToggleNotificationModeInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users toggle notification mode internal server error response has a 4xx status code
+func (o *UsersToggleNotificationModeInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this users toggle notification mode internal server error response has a 5xx status code
+func (o *UsersToggleNotificationModeInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this users toggle notification mode internal server error response a status code equal to that given
+func (o *UsersToggleNotificationModeInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UsersToggleNotificationModeInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeInternalServerError ", 500)
+}
+
+func (o *UsersToggleNotificationModeInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeInternalServerError ", 500)
 }
 

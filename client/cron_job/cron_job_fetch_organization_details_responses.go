@@ -69,7 +69,8 @@ func NewCronJobFetchOrganizationDetailsOK() *CronJobFetchOrganizationDetailsOK {
 	return &CronJobFetchOrganizationDetailsOK{}
 }
 
-/* CronJobFetchOrganizationDetailsOK describes a response with status code 200, with default header values.
+/*
+CronJobFetchOrganizationDetailsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CronJobFetchOrganizationDetailsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this cron job fetch organization details o k response has a 2xx status code
+func (o *CronJobFetchOrganizationDetailsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cron job fetch organization details o k response has a 3xx status code
+func (o *CronJobFetchOrganizationDetailsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job fetch organization details o k response has a 4xx status code
+func (o *CronJobFetchOrganizationDetailsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job fetch organization details o k response has a 5xx status code
+func (o *CronJobFetchOrganizationDetailsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job fetch organization details o k response a status code equal to that given
+func (o *CronJobFetchOrganizationDetailsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CronJobFetchOrganizationDetailsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsOK  %+v", 200, o.Payload)
 }
+
+func (o *CronJobFetchOrganizationDetailsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsOK  %+v", 200, o.Payload)
+}
+
 func (o *CronJobFetchOrganizationDetailsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCronJobFetchOrganizationDetailsBadRequest() *CronJobFetchOrganizationDet
 	return &CronJobFetchOrganizationDetailsBadRequest{}
 }
 
-/* CronJobFetchOrganizationDetailsBadRequest describes a response with status code 400, with default header values.
+/*
+CronJobFetchOrganizationDetailsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CronJobFetchOrganizationDetailsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cron job fetch organization details bad request response has a 2xx status code
+func (o *CronJobFetchOrganizationDetailsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job fetch organization details bad request response has a 3xx status code
+func (o *CronJobFetchOrganizationDetailsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job fetch organization details bad request response has a 4xx status code
+func (o *CronJobFetchOrganizationDetailsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job fetch organization details bad request response has a 5xx status code
+func (o *CronJobFetchOrganizationDetailsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job fetch organization details bad request response a status code equal to that given
+func (o *CronJobFetchOrganizationDetailsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CronJobFetchOrganizationDetailsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CronJobFetchOrganizationDetailsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CronJobFetchOrganizationDetailsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCronJobFetchOrganizationDetailsUnauthorized() *CronJobFetchOrganizationD
 	return &CronJobFetchOrganizationDetailsUnauthorized{}
 }
 
-/* CronJobFetchOrganizationDetailsUnauthorized describes a response with status code 401, with default header values.
+/*
+CronJobFetchOrganizationDetailsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CronJobFetchOrganizationDetailsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job fetch organization details unauthorized response has a 2xx status code
+func (o *CronJobFetchOrganizationDetailsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job fetch organization details unauthorized response has a 3xx status code
+func (o *CronJobFetchOrganizationDetailsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job fetch organization details unauthorized response has a 4xx status code
+func (o *CronJobFetchOrganizationDetailsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job fetch organization details unauthorized response has a 5xx status code
+func (o *CronJobFetchOrganizationDetailsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job fetch organization details unauthorized response a status code equal to that given
+func (o *CronJobFetchOrganizationDetailsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CronJobFetchOrganizationDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CronJobFetchOrganizationDetailsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CronJobFetchOrganizationDetailsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCronJobFetchOrganizationDetailsForbidden() *CronJobFetchOrganizationDeta
 	return &CronJobFetchOrganizationDetailsForbidden{}
 }
 
-/* CronJobFetchOrganizationDetailsForbidden describes a response with status code 403, with default header values.
+/*
+CronJobFetchOrganizationDetailsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CronJobFetchOrganizationDetailsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job fetch organization details forbidden response has a 2xx status code
+func (o *CronJobFetchOrganizationDetailsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job fetch organization details forbidden response has a 3xx status code
+func (o *CronJobFetchOrganizationDetailsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job fetch organization details forbidden response has a 4xx status code
+func (o *CronJobFetchOrganizationDetailsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job fetch organization details forbidden response has a 5xx status code
+func (o *CronJobFetchOrganizationDetailsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job fetch organization details forbidden response a status code equal to that given
+func (o *CronJobFetchOrganizationDetailsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CronJobFetchOrganizationDetailsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CronJobFetchOrganizationDetailsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CronJobFetchOrganizationDetailsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCronJobFetchOrganizationDetailsNotFound() *CronJobFetchOrganizationDetai
 	return &CronJobFetchOrganizationDetailsNotFound{}
 }
 
-/* CronJobFetchOrganizationDetailsNotFound describes a response with status code 404, with default header values.
+/*
+CronJobFetchOrganizationDetailsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CronJobFetchOrganizationDetailsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job fetch organization details not found response has a 2xx status code
+func (o *CronJobFetchOrganizationDetailsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job fetch organization details not found response has a 3xx status code
+func (o *CronJobFetchOrganizationDetailsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job fetch organization details not found response has a 4xx status code
+func (o *CronJobFetchOrganizationDetailsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job fetch organization details not found response has a 5xx status code
+func (o *CronJobFetchOrganizationDetailsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job fetch organization details not found response a status code equal to that given
+func (o *CronJobFetchOrganizationDetailsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CronJobFetchOrganizationDetailsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CronJobFetchOrganizationDetailsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CronJobFetchOrganizationDetailsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCronJobFetchOrganizationDetailsInternalServerError() *CronJobFetchOrgani
 	return &CronJobFetchOrganizationDetailsInternalServerError{}
 }
 
-/* CronJobFetchOrganizationDetailsInternalServerError describes a response with status code 500, with default header values.
+/*
+CronJobFetchOrganizationDetailsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CronJobFetchOrganizationDetailsInternalServerError struct {
 }
 
+// IsSuccess returns true when this cron job fetch organization details internal server error response has a 2xx status code
+func (o *CronJobFetchOrganizationDetailsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job fetch organization details internal server error response has a 3xx status code
+func (o *CronJobFetchOrganizationDetailsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job fetch organization details internal server error response has a 4xx status code
+func (o *CronJobFetchOrganizationDetailsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job fetch organization details internal server error response has a 5xx status code
+func (o *CronJobFetchOrganizationDetailsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cron job fetch organization details internal server error response a status code equal to that given
+func (o *CronJobFetchOrganizationDetailsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CronJobFetchOrganizationDetailsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsInternalServerError ", 500)
+}
+
+func (o *CronJobFetchOrganizationDetailsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsInternalServerError ", 500)
 }
 

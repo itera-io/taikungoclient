@@ -54,10 +54,12 @@ func NewCheckerOrganizationParamsWithHTTPClient(client *http.Client) *CheckerOrg
 	}
 }
 
-/* CheckerOrganizationParams contains all the parameters to send to the API endpoint
-   for the checker organization operation.
+/*
+CheckerOrganizationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checker organization operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckerOrganizationParams struct {
 

@@ -69,7 +69,8 @@ func NewShowbackSummariesGroupedListOK() *ShowbackSummariesGroupedListOK {
 	return &ShowbackSummariesGroupedListOK{}
 }
 
-/* ShowbackSummariesGroupedListOK describes a response with status code 200, with default header values.
+/*
+ShowbackSummariesGroupedListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ShowbackSummariesGroupedListOK struct {
 	Payload *models.GroupedShowbackList
 }
 
+// IsSuccess returns true when this showback summaries grouped list o k response has a 2xx status code
+func (o *ShowbackSummariesGroupedListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this showback summaries grouped list o k response has a 3xx status code
+func (o *ShowbackSummariesGroupedListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries grouped list o k response has a 4xx status code
+func (o *ShowbackSummariesGroupedListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this showback summaries grouped list o k response has a 5xx status code
+func (o *ShowbackSummariesGroupedListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback summaries grouped list o k response a status code equal to that given
+func (o *ShowbackSummariesGroupedListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ShowbackSummariesGroupedListOK) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListOK  %+v", 200, o.Payload)
 }
+
+func (o *ShowbackSummariesGroupedListOK) String() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListOK  %+v", 200, o.Payload)
+}
+
 func (o *ShowbackSummariesGroupedListOK) GetPayload() *models.GroupedShowbackList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewShowbackSummariesGroupedListBadRequest() *ShowbackSummariesGroupedListBa
 	return &ShowbackSummariesGroupedListBadRequest{}
 }
 
-/* ShowbackSummariesGroupedListBadRequest describes a response with status code 400, with default header values.
+/*
+ShowbackSummariesGroupedListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type ShowbackSummariesGroupedListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this showback summaries grouped list bad request response has a 2xx status code
+func (o *ShowbackSummariesGroupedListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback summaries grouped list bad request response has a 3xx status code
+func (o *ShowbackSummariesGroupedListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries grouped list bad request response has a 4xx status code
+func (o *ShowbackSummariesGroupedListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback summaries grouped list bad request response has a 5xx status code
+func (o *ShowbackSummariesGroupedListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback summaries grouped list bad request response a status code equal to that given
+func (o *ShowbackSummariesGroupedListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ShowbackSummariesGroupedListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ShowbackSummariesGroupedListBadRequest) String() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ShowbackSummariesGroupedListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewShowbackSummariesGroupedListUnauthorized() *ShowbackSummariesGroupedList
 	return &ShowbackSummariesGroupedListUnauthorized{}
 }
 
-/* ShowbackSummariesGroupedListUnauthorized describes a response with status code 401, with default header values.
+/*
+ShowbackSummariesGroupedListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type ShowbackSummariesGroupedListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback summaries grouped list unauthorized response has a 2xx status code
+func (o *ShowbackSummariesGroupedListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback summaries grouped list unauthorized response has a 3xx status code
+func (o *ShowbackSummariesGroupedListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries grouped list unauthorized response has a 4xx status code
+func (o *ShowbackSummariesGroupedListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback summaries grouped list unauthorized response has a 5xx status code
+func (o *ShowbackSummariesGroupedListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback summaries grouped list unauthorized response a status code equal to that given
+func (o *ShowbackSummariesGroupedListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ShowbackSummariesGroupedListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ShowbackSummariesGroupedListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ShowbackSummariesGroupedListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewShowbackSummariesGroupedListForbidden() *ShowbackSummariesGroupedListFor
 	return &ShowbackSummariesGroupedListForbidden{}
 }
 
-/* ShowbackSummariesGroupedListForbidden describes a response with status code 403, with default header values.
+/*
+ShowbackSummariesGroupedListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type ShowbackSummariesGroupedListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback summaries grouped list forbidden response has a 2xx status code
+func (o *ShowbackSummariesGroupedListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback summaries grouped list forbidden response has a 3xx status code
+func (o *ShowbackSummariesGroupedListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries grouped list forbidden response has a 4xx status code
+func (o *ShowbackSummariesGroupedListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback summaries grouped list forbidden response has a 5xx status code
+func (o *ShowbackSummariesGroupedListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback summaries grouped list forbidden response a status code equal to that given
+func (o *ShowbackSummariesGroupedListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ShowbackSummariesGroupedListForbidden) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ShowbackSummariesGroupedListForbidden) String() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ShowbackSummariesGroupedListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewShowbackSummariesGroupedListNotFound() *ShowbackSummariesGroupedListNotF
 	return &ShowbackSummariesGroupedListNotFound{}
 }
 
-/* ShowbackSummariesGroupedListNotFound describes a response with status code 404, with default header values.
+/*
+ShowbackSummariesGroupedListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type ShowbackSummariesGroupedListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback summaries grouped list not found response has a 2xx status code
+func (o *ShowbackSummariesGroupedListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback summaries grouped list not found response has a 3xx status code
+func (o *ShowbackSummariesGroupedListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries grouped list not found response has a 4xx status code
+func (o *ShowbackSummariesGroupedListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback summaries grouped list not found response has a 5xx status code
+func (o *ShowbackSummariesGroupedListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback summaries grouped list not found response a status code equal to that given
+func (o *ShowbackSummariesGroupedListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ShowbackSummariesGroupedListNotFound) Error() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ShowbackSummariesGroupedListNotFound) String() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ShowbackSummariesGroupedListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewShowbackSummariesGroupedListInternalServerError() *ShowbackSummariesGrou
 	return &ShowbackSummariesGroupedListInternalServerError{}
 }
 
-/* ShowbackSummariesGroupedListInternalServerError describes a response with status code 500, with default header values.
+/*
+ShowbackSummariesGroupedListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ShowbackSummariesGroupedListInternalServerError struct {
 }
 
+// IsSuccess returns true when this showback summaries grouped list internal server error response has a 2xx status code
+func (o *ShowbackSummariesGroupedListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback summaries grouped list internal server error response has a 3xx status code
+func (o *ShowbackSummariesGroupedListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries grouped list internal server error response has a 4xx status code
+func (o *ShowbackSummariesGroupedListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this showback summaries grouped list internal server error response has a 5xx status code
+func (o *ShowbackSummariesGroupedListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this showback summaries grouped list internal server error response a status code equal to that given
+func (o *ShowbackSummariesGroupedListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ShowbackSummariesGroupedListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListInternalServerError ", 500)
+}
+
+func (o *ShowbackSummariesGroupedListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListInternalServerError ", 500)
 }
 

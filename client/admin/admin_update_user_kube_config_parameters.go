@@ -54,10 +54,12 @@ func NewAdminUpdateUserKubeConfigParamsWithHTTPClient(client *http.Client) *Admi
 	}
 }
 
-/* AdminUpdateUserKubeConfigParams contains all the parameters to send to the API endpoint
-   for the admin update user kube config operation.
+/*
+AdminUpdateUserKubeConfigParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the admin update user kube config operation.
+
+	Typically these are written to a http.Request.
 */
 type AdminUpdateUserKubeConfigParams struct {
 

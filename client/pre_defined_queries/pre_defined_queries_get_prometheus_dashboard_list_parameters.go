@@ -52,10 +52,12 @@ func NewPreDefinedQueriesGetPrometheusDashboardListParamsWithHTTPClient(client *
 	}
 }
 
-/* PreDefinedQueriesGetPrometheusDashboardListParams contains all the parameters to send to the API endpoint
-   for the pre defined queries get prometheus dashboard list operation.
+/*
+PreDefinedQueriesGetPrometheusDashboardListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the pre defined queries get prometheus dashboard list operation.
+
+	Typically these are written to a http.Request.
 */
 type PreDefinedQueriesGetPrometheusDashboardListParams struct {
 

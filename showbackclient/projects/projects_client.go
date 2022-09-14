@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-  ProjectsList retrieves all projects
+ProjectsList retrieves all projects
 */
 func (a *Client) ProjectsList(params *ProjectsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectsListOK, error) {
 	// TODO: Validate the params before sending

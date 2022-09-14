@@ -54,10 +54,12 @@ func NewAccessProfilesCreateParamsWithHTTPClient(client *http.Client) *AccessPro
 	}
 }
 
-/* AccessProfilesCreateParams contains all the parameters to send to the API endpoint
-   for the access profiles create operation.
+/*
+AccessProfilesCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the access profiles create operation.
+
+	Typically these are written to a http.Request.
 */
 type AccessProfilesCreateParams struct {
 

@@ -69,7 +69,8 @@ func NewKubernetesGetSupportedListOK() *KubernetesGetSupportedListOK {
 	return &KubernetesGetSupportedListOK{}
 }
 
-/* KubernetesGetSupportedListOK describes a response with status code 200, with default header values.
+/*
+KubernetesGetSupportedListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesGetSupportedListOK struct {
 	Payload []string
 }
 
+// IsSuccess returns true when this kubernetes get supported list o k response has a 2xx status code
+func (o *KubernetesGetSupportedListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes get supported list o k response has a 3xx status code
+func (o *KubernetesGetSupportedListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get supported list o k response has a 4xx status code
+func (o *KubernetesGetSupportedListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get supported list o k response has a 5xx status code
+func (o *KubernetesGetSupportedListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get supported list o k response a status code equal to that given
+func (o *KubernetesGetSupportedListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesGetSupportedListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesGetSupportedListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesGetSupportedListOK) GetPayload() []string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesGetSupportedListBadRequest() *KubernetesGetSupportedListBadReq
 	return &KubernetesGetSupportedListBadRequest{}
 }
 
-/* KubernetesGetSupportedListBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesGetSupportedListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesGetSupportedListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get supported list bad request response has a 2xx status code
+func (o *KubernetesGetSupportedListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get supported list bad request response has a 3xx status code
+func (o *KubernetesGetSupportedListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get supported list bad request response has a 4xx status code
+func (o *KubernetesGetSupportedListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get supported list bad request response has a 5xx status code
+func (o *KubernetesGetSupportedListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get supported list bad request response a status code equal to that given
+func (o *KubernetesGetSupportedListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesGetSupportedListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesGetSupportedListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesGetSupportedListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesGetSupportedListUnauthorized() *KubernetesGetSupportedListUnau
 	return &KubernetesGetSupportedListUnauthorized{}
 }
 
-/* KubernetesGetSupportedListUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesGetSupportedListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesGetSupportedListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get supported list unauthorized response has a 2xx status code
+func (o *KubernetesGetSupportedListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get supported list unauthorized response has a 3xx status code
+func (o *KubernetesGetSupportedListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get supported list unauthorized response has a 4xx status code
+func (o *KubernetesGetSupportedListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get supported list unauthorized response has a 5xx status code
+func (o *KubernetesGetSupportedListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get supported list unauthorized response a status code equal to that given
+func (o *KubernetesGetSupportedListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesGetSupportedListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesGetSupportedListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesGetSupportedListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesGetSupportedListForbidden() *KubernetesGetSupportedListForbidd
 	return &KubernetesGetSupportedListForbidden{}
 }
 
-/* KubernetesGetSupportedListForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesGetSupportedListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesGetSupportedListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get supported list forbidden response has a 2xx status code
+func (o *KubernetesGetSupportedListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get supported list forbidden response has a 3xx status code
+func (o *KubernetesGetSupportedListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get supported list forbidden response has a 4xx status code
+func (o *KubernetesGetSupportedListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get supported list forbidden response has a 5xx status code
+func (o *KubernetesGetSupportedListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get supported list forbidden response a status code equal to that given
+func (o *KubernetesGetSupportedListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesGetSupportedListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesGetSupportedListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesGetSupportedListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesGetSupportedListNotFound() *KubernetesGetSupportedListNotFound
 	return &KubernetesGetSupportedListNotFound{}
 }
 
-/* KubernetesGetSupportedListNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesGetSupportedListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesGetSupportedListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get supported list not found response has a 2xx status code
+func (o *KubernetesGetSupportedListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get supported list not found response has a 3xx status code
+func (o *KubernetesGetSupportedListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get supported list not found response has a 4xx status code
+func (o *KubernetesGetSupportedListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get supported list not found response has a 5xx status code
+func (o *KubernetesGetSupportedListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get supported list not found response a status code equal to that given
+func (o *KubernetesGetSupportedListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesGetSupportedListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesGetSupportedListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesGetSupportedListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesGetSupportedListInternalServerError() *KubernetesGetSupportedL
 	return &KubernetesGetSupportedListInternalServerError{}
 }
 
-/* KubernetesGetSupportedListInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesGetSupportedListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesGetSupportedListInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes get supported list internal server error response has a 2xx status code
+func (o *KubernetesGetSupportedListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get supported list internal server error response has a 3xx status code
+func (o *KubernetesGetSupportedListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get supported list internal server error response has a 4xx status code
+func (o *KubernetesGetSupportedListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get supported list internal server error response has a 5xx status code
+func (o *KubernetesGetSupportedListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes get supported list internal server error response a status code equal to that given
+func (o *KubernetesGetSupportedListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesGetSupportedListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListInternalServerError ", 500)
+}
+
+func (o *KubernetesGetSupportedListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListInternalServerError ", 500)
 }
 

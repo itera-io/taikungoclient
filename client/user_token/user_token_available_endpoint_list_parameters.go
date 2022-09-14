@@ -53,10 +53,12 @@ func NewUserTokenAvailableEndpointListParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* UserTokenAvailableEndpointListParams contains all the parameters to send to the API endpoint
-   for the user token available endpoint list operation.
+/*
+UserTokenAvailableEndpointListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the user token available endpoint list operation.
+
+	Typically these are written to a http.Request.
 */
 type UserTokenAvailableEndpointListParams struct {
 

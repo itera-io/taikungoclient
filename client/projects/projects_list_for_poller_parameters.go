@@ -53,10 +53,12 @@ func NewProjectsListForPollerParamsWithHTTPClient(client *http.Client) *Projects
 	}
 }
 
-/* ProjectsListForPollerParams contains all the parameters to send to the API endpoint
-   for the projects list for poller operation.
+/*
+ProjectsListForPollerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects list for poller operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsListForPollerParams struct {
 

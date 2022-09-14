@@ -69,7 +69,8 @@ func NewOrganizationsUpdatePaymentMethodOK() *OrganizationsUpdatePaymentMethodOK
 	return &OrganizationsUpdatePaymentMethodOK{}
 }
 
-/* OrganizationsUpdatePaymentMethodOK describes a response with status code 200, with default header values.
+/*
+OrganizationsUpdatePaymentMethodOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OrganizationsUpdatePaymentMethodOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this organizations update payment method o k response has a 2xx status code
+func (o *OrganizationsUpdatePaymentMethodOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this organizations update payment method o k response has a 3xx status code
+func (o *OrganizationsUpdatePaymentMethodOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update payment method o k response has a 4xx status code
+func (o *OrganizationsUpdatePaymentMethodOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations update payment method o k response has a 5xx status code
+func (o *OrganizationsUpdatePaymentMethodOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations update payment method o k response a status code equal to that given
+func (o *OrganizationsUpdatePaymentMethodOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OrganizationsUpdatePaymentMethodOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodOK  %+v", 200, o.Payload)
 }
+
+func (o *OrganizationsUpdatePaymentMethodOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodOK  %+v", 200, o.Payload)
+}
+
 func (o *OrganizationsUpdatePaymentMethodOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewOrganizationsUpdatePaymentMethodBadRequest() *OrganizationsUpdatePayment
 	return &OrganizationsUpdatePaymentMethodBadRequest{}
 }
 
-/* OrganizationsUpdatePaymentMethodBadRequest describes a response with status code 400, with default header values.
+/*
+OrganizationsUpdatePaymentMethodBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type OrganizationsUpdatePaymentMethodBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this organizations update payment method bad request response has a 2xx status code
+func (o *OrganizationsUpdatePaymentMethodBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations update payment method bad request response has a 3xx status code
+func (o *OrganizationsUpdatePaymentMethodBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update payment method bad request response has a 4xx status code
+func (o *OrganizationsUpdatePaymentMethodBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations update payment method bad request response has a 5xx status code
+func (o *OrganizationsUpdatePaymentMethodBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations update payment method bad request response a status code equal to that given
+func (o *OrganizationsUpdatePaymentMethodBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OrganizationsUpdatePaymentMethodBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OrganizationsUpdatePaymentMethodBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OrganizationsUpdatePaymentMethodBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewOrganizationsUpdatePaymentMethodUnauthorized() *OrganizationsUpdatePayme
 	return &OrganizationsUpdatePaymentMethodUnauthorized{}
 }
 
-/* OrganizationsUpdatePaymentMethodUnauthorized describes a response with status code 401, with default header values.
+/*
+OrganizationsUpdatePaymentMethodUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type OrganizationsUpdatePaymentMethodUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations update payment method unauthorized response has a 2xx status code
+func (o *OrganizationsUpdatePaymentMethodUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations update payment method unauthorized response has a 3xx status code
+func (o *OrganizationsUpdatePaymentMethodUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update payment method unauthorized response has a 4xx status code
+func (o *OrganizationsUpdatePaymentMethodUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations update payment method unauthorized response has a 5xx status code
+func (o *OrganizationsUpdatePaymentMethodUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations update payment method unauthorized response a status code equal to that given
+func (o *OrganizationsUpdatePaymentMethodUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OrganizationsUpdatePaymentMethodUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OrganizationsUpdatePaymentMethodUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OrganizationsUpdatePaymentMethodUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewOrganizationsUpdatePaymentMethodForbidden() *OrganizationsUpdatePaymentM
 	return &OrganizationsUpdatePaymentMethodForbidden{}
 }
 
-/* OrganizationsUpdatePaymentMethodForbidden describes a response with status code 403, with default header values.
+/*
+OrganizationsUpdatePaymentMethodForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type OrganizationsUpdatePaymentMethodForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations update payment method forbidden response has a 2xx status code
+func (o *OrganizationsUpdatePaymentMethodForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations update payment method forbidden response has a 3xx status code
+func (o *OrganizationsUpdatePaymentMethodForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update payment method forbidden response has a 4xx status code
+func (o *OrganizationsUpdatePaymentMethodForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations update payment method forbidden response has a 5xx status code
+func (o *OrganizationsUpdatePaymentMethodForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations update payment method forbidden response a status code equal to that given
+func (o *OrganizationsUpdatePaymentMethodForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OrganizationsUpdatePaymentMethodForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OrganizationsUpdatePaymentMethodForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OrganizationsUpdatePaymentMethodForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewOrganizationsUpdatePaymentMethodNotFound() *OrganizationsUpdatePaymentMe
 	return &OrganizationsUpdatePaymentMethodNotFound{}
 }
 
-/* OrganizationsUpdatePaymentMethodNotFound describes a response with status code 404, with default header values.
+/*
+OrganizationsUpdatePaymentMethodNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type OrganizationsUpdatePaymentMethodNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations update payment method not found response has a 2xx status code
+func (o *OrganizationsUpdatePaymentMethodNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations update payment method not found response has a 3xx status code
+func (o *OrganizationsUpdatePaymentMethodNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update payment method not found response has a 4xx status code
+func (o *OrganizationsUpdatePaymentMethodNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations update payment method not found response has a 5xx status code
+func (o *OrganizationsUpdatePaymentMethodNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations update payment method not found response a status code equal to that given
+func (o *OrganizationsUpdatePaymentMethodNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OrganizationsUpdatePaymentMethodNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OrganizationsUpdatePaymentMethodNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OrganizationsUpdatePaymentMethodNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewOrganizationsUpdatePaymentMethodInternalServerError() *OrganizationsUpda
 	return &OrganizationsUpdatePaymentMethodInternalServerError{}
 }
 
-/* OrganizationsUpdatePaymentMethodInternalServerError describes a response with status code 500, with default header values.
+/*
+OrganizationsUpdatePaymentMethodInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OrganizationsUpdatePaymentMethodInternalServerError struct {
 }
 
+// IsSuccess returns true when this organizations update payment method internal server error response has a 2xx status code
+func (o *OrganizationsUpdatePaymentMethodInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations update payment method internal server error response has a 3xx status code
+func (o *OrganizationsUpdatePaymentMethodInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update payment method internal server error response has a 4xx status code
+func (o *OrganizationsUpdatePaymentMethodInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations update payment method internal server error response has a 5xx status code
+func (o *OrganizationsUpdatePaymentMethodInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this organizations update payment method internal server error response a status code equal to that given
+func (o *OrganizationsUpdatePaymentMethodInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OrganizationsUpdatePaymentMethodInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodInternalServerError ", 500)
+}
+
+func (o *OrganizationsUpdatePaymentMethodInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodInternalServerError ", 500)
 }
 

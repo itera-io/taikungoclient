@@ -69,7 +69,8 @@ func NewCronJobCreateKeyPoolOK() *CronJobCreateKeyPoolOK {
 	return &CronJobCreateKeyPoolOK{}
 }
 
-/* CronJobCreateKeyPoolOK describes a response with status code 200, with default header values.
+/*
+CronJobCreateKeyPoolOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CronJobCreateKeyPoolOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this cron job create key pool o k response has a 2xx status code
+func (o *CronJobCreateKeyPoolOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cron job create key pool o k response has a 3xx status code
+func (o *CronJobCreateKeyPoolOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job create key pool o k response has a 4xx status code
+func (o *CronJobCreateKeyPoolOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job create key pool o k response has a 5xx status code
+func (o *CronJobCreateKeyPoolOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job create key pool o k response a status code equal to that given
+func (o *CronJobCreateKeyPoolOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CronJobCreateKeyPoolOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolOK  %+v", 200, o.Payload)
 }
+
+func (o *CronJobCreateKeyPoolOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolOK  %+v", 200, o.Payload)
+}
+
 func (o *CronJobCreateKeyPoolOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCronJobCreateKeyPoolBadRequest() *CronJobCreateKeyPoolBadRequest {
 	return &CronJobCreateKeyPoolBadRequest{}
 }
 
-/* CronJobCreateKeyPoolBadRequest describes a response with status code 400, with default header values.
+/*
+CronJobCreateKeyPoolBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CronJobCreateKeyPoolBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cron job create key pool bad request response has a 2xx status code
+func (o *CronJobCreateKeyPoolBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job create key pool bad request response has a 3xx status code
+func (o *CronJobCreateKeyPoolBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job create key pool bad request response has a 4xx status code
+func (o *CronJobCreateKeyPoolBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job create key pool bad request response has a 5xx status code
+func (o *CronJobCreateKeyPoolBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job create key pool bad request response a status code equal to that given
+func (o *CronJobCreateKeyPoolBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CronJobCreateKeyPoolBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CronJobCreateKeyPoolBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CronJobCreateKeyPoolBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCronJobCreateKeyPoolUnauthorized() *CronJobCreateKeyPoolUnauthorized {
 	return &CronJobCreateKeyPoolUnauthorized{}
 }
 
-/* CronJobCreateKeyPoolUnauthorized describes a response with status code 401, with default header values.
+/*
+CronJobCreateKeyPoolUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CronJobCreateKeyPoolUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job create key pool unauthorized response has a 2xx status code
+func (o *CronJobCreateKeyPoolUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job create key pool unauthorized response has a 3xx status code
+func (o *CronJobCreateKeyPoolUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job create key pool unauthorized response has a 4xx status code
+func (o *CronJobCreateKeyPoolUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job create key pool unauthorized response has a 5xx status code
+func (o *CronJobCreateKeyPoolUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job create key pool unauthorized response a status code equal to that given
+func (o *CronJobCreateKeyPoolUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CronJobCreateKeyPoolUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CronJobCreateKeyPoolUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CronJobCreateKeyPoolUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCronJobCreateKeyPoolForbidden() *CronJobCreateKeyPoolForbidden {
 	return &CronJobCreateKeyPoolForbidden{}
 }
 
-/* CronJobCreateKeyPoolForbidden describes a response with status code 403, with default header values.
+/*
+CronJobCreateKeyPoolForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CronJobCreateKeyPoolForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job create key pool forbidden response has a 2xx status code
+func (o *CronJobCreateKeyPoolForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job create key pool forbidden response has a 3xx status code
+func (o *CronJobCreateKeyPoolForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job create key pool forbidden response has a 4xx status code
+func (o *CronJobCreateKeyPoolForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job create key pool forbidden response has a 5xx status code
+func (o *CronJobCreateKeyPoolForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job create key pool forbidden response a status code equal to that given
+func (o *CronJobCreateKeyPoolForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CronJobCreateKeyPoolForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CronJobCreateKeyPoolForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CronJobCreateKeyPoolForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCronJobCreateKeyPoolNotFound() *CronJobCreateKeyPoolNotFound {
 	return &CronJobCreateKeyPoolNotFound{}
 }
 
-/* CronJobCreateKeyPoolNotFound describes a response with status code 404, with default header values.
+/*
+CronJobCreateKeyPoolNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CronJobCreateKeyPoolNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cron job create key pool not found response has a 2xx status code
+func (o *CronJobCreateKeyPoolNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job create key pool not found response has a 3xx status code
+func (o *CronJobCreateKeyPoolNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job create key pool not found response has a 4xx status code
+func (o *CronJobCreateKeyPoolNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cron job create key pool not found response has a 5xx status code
+func (o *CronJobCreateKeyPoolNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cron job create key pool not found response a status code equal to that given
+func (o *CronJobCreateKeyPoolNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CronJobCreateKeyPoolNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CronJobCreateKeyPoolNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CronJobCreateKeyPoolNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCronJobCreateKeyPoolInternalServerError() *CronJobCreateKeyPoolInternalS
 	return &CronJobCreateKeyPoolInternalServerError{}
 }
 
-/* CronJobCreateKeyPoolInternalServerError describes a response with status code 500, with default header values.
+/*
+CronJobCreateKeyPoolInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CronJobCreateKeyPoolInternalServerError struct {
 }
 
+// IsSuccess returns true when this cron job create key pool internal server error response has a 2xx status code
+func (o *CronJobCreateKeyPoolInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cron job create key pool internal server error response has a 3xx status code
+func (o *CronJobCreateKeyPoolInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cron job create key pool internal server error response has a 4xx status code
+func (o *CronJobCreateKeyPoolInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cron job create key pool internal server error response has a 5xx status code
+func (o *CronJobCreateKeyPoolInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cron job create key pool internal server error response a status code equal to that given
+func (o *CronJobCreateKeyPoolInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CronJobCreateKeyPoolInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolInternalServerError ", 500)
+}
+
+func (o *CronJobCreateKeyPoolInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolInternalServerError ", 500)
 }
 

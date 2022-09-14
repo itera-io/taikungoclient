@@ -69,7 +69,8 @@ func NewNotificationsListByUserOK() *NotificationsListByUserOK {
 	return &NotificationsListByUserOK{}
 }
 
-/* NotificationsListByUserOK describes a response with status code 200, with default header values.
+/*
+NotificationsListByUserOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type NotificationsListByUserOK struct {
 	Payload *models.ListUserNotifications
 }
 
+// IsSuccess returns true when this notifications list by user o k response has a 2xx status code
+func (o *NotificationsListByUserOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this notifications list by user o k response has a 3xx status code
+func (o *NotificationsListByUserOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications list by user o k response has a 4xx status code
+func (o *NotificationsListByUserOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this notifications list by user o k response has a 5xx status code
+func (o *NotificationsListByUserOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications list by user o k response a status code equal to that given
+func (o *NotificationsListByUserOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *NotificationsListByUserOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/list][%d] notificationsListByUserOK  %+v", 200, o.Payload)
 }
+
+func (o *NotificationsListByUserOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Notifications/list][%d] notificationsListByUserOK  %+v", 200, o.Payload)
+}
+
 func (o *NotificationsListByUserOK) GetPayload() *models.ListUserNotifications {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewNotificationsListByUserBadRequest() *NotificationsListByUserBadRequest {
 	return &NotificationsListByUserBadRequest{}
 }
 
-/* NotificationsListByUserBadRequest describes a response with status code 400, with default header values.
+/*
+NotificationsListByUserBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type NotificationsListByUserBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this notifications list by user bad request response has a 2xx status code
+func (o *NotificationsListByUserBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications list by user bad request response has a 3xx status code
+func (o *NotificationsListByUserBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications list by user bad request response has a 4xx status code
+func (o *NotificationsListByUserBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications list by user bad request response has a 5xx status code
+func (o *NotificationsListByUserBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications list by user bad request response a status code equal to that given
+func (o *NotificationsListByUserBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *NotificationsListByUserBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/list][%d] notificationsListByUserBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *NotificationsListByUserBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Notifications/list][%d] notificationsListByUserBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *NotificationsListByUserBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewNotificationsListByUserUnauthorized() *NotificationsListByUserUnauthoriz
 	return &NotificationsListByUserUnauthorized{}
 }
 
-/* NotificationsListByUserUnauthorized describes a response with status code 401, with default header values.
+/*
+NotificationsListByUserUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type NotificationsListByUserUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this notifications list by user unauthorized response has a 2xx status code
+func (o *NotificationsListByUserUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications list by user unauthorized response has a 3xx status code
+func (o *NotificationsListByUserUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications list by user unauthorized response has a 4xx status code
+func (o *NotificationsListByUserUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications list by user unauthorized response has a 5xx status code
+func (o *NotificationsListByUserUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications list by user unauthorized response a status code equal to that given
+func (o *NotificationsListByUserUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *NotificationsListByUserUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/list][%d] notificationsListByUserUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *NotificationsListByUserUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Notifications/list][%d] notificationsListByUserUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *NotificationsListByUserUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewNotificationsListByUserForbidden() *NotificationsListByUserForbidden {
 	return &NotificationsListByUserForbidden{}
 }
 
-/* NotificationsListByUserForbidden describes a response with status code 403, with default header values.
+/*
+NotificationsListByUserForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type NotificationsListByUserForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this notifications list by user forbidden response has a 2xx status code
+func (o *NotificationsListByUserForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications list by user forbidden response has a 3xx status code
+func (o *NotificationsListByUserForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications list by user forbidden response has a 4xx status code
+func (o *NotificationsListByUserForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications list by user forbidden response has a 5xx status code
+func (o *NotificationsListByUserForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications list by user forbidden response a status code equal to that given
+func (o *NotificationsListByUserForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *NotificationsListByUserForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/list][%d] notificationsListByUserForbidden  %+v", 403, o.Payload)
 }
+
+func (o *NotificationsListByUserForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Notifications/list][%d] notificationsListByUserForbidden  %+v", 403, o.Payload)
+}
+
 func (o *NotificationsListByUserForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewNotificationsListByUserNotFound() *NotificationsListByUserNotFound {
 	return &NotificationsListByUserNotFound{}
 }
 
-/* NotificationsListByUserNotFound describes a response with status code 404, with default header values.
+/*
+NotificationsListByUserNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type NotificationsListByUserNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this notifications list by user not found response has a 2xx status code
+func (o *NotificationsListByUserNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications list by user not found response has a 3xx status code
+func (o *NotificationsListByUserNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications list by user not found response has a 4xx status code
+func (o *NotificationsListByUserNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications list by user not found response has a 5xx status code
+func (o *NotificationsListByUserNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications list by user not found response a status code equal to that given
+func (o *NotificationsListByUserNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *NotificationsListByUserNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/list][%d] notificationsListByUserNotFound  %+v", 404, o.Payload)
 }
+
+func (o *NotificationsListByUserNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Notifications/list][%d] notificationsListByUserNotFound  %+v", 404, o.Payload)
+}
+
 func (o *NotificationsListByUserNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewNotificationsListByUserInternalServerError() *NotificationsListByUserInt
 	return &NotificationsListByUserInternalServerError{}
 }
 
-/* NotificationsListByUserInternalServerError describes a response with status code 500, with default header values.
+/*
+NotificationsListByUserInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type NotificationsListByUserInternalServerError struct {
 }
 
+// IsSuccess returns true when this notifications list by user internal server error response has a 2xx status code
+func (o *NotificationsListByUserInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications list by user internal server error response has a 3xx status code
+func (o *NotificationsListByUserInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications list by user internal server error response has a 4xx status code
+func (o *NotificationsListByUserInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this notifications list by user internal server error response has a 5xx status code
+func (o *NotificationsListByUserInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this notifications list by user internal server error response a status code equal to that given
+func (o *NotificationsListByUserInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *NotificationsListByUserInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Notifications/list][%d] notificationsListByUserInternalServerError ", 500)
+}
+
+func (o *NotificationsListByUserInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/list][%d] notificationsListByUserInternalServerError ", 500)
 }
 

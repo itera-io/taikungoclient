@@ -38,7 +38,7 @@ type ClientService interface {
 }
 
 /*
-  ProjectActionsDelete deletes the project action
+ProjectActionsDelete deletes the project action
 */
 func (a *Client) ProjectActionsDelete(params *ProjectActionsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectActionsDeleteOK, *ProjectActionsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -78,7 +78,7 @@ func (a *Client) ProjectActionsDelete(params *ProjectActionsDeleteParams, authIn
 }
 
 /*
-  ProjectActionsEdit updates project action by project Id for poller
+ProjectActionsEdit updates project action by project Id for poller
 */
 func (a *Client) ProjectActionsEdit(params *ProjectActionsEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectActionsEditOK, error) {
 	// TODO: Validate the params before sending

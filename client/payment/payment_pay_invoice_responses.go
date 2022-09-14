@@ -69,14 +69,44 @@ func NewPaymentPayInvoiceOK() *PaymentPayInvoiceOK {
 	return &PaymentPayInvoiceOK{}
 }
 
-/* PaymentPayInvoiceOK describes a response with status code 200, with default header values.
+/*
+PaymentPayInvoiceOK describes a response with status code 200, with default header values.
 
 Success
 */
 type PaymentPayInvoiceOK struct {
 }
 
+// IsSuccess returns true when this payment pay invoice o k response has a 2xx status code
+func (o *PaymentPayInvoiceOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this payment pay invoice o k response has a 3xx status code
+func (o *PaymentPayInvoiceOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment pay invoice o k response has a 4xx status code
+func (o *PaymentPayInvoiceOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this payment pay invoice o k response has a 5xx status code
+func (o *PaymentPayInvoiceOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this payment pay invoice o k response a status code equal to that given
+func (o *PaymentPayInvoiceOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PaymentPayInvoiceOK) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceOK ", 200)
+}
+
+func (o *PaymentPayInvoiceOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceOK ", 200)
 }
 
@@ -90,7 +120,8 @@ func NewPaymentPayInvoiceBadRequest() *PaymentPayInvoiceBadRequest {
 	return &PaymentPayInvoiceBadRequest{}
 }
 
-/* PaymentPayInvoiceBadRequest describes a response with status code 400, with default header values.
+/*
+PaymentPayInvoiceBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -98,9 +129,39 @@ type PaymentPayInvoiceBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this payment pay invoice bad request response has a 2xx status code
+func (o *PaymentPayInvoiceBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this payment pay invoice bad request response has a 3xx status code
+func (o *PaymentPayInvoiceBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment pay invoice bad request response has a 4xx status code
+func (o *PaymentPayInvoiceBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this payment pay invoice bad request response has a 5xx status code
+func (o *PaymentPayInvoiceBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this payment pay invoice bad request response a status code equal to that given
+func (o *PaymentPayInvoiceBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PaymentPayInvoiceBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PaymentPayInvoiceBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PaymentPayInvoiceBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -122,7 +183,8 @@ func NewPaymentPayInvoiceUnauthorized() *PaymentPayInvoiceUnauthorized {
 	return &PaymentPayInvoiceUnauthorized{}
 }
 
-/* PaymentPayInvoiceUnauthorized describes a response with status code 401, with default header values.
+/*
+PaymentPayInvoiceUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -130,9 +192,39 @@ type PaymentPayInvoiceUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this payment pay invoice unauthorized response has a 2xx status code
+func (o *PaymentPayInvoiceUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this payment pay invoice unauthorized response has a 3xx status code
+func (o *PaymentPayInvoiceUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment pay invoice unauthorized response has a 4xx status code
+func (o *PaymentPayInvoiceUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this payment pay invoice unauthorized response has a 5xx status code
+func (o *PaymentPayInvoiceUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this payment pay invoice unauthorized response a status code equal to that given
+func (o *PaymentPayInvoiceUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PaymentPayInvoiceUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *PaymentPayInvoiceUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *PaymentPayInvoiceUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -154,7 +246,8 @@ func NewPaymentPayInvoiceForbidden() *PaymentPayInvoiceForbidden {
 	return &PaymentPayInvoiceForbidden{}
 }
 
-/* PaymentPayInvoiceForbidden describes a response with status code 403, with default header values.
+/*
+PaymentPayInvoiceForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -162,9 +255,39 @@ type PaymentPayInvoiceForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this payment pay invoice forbidden response has a 2xx status code
+func (o *PaymentPayInvoiceForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this payment pay invoice forbidden response has a 3xx status code
+func (o *PaymentPayInvoiceForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment pay invoice forbidden response has a 4xx status code
+func (o *PaymentPayInvoiceForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this payment pay invoice forbidden response has a 5xx status code
+func (o *PaymentPayInvoiceForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this payment pay invoice forbidden response a status code equal to that given
+func (o *PaymentPayInvoiceForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PaymentPayInvoiceForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PaymentPayInvoiceForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PaymentPayInvoiceForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -186,7 +309,8 @@ func NewPaymentPayInvoiceNotFound() *PaymentPayInvoiceNotFound {
 	return &PaymentPayInvoiceNotFound{}
 }
 
-/* PaymentPayInvoiceNotFound describes a response with status code 404, with default header values.
+/*
+PaymentPayInvoiceNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -194,9 +318,39 @@ type PaymentPayInvoiceNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this payment pay invoice not found response has a 2xx status code
+func (o *PaymentPayInvoiceNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this payment pay invoice not found response has a 3xx status code
+func (o *PaymentPayInvoiceNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment pay invoice not found response has a 4xx status code
+func (o *PaymentPayInvoiceNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this payment pay invoice not found response has a 5xx status code
+func (o *PaymentPayInvoiceNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this payment pay invoice not found response a status code equal to that given
+func (o *PaymentPayInvoiceNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PaymentPayInvoiceNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PaymentPayInvoiceNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PaymentPayInvoiceNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -218,14 +372,44 @@ func NewPaymentPayInvoiceInternalServerError() *PaymentPayInvoiceInternalServerE
 	return &PaymentPayInvoiceInternalServerError{}
 }
 
-/* PaymentPayInvoiceInternalServerError describes a response with status code 500, with default header values.
+/*
+PaymentPayInvoiceInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PaymentPayInvoiceInternalServerError struct {
 }
 
+// IsSuccess returns true when this payment pay invoice internal server error response has a 2xx status code
+func (o *PaymentPayInvoiceInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this payment pay invoice internal server error response has a 3xx status code
+func (o *PaymentPayInvoiceInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this payment pay invoice internal server error response has a 4xx status code
+func (o *PaymentPayInvoiceInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this payment pay invoice internal server error response has a 5xx status code
+func (o *PaymentPayInvoiceInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this payment pay invoice internal server error response a status code equal to that given
+func (o *PaymentPayInvoiceInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PaymentPayInvoiceInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceInternalServerError ", 500)
+}
+
+func (o *PaymentPayInvoiceInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceInternalServerError ", 500)
 }
 

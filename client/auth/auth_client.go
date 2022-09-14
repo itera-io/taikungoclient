@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  AuthForgotPassword generates reset password token if you forgot password
+AuthForgotPassword generates reset password token if you forgot password
 */
 func (a *Client) AuthForgotPassword(params *AuthForgotPasswordParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthForgotPasswordOK, error) {
 	// TODO: Validate the params before sending
@@ -85,7 +85,7 @@ func (a *Client) AuthForgotPassword(params *AuthForgotPasswordParams, authInfo r
 }
 
 /*
-  AuthLogin logins to API by email and password
+AuthLogin logins to API by email and password
 */
 func (a *Client) AuthLogin(params *AuthLoginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthLoginOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) AuthLogin(params *AuthLoginParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  AuthRefreshToken refreshes bearer token that generated automatically by API
+AuthRefreshToken refreshes bearer token that generated automatically by API
 */
 func (a *Client) AuthRefreshToken(params *AuthRefreshTokenParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthRefreshTokenOK, error) {
 	// TODO: Validate the params before sending
@@ -163,7 +163,7 @@ func (a *Client) AuthRefreshToken(params *AuthRefreshTokenParams, authInfo runti
 }
 
 /*
-  AuthRegister users registration
+AuthRegister users registration
 */
 func (a *Client) AuthRegister(params *AuthRegisterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthRegisterOK, error) {
 	// TODO: Validate the params before sending
@@ -202,7 +202,7 @@ func (a *Client) AuthRegister(params *AuthRegisterParams, authInfo runtime.Clien
 }
 
 /*
-  AuthResetPassword resets password
+AuthResetPassword resets password
 */
 func (a *Client) AuthResetPassword(params *AuthResetPasswordParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthResetPasswordOK, error) {
 	// TODO: Validate the params before sending
@@ -241,7 +241,7 @@ func (a *Client) AuthResetPassword(params *AuthResetPasswordParams, authInfo run
 }
 
 /*
-  AuthTryDemo tries demo
+AuthTryDemo tries demo
 */
 func (a *Client) AuthTryDemo(params *AuthTryDemoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthTryDemoOK, error) {
 	// TODO: Validate the params before sending

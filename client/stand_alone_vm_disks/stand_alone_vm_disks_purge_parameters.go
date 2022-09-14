@@ -54,10 +54,12 @@ func NewStandAloneVMDisksPurgeParamsWithHTTPClient(client *http.Client) *StandAl
 	}
 }
 
-/* StandAloneVMDisksPurgeParams contains all the parameters to send to the API endpoint
-   for the stand alone Vm disks purge operation.
+/*
+StandAloneVMDisksPurgeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone Vm disks purge operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneVMDisksPurgeParams struct {
 

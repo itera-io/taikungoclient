@@ -54,10 +54,12 @@ func NewCronJobSyncOpaProfilesParamsWithHTTPClient(client *http.Client) *CronJob
 	}
 }
 
-/* CronJobSyncOpaProfilesParams contains all the parameters to send to the API endpoint
-   for the cron job sync opa profiles operation.
+/*
+CronJobSyncOpaProfilesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job sync opa profiles operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobSyncOpaProfilesParams struct {
 

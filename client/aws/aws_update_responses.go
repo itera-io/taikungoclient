@@ -69,7 +69,8 @@ func NewAwsUpdateOK() *AwsUpdateOK {
 	return &AwsUpdateOK{}
 }
 
-/* AwsUpdateOK describes a response with status code 200, with default header values.
+/*
+AwsUpdateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AwsUpdateOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this aws update o k response has a 2xx status code
+func (o *AwsUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this aws update o k response has a 3xx status code
+func (o *AwsUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this aws update o k response has a 4xx status code
+func (o *AwsUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this aws update o k response has a 5xx status code
+func (o *AwsUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this aws update o k response a status code equal to that given
+func (o *AwsUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AwsUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *AwsUpdateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *AwsUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAwsUpdateBadRequest() *AwsUpdateBadRequest {
 	return &AwsUpdateBadRequest{}
 }
 
-/* AwsUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+AwsUpdateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AwsUpdateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this aws update bad request response has a 2xx status code
+func (o *AwsUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this aws update bad request response has a 3xx status code
+func (o *AwsUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this aws update bad request response has a 4xx status code
+func (o *AwsUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this aws update bad request response has a 5xx status code
+func (o *AwsUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this aws update bad request response a status code equal to that given
+func (o *AwsUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AwsUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AwsUpdateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AwsUpdateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAwsUpdateUnauthorized() *AwsUpdateUnauthorized {
 	return &AwsUpdateUnauthorized{}
 }
 
-/* AwsUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+AwsUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AwsUpdateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this aws update unauthorized response has a 2xx status code
+func (o *AwsUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this aws update unauthorized response has a 3xx status code
+func (o *AwsUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this aws update unauthorized response has a 4xx status code
+func (o *AwsUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this aws update unauthorized response has a 5xx status code
+func (o *AwsUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this aws update unauthorized response a status code equal to that given
+func (o *AwsUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AwsUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AwsUpdateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AwsUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAwsUpdateForbidden() *AwsUpdateForbidden {
 	return &AwsUpdateForbidden{}
 }
 
-/* AwsUpdateForbidden describes a response with status code 403, with default header values.
+/*
+AwsUpdateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AwsUpdateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this aws update forbidden response has a 2xx status code
+func (o *AwsUpdateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this aws update forbidden response has a 3xx status code
+func (o *AwsUpdateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this aws update forbidden response has a 4xx status code
+func (o *AwsUpdateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this aws update forbidden response has a 5xx status code
+func (o *AwsUpdateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this aws update forbidden response a status code equal to that given
+func (o *AwsUpdateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AwsUpdateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AwsUpdateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AwsUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAwsUpdateNotFound() *AwsUpdateNotFound {
 	return &AwsUpdateNotFound{}
 }
 
-/* AwsUpdateNotFound describes a response with status code 404, with default header values.
+/*
+AwsUpdateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AwsUpdateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this aws update not found response has a 2xx status code
+func (o *AwsUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this aws update not found response has a 3xx status code
+func (o *AwsUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this aws update not found response has a 4xx status code
+func (o *AwsUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this aws update not found response has a 5xx status code
+func (o *AwsUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this aws update not found response a status code equal to that given
+func (o *AwsUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AwsUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AwsUpdateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AwsUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAwsUpdateInternalServerError() *AwsUpdateInternalServerError {
 	return &AwsUpdateInternalServerError{}
 }
 
-/* AwsUpdateInternalServerError describes a response with status code 500, with default header values.
+/*
+AwsUpdateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AwsUpdateInternalServerError struct {
 }
 
+// IsSuccess returns true when this aws update internal server error response has a 2xx status code
+func (o *AwsUpdateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this aws update internal server error response has a 3xx status code
+func (o *AwsUpdateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this aws update internal server error response has a 4xx status code
+func (o *AwsUpdateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this aws update internal server error response has a 5xx status code
+func (o *AwsUpdateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this aws update internal server error response a status code equal to that given
+func (o *AwsUpdateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AwsUpdateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateInternalServerError ", 500)
+}
+
+func (o *AwsUpdateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateInternalServerError ", 500)
 }
 

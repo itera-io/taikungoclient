@@ -53,10 +53,12 @@ func NewShowbackRulesDeleteParamsWithHTTPClient(client *http.Client) *ShowbackRu
 	}
 }
 
-/* ShowbackRulesDeleteParams contains all the parameters to send to the API endpoint
-   for the showback rules delete operation.
+/*
+ShowbackRulesDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the showback rules delete operation.
+
+	Typically these are written to a http.Request.
 */
 type ShowbackRulesDeleteParams struct {
 

@@ -53,10 +53,12 @@ func NewOrganizationsDetailsParamsWithHTTPClient(client *http.Client) *Organizat
 	}
 }
 
-/* OrganizationsDetailsParams contains all the parameters to send to the API endpoint
-   for the organizations details operation.
+/*
+OrganizationsDetailsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the organizations details operation.
+
+	Typically these are written to a http.Request.
 */
 type OrganizationsDetailsParams struct {
 

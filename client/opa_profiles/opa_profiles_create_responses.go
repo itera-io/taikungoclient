@@ -69,7 +69,8 @@ func NewOpaProfilesCreateOK() *OpaProfilesCreateOK {
 	return &OpaProfilesCreateOK{}
 }
 
-/* OpaProfilesCreateOK describes a response with status code 200, with default header values.
+/*
+OpaProfilesCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OpaProfilesCreateOK struct {
 	Payload *models.APIResponse
 }
 
+// IsSuccess returns true when this opa profiles create o k response has a 2xx status code
+func (o *OpaProfilesCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this opa profiles create o k response has a 3xx status code
+func (o *OpaProfilesCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles create o k response has a 4xx status code
+func (o *OpaProfilesCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this opa profiles create o k response has a 5xx status code
+func (o *OpaProfilesCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this opa profiles create o k response a status code equal to that given
+func (o *OpaProfilesCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OpaProfilesCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *OpaProfilesCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *OpaProfilesCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewOpaProfilesCreateBadRequest() *OpaProfilesCreateBadRequest {
 	return &OpaProfilesCreateBadRequest{}
 }
 
-/* OpaProfilesCreateBadRequest describes a response with status code 400, with default header values.
+/*
+OpaProfilesCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type OpaProfilesCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this opa profiles create bad request response has a 2xx status code
+func (o *OpaProfilesCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this opa profiles create bad request response has a 3xx status code
+func (o *OpaProfilesCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles create bad request response has a 4xx status code
+func (o *OpaProfilesCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this opa profiles create bad request response has a 5xx status code
+func (o *OpaProfilesCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this opa profiles create bad request response a status code equal to that given
+func (o *OpaProfilesCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OpaProfilesCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OpaProfilesCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OpaProfilesCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewOpaProfilesCreateUnauthorized() *OpaProfilesCreateUnauthorized {
 	return &OpaProfilesCreateUnauthorized{}
 }
 
-/* OpaProfilesCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+OpaProfilesCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type OpaProfilesCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this opa profiles create unauthorized response has a 2xx status code
+func (o *OpaProfilesCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this opa profiles create unauthorized response has a 3xx status code
+func (o *OpaProfilesCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles create unauthorized response has a 4xx status code
+func (o *OpaProfilesCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this opa profiles create unauthorized response has a 5xx status code
+func (o *OpaProfilesCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this opa profiles create unauthorized response a status code equal to that given
+func (o *OpaProfilesCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OpaProfilesCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OpaProfilesCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OpaProfilesCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewOpaProfilesCreateForbidden() *OpaProfilesCreateForbidden {
 	return &OpaProfilesCreateForbidden{}
 }
 
-/* OpaProfilesCreateForbidden describes a response with status code 403, with default header values.
+/*
+OpaProfilesCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type OpaProfilesCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this opa profiles create forbidden response has a 2xx status code
+func (o *OpaProfilesCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this opa profiles create forbidden response has a 3xx status code
+func (o *OpaProfilesCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles create forbidden response has a 4xx status code
+func (o *OpaProfilesCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this opa profiles create forbidden response has a 5xx status code
+func (o *OpaProfilesCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this opa profiles create forbidden response a status code equal to that given
+func (o *OpaProfilesCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OpaProfilesCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OpaProfilesCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OpaProfilesCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewOpaProfilesCreateNotFound() *OpaProfilesCreateNotFound {
 	return &OpaProfilesCreateNotFound{}
 }
 
-/* OpaProfilesCreateNotFound describes a response with status code 404, with default header values.
+/*
+OpaProfilesCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type OpaProfilesCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this opa profiles create not found response has a 2xx status code
+func (o *OpaProfilesCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this opa profiles create not found response has a 3xx status code
+func (o *OpaProfilesCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles create not found response has a 4xx status code
+func (o *OpaProfilesCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this opa profiles create not found response has a 5xx status code
+func (o *OpaProfilesCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this opa profiles create not found response a status code equal to that given
+func (o *OpaProfilesCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OpaProfilesCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OpaProfilesCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OpaProfilesCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewOpaProfilesCreateInternalServerError() *OpaProfilesCreateInternalServerE
 	return &OpaProfilesCreateInternalServerError{}
 }
 
-/* OpaProfilesCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+OpaProfilesCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OpaProfilesCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this opa profiles create internal server error response has a 2xx status code
+func (o *OpaProfilesCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this opa profiles create internal server error response has a 3xx status code
+func (o *OpaProfilesCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles create internal server error response has a 4xx status code
+func (o *OpaProfilesCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this opa profiles create internal server error response has a 5xx status code
+func (o *OpaProfilesCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this opa profiles create internal server error response a status code equal to that given
+func (o *OpaProfilesCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OpaProfilesCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateInternalServerError ", 500)
+}
+
+func (o *OpaProfilesCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateInternalServerError ", 500)
 }
 

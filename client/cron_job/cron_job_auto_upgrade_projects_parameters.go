@@ -54,10 +54,12 @@ func NewCronJobAutoUpgradeProjectsParamsWithHTTPClient(client *http.Client) *Cro
 	}
 }
 
-/* CronJobAutoUpgradeProjectsParams contains all the parameters to send to the API endpoint
-   for the cron job auto upgrade projects operation.
+/*
+CronJobAutoUpgradeProjectsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job auto upgrade projects operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobAutoUpgradeProjectsParams struct {
 

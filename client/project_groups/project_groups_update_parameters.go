@@ -55,10 +55,12 @@ func NewProjectGroupsUpdateParamsWithHTTPClient(client *http.Client) *ProjectGro
 	}
 }
 
-/* ProjectGroupsUpdateParams contains all the parameters to send to the API endpoint
-   for the project groups update operation.
+/*
+ProjectGroupsUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the project groups update operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectGroupsUpdateParams struct {
 

@@ -69,7 +69,8 @@ func NewOrganizationsUpdateSubscriptionOK() *OrganizationsUpdateSubscriptionOK {
 	return &OrganizationsUpdateSubscriptionOK{}
 }
 
-/* OrganizationsUpdateSubscriptionOK describes a response with status code 200, with default header values.
+/*
+OrganizationsUpdateSubscriptionOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OrganizationsUpdateSubscriptionOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this organizations update subscription o k response has a 2xx status code
+func (o *OrganizationsUpdateSubscriptionOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this organizations update subscription o k response has a 3xx status code
+func (o *OrganizationsUpdateSubscriptionOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update subscription o k response has a 4xx status code
+func (o *OrganizationsUpdateSubscriptionOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations update subscription o k response has a 5xx status code
+func (o *OrganizationsUpdateSubscriptionOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations update subscription o k response a status code equal to that given
+func (o *OrganizationsUpdateSubscriptionOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OrganizationsUpdateSubscriptionOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionOK  %+v", 200, o.Payload)
 }
+
+func (o *OrganizationsUpdateSubscriptionOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionOK  %+v", 200, o.Payload)
+}
+
 func (o *OrganizationsUpdateSubscriptionOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewOrganizationsUpdateSubscriptionBadRequest() *OrganizationsUpdateSubscrip
 	return &OrganizationsUpdateSubscriptionBadRequest{}
 }
 
-/* OrganizationsUpdateSubscriptionBadRequest describes a response with status code 400, with default header values.
+/*
+OrganizationsUpdateSubscriptionBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type OrganizationsUpdateSubscriptionBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this organizations update subscription bad request response has a 2xx status code
+func (o *OrganizationsUpdateSubscriptionBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations update subscription bad request response has a 3xx status code
+func (o *OrganizationsUpdateSubscriptionBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update subscription bad request response has a 4xx status code
+func (o *OrganizationsUpdateSubscriptionBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations update subscription bad request response has a 5xx status code
+func (o *OrganizationsUpdateSubscriptionBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations update subscription bad request response a status code equal to that given
+func (o *OrganizationsUpdateSubscriptionBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OrganizationsUpdateSubscriptionBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OrganizationsUpdateSubscriptionBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OrganizationsUpdateSubscriptionBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewOrganizationsUpdateSubscriptionUnauthorized() *OrganizationsUpdateSubscr
 	return &OrganizationsUpdateSubscriptionUnauthorized{}
 }
 
-/* OrganizationsUpdateSubscriptionUnauthorized describes a response with status code 401, with default header values.
+/*
+OrganizationsUpdateSubscriptionUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type OrganizationsUpdateSubscriptionUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations update subscription unauthorized response has a 2xx status code
+func (o *OrganizationsUpdateSubscriptionUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations update subscription unauthorized response has a 3xx status code
+func (o *OrganizationsUpdateSubscriptionUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update subscription unauthorized response has a 4xx status code
+func (o *OrganizationsUpdateSubscriptionUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations update subscription unauthorized response has a 5xx status code
+func (o *OrganizationsUpdateSubscriptionUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations update subscription unauthorized response a status code equal to that given
+func (o *OrganizationsUpdateSubscriptionUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OrganizationsUpdateSubscriptionUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OrganizationsUpdateSubscriptionUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OrganizationsUpdateSubscriptionUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewOrganizationsUpdateSubscriptionForbidden() *OrganizationsUpdateSubscript
 	return &OrganizationsUpdateSubscriptionForbidden{}
 }
 
-/* OrganizationsUpdateSubscriptionForbidden describes a response with status code 403, with default header values.
+/*
+OrganizationsUpdateSubscriptionForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type OrganizationsUpdateSubscriptionForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations update subscription forbidden response has a 2xx status code
+func (o *OrganizationsUpdateSubscriptionForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations update subscription forbidden response has a 3xx status code
+func (o *OrganizationsUpdateSubscriptionForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update subscription forbidden response has a 4xx status code
+func (o *OrganizationsUpdateSubscriptionForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations update subscription forbidden response has a 5xx status code
+func (o *OrganizationsUpdateSubscriptionForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations update subscription forbidden response a status code equal to that given
+func (o *OrganizationsUpdateSubscriptionForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OrganizationsUpdateSubscriptionForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OrganizationsUpdateSubscriptionForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OrganizationsUpdateSubscriptionForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewOrganizationsUpdateSubscriptionNotFound() *OrganizationsUpdateSubscripti
 	return &OrganizationsUpdateSubscriptionNotFound{}
 }
 
-/* OrganizationsUpdateSubscriptionNotFound describes a response with status code 404, with default header values.
+/*
+OrganizationsUpdateSubscriptionNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type OrganizationsUpdateSubscriptionNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations update subscription not found response has a 2xx status code
+func (o *OrganizationsUpdateSubscriptionNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations update subscription not found response has a 3xx status code
+func (o *OrganizationsUpdateSubscriptionNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update subscription not found response has a 4xx status code
+func (o *OrganizationsUpdateSubscriptionNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations update subscription not found response has a 5xx status code
+func (o *OrganizationsUpdateSubscriptionNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations update subscription not found response a status code equal to that given
+func (o *OrganizationsUpdateSubscriptionNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OrganizationsUpdateSubscriptionNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OrganizationsUpdateSubscriptionNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OrganizationsUpdateSubscriptionNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewOrganizationsUpdateSubscriptionInternalServerError() *OrganizationsUpdat
 	return &OrganizationsUpdateSubscriptionInternalServerError{}
 }
 
-/* OrganizationsUpdateSubscriptionInternalServerError describes a response with status code 500, with default header values.
+/*
+OrganizationsUpdateSubscriptionInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OrganizationsUpdateSubscriptionInternalServerError struct {
 }
 
+// IsSuccess returns true when this organizations update subscription internal server error response has a 2xx status code
+func (o *OrganizationsUpdateSubscriptionInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations update subscription internal server error response has a 3xx status code
+func (o *OrganizationsUpdateSubscriptionInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update subscription internal server error response has a 4xx status code
+func (o *OrganizationsUpdateSubscriptionInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations update subscription internal server error response has a 5xx status code
+func (o *OrganizationsUpdateSubscriptionInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this organizations update subscription internal server error response a status code equal to that given
+func (o *OrganizationsUpdateSubscriptionInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OrganizationsUpdateSubscriptionInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionInternalServerError ", 500)
+}
+
+func (o *OrganizationsUpdateSubscriptionInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionInternalServerError ", 500)
 }
 

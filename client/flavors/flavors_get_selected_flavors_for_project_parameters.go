@@ -53,10 +53,12 @@ func NewFlavorsGetSelectedFlavorsForProjectParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* FlavorsGetSelectedFlavorsForProjectParams contains all the parameters to send to the API endpoint
-   for the flavors get selected flavors for project operation.
+/*
+FlavorsGetSelectedFlavorsForProjectParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the flavors get selected flavors for project operation.
+
+	Typically these are written to a http.Request.
 */
 type FlavorsGetSelectedFlavorsForProjectParams struct {
 

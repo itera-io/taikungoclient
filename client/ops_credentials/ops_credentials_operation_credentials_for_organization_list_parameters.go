@@ -53,10 +53,12 @@ func NewOpsCredentialsOperationCredentialsForOrganizationListParamsWithHTTPClien
 	}
 }
 
-/* OpsCredentialsOperationCredentialsForOrganizationListParams contains all the parameters to send to the API endpoint
-   for the ops credentials operation credentials for organization list operation.
+/*
+OpsCredentialsOperationCredentialsForOrganizationListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ops credentials operation credentials for organization list operation.
+
+	Typically these are written to a http.Request.
 */
 type OpsCredentialsOperationCredentialsForOrganizationListParams struct {
 

@@ -40,7 +40,7 @@ type ClientService interface {
 }
 
 /*
-  KubesprayCreate kubespray create API
+KubesprayCreate kubespray create API
 */
 func (a *Client) KubesprayCreate(params *KubesprayCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubesprayCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -79,7 +79,7 @@ func (a *Client) KubesprayCreate(params *KubesprayCreateParams, authInfo runtime
 }
 
 /*
-  KubesprayDelete kubespray delete API
+KubesprayDelete kubespray delete API
 */
 func (a *Client) KubesprayDelete(params *KubesprayDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubesprayDeleteOK, *KubesprayDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -119,7 +119,7 @@ func (a *Client) KubesprayDelete(params *KubesprayDeleteParams, authInfo runtime
 }
 
 /*
-  KubesprayList kubespray list API
+KubesprayList kubespray list API
 */
 func (a *Client) KubesprayList(params *KubesprayListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubesprayListOK, error) {
 	// TODO: Validate the params before sending

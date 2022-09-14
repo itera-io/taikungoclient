@@ -100,6 +100,9 @@ type ProjectListDetailDto struct {
 	// organization name
 	OrganizationName string `json:"organizationName,omitempty"`
 
+	// project action
+	ProjectAction bool `json:"projectAction"`
+
 	// quota Id
 	QuotaID int32 `json:"quotaId,omitempty"`
 

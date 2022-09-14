@@ -69,7 +69,8 @@ func NewPrometheusBindOrganizationsOK() *PrometheusBindOrganizationsOK {
 	return &PrometheusBindOrganizationsOK{}
 }
 
-/* PrometheusBindOrganizationsOK describes a response with status code 200, with default header values.
+/*
+PrometheusBindOrganizationsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type PrometheusBindOrganizationsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this prometheus bind organizations o k response has a 2xx status code
+func (o *PrometheusBindOrganizationsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this prometheus bind organizations o k response has a 3xx status code
+func (o *PrometheusBindOrganizationsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus bind organizations o k response has a 4xx status code
+func (o *PrometheusBindOrganizationsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this prometheus bind organizations o k response has a 5xx status code
+func (o *PrometheusBindOrganizationsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus bind organizations o k response a status code equal to that given
+func (o *PrometheusBindOrganizationsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PrometheusBindOrganizationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsOK  %+v", 200, o.Payload)
 }
+
+func (o *PrometheusBindOrganizationsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsOK  %+v", 200, o.Payload)
+}
+
 func (o *PrometheusBindOrganizationsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewPrometheusBindOrganizationsBadRequest() *PrometheusBindOrganizationsBadR
 	return &PrometheusBindOrganizationsBadRequest{}
 }
 
-/* PrometheusBindOrganizationsBadRequest describes a response with status code 400, with default header values.
+/*
+PrometheusBindOrganizationsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type PrometheusBindOrganizationsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this prometheus bind organizations bad request response has a 2xx status code
+func (o *PrometheusBindOrganizationsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus bind organizations bad request response has a 3xx status code
+func (o *PrometheusBindOrganizationsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus bind organizations bad request response has a 4xx status code
+func (o *PrometheusBindOrganizationsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus bind organizations bad request response has a 5xx status code
+func (o *PrometheusBindOrganizationsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus bind organizations bad request response a status code equal to that given
+func (o *PrometheusBindOrganizationsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PrometheusBindOrganizationsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PrometheusBindOrganizationsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PrometheusBindOrganizationsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewPrometheusBindOrganizationsUnauthorized() *PrometheusBindOrganizationsUn
 	return &PrometheusBindOrganizationsUnauthorized{}
 }
 
-/* PrometheusBindOrganizationsUnauthorized describes a response with status code 401, with default header values.
+/*
+PrometheusBindOrganizationsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type PrometheusBindOrganizationsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus bind organizations unauthorized response has a 2xx status code
+func (o *PrometheusBindOrganizationsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus bind organizations unauthorized response has a 3xx status code
+func (o *PrometheusBindOrganizationsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus bind organizations unauthorized response has a 4xx status code
+func (o *PrometheusBindOrganizationsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus bind organizations unauthorized response has a 5xx status code
+func (o *PrometheusBindOrganizationsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus bind organizations unauthorized response a status code equal to that given
+func (o *PrometheusBindOrganizationsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PrometheusBindOrganizationsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *PrometheusBindOrganizationsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *PrometheusBindOrganizationsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewPrometheusBindOrganizationsForbidden() *PrometheusBindOrganizationsForbi
 	return &PrometheusBindOrganizationsForbidden{}
 }
 
-/* PrometheusBindOrganizationsForbidden describes a response with status code 403, with default header values.
+/*
+PrometheusBindOrganizationsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type PrometheusBindOrganizationsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus bind organizations forbidden response has a 2xx status code
+func (o *PrometheusBindOrganizationsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus bind organizations forbidden response has a 3xx status code
+func (o *PrometheusBindOrganizationsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus bind organizations forbidden response has a 4xx status code
+func (o *PrometheusBindOrganizationsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus bind organizations forbidden response has a 5xx status code
+func (o *PrometheusBindOrganizationsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus bind organizations forbidden response a status code equal to that given
+func (o *PrometheusBindOrganizationsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PrometheusBindOrganizationsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PrometheusBindOrganizationsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PrometheusBindOrganizationsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewPrometheusBindOrganizationsNotFound() *PrometheusBindOrganizationsNotFou
 	return &PrometheusBindOrganizationsNotFound{}
 }
 
-/* PrometheusBindOrganizationsNotFound describes a response with status code 404, with default header values.
+/*
+PrometheusBindOrganizationsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type PrometheusBindOrganizationsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus bind organizations not found response has a 2xx status code
+func (o *PrometheusBindOrganizationsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus bind organizations not found response has a 3xx status code
+func (o *PrometheusBindOrganizationsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus bind organizations not found response has a 4xx status code
+func (o *PrometheusBindOrganizationsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus bind organizations not found response has a 5xx status code
+func (o *PrometheusBindOrganizationsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus bind organizations not found response a status code equal to that given
+func (o *PrometheusBindOrganizationsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PrometheusBindOrganizationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PrometheusBindOrganizationsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PrometheusBindOrganizationsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewPrometheusBindOrganizationsInternalServerError() *PrometheusBindOrganiza
 	return &PrometheusBindOrganizationsInternalServerError{}
 }
 
-/* PrometheusBindOrganizationsInternalServerError describes a response with status code 500, with default header values.
+/*
+PrometheusBindOrganizationsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PrometheusBindOrganizationsInternalServerError struct {
 }
 
+// IsSuccess returns true when this prometheus bind organizations internal server error response has a 2xx status code
+func (o *PrometheusBindOrganizationsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus bind organizations internal server error response has a 3xx status code
+func (o *PrometheusBindOrganizationsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus bind organizations internal server error response has a 4xx status code
+func (o *PrometheusBindOrganizationsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this prometheus bind organizations internal server error response has a 5xx status code
+func (o *PrometheusBindOrganizationsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this prometheus bind organizations internal server error response a status code equal to that given
+func (o *PrometheusBindOrganizationsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PrometheusBindOrganizationsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsInternalServerError ", 500)
+}
+
+func (o *PrometheusBindOrganizationsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsInternalServerError ", 500)
 }
 

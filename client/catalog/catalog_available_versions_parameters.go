@@ -54,10 +54,12 @@ func NewCatalogAvailableVersionsParamsWithHTTPClient(client *http.Client) *Catal
 	}
 }
 
-/* CatalogAvailableVersionsParams contains all the parameters to send to the API endpoint
-   for the catalog available versions operation.
+/*
+CatalogAvailableVersionsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the catalog available versions operation.
+
+	Typically these are written to a http.Request.
 */
 type CatalogAvailableVersionsParams struct {
 

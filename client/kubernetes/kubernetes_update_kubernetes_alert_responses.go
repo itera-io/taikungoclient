@@ -69,7 +69,8 @@ func NewKubernetesUpdateKubernetesAlertOK() *KubernetesUpdateKubernetesAlertOK {
 	return &KubernetesUpdateKubernetesAlertOK{}
 }
 
-/* KubernetesUpdateKubernetesAlertOK describes a response with status code 200, with default header values.
+/*
+KubernetesUpdateKubernetesAlertOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesUpdateKubernetesAlertOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this kubernetes update kubernetes alert o k response has a 2xx status code
+func (o *KubernetesUpdateKubernetesAlertOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes update kubernetes alert o k response has a 3xx status code
+func (o *KubernetesUpdateKubernetesAlertOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes update kubernetes alert o k response has a 4xx status code
+func (o *KubernetesUpdateKubernetesAlertOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes update kubernetes alert o k response has a 5xx status code
+func (o *KubernetesUpdateKubernetesAlertOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes update kubernetes alert o k response a status code equal to that given
+func (o *KubernetesUpdateKubernetesAlertOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesUpdateKubernetesAlertOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesUpdateKubernetesAlertOK) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesUpdateKubernetesAlertOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesUpdateKubernetesAlertBadRequest() *KubernetesUpdateKubernetesA
 	return &KubernetesUpdateKubernetesAlertBadRequest{}
 }
 
-/* KubernetesUpdateKubernetesAlertBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesUpdateKubernetesAlertBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesUpdateKubernetesAlertBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes update kubernetes alert bad request response has a 2xx status code
+func (o *KubernetesUpdateKubernetesAlertBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes update kubernetes alert bad request response has a 3xx status code
+func (o *KubernetesUpdateKubernetesAlertBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes update kubernetes alert bad request response has a 4xx status code
+func (o *KubernetesUpdateKubernetesAlertBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes update kubernetes alert bad request response has a 5xx status code
+func (o *KubernetesUpdateKubernetesAlertBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes update kubernetes alert bad request response a status code equal to that given
+func (o *KubernetesUpdateKubernetesAlertBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesUpdateKubernetesAlertBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesUpdateKubernetesAlertBadRequest) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesUpdateKubernetesAlertBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesUpdateKubernetesAlertUnauthorized() *KubernetesUpdateKubernete
 	return &KubernetesUpdateKubernetesAlertUnauthorized{}
 }
 
-/* KubernetesUpdateKubernetesAlertUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesUpdateKubernetesAlertUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesUpdateKubernetesAlertUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes update kubernetes alert unauthorized response has a 2xx status code
+func (o *KubernetesUpdateKubernetesAlertUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes update kubernetes alert unauthorized response has a 3xx status code
+func (o *KubernetesUpdateKubernetesAlertUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes update kubernetes alert unauthorized response has a 4xx status code
+func (o *KubernetesUpdateKubernetesAlertUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes update kubernetes alert unauthorized response has a 5xx status code
+func (o *KubernetesUpdateKubernetesAlertUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes update kubernetes alert unauthorized response a status code equal to that given
+func (o *KubernetesUpdateKubernetesAlertUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesUpdateKubernetesAlertUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesUpdateKubernetesAlertUnauthorized) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesUpdateKubernetesAlertUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesUpdateKubernetesAlertForbidden() *KubernetesUpdateKubernetesAl
 	return &KubernetesUpdateKubernetesAlertForbidden{}
 }
 
-/* KubernetesUpdateKubernetesAlertForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesUpdateKubernetesAlertForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesUpdateKubernetesAlertForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes update kubernetes alert forbidden response has a 2xx status code
+func (o *KubernetesUpdateKubernetesAlertForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes update kubernetes alert forbidden response has a 3xx status code
+func (o *KubernetesUpdateKubernetesAlertForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes update kubernetes alert forbidden response has a 4xx status code
+func (o *KubernetesUpdateKubernetesAlertForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes update kubernetes alert forbidden response has a 5xx status code
+func (o *KubernetesUpdateKubernetesAlertForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes update kubernetes alert forbidden response a status code equal to that given
+func (o *KubernetesUpdateKubernetesAlertForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesUpdateKubernetesAlertForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesUpdateKubernetesAlertForbidden) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesUpdateKubernetesAlertForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesUpdateKubernetesAlertNotFound() *KubernetesUpdateKubernetesAle
 	return &KubernetesUpdateKubernetesAlertNotFound{}
 }
 
-/* KubernetesUpdateKubernetesAlertNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesUpdateKubernetesAlertNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesUpdateKubernetesAlertNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes update kubernetes alert not found response has a 2xx status code
+func (o *KubernetesUpdateKubernetesAlertNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes update kubernetes alert not found response has a 3xx status code
+func (o *KubernetesUpdateKubernetesAlertNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes update kubernetes alert not found response has a 4xx status code
+func (o *KubernetesUpdateKubernetesAlertNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes update kubernetes alert not found response has a 5xx status code
+func (o *KubernetesUpdateKubernetesAlertNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes update kubernetes alert not found response a status code equal to that given
+func (o *KubernetesUpdateKubernetesAlertNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesUpdateKubernetesAlertNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesUpdateKubernetesAlertNotFound) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesUpdateKubernetesAlertNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesUpdateKubernetesAlertInternalServerError() *KubernetesUpdateKu
 	return &KubernetesUpdateKubernetesAlertInternalServerError{}
 }
 
-/* KubernetesUpdateKubernetesAlertInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesUpdateKubernetesAlertInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesUpdateKubernetesAlertInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes update kubernetes alert internal server error response has a 2xx status code
+func (o *KubernetesUpdateKubernetesAlertInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes update kubernetes alert internal server error response has a 3xx status code
+func (o *KubernetesUpdateKubernetesAlertInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes update kubernetes alert internal server error response has a 4xx status code
+func (o *KubernetesUpdateKubernetesAlertInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes update kubernetes alert internal server error response has a 5xx status code
+func (o *KubernetesUpdateKubernetesAlertInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes update kubernetes alert internal server error response a status code equal to that given
+func (o *KubernetesUpdateKubernetesAlertInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesUpdateKubernetesAlertInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertInternalServerError ", 500)
+}
+
+func (o *KubernetesUpdateKubernetesAlertInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertInternalServerError ", 500)
 }
 

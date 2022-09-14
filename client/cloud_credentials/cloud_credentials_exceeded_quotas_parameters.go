@@ -53,10 +53,12 @@ func NewCloudCredentialsExceededQuotasParamsWithHTTPClient(client *http.Client) 
 	}
 }
 
-/* CloudCredentialsExceededQuotasParams contains all the parameters to send to the API endpoint
-   for the cloud credentials exceeded quotas operation.
+/*
+CloudCredentialsExceededQuotasParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cloud credentials exceeded quotas operation.
+
+	Typically these are written to a http.Request.
 */
 type CloudCredentialsExceededQuotasParams struct {
 

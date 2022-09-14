@@ -54,10 +54,12 @@ func NewSearchIngressListParamsWithHTTPClient(client *http.Client) *SearchIngres
 	}
 }
 
-/* SearchIngressListParams contains all the parameters to send to the API endpoint
-   for the search ingress list operation.
+/*
+SearchIngressListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search ingress list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchIngressListParams struct {
 

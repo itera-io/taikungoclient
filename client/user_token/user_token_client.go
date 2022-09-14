@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  UserTokenAvailableEndpointList gets available endpoints list
+UserTokenAvailableEndpointList gets available endpoints list
 */
 func (a *Client) UserTokenAvailableEndpointList(params *UserTokenAvailableEndpointListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserTokenAvailableEndpointListOK, error) {
 	// TODO: Validate the params before sending
@@ -83,7 +83,7 @@ func (a *Client) UserTokenAvailableEndpointList(params *UserTokenAvailableEndpoi
 }
 
 /*
-  UserTokenBindUnbind binds and unbind endpoints
+UserTokenBindUnbind binds and unbind endpoints
 */
 func (a *Client) UserTokenBindUnbind(params *UserTokenBindUnbindParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserTokenBindUnbindOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +122,7 @@ func (a *Client) UserTokenBindUnbind(params *UserTokenBindUnbindParams, authInfo
 }
 
 /*
-  UserTokenCreate creates a new user token
+UserTokenCreate creates a new user token
 */
 func (a *Client) UserTokenCreate(params *UserTokenCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserTokenCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -161,7 +161,7 @@ func (a *Client) UserTokenCreate(params *UserTokenCreateParams, authInfo runtime
 }
 
 /*
-  UserTokenDelete deletes token
+UserTokenDelete deletes token
 */
 func (a *Client) UserTokenDelete(params *UserTokenDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserTokenDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +200,7 @@ func (a *Client) UserTokenDelete(params *UserTokenDeleteParams, authInfo runtime
 }
 
 /*
-  UserTokenList gets user token list
+UserTokenList gets user token list
 */
 func (a *Client) UserTokenList(params *UserTokenListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserTokenListOK, error) {
 	// TODO: Validate the params before sending

@@ -69,7 +69,8 @@ func NewKubernetesDescribeNetworkPolicyOK() *KubernetesDescribeNetworkPolicyOK {
 	return &KubernetesDescribeNetworkPolicyOK{}
 }
 
-/* KubernetesDescribeNetworkPolicyOK describes a response with status code 200, with default header values.
+/*
+KubernetesDescribeNetworkPolicyOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesDescribeNetworkPolicyOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this kubernetes describe network policy o k response has a 2xx status code
+func (o *KubernetesDescribeNetworkPolicyOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes describe network policy o k response has a 3xx status code
+func (o *KubernetesDescribeNetworkPolicyOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe network policy o k response has a 4xx status code
+func (o *KubernetesDescribeNetworkPolicyOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes describe network policy o k response has a 5xx status code
+func (o *KubernetesDescribeNetworkPolicyOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe network policy o k response a status code equal to that given
+func (o *KubernetesDescribeNetworkPolicyOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesDescribeNetworkPolicyOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesDescribeNetworkPolicyOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesDescribeNetworkPolicyOK) GetPayload() string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesDescribeNetworkPolicyBadRequest() *KubernetesDescribeNetworkPo
 	return &KubernetesDescribeNetworkPolicyBadRequest{}
 }
 
-/* KubernetesDescribeNetworkPolicyBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesDescribeNetworkPolicyBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesDescribeNetworkPolicyBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe network policy bad request response has a 2xx status code
+func (o *KubernetesDescribeNetworkPolicyBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe network policy bad request response has a 3xx status code
+func (o *KubernetesDescribeNetworkPolicyBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe network policy bad request response has a 4xx status code
+func (o *KubernetesDescribeNetworkPolicyBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe network policy bad request response has a 5xx status code
+func (o *KubernetesDescribeNetworkPolicyBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe network policy bad request response a status code equal to that given
+func (o *KubernetesDescribeNetworkPolicyBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesDescribeNetworkPolicyBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesDescribeNetworkPolicyBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesDescribeNetworkPolicyBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesDescribeNetworkPolicyUnauthorized() *KubernetesDescribeNetwork
 	return &KubernetesDescribeNetworkPolicyUnauthorized{}
 }
 
-/* KubernetesDescribeNetworkPolicyUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesDescribeNetworkPolicyUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesDescribeNetworkPolicyUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe network policy unauthorized response has a 2xx status code
+func (o *KubernetesDescribeNetworkPolicyUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe network policy unauthorized response has a 3xx status code
+func (o *KubernetesDescribeNetworkPolicyUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe network policy unauthorized response has a 4xx status code
+func (o *KubernetesDescribeNetworkPolicyUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe network policy unauthorized response has a 5xx status code
+func (o *KubernetesDescribeNetworkPolicyUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe network policy unauthorized response a status code equal to that given
+func (o *KubernetesDescribeNetworkPolicyUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesDescribeNetworkPolicyUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesDescribeNetworkPolicyUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesDescribeNetworkPolicyUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesDescribeNetworkPolicyForbidden() *KubernetesDescribeNetworkPol
 	return &KubernetesDescribeNetworkPolicyForbidden{}
 }
 
-/* KubernetesDescribeNetworkPolicyForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesDescribeNetworkPolicyForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesDescribeNetworkPolicyForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe network policy forbidden response has a 2xx status code
+func (o *KubernetesDescribeNetworkPolicyForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe network policy forbidden response has a 3xx status code
+func (o *KubernetesDescribeNetworkPolicyForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe network policy forbidden response has a 4xx status code
+func (o *KubernetesDescribeNetworkPolicyForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe network policy forbidden response has a 5xx status code
+func (o *KubernetesDescribeNetworkPolicyForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe network policy forbidden response a status code equal to that given
+func (o *KubernetesDescribeNetworkPolicyForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesDescribeNetworkPolicyForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesDescribeNetworkPolicyForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesDescribeNetworkPolicyForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesDescribeNetworkPolicyNotFound() *KubernetesDescribeNetworkPoli
 	return &KubernetesDescribeNetworkPolicyNotFound{}
 }
 
-/* KubernetesDescribeNetworkPolicyNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesDescribeNetworkPolicyNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesDescribeNetworkPolicyNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe network policy not found response has a 2xx status code
+func (o *KubernetesDescribeNetworkPolicyNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe network policy not found response has a 3xx status code
+func (o *KubernetesDescribeNetworkPolicyNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe network policy not found response has a 4xx status code
+func (o *KubernetesDescribeNetworkPolicyNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe network policy not found response has a 5xx status code
+func (o *KubernetesDescribeNetworkPolicyNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe network policy not found response a status code equal to that given
+func (o *KubernetesDescribeNetworkPolicyNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesDescribeNetworkPolicyNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesDescribeNetworkPolicyNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesDescribeNetworkPolicyNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesDescribeNetworkPolicyInternalServerError() *KubernetesDescribe
 	return &KubernetesDescribeNetworkPolicyInternalServerError{}
 }
 
-/* KubernetesDescribeNetworkPolicyInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesDescribeNetworkPolicyInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesDescribeNetworkPolicyInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes describe network policy internal server error response has a 2xx status code
+func (o *KubernetesDescribeNetworkPolicyInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe network policy internal server error response has a 3xx status code
+func (o *KubernetesDescribeNetworkPolicyInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe network policy internal server error response has a 4xx status code
+func (o *KubernetesDescribeNetworkPolicyInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes describe network policy internal server error response has a 5xx status code
+func (o *KubernetesDescribeNetworkPolicyInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes describe network policy internal server error response a status code equal to that given
+func (o *KubernetesDescribeNetworkPolicyInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesDescribeNetworkPolicyInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyInternalServerError ", 500)
+}
+
+func (o *KubernetesDescribeNetworkPolicyInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyInternalServerError ", 500)
 }
 

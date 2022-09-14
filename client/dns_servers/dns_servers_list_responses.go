@@ -69,7 +69,8 @@ func NewDNSServersListOK() *DNSServersListOK {
 	return &DNSServersListOK{}
 }
 
-/* DNSServersListOK describes a response with status code 200, with default header values.
+/*
+DNSServersListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type DNSServersListOK struct {
 	Payload []*models.DNSServersListDto
 }
 
+// IsSuccess returns true when this dns servers list o k response has a 2xx status code
+func (o *DNSServersListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this dns servers list o k response has a 3xx status code
+func (o *DNSServersListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this dns servers list o k response has a 4xx status code
+func (o *DNSServersListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this dns servers list o k response has a 5xx status code
+func (o *DNSServersListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this dns servers list o k response a status code equal to that given
+func (o *DNSServersListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *DNSServersListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListOK  %+v", 200, o.Payload)
 }
+
+func (o *DNSServersListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListOK  %+v", 200, o.Payload)
+}
+
 func (o *DNSServersListOK) GetPayload() []*models.DNSServersListDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewDNSServersListBadRequest() *DNSServersListBadRequest {
 	return &DNSServersListBadRequest{}
 }
 
-/* DNSServersListBadRequest describes a response with status code 400, with default header values.
+/*
+DNSServersListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type DNSServersListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this dns servers list bad request response has a 2xx status code
+func (o *DNSServersListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this dns servers list bad request response has a 3xx status code
+func (o *DNSServersListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this dns servers list bad request response has a 4xx status code
+func (o *DNSServersListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this dns servers list bad request response has a 5xx status code
+func (o *DNSServersListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this dns servers list bad request response a status code equal to that given
+func (o *DNSServersListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *DNSServersListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *DNSServersListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *DNSServersListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewDNSServersListUnauthorized() *DNSServersListUnauthorized {
 	return &DNSServersListUnauthorized{}
 }
 
-/* DNSServersListUnauthorized describes a response with status code 401, with default header values.
+/*
+DNSServersListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type DNSServersListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this dns servers list unauthorized response has a 2xx status code
+func (o *DNSServersListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this dns servers list unauthorized response has a 3xx status code
+func (o *DNSServersListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this dns servers list unauthorized response has a 4xx status code
+func (o *DNSServersListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this dns servers list unauthorized response has a 5xx status code
+func (o *DNSServersListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this dns servers list unauthorized response a status code equal to that given
+func (o *DNSServersListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *DNSServersListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *DNSServersListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *DNSServersListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewDNSServersListForbidden() *DNSServersListForbidden {
 	return &DNSServersListForbidden{}
 }
 
-/* DNSServersListForbidden describes a response with status code 403, with default header values.
+/*
+DNSServersListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type DNSServersListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this dns servers list forbidden response has a 2xx status code
+func (o *DNSServersListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this dns servers list forbidden response has a 3xx status code
+func (o *DNSServersListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this dns servers list forbidden response has a 4xx status code
+func (o *DNSServersListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this dns servers list forbidden response has a 5xx status code
+func (o *DNSServersListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this dns servers list forbidden response a status code equal to that given
+func (o *DNSServersListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *DNSServersListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *DNSServersListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *DNSServersListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewDNSServersListNotFound() *DNSServersListNotFound {
 	return &DNSServersListNotFound{}
 }
 
-/* DNSServersListNotFound describes a response with status code 404, with default header values.
+/*
+DNSServersListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type DNSServersListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this dns servers list not found response has a 2xx status code
+func (o *DNSServersListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this dns servers list not found response has a 3xx status code
+func (o *DNSServersListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this dns servers list not found response has a 4xx status code
+func (o *DNSServersListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this dns servers list not found response has a 5xx status code
+func (o *DNSServersListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this dns servers list not found response a status code equal to that given
+func (o *DNSServersListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *DNSServersListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *DNSServersListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *DNSServersListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewDNSServersListInternalServerError() *DNSServersListInternalServerError {
 	return &DNSServersListInternalServerError{}
 }
 
-/* DNSServersListInternalServerError describes a response with status code 500, with default header values.
+/*
+DNSServersListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type DNSServersListInternalServerError struct {
 }
 
+// IsSuccess returns true when this dns servers list internal server error response has a 2xx status code
+func (o *DNSServersListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this dns servers list internal server error response has a 3xx status code
+func (o *DNSServersListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this dns servers list internal server error response has a 4xx status code
+func (o *DNSServersListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this dns servers list internal server error response has a 5xx status code
+func (o *DNSServersListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this dns servers list internal server error response a status code equal to that given
+func (o *DNSServersListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *DNSServersListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListInternalServerError ", 500)
+}
+
+func (o *DNSServersListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListInternalServerError ", 500)
 }
 

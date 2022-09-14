@@ -69,7 +69,8 @@ func NewCloudCredentialsForProjectOK() *CloudCredentialsForProjectOK {
 	return &CloudCredentialsForProjectOK{}
 }
 
-/* CloudCredentialsForProjectOK describes a response with status code 200, with default header values.
+/*
+CloudCredentialsForProjectOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CloudCredentialsForProjectOK struct {
 	Payload *models.CredentialsForProjectList
 }
 
+// IsSuccess returns true when this cloud credentials for project o k response has a 2xx status code
+func (o *CloudCredentialsForProjectOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cloud credentials for project o k response has a 3xx status code
+func (o *CloudCredentialsForProjectOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials for project o k response has a 4xx status code
+func (o *CloudCredentialsForProjectOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cloud credentials for project o k response has a 5xx status code
+func (o *CloudCredentialsForProjectOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials for project o k response a status code equal to that given
+func (o *CloudCredentialsForProjectOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CloudCredentialsForProjectOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectOK  %+v", 200, o.Payload)
 }
+
+func (o *CloudCredentialsForProjectOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectOK  %+v", 200, o.Payload)
+}
+
 func (o *CloudCredentialsForProjectOK) GetPayload() *models.CredentialsForProjectList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewCloudCredentialsForProjectBadRequest() *CloudCredentialsForProjectBadReq
 	return &CloudCredentialsForProjectBadRequest{}
 }
 
-/* CloudCredentialsForProjectBadRequest describes a response with status code 400, with default header values.
+/*
+CloudCredentialsForProjectBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type CloudCredentialsForProjectBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials for project bad request response has a 2xx status code
+func (o *CloudCredentialsForProjectBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials for project bad request response has a 3xx status code
+func (o *CloudCredentialsForProjectBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials for project bad request response has a 4xx status code
+func (o *CloudCredentialsForProjectBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials for project bad request response has a 5xx status code
+func (o *CloudCredentialsForProjectBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials for project bad request response a status code equal to that given
+func (o *CloudCredentialsForProjectBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CloudCredentialsForProjectBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CloudCredentialsForProjectBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CloudCredentialsForProjectBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewCloudCredentialsForProjectUnauthorized() *CloudCredentialsForProjectUnau
 	return &CloudCredentialsForProjectUnauthorized{}
 }
 
-/* CloudCredentialsForProjectUnauthorized describes a response with status code 401, with default header values.
+/*
+CloudCredentialsForProjectUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type CloudCredentialsForProjectUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials for project unauthorized response has a 2xx status code
+func (o *CloudCredentialsForProjectUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials for project unauthorized response has a 3xx status code
+func (o *CloudCredentialsForProjectUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials for project unauthorized response has a 4xx status code
+func (o *CloudCredentialsForProjectUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials for project unauthorized response has a 5xx status code
+func (o *CloudCredentialsForProjectUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials for project unauthorized response a status code equal to that given
+func (o *CloudCredentialsForProjectUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CloudCredentialsForProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CloudCredentialsForProjectUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CloudCredentialsForProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewCloudCredentialsForProjectForbidden() *CloudCredentialsForProjectForbidd
 	return &CloudCredentialsForProjectForbidden{}
 }
 
-/* CloudCredentialsForProjectForbidden describes a response with status code 403, with default header values.
+/*
+CloudCredentialsForProjectForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type CloudCredentialsForProjectForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials for project forbidden response has a 2xx status code
+func (o *CloudCredentialsForProjectForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials for project forbidden response has a 3xx status code
+func (o *CloudCredentialsForProjectForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials for project forbidden response has a 4xx status code
+func (o *CloudCredentialsForProjectForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials for project forbidden response has a 5xx status code
+func (o *CloudCredentialsForProjectForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials for project forbidden response a status code equal to that given
+func (o *CloudCredentialsForProjectForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CloudCredentialsForProjectForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CloudCredentialsForProjectForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CloudCredentialsForProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewCloudCredentialsForProjectNotFound() *CloudCredentialsForProjectNotFound
 	return &CloudCredentialsForProjectNotFound{}
 }
 
-/* CloudCredentialsForProjectNotFound describes a response with status code 404, with default header values.
+/*
+CloudCredentialsForProjectNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type CloudCredentialsForProjectNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials for project not found response has a 2xx status code
+func (o *CloudCredentialsForProjectNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials for project not found response has a 3xx status code
+func (o *CloudCredentialsForProjectNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials for project not found response has a 4xx status code
+func (o *CloudCredentialsForProjectNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials for project not found response has a 5xx status code
+func (o *CloudCredentialsForProjectNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials for project not found response a status code equal to that given
+func (o *CloudCredentialsForProjectNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CloudCredentialsForProjectNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CloudCredentialsForProjectNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CloudCredentialsForProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewCloudCredentialsForProjectInternalServerError() *CloudCredentialsForProj
 	return &CloudCredentialsForProjectInternalServerError{}
 }
 
-/* CloudCredentialsForProjectInternalServerError describes a response with status code 500, with default header values.
+/*
+CloudCredentialsForProjectInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CloudCredentialsForProjectInternalServerError struct {
 }
 
+// IsSuccess returns true when this cloud credentials for project internal server error response has a 2xx status code
+func (o *CloudCredentialsForProjectInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials for project internal server error response has a 3xx status code
+func (o *CloudCredentialsForProjectInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials for project internal server error response has a 4xx status code
+func (o *CloudCredentialsForProjectInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cloud credentials for project internal server error response has a 5xx status code
+func (o *CloudCredentialsForProjectInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cloud credentials for project internal server error response a status code equal to that given
+func (o *CloudCredentialsForProjectInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CloudCredentialsForProjectInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectInternalServerError ", 500)
+}
+
+func (o *CloudCredentialsForProjectInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectInternalServerError ", 500)
 }
 

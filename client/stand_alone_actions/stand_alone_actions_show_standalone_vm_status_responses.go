@@ -69,7 +69,8 @@ func NewStandAloneActionsShowStandaloneVMStatusOK() *StandAloneActionsShowStanda
 	return &StandAloneActionsShowStandaloneVMStatusOK{}
 }
 
-/* StandAloneActionsShowStandaloneVMStatusOK describes a response with status code 200, with default header values.
+/*
+StandAloneActionsShowStandaloneVMStatusOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type StandAloneActionsShowStandaloneVMStatusOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this stand alone actions show standalone Vm status o k response has a 2xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this stand alone actions show standalone Vm status o k response has a 3xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions show standalone Vm status o k response has a 4xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone actions show standalone Vm status o k response has a 5xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions show standalone Vm status o k response a status code equal to that given
+func (o *StandAloneActionsShowStandaloneVMStatusOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *StandAloneActionsShowStandaloneVMStatusOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusOK  %+v", 200, o.Payload)
 }
+
+func (o *StandAloneActionsShowStandaloneVMStatusOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusOK  %+v", 200, o.Payload)
+}
+
 func (o *StandAloneActionsShowStandaloneVMStatusOK) GetPayload() string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewStandAloneActionsShowStandaloneVMStatusBadRequest() *StandAloneActionsSh
 	return &StandAloneActionsShowStandaloneVMStatusBadRequest{}
 }
 
-/* StandAloneActionsShowStandaloneVMStatusBadRequest describes a response with status code 400, with default header values.
+/*
+StandAloneActionsShowStandaloneVMStatusBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type StandAloneActionsShowStandaloneVMStatusBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions show standalone Vm status bad request response has a 2xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions show standalone Vm status bad request response has a 3xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions show standalone Vm status bad request response has a 4xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions show standalone Vm status bad request response has a 5xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions show standalone Vm status bad request response a status code equal to that given
+func (o *StandAloneActionsShowStandaloneVMStatusBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *StandAloneActionsShowStandaloneVMStatusBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *StandAloneActionsShowStandaloneVMStatusBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *StandAloneActionsShowStandaloneVMStatusBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewStandAloneActionsShowStandaloneVMStatusUnauthorized() *StandAloneActions
 	return &StandAloneActionsShowStandaloneVMStatusUnauthorized{}
 }
 
-/* StandAloneActionsShowStandaloneVMStatusUnauthorized describes a response with status code 401, with default header values.
+/*
+StandAloneActionsShowStandaloneVMStatusUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type StandAloneActionsShowStandaloneVMStatusUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions show standalone Vm status unauthorized response has a 2xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions show standalone Vm status unauthorized response has a 3xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions show standalone Vm status unauthorized response has a 4xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions show standalone Vm status unauthorized response has a 5xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions show standalone Vm status unauthorized response a status code equal to that given
+func (o *StandAloneActionsShowStandaloneVMStatusUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *StandAloneActionsShowStandaloneVMStatusUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *StandAloneActionsShowStandaloneVMStatusUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *StandAloneActionsShowStandaloneVMStatusUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewStandAloneActionsShowStandaloneVMStatusForbidden() *StandAloneActionsSho
 	return &StandAloneActionsShowStandaloneVMStatusForbidden{}
 }
 
-/* StandAloneActionsShowStandaloneVMStatusForbidden describes a response with status code 403, with default header values.
+/*
+StandAloneActionsShowStandaloneVMStatusForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type StandAloneActionsShowStandaloneVMStatusForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions show standalone Vm status forbidden response has a 2xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions show standalone Vm status forbidden response has a 3xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions show standalone Vm status forbidden response has a 4xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions show standalone Vm status forbidden response has a 5xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions show standalone Vm status forbidden response a status code equal to that given
+func (o *StandAloneActionsShowStandaloneVMStatusForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *StandAloneActionsShowStandaloneVMStatusForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusForbidden  %+v", 403, o.Payload)
 }
+
+func (o *StandAloneActionsShowStandaloneVMStatusForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusForbidden  %+v", 403, o.Payload)
+}
+
 func (o *StandAloneActionsShowStandaloneVMStatusForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewStandAloneActionsShowStandaloneVMStatusNotFound() *StandAloneActionsShow
 	return &StandAloneActionsShowStandaloneVMStatusNotFound{}
 }
 
-/* StandAloneActionsShowStandaloneVMStatusNotFound describes a response with status code 404, with default header values.
+/*
+StandAloneActionsShowStandaloneVMStatusNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type StandAloneActionsShowStandaloneVMStatusNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions show standalone Vm status not found response has a 2xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions show standalone Vm status not found response has a 3xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions show standalone Vm status not found response has a 4xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions show standalone Vm status not found response has a 5xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions show standalone Vm status not found response a status code equal to that given
+func (o *StandAloneActionsShowStandaloneVMStatusNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *StandAloneActionsShowStandaloneVMStatusNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusNotFound  %+v", 404, o.Payload)
 }
+
+func (o *StandAloneActionsShowStandaloneVMStatusNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusNotFound  %+v", 404, o.Payload)
+}
+
 func (o *StandAloneActionsShowStandaloneVMStatusNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewStandAloneActionsShowStandaloneVMStatusInternalServerError() *StandAlone
 	return &StandAloneActionsShowStandaloneVMStatusInternalServerError{}
 }
 
-/* StandAloneActionsShowStandaloneVMStatusInternalServerError describes a response with status code 500, with default header values.
+/*
+StandAloneActionsShowStandaloneVMStatusInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type StandAloneActionsShowStandaloneVMStatusInternalServerError struct {
 }
 
+// IsSuccess returns true when this stand alone actions show standalone Vm status internal server error response has a 2xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions show standalone Vm status internal server error response has a 3xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions show standalone Vm status internal server error response has a 4xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone actions show standalone Vm status internal server error response has a 5xx status code
+func (o *StandAloneActionsShowStandaloneVMStatusInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this stand alone actions show standalone Vm status internal server error response a status code equal to that given
+func (o *StandAloneActionsShowStandaloneVMStatusInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *StandAloneActionsShowStandaloneVMStatusInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusInternalServerError ", 500)
+}
+
+func (o *StandAloneActionsShowStandaloneVMStatusInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusInternalServerError ", 500)
 }
 

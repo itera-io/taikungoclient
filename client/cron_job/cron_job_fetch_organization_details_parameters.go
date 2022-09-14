@@ -54,10 +54,12 @@ func NewCronJobFetchOrganizationDetailsParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* CronJobFetchOrganizationDetailsParams contains all the parameters to send to the API endpoint
-   for the cron job fetch organization details operation.
+/*
+CronJobFetchOrganizationDetailsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job fetch organization details operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobFetchOrganizationDetailsParams struct {
 

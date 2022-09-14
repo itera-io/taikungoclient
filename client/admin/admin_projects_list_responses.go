@@ -69,7 +69,8 @@ func NewAdminProjectsListOK() *AdminProjectsListOK {
 	return &AdminProjectsListOK{}
 }
 
-/* AdminProjectsListOK describes a response with status code 200, with default header values.
+/*
+AdminProjectsListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AdminProjectsListOK struct {
 	Payload *models.AdminProjectsList
 }
 
+// IsSuccess returns true when this admin projects list o k response has a 2xx status code
+func (o *AdminProjectsListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this admin projects list o k response has a 3xx status code
+func (o *AdminProjectsListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin projects list o k response has a 4xx status code
+func (o *AdminProjectsListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin projects list o k response has a 5xx status code
+func (o *AdminProjectsListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin projects list o k response a status code equal to that given
+func (o *AdminProjectsListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AdminProjectsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListOK  %+v", 200, o.Payload)
 }
+
+func (o *AdminProjectsListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListOK  %+v", 200, o.Payload)
+}
+
 func (o *AdminProjectsListOK) GetPayload() *models.AdminProjectsList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewAdminProjectsListBadRequest() *AdminProjectsListBadRequest {
 	return &AdminProjectsListBadRequest{}
 }
 
-/* AdminProjectsListBadRequest describes a response with status code 400, with default header values.
+/*
+AdminProjectsListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type AdminProjectsListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this admin projects list bad request response has a 2xx status code
+func (o *AdminProjectsListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin projects list bad request response has a 3xx status code
+func (o *AdminProjectsListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin projects list bad request response has a 4xx status code
+func (o *AdminProjectsListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin projects list bad request response has a 5xx status code
+func (o *AdminProjectsListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin projects list bad request response a status code equal to that given
+func (o *AdminProjectsListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AdminProjectsListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AdminProjectsListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AdminProjectsListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewAdminProjectsListUnauthorized() *AdminProjectsListUnauthorized {
 	return &AdminProjectsListUnauthorized{}
 }
 
-/* AdminProjectsListUnauthorized describes a response with status code 401, with default header values.
+/*
+AdminProjectsListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type AdminProjectsListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin projects list unauthorized response has a 2xx status code
+func (o *AdminProjectsListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin projects list unauthorized response has a 3xx status code
+func (o *AdminProjectsListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin projects list unauthorized response has a 4xx status code
+func (o *AdminProjectsListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin projects list unauthorized response has a 5xx status code
+func (o *AdminProjectsListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin projects list unauthorized response a status code equal to that given
+func (o *AdminProjectsListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AdminProjectsListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AdminProjectsListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AdminProjectsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewAdminProjectsListForbidden() *AdminProjectsListForbidden {
 	return &AdminProjectsListForbidden{}
 }
 
-/* AdminProjectsListForbidden describes a response with status code 403, with default header values.
+/*
+AdminProjectsListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type AdminProjectsListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin projects list forbidden response has a 2xx status code
+func (o *AdminProjectsListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin projects list forbidden response has a 3xx status code
+func (o *AdminProjectsListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin projects list forbidden response has a 4xx status code
+func (o *AdminProjectsListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin projects list forbidden response has a 5xx status code
+func (o *AdminProjectsListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin projects list forbidden response a status code equal to that given
+func (o *AdminProjectsListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AdminProjectsListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AdminProjectsListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AdminProjectsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewAdminProjectsListNotFound() *AdminProjectsListNotFound {
 	return &AdminProjectsListNotFound{}
 }
 
-/* AdminProjectsListNotFound describes a response with status code 404, with default header values.
+/*
+AdminProjectsListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type AdminProjectsListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this admin projects list not found response has a 2xx status code
+func (o *AdminProjectsListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin projects list not found response has a 3xx status code
+func (o *AdminProjectsListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin projects list not found response has a 4xx status code
+func (o *AdminProjectsListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this admin projects list not found response has a 5xx status code
+func (o *AdminProjectsListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this admin projects list not found response a status code equal to that given
+func (o *AdminProjectsListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AdminProjectsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AdminProjectsListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AdminProjectsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewAdminProjectsListInternalServerError() *AdminProjectsListInternalServerE
 	return &AdminProjectsListInternalServerError{}
 }
 
-/* AdminProjectsListInternalServerError describes a response with status code 500, with default header values.
+/*
+AdminProjectsListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AdminProjectsListInternalServerError struct {
 }
 
+// IsSuccess returns true when this admin projects list internal server error response has a 2xx status code
+func (o *AdminProjectsListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this admin projects list internal server error response has a 3xx status code
+func (o *AdminProjectsListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this admin projects list internal server error response has a 4xx status code
+func (o *AdminProjectsListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this admin projects list internal server error response has a 5xx status code
+func (o *AdminProjectsListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this admin projects list internal server error response a status code equal to that given
+func (o *AdminProjectsListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AdminProjectsListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListInternalServerError ", 500)
+}
+
+func (o *AdminProjectsListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/projects/list][%d] adminProjectsListInternalServerError ", 500)
 }
 

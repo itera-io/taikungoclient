@@ -69,14 +69,44 @@ func NewPrometheusExportCsvOK() *PrometheusExportCsvOK {
 	return &PrometheusExportCsvOK{}
 }
 
-/* PrometheusExportCsvOK describes a response with status code 200, with default header values.
+/*
+PrometheusExportCsvOK describes a response with status code 200, with default header values.
 
 Success
 */
 type PrometheusExportCsvOK struct {
 }
 
+// IsSuccess returns true when this prometheus export csv o k response has a 2xx status code
+func (o *PrometheusExportCsvOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this prometheus export csv o k response has a 3xx status code
+func (o *PrometheusExportCsvOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus export csv o k response has a 4xx status code
+func (o *PrometheusExportCsvOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this prometheus export csv o k response has a 5xx status code
+func (o *PrometheusExportCsvOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus export csv o k response a status code equal to that given
+func (o *PrometheusExportCsvOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PrometheusExportCsvOK) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvOK ", 200)
+}
+
+func (o *PrometheusExportCsvOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvOK ", 200)
 }
 
@@ -90,7 +120,8 @@ func NewPrometheusExportCsvBadRequest() *PrometheusExportCsvBadRequest {
 	return &PrometheusExportCsvBadRequest{}
 }
 
-/* PrometheusExportCsvBadRequest describes a response with status code 400, with default header values.
+/*
+PrometheusExportCsvBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -98,9 +129,39 @@ type PrometheusExportCsvBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this prometheus export csv bad request response has a 2xx status code
+func (o *PrometheusExportCsvBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus export csv bad request response has a 3xx status code
+func (o *PrometheusExportCsvBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus export csv bad request response has a 4xx status code
+func (o *PrometheusExportCsvBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus export csv bad request response has a 5xx status code
+func (o *PrometheusExportCsvBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus export csv bad request response a status code equal to that given
+func (o *PrometheusExportCsvBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PrometheusExportCsvBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PrometheusExportCsvBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PrometheusExportCsvBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -122,7 +183,8 @@ func NewPrometheusExportCsvUnauthorized() *PrometheusExportCsvUnauthorized {
 	return &PrometheusExportCsvUnauthorized{}
 }
 
-/* PrometheusExportCsvUnauthorized describes a response with status code 401, with default header values.
+/*
+PrometheusExportCsvUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -130,9 +192,39 @@ type PrometheusExportCsvUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus export csv unauthorized response has a 2xx status code
+func (o *PrometheusExportCsvUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus export csv unauthorized response has a 3xx status code
+func (o *PrometheusExportCsvUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus export csv unauthorized response has a 4xx status code
+func (o *PrometheusExportCsvUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus export csv unauthorized response has a 5xx status code
+func (o *PrometheusExportCsvUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus export csv unauthorized response a status code equal to that given
+func (o *PrometheusExportCsvUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PrometheusExportCsvUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *PrometheusExportCsvUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *PrometheusExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -154,7 +246,8 @@ func NewPrometheusExportCsvForbidden() *PrometheusExportCsvForbidden {
 	return &PrometheusExportCsvForbidden{}
 }
 
-/* PrometheusExportCsvForbidden describes a response with status code 403, with default header values.
+/*
+PrometheusExportCsvForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -162,9 +255,39 @@ type PrometheusExportCsvForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus export csv forbidden response has a 2xx status code
+func (o *PrometheusExportCsvForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus export csv forbidden response has a 3xx status code
+func (o *PrometheusExportCsvForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus export csv forbidden response has a 4xx status code
+func (o *PrometheusExportCsvForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus export csv forbidden response has a 5xx status code
+func (o *PrometheusExportCsvForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus export csv forbidden response a status code equal to that given
+func (o *PrometheusExportCsvForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PrometheusExportCsvForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PrometheusExportCsvForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PrometheusExportCsvForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -186,7 +309,8 @@ func NewPrometheusExportCsvNotFound() *PrometheusExportCsvNotFound {
 	return &PrometheusExportCsvNotFound{}
 }
 
-/* PrometheusExportCsvNotFound describes a response with status code 404, with default header values.
+/*
+PrometheusExportCsvNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -194,9 +318,39 @@ type PrometheusExportCsvNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus export csv not found response has a 2xx status code
+func (o *PrometheusExportCsvNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus export csv not found response has a 3xx status code
+func (o *PrometheusExportCsvNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus export csv not found response has a 4xx status code
+func (o *PrometheusExportCsvNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus export csv not found response has a 5xx status code
+func (o *PrometheusExportCsvNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus export csv not found response a status code equal to that given
+func (o *PrometheusExportCsvNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PrometheusExportCsvNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PrometheusExportCsvNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PrometheusExportCsvNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -218,14 +372,44 @@ func NewPrometheusExportCsvInternalServerError() *PrometheusExportCsvInternalSer
 	return &PrometheusExportCsvInternalServerError{}
 }
 
-/* PrometheusExportCsvInternalServerError describes a response with status code 500, with default header values.
+/*
+PrometheusExportCsvInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PrometheusExportCsvInternalServerError struct {
 }
 
+// IsSuccess returns true when this prometheus export csv internal server error response has a 2xx status code
+func (o *PrometheusExportCsvInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus export csv internal server error response has a 3xx status code
+func (o *PrometheusExportCsvInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus export csv internal server error response has a 4xx status code
+func (o *PrometheusExportCsvInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this prometheus export csv internal server error response has a 5xx status code
+func (o *PrometheusExportCsvInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this prometheus export csv internal server error response a status code equal to that given
+func (o *PrometheusExportCsvInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PrometheusExportCsvInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvInternalServerError ", 500)
+}
+
+func (o *PrometheusExportCsvInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvInternalServerError ", 500)
 }
 

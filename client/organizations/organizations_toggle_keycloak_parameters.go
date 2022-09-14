@@ -54,10 +54,12 @@ func NewOrganizationsToggleKeycloakParamsWithHTTPClient(client *http.Client) *Or
 	}
 }
 
-/* OrganizationsToggleKeycloakParams contains all the parameters to send to the API endpoint
-   for the organizations toggle keycloak operation.
+/*
+OrganizationsToggleKeycloakParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the organizations toggle keycloak operation.
+
+	Typically these are written to a http.Request.
 */
 type OrganizationsToggleKeycloakParams struct {
 

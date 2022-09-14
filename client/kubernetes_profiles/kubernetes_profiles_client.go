@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  KubernetesProfilesCreate adds kubernetes profiles
+KubernetesProfilesCreate adds kubernetes profiles
 */
 func (a *Client) KubernetesProfilesCreate(params *KubernetesProfilesCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesProfilesCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -83,7 +83,7 @@ func (a *Client) KubernetesProfilesCreate(params *KubernetesProfilesCreateParams
 }
 
 /*
-  KubernetesProfilesDelete removes kubernetes profiles by Id
+KubernetesProfilesDelete removes kubernetes profiles by Id
 */
 func (a *Client) KubernetesProfilesDelete(params *KubernetesProfilesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesProfilesDeleteOK, *KubernetesProfilesDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -123,7 +123,7 @@ func (a *Client) KubernetesProfilesDelete(params *KubernetesProfilesDeleteParams
 }
 
 /*
-  KubernetesProfilesKubernetesProfilesForOrganizationList retrieves all kubernetes profiles for organization
+KubernetesProfilesKubernetesProfilesForOrganizationList retrieves all kubernetes profiles for organization
 */
 func (a *Client) KubernetesProfilesKubernetesProfilesForOrganizationList(params *KubernetesProfilesKubernetesProfilesForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesProfilesKubernetesProfilesForOrganizationListOK, error) {
 	// TODO: Validate the params before sending
@@ -162,7 +162,7 @@ func (a *Client) KubernetesProfilesKubernetesProfilesForOrganizationList(params 
 }
 
 /*
-  KubernetesProfilesList retrieves all kubernetes profiles
+KubernetesProfilesList retrieves all kubernetes profiles
 */
 func (a *Client) KubernetesProfilesList(params *KubernetesProfilesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesProfilesListOK, error) {
 	// TODO: Validate the params before sending
@@ -201,7 +201,7 @@ func (a *Client) KubernetesProfilesList(params *KubernetesProfilesListParams, au
 }
 
 /*
-  KubernetesProfilesLockManager locks unlock kubernetes profiles
+KubernetesProfilesLockManager locks unlock kubernetes profiles
 */
 func (a *Client) KubernetesProfilesLockManager(params *KubernetesProfilesLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubernetesProfilesLockManagerOK, error) {
 	// TODO: Validate the params before sending

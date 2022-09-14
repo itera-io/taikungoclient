@@ -55,10 +55,12 @@ func NewAccessProfilesUpdateParamsWithHTTPClient(client *http.Client) *AccessPro
 	}
 }
 
-/* AccessProfilesUpdateParams contains all the parameters to send to the API endpoint
-   for the access profiles update operation.
+/*
+AccessProfilesUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the access profiles update operation.
+
+	Typically these are written to a http.Request.
 */
 type AccessProfilesUpdateParams struct {
 

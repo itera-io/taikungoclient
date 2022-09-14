@@ -50,7 +50,7 @@ type ClientService interface {
 }
 
 /*
-  FlavorsAwsFlavors retrieves aws flavors
+FlavorsAwsFlavors retrieves aws flavors
 */
 func (a *Client) FlavorsAwsFlavors(params *FlavorsAwsFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsAwsFlavorsOK, error) {
 	// TODO: Validate the params before sending
@@ -89,7 +89,7 @@ func (a *Client) FlavorsAwsFlavors(params *FlavorsAwsFlavorsParams, authInfo run
 }
 
 /*
-  FlavorsAzureFlavors retrieves azure flavors
+FlavorsAzureFlavors retrieves azure flavors
 */
 func (a *Client) FlavorsAzureFlavors(params *FlavorsAzureFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsAzureFlavorsOK, error) {
 	// TODO: Validate the params before sending
@@ -128,7 +128,7 @@ func (a *Client) FlavorsAzureFlavors(params *FlavorsAzureFlavorsParams, authInfo
 }
 
 /*
-  FlavorsBindToProject binds flavors to project
+FlavorsBindToProject binds flavors to project
 */
 func (a *Client) FlavorsBindToProject(params *FlavorsBindToProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsBindToProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -167,7 +167,7 @@ func (a *Client) FlavorsBindToProject(params *FlavorsBindToProjectParams, authIn
 }
 
 /*
-  FlavorsDropdownRecordDtos retrieves cloud credentials dropdown list
+FlavorsDropdownRecordDtos retrieves cloud credentials dropdown list
 */
 func (a *Client) FlavorsDropdownRecordDtos(params *FlavorsDropdownRecordDtosParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsDropdownRecordDtosOK, error) {
 	// TODO: Validate the params before sending
@@ -206,7 +206,7 @@ func (a *Client) FlavorsDropdownRecordDtos(params *FlavorsDropdownRecordDtosPara
 }
 
 /*
-  FlavorsGetSelectedFlavorsForProject retrieves selected flavors for projects
+FlavorsGetSelectedFlavorsForProject retrieves selected flavors for projects
 */
 func (a *Client) FlavorsGetSelectedFlavorsForProject(params *FlavorsGetSelectedFlavorsForProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsGetSelectedFlavorsForProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -245,7 +245,7 @@ func (a *Client) FlavorsGetSelectedFlavorsForProject(params *FlavorsGetSelectedF
 }
 
 /*
-  FlavorsGoogleFlavors retrieves google flavors
+FlavorsGoogleFlavors retrieves google flavors
 */
 func (a *Client) FlavorsGoogleFlavors(params *FlavorsGoogleFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsGoogleFlavorsOK, error) {
 	// TODO: Validate the params before sending
@@ -284,7 +284,7 @@ func (a *Client) FlavorsGoogleFlavors(params *FlavorsGoogleFlavorsParams, authIn
 }
 
 /*
-  FlavorsOpenstackFlavors retrieves openstack flavors
+FlavorsOpenstackFlavors retrieves openstack flavors
 */
 func (a *Client) FlavorsOpenstackFlavors(params *FlavorsOpenstackFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsOpenstackFlavorsOK, error) {
 	// TODO: Validate the params before sending
@@ -323,7 +323,7 @@ func (a *Client) FlavorsOpenstackFlavors(params *FlavorsOpenstackFlavorsParams, 
 }
 
 /*
-  FlavorsUnbindFromProject unbinds flavors from project
+FlavorsUnbindFromProject unbinds flavors from project
 */
 func (a *Client) FlavorsUnbindFromProject(params *FlavorsUnbindFromProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsUnbindFromProjectOK, error) {
 	// TODO: Validate the params before sending

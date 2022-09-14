@@ -69,7 +69,8 @@ func NewKubernetesRestartDaemonSetOK() *KubernetesRestartDaemonSetOK {
 	return &KubernetesRestartDaemonSetOK{}
 }
 
-/* KubernetesRestartDaemonSetOK describes a response with status code 200, with default header values.
+/*
+KubernetesRestartDaemonSetOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesRestartDaemonSetOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this kubernetes restart daemon set o k response has a 2xx status code
+func (o *KubernetesRestartDaemonSetOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes restart daemon set o k response has a 3xx status code
+func (o *KubernetesRestartDaemonSetOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes restart daemon set o k response has a 4xx status code
+func (o *KubernetesRestartDaemonSetOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes restart daemon set o k response has a 5xx status code
+func (o *KubernetesRestartDaemonSetOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes restart daemon set o k response a status code equal to that given
+func (o *KubernetesRestartDaemonSetOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesRestartDaemonSetOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesRestartDaemonSetOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesRestartDaemonSetOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesRestartDaemonSetBadRequest() *KubernetesRestartDaemonSetBadReq
 	return &KubernetesRestartDaemonSetBadRequest{}
 }
 
-/* KubernetesRestartDaemonSetBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesRestartDaemonSetBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesRestartDaemonSetBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes restart daemon set bad request response has a 2xx status code
+func (o *KubernetesRestartDaemonSetBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes restart daemon set bad request response has a 3xx status code
+func (o *KubernetesRestartDaemonSetBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes restart daemon set bad request response has a 4xx status code
+func (o *KubernetesRestartDaemonSetBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes restart daemon set bad request response has a 5xx status code
+func (o *KubernetesRestartDaemonSetBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes restart daemon set bad request response a status code equal to that given
+func (o *KubernetesRestartDaemonSetBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesRestartDaemonSetBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesRestartDaemonSetBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesRestartDaemonSetBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesRestartDaemonSetUnauthorized() *KubernetesRestartDaemonSetUnau
 	return &KubernetesRestartDaemonSetUnauthorized{}
 }
 
-/* KubernetesRestartDaemonSetUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesRestartDaemonSetUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesRestartDaemonSetUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes restart daemon set unauthorized response has a 2xx status code
+func (o *KubernetesRestartDaemonSetUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes restart daemon set unauthorized response has a 3xx status code
+func (o *KubernetesRestartDaemonSetUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes restart daemon set unauthorized response has a 4xx status code
+func (o *KubernetesRestartDaemonSetUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes restart daemon set unauthorized response has a 5xx status code
+func (o *KubernetesRestartDaemonSetUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes restart daemon set unauthorized response a status code equal to that given
+func (o *KubernetesRestartDaemonSetUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesRestartDaemonSetUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesRestartDaemonSetUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesRestartDaemonSetUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesRestartDaemonSetForbidden() *KubernetesRestartDaemonSetForbidd
 	return &KubernetesRestartDaemonSetForbidden{}
 }
 
-/* KubernetesRestartDaemonSetForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesRestartDaemonSetForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesRestartDaemonSetForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes restart daemon set forbidden response has a 2xx status code
+func (o *KubernetesRestartDaemonSetForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes restart daemon set forbidden response has a 3xx status code
+func (o *KubernetesRestartDaemonSetForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes restart daemon set forbidden response has a 4xx status code
+func (o *KubernetesRestartDaemonSetForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes restart daemon set forbidden response has a 5xx status code
+func (o *KubernetesRestartDaemonSetForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes restart daemon set forbidden response a status code equal to that given
+func (o *KubernetesRestartDaemonSetForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesRestartDaemonSetForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesRestartDaemonSetForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesRestartDaemonSetForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesRestartDaemonSetNotFound() *KubernetesRestartDaemonSetNotFound
 	return &KubernetesRestartDaemonSetNotFound{}
 }
 
-/* KubernetesRestartDaemonSetNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesRestartDaemonSetNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesRestartDaemonSetNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes restart daemon set not found response has a 2xx status code
+func (o *KubernetesRestartDaemonSetNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes restart daemon set not found response has a 3xx status code
+func (o *KubernetesRestartDaemonSetNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes restart daemon set not found response has a 4xx status code
+func (o *KubernetesRestartDaemonSetNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes restart daemon set not found response has a 5xx status code
+func (o *KubernetesRestartDaemonSetNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes restart daemon set not found response a status code equal to that given
+func (o *KubernetesRestartDaemonSetNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesRestartDaemonSetNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesRestartDaemonSetNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesRestartDaemonSetNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesRestartDaemonSetInternalServerError() *KubernetesRestartDaemon
 	return &KubernetesRestartDaemonSetInternalServerError{}
 }
 
-/* KubernetesRestartDaemonSetInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesRestartDaemonSetInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesRestartDaemonSetInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes restart daemon set internal server error response has a 2xx status code
+func (o *KubernetesRestartDaemonSetInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes restart daemon set internal server error response has a 3xx status code
+func (o *KubernetesRestartDaemonSetInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes restart daemon set internal server error response has a 4xx status code
+func (o *KubernetesRestartDaemonSetInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes restart daemon set internal server error response has a 5xx status code
+func (o *KubernetesRestartDaemonSetInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes restart daemon set internal server error response a status code equal to that given
+func (o *KubernetesRestartDaemonSetInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesRestartDaemonSetInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetInternalServerError ", 500)
+}
+
+func (o *KubernetesRestartDaemonSetInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetInternalServerError ", 500)
 }
 

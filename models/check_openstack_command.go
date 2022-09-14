@@ -17,6 +17,9 @@ import (
 // swagger:model CheckOpenstackCommand
 type CheckOpenstackCommand struct {
 
+	// is admin
+	IsAdmin bool `json:"isAdmin"`
+
 	// open stack domain
 	OpenStackDomain string `json:"openStackDomain,omitempty"`
 

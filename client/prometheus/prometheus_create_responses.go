@@ -69,7 +69,8 @@ func NewPrometheusCreateOK() *PrometheusCreateOK {
 	return &PrometheusCreateOK{}
 }
 
-/* PrometheusCreateOK describes a response with status code 200, with default header values.
+/*
+PrometheusCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type PrometheusCreateOK struct {
 	Payload *models.APIResponse
 }
 
+// IsSuccess returns true when this prometheus create o k response has a 2xx status code
+func (o *PrometheusCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this prometheus create o k response has a 3xx status code
+func (o *PrometheusCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus create o k response has a 4xx status code
+func (o *PrometheusCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this prometheus create o k response has a 5xx status code
+func (o *PrometheusCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus create o k response a status code equal to that given
+func (o *PrometheusCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PrometheusCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *PrometheusCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *PrometheusCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewPrometheusCreateBadRequest() *PrometheusCreateBadRequest {
 	return &PrometheusCreateBadRequest{}
 }
 
-/* PrometheusCreateBadRequest describes a response with status code 400, with default header values.
+/*
+PrometheusCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type PrometheusCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this prometheus create bad request response has a 2xx status code
+func (o *PrometheusCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus create bad request response has a 3xx status code
+func (o *PrometheusCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus create bad request response has a 4xx status code
+func (o *PrometheusCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus create bad request response has a 5xx status code
+func (o *PrometheusCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus create bad request response a status code equal to that given
+func (o *PrometheusCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PrometheusCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PrometheusCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PrometheusCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewPrometheusCreateUnauthorized() *PrometheusCreateUnauthorized {
 	return &PrometheusCreateUnauthorized{}
 }
 
-/* PrometheusCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+PrometheusCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type PrometheusCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus create unauthorized response has a 2xx status code
+func (o *PrometheusCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus create unauthorized response has a 3xx status code
+func (o *PrometheusCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus create unauthorized response has a 4xx status code
+func (o *PrometheusCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus create unauthorized response has a 5xx status code
+func (o *PrometheusCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus create unauthorized response a status code equal to that given
+func (o *PrometheusCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PrometheusCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *PrometheusCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *PrometheusCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewPrometheusCreateForbidden() *PrometheusCreateForbidden {
 	return &PrometheusCreateForbidden{}
 }
 
-/* PrometheusCreateForbidden describes a response with status code 403, with default header values.
+/*
+PrometheusCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type PrometheusCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus create forbidden response has a 2xx status code
+func (o *PrometheusCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus create forbidden response has a 3xx status code
+func (o *PrometheusCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus create forbidden response has a 4xx status code
+func (o *PrometheusCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus create forbidden response has a 5xx status code
+func (o *PrometheusCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus create forbidden response a status code equal to that given
+func (o *PrometheusCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PrometheusCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PrometheusCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PrometheusCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewPrometheusCreateNotFound() *PrometheusCreateNotFound {
 	return &PrometheusCreateNotFound{}
 }
 
-/* PrometheusCreateNotFound describes a response with status code 404, with default header values.
+/*
+PrometheusCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type PrometheusCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus create not found response has a 2xx status code
+func (o *PrometheusCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus create not found response has a 3xx status code
+func (o *PrometheusCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus create not found response has a 4xx status code
+func (o *PrometheusCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus create not found response has a 5xx status code
+func (o *PrometheusCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus create not found response a status code equal to that given
+func (o *PrometheusCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PrometheusCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PrometheusCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PrometheusCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewPrometheusCreateInternalServerError() *PrometheusCreateInternalServerErr
 	return &PrometheusCreateInternalServerError{}
 }
 
-/* PrometheusCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+PrometheusCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PrometheusCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this prometheus create internal server error response has a 2xx status code
+func (o *PrometheusCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus create internal server error response has a 3xx status code
+func (o *PrometheusCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus create internal server error response has a 4xx status code
+func (o *PrometheusCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this prometheus create internal server error response has a 5xx status code
+func (o *PrometheusCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this prometheus create internal server error response a status code equal to that given
+func (o *PrometheusCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PrometheusCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateInternalServerError ", 500)
+}
+
+func (o *PrometheusCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateInternalServerError ", 500)
 }
 

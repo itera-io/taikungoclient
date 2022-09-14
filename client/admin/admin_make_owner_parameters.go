@@ -54,10 +54,12 @@ func NewAdminMakeOwnerParamsWithHTTPClient(client *http.Client) *AdminMakeOwnerP
 	}
 }
 
-/* AdminMakeOwnerParams contains all the parameters to send to the API endpoint
-   for the admin make owner operation.
+/*
+AdminMakeOwnerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the admin make owner operation.
+
+	Typically these are written to a http.Request.
 */
 type AdminMakeOwnerParams struct {
 

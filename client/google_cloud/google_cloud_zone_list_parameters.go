@@ -52,10 +52,12 @@ func NewGoogleCloudZoneListParamsWithHTTPClient(client *http.Client) *GoogleClou
 	}
 }
 
-/* GoogleCloudZoneListParams contains all the parameters to send to the API endpoint
-   for the google cloud zone list operation.
+/*
+GoogleCloudZoneListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the google cloud zone list operation.
+
+	Typically these are written to a http.Request.
 */
 type GoogleCloudZoneListParams struct {
 

@@ -69,7 +69,8 @@ func NewSearchSecretListOK() *SearchSecretListOK {
 	return &SearchSecretListOK{}
 }
 
-/* SearchSecretListOK describes a response with status code 200, with default header values.
+/*
+SearchSecretListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SearchSecretListOK struct {
 	Payload *models.SecretSearchList
 }
 
+// IsSuccess returns true when this search secret list o k response has a 2xx status code
+func (o *SearchSecretListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this search secret list o k response has a 3xx status code
+func (o *SearchSecretListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search secret list o k response has a 4xx status code
+func (o *SearchSecretListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search secret list o k response has a 5xx status code
+func (o *SearchSecretListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search secret list o k response a status code equal to that given
+func (o *SearchSecretListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SearchSecretListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListOK  %+v", 200, o.Payload)
 }
+
+func (o *SearchSecretListOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListOK  %+v", 200, o.Payload)
+}
+
 func (o *SearchSecretListOK) GetPayload() *models.SecretSearchList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewSearchSecretListBadRequest() *SearchSecretListBadRequest {
 	return &SearchSecretListBadRequest{}
 }
 
-/* SearchSecretListBadRequest describes a response with status code 400, with default header values.
+/*
+SearchSecretListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type SearchSecretListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this search secret list bad request response has a 2xx status code
+func (o *SearchSecretListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search secret list bad request response has a 3xx status code
+func (o *SearchSecretListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search secret list bad request response has a 4xx status code
+func (o *SearchSecretListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search secret list bad request response has a 5xx status code
+func (o *SearchSecretListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search secret list bad request response a status code equal to that given
+func (o *SearchSecretListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SearchSecretListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SearchSecretListBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SearchSecretListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewSearchSecretListUnauthorized() *SearchSecretListUnauthorized {
 	return &SearchSecretListUnauthorized{}
 }
 
-/* SearchSecretListUnauthorized describes a response with status code 401, with default header values.
+/*
+SearchSecretListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type SearchSecretListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search secret list unauthorized response has a 2xx status code
+func (o *SearchSecretListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search secret list unauthorized response has a 3xx status code
+func (o *SearchSecretListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search secret list unauthorized response has a 4xx status code
+func (o *SearchSecretListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search secret list unauthorized response has a 5xx status code
+func (o *SearchSecretListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search secret list unauthorized response a status code equal to that given
+func (o *SearchSecretListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SearchSecretListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SearchSecretListUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SearchSecretListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewSearchSecretListForbidden() *SearchSecretListForbidden {
 	return &SearchSecretListForbidden{}
 }
 
-/* SearchSecretListForbidden describes a response with status code 403, with default header values.
+/*
+SearchSecretListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type SearchSecretListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search secret list forbidden response has a 2xx status code
+func (o *SearchSecretListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search secret list forbidden response has a 3xx status code
+func (o *SearchSecretListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search secret list forbidden response has a 4xx status code
+func (o *SearchSecretListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search secret list forbidden response has a 5xx status code
+func (o *SearchSecretListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search secret list forbidden response a status code equal to that given
+func (o *SearchSecretListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SearchSecretListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SearchSecretListForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SearchSecretListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewSearchSecretListNotFound() *SearchSecretListNotFound {
 	return &SearchSecretListNotFound{}
 }
 
-/* SearchSecretListNotFound describes a response with status code 404, with default header values.
+/*
+SearchSecretListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type SearchSecretListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search secret list not found response has a 2xx status code
+func (o *SearchSecretListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search secret list not found response has a 3xx status code
+func (o *SearchSecretListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search secret list not found response has a 4xx status code
+func (o *SearchSecretListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search secret list not found response has a 5xx status code
+func (o *SearchSecretListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search secret list not found response a status code equal to that given
+func (o *SearchSecretListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SearchSecretListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SearchSecretListNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SearchSecretListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewSearchSecretListInternalServerError() *SearchSecretListInternalServerErr
 	return &SearchSecretListInternalServerError{}
 }
 
-/* SearchSecretListInternalServerError describes a response with status code 500, with default header values.
+/*
+SearchSecretListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SearchSecretListInternalServerError struct {
 }
 
+// IsSuccess returns true when this search secret list internal server error response has a 2xx status code
+func (o *SearchSecretListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search secret list internal server error response has a 3xx status code
+func (o *SearchSecretListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search secret list internal server error response has a 4xx status code
+func (o *SearchSecretListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search secret list internal server error response has a 5xx status code
+func (o *SearchSecretListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this search secret list internal server error response a status code equal to that given
+func (o *SearchSecretListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SearchSecretListInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListInternalServerError ", 500)
+}
+
+func (o *SearchSecretListInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/secrets][%d] searchSecretListInternalServerError ", 500)
 }
 

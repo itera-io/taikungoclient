@@ -52,10 +52,12 @@ func NewCommonGetEnumValuesParamsWithHTTPClient(client *http.Client) *CommonGetE
 	}
 }
 
-/* CommonGetEnumValuesParams contains all the parameters to send to the API endpoint
-   for the common get enum values operation.
+/*
+CommonGetEnumValuesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the common get enum values operation.
+
+	Typically these are written to a http.Request.
 */
 type CommonGetEnumValuesParams struct {
 

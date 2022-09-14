@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  AllowedHostCreate creates access profile allowed host
+AllowedHostCreate creates access profile allowed host
 */
 func (a *Client) AllowedHostCreate(params *AllowedHostCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AllowedHostCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +81,7 @@ func (a *Client) AllowedHostCreate(params *AllowedHostCreateParams, authInfo run
 }
 
 /*
-  AllowedHostDelete deletes access profile allowed host
+AllowedHostDelete deletes access profile allowed host
 */
 func (a *Client) AllowedHostDelete(params *AllowedHostDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AllowedHostDeleteOK, *AllowedHostDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -121,7 +121,7 @@ func (a *Client) AllowedHostDelete(params *AllowedHostDeleteParams, authInfo run
 }
 
 /*
-  AllowedHostEdit edits access profile allowed host
+AllowedHostEdit edits access profile allowed host
 */
 func (a *Client) AllowedHostEdit(params *AllowedHostEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AllowedHostEditOK, error) {
 	// TODO: Validate the params before sending
@@ -160,7 +160,7 @@ func (a *Client) AllowedHostEdit(params *AllowedHostEditParams, authInfo runtime
 }
 
 /*
-  AllowedHostList lists allowed hosts by access profile id
+AllowedHostList lists allowed hosts by access profile id
 */
 func (a *Client) AllowedHostList(params *AllowedHostListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AllowedHostListOK, error) {
 	// TODO: Validate the params before sending

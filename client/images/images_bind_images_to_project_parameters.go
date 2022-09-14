@@ -54,10 +54,12 @@ func NewImagesBindImagesToProjectParamsWithHTTPClient(client *http.Client) *Imag
 	}
 }
 
-/* ImagesBindImagesToProjectParams contains all the parameters to send to the API endpoint
-   for the images bind images to project operation.
+/*
+ImagesBindImagesToProjectParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the images bind images to project operation.
+
+	Typically these are written to a http.Request.
 */
 type ImagesBindImagesToProjectParams struct {
 

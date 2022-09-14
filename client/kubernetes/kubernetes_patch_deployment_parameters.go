@@ -54,10 +54,12 @@ func NewKubernetesPatchDeploymentParamsWithHTTPClient(client *http.Client) *Kube
 	}
 }
 
-/* KubernetesPatchDeploymentParams contains all the parameters to send to the API endpoint
-   for the kubernetes patch deployment operation.
+/*
+KubernetesPatchDeploymentParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes patch deployment operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesPatchDeploymentParams struct {
 

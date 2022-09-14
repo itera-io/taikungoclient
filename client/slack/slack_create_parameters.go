@@ -54,10 +54,12 @@ func NewSlackCreateParamsWithHTTPClient(client *http.Client) *SlackCreateParams 
 	}
 }
 
-/* SlackCreateParams contains all the parameters to send to the API endpoint
-   for the slack create operation.
+/*
+SlackCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the slack create operation.
+
+	Typically these are written to a http.Request.
 */
 type SlackCreateParams struct {
 

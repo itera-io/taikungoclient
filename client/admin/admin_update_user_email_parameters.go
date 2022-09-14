@@ -54,10 +54,12 @@ func NewAdminUpdateUserEmailParamsWithHTTPClient(client *http.Client) *AdminUpda
 	}
 }
 
-/* AdminUpdateUserEmailParams contains all the parameters to send to the API endpoint
-   for the admin update user email operation.
+/*
+AdminUpdateUserEmailParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the admin update user email operation.
+
+	Typically these are written to a http.Request.
 */
 type AdminUpdateUserEmailParams struct {
 

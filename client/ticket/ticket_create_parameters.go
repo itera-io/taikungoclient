@@ -54,10 +54,12 @@ func NewTicketCreateParamsWithHTTPClient(client *http.Client) *TicketCreateParam
 	}
 }
 
-/* TicketCreateParams contains all the parameters to send to the API endpoint
-   for the ticket create operation.
+/*
+TicketCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ticket create operation.
+
+	Typically these are written to a http.Request.
 */
 type TicketCreateParams struct {
 

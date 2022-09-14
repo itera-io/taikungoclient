@@ -69,7 +69,8 @@ func NewKubernetesDescribeJobOK() *KubernetesDescribeJobOK {
 	return &KubernetesDescribeJobOK{}
 }
 
-/* KubernetesDescribeJobOK describes a response with status code 200, with default header values.
+/*
+KubernetesDescribeJobOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesDescribeJobOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this kubernetes describe job o k response has a 2xx status code
+func (o *KubernetesDescribeJobOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes describe job o k response has a 3xx status code
+func (o *KubernetesDescribeJobOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe job o k response has a 4xx status code
+func (o *KubernetesDescribeJobOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes describe job o k response has a 5xx status code
+func (o *KubernetesDescribeJobOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe job o k response a status code equal to that given
+func (o *KubernetesDescribeJobOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesDescribeJobOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesDescribeJobOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesDescribeJobOK) GetPayload() string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesDescribeJobBadRequest() *KubernetesDescribeJobBadRequest {
 	return &KubernetesDescribeJobBadRequest{}
 }
 
-/* KubernetesDescribeJobBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesDescribeJobBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesDescribeJobBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe job bad request response has a 2xx status code
+func (o *KubernetesDescribeJobBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe job bad request response has a 3xx status code
+func (o *KubernetesDescribeJobBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe job bad request response has a 4xx status code
+func (o *KubernetesDescribeJobBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe job bad request response has a 5xx status code
+func (o *KubernetesDescribeJobBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe job bad request response a status code equal to that given
+func (o *KubernetesDescribeJobBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesDescribeJobBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesDescribeJobBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesDescribeJobBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesDescribeJobUnauthorized() *KubernetesDescribeJobUnauthorized {
 	return &KubernetesDescribeJobUnauthorized{}
 }
 
-/* KubernetesDescribeJobUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesDescribeJobUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesDescribeJobUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe job unauthorized response has a 2xx status code
+func (o *KubernetesDescribeJobUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe job unauthorized response has a 3xx status code
+func (o *KubernetesDescribeJobUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe job unauthorized response has a 4xx status code
+func (o *KubernetesDescribeJobUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe job unauthorized response has a 5xx status code
+func (o *KubernetesDescribeJobUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe job unauthorized response a status code equal to that given
+func (o *KubernetesDescribeJobUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesDescribeJobUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesDescribeJobUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesDescribeJobUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesDescribeJobForbidden() *KubernetesDescribeJobForbidden {
 	return &KubernetesDescribeJobForbidden{}
 }
 
-/* KubernetesDescribeJobForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesDescribeJobForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesDescribeJobForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe job forbidden response has a 2xx status code
+func (o *KubernetesDescribeJobForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe job forbidden response has a 3xx status code
+func (o *KubernetesDescribeJobForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe job forbidden response has a 4xx status code
+func (o *KubernetesDescribeJobForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe job forbidden response has a 5xx status code
+func (o *KubernetesDescribeJobForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe job forbidden response a status code equal to that given
+func (o *KubernetesDescribeJobForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesDescribeJobForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesDescribeJobForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesDescribeJobForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesDescribeJobNotFound() *KubernetesDescribeJobNotFound {
 	return &KubernetesDescribeJobNotFound{}
 }
 
-/* KubernetesDescribeJobNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesDescribeJobNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesDescribeJobNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe job not found response has a 2xx status code
+func (o *KubernetesDescribeJobNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe job not found response has a 3xx status code
+func (o *KubernetesDescribeJobNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe job not found response has a 4xx status code
+func (o *KubernetesDescribeJobNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe job not found response has a 5xx status code
+func (o *KubernetesDescribeJobNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe job not found response a status code equal to that given
+func (o *KubernetesDescribeJobNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesDescribeJobNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesDescribeJobNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesDescribeJobNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesDescribeJobInternalServerError() *KubernetesDescribeJobInterna
 	return &KubernetesDescribeJobInternalServerError{}
 }
 
-/* KubernetesDescribeJobInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesDescribeJobInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesDescribeJobInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes describe job internal server error response has a 2xx status code
+func (o *KubernetesDescribeJobInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe job internal server error response has a 3xx status code
+func (o *KubernetesDescribeJobInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe job internal server error response has a 4xx status code
+func (o *KubernetesDescribeJobInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes describe job internal server error response has a 5xx status code
+func (o *KubernetesDescribeJobInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes describe job internal server error response a status code equal to that given
+func (o *KubernetesDescribeJobInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesDescribeJobInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobInternalServerError ", 500)
+}
+
+func (o *KubernetesDescribeJobInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobInternalServerError ", 500)
 }
 

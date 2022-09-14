@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  UserProjectsBindProjects binds projects to users
+UserProjectsBindProjects binds projects to users
 */
 func (a *Client) UserProjectsBindProjects(params *UserProjectsBindProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserProjectsBindProjectsOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +81,7 @@ func (a *Client) UserProjectsBindProjects(params *UserProjectsBindProjectsParams
 }
 
 /*
-  UserProjectsBindUsers binds users to projects
+UserProjectsBindUsers binds users to projects
 */
 func (a *Client) UserProjectsBindUsers(params *UserProjectsBindUsersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserProjectsBindUsersOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) UserProjectsBindUsers(params *UserProjectsBindUsersParams, auth
 }
 
 /*
-  UserProjectsProjectsListByUser projects list for user
+UserProjectsProjectsListByUser projects list for user
 */
 func (a *Client) UserProjectsProjectsListByUser(params *UserProjectsProjectsListByUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserProjectsProjectsListByUserOK, error) {
 	// TODO: Validate the params before sending
@@ -159,7 +159,7 @@ func (a *Client) UserProjectsProjectsListByUser(params *UserProjectsProjectsList
 }
 
 /*
-  UserProjectsUsersListByProject users list by project id
+UserProjectsUsersListByProject users list by project id
 */
 func (a *Client) UserProjectsUsersListByProject(params *UserProjectsUsersListByProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserProjectsUsersListByProjectOK, error) {
 	// TODO: Validate the params before sending

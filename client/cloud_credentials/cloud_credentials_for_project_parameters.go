@@ -53,10 +53,12 @@ func NewCloudCredentialsForProjectParamsWithHTTPClient(client *http.Client) *Clo
 	}
 }
 
-/* CloudCredentialsForProjectParams contains all the parameters to send to the API endpoint
-   for the cloud credentials for project operation.
+/*
+CloudCredentialsForProjectParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cloud credentials for project operation.
+
+	Typically these are written to a http.Request.
 */
 type CloudCredentialsForProjectParams struct {
 

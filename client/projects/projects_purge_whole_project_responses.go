@@ -69,7 +69,8 @@ func NewProjectsPurgeWholeProjectOK() *ProjectsPurgeWholeProjectOK {
 	return &ProjectsPurgeWholeProjectOK{}
 }
 
-/* ProjectsPurgeWholeProjectOK describes a response with status code 200, with default header values.
+/*
+ProjectsPurgeWholeProjectOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsPurgeWholeProjectOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this projects purge whole project o k response has a 2xx status code
+func (o *ProjectsPurgeWholeProjectOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects purge whole project o k response has a 3xx status code
+func (o *ProjectsPurgeWholeProjectOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects purge whole project o k response has a 4xx status code
+func (o *ProjectsPurgeWholeProjectOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects purge whole project o k response has a 5xx status code
+func (o *ProjectsPurgeWholeProjectOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects purge whole project o k response a status code equal to that given
+func (o *ProjectsPurgeWholeProjectOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsPurgeWholeProjectOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsPurgeWholeProjectOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsPurgeWholeProjectOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectsPurgeWholeProjectBadRequest() *ProjectsPurgeWholeProjectBadReque
 	return &ProjectsPurgeWholeProjectBadRequest{}
 }
 
-/* ProjectsPurgeWholeProjectBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsPurgeWholeProjectBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectsPurgeWholeProjectBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects purge whole project bad request response has a 2xx status code
+func (o *ProjectsPurgeWholeProjectBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects purge whole project bad request response has a 3xx status code
+func (o *ProjectsPurgeWholeProjectBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects purge whole project bad request response has a 4xx status code
+func (o *ProjectsPurgeWholeProjectBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects purge whole project bad request response has a 5xx status code
+func (o *ProjectsPurgeWholeProjectBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects purge whole project bad request response a status code equal to that given
+func (o *ProjectsPurgeWholeProjectBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsPurgeWholeProjectBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsPurgeWholeProjectBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsPurgeWholeProjectBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectsPurgeWholeProjectUnauthorized() *ProjectsPurgeWholeProjectUnauth
 	return &ProjectsPurgeWholeProjectUnauthorized{}
 }
 
-/* ProjectsPurgeWholeProjectUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsPurgeWholeProjectUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectsPurgeWholeProjectUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects purge whole project unauthorized response has a 2xx status code
+func (o *ProjectsPurgeWholeProjectUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects purge whole project unauthorized response has a 3xx status code
+func (o *ProjectsPurgeWholeProjectUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects purge whole project unauthorized response has a 4xx status code
+func (o *ProjectsPurgeWholeProjectUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects purge whole project unauthorized response has a 5xx status code
+func (o *ProjectsPurgeWholeProjectUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects purge whole project unauthorized response a status code equal to that given
+func (o *ProjectsPurgeWholeProjectUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsPurgeWholeProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsPurgeWholeProjectUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsPurgeWholeProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectsPurgeWholeProjectForbidden() *ProjectsPurgeWholeProjectForbidden
 	return &ProjectsPurgeWholeProjectForbidden{}
 }
 
-/* ProjectsPurgeWholeProjectForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsPurgeWholeProjectForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectsPurgeWholeProjectForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects purge whole project forbidden response has a 2xx status code
+func (o *ProjectsPurgeWholeProjectForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects purge whole project forbidden response has a 3xx status code
+func (o *ProjectsPurgeWholeProjectForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects purge whole project forbidden response has a 4xx status code
+func (o *ProjectsPurgeWholeProjectForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects purge whole project forbidden response has a 5xx status code
+func (o *ProjectsPurgeWholeProjectForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects purge whole project forbidden response a status code equal to that given
+func (o *ProjectsPurgeWholeProjectForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsPurgeWholeProjectForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsPurgeWholeProjectForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsPurgeWholeProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectsPurgeWholeProjectNotFound() *ProjectsPurgeWholeProjectNotFound {
 	return &ProjectsPurgeWholeProjectNotFound{}
 }
 
-/* ProjectsPurgeWholeProjectNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsPurgeWholeProjectNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectsPurgeWholeProjectNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects purge whole project not found response has a 2xx status code
+func (o *ProjectsPurgeWholeProjectNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects purge whole project not found response has a 3xx status code
+func (o *ProjectsPurgeWholeProjectNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects purge whole project not found response has a 4xx status code
+func (o *ProjectsPurgeWholeProjectNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects purge whole project not found response has a 5xx status code
+func (o *ProjectsPurgeWholeProjectNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects purge whole project not found response a status code equal to that given
+func (o *ProjectsPurgeWholeProjectNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsPurgeWholeProjectNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsPurgeWholeProjectNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsPurgeWholeProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectsPurgeWholeProjectInternalServerError() *ProjectsPurgeWholeProjec
 	return &ProjectsPurgeWholeProjectInternalServerError{}
 }
 
-/* ProjectsPurgeWholeProjectInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsPurgeWholeProjectInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsPurgeWholeProjectInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects purge whole project internal server error response has a 2xx status code
+func (o *ProjectsPurgeWholeProjectInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects purge whole project internal server error response has a 3xx status code
+func (o *ProjectsPurgeWholeProjectInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects purge whole project internal server error response has a 4xx status code
+func (o *ProjectsPurgeWholeProjectInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects purge whole project internal server error response has a 5xx status code
+func (o *ProjectsPurgeWholeProjectInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects purge whole project internal server error response a status code equal to that given
+func (o *ProjectsPurgeWholeProjectInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsPurgeWholeProjectInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectInternalServerError ", 500)
+}
+
+func (o *ProjectsPurgeWholeProjectInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectInternalServerError ", 500)
 }
 

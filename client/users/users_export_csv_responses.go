@@ -69,14 +69,44 @@ func NewUsersExportCsvOK() *UsersExportCsvOK {
 	return &UsersExportCsvOK{}
 }
 
-/* UsersExportCsvOK describes a response with status code 200, with default header values.
+/*
+UsersExportCsvOK describes a response with status code 200, with default header values.
 
 Success
 */
 type UsersExportCsvOK struct {
 }
 
+// IsSuccess returns true when this users export csv o k response has a 2xx status code
+func (o *UsersExportCsvOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this users export csv o k response has a 3xx status code
+func (o *UsersExportCsvOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users export csv o k response has a 4xx status code
+func (o *UsersExportCsvOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this users export csv o k response has a 5xx status code
+func (o *UsersExportCsvOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users export csv o k response a status code equal to that given
+func (o *UsersExportCsvOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UsersExportCsvOK) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvOK ", 200)
+}
+
+func (o *UsersExportCsvOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvOK ", 200)
 }
 
@@ -90,7 +120,8 @@ func NewUsersExportCsvBadRequest() *UsersExportCsvBadRequest {
 	return &UsersExportCsvBadRequest{}
 }
 
-/* UsersExportCsvBadRequest describes a response with status code 400, with default header values.
+/*
+UsersExportCsvBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -98,9 +129,39 @@ type UsersExportCsvBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this users export csv bad request response has a 2xx status code
+func (o *UsersExportCsvBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users export csv bad request response has a 3xx status code
+func (o *UsersExportCsvBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users export csv bad request response has a 4xx status code
+func (o *UsersExportCsvBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users export csv bad request response has a 5xx status code
+func (o *UsersExportCsvBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users export csv bad request response a status code equal to that given
+func (o *UsersExportCsvBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UsersExportCsvBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UsersExportCsvBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UsersExportCsvBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -122,7 +183,8 @@ func NewUsersExportCsvUnauthorized() *UsersExportCsvUnauthorized {
 	return &UsersExportCsvUnauthorized{}
 }
 
-/* UsersExportCsvUnauthorized describes a response with status code 401, with default header values.
+/*
+UsersExportCsvUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -130,9 +192,39 @@ type UsersExportCsvUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this users export csv unauthorized response has a 2xx status code
+func (o *UsersExportCsvUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users export csv unauthorized response has a 3xx status code
+func (o *UsersExportCsvUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users export csv unauthorized response has a 4xx status code
+func (o *UsersExportCsvUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users export csv unauthorized response has a 5xx status code
+func (o *UsersExportCsvUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users export csv unauthorized response a status code equal to that given
+func (o *UsersExportCsvUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UsersExportCsvUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *UsersExportCsvUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *UsersExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -154,7 +246,8 @@ func NewUsersExportCsvForbidden() *UsersExportCsvForbidden {
 	return &UsersExportCsvForbidden{}
 }
 
-/* UsersExportCsvForbidden describes a response with status code 403, with default header values.
+/*
+UsersExportCsvForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -162,9 +255,39 @@ type UsersExportCsvForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this users export csv forbidden response has a 2xx status code
+func (o *UsersExportCsvForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users export csv forbidden response has a 3xx status code
+func (o *UsersExportCsvForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users export csv forbidden response has a 4xx status code
+func (o *UsersExportCsvForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users export csv forbidden response has a 5xx status code
+func (o *UsersExportCsvForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users export csv forbidden response a status code equal to that given
+func (o *UsersExportCsvForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UsersExportCsvForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UsersExportCsvForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UsersExportCsvForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -186,7 +309,8 @@ func NewUsersExportCsvNotFound() *UsersExportCsvNotFound {
 	return &UsersExportCsvNotFound{}
 }
 
-/* UsersExportCsvNotFound describes a response with status code 404, with default header values.
+/*
+UsersExportCsvNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -194,9 +318,39 @@ type UsersExportCsvNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this users export csv not found response has a 2xx status code
+func (o *UsersExportCsvNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users export csv not found response has a 3xx status code
+func (o *UsersExportCsvNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users export csv not found response has a 4xx status code
+func (o *UsersExportCsvNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users export csv not found response has a 5xx status code
+func (o *UsersExportCsvNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users export csv not found response a status code equal to that given
+func (o *UsersExportCsvNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UsersExportCsvNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UsersExportCsvNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UsersExportCsvNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -218,14 +372,44 @@ func NewUsersExportCsvInternalServerError() *UsersExportCsvInternalServerError {
 	return &UsersExportCsvInternalServerError{}
 }
 
-/* UsersExportCsvInternalServerError describes a response with status code 500, with default header values.
+/*
+UsersExportCsvInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UsersExportCsvInternalServerError struct {
 }
 
+// IsSuccess returns true when this users export csv internal server error response has a 2xx status code
+func (o *UsersExportCsvInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users export csv internal server error response has a 3xx status code
+func (o *UsersExportCsvInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users export csv internal server error response has a 4xx status code
+func (o *UsersExportCsvInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this users export csv internal server error response has a 5xx status code
+func (o *UsersExportCsvInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this users export csv internal server error response a status code equal to that given
+func (o *UsersExportCsvInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UsersExportCsvInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvInternalServerError ", 500)
+}
+
+func (o *UsersExportCsvInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvInternalServerError ", 500)
 }
 

@@ -69,7 +69,8 @@ func NewFlavorsDropdownRecordDtosOK() *FlavorsDropdownRecordDtosOK {
 	return &FlavorsDropdownRecordDtosOK{}
 }
 
-/* FlavorsDropdownRecordDtosOK describes a response with status code 200, with default header values.
+/*
+FlavorsDropdownRecordDtosOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type FlavorsDropdownRecordDtosOK struct {
 	Payload []*models.CloudCredentialsDropdownRecordDto
 }
 
+// IsSuccess returns true when this flavors dropdown record dtos o k response has a 2xx status code
+func (o *FlavorsDropdownRecordDtosOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this flavors dropdown record dtos o k response has a 3xx status code
+func (o *FlavorsDropdownRecordDtosOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors dropdown record dtos o k response has a 4xx status code
+func (o *FlavorsDropdownRecordDtosOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this flavors dropdown record dtos o k response has a 5xx status code
+func (o *FlavorsDropdownRecordDtosOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors dropdown record dtos o k response a status code equal to that given
+func (o *FlavorsDropdownRecordDtosOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *FlavorsDropdownRecordDtosOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosOK  %+v", 200, o.Payload)
 }
+
+func (o *FlavorsDropdownRecordDtosOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosOK  %+v", 200, o.Payload)
+}
+
 func (o *FlavorsDropdownRecordDtosOK) GetPayload() []*models.CloudCredentialsDropdownRecordDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewFlavorsDropdownRecordDtosBadRequest() *FlavorsDropdownRecordDtosBadReque
 	return &FlavorsDropdownRecordDtosBadRequest{}
 }
 
-/* FlavorsDropdownRecordDtosBadRequest describes a response with status code 400, with default header values.
+/*
+FlavorsDropdownRecordDtosBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type FlavorsDropdownRecordDtosBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this flavors dropdown record dtos bad request response has a 2xx status code
+func (o *FlavorsDropdownRecordDtosBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors dropdown record dtos bad request response has a 3xx status code
+func (o *FlavorsDropdownRecordDtosBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors dropdown record dtos bad request response has a 4xx status code
+func (o *FlavorsDropdownRecordDtosBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors dropdown record dtos bad request response has a 5xx status code
+func (o *FlavorsDropdownRecordDtosBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors dropdown record dtos bad request response a status code equal to that given
+func (o *FlavorsDropdownRecordDtosBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *FlavorsDropdownRecordDtosBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *FlavorsDropdownRecordDtosBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *FlavorsDropdownRecordDtosBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewFlavorsDropdownRecordDtosUnauthorized() *FlavorsDropdownRecordDtosUnauth
 	return &FlavorsDropdownRecordDtosUnauthorized{}
 }
 
-/* FlavorsDropdownRecordDtosUnauthorized describes a response with status code 401, with default header values.
+/*
+FlavorsDropdownRecordDtosUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type FlavorsDropdownRecordDtosUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this flavors dropdown record dtos unauthorized response has a 2xx status code
+func (o *FlavorsDropdownRecordDtosUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors dropdown record dtos unauthorized response has a 3xx status code
+func (o *FlavorsDropdownRecordDtosUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors dropdown record dtos unauthorized response has a 4xx status code
+func (o *FlavorsDropdownRecordDtosUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors dropdown record dtos unauthorized response has a 5xx status code
+func (o *FlavorsDropdownRecordDtosUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors dropdown record dtos unauthorized response a status code equal to that given
+func (o *FlavorsDropdownRecordDtosUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *FlavorsDropdownRecordDtosUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *FlavorsDropdownRecordDtosUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *FlavorsDropdownRecordDtosUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewFlavorsDropdownRecordDtosForbidden() *FlavorsDropdownRecordDtosForbidden
 	return &FlavorsDropdownRecordDtosForbidden{}
 }
 
-/* FlavorsDropdownRecordDtosForbidden describes a response with status code 403, with default header values.
+/*
+FlavorsDropdownRecordDtosForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type FlavorsDropdownRecordDtosForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this flavors dropdown record dtos forbidden response has a 2xx status code
+func (o *FlavorsDropdownRecordDtosForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors dropdown record dtos forbidden response has a 3xx status code
+func (o *FlavorsDropdownRecordDtosForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors dropdown record dtos forbidden response has a 4xx status code
+func (o *FlavorsDropdownRecordDtosForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors dropdown record dtos forbidden response has a 5xx status code
+func (o *FlavorsDropdownRecordDtosForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors dropdown record dtos forbidden response a status code equal to that given
+func (o *FlavorsDropdownRecordDtosForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *FlavorsDropdownRecordDtosForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosForbidden  %+v", 403, o.Payload)
 }
+
+func (o *FlavorsDropdownRecordDtosForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosForbidden  %+v", 403, o.Payload)
+}
+
 func (o *FlavorsDropdownRecordDtosForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewFlavorsDropdownRecordDtosNotFound() *FlavorsDropdownRecordDtosNotFound {
 	return &FlavorsDropdownRecordDtosNotFound{}
 }
 
-/* FlavorsDropdownRecordDtosNotFound describes a response with status code 404, with default header values.
+/*
+FlavorsDropdownRecordDtosNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type FlavorsDropdownRecordDtosNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this flavors dropdown record dtos not found response has a 2xx status code
+func (o *FlavorsDropdownRecordDtosNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors dropdown record dtos not found response has a 3xx status code
+func (o *FlavorsDropdownRecordDtosNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors dropdown record dtos not found response has a 4xx status code
+func (o *FlavorsDropdownRecordDtosNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors dropdown record dtos not found response has a 5xx status code
+func (o *FlavorsDropdownRecordDtosNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors dropdown record dtos not found response a status code equal to that given
+func (o *FlavorsDropdownRecordDtosNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *FlavorsDropdownRecordDtosNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosNotFound  %+v", 404, o.Payload)
 }
+
+func (o *FlavorsDropdownRecordDtosNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosNotFound  %+v", 404, o.Payload)
+}
+
 func (o *FlavorsDropdownRecordDtosNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewFlavorsDropdownRecordDtosInternalServerError() *FlavorsDropdownRecordDto
 	return &FlavorsDropdownRecordDtosInternalServerError{}
 }
 
-/* FlavorsDropdownRecordDtosInternalServerError describes a response with status code 500, with default header values.
+/*
+FlavorsDropdownRecordDtosInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type FlavorsDropdownRecordDtosInternalServerError struct {
 }
 
+// IsSuccess returns true when this flavors dropdown record dtos internal server error response has a 2xx status code
+func (o *FlavorsDropdownRecordDtosInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors dropdown record dtos internal server error response has a 3xx status code
+func (o *FlavorsDropdownRecordDtosInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors dropdown record dtos internal server error response has a 4xx status code
+func (o *FlavorsDropdownRecordDtosInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this flavors dropdown record dtos internal server error response has a 5xx status code
+func (o *FlavorsDropdownRecordDtosInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this flavors dropdown record dtos internal server error response a status code equal to that given
+func (o *FlavorsDropdownRecordDtosInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *FlavorsDropdownRecordDtosInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosInternalServerError ", 500)
+}
+
+func (o *FlavorsDropdownRecordDtosInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosInternalServerError ", 500)
 }
 

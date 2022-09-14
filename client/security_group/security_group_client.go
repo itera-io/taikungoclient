@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  SecurityGroupCreate creates standalone profile security group
+SecurityGroupCreate creates standalone profile security group
 */
 func (a *Client) SecurityGroupCreate(params *SecurityGroupCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecurityGroupCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +81,7 @@ func (a *Client) SecurityGroupCreate(params *SecurityGroupCreateParams, authInfo
 }
 
 /*
-  SecurityGroupDelete deletes standalone profile security group
+SecurityGroupDelete deletes standalone profile security group
 */
 func (a *Client) SecurityGroupDelete(params *SecurityGroupDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecurityGroupDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) SecurityGroupDelete(params *SecurityGroupDeleteParams, authInfo
 }
 
 /*
-  SecurityGroupEdit es dit standalone profile security group
+SecurityGroupEdit es dit standalone profile security group
 */
 func (a *Client) SecurityGroupEdit(params *SecurityGroupEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecurityGroupEditOK, error) {
 	// TODO: Validate the params before sending
@@ -159,7 +159,7 @@ func (a *Client) SecurityGroupEdit(params *SecurityGroupEditParams, authInfo run
 }
 
 /*
-  SecurityGroupList lists stand alone security group by profile id
+SecurityGroupList lists stand alone security group by profile id
 */
 func (a *Client) SecurityGroupList(params *SecurityGroupListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecurityGroupListOK, error) {
 	// TODO: Validate the params before sending

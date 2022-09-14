@@ -75,7 +75,8 @@ func NewOpsCredentialsDeleteOK() *OpsCredentialsDeleteOK {
 	return &OpsCredentialsDeleteOK{}
 }
 
-/* OpsCredentialsDeleteOK describes a response with status code 200, with default header values.
+/*
+OpsCredentialsDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -83,9 +84,39 @@ type OpsCredentialsDeleteOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this ops credentials delete o k response has a 2xx status code
+func (o *OpsCredentialsDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this ops credentials delete o k response has a 3xx status code
+func (o *OpsCredentialsDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials delete o k response has a 4xx status code
+func (o *OpsCredentialsDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ops credentials delete o k response has a 5xx status code
+func (o *OpsCredentialsDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials delete o k response a status code equal to that given
+func (o *OpsCredentialsDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OpsCredentialsDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *OpsCredentialsDeleteOK) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *OpsCredentialsDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -105,14 +136,44 @@ func NewOpsCredentialsDeleteNoContent() *OpsCredentialsDeleteNoContent {
 	return &OpsCredentialsDeleteNoContent{}
 }
 
-/* OpsCredentialsDeleteNoContent describes a response with status code 204, with default header values.
+/*
+OpsCredentialsDeleteNoContent describes a response with status code 204, with default header values.
 
 Success
 */
 type OpsCredentialsDeleteNoContent struct {
 }
 
+// IsSuccess returns true when this ops credentials delete no content response has a 2xx status code
+func (o *OpsCredentialsDeleteNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this ops credentials delete no content response has a 3xx status code
+func (o *OpsCredentialsDeleteNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials delete no content response has a 4xx status code
+func (o *OpsCredentialsDeleteNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ops credentials delete no content response has a 5xx status code
+func (o *OpsCredentialsDeleteNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials delete no content response a status code equal to that given
+func (o *OpsCredentialsDeleteNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *OpsCredentialsDeleteNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteNoContent ", 204)
+}
+
+func (o *OpsCredentialsDeleteNoContent) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteNoContent ", 204)
 }
 
@@ -126,7 +187,8 @@ func NewOpsCredentialsDeleteBadRequest() *OpsCredentialsDeleteBadRequest {
 	return &OpsCredentialsDeleteBadRequest{}
 }
 
-/* OpsCredentialsDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+OpsCredentialsDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -134,9 +196,39 @@ type OpsCredentialsDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this ops credentials delete bad request response has a 2xx status code
+func (o *OpsCredentialsDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ops credentials delete bad request response has a 3xx status code
+func (o *OpsCredentialsDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials delete bad request response has a 4xx status code
+func (o *OpsCredentialsDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ops credentials delete bad request response has a 5xx status code
+func (o *OpsCredentialsDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials delete bad request response a status code equal to that given
+func (o *OpsCredentialsDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OpsCredentialsDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OpsCredentialsDeleteBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OpsCredentialsDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -158,7 +250,8 @@ func NewOpsCredentialsDeleteUnauthorized() *OpsCredentialsDeleteUnauthorized {
 	return &OpsCredentialsDeleteUnauthorized{}
 }
 
-/* OpsCredentialsDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+OpsCredentialsDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -166,9 +259,39 @@ type OpsCredentialsDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ops credentials delete unauthorized response has a 2xx status code
+func (o *OpsCredentialsDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ops credentials delete unauthorized response has a 3xx status code
+func (o *OpsCredentialsDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials delete unauthorized response has a 4xx status code
+func (o *OpsCredentialsDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ops credentials delete unauthorized response has a 5xx status code
+func (o *OpsCredentialsDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials delete unauthorized response a status code equal to that given
+func (o *OpsCredentialsDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OpsCredentialsDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OpsCredentialsDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OpsCredentialsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -190,7 +313,8 @@ func NewOpsCredentialsDeleteForbidden() *OpsCredentialsDeleteForbidden {
 	return &OpsCredentialsDeleteForbidden{}
 }
 
-/* OpsCredentialsDeleteForbidden describes a response with status code 403, with default header values.
+/*
+OpsCredentialsDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -198,9 +322,39 @@ type OpsCredentialsDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ops credentials delete forbidden response has a 2xx status code
+func (o *OpsCredentialsDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ops credentials delete forbidden response has a 3xx status code
+func (o *OpsCredentialsDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials delete forbidden response has a 4xx status code
+func (o *OpsCredentialsDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ops credentials delete forbidden response has a 5xx status code
+func (o *OpsCredentialsDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials delete forbidden response a status code equal to that given
+func (o *OpsCredentialsDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OpsCredentialsDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OpsCredentialsDeleteForbidden) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OpsCredentialsDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -222,7 +376,8 @@ func NewOpsCredentialsDeleteNotFound() *OpsCredentialsDeleteNotFound {
 	return &OpsCredentialsDeleteNotFound{}
 }
 
-/* OpsCredentialsDeleteNotFound describes a response with status code 404, with default header values.
+/*
+OpsCredentialsDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -230,9 +385,39 @@ type OpsCredentialsDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ops credentials delete not found response has a 2xx status code
+func (o *OpsCredentialsDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ops credentials delete not found response has a 3xx status code
+func (o *OpsCredentialsDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials delete not found response has a 4xx status code
+func (o *OpsCredentialsDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ops credentials delete not found response has a 5xx status code
+func (o *OpsCredentialsDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials delete not found response a status code equal to that given
+func (o *OpsCredentialsDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OpsCredentialsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OpsCredentialsDeleteNotFound) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OpsCredentialsDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -254,14 +439,44 @@ func NewOpsCredentialsDeleteInternalServerError() *OpsCredentialsDeleteInternalS
 	return &OpsCredentialsDeleteInternalServerError{}
 }
 
-/* OpsCredentialsDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+OpsCredentialsDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OpsCredentialsDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this ops credentials delete internal server error response has a 2xx status code
+func (o *OpsCredentialsDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ops credentials delete internal server error response has a 3xx status code
+func (o *OpsCredentialsDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials delete internal server error response has a 4xx status code
+func (o *OpsCredentialsDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ops credentials delete internal server error response has a 5xx status code
+func (o *OpsCredentialsDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this ops credentials delete internal server error response a status code equal to that given
+func (o *OpsCredentialsDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OpsCredentialsDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteInternalServerError ", 500)
+}
+
+func (o *OpsCredentialsDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteInternalServerError ", 500)
 }
 

@@ -53,10 +53,12 @@ func NewOpaProfilesOpaProfilesForOrganizationListParamsWithHTTPClient(client *ht
 	}
 }
 
-/* OpaProfilesOpaProfilesForOrganizationListParams contains all the parameters to send to the API endpoint
-   for the opa profiles opa profiles for organization list operation.
+/*
+OpaProfilesOpaProfilesForOrganizationListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the opa profiles opa profiles for organization list operation.
+
+	Typically these are written to a http.Request.
 */
 type OpaProfilesOpaProfilesForOrganizationListParams struct {
 

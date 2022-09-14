@@ -69,7 +69,8 @@ func NewKubernetesDescribeIngressOK() *KubernetesDescribeIngressOK {
 	return &KubernetesDescribeIngressOK{}
 }
 
-/* KubernetesDescribeIngressOK describes a response with status code 200, with default header values.
+/*
+KubernetesDescribeIngressOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesDescribeIngressOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this kubernetes describe ingress o k response has a 2xx status code
+func (o *KubernetesDescribeIngressOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes describe ingress o k response has a 3xx status code
+func (o *KubernetesDescribeIngressOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe ingress o k response has a 4xx status code
+func (o *KubernetesDescribeIngressOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes describe ingress o k response has a 5xx status code
+func (o *KubernetesDescribeIngressOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe ingress o k response a status code equal to that given
+func (o *KubernetesDescribeIngressOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesDescribeIngressOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesDescribeIngressOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesDescribeIngressOK) GetPayload() string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesDescribeIngressBadRequest() *KubernetesDescribeIngressBadReque
 	return &KubernetesDescribeIngressBadRequest{}
 }
 
-/* KubernetesDescribeIngressBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesDescribeIngressBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesDescribeIngressBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe ingress bad request response has a 2xx status code
+func (o *KubernetesDescribeIngressBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe ingress bad request response has a 3xx status code
+func (o *KubernetesDescribeIngressBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe ingress bad request response has a 4xx status code
+func (o *KubernetesDescribeIngressBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe ingress bad request response has a 5xx status code
+func (o *KubernetesDescribeIngressBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe ingress bad request response a status code equal to that given
+func (o *KubernetesDescribeIngressBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesDescribeIngressBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesDescribeIngressBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesDescribeIngressBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesDescribeIngressUnauthorized() *KubernetesDescribeIngressUnauth
 	return &KubernetesDescribeIngressUnauthorized{}
 }
 
-/* KubernetesDescribeIngressUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesDescribeIngressUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesDescribeIngressUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe ingress unauthorized response has a 2xx status code
+func (o *KubernetesDescribeIngressUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe ingress unauthorized response has a 3xx status code
+func (o *KubernetesDescribeIngressUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe ingress unauthorized response has a 4xx status code
+func (o *KubernetesDescribeIngressUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe ingress unauthorized response has a 5xx status code
+func (o *KubernetesDescribeIngressUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe ingress unauthorized response a status code equal to that given
+func (o *KubernetesDescribeIngressUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesDescribeIngressUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesDescribeIngressUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesDescribeIngressUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesDescribeIngressForbidden() *KubernetesDescribeIngressForbidden
 	return &KubernetesDescribeIngressForbidden{}
 }
 
-/* KubernetesDescribeIngressForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesDescribeIngressForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesDescribeIngressForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe ingress forbidden response has a 2xx status code
+func (o *KubernetesDescribeIngressForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe ingress forbidden response has a 3xx status code
+func (o *KubernetesDescribeIngressForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe ingress forbidden response has a 4xx status code
+func (o *KubernetesDescribeIngressForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe ingress forbidden response has a 5xx status code
+func (o *KubernetesDescribeIngressForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe ingress forbidden response a status code equal to that given
+func (o *KubernetesDescribeIngressForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesDescribeIngressForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesDescribeIngressForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesDescribeIngressForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesDescribeIngressNotFound() *KubernetesDescribeIngressNotFound {
 	return &KubernetesDescribeIngressNotFound{}
 }
 
-/* KubernetesDescribeIngressNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesDescribeIngressNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesDescribeIngressNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe ingress not found response has a 2xx status code
+func (o *KubernetesDescribeIngressNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe ingress not found response has a 3xx status code
+func (o *KubernetesDescribeIngressNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe ingress not found response has a 4xx status code
+func (o *KubernetesDescribeIngressNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe ingress not found response has a 5xx status code
+func (o *KubernetesDescribeIngressNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe ingress not found response a status code equal to that given
+func (o *KubernetesDescribeIngressNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesDescribeIngressNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesDescribeIngressNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesDescribeIngressNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesDescribeIngressInternalServerError() *KubernetesDescribeIngres
 	return &KubernetesDescribeIngressInternalServerError{}
 }
 
-/* KubernetesDescribeIngressInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesDescribeIngressInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesDescribeIngressInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes describe ingress internal server error response has a 2xx status code
+func (o *KubernetesDescribeIngressInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe ingress internal server error response has a 3xx status code
+func (o *KubernetesDescribeIngressInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe ingress internal server error response has a 4xx status code
+func (o *KubernetesDescribeIngressInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes describe ingress internal server error response has a 5xx status code
+func (o *KubernetesDescribeIngressInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes describe ingress internal server error response a status code equal to that given
+func (o *KubernetesDescribeIngressInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesDescribeIngressInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressInternalServerError ", 500)
+}
+
+func (o *KubernetesDescribeIngressInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressInternalServerError ", 500)
 }
 

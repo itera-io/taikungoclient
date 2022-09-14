@@ -54,10 +54,12 @@ func NewBackupDeleteScheduleParamsWithHTTPClient(client *http.Client) *BackupDel
 	}
 }
 
-/* BackupDeleteScheduleParams contains all the parameters to send to the API endpoint
-   for the backup delete schedule operation.
+/*
+BackupDeleteScheduleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the backup delete schedule operation.
+
+	Typically these are written to a http.Request.
 */
 type BackupDeleteScheduleParams struct {
 

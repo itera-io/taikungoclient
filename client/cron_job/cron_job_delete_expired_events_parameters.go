@@ -54,10 +54,12 @@ func NewCronJobDeleteExpiredEventsParamsWithHTTPClient(client *http.Client) *Cro
 	}
 }
 
-/* CronJobDeleteExpiredEventsParams contains all the parameters to send to the API endpoint
-   for the cron job delete expired events operation.
+/*
+CronJobDeleteExpiredEventsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job delete expired events operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobDeleteExpiredEventsParams struct {
 

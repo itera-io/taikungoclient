@@ -69,7 +69,8 @@ func NewOpenstackSubnetsOK() *OpenstackSubnetsOK {
 	return &OpenstackSubnetsOK{}
 }
 
-/* OpenstackSubnetsOK describes a response with status code 200, with default header values.
+/*
+OpenstackSubnetsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OpenstackSubnetsOK struct {
 	Payload []*models.CommonStringBasedDropdownDto
 }
 
+// IsSuccess returns true when this openstack subnets o k response has a 2xx status code
+func (o *OpenstackSubnetsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this openstack subnets o k response has a 3xx status code
+func (o *OpenstackSubnetsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack subnets o k response has a 4xx status code
+func (o *OpenstackSubnetsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this openstack subnets o k response has a 5xx status code
+func (o *OpenstackSubnetsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack subnets o k response a status code equal to that given
+func (o *OpenstackSubnetsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OpenstackSubnetsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsOK  %+v", 200, o.Payload)
 }
+
+func (o *OpenstackSubnetsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsOK  %+v", 200, o.Payload)
+}
+
 func (o *OpenstackSubnetsOK) GetPayload() []*models.CommonStringBasedDropdownDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewOpenstackSubnetsBadRequest() *OpenstackSubnetsBadRequest {
 	return &OpenstackSubnetsBadRequest{}
 }
 
-/* OpenstackSubnetsBadRequest describes a response with status code 400, with default header values.
+/*
+OpenstackSubnetsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type OpenstackSubnetsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this openstack subnets bad request response has a 2xx status code
+func (o *OpenstackSubnetsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack subnets bad request response has a 3xx status code
+func (o *OpenstackSubnetsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack subnets bad request response has a 4xx status code
+func (o *OpenstackSubnetsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack subnets bad request response has a 5xx status code
+func (o *OpenstackSubnetsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack subnets bad request response a status code equal to that given
+func (o *OpenstackSubnetsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OpenstackSubnetsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OpenstackSubnetsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OpenstackSubnetsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewOpenstackSubnetsUnauthorized() *OpenstackSubnetsUnauthorized {
 	return &OpenstackSubnetsUnauthorized{}
 }
 
-/* OpenstackSubnetsUnauthorized describes a response with status code 401, with default header values.
+/*
+OpenstackSubnetsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type OpenstackSubnetsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack subnets unauthorized response has a 2xx status code
+func (o *OpenstackSubnetsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack subnets unauthorized response has a 3xx status code
+func (o *OpenstackSubnetsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack subnets unauthorized response has a 4xx status code
+func (o *OpenstackSubnetsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack subnets unauthorized response has a 5xx status code
+func (o *OpenstackSubnetsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack subnets unauthorized response a status code equal to that given
+func (o *OpenstackSubnetsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OpenstackSubnetsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OpenstackSubnetsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OpenstackSubnetsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewOpenstackSubnetsForbidden() *OpenstackSubnetsForbidden {
 	return &OpenstackSubnetsForbidden{}
 }
 
-/* OpenstackSubnetsForbidden describes a response with status code 403, with default header values.
+/*
+OpenstackSubnetsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type OpenstackSubnetsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack subnets forbidden response has a 2xx status code
+func (o *OpenstackSubnetsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack subnets forbidden response has a 3xx status code
+func (o *OpenstackSubnetsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack subnets forbidden response has a 4xx status code
+func (o *OpenstackSubnetsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack subnets forbidden response has a 5xx status code
+func (o *OpenstackSubnetsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack subnets forbidden response a status code equal to that given
+func (o *OpenstackSubnetsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OpenstackSubnetsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OpenstackSubnetsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OpenstackSubnetsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewOpenstackSubnetsNotFound() *OpenstackSubnetsNotFound {
 	return &OpenstackSubnetsNotFound{}
 }
 
-/* OpenstackSubnetsNotFound describes a response with status code 404, with default header values.
+/*
+OpenstackSubnetsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type OpenstackSubnetsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack subnets not found response has a 2xx status code
+func (o *OpenstackSubnetsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack subnets not found response has a 3xx status code
+func (o *OpenstackSubnetsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack subnets not found response has a 4xx status code
+func (o *OpenstackSubnetsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack subnets not found response has a 5xx status code
+func (o *OpenstackSubnetsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack subnets not found response a status code equal to that given
+func (o *OpenstackSubnetsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OpenstackSubnetsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OpenstackSubnetsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OpenstackSubnetsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewOpenstackSubnetsInternalServerError() *OpenstackSubnetsInternalServerErr
 	return &OpenstackSubnetsInternalServerError{}
 }
 
-/* OpenstackSubnetsInternalServerError describes a response with status code 500, with default header values.
+/*
+OpenstackSubnetsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OpenstackSubnetsInternalServerError struct {
 }
 
+// IsSuccess returns true when this openstack subnets internal server error response has a 2xx status code
+func (o *OpenstackSubnetsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack subnets internal server error response has a 3xx status code
+func (o *OpenstackSubnetsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack subnets internal server error response has a 4xx status code
+func (o *OpenstackSubnetsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this openstack subnets internal server error response has a 5xx status code
+func (o *OpenstackSubnetsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this openstack subnets internal server error response a status code equal to that given
+func (o *OpenstackSubnetsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OpenstackSubnetsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsInternalServerError ", 500)
+}
+
+func (o *OpenstackSubnetsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsInternalServerError ", 500)
 }
 

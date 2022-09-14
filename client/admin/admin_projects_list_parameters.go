@@ -53,10 +53,12 @@ func NewAdminProjectsListParamsWithHTTPClient(client *http.Client) *AdminProject
 	}
 }
 
-/* AdminProjectsListParams contains all the parameters to send to the API endpoint
-   for the admin projects list operation.
+/*
+AdminProjectsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the admin projects list operation.
+
+	Typically these are written to a http.Request.
 */
 type AdminProjectsListParams struct {
 

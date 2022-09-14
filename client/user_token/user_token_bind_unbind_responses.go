@@ -69,7 +69,8 @@ func NewUserTokenBindUnbindOK() *UserTokenBindUnbindOK {
 	return &UserTokenBindUnbindOK{}
 }
 
-/* UserTokenBindUnbindOK describes a response with status code 200, with default header values.
+/*
+UserTokenBindUnbindOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type UserTokenBindUnbindOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this user token bind unbind o k response has a 2xx status code
+func (o *UserTokenBindUnbindOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this user token bind unbind o k response has a 3xx status code
+func (o *UserTokenBindUnbindOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token bind unbind o k response has a 4xx status code
+func (o *UserTokenBindUnbindOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user token bind unbind o k response has a 5xx status code
+func (o *UserTokenBindUnbindOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user token bind unbind o k response a status code equal to that given
+func (o *UserTokenBindUnbindOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UserTokenBindUnbindOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindOK  %+v", 200, o.Payload)
 }
+
+func (o *UserTokenBindUnbindOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindOK  %+v", 200, o.Payload)
+}
+
 func (o *UserTokenBindUnbindOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewUserTokenBindUnbindBadRequest() *UserTokenBindUnbindBadRequest {
 	return &UserTokenBindUnbindBadRequest{}
 }
 
-/* UserTokenBindUnbindBadRequest describes a response with status code 400, with default header values.
+/*
+UserTokenBindUnbindBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type UserTokenBindUnbindBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this user token bind unbind bad request response has a 2xx status code
+func (o *UserTokenBindUnbindBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user token bind unbind bad request response has a 3xx status code
+func (o *UserTokenBindUnbindBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token bind unbind bad request response has a 4xx status code
+func (o *UserTokenBindUnbindBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user token bind unbind bad request response has a 5xx status code
+func (o *UserTokenBindUnbindBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user token bind unbind bad request response a status code equal to that given
+func (o *UserTokenBindUnbindBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UserTokenBindUnbindBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UserTokenBindUnbindBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UserTokenBindUnbindBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewUserTokenBindUnbindUnauthorized() *UserTokenBindUnbindUnauthorized {
 	return &UserTokenBindUnbindUnauthorized{}
 }
 
-/* UserTokenBindUnbindUnauthorized describes a response with status code 401, with default header values.
+/*
+UserTokenBindUnbindUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type UserTokenBindUnbindUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user token bind unbind unauthorized response has a 2xx status code
+func (o *UserTokenBindUnbindUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user token bind unbind unauthorized response has a 3xx status code
+func (o *UserTokenBindUnbindUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token bind unbind unauthorized response has a 4xx status code
+func (o *UserTokenBindUnbindUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user token bind unbind unauthorized response has a 5xx status code
+func (o *UserTokenBindUnbindUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user token bind unbind unauthorized response a status code equal to that given
+func (o *UserTokenBindUnbindUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UserTokenBindUnbindUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *UserTokenBindUnbindUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *UserTokenBindUnbindUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewUserTokenBindUnbindForbidden() *UserTokenBindUnbindForbidden {
 	return &UserTokenBindUnbindForbidden{}
 }
 
-/* UserTokenBindUnbindForbidden describes a response with status code 403, with default header values.
+/*
+UserTokenBindUnbindForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type UserTokenBindUnbindForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user token bind unbind forbidden response has a 2xx status code
+func (o *UserTokenBindUnbindForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user token bind unbind forbidden response has a 3xx status code
+func (o *UserTokenBindUnbindForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token bind unbind forbidden response has a 4xx status code
+func (o *UserTokenBindUnbindForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user token bind unbind forbidden response has a 5xx status code
+func (o *UserTokenBindUnbindForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user token bind unbind forbidden response a status code equal to that given
+func (o *UserTokenBindUnbindForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UserTokenBindUnbindForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UserTokenBindUnbindForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UserTokenBindUnbindForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewUserTokenBindUnbindNotFound() *UserTokenBindUnbindNotFound {
 	return &UserTokenBindUnbindNotFound{}
 }
 
-/* UserTokenBindUnbindNotFound describes a response with status code 404, with default header values.
+/*
+UserTokenBindUnbindNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type UserTokenBindUnbindNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user token bind unbind not found response has a 2xx status code
+func (o *UserTokenBindUnbindNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user token bind unbind not found response has a 3xx status code
+func (o *UserTokenBindUnbindNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token bind unbind not found response has a 4xx status code
+func (o *UserTokenBindUnbindNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user token bind unbind not found response has a 5xx status code
+func (o *UserTokenBindUnbindNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user token bind unbind not found response a status code equal to that given
+func (o *UserTokenBindUnbindNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UserTokenBindUnbindNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UserTokenBindUnbindNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UserTokenBindUnbindNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewUserTokenBindUnbindInternalServerError() *UserTokenBindUnbindInternalSer
 	return &UserTokenBindUnbindInternalServerError{}
 }
 
-/* UserTokenBindUnbindInternalServerError describes a response with status code 500, with default header values.
+/*
+UserTokenBindUnbindInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UserTokenBindUnbindInternalServerError struct {
 }
 
+// IsSuccess returns true when this user token bind unbind internal server error response has a 2xx status code
+func (o *UserTokenBindUnbindInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user token bind unbind internal server error response has a 3xx status code
+func (o *UserTokenBindUnbindInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user token bind unbind internal server error response has a 4xx status code
+func (o *UserTokenBindUnbindInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user token bind unbind internal server error response has a 5xx status code
+func (o *UserTokenBindUnbindInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this user token bind unbind internal server error response a status code equal to that given
+func (o *UserTokenBindUnbindInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UserTokenBindUnbindInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindInternalServerError ", 500)
+}
+
+func (o *UserTokenBindUnbindInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindInternalServerError ", 500)
 }
 

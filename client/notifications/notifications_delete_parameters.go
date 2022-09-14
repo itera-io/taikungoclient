@@ -54,10 +54,12 @@ func NewNotificationsDeleteParamsWithHTTPClient(client *http.Client) *Notificati
 	}
 }
 
-/* NotificationsDeleteParams contains all the parameters to send to the API endpoint
-   for the notifications delete operation.
+/*
+NotificationsDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the notifications delete operation.
+
+	Typically these are written to a http.Request.
 */
 type NotificationsDeleteParams struct {
 

@@ -69,7 +69,8 @@ func NewSlackSlackConfigurationForOrganizationListOK() *SlackSlackConfigurationF
 	return &SlackSlackConfigurationForOrganizationListOK{}
 }
 
-/* SlackSlackConfigurationForOrganizationListOK describes a response with status code 200, with default header values.
+/*
+SlackSlackConfigurationForOrganizationListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SlackSlackConfigurationForOrganizationListOK struct {
 	Payload []*models.SlackConfigurationEntity
 }
 
+// IsSuccess returns true when this slack slack configuration for organization list o k response has a 2xx status code
+func (o *SlackSlackConfigurationForOrganizationListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this slack slack configuration for organization list o k response has a 3xx status code
+func (o *SlackSlackConfigurationForOrganizationListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack slack configuration for organization list o k response has a 4xx status code
+func (o *SlackSlackConfigurationForOrganizationListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this slack slack configuration for organization list o k response has a 5xx status code
+func (o *SlackSlackConfigurationForOrganizationListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack slack configuration for organization list o k response a status code equal to that given
+func (o *SlackSlackConfigurationForOrganizationListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SlackSlackConfigurationForOrganizationListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListOK  %+v", 200, o.Payload)
 }
+
+func (o *SlackSlackConfigurationForOrganizationListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListOK  %+v", 200, o.Payload)
+}
+
 func (o *SlackSlackConfigurationForOrganizationListOK) GetPayload() []*models.SlackConfigurationEntity {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewSlackSlackConfigurationForOrganizationListBadRequest() *SlackSlackConfig
 	return &SlackSlackConfigurationForOrganizationListBadRequest{}
 }
 
-/* SlackSlackConfigurationForOrganizationListBadRequest describes a response with status code 400, with default header values.
+/*
+SlackSlackConfigurationForOrganizationListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type SlackSlackConfigurationForOrganizationListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this slack slack configuration for organization list bad request response has a 2xx status code
+func (o *SlackSlackConfigurationForOrganizationListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack slack configuration for organization list bad request response has a 3xx status code
+func (o *SlackSlackConfigurationForOrganizationListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack slack configuration for organization list bad request response has a 4xx status code
+func (o *SlackSlackConfigurationForOrganizationListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack slack configuration for organization list bad request response has a 5xx status code
+func (o *SlackSlackConfigurationForOrganizationListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack slack configuration for organization list bad request response a status code equal to that given
+func (o *SlackSlackConfigurationForOrganizationListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SlackSlackConfigurationForOrganizationListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SlackSlackConfigurationForOrganizationListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SlackSlackConfigurationForOrganizationListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewSlackSlackConfigurationForOrganizationListUnauthorized() *SlackSlackConf
 	return &SlackSlackConfigurationForOrganizationListUnauthorized{}
 }
 
-/* SlackSlackConfigurationForOrganizationListUnauthorized describes a response with status code 401, with default header values.
+/*
+SlackSlackConfigurationForOrganizationListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type SlackSlackConfigurationForOrganizationListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this slack slack configuration for organization list unauthorized response has a 2xx status code
+func (o *SlackSlackConfigurationForOrganizationListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack slack configuration for organization list unauthorized response has a 3xx status code
+func (o *SlackSlackConfigurationForOrganizationListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack slack configuration for organization list unauthorized response has a 4xx status code
+func (o *SlackSlackConfigurationForOrganizationListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack slack configuration for organization list unauthorized response has a 5xx status code
+func (o *SlackSlackConfigurationForOrganizationListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack slack configuration for organization list unauthorized response a status code equal to that given
+func (o *SlackSlackConfigurationForOrganizationListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SlackSlackConfigurationForOrganizationListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SlackSlackConfigurationForOrganizationListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SlackSlackConfigurationForOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewSlackSlackConfigurationForOrganizationListForbidden() *SlackSlackConfigu
 	return &SlackSlackConfigurationForOrganizationListForbidden{}
 }
 
-/* SlackSlackConfigurationForOrganizationListForbidden describes a response with status code 403, with default header values.
+/*
+SlackSlackConfigurationForOrganizationListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type SlackSlackConfigurationForOrganizationListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this slack slack configuration for organization list forbidden response has a 2xx status code
+func (o *SlackSlackConfigurationForOrganizationListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack slack configuration for organization list forbidden response has a 3xx status code
+func (o *SlackSlackConfigurationForOrganizationListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack slack configuration for organization list forbidden response has a 4xx status code
+func (o *SlackSlackConfigurationForOrganizationListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack slack configuration for organization list forbidden response has a 5xx status code
+func (o *SlackSlackConfigurationForOrganizationListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack slack configuration for organization list forbidden response a status code equal to that given
+func (o *SlackSlackConfigurationForOrganizationListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SlackSlackConfigurationForOrganizationListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SlackSlackConfigurationForOrganizationListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SlackSlackConfigurationForOrganizationListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewSlackSlackConfigurationForOrganizationListNotFound() *SlackSlackConfigur
 	return &SlackSlackConfigurationForOrganizationListNotFound{}
 }
 
-/* SlackSlackConfigurationForOrganizationListNotFound describes a response with status code 404, with default header values.
+/*
+SlackSlackConfigurationForOrganizationListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type SlackSlackConfigurationForOrganizationListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this slack slack configuration for organization list not found response has a 2xx status code
+func (o *SlackSlackConfigurationForOrganizationListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack slack configuration for organization list not found response has a 3xx status code
+func (o *SlackSlackConfigurationForOrganizationListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack slack configuration for organization list not found response has a 4xx status code
+func (o *SlackSlackConfigurationForOrganizationListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack slack configuration for organization list not found response has a 5xx status code
+func (o *SlackSlackConfigurationForOrganizationListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack slack configuration for organization list not found response a status code equal to that given
+func (o *SlackSlackConfigurationForOrganizationListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SlackSlackConfigurationForOrganizationListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SlackSlackConfigurationForOrganizationListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SlackSlackConfigurationForOrganizationListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewSlackSlackConfigurationForOrganizationListInternalServerError() *SlackSl
 	return &SlackSlackConfigurationForOrganizationListInternalServerError{}
 }
 
-/* SlackSlackConfigurationForOrganizationListInternalServerError describes a response with status code 500, with default header values.
+/*
+SlackSlackConfigurationForOrganizationListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SlackSlackConfigurationForOrganizationListInternalServerError struct {
 }
 
+// IsSuccess returns true when this slack slack configuration for organization list internal server error response has a 2xx status code
+func (o *SlackSlackConfigurationForOrganizationListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack slack configuration for organization list internal server error response has a 3xx status code
+func (o *SlackSlackConfigurationForOrganizationListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack slack configuration for organization list internal server error response has a 4xx status code
+func (o *SlackSlackConfigurationForOrganizationListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this slack slack configuration for organization list internal server error response has a 5xx status code
+func (o *SlackSlackConfigurationForOrganizationListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this slack slack configuration for organization list internal server error response a status code equal to that given
+func (o *SlackSlackConfigurationForOrganizationListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SlackSlackConfigurationForOrganizationListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListInternalServerError ", 500)
+}
+
+func (o *SlackSlackConfigurationForOrganizationListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListInternalServerError ", 500)
 }
 

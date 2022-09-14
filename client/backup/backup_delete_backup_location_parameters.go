@@ -54,10 +54,12 @@ func NewBackupDeleteBackupLocationParamsWithHTTPClient(client *http.Client) *Bac
 	}
 }
 
-/* BackupDeleteBackupLocationParams contains all the parameters to send to the API endpoint
-   for the backup delete backup location operation.
+/*
+BackupDeleteBackupLocationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the backup delete backup location operation.
+
+	Typically these are written to a http.Request.
 */
 type BackupDeleteBackupLocationParams struct {
 

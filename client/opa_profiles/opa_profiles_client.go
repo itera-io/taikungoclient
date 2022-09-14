@@ -54,7 +54,7 @@ type ClientService interface {
 }
 
 /*
-  OpaProfilesCreate creates policy profile
+OpaProfilesCreate creates policy profile
 */
 func (a *Client) OpaProfilesCreate(params *OpaProfilesCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -93,7 +93,7 @@ func (a *Client) OpaProfilesCreate(params *OpaProfilesCreateParams, authInfo run
 }
 
 /*
-  OpaProfilesDelete deletes policy profile
+OpaProfilesDelete deletes policy profile
 */
 func (a *Client) OpaProfilesDelete(params *OpaProfilesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -132,7 +132,7 @@ func (a *Client) OpaProfilesDelete(params *OpaProfilesDeleteParams, authInfo run
 }
 
 /*
-  OpaProfilesDisableGatekeeper disables gatekeeper by the project Id
+OpaProfilesDisableGatekeeper disables gatekeeper by the project Id
 */
 func (a *Client) OpaProfilesDisableGatekeeper(params *OpaProfilesDisableGatekeeperParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesDisableGatekeeperOK, error) {
 	// TODO: Validate the params before sending
@@ -171,7 +171,7 @@ func (a *Client) OpaProfilesDisableGatekeeper(params *OpaProfilesDisableGatekeep
 }
 
 /*
-  OpaProfilesEnableGatekeeper enables gatekeeper by the project Id
+OpaProfilesEnableGatekeeper enables gatekeeper by the project Id
 */
 func (a *Client) OpaProfilesEnableGatekeeper(params *OpaProfilesEnableGatekeeperParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesEnableGatekeeperOK, error) {
 	// TODO: Validate the params before sending
@@ -210,7 +210,7 @@ func (a *Client) OpaProfilesEnableGatekeeper(params *OpaProfilesEnableGatekeeper
 }
 
 /*
-  OpaProfilesList retrieves a list of policy profile for project
+OpaProfilesList retrieves a list of policy profile for project
 */
 func (a *Client) OpaProfilesList(params *OpaProfilesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesListOK, error) {
 	// TODO: Validate the params before sending
@@ -249,7 +249,7 @@ func (a *Client) OpaProfilesList(params *OpaProfilesListParams, authInfo runtime
 }
 
 /*
-  OpaProfilesLockManager locks unlock policy profile
+OpaProfilesLockManager locks unlock policy profile
 */
 func (a *Client) OpaProfilesLockManager(params *OpaProfilesLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesLockManagerOK, error) {
 	// TODO: Validate the params before sending
@@ -288,7 +288,7 @@ func (a *Client) OpaProfilesLockManager(params *OpaProfilesLockManagerParams, au
 }
 
 /*
-  OpaProfilesMakeDefault chooses default policy profile
+OpaProfilesMakeDefault chooses default policy profile
 */
 func (a *Client) OpaProfilesMakeDefault(params *OpaProfilesMakeDefaultParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesMakeDefaultOK, error) {
 	// TODO: Validate the params before sending
@@ -327,7 +327,7 @@ func (a *Client) OpaProfilesMakeDefault(params *OpaProfilesMakeDefaultParams, au
 }
 
 /*
-  OpaProfilesOpaProfilesForOrganizationList retrieves policy profiles by organization Id
+OpaProfilesOpaProfilesForOrganizationList retrieves policy profiles by organization Id
 */
 func (a *Client) OpaProfilesOpaProfilesForOrganizationList(params *OpaProfilesOpaProfilesForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesOpaProfilesForOrganizationListOK, error) {
 	// TODO: Validate the params before sending
@@ -366,7 +366,7 @@ func (a *Client) OpaProfilesOpaProfilesForOrganizationList(params *OpaProfilesOp
 }
 
 /*
-  OpaProfilesSync syncs policy profile
+OpaProfilesSync syncs policy profile
 */
 func (a *Client) OpaProfilesSync(params *OpaProfilesSyncParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesSyncOK, error) {
 	// TODO: Validate the params before sending
@@ -405,7 +405,7 @@ func (a *Client) OpaProfilesSync(params *OpaProfilesSyncParams, authInfo runtime
 }
 
 /*
-  OpaProfilesUpdate updates policy profile
+OpaProfilesUpdate updates policy profile
 */
 func (a *Client) OpaProfilesUpdate(params *OpaProfilesUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpaProfilesUpdateOK, error) {
 	// TODO: Validate the params before sending

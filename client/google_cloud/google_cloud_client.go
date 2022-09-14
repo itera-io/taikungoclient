@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  GoogleCloudBillingAccountList retrieves google billing accounts list
+GoogleCloudBillingAccountList retrieves google billing accounts list
 */
 func (a *Client) GoogleCloudBillingAccountList(params *GoogleCloudBillingAccountListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GoogleCloudBillingAccountListOK, error) {
 	// TODO: Validate the params before sending
@@ -83,7 +83,7 @@ func (a *Client) GoogleCloudBillingAccountList(params *GoogleCloudBillingAccount
 }
 
 /*
-  GoogleCloudCreate creates google cloud credential
+GoogleCloudCreate creates google cloud credential
 */
 func (a *Client) GoogleCloudCreate(params *GoogleCloudCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GoogleCloudCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +122,7 @@ func (a *Client) GoogleCloudCreate(params *GoogleCloudCreateParams, authInfo run
 }
 
 /*
-  GoogleCloudList retrieves list of google cloud credentials
+GoogleCloudList retrieves list of google cloud credentials
 */
 func (a *Client) GoogleCloudList(params *GoogleCloudListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GoogleCloudListOK, error) {
 	// TODO: Validate the params before sending
@@ -161,7 +161,7 @@ func (a *Client) GoogleCloudList(params *GoogleCloudListParams, authInfo runtime
 }
 
 /*
-  GoogleCloudRegionList retrieves google region list
+GoogleCloudRegionList retrieves google region list
 */
 func (a *Client) GoogleCloudRegionList(params *GoogleCloudRegionListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GoogleCloudRegionListOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +200,7 @@ func (a *Client) GoogleCloudRegionList(params *GoogleCloudRegionListParams, auth
 }
 
 /*
-  GoogleCloudZoneList retrieves google zone list
+GoogleCloudZoneList retrieves google zone list
 */
 func (a *Client) GoogleCloudZoneList(params *GoogleCloudZoneListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GoogleCloudZoneListOK, error) {
 	// TODO: Validate the params before sending

@@ -69,7 +69,8 @@ func NewOrganizationsCreateDefaultProfilersOK() *OrganizationsCreateDefaultProfi
 	return &OrganizationsCreateDefaultProfilersOK{}
 }
 
-/* OrganizationsCreateDefaultProfilersOK describes a response with status code 200, with default header values.
+/*
+OrganizationsCreateDefaultProfilersOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OrganizationsCreateDefaultProfilersOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this organizations create default profilers o k response has a 2xx status code
+func (o *OrganizationsCreateDefaultProfilersOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this organizations create default profilers o k response has a 3xx status code
+func (o *OrganizationsCreateDefaultProfilersOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations create default profilers o k response has a 4xx status code
+func (o *OrganizationsCreateDefaultProfilersOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations create default profilers o k response has a 5xx status code
+func (o *OrganizationsCreateDefaultProfilersOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations create default profilers o k response a status code equal to that given
+func (o *OrganizationsCreateDefaultProfilersOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OrganizationsCreateDefaultProfilersOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersOK  %+v", 200, o.Payload)
 }
+
+func (o *OrganizationsCreateDefaultProfilersOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersOK  %+v", 200, o.Payload)
+}
+
 func (o *OrganizationsCreateDefaultProfilersOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewOrganizationsCreateDefaultProfilersBadRequest() *OrganizationsCreateDefa
 	return &OrganizationsCreateDefaultProfilersBadRequest{}
 }
 
-/* OrganizationsCreateDefaultProfilersBadRequest describes a response with status code 400, with default header values.
+/*
+OrganizationsCreateDefaultProfilersBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type OrganizationsCreateDefaultProfilersBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this organizations create default profilers bad request response has a 2xx status code
+func (o *OrganizationsCreateDefaultProfilersBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations create default profilers bad request response has a 3xx status code
+func (o *OrganizationsCreateDefaultProfilersBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations create default profilers bad request response has a 4xx status code
+func (o *OrganizationsCreateDefaultProfilersBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations create default profilers bad request response has a 5xx status code
+func (o *OrganizationsCreateDefaultProfilersBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations create default profilers bad request response a status code equal to that given
+func (o *OrganizationsCreateDefaultProfilersBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OrganizationsCreateDefaultProfilersBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OrganizationsCreateDefaultProfilersBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OrganizationsCreateDefaultProfilersBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewOrganizationsCreateDefaultProfilersUnauthorized() *OrganizationsCreateDe
 	return &OrganizationsCreateDefaultProfilersUnauthorized{}
 }
 
-/* OrganizationsCreateDefaultProfilersUnauthorized describes a response with status code 401, with default header values.
+/*
+OrganizationsCreateDefaultProfilersUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type OrganizationsCreateDefaultProfilersUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations create default profilers unauthorized response has a 2xx status code
+func (o *OrganizationsCreateDefaultProfilersUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations create default profilers unauthorized response has a 3xx status code
+func (o *OrganizationsCreateDefaultProfilersUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations create default profilers unauthorized response has a 4xx status code
+func (o *OrganizationsCreateDefaultProfilersUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations create default profilers unauthorized response has a 5xx status code
+func (o *OrganizationsCreateDefaultProfilersUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations create default profilers unauthorized response a status code equal to that given
+func (o *OrganizationsCreateDefaultProfilersUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OrganizationsCreateDefaultProfilersUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OrganizationsCreateDefaultProfilersUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OrganizationsCreateDefaultProfilersUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewOrganizationsCreateDefaultProfilersForbidden() *OrganizationsCreateDefau
 	return &OrganizationsCreateDefaultProfilersForbidden{}
 }
 
-/* OrganizationsCreateDefaultProfilersForbidden describes a response with status code 403, with default header values.
+/*
+OrganizationsCreateDefaultProfilersForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type OrganizationsCreateDefaultProfilersForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations create default profilers forbidden response has a 2xx status code
+func (o *OrganizationsCreateDefaultProfilersForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations create default profilers forbidden response has a 3xx status code
+func (o *OrganizationsCreateDefaultProfilersForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations create default profilers forbidden response has a 4xx status code
+func (o *OrganizationsCreateDefaultProfilersForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations create default profilers forbidden response has a 5xx status code
+func (o *OrganizationsCreateDefaultProfilersForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations create default profilers forbidden response a status code equal to that given
+func (o *OrganizationsCreateDefaultProfilersForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OrganizationsCreateDefaultProfilersForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OrganizationsCreateDefaultProfilersForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OrganizationsCreateDefaultProfilersForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewOrganizationsCreateDefaultProfilersNotFound() *OrganizationsCreateDefaul
 	return &OrganizationsCreateDefaultProfilersNotFound{}
 }
 
-/* OrganizationsCreateDefaultProfilersNotFound describes a response with status code 404, with default header values.
+/*
+OrganizationsCreateDefaultProfilersNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type OrganizationsCreateDefaultProfilersNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations create default profilers not found response has a 2xx status code
+func (o *OrganizationsCreateDefaultProfilersNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations create default profilers not found response has a 3xx status code
+func (o *OrganizationsCreateDefaultProfilersNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations create default profilers not found response has a 4xx status code
+func (o *OrganizationsCreateDefaultProfilersNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations create default profilers not found response has a 5xx status code
+func (o *OrganizationsCreateDefaultProfilersNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations create default profilers not found response a status code equal to that given
+func (o *OrganizationsCreateDefaultProfilersNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OrganizationsCreateDefaultProfilersNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OrganizationsCreateDefaultProfilersNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OrganizationsCreateDefaultProfilersNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewOrganizationsCreateDefaultProfilersInternalServerError() *OrganizationsC
 	return &OrganizationsCreateDefaultProfilersInternalServerError{}
 }
 
-/* OrganizationsCreateDefaultProfilersInternalServerError describes a response with status code 500, with default header values.
+/*
+OrganizationsCreateDefaultProfilersInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OrganizationsCreateDefaultProfilersInternalServerError struct {
 }
 
+// IsSuccess returns true when this organizations create default profilers internal server error response has a 2xx status code
+func (o *OrganizationsCreateDefaultProfilersInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations create default profilers internal server error response has a 3xx status code
+func (o *OrganizationsCreateDefaultProfilersInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations create default profilers internal server error response has a 4xx status code
+func (o *OrganizationsCreateDefaultProfilersInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations create default profilers internal server error response has a 5xx status code
+func (o *OrganizationsCreateDefaultProfilersInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this organizations create default profilers internal server error response a status code equal to that given
+func (o *OrganizationsCreateDefaultProfilersInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OrganizationsCreateDefaultProfilersInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersInternalServerError ", 500)
+}
+
+func (o *OrganizationsCreateDefaultProfilersInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersInternalServerError ", 500)
 }
 

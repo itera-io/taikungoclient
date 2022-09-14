@@ -53,10 +53,12 @@ func NewAdminOrganizationsParamsWithHTTPClient(client *http.Client) *AdminOrgani
 	}
 }
 
-/* AdminOrganizationsParams contains all the parameters to send to the API endpoint
-   for the admin organizations operation.
+/*
+AdminOrganizationsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the admin organizations operation.
+
+	Typically these are written to a http.Request.
 */
 type AdminOrganizationsParams struct {
 

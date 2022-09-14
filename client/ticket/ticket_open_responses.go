@@ -69,7 +69,8 @@ func NewTicketOpenOK() *TicketOpenOK {
 	return &TicketOpenOK{}
 }
 
-/* TicketOpenOK describes a response with status code 200, with default header values.
+/*
+TicketOpenOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type TicketOpenOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this ticket open o k response has a 2xx status code
+func (o *TicketOpenOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this ticket open o k response has a 3xx status code
+func (o *TicketOpenOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket open o k response has a 4xx status code
+func (o *TicketOpenOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ticket open o k response has a 5xx status code
+func (o *TicketOpenOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket open o k response a status code equal to that given
+func (o *TicketOpenOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *TicketOpenOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenOK  %+v", 200, o.Payload)
 }
+
+func (o *TicketOpenOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenOK  %+v", 200, o.Payload)
+}
+
 func (o *TicketOpenOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewTicketOpenBadRequest() *TicketOpenBadRequest {
 	return &TicketOpenBadRequest{}
 }
 
-/* TicketOpenBadRequest describes a response with status code 400, with default header values.
+/*
+TicketOpenBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type TicketOpenBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this ticket open bad request response has a 2xx status code
+func (o *TicketOpenBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket open bad request response has a 3xx status code
+func (o *TicketOpenBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket open bad request response has a 4xx status code
+func (o *TicketOpenBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket open bad request response has a 5xx status code
+func (o *TicketOpenBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket open bad request response a status code equal to that given
+func (o *TicketOpenBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *TicketOpenBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *TicketOpenBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *TicketOpenBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewTicketOpenUnauthorized() *TicketOpenUnauthorized {
 	return &TicketOpenUnauthorized{}
 }
 
-/* TicketOpenUnauthorized describes a response with status code 401, with default header values.
+/*
+TicketOpenUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type TicketOpenUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ticket open unauthorized response has a 2xx status code
+func (o *TicketOpenUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket open unauthorized response has a 3xx status code
+func (o *TicketOpenUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket open unauthorized response has a 4xx status code
+func (o *TicketOpenUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket open unauthorized response has a 5xx status code
+func (o *TicketOpenUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket open unauthorized response a status code equal to that given
+func (o *TicketOpenUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *TicketOpenUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *TicketOpenUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *TicketOpenUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewTicketOpenForbidden() *TicketOpenForbidden {
 	return &TicketOpenForbidden{}
 }
 
-/* TicketOpenForbidden describes a response with status code 403, with default header values.
+/*
+TicketOpenForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type TicketOpenForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ticket open forbidden response has a 2xx status code
+func (o *TicketOpenForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket open forbidden response has a 3xx status code
+func (o *TicketOpenForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket open forbidden response has a 4xx status code
+func (o *TicketOpenForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket open forbidden response has a 5xx status code
+func (o *TicketOpenForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket open forbidden response a status code equal to that given
+func (o *TicketOpenForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *TicketOpenForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenForbidden  %+v", 403, o.Payload)
 }
+
+func (o *TicketOpenForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenForbidden  %+v", 403, o.Payload)
+}
+
 func (o *TicketOpenForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewTicketOpenNotFound() *TicketOpenNotFound {
 	return &TicketOpenNotFound{}
 }
 
-/* TicketOpenNotFound describes a response with status code 404, with default header values.
+/*
+TicketOpenNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type TicketOpenNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ticket open not found response has a 2xx status code
+func (o *TicketOpenNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket open not found response has a 3xx status code
+func (o *TicketOpenNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket open not found response has a 4xx status code
+func (o *TicketOpenNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ticket open not found response has a 5xx status code
+func (o *TicketOpenNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ticket open not found response a status code equal to that given
+func (o *TicketOpenNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *TicketOpenNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenNotFound  %+v", 404, o.Payload)
 }
+
+func (o *TicketOpenNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenNotFound  %+v", 404, o.Payload)
+}
+
 func (o *TicketOpenNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewTicketOpenInternalServerError() *TicketOpenInternalServerError {
 	return &TicketOpenInternalServerError{}
 }
 
-/* TicketOpenInternalServerError describes a response with status code 500, with default header values.
+/*
+TicketOpenInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type TicketOpenInternalServerError struct {
 }
 
+// IsSuccess returns true when this ticket open internal server error response has a 2xx status code
+func (o *TicketOpenInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ticket open internal server error response has a 3xx status code
+func (o *TicketOpenInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ticket open internal server error response has a 4xx status code
+func (o *TicketOpenInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ticket open internal server error response has a 5xx status code
+func (o *TicketOpenInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this ticket open internal server error response a status code equal to that given
+func (o *TicketOpenInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *TicketOpenInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenInternalServerError ", 500)
+}
+
+func (o *TicketOpenInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenInternalServerError ", 500)
 }
 

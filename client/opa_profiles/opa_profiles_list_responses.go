@@ -69,7 +69,8 @@ func NewOpaProfilesListOK() *OpaProfilesListOK {
 	return &OpaProfilesListOK{}
 }
 
-/* OpaProfilesListOK describes a response with status code 200, with default header values.
+/*
+OpaProfilesListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OpaProfilesListOK struct {
 	Payload *models.OpaProfileList
 }
 
+// IsSuccess returns true when this opa profiles list o k response has a 2xx status code
+func (o *OpaProfilesListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this opa profiles list o k response has a 3xx status code
+func (o *OpaProfilesListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles list o k response has a 4xx status code
+func (o *OpaProfilesListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this opa profiles list o k response has a 5xx status code
+func (o *OpaProfilesListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this opa profiles list o k response a status code equal to that given
+func (o *OpaProfilesListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OpaProfilesListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListOK  %+v", 200, o.Payload)
 }
+
+func (o *OpaProfilesListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListOK  %+v", 200, o.Payload)
+}
+
 func (o *OpaProfilesListOK) GetPayload() *models.OpaProfileList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewOpaProfilesListBadRequest() *OpaProfilesListBadRequest {
 	return &OpaProfilesListBadRequest{}
 }
 
-/* OpaProfilesListBadRequest describes a response with status code 400, with default header values.
+/*
+OpaProfilesListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type OpaProfilesListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this opa profiles list bad request response has a 2xx status code
+func (o *OpaProfilesListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this opa profiles list bad request response has a 3xx status code
+func (o *OpaProfilesListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles list bad request response has a 4xx status code
+func (o *OpaProfilesListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this opa profiles list bad request response has a 5xx status code
+func (o *OpaProfilesListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this opa profiles list bad request response a status code equal to that given
+func (o *OpaProfilesListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OpaProfilesListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OpaProfilesListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OpaProfilesListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewOpaProfilesListUnauthorized() *OpaProfilesListUnauthorized {
 	return &OpaProfilesListUnauthorized{}
 }
 
-/* OpaProfilesListUnauthorized describes a response with status code 401, with default header values.
+/*
+OpaProfilesListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type OpaProfilesListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this opa profiles list unauthorized response has a 2xx status code
+func (o *OpaProfilesListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this opa profiles list unauthorized response has a 3xx status code
+func (o *OpaProfilesListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles list unauthorized response has a 4xx status code
+func (o *OpaProfilesListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this opa profiles list unauthorized response has a 5xx status code
+func (o *OpaProfilesListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this opa profiles list unauthorized response a status code equal to that given
+func (o *OpaProfilesListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OpaProfilesListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OpaProfilesListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OpaProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewOpaProfilesListForbidden() *OpaProfilesListForbidden {
 	return &OpaProfilesListForbidden{}
 }
 
-/* OpaProfilesListForbidden describes a response with status code 403, with default header values.
+/*
+OpaProfilesListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type OpaProfilesListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this opa profiles list forbidden response has a 2xx status code
+func (o *OpaProfilesListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this opa profiles list forbidden response has a 3xx status code
+func (o *OpaProfilesListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles list forbidden response has a 4xx status code
+func (o *OpaProfilesListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this opa profiles list forbidden response has a 5xx status code
+func (o *OpaProfilesListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this opa profiles list forbidden response a status code equal to that given
+func (o *OpaProfilesListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OpaProfilesListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OpaProfilesListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OpaProfilesListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewOpaProfilesListNotFound() *OpaProfilesListNotFound {
 	return &OpaProfilesListNotFound{}
 }
 
-/* OpaProfilesListNotFound describes a response with status code 404, with default header values.
+/*
+OpaProfilesListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type OpaProfilesListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this opa profiles list not found response has a 2xx status code
+func (o *OpaProfilesListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this opa profiles list not found response has a 3xx status code
+func (o *OpaProfilesListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles list not found response has a 4xx status code
+func (o *OpaProfilesListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this opa profiles list not found response has a 5xx status code
+func (o *OpaProfilesListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this opa profiles list not found response a status code equal to that given
+func (o *OpaProfilesListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OpaProfilesListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OpaProfilesListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OpaProfilesListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewOpaProfilesListInternalServerError() *OpaProfilesListInternalServerError
 	return &OpaProfilesListInternalServerError{}
 }
 
-/* OpaProfilesListInternalServerError describes a response with status code 500, with default header values.
+/*
+OpaProfilesListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OpaProfilesListInternalServerError struct {
 }
 
+// IsSuccess returns true when this opa profiles list internal server error response has a 2xx status code
+func (o *OpaProfilesListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this opa profiles list internal server error response has a 3xx status code
+func (o *OpaProfilesListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this opa profiles list internal server error response has a 4xx status code
+func (o *OpaProfilesListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this opa profiles list internal server error response has a 5xx status code
+func (o *OpaProfilesListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this opa profiles list internal server error response a status code equal to that given
+func (o *OpaProfilesListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OpaProfilesListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListInternalServerError ", 500)
+}
+
+func (o *OpaProfilesListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListInternalServerError ", 500)
 }
 

@@ -52,10 +52,12 @@ func NewSubscriptionSubscriptionForLandingPageParamsWithHTTPClient(client *http.
 	}
 }
 
-/* SubscriptionSubscriptionForLandingPageParams contains all the parameters to send to the API endpoint
-   for the subscription subscription for landing page operation.
+/*
+SubscriptionSubscriptionForLandingPageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the subscription subscription for landing page operation.
+
+	Typically these are written to a http.Request.
 */
 type SubscriptionSubscriptionForLandingPageParams struct {
 

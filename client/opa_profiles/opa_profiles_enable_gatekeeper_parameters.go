@@ -54,10 +54,12 @@ func NewOpaProfilesEnableGatekeeperParamsWithHTTPClient(client *http.Client) *Op
 	}
 }
 
-/* OpaProfilesEnableGatekeeperParams contains all the parameters to send to the API endpoint
-   for the opa profiles enable gatekeeper operation.
+/*
+OpaProfilesEnableGatekeeperParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the opa profiles enable gatekeeper operation.
+
+	Typically these are written to a http.Request.
 */
 type OpaProfilesEnableGatekeeperParams struct {
 

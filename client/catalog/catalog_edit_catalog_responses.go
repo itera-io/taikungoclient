@@ -69,7 +69,8 @@ func NewCatalogEditCatalogOK() *CatalogEditCatalogOK {
 	return &CatalogEditCatalogOK{}
 }
 
-/* CatalogEditCatalogOK describes a response with status code 200, with default header values.
+/*
+CatalogEditCatalogOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CatalogEditCatalogOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this catalog edit catalog o k response has a 2xx status code
+func (o *CatalogEditCatalogOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this catalog edit catalog o k response has a 3xx status code
+func (o *CatalogEditCatalogOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog edit catalog o k response has a 4xx status code
+func (o *CatalogEditCatalogOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this catalog edit catalog o k response has a 5xx status code
+func (o *CatalogEditCatalogOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog edit catalog o k response a status code equal to that given
+func (o *CatalogEditCatalogOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CatalogEditCatalogOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogOK  %+v", 200, o.Payload)
 }
+
+func (o *CatalogEditCatalogOK) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogOK  %+v", 200, o.Payload)
+}
+
 func (o *CatalogEditCatalogOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCatalogEditCatalogBadRequest() *CatalogEditCatalogBadRequest {
 	return &CatalogEditCatalogBadRequest{}
 }
 
-/* CatalogEditCatalogBadRequest describes a response with status code 400, with default header values.
+/*
+CatalogEditCatalogBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CatalogEditCatalogBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this catalog edit catalog bad request response has a 2xx status code
+func (o *CatalogEditCatalogBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog edit catalog bad request response has a 3xx status code
+func (o *CatalogEditCatalogBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog edit catalog bad request response has a 4xx status code
+func (o *CatalogEditCatalogBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog edit catalog bad request response has a 5xx status code
+func (o *CatalogEditCatalogBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog edit catalog bad request response a status code equal to that given
+func (o *CatalogEditCatalogBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CatalogEditCatalogBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CatalogEditCatalogBadRequest) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CatalogEditCatalogBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCatalogEditCatalogUnauthorized() *CatalogEditCatalogUnauthorized {
 	return &CatalogEditCatalogUnauthorized{}
 }
 
-/* CatalogEditCatalogUnauthorized describes a response with status code 401, with default header values.
+/*
+CatalogEditCatalogUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CatalogEditCatalogUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog edit catalog unauthorized response has a 2xx status code
+func (o *CatalogEditCatalogUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog edit catalog unauthorized response has a 3xx status code
+func (o *CatalogEditCatalogUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog edit catalog unauthorized response has a 4xx status code
+func (o *CatalogEditCatalogUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog edit catalog unauthorized response has a 5xx status code
+func (o *CatalogEditCatalogUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog edit catalog unauthorized response a status code equal to that given
+func (o *CatalogEditCatalogUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CatalogEditCatalogUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CatalogEditCatalogUnauthorized) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CatalogEditCatalogUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCatalogEditCatalogForbidden() *CatalogEditCatalogForbidden {
 	return &CatalogEditCatalogForbidden{}
 }
 
-/* CatalogEditCatalogForbidden describes a response with status code 403, with default header values.
+/*
+CatalogEditCatalogForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CatalogEditCatalogForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog edit catalog forbidden response has a 2xx status code
+func (o *CatalogEditCatalogForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog edit catalog forbidden response has a 3xx status code
+func (o *CatalogEditCatalogForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog edit catalog forbidden response has a 4xx status code
+func (o *CatalogEditCatalogForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog edit catalog forbidden response has a 5xx status code
+func (o *CatalogEditCatalogForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog edit catalog forbidden response a status code equal to that given
+func (o *CatalogEditCatalogForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CatalogEditCatalogForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CatalogEditCatalogForbidden) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CatalogEditCatalogForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCatalogEditCatalogNotFound() *CatalogEditCatalogNotFound {
 	return &CatalogEditCatalogNotFound{}
 }
 
-/* CatalogEditCatalogNotFound describes a response with status code 404, with default header values.
+/*
+CatalogEditCatalogNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CatalogEditCatalogNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog edit catalog not found response has a 2xx status code
+func (o *CatalogEditCatalogNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog edit catalog not found response has a 3xx status code
+func (o *CatalogEditCatalogNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog edit catalog not found response has a 4xx status code
+func (o *CatalogEditCatalogNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog edit catalog not found response has a 5xx status code
+func (o *CatalogEditCatalogNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog edit catalog not found response a status code equal to that given
+func (o *CatalogEditCatalogNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CatalogEditCatalogNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CatalogEditCatalogNotFound) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CatalogEditCatalogNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCatalogEditCatalogInternalServerError() *CatalogEditCatalogInternalServe
 	return &CatalogEditCatalogInternalServerError{}
 }
 
-/* CatalogEditCatalogInternalServerError describes a response with status code 500, with default header values.
+/*
+CatalogEditCatalogInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CatalogEditCatalogInternalServerError struct {
 }
 
+// IsSuccess returns true when this catalog edit catalog internal server error response has a 2xx status code
+func (o *CatalogEditCatalogInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog edit catalog internal server error response has a 3xx status code
+func (o *CatalogEditCatalogInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog edit catalog internal server error response has a 4xx status code
+func (o *CatalogEditCatalogInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this catalog edit catalog internal server error response has a 5xx status code
+func (o *CatalogEditCatalogInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this catalog edit catalog internal server error response a status code equal to that given
+func (o *CatalogEditCatalogInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CatalogEditCatalogInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogInternalServerError ", 500)
+}
+
+func (o *CatalogEditCatalogInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogInternalServerError ", 500)
 }
 

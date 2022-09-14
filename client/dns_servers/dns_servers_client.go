@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  DNSServersCreate creates access profile dns server
+DNSServersCreate creates access profile dns server
 */
 func (a *Client) DNSServersCreate(params *DNSServersCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DNSServersCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +81,7 @@ func (a *Client) DNSServersCreate(params *DNSServersCreateParams, authInfo runti
 }
 
 /*
-  DNSServersDelete deletes access profile dns server
+DNSServersDelete deletes access profile dns server
 */
 func (a *Client) DNSServersDelete(params *DNSServersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DNSServersDeleteOK, *DNSServersDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -121,7 +121,7 @@ func (a *Client) DNSServersDelete(params *DNSServersDeleteParams, authInfo runti
 }
 
 /*
-  DNSServersEdit edits access profile dns server
+DNSServersEdit edits access profile dns server
 */
 func (a *Client) DNSServersEdit(params *DNSServersEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DNSServersEditOK, error) {
 	// TODO: Validate the params before sending
@@ -160,7 +160,7 @@ func (a *Client) DNSServersEdit(params *DNSServersEditParams, authInfo runtime.C
 }
 
 /*
-  DNSServersList lists dns servers by profile id
+DNSServersList lists dns servers by profile id
 */
 func (a *Client) DNSServersList(params *DNSServersListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*DNSServersListOK, error) {
 	// TODO: Validate the params before sending

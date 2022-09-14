@@ -52,10 +52,12 @@ func NewGoogleCloudBillingAccountListParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* GoogleCloudBillingAccountListParams contains all the parameters to send to the API endpoint
-   for the google cloud billing account list operation.
+/*
+GoogleCloudBillingAccountListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the google cloud billing account list operation.
+
+	Typically these are written to a http.Request.
 */
 type GoogleCloudBillingAccountListParams struct {
 

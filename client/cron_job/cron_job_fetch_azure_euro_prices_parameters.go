@@ -54,10 +54,12 @@ func NewCronJobFetchAzureEuroPricesParamsWithHTTPClient(client *http.Client) *Cr
 	}
 }
 
-/* CronJobFetchAzureEuroPricesParams contains all the parameters to send to the API endpoint
-   for the cron job fetch azure euro prices operation.
+/*
+CronJobFetchAzureEuroPricesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cron job fetch azure euro prices operation.
+
+	Typically these are written to a http.Request.
 */
 type CronJobFetchAzureEuroPricesParams struct {
 

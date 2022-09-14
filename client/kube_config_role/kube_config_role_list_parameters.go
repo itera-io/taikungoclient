@@ -52,10 +52,12 @@ func NewKubeConfigRoleListParamsWithHTTPClient(client *http.Client) *KubeConfigR
 	}
 }
 
-/* KubeConfigRoleListParams contains all the parameters to send to the API endpoint
-   for the kube config role list operation.
+/*
+KubeConfigRoleListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kube config role list operation.
+
+	Typically these are written to a http.Request.
 */
 type KubeConfigRoleListParams struct {
 

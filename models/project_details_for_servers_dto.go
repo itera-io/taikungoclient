@@ -80,6 +80,9 @@ type ProjectDetailsForServersDto struct {
 	// expired at
 	ExpiredAt string `json:"expiredAt,omitempty"`
 
+	// failure reason
+	FailureReason string `json:"failureReason,omitempty"`
+
 	// has alerting profile
 	HasAlertingProfile bool `json:"hasAlertingProfile"`
 

@@ -69,7 +69,8 @@ func NewKubernetesRestartDeploymentOK() *KubernetesRestartDeploymentOK {
 	return &KubernetesRestartDeploymentOK{}
 }
 
-/* KubernetesRestartDeploymentOK describes a response with status code 200, with default header values.
+/*
+KubernetesRestartDeploymentOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesRestartDeploymentOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this kubernetes restart deployment o k response has a 2xx status code
+func (o *KubernetesRestartDeploymentOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes restart deployment o k response has a 3xx status code
+func (o *KubernetesRestartDeploymentOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes restart deployment o k response has a 4xx status code
+func (o *KubernetesRestartDeploymentOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes restart deployment o k response has a 5xx status code
+func (o *KubernetesRestartDeploymentOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes restart deployment o k response a status code equal to that given
+func (o *KubernetesRestartDeploymentOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesRestartDeploymentOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesRestartDeploymentOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesRestartDeploymentOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesRestartDeploymentBadRequest() *KubernetesRestartDeploymentBadR
 	return &KubernetesRestartDeploymentBadRequest{}
 }
 
-/* KubernetesRestartDeploymentBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesRestartDeploymentBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesRestartDeploymentBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes restart deployment bad request response has a 2xx status code
+func (o *KubernetesRestartDeploymentBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes restart deployment bad request response has a 3xx status code
+func (o *KubernetesRestartDeploymentBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes restart deployment bad request response has a 4xx status code
+func (o *KubernetesRestartDeploymentBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes restart deployment bad request response has a 5xx status code
+func (o *KubernetesRestartDeploymentBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes restart deployment bad request response a status code equal to that given
+func (o *KubernetesRestartDeploymentBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesRestartDeploymentBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesRestartDeploymentBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesRestartDeploymentBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesRestartDeploymentUnauthorized() *KubernetesRestartDeploymentUn
 	return &KubernetesRestartDeploymentUnauthorized{}
 }
 
-/* KubernetesRestartDeploymentUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesRestartDeploymentUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesRestartDeploymentUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes restart deployment unauthorized response has a 2xx status code
+func (o *KubernetesRestartDeploymentUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes restart deployment unauthorized response has a 3xx status code
+func (o *KubernetesRestartDeploymentUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes restart deployment unauthorized response has a 4xx status code
+func (o *KubernetesRestartDeploymentUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes restart deployment unauthorized response has a 5xx status code
+func (o *KubernetesRestartDeploymentUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes restart deployment unauthorized response a status code equal to that given
+func (o *KubernetesRestartDeploymentUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesRestartDeploymentUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesRestartDeploymentUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesRestartDeploymentUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesRestartDeploymentForbidden() *KubernetesRestartDeploymentForbi
 	return &KubernetesRestartDeploymentForbidden{}
 }
 
-/* KubernetesRestartDeploymentForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesRestartDeploymentForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesRestartDeploymentForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes restart deployment forbidden response has a 2xx status code
+func (o *KubernetesRestartDeploymentForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes restart deployment forbidden response has a 3xx status code
+func (o *KubernetesRestartDeploymentForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes restart deployment forbidden response has a 4xx status code
+func (o *KubernetesRestartDeploymentForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes restart deployment forbidden response has a 5xx status code
+func (o *KubernetesRestartDeploymentForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes restart deployment forbidden response a status code equal to that given
+func (o *KubernetesRestartDeploymentForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesRestartDeploymentForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesRestartDeploymentForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesRestartDeploymentForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesRestartDeploymentNotFound() *KubernetesRestartDeploymentNotFou
 	return &KubernetesRestartDeploymentNotFound{}
 }
 
-/* KubernetesRestartDeploymentNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesRestartDeploymentNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesRestartDeploymentNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes restart deployment not found response has a 2xx status code
+func (o *KubernetesRestartDeploymentNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes restart deployment not found response has a 3xx status code
+func (o *KubernetesRestartDeploymentNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes restart deployment not found response has a 4xx status code
+func (o *KubernetesRestartDeploymentNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes restart deployment not found response has a 5xx status code
+func (o *KubernetesRestartDeploymentNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes restart deployment not found response a status code equal to that given
+func (o *KubernetesRestartDeploymentNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesRestartDeploymentNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesRestartDeploymentNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesRestartDeploymentNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesRestartDeploymentInternalServerError() *KubernetesRestartDeplo
 	return &KubernetesRestartDeploymentInternalServerError{}
 }
 
-/* KubernetesRestartDeploymentInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesRestartDeploymentInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesRestartDeploymentInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes restart deployment internal server error response has a 2xx status code
+func (o *KubernetesRestartDeploymentInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes restart deployment internal server error response has a 3xx status code
+func (o *KubernetesRestartDeploymentInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes restart deployment internal server error response has a 4xx status code
+func (o *KubernetesRestartDeploymentInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes restart deployment internal server error response has a 5xx status code
+func (o *KubernetesRestartDeploymentInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes restart deployment internal server error response a status code equal to that given
+func (o *KubernetesRestartDeploymentInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesRestartDeploymentInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentInternalServerError ", 500)
+}
+
+func (o *KubernetesRestartDeploymentInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentInternalServerError ", 500)
 }
 

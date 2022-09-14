@@ -53,10 +53,12 @@ func NewAllowedHostDeleteParamsWithHTTPClient(client *http.Client) *AllowedHostD
 	}
 }
 
-/* AllowedHostDeleteParams contains all the parameters to send to the API endpoint
-   for the allowed host delete operation.
+/*
+AllowedHostDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the allowed host delete operation.
+
+	Typically these are written to a http.Request.
 */
 type AllowedHostDeleteParams struct {
 

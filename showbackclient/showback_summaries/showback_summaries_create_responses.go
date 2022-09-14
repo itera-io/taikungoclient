@@ -69,7 +69,8 @@ func NewShowbackSummariesCreateOK() *ShowbackSummariesCreateOK {
 	return &ShowbackSummariesCreateOK{}
 }
 
-/* ShowbackSummariesCreateOK describes a response with status code 200, with default header values.
+/*
+ShowbackSummariesCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ShowbackSummariesCreateOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this showback summaries create o k response has a 2xx status code
+func (o *ShowbackSummariesCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this showback summaries create o k response has a 3xx status code
+func (o *ShowbackSummariesCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries create o k response has a 4xx status code
+func (o *ShowbackSummariesCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this showback summaries create o k response has a 5xx status code
+func (o *ShowbackSummariesCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback summaries create o k response a status code equal to that given
+func (o *ShowbackSummariesCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ShowbackSummariesCreateOK) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *ShowbackSummariesCreateOK) String() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *ShowbackSummariesCreateOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewShowbackSummariesCreateBadRequest() *ShowbackSummariesCreateBadRequest {
 	return &ShowbackSummariesCreateBadRequest{}
 }
 
-/* ShowbackSummariesCreateBadRequest describes a response with status code 400, with default header values.
+/*
+ShowbackSummariesCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ShowbackSummariesCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this showback summaries create bad request response has a 2xx status code
+func (o *ShowbackSummariesCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback summaries create bad request response has a 3xx status code
+func (o *ShowbackSummariesCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries create bad request response has a 4xx status code
+func (o *ShowbackSummariesCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback summaries create bad request response has a 5xx status code
+func (o *ShowbackSummariesCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback summaries create bad request response a status code equal to that given
+func (o *ShowbackSummariesCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ShowbackSummariesCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ShowbackSummariesCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ShowbackSummariesCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewShowbackSummariesCreateUnauthorized() *ShowbackSummariesCreateUnauthoriz
 	return &ShowbackSummariesCreateUnauthorized{}
 }
 
-/* ShowbackSummariesCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+ShowbackSummariesCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ShowbackSummariesCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback summaries create unauthorized response has a 2xx status code
+func (o *ShowbackSummariesCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback summaries create unauthorized response has a 3xx status code
+func (o *ShowbackSummariesCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries create unauthorized response has a 4xx status code
+func (o *ShowbackSummariesCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback summaries create unauthorized response has a 5xx status code
+func (o *ShowbackSummariesCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback summaries create unauthorized response a status code equal to that given
+func (o *ShowbackSummariesCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ShowbackSummariesCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ShowbackSummariesCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ShowbackSummariesCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewShowbackSummariesCreateForbidden() *ShowbackSummariesCreateForbidden {
 	return &ShowbackSummariesCreateForbidden{}
 }
 
-/* ShowbackSummariesCreateForbidden describes a response with status code 403, with default header values.
+/*
+ShowbackSummariesCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ShowbackSummariesCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback summaries create forbidden response has a 2xx status code
+func (o *ShowbackSummariesCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback summaries create forbidden response has a 3xx status code
+func (o *ShowbackSummariesCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries create forbidden response has a 4xx status code
+func (o *ShowbackSummariesCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback summaries create forbidden response has a 5xx status code
+func (o *ShowbackSummariesCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback summaries create forbidden response a status code equal to that given
+func (o *ShowbackSummariesCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ShowbackSummariesCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ShowbackSummariesCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ShowbackSummariesCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewShowbackSummariesCreateNotFound() *ShowbackSummariesCreateNotFound {
 	return &ShowbackSummariesCreateNotFound{}
 }
 
-/* ShowbackSummariesCreateNotFound describes a response with status code 404, with default header values.
+/*
+ShowbackSummariesCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ShowbackSummariesCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this showback summaries create not found response has a 2xx status code
+func (o *ShowbackSummariesCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback summaries create not found response has a 3xx status code
+func (o *ShowbackSummariesCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries create not found response has a 4xx status code
+func (o *ShowbackSummariesCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this showback summaries create not found response has a 5xx status code
+func (o *ShowbackSummariesCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this showback summaries create not found response a status code equal to that given
+func (o *ShowbackSummariesCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ShowbackSummariesCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ShowbackSummariesCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ShowbackSummariesCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewShowbackSummariesCreateInternalServerError() *ShowbackSummariesCreateInt
 	return &ShowbackSummariesCreateInternalServerError{}
 }
 
-/* ShowbackSummariesCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+ShowbackSummariesCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ShowbackSummariesCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this showback summaries create internal server error response has a 2xx status code
+func (o *ShowbackSummariesCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this showback summaries create internal server error response has a 3xx status code
+func (o *ShowbackSummariesCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this showback summaries create internal server error response has a 4xx status code
+func (o *ShowbackSummariesCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this showback summaries create internal server error response has a 5xx status code
+func (o *ShowbackSummariesCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this showback summaries create internal server error response a status code equal to that given
+func (o *ShowbackSummariesCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ShowbackSummariesCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateInternalServerError ", 500)
+}
+
+func (o *ShowbackSummariesCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateInternalServerError ", 500)
 }
 

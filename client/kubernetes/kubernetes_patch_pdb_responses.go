@@ -69,7 +69,8 @@ func NewKubernetesPatchPdbOK() *KubernetesPatchPdbOK {
 	return &KubernetesPatchPdbOK{}
 }
 
-/* KubernetesPatchPdbOK describes a response with status code 200, with default header values.
+/*
+KubernetesPatchPdbOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesPatchPdbOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this kubernetes patch pdb o k response has a 2xx status code
+func (o *KubernetesPatchPdbOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes patch pdb o k response has a 3xx status code
+func (o *KubernetesPatchPdbOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch pdb o k response has a 4xx status code
+func (o *KubernetesPatchPdbOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes patch pdb o k response has a 5xx status code
+func (o *KubernetesPatchPdbOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch pdb o k response a status code equal to that given
+func (o *KubernetesPatchPdbOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesPatchPdbOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesPatchPdbOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesPatchPdbOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesPatchPdbBadRequest() *KubernetesPatchPdbBadRequest {
 	return &KubernetesPatchPdbBadRequest{}
 }
 
-/* KubernetesPatchPdbBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesPatchPdbBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesPatchPdbBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch pdb bad request response has a 2xx status code
+func (o *KubernetesPatchPdbBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch pdb bad request response has a 3xx status code
+func (o *KubernetesPatchPdbBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch pdb bad request response has a 4xx status code
+func (o *KubernetesPatchPdbBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch pdb bad request response has a 5xx status code
+func (o *KubernetesPatchPdbBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch pdb bad request response a status code equal to that given
+func (o *KubernetesPatchPdbBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesPatchPdbBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesPatchPdbBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesPatchPdbBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesPatchPdbUnauthorized() *KubernetesPatchPdbUnauthorized {
 	return &KubernetesPatchPdbUnauthorized{}
 }
 
-/* KubernetesPatchPdbUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesPatchPdbUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesPatchPdbUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch pdb unauthorized response has a 2xx status code
+func (o *KubernetesPatchPdbUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch pdb unauthorized response has a 3xx status code
+func (o *KubernetesPatchPdbUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch pdb unauthorized response has a 4xx status code
+func (o *KubernetesPatchPdbUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch pdb unauthorized response has a 5xx status code
+func (o *KubernetesPatchPdbUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch pdb unauthorized response a status code equal to that given
+func (o *KubernetesPatchPdbUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesPatchPdbUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesPatchPdbUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesPatchPdbUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesPatchPdbForbidden() *KubernetesPatchPdbForbidden {
 	return &KubernetesPatchPdbForbidden{}
 }
 
-/* KubernetesPatchPdbForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesPatchPdbForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesPatchPdbForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch pdb forbidden response has a 2xx status code
+func (o *KubernetesPatchPdbForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch pdb forbidden response has a 3xx status code
+func (o *KubernetesPatchPdbForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch pdb forbidden response has a 4xx status code
+func (o *KubernetesPatchPdbForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch pdb forbidden response has a 5xx status code
+func (o *KubernetesPatchPdbForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch pdb forbidden response a status code equal to that given
+func (o *KubernetesPatchPdbForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesPatchPdbForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesPatchPdbForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesPatchPdbForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesPatchPdbNotFound() *KubernetesPatchPdbNotFound {
 	return &KubernetesPatchPdbNotFound{}
 }
 
-/* KubernetesPatchPdbNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesPatchPdbNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesPatchPdbNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes patch pdb not found response has a 2xx status code
+func (o *KubernetesPatchPdbNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch pdb not found response has a 3xx status code
+func (o *KubernetesPatchPdbNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch pdb not found response has a 4xx status code
+func (o *KubernetesPatchPdbNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes patch pdb not found response has a 5xx status code
+func (o *KubernetesPatchPdbNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes patch pdb not found response a status code equal to that given
+func (o *KubernetesPatchPdbNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesPatchPdbNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesPatchPdbNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesPatchPdbNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesPatchPdbInternalServerError() *KubernetesPatchPdbInternalServe
 	return &KubernetesPatchPdbInternalServerError{}
 }
 
-/* KubernetesPatchPdbInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesPatchPdbInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesPatchPdbInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes patch pdb internal server error response has a 2xx status code
+func (o *KubernetesPatchPdbInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes patch pdb internal server error response has a 3xx status code
+func (o *KubernetesPatchPdbInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes patch pdb internal server error response has a 4xx status code
+func (o *KubernetesPatchPdbInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes patch pdb internal server error response has a 5xx status code
+func (o *KubernetesPatchPdbInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes patch pdb internal server error response a status code equal to that given
+func (o *KubernetesPatchPdbInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesPatchPdbInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbInternalServerError ", 500)
+}
+
+func (o *KubernetesPatchPdbInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbInternalServerError ", 500)
 }
 

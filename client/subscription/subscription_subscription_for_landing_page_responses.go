@@ -69,7 +69,8 @@ func NewSubscriptionSubscriptionForLandingPageOK() *SubscriptionSubscriptionForL
 	return &SubscriptionSubscriptionForLandingPageOK{}
 }
 
-/* SubscriptionSubscriptionForLandingPageOK describes a response with status code 200, with default header values.
+/*
+SubscriptionSubscriptionForLandingPageOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SubscriptionSubscriptionForLandingPageOK struct {
 	Payload []*models.ListForLandingPageDto
 }
 
+// IsSuccess returns true when this subscription subscription for landing page o k response has a 2xx status code
+func (o *SubscriptionSubscriptionForLandingPageOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this subscription subscription for landing page o k response has a 3xx status code
+func (o *SubscriptionSubscriptionForLandingPageOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription subscription for landing page o k response has a 4xx status code
+func (o *SubscriptionSubscriptionForLandingPageOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this subscription subscription for landing page o k response has a 5xx status code
+func (o *SubscriptionSubscriptionForLandingPageOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription subscription for landing page o k response a status code equal to that given
+func (o *SubscriptionSubscriptionForLandingPageOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SubscriptionSubscriptionForLandingPageOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageOK  %+v", 200, o.Payload)
 }
+
+func (o *SubscriptionSubscriptionForLandingPageOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageOK  %+v", 200, o.Payload)
+}
+
 func (o *SubscriptionSubscriptionForLandingPageOK) GetPayload() []*models.ListForLandingPageDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewSubscriptionSubscriptionForLandingPageBadRequest() *SubscriptionSubscrip
 	return &SubscriptionSubscriptionForLandingPageBadRequest{}
 }
 
-/* SubscriptionSubscriptionForLandingPageBadRequest describes a response with status code 400, with default header values.
+/*
+SubscriptionSubscriptionForLandingPageBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type SubscriptionSubscriptionForLandingPageBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this subscription subscription for landing page bad request response has a 2xx status code
+func (o *SubscriptionSubscriptionForLandingPageBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this subscription subscription for landing page bad request response has a 3xx status code
+func (o *SubscriptionSubscriptionForLandingPageBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription subscription for landing page bad request response has a 4xx status code
+func (o *SubscriptionSubscriptionForLandingPageBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this subscription subscription for landing page bad request response has a 5xx status code
+func (o *SubscriptionSubscriptionForLandingPageBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription subscription for landing page bad request response a status code equal to that given
+func (o *SubscriptionSubscriptionForLandingPageBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SubscriptionSubscriptionForLandingPageBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SubscriptionSubscriptionForLandingPageBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SubscriptionSubscriptionForLandingPageBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewSubscriptionSubscriptionForLandingPageUnauthorized() *SubscriptionSubscr
 	return &SubscriptionSubscriptionForLandingPageUnauthorized{}
 }
 
-/* SubscriptionSubscriptionForLandingPageUnauthorized describes a response with status code 401, with default header values.
+/*
+SubscriptionSubscriptionForLandingPageUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type SubscriptionSubscriptionForLandingPageUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this subscription subscription for landing page unauthorized response has a 2xx status code
+func (o *SubscriptionSubscriptionForLandingPageUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this subscription subscription for landing page unauthorized response has a 3xx status code
+func (o *SubscriptionSubscriptionForLandingPageUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription subscription for landing page unauthorized response has a 4xx status code
+func (o *SubscriptionSubscriptionForLandingPageUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this subscription subscription for landing page unauthorized response has a 5xx status code
+func (o *SubscriptionSubscriptionForLandingPageUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription subscription for landing page unauthorized response a status code equal to that given
+func (o *SubscriptionSubscriptionForLandingPageUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SubscriptionSubscriptionForLandingPageUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SubscriptionSubscriptionForLandingPageUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SubscriptionSubscriptionForLandingPageUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewSubscriptionSubscriptionForLandingPageForbidden() *SubscriptionSubscript
 	return &SubscriptionSubscriptionForLandingPageForbidden{}
 }
 
-/* SubscriptionSubscriptionForLandingPageForbidden describes a response with status code 403, with default header values.
+/*
+SubscriptionSubscriptionForLandingPageForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type SubscriptionSubscriptionForLandingPageForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this subscription subscription for landing page forbidden response has a 2xx status code
+func (o *SubscriptionSubscriptionForLandingPageForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this subscription subscription for landing page forbidden response has a 3xx status code
+func (o *SubscriptionSubscriptionForLandingPageForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription subscription for landing page forbidden response has a 4xx status code
+func (o *SubscriptionSubscriptionForLandingPageForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this subscription subscription for landing page forbidden response has a 5xx status code
+func (o *SubscriptionSubscriptionForLandingPageForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription subscription for landing page forbidden response a status code equal to that given
+func (o *SubscriptionSubscriptionForLandingPageForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SubscriptionSubscriptionForLandingPageForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SubscriptionSubscriptionForLandingPageForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SubscriptionSubscriptionForLandingPageForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewSubscriptionSubscriptionForLandingPageNotFound() *SubscriptionSubscripti
 	return &SubscriptionSubscriptionForLandingPageNotFound{}
 }
 
-/* SubscriptionSubscriptionForLandingPageNotFound describes a response with status code 404, with default header values.
+/*
+SubscriptionSubscriptionForLandingPageNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type SubscriptionSubscriptionForLandingPageNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this subscription subscription for landing page not found response has a 2xx status code
+func (o *SubscriptionSubscriptionForLandingPageNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this subscription subscription for landing page not found response has a 3xx status code
+func (o *SubscriptionSubscriptionForLandingPageNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription subscription for landing page not found response has a 4xx status code
+func (o *SubscriptionSubscriptionForLandingPageNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this subscription subscription for landing page not found response has a 5xx status code
+func (o *SubscriptionSubscriptionForLandingPageNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this subscription subscription for landing page not found response a status code equal to that given
+func (o *SubscriptionSubscriptionForLandingPageNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SubscriptionSubscriptionForLandingPageNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SubscriptionSubscriptionForLandingPageNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SubscriptionSubscriptionForLandingPageNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewSubscriptionSubscriptionForLandingPageInternalServerError() *Subscriptio
 	return &SubscriptionSubscriptionForLandingPageInternalServerError{}
 }
 
-/* SubscriptionSubscriptionForLandingPageInternalServerError describes a response with status code 500, with default header values.
+/*
+SubscriptionSubscriptionForLandingPageInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SubscriptionSubscriptionForLandingPageInternalServerError struct {
 }
 
+// IsSuccess returns true when this subscription subscription for landing page internal server error response has a 2xx status code
+func (o *SubscriptionSubscriptionForLandingPageInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this subscription subscription for landing page internal server error response has a 3xx status code
+func (o *SubscriptionSubscriptionForLandingPageInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this subscription subscription for landing page internal server error response has a 4xx status code
+func (o *SubscriptionSubscriptionForLandingPageInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this subscription subscription for landing page internal server error response has a 5xx status code
+func (o *SubscriptionSubscriptionForLandingPageInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this subscription subscription for landing page internal server error response a status code equal to that given
+func (o *SubscriptionSubscriptionForLandingPageInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SubscriptionSubscriptionForLandingPageInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageInternalServerError ", 500)
+}
+
+func (o *SubscriptionSubscriptionForLandingPageInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageInternalServerError ", 500)
 }
 

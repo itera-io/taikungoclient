@@ -52,10 +52,12 @@ func NewCatalogCatalogDropdownParamsWithHTTPClient(client *http.Client) *Catalog
 	}
 }
 
-/* CatalogCatalogDropdownParams contains all the parameters to send to the API endpoint
-   for the catalog catalog dropdown operation.
+/*
+CatalogCatalogDropdownParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the catalog catalog dropdown operation.
+
+	Typically these are written to a http.Request.
 */
 type CatalogCatalogDropdownParams struct {
 

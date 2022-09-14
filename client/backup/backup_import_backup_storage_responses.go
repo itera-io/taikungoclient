@@ -69,7 +69,8 @@ func NewBackupImportBackupStorageOK() *BackupImportBackupStorageOK {
 	return &BackupImportBackupStorageOK{}
 }
 
-/* BackupImportBackupStorageOK describes a response with status code 200, with default header values.
+/*
+BackupImportBackupStorageOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type BackupImportBackupStorageOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this backup import backup storage o k response has a 2xx status code
+func (o *BackupImportBackupStorageOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this backup import backup storage o k response has a 3xx status code
+func (o *BackupImportBackupStorageOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup import backup storage o k response has a 4xx status code
+func (o *BackupImportBackupStorageOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this backup import backup storage o k response has a 5xx status code
+func (o *BackupImportBackupStorageOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup import backup storage o k response a status code equal to that given
+func (o *BackupImportBackupStorageOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *BackupImportBackupStorageOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageOK  %+v", 200, o.Payload)
 }
+
+func (o *BackupImportBackupStorageOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageOK  %+v", 200, o.Payload)
+}
+
 func (o *BackupImportBackupStorageOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewBackupImportBackupStorageBadRequest() *BackupImportBackupStorageBadReque
 	return &BackupImportBackupStorageBadRequest{}
 }
 
-/* BackupImportBackupStorageBadRequest describes a response with status code 400, with default header values.
+/*
+BackupImportBackupStorageBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type BackupImportBackupStorageBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this backup import backup storage bad request response has a 2xx status code
+func (o *BackupImportBackupStorageBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup import backup storage bad request response has a 3xx status code
+func (o *BackupImportBackupStorageBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup import backup storage bad request response has a 4xx status code
+func (o *BackupImportBackupStorageBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup import backup storage bad request response has a 5xx status code
+func (o *BackupImportBackupStorageBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup import backup storage bad request response a status code equal to that given
+func (o *BackupImportBackupStorageBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BackupImportBackupStorageBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BackupImportBackupStorageBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BackupImportBackupStorageBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewBackupImportBackupStorageUnauthorized() *BackupImportBackupStorageUnauth
 	return &BackupImportBackupStorageUnauthorized{}
 }
 
-/* BackupImportBackupStorageUnauthorized describes a response with status code 401, with default header values.
+/*
+BackupImportBackupStorageUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type BackupImportBackupStorageUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup import backup storage unauthorized response has a 2xx status code
+func (o *BackupImportBackupStorageUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup import backup storage unauthorized response has a 3xx status code
+func (o *BackupImportBackupStorageUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup import backup storage unauthorized response has a 4xx status code
+func (o *BackupImportBackupStorageUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup import backup storage unauthorized response has a 5xx status code
+func (o *BackupImportBackupStorageUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup import backup storage unauthorized response a status code equal to that given
+func (o *BackupImportBackupStorageUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BackupImportBackupStorageUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BackupImportBackupStorageUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BackupImportBackupStorageUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewBackupImportBackupStorageForbidden() *BackupImportBackupStorageForbidden
 	return &BackupImportBackupStorageForbidden{}
 }
 
-/* BackupImportBackupStorageForbidden describes a response with status code 403, with default header values.
+/*
+BackupImportBackupStorageForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type BackupImportBackupStorageForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup import backup storage forbidden response has a 2xx status code
+func (o *BackupImportBackupStorageForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup import backup storage forbidden response has a 3xx status code
+func (o *BackupImportBackupStorageForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup import backup storage forbidden response has a 4xx status code
+func (o *BackupImportBackupStorageForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup import backup storage forbidden response has a 5xx status code
+func (o *BackupImportBackupStorageForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup import backup storage forbidden response a status code equal to that given
+func (o *BackupImportBackupStorageForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *BackupImportBackupStorageForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageForbidden  %+v", 403, o.Payload)
 }
+
+func (o *BackupImportBackupStorageForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageForbidden  %+v", 403, o.Payload)
+}
+
 func (o *BackupImportBackupStorageForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewBackupImportBackupStorageNotFound() *BackupImportBackupStorageNotFound {
 	return &BackupImportBackupStorageNotFound{}
 }
 
-/* BackupImportBackupStorageNotFound describes a response with status code 404, with default header values.
+/*
+BackupImportBackupStorageNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type BackupImportBackupStorageNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup import backup storage not found response has a 2xx status code
+func (o *BackupImportBackupStorageNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup import backup storage not found response has a 3xx status code
+func (o *BackupImportBackupStorageNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup import backup storage not found response has a 4xx status code
+func (o *BackupImportBackupStorageNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup import backup storage not found response has a 5xx status code
+func (o *BackupImportBackupStorageNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup import backup storage not found response a status code equal to that given
+func (o *BackupImportBackupStorageNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BackupImportBackupStorageNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BackupImportBackupStorageNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BackupImportBackupStorageNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewBackupImportBackupStorageInternalServerError() *BackupImportBackupStorag
 	return &BackupImportBackupStorageInternalServerError{}
 }
 
-/* BackupImportBackupStorageInternalServerError describes a response with status code 500, with default header values.
+/*
+BackupImportBackupStorageInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type BackupImportBackupStorageInternalServerError struct {
 }
 
+// IsSuccess returns true when this backup import backup storage internal server error response has a 2xx status code
+func (o *BackupImportBackupStorageInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup import backup storage internal server error response has a 3xx status code
+func (o *BackupImportBackupStorageInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup import backup storage internal server error response has a 4xx status code
+func (o *BackupImportBackupStorageInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this backup import backup storage internal server error response has a 5xx status code
+func (o *BackupImportBackupStorageInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this backup import backup storage internal server error response a status code equal to that given
+func (o *BackupImportBackupStorageInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BackupImportBackupStorageInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageInternalServerError ", 500)
+}
+
+func (o *BackupImportBackupStorageInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageInternalServerError ", 500)
 }
 

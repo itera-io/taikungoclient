@@ -69,7 +69,8 @@ func NewSearchPodsListOK() *SearchPodsListOK {
 	return &SearchPodsListOK{}
 }
 
-/* SearchPodsListOK describes a response with status code 200, with default header values.
+/*
+SearchPodsListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SearchPodsListOK struct {
 	Payload *models.PodsSearchList
 }
 
+// IsSuccess returns true when this search pods list o k response has a 2xx status code
+func (o *SearchPodsListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this search pods list o k response has a 3xx status code
+func (o *SearchPodsListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search pods list o k response has a 4xx status code
+func (o *SearchPodsListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search pods list o k response has a 5xx status code
+func (o *SearchPodsListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search pods list o k response a status code equal to that given
+func (o *SearchPodsListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SearchPodsListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListOK  %+v", 200, o.Payload)
 }
+
+func (o *SearchPodsListOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListOK  %+v", 200, o.Payload)
+}
+
 func (o *SearchPodsListOK) GetPayload() *models.PodsSearchList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewSearchPodsListBadRequest() *SearchPodsListBadRequest {
 	return &SearchPodsListBadRequest{}
 }
 
-/* SearchPodsListBadRequest describes a response with status code 400, with default header values.
+/*
+SearchPodsListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type SearchPodsListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this search pods list bad request response has a 2xx status code
+func (o *SearchPodsListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search pods list bad request response has a 3xx status code
+func (o *SearchPodsListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search pods list bad request response has a 4xx status code
+func (o *SearchPodsListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search pods list bad request response has a 5xx status code
+func (o *SearchPodsListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search pods list bad request response a status code equal to that given
+func (o *SearchPodsListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SearchPodsListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SearchPodsListBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SearchPodsListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewSearchPodsListUnauthorized() *SearchPodsListUnauthorized {
 	return &SearchPodsListUnauthorized{}
 }
 
-/* SearchPodsListUnauthorized describes a response with status code 401, with default header values.
+/*
+SearchPodsListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type SearchPodsListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search pods list unauthorized response has a 2xx status code
+func (o *SearchPodsListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search pods list unauthorized response has a 3xx status code
+func (o *SearchPodsListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search pods list unauthorized response has a 4xx status code
+func (o *SearchPodsListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search pods list unauthorized response has a 5xx status code
+func (o *SearchPodsListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search pods list unauthorized response a status code equal to that given
+func (o *SearchPodsListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SearchPodsListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SearchPodsListUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SearchPodsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewSearchPodsListForbidden() *SearchPodsListForbidden {
 	return &SearchPodsListForbidden{}
 }
 
-/* SearchPodsListForbidden describes a response with status code 403, with default header values.
+/*
+SearchPodsListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type SearchPodsListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search pods list forbidden response has a 2xx status code
+func (o *SearchPodsListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search pods list forbidden response has a 3xx status code
+func (o *SearchPodsListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search pods list forbidden response has a 4xx status code
+func (o *SearchPodsListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search pods list forbidden response has a 5xx status code
+func (o *SearchPodsListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search pods list forbidden response a status code equal to that given
+func (o *SearchPodsListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SearchPodsListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SearchPodsListForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SearchPodsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewSearchPodsListNotFound() *SearchPodsListNotFound {
 	return &SearchPodsListNotFound{}
 }
 
-/* SearchPodsListNotFound describes a response with status code 404, with default header values.
+/*
+SearchPodsListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type SearchPodsListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search pods list not found response has a 2xx status code
+func (o *SearchPodsListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search pods list not found response has a 3xx status code
+func (o *SearchPodsListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search pods list not found response has a 4xx status code
+func (o *SearchPodsListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search pods list not found response has a 5xx status code
+func (o *SearchPodsListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search pods list not found response a status code equal to that given
+func (o *SearchPodsListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SearchPodsListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SearchPodsListNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SearchPodsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewSearchPodsListInternalServerError() *SearchPodsListInternalServerError {
 	return &SearchPodsListInternalServerError{}
 }
 
-/* SearchPodsListInternalServerError describes a response with status code 500, with default header values.
+/*
+SearchPodsListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SearchPodsListInternalServerError struct {
 }
 
+// IsSuccess returns true when this search pods list internal server error response has a 2xx status code
+func (o *SearchPodsListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search pods list internal server error response has a 3xx status code
+func (o *SearchPodsListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search pods list internal server error response has a 4xx status code
+func (o *SearchPodsListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search pods list internal server error response has a 5xx status code
+func (o *SearchPodsListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this search pods list internal server error response a status code equal to that given
+func (o *SearchPodsListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SearchPodsListInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListInternalServerError ", 500)
+}
+
+func (o *SearchPodsListInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListInternalServerError ", 500)
 }
 

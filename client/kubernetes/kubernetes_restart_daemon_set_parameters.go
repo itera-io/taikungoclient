@@ -54,10 +54,12 @@ func NewKubernetesRestartDaemonSetParamsWithHTTPClient(client *http.Client) *Kub
 	}
 }
 
-/* KubernetesRestartDaemonSetParams contains all the parameters to send to the API endpoint
-   for the kubernetes restart daemon set operation.
+/*
+KubernetesRestartDaemonSetParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes restart daemon set operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesRestartDaemonSetParams struct {
 

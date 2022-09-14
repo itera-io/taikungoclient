@@ -54,10 +54,12 @@ func NewTicketCloseParamsWithHTTPClient(client *http.Client) *TicketCloseParams 
 	}
 }
 
-/* TicketCloseParams contains all the parameters to send to the API endpoint
-   for the ticket close operation.
+/*
+TicketCloseParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ticket close operation.
+
+	Typically these are written to a http.Request.
 */
 type TicketCloseParams struct {
 

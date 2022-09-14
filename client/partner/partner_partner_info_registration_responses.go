@@ -69,7 +69,8 @@ func NewPartnerPartnerInfoRegistrationOK() *PartnerPartnerInfoRegistrationOK {
 	return &PartnerPartnerInfoRegistrationOK{}
 }
 
-/* PartnerPartnerInfoRegistrationOK describes a response with status code 200, with default header values.
+/*
+PartnerPartnerInfoRegistrationOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type PartnerPartnerInfoRegistrationOK struct {
 	Payload *models.PartnerRecordDto
 }
 
+// IsSuccess returns true when this partner partner info registration o k response has a 2xx status code
+func (o *PartnerPartnerInfoRegistrationOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this partner partner info registration o k response has a 3xx status code
+func (o *PartnerPartnerInfoRegistrationOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner partner info registration o k response has a 4xx status code
+func (o *PartnerPartnerInfoRegistrationOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this partner partner info registration o k response has a 5xx status code
+func (o *PartnerPartnerInfoRegistrationOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner partner info registration o k response a status code equal to that given
+func (o *PartnerPartnerInfoRegistrationOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PartnerPartnerInfoRegistrationOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationOK  %+v", 200, o.Payload)
 }
+
+func (o *PartnerPartnerInfoRegistrationOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationOK  %+v", 200, o.Payload)
+}
+
 func (o *PartnerPartnerInfoRegistrationOK) GetPayload() *models.PartnerRecordDto {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewPartnerPartnerInfoRegistrationBadRequest() *PartnerPartnerInfoRegistrati
 	return &PartnerPartnerInfoRegistrationBadRequest{}
 }
 
-/* PartnerPartnerInfoRegistrationBadRequest describes a response with status code 400, with default header values.
+/*
+PartnerPartnerInfoRegistrationBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type PartnerPartnerInfoRegistrationBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this partner partner info registration bad request response has a 2xx status code
+func (o *PartnerPartnerInfoRegistrationBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner partner info registration bad request response has a 3xx status code
+func (o *PartnerPartnerInfoRegistrationBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner partner info registration bad request response has a 4xx status code
+func (o *PartnerPartnerInfoRegistrationBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner partner info registration bad request response has a 5xx status code
+func (o *PartnerPartnerInfoRegistrationBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner partner info registration bad request response a status code equal to that given
+func (o *PartnerPartnerInfoRegistrationBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PartnerPartnerInfoRegistrationBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PartnerPartnerInfoRegistrationBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PartnerPartnerInfoRegistrationBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewPartnerPartnerInfoRegistrationUnauthorized() *PartnerPartnerInfoRegistra
 	return &PartnerPartnerInfoRegistrationUnauthorized{}
 }
 
-/* PartnerPartnerInfoRegistrationUnauthorized describes a response with status code 401, with default header values.
+/*
+PartnerPartnerInfoRegistrationUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type PartnerPartnerInfoRegistrationUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this partner partner info registration unauthorized response has a 2xx status code
+func (o *PartnerPartnerInfoRegistrationUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner partner info registration unauthorized response has a 3xx status code
+func (o *PartnerPartnerInfoRegistrationUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner partner info registration unauthorized response has a 4xx status code
+func (o *PartnerPartnerInfoRegistrationUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner partner info registration unauthorized response has a 5xx status code
+func (o *PartnerPartnerInfoRegistrationUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner partner info registration unauthorized response a status code equal to that given
+func (o *PartnerPartnerInfoRegistrationUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PartnerPartnerInfoRegistrationUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *PartnerPartnerInfoRegistrationUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *PartnerPartnerInfoRegistrationUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewPartnerPartnerInfoRegistrationForbidden() *PartnerPartnerInfoRegistratio
 	return &PartnerPartnerInfoRegistrationForbidden{}
 }
 
-/* PartnerPartnerInfoRegistrationForbidden describes a response with status code 403, with default header values.
+/*
+PartnerPartnerInfoRegistrationForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type PartnerPartnerInfoRegistrationForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this partner partner info registration forbidden response has a 2xx status code
+func (o *PartnerPartnerInfoRegistrationForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner partner info registration forbidden response has a 3xx status code
+func (o *PartnerPartnerInfoRegistrationForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner partner info registration forbidden response has a 4xx status code
+func (o *PartnerPartnerInfoRegistrationForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner partner info registration forbidden response has a 5xx status code
+func (o *PartnerPartnerInfoRegistrationForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner partner info registration forbidden response a status code equal to that given
+func (o *PartnerPartnerInfoRegistrationForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PartnerPartnerInfoRegistrationForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PartnerPartnerInfoRegistrationForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PartnerPartnerInfoRegistrationForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewPartnerPartnerInfoRegistrationNotFound() *PartnerPartnerInfoRegistration
 	return &PartnerPartnerInfoRegistrationNotFound{}
 }
 
-/* PartnerPartnerInfoRegistrationNotFound describes a response with status code 404, with default header values.
+/*
+PartnerPartnerInfoRegistrationNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type PartnerPartnerInfoRegistrationNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this partner partner info registration not found response has a 2xx status code
+func (o *PartnerPartnerInfoRegistrationNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner partner info registration not found response has a 3xx status code
+func (o *PartnerPartnerInfoRegistrationNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner partner info registration not found response has a 4xx status code
+func (o *PartnerPartnerInfoRegistrationNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner partner info registration not found response has a 5xx status code
+func (o *PartnerPartnerInfoRegistrationNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner partner info registration not found response a status code equal to that given
+func (o *PartnerPartnerInfoRegistrationNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PartnerPartnerInfoRegistrationNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PartnerPartnerInfoRegistrationNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PartnerPartnerInfoRegistrationNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewPartnerPartnerInfoRegistrationInternalServerError() *PartnerPartnerInfoR
 	return &PartnerPartnerInfoRegistrationInternalServerError{}
 }
 
-/* PartnerPartnerInfoRegistrationInternalServerError describes a response with status code 500, with default header values.
+/*
+PartnerPartnerInfoRegistrationInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PartnerPartnerInfoRegistrationInternalServerError struct {
 }
 
+// IsSuccess returns true when this partner partner info registration internal server error response has a 2xx status code
+func (o *PartnerPartnerInfoRegistrationInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner partner info registration internal server error response has a 3xx status code
+func (o *PartnerPartnerInfoRegistrationInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner partner info registration internal server error response has a 4xx status code
+func (o *PartnerPartnerInfoRegistrationInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this partner partner info registration internal server error response has a 5xx status code
+func (o *PartnerPartnerInfoRegistrationInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this partner partner info registration internal server error response a status code equal to that given
+func (o *PartnerPartnerInfoRegistrationInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PartnerPartnerInfoRegistrationInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationInternalServerError ", 500)
+}
+
+func (o *PartnerPartnerInfoRegistrationInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationInternalServerError ", 500)
 }
 

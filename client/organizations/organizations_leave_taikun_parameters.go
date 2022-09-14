@@ -54,10 +54,12 @@ func NewOrganizationsLeaveTaikunParamsWithHTTPClient(client *http.Client) *Organ
 	}
 }
 
-/* OrganizationsLeaveTaikunParams contains all the parameters to send to the API endpoint
-   for the organizations leave taikun operation.
+/*
+OrganizationsLeaveTaikunParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the organizations leave taikun operation.
+
+	Typically these are written to a http.Request.
 */
 type OrganizationsLeaveTaikunParams struct {
 

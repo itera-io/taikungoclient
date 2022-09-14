@@ -75,7 +75,8 @@ func NewNotificationsDeleteOK() *NotificationsDeleteOK {
 	return &NotificationsDeleteOK{}
 }
 
-/* NotificationsDeleteOK describes a response with status code 200, with default header values.
+/*
+NotificationsDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -83,9 +84,39 @@ type NotificationsDeleteOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this notifications delete o k response has a 2xx status code
+func (o *NotificationsDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this notifications delete o k response has a 3xx status code
+func (o *NotificationsDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications delete o k response has a 4xx status code
+func (o *NotificationsDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this notifications delete o k response has a 5xx status code
+func (o *NotificationsDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications delete o k response a status code equal to that given
+func (o *NotificationsDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *NotificationsDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/delete][%d] notificationsDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *NotificationsDeleteOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/delete][%d] notificationsDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *NotificationsDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -105,14 +136,44 @@ func NewNotificationsDeleteNoContent() *NotificationsDeleteNoContent {
 	return &NotificationsDeleteNoContent{}
 }
 
-/* NotificationsDeleteNoContent describes a response with status code 204, with default header values.
+/*
+NotificationsDeleteNoContent describes a response with status code 204, with default header values.
 
 Success
 */
 type NotificationsDeleteNoContent struct {
 }
 
+// IsSuccess returns true when this notifications delete no content response has a 2xx status code
+func (o *NotificationsDeleteNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this notifications delete no content response has a 3xx status code
+func (o *NotificationsDeleteNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications delete no content response has a 4xx status code
+func (o *NotificationsDeleteNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this notifications delete no content response has a 5xx status code
+func (o *NotificationsDeleteNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications delete no content response a status code equal to that given
+func (o *NotificationsDeleteNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *NotificationsDeleteNoContent) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/delete][%d] notificationsDeleteNoContent ", 204)
+}
+
+func (o *NotificationsDeleteNoContent) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/delete][%d] notificationsDeleteNoContent ", 204)
 }
 
@@ -126,7 +187,8 @@ func NewNotificationsDeleteBadRequest() *NotificationsDeleteBadRequest {
 	return &NotificationsDeleteBadRequest{}
 }
 
-/* NotificationsDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+NotificationsDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -134,9 +196,39 @@ type NotificationsDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this notifications delete bad request response has a 2xx status code
+func (o *NotificationsDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications delete bad request response has a 3xx status code
+func (o *NotificationsDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications delete bad request response has a 4xx status code
+func (o *NotificationsDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications delete bad request response has a 5xx status code
+func (o *NotificationsDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications delete bad request response a status code equal to that given
+func (o *NotificationsDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *NotificationsDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/delete][%d] notificationsDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *NotificationsDeleteBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/delete][%d] notificationsDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *NotificationsDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -158,7 +250,8 @@ func NewNotificationsDeleteUnauthorized() *NotificationsDeleteUnauthorized {
 	return &NotificationsDeleteUnauthorized{}
 }
 
-/* NotificationsDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+NotificationsDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -166,9 +259,39 @@ type NotificationsDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this notifications delete unauthorized response has a 2xx status code
+func (o *NotificationsDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications delete unauthorized response has a 3xx status code
+func (o *NotificationsDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications delete unauthorized response has a 4xx status code
+func (o *NotificationsDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications delete unauthorized response has a 5xx status code
+func (o *NotificationsDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications delete unauthorized response a status code equal to that given
+func (o *NotificationsDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *NotificationsDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/delete][%d] notificationsDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *NotificationsDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/delete][%d] notificationsDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *NotificationsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -190,7 +313,8 @@ func NewNotificationsDeleteForbidden() *NotificationsDeleteForbidden {
 	return &NotificationsDeleteForbidden{}
 }
 
-/* NotificationsDeleteForbidden describes a response with status code 403, with default header values.
+/*
+NotificationsDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -198,9 +322,39 @@ type NotificationsDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this notifications delete forbidden response has a 2xx status code
+func (o *NotificationsDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications delete forbidden response has a 3xx status code
+func (o *NotificationsDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications delete forbidden response has a 4xx status code
+func (o *NotificationsDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications delete forbidden response has a 5xx status code
+func (o *NotificationsDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications delete forbidden response a status code equal to that given
+func (o *NotificationsDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *NotificationsDeleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/delete][%d] notificationsDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *NotificationsDeleteForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/delete][%d] notificationsDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *NotificationsDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -222,7 +376,8 @@ func NewNotificationsDeleteNotFound() *NotificationsDeleteNotFound {
 	return &NotificationsDeleteNotFound{}
 }
 
-/* NotificationsDeleteNotFound describes a response with status code 404, with default header values.
+/*
+NotificationsDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -230,9 +385,39 @@ type NotificationsDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this notifications delete not found response has a 2xx status code
+func (o *NotificationsDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications delete not found response has a 3xx status code
+func (o *NotificationsDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications delete not found response has a 4xx status code
+func (o *NotificationsDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications delete not found response has a 5xx status code
+func (o *NotificationsDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications delete not found response a status code equal to that given
+func (o *NotificationsDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *NotificationsDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/delete][%d] notificationsDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *NotificationsDeleteNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/delete][%d] notificationsDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *NotificationsDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -254,14 +439,44 @@ func NewNotificationsDeleteInternalServerError() *NotificationsDeleteInternalSer
 	return &NotificationsDeleteInternalServerError{}
 }
 
-/* NotificationsDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+NotificationsDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type NotificationsDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this notifications delete internal server error response has a 2xx status code
+func (o *NotificationsDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications delete internal server error response has a 3xx status code
+func (o *NotificationsDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications delete internal server error response has a 4xx status code
+func (o *NotificationsDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this notifications delete internal server error response has a 5xx status code
+func (o *NotificationsDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this notifications delete internal server error response a status code equal to that given
+func (o *NotificationsDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *NotificationsDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/delete][%d] notificationsDeleteInternalServerError ", 500)
+}
+
+func (o *NotificationsDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/delete][%d] notificationsDeleteInternalServerError ", 500)
 }
 

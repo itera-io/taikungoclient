@@ -69,7 +69,8 @@ func NewPartnerCreateOK() *PartnerCreateOK {
 	return &PartnerCreateOK{}
 }
 
-/* PartnerCreateOK describes a response with status code 200, with default header values.
+/*
+PartnerCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type PartnerCreateOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this partner create o k response has a 2xx status code
+func (o *PartnerCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this partner create o k response has a 3xx status code
+func (o *PartnerCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner create o k response has a 4xx status code
+func (o *PartnerCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this partner create o k response has a 5xx status code
+func (o *PartnerCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner create o k response a status code equal to that given
+func (o *PartnerCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PartnerCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *PartnerCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *PartnerCreateOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewPartnerCreateBadRequest() *PartnerCreateBadRequest {
 	return &PartnerCreateBadRequest{}
 }
 
-/* PartnerCreateBadRequest describes a response with status code 400, with default header values.
+/*
+PartnerCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type PartnerCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this partner create bad request response has a 2xx status code
+func (o *PartnerCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner create bad request response has a 3xx status code
+func (o *PartnerCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner create bad request response has a 4xx status code
+func (o *PartnerCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner create bad request response has a 5xx status code
+func (o *PartnerCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner create bad request response a status code equal to that given
+func (o *PartnerCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PartnerCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PartnerCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PartnerCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewPartnerCreateUnauthorized() *PartnerCreateUnauthorized {
 	return &PartnerCreateUnauthorized{}
 }
 
-/* PartnerCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+PartnerCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type PartnerCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this partner create unauthorized response has a 2xx status code
+func (o *PartnerCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner create unauthorized response has a 3xx status code
+func (o *PartnerCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner create unauthorized response has a 4xx status code
+func (o *PartnerCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner create unauthorized response has a 5xx status code
+func (o *PartnerCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner create unauthorized response a status code equal to that given
+func (o *PartnerCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PartnerCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *PartnerCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *PartnerCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewPartnerCreateForbidden() *PartnerCreateForbidden {
 	return &PartnerCreateForbidden{}
 }
 
-/* PartnerCreateForbidden describes a response with status code 403, with default header values.
+/*
+PartnerCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type PartnerCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this partner create forbidden response has a 2xx status code
+func (o *PartnerCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner create forbidden response has a 3xx status code
+func (o *PartnerCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner create forbidden response has a 4xx status code
+func (o *PartnerCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner create forbidden response has a 5xx status code
+func (o *PartnerCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner create forbidden response a status code equal to that given
+func (o *PartnerCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PartnerCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PartnerCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PartnerCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewPartnerCreateNotFound() *PartnerCreateNotFound {
 	return &PartnerCreateNotFound{}
 }
 
-/* PartnerCreateNotFound describes a response with status code 404, with default header values.
+/*
+PartnerCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type PartnerCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this partner create not found response has a 2xx status code
+func (o *PartnerCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner create not found response has a 3xx status code
+func (o *PartnerCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner create not found response has a 4xx status code
+func (o *PartnerCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this partner create not found response has a 5xx status code
+func (o *PartnerCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this partner create not found response a status code equal to that given
+func (o *PartnerCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PartnerCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PartnerCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PartnerCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewPartnerCreateInternalServerError() *PartnerCreateInternalServerError {
 	return &PartnerCreateInternalServerError{}
 }
 
-/* PartnerCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+PartnerCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PartnerCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this partner create internal server error response has a 2xx status code
+func (o *PartnerCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this partner create internal server error response has a 3xx status code
+func (o *PartnerCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this partner create internal server error response has a 4xx status code
+func (o *PartnerCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this partner create internal server error response has a 5xx status code
+func (o *PartnerCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this partner create internal server error response a status code equal to that given
+func (o *PartnerCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PartnerCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateInternalServerError ", 500)
+}
+
+func (o *PartnerCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateInternalServerError ", 500)
 }
 

@@ -54,10 +54,12 @@ func NewSearchKubernetesProfilesListParamsWithHTTPClient(client *http.Client) *S
 	}
 }
 
-/* SearchKubernetesProfilesListParams contains all the parameters to send to the API endpoint
-   for the search kubernetes profiles list operation.
+/*
+SearchKubernetesProfilesListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search kubernetes profiles list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchKubernetesProfilesListParams struct {
 

@@ -53,10 +53,12 @@ func NewStandAloneActionsInstancePasswordParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* StandAloneActionsInstancePasswordParams contains all the parameters to send to the API endpoint
-   for the stand alone actions instance password operation.
+/*
+StandAloneActionsInstancePasswordParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone actions instance password operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneActionsInstancePasswordParams struct {
 

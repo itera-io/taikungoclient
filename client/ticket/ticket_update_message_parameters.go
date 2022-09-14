@@ -54,10 +54,12 @@ func NewTicketUpdateMessageParamsWithHTTPClient(client *http.Client) *TicketUpda
 	}
 }
 
-/* TicketUpdateMessageParams contains all the parameters to send to the API endpoint
-   for the ticket update message operation.
+/*
+TicketUpdateMessageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ticket update message operation.
+
+	Typically these are written to a http.Request.
 */
 type TicketUpdateMessageParams struct {
 

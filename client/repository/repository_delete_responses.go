@@ -69,7 +69,8 @@ func NewRepositoryDeleteOK() *RepositoryDeleteOK {
 	return &RepositoryDeleteOK{}
 }
 
-/* RepositoryDeleteOK describes a response with status code 200, with default header values.
+/*
+RepositoryDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type RepositoryDeleteOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this repository delete o k response has a 2xx status code
+func (o *RepositoryDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this repository delete o k response has a 3xx status code
+func (o *RepositoryDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository delete o k response has a 4xx status code
+func (o *RepositoryDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this repository delete o k response has a 5xx status code
+func (o *RepositoryDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this repository delete o k response a status code equal to that given
+func (o *RepositoryDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *RepositoryDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *RepositoryDeleteOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *RepositoryDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewRepositoryDeleteBadRequest() *RepositoryDeleteBadRequest {
 	return &RepositoryDeleteBadRequest{}
 }
 
-/* RepositoryDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+RepositoryDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type RepositoryDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this repository delete bad request response has a 2xx status code
+func (o *RepositoryDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this repository delete bad request response has a 3xx status code
+func (o *RepositoryDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository delete bad request response has a 4xx status code
+func (o *RepositoryDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this repository delete bad request response has a 5xx status code
+func (o *RepositoryDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this repository delete bad request response a status code equal to that given
+func (o *RepositoryDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *RepositoryDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *RepositoryDeleteBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *RepositoryDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewRepositoryDeleteUnauthorized() *RepositoryDeleteUnauthorized {
 	return &RepositoryDeleteUnauthorized{}
 }
 
-/* RepositoryDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+RepositoryDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type RepositoryDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this repository delete unauthorized response has a 2xx status code
+func (o *RepositoryDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this repository delete unauthorized response has a 3xx status code
+func (o *RepositoryDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository delete unauthorized response has a 4xx status code
+func (o *RepositoryDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this repository delete unauthorized response has a 5xx status code
+func (o *RepositoryDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this repository delete unauthorized response a status code equal to that given
+func (o *RepositoryDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *RepositoryDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *RepositoryDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *RepositoryDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewRepositoryDeleteForbidden() *RepositoryDeleteForbidden {
 	return &RepositoryDeleteForbidden{}
 }
 
-/* RepositoryDeleteForbidden describes a response with status code 403, with default header values.
+/*
+RepositoryDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type RepositoryDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this repository delete forbidden response has a 2xx status code
+func (o *RepositoryDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this repository delete forbidden response has a 3xx status code
+func (o *RepositoryDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository delete forbidden response has a 4xx status code
+func (o *RepositoryDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this repository delete forbidden response has a 5xx status code
+func (o *RepositoryDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this repository delete forbidden response a status code equal to that given
+func (o *RepositoryDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *RepositoryDeleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *RepositoryDeleteForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *RepositoryDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewRepositoryDeleteNotFound() *RepositoryDeleteNotFound {
 	return &RepositoryDeleteNotFound{}
 }
 
-/* RepositoryDeleteNotFound describes a response with status code 404, with default header values.
+/*
+RepositoryDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type RepositoryDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this repository delete not found response has a 2xx status code
+func (o *RepositoryDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this repository delete not found response has a 3xx status code
+func (o *RepositoryDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository delete not found response has a 4xx status code
+func (o *RepositoryDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this repository delete not found response has a 5xx status code
+func (o *RepositoryDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this repository delete not found response a status code equal to that given
+func (o *RepositoryDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *RepositoryDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *RepositoryDeleteNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *RepositoryDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewRepositoryDeleteInternalServerError() *RepositoryDeleteInternalServerErr
 	return &RepositoryDeleteInternalServerError{}
 }
 
-/* RepositoryDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+RepositoryDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type RepositoryDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this repository delete internal server error response has a 2xx status code
+func (o *RepositoryDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this repository delete internal server error response has a 3xx status code
+func (o *RepositoryDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository delete internal server error response has a 4xx status code
+func (o *RepositoryDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this repository delete internal server error response has a 5xx status code
+func (o *RepositoryDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this repository delete internal server error response a status code equal to that given
+func (o *RepositoryDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *RepositoryDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteInternalServerError ", 500)
+}
+
+func (o *RepositoryDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteInternalServerError ", 500)
 }
 

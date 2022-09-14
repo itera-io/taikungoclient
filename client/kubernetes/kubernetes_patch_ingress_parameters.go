@@ -54,10 +54,12 @@ func NewKubernetesPatchIngressParamsWithHTTPClient(client *http.Client) *Kuberne
 	}
 }
 
-/* KubernetesPatchIngressParams contains all the parameters to send to the API endpoint
-   for the kubernetes patch ingress operation.
+/*
+KubernetesPatchIngressParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes patch ingress operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesPatchIngressParams struct {
 

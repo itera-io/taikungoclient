@@ -53,10 +53,12 @@ func NewTicketTransferListParamsWithHTTPClient(client *http.Client) *TicketTrans
 	}
 }
 
-/* TicketTransferListParams contains all the parameters to send to the API endpoint
-   for the ticket transfer list operation.
+/*
+TicketTransferListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ticket transfer list operation.
+
+	Typically these are written to a http.Request.
 */
 type TicketTransferListParams struct {
 

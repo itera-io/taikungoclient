@@ -69,7 +69,8 @@ func NewNotificationsUpdateOK() *NotificationsUpdateOK {
 	return &NotificationsUpdateOK{}
 }
 
-/* NotificationsUpdateOK describes a response with status code 200, with default header values.
+/*
+NotificationsUpdateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type NotificationsUpdateOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this notifications update o k response has a 2xx status code
+func (o *NotificationsUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this notifications update o k response has a 3xx status code
+func (o *NotificationsUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications update o k response has a 4xx status code
+func (o *NotificationsUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this notifications update o k response has a 5xx status code
+func (o *NotificationsUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications update o k response a status code equal to that given
+func (o *NotificationsUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *NotificationsUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/update][%d] notificationsUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *NotificationsUpdateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/update][%d] notificationsUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *NotificationsUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewNotificationsUpdateBadRequest() *NotificationsUpdateBadRequest {
 	return &NotificationsUpdateBadRequest{}
 }
 
-/* NotificationsUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+NotificationsUpdateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type NotificationsUpdateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this notifications update bad request response has a 2xx status code
+func (o *NotificationsUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications update bad request response has a 3xx status code
+func (o *NotificationsUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications update bad request response has a 4xx status code
+func (o *NotificationsUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications update bad request response has a 5xx status code
+func (o *NotificationsUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications update bad request response a status code equal to that given
+func (o *NotificationsUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *NotificationsUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/update][%d] notificationsUpdateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *NotificationsUpdateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/update][%d] notificationsUpdateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *NotificationsUpdateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewNotificationsUpdateUnauthorized() *NotificationsUpdateUnauthorized {
 	return &NotificationsUpdateUnauthorized{}
 }
 
-/* NotificationsUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+NotificationsUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type NotificationsUpdateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this notifications update unauthorized response has a 2xx status code
+func (o *NotificationsUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications update unauthorized response has a 3xx status code
+func (o *NotificationsUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications update unauthorized response has a 4xx status code
+func (o *NotificationsUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications update unauthorized response has a 5xx status code
+func (o *NotificationsUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications update unauthorized response a status code equal to that given
+func (o *NotificationsUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *NotificationsUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/update][%d] notificationsUpdateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *NotificationsUpdateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/update][%d] notificationsUpdateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *NotificationsUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewNotificationsUpdateForbidden() *NotificationsUpdateForbidden {
 	return &NotificationsUpdateForbidden{}
 }
 
-/* NotificationsUpdateForbidden describes a response with status code 403, with default header values.
+/*
+NotificationsUpdateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type NotificationsUpdateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this notifications update forbidden response has a 2xx status code
+func (o *NotificationsUpdateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications update forbidden response has a 3xx status code
+func (o *NotificationsUpdateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications update forbidden response has a 4xx status code
+func (o *NotificationsUpdateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications update forbidden response has a 5xx status code
+func (o *NotificationsUpdateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications update forbidden response a status code equal to that given
+func (o *NotificationsUpdateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *NotificationsUpdateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/update][%d] notificationsUpdateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *NotificationsUpdateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/update][%d] notificationsUpdateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *NotificationsUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewNotificationsUpdateNotFound() *NotificationsUpdateNotFound {
 	return &NotificationsUpdateNotFound{}
 }
 
-/* NotificationsUpdateNotFound describes a response with status code 404, with default header values.
+/*
+NotificationsUpdateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type NotificationsUpdateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this notifications update not found response has a 2xx status code
+func (o *NotificationsUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications update not found response has a 3xx status code
+func (o *NotificationsUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications update not found response has a 4xx status code
+func (o *NotificationsUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications update not found response has a 5xx status code
+func (o *NotificationsUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications update not found response a status code equal to that given
+func (o *NotificationsUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *NotificationsUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/update][%d] notificationsUpdateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *NotificationsUpdateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/update][%d] notificationsUpdateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *NotificationsUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewNotificationsUpdateInternalServerError() *NotificationsUpdateInternalSer
 	return &NotificationsUpdateInternalServerError{}
 }
 
-/* NotificationsUpdateInternalServerError describes a response with status code 500, with default header values.
+/*
+NotificationsUpdateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type NotificationsUpdateInternalServerError struct {
 }
 
+// IsSuccess returns true when this notifications update internal server error response has a 2xx status code
+func (o *NotificationsUpdateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications update internal server error response has a 3xx status code
+func (o *NotificationsUpdateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications update internal server error response has a 4xx status code
+func (o *NotificationsUpdateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this notifications update internal server error response has a 5xx status code
+func (o *NotificationsUpdateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this notifications update internal server error response a status code equal to that given
+func (o *NotificationsUpdateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *NotificationsUpdateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Notifications/update][%d] notificationsUpdateInternalServerError ", 500)
+}
+
+func (o *NotificationsUpdateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/update][%d] notificationsUpdateInternalServerError ", 500)
 }
 

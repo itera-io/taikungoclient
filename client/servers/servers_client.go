@@ -54,7 +54,7 @@ type ClientService interface {
 }
 
 /*
-  ServersConsole consoles servers
+ServersConsole consoles servers
 */
 func (a *Client) ServersConsole(params *ServersConsoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersConsoleOK, error) {
 	// TODO: Validate the params before sending
@@ -93,7 +93,7 @@ func (a *Client) ServersConsole(params *ServersConsoleParams, authInfo runtime.C
 }
 
 /*
-  ServersCreate creates a new server in the given project
+ServersCreate creates a new server in the given project
 */
 func (a *Client) ServersCreate(params *ServersCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -132,7 +132,7 @@ func (a *Client) ServersCreate(params *ServersCreateParams, authInfo runtime.Cli
 }
 
 /*
-  ServersDelete deletes servers by project Id
+ServersDelete deletes servers by project Id
 */
 func (a *Client) ServersDelete(params *ServersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersDeleteOK, *ServersDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -172,7 +172,7 @@ func (a *Client) ServersDelete(params *ServersDeleteParams, authInfo runtime.Cli
 }
 
 /*
-  ServersDetails retrieves a list of servers with detailed info
+ServersDetails retrieves a list of servers with detailed info
 */
 func (a *Client) ServersDetails(params *ServersDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -211,7 +211,7 @@ func (a *Client) ServersDetails(params *ServersDetailsParams, authInfo runtime.C
 }
 
 /*
-  ServersList lists all servers according to roles
+ServersList lists all servers according to roles
 */
 func (a *Client) ServersList(params *ServersListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersListOK, error) {
 	// TODO: Validate the params before sending
@@ -250,7 +250,7 @@ func (a *Client) ServersList(params *ServersListParams, authInfo runtime.ClientA
 }
 
 /*
-  ServersReboot reboots servers
+ServersReboot reboots servers
 */
 func (a *Client) ServersReboot(params *ServersRebootParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersRebootOK, error) {
 	// TODO: Validate the params before sending
@@ -289,7 +289,7 @@ func (a *Client) ServersReboot(params *ServersRebootParams, authInfo runtime.Cli
 }
 
 /*
-  ServersReset updates statuses of servers by project Id
+ServersReset updates statuses of servers by project Id
 */
 func (a *Client) ServersReset(params *ServersResetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersResetOK, error) {
 	// TODO: Validate the params before sending
@@ -328,7 +328,7 @@ func (a *Client) ServersReset(params *ServersResetParams, authInfo runtime.Clien
 }
 
 /*
-  ServersShowServerStatus shows server status
+ServersShowServerStatus shows server status
 */
 func (a *Client) ServersShowServerStatus(params *ServersShowServerStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersShowServerStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -367,7 +367,7 @@ func (a *Client) ServersShowServerStatus(params *ServersShowServerStatusParams, 
 }
 
 /*
-  ServersUpdate updates server
+ServersUpdate updates server
 */
 func (a *Client) ServersUpdate(params *ServersUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -406,7 +406,7 @@ func (a *Client) ServersUpdate(params *ServersUpdateParams, authInfo runtime.Cli
 }
 
 /*
-  ServersUpdateByProjectID updates server by project Id
+ServersUpdateByProjectID updates server by project Id
 */
 func (a *Client) ServersUpdateByProjectID(params *ServersUpdateByProjectIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersUpdateByProjectIDOK, error) {
 	// TODO: Validate the params before sending

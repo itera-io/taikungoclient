@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  ShowbackCredentialsCreate creates showback credential
+ShowbackCredentialsCreate creates showback credential
 */
 func (a *Client) ShowbackCredentialsCreate(params *ShowbackCredentialsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackCredentialsCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -83,7 +83,7 @@ func (a *Client) ShowbackCredentialsCreate(params *ShowbackCredentialsCreatePara
 }
 
 /*
-  ShowbackCredentialsDelete deletes showback credential
+ShowbackCredentialsDelete deletes showback credential
 */
 func (a *Client) ShowbackCredentialsDelete(params *ShowbackCredentialsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackCredentialsDeleteOK, *ShowbackCredentialsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -123,7 +123,7 @@ func (a *Client) ShowbackCredentialsDelete(params *ShowbackCredentialsDeletePara
 }
 
 /*
-  ShowbackCredentialsDropdown retrieves showback credentials by organization Id
+ShowbackCredentialsDropdown retrieves showback credentials by organization Id
 */
 func (a *Client) ShowbackCredentialsDropdown(params *ShowbackCredentialsDropdownParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackCredentialsDropdownOK, error) {
 	// TODO: Validate the params before sending
@@ -162,7 +162,7 @@ func (a *Client) ShowbackCredentialsDropdown(params *ShowbackCredentialsDropdown
 }
 
 /*
-  ShowbackCredentialsList retrieves all showback credentials
+ShowbackCredentialsList retrieves all showback credentials
 */
 func (a *Client) ShowbackCredentialsList(params *ShowbackCredentialsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackCredentialsListOK, error) {
 	// TODO: Validate the params before sending
@@ -201,7 +201,7 @@ func (a *Client) ShowbackCredentialsList(params *ShowbackCredentialsListParams, 
 }
 
 /*
-  ShowbackCredentialsLockManager locks unlock showback credential
+ShowbackCredentialsLockManager locks unlock showback credential
 */
 func (a *Client) ShowbackCredentialsLockManager(params *ShowbackCredentialsLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ShowbackCredentialsLockManagerOK, error) {
 	// TODO: Validate the params before sending

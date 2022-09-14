@@ -69,7 +69,8 @@ func NewOpsCredentialsLockManagerOK() *OpsCredentialsLockManagerOK {
 	return &OpsCredentialsLockManagerOK{}
 }
 
-/* OpsCredentialsLockManagerOK describes a response with status code 200, with default header values.
+/*
+OpsCredentialsLockManagerOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OpsCredentialsLockManagerOK struct {
 	Payload *models.APIResponse
 }
 
+// IsSuccess returns true when this ops credentials lock manager o k response has a 2xx status code
+func (o *OpsCredentialsLockManagerOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this ops credentials lock manager o k response has a 3xx status code
+func (o *OpsCredentialsLockManagerOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials lock manager o k response has a 4xx status code
+func (o *OpsCredentialsLockManagerOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ops credentials lock manager o k response has a 5xx status code
+func (o *OpsCredentialsLockManagerOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials lock manager o k response a status code equal to that given
+func (o *OpsCredentialsLockManagerOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OpsCredentialsLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerOK  %+v", 200, o.Payload)
 }
+
+func (o *OpsCredentialsLockManagerOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerOK  %+v", 200, o.Payload)
+}
+
 func (o *OpsCredentialsLockManagerOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewOpsCredentialsLockManagerBadRequest() *OpsCredentialsLockManagerBadReque
 	return &OpsCredentialsLockManagerBadRequest{}
 }
 
-/* OpsCredentialsLockManagerBadRequest describes a response with status code 400, with default header values.
+/*
+OpsCredentialsLockManagerBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type OpsCredentialsLockManagerBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this ops credentials lock manager bad request response has a 2xx status code
+func (o *OpsCredentialsLockManagerBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ops credentials lock manager bad request response has a 3xx status code
+func (o *OpsCredentialsLockManagerBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials lock manager bad request response has a 4xx status code
+func (o *OpsCredentialsLockManagerBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ops credentials lock manager bad request response has a 5xx status code
+func (o *OpsCredentialsLockManagerBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials lock manager bad request response a status code equal to that given
+func (o *OpsCredentialsLockManagerBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OpsCredentialsLockManagerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OpsCredentialsLockManagerBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OpsCredentialsLockManagerBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewOpsCredentialsLockManagerUnauthorized() *OpsCredentialsLockManagerUnauth
 	return &OpsCredentialsLockManagerUnauthorized{}
 }
 
-/* OpsCredentialsLockManagerUnauthorized describes a response with status code 401, with default header values.
+/*
+OpsCredentialsLockManagerUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type OpsCredentialsLockManagerUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ops credentials lock manager unauthorized response has a 2xx status code
+func (o *OpsCredentialsLockManagerUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ops credentials lock manager unauthorized response has a 3xx status code
+func (o *OpsCredentialsLockManagerUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials lock manager unauthorized response has a 4xx status code
+func (o *OpsCredentialsLockManagerUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ops credentials lock manager unauthorized response has a 5xx status code
+func (o *OpsCredentialsLockManagerUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials lock manager unauthorized response a status code equal to that given
+func (o *OpsCredentialsLockManagerUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OpsCredentialsLockManagerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OpsCredentialsLockManagerUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OpsCredentialsLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewOpsCredentialsLockManagerForbidden() *OpsCredentialsLockManagerForbidden
 	return &OpsCredentialsLockManagerForbidden{}
 }
 
-/* OpsCredentialsLockManagerForbidden describes a response with status code 403, with default header values.
+/*
+OpsCredentialsLockManagerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type OpsCredentialsLockManagerForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ops credentials lock manager forbidden response has a 2xx status code
+func (o *OpsCredentialsLockManagerForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ops credentials lock manager forbidden response has a 3xx status code
+func (o *OpsCredentialsLockManagerForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials lock manager forbidden response has a 4xx status code
+func (o *OpsCredentialsLockManagerForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ops credentials lock manager forbidden response has a 5xx status code
+func (o *OpsCredentialsLockManagerForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials lock manager forbidden response a status code equal to that given
+func (o *OpsCredentialsLockManagerForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OpsCredentialsLockManagerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OpsCredentialsLockManagerForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OpsCredentialsLockManagerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewOpsCredentialsLockManagerNotFound() *OpsCredentialsLockManagerNotFound {
 	return &OpsCredentialsLockManagerNotFound{}
 }
 
-/* OpsCredentialsLockManagerNotFound describes a response with status code 404, with default header values.
+/*
+OpsCredentialsLockManagerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type OpsCredentialsLockManagerNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ops credentials lock manager not found response has a 2xx status code
+func (o *OpsCredentialsLockManagerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ops credentials lock manager not found response has a 3xx status code
+func (o *OpsCredentialsLockManagerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials lock manager not found response has a 4xx status code
+func (o *OpsCredentialsLockManagerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ops credentials lock manager not found response has a 5xx status code
+func (o *OpsCredentialsLockManagerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials lock manager not found response a status code equal to that given
+func (o *OpsCredentialsLockManagerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OpsCredentialsLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OpsCredentialsLockManagerNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OpsCredentialsLockManagerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewOpsCredentialsLockManagerInternalServerError() *OpsCredentialsLockManage
 	return &OpsCredentialsLockManagerInternalServerError{}
 }
 
-/* OpsCredentialsLockManagerInternalServerError describes a response with status code 500, with default header values.
+/*
+OpsCredentialsLockManagerInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OpsCredentialsLockManagerInternalServerError struct {
 }
 
+// IsSuccess returns true when this ops credentials lock manager internal server error response has a 2xx status code
+func (o *OpsCredentialsLockManagerInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ops credentials lock manager internal server error response has a 3xx status code
+func (o *OpsCredentialsLockManagerInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials lock manager internal server error response has a 4xx status code
+func (o *OpsCredentialsLockManagerInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ops credentials lock manager internal server error response has a 5xx status code
+func (o *OpsCredentialsLockManagerInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this ops credentials lock manager internal server error response a status code equal to that given
+func (o *OpsCredentialsLockManagerInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OpsCredentialsLockManagerInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerInternalServerError ", 500)
+}
+
+func (o *OpsCredentialsLockManagerInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerInternalServerError ", 500)
 }
 

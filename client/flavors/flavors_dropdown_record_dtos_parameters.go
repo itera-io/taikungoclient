@@ -53,10 +53,12 @@ func NewFlavorsDropdownRecordDtosParamsWithHTTPClient(client *http.Client) *Flav
 	}
 }
 
-/* FlavorsDropdownRecordDtosParams contains all the parameters to send to the API endpoint
-   for the flavors dropdown record dtos operation.
+/*
+FlavorsDropdownRecordDtosParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the flavors dropdown record dtos operation.
+
+	Typically these are written to a http.Request.
 */
 type FlavorsDropdownRecordDtosParams struct {
 

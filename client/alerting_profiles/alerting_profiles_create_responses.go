@@ -69,7 +69,8 @@ func NewAlertingProfilesCreateOK() *AlertingProfilesCreateOK {
 	return &AlertingProfilesCreateOK{}
 }
 
-/* AlertingProfilesCreateOK describes a response with status code 200, with default header values.
+/*
+AlertingProfilesCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AlertingProfilesCreateOK struct {
 	Payload *models.APIResponse
 }
 
+// IsSuccess returns true when this alerting profiles create o k response has a 2xx status code
+func (o *AlertingProfilesCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this alerting profiles create o k response has a 3xx status code
+func (o *AlertingProfilesCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles create o k response has a 4xx status code
+func (o *AlertingProfilesCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting profiles create o k response has a 5xx status code
+func (o *AlertingProfilesCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles create o k response a status code equal to that given
+func (o *AlertingProfilesCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AlertingProfilesCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *AlertingProfilesCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *AlertingProfilesCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewAlertingProfilesCreateBadRequest() *AlertingProfilesCreateBadRequest {
 	return &AlertingProfilesCreateBadRequest{}
 }
 
-/* AlertingProfilesCreateBadRequest describes a response with status code 400, with default header values.
+/*
+AlertingProfilesCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type AlertingProfilesCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles create bad request response has a 2xx status code
+func (o *AlertingProfilesCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles create bad request response has a 3xx status code
+func (o *AlertingProfilesCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles create bad request response has a 4xx status code
+func (o *AlertingProfilesCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles create bad request response has a 5xx status code
+func (o *AlertingProfilesCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles create bad request response a status code equal to that given
+func (o *AlertingProfilesCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AlertingProfilesCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AlertingProfilesCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AlertingProfilesCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewAlertingProfilesCreateUnauthorized() *AlertingProfilesCreateUnauthorized
 	return &AlertingProfilesCreateUnauthorized{}
 }
 
-/* AlertingProfilesCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+AlertingProfilesCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type AlertingProfilesCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles create unauthorized response has a 2xx status code
+func (o *AlertingProfilesCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles create unauthorized response has a 3xx status code
+func (o *AlertingProfilesCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles create unauthorized response has a 4xx status code
+func (o *AlertingProfilesCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles create unauthorized response has a 5xx status code
+func (o *AlertingProfilesCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles create unauthorized response a status code equal to that given
+func (o *AlertingProfilesCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AlertingProfilesCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AlertingProfilesCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AlertingProfilesCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewAlertingProfilesCreateForbidden() *AlertingProfilesCreateForbidden {
 	return &AlertingProfilesCreateForbidden{}
 }
 
-/* AlertingProfilesCreateForbidden describes a response with status code 403, with default header values.
+/*
+AlertingProfilesCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type AlertingProfilesCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles create forbidden response has a 2xx status code
+func (o *AlertingProfilesCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles create forbidden response has a 3xx status code
+func (o *AlertingProfilesCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles create forbidden response has a 4xx status code
+func (o *AlertingProfilesCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles create forbidden response has a 5xx status code
+func (o *AlertingProfilesCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles create forbidden response a status code equal to that given
+func (o *AlertingProfilesCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AlertingProfilesCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AlertingProfilesCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AlertingProfilesCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewAlertingProfilesCreateNotFound() *AlertingProfilesCreateNotFound {
 	return &AlertingProfilesCreateNotFound{}
 }
 
-/* AlertingProfilesCreateNotFound describes a response with status code 404, with default header values.
+/*
+AlertingProfilesCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type AlertingProfilesCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles create not found response has a 2xx status code
+func (o *AlertingProfilesCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles create not found response has a 3xx status code
+func (o *AlertingProfilesCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles create not found response has a 4xx status code
+func (o *AlertingProfilesCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles create not found response has a 5xx status code
+func (o *AlertingProfilesCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles create not found response a status code equal to that given
+func (o *AlertingProfilesCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AlertingProfilesCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AlertingProfilesCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AlertingProfilesCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewAlertingProfilesCreateInternalServerError() *AlertingProfilesCreateInter
 	return &AlertingProfilesCreateInternalServerError{}
 }
 
-/* AlertingProfilesCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+AlertingProfilesCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AlertingProfilesCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this alerting profiles create internal server error response has a 2xx status code
+func (o *AlertingProfilesCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles create internal server error response has a 3xx status code
+func (o *AlertingProfilesCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles create internal server error response has a 4xx status code
+func (o *AlertingProfilesCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting profiles create internal server error response has a 5xx status code
+func (o *AlertingProfilesCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this alerting profiles create internal server error response a status code equal to that given
+func (o *AlertingProfilesCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AlertingProfilesCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateInternalServerError ", 500)
+}
+
+func (o *AlertingProfilesCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/create][%d] alertingProfilesCreateInternalServerError ", 500)
 }
 

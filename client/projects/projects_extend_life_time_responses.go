@@ -69,7 +69,8 @@ func NewProjectsExtendLifeTimeOK() *ProjectsExtendLifeTimeOK {
 	return &ProjectsExtendLifeTimeOK{}
 }
 
-/* ProjectsExtendLifeTimeOK describes a response with status code 200, with default header values.
+/*
+ProjectsExtendLifeTimeOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsExtendLifeTimeOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this projects extend life time o k response has a 2xx status code
+func (o *ProjectsExtendLifeTimeOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects extend life time o k response has a 3xx status code
+func (o *ProjectsExtendLifeTimeOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects extend life time o k response has a 4xx status code
+func (o *ProjectsExtendLifeTimeOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects extend life time o k response has a 5xx status code
+func (o *ProjectsExtendLifeTimeOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects extend life time o k response a status code equal to that given
+func (o *ProjectsExtendLifeTimeOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsExtendLifeTimeOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsExtendLifeTimeOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsExtendLifeTimeOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectsExtendLifeTimeBadRequest() *ProjectsExtendLifeTimeBadRequest {
 	return &ProjectsExtendLifeTimeBadRequest{}
 }
 
-/* ProjectsExtendLifeTimeBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsExtendLifeTimeBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectsExtendLifeTimeBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects extend life time bad request response has a 2xx status code
+func (o *ProjectsExtendLifeTimeBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects extend life time bad request response has a 3xx status code
+func (o *ProjectsExtendLifeTimeBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects extend life time bad request response has a 4xx status code
+func (o *ProjectsExtendLifeTimeBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects extend life time bad request response has a 5xx status code
+func (o *ProjectsExtendLifeTimeBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects extend life time bad request response a status code equal to that given
+func (o *ProjectsExtendLifeTimeBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsExtendLifeTimeBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsExtendLifeTimeBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsExtendLifeTimeBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectsExtendLifeTimeUnauthorized() *ProjectsExtendLifeTimeUnauthorized
 	return &ProjectsExtendLifeTimeUnauthorized{}
 }
 
-/* ProjectsExtendLifeTimeUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsExtendLifeTimeUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectsExtendLifeTimeUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects extend life time unauthorized response has a 2xx status code
+func (o *ProjectsExtendLifeTimeUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects extend life time unauthorized response has a 3xx status code
+func (o *ProjectsExtendLifeTimeUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects extend life time unauthorized response has a 4xx status code
+func (o *ProjectsExtendLifeTimeUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects extend life time unauthorized response has a 5xx status code
+func (o *ProjectsExtendLifeTimeUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects extend life time unauthorized response a status code equal to that given
+func (o *ProjectsExtendLifeTimeUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsExtendLifeTimeUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsExtendLifeTimeUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsExtendLifeTimeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectsExtendLifeTimeForbidden() *ProjectsExtendLifeTimeForbidden {
 	return &ProjectsExtendLifeTimeForbidden{}
 }
 
-/* ProjectsExtendLifeTimeForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsExtendLifeTimeForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectsExtendLifeTimeForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects extend life time forbidden response has a 2xx status code
+func (o *ProjectsExtendLifeTimeForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects extend life time forbidden response has a 3xx status code
+func (o *ProjectsExtendLifeTimeForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects extend life time forbidden response has a 4xx status code
+func (o *ProjectsExtendLifeTimeForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects extend life time forbidden response has a 5xx status code
+func (o *ProjectsExtendLifeTimeForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects extend life time forbidden response a status code equal to that given
+func (o *ProjectsExtendLifeTimeForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsExtendLifeTimeForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsExtendLifeTimeForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsExtendLifeTimeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectsExtendLifeTimeNotFound() *ProjectsExtendLifeTimeNotFound {
 	return &ProjectsExtendLifeTimeNotFound{}
 }
 
-/* ProjectsExtendLifeTimeNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsExtendLifeTimeNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectsExtendLifeTimeNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects extend life time not found response has a 2xx status code
+func (o *ProjectsExtendLifeTimeNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects extend life time not found response has a 3xx status code
+func (o *ProjectsExtendLifeTimeNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects extend life time not found response has a 4xx status code
+func (o *ProjectsExtendLifeTimeNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects extend life time not found response has a 5xx status code
+func (o *ProjectsExtendLifeTimeNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects extend life time not found response a status code equal to that given
+func (o *ProjectsExtendLifeTimeNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsExtendLifeTimeNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsExtendLifeTimeNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsExtendLifeTimeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectsExtendLifeTimeInternalServerError() *ProjectsExtendLifeTimeInter
 	return &ProjectsExtendLifeTimeInternalServerError{}
 }
 
-/* ProjectsExtendLifeTimeInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsExtendLifeTimeInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsExtendLifeTimeInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects extend life time internal server error response has a 2xx status code
+func (o *ProjectsExtendLifeTimeInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects extend life time internal server error response has a 3xx status code
+func (o *ProjectsExtendLifeTimeInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects extend life time internal server error response has a 4xx status code
+func (o *ProjectsExtendLifeTimeInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects extend life time internal server error response has a 5xx status code
+func (o *ProjectsExtendLifeTimeInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects extend life time internal server error response a status code equal to that given
+func (o *ProjectsExtendLifeTimeInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsExtendLifeTimeInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeInternalServerError ", 500)
+}
+
+func (o *ProjectsExtendLifeTimeInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeInternalServerError ", 500)
 }
 

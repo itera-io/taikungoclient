@@ -55,10 +55,12 @@ func NewNtpServersEditParamsWithHTTPClient(client *http.Client) *NtpServersEditP
 	}
 }
 
-/* NtpServersEditParams contains all the parameters to send to the API endpoint
-   for the ntp servers edit operation.
+/*
+NtpServersEditParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ntp servers edit operation.
+
+	Typically these are written to a http.Request.
 */
 type NtpServersEditParams struct {
 
