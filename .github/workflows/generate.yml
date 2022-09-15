@@ -1,0 +1,102 @@
+name: Generate Client
+
+on:
+  workflow_call:
+    inputs:
+      branch:
+        required: true
+        type: string
+    secrets:
+      username:
+        required: true
+      password:
+        required: true
+      url:
+        required: true
+      showback_url:
+        required: true
+
+jobs:
+  build:
+    name: Generate
+    runs-on: self-hosted
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ inputs.branch }}
+
+      - name: Download swagger.json
+        run: wget -q --user "$SWAGGER_USERNAME" --password "$SWAGGER_PASSWORD" "$SWAGGER_URL" -O swagger.json
+        shell: bash
+        env:
+          SWAGGER_USERNAME: ${{ secrets.username }}
+          SWAGGER_PASSWORD: ${{ secrets.password }}
+          SWAGGER_URL: ${{ secrets.url }}
+
+      - name: Download showback-swagger.json
+        run: wget -q --user "$SWAGGER_USERNAME" --password "$SWAGGER_PASSWORD" "$SHOWBACK_SWAGGER_URL" -O showback-swagger.json
+        shell: bash
+        env:
+          SWAGGER_USERNAME: ${{ secrets.username }}
+          SWAGGER_PASSWORD: ${{ secrets.password }}
+          SHOWBACK_SWAGGER_URL: ${{ secrets.showback_url }}
+
+      - name: Should regenerate client
+        id: check
+        shell: bash
+        run: ./.github/should_regenerate_client.sh
+        continue-on-error: true
+
+      - name: Setup Git
+        if: steps.check.outcome == 'success'
+        shell: bash
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Set up Go
+        if: steps.check.outcome == 'success'
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.17'
+
+      - name: Install Go-Swagger
+        if: steps.check.outcome == 'success'
+        shell: bash
+        run: |
+          download_url=$(curl -s https://api.github.com/repos/go-swagger/go-swagger/releases/latest | jq -r '.assets[] | select(.name | contains("'"$(uname | tr '[:upper:]' '[:lower:]')"'_amd64")) | .browser_download_url')
+          curl -o swagger -L'#' "$download_url"
+          chmod +x swagger
+
+      - name: Generate Client
+        if: steps.check.outcome == 'success'
+        run: ./.github/generate_client.sh
+        shell: bash
+
+      - name: Delete swagger.json
+        if: steps.check.outcome == 'success'
+        run: rm swagger.json
+        shell: bash
+
+      - name: Delete showback-swagger.json
+        if: steps.check.outcome == 'success'
+        run: rm showback-swagger.json
+        shell: bash
+
+      - name: Delete go-swagger
+        if: steps.check.outcome == 'success'
+        run: rm swagger
+        shell: bash
+
+      - name: Commit
+        if: steps.check.outcome == 'success'
+        shell: bash
+        run: |
+          git add .
+          git commit -m "feat: update generated client"
+
+      - name: Push
+        if: steps.check.outcome == 'success'
+        shell: bash
+        run: git push

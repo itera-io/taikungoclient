@@ -6,8 +6,14 @@ set -e
 old_sha1sum_path="./.github/swagger_sha1sum.txt"
 new_sha1sum_path="./.github/swagger_sha1sum_new.txt"
 
+# Combine swagger files
+cat swagger.json showback-swagger.json > combined-swagger.json
+
 # Generate new sha1sum of swagger.json
-sha1sum swagger.json > "${new_sha1sum_path}"
+sha1sum combined-swagger.json > "${new_sha1sum_path}"
+
+# Remove combined-swagger.json file
+rm -f combined-swagger.json
 
 # If running for the first time, save the sha1sum and return true
 if [[ ! -f "${old_sha1sum_path}" ]]; then

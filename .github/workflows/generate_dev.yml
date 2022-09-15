@@ -1,0 +1,16 @@
+name: Generate Dev Client
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  generate-client:
+    uses: itera-io/taikungoclient/.github/workflows/generate.yml@dev
+    with:
+      branch: dev
+    secrets:
+      username: ${{ secrets.SWAGGER_USERNAME }}
+      password: ${{ secrets.SWAGGER_PASSWORD }}
+      url: ${{ secrets.SWAGGER_DEV_URL }}
+      showback_url: ${{ secrets.SHOWBACK_SWAGGER_DEV_URL }}
