@@ -25,6 +25,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/common"
 	"github.com/itera-io/taikungoclient/client/dns_servers"
 	"github.com/itera-io/taikungoclient/client/flavors"
+	"github.com/itera-io/taikungoclient/client/google_cloud"
 	"github.com/itera-io/taikungoclient/client/images"
 	"github.com/itera-io/taikungoclient/client/keycloak"
 	"github.com/itera-io/taikungoclient/client/kube_config"
@@ -133,6 +134,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.Common = common.New(transport, formats)
 	cli.DNSServers = dns_servers.New(transport, formats)
 	cli.Flavors = flavors.New(transport, formats)
+	cli.GoogleCloud = google_cloud.New(transport, formats)
 	cli.Images = images.New(transport, formats)
 	cli.Keycloak = keycloak.New(transport, formats)
 	cli.KubeConfig = kube_config.New(transport, formats)
@@ -239,6 +241,8 @@ type Taikungoclient struct {
 
 	Flavors flavors.ClientService
 
+	GoogleCloud google_cloud.ClientService
+
 	Images images.ClientService
 
 	Keycloak keycloak.ClientService
@@ -324,6 +328,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.Common.SetTransport(transport)
 	c.DNSServers.SetTransport(transport)
 	c.Flavors.SetTransport(transport)
+	c.GoogleCloud.SetTransport(transport)
 	c.Images.SetTransport(transport)
 	c.Keycloak.SetTransport(transport)
 	c.KubeConfig.SetTransport(transport)

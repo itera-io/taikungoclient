@@ -42,6 +42,8 @@ type ClientService interface {
 
 	CheckerDNS(params *CheckerDNSParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerDNSOK, error)
 
+	CheckerGoogle(params *CheckerGoogleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerGoogleOK, error)
+
 	CheckerNtp(params *CheckerNtpParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerNtpOK, error)
 
 	CheckerOpenstack(params *CheckerOpenstackParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOpenstackOK, error)
@@ -292,6 +294,45 @@ func (a *Client) CheckerDNS(params *CheckerDNSParams, authInfo runtime.ClientAut
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Checker_Dns: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CheckerGoogle checks aws credentials
+*/
+func (a *Client) CheckerGoogle(params *CheckerGoogleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerGoogleOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCheckerGoogleParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Checker_Google",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Checker/google",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CheckerGoogleReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CheckerGoogleOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Checker_Google: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
