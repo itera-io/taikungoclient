@@ -54,10 +54,12 @@ func NewKubernetesDescribePdbParamsWithHTTPClient(client *http.Client) *Kubernet
 	}
 }
 
-/* KubernetesDescribePdbParams contains all the parameters to send to the API endpoint
-   for the kubernetes describe pdb operation.
+/*
+KubernetesDescribePdbParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes describe pdb operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesDescribePdbParams struct {
 

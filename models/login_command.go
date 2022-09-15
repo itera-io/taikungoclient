@@ -17,11 +17,20 @@ import (
 // swagger:model LoginCommand
 type LoginCommand struct {
 
+	// access key
+	AccessKey string `json:"accessKey,omitempty"`
+
 	// email
 	Email string `json:"email,omitempty"`
 
+	// mode
+	Mode string `json:"mode,omitempty"`
+
 	// password
 	Password string `json:"password,omitempty"`
+
+	// secret key
+	SecretKey string `json:"secretKey,omitempty"`
 }
 
 // Validate validates this login command

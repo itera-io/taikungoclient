@@ -54,10 +54,12 @@ func NewCloudCredentialsMakeDefaultParamsWithHTTPClient(client *http.Client) *Cl
 	}
 }
 
-/* CloudCredentialsMakeDefaultParams contains all the parameters to send to the API endpoint
-   for the cloud credentials make default operation.
+/*
+CloudCredentialsMakeDefaultParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cloud credentials make default operation.
+
+	Typically these are written to a http.Request.
 */
 type CloudCredentialsMakeDefaultParams struct {
 

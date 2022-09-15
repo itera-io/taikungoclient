@@ -54,10 +54,12 @@ func NewStandAloneVMDisksCreateParamsWithHTTPClient(client *http.Client) *StandA
 	}
 }
 
-/* StandAloneVMDisksCreateParams contains all the parameters to send to the API endpoint
-   for the stand alone Vm disks create operation.
+/*
+StandAloneVMDisksCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone Vm disks create operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneVMDisksCreateParams struct {
 

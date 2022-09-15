@@ -54,10 +54,12 @@ func NewCheckerCronParamsWithHTTPClient(client *http.Client) *CheckerCronParams 
 	}
 }
 
-/* CheckerCronParams contains all the parameters to send to the API endpoint
-   for the checker cron operation.
+/*
+CheckerCronParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checker cron operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckerCronParams struct {
 

@@ -69,7 +69,8 @@ func NewAccessProfilesLockManagerOK() *AccessProfilesLockManagerOK {
 	return &AccessProfilesLockManagerOK{}
 }
 
-/* AccessProfilesLockManagerOK describes a response with status code 200, with default header values.
+/*
+AccessProfilesLockManagerOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AccessProfilesLockManagerOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this access profiles lock manager o k response has a 2xx status code
+func (o *AccessProfilesLockManagerOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this access profiles lock manager o k response has a 3xx status code
+func (o *AccessProfilesLockManagerOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles lock manager o k response has a 4xx status code
+func (o *AccessProfilesLockManagerOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this access profiles lock manager o k response has a 5xx status code
+func (o *AccessProfilesLockManagerOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this access profiles lock manager o k response a status code equal to that given
+func (o *AccessProfilesLockManagerOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AccessProfilesLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerOK  %+v", 200, o.Payload)
 }
+
+func (o *AccessProfilesLockManagerOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerOK  %+v", 200, o.Payload)
+}
+
 func (o *AccessProfilesLockManagerOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAccessProfilesLockManagerBadRequest() *AccessProfilesLockManagerBadReque
 	return &AccessProfilesLockManagerBadRequest{}
 }
 
-/* AccessProfilesLockManagerBadRequest describes a response with status code 400, with default header values.
+/*
+AccessProfilesLockManagerBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AccessProfilesLockManagerBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this access profiles lock manager bad request response has a 2xx status code
+func (o *AccessProfilesLockManagerBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this access profiles lock manager bad request response has a 3xx status code
+func (o *AccessProfilesLockManagerBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles lock manager bad request response has a 4xx status code
+func (o *AccessProfilesLockManagerBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this access profiles lock manager bad request response has a 5xx status code
+func (o *AccessProfilesLockManagerBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this access profiles lock manager bad request response a status code equal to that given
+func (o *AccessProfilesLockManagerBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AccessProfilesLockManagerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AccessProfilesLockManagerBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AccessProfilesLockManagerBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAccessProfilesLockManagerUnauthorized() *AccessProfilesLockManagerUnauth
 	return &AccessProfilesLockManagerUnauthorized{}
 }
 
-/* AccessProfilesLockManagerUnauthorized describes a response with status code 401, with default header values.
+/*
+AccessProfilesLockManagerUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AccessProfilesLockManagerUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this access profiles lock manager unauthorized response has a 2xx status code
+func (o *AccessProfilesLockManagerUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this access profiles lock manager unauthorized response has a 3xx status code
+func (o *AccessProfilesLockManagerUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles lock manager unauthorized response has a 4xx status code
+func (o *AccessProfilesLockManagerUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this access profiles lock manager unauthorized response has a 5xx status code
+func (o *AccessProfilesLockManagerUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this access profiles lock manager unauthorized response a status code equal to that given
+func (o *AccessProfilesLockManagerUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AccessProfilesLockManagerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AccessProfilesLockManagerUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AccessProfilesLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAccessProfilesLockManagerForbidden() *AccessProfilesLockManagerForbidden
 	return &AccessProfilesLockManagerForbidden{}
 }
 
-/* AccessProfilesLockManagerForbidden describes a response with status code 403, with default header values.
+/*
+AccessProfilesLockManagerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AccessProfilesLockManagerForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this access profiles lock manager forbidden response has a 2xx status code
+func (o *AccessProfilesLockManagerForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this access profiles lock manager forbidden response has a 3xx status code
+func (o *AccessProfilesLockManagerForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles lock manager forbidden response has a 4xx status code
+func (o *AccessProfilesLockManagerForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this access profiles lock manager forbidden response has a 5xx status code
+func (o *AccessProfilesLockManagerForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this access profiles lock manager forbidden response a status code equal to that given
+func (o *AccessProfilesLockManagerForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AccessProfilesLockManagerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AccessProfilesLockManagerForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AccessProfilesLockManagerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAccessProfilesLockManagerNotFound() *AccessProfilesLockManagerNotFound {
 	return &AccessProfilesLockManagerNotFound{}
 }
 
-/* AccessProfilesLockManagerNotFound describes a response with status code 404, with default header values.
+/*
+AccessProfilesLockManagerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AccessProfilesLockManagerNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this access profiles lock manager not found response has a 2xx status code
+func (o *AccessProfilesLockManagerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this access profiles lock manager not found response has a 3xx status code
+func (o *AccessProfilesLockManagerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles lock manager not found response has a 4xx status code
+func (o *AccessProfilesLockManagerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this access profiles lock manager not found response has a 5xx status code
+func (o *AccessProfilesLockManagerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this access profiles lock manager not found response a status code equal to that given
+func (o *AccessProfilesLockManagerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AccessProfilesLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AccessProfilesLockManagerNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AccessProfilesLockManagerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAccessProfilesLockManagerInternalServerError() *AccessProfilesLockManage
 	return &AccessProfilesLockManagerInternalServerError{}
 }
 
-/* AccessProfilesLockManagerInternalServerError describes a response with status code 500, with default header values.
+/*
+AccessProfilesLockManagerInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AccessProfilesLockManagerInternalServerError struct {
 }
 
+// IsSuccess returns true when this access profiles lock manager internal server error response has a 2xx status code
+func (o *AccessProfilesLockManagerInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this access profiles lock manager internal server error response has a 3xx status code
+func (o *AccessProfilesLockManagerInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this access profiles lock manager internal server error response has a 4xx status code
+func (o *AccessProfilesLockManagerInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this access profiles lock manager internal server error response has a 5xx status code
+func (o *AccessProfilesLockManagerInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this access profiles lock manager internal server error response a status code equal to that given
+func (o *AccessProfilesLockManagerInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AccessProfilesLockManagerInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerInternalServerError ", 500)
+}
+
+func (o *AccessProfilesLockManagerInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerInternalServerError ", 500)
 }
 

@@ -53,15 +53,20 @@ func NewFlavorsGetSelectedFlavorsForProjectParamsWithHTTPClient(client *http.Cli
 	}
 }
 
-/* FlavorsGetSelectedFlavorsForProjectParams contains all the parameters to send to the API endpoint
-   for the flavors get selected flavors for project operation.
+/*
+FlavorsGetSelectedFlavorsForProjectParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the flavors get selected flavors for project operation.
+
+	Typically these are written to a http.Request.
 */
 type FlavorsGetSelectedFlavorsForProjectParams struct {
 
 	// FilterBy.
 	FilterBy *string
+
+	// FlavorName.
+	FlavorName *string
 
 	// Limit.
 	//
@@ -94,6 +99,9 @@ type FlavorsGetSelectedFlavorsForProjectParams struct {
 
 	// V.
 	V string
+
+	// WithPrice.
+	WithPrice *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -157,6 +165,17 @@ func (o *FlavorsGetSelectedFlavorsForProjectParams) WithFilterBy(filterBy *strin
 // SetFilterBy adds the filterBy to the flavors get selected flavors for project params
 func (o *FlavorsGetSelectedFlavorsForProjectParams) SetFilterBy(filterBy *string) {
 	o.FilterBy = filterBy
+}
+
+// WithFlavorName adds the flavorName to the flavors get selected flavors for project params
+func (o *FlavorsGetSelectedFlavorsForProjectParams) WithFlavorName(flavorName *string) *FlavorsGetSelectedFlavorsForProjectParams {
+	o.SetFlavorName(flavorName)
+	return o
+}
+
+// SetFlavorName adds the flavorName to the flavors get selected flavors for project params
+func (o *FlavorsGetSelectedFlavorsForProjectParams) SetFlavorName(flavorName *string) {
+	o.FlavorName = flavorName
 }
 
 // WithLimit adds the limit to the flavors get selected flavors for project params
@@ -247,6 +266,17 @@ func (o *FlavorsGetSelectedFlavorsForProjectParams) SetV(v string) {
 	o.V = v
 }
 
+// WithWithPrice adds the withPrice to the flavors get selected flavors for project params
+func (o *FlavorsGetSelectedFlavorsForProjectParams) WithWithPrice(withPrice *bool) *FlavorsGetSelectedFlavorsForProjectParams {
+	o.SetWithPrice(withPrice)
+	return o
+}
+
+// SetWithPrice adds the withPrice to the flavors get selected flavors for project params
+func (o *FlavorsGetSelectedFlavorsForProjectParams) SetWithPrice(withPrice *bool) {
+	o.WithPrice = withPrice
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *FlavorsGetSelectedFlavorsForProjectParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -267,6 +297,23 @@ func (o *FlavorsGetSelectedFlavorsForProjectParams) WriteToRequest(r runtime.Cli
 		if qFilterBy != "" {
 
 			if err := r.SetQueryParam("filterBy", qFilterBy); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.FlavorName != nil {
+
+		// query param flavorName
+		var qrFlavorName string
+
+		if o.FlavorName != nil {
+			qrFlavorName = *o.FlavorName
+		}
+		qFlavorName := qrFlavorName
+		if qFlavorName != "" {
+
+			if err := r.SetQueryParam("flavorName", qFlavorName); err != nil {
 				return err
 			}
 		}
@@ -394,6 +441,23 @@ func (o *FlavorsGetSelectedFlavorsForProjectParams) WriteToRequest(r runtime.Cli
 	// path param v
 	if err := r.SetPathParam("v", o.V); err != nil {
 		return err
+	}
+
+	if o.WithPrice != nil {
+
+		// query param withPrice
+		var qrWithPrice bool
+
+		if o.WithPrice != nil {
+			qrWithPrice = *o.WithPrice
+		}
+		qWithPrice := swag.FormatBool(qrWithPrice)
+		if qWithPrice != "" {
+
+			if err := r.SetQueryParam("withPrice", qWithPrice); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {

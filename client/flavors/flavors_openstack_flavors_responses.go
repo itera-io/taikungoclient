@@ -69,7 +69,8 @@ func NewFlavorsOpenstackFlavorsOK() *FlavorsOpenstackFlavorsOK {
 	return &FlavorsOpenstackFlavorsOK{}
 }
 
-/* FlavorsOpenstackFlavorsOK describes a response with status code 200, with default header values.
+/*
+FlavorsOpenstackFlavorsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type FlavorsOpenstackFlavorsOK struct {
 	Payload *models.OpenstackFlavorList
 }
 
+// IsSuccess returns true when this flavors openstack flavors o k response has a 2xx status code
+func (o *FlavorsOpenstackFlavorsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this flavors openstack flavors o k response has a 3xx status code
+func (o *FlavorsOpenstackFlavorsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors openstack flavors o k response has a 4xx status code
+func (o *FlavorsOpenstackFlavorsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this flavors openstack flavors o k response has a 5xx status code
+func (o *FlavorsOpenstackFlavorsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors openstack flavors o k response a status code equal to that given
+func (o *FlavorsOpenstackFlavorsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *FlavorsOpenstackFlavorsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsOK  %+v", 200, o.Payload)
 }
+
+func (o *FlavorsOpenstackFlavorsOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsOK  %+v", 200, o.Payload)
+}
+
 func (o *FlavorsOpenstackFlavorsOK) GetPayload() *models.OpenstackFlavorList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewFlavorsOpenstackFlavorsBadRequest() *FlavorsOpenstackFlavorsBadRequest {
 	return &FlavorsOpenstackFlavorsBadRequest{}
 }
 
-/* FlavorsOpenstackFlavorsBadRequest describes a response with status code 400, with default header values.
+/*
+FlavorsOpenstackFlavorsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type FlavorsOpenstackFlavorsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this flavors openstack flavors bad request response has a 2xx status code
+func (o *FlavorsOpenstackFlavorsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors openstack flavors bad request response has a 3xx status code
+func (o *FlavorsOpenstackFlavorsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors openstack flavors bad request response has a 4xx status code
+func (o *FlavorsOpenstackFlavorsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors openstack flavors bad request response has a 5xx status code
+func (o *FlavorsOpenstackFlavorsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors openstack flavors bad request response a status code equal to that given
+func (o *FlavorsOpenstackFlavorsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *FlavorsOpenstackFlavorsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *FlavorsOpenstackFlavorsBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *FlavorsOpenstackFlavorsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewFlavorsOpenstackFlavorsUnauthorized() *FlavorsOpenstackFlavorsUnauthoriz
 	return &FlavorsOpenstackFlavorsUnauthorized{}
 }
 
-/* FlavorsOpenstackFlavorsUnauthorized describes a response with status code 401, with default header values.
+/*
+FlavorsOpenstackFlavorsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type FlavorsOpenstackFlavorsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this flavors openstack flavors unauthorized response has a 2xx status code
+func (o *FlavorsOpenstackFlavorsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors openstack flavors unauthorized response has a 3xx status code
+func (o *FlavorsOpenstackFlavorsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors openstack flavors unauthorized response has a 4xx status code
+func (o *FlavorsOpenstackFlavorsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors openstack flavors unauthorized response has a 5xx status code
+func (o *FlavorsOpenstackFlavorsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors openstack flavors unauthorized response a status code equal to that given
+func (o *FlavorsOpenstackFlavorsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *FlavorsOpenstackFlavorsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *FlavorsOpenstackFlavorsUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *FlavorsOpenstackFlavorsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewFlavorsOpenstackFlavorsForbidden() *FlavorsOpenstackFlavorsForbidden {
 	return &FlavorsOpenstackFlavorsForbidden{}
 }
 
-/* FlavorsOpenstackFlavorsForbidden describes a response with status code 403, with default header values.
+/*
+FlavorsOpenstackFlavorsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type FlavorsOpenstackFlavorsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this flavors openstack flavors forbidden response has a 2xx status code
+func (o *FlavorsOpenstackFlavorsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors openstack flavors forbidden response has a 3xx status code
+func (o *FlavorsOpenstackFlavorsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors openstack flavors forbidden response has a 4xx status code
+func (o *FlavorsOpenstackFlavorsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors openstack flavors forbidden response has a 5xx status code
+func (o *FlavorsOpenstackFlavorsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors openstack flavors forbidden response a status code equal to that given
+func (o *FlavorsOpenstackFlavorsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *FlavorsOpenstackFlavorsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *FlavorsOpenstackFlavorsForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *FlavorsOpenstackFlavorsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewFlavorsOpenstackFlavorsNotFound() *FlavorsOpenstackFlavorsNotFound {
 	return &FlavorsOpenstackFlavorsNotFound{}
 }
 
-/* FlavorsOpenstackFlavorsNotFound describes a response with status code 404, with default header values.
+/*
+FlavorsOpenstackFlavorsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type FlavorsOpenstackFlavorsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this flavors openstack flavors not found response has a 2xx status code
+func (o *FlavorsOpenstackFlavorsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors openstack flavors not found response has a 3xx status code
+func (o *FlavorsOpenstackFlavorsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors openstack flavors not found response has a 4xx status code
+func (o *FlavorsOpenstackFlavorsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors openstack flavors not found response has a 5xx status code
+func (o *FlavorsOpenstackFlavorsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors openstack flavors not found response a status code equal to that given
+func (o *FlavorsOpenstackFlavorsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *FlavorsOpenstackFlavorsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *FlavorsOpenstackFlavorsNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *FlavorsOpenstackFlavorsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewFlavorsOpenstackFlavorsInternalServerError() *FlavorsOpenstackFlavorsInt
 	return &FlavorsOpenstackFlavorsInternalServerError{}
 }
 
-/* FlavorsOpenstackFlavorsInternalServerError describes a response with status code 500, with default header values.
+/*
+FlavorsOpenstackFlavorsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type FlavorsOpenstackFlavorsInternalServerError struct {
 }
 
+// IsSuccess returns true when this flavors openstack flavors internal server error response has a 2xx status code
+func (o *FlavorsOpenstackFlavorsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors openstack flavors internal server error response has a 3xx status code
+func (o *FlavorsOpenstackFlavorsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors openstack flavors internal server error response has a 4xx status code
+func (o *FlavorsOpenstackFlavorsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this flavors openstack flavors internal server error response has a 5xx status code
+func (o *FlavorsOpenstackFlavorsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this flavors openstack flavors internal server error response a status code equal to that given
+func (o *FlavorsOpenstackFlavorsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *FlavorsOpenstackFlavorsInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsInternalServerError ", 500)
+}
+
+func (o *FlavorsOpenstackFlavorsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsInternalServerError ", 500)
 }
 

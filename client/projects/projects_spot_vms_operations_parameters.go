@@ -54,10 +54,12 @@ func NewProjectsSpotVmsOperationsParamsWithHTTPClient(client *http.Client) *Proj
 	}
 }
 
-/* ProjectsSpotVmsOperationsParams contains all the parameters to send to the API endpoint
-   for the projects spot vms operations operation.
+/*
+ProjectsSpotVmsOperationsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects spot vms operations operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsSpotVmsOperationsParams struct {
 

@@ -20,7 +20,7 @@ import (
 type ProjectsList struct {
 
 	// data
-	Data []*ProjectListForUIDto `json:"data"`
+	Data []*ProjectListDetailDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`

@@ -69,7 +69,8 @@ func NewKeycloakEditOK() *KeycloakEditOK {
 	return &KeycloakEditOK{}
 }
 
-/* KeycloakEditOK describes a response with status code 200, with default header values.
+/*
+KeycloakEditOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KeycloakEditOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this keycloak edit o k response has a 2xx status code
+func (o *KeycloakEditOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this keycloak edit o k response has a 3xx status code
+func (o *KeycloakEditOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this keycloak edit o k response has a 4xx status code
+func (o *KeycloakEditOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this keycloak edit o k response has a 5xx status code
+func (o *KeycloakEditOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this keycloak edit o k response a status code equal to that given
+func (o *KeycloakEditOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KeycloakEditOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditOK  %+v", 200, o.Payload)
 }
+
+func (o *KeycloakEditOK) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditOK  %+v", 200, o.Payload)
+}
+
 func (o *KeycloakEditOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKeycloakEditBadRequest() *KeycloakEditBadRequest {
 	return &KeycloakEditBadRequest{}
 }
 
-/* KeycloakEditBadRequest describes a response with status code 400, with default header values.
+/*
+KeycloakEditBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KeycloakEditBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this keycloak edit bad request response has a 2xx status code
+func (o *KeycloakEditBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this keycloak edit bad request response has a 3xx status code
+func (o *KeycloakEditBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this keycloak edit bad request response has a 4xx status code
+func (o *KeycloakEditBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this keycloak edit bad request response has a 5xx status code
+func (o *KeycloakEditBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this keycloak edit bad request response a status code equal to that given
+func (o *KeycloakEditBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KeycloakEditBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KeycloakEditBadRequest) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KeycloakEditBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKeycloakEditUnauthorized() *KeycloakEditUnauthorized {
 	return &KeycloakEditUnauthorized{}
 }
 
-/* KeycloakEditUnauthorized describes a response with status code 401, with default header values.
+/*
+KeycloakEditUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KeycloakEditUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this keycloak edit unauthorized response has a 2xx status code
+func (o *KeycloakEditUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this keycloak edit unauthorized response has a 3xx status code
+func (o *KeycloakEditUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this keycloak edit unauthorized response has a 4xx status code
+func (o *KeycloakEditUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this keycloak edit unauthorized response has a 5xx status code
+func (o *KeycloakEditUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this keycloak edit unauthorized response a status code equal to that given
+func (o *KeycloakEditUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KeycloakEditUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KeycloakEditUnauthorized) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KeycloakEditUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKeycloakEditForbidden() *KeycloakEditForbidden {
 	return &KeycloakEditForbidden{}
 }
 
-/* KeycloakEditForbidden describes a response with status code 403, with default header values.
+/*
+KeycloakEditForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KeycloakEditForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this keycloak edit forbidden response has a 2xx status code
+func (o *KeycloakEditForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this keycloak edit forbidden response has a 3xx status code
+func (o *KeycloakEditForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this keycloak edit forbidden response has a 4xx status code
+func (o *KeycloakEditForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this keycloak edit forbidden response has a 5xx status code
+func (o *KeycloakEditForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this keycloak edit forbidden response a status code equal to that given
+func (o *KeycloakEditForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KeycloakEditForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KeycloakEditForbidden) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KeycloakEditForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKeycloakEditNotFound() *KeycloakEditNotFound {
 	return &KeycloakEditNotFound{}
 }
 
-/* KeycloakEditNotFound describes a response with status code 404, with default header values.
+/*
+KeycloakEditNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KeycloakEditNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this keycloak edit not found response has a 2xx status code
+func (o *KeycloakEditNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this keycloak edit not found response has a 3xx status code
+func (o *KeycloakEditNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this keycloak edit not found response has a 4xx status code
+func (o *KeycloakEditNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this keycloak edit not found response has a 5xx status code
+func (o *KeycloakEditNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this keycloak edit not found response a status code equal to that given
+func (o *KeycloakEditNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KeycloakEditNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KeycloakEditNotFound) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KeycloakEditNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKeycloakEditInternalServerError() *KeycloakEditInternalServerError {
 	return &KeycloakEditInternalServerError{}
 }
 
-/* KeycloakEditInternalServerError describes a response with status code 500, with default header values.
+/*
+KeycloakEditInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KeycloakEditInternalServerError struct {
 }
 
+// IsSuccess returns true when this keycloak edit internal server error response has a 2xx status code
+func (o *KeycloakEditInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this keycloak edit internal server error response has a 3xx status code
+func (o *KeycloakEditInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this keycloak edit internal server error response has a 4xx status code
+func (o *KeycloakEditInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this keycloak edit internal server error response has a 5xx status code
+func (o *KeycloakEditInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this keycloak edit internal server error response a status code equal to that given
+func (o *KeycloakEditInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KeycloakEditInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditInternalServerError ", 500)
+}
+
+func (o *KeycloakEditInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditInternalServerError ", 500)
 }
 

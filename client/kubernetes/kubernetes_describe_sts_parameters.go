@@ -54,10 +54,12 @@ func NewKubernetesDescribeStsParamsWithHTTPClient(client *http.Client) *Kubernet
 	}
 }
 
-/* KubernetesDescribeStsParams contains all the parameters to send to the API endpoint
-   for the kubernetes describe sts operation.
+/*
+KubernetesDescribeStsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes describe sts operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesDescribeStsParams struct {
 

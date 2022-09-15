@@ -53,10 +53,12 @@ func NewStandAloneListParamsWithHTTPClient(client *http.Client) *StandAloneListP
 	}
 }
 
-/* StandAloneListParams contains all the parameters to send to the API endpoint
-   for the stand alone list operation.
+/*
+StandAloneListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone list operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneListParams struct {
 
@@ -72,8 +74,8 @@ type StandAloneListParams struct {
 
 	// EndRAM.
 	//
-	// Format: int64
-	EndRAM *int64
+	// Format: double
+	EndRAM *float64
 
 	// FilterBy.
 	FilterBy *string
@@ -133,8 +135,8 @@ type StandAloneListParams struct {
 
 	// StartRAM.
 	//
-	// Format: int64
-	StartRAM *int64
+	// Format: double
+	StartRAM *float64
 
 	// V.
 	V string
@@ -215,13 +217,13 @@ func (o *StandAloneListParams) SetEndDiskSize(endDiskSize *int64) {
 }
 
 // WithEndRAM adds the endRAM to the stand alone list params
-func (o *StandAloneListParams) WithEndRAM(endRAM *int64) *StandAloneListParams {
+func (o *StandAloneListParams) WithEndRAM(endRAM *float64) *StandAloneListParams {
 	o.SetEndRAM(endRAM)
 	return o
 }
 
 // SetEndRAM adds the endRam to the stand alone list params
-func (o *StandAloneListParams) SetEndRAM(endRAM *int64) {
+func (o *StandAloneListParams) SetEndRAM(endRAM *float64) {
 	o.EndRAM = endRAM
 }
 
@@ -358,13 +360,13 @@ func (o *StandAloneListParams) SetStartDiskSize(startDiskSize *int64) {
 }
 
 // WithStartRAM adds the startRAM to the stand alone list params
-func (o *StandAloneListParams) WithStartRAM(startRAM *int64) *StandAloneListParams {
+func (o *StandAloneListParams) WithStartRAM(startRAM *float64) *StandAloneListParams {
 	o.SetStartRAM(startRAM)
 	return o
 }
 
 // SetStartRAM adds the startRam to the stand alone list params
-func (o *StandAloneListParams) SetStartRAM(startRAM *int64) {
+func (o *StandAloneListParams) SetStartRAM(startRAM *float64) {
 	o.StartRAM = startRAM
 }
 
@@ -424,12 +426,12 @@ func (o *StandAloneListParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 	if o.EndRAM != nil {
 
 		// query param endRam
-		var qrEndRAM int64
+		var qrEndRAM float64
 
 		if o.EndRAM != nil {
 			qrEndRAM = *o.EndRAM
 		}
-		qEndRAM := swag.FormatInt64(qrEndRAM)
+		qEndRAM := swag.FormatFloat64(qrEndRAM)
 		if qEndRAM != "" {
 
 			if err := r.SetQueryParam("endRam", qEndRAM); err != nil {
@@ -645,12 +647,12 @@ func (o *StandAloneListParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 	if o.StartRAM != nil {
 
 		// query param startRam
-		var qrStartRAM int64
+		var qrStartRAM float64
 
 		if o.StartRAM != nil {
 			qrStartRAM = *o.StartRAM
 		}
-		qStartRAM := swag.FormatInt64(qrStartRAM)
+		qStartRAM := swag.FormatFloat64(qrStartRAM)
 		if qStartRAM != "" {
 
 			if err := r.SetQueryParam("startRam", qStartRAM); err != nil {

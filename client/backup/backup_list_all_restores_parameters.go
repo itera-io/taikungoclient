@@ -53,10 +53,12 @@ func NewBackupListAllRestoresParamsWithHTTPClient(client *http.Client) *BackupLi
 	}
 }
 
-/* BackupListAllRestoresParams contains all the parameters to send to the API endpoint
-   for the backup list all restores operation.
+/*
+BackupListAllRestoresParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the backup list all restores operation.
+
+	Typically these are written to a http.Request.
 */
 type BackupListAllRestoresParams struct {
 

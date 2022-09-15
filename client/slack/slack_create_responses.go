@@ -69,25 +69,58 @@ func NewSlackCreateOK() *SlackCreateOK {
 	return &SlackCreateOK{}
 }
 
-/* SlackCreateOK describes a response with status code 200, with default header values.
+/*
+SlackCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
 type SlackCreateOK struct {
-	Payload int32
+	Payload *models.APIResponse
+}
+
+// IsSuccess returns true when this slack create o k response has a 2xx status code
+func (o *SlackCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this slack create o k response has a 3xx status code
+func (o *SlackCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack create o k response has a 4xx status code
+func (o *SlackCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this slack create o k response has a 5xx status code
+func (o *SlackCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack create o k response a status code equal to that given
+func (o *SlackCreateOK) IsCode(code int) bool {
+	return code == 200
 }
 
 func (o *SlackCreateOK) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack][%d] slackCreateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateOK  %+v", 200, o.Payload)
 }
-func (o *SlackCreateOK) GetPayload() int32 {
+
+func (o *SlackCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateOK  %+v", 200, o.Payload)
+}
+
+func (o *SlackCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *SlackCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.APIResponse)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -99,7 +132,8 @@ func NewSlackCreateBadRequest() *SlackCreateBadRequest {
 	return &SlackCreateBadRequest{}
 }
 
-/* SlackCreateBadRequest describes a response with status code 400, with default header values.
+/*
+SlackCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +141,39 @@ type SlackCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
-func (o *SlackCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack][%d] slackCreateBadRequest  %+v", 400, o.Payload)
+// IsSuccess returns true when this slack create bad request response has a 2xx status code
+func (o *SlackCreateBadRequest) IsSuccess() bool {
+	return false
 }
+
+// IsRedirect returns true when this slack create bad request response has a 3xx status code
+func (o *SlackCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack create bad request response has a 4xx status code
+func (o *SlackCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack create bad request response has a 5xx status code
+func (o *SlackCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack create bad request response a status code equal to that given
+func (o *SlackCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
+func (o *SlackCreateBadRequest) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *SlackCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SlackCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +195,8 @@ func NewSlackCreateUnauthorized() *SlackCreateUnauthorized {
 	return &SlackCreateUnauthorized{}
 }
 
-/* SlackCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+SlackCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +204,39 @@ type SlackCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
-func (o *SlackCreateUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack][%d] slackCreateUnauthorized  %+v", 401, o.Payload)
+// IsSuccess returns true when this slack create unauthorized response has a 2xx status code
+func (o *SlackCreateUnauthorized) IsSuccess() bool {
+	return false
 }
+
+// IsRedirect returns true when this slack create unauthorized response has a 3xx status code
+func (o *SlackCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack create unauthorized response has a 4xx status code
+func (o *SlackCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack create unauthorized response has a 5xx status code
+func (o *SlackCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack create unauthorized response a status code equal to that given
+func (o *SlackCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
+func (o *SlackCreateUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateUnauthorized  %+v", 401, o.Payload)
+}
+
+func (o *SlackCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SlackCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +258,8 @@ func NewSlackCreateForbidden() *SlackCreateForbidden {
 	return &SlackCreateForbidden{}
 }
 
-/* SlackCreateForbidden describes a response with status code 403, with default header values.
+/*
+SlackCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +267,39 @@ type SlackCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
-func (o *SlackCreateForbidden) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack][%d] slackCreateForbidden  %+v", 403, o.Payload)
+// IsSuccess returns true when this slack create forbidden response has a 2xx status code
+func (o *SlackCreateForbidden) IsSuccess() bool {
+	return false
 }
+
+// IsRedirect returns true when this slack create forbidden response has a 3xx status code
+func (o *SlackCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack create forbidden response has a 4xx status code
+func (o *SlackCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack create forbidden response has a 5xx status code
+func (o *SlackCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack create forbidden response a status code equal to that given
+func (o *SlackCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+func (o *SlackCreateForbidden) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateForbidden  %+v", 403, o.Payload)
+}
+
+func (o *SlackCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SlackCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +321,8 @@ func NewSlackCreateNotFound() *SlackCreateNotFound {
 	return &SlackCreateNotFound{}
 }
 
-/* SlackCreateNotFound describes a response with status code 404, with default header values.
+/*
+SlackCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +330,39 @@ type SlackCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
-func (o *SlackCreateNotFound) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack][%d] slackCreateNotFound  %+v", 404, o.Payload)
+// IsSuccess returns true when this slack create not found response has a 2xx status code
+func (o *SlackCreateNotFound) IsSuccess() bool {
+	return false
 }
+
+// IsRedirect returns true when this slack create not found response has a 3xx status code
+func (o *SlackCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack create not found response has a 4xx status code
+func (o *SlackCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack create not found response has a 5xx status code
+func (o *SlackCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack create not found response a status code equal to that given
+func (o *SlackCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
+func (o *SlackCreateNotFound) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateNotFound  %+v", 404, o.Payload)
+}
+
+func (o *SlackCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SlackCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,15 +384,45 @@ func NewSlackCreateInternalServerError() *SlackCreateInternalServerError {
 	return &SlackCreateInternalServerError{}
 }
 
-/* SlackCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+SlackCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SlackCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this slack create internal server error response has a 2xx status code
+func (o *SlackCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack create internal server error response has a 3xx status code
+func (o *SlackCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack create internal server error response has a 4xx status code
+func (o *SlackCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this slack create internal server error response has a 5xx status code
+func (o *SlackCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this slack create internal server error response a status code equal to that given
+func (o *SlackCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SlackCreateInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /api/v{v}/Slack][%d] slackCreateInternalServerError ", 500)
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateInternalServerError ", 500)
+}
+
+func (o *SlackCreateInternalServerError) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateInternalServerError ", 500)
 }
 
 func (o *SlackCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

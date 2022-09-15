@@ -53,10 +53,12 @@ func NewStandAloneActionsExportCsvParamsWithHTTPClient(client *http.Client) *Sta
 	}
 }
 
-/* StandAloneActionsExportCsvParams contains all the parameters to send to the API endpoint
-   for the stand alone actions export csv operation.
+/*
+StandAloneActionsExportCsvParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone actions export csv operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneActionsExportCsvParams struct {
 

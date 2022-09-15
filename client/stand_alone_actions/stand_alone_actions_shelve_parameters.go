@@ -54,10 +54,12 @@ func NewStandAloneActionsShelveParamsWithHTTPClient(client *http.Client) *StandA
 	}
 }
 
-/* StandAloneActionsShelveParams contains all the parameters to send to the API endpoint
-   for the stand alone actions shelve operation.
+/*
+StandAloneActionsShelveParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone actions shelve operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneActionsShelveParams struct {
 

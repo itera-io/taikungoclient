@@ -69,7 +69,8 @@ func NewAlertingProfilesAssignEmailsOK() *AlertingProfilesAssignEmailsOK {
 	return &AlertingProfilesAssignEmailsOK{}
 }
 
-/* AlertingProfilesAssignEmailsOK describes a response with status code 200, with default header values.
+/*
+AlertingProfilesAssignEmailsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AlertingProfilesAssignEmailsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this alerting profiles assign emails o k response has a 2xx status code
+func (o *AlertingProfilesAssignEmailsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this alerting profiles assign emails o k response has a 3xx status code
+func (o *AlertingProfilesAssignEmailsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles assign emails o k response has a 4xx status code
+func (o *AlertingProfilesAssignEmailsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting profiles assign emails o k response has a 5xx status code
+func (o *AlertingProfilesAssignEmailsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles assign emails o k response a status code equal to that given
+func (o *AlertingProfilesAssignEmailsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AlertingProfilesAssignEmailsOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsOK  %+v", 200, o.Payload)
 }
+
+func (o *AlertingProfilesAssignEmailsOK) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsOK  %+v", 200, o.Payload)
+}
+
 func (o *AlertingProfilesAssignEmailsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAlertingProfilesAssignEmailsBadRequest() *AlertingProfilesAssignEmailsBa
 	return &AlertingProfilesAssignEmailsBadRequest{}
 }
 
-/* AlertingProfilesAssignEmailsBadRequest describes a response with status code 400, with default header values.
+/*
+AlertingProfilesAssignEmailsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AlertingProfilesAssignEmailsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles assign emails bad request response has a 2xx status code
+func (o *AlertingProfilesAssignEmailsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles assign emails bad request response has a 3xx status code
+func (o *AlertingProfilesAssignEmailsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles assign emails bad request response has a 4xx status code
+func (o *AlertingProfilesAssignEmailsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles assign emails bad request response has a 5xx status code
+func (o *AlertingProfilesAssignEmailsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles assign emails bad request response a status code equal to that given
+func (o *AlertingProfilesAssignEmailsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AlertingProfilesAssignEmailsBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AlertingProfilesAssignEmailsBadRequest) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AlertingProfilesAssignEmailsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAlertingProfilesAssignEmailsUnauthorized() *AlertingProfilesAssignEmails
 	return &AlertingProfilesAssignEmailsUnauthorized{}
 }
 
-/* AlertingProfilesAssignEmailsUnauthorized describes a response with status code 401, with default header values.
+/*
+AlertingProfilesAssignEmailsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AlertingProfilesAssignEmailsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles assign emails unauthorized response has a 2xx status code
+func (o *AlertingProfilesAssignEmailsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles assign emails unauthorized response has a 3xx status code
+func (o *AlertingProfilesAssignEmailsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles assign emails unauthorized response has a 4xx status code
+func (o *AlertingProfilesAssignEmailsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles assign emails unauthorized response has a 5xx status code
+func (o *AlertingProfilesAssignEmailsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles assign emails unauthorized response a status code equal to that given
+func (o *AlertingProfilesAssignEmailsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AlertingProfilesAssignEmailsUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AlertingProfilesAssignEmailsUnauthorized) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AlertingProfilesAssignEmailsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAlertingProfilesAssignEmailsForbidden() *AlertingProfilesAssignEmailsFor
 	return &AlertingProfilesAssignEmailsForbidden{}
 }
 
-/* AlertingProfilesAssignEmailsForbidden describes a response with status code 403, with default header values.
+/*
+AlertingProfilesAssignEmailsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AlertingProfilesAssignEmailsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles assign emails forbidden response has a 2xx status code
+func (o *AlertingProfilesAssignEmailsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles assign emails forbidden response has a 3xx status code
+func (o *AlertingProfilesAssignEmailsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles assign emails forbidden response has a 4xx status code
+func (o *AlertingProfilesAssignEmailsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles assign emails forbidden response has a 5xx status code
+func (o *AlertingProfilesAssignEmailsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles assign emails forbidden response a status code equal to that given
+func (o *AlertingProfilesAssignEmailsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AlertingProfilesAssignEmailsForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AlertingProfilesAssignEmailsForbidden) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AlertingProfilesAssignEmailsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAlertingProfilesAssignEmailsNotFound() *AlertingProfilesAssignEmailsNotF
 	return &AlertingProfilesAssignEmailsNotFound{}
 }
 
-/* AlertingProfilesAssignEmailsNotFound describes a response with status code 404, with default header values.
+/*
+AlertingProfilesAssignEmailsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AlertingProfilesAssignEmailsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles assign emails not found response has a 2xx status code
+func (o *AlertingProfilesAssignEmailsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles assign emails not found response has a 3xx status code
+func (o *AlertingProfilesAssignEmailsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles assign emails not found response has a 4xx status code
+func (o *AlertingProfilesAssignEmailsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles assign emails not found response has a 5xx status code
+func (o *AlertingProfilesAssignEmailsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles assign emails not found response a status code equal to that given
+func (o *AlertingProfilesAssignEmailsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AlertingProfilesAssignEmailsNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AlertingProfilesAssignEmailsNotFound) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AlertingProfilesAssignEmailsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAlertingProfilesAssignEmailsInternalServerError() *AlertingProfilesAssig
 	return &AlertingProfilesAssignEmailsInternalServerError{}
 }
 
-/* AlertingProfilesAssignEmailsInternalServerError describes a response with status code 500, with default header values.
+/*
+AlertingProfilesAssignEmailsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AlertingProfilesAssignEmailsInternalServerError struct {
 }
 
+// IsSuccess returns true when this alerting profiles assign emails internal server error response has a 2xx status code
+func (o *AlertingProfilesAssignEmailsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles assign emails internal server error response has a 3xx status code
+func (o *AlertingProfilesAssignEmailsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles assign emails internal server error response has a 4xx status code
+func (o *AlertingProfilesAssignEmailsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting profiles assign emails internal server error response has a 5xx status code
+func (o *AlertingProfilesAssignEmailsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this alerting profiles assign emails internal server error response a status code equal to that given
+func (o *AlertingProfilesAssignEmailsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AlertingProfilesAssignEmailsInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsInternalServerError ", 500)
+}
+
+func (o *AlertingProfilesAssignEmailsInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsInternalServerError ", 500)
 }
 

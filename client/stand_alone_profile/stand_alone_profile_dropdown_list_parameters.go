@@ -53,10 +53,12 @@ func NewStandAloneProfileDropdownListParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* StandAloneProfileDropdownListParams contains all the parameters to send to the API endpoint
-   for the stand alone profile dropdown list operation.
+/*
+StandAloneProfileDropdownListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone profile dropdown list operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneProfileDropdownListParams struct {
 
@@ -64,6 +66,9 @@ type StandAloneProfileDropdownListParams struct {
 	//
 	// Format: int32
 	OrganizationID *int32
+
+	// Search.
+	Search *string
 
 	// V.
 	V string
@@ -132,6 +137,17 @@ func (o *StandAloneProfileDropdownListParams) SetOrganizationID(organizationID *
 	o.OrganizationID = organizationID
 }
 
+// WithSearch adds the search to the stand alone profile dropdown list params
+func (o *StandAloneProfileDropdownListParams) WithSearch(search *string) *StandAloneProfileDropdownListParams {
+	o.SetSearch(search)
+	return o
+}
+
+// SetSearch adds the search to the stand alone profile dropdown list params
+func (o *StandAloneProfileDropdownListParams) SetSearch(search *string) {
+	o.Search = search
+}
+
 // WithV adds the v to the stand alone profile dropdown list params
 func (o *StandAloneProfileDropdownListParams) WithV(v string) *StandAloneProfileDropdownListParams {
 	o.SetV(v)
@@ -163,6 +179,23 @@ func (o *StandAloneProfileDropdownListParams) WriteToRequest(r runtime.ClientReq
 		if qOrganizationID != "" {
 
 			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Search != nil {
+
+		// query param search
+		var qrSearch string
+
+		if o.Search != nil {
+			qrSearch = *o.Search
+		}
+		qSearch := qrSearch
+		if qSearch != "" {
+
+			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}

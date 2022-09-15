@@ -53,10 +53,12 @@ func NewPrometheusListOfRulesParamsWithHTTPClient(client *http.Client) *Promethe
 	}
 }
 
-/* PrometheusListOfRulesParams contains all the parameters to send to the API endpoint
-   for the prometheus list of rules operation.
+/*
+PrometheusListOfRulesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the prometheus list of rules operation.
+
+	Typically these are written to a http.Request.
 */
 type PrometheusListOfRulesParams struct {
 

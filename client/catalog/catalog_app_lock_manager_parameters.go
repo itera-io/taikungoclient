@@ -54,10 +54,12 @@ func NewCatalogAppLockManagerParamsWithHTTPClient(client *http.Client) *CatalogA
 	}
 }
 
-/* CatalogAppLockManagerParams contains all the parameters to send to the API endpoint
-   for the catalog app lock manager operation.
+/*
+CatalogAppLockManagerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the catalog app lock manager operation.
+
+	Typically these are written to a http.Request.
 */
 type CatalogAppLockManagerParams struct {
 

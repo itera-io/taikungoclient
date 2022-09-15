@@ -53,10 +53,12 @@ func NewAlertingProfilesAlertingProfilesForOrganizationListParamsWithHTTPClient(
 	}
 }
 
-/* AlertingProfilesAlertingProfilesForOrganizationListParams contains all the parameters to send to the API endpoint
-   for the alerting profiles alerting profiles for organization list operation.
+/*
+AlertingProfilesAlertingProfilesForOrganizationListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the alerting profiles alerting profiles for organization list operation.
+
+	Typically these are written to a http.Request.
 */
 type AlertingProfilesAlertingProfilesForOrganizationListParams struct {
 
@@ -64,6 +66,9 @@ type AlertingProfilesAlertingProfilesForOrganizationListParams struct {
 	//
 	// Format: int32
 	OrganizationID *int32
+
+	// Search.
+	Search *string
 
 	// V.
 	V string
@@ -132,6 +137,17 @@ func (o *AlertingProfilesAlertingProfilesForOrganizationListParams) SetOrganizat
 	o.OrganizationID = organizationID
 }
 
+// WithSearch adds the search to the alerting profiles alerting profiles for organization list params
+func (o *AlertingProfilesAlertingProfilesForOrganizationListParams) WithSearch(search *string) *AlertingProfilesAlertingProfilesForOrganizationListParams {
+	o.SetSearch(search)
+	return o
+}
+
+// SetSearch adds the search to the alerting profiles alerting profiles for organization list params
+func (o *AlertingProfilesAlertingProfilesForOrganizationListParams) SetSearch(search *string) {
+	o.Search = search
+}
+
 // WithV adds the v to the alerting profiles alerting profiles for organization list params
 func (o *AlertingProfilesAlertingProfilesForOrganizationListParams) WithV(v string) *AlertingProfilesAlertingProfilesForOrganizationListParams {
 	o.SetV(v)
@@ -163,6 +179,23 @@ func (o *AlertingProfilesAlertingProfilesForOrganizationListParams) WriteToReque
 		if qOrganizationID != "" {
 
 			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Search != nil {
+
+		// query param search
+		var qrSearch string
+
+		if o.Search != nil {
+			qrSearch = *o.Search
+		}
+		qSearch := qrSearch
+		if qSearch != "" {
+
+			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}

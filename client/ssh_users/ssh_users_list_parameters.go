@@ -53,10 +53,12 @@ func NewSSHUsersListParamsWithHTTPClient(client *http.Client) *SSHUsersListParam
 	}
 }
 
-/* SSHUsersListParams contains all the parameters to send to the API endpoint
-   for the Ssh users list operation.
+/*
+SSHUsersListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the Ssh users list operation.
+
+	Typically these are written to a http.Request.
 */
 type SSHUsersListParams struct {
 
@@ -64,6 +66,9 @@ type SSHUsersListParams struct {
 	//
 	// Format: int32
 	AccessProfileID int32
+
+	// Search.
+	Search *string
 
 	// V.
 	V string
@@ -132,6 +137,17 @@ func (o *SSHUsersListParams) SetAccessProfileID(accessProfileID int32) {
 	o.AccessProfileID = accessProfileID
 }
 
+// WithSearch adds the search to the Ssh users list params
+func (o *SSHUsersListParams) WithSearch(search *string) *SSHUsersListParams {
+	o.SetSearch(search)
+	return o
+}
+
+// SetSearch adds the search to the Ssh users list params
+func (o *SSHUsersListParams) SetSearch(search *string) {
+	o.Search = search
+}
+
 // WithV adds the v to the Ssh users list params
 func (o *SSHUsersListParams) WithV(v string) *SSHUsersListParams {
 	o.SetV(v)
@@ -154,6 +170,23 @@ func (o *SSHUsersListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 	// path param accessProfileId
 	if err := r.SetPathParam("accessProfileId", swag.FormatInt32(o.AccessProfileID)); err != nil {
 		return err
+	}
+
+	if o.Search != nil {
+
+		// query param search
+		var qrSearch string
+
+		if o.Search != nil {
+			qrSearch = *o.Search
+		}
+		qSearch := qrSearch
+		if qSearch != "" {
+
+			if err := r.SetQueryParam("search", qSearch); err != nil {
+				return err
+			}
+		}
 	}
 
 	// path param v

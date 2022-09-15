@@ -53,10 +53,12 @@ func NewPrometheusGroupedListParamsWithHTTPClient(client *http.Client) *Promethe
 	}
 }
 
-/* PrometheusGroupedListParams contains all the parameters to send to the API endpoint
-   for the prometheus grouped list operation.
+/*
+PrometheusGroupedListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the prometheus grouped list operation.
+
+	Typically these are written to a http.Request.
 */
 type PrometheusGroupedListParams struct {
 

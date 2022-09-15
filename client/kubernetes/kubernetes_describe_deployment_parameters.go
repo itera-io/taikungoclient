@@ -54,10 +54,12 @@ func NewKubernetesDescribeDeploymentParamsWithHTTPClient(client *http.Client) *K
 	}
 }
 
-/* KubernetesDescribeDeploymentParams contains all the parameters to send to the API endpoint
-   for the kubernetes describe deployment operation.
+/*
+KubernetesDescribeDeploymentParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes describe deployment operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesDescribeDeploymentParams struct {
 

@@ -54,10 +54,12 @@ func NewKubernetesDescribeDaemonSetParamsWithHTTPClient(client *http.Client) *Ku
 	}
 }
 
-/* KubernetesDescribeDaemonSetParams contains all the parameters to send to the API endpoint
-   for the kubernetes describe daemon set operation.
+/*
+KubernetesDescribeDaemonSetParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes describe daemon set operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesDescribeDaemonSetParams struct {
 

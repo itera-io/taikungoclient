@@ -54,10 +54,12 @@ func NewOpenstackZoneListParamsWithHTTPClient(client *http.Client) *OpenstackZon
 	}
 }
 
-/* OpenstackZoneListParams contains all the parameters to send to the API endpoint
-   for the openstack zone list operation.
+/*
+OpenstackZoneListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the openstack zone list operation.
+
+	Typically these are written to a http.Request.
 */
 type OpenstackZoneListParams struct {
 

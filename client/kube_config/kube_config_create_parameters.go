@@ -54,10 +54,12 @@ func NewKubeConfigCreateParamsWithHTTPClient(client *http.Client) *KubeConfigCre
 	}
 }
 
-/* KubeConfigCreateParams contains all the parameters to send to the API endpoint
-   for the kube config create operation.
+/*
+KubeConfigCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kube config create operation.
+
+	Typically these are written to a http.Request.
 */
 type KubeConfigCreateParams struct {
 

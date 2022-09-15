@@ -54,10 +54,12 @@ func NewStandAloneVMDisksUpdateDiskSizeParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* StandAloneVMDisksUpdateDiskSizeParams contains all the parameters to send to the API endpoint
-   for the stand alone Vm disks update disk size operation.
+/*
+StandAloneVMDisksUpdateDiskSizeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone Vm disks update disk size operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneVMDisksUpdateDiskSizeParams struct {
 

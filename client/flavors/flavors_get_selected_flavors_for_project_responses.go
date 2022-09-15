@@ -69,7 +69,8 @@ func NewFlavorsGetSelectedFlavorsForProjectOK() *FlavorsGetSelectedFlavorsForPro
 	return &FlavorsGetSelectedFlavorsForProjectOK{}
 }
 
-/* FlavorsGetSelectedFlavorsForProjectOK describes a response with status code 200, with default header values.
+/*
+FlavorsGetSelectedFlavorsForProjectOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type FlavorsGetSelectedFlavorsForProjectOK struct {
 	Payload *models.BoundFlavorsForProjectsList
 }
 
+// IsSuccess returns true when this flavors get selected flavors for project o k response has a 2xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this flavors get selected flavors for project o k response has a 3xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors get selected flavors for project o k response has a 4xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this flavors get selected flavors for project o k response has a 5xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors get selected flavors for project o k response a status code equal to that given
+func (o *FlavorsGetSelectedFlavorsForProjectOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *FlavorsGetSelectedFlavorsForProjectOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectOK  %+v", 200, o.Payload)
 }
+
+func (o *FlavorsGetSelectedFlavorsForProjectOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectOK  %+v", 200, o.Payload)
+}
+
 func (o *FlavorsGetSelectedFlavorsForProjectOK) GetPayload() *models.BoundFlavorsForProjectsList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewFlavorsGetSelectedFlavorsForProjectBadRequest() *FlavorsGetSelectedFlavo
 	return &FlavorsGetSelectedFlavorsForProjectBadRequest{}
 }
 
-/* FlavorsGetSelectedFlavorsForProjectBadRequest describes a response with status code 400, with default header values.
+/*
+FlavorsGetSelectedFlavorsForProjectBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type FlavorsGetSelectedFlavorsForProjectBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this flavors get selected flavors for project bad request response has a 2xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors get selected flavors for project bad request response has a 3xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors get selected flavors for project bad request response has a 4xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors get selected flavors for project bad request response has a 5xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors get selected flavors for project bad request response a status code equal to that given
+func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewFlavorsGetSelectedFlavorsForProjectUnauthorized() *FlavorsGetSelectedFla
 	return &FlavorsGetSelectedFlavorsForProjectUnauthorized{}
 }
 
-/* FlavorsGetSelectedFlavorsForProjectUnauthorized describes a response with status code 401, with default header values.
+/*
+FlavorsGetSelectedFlavorsForProjectUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type FlavorsGetSelectedFlavorsForProjectUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this flavors get selected flavors for project unauthorized response has a 2xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors get selected flavors for project unauthorized response has a 3xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors get selected flavors for project unauthorized response has a 4xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors get selected flavors for project unauthorized response has a 5xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors get selected flavors for project unauthorized response a status code equal to that given
+func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewFlavorsGetSelectedFlavorsForProjectForbidden() *FlavorsGetSelectedFlavor
 	return &FlavorsGetSelectedFlavorsForProjectForbidden{}
 }
 
-/* FlavorsGetSelectedFlavorsForProjectForbidden describes a response with status code 403, with default header values.
+/*
+FlavorsGetSelectedFlavorsForProjectForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type FlavorsGetSelectedFlavorsForProjectForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this flavors get selected flavors for project forbidden response has a 2xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors get selected flavors for project forbidden response has a 3xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors get selected flavors for project forbidden response has a 4xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors get selected flavors for project forbidden response has a 5xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors get selected flavors for project forbidden response a status code equal to that given
+func (o *FlavorsGetSelectedFlavorsForProjectForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *FlavorsGetSelectedFlavorsForProjectForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectForbidden  %+v", 403, o.Payload)
 }
+
+func (o *FlavorsGetSelectedFlavorsForProjectForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectForbidden  %+v", 403, o.Payload)
+}
+
 func (o *FlavorsGetSelectedFlavorsForProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewFlavorsGetSelectedFlavorsForProjectNotFound() *FlavorsGetSelectedFlavors
 	return &FlavorsGetSelectedFlavorsForProjectNotFound{}
 }
 
-/* FlavorsGetSelectedFlavorsForProjectNotFound describes a response with status code 404, with default header values.
+/*
+FlavorsGetSelectedFlavorsForProjectNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type FlavorsGetSelectedFlavorsForProjectNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this flavors get selected flavors for project not found response has a 2xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors get selected flavors for project not found response has a 3xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors get selected flavors for project not found response has a 4xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this flavors get selected flavors for project not found response has a 5xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this flavors get selected flavors for project not found response a status code equal to that given
+func (o *FlavorsGetSelectedFlavorsForProjectNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *FlavorsGetSelectedFlavorsForProjectNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectNotFound  %+v", 404, o.Payload)
 }
+
+func (o *FlavorsGetSelectedFlavorsForProjectNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectNotFound  %+v", 404, o.Payload)
+}
+
 func (o *FlavorsGetSelectedFlavorsForProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewFlavorsGetSelectedFlavorsForProjectInternalServerError() *FlavorsGetSele
 	return &FlavorsGetSelectedFlavorsForProjectInternalServerError{}
 }
 
-/* FlavorsGetSelectedFlavorsForProjectInternalServerError describes a response with status code 500, with default header values.
+/*
+FlavorsGetSelectedFlavorsForProjectInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type FlavorsGetSelectedFlavorsForProjectInternalServerError struct {
 }
 
+// IsSuccess returns true when this flavors get selected flavors for project internal server error response has a 2xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this flavors get selected flavors for project internal server error response has a 3xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this flavors get selected flavors for project internal server error response has a 4xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this flavors get selected flavors for project internal server error response has a 5xx status code
+func (o *FlavorsGetSelectedFlavorsForProjectInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this flavors get selected flavors for project internal server error response a status code equal to that given
+func (o *FlavorsGetSelectedFlavorsForProjectInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *FlavorsGetSelectedFlavorsForProjectInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectInternalServerError ", 500)
+}
+
+func (o *FlavorsGetSelectedFlavorsForProjectInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectInternalServerError ", 500)
 }
 

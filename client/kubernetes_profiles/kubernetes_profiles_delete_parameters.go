@@ -53,10 +53,12 @@ func NewKubernetesProfilesDeleteParamsWithHTTPClient(client *http.Client) *Kuber
 	}
 }
 
-/* KubernetesProfilesDeleteParams contains all the parameters to send to the API endpoint
-   for the kubernetes profiles delete operation.
+/*
+KubernetesProfilesDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes profiles delete operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesProfilesDeleteParams struct {
 

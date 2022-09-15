@@ -69,7 +69,8 @@ func NewOpsCredentialsListOK() *OpsCredentialsListOK {
 	return &OpsCredentialsListOK{}
 }
 
-/* OpsCredentialsListOK describes a response with status code 200, with default header values.
+/*
+OpsCredentialsListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OpsCredentialsListOK struct {
 	Payload *models.OperationCredentials
 }
 
+// IsSuccess returns true when this ops credentials list o k response has a 2xx status code
+func (o *OpsCredentialsListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this ops credentials list o k response has a 3xx status code
+func (o *OpsCredentialsListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials list o k response has a 4xx status code
+func (o *OpsCredentialsListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ops credentials list o k response has a 5xx status code
+func (o *OpsCredentialsListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials list o k response a status code equal to that given
+func (o *OpsCredentialsListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OpsCredentialsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListOK  %+v", 200, o.Payload)
 }
+
+func (o *OpsCredentialsListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListOK  %+v", 200, o.Payload)
+}
+
 func (o *OpsCredentialsListOK) GetPayload() *models.OperationCredentials {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewOpsCredentialsListBadRequest() *OpsCredentialsListBadRequest {
 	return &OpsCredentialsListBadRequest{}
 }
 
-/* OpsCredentialsListBadRequest describes a response with status code 400, with default header values.
+/*
+OpsCredentialsListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type OpsCredentialsListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this ops credentials list bad request response has a 2xx status code
+func (o *OpsCredentialsListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ops credentials list bad request response has a 3xx status code
+func (o *OpsCredentialsListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials list bad request response has a 4xx status code
+func (o *OpsCredentialsListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ops credentials list bad request response has a 5xx status code
+func (o *OpsCredentialsListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials list bad request response a status code equal to that given
+func (o *OpsCredentialsListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OpsCredentialsListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OpsCredentialsListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OpsCredentialsListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewOpsCredentialsListUnauthorized() *OpsCredentialsListUnauthorized {
 	return &OpsCredentialsListUnauthorized{}
 }
 
-/* OpsCredentialsListUnauthorized describes a response with status code 401, with default header values.
+/*
+OpsCredentialsListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type OpsCredentialsListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ops credentials list unauthorized response has a 2xx status code
+func (o *OpsCredentialsListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ops credentials list unauthorized response has a 3xx status code
+func (o *OpsCredentialsListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials list unauthorized response has a 4xx status code
+func (o *OpsCredentialsListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ops credentials list unauthorized response has a 5xx status code
+func (o *OpsCredentialsListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials list unauthorized response a status code equal to that given
+func (o *OpsCredentialsListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OpsCredentialsListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OpsCredentialsListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OpsCredentialsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewOpsCredentialsListForbidden() *OpsCredentialsListForbidden {
 	return &OpsCredentialsListForbidden{}
 }
 
-/* OpsCredentialsListForbidden describes a response with status code 403, with default header values.
+/*
+OpsCredentialsListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type OpsCredentialsListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ops credentials list forbidden response has a 2xx status code
+func (o *OpsCredentialsListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ops credentials list forbidden response has a 3xx status code
+func (o *OpsCredentialsListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials list forbidden response has a 4xx status code
+func (o *OpsCredentialsListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ops credentials list forbidden response has a 5xx status code
+func (o *OpsCredentialsListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials list forbidden response a status code equal to that given
+func (o *OpsCredentialsListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OpsCredentialsListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OpsCredentialsListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OpsCredentialsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewOpsCredentialsListNotFound() *OpsCredentialsListNotFound {
 	return &OpsCredentialsListNotFound{}
 }
 
-/* OpsCredentialsListNotFound describes a response with status code 404, with default header values.
+/*
+OpsCredentialsListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type OpsCredentialsListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this ops credentials list not found response has a 2xx status code
+func (o *OpsCredentialsListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ops credentials list not found response has a 3xx status code
+func (o *OpsCredentialsListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials list not found response has a 4xx status code
+func (o *OpsCredentialsListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ops credentials list not found response has a 5xx status code
+func (o *OpsCredentialsListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ops credentials list not found response a status code equal to that given
+func (o *OpsCredentialsListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OpsCredentialsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OpsCredentialsListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OpsCredentialsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewOpsCredentialsListInternalServerError() *OpsCredentialsListInternalServe
 	return &OpsCredentialsListInternalServerError{}
 }
 
-/* OpsCredentialsListInternalServerError describes a response with status code 500, with default header values.
+/*
+OpsCredentialsListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OpsCredentialsListInternalServerError struct {
 }
 
+// IsSuccess returns true when this ops credentials list internal server error response has a 2xx status code
+func (o *OpsCredentialsListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ops credentials list internal server error response has a 3xx status code
+func (o *OpsCredentialsListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ops credentials list internal server error response has a 4xx status code
+func (o *OpsCredentialsListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ops credentials list internal server error response has a 5xx status code
+func (o *OpsCredentialsListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this ops credentials list internal server error response a status code equal to that given
+func (o *OpsCredentialsListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OpsCredentialsListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListInternalServerError ", 500)
+}
+
+func (o *OpsCredentialsListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListInternalServerError ", 500)
 }
 

@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  KeycloakCreate creates keycloak configuration for organization
+KeycloakCreate creates keycloak configuration for organization
 */
 func (a *Client) KeycloakCreate(params *KeycloakCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KeycloakCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -83,7 +83,7 @@ func (a *Client) KeycloakCreate(params *KeycloakCreateParams, authInfo runtime.C
 }
 
 /*
-  KeycloakDelete deletes keycloak configuration
+KeycloakDelete deletes keycloak configuration
 */
 func (a *Client) KeycloakDelete(params *KeycloakDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KeycloakDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +122,7 @@ func (a *Client) KeycloakDelete(params *KeycloakDeleteParams, authInfo runtime.C
 }
 
 /*
-  KeycloakEdit edits keycloak configuration for organization
+KeycloakEdit edits keycloak configuration for organization
 */
 func (a *Client) KeycloakEdit(params *KeycloakEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KeycloakEditOK, error) {
 	// TODO: Validate the params before sending
@@ -161,7 +161,7 @@ func (a *Client) KeycloakEdit(params *KeycloakEditParams, authInfo runtime.Clien
 }
 
 /*
-  KeycloakGet gets keycloak configuration
+KeycloakGet gets keycloak configuration
 */
 func (a *Client) KeycloakGet(params *KeycloakGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KeycloakGetOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +200,7 @@ func (a *Client) KeycloakGet(params *KeycloakGetParams, authInfo runtime.ClientA
 }
 
 /*
-  KeycloakLogin logins to API by using keycloak email and password
+KeycloakLogin logins to API by using keycloak email and password
 */
 func (a *Client) KeycloakLogin(params *KeycloakLoginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KeycloakLoginOK, error) {
 	// TODO: Validate the params before sending

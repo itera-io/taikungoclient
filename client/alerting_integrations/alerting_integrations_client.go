@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  AlertingIntegrationsCreate creates alerting profile alerting integration
+AlertingIntegrationsCreate creates alerting profile alerting integration
 */
 func (a *Client) AlertingIntegrationsCreate(params *AlertingIntegrationsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingIntegrationsCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +81,7 @@ func (a *Client) AlertingIntegrationsCreate(params *AlertingIntegrationsCreatePa
 }
 
 /*
-  AlertingIntegrationsDelete deletes alerting profile alerting integration
+AlertingIntegrationsDelete deletes alerting profile alerting integration
 */
 func (a *Client) AlertingIntegrationsDelete(params *AlertingIntegrationsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingIntegrationsDeleteOK, *AlertingIntegrationsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -121,7 +121,7 @@ func (a *Client) AlertingIntegrationsDelete(params *AlertingIntegrationsDeletePa
 }
 
 /*
-  AlertingIntegrationsEdit edits alerting profile alerting integration
+AlertingIntegrationsEdit edits alerting profile alerting integration
 */
 func (a *Client) AlertingIntegrationsEdit(params *AlertingIntegrationsEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingIntegrationsEditOK, error) {
 	// TODO: Validate the params before sending
@@ -160,7 +160,7 @@ func (a *Client) AlertingIntegrationsEdit(params *AlertingIntegrationsEditParams
 }
 
 /*
-  AlertingIntegrationsList lists alerting integrations by profile id
+AlertingIntegrationsList lists alerting integrations by profile id
 */
 func (a *Client) AlertingIntegrationsList(params *AlertingIntegrationsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingIntegrationsListOK, error) {
 	// TODO: Validate the params before sending

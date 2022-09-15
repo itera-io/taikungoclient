@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/itera-io/taikungoclient/models"
 )
@@ -55,20 +54,17 @@ func NewProjectQuotasEditParamsWithHTTPClient(client *http.Client) *ProjectQuota
 	}
 }
 
-/* ProjectQuotasEditParams contains all the parameters to send to the API endpoint
-   for the project quotas edit operation.
+/*
+ProjectQuotasEditParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the project quotas edit operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectQuotasEditParams struct {
 
 	// Body.
-	Body *models.ProjectQuotaUpdateDto
-
-	// QuotaID.
-	//
-	// Format: int32
-	QuotaID int32
+	Body *models.UpdateQuotaCommand
 
 	// V.
 	V string
@@ -127,25 +123,14 @@ func (o *ProjectQuotasEditParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the project quotas edit params
-func (o *ProjectQuotasEditParams) WithBody(body *models.ProjectQuotaUpdateDto) *ProjectQuotasEditParams {
+func (o *ProjectQuotasEditParams) WithBody(body *models.UpdateQuotaCommand) *ProjectQuotasEditParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the project quotas edit params
-func (o *ProjectQuotasEditParams) SetBody(body *models.ProjectQuotaUpdateDto) {
+func (o *ProjectQuotasEditParams) SetBody(body *models.UpdateQuotaCommand) {
 	o.Body = body
-}
-
-// WithQuotaID adds the quotaID to the project quotas edit params
-func (o *ProjectQuotasEditParams) WithQuotaID(quotaID int32) *ProjectQuotasEditParams {
-	o.SetQuotaID(quotaID)
-	return o
-}
-
-// SetQuotaID adds the quotaId to the project quotas edit params
-func (o *ProjectQuotasEditParams) SetQuotaID(quotaID int32) {
-	o.QuotaID = quotaID
 }
 
 // WithV adds the v to the project quotas edit params
@@ -170,11 +155,6 @@ func (o *ProjectQuotasEditParams) WriteToRequest(r runtime.ClientRequest, reg st
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err
 		}
-	}
-
-	// path param quotaId
-	if err := r.SetPathParam("quotaId", swag.FormatInt32(o.QuotaID)); err != nil {
-		return err
 	}
 
 	// path param v

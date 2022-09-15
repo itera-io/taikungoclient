@@ -53,10 +53,12 @@ func NewCheckerOpenstackTaikunLbImageParamsWithHTTPClient(client *http.Client) *
 	}
 }
 
-/* CheckerOpenstackTaikunLbImageParams contains all the parameters to send to the API endpoint
-   for the checker openstack taikun lb image operation.
+/*
+CheckerOpenstackTaikunLbImageParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checker openstack taikun lb image operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckerOpenstackTaikunLbImageParams struct {
 

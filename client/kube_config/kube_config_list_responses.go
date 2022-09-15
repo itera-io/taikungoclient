@@ -69,7 +69,8 @@ func NewKubeConfigListOK() *KubeConfigListOK {
 	return &KubeConfigListOK{}
 }
 
-/* KubeConfigListOK describes a response with status code 200, with default header values.
+/*
+KubeConfigListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubeConfigListOK struct {
 	Payload *models.KubeConfigForUserList
 }
 
+// IsSuccess returns true when this kube config list o k response has a 2xx status code
+func (o *KubeConfigListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kube config list o k response has a 3xx status code
+func (o *KubeConfigListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kube config list o k response has a 4xx status code
+func (o *KubeConfigListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kube config list o k response has a 5xx status code
+func (o *KubeConfigListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kube config list o k response a status code equal to that given
+func (o *KubeConfigListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubeConfigListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListOK  %+v", 200, o.Payload)
 }
+
+func (o *KubeConfigListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListOK  %+v", 200, o.Payload)
+}
+
 func (o *KubeConfigListOK) GetPayload() *models.KubeConfigForUserList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewKubeConfigListBadRequest() *KubeConfigListBadRequest {
 	return &KubeConfigListBadRequest{}
 }
 
-/* KubeConfigListBadRequest describes a response with status code 400, with default header values.
+/*
+KubeConfigListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type KubeConfigListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kube config list bad request response has a 2xx status code
+func (o *KubeConfigListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kube config list bad request response has a 3xx status code
+func (o *KubeConfigListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kube config list bad request response has a 4xx status code
+func (o *KubeConfigListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kube config list bad request response has a 5xx status code
+func (o *KubeConfigListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kube config list bad request response a status code equal to that given
+func (o *KubeConfigListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubeConfigListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubeConfigListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubeConfigListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewKubeConfigListUnauthorized() *KubeConfigListUnauthorized {
 	return &KubeConfigListUnauthorized{}
 }
 
-/* KubeConfigListUnauthorized describes a response with status code 401, with default header values.
+/*
+KubeConfigListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type KubeConfigListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kube config list unauthorized response has a 2xx status code
+func (o *KubeConfigListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kube config list unauthorized response has a 3xx status code
+func (o *KubeConfigListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kube config list unauthorized response has a 4xx status code
+func (o *KubeConfigListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kube config list unauthorized response has a 5xx status code
+func (o *KubeConfigListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kube config list unauthorized response a status code equal to that given
+func (o *KubeConfigListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubeConfigListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubeConfigListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubeConfigListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewKubeConfigListForbidden() *KubeConfigListForbidden {
 	return &KubeConfigListForbidden{}
 }
 
-/* KubeConfigListForbidden describes a response with status code 403, with default header values.
+/*
+KubeConfigListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type KubeConfigListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kube config list forbidden response has a 2xx status code
+func (o *KubeConfigListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kube config list forbidden response has a 3xx status code
+func (o *KubeConfigListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kube config list forbidden response has a 4xx status code
+func (o *KubeConfigListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kube config list forbidden response has a 5xx status code
+func (o *KubeConfigListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kube config list forbidden response a status code equal to that given
+func (o *KubeConfigListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubeConfigListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubeConfigListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubeConfigListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewKubeConfigListNotFound() *KubeConfigListNotFound {
 	return &KubeConfigListNotFound{}
 }
 
-/* KubeConfigListNotFound describes a response with status code 404, with default header values.
+/*
+KubeConfigListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type KubeConfigListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kube config list not found response has a 2xx status code
+func (o *KubeConfigListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kube config list not found response has a 3xx status code
+func (o *KubeConfigListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kube config list not found response has a 4xx status code
+func (o *KubeConfigListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kube config list not found response has a 5xx status code
+func (o *KubeConfigListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kube config list not found response a status code equal to that given
+func (o *KubeConfigListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubeConfigListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubeConfigListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubeConfigListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewKubeConfigListInternalServerError() *KubeConfigListInternalServerError {
 	return &KubeConfigListInternalServerError{}
 }
 
-/* KubeConfigListInternalServerError describes a response with status code 500, with default header values.
+/*
+KubeConfigListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubeConfigListInternalServerError struct {
 }
 
+// IsSuccess returns true when this kube config list internal server error response has a 2xx status code
+func (o *KubeConfigListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kube config list internal server error response has a 3xx status code
+func (o *KubeConfigListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kube config list internal server error response has a 4xx status code
+func (o *KubeConfigListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kube config list internal server error response has a 5xx status code
+func (o *KubeConfigListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kube config list internal server error response a status code equal to that given
+func (o *KubeConfigListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubeConfigListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListInternalServerError ", 500)
+}
+
+func (o *KubeConfigListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListInternalServerError ", 500)
 }
 

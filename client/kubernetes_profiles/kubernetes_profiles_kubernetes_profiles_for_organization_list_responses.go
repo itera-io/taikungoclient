@@ -69,7 +69,8 @@ func NewKubernetesProfilesKubernetesProfilesForOrganizationListOK() *KubernetesP
 	return &KubernetesProfilesKubernetesProfilesForOrganizationListOK{}
 }
 
-/* KubernetesProfilesKubernetesProfilesForOrganizationListOK describes a response with status code 200, with default header values.
+/*
+KubernetesProfilesKubernetesProfilesForOrganizationListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesProfilesKubernetesProfilesForOrganizationListOK struct {
 	Payload []*models.KubernetesProfilesEntity
 }
 
+// IsSuccess returns true when this kubernetes profiles kubernetes profiles for organization list o k response has a 2xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes profiles kubernetes profiles for organization list o k response has a 3xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles kubernetes profiles for organization list o k response has a 4xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes profiles kubernetes profiles for organization list o k response has a 5xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes profiles kubernetes profiles for organization list o k response a status code equal to that given
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesProfilesKubernetesProfilesForOrganizationListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesProfilesKubernetesProfilesForOrganizationListOK) GetPayload() []*models.KubernetesProfilesEntity {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesProfilesKubernetesProfilesForOrganizationListBadRequest() *Kub
 	return &KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest{}
 }
 
-/* KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes profiles kubernetes profiles for organization list bad request response has a 2xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes profiles kubernetes profiles for organization list bad request response has a 3xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles kubernetes profiles for organization list bad request response has a 4xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes profiles kubernetes profiles for organization list bad request response has a 5xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes profiles kubernetes profiles for organization list bad request response a status code equal to that given
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesProfilesKubernetesProfilesForOrganizationListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized() *K
 	return &KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized{}
 }
 
-/* KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized struct 
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes profiles kubernetes profiles for organization list unauthorized response has a 2xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes profiles kubernetes profiles for organization list unauthorized response has a 3xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles kubernetes profiles for organization list unauthorized response has a 4xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes profiles kubernetes profiles for organization list unauthorized response has a 5xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes profiles kubernetes profiles for organization list unauthorized response a status code equal to that given
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesProfilesKubernetesProfilesForOrganizationListForbidden() *Kube
 	return &KubernetesProfilesKubernetesProfilesForOrganizationListForbidden{}
 }
 
-/* KubernetesProfilesKubernetesProfilesForOrganizationListForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesProfilesKubernetesProfilesForOrganizationListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesProfilesKubernetesProfilesForOrganizationListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes profiles kubernetes profiles for organization list forbidden response has a 2xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes profiles kubernetes profiles for organization list forbidden response has a 3xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles kubernetes profiles for organization list forbidden response has a 4xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes profiles kubernetes profiles for organization list forbidden response has a 5xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes profiles kubernetes profiles for organization list forbidden response a status code equal to that given
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesProfilesKubernetesProfilesForOrganizationListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesProfilesKubernetesProfilesForOrganizationListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesProfilesKubernetesProfilesForOrganizationListNotFound() *Kuber
 	return &KubernetesProfilesKubernetesProfilesForOrganizationListNotFound{}
 }
 
-/* KubernetesProfilesKubernetesProfilesForOrganizationListNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesProfilesKubernetesProfilesForOrganizationListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesProfilesKubernetesProfilesForOrganizationListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes profiles kubernetes profiles for organization list not found response has a 2xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes profiles kubernetes profiles for organization list not found response has a 3xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles kubernetes profiles for organization list not found response has a 4xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes profiles kubernetes profiles for organization list not found response has a 5xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes profiles kubernetes profiles for organization list not found response a status code equal to that given
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesProfilesKubernetesProfilesForOrganizationListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesProfilesKubernetesProfilesForOrganizationListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesProfilesKubernetesProfilesForOrganizationListInternalServerErr
 	return &KubernetesProfilesKubernetesProfilesForOrganizationListInternalServerError{}
 }
 
-/* KubernetesProfilesKubernetesProfilesForOrganizationListInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesProfilesKubernetesProfilesForOrganizationListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesProfilesKubernetesProfilesForOrganizationListInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes profiles kubernetes profiles for organization list internal server error response has a 2xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes profiles kubernetes profiles for organization list internal server error response has a 3xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles kubernetes profiles for organization list internal server error response has a 4xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes profiles kubernetes profiles for organization list internal server error response has a 5xx status code
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes profiles kubernetes profiles for organization list internal server error response a status code equal to that given
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesProfilesKubernetesProfilesForOrganizationListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListInternalServerError ", 500)
+}
+
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListInternalServerError ", 500)
 }
 

@@ -69,7 +69,8 @@ func NewPrometheusGroupedListOK() *PrometheusGroupedListOK {
 	return &PrometheusGroupedListOK{}
 }
 
-/* PrometheusGroupedListOK describes a response with status code 200, with default header values.
+/*
+PrometheusGroupedListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type PrometheusGroupedListOK struct {
 	Payload interface{}
 }
 
+// IsSuccess returns true when this prometheus grouped list o k response has a 2xx status code
+func (o *PrometheusGroupedListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this prometheus grouped list o k response has a 3xx status code
+func (o *PrometheusGroupedListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus grouped list o k response has a 4xx status code
+func (o *PrometheusGroupedListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this prometheus grouped list o k response has a 5xx status code
+func (o *PrometheusGroupedListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus grouped list o k response a status code equal to that given
+func (o *PrometheusGroupedListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PrometheusGroupedListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListOK  %+v", 200, o.Payload)
 }
+
+func (o *PrometheusGroupedListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListOK  %+v", 200, o.Payload)
+}
+
 func (o *PrometheusGroupedListOK) GetPayload() interface{} {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewPrometheusGroupedListBadRequest() *PrometheusGroupedListBadRequest {
 	return &PrometheusGroupedListBadRequest{}
 }
 
-/* PrometheusGroupedListBadRequest describes a response with status code 400, with default header values.
+/*
+PrometheusGroupedListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type PrometheusGroupedListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this prometheus grouped list bad request response has a 2xx status code
+func (o *PrometheusGroupedListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus grouped list bad request response has a 3xx status code
+func (o *PrometheusGroupedListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus grouped list bad request response has a 4xx status code
+func (o *PrometheusGroupedListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus grouped list bad request response has a 5xx status code
+func (o *PrometheusGroupedListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus grouped list bad request response a status code equal to that given
+func (o *PrometheusGroupedListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PrometheusGroupedListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PrometheusGroupedListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PrometheusGroupedListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewPrometheusGroupedListUnauthorized() *PrometheusGroupedListUnauthorized {
 	return &PrometheusGroupedListUnauthorized{}
 }
 
-/* PrometheusGroupedListUnauthorized describes a response with status code 401, with default header values.
+/*
+PrometheusGroupedListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type PrometheusGroupedListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus grouped list unauthorized response has a 2xx status code
+func (o *PrometheusGroupedListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus grouped list unauthorized response has a 3xx status code
+func (o *PrometheusGroupedListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus grouped list unauthorized response has a 4xx status code
+func (o *PrometheusGroupedListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus grouped list unauthorized response has a 5xx status code
+func (o *PrometheusGroupedListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus grouped list unauthorized response a status code equal to that given
+func (o *PrometheusGroupedListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PrometheusGroupedListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *PrometheusGroupedListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *PrometheusGroupedListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewPrometheusGroupedListForbidden() *PrometheusGroupedListForbidden {
 	return &PrometheusGroupedListForbidden{}
 }
 
-/* PrometheusGroupedListForbidden describes a response with status code 403, with default header values.
+/*
+PrometheusGroupedListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type PrometheusGroupedListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus grouped list forbidden response has a 2xx status code
+func (o *PrometheusGroupedListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus grouped list forbidden response has a 3xx status code
+func (o *PrometheusGroupedListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus grouped list forbidden response has a 4xx status code
+func (o *PrometheusGroupedListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus grouped list forbidden response has a 5xx status code
+func (o *PrometheusGroupedListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus grouped list forbidden response a status code equal to that given
+func (o *PrometheusGroupedListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PrometheusGroupedListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PrometheusGroupedListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PrometheusGroupedListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewPrometheusGroupedListNotFound() *PrometheusGroupedListNotFound {
 	return &PrometheusGroupedListNotFound{}
 }
 
-/* PrometheusGroupedListNotFound describes a response with status code 404, with default header values.
+/*
+PrometheusGroupedListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type PrometheusGroupedListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus grouped list not found response has a 2xx status code
+func (o *PrometheusGroupedListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus grouped list not found response has a 3xx status code
+func (o *PrometheusGroupedListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus grouped list not found response has a 4xx status code
+func (o *PrometheusGroupedListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus grouped list not found response has a 5xx status code
+func (o *PrometheusGroupedListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus grouped list not found response a status code equal to that given
+func (o *PrometheusGroupedListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PrometheusGroupedListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PrometheusGroupedListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PrometheusGroupedListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewPrometheusGroupedListInternalServerError() *PrometheusGroupedListInterna
 	return &PrometheusGroupedListInternalServerError{}
 }
 
-/* PrometheusGroupedListInternalServerError describes a response with status code 500, with default header values.
+/*
+PrometheusGroupedListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PrometheusGroupedListInternalServerError struct {
 }
 
+// IsSuccess returns true when this prometheus grouped list internal server error response has a 2xx status code
+func (o *PrometheusGroupedListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus grouped list internal server error response has a 3xx status code
+func (o *PrometheusGroupedListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus grouped list internal server error response has a 4xx status code
+func (o *PrometheusGroupedListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this prometheus grouped list internal server error response has a 5xx status code
+func (o *PrometheusGroupedListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this prometheus grouped list internal server error response a status code equal to that given
+func (o *PrometheusGroupedListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PrometheusGroupedListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListInternalServerError ", 500)
+}
+
+func (o *PrometheusGroupedListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListInternalServerError ", 500)
 }
 

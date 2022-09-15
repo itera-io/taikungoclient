@@ -53,10 +53,12 @@ func NewProjectsCommitParamsWithHTTPClient(client *http.Client) *ProjectsCommitP
 	}
 }
 
-/* ProjectsCommitParams contains all the parameters to send to the API endpoint
-   for the projects commit operation.
+/*
+ProjectsCommitParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects commit operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsCommitParams struct {
 

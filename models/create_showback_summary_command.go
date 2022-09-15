@@ -23,6 +23,9 @@ type CreateShowbackSummaryCommand struct {
 	// Format: date-time
 	BeginApply *strfmt.DateTime `json:"beginApply,omitempty"`
 
+	// by label value
+	ByLabelValue string `json:"byLabelValue,omitempty"`
+
 	// price
 	Price float64 `json:"price,omitempty"`
 

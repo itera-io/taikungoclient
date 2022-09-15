@@ -69,7 +69,8 @@ func NewBackupDescribeBackupOK() *BackupDescribeBackupOK {
 	return &BackupDescribeBackupOK{}
 }
 
-/* BackupDescribeBackupOK describes a response with status code 200, with default header values.
+/*
+BackupDescribeBackupOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type BackupDescribeBackupOK struct {
 	Payload interface{}
 }
 
+// IsSuccess returns true when this backup describe backup o k response has a 2xx status code
+func (o *BackupDescribeBackupOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this backup describe backup o k response has a 3xx status code
+func (o *BackupDescribeBackupOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup describe backup o k response has a 4xx status code
+func (o *BackupDescribeBackupOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this backup describe backup o k response has a 5xx status code
+func (o *BackupDescribeBackupOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup describe backup o k response a status code equal to that given
+func (o *BackupDescribeBackupOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *BackupDescribeBackupOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupOK  %+v", 200, o.Payload)
 }
+
+func (o *BackupDescribeBackupOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupOK  %+v", 200, o.Payload)
+}
+
 func (o *BackupDescribeBackupOK) GetPayload() interface{} {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewBackupDescribeBackupBadRequest() *BackupDescribeBackupBadRequest {
 	return &BackupDescribeBackupBadRequest{}
 }
 
-/* BackupDescribeBackupBadRequest describes a response with status code 400, with default header values.
+/*
+BackupDescribeBackupBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type BackupDescribeBackupBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this backup describe backup bad request response has a 2xx status code
+func (o *BackupDescribeBackupBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup describe backup bad request response has a 3xx status code
+func (o *BackupDescribeBackupBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup describe backup bad request response has a 4xx status code
+func (o *BackupDescribeBackupBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup describe backup bad request response has a 5xx status code
+func (o *BackupDescribeBackupBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup describe backup bad request response a status code equal to that given
+func (o *BackupDescribeBackupBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BackupDescribeBackupBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BackupDescribeBackupBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BackupDescribeBackupBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewBackupDescribeBackupUnauthorized() *BackupDescribeBackupUnauthorized {
 	return &BackupDescribeBackupUnauthorized{}
 }
 
-/* BackupDescribeBackupUnauthorized describes a response with status code 401, with default header values.
+/*
+BackupDescribeBackupUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type BackupDescribeBackupUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup describe backup unauthorized response has a 2xx status code
+func (o *BackupDescribeBackupUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup describe backup unauthorized response has a 3xx status code
+func (o *BackupDescribeBackupUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup describe backup unauthorized response has a 4xx status code
+func (o *BackupDescribeBackupUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup describe backup unauthorized response has a 5xx status code
+func (o *BackupDescribeBackupUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup describe backup unauthorized response a status code equal to that given
+func (o *BackupDescribeBackupUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BackupDescribeBackupUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BackupDescribeBackupUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BackupDescribeBackupUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewBackupDescribeBackupForbidden() *BackupDescribeBackupForbidden {
 	return &BackupDescribeBackupForbidden{}
 }
 
-/* BackupDescribeBackupForbidden describes a response with status code 403, with default header values.
+/*
+BackupDescribeBackupForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type BackupDescribeBackupForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup describe backup forbidden response has a 2xx status code
+func (o *BackupDescribeBackupForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup describe backup forbidden response has a 3xx status code
+func (o *BackupDescribeBackupForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup describe backup forbidden response has a 4xx status code
+func (o *BackupDescribeBackupForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup describe backup forbidden response has a 5xx status code
+func (o *BackupDescribeBackupForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup describe backup forbidden response a status code equal to that given
+func (o *BackupDescribeBackupForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *BackupDescribeBackupForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupForbidden  %+v", 403, o.Payload)
 }
+
+func (o *BackupDescribeBackupForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupForbidden  %+v", 403, o.Payload)
+}
+
 func (o *BackupDescribeBackupForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewBackupDescribeBackupNotFound() *BackupDescribeBackupNotFound {
 	return &BackupDescribeBackupNotFound{}
 }
 
-/* BackupDescribeBackupNotFound describes a response with status code 404, with default header values.
+/*
+BackupDescribeBackupNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type BackupDescribeBackupNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup describe backup not found response has a 2xx status code
+func (o *BackupDescribeBackupNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup describe backup not found response has a 3xx status code
+func (o *BackupDescribeBackupNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup describe backup not found response has a 4xx status code
+func (o *BackupDescribeBackupNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup describe backup not found response has a 5xx status code
+func (o *BackupDescribeBackupNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup describe backup not found response a status code equal to that given
+func (o *BackupDescribeBackupNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BackupDescribeBackupNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BackupDescribeBackupNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BackupDescribeBackupNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewBackupDescribeBackupInternalServerError() *BackupDescribeBackupInternalS
 	return &BackupDescribeBackupInternalServerError{}
 }
 
-/* BackupDescribeBackupInternalServerError describes a response with status code 500, with default header values.
+/*
+BackupDescribeBackupInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type BackupDescribeBackupInternalServerError struct {
 }
 
+// IsSuccess returns true when this backup describe backup internal server error response has a 2xx status code
+func (o *BackupDescribeBackupInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup describe backup internal server error response has a 3xx status code
+func (o *BackupDescribeBackupInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup describe backup internal server error response has a 4xx status code
+func (o *BackupDescribeBackupInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this backup describe backup internal server error response has a 5xx status code
+func (o *BackupDescribeBackupInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this backup describe backup internal server error response a status code equal to that given
+func (o *BackupDescribeBackupInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BackupDescribeBackupInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupInternalServerError ", 500)
+}
+
+func (o *BackupDescribeBackupInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/backup/{projectId}/{name}][%d] backupDescribeBackupInternalServerError ", 500)
 }
 

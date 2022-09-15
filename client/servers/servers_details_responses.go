@@ -69,7 +69,8 @@ func NewServersDetailsOK() *ServersDetailsOK {
 	return &ServersDetailsOK{}
 }
 
-/* ServersDetailsOK describes a response with status code 200, with default header values.
+/*
+ServersDetailsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ServersDetailsOK struct {
 	Payload *models.ServersListForDetails
 }
 
+// IsSuccess returns true when this servers details o k response has a 2xx status code
+func (o *ServersDetailsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this servers details o k response has a 3xx status code
+func (o *ServersDetailsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers details o k response has a 4xx status code
+func (o *ServersDetailsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this servers details o k response has a 5xx status code
+func (o *ServersDetailsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this servers details o k response a status code equal to that given
+func (o *ServersDetailsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ServersDetailsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsOK  %+v", 200, o.Payload)
 }
+
+func (o *ServersDetailsOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsOK  %+v", 200, o.Payload)
+}
+
 func (o *ServersDetailsOK) GetPayload() *models.ServersListForDetails {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewServersDetailsBadRequest() *ServersDetailsBadRequest {
 	return &ServersDetailsBadRequest{}
 }
 
-/* ServersDetailsBadRequest describes a response with status code 400, with default header values.
+/*
+ServersDetailsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type ServersDetailsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this servers details bad request response has a 2xx status code
+func (o *ServersDetailsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this servers details bad request response has a 3xx status code
+func (o *ServersDetailsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers details bad request response has a 4xx status code
+func (o *ServersDetailsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this servers details bad request response has a 5xx status code
+func (o *ServersDetailsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this servers details bad request response a status code equal to that given
+func (o *ServersDetailsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ServersDetailsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ServersDetailsBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ServersDetailsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewServersDetailsUnauthorized() *ServersDetailsUnauthorized {
 	return &ServersDetailsUnauthorized{}
 }
 
-/* ServersDetailsUnauthorized describes a response with status code 401, with default header values.
+/*
+ServersDetailsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type ServersDetailsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this servers details unauthorized response has a 2xx status code
+func (o *ServersDetailsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this servers details unauthorized response has a 3xx status code
+func (o *ServersDetailsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers details unauthorized response has a 4xx status code
+func (o *ServersDetailsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this servers details unauthorized response has a 5xx status code
+func (o *ServersDetailsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this servers details unauthorized response a status code equal to that given
+func (o *ServersDetailsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ServersDetailsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ServersDetailsUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ServersDetailsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewServersDetailsForbidden() *ServersDetailsForbidden {
 	return &ServersDetailsForbidden{}
 }
 
-/* ServersDetailsForbidden describes a response with status code 403, with default header values.
+/*
+ServersDetailsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type ServersDetailsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this servers details forbidden response has a 2xx status code
+func (o *ServersDetailsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this servers details forbidden response has a 3xx status code
+func (o *ServersDetailsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers details forbidden response has a 4xx status code
+func (o *ServersDetailsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this servers details forbidden response has a 5xx status code
+func (o *ServersDetailsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this servers details forbidden response a status code equal to that given
+func (o *ServersDetailsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ServersDetailsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ServersDetailsForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ServersDetailsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewServersDetailsNotFound() *ServersDetailsNotFound {
 	return &ServersDetailsNotFound{}
 }
 
-/* ServersDetailsNotFound describes a response with status code 404, with default header values.
+/*
+ServersDetailsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type ServersDetailsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this servers details not found response has a 2xx status code
+func (o *ServersDetailsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this servers details not found response has a 3xx status code
+func (o *ServersDetailsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers details not found response has a 4xx status code
+func (o *ServersDetailsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this servers details not found response has a 5xx status code
+func (o *ServersDetailsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this servers details not found response a status code equal to that given
+func (o *ServersDetailsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ServersDetailsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ServersDetailsNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ServersDetailsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewServersDetailsInternalServerError() *ServersDetailsInternalServerError {
 	return &ServersDetailsInternalServerError{}
 }
 
-/* ServersDetailsInternalServerError describes a response with status code 500, with default header values.
+/*
+ServersDetailsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ServersDetailsInternalServerError struct {
 }
 
+// IsSuccess returns true when this servers details internal server error response has a 2xx status code
+func (o *ServersDetailsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this servers details internal server error response has a 3xx status code
+func (o *ServersDetailsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this servers details internal server error response has a 4xx status code
+func (o *ServersDetailsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this servers details internal server error response has a 5xx status code
+func (o *ServersDetailsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this servers details internal server error response a status code equal to that given
+func (o *ServersDetailsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ServersDetailsInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsInternalServerError ", 500)
+}
+
+func (o *ServersDetailsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsInternalServerError ", 500)
 }
 

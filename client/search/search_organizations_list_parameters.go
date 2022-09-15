@@ -54,10 +54,12 @@ func NewSearchOrganizationsListParamsWithHTTPClient(client *http.Client) *Search
 	}
 }
 
-/* SearchOrganizationsListParams contains all the parameters to send to the API endpoint
-   for the search organizations list operation.
+/*
+SearchOrganizationsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search organizations list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchOrganizationsListParams struct {
 

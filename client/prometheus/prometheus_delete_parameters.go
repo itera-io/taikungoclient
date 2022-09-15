@@ -53,10 +53,12 @@ func NewPrometheusDeleteParamsWithHTTPClient(client *http.Client) *PrometheusDel
 	}
 }
 
-/* PrometheusDeleteParams contains all the parameters to send to the API endpoint
-   for the prometheus delete operation.
+/*
+PrometheusDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the prometheus delete operation.
+
+	Typically these are written to a http.Request.
 */
 type PrometheusDeleteParams struct {
 

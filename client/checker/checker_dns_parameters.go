@@ -54,10 +54,12 @@ func NewCheckerDNSParamsWithHTTPClient(client *http.Client) *CheckerDNSParams {
 	}
 }
 
-/* CheckerDNSParams contains all the parameters to send to the API endpoint
-   for the checker Dns operation.
+/*
+CheckerDNSParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checker Dns operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckerDNSParams struct {
 

@@ -42,13 +42,19 @@ type ClientService interface {
 
 	ServersReboot(params *ServersRebootParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersRebootOK, error)
 
+	ServersReset(params *ServersResetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersResetOK, error)
+
 	ServersShowServerStatus(params *ServersShowServerStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersShowServerStatusOK, error)
+
+	ServersUpdate(params *ServersUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersUpdateOK, error)
+
+	ServersUpdateByProjectID(params *ServersUpdateByProjectIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersUpdateByProjectIDOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  ServersConsole consoles servers
+ServersConsole consoles servers
 */
 func (a *Client) ServersConsole(params *ServersConsoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersConsoleOK, error) {
 	// TODO: Validate the params before sending
@@ -87,7 +93,7 @@ func (a *Client) ServersConsole(params *ServersConsoleParams, authInfo runtime.C
 }
 
 /*
-  ServersCreate creates a new server in the given project
+ServersCreate creates a new server in the given project
 */
 func (a *Client) ServersCreate(params *ServersCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -126,7 +132,7 @@ func (a *Client) ServersCreate(params *ServersCreateParams, authInfo runtime.Cli
 }
 
 /*
-  ServersDelete deletes servers by project Id
+ServersDelete deletes servers by project Id
 */
 func (a *Client) ServersDelete(params *ServersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersDeleteOK, *ServersDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -166,7 +172,7 @@ func (a *Client) ServersDelete(params *ServersDeleteParams, authInfo runtime.Cli
 }
 
 /*
-  ServersDetails retrieves a list of servers with detailed info
+ServersDetails retrieves a list of servers with detailed info
 */
 func (a *Client) ServersDetails(params *ServersDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -205,7 +211,7 @@ func (a *Client) ServersDetails(params *ServersDetailsParams, authInfo runtime.C
 }
 
 /*
-  ServersList lists all servers according to roles
+ServersList lists all servers according to roles
 */
 func (a *Client) ServersList(params *ServersListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersListOK, error) {
 	// TODO: Validate the params before sending
@@ -244,7 +250,7 @@ func (a *Client) ServersList(params *ServersListParams, authInfo runtime.ClientA
 }
 
 /*
-  ServersReboot reboots servers
+ServersReboot reboots servers
 */
 func (a *Client) ServersReboot(params *ServersRebootParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersRebootOK, error) {
 	// TODO: Validate the params before sending
@@ -283,7 +289,46 @@ func (a *Client) ServersReboot(params *ServersRebootParams, authInfo runtime.Cli
 }
 
 /*
-  ServersShowServerStatus shows server status
+ServersReset updates statuses of servers by project Id
+*/
+func (a *Client) ServersReset(params *ServersResetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersResetOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewServersResetParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Servers_Reset",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Servers/reset",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ServersResetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ServersResetOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Servers_Reset: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ServersShowServerStatus shows server status
 */
 func (a *Client) ServersShowServerStatus(params *ServersShowServerStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersShowServerStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -318,6 +363,84 @@ func (a *Client) ServersShowServerStatus(params *ServersShowServerStatusParams, 
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Servers_ShowServerStatus: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ServersUpdate updates server
+*/
+func (a *Client) ServersUpdate(params *ServersUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewServersUpdateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Servers_Update",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Servers/update",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ServersUpdateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ServersUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Servers_Update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ServersUpdateByProjectID updates server by project Id
+*/
+func (a *Client) ServersUpdateByProjectID(params *ServersUpdateByProjectIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ServersUpdateByProjectIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewServersUpdateByProjectIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Servers_UpdateByProjectId",
+		Method:             "PUT",
+		PathPattern:        "/api/v{v}/Servers/update/{projectId}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ServersUpdateByProjectIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ServersUpdateByProjectIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Servers_UpdateByProjectId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

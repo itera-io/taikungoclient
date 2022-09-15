@@ -36,19 +36,17 @@ type ClientService interface {
 
 	AccessProfilesDelete(params *AccessProfilesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesDeleteOK, *AccessProfilesDeleteNoContent, error)
 
-	AccessProfilesDeleteDNSServer(params *AccessProfilesDeleteDNSServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesDeleteDNSServerOK, error)
-
-	AccessProfilesDeleteNtpServer(params *AccessProfilesDeleteNtpServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesDeleteNtpServerOK, error)
-
 	AccessProfilesList(params *AccessProfilesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesListOK, error)
 
 	AccessProfilesLockManager(params *AccessProfilesLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesLockManagerOK, error)
+
+	AccessProfilesUpdate(params *AccessProfilesUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesUpdateOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  AccessProfilesAccessProfilesForOrganizationList retrieves access profiles by organization Id
+AccessProfilesAccessProfilesForOrganizationList retrieves access profiles by organization Id
 */
 func (a *Client) AccessProfilesAccessProfilesForOrganizationList(params *AccessProfilesAccessProfilesForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesAccessProfilesForOrganizationListOK, error) {
 	// TODO: Validate the params before sending
@@ -87,7 +85,7 @@ func (a *Client) AccessProfilesAccessProfilesForOrganizationList(params *AccessP
 }
 
 /*
-  AccessProfilesCreate upserts access profile
+AccessProfilesCreate creates access profile
 */
 func (a *Client) AccessProfilesCreate(params *AccessProfilesCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -97,7 +95,7 @@ func (a *Client) AccessProfilesCreate(params *AccessProfilesCreateParams, authIn
 	op := &runtime.ClientOperation{
 		ID:                 "AccessProfiles_Create",
 		Method:             "POST",
-		PathPattern:        "/api/v{v}/AccessProfiles",
+		PathPattern:        "/api/v{v}/AccessProfiles/create",
 		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
 		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
 		Schemes:            []string{"https"},
@@ -126,7 +124,7 @@ func (a *Client) AccessProfilesCreate(params *AccessProfilesCreateParams, authIn
 }
 
 /*
-  AccessProfilesDelete deletes access profile by Id
+AccessProfilesDelete deletes access profile by Id
 */
 func (a *Client) AccessProfilesDelete(params *AccessProfilesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesDeleteOK, *AccessProfilesDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -166,85 +164,7 @@ func (a *Client) AccessProfilesDelete(params *AccessProfilesDeleteParams, authIn
 }
 
 /*
-  AccessProfilesDeleteDNSServer deletes dns server
-*/
-func (a *Client) AccessProfilesDeleteDNSServer(params *AccessProfilesDeleteDNSServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesDeleteDNSServerOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAccessProfilesDeleteDNSServerParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "AccessProfiles_DeleteDnsServer",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/AccessProfiles/dnsserver",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AccessProfilesDeleteDNSServerReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AccessProfilesDeleteDNSServerOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for AccessProfiles_DeleteDnsServer: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  AccessProfilesDeleteNtpServer deletes ntp server
-*/
-func (a *Client) AccessProfilesDeleteNtpServer(params *AccessProfilesDeleteNtpServerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesDeleteNtpServerOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAccessProfilesDeleteNtpServerParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "AccessProfiles_DeleteNtpServer",
-		Method:             "POST",
-		PathPattern:        "/api/v{v}/AccessProfiles/ntpserver",
-		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
-		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AccessProfilesDeleteNtpServerReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AccessProfilesDeleteNtpServerOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for AccessProfiles_DeleteNtpServer: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-  AccessProfilesList retrieves all access profiles
+AccessProfilesList retrieves all access profiles
 */
 func (a *Client) AccessProfilesList(params *AccessProfilesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesListOK, error) {
 	// TODO: Validate the params before sending
@@ -283,7 +203,7 @@ func (a *Client) AccessProfilesList(params *AccessProfilesListParams, authInfo r
 }
 
 /*
-  AccessProfilesLockManager locks unlock access profiles
+AccessProfilesLockManager locks unlock access profiles
 */
 func (a *Client) AccessProfilesLockManager(params *AccessProfilesLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesLockManagerOK, error) {
 	// TODO: Validate the params before sending
@@ -318,6 +238,45 @@ func (a *Client) AccessProfilesLockManager(params *AccessProfilesLockManagerPara
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for AccessProfiles_LockManager: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AccessProfilesUpdate updates access profile
+*/
+func (a *Client) AccessProfilesUpdate(params *AccessProfilesUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AccessProfilesUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAccessProfilesUpdateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "AccessProfiles_Update",
+		Method:             "PUT",
+		PathPattern:        "/api/v{v}/AccessProfiles/update/{id}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AccessProfilesUpdateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AccessProfilesUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for AccessProfiles_Update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

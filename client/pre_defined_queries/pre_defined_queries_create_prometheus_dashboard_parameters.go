@@ -54,10 +54,12 @@ func NewPreDefinedQueriesCreatePrometheusDashboardParamsWithHTTPClient(client *h
 	}
 }
 
-/* PreDefinedQueriesCreatePrometheusDashboardParams contains all the parameters to send to the API endpoint
-   for the pre defined queries create prometheus dashboard operation.
+/*
+PreDefinedQueriesCreatePrometheusDashboardParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the pre defined queries create prometheus dashboard operation.
+
+	Typically these are written to a http.Request.
 */
 type PreDefinedQueriesCreatePrometheusDashboardParams struct {
 

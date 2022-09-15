@@ -36,13 +36,17 @@ type ClientService interface {
 
 	AuthRefreshToken(params *AuthRefreshTokenParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthRefreshTokenOK, error)
 
+	AuthRegister(params *AuthRegisterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthRegisterOK, error)
+
 	AuthResetPassword(params *AuthResetPasswordParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthResetPasswordOK, error)
+
+	AuthTryDemo(params *AuthTryDemoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthTryDemoOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  AuthForgotPassword generates reset password token if you forgot password
+AuthForgotPassword generates reset password token if you forgot password
 */
 func (a *Client) AuthForgotPassword(params *AuthForgotPasswordParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthForgotPasswordOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +85,7 @@ func (a *Client) AuthForgotPassword(params *AuthForgotPasswordParams, authInfo r
 }
 
 /*
-  AuthLogin logins to API by email and password
+AuthLogin logins to API by email and password
 */
 func (a *Client) AuthLogin(params *AuthLoginParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthLoginOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +124,7 @@ func (a *Client) AuthLogin(params *AuthLoginParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  AuthRefreshToken refreshes bearer token that generated automatically by API
+AuthRefreshToken refreshes bearer token that generated automatically by API
 */
 func (a *Client) AuthRefreshToken(params *AuthRefreshTokenParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthRefreshTokenOK, error) {
 	// TODO: Validate the params before sending
@@ -159,7 +163,46 @@ func (a *Client) AuthRefreshToken(params *AuthRefreshTokenParams, authInfo runti
 }
 
 /*
-  AuthResetPassword resets password
+AuthRegister users registration
+*/
+func (a *Client) AuthRegister(params *AuthRegisterParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthRegisterOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAuthRegisterParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Auth_Register",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Auth/register",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AuthRegisterReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AuthRegisterOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Auth_Register: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AuthResetPassword resets password
 */
 func (a *Client) AuthResetPassword(params *AuthResetPasswordParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthResetPasswordOK, error) {
 	// TODO: Validate the params before sending
@@ -194,6 +237,45 @@ func (a *Client) AuthResetPassword(params *AuthResetPasswordParams, authInfo run
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Auth_ResetPassword: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AuthTryDemo tries demo
+*/
+func (a *Client) AuthTryDemo(params *AuthTryDemoParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AuthTryDemoOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAuthTryDemoParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Auth_TryDemo",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Auth/try-demo",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AuthTryDemoReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AuthTryDemoOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Auth_TryDemo: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

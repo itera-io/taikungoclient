@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  StandAloneProfileCreate creates standalone profile
+StandAloneProfileCreate creates standalone profile
 */
 func (a *Client) StandAloneProfileCreate(params *StandAloneProfileCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProfileCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -85,7 +85,7 @@ func (a *Client) StandAloneProfileCreate(params *StandAloneProfileCreateParams, 
 }
 
 /*
-  StandAloneProfileDelete deletes standalone profile
+StandAloneProfileDelete deletes standalone profile
 */
 func (a *Client) StandAloneProfileDelete(params *StandAloneProfileDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProfileDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) StandAloneProfileDelete(params *StandAloneProfileDeleteParams, 
 }
 
 /*
-  StandAloneProfileDropdownList retrieves dropdown list of stand alone profiles
+StandAloneProfileDropdownList retrieves dropdown list of stand alone profiles
 */
 func (a *Client) StandAloneProfileDropdownList(params *StandAloneProfileDropdownListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProfileDropdownListOK, error) {
 	// TODO: Validate the params before sending
@@ -163,7 +163,7 @@ func (a *Client) StandAloneProfileDropdownList(params *StandAloneProfileDropdown
 }
 
 /*
-  StandAloneProfileEdit updates standalone profile
+StandAloneProfileEdit updates standalone profile
 */
 func (a *Client) StandAloneProfileEdit(params *StandAloneProfileEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProfileEditOK, error) {
 	// TODO: Validate the params before sending
@@ -202,7 +202,7 @@ func (a *Client) StandAloneProfileEdit(params *StandAloneProfileEditParams, auth
 }
 
 /*
-  StandAloneProfileList retrieves a list of stand alone profiles
+StandAloneProfileList retrieves a list of stand alone profiles
 */
 func (a *Client) StandAloneProfileList(params *StandAloneProfileListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProfileListOK, error) {
 	// TODO: Validate the params before sending
@@ -241,7 +241,7 @@ func (a *Client) StandAloneProfileList(params *StandAloneProfileListParams, auth
 }
 
 /*
-  StandAloneProfileLockManagement locks unlock standalone profile
+StandAloneProfileLockManagement locks unlock standalone profile
 */
 func (a *Client) StandAloneProfileLockManagement(params *StandAloneProfileLockManagementParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProfileLockManagementOK, error) {
 	// TODO: Validate the params before sending

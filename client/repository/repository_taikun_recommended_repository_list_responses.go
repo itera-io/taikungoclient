@@ -69,7 +69,8 @@ func NewRepositoryTaikunRecommendedRepositoryListOK() *RepositoryTaikunRecommend
 	return &RepositoryTaikunRecommendedRepositoryListOK{}
 }
 
-/* RepositoryTaikunRecommendedRepositoryListOK describes a response with status code 200, with default header values.
+/*
+RepositoryTaikunRecommendedRepositoryListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type RepositoryTaikunRecommendedRepositoryListOK struct {
 	Payload []*models.ArtifactRepositoryDto
 }
 
+// IsSuccess returns true when this repository taikun recommended repository list o k response has a 2xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this repository taikun recommended repository list o k response has a 3xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository taikun recommended repository list o k response has a 4xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this repository taikun recommended repository list o k response has a 5xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this repository taikun recommended repository list o k response a status code equal to that given
+func (o *RepositoryTaikunRecommendedRepositoryListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *RepositoryTaikunRecommendedRepositoryListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListOK  %+v", 200, o.Payload)
 }
+
+func (o *RepositoryTaikunRecommendedRepositoryListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListOK  %+v", 200, o.Payload)
+}
+
 func (o *RepositoryTaikunRecommendedRepositoryListOK) GetPayload() []*models.ArtifactRepositoryDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewRepositoryTaikunRecommendedRepositoryListBadRequest() *RepositoryTaikunR
 	return &RepositoryTaikunRecommendedRepositoryListBadRequest{}
 }
 
-/* RepositoryTaikunRecommendedRepositoryListBadRequest describes a response with status code 400, with default header values.
+/*
+RepositoryTaikunRecommendedRepositoryListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type RepositoryTaikunRecommendedRepositoryListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this repository taikun recommended repository list bad request response has a 2xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this repository taikun recommended repository list bad request response has a 3xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository taikun recommended repository list bad request response has a 4xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this repository taikun recommended repository list bad request response has a 5xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this repository taikun recommended repository list bad request response a status code equal to that given
+func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *RepositoryTaikunRecommendedRepositoryListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewRepositoryTaikunRecommendedRepositoryListUnauthorized() *RepositoryTaiku
 	return &RepositoryTaikunRecommendedRepositoryListUnauthorized{}
 }
 
-/* RepositoryTaikunRecommendedRepositoryListUnauthorized describes a response with status code 401, with default header values.
+/*
+RepositoryTaikunRecommendedRepositoryListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type RepositoryTaikunRecommendedRepositoryListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this repository taikun recommended repository list unauthorized response has a 2xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this repository taikun recommended repository list unauthorized response has a 3xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository taikun recommended repository list unauthorized response has a 4xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this repository taikun recommended repository list unauthorized response has a 5xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this repository taikun recommended repository list unauthorized response a status code equal to that given
+func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewRepositoryTaikunRecommendedRepositoryListForbidden() *RepositoryTaikunRe
 	return &RepositoryTaikunRecommendedRepositoryListForbidden{}
 }
 
-/* RepositoryTaikunRecommendedRepositoryListForbidden describes a response with status code 403, with default header values.
+/*
+RepositoryTaikunRecommendedRepositoryListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type RepositoryTaikunRecommendedRepositoryListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this repository taikun recommended repository list forbidden response has a 2xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this repository taikun recommended repository list forbidden response has a 3xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository taikun recommended repository list forbidden response has a 4xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this repository taikun recommended repository list forbidden response has a 5xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this repository taikun recommended repository list forbidden response a status code equal to that given
+func (o *RepositoryTaikunRecommendedRepositoryListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *RepositoryTaikunRecommendedRepositoryListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *RepositoryTaikunRecommendedRepositoryListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *RepositoryTaikunRecommendedRepositoryListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewRepositoryTaikunRecommendedRepositoryListNotFound() *RepositoryTaikunRec
 	return &RepositoryTaikunRecommendedRepositoryListNotFound{}
 }
 
-/* RepositoryTaikunRecommendedRepositoryListNotFound describes a response with status code 404, with default header values.
+/*
+RepositoryTaikunRecommendedRepositoryListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type RepositoryTaikunRecommendedRepositoryListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this repository taikun recommended repository list not found response has a 2xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this repository taikun recommended repository list not found response has a 3xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository taikun recommended repository list not found response has a 4xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this repository taikun recommended repository list not found response has a 5xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this repository taikun recommended repository list not found response a status code equal to that given
+func (o *RepositoryTaikunRecommendedRepositoryListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *RepositoryTaikunRecommendedRepositoryListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *RepositoryTaikunRecommendedRepositoryListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *RepositoryTaikunRecommendedRepositoryListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewRepositoryTaikunRecommendedRepositoryListInternalServerError() *Reposito
 	return &RepositoryTaikunRecommendedRepositoryListInternalServerError{}
 }
 
-/* RepositoryTaikunRecommendedRepositoryListInternalServerError describes a response with status code 500, with default header values.
+/*
+RepositoryTaikunRecommendedRepositoryListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type RepositoryTaikunRecommendedRepositoryListInternalServerError struct {
 }
 
+// IsSuccess returns true when this repository taikun recommended repository list internal server error response has a 2xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this repository taikun recommended repository list internal server error response has a 3xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this repository taikun recommended repository list internal server error response has a 4xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this repository taikun recommended repository list internal server error response has a 5xx status code
+func (o *RepositoryTaikunRecommendedRepositoryListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this repository taikun recommended repository list internal server error response a status code equal to that given
+func (o *RepositoryTaikunRecommendedRepositoryListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *RepositoryTaikunRecommendedRepositoryListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListInternalServerError ", 500)
+}
+
+func (o *RepositoryTaikunRecommendedRepositoryListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListInternalServerError ", 500)
 }
 

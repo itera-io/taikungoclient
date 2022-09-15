@@ -17,6 +17,12 @@ import (
 // swagger:model CreateOpenstackCloudCommand
 type CreateOpenstackCloudCommand struct {
 
+	// application cred enabled
+	ApplicationCredEnabled bool `json:"applicationCredEnabled"`
+
+	// is admin
+	IsAdmin bool `json:"isAdmin"`
+
 	// name
 	Name string `json:"name,omitempty"`
 

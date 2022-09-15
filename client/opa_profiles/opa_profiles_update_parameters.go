@@ -54,10 +54,12 @@ func NewOpaProfilesUpdateParamsWithHTTPClient(client *http.Client) *OpaProfilesU
 	}
 }
 
-/* OpaProfilesUpdateParams contains all the parameters to send to the API endpoint
-   for the opa profiles update operation.
+/*
+OpaProfilesUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the opa profiles update operation.
+
+	Typically these are written to a http.Request.
 */
 type OpaProfilesUpdateParams struct {
 

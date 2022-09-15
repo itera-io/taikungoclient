@@ -69,7 +69,8 @@ func NewOrganizationsListOK() *OrganizationsListOK {
 	return &OrganizationsListOK{}
 }
 
-/* OrganizationsListOK describes a response with status code 200, with default header values.
+/*
+OrganizationsListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OrganizationsListOK struct {
 	Payload *models.OrganizationsList
 }
 
+// IsSuccess returns true when this organizations list o k response has a 2xx status code
+func (o *OrganizationsListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this organizations list o k response has a 3xx status code
+func (o *OrganizationsListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations list o k response has a 4xx status code
+func (o *OrganizationsListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations list o k response has a 5xx status code
+func (o *OrganizationsListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations list o k response a status code equal to that given
+func (o *OrganizationsListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OrganizationsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations][%d] organizationsListOK  %+v", 200, o.Payload)
 }
+
+func (o *OrganizationsListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Organizations][%d] organizationsListOK  %+v", 200, o.Payload)
+}
+
 func (o *OrganizationsListOK) GetPayload() *models.OrganizationsList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewOrganizationsListBadRequest() *OrganizationsListBadRequest {
 	return &OrganizationsListBadRequest{}
 }
 
-/* OrganizationsListBadRequest describes a response with status code 400, with default header values.
+/*
+OrganizationsListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type OrganizationsListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this organizations list bad request response has a 2xx status code
+func (o *OrganizationsListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations list bad request response has a 3xx status code
+func (o *OrganizationsListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations list bad request response has a 4xx status code
+func (o *OrganizationsListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations list bad request response has a 5xx status code
+func (o *OrganizationsListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations list bad request response a status code equal to that given
+func (o *OrganizationsListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OrganizationsListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations][%d] organizationsListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OrganizationsListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Organizations][%d] organizationsListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OrganizationsListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewOrganizationsListUnauthorized() *OrganizationsListUnauthorized {
 	return &OrganizationsListUnauthorized{}
 }
 
-/* OrganizationsListUnauthorized describes a response with status code 401, with default header values.
+/*
+OrganizationsListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type OrganizationsListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations list unauthorized response has a 2xx status code
+func (o *OrganizationsListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations list unauthorized response has a 3xx status code
+func (o *OrganizationsListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations list unauthorized response has a 4xx status code
+func (o *OrganizationsListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations list unauthorized response has a 5xx status code
+func (o *OrganizationsListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations list unauthorized response a status code equal to that given
+func (o *OrganizationsListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OrganizationsListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations][%d] organizationsListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OrganizationsListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Organizations][%d] organizationsListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OrganizationsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewOrganizationsListForbidden() *OrganizationsListForbidden {
 	return &OrganizationsListForbidden{}
 }
 
-/* OrganizationsListForbidden describes a response with status code 403, with default header values.
+/*
+OrganizationsListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type OrganizationsListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations list forbidden response has a 2xx status code
+func (o *OrganizationsListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations list forbidden response has a 3xx status code
+func (o *OrganizationsListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations list forbidden response has a 4xx status code
+func (o *OrganizationsListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations list forbidden response has a 5xx status code
+func (o *OrganizationsListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations list forbidden response a status code equal to that given
+func (o *OrganizationsListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OrganizationsListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations][%d] organizationsListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OrganizationsListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Organizations][%d] organizationsListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OrganizationsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewOrganizationsListNotFound() *OrganizationsListNotFound {
 	return &OrganizationsListNotFound{}
 }
 
-/* OrganizationsListNotFound describes a response with status code 404, with default header values.
+/*
+OrganizationsListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type OrganizationsListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations list not found response has a 2xx status code
+func (o *OrganizationsListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations list not found response has a 3xx status code
+func (o *OrganizationsListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations list not found response has a 4xx status code
+func (o *OrganizationsListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations list not found response has a 5xx status code
+func (o *OrganizationsListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations list not found response a status code equal to that given
+func (o *OrganizationsListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OrganizationsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations][%d] organizationsListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OrganizationsListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Organizations][%d] organizationsListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OrganizationsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewOrganizationsListInternalServerError() *OrganizationsListInternalServerE
 	return &OrganizationsListInternalServerError{}
 }
 
-/* OrganizationsListInternalServerError describes a response with status code 500, with default header values.
+/*
+OrganizationsListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OrganizationsListInternalServerError struct {
 }
 
+// IsSuccess returns true when this organizations list internal server error response has a 2xx status code
+func (o *OrganizationsListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations list internal server error response has a 3xx status code
+func (o *OrganizationsListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations list internal server error response has a 4xx status code
+func (o *OrganizationsListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations list internal server error response has a 5xx status code
+func (o *OrganizationsListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this organizations list internal server error response a status code equal to that given
+func (o *OrganizationsListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OrganizationsListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Organizations][%d] organizationsListInternalServerError ", 500)
+}
+
+func (o *OrganizationsListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations][%d] organizationsListInternalServerError ", 500)
 }
 

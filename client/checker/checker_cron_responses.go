@@ -69,7 +69,8 @@ func NewCheckerCronOK() *CheckerCronOK {
 	return &CheckerCronOK{}
 }
 
-/* CheckerCronOK describes a response with status code 200, with default header values.
+/*
+CheckerCronOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CheckerCronOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this checker cron o k response has a 2xx status code
+func (o *CheckerCronOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this checker cron o k response has a 3xx status code
+func (o *CheckerCronOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker cron o k response has a 4xx status code
+func (o *CheckerCronOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this checker cron o k response has a 5xx status code
+func (o *CheckerCronOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker cron o k response a status code equal to that given
+func (o *CheckerCronOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CheckerCronOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronOK  %+v", 200, o.Payload)
 }
+
+func (o *CheckerCronOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronOK  %+v", 200, o.Payload)
+}
+
 func (o *CheckerCronOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCheckerCronBadRequest() *CheckerCronBadRequest {
 	return &CheckerCronBadRequest{}
 }
 
-/* CheckerCronBadRequest describes a response with status code 400, with default header values.
+/*
+CheckerCronBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CheckerCronBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this checker cron bad request response has a 2xx status code
+func (o *CheckerCronBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker cron bad request response has a 3xx status code
+func (o *CheckerCronBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker cron bad request response has a 4xx status code
+func (o *CheckerCronBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker cron bad request response has a 5xx status code
+func (o *CheckerCronBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker cron bad request response a status code equal to that given
+func (o *CheckerCronBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CheckerCronBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CheckerCronBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CheckerCronBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCheckerCronUnauthorized() *CheckerCronUnauthorized {
 	return &CheckerCronUnauthorized{}
 }
 
-/* CheckerCronUnauthorized describes a response with status code 401, with default header values.
+/*
+CheckerCronUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CheckerCronUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker cron unauthorized response has a 2xx status code
+func (o *CheckerCronUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker cron unauthorized response has a 3xx status code
+func (o *CheckerCronUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker cron unauthorized response has a 4xx status code
+func (o *CheckerCronUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker cron unauthorized response has a 5xx status code
+func (o *CheckerCronUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker cron unauthorized response a status code equal to that given
+func (o *CheckerCronUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CheckerCronUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CheckerCronUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CheckerCronUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCheckerCronForbidden() *CheckerCronForbidden {
 	return &CheckerCronForbidden{}
 }
 
-/* CheckerCronForbidden describes a response with status code 403, with default header values.
+/*
+CheckerCronForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CheckerCronForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker cron forbidden response has a 2xx status code
+func (o *CheckerCronForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker cron forbidden response has a 3xx status code
+func (o *CheckerCronForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker cron forbidden response has a 4xx status code
+func (o *CheckerCronForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker cron forbidden response has a 5xx status code
+func (o *CheckerCronForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker cron forbidden response a status code equal to that given
+func (o *CheckerCronForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CheckerCronForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CheckerCronForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CheckerCronForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCheckerCronNotFound() *CheckerCronNotFound {
 	return &CheckerCronNotFound{}
 }
 
-/* CheckerCronNotFound describes a response with status code 404, with default header values.
+/*
+CheckerCronNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CheckerCronNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker cron not found response has a 2xx status code
+func (o *CheckerCronNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker cron not found response has a 3xx status code
+func (o *CheckerCronNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker cron not found response has a 4xx status code
+func (o *CheckerCronNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker cron not found response has a 5xx status code
+func (o *CheckerCronNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker cron not found response a status code equal to that given
+func (o *CheckerCronNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CheckerCronNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CheckerCronNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CheckerCronNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCheckerCronInternalServerError() *CheckerCronInternalServerError {
 	return &CheckerCronInternalServerError{}
 }
 
-/* CheckerCronInternalServerError describes a response with status code 500, with default header values.
+/*
+CheckerCronInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CheckerCronInternalServerError struct {
 }
 
+// IsSuccess returns true when this checker cron internal server error response has a 2xx status code
+func (o *CheckerCronInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker cron internal server error response has a 3xx status code
+func (o *CheckerCronInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker cron internal server error response has a 4xx status code
+func (o *CheckerCronInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this checker cron internal server error response has a 5xx status code
+func (o *CheckerCronInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this checker cron internal server error response a status code equal to that given
+func (o *CheckerCronInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CheckerCronInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronInternalServerError ", 500)
+}
+
+func (o *CheckerCronInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronInternalServerError ", 500)
 }
 

@@ -19,6 +19,9 @@ import (
 // swagger:model ProjectExtendLifeTimeCommand
 type ProjectExtendLifeTimeCommand struct {
 
+	// delete on expiration
+	DeleteOnExpiration bool `json:"deleteOnExpiration"`
+
 	// expire at
 	// Format: date-time
 	ExpireAt *strfmt.DateTime `json:"expireAt,omitempty"`

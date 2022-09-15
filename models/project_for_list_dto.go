@@ -29,11 +29,17 @@ type ProjectForListDto struct {
 	// access profiles
 	AccessProfiles *AccessProfilesForProjectListDto `json:"accessProfiles,omitempty"`
 
+	// autoscaling credential
+	AutoscalingCredential *AutoscalingListDto `json:"autoscalingCredential,omitempty"`
+
 	// bastion
 	Bastion int32 `json:"bastion,omitempty"`
 
 	// bound users
 	BoundUsers []*UserDto `json:"boundUsers"`
+
+	// cidr
+	Cidr string `json:"cidr,omitempty"`
 
 	// cloud credential Id
 	CloudCredentialID int32 `json:"cloudCredentialId,omitempty"`
@@ -80,6 +86,9 @@ type ProjectForListDto struct {
 	// is kubernetes
 	IsKubernetes bool `json:"isKubernetes"`
 
+	// is kubevap enabled
+	IsKubevapEnabled bool `json:"isKubevapEnabled"`
+
 	// is locked
 	IsLocked bool `json:"isLocked"`
 
@@ -110,6 +119,9 @@ type ProjectForListDto struct {
 	// kubespray target version
 	KubesprayTargetVersion string `json:"kubesprayTargetVersion,omitempty"`
 
+	// kubevap enabeled kubernetes versions
+	KubevapEnabeledKubernetesVersions []string `json:"kubevapEnabeledKubernetesVersions"`
+
 	// master
 	Master int32 `json:"master,omitempty"`
 
@@ -121,6 +133,9 @@ type ProjectForListDto struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	// net mask
+	NetMask int32 `json:"netMask,omitempty"`
 
 	// opa profile revision
 	OpaProfileRevision int32 `json:"opaProfileRevision,omitempty"`
@@ -136,6 +151,15 @@ type ProjectForListDto struct {
 
 	// organization name
 	OrganizationName string `json:"organizationName,omitempty"`
+
+	// partner Id
+	PartnerID int32 `json:"partnerId,omitempty"`
+
+	// private Ip
+	PrivateIP string `json:"privateIp,omitempty"`
+
+	// public Ip
+	PublicIP string `json:"publicIp,omitempty"`
 
 	// quota Id
 	QuotaID int32 `json:"quotaId,omitempty"`
@@ -201,6 +225,10 @@ func (m *ProjectForListDto) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateAutoscalingCredential(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateBoundUsers(formats); err != nil {
 		res = append(res, err)
 	}
@@ -242,6 +270,25 @@ func (m *ProjectForListDto) validateAccessProfiles(formats strfmt.Registry) erro
 				return ve.ValidateName("accessProfiles")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("accessProfiles")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ProjectForListDto) validateAutoscalingCredential(formats strfmt.Registry) error {
+	if swag.IsZero(m.AutoscalingCredential) { // not required
+		return nil
+	}
+
+	if m.AutoscalingCredential != nil {
+		if err := m.AutoscalingCredential.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("autoscalingCredential")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("autoscalingCredential")
 			}
 			return err
 		}
@@ -379,6 +426,10 @@ func (m *ProjectForListDto) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateAutoscalingCredential(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateBoundUsers(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -413,6 +464,22 @@ func (m *ProjectForListDto) contextValidateAccessProfiles(ctx context.Context, f
 				return ve.ValidateName("accessProfiles")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("accessProfiles")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *ProjectForListDto) contextValidateAutoscalingCredential(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.AutoscalingCredential != nil {
+		if err := m.AutoscalingCredential.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("autoscalingCredential")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("autoscalingCredential")
 			}
 			return err
 		}

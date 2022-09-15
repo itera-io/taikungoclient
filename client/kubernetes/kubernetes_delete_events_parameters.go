@@ -54,10 +54,12 @@ func NewKubernetesDeleteEventsParamsWithHTTPClient(client *http.Client) *Kuberne
 	}
 }
 
-/* KubernetesDeleteEventsParams contains all the parameters to send to the API endpoint
-   for the kubernetes delete events operation.
+/*
+KubernetesDeleteEventsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes delete events operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesDeleteEventsParams struct {
 

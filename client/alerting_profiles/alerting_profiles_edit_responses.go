@@ -69,7 +69,8 @@ func NewAlertingProfilesEditOK() *AlertingProfilesEditOK {
 	return &AlertingProfilesEditOK{}
 }
 
-/* AlertingProfilesEditOK describes a response with status code 200, with default header values.
+/*
+AlertingProfilesEditOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AlertingProfilesEditOK struct {
 	Payload *models.APIResponse
 }
 
+// IsSuccess returns true when this alerting profiles edit o k response has a 2xx status code
+func (o *AlertingProfilesEditOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this alerting profiles edit o k response has a 3xx status code
+func (o *AlertingProfilesEditOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles edit o k response has a 4xx status code
+func (o *AlertingProfilesEditOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting profiles edit o k response has a 5xx status code
+func (o *AlertingProfilesEditOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles edit o k response a status code equal to that given
+func (o *AlertingProfilesEditOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AlertingProfilesEditOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditOK  %+v", 200, o.Payload)
 }
+
+func (o *AlertingProfilesEditOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditOK  %+v", 200, o.Payload)
+}
+
 func (o *AlertingProfilesEditOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewAlertingProfilesEditBadRequest() *AlertingProfilesEditBadRequest {
 	return &AlertingProfilesEditBadRequest{}
 }
 
-/* AlertingProfilesEditBadRequest describes a response with status code 400, with default header values.
+/*
+AlertingProfilesEditBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type AlertingProfilesEditBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles edit bad request response has a 2xx status code
+func (o *AlertingProfilesEditBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles edit bad request response has a 3xx status code
+func (o *AlertingProfilesEditBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles edit bad request response has a 4xx status code
+func (o *AlertingProfilesEditBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles edit bad request response has a 5xx status code
+func (o *AlertingProfilesEditBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles edit bad request response a status code equal to that given
+func (o *AlertingProfilesEditBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AlertingProfilesEditBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AlertingProfilesEditBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AlertingProfilesEditBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewAlertingProfilesEditUnauthorized() *AlertingProfilesEditUnauthorized {
 	return &AlertingProfilesEditUnauthorized{}
 }
 
-/* AlertingProfilesEditUnauthorized describes a response with status code 401, with default header values.
+/*
+AlertingProfilesEditUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type AlertingProfilesEditUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles edit unauthorized response has a 2xx status code
+func (o *AlertingProfilesEditUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles edit unauthorized response has a 3xx status code
+func (o *AlertingProfilesEditUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles edit unauthorized response has a 4xx status code
+func (o *AlertingProfilesEditUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles edit unauthorized response has a 5xx status code
+func (o *AlertingProfilesEditUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles edit unauthorized response a status code equal to that given
+func (o *AlertingProfilesEditUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AlertingProfilesEditUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AlertingProfilesEditUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AlertingProfilesEditUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewAlertingProfilesEditForbidden() *AlertingProfilesEditForbidden {
 	return &AlertingProfilesEditForbidden{}
 }
 
-/* AlertingProfilesEditForbidden describes a response with status code 403, with default header values.
+/*
+AlertingProfilesEditForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type AlertingProfilesEditForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles edit forbidden response has a 2xx status code
+func (o *AlertingProfilesEditForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles edit forbidden response has a 3xx status code
+func (o *AlertingProfilesEditForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles edit forbidden response has a 4xx status code
+func (o *AlertingProfilesEditForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles edit forbidden response has a 5xx status code
+func (o *AlertingProfilesEditForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles edit forbidden response a status code equal to that given
+func (o *AlertingProfilesEditForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AlertingProfilesEditForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AlertingProfilesEditForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AlertingProfilesEditForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewAlertingProfilesEditNotFound() *AlertingProfilesEditNotFound {
 	return &AlertingProfilesEditNotFound{}
 }
 
-/* AlertingProfilesEditNotFound describes a response with status code 404, with default header values.
+/*
+AlertingProfilesEditNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type AlertingProfilesEditNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles edit not found response has a 2xx status code
+func (o *AlertingProfilesEditNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles edit not found response has a 3xx status code
+func (o *AlertingProfilesEditNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles edit not found response has a 4xx status code
+func (o *AlertingProfilesEditNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles edit not found response has a 5xx status code
+func (o *AlertingProfilesEditNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles edit not found response a status code equal to that given
+func (o *AlertingProfilesEditNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AlertingProfilesEditNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AlertingProfilesEditNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AlertingProfilesEditNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewAlertingProfilesEditInternalServerError() *AlertingProfilesEditInternalS
 	return &AlertingProfilesEditInternalServerError{}
 }
 
-/* AlertingProfilesEditInternalServerError describes a response with status code 500, with default header values.
+/*
+AlertingProfilesEditInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AlertingProfilesEditInternalServerError struct {
 }
 
+// IsSuccess returns true when this alerting profiles edit internal server error response has a 2xx status code
+func (o *AlertingProfilesEditInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles edit internal server error response has a 3xx status code
+func (o *AlertingProfilesEditInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles edit internal server error response has a 4xx status code
+func (o *AlertingProfilesEditInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting profiles edit internal server error response has a 5xx status code
+func (o *AlertingProfilesEditInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this alerting profiles edit internal server error response a status code equal to that given
+func (o *AlertingProfilesEditInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AlertingProfilesEditInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditInternalServerError ", 500)
+}
+
+func (o *AlertingProfilesEditInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditInternalServerError ", 500)
 }
 

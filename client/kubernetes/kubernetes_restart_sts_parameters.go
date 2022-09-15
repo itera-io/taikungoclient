@@ -54,10 +54,12 @@ func NewKubernetesRestartStsParamsWithHTTPClient(client *http.Client) *Kubernete
 	}
 }
 
-/* KubernetesRestartStsParams contains all the parameters to send to the API endpoint
-   for the kubernetes restart sts operation.
+/*
+KubernetesRestartStsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes restart sts operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesRestartStsParams struct {
 

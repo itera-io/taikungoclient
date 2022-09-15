@@ -42,6 +42,10 @@ type ClientService interface {
 
 	CheckerDNS(params *CheckerDNSParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerDNSOK, error)
 
+	CheckerGoogle(params *CheckerGoogleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerGoogleOK, error)
+
+	CheckerNode(params *CheckerNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerNodeOK, error)
+
 	CheckerNtp(params *CheckerNtpParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerNtpOK, error)
 
 	CheckerOpenstack(params *CheckerOpenstackParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOpenstackOK, error)
@@ -50,11 +54,15 @@ type ClientService interface {
 
 	CheckerOpenstackTaikunLbImage(params *CheckerOpenstackTaikunLbImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOpenstackTaikunLbImageOK, error)
 
+	CheckerOrganization(params *CheckerOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOrganizationOK, error)
+
 	CheckerPrometheus(params *CheckerPrometheusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerPrometheusOK, error)
 
 	CheckerS3(params *CheckerS3Params, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerS3OK, error)
 
 	CheckerSSH(params *CheckerSSHParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerSSHOK, error)
+
+	CheckerUserChecker(params *CheckerUserCheckerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerUserCheckerOK, error)
 
 	CheckerYaml(params *CheckerYamlParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerYamlOK, error)
 
@@ -62,7 +70,7 @@ type ClientService interface {
 }
 
 /*
-  CheckerAws checks aws credentials
+CheckerAws checks aws credentials
 */
 func (a *Client) CheckerAws(params *CheckerAwsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerAwsOK, error) {
 	// TODO: Validate the params before sending
@@ -101,7 +109,7 @@ func (a *Client) CheckerAws(params *CheckerAwsParams, authInfo runtime.ClientAut
 }
 
 /*
-  CheckerAzure checks valid azure credentials
+CheckerAzure checks valid azure credentials
 */
 func (a *Client) CheckerAzure(params *CheckerAzureParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerAzureOK, error) {
 	// TODO: Validate the params before sending
@@ -140,7 +148,7 @@ func (a *Client) CheckerAzure(params *CheckerAzureParams, authInfo runtime.Clien
 }
 
 /*
-  CheckerAzureCPUQuota checks azure cpu quota limit
+CheckerAzureCPUQuota checks azure cpu quota limit
 */
 func (a *Client) CheckerAzureCPUQuota(params *CheckerAzureCPUQuotaParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerAzureCPUQuotaOK, error) {
 	// TODO: Validate the params before sending
@@ -179,7 +187,7 @@ func (a *Client) CheckerAzureCPUQuota(params *CheckerAzureCPUQuotaParams, authIn
 }
 
 /*
-  CheckerCidr checks valid cidr format
+CheckerCidr checks valid cidr format
 */
 func (a *Client) CheckerCidr(params *CheckerCidrParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerCidrOK, error) {
 	// TODO: Validate the params before sending
@@ -218,7 +226,7 @@ func (a *Client) CheckerCidr(params *CheckerCidrParams, authInfo runtime.ClientA
 }
 
 /*
-  CheckerCron checks valid cron job format
+CheckerCron checks valid cron job format
 */
 func (a *Client) CheckerCron(params *CheckerCronParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerCronOK, error) {
 	// TODO: Validate the params before sending
@@ -257,7 +265,7 @@ func (a *Client) CheckerCron(params *CheckerCronParams, authInfo runtime.ClientA
 }
 
 /*
-  CheckerDNS checks valid dns format
+CheckerDNS checks valid dns format
 */
 func (a *Client) CheckerDNS(params *CheckerDNSParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerDNSOK, error) {
 	// TODO: Validate the params before sending
@@ -296,7 +304,85 @@ func (a *Client) CheckerDNS(params *CheckerDNSParams, authInfo runtime.ClientAut
 }
 
 /*
-  CheckerNtp checks valid ntp format
+CheckerGoogle checks aws credentials
+*/
+func (a *Client) CheckerGoogle(params *CheckerGoogleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerGoogleOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCheckerGoogleParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Checker_Google",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Checker/google",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CheckerGoogleReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CheckerGoogleOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Checker_Google: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CheckerNode duplicates server name checker
+*/
+func (a *Client) CheckerNode(params *CheckerNodeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerNodeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCheckerNodeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Checker_Node",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Checker/node",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CheckerNodeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CheckerNodeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Checker_Node: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CheckerNtp checks valid ntp format
 */
 func (a *Client) CheckerNtp(params *CheckerNtpParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerNtpOK, error) {
 	// TODO: Validate the params before sending
@@ -335,7 +421,7 @@ func (a *Client) CheckerNtp(params *CheckerNtpParams, authInfo runtime.ClientAut
 }
 
 /*
-  CheckerOpenstack checks openstack credentials
+CheckerOpenstack checks openstack credentials
 */
 func (a *Client) CheckerOpenstack(params *CheckerOpenstackParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOpenstackOK, error) {
 	// TODO: Validate the params before sending
@@ -374,7 +460,7 @@ func (a *Client) CheckerOpenstack(params *CheckerOpenstackParams, authInfo runti
 }
 
 /*
-  CheckerOpenstackImage checks openstack taikun image
+CheckerOpenstackImage checks openstack taikun image
 */
 func (a *Client) CheckerOpenstackImage(params *CheckerOpenstackImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOpenstackImageOK, error) {
 	// TODO: Validate the params before sending
@@ -413,7 +499,7 @@ func (a *Client) CheckerOpenstackImage(params *CheckerOpenstackImageParams, auth
 }
 
 /*
-  CheckerOpenstackTaikunLbImage checks openstack taikun lb image
+CheckerOpenstackTaikunLbImage checks openstack taikun lb image
 */
 func (a *Client) CheckerOpenstackTaikunLbImage(params *CheckerOpenstackTaikunLbImageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOpenstackTaikunLbImageOK, error) {
 	// TODO: Validate the params before sending
@@ -452,7 +538,46 @@ func (a *Client) CheckerOpenstackTaikunLbImage(params *CheckerOpenstackTaikunLbI
 }
 
 /*
-  CheckerPrometheus checks prometheus credentials
+CheckerOrganization checks duplicate org name
+*/
+func (a *Client) CheckerOrganization(params *CheckerOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerOrganizationOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCheckerOrganizationParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Checker_Organization",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Checker/organization",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CheckerOrganizationReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CheckerOrganizationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Checker_Organization: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CheckerPrometheus checks prometheus credentials
 */
 func (a *Client) CheckerPrometheus(params *CheckerPrometheusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerPrometheusOK, error) {
 	// TODO: Validate the params before sending
@@ -491,7 +616,7 @@ func (a *Client) CheckerPrometheus(params *CheckerPrometheusParams, authInfo run
 }
 
 /*
-  CheckerS3 checks s3 credentials
+CheckerS3 checks s3 credentials
 */
 func (a *Client) CheckerS3(params *CheckerS3Params, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerS3OK, error) {
 	// TODO: Validate the params before sending
@@ -530,7 +655,7 @@ func (a *Client) CheckerS3(params *CheckerS3Params, authInfo runtime.ClientAuthI
 }
 
 /*
-  CheckerSSH checks valid ssh key format
+CheckerSSH checks valid ssh key format
 */
 func (a *Client) CheckerSSH(params *CheckerSSHParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerSSHOK, error) {
 	// TODO: Validate the params before sending
@@ -569,7 +694,46 @@ func (a *Client) CheckerSSH(params *CheckerSSHParams, authInfo runtime.ClientAut
 }
 
 /*
-  CheckerYaml checks yaml file
+CheckerUserChecker checks duplicate username
+*/
+func (a *Client) CheckerUserChecker(params *CheckerUserCheckerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerUserCheckerOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCheckerUserCheckerParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Checker_UserChecker",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Checker/user",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CheckerUserCheckerReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CheckerUserCheckerOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Checker_UserChecker: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CheckerYaml checks yaml file
 */
 func (a *Client) CheckerYaml(params *CheckerYamlParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CheckerYamlOK, error) {
 	// TODO: Validate the params before sending

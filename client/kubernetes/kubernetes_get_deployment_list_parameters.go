@@ -53,10 +53,12 @@ func NewKubernetesGetDeploymentListParamsWithHTTPClient(client *http.Client) *Ku
 	}
 }
 
-/* KubernetesGetDeploymentListParams contains all the parameters to send to the API endpoint
-   for the kubernetes get deployment list operation.
+/*
+KubernetesGetDeploymentListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes get deployment list operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesGetDeploymentListParams struct {
 

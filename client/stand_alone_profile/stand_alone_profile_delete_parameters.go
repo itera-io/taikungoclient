@@ -54,10 +54,12 @@ func NewStandAloneProfileDeleteParamsWithHTTPClient(client *http.Client) *StandA
 	}
 }
 
-/* StandAloneProfileDeleteParams contains all the parameters to send to the API endpoint
-   for the stand alone profile delete operation.
+/*
+StandAloneProfileDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone profile delete operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneProfileDeleteParams struct {
 

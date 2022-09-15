@@ -14,6 +14,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/auth"
 	"github.com/itera-io/taikungoclient/client/keycloak"
 	"github.com/itera-io/taikungoclient/models"
+	"github.com/itera-io/taikungoclient/showbackclient"
 )
 
 // API version
@@ -28,7 +29,8 @@ const TaikunApiHostEnvVar = "TAIKUN_API_HOST"
 
 // Wrapper around the generated Taikungoclient to include authentication
 type Client struct {
-	Client *client.Taikungoclient
+	Client         *client.Taikungoclient
+	ShowbackClient *showbackclient.Showbackgoclient
 
 	email               string
 	password            string
@@ -38,8 +40,8 @@ type Client struct {
 	refreshToken string
 }
 
-// Create a new authenticated Taikungoclient, Taikun or Keycloak credentials
-// environment variables must be set
+// Create a new authenticated Taikungoclient from environment variables.
+// Taikun or Keycloak credentials environment variables must be set
 func NewClient() (*Client, error) {
 	email, keycloakEnabled := os.LookupEnv(TaikunKeycloakEmailEnvVar)
 	password := os.Getenv(TaikunKeycloakPasswordEnvVar)
@@ -72,13 +74,22 @@ To override the default API host, set the following environment variable:
 		)
 	}
 
+	apiHost := os.Getenv(TaikunApiHostEnvVar)
+
+	return NewClientFromCredentials(email, password, keycloakEnabled, apiHost)
+}
+
+func NewClientFromCredentials(email string, password string, keycloakEnabled bool, apiHost string) (*Client, error) {
 	transportConfig := client.DefaultTransportConfig()
-	if apiHost, apiHostIsSet := os.LookupEnv(TaikunApiHostEnvVar); apiHostIsSet {
+	showbackTransportConfig := showbackclient.DefaultTransportConfig()
+	if apiHost != "" {
 		transportConfig = transportConfig.WithHost(apiHost)
+		showbackTransportConfig = showbackTransportConfig.WithHost(apiHost)
 	}
 
 	return &Client{
 		Client:              client.NewHTTPClientWithConfig(nil, transportConfig),
+		ShowbackClient:      showbackclient.NewHTTPClientWithConfig(nil, showbackTransportConfig),
 		email:               email,
 		password:            password,
 		useKeycloakEndpoint: keycloakEnabled,
@@ -96,7 +107,8 @@ type jwtData struct {
 }
 
 // Authenticate a ClientRequest, obtain a new token if the current one is
-// expired
+// expired. Only Client is authenticated since ShowbackClient uses Client as
+// its runtime.ClientAuthInfoWriter.
 func (apiClient *Client) AuthenticateRequest(request runtime.ClientRequest, _ strfmt.Registry) error {
 	if len(apiClient.token) == 0 {
 		if !apiClient.useKeycloakEndpoint {

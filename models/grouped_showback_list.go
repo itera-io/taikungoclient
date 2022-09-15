@@ -19,6 +19,9 @@ import (
 // swagger:model GroupedShowbackList
 type GroupedShowbackList struct {
 
+	// by label values
+	ByLabelValues []*GroupedShowbackSummaryInfos `json:"byLabelValues"`
+
 	// credentials
 	Credentials []*GroupedShowbackSummaryInfos `json:"credentials"`
 
@@ -29,6 +32,10 @@ type GroupedShowbackList struct {
 // Validate validates this grouped showback list
 func (m *GroupedShowbackList) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateByLabelValues(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateCredentials(formats); err != nil {
 		res = append(res, err)
@@ -41,6 +48,32 @@ func (m *GroupedShowbackList) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *GroupedShowbackList) validateByLabelValues(formats strfmt.Registry) error {
+	if swag.IsZero(m.ByLabelValues) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.ByLabelValues); i++ {
+		if swag.IsZero(m.ByLabelValues[i]) { // not required
+			continue
+		}
+
+		if m.ByLabelValues[i] != nil {
+			if err := m.ByLabelValues[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("byLabelValues" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("byLabelValues" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -100,6 +133,10 @@ func (m *GroupedShowbackList) validateProjects(formats strfmt.Registry) error {
 func (m *GroupedShowbackList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateByLabelValues(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateCredentials(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -111,6 +148,26 @@ func (m *GroupedShowbackList) ContextValidate(ctx context.Context, formats strfm
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *GroupedShowbackList) contextValidateByLabelValues(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ByLabelValues); i++ {
+
+		if m.ByLabelValues[i] != nil {
+			if err := m.ByLabelValues[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("byLabelValues" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("byLabelValues" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

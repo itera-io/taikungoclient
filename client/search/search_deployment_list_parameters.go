@@ -54,10 +54,12 @@ func NewSearchDeploymentListParamsWithHTTPClient(client *http.Client) *SearchDep
 	}
 }
 
-/* SearchDeploymentListParams contains all the parameters to send to the API endpoint
-   for the search deployment list operation.
+/*
+SearchDeploymentListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search deployment list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchDeploymentListParams struct {
 

@@ -53,10 +53,12 @@ func NewOpsCredentialsListParamsWithHTTPClient(client *http.Client) *OpsCredenti
 	}
 }
 
-/* OpsCredentialsListParams contains all the parameters to send to the API endpoint
-   for the ops credentials list operation.
+/*
+OpsCredentialsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ops credentials list operation.
+
+	Typically these are written to a http.Request.
 */
 type OpsCredentialsListParams struct {
 
@@ -91,6 +93,12 @@ type OpsCredentialsListParams struct {
 
 	// SearchID.
 	SearchID *string
+
+	// SortBy.
+	SortBy *string
+
+	// SortDirection.
+	SortDirection *string
 
 	// V.
 	V string
@@ -214,6 +222,28 @@ func (o *OpsCredentialsListParams) SetSearchID(searchID *string) {
 	o.SearchID = searchID
 }
 
+// WithSortBy adds the sortBy to the ops credentials list params
+func (o *OpsCredentialsListParams) WithSortBy(sortBy *string) *OpsCredentialsListParams {
+	o.SetSortBy(sortBy)
+	return o
+}
+
+// SetSortBy adds the sortBy to the ops credentials list params
+func (o *OpsCredentialsListParams) SetSortBy(sortBy *string) {
+	o.SortBy = sortBy
+}
+
+// WithSortDirection adds the sortDirection to the ops credentials list params
+func (o *OpsCredentialsListParams) WithSortDirection(sortDirection *string) *OpsCredentialsListParams {
+	o.SetSortDirection(sortDirection)
+	return o
+}
+
+// SetSortDirection adds the sortDirection to the ops credentials list params
+func (o *OpsCredentialsListParams) SetSortDirection(sortDirection *string) {
+	o.SortDirection = sortDirection
+}
+
 // WithV adds the v to the ops credentials list params
 func (o *OpsCredentialsListParams) WithV(v string) *OpsCredentialsListParams {
 	o.SetV(v)
@@ -330,6 +360,40 @@ func (o *OpsCredentialsListParams) WriteToRequest(r runtime.ClientRequest, reg s
 		if qSearchID != "" {
 
 			if err := r.SetQueryParam("searchId", qSearchID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SortBy != nil {
+
+		// query param sortBy
+		var qrSortBy string
+
+		if o.SortBy != nil {
+			qrSortBy = *o.SortBy
+		}
+		qSortBy := qrSortBy
+		if qSortBy != "" {
+
+			if err := r.SetQueryParam("sortBy", qSortBy); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.SortDirection != nil {
+
+		// query param sortDirection
+		var qrSortDirection string
+
+		if o.SortDirection != nil {
+			qrSortDirection = *o.SortDirection
+		}
+		qSortDirection := qrSortDirection
+		if qSortDirection != "" {
+
+			if err := r.SetQueryParam("sortDirection", qSortDirection); err != nil {
 				return err
 			}
 		}

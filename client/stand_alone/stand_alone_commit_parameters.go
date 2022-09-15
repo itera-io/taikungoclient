@@ -54,10 +54,12 @@ func NewStandAloneCommitParamsWithHTTPClient(client *http.Client) *StandAloneCom
 	}
 }
 
-/* StandAloneCommitParams contains all the parameters to send to the API endpoint
-   for the stand alone commit operation.
+/*
+StandAloneCommitParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone commit operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneCommitParams struct {
 

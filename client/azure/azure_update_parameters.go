@@ -54,10 +54,12 @@ func NewAzureUpdateParamsWithHTTPClient(client *http.Client) *AzureUpdateParams 
 	}
 }
 
-/* AzureUpdateParams contains all the parameters to send to the API endpoint
-   for the azure update operation.
+/*
+AzureUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the azure update operation.
+
+	Typically these are written to a http.Request.
 */
 type AzureUpdateParams struct {
 

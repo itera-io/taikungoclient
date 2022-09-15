@@ -54,10 +54,12 @@ func NewOpsCredentialsMakeDefaultParamsWithHTTPClient(client *http.Client) *OpsC
 	}
 }
 
-/* OpsCredentialsMakeDefaultParams contains all the parameters to send to the API endpoint
-   for the ops credentials make default operation.
+/*
+OpsCredentialsMakeDefaultParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ops credentials make default operation.
+
+	Typically these are written to a http.Request.
 */
 type OpsCredentialsMakeDefaultParams struct {
 

@@ -54,10 +54,12 @@ func NewCheckerAzureParamsWithHTTPClient(client *http.Client) *CheckerAzureParam
 	}
 }
 
-/* CheckerAzureParams contains all the parameters to send to the API endpoint
-   for the checker azure operation.
+/*
+CheckerAzureParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checker azure operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckerAzureParams struct {
 

@@ -54,10 +54,12 @@ func NewSearchPrometheusRulesListParamsWithHTTPClient(client *http.Client) *Sear
 	}
 }
 
-/* SearchPrometheusRulesListParams contains all the parameters to send to the API endpoint
-   for the search prometheus rules list operation.
+/*
+SearchPrometheusRulesListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search prometheus rules list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchPrometheusRulesListParams struct {
 

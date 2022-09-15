@@ -50,11 +50,13 @@ type ClientService interface {
 
 	AlertingProfilesLockManager(params *AlertingProfilesLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingProfilesLockManagerOK, error)
 
+	AlertingProfilesVerifyWebhook(params *AlertingProfilesVerifyWebhookParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingProfilesVerifyWebhookOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  AlertingProfilesAlertingProfilesForOrganizationList retrieves all alerting profiles for organization
+AlertingProfilesAlertingProfilesForOrganizationList retrieves all alerting profiles for organization
 */
 func (a *Client) AlertingProfilesAlertingProfilesForOrganizationList(params *AlertingProfilesAlertingProfilesForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingProfilesAlertingProfilesForOrganizationListOK, error) {
 	// TODO: Validate the params before sending
@@ -93,7 +95,7 @@ func (a *Client) AlertingProfilesAlertingProfilesForOrganizationList(params *Ale
 }
 
 /*
-  AlertingProfilesAssignEmails assigns alerting emails
+AlertingProfilesAssignEmails assigns alerting emails
 */
 func (a *Client) AlertingProfilesAssignEmails(params *AlertingProfilesAssignEmailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingProfilesAssignEmailsOK, error) {
 	// TODO: Validate the params before sending
@@ -132,7 +134,7 @@ func (a *Client) AlertingProfilesAssignEmails(params *AlertingProfilesAssignEmai
 }
 
 /*
-  AlertingProfilesAssignWebhooks assigns alerting webhooks
+AlertingProfilesAssignWebhooks assigns alerting webhooks
 */
 func (a *Client) AlertingProfilesAssignWebhooks(params *AlertingProfilesAssignWebhooksParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingProfilesAssignWebhooksOK, error) {
 	// TODO: Validate the params before sending
@@ -171,7 +173,7 @@ func (a *Client) AlertingProfilesAssignWebhooks(params *AlertingProfilesAssignWe
 }
 
 /*
-  AlertingProfilesAttach attaches alerting profile to project
+AlertingProfilesAttach attaches alerting profile to project
 */
 func (a *Client) AlertingProfilesAttach(params *AlertingProfilesAttachParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingProfilesAttachOK, error) {
 	// TODO: Validate the params before sending
@@ -210,7 +212,7 @@ func (a *Client) AlertingProfilesAttach(params *AlertingProfilesAttachParams, au
 }
 
 /*
-  AlertingProfilesCreate adds alerting profiles
+AlertingProfilesCreate adds alerting profiles
 */
 func (a *Client) AlertingProfilesCreate(params *AlertingProfilesCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingProfilesCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -249,7 +251,7 @@ func (a *Client) AlertingProfilesCreate(params *AlertingProfilesCreateParams, au
 }
 
 /*
-  AlertingProfilesDelete removes alerting profiles by Id
+AlertingProfilesDelete removes alerting profiles by Id
 */
 func (a *Client) AlertingProfilesDelete(params *AlertingProfilesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingProfilesDeleteOK, *AlertingProfilesDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -289,7 +291,7 @@ func (a *Client) AlertingProfilesDelete(params *AlertingProfilesDeleteParams, au
 }
 
 /*
-  AlertingProfilesDetach detaches alerting profile from project
+AlertingProfilesDetach detaches alerting profile from project
 */
 func (a *Client) AlertingProfilesDetach(params *AlertingProfilesDetachParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingProfilesDetachOK, error) {
 	// TODO: Validate the params before sending
@@ -328,7 +330,7 @@ func (a *Client) AlertingProfilesDetach(params *AlertingProfilesDetachParams, au
 }
 
 /*
-  AlertingProfilesEdit updates alerting profiles
+AlertingProfilesEdit updates alerting profiles
 */
 func (a *Client) AlertingProfilesEdit(params *AlertingProfilesEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingProfilesEditOK, error) {
 	// TODO: Validate the params before sending
@@ -367,7 +369,7 @@ func (a *Client) AlertingProfilesEdit(params *AlertingProfilesEditParams, authIn
 }
 
 /*
-  AlertingProfilesList retrieves all alerting profiles
+AlertingProfilesList retrieves all alerting profiles
 */
 func (a *Client) AlertingProfilesList(params *AlertingProfilesListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingProfilesListOK, error) {
 	// TODO: Validate the params before sending
@@ -406,7 +408,7 @@ func (a *Client) AlertingProfilesList(params *AlertingProfilesListParams, authIn
 }
 
 /*
-  AlertingProfilesLockManager locks unlock alerting profiles
+AlertingProfilesLockManager locks unlock alerting profiles
 */
 func (a *Client) AlertingProfilesLockManager(params *AlertingProfilesLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingProfilesLockManagerOK, error) {
 	// TODO: Validate the params before sending
@@ -441,6 +443,45 @@ func (a *Client) AlertingProfilesLockManager(params *AlertingProfilesLockManager
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for AlertingProfiles_LockManager: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AlertingProfilesVerifyWebhook verifies webhook endpoint
+*/
+func (a *Client) AlertingProfilesVerifyWebhook(params *AlertingProfilesVerifyWebhookParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AlertingProfilesVerifyWebhookOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAlertingProfilesVerifyWebhookParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "AlertingProfiles_VerifyWebhook",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/AlertingProfiles/verifywebhook",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AlertingProfilesVerifyWebhookReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AlertingProfilesVerifyWebhookOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for AlertingProfiles_VerifyWebhook: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

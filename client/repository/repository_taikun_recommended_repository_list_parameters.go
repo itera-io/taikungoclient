@@ -52,10 +52,12 @@ func NewRepositoryTaikunRecommendedRepositoryListParamsWithHTTPClient(client *ht
 	}
 }
 
-/* RepositoryTaikunRecommendedRepositoryListParams contains all the parameters to send to the API endpoint
-   for the repository taikun recommended repository list operation.
+/*
+RepositoryTaikunRecommendedRepositoryListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the repository taikun recommended repository list operation.
+
+	Typically these are written to a http.Request.
 */
 type RepositoryTaikunRecommendedRepositoryListParams struct {
 

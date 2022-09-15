@@ -69,7 +69,8 @@ func NewSearchDaemonSetListOK() *SearchDaemonSetListOK {
 	return &SearchDaemonSetListOK{}
 }
 
-/* SearchDaemonSetListOK describes a response with status code 200, with default header values.
+/*
+SearchDaemonSetListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SearchDaemonSetListOK struct {
 	Payload *models.DaemonSetSearchList
 }
 
+// IsSuccess returns true when this search daemon set list o k response has a 2xx status code
+func (o *SearchDaemonSetListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this search daemon set list o k response has a 3xx status code
+func (o *SearchDaemonSetListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search daemon set list o k response has a 4xx status code
+func (o *SearchDaemonSetListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search daemon set list o k response has a 5xx status code
+func (o *SearchDaemonSetListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search daemon set list o k response a status code equal to that given
+func (o *SearchDaemonSetListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SearchDaemonSetListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListOK  %+v", 200, o.Payload)
 }
+
+func (o *SearchDaemonSetListOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListOK  %+v", 200, o.Payload)
+}
+
 func (o *SearchDaemonSetListOK) GetPayload() *models.DaemonSetSearchList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewSearchDaemonSetListBadRequest() *SearchDaemonSetListBadRequest {
 	return &SearchDaemonSetListBadRequest{}
 }
 
-/* SearchDaemonSetListBadRequest describes a response with status code 400, with default header values.
+/*
+SearchDaemonSetListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type SearchDaemonSetListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this search daemon set list bad request response has a 2xx status code
+func (o *SearchDaemonSetListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search daemon set list bad request response has a 3xx status code
+func (o *SearchDaemonSetListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search daemon set list bad request response has a 4xx status code
+func (o *SearchDaemonSetListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search daemon set list bad request response has a 5xx status code
+func (o *SearchDaemonSetListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search daemon set list bad request response a status code equal to that given
+func (o *SearchDaemonSetListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SearchDaemonSetListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SearchDaemonSetListBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SearchDaemonSetListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewSearchDaemonSetListUnauthorized() *SearchDaemonSetListUnauthorized {
 	return &SearchDaemonSetListUnauthorized{}
 }
 
-/* SearchDaemonSetListUnauthorized describes a response with status code 401, with default header values.
+/*
+SearchDaemonSetListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type SearchDaemonSetListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search daemon set list unauthorized response has a 2xx status code
+func (o *SearchDaemonSetListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search daemon set list unauthorized response has a 3xx status code
+func (o *SearchDaemonSetListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search daemon set list unauthorized response has a 4xx status code
+func (o *SearchDaemonSetListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search daemon set list unauthorized response has a 5xx status code
+func (o *SearchDaemonSetListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search daemon set list unauthorized response a status code equal to that given
+func (o *SearchDaemonSetListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SearchDaemonSetListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SearchDaemonSetListUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SearchDaemonSetListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewSearchDaemonSetListForbidden() *SearchDaemonSetListForbidden {
 	return &SearchDaemonSetListForbidden{}
 }
 
-/* SearchDaemonSetListForbidden describes a response with status code 403, with default header values.
+/*
+SearchDaemonSetListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type SearchDaemonSetListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search daemon set list forbidden response has a 2xx status code
+func (o *SearchDaemonSetListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search daemon set list forbidden response has a 3xx status code
+func (o *SearchDaemonSetListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search daemon set list forbidden response has a 4xx status code
+func (o *SearchDaemonSetListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search daemon set list forbidden response has a 5xx status code
+func (o *SearchDaemonSetListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search daemon set list forbidden response a status code equal to that given
+func (o *SearchDaemonSetListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SearchDaemonSetListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SearchDaemonSetListForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SearchDaemonSetListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewSearchDaemonSetListNotFound() *SearchDaemonSetListNotFound {
 	return &SearchDaemonSetListNotFound{}
 }
 
-/* SearchDaemonSetListNotFound describes a response with status code 404, with default header values.
+/*
+SearchDaemonSetListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type SearchDaemonSetListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search daemon set list not found response has a 2xx status code
+func (o *SearchDaemonSetListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search daemon set list not found response has a 3xx status code
+func (o *SearchDaemonSetListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search daemon set list not found response has a 4xx status code
+func (o *SearchDaemonSetListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search daemon set list not found response has a 5xx status code
+func (o *SearchDaemonSetListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search daemon set list not found response a status code equal to that given
+func (o *SearchDaemonSetListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SearchDaemonSetListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SearchDaemonSetListNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SearchDaemonSetListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewSearchDaemonSetListInternalServerError() *SearchDaemonSetListInternalSer
 	return &SearchDaemonSetListInternalServerError{}
 }
 
-/* SearchDaemonSetListInternalServerError describes a response with status code 500, with default header values.
+/*
+SearchDaemonSetListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SearchDaemonSetListInternalServerError struct {
 }
 
+// IsSuccess returns true when this search daemon set list internal server error response has a 2xx status code
+func (o *SearchDaemonSetListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search daemon set list internal server error response has a 3xx status code
+func (o *SearchDaemonSetListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search daemon set list internal server error response has a 4xx status code
+func (o *SearchDaemonSetListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search daemon set list internal server error response has a 5xx status code
+func (o *SearchDaemonSetListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this search daemon set list internal server error response a status code equal to that given
+func (o *SearchDaemonSetListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SearchDaemonSetListInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListInternalServerError ", 500)
+}
+
+func (o *SearchDaemonSetListInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListInternalServerError ", 500)
 }
 

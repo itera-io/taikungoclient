@@ -53,10 +53,12 @@ func NewKubernetesProfilesKubernetesProfilesForOrganizationListParamsWithHTTPCli
 	}
 }
 
-/* KubernetesProfilesKubernetesProfilesForOrganizationListParams contains all the parameters to send to the API endpoint
-   for the kubernetes profiles kubernetes profiles for organization list operation.
+/*
+KubernetesProfilesKubernetesProfilesForOrganizationListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes profiles kubernetes profiles for organization list operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesProfilesKubernetesProfilesForOrganizationListParams struct {
 
@@ -64,6 +66,9 @@ type KubernetesProfilesKubernetesProfilesForOrganizationListParams struct {
 	//
 	// Format: int32
 	OrganizationID *int32
+
+	// Search.
+	Search *string
 
 	// V.
 	V string
@@ -132,6 +137,17 @@ func (o *KubernetesProfilesKubernetesProfilesForOrganizationListParams) SetOrgan
 	o.OrganizationID = organizationID
 }
 
+// WithSearch adds the search to the kubernetes profiles kubernetes profiles for organization list params
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListParams) WithSearch(search *string) *KubernetesProfilesKubernetesProfilesForOrganizationListParams {
+	o.SetSearch(search)
+	return o
+}
+
+// SetSearch adds the search to the kubernetes profiles kubernetes profiles for organization list params
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListParams) SetSearch(search *string) {
+	o.Search = search
+}
+
 // WithV adds the v to the kubernetes profiles kubernetes profiles for organization list params
 func (o *KubernetesProfilesKubernetesProfilesForOrganizationListParams) WithV(v string) *KubernetesProfilesKubernetesProfilesForOrganizationListParams {
 	o.SetV(v)
@@ -163,6 +179,23 @@ func (o *KubernetesProfilesKubernetesProfilesForOrganizationListParams) WriteToR
 		if qOrganizationID != "" {
 
 			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Search != nil {
+
+		// query param search
+		var qrSearch string
+
+		if o.Search != nil {
+			qrSearch = *o.Search
+		}
+		qSearch := qrSearch
+		if qSearch != "" {
+
+			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}

@@ -34,6 +34,8 @@ type ClientService interface {
 
 	AzureDashboard(params *AzureDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureDashboardOK, error)
 
+	AzureList(params *AzureListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureListOK, error)
+
 	AzureLocations(params *AzureLocationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureLocationsOK, error)
 
 	AzureOffers(params *AzureOffersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureOffersOK, error)
@@ -52,7 +54,7 @@ type ClientService interface {
 }
 
 /*
-  AzureCreate adds azure credentials
+AzureCreate adds azure credentials
 */
 func (a *Client) AzureCreate(params *AzureCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -91,7 +93,7 @@ func (a *Client) AzureCreate(params *AzureCreateParams, authInfo runtime.ClientA
 }
 
 /*
-  AzureDashboard fetches azure quota list
+AzureDashboard fetches azure quota list
 */
 func (a *Client) AzureDashboard(params *AzureDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureDashboardOK, error) {
 	// TODO: Validate the params before sending
@@ -130,7 +132,46 @@ func (a *Client) AzureDashboard(params *AzureDashboardParams, authInfo runtime.C
 }
 
 /*
-  AzureLocations fetches azure location list
+AzureList retrieves list of azure cloud credentials
+*/
+func (a *Client) AzureList(params *AzureListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAzureListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Azure_List",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Azure/list",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AzureListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AzureListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Azure_List: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AzureLocations fetches azure location list
 */
 func (a *Client) AzureLocations(params *AzureLocationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureLocationsOK, error) {
 	// TODO: Validate the params before sending
@@ -169,7 +210,7 @@ func (a *Client) AzureLocations(params *AzureLocationsParams, authInfo runtime.C
 }
 
 /*
-  AzureOffers lists azure offer list by publisher
+AzureOffers lists azure offer list by publisher
 */
 func (a *Client) AzureOffers(params *AzureOffersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureOffersOK, error) {
 	// TODO: Validate the params before sending
@@ -208,7 +249,7 @@ func (a *Client) AzureOffers(params *AzureOffersParams, authInfo runtime.ClientA
 }
 
 /*
-  AzurePublishers lists azure publishers list
+AzurePublishers lists azure publishers list
 */
 func (a *Client) AzurePublishers(params *AzurePublishersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzurePublishersOK, error) {
 	// TODO: Validate the params before sending
@@ -247,7 +288,7 @@ func (a *Client) AzurePublishers(params *AzurePublishersParams, authInfo runtime
 }
 
 /*
-  AzureSkus lists azure skus list by publisher and offer
+AzureSkus lists azure skus list by publisher and offer
 */
 func (a *Client) AzureSkus(params *AzureSkusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureSkusOK, error) {
 	// TODO: Validate the params before sending
@@ -286,7 +327,7 @@ func (a *Client) AzureSkus(params *AzureSkusParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  AzureSubscriptions azures subscriptions list
+AzureSubscriptions azures subscriptions list
 */
 func (a *Client) AzureSubscriptions(params *AzureSubscriptionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureSubscriptionsOK, error) {
 	// TODO: Validate the params before sending
@@ -325,7 +366,7 @@ func (a *Client) AzureSubscriptions(params *AzureSubscriptionsParams, authInfo r
 }
 
 /*
-  AzureUpdate updates azure credentials
+AzureUpdate updates azure credentials
 */
 func (a *Client) AzureUpdate(params *AzureUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -364,7 +405,7 @@ func (a *Client) AzureUpdate(params *AzureUpdateParams, authInfo runtime.ClientA
 }
 
 /*
-  AzureZones fetches azure zone list
+AzureZones fetches azure zone list
 */
 func (a *Client) AzureZones(params *AzureZonesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AzureZonesOK, error) {
 	// TODO: Validate the params before sending

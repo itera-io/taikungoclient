@@ -69,7 +69,8 @@ func NewAzureSubscriptionsOK() *AzureSubscriptionsOK {
 	return &AzureSubscriptionsOK{}
 }
 
-/* AzureSubscriptionsOK describes a response with status code 200, with default header values.
+/*
+AzureSubscriptionsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AzureSubscriptionsOK struct {
 	Payload []*models.CommonStringBasedDropdownDto
 }
 
+// IsSuccess returns true when this azure subscriptions o k response has a 2xx status code
+func (o *AzureSubscriptionsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this azure subscriptions o k response has a 3xx status code
+func (o *AzureSubscriptionsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure subscriptions o k response has a 4xx status code
+func (o *AzureSubscriptionsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this azure subscriptions o k response has a 5xx status code
+func (o *AzureSubscriptionsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure subscriptions o k response a status code equal to that given
+func (o *AzureSubscriptionsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AzureSubscriptionsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsOK  %+v", 200, o.Payload)
 }
+
+func (o *AzureSubscriptionsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsOK  %+v", 200, o.Payload)
+}
+
 func (o *AzureSubscriptionsOK) GetPayload() []*models.CommonStringBasedDropdownDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAzureSubscriptionsBadRequest() *AzureSubscriptionsBadRequest {
 	return &AzureSubscriptionsBadRequest{}
 }
 
-/* AzureSubscriptionsBadRequest describes a response with status code 400, with default header values.
+/*
+AzureSubscriptionsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AzureSubscriptionsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this azure subscriptions bad request response has a 2xx status code
+func (o *AzureSubscriptionsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure subscriptions bad request response has a 3xx status code
+func (o *AzureSubscriptionsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure subscriptions bad request response has a 4xx status code
+func (o *AzureSubscriptionsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure subscriptions bad request response has a 5xx status code
+func (o *AzureSubscriptionsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure subscriptions bad request response a status code equal to that given
+func (o *AzureSubscriptionsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AzureSubscriptionsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AzureSubscriptionsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AzureSubscriptionsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAzureSubscriptionsUnauthorized() *AzureSubscriptionsUnauthorized {
 	return &AzureSubscriptionsUnauthorized{}
 }
 
-/* AzureSubscriptionsUnauthorized describes a response with status code 401, with default header values.
+/*
+AzureSubscriptionsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AzureSubscriptionsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this azure subscriptions unauthorized response has a 2xx status code
+func (o *AzureSubscriptionsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure subscriptions unauthorized response has a 3xx status code
+func (o *AzureSubscriptionsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure subscriptions unauthorized response has a 4xx status code
+func (o *AzureSubscriptionsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure subscriptions unauthorized response has a 5xx status code
+func (o *AzureSubscriptionsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure subscriptions unauthorized response a status code equal to that given
+func (o *AzureSubscriptionsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AzureSubscriptionsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AzureSubscriptionsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AzureSubscriptionsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAzureSubscriptionsForbidden() *AzureSubscriptionsForbidden {
 	return &AzureSubscriptionsForbidden{}
 }
 
-/* AzureSubscriptionsForbidden describes a response with status code 403, with default header values.
+/*
+AzureSubscriptionsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AzureSubscriptionsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this azure subscriptions forbidden response has a 2xx status code
+func (o *AzureSubscriptionsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure subscriptions forbidden response has a 3xx status code
+func (o *AzureSubscriptionsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure subscriptions forbidden response has a 4xx status code
+func (o *AzureSubscriptionsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure subscriptions forbidden response has a 5xx status code
+func (o *AzureSubscriptionsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure subscriptions forbidden response a status code equal to that given
+func (o *AzureSubscriptionsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AzureSubscriptionsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AzureSubscriptionsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AzureSubscriptionsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAzureSubscriptionsNotFound() *AzureSubscriptionsNotFound {
 	return &AzureSubscriptionsNotFound{}
 }
 
-/* AzureSubscriptionsNotFound describes a response with status code 404, with default header values.
+/*
+AzureSubscriptionsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AzureSubscriptionsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this azure subscriptions not found response has a 2xx status code
+func (o *AzureSubscriptionsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure subscriptions not found response has a 3xx status code
+func (o *AzureSubscriptionsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure subscriptions not found response has a 4xx status code
+func (o *AzureSubscriptionsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure subscriptions not found response has a 5xx status code
+func (o *AzureSubscriptionsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure subscriptions not found response a status code equal to that given
+func (o *AzureSubscriptionsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AzureSubscriptionsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AzureSubscriptionsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AzureSubscriptionsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAzureSubscriptionsInternalServerError() *AzureSubscriptionsInternalServe
 	return &AzureSubscriptionsInternalServerError{}
 }
 
-/* AzureSubscriptionsInternalServerError describes a response with status code 500, with default header values.
+/*
+AzureSubscriptionsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AzureSubscriptionsInternalServerError struct {
 }
 
+// IsSuccess returns true when this azure subscriptions internal server error response has a 2xx status code
+func (o *AzureSubscriptionsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure subscriptions internal server error response has a 3xx status code
+func (o *AzureSubscriptionsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure subscriptions internal server error response has a 4xx status code
+func (o *AzureSubscriptionsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this azure subscriptions internal server error response has a 5xx status code
+func (o *AzureSubscriptionsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this azure subscriptions internal server error response a status code equal to that given
+func (o *AzureSubscriptionsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AzureSubscriptionsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsInternalServerError ", 500)
+}
+
+func (o *AzureSubscriptionsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsInternalServerError ", 500)
 }
 

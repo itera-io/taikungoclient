@@ -53,12 +53,17 @@ func NewServersListParamsWithHTTPClient(client *http.Client) *ServersListParams 
 	}
 }
 
-/* ServersListParams contains all the parameters to send to the API endpoint
-   for the servers list operation.
+/*
+ServersListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the servers list operation.
+
+	Typically these are written to a http.Request.
 */
 type ServersListParams struct {
+
+	// AutoscalingGroup.
+	AutoscalingGroup *string
 
 	// EndCPU.
 	//
@@ -72,8 +77,8 @@ type ServersListParams struct {
 
 	// EndRAM.
 	//
-	// Format: int64
-	EndRAM *int64
+	// Format: double
+	EndRAM *float64
 
 	// FilterBy.
 	FilterBy *string
@@ -130,8 +135,8 @@ type ServersListParams struct {
 
 	// StartRAM.
 	//
-	// Format: int64
-	StartRAM *int64
+	// Format: double
+	StartRAM *float64
 
 	// V.
 	V string
@@ -189,6 +194,17 @@ func (o *ServersListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAutoscalingGroup adds the autoscalingGroup to the servers list params
+func (o *ServersListParams) WithAutoscalingGroup(autoscalingGroup *string) *ServersListParams {
+	o.SetAutoscalingGroup(autoscalingGroup)
+	return o
+}
+
+// SetAutoscalingGroup adds the autoscalingGroup to the servers list params
+func (o *ServersListParams) SetAutoscalingGroup(autoscalingGroup *string) {
+	o.AutoscalingGroup = autoscalingGroup
+}
+
 // WithEndCPU adds the endCPU to the servers list params
 func (o *ServersListParams) WithEndCPU(endCPU *int32) *ServersListParams {
 	o.SetEndCPU(endCPU)
@@ -212,13 +228,13 @@ func (o *ServersListParams) SetEndDiskSize(endDiskSize *int64) {
 }
 
 // WithEndRAM adds the endRAM to the servers list params
-func (o *ServersListParams) WithEndRAM(endRAM *int64) *ServersListParams {
+func (o *ServersListParams) WithEndRAM(endRAM *float64) *ServersListParams {
 	o.SetEndRAM(endRAM)
 	return o
 }
 
 // SetEndRAM adds the endRam to the servers list params
-func (o *ServersListParams) SetEndRAM(endRAM *int64) {
+func (o *ServersListParams) SetEndRAM(endRAM *float64) {
 	o.EndRAM = endRAM
 }
 
@@ -344,13 +360,13 @@ func (o *ServersListParams) SetStartDiskSize(startDiskSize *int64) {
 }
 
 // WithStartRAM adds the startRAM to the servers list params
-func (o *ServersListParams) WithStartRAM(startRAM *int64) *ServersListParams {
+func (o *ServersListParams) WithStartRAM(startRAM *float64) *ServersListParams {
 	o.SetStartRAM(startRAM)
 	return o
 }
 
 // SetStartRAM adds the startRam to the servers list params
-func (o *ServersListParams) SetStartRAM(startRAM *int64) {
+func (o *ServersListParams) SetStartRAM(startRAM *float64) {
 	o.StartRAM = startRAM
 }
 
@@ -372,6 +388,23 @@ func (o *ServersListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
+
+	if o.AutoscalingGroup != nil {
+
+		// query param autoscalingGroup
+		var qrAutoscalingGroup string
+
+		if o.AutoscalingGroup != nil {
+			qrAutoscalingGroup = *o.AutoscalingGroup
+		}
+		qAutoscalingGroup := qrAutoscalingGroup
+		if qAutoscalingGroup != "" {
+
+			if err := r.SetQueryParam("autoscalingGroup", qAutoscalingGroup); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.EndCPU != nil {
 
@@ -410,12 +443,12 @@ func (o *ServersListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 	if o.EndRAM != nil {
 
 		// query param endRam
-		var qrEndRAM int64
+		var qrEndRAM float64
 
 		if o.EndRAM != nil {
 			qrEndRAM = *o.EndRAM
 		}
-		qEndRAM := swag.FormatInt64(qrEndRAM)
+		qEndRAM := swag.FormatFloat64(qrEndRAM)
 		if qEndRAM != "" {
 
 			if err := r.SetQueryParam("endRam", qEndRAM); err != nil {
@@ -614,12 +647,12 @@ func (o *ServersListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 	if o.StartRAM != nil {
 
 		// query param startRam
-		var qrStartRAM int64
+		var qrStartRAM float64
 
 		if o.StartRAM != nil {
 			qrStartRAM = *o.StartRAM
 		}
-		qStartRAM := swag.FormatInt64(qrStartRAM)
+		qStartRAM := swag.FormatFloat64(qrStartRAM)
 		if qStartRAM != "" {
 
 			if err := r.SetQueryParam("startRam", qStartRAM); err != nil {

@@ -69,7 +69,8 @@ func NewKubernetesOverviewOK() *KubernetesOverviewOK {
 	return &KubernetesOverviewOK{}
 }
 
-/* KubernetesOverviewOK describes a response with status code 200, with default header values.
+/*
+KubernetesOverviewOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesOverviewOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this kubernetes overview o k response has a 2xx status code
+func (o *KubernetesOverviewOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes overview o k response has a 3xx status code
+func (o *KubernetesOverviewOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes overview o k response has a 4xx status code
+func (o *KubernetesOverviewOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes overview o k response has a 5xx status code
+func (o *KubernetesOverviewOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes overview o k response a status code equal to that given
+func (o *KubernetesOverviewOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesOverviewOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesOverviewOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesOverviewOK) GetPayload() string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesOverviewBadRequest() *KubernetesOverviewBadRequest {
 	return &KubernetesOverviewBadRequest{}
 }
 
-/* KubernetesOverviewBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesOverviewBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesOverviewBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes overview bad request response has a 2xx status code
+func (o *KubernetesOverviewBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes overview bad request response has a 3xx status code
+func (o *KubernetesOverviewBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes overview bad request response has a 4xx status code
+func (o *KubernetesOverviewBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes overview bad request response has a 5xx status code
+func (o *KubernetesOverviewBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes overview bad request response a status code equal to that given
+func (o *KubernetesOverviewBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesOverviewBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesOverviewBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesOverviewBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesOverviewUnauthorized() *KubernetesOverviewUnauthorized {
 	return &KubernetesOverviewUnauthorized{}
 }
 
-/* KubernetesOverviewUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesOverviewUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesOverviewUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes overview unauthorized response has a 2xx status code
+func (o *KubernetesOverviewUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes overview unauthorized response has a 3xx status code
+func (o *KubernetesOverviewUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes overview unauthorized response has a 4xx status code
+func (o *KubernetesOverviewUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes overview unauthorized response has a 5xx status code
+func (o *KubernetesOverviewUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes overview unauthorized response a status code equal to that given
+func (o *KubernetesOverviewUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesOverviewUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesOverviewUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesOverviewUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesOverviewForbidden() *KubernetesOverviewForbidden {
 	return &KubernetesOverviewForbidden{}
 }
 
-/* KubernetesOverviewForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesOverviewForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesOverviewForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes overview forbidden response has a 2xx status code
+func (o *KubernetesOverviewForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes overview forbidden response has a 3xx status code
+func (o *KubernetesOverviewForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes overview forbidden response has a 4xx status code
+func (o *KubernetesOverviewForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes overview forbidden response has a 5xx status code
+func (o *KubernetesOverviewForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes overview forbidden response a status code equal to that given
+func (o *KubernetesOverviewForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesOverviewForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesOverviewForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesOverviewForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesOverviewNotFound() *KubernetesOverviewNotFound {
 	return &KubernetesOverviewNotFound{}
 }
 
-/* KubernetesOverviewNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesOverviewNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesOverviewNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes overview not found response has a 2xx status code
+func (o *KubernetesOverviewNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes overview not found response has a 3xx status code
+func (o *KubernetesOverviewNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes overview not found response has a 4xx status code
+func (o *KubernetesOverviewNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes overview not found response has a 5xx status code
+func (o *KubernetesOverviewNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes overview not found response a status code equal to that given
+func (o *KubernetesOverviewNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesOverviewNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesOverviewNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesOverviewNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesOverviewInternalServerError() *KubernetesOverviewInternalServe
 	return &KubernetesOverviewInternalServerError{}
 }
 
-/* KubernetesOverviewInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesOverviewInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesOverviewInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes overview internal server error response has a 2xx status code
+func (o *KubernetesOverviewInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes overview internal server error response has a 3xx status code
+func (o *KubernetesOverviewInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes overview internal server error response has a 4xx status code
+func (o *KubernetesOverviewInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes overview internal server error response has a 5xx status code
+func (o *KubernetesOverviewInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes overview internal server error response a status code equal to that given
+func (o *KubernetesOverviewInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesOverviewInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewInternalServerError ", 500)
+}
+
+func (o *KubernetesOverviewInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/overview][%d] kubernetesOverviewInternalServerError ", 500)
 }
 

@@ -19,6 +19,9 @@ import (
 // swagger:model UpdateShowbackRuleCommand
 type UpdateShowbackRuleCommand struct {
 
+	// by label
+	ByLabel string `json:"byLabel,omitempty"`
+
 	// global alert limit
 	GlobalAlertLimit int32 `json:"globalAlertLimit,omitempty"`
 
@@ -26,7 +29,7 @@ type UpdateShowbackRuleCommand struct {
 	ID int32 `json:"id,omitempty"`
 
 	// kind
-	Kind ShowbackType `json:"kind,omitempty"`
+	Kind EShowbackType `json:"kind,omitempty"`
 
 	// labels
 	Labels []*ShowbackLabelCreateDto `json:"labels"`
@@ -44,7 +47,7 @@ type UpdateShowbackRuleCommand struct {
 	ProjectAlertLimit int32 `json:"projectAlertLimit,omitempty"`
 
 	// type
-	Type PrometheusType `json:"type,omitempty"`
+	Type EPrometheusType `json:"type,omitempty"`
 }
 
 // Validate validates this update showback rule command

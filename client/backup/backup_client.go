@@ -30,9 +30,13 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	BackupClearProject(params *BackupClearProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupClearProjectOK, error)
+
 	BackupCreate(params *BackupCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupCreateOK, error)
 
 	BackupDeleteBackup(params *BackupDeleteBackupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDeleteBackupOK, error)
+
+	BackupDeleteBackupLocation(params *BackupDeleteBackupLocationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDeleteBackupLocationOK, error)
 
 	BackupDeleteRestore(params *BackupDeleteRestoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDeleteRestoreOK, error)
 
@@ -48,7 +52,13 @@ type ClientService interface {
 
 	BackupEnableBackup(params *BackupEnableBackupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupEnableBackupOK, error)
 
+	BackupImportBackupStorage(params *BackupImportBackupStorageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupImportBackupStorageOK, error)
+
+	BackupListAllBackupStorages(params *BackupListAllBackupStoragesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupListAllBackupStoragesOK, error)
+
 	BackupListAllBackups(params *BackupListAllBackupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupListAllBackupsOK, error)
+
+	BackupListAllDeleteBackupRequests(params *BackupListAllDeleteBackupRequestsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupListAllDeleteBackupRequestsOK, error)
 
 	BackupListAllRestores(params *BackupListAllRestoresParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupListAllRestoresOK, error)
 
@@ -62,7 +72,46 @@ type ClientService interface {
 }
 
 /*
-  BackupCreate adds backup policy
+BackupClearProject deletes unfinished backup for project
+*/
+func (a *Client) BackupClearProject(params *BackupClearProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupClearProjectOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewBackupClearProjectParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Backup_ClearProject",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Backup/clear/project",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &BackupClearProjectReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*BackupClearProjectOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Backup_ClearProject: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+BackupCreate adds backup policy
 */
 func (a *Client) BackupCreate(params *BackupCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -101,7 +150,7 @@ func (a *Client) BackupCreate(params *BackupCreateParams, authInfo runtime.Clien
 }
 
 /*
-  BackupDeleteBackup removes policy backup
+BackupDeleteBackup removes policy backup
 */
 func (a *Client) BackupDeleteBackup(params *BackupDeleteBackupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDeleteBackupOK, error) {
 	// TODO: Validate the params before sending
@@ -140,7 +189,46 @@ func (a *Client) BackupDeleteBackup(params *BackupDeleteBackupParams, authInfo r
 }
 
 /*
-  BackupDeleteRestore removes policy restore
+BackupDeleteBackupLocation removes backup location from project
+*/
+func (a *Client) BackupDeleteBackupLocation(params *BackupDeleteBackupLocationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDeleteBackupLocationOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewBackupDeleteBackupLocationParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Backup_DeleteBackupLocation",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Backup/delete/location",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &BackupDeleteBackupLocationReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*BackupDeleteBackupLocationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Backup_DeleteBackupLocation: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+BackupDeleteRestore removes policy restore
 */
 func (a *Client) BackupDeleteRestore(params *BackupDeleteRestoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDeleteRestoreOK, error) {
 	// TODO: Validate the params before sending
@@ -179,7 +267,7 @@ func (a *Client) BackupDeleteRestore(params *BackupDeleteRestoreParams, authInfo
 }
 
 /*
-  BackupDeleteSchedule removes policy schedule
+BackupDeleteSchedule removes policy schedule
 */
 func (a *Client) BackupDeleteSchedule(params *BackupDeleteScheduleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDeleteScheduleOK, error) {
 	// TODO: Validate the params before sending
@@ -218,7 +306,7 @@ func (a *Client) BackupDeleteSchedule(params *BackupDeleteScheduleParams, authIn
 }
 
 /*
-  BackupDescribeBackup gets backup info by name
+BackupDescribeBackup gets backup info by name
 */
 func (a *Client) BackupDescribeBackup(params *BackupDescribeBackupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDescribeBackupOK, error) {
 	// TODO: Validate the params before sending
@@ -257,7 +345,7 @@ func (a *Client) BackupDescribeBackup(params *BackupDescribeBackupParams, authIn
 }
 
 /*
-  BackupDescribeRestore gets restore info by name
+BackupDescribeRestore gets restore info by name
 */
 func (a *Client) BackupDescribeRestore(params *BackupDescribeRestoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDescribeRestoreOK, error) {
 	// TODO: Validate the params before sending
@@ -296,7 +384,7 @@ func (a *Client) BackupDescribeRestore(params *BackupDescribeRestoreParams, auth
 }
 
 /*
-  BackupDescribeSchedule gets schedule info by name
+BackupDescribeSchedule gets schedule info by name
 */
 func (a *Client) BackupDescribeSchedule(params *BackupDescribeScheduleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDescribeScheduleOK, error) {
 	// TODO: Validate the params before sending
@@ -335,7 +423,7 @@ func (a *Client) BackupDescribeSchedule(params *BackupDescribeScheduleParams, au
 }
 
 /*
-  BackupDisableBackup disables backup by the project Id
+BackupDisableBackup disables backup by the project Id
 */
 func (a *Client) BackupDisableBackup(params *BackupDisableBackupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupDisableBackupOK, error) {
 	// TODO: Validate the params before sending
@@ -374,7 +462,7 @@ func (a *Client) BackupDisableBackup(params *BackupDisableBackupParams, authInfo
 }
 
 /*
-  BackupEnableBackup enables backup by the project Id
+BackupEnableBackup enables backup by the project Id
 */
 func (a *Client) BackupEnableBackup(params *BackupEnableBackupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupEnableBackupOK, error) {
 	// TODO: Validate the params before sending
@@ -413,7 +501,85 @@ func (a *Client) BackupEnableBackup(params *BackupEnableBackupParams, authInfo r
 }
 
 /*
-  BackupListAllBackups lists all backups
+BackupImportBackupStorage imports backup storage from source project to target project
+*/
+func (a *Client) BackupImportBackupStorage(params *BackupImportBackupStorageParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupImportBackupStorageOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewBackupImportBackupStorageParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Backup_ImportBackupStorage",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Backup/location",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &BackupImportBackupStorageReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*BackupImportBackupStorageOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Backup_ImportBackupStorage: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+BackupListAllBackupStorages lists all backup locations
+*/
+func (a *Client) BackupListAllBackupStorages(params *BackupListAllBackupStoragesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupListAllBackupStoragesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewBackupListAllBackupStoragesParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Backup_ListAllBackupStorages",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Backup/location/{projectId}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &BackupListAllBackupStoragesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*BackupListAllBackupStoragesOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Backup_ListAllBackupStorages: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+BackupListAllBackups lists all backups
 */
 func (a *Client) BackupListAllBackups(params *BackupListAllBackupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupListAllBackupsOK, error) {
 	// TODO: Validate the params before sending
@@ -452,7 +618,46 @@ func (a *Client) BackupListAllBackups(params *BackupListAllBackupsParams, authIn
 }
 
 /*
-  BackupListAllRestores lists all restores
+BackupListAllDeleteBackupRequests lists all delete backup requests
+*/
+func (a *Client) BackupListAllDeleteBackupRequests(params *BackupListAllDeleteBackupRequestsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupListAllDeleteBackupRequestsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewBackupListAllDeleteBackupRequestsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Backup_ListAllDeleteBackupRequests",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Backup/delelete-requests/{projectId}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &BackupListAllDeleteBackupRequestsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*BackupListAllDeleteBackupRequestsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Backup_ListAllDeleteBackupRequests: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+BackupListAllRestores lists all restores
 */
 func (a *Client) BackupListAllRestores(params *BackupListAllRestoresParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupListAllRestoresOK, error) {
 	// TODO: Validate the params before sending
@@ -491,7 +696,7 @@ func (a *Client) BackupListAllRestores(params *BackupListAllRestoresParams, auth
 }
 
 /*
-  BackupListAllSchedules lists all schedules
+BackupListAllSchedules lists all schedules
 */
 func (a *Client) BackupListAllSchedules(params *BackupListAllSchedulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupListAllSchedulesOK, error) {
 	// TODO: Validate the params before sending
@@ -530,7 +735,7 @@ func (a *Client) BackupListAllSchedules(params *BackupListAllSchedulesParams, au
 }
 
 /*
-  BackupRestoreBackup restores backup
+BackupRestoreBackup restores backup
 */
 func (a *Client) BackupRestoreBackup(params *BackupRestoreBackupParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupRestoreBackupOK, error) {
 	// TODO: Validate the params before sending
@@ -569,7 +774,7 @@ func (a *Client) BackupRestoreBackup(params *BackupRestoreBackupParams, authInfo
 }
 
 /*
-  BackupScheduleByName gets schedule info by name
+BackupScheduleByName gets schedule info by name
 */
 func (a *Client) BackupScheduleByName(params *BackupScheduleByNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BackupScheduleByNameOK, error) {
 	// TODO: Validate the params before sending

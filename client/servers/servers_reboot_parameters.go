@@ -54,10 +54,12 @@ func NewServersRebootParamsWithHTTPClient(client *http.Client) *ServersRebootPar
 	}
 }
 
-/* ServersRebootParams contains all the parameters to send to the API endpoint
-   for the servers reboot operation.
+/*
+ServersRebootParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the servers reboot operation.
+
+	Typically these are written to a http.Request.
 */
 type ServersRebootParams struct {
 

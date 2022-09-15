@@ -54,10 +54,12 @@ func NewNotificationsGetProjectOperationMessagesParamsWithHTTPClient(client *htt
 	}
 }
 
-/* NotificationsGetProjectOperationMessagesParams contains all the parameters to send to the API endpoint
-   for the notifications get project operation messages operation.
+/*
+NotificationsGetProjectOperationMessagesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the notifications get project operation messages operation.
+
+	Typically these are written to a http.Request.
 */
 type NotificationsGetProjectOperationMessagesParams struct {
 

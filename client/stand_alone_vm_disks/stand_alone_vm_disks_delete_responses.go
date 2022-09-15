@@ -69,7 +69,8 @@ func NewStandAloneVMDisksDeleteOK() *StandAloneVMDisksDeleteOK {
 	return &StandAloneVMDisksDeleteOK{}
 }
 
-/* StandAloneVMDisksDeleteOK describes a response with status code 200, with default header values.
+/*
+StandAloneVMDisksDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type StandAloneVMDisksDeleteOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this stand alone Vm disks delete o k response has a 2xx status code
+func (o *StandAloneVMDisksDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this stand alone Vm disks delete o k response has a 3xx status code
+func (o *StandAloneVMDisksDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone Vm disks delete o k response has a 4xx status code
+func (o *StandAloneVMDisksDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone Vm disks delete o k response has a 5xx status code
+func (o *StandAloneVMDisksDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone Vm disks delete o k response a status code equal to that given
+func (o *StandAloneVMDisksDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *StandAloneVMDisksDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *StandAloneVMDisksDeleteOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *StandAloneVMDisksDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewStandAloneVMDisksDeleteBadRequest() *StandAloneVMDisksDeleteBadRequest {
 	return &StandAloneVMDisksDeleteBadRequest{}
 }
 
-/* StandAloneVMDisksDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+StandAloneVMDisksDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type StandAloneVMDisksDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this stand alone Vm disks delete bad request response has a 2xx status code
+func (o *StandAloneVMDisksDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone Vm disks delete bad request response has a 3xx status code
+func (o *StandAloneVMDisksDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone Vm disks delete bad request response has a 4xx status code
+func (o *StandAloneVMDisksDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone Vm disks delete bad request response has a 5xx status code
+func (o *StandAloneVMDisksDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone Vm disks delete bad request response a status code equal to that given
+func (o *StandAloneVMDisksDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *StandAloneVMDisksDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *StandAloneVMDisksDeleteBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *StandAloneVMDisksDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewStandAloneVMDisksDeleteUnauthorized() *StandAloneVMDisksDeleteUnauthoriz
 	return &StandAloneVMDisksDeleteUnauthorized{}
 }
 
-/* StandAloneVMDisksDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+StandAloneVMDisksDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type StandAloneVMDisksDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone Vm disks delete unauthorized response has a 2xx status code
+func (o *StandAloneVMDisksDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone Vm disks delete unauthorized response has a 3xx status code
+func (o *StandAloneVMDisksDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone Vm disks delete unauthorized response has a 4xx status code
+func (o *StandAloneVMDisksDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone Vm disks delete unauthorized response has a 5xx status code
+func (o *StandAloneVMDisksDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone Vm disks delete unauthorized response a status code equal to that given
+func (o *StandAloneVMDisksDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *StandAloneVMDisksDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *StandAloneVMDisksDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *StandAloneVMDisksDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewStandAloneVMDisksDeleteForbidden() *StandAloneVMDisksDeleteForbidden {
 	return &StandAloneVMDisksDeleteForbidden{}
 }
 
-/* StandAloneVMDisksDeleteForbidden describes a response with status code 403, with default header values.
+/*
+StandAloneVMDisksDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type StandAloneVMDisksDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone Vm disks delete forbidden response has a 2xx status code
+func (o *StandAloneVMDisksDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone Vm disks delete forbidden response has a 3xx status code
+func (o *StandAloneVMDisksDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone Vm disks delete forbidden response has a 4xx status code
+func (o *StandAloneVMDisksDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone Vm disks delete forbidden response has a 5xx status code
+func (o *StandAloneVMDisksDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone Vm disks delete forbidden response a status code equal to that given
+func (o *StandAloneVMDisksDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *StandAloneVMDisksDeleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *StandAloneVMDisksDeleteForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *StandAloneVMDisksDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewStandAloneVMDisksDeleteNotFound() *StandAloneVMDisksDeleteNotFound {
 	return &StandAloneVMDisksDeleteNotFound{}
 }
 
-/* StandAloneVMDisksDeleteNotFound describes a response with status code 404, with default header values.
+/*
+StandAloneVMDisksDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type StandAloneVMDisksDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone Vm disks delete not found response has a 2xx status code
+func (o *StandAloneVMDisksDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone Vm disks delete not found response has a 3xx status code
+func (o *StandAloneVMDisksDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone Vm disks delete not found response has a 4xx status code
+func (o *StandAloneVMDisksDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone Vm disks delete not found response has a 5xx status code
+func (o *StandAloneVMDisksDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone Vm disks delete not found response a status code equal to that given
+func (o *StandAloneVMDisksDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *StandAloneVMDisksDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *StandAloneVMDisksDeleteNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *StandAloneVMDisksDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewStandAloneVMDisksDeleteInternalServerError() *StandAloneVMDisksDeleteInt
 	return &StandAloneVMDisksDeleteInternalServerError{}
 }
 
-/* StandAloneVMDisksDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+StandAloneVMDisksDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type StandAloneVMDisksDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this stand alone Vm disks delete internal server error response has a 2xx status code
+func (o *StandAloneVMDisksDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone Vm disks delete internal server error response has a 3xx status code
+func (o *StandAloneVMDisksDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone Vm disks delete internal server error response has a 4xx status code
+func (o *StandAloneVMDisksDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone Vm disks delete internal server error response has a 5xx status code
+func (o *StandAloneVMDisksDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this stand alone Vm disks delete internal server error response a status code equal to that given
+func (o *StandAloneVMDisksDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *StandAloneVMDisksDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteInternalServerError ", 500)
+}
+
+func (o *StandAloneVMDisksDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteInternalServerError ", 500)
 }
 

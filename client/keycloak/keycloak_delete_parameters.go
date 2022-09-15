@@ -54,10 +54,12 @@ func NewKeycloakDeleteParamsWithHTTPClient(client *http.Client) *KeycloakDeleteP
 	}
 }
 
-/* KeycloakDeleteParams contains all the parameters to send to the API endpoint
-   for the keycloak delete operation.
+/*
+KeycloakDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the keycloak delete operation.
+
+	Typically these are written to a http.Request.
 */
 type KeycloakDeleteParams struct {
 

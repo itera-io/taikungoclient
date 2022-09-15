@@ -54,10 +54,12 @@ func NewStandAloneProfileLockManagementParamsWithHTTPClient(client *http.Client)
 	}
 }
 
-/* StandAloneProfileLockManagementParams contains all the parameters to send to the API endpoint
-   for the stand alone profile lock management operation.
+/*
+StandAloneProfileLockManagementParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone profile lock management operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneProfileLockManagementParams struct {
 

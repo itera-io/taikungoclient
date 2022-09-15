@@ -69,7 +69,8 @@ func NewSearchKubernetesProfilesListOK() *SearchKubernetesProfilesListOK {
 	return &SearchKubernetesProfilesListOK{}
 }
 
-/* SearchKubernetesProfilesListOK describes a response with status code 200, with default header values.
+/*
+SearchKubernetesProfilesListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SearchKubernetesProfilesListOK struct {
 	Payload *models.KubernetesProfilesSearchList
 }
 
+// IsSuccess returns true when this search kubernetes profiles list o k response has a 2xx status code
+func (o *SearchKubernetesProfilesListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this search kubernetes profiles list o k response has a 3xx status code
+func (o *SearchKubernetesProfilesListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search kubernetes profiles list o k response has a 4xx status code
+func (o *SearchKubernetesProfilesListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search kubernetes profiles list o k response has a 5xx status code
+func (o *SearchKubernetesProfilesListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search kubernetes profiles list o k response a status code equal to that given
+func (o *SearchKubernetesProfilesListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SearchKubernetesProfilesListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListOK  %+v", 200, o.Payload)
 }
+
+func (o *SearchKubernetesProfilesListOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListOK  %+v", 200, o.Payload)
+}
+
 func (o *SearchKubernetesProfilesListOK) GetPayload() *models.KubernetesProfilesSearchList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewSearchKubernetesProfilesListBadRequest() *SearchKubernetesProfilesListBa
 	return &SearchKubernetesProfilesListBadRequest{}
 }
 
-/* SearchKubernetesProfilesListBadRequest describes a response with status code 400, with default header values.
+/*
+SearchKubernetesProfilesListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type SearchKubernetesProfilesListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this search kubernetes profiles list bad request response has a 2xx status code
+func (o *SearchKubernetesProfilesListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search kubernetes profiles list bad request response has a 3xx status code
+func (o *SearchKubernetesProfilesListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search kubernetes profiles list bad request response has a 4xx status code
+func (o *SearchKubernetesProfilesListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search kubernetes profiles list bad request response has a 5xx status code
+func (o *SearchKubernetesProfilesListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search kubernetes profiles list bad request response a status code equal to that given
+func (o *SearchKubernetesProfilesListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SearchKubernetesProfilesListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SearchKubernetesProfilesListBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SearchKubernetesProfilesListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewSearchKubernetesProfilesListUnauthorized() *SearchKubernetesProfilesList
 	return &SearchKubernetesProfilesListUnauthorized{}
 }
 
-/* SearchKubernetesProfilesListUnauthorized describes a response with status code 401, with default header values.
+/*
+SearchKubernetesProfilesListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type SearchKubernetesProfilesListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search kubernetes profiles list unauthorized response has a 2xx status code
+func (o *SearchKubernetesProfilesListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search kubernetes profiles list unauthorized response has a 3xx status code
+func (o *SearchKubernetesProfilesListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search kubernetes profiles list unauthorized response has a 4xx status code
+func (o *SearchKubernetesProfilesListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search kubernetes profiles list unauthorized response has a 5xx status code
+func (o *SearchKubernetesProfilesListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search kubernetes profiles list unauthorized response a status code equal to that given
+func (o *SearchKubernetesProfilesListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SearchKubernetesProfilesListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SearchKubernetesProfilesListUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SearchKubernetesProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewSearchKubernetesProfilesListForbidden() *SearchKubernetesProfilesListFor
 	return &SearchKubernetesProfilesListForbidden{}
 }
 
-/* SearchKubernetesProfilesListForbidden describes a response with status code 403, with default header values.
+/*
+SearchKubernetesProfilesListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type SearchKubernetesProfilesListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search kubernetes profiles list forbidden response has a 2xx status code
+func (o *SearchKubernetesProfilesListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search kubernetes profiles list forbidden response has a 3xx status code
+func (o *SearchKubernetesProfilesListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search kubernetes profiles list forbidden response has a 4xx status code
+func (o *SearchKubernetesProfilesListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search kubernetes profiles list forbidden response has a 5xx status code
+func (o *SearchKubernetesProfilesListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search kubernetes profiles list forbidden response a status code equal to that given
+func (o *SearchKubernetesProfilesListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SearchKubernetesProfilesListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SearchKubernetesProfilesListForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SearchKubernetesProfilesListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewSearchKubernetesProfilesListNotFound() *SearchKubernetesProfilesListNotF
 	return &SearchKubernetesProfilesListNotFound{}
 }
 
-/* SearchKubernetesProfilesListNotFound describes a response with status code 404, with default header values.
+/*
+SearchKubernetesProfilesListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type SearchKubernetesProfilesListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search kubernetes profiles list not found response has a 2xx status code
+func (o *SearchKubernetesProfilesListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search kubernetes profiles list not found response has a 3xx status code
+func (o *SearchKubernetesProfilesListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search kubernetes profiles list not found response has a 4xx status code
+func (o *SearchKubernetesProfilesListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search kubernetes profiles list not found response has a 5xx status code
+func (o *SearchKubernetesProfilesListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search kubernetes profiles list not found response a status code equal to that given
+func (o *SearchKubernetesProfilesListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SearchKubernetesProfilesListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SearchKubernetesProfilesListNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SearchKubernetesProfilesListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewSearchKubernetesProfilesListInternalServerError() *SearchKubernetesProfi
 	return &SearchKubernetesProfilesListInternalServerError{}
 }
 
-/* SearchKubernetesProfilesListInternalServerError describes a response with status code 500, with default header values.
+/*
+SearchKubernetesProfilesListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SearchKubernetesProfilesListInternalServerError struct {
 }
 
+// IsSuccess returns true when this search kubernetes profiles list internal server error response has a 2xx status code
+func (o *SearchKubernetesProfilesListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search kubernetes profiles list internal server error response has a 3xx status code
+func (o *SearchKubernetesProfilesListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search kubernetes profiles list internal server error response has a 4xx status code
+func (o *SearchKubernetesProfilesListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search kubernetes profiles list internal server error response has a 5xx status code
+func (o *SearchKubernetesProfilesListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this search kubernetes profiles list internal server error response a status code equal to that given
+func (o *SearchKubernetesProfilesListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SearchKubernetesProfilesListInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListInternalServerError ", 500)
+}
+
+func (o *SearchKubernetesProfilesListInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListInternalServerError ", 500)
 }
 

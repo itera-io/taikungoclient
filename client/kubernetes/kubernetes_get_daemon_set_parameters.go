@@ -53,10 +53,12 @@ func NewKubernetesGetDaemonSetParamsWithHTTPClient(client *http.Client) *Kuberne
 	}
 }
 
-/* KubernetesGetDaemonSetParams contains all the parameters to send to the API endpoint
-   for the kubernetes get daemon set operation.
+/*
+KubernetesGetDaemonSetParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes get daemon set operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesGetDaemonSetParams struct {
 

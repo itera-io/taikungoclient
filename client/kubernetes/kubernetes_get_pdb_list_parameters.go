@@ -53,10 +53,12 @@ func NewKubernetesGetPdbListParamsWithHTTPClient(client *http.Client) *Kubernete
 	}
 }
 
-/* KubernetesGetPdbListParams contains all the parameters to send to the API endpoint
-   for the kubernetes get pdb list operation.
+/*
+KubernetesGetPdbListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes get pdb list operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesGetPdbListParams struct {
 

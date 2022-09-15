@@ -54,10 +54,12 @@ func NewSearchSecretListParamsWithHTTPClient(client *http.Client) *SearchSecretL
 	}
 }
 
-/* SearchSecretListParams contains all the parameters to send to the API endpoint
-   for the search secret list operation.
+/*
+SearchSecretListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search secret list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchSecretListParams struct {
 

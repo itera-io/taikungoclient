@@ -52,12 +52,17 @@ func NewCatalogCatalogDropdownParamsWithHTTPClient(client *http.Client) *Catalog
 	}
 }
 
-/* CatalogCatalogDropdownParams contains all the parameters to send to the API endpoint
-   for the catalog catalog dropdown operation.
+/*
+CatalogCatalogDropdownParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the catalog catalog dropdown operation.
+
+	Typically these are written to a http.Request.
 */
 type CatalogCatalogDropdownParams struct {
+
+	// Search.
+	Search *string
 
 	// V.
 	V string
@@ -115,6 +120,17 @@ func (o *CatalogCatalogDropdownParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithSearch adds the search to the catalog catalog dropdown params
+func (o *CatalogCatalogDropdownParams) WithSearch(search *string) *CatalogCatalogDropdownParams {
+	o.SetSearch(search)
+	return o
+}
+
+// SetSearch adds the search to the catalog catalog dropdown params
+func (o *CatalogCatalogDropdownParams) SetSearch(search *string) {
+	o.Search = search
+}
+
 // WithV adds the v to the catalog catalog dropdown params
 func (o *CatalogCatalogDropdownParams) WithV(v string) *CatalogCatalogDropdownParams {
 	o.SetV(v)
@@ -133,6 +149,23 @@ func (o *CatalogCatalogDropdownParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
+
+	if o.Search != nil {
+
+		// query param search
+		var qrSearch string
+
+		if o.Search != nil {
+			qrSearch = *o.Search
+		}
+		qSearch := qrSearch
+		if qSearch != "" {
+
+			if err := r.SetQueryParam("search", qSearch); err != nil {
+				return err
+			}
+		}
+	}
 
 	// path param v
 	if err := r.SetPathParam("v", o.V); err != nil {

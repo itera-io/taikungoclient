@@ -7,7 +7,9 @@ package models
 
 import (
 	"context"
+	"strconv"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -23,11 +25,11 @@ type CreateCatalogAppCommand struct {
 	// package name
 	PackageName string `json:"packageName,omitempty"`
 
+	// parameters
+	Parameters []*CatalogAppParamsDto `json:"parameters"`
+
 	// repo name
 	RepoName string `json:"repoName,omitempty"`
-
-	// values
-	Values string `json:"values,omitempty"`
 
 	// version
 	Version string `json:"version,omitempty"`
@@ -35,11 +37,75 @@ type CreateCatalogAppCommand struct {
 
 // Validate validates this create catalog app command
 func (m *CreateCatalogAppCommand) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateParameters(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this create catalog app command based on context it is used
+func (m *CreateCatalogAppCommand) validateParameters(formats strfmt.Registry) error {
+	if swag.IsZero(m.Parameters) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Parameters); i++ {
+		if swag.IsZero(m.Parameters[i]) { // not required
+			continue
+		}
+
+		if m.Parameters[i] != nil {
+			if err := m.Parameters[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("parameters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("parameters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+// ContextValidate validate this create catalog app command based on the context it is used
 func (m *CreateCatalogAppCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateParameters(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateCatalogAppCommand) contextValidateParameters(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Parameters); i++ {
+
+		if m.Parameters[i] != nil {
+			if err := m.Parameters[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("parameters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("parameters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

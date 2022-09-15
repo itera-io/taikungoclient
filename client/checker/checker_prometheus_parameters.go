@@ -54,10 +54,12 @@ func NewCheckerPrometheusParamsWithHTTPClient(client *http.Client) *CheckerProme
 	}
 }
 
-/* CheckerPrometheusParams contains all the parameters to send to the API endpoint
-   for the checker prometheus operation.
+/*
+CheckerPrometheusParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checker prometheus operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckerPrometheusParams struct {
 

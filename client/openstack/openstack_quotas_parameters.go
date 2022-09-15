@@ -54,10 +54,12 @@ func NewOpenstackQuotasParamsWithHTTPClient(client *http.Client) *OpenstackQuota
 	}
 }
 
-/* OpenstackQuotasParams contains all the parameters to send to the API endpoint
-   for the openstack quotas operation.
+/*
+OpenstackQuotasParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the openstack quotas operation.
+
+	Typically these are written to a http.Request.
 */
 type OpenstackQuotasParams struct {
 

@@ -54,10 +54,12 @@ func NewFlavorsUnbindFromProjectParamsWithHTTPClient(client *http.Client) *Flavo
 	}
 }
 
-/* FlavorsUnbindFromProjectParams contains all the parameters to send to the API endpoint
-   for the flavors unbind from project operation.
+/*
+FlavorsUnbindFromProjectParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the flavors unbind from project operation.
+
+	Typically these are written to a http.Request.
 */
 type FlavorsUnbindFromProjectParams struct {
 

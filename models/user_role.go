@@ -24,7 +24,7 @@ var userRoleEnum []interface{}
 
 func init() {
 	var res []UserRole
-	if err := json.Unmarshal([]byte(`[100,200,250,400]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`[100,200,250,400,6000]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

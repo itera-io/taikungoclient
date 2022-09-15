@@ -54,10 +54,12 @@ func NewSearchCloudCredentialsListParamsWithHTTPClient(client *http.Client) *Sea
 	}
 }
 
-/* SearchCloudCredentialsListParams contains all the parameters to send to the API endpoint
-   for the search cloud credentials list operation.
+/*
+SearchCloudCredentialsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search cloud credentials list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchCloudCredentialsListParams struct {
 

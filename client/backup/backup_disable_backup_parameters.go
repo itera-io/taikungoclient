@@ -54,10 +54,12 @@ func NewBackupDisableBackupParamsWithHTTPClient(client *http.Client) *BackupDisa
 	}
 }
 
-/* BackupDisableBackupParams contains all the parameters to send to the API endpoint
-   for the backup disable backup operation.
+/*
+BackupDisableBackupParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the backup disable backup operation.
+
+	Typically these are written to a http.Request.
 */
 type BackupDisableBackupParams struct {
 

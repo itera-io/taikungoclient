@@ -38,6 +38,12 @@ type BoundFlavorsForProjectsListDto struct {
 	// is openstack
 	IsOpenstack bool `json:"isOpenstack"`
 
+	// linux price
+	LinuxPrice string `json:"linuxPrice,omitempty"`
+
+	// linux spot price
+	LinuxSpotPrice string `json:"linuxSpotPrice,omitempty"`
+
 	// max data disk count
 	MaxDataDiskCount int32 `json:"maxDataDiskCount,omitempty"`
 
@@ -52,6 +58,12 @@ type BoundFlavorsForProjectsListDto struct {
 
 	// ram
 	RAM int64 `json:"ram,omitempty"`
+
+	// windows price
+	WindowsPrice string `json:"windowsPrice,omitempty"`
+
+	// windows spot price
+	WindowsSpotPrice string `json:"windowsSpotPrice,omitempty"`
 }
 
 // Validate validates this bound flavors for projects list dto

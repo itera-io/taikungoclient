@@ -69,7 +69,8 @@ func NewCheckerAwsOK() *CheckerAwsOK {
 	return &CheckerAwsOK{}
 }
 
-/* CheckerAwsOK describes a response with status code 200, with default header values.
+/*
+CheckerAwsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CheckerAwsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this checker aws o k response has a 2xx status code
+func (o *CheckerAwsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this checker aws o k response has a 3xx status code
+func (o *CheckerAwsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker aws o k response has a 4xx status code
+func (o *CheckerAwsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this checker aws o k response has a 5xx status code
+func (o *CheckerAwsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker aws o k response a status code equal to that given
+func (o *CheckerAwsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CheckerAwsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsOK  %+v", 200, o.Payload)
 }
+
+func (o *CheckerAwsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsOK  %+v", 200, o.Payload)
+}
+
 func (o *CheckerAwsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCheckerAwsBadRequest() *CheckerAwsBadRequest {
 	return &CheckerAwsBadRequest{}
 }
 
-/* CheckerAwsBadRequest describes a response with status code 400, with default header values.
+/*
+CheckerAwsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CheckerAwsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this checker aws bad request response has a 2xx status code
+func (o *CheckerAwsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker aws bad request response has a 3xx status code
+func (o *CheckerAwsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker aws bad request response has a 4xx status code
+func (o *CheckerAwsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker aws bad request response has a 5xx status code
+func (o *CheckerAwsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker aws bad request response a status code equal to that given
+func (o *CheckerAwsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CheckerAwsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CheckerAwsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CheckerAwsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCheckerAwsUnauthorized() *CheckerAwsUnauthorized {
 	return &CheckerAwsUnauthorized{}
 }
 
-/* CheckerAwsUnauthorized describes a response with status code 401, with default header values.
+/*
+CheckerAwsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CheckerAwsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker aws unauthorized response has a 2xx status code
+func (o *CheckerAwsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker aws unauthorized response has a 3xx status code
+func (o *CheckerAwsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker aws unauthorized response has a 4xx status code
+func (o *CheckerAwsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker aws unauthorized response has a 5xx status code
+func (o *CheckerAwsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker aws unauthorized response a status code equal to that given
+func (o *CheckerAwsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CheckerAwsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CheckerAwsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CheckerAwsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCheckerAwsForbidden() *CheckerAwsForbidden {
 	return &CheckerAwsForbidden{}
 }
 
-/* CheckerAwsForbidden describes a response with status code 403, with default header values.
+/*
+CheckerAwsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CheckerAwsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker aws forbidden response has a 2xx status code
+func (o *CheckerAwsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker aws forbidden response has a 3xx status code
+func (o *CheckerAwsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker aws forbidden response has a 4xx status code
+func (o *CheckerAwsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker aws forbidden response has a 5xx status code
+func (o *CheckerAwsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker aws forbidden response a status code equal to that given
+func (o *CheckerAwsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CheckerAwsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CheckerAwsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CheckerAwsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCheckerAwsNotFound() *CheckerAwsNotFound {
 	return &CheckerAwsNotFound{}
 }
 
-/* CheckerAwsNotFound describes a response with status code 404, with default header values.
+/*
+CheckerAwsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CheckerAwsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker aws not found response has a 2xx status code
+func (o *CheckerAwsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker aws not found response has a 3xx status code
+func (o *CheckerAwsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker aws not found response has a 4xx status code
+func (o *CheckerAwsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker aws not found response has a 5xx status code
+func (o *CheckerAwsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker aws not found response a status code equal to that given
+func (o *CheckerAwsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CheckerAwsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CheckerAwsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CheckerAwsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCheckerAwsInternalServerError() *CheckerAwsInternalServerError {
 	return &CheckerAwsInternalServerError{}
 }
 
-/* CheckerAwsInternalServerError describes a response with status code 500, with default header values.
+/*
+CheckerAwsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CheckerAwsInternalServerError struct {
 }
 
+// IsSuccess returns true when this checker aws internal server error response has a 2xx status code
+func (o *CheckerAwsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker aws internal server error response has a 3xx status code
+func (o *CheckerAwsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker aws internal server error response has a 4xx status code
+func (o *CheckerAwsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this checker aws internal server error response has a 5xx status code
+func (o *CheckerAwsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this checker aws internal server error response a status code equal to that given
+func (o *CheckerAwsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CheckerAwsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsInternalServerError ", 500)
+}
+
+func (o *CheckerAwsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsInternalServerError ", 500)
 }
 

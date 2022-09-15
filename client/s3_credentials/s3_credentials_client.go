@@ -48,7 +48,7 @@ type ClientService interface {
 }
 
 /*
-  S3CredentialsBackupCredentialsForOrganizationList retrieves all s3 credentials for organization
+S3CredentialsBackupCredentialsForOrganizationList retrieves all s3 credentials for organization
 */
 func (a *Client) S3CredentialsBackupCredentialsForOrganizationList(params *S3CredentialsBackupCredentialsForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*S3CredentialsBackupCredentialsForOrganizationListOK, error) {
 	// TODO: Validate the params before sending
@@ -87,7 +87,7 @@ func (a *Client) S3CredentialsBackupCredentialsForOrganizationList(params *S3Cre
 }
 
 /*
-  S3CredentialsCreate adds s3 credential
+S3CredentialsCreate adds s3 credential
 */
 func (a *Client) S3CredentialsCreate(params *S3CredentialsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*S3CredentialsCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -126,7 +126,7 @@ func (a *Client) S3CredentialsCreate(params *S3CredentialsCreateParams, authInfo
 }
 
 /*
-  S3CredentialsDelete removes s3 credentials by Id
+S3CredentialsDelete removes s3 credentials by Id
 */
 func (a *Client) S3CredentialsDelete(params *S3CredentialsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*S3CredentialsDeleteOK, *S3CredentialsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -166,7 +166,7 @@ func (a *Client) S3CredentialsDelete(params *S3CredentialsDeleteParams, authInfo
 }
 
 /*
-  S3CredentialsList retrieves all s3 credentials
+S3CredentialsList retrieves all s3 credentials
 */
 func (a *Client) S3CredentialsList(params *S3CredentialsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*S3CredentialsListOK, error) {
 	// TODO: Validate the params before sending
@@ -205,7 +205,7 @@ func (a *Client) S3CredentialsList(params *S3CredentialsListParams, authInfo run
 }
 
 /*
-  S3CredentialsLockManager locks unlock s3 credentials
+S3CredentialsLockManager locks unlock s3 credentials
 */
 func (a *Client) S3CredentialsLockManager(params *S3CredentialsLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*S3CredentialsLockManagerOK, error) {
 	// TODO: Validate the params before sending
@@ -244,7 +244,7 @@ func (a *Client) S3CredentialsLockManager(params *S3CredentialsLockManagerParams
 }
 
 /*
-  S3CredentialsMakeDefault makes backup credentials default
+S3CredentialsMakeDefault makes backup credentials default
 */
 func (a *Client) S3CredentialsMakeDefault(params *S3CredentialsMakeDefaultParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*S3CredentialsMakeDefaultOK, error) {
 	// TODO: Validate the params before sending
@@ -283,7 +283,7 @@ func (a *Client) S3CredentialsMakeDefault(params *S3CredentialsMakeDefaultParams
 }
 
 /*
-  S3CredentialsUpdate updates s3 credential
+S3CredentialsUpdate updates s3 credential
 */
 func (a *Client) S3CredentialsUpdate(params *S3CredentialsUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*S3CredentialsUpdateOK, error) {
 	// TODO: Validate the params before sending

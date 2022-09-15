@@ -69,7 +69,8 @@ func NewStandAloneProfileDeleteOK() *StandAloneProfileDeleteOK {
 	return &StandAloneProfileDeleteOK{}
 }
 
-/* StandAloneProfileDeleteOK describes a response with status code 200, with default header values.
+/*
+StandAloneProfileDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type StandAloneProfileDeleteOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this stand alone profile delete o k response has a 2xx status code
+func (o *StandAloneProfileDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this stand alone profile delete o k response has a 3xx status code
+func (o *StandAloneProfileDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone profile delete o k response has a 4xx status code
+func (o *StandAloneProfileDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone profile delete o k response has a 5xx status code
+func (o *StandAloneProfileDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone profile delete o k response a status code equal to that given
+func (o *StandAloneProfileDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *StandAloneProfileDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *StandAloneProfileDeleteOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *StandAloneProfileDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewStandAloneProfileDeleteBadRequest() *StandAloneProfileDeleteBadRequest {
 	return &StandAloneProfileDeleteBadRequest{}
 }
 
-/* StandAloneProfileDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+StandAloneProfileDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type StandAloneProfileDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this stand alone profile delete bad request response has a 2xx status code
+func (o *StandAloneProfileDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone profile delete bad request response has a 3xx status code
+func (o *StandAloneProfileDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone profile delete bad request response has a 4xx status code
+func (o *StandAloneProfileDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone profile delete bad request response has a 5xx status code
+func (o *StandAloneProfileDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone profile delete bad request response a status code equal to that given
+func (o *StandAloneProfileDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *StandAloneProfileDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *StandAloneProfileDeleteBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *StandAloneProfileDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewStandAloneProfileDeleteUnauthorized() *StandAloneProfileDeleteUnauthoriz
 	return &StandAloneProfileDeleteUnauthorized{}
 }
 
-/* StandAloneProfileDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+StandAloneProfileDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type StandAloneProfileDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone profile delete unauthorized response has a 2xx status code
+func (o *StandAloneProfileDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone profile delete unauthorized response has a 3xx status code
+func (o *StandAloneProfileDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone profile delete unauthorized response has a 4xx status code
+func (o *StandAloneProfileDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone profile delete unauthorized response has a 5xx status code
+func (o *StandAloneProfileDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone profile delete unauthorized response a status code equal to that given
+func (o *StandAloneProfileDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *StandAloneProfileDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *StandAloneProfileDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *StandAloneProfileDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewStandAloneProfileDeleteForbidden() *StandAloneProfileDeleteForbidden {
 	return &StandAloneProfileDeleteForbidden{}
 }
 
-/* StandAloneProfileDeleteForbidden describes a response with status code 403, with default header values.
+/*
+StandAloneProfileDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type StandAloneProfileDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone profile delete forbidden response has a 2xx status code
+func (o *StandAloneProfileDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone profile delete forbidden response has a 3xx status code
+func (o *StandAloneProfileDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone profile delete forbidden response has a 4xx status code
+func (o *StandAloneProfileDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone profile delete forbidden response has a 5xx status code
+func (o *StandAloneProfileDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone profile delete forbidden response a status code equal to that given
+func (o *StandAloneProfileDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *StandAloneProfileDeleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *StandAloneProfileDeleteForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *StandAloneProfileDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewStandAloneProfileDeleteNotFound() *StandAloneProfileDeleteNotFound {
 	return &StandAloneProfileDeleteNotFound{}
 }
 
-/* StandAloneProfileDeleteNotFound describes a response with status code 404, with default header values.
+/*
+StandAloneProfileDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type StandAloneProfileDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone profile delete not found response has a 2xx status code
+func (o *StandAloneProfileDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone profile delete not found response has a 3xx status code
+func (o *StandAloneProfileDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone profile delete not found response has a 4xx status code
+func (o *StandAloneProfileDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone profile delete not found response has a 5xx status code
+func (o *StandAloneProfileDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone profile delete not found response a status code equal to that given
+func (o *StandAloneProfileDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *StandAloneProfileDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *StandAloneProfileDeleteNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *StandAloneProfileDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewStandAloneProfileDeleteInternalServerError() *StandAloneProfileDeleteInt
 	return &StandAloneProfileDeleteInternalServerError{}
 }
 
-/* StandAloneProfileDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+StandAloneProfileDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type StandAloneProfileDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this stand alone profile delete internal server error response has a 2xx status code
+func (o *StandAloneProfileDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone profile delete internal server error response has a 3xx status code
+func (o *StandAloneProfileDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone profile delete internal server error response has a 4xx status code
+func (o *StandAloneProfileDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone profile delete internal server error response has a 5xx status code
+func (o *StandAloneProfileDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this stand alone profile delete internal server error response a status code equal to that given
+func (o *StandAloneProfileDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *StandAloneProfileDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteInternalServerError ", 500)
+}
+
+func (o *StandAloneProfileDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteInternalServerError ", 500)
 }
 

@@ -34,6 +34,8 @@ type ClientService interface {
 
 	KubeConfigDelete(params *KubeConfigDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigDeleteOK, error)
 
+	KubeConfigDeleteByProjectID(params *KubeConfigDeleteByProjectIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigDeleteByProjectIDOK, error)
+
 	KubeConfigDownload(params *KubeConfigDownloadParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigDownloadOK, error)
 
 	KubeConfigList(params *KubeConfigListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigListOK, error)
@@ -42,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  KubeConfigCreate creates kube config
+KubeConfigCreate creates kube config
 */
 func (a *Client) KubeConfigCreate(params *KubeConfigCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +83,7 @@ func (a *Client) KubeConfigCreate(params *KubeConfigCreateParams, authInfo runti
 }
 
 /*
-  KubeConfigDelete deletes kube config
+KubeConfigDelete deletes kube config
 */
 func (a *Client) KubeConfigDelete(params *KubeConfigDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +122,46 @@ func (a *Client) KubeConfigDelete(params *KubeConfigDeleteParams, authInfo runti
 }
 
 /*
-  KubeConfigDownload downloads kube config file for user by project Id
+KubeConfigDeleteByProjectID deletes kube config by project id
+*/
+func (a *Client) KubeConfigDeleteByProjectID(params *KubeConfigDeleteByProjectIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigDeleteByProjectIDOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewKubeConfigDeleteByProjectIDParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "KubeConfig_DeleteByProjectId",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/KubeConfig/delete-by-project-id",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &KubeConfigDeleteByProjectIDReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*KubeConfigDeleteByProjectIDOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for KubeConfig_DeleteByProjectId: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+KubeConfigDownload downloads kube config file for user by project Id
 */
 func (a *Client) KubeConfigDownload(params *KubeConfigDownloadParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigDownloadOK, error) {
 	// TODO: Validate the params before sending
@@ -159,7 +200,7 @@ func (a *Client) KubeConfigDownload(params *KubeConfigDownloadParams, authInfo r
 }
 
 /*
-  KubeConfigList retrieves a list of kube configs for project it s possible to filter and select kube configs by project
+KubeConfigList retrieves a list of kube configs for project it s possible to filter and select kube configs by project
 */
 func (a *Client) KubeConfigList(params *KubeConfigListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*KubeConfigListOK, error) {
 	// TODO: Validate the params before sending

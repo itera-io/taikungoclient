@@ -69,7 +69,8 @@ func NewKubernetesProfilesLockManagerOK() *KubernetesProfilesLockManagerOK {
 	return &KubernetesProfilesLockManagerOK{}
 }
 
-/* KubernetesProfilesLockManagerOK describes a response with status code 200, with default header values.
+/*
+KubernetesProfilesLockManagerOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesProfilesLockManagerOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this kubernetes profiles lock manager o k response has a 2xx status code
+func (o *KubernetesProfilesLockManagerOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes profiles lock manager o k response has a 3xx status code
+func (o *KubernetesProfilesLockManagerOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles lock manager o k response has a 4xx status code
+func (o *KubernetesProfilesLockManagerOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes profiles lock manager o k response has a 5xx status code
+func (o *KubernetesProfilesLockManagerOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes profiles lock manager o k response a status code equal to that given
+func (o *KubernetesProfilesLockManagerOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesProfilesLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesProfilesLockManagerOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesProfilesLockManagerOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesProfilesLockManagerBadRequest() *KubernetesProfilesLockManager
 	return &KubernetesProfilesLockManagerBadRequest{}
 }
 
-/* KubernetesProfilesLockManagerBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesProfilesLockManagerBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesProfilesLockManagerBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes profiles lock manager bad request response has a 2xx status code
+func (o *KubernetesProfilesLockManagerBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes profiles lock manager bad request response has a 3xx status code
+func (o *KubernetesProfilesLockManagerBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles lock manager bad request response has a 4xx status code
+func (o *KubernetesProfilesLockManagerBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes profiles lock manager bad request response has a 5xx status code
+func (o *KubernetesProfilesLockManagerBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes profiles lock manager bad request response a status code equal to that given
+func (o *KubernetesProfilesLockManagerBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesProfilesLockManagerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesProfilesLockManagerBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesProfilesLockManagerBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesProfilesLockManagerUnauthorized() *KubernetesProfilesLockManag
 	return &KubernetesProfilesLockManagerUnauthorized{}
 }
 
-/* KubernetesProfilesLockManagerUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesProfilesLockManagerUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesProfilesLockManagerUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes profiles lock manager unauthorized response has a 2xx status code
+func (o *KubernetesProfilesLockManagerUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes profiles lock manager unauthorized response has a 3xx status code
+func (o *KubernetesProfilesLockManagerUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles lock manager unauthorized response has a 4xx status code
+func (o *KubernetesProfilesLockManagerUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes profiles lock manager unauthorized response has a 5xx status code
+func (o *KubernetesProfilesLockManagerUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes profiles lock manager unauthorized response a status code equal to that given
+func (o *KubernetesProfilesLockManagerUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesProfilesLockManagerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesProfilesLockManagerUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesProfilesLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesProfilesLockManagerForbidden() *KubernetesProfilesLockManagerF
 	return &KubernetesProfilesLockManagerForbidden{}
 }
 
-/* KubernetesProfilesLockManagerForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesProfilesLockManagerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesProfilesLockManagerForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes profiles lock manager forbidden response has a 2xx status code
+func (o *KubernetesProfilesLockManagerForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes profiles lock manager forbidden response has a 3xx status code
+func (o *KubernetesProfilesLockManagerForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles lock manager forbidden response has a 4xx status code
+func (o *KubernetesProfilesLockManagerForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes profiles lock manager forbidden response has a 5xx status code
+func (o *KubernetesProfilesLockManagerForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes profiles lock manager forbidden response a status code equal to that given
+func (o *KubernetesProfilesLockManagerForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesProfilesLockManagerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesProfilesLockManagerForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesProfilesLockManagerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesProfilesLockManagerNotFound() *KubernetesProfilesLockManagerNo
 	return &KubernetesProfilesLockManagerNotFound{}
 }
 
-/* KubernetesProfilesLockManagerNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesProfilesLockManagerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesProfilesLockManagerNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes profiles lock manager not found response has a 2xx status code
+func (o *KubernetesProfilesLockManagerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes profiles lock manager not found response has a 3xx status code
+func (o *KubernetesProfilesLockManagerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles lock manager not found response has a 4xx status code
+func (o *KubernetesProfilesLockManagerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes profiles lock manager not found response has a 5xx status code
+func (o *KubernetesProfilesLockManagerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes profiles lock manager not found response a status code equal to that given
+func (o *KubernetesProfilesLockManagerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesProfilesLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesProfilesLockManagerNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesProfilesLockManagerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesProfilesLockManagerInternalServerError() *KubernetesProfilesLo
 	return &KubernetesProfilesLockManagerInternalServerError{}
 }
 
-/* KubernetesProfilesLockManagerInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesProfilesLockManagerInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesProfilesLockManagerInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes profiles lock manager internal server error response has a 2xx status code
+func (o *KubernetesProfilesLockManagerInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes profiles lock manager internal server error response has a 3xx status code
+func (o *KubernetesProfilesLockManagerInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes profiles lock manager internal server error response has a 4xx status code
+func (o *KubernetesProfilesLockManagerInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes profiles lock manager internal server error response has a 5xx status code
+func (o *KubernetesProfilesLockManagerInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes profiles lock manager internal server error response a status code equal to that given
+func (o *KubernetesProfilesLockManagerInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesProfilesLockManagerInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerInternalServerError ", 500)
+}
+
+func (o *KubernetesProfilesLockManagerInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerInternalServerError ", 500)
 }
 

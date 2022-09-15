@@ -53,12 +53,22 @@ func NewProjectsListParamsWithHTTPClient(client *http.Client) *ProjectsListParam
 	}
 }
 
-/* ProjectsListParams contains all the parameters to send to the API endpoint
-   for the projects list operation.
+/*
+ProjectsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects list operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsListParams struct {
+
+	// BackupCredentialID.
+	//
+	// Format: int32
+	BackupCredentialID *int32
+
+	// Healthy.
+	Healthy *bool
 
 	// ID.
 	//
@@ -160,6 +170,28 @@ func (o *ProjectsListParams) WithHTTPClient(client *http.Client) *ProjectsListPa
 // SetHTTPClient adds the HTTPClient to the projects list params
 func (o *ProjectsListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithBackupCredentialID adds the backupCredentialID to the projects list params
+func (o *ProjectsListParams) WithBackupCredentialID(backupCredentialID *int32) *ProjectsListParams {
+	o.SetBackupCredentialID(backupCredentialID)
+	return o
+}
+
+// SetBackupCredentialID adds the backupCredentialId to the projects list params
+func (o *ProjectsListParams) SetBackupCredentialID(backupCredentialID *int32) {
+	o.BackupCredentialID = backupCredentialID
+}
+
+// WithHealthy adds the healthy to the projects list params
+func (o *ProjectsListParams) WithHealthy(healthy *bool) *ProjectsListParams {
+	o.SetHealthy(healthy)
+	return o
+}
+
+// SetHealthy adds the healthy to the projects list params
+func (o *ProjectsListParams) SetHealthy(healthy *bool) {
+	o.Healthy = healthy
 }
 
 // WithID adds the id to the projects list params
@@ -279,6 +311,40 @@ func (o *ProjectsListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		return err
 	}
 	var res []error
+
+	if o.BackupCredentialID != nil {
+
+		// query param backupCredentialId
+		var qrBackupCredentialID int32
+
+		if o.BackupCredentialID != nil {
+			qrBackupCredentialID = *o.BackupCredentialID
+		}
+		qBackupCredentialID := swag.FormatInt32(qrBackupCredentialID)
+		if qBackupCredentialID != "" {
+
+			if err := r.SetQueryParam("backupCredentialId", qBackupCredentialID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Healthy != nil {
+
+		// query param healthy
+		var qrHealthy bool
+
+		if o.Healthy != nil {
+			qrHealthy = *o.Healthy
+		}
+		qHealthy := swag.FormatBool(qrHealthy)
+		if qHealthy != "" {
+
+			if err := r.SetQueryParam("healthy", qHealthy); err != nil {
+				return err
+			}
+		}
+	}
 
 	if o.ID != nil {
 

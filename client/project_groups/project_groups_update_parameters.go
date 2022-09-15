@@ -55,20 +55,22 @@ func NewProjectGroupsUpdateParamsWithHTTPClient(client *http.Client) *ProjectGro
 	}
 }
 
-/* ProjectGroupsUpdateParams contains all the parameters to send to the API endpoint
-   for the project groups update operation.
+/*
+ProjectGroupsUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the project groups update operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectGroupsUpdateParams struct {
+
+	// Body.
+	Body *models.UpdateProjectGroupDto
 
 	// ProjectGroupID.
 	//
 	// Format: int32
 	ProjectGroupID *int32
-
-	// Body.
-	Body *models.UpdateProjectGroupDto
 
 	// V.
 	V string
@@ -126,17 +128,6 @@ func (o *ProjectGroupsUpdateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithProjectGroupID adds the projectGroupID to the project groups update params
-func (o *ProjectGroupsUpdateParams) WithProjectGroupID(projectGroupID *int32) *ProjectGroupsUpdateParams {
-	o.SetProjectGroupID(projectGroupID)
-	return o
-}
-
-// SetProjectGroupID adds the projectGroupId to the project groups update params
-func (o *ProjectGroupsUpdateParams) SetProjectGroupID(projectGroupID *int32) {
-	o.ProjectGroupID = projectGroupID
-}
-
 // WithBody adds the body to the project groups update params
 func (o *ProjectGroupsUpdateParams) WithBody(body *models.UpdateProjectGroupDto) *ProjectGroupsUpdateParams {
 	o.SetBody(body)
@@ -146,6 +137,17 @@ func (o *ProjectGroupsUpdateParams) WithBody(body *models.UpdateProjectGroupDto)
 // SetBody adds the body to the project groups update params
 func (o *ProjectGroupsUpdateParams) SetBody(body *models.UpdateProjectGroupDto) {
 	o.Body = body
+}
+
+// WithProjectGroupID adds the projectGroupID to the project groups update params
+func (o *ProjectGroupsUpdateParams) WithProjectGroupID(projectGroupID *int32) *ProjectGroupsUpdateParams {
+	o.SetProjectGroupID(projectGroupID)
+	return o
+}
+
+// SetProjectGroupID adds the projectGroupId to the project groups update params
+func (o *ProjectGroupsUpdateParams) SetProjectGroupID(projectGroupID *int32) {
+	o.ProjectGroupID = projectGroupID
 }
 
 // WithV adds the v to the project groups update params
@@ -166,10 +168,15 @@ func (o *ProjectGroupsUpdateParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
+	}
 
 	if o.ProjectGroupID != nil {
 
-		// query param ProjectGroupId
+		// query param projectGroupId
 		var qrProjectGroupID int32
 
 		if o.ProjectGroupID != nil {
@@ -178,14 +185,9 @@ func (o *ProjectGroupsUpdateParams) WriteToRequest(r runtime.ClientRequest, reg 
 		qProjectGroupID := swag.FormatInt32(qrProjectGroupID)
 		if qProjectGroupID != "" {
 
-			if err := r.SetQueryParam("ProjectGroupId", qProjectGroupID); err != nil {
+			if err := r.SetQueryParam("projectGroupId", qProjectGroupID); err != nil {
 				return err
 			}
-		}
-	}
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
 		}
 	}
 

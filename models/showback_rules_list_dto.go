@@ -22,6 +22,9 @@ type ShowbackRulesListDto struct {
 	// billing start date
 	BillingStartDate string `json:"billingStartDate,omitempty"`
 
+	// by label
+	ByLabel string `json:"byLabel,omitempty"`
+
 	// created at
 	CreatedAt string `json:"createdAt,omitempty"`
 

@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  ProjectGroupsBindUserGroups binds user groups
+ProjectGroupsBindUserGroups binds user groups
 */
 func (a *Client) ProjectGroupsBindUserGroups(params *ProjectGroupsBindUserGroupsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectGroupsBindUserGroupsOK, error) {
 	// TODO: Validate the params before sending
@@ -85,7 +85,7 @@ func (a *Client) ProjectGroupsBindUserGroups(params *ProjectGroupsBindUserGroups
 }
 
 /*
-  ProjectGroupsCreate adds project groups
+ProjectGroupsCreate adds project groups
 */
 func (a *Client) ProjectGroupsCreate(params *ProjectGroupsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectGroupsCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +124,7 @@ func (a *Client) ProjectGroupsCreate(params *ProjectGroupsCreateParams, authInfo
 }
 
 /*
-  ProjectGroupsDelete removes project group
+ProjectGroupsDelete removes project group
 */
 func (a *Client) ProjectGroupsDelete(params *ProjectGroupsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectGroupsDeleteOK, *ProjectGroupsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -164,7 +164,7 @@ func (a *Client) ProjectGroupsDelete(params *ProjectGroupsDeleteParams, authInfo
 }
 
 /*
-  ProjectGroupsList retrieves list of project groups
+ProjectGroupsList retrieves list of project groups
 */
 func (a *Client) ProjectGroupsList(params *ProjectGroupsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectGroupsListOK, error) {
 	// TODO: Validate the params before sending
@@ -203,7 +203,7 @@ func (a *Client) ProjectGroupsList(params *ProjectGroupsListParams, authInfo run
 }
 
 /*
-  ProjectGroupsListByUserGroupID retrieves list of project groups by user group id for dropdown
+ProjectGroupsListByUserGroupID retrieves list of project groups by user group id for dropdown
 */
 func (a *Client) ProjectGroupsListByUserGroupID(params *ProjectGroupsListByUserGroupIDParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectGroupsListByUserGroupIDOK, error) {
 	// TODO: Validate the params before sending
@@ -242,7 +242,7 @@ func (a *Client) ProjectGroupsListByUserGroupID(params *ProjectGroupsListByUserG
 }
 
 /*
-  ProjectGroupsUpdate updates project groups
+ProjectGroupsUpdate updates project groups
 */
 func (a *Client) ProjectGroupsUpdate(params *ProjectGroupsUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectGroupsUpdateOK, error) {
 	// TODO: Validate the params before sending

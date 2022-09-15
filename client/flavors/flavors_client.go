@@ -36,6 +36,8 @@ type ClientService interface {
 
 	FlavorsBindToProject(params *FlavorsBindToProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsBindToProjectOK, error)
 
+	FlavorsDropdownRecordDtos(params *FlavorsDropdownRecordDtosParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsDropdownRecordDtosOK, error)
+
 	FlavorsGetSelectedFlavorsForProject(params *FlavorsGetSelectedFlavorsForProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsGetSelectedFlavorsForProjectOK, error)
 
 	FlavorsGoogleFlavors(params *FlavorsGoogleFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsGoogleFlavorsOK, error)
@@ -48,7 +50,7 @@ type ClientService interface {
 }
 
 /*
-  FlavorsAwsFlavors retrieves aws flavors
+FlavorsAwsFlavors retrieves aws flavors
 */
 func (a *Client) FlavorsAwsFlavors(params *FlavorsAwsFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsAwsFlavorsOK, error) {
 	// TODO: Validate the params before sending
@@ -87,7 +89,7 @@ func (a *Client) FlavorsAwsFlavors(params *FlavorsAwsFlavorsParams, authInfo run
 }
 
 /*
-  FlavorsAzureFlavors retrieves azure flavors
+FlavorsAzureFlavors retrieves azure flavors
 */
 func (a *Client) FlavorsAzureFlavors(params *FlavorsAzureFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsAzureFlavorsOK, error) {
 	// TODO: Validate the params before sending
@@ -126,7 +128,7 @@ func (a *Client) FlavorsAzureFlavors(params *FlavorsAzureFlavorsParams, authInfo
 }
 
 /*
-  FlavorsBindToProject binds flavors to project
+FlavorsBindToProject binds flavors to project
 */
 func (a *Client) FlavorsBindToProject(params *FlavorsBindToProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsBindToProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -165,7 +167,46 @@ func (a *Client) FlavorsBindToProject(params *FlavorsBindToProjectParams, authIn
 }
 
 /*
-  FlavorsGetSelectedFlavorsForProject retrieves selected flavors for projects
+FlavorsDropdownRecordDtos retrieves cloud credentials dropdown list
+*/
+func (a *Client) FlavorsDropdownRecordDtos(params *FlavorsDropdownRecordDtosParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsDropdownRecordDtosOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewFlavorsDropdownRecordDtosParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Flavors_DropdownRecordDtos",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Flavors/credentials/dropdown/list",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &FlavorsDropdownRecordDtosReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*FlavorsDropdownRecordDtosOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Flavors_DropdownRecordDtos: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+FlavorsGetSelectedFlavorsForProject retrieves selected flavors for projects
 */
 func (a *Client) FlavorsGetSelectedFlavorsForProject(params *FlavorsGetSelectedFlavorsForProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsGetSelectedFlavorsForProjectOK, error) {
 	// TODO: Validate the params before sending
@@ -204,7 +245,7 @@ func (a *Client) FlavorsGetSelectedFlavorsForProject(params *FlavorsGetSelectedF
 }
 
 /*
-  FlavorsGoogleFlavors retrieves google flavors
+FlavorsGoogleFlavors retrieves google flavors
 */
 func (a *Client) FlavorsGoogleFlavors(params *FlavorsGoogleFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsGoogleFlavorsOK, error) {
 	// TODO: Validate the params before sending
@@ -243,7 +284,7 @@ func (a *Client) FlavorsGoogleFlavors(params *FlavorsGoogleFlavorsParams, authIn
 }
 
 /*
-  FlavorsOpenstackFlavors retrieves openstack flavors
+FlavorsOpenstackFlavors retrieves openstack flavors
 */
 func (a *Client) FlavorsOpenstackFlavors(params *FlavorsOpenstackFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsOpenstackFlavorsOK, error) {
 	// TODO: Validate the params before sending
@@ -282,7 +323,7 @@ func (a *Client) FlavorsOpenstackFlavors(params *FlavorsOpenstackFlavorsParams, 
 }
 
 /*
-  FlavorsUnbindFromProject unbinds flavors from project
+FlavorsUnbindFromProject unbinds flavors from project
 */
 func (a *Client) FlavorsUnbindFromProject(params *FlavorsUnbindFromProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*FlavorsUnbindFromProjectOK, error) {
 	// TODO: Validate the params before sending

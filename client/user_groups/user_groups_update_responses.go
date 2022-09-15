@@ -69,7 +69,8 @@ func NewUserGroupsUpdateOK() *UserGroupsUpdateOK {
 	return &UserGroupsUpdateOK{}
 }
 
-/* UserGroupsUpdateOK describes a response with status code 200, with default header values.
+/*
+UserGroupsUpdateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type UserGroupsUpdateOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this user groups update o k response has a 2xx status code
+func (o *UserGroupsUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this user groups update o k response has a 3xx status code
+func (o *UserGroupsUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user groups update o k response has a 4xx status code
+func (o *UserGroupsUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user groups update o k response has a 5xx status code
+func (o *UserGroupsUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user groups update o k response a status code equal to that given
+func (o *UserGroupsUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UserGroupsUpdateOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *UserGroupsUpdateOK) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *UserGroupsUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewUserGroupsUpdateBadRequest() *UserGroupsUpdateBadRequest {
 	return &UserGroupsUpdateBadRequest{}
 }
 
-/* UserGroupsUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+UserGroupsUpdateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type UserGroupsUpdateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this user groups update bad request response has a 2xx status code
+func (o *UserGroupsUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user groups update bad request response has a 3xx status code
+func (o *UserGroupsUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user groups update bad request response has a 4xx status code
+func (o *UserGroupsUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user groups update bad request response has a 5xx status code
+func (o *UserGroupsUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user groups update bad request response a status code equal to that given
+func (o *UserGroupsUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UserGroupsUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UserGroupsUpdateBadRequest) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UserGroupsUpdateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewUserGroupsUpdateUnauthorized() *UserGroupsUpdateUnauthorized {
 	return &UserGroupsUpdateUnauthorized{}
 }
 
-/* UserGroupsUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+UserGroupsUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type UserGroupsUpdateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user groups update unauthorized response has a 2xx status code
+func (o *UserGroupsUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user groups update unauthorized response has a 3xx status code
+func (o *UserGroupsUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user groups update unauthorized response has a 4xx status code
+func (o *UserGroupsUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user groups update unauthorized response has a 5xx status code
+func (o *UserGroupsUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user groups update unauthorized response a status code equal to that given
+func (o *UserGroupsUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UserGroupsUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *UserGroupsUpdateUnauthorized) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *UserGroupsUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewUserGroupsUpdateForbidden() *UserGroupsUpdateForbidden {
 	return &UserGroupsUpdateForbidden{}
 }
 
-/* UserGroupsUpdateForbidden describes a response with status code 403, with default header values.
+/*
+UserGroupsUpdateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type UserGroupsUpdateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user groups update forbidden response has a 2xx status code
+func (o *UserGroupsUpdateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user groups update forbidden response has a 3xx status code
+func (o *UserGroupsUpdateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user groups update forbidden response has a 4xx status code
+func (o *UserGroupsUpdateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user groups update forbidden response has a 5xx status code
+func (o *UserGroupsUpdateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user groups update forbidden response a status code equal to that given
+func (o *UserGroupsUpdateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UserGroupsUpdateForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UserGroupsUpdateForbidden) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UserGroupsUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewUserGroupsUpdateNotFound() *UserGroupsUpdateNotFound {
 	return &UserGroupsUpdateNotFound{}
 }
 
-/* UserGroupsUpdateNotFound describes a response with status code 404, with default header values.
+/*
+UserGroupsUpdateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type UserGroupsUpdateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user groups update not found response has a 2xx status code
+func (o *UserGroupsUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user groups update not found response has a 3xx status code
+func (o *UserGroupsUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user groups update not found response has a 4xx status code
+func (o *UserGroupsUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user groups update not found response has a 5xx status code
+func (o *UserGroupsUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user groups update not found response a status code equal to that given
+func (o *UserGroupsUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UserGroupsUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UserGroupsUpdateNotFound) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UserGroupsUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewUserGroupsUpdateInternalServerError() *UserGroupsUpdateInternalServerErr
 	return &UserGroupsUpdateInternalServerError{}
 }
 
-/* UserGroupsUpdateInternalServerError describes a response with status code 500, with default header values.
+/*
+UserGroupsUpdateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UserGroupsUpdateInternalServerError struct {
 }
 
+// IsSuccess returns true when this user groups update internal server error response has a 2xx status code
+func (o *UserGroupsUpdateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user groups update internal server error response has a 3xx status code
+func (o *UserGroupsUpdateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user groups update internal server error response has a 4xx status code
+func (o *UserGroupsUpdateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user groups update internal server error response has a 5xx status code
+func (o *UserGroupsUpdateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this user groups update internal server error response a status code equal to that given
+func (o *UserGroupsUpdateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UserGroupsUpdateInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateInternalServerError ", 500)
+}
+
+func (o *UserGroupsUpdateInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateInternalServerError ", 500)
 }
 

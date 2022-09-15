@@ -54,10 +54,12 @@ func NewAwsAwsZoneListParamsWithHTTPClient(client *http.Client) *AwsAwsZoneListP
 	}
 }
 
-/* AwsAwsZoneListParams contains all the parameters to send to the API endpoint
-   for the aws aws zone list operation.
+/*
+AwsAwsZoneListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the aws aws zone list operation.
+
+	Typically these are written to a http.Request.
 */
 type AwsAwsZoneListParams struct {
 

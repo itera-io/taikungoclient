@@ -69,14 +69,44 @@ func NewNotificationsExportCsvOK() *NotificationsExportCsvOK {
 	return &NotificationsExportCsvOK{}
 }
 
-/* NotificationsExportCsvOK describes a response with status code 200, with default header values.
+/*
+NotificationsExportCsvOK describes a response with status code 200, with default header values.
 
 Success
 */
 type NotificationsExportCsvOK struct {
 }
 
+// IsSuccess returns true when this notifications export csv o k response has a 2xx status code
+func (o *NotificationsExportCsvOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this notifications export csv o k response has a 3xx status code
+func (o *NotificationsExportCsvOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications export csv o k response has a 4xx status code
+func (o *NotificationsExportCsvOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this notifications export csv o k response has a 5xx status code
+func (o *NotificationsExportCsvOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications export csv o k response a status code equal to that given
+func (o *NotificationsExportCsvOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *NotificationsExportCsvOK) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvOK ", 200)
+}
+
+func (o *NotificationsExportCsvOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvOK ", 200)
 }
 
@@ -90,7 +120,8 @@ func NewNotificationsExportCsvBadRequest() *NotificationsExportCsvBadRequest {
 	return &NotificationsExportCsvBadRequest{}
 }
 
-/* NotificationsExportCsvBadRequest describes a response with status code 400, with default header values.
+/*
+NotificationsExportCsvBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -98,9 +129,39 @@ type NotificationsExportCsvBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this notifications export csv bad request response has a 2xx status code
+func (o *NotificationsExportCsvBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications export csv bad request response has a 3xx status code
+func (o *NotificationsExportCsvBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications export csv bad request response has a 4xx status code
+func (o *NotificationsExportCsvBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications export csv bad request response has a 5xx status code
+func (o *NotificationsExportCsvBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications export csv bad request response a status code equal to that given
+func (o *NotificationsExportCsvBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *NotificationsExportCsvBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *NotificationsExportCsvBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *NotificationsExportCsvBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -122,7 +183,8 @@ func NewNotificationsExportCsvUnauthorized() *NotificationsExportCsvUnauthorized
 	return &NotificationsExportCsvUnauthorized{}
 }
 
-/* NotificationsExportCsvUnauthorized describes a response with status code 401, with default header values.
+/*
+NotificationsExportCsvUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -130,9 +192,39 @@ type NotificationsExportCsvUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this notifications export csv unauthorized response has a 2xx status code
+func (o *NotificationsExportCsvUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications export csv unauthorized response has a 3xx status code
+func (o *NotificationsExportCsvUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications export csv unauthorized response has a 4xx status code
+func (o *NotificationsExportCsvUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications export csv unauthorized response has a 5xx status code
+func (o *NotificationsExportCsvUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications export csv unauthorized response a status code equal to that given
+func (o *NotificationsExportCsvUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *NotificationsExportCsvUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *NotificationsExportCsvUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *NotificationsExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -154,7 +246,8 @@ func NewNotificationsExportCsvForbidden() *NotificationsExportCsvForbidden {
 	return &NotificationsExportCsvForbidden{}
 }
 
-/* NotificationsExportCsvForbidden describes a response with status code 403, with default header values.
+/*
+NotificationsExportCsvForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -162,9 +255,39 @@ type NotificationsExportCsvForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this notifications export csv forbidden response has a 2xx status code
+func (o *NotificationsExportCsvForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications export csv forbidden response has a 3xx status code
+func (o *NotificationsExportCsvForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications export csv forbidden response has a 4xx status code
+func (o *NotificationsExportCsvForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications export csv forbidden response has a 5xx status code
+func (o *NotificationsExportCsvForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications export csv forbidden response a status code equal to that given
+func (o *NotificationsExportCsvForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *NotificationsExportCsvForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvForbidden  %+v", 403, o.Payload)
 }
+
+func (o *NotificationsExportCsvForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvForbidden  %+v", 403, o.Payload)
+}
+
 func (o *NotificationsExportCsvForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -186,7 +309,8 @@ func NewNotificationsExportCsvNotFound() *NotificationsExportCsvNotFound {
 	return &NotificationsExportCsvNotFound{}
 }
 
-/* NotificationsExportCsvNotFound describes a response with status code 404, with default header values.
+/*
+NotificationsExportCsvNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -194,9 +318,39 @@ type NotificationsExportCsvNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this notifications export csv not found response has a 2xx status code
+func (o *NotificationsExportCsvNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications export csv not found response has a 3xx status code
+func (o *NotificationsExportCsvNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications export csv not found response has a 4xx status code
+func (o *NotificationsExportCsvNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this notifications export csv not found response has a 5xx status code
+func (o *NotificationsExportCsvNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this notifications export csv not found response a status code equal to that given
+func (o *NotificationsExportCsvNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *NotificationsExportCsvNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvNotFound  %+v", 404, o.Payload)
 }
+
+func (o *NotificationsExportCsvNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvNotFound  %+v", 404, o.Payload)
+}
+
 func (o *NotificationsExportCsvNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -218,14 +372,44 @@ func NewNotificationsExportCsvInternalServerError() *NotificationsExportCsvInter
 	return &NotificationsExportCsvInternalServerError{}
 }
 
-/* NotificationsExportCsvInternalServerError describes a response with status code 500, with default header values.
+/*
+NotificationsExportCsvInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type NotificationsExportCsvInternalServerError struct {
 }
 
+// IsSuccess returns true when this notifications export csv internal server error response has a 2xx status code
+func (o *NotificationsExportCsvInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this notifications export csv internal server error response has a 3xx status code
+func (o *NotificationsExportCsvInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this notifications export csv internal server error response has a 4xx status code
+func (o *NotificationsExportCsvInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this notifications export csv internal server error response has a 5xx status code
+func (o *NotificationsExportCsvInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this notifications export csv internal server error response a status code equal to that given
+func (o *NotificationsExportCsvInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *NotificationsExportCsvInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvInternalServerError ", 500)
+}
+
+func (o *NotificationsExportCsvInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications/download][%d] notificationsExportCsvInternalServerError ", 500)
 }
 

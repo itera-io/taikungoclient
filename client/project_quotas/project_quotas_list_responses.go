@@ -69,7 +69,8 @@ func NewProjectQuotasListOK() *ProjectQuotasListOK {
 	return &ProjectQuotasListOK{}
 }
 
-/* ProjectQuotasListOK describes a response with status code 200, with default header values.
+/*
+ProjectQuotasListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectQuotasListOK struct {
 	Payload *models.ProjectQuotaList
 }
 
+// IsSuccess returns true when this project quotas list o k response has a 2xx status code
+func (o *ProjectQuotasListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this project quotas list o k response has a 3xx status code
+func (o *ProjectQuotasListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project quotas list o k response has a 4xx status code
+func (o *ProjectQuotasListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this project quotas list o k response has a 5xx status code
+func (o *ProjectQuotasListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project quotas list o k response a status code equal to that given
+func (o *ProjectQuotasListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectQuotasListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectQuotasListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectQuotasListOK) GetPayload() *models.ProjectQuotaList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewProjectQuotasListBadRequest() *ProjectQuotasListBadRequest {
 	return &ProjectQuotasListBadRequest{}
 }
 
-/* ProjectQuotasListBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectQuotasListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type ProjectQuotasListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this project quotas list bad request response has a 2xx status code
+func (o *ProjectQuotasListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project quotas list bad request response has a 3xx status code
+func (o *ProjectQuotasListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project quotas list bad request response has a 4xx status code
+func (o *ProjectQuotasListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project quotas list bad request response has a 5xx status code
+func (o *ProjectQuotasListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project quotas list bad request response a status code equal to that given
+func (o *ProjectQuotasListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectQuotasListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectQuotasListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectQuotasListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewProjectQuotasListUnauthorized() *ProjectQuotasListUnauthorized {
 	return &ProjectQuotasListUnauthorized{}
 }
 
-/* ProjectQuotasListUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectQuotasListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type ProjectQuotasListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project quotas list unauthorized response has a 2xx status code
+func (o *ProjectQuotasListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project quotas list unauthorized response has a 3xx status code
+func (o *ProjectQuotasListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project quotas list unauthorized response has a 4xx status code
+func (o *ProjectQuotasListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project quotas list unauthorized response has a 5xx status code
+func (o *ProjectQuotasListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project quotas list unauthorized response a status code equal to that given
+func (o *ProjectQuotasListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectQuotasListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectQuotasListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectQuotasListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewProjectQuotasListForbidden() *ProjectQuotasListForbidden {
 	return &ProjectQuotasListForbidden{}
 }
 
-/* ProjectQuotasListForbidden describes a response with status code 403, with default header values.
+/*
+ProjectQuotasListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type ProjectQuotasListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project quotas list forbidden response has a 2xx status code
+func (o *ProjectQuotasListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project quotas list forbidden response has a 3xx status code
+func (o *ProjectQuotasListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project quotas list forbidden response has a 4xx status code
+func (o *ProjectQuotasListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project quotas list forbidden response has a 5xx status code
+func (o *ProjectQuotasListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project quotas list forbidden response a status code equal to that given
+func (o *ProjectQuotasListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectQuotasListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectQuotasListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectQuotasListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewProjectQuotasListNotFound() *ProjectQuotasListNotFound {
 	return &ProjectQuotasListNotFound{}
 }
 
-/* ProjectQuotasListNotFound describes a response with status code 404, with default header values.
+/*
+ProjectQuotasListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type ProjectQuotasListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this project quotas list not found response has a 2xx status code
+func (o *ProjectQuotasListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project quotas list not found response has a 3xx status code
+func (o *ProjectQuotasListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project quotas list not found response has a 4xx status code
+func (o *ProjectQuotasListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this project quotas list not found response has a 5xx status code
+func (o *ProjectQuotasListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this project quotas list not found response a status code equal to that given
+func (o *ProjectQuotasListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectQuotasListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectQuotasListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectQuotasListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewProjectQuotasListInternalServerError() *ProjectQuotasListInternalServerE
 	return &ProjectQuotasListInternalServerError{}
 }
 
-/* ProjectQuotasListInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectQuotasListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectQuotasListInternalServerError struct {
 }
 
+// IsSuccess returns true when this project quotas list internal server error response has a 2xx status code
+func (o *ProjectQuotasListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this project quotas list internal server error response has a 3xx status code
+func (o *ProjectQuotasListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this project quotas list internal server error response has a 4xx status code
+func (o *ProjectQuotasListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this project quotas list internal server error response has a 5xx status code
+func (o *ProjectQuotasListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this project quotas list internal server error response a status code equal to that given
+func (o *ProjectQuotasListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectQuotasListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListInternalServerError ", 500)
+}
+
+func (o *ProjectQuotasListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListInternalServerError ", 500)
 }
 

@@ -69,7 +69,8 @@ func NewCloudCredentialsLockManagerOK() *CloudCredentialsLockManagerOK {
 	return &CloudCredentialsLockManagerOK{}
 }
 
-/* CloudCredentialsLockManagerOK describes a response with status code 200, with default header values.
+/*
+CloudCredentialsLockManagerOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CloudCredentialsLockManagerOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this cloud credentials lock manager o k response has a 2xx status code
+func (o *CloudCredentialsLockManagerOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cloud credentials lock manager o k response has a 3xx status code
+func (o *CloudCredentialsLockManagerOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials lock manager o k response has a 4xx status code
+func (o *CloudCredentialsLockManagerOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cloud credentials lock manager o k response has a 5xx status code
+func (o *CloudCredentialsLockManagerOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials lock manager o k response a status code equal to that given
+func (o *CloudCredentialsLockManagerOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CloudCredentialsLockManagerOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerOK  %+v", 200, o.Payload)
 }
+
+func (o *CloudCredentialsLockManagerOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerOK  %+v", 200, o.Payload)
+}
+
 func (o *CloudCredentialsLockManagerOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCloudCredentialsLockManagerBadRequest() *CloudCredentialsLockManagerBadR
 	return &CloudCredentialsLockManagerBadRequest{}
 }
 
-/* CloudCredentialsLockManagerBadRequest describes a response with status code 400, with default header values.
+/*
+CloudCredentialsLockManagerBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CloudCredentialsLockManagerBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials lock manager bad request response has a 2xx status code
+func (o *CloudCredentialsLockManagerBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials lock manager bad request response has a 3xx status code
+func (o *CloudCredentialsLockManagerBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials lock manager bad request response has a 4xx status code
+func (o *CloudCredentialsLockManagerBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials lock manager bad request response has a 5xx status code
+func (o *CloudCredentialsLockManagerBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials lock manager bad request response a status code equal to that given
+func (o *CloudCredentialsLockManagerBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CloudCredentialsLockManagerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CloudCredentialsLockManagerBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CloudCredentialsLockManagerBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCloudCredentialsLockManagerUnauthorized() *CloudCredentialsLockManagerUn
 	return &CloudCredentialsLockManagerUnauthorized{}
 }
 
-/* CloudCredentialsLockManagerUnauthorized describes a response with status code 401, with default header values.
+/*
+CloudCredentialsLockManagerUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CloudCredentialsLockManagerUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials lock manager unauthorized response has a 2xx status code
+func (o *CloudCredentialsLockManagerUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials lock manager unauthorized response has a 3xx status code
+func (o *CloudCredentialsLockManagerUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials lock manager unauthorized response has a 4xx status code
+func (o *CloudCredentialsLockManagerUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials lock manager unauthorized response has a 5xx status code
+func (o *CloudCredentialsLockManagerUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials lock manager unauthorized response a status code equal to that given
+func (o *CloudCredentialsLockManagerUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CloudCredentialsLockManagerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CloudCredentialsLockManagerUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CloudCredentialsLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCloudCredentialsLockManagerForbidden() *CloudCredentialsLockManagerForbi
 	return &CloudCredentialsLockManagerForbidden{}
 }
 
-/* CloudCredentialsLockManagerForbidden describes a response with status code 403, with default header values.
+/*
+CloudCredentialsLockManagerForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CloudCredentialsLockManagerForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials lock manager forbidden response has a 2xx status code
+func (o *CloudCredentialsLockManagerForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials lock manager forbidden response has a 3xx status code
+func (o *CloudCredentialsLockManagerForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials lock manager forbidden response has a 4xx status code
+func (o *CloudCredentialsLockManagerForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials lock manager forbidden response has a 5xx status code
+func (o *CloudCredentialsLockManagerForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials lock manager forbidden response a status code equal to that given
+func (o *CloudCredentialsLockManagerForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CloudCredentialsLockManagerForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CloudCredentialsLockManagerForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CloudCredentialsLockManagerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCloudCredentialsLockManagerNotFound() *CloudCredentialsLockManagerNotFou
 	return &CloudCredentialsLockManagerNotFound{}
 }
 
-/* CloudCredentialsLockManagerNotFound describes a response with status code 404, with default header values.
+/*
+CloudCredentialsLockManagerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CloudCredentialsLockManagerNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials lock manager not found response has a 2xx status code
+func (o *CloudCredentialsLockManagerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials lock manager not found response has a 3xx status code
+func (o *CloudCredentialsLockManagerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials lock manager not found response has a 4xx status code
+func (o *CloudCredentialsLockManagerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials lock manager not found response has a 5xx status code
+func (o *CloudCredentialsLockManagerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials lock manager not found response a status code equal to that given
+func (o *CloudCredentialsLockManagerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CloudCredentialsLockManagerNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CloudCredentialsLockManagerNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CloudCredentialsLockManagerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCloudCredentialsLockManagerInternalServerError() *CloudCredentialsLockMa
 	return &CloudCredentialsLockManagerInternalServerError{}
 }
 
-/* CloudCredentialsLockManagerInternalServerError describes a response with status code 500, with default header values.
+/*
+CloudCredentialsLockManagerInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CloudCredentialsLockManagerInternalServerError struct {
 }
 
+// IsSuccess returns true when this cloud credentials lock manager internal server error response has a 2xx status code
+func (o *CloudCredentialsLockManagerInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials lock manager internal server error response has a 3xx status code
+func (o *CloudCredentialsLockManagerInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials lock manager internal server error response has a 4xx status code
+func (o *CloudCredentialsLockManagerInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cloud credentials lock manager internal server error response has a 5xx status code
+func (o *CloudCredentialsLockManagerInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cloud credentials lock manager internal server error response a status code equal to that given
+func (o *CloudCredentialsLockManagerInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CloudCredentialsLockManagerInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerInternalServerError ", 500)
+}
+
+func (o *CloudCredentialsLockManagerInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerInternalServerError ", 500)
 }
 

@@ -69,7 +69,8 @@ func NewStandAloneActionsStopOK() *StandAloneActionsStopOK {
 	return &StandAloneActionsStopOK{}
 }
 
-/* StandAloneActionsStopOK describes a response with status code 200, with default header values.
+/*
+StandAloneActionsStopOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type StandAloneActionsStopOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this stand alone actions stop o k response has a 2xx status code
+func (o *StandAloneActionsStopOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this stand alone actions stop o k response has a 3xx status code
+func (o *StandAloneActionsStopOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions stop o k response has a 4xx status code
+func (o *StandAloneActionsStopOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone actions stop o k response has a 5xx status code
+func (o *StandAloneActionsStopOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions stop o k response a status code equal to that given
+func (o *StandAloneActionsStopOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *StandAloneActionsStopOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopOK  %+v", 200, o.Payload)
 }
+
+func (o *StandAloneActionsStopOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopOK  %+v", 200, o.Payload)
+}
+
 func (o *StandAloneActionsStopOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewStandAloneActionsStopBadRequest() *StandAloneActionsStopBadRequest {
 	return &StandAloneActionsStopBadRequest{}
 }
 
-/* StandAloneActionsStopBadRequest describes a response with status code 400, with default header values.
+/*
+StandAloneActionsStopBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type StandAloneActionsStopBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions stop bad request response has a 2xx status code
+func (o *StandAloneActionsStopBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions stop bad request response has a 3xx status code
+func (o *StandAloneActionsStopBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions stop bad request response has a 4xx status code
+func (o *StandAloneActionsStopBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions stop bad request response has a 5xx status code
+func (o *StandAloneActionsStopBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions stop bad request response a status code equal to that given
+func (o *StandAloneActionsStopBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *StandAloneActionsStopBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *StandAloneActionsStopBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *StandAloneActionsStopBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewStandAloneActionsStopUnauthorized() *StandAloneActionsStopUnauthorized {
 	return &StandAloneActionsStopUnauthorized{}
 }
 
-/* StandAloneActionsStopUnauthorized describes a response with status code 401, with default header values.
+/*
+StandAloneActionsStopUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type StandAloneActionsStopUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions stop unauthorized response has a 2xx status code
+func (o *StandAloneActionsStopUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions stop unauthorized response has a 3xx status code
+func (o *StandAloneActionsStopUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions stop unauthorized response has a 4xx status code
+func (o *StandAloneActionsStopUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions stop unauthorized response has a 5xx status code
+func (o *StandAloneActionsStopUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions stop unauthorized response a status code equal to that given
+func (o *StandAloneActionsStopUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *StandAloneActionsStopUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *StandAloneActionsStopUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *StandAloneActionsStopUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewStandAloneActionsStopForbidden() *StandAloneActionsStopForbidden {
 	return &StandAloneActionsStopForbidden{}
 }
 
-/* StandAloneActionsStopForbidden describes a response with status code 403, with default header values.
+/*
+StandAloneActionsStopForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type StandAloneActionsStopForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions stop forbidden response has a 2xx status code
+func (o *StandAloneActionsStopForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions stop forbidden response has a 3xx status code
+func (o *StandAloneActionsStopForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions stop forbidden response has a 4xx status code
+func (o *StandAloneActionsStopForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions stop forbidden response has a 5xx status code
+func (o *StandAloneActionsStopForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions stop forbidden response a status code equal to that given
+func (o *StandAloneActionsStopForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *StandAloneActionsStopForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopForbidden  %+v", 403, o.Payload)
 }
+
+func (o *StandAloneActionsStopForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopForbidden  %+v", 403, o.Payload)
+}
+
 func (o *StandAloneActionsStopForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewStandAloneActionsStopNotFound() *StandAloneActionsStopNotFound {
 	return &StandAloneActionsStopNotFound{}
 }
 
-/* StandAloneActionsStopNotFound describes a response with status code 404, with default header values.
+/*
+StandAloneActionsStopNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type StandAloneActionsStopNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions stop not found response has a 2xx status code
+func (o *StandAloneActionsStopNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions stop not found response has a 3xx status code
+func (o *StandAloneActionsStopNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions stop not found response has a 4xx status code
+func (o *StandAloneActionsStopNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions stop not found response has a 5xx status code
+func (o *StandAloneActionsStopNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions stop not found response a status code equal to that given
+func (o *StandAloneActionsStopNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *StandAloneActionsStopNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopNotFound  %+v", 404, o.Payload)
 }
+
+func (o *StandAloneActionsStopNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopNotFound  %+v", 404, o.Payload)
+}
+
 func (o *StandAloneActionsStopNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewStandAloneActionsStopInternalServerError() *StandAloneActionsStopInterna
 	return &StandAloneActionsStopInternalServerError{}
 }
 
-/* StandAloneActionsStopInternalServerError describes a response with status code 500, with default header values.
+/*
+StandAloneActionsStopInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type StandAloneActionsStopInternalServerError struct {
 }
 
+// IsSuccess returns true when this stand alone actions stop internal server error response has a 2xx status code
+func (o *StandAloneActionsStopInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions stop internal server error response has a 3xx status code
+func (o *StandAloneActionsStopInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions stop internal server error response has a 4xx status code
+func (o *StandAloneActionsStopInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone actions stop internal server error response has a 5xx status code
+func (o *StandAloneActionsStopInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this stand alone actions stop internal server error response a status code equal to that given
+func (o *StandAloneActionsStopInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *StandAloneActionsStopInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopInternalServerError ", 500)
+}
+
+func (o *StandAloneActionsStopInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopInternalServerError ", 500)
 }
 

@@ -53,10 +53,12 @@ func NewStandAloneDetailsParamsWithHTTPClient(client *http.Client) *StandAloneDe
 	}
 }
 
-/* StandAloneDetailsParams contains all the parameters to send to the API endpoint
-   for the stand alone details operation.
+/*
+StandAloneDetailsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone details operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneDetailsParams struct {
 

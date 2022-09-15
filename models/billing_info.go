@@ -26,7 +26,7 @@ type BillingInfo struct {
 	TotalCount int32 `json:"totalCount,omitempty"`
 
 	// total tcu
-	TotalTcu int32 `json:"totalTcu,omitempty"`
+	TotalTcu float64 `json:"totalTcu,omitempty"`
 }
 
 // Validate validates this billing info

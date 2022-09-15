@@ -53,10 +53,12 @@ func NewProjectsUpgradeParamsWithHTTPClient(client *http.Client) *ProjectsUpgrad
 	}
 }
 
-/* ProjectsUpgradeParams contains all the parameters to send to the API endpoint
-   for the projects upgrade operation.
+/*
+ProjectsUpgradeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects upgrade operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsUpgradeParams struct {
 

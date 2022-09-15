@@ -54,10 +54,12 @@ func NewAzureZonesParamsWithHTTPClient(client *http.Client) *AzureZonesParams {
 	}
 }
 
-/* AzureZonesParams contains all the parameters to send to the API endpoint
-   for the azure zones operation.
+/*
+AzureZonesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the azure zones operation.
+
+	Typically these are written to a http.Request.
 */
 type AzureZonesParams struct {
 

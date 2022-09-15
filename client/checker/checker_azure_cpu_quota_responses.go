@@ -69,7 +69,8 @@ func NewCheckerAzureCPUQuotaOK() *CheckerAzureCPUQuotaOK {
 	return &CheckerAzureCPUQuotaOK{}
 }
 
-/* CheckerAzureCPUQuotaOK describes a response with status code 200, with default header values.
+/*
+CheckerAzureCPUQuotaOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CheckerAzureCPUQuotaOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this checker azure Cpu quota o k response has a 2xx status code
+func (o *CheckerAzureCPUQuotaOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this checker azure Cpu quota o k response has a 3xx status code
+func (o *CheckerAzureCPUQuotaOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker azure Cpu quota o k response has a 4xx status code
+func (o *CheckerAzureCPUQuotaOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this checker azure Cpu quota o k response has a 5xx status code
+func (o *CheckerAzureCPUQuotaOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker azure Cpu quota o k response a status code equal to that given
+func (o *CheckerAzureCPUQuotaOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CheckerAzureCPUQuotaOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaOK  %+v", 200, o.Payload)
 }
+
+func (o *CheckerAzureCPUQuotaOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaOK  %+v", 200, o.Payload)
+}
+
 func (o *CheckerAzureCPUQuotaOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCheckerAzureCPUQuotaBadRequest() *CheckerAzureCPUQuotaBadRequest {
 	return &CheckerAzureCPUQuotaBadRequest{}
 }
 
-/* CheckerAzureCPUQuotaBadRequest describes a response with status code 400, with default header values.
+/*
+CheckerAzureCPUQuotaBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CheckerAzureCPUQuotaBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this checker azure Cpu quota bad request response has a 2xx status code
+func (o *CheckerAzureCPUQuotaBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker azure Cpu quota bad request response has a 3xx status code
+func (o *CheckerAzureCPUQuotaBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker azure Cpu quota bad request response has a 4xx status code
+func (o *CheckerAzureCPUQuotaBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker azure Cpu quota bad request response has a 5xx status code
+func (o *CheckerAzureCPUQuotaBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker azure Cpu quota bad request response a status code equal to that given
+func (o *CheckerAzureCPUQuotaBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CheckerAzureCPUQuotaBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CheckerAzureCPUQuotaBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CheckerAzureCPUQuotaBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCheckerAzureCPUQuotaUnauthorized() *CheckerAzureCPUQuotaUnauthorized {
 	return &CheckerAzureCPUQuotaUnauthorized{}
 }
 
-/* CheckerAzureCPUQuotaUnauthorized describes a response with status code 401, with default header values.
+/*
+CheckerAzureCPUQuotaUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CheckerAzureCPUQuotaUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker azure Cpu quota unauthorized response has a 2xx status code
+func (o *CheckerAzureCPUQuotaUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker azure Cpu quota unauthorized response has a 3xx status code
+func (o *CheckerAzureCPUQuotaUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker azure Cpu quota unauthorized response has a 4xx status code
+func (o *CheckerAzureCPUQuotaUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker azure Cpu quota unauthorized response has a 5xx status code
+func (o *CheckerAzureCPUQuotaUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker azure Cpu quota unauthorized response a status code equal to that given
+func (o *CheckerAzureCPUQuotaUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CheckerAzureCPUQuotaUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CheckerAzureCPUQuotaUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CheckerAzureCPUQuotaUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCheckerAzureCPUQuotaForbidden() *CheckerAzureCPUQuotaForbidden {
 	return &CheckerAzureCPUQuotaForbidden{}
 }
 
-/* CheckerAzureCPUQuotaForbidden describes a response with status code 403, with default header values.
+/*
+CheckerAzureCPUQuotaForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CheckerAzureCPUQuotaForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker azure Cpu quota forbidden response has a 2xx status code
+func (o *CheckerAzureCPUQuotaForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker azure Cpu quota forbidden response has a 3xx status code
+func (o *CheckerAzureCPUQuotaForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker azure Cpu quota forbidden response has a 4xx status code
+func (o *CheckerAzureCPUQuotaForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker azure Cpu quota forbidden response has a 5xx status code
+func (o *CheckerAzureCPUQuotaForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker azure Cpu quota forbidden response a status code equal to that given
+func (o *CheckerAzureCPUQuotaForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CheckerAzureCPUQuotaForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CheckerAzureCPUQuotaForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CheckerAzureCPUQuotaForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCheckerAzureCPUQuotaNotFound() *CheckerAzureCPUQuotaNotFound {
 	return &CheckerAzureCPUQuotaNotFound{}
 }
 
-/* CheckerAzureCPUQuotaNotFound describes a response with status code 404, with default header values.
+/*
+CheckerAzureCPUQuotaNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CheckerAzureCPUQuotaNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker azure Cpu quota not found response has a 2xx status code
+func (o *CheckerAzureCPUQuotaNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker azure Cpu quota not found response has a 3xx status code
+func (o *CheckerAzureCPUQuotaNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker azure Cpu quota not found response has a 4xx status code
+func (o *CheckerAzureCPUQuotaNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker azure Cpu quota not found response has a 5xx status code
+func (o *CheckerAzureCPUQuotaNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker azure Cpu quota not found response a status code equal to that given
+func (o *CheckerAzureCPUQuotaNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CheckerAzureCPUQuotaNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CheckerAzureCPUQuotaNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CheckerAzureCPUQuotaNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCheckerAzureCPUQuotaInternalServerError() *CheckerAzureCPUQuotaInternalS
 	return &CheckerAzureCPUQuotaInternalServerError{}
 }
 
-/* CheckerAzureCPUQuotaInternalServerError describes a response with status code 500, with default header values.
+/*
+CheckerAzureCPUQuotaInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CheckerAzureCPUQuotaInternalServerError struct {
 }
 
+// IsSuccess returns true when this checker azure Cpu quota internal server error response has a 2xx status code
+func (o *CheckerAzureCPUQuotaInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker azure Cpu quota internal server error response has a 3xx status code
+func (o *CheckerAzureCPUQuotaInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker azure Cpu quota internal server error response has a 4xx status code
+func (o *CheckerAzureCPUQuotaInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this checker azure Cpu quota internal server error response has a 5xx status code
+func (o *CheckerAzureCPUQuotaInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this checker azure Cpu quota internal server error response a status code equal to that given
+func (o *CheckerAzureCPUQuotaInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CheckerAzureCPUQuotaInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaInternalServerError ", 500)
+}
+
+func (o *CheckerAzureCPUQuotaInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaInternalServerError ", 500)
 }
 

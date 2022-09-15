@@ -20,6 +20,9 @@ import (
 // swagger:model ProjectsForBillingDto
 type ProjectsForBillingDto struct {
 
+	// billing enabled
+	BillingEnabled bool `json:"billingEnabled"`
+
 	// billing start date
 	// Format: date-time
 	BillingStartDate *strfmt.DateTime `json:"billingStartDate,omitempty"`

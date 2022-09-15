@@ -69,7 +69,8 @@ func NewOpenstackZoneListOK() *OpenstackZoneListOK {
 	return &OpenstackZoneListOK{}
 }
 
-/* OpenstackZoneListOK describes a response with status code 200, with default header values.
+/*
+OpenstackZoneListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OpenstackZoneListOK struct {
 	Payload []string
 }
 
+// IsSuccess returns true when this openstack zone list o k response has a 2xx status code
+func (o *OpenstackZoneListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this openstack zone list o k response has a 3xx status code
+func (o *OpenstackZoneListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack zone list o k response has a 4xx status code
+func (o *OpenstackZoneListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this openstack zone list o k response has a 5xx status code
+func (o *OpenstackZoneListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack zone list o k response a status code equal to that given
+func (o *OpenstackZoneListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OpenstackZoneListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListOK  %+v", 200, o.Payload)
 }
+
+func (o *OpenstackZoneListOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListOK  %+v", 200, o.Payload)
+}
+
 func (o *OpenstackZoneListOK) GetPayload() []string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewOpenstackZoneListBadRequest() *OpenstackZoneListBadRequest {
 	return &OpenstackZoneListBadRequest{}
 }
 
-/* OpenstackZoneListBadRequest describes a response with status code 400, with default header values.
+/*
+OpenstackZoneListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type OpenstackZoneListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this openstack zone list bad request response has a 2xx status code
+func (o *OpenstackZoneListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack zone list bad request response has a 3xx status code
+func (o *OpenstackZoneListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack zone list bad request response has a 4xx status code
+func (o *OpenstackZoneListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack zone list bad request response has a 5xx status code
+func (o *OpenstackZoneListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack zone list bad request response a status code equal to that given
+func (o *OpenstackZoneListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OpenstackZoneListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OpenstackZoneListBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OpenstackZoneListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewOpenstackZoneListUnauthorized() *OpenstackZoneListUnauthorized {
 	return &OpenstackZoneListUnauthorized{}
 }
 
-/* OpenstackZoneListUnauthorized describes a response with status code 401, with default header values.
+/*
+OpenstackZoneListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type OpenstackZoneListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack zone list unauthorized response has a 2xx status code
+func (o *OpenstackZoneListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack zone list unauthorized response has a 3xx status code
+func (o *OpenstackZoneListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack zone list unauthorized response has a 4xx status code
+func (o *OpenstackZoneListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack zone list unauthorized response has a 5xx status code
+func (o *OpenstackZoneListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack zone list unauthorized response a status code equal to that given
+func (o *OpenstackZoneListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OpenstackZoneListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OpenstackZoneListUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OpenstackZoneListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewOpenstackZoneListForbidden() *OpenstackZoneListForbidden {
 	return &OpenstackZoneListForbidden{}
 }
 
-/* OpenstackZoneListForbidden describes a response with status code 403, with default header values.
+/*
+OpenstackZoneListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type OpenstackZoneListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack zone list forbidden response has a 2xx status code
+func (o *OpenstackZoneListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack zone list forbidden response has a 3xx status code
+func (o *OpenstackZoneListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack zone list forbidden response has a 4xx status code
+func (o *OpenstackZoneListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack zone list forbidden response has a 5xx status code
+func (o *OpenstackZoneListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack zone list forbidden response a status code equal to that given
+func (o *OpenstackZoneListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OpenstackZoneListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OpenstackZoneListForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OpenstackZoneListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewOpenstackZoneListNotFound() *OpenstackZoneListNotFound {
 	return &OpenstackZoneListNotFound{}
 }
 
-/* OpenstackZoneListNotFound describes a response with status code 404, with default header values.
+/*
+OpenstackZoneListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type OpenstackZoneListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack zone list not found response has a 2xx status code
+func (o *OpenstackZoneListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack zone list not found response has a 3xx status code
+func (o *OpenstackZoneListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack zone list not found response has a 4xx status code
+func (o *OpenstackZoneListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack zone list not found response has a 5xx status code
+func (o *OpenstackZoneListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack zone list not found response a status code equal to that given
+func (o *OpenstackZoneListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OpenstackZoneListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OpenstackZoneListNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OpenstackZoneListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewOpenstackZoneListInternalServerError() *OpenstackZoneListInternalServerE
 	return &OpenstackZoneListInternalServerError{}
 }
 
-/* OpenstackZoneListInternalServerError describes a response with status code 500, with default header values.
+/*
+OpenstackZoneListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OpenstackZoneListInternalServerError struct {
 }
 
+// IsSuccess returns true when this openstack zone list internal server error response has a 2xx status code
+func (o *OpenstackZoneListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack zone list internal server error response has a 3xx status code
+func (o *OpenstackZoneListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack zone list internal server error response has a 4xx status code
+func (o *OpenstackZoneListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this openstack zone list internal server error response has a 5xx status code
+func (o *OpenstackZoneListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this openstack zone list internal server error response a status code equal to that given
+func (o *OpenstackZoneListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OpenstackZoneListInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListInternalServerError ", 500)
+}
+
+func (o *OpenstackZoneListInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListInternalServerError ", 500)
 }
 

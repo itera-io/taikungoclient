@@ -69,7 +69,8 @@ func NewOpenstackQuotasOK() *OpenstackQuotasOK {
 	return &OpenstackQuotasOK{}
 }
 
-/* OpenstackQuotasOK describes a response with status code 200, with default header values.
+/*
+OpenstackQuotasOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OpenstackQuotasOK struct {
 	Payload *models.OpenstackQuotaList
 }
 
+// IsSuccess returns true when this openstack quotas o k response has a 2xx status code
+func (o *OpenstackQuotasOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this openstack quotas o k response has a 3xx status code
+func (o *OpenstackQuotasOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack quotas o k response has a 4xx status code
+func (o *OpenstackQuotasOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this openstack quotas o k response has a 5xx status code
+func (o *OpenstackQuotasOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack quotas o k response a status code equal to that given
+func (o *OpenstackQuotasOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OpenstackQuotasOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasOK  %+v", 200, o.Payload)
 }
+
+func (o *OpenstackQuotasOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasOK  %+v", 200, o.Payload)
+}
+
 func (o *OpenstackQuotasOK) GetPayload() *models.OpenstackQuotaList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewOpenstackQuotasBadRequest() *OpenstackQuotasBadRequest {
 	return &OpenstackQuotasBadRequest{}
 }
 
-/* OpenstackQuotasBadRequest describes a response with status code 400, with default header values.
+/*
+OpenstackQuotasBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type OpenstackQuotasBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this openstack quotas bad request response has a 2xx status code
+func (o *OpenstackQuotasBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack quotas bad request response has a 3xx status code
+func (o *OpenstackQuotasBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack quotas bad request response has a 4xx status code
+func (o *OpenstackQuotasBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack quotas bad request response has a 5xx status code
+func (o *OpenstackQuotasBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack quotas bad request response a status code equal to that given
+func (o *OpenstackQuotasBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OpenstackQuotasBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OpenstackQuotasBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OpenstackQuotasBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewOpenstackQuotasUnauthorized() *OpenstackQuotasUnauthorized {
 	return &OpenstackQuotasUnauthorized{}
 }
 
-/* OpenstackQuotasUnauthorized describes a response with status code 401, with default header values.
+/*
+OpenstackQuotasUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type OpenstackQuotasUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack quotas unauthorized response has a 2xx status code
+func (o *OpenstackQuotasUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack quotas unauthorized response has a 3xx status code
+func (o *OpenstackQuotasUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack quotas unauthorized response has a 4xx status code
+func (o *OpenstackQuotasUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack quotas unauthorized response has a 5xx status code
+func (o *OpenstackQuotasUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack quotas unauthorized response a status code equal to that given
+func (o *OpenstackQuotasUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OpenstackQuotasUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OpenstackQuotasUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OpenstackQuotasUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewOpenstackQuotasForbidden() *OpenstackQuotasForbidden {
 	return &OpenstackQuotasForbidden{}
 }
 
-/* OpenstackQuotasForbidden describes a response with status code 403, with default header values.
+/*
+OpenstackQuotasForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type OpenstackQuotasForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack quotas forbidden response has a 2xx status code
+func (o *OpenstackQuotasForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack quotas forbidden response has a 3xx status code
+func (o *OpenstackQuotasForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack quotas forbidden response has a 4xx status code
+func (o *OpenstackQuotasForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack quotas forbidden response has a 5xx status code
+func (o *OpenstackQuotasForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack quotas forbidden response a status code equal to that given
+func (o *OpenstackQuotasForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OpenstackQuotasForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OpenstackQuotasForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OpenstackQuotasForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewOpenstackQuotasNotFound() *OpenstackQuotasNotFound {
 	return &OpenstackQuotasNotFound{}
 }
 
-/* OpenstackQuotasNotFound describes a response with status code 404, with default header values.
+/*
+OpenstackQuotasNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type OpenstackQuotasNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this openstack quotas not found response has a 2xx status code
+func (o *OpenstackQuotasNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack quotas not found response has a 3xx status code
+func (o *OpenstackQuotasNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack quotas not found response has a 4xx status code
+func (o *OpenstackQuotasNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this openstack quotas not found response has a 5xx status code
+func (o *OpenstackQuotasNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this openstack quotas not found response a status code equal to that given
+func (o *OpenstackQuotasNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OpenstackQuotasNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OpenstackQuotasNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OpenstackQuotasNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewOpenstackQuotasInternalServerError() *OpenstackQuotasInternalServerError
 	return &OpenstackQuotasInternalServerError{}
 }
 
-/* OpenstackQuotasInternalServerError describes a response with status code 500, with default header values.
+/*
+OpenstackQuotasInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OpenstackQuotasInternalServerError struct {
 }
 
+// IsSuccess returns true when this openstack quotas internal server error response has a 2xx status code
+func (o *OpenstackQuotasInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this openstack quotas internal server error response has a 3xx status code
+func (o *OpenstackQuotasInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this openstack quotas internal server error response has a 4xx status code
+func (o *OpenstackQuotasInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this openstack quotas internal server error response has a 5xx status code
+func (o *OpenstackQuotasInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this openstack quotas internal server error response a status code equal to that given
+func (o *OpenstackQuotasInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OpenstackQuotasInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasInternalServerError ", 500)
+}
+
+func (o *OpenstackQuotasInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasInternalServerError ", 500)
 }
 

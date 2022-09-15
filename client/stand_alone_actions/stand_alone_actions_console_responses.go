@@ -69,7 +69,8 @@ func NewStandAloneActionsConsoleOK() *StandAloneActionsConsoleOK {
 	return &StandAloneActionsConsoleOK{}
 }
 
-/* StandAloneActionsConsoleOK describes a response with status code 200, with default header values.
+/*
+StandAloneActionsConsoleOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type StandAloneActionsConsoleOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this stand alone actions console o k response has a 2xx status code
+func (o *StandAloneActionsConsoleOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this stand alone actions console o k response has a 3xx status code
+func (o *StandAloneActionsConsoleOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions console o k response has a 4xx status code
+func (o *StandAloneActionsConsoleOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone actions console o k response has a 5xx status code
+func (o *StandAloneActionsConsoleOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions console o k response a status code equal to that given
+func (o *StandAloneActionsConsoleOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *StandAloneActionsConsoleOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleOK  %+v", 200, o.Payload)
 }
+
+func (o *StandAloneActionsConsoleOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleOK  %+v", 200, o.Payload)
+}
+
 func (o *StandAloneActionsConsoleOK) GetPayload() string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewStandAloneActionsConsoleBadRequest() *StandAloneActionsConsoleBadRequest
 	return &StandAloneActionsConsoleBadRequest{}
 }
 
-/* StandAloneActionsConsoleBadRequest describes a response with status code 400, with default header values.
+/*
+StandAloneActionsConsoleBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type StandAloneActionsConsoleBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions console bad request response has a 2xx status code
+func (o *StandAloneActionsConsoleBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions console bad request response has a 3xx status code
+func (o *StandAloneActionsConsoleBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions console bad request response has a 4xx status code
+func (o *StandAloneActionsConsoleBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions console bad request response has a 5xx status code
+func (o *StandAloneActionsConsoleBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions console bad request response a status code equal to that given
+func (o *StandAloneActionsConsoleBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *StandAloneActionsConsoleBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *StandAloneActionsConsoleBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *StandAloneActionsConsoleBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewStandAloneActionsConsoleUnauthorized() *StandAloneActionsConsoleUnauthor
 	return &StandAloneActionsConsoleUnauthorized{}
 }
 
-/* StandAloneActionsConsoleUnauthorized describes a response with status code 401, with default header values.
+/*
+StandAloneActionsConsoleUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type StandAloneActionsConsoleUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions console unauthorized response has a 2xx status code
+func (o *StandAloneActionsConsoleUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions console unauthorized response has a 3xx status code
+func (o *StandAloneActionsConsoleUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions console unauthorized response has a 4xx status code
+func (o *StandAloneActionsConsoleUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions console unauthorized response has a 5xx status code
+func (o *StandAloneActionsConsoleUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions console unauthorized response a status code equal to that given
+func (o *StandAloneActionsConsoleUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *StandAloneActionsConsoleUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *StandAloneActionsConsoleUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *StandAloneActionsConsoleUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewStandAloneActionsConsoleForbidden() *StandAloneActionsConsoleForbidden {
 	return &StandAloneActionsConsoleForbidden{}
 }
 
-/* StandAloneActionsConsoleForbidden describes a response with status code 403, with default header values.
+/*
+StandAloneActionsConsoleForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type StandAloneActionsConsoleForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions console forbidden response has a 2xx status code
+func (o *StandAloneActionsConsoleForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions console forbidden response has a 3xx status code
+func (o *StandAloneActionsConsoleForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions console forbidden response has a 4xx status code
+func (o *StandAloneActionsConsoleForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions console forbidden response has a 5xx status code
+func (o *StandAloneActionsConsoleForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions console forbidden response a status code equal to that given
+func (o *StandAloneActionsConsoleForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *StandAloneActionsConsoleForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleForbidden  %+v", 403, o.Payload)
 }
+
+func (o *StandAloneActionsConsoleForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleForbidden  %+v", 403, o.Payload)
+}
+
 func (o *StandAloneActionsConsoleForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewStandAloneActionsConsoleNotFound() *StandAloneActionsConsoleNotFound {
 	return &StandAloneActionsConsoleNotFound{}
 }
 
-/* StandAloneActionsConsoleNotFound describes a response with status code 404, with default header values.
+/*
+StandAloneActionsConsoleNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type StandAloneActionsConsoleNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this stand alone actions console not found response has a 2xx status code
+func (o *StandAloneActionsConsoleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions console not found response has a 3xx status code
+func (o *StandAloneActionsConsoleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions console not found response has a 4xx status code
+func (o *StandAloneActionsConsoleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this stand alone actions console not found response has a 5xx status code
+func (o *StandAloneActionsConsoleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this stand alone actions console not found response a status code equal to that given
+func (o *StandAloneActionsConsoleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *StandAloneActionsConsoleNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleNotFound  %+v", 404, o.Payload)
 }
+
+func (o *StandAloneActionsConsoleNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleNotFound  %+v", 404, o.Payload)
+}
+
 func (o *StandAloneActionsConsoleNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewStandAloneActionsConsoleInternalServerError() *StandAloneActionsConsoleI
 	return &StandAloneActionsConsoleInternalServerError{}
 }
 
-/* StandAloneActionsConsoleInternalServerError describes a response with status code 500, with default header values.
+/*
+StandAloneActionsConsoleInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type StandAloneActionsConsoleInternalServerError struct {
 }
 
+// IsSuccess returns true when this stand alone actions console internal server error response has a 2xx status code
+func (o *StandAloneActionsConsoleInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this stand alone actions console internal server error response has a 3xx status code
+func (o *StandAloneActionsConsoleInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this stand alone actions console internal server error response has a 4xx status code
+func (o *StandAloneActionsConsoleInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this stand alone actions console internal server error response has a 5xx status code
+func (o *StandAloneActionsConsoleInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this stand alone actions console internal server error response a status code equal to that given
+func (o *StandAloneActionsConsoleInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *StandAloneActionsConsoleInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleInternalServerError ", 500)
+}
+
+func (o *StandAloneActionsConsoleInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleInternalServerError ", 500)
 }
 

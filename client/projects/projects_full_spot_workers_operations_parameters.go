@@ -54,10 +54,12 @@ func NewProjectsFullSpotWorkersOperationsParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* ProjectsFullSpotWorkersOperationsParams contains all the parameters to send to the API endpoint
-   for the projects full spot workers operations operation.
+/*
+ProjectsFullSpotWorkersOperationsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects full spot workers operations operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsFullSpotWorkersOperationsParams struct {
 

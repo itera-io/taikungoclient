@@ -54,10 +54,12 @@ func NewSearchProjectsListParamsWithHTTPClient(client *http.Client) *SearchProje
 	}
 }
 
-/* SearchProjectsListParams contains all the parameters to send to the API endpoint
-   for the search projects list operation.
+/*
+SearchProjectsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search projects list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchProjectsListParams struct {
 

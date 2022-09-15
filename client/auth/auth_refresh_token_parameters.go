@@ -54,10 +54,12 @@ func NewAuthRefreshTokenParamsWithHTTPClient(client *http.Client) *AuthRefreshTo
 	}
 }
 
-/* AuthRefreshTokenParams contains all the parameters to send to the API endpoint
-   for the auth refresh token operation.
+/*
+AuthRefreshTokenParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the auth refresh token operation.
+
+	Typically these are written to a http.Request.
 */
 type AuthRefreshTokenParams struct {
 

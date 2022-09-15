@@ -53,10 +53,12 @@ func NewAccessProfilesDeleteParamsWithHTTPClient(client *http.Client) *AccessPro
 	}
 }
 
-/* AccessProfilesDeleteParams contains all the parameters to send to the API endpoint
-   for the access profiles delete operation.
+/*
+AccessProfilesDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the access profiles delete operation.
+
+	Typically these are written to a http.Request.
 */
 type AccessProfilesDeleteParams struct {
 

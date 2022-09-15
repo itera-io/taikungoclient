@@ -30,23 +30,76 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	OrganizationsAcceptOffer(params *OrganizationsAcceptOfferParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsAcceptOfferOK, error)
+
 	OrganizationsCreate(params *OrganizationsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsCreateOK, error)
+
+	OrganizationsCreateDefaultProfilers(params *OrganizationsCreateDefaultProfilersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsCreateDefaultProfilersOK, error)
 
 	OrganizationsDelete(params *OrganizationsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsDeleteOK, *OrganizationsDeleteNoContent, error)
 
 	OrganizationsDetails(params *OrganizationsDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsDetailsOK, error)
 
+	OrganizationsExportCsv(params *OrganizationsExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsExportCsvOK, error)
+
+	OrganizationsLeaveTaikun(params *OrganizationsLeaveTaikunParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsLeaveTaikunOK, error)
+
 	OrganizationsList(params *OrganizationsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsListOK, error)
+
+	OrganizationsOrganizationList(params *OrganizationsOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsOrganizationListOK, error)
 
 	OrganizationsToggleKeycloak(params *OrganizationsToggleKeycloakParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsToggleKeycloakOK, error)
 
 	OrganizationsUpdate(params *OrganizationsUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsUpdateOK, error)
 
+	OrganizationsUpdatePaymentMethod(params *OrganizationsUpdatePaymentMethodParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsUpdatePaymentMethodOK, error)
+
+	OrganizationsUpdateSubscription(params *OrganizationsUpdateSubscriptionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsUpdateSubscriptionOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  OrganizationsCreate creates a new organization only available for admins
+OrganizationsAcceptOffer accepts discount offer
+*/
+func (a *Client) OrganizationsAcceptOffer(params *OrganizationsAcceptOfferParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsAcceptOfferOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOrganizationsAcceptOfferParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Organizations_AcceptOffer",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Organizations/accept-offer",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OrganizationsAcceptOfferReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OrganizationsAcceptOfferOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Organizations_AcceptOffer: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+OrganizationsCreate creates a new organization only available for admins
 */
 func (a *Client) OrganizationsCreate(params *OrganizationsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -85,7 +138,46 @@ func (a *Client) OrganizationsCreate(params *OrganizationsCreateParams, authInfo
 }
 
 /*
-  OrganizationsDelete deletes the specified organization only available for admins
+OrganizationsCreateDefaultProfilers creates default profilers by organization Uuid
+*/
+func (a *Client) OrganizationsCreateDefaultProfilers(params *OrganizationsCreateDefaultProfilersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsCreateDefaultProfilersOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOrganizationsCreateDefaultProfilersParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Organizations_CreateDefaultProfilers",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Organizations/createdefaultprofilers",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OrganizationsCreateDefaultProfilersReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OrganizationsCreateDefaultProfilersOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Organizations_CreateDefaultProfilers: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+OrganizationsDelete deletes the specified organization only available for admins
 */
 func (a *Client) OrganizationsDelete(params *OrganizationsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsDeleteOK, *OrganizationsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -125,7 +217,7 @@ func (a *Client) OrganizationsDelete(params *OrganizationsDeleteParams, authInfo
 }
 
 /*
-  OrganizationsDetails retrieves all data about current organization by Id
+OrganizationsDetails retrieves all data about current organization by Id
 */
 func (a *Client) OrganizationsDetails(params *OrganizationsDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -164,7 +256,85 @@ func (a *Client) OrganizationsDetails(params *OrganizationsDetailsParams, authIn
 }
 
 /*
-  OrganizationsList retrieves all organizations
+OrganizationsExportCsv exports csv file
+*/
+func (a *Client) OrganizationsExportCsv(params *OrganizationsExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsExportCsvOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOrganizationsExportCsvParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Organizations_ExportCsv",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Organizations/export",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OrganizationsExportCsvReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OrganizationsExportCsvOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Organizations_ExportCsv: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+OrganizationsLeaveTaikun leaves taikun
+*/
+func (a *Client) OrganizationsLeaveTaikun(params *OrganizationsLeaveTaikunParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsLeaveTaikunOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOrganizationsLeaveTaikunParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Organizations_LeaveTaikun",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Organizations/leave",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OrganizationsLeaveTaikunReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OrganizationsLeaveTaikunOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Organizations_LeaveTaikun: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+OrganizationsList retrieves all organizations
 */
 func (a *Client) OrganizationsList(params *OrganizationsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsListOK, error) {
 	// TODO: Validate the params before sending
@@ -203,7 +373,46 @@ func (a *Client) OrganizationsList(params *OrganizationsListParams, authInfo run
 }
 
 /*
-  OrganizationsToggleKeycloak toggles keycloak login option
+OrganizationsOrganizationList retrieves organizations
+*/
+func (a *Client) OrganizationsOrganizationList(params *OrganizationsOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsOrganizationListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOrganizationsOrganizationListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Organizations_OrganizationList",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Organizations/list",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OrganizationsOrganizationListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OrganizationsOrganizationListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Organizations_OrganizationList: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+OrganizationsToggleKeycloak toggles keycloak login option
 */
 func (a *Client) OrganizationsToggleKeycloak(params *OrganizationsToggleKeycloakParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsToggleKeycloakOK, error) {
 	// TODO: Validate the params before sending
@@ -242,7 +451,7 @@ func (a *Client) OrganizationsToggleKeycloak(params *OrganizationsToggleKeycloak
 }
 
 /*
-  OrganizationsUpdate updates organization by Id
+OrganizationsUpdate updates organization by Id
 */
 func (a *Client) OrganizationsUpdate(params *OrganizationsUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -277,6 +486,84 @@ func (a *Client) OrganizationsUpdate(params *OrganizationsUpdateParams, authInfo
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Organizations_Update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+OrganizationsUpdatePaymentMethod updates organization payment Id
+*/
+func (a *Client) OrganizationsUpdatePaymentMethod(params *OrganizationsUpdatePaymentMethodParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsUpdatePaymentMethodOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOrganizationsUpdatePaymentMethodParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Organizations_UpdatePaymentMethod",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Organizations/updatepaymentmethod",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OrganizationsUpdatePaymentMethodReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OrganizationsUpdatePaymentMethodOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Organizations_UpdatePaymentMethod: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+OrganizationsUpdateSubscription updates subscription
+*/
+func (a *Client) OrganizationsUpdateSubscription(params *OrganizationsUpdateSubscriptionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationsUpdateSubscriptionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOrganizationsUpdateSubscriptionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Organizations_UpdateSubscription",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Organizations/updatesubscription",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OrganizationsUpdateSubscriptionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OrganizationsUpdateSubscriptionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Organizations_UpdateSubscription: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

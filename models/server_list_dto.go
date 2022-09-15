@@ -19,6 +19,12 @@ import (
 // swagger:model ServerListDto
 type ServerListDto struct {
 
+	// autoscaling group
+	AutoscalingGroup string `json:"autoscalingGroup,omitempty"`
+
+	// aws host name
+	AwsHostName string `json:"awsHostName,omitempty"`
+
 	// aws instance type
 	AwsInstanceType string `json:"awsInstanceType,omitempty"`
 
@@ -79,11 +85,17 @@ type ServerListDto struct {
 	// project name
 	ProjectName string `json:"projectName,omitempty"`
 
+	// provider ID
+	ProviderID string `json:"providerID,omitempty"`
+
 	// ram
 	RAM int64 `json:"ram,omitempty"`
 
 	// role
 	Role string `json:"role,omitempty"`
+
+	// shut off
+	ShutOff bool `json:"shutOff"`
 
 	// spot instance
 	SpotInstance bool `json:"spotInstance"`

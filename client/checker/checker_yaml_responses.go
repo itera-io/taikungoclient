@@ -69,7 +69,8 @@ func NewCheckerYamlOK() *CheckerYamlOK {
 	return &CheckerYamlOK{}
 }
 
-/* CheckerYamlOK describes a response with status code 200, with default header values.
+/*
+CheckerYamlOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CheckerYamlOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this checker yaml o k response has a 2xx status code
+func (o *CheckerYamlOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this checker yaml o k response has a 3xx status code
+func (o *CheckerYamlOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker yaml o k response has a 4xx status code
+func (o *CheckerYamlOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this checker yaml o k response has a 5xx status code
+func (o *CheckerYamlOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker yaml o k response a status code equal to that given
+func (o *CheckerYamlOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CheckerYamlOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlOK  %+v", 200, o.Payload)
 }
+
+func (o *CheckerYamlOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlOK  %+v", 200, o.Payload)
+}
+
 func (o *CheckerYamlOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCheckerYamlBadRequest() *CheckerYamlBadRequest {
 	return &CheckerYamlBadRequest{}
 }
 
-/* CheckerYamlBadRequest describes a response with status code 400, with default header values.
+/*
+CheckerYamlBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CheckerYamlBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this checker yaml bad request response has a 2xx status code
+func (o *CheckerYamlBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker yaml bad request response has a 3xx status code
+func (o *CheckerYamlBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker yaml bad request response has a 4xx status code
+func (o *CheckerYamlBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker yaml bad request response has a 5xx status code
+func (o *CheckerYamlBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker yaml bad request response a status code equal to that given
+func (o *CheckerYamlBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CheckerYamlBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CheckerYamlBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CheckerYamlBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCheckerYamlUnauthorized() *CheckerYamlUnauthorized {
 	return &CheckerYamlUnauthorized{}
 }
 
-/* CheckerYamlUnauthorized describes a response with status code 401, with default header values.
+/*
+CheckerYamlUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CheckerYamlUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker yaml unauthorized response has a 2xx status code
+func (o *CheckerYamlUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker yaml unauthorized response has a 3xx status code
+func (o *CheckerYamlUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker yaml unauthorized response has a 4xx status code
+func (o *CheckerYamlUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker yaml unauthorized response has a 5xx status code
+func (o *CheckerYamlUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker yaml unauthorized response a status code equal to that given
+func (o *CheckerYamlUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CheckerYamlUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CheckerYamlUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CheckerYamlUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCheckerYamlForbidden() *CheckerYamlForbidden {
 	return &CheckerYamlForbidden{}
 }
 
-/* CheckerYamlForbidden describes a response with status code 403, with default header values.
+/*
+CheckerYamlForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CheckerYamlForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker yaml forbidden response has a 2xx status code
+func (o *CheckerYamlForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker yaml forbidden response has a 3xx status code
+func (o *CheckerYamlForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker yaml forbidden response has a 4xx status code
+func (o *CheckerYamlForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker yaml forbidden response has a 5xx status code
+func (o *CheckerYamlForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker yaml forbidden response a status code equal to that given
+func (o *CheckerYamlForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CheckerYamlForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CheckerYamlForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CheckerYamlForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCheckerYamlNotFound() *CheckerYamlNotFound {
 	return &CheckerYamlNotFound{}
 }
 
-/* CheckerYamlNotFound describes a response with status code 404, with default header values.
+/*
+CheckerYamlNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CheckerYamlNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this checker yaml not found response has a 2xx status code
+func (o *CheckerYamlNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker yaml not found response has a 3xx status code
+func (o *CheckerYamlNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker yaml not found response has a 4xx status code
+func (o *CheckerYamlNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this checker yaml not found response has a 5xx status code
+func (o *CheckerYamlNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this checker yaml not found response a status code equal to that given
+func (o *CheckerYamlNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CheckerYamlNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CheckerYamlNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CheckerYamlNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCheckerYamlInternalServerError() *CheckerYamlInternalServerError {
 	return &CheckerYamlInternalServerError{}
 }
 
-/* CheckerYamlInternalServerError describes a response with status code 500, with default header values.
+/*
+CheckerYamlInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CheckerYamlInternalServerError struct {
 }
 
+// IsSuccess returns true when this checker yaml internal server error response has a 2xx status code
+func (o *CheckerYamlInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this checker yaml internal server error response has a 3xx status code
+func (o *CheckerYamlInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this checker yaml internal server error response has a 4xx status code
+func (o *CheckerYamlInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this checker yaml internal server error response has a 5xx status code
+func (o *CheckerYamlInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this checker yaml internal server error response a status code equal to that given
+func (o *CheckerYamlInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CheckerYamlInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlInternalServerError ", 500)
+}
+
+func (o *CheckerYamlInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlInternalServerError ", 500)
 }
 

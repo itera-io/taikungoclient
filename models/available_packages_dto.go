@@ -21,6 +21,9 @@ type AvailablePackagesDto struct {
 	// app version
 	AppVersion string `json:"appVersion,omitempty"`
 
+	// catalog app Id
+	CatalogAppID int32 `json:"catalogAppId,omitempty"`
+
 	// deprecated
 	Deprecated bool `json:"deprecated"`
 

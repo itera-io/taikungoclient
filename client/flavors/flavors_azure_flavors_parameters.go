@@ -53,10 +53,12 @@ func NewFlavorsAzureFlavorsParamsWithHTTPClient(client *http.Client) *FlavorsAzu
 	}
 }
 
-/* FlavorsAzureFlavorsParams contains all the parameters to send to the API endpoint
-   for the flavors azure flavors operation.
+/*
+FlavorsAzureFlavorsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the flavors azure flavors operation.
+
+	Typically these are written to a http.Request.
 */
 type FlavorsAzureFlavorsParams struct {
 

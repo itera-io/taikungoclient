@@ -54,10 +54,12 @@ func NewKubernetesSilenceManagerParamsWithHTTPClient(client *http.Client) *Kuber
 	}
 }
 
-/* KubernetesSilenceManagerParams contains all the parameters to send to the API endpoint
-   for the kubernetes silence manager operation.
+/*
+KubernetesSilenceManagerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes silence manager operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesSilenceManagerParams struct {
 

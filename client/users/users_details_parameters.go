@@ -52,10 +52,12 @@ func NewUsersDetailsParamsWithHTTPClient(client *http.Client) *UsersDetailsParam
 	}
 }
 
-/* UsersDetailsParams contains all the parameters to send to the API endpoint
-   for the users details operation.
+/*
+UsersDetailsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the users details operation.
+
+	Typically these are written to a http.Request.
 */
 type UsersDetailsParams struct {
 

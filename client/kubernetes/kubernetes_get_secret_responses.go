@@ -69,7 +69,8 @@ func NewKubernetesGetSecretOK() *KubernetesGetSecretOK {
 	return &KubernetesGetSecretOK{}
 }
 
-/* KubernetesGetSecretOK describes a response with status code 200, with default header values.
+/*
+KubernetesGetSecretOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesGetSecretOK struct {
 	Payload *models.Secrets
 }
 
+// IsSuccess returns true when this kubernetes get secret o k response has a 2xx status code
+func (o *KubernetesGetSecretOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes get secret o k response has a 3xx status code
+func (o *KubernetesGetSecretOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get secret o k response has a 4xx status code
+func (o *KubernetesGetSecretOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get secret o k response has a 5xx status code
+func (o *KubernetesGetSecretOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get secret o k response a status code equal to that given
+func (o *KubernetesGetSecretOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesGetSecretOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesGetSecretOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesGetSecretOK) GetPayload() *models.Secrets {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewKubernetesGetSecretBadRequest() *KubernetesGetSecretBadRequest {
 	return &KubernetesGetSecretBadRequest{}
 }
 
-/* KubernetesGetSecretBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesGetSecretBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type KubernetesGetSecretBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get secret bad request response has a 2xx status code
+func (o *KubernetesGetSecretBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get secret bad request response has a 3xx status code
+func (o *KubernetesGetSecretBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get secret bad request response has a 4xx status code
+func (o *KubernetesGetSecretBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get secret bad request response has a 5xx status code
+func (o *KubernetesGetSecretBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get secret bad request response a status code equal to that given
+func (o *KubernetesGetSecretBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesGetSecretBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesGetSecretBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesGetSecretBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewKubernetesGetSecretUnauthorized() *KubernetesGetSecretUnauthorized {
 	return &KubernetesGetSecretUnauthorized{}
 }
 
-/* KubernetesGetSecretUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesGetSecretUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type KubernetesGetSecretUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get secret unauthorized response has a 2xx status code
+func (o *KubernetesGetSecretUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get secret unauthorized response has a 3xx status code
+func (o *KubernetesGetSecretUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get secret unauthorized response has a 4xx status code
+func (o *KubernetesGetSecretUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get secret unauthorized response has a 5xx status code
+func (o *KubernetesGetSecretUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get secret unauthorized response a status code equal to that given
+func (o *KubernetesGetSecretUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesGetSecretUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesGetSecretUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesGetSecretUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewKubernetesGetSecretForbidden() *KubernetesGetSecretForbidden {
 	return &KubernetesGetSecretForbidden{}
 }
 
-/* KubernetesGetSecretForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesGetSecretForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type KubernetesGetSecretForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get secret forbidden response has a 2xx status code
+func (o *KubernetesGetSecretForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get secret forbidden response has a 3xx status code
+func (o *KubernetesGetSecretForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get secret forbidden response has a 4xx status code
+func (o *KubernetesGetSecretForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get secret forbidden response has a 5xx status code
+func (o *KubernetesGetSecretForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get secret forbidden response a status code equal to that given
+func (o *KubernetesGetSecretForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesGetSecretForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesGetSecretForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesGetSecretForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewKubernetesGetSecretNotFound() *KubernetesGetSecretNotFound {
 	return &KubernetesGetSecretNotFound{}
 }
 
-/* KubernetesGetSecretNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesGetSecretNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type KubernetesGetSecretNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get secret not found response has a 2xx status code
+func (o *KubernetesGetSecretNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get secret not found response has a 3xx status code
+func (o *KubernetesGetSecretNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get secret not found response has a 4xx status code
+func (o *KubernetesGetSecretNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get secret not found response has a 5xx status code
+func (o *KubernetesGetSecretNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get secret not found response a status code equal to that given
+func (o *KubernetesGetSecretNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesGetSecretNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesGetSecretNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesGetSecretNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewKubernetesGetSecretInternalServerError() *KubernetesGetSecretInternalSer
 	return &KubernetesGetSecretInternalServerError{}
 }
 
-/* KubernetesGetSecretInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesGetSecretInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesGetSecretInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes get secret internal server error response has a 2xx status code
+func (o *KubernetesGetSecretInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get secret internal server error response has a 3xx status code
+func (o *KubernetesGetSecretInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get secret internal server error response has a 4xx status code
+func (o *KubernetesGetSecretInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get secret internal server error response has a 5xx status code
+func (o *KubernetesGetSecretInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes get secret internal server error response a status code equal to that given
+func (o *KubernetesGetSecretInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesGetSecretInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretInternalServerError ", 500)
+}
+
+func (o *KubernetesGetSecretInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretInternalServerError ", 500)
 }
 

@@ -54,10 +54,12 @@ func NewStandAloneActionsConsoleParamsWithHTTPClient(client *http.Client) *Stand
 	}
 }
 
-/* StandAloneActionsConsoleParams contains all the parameters to send to the API endpoint
-   for the stand alone actions console operation.
+/*
+StandAloneActionsConsoleParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone actions console operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneActionsConsoleParams struct {
 

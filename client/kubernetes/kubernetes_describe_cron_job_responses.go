@@ -69,7 +69,8 @@ func NewKubernetesDescribeCronJobOK() *KubernetesDescribeCronJobOK {
 	return &KubernetesDescribeCronJobOK{}
 }
 
-/* KubernetesDescribeCronJobOK describes a response with status code 200, with default header values.
+/*
+KubernetesDescribeCronJobOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesDescribeCronJobOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this kubernetes describe cron job o k response has a 2xx status code
+func (o *KubernetesDescribeCronJobOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes describe cron job o k response has a 3xx status code
+func (o *KubernetesDescribeCronJobOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe cron job o k response has a 4xx status code
+func (o *KubernetesDescribeCronJobOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes describe cron job o k response has a 5xx status code
+func (o *KubernetesDescribeCronJobOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe cron job o k response a status code equal to that given
+func (o *KubernetesDescribeCronJobOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesDescribeCronJobOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesDescribeCronJobOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesDescribeCronJobOK) GetPayload() string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesDescribeCronJobBadRequest() *KubernetesDescribeCronJobBadReque
 	return &KubernetesDescribeCronJobBadRequest{}
 }
 
-/* KubernetesDescribeCronJobBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesDescribeCronJobBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesDescribeCronJobBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe cron job bad request response has a 2xx status code
+func (o *KubernetesDescribeCronJobBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe cron job bad request response has a 3xx status code
+func (o *KubernetesDescribeCronJobBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe cron job bad request response has a 4xx status code
+func (o *KubernetesDescribeCronJobBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe cron job bad request response has a 5xx status code
+func (o *KubernetesDescribeCronJobBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe cron job bad request response a status code equal to that given
+func (o *KubernetesDescribeCronJobBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesDescribeCronJobBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesDescribeCronJobBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesDescribeCronJobBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesDescribeCronJobUnauthorized() *KubernetesDescribeCronJobUnauth
 	return &KubernetesDescribeCronJobUnauthorized{}
 }
 
-/* KubernetesDescribeCronJobUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesDescribeCronJobUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesDescribeCronJobUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe cron job unauthorized response has a 2xx status code
+func (o *KubernetesDescribeCronJobUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe cron job unauthorized response has a 3xx status code
+func (o *KubernetesDescribeCronJobUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe cron job unauthorized response has a 4xx status code
+func (o *KubernetesDescribeCronJobUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe cron job unauthorized response has a 5xx status code
+func (o *KubernetesDescribeCronJobUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe cron job unauthorized response a status code equal to that given
+func (o *KubernetesDescribeCronJobUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesDescribeCronJobUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesDescribeCronJobUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesDescribeCronJobUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesDescribeCronJobForbidden() *KubernetesDescribeCronJobForbidden
 	return &KubernetesDescribeCronJobForbidden{}
 }
 
-/* KubernetesDescribeCronJobForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesDescribeCronJobForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesDescribeCronJobForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe cron job forbidden response has a 2xx status code
+func (o *KubernetesDescribeCronJobForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe cron job forbidden response has a 3xx status code
+func (o *KubernetesDescribeCronJobForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe cron job forbidden response has a 4xx status code
+func (o *KubernetesDescribeCronJobForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe cron job forbidden response has a 5xx status code
+func (o *KubernetesDescribeCronJobForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe cron job forbidden response a status code equal to that given
+func (o *KubernetesDescribeCronJobForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesDescribeCronJobForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesDescribeCronJobForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesDescribeCronJobForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesDescribeCronJobNotFound() *KubernetesDescribeCronJobNotFound {
 	return &KubernetesDescribeCronJobNotFound{}
 }
 
-/* KubernetesDescribeCronJobNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesDescribeCronJobNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesDescribeCronJobNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe cron job not found response has a 2xx status code
+func (o *KubernetesDescribeCronJobNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe cron job not found response has a 3xx status code
+func (o *KubernetesDescribeCronJobNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe cron job not found response has a 4xx status code
+func (o *KubernetesDescribeCronJobNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe cron job not found response has a 5xx status code
+func (o *KubernetesDescribeCronJobNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe cron job not found response a status code equal to that given
+func (o *KubernetesDescribeCronJobNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesDescribeCronJobNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesDescribeCronJobNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesDescribeCronJobNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesDescribeCronJobInternalServerError() *KubernetesDescribeCronJo
 	return &KubernetesDescribeCronJobInternalServerError{}
 }
 
-/* KubernetesDescribeCronJobInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesDescribeCronJobInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesDescribeCronJobInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes describe cron job internal server error response has a 2xx status code
+func (o *KubernetesDescribeCronJobInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe cron job internal server error response has a 3xx status code
+func (o *KubernetesDescribeCronJobInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe cron job internal server error response has a 4xx status code
+func (o *KubernetesDescribeCronJobInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes describe cron job internal server error response has a 5xx status code
+func (o *KubernetesDescribeCronJobInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes describe cron job internal server error response a status code equal to that given
+func (o *KubernetesDescribeCronJobInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesDescribeCronJobInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobInternalServerError ", 500)
+}
+
+func (o *KubernetesDescribeCronJobInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/cronjob][%d] kubernetesDescribeCronJobInternalServerError ", 500)
 }
 

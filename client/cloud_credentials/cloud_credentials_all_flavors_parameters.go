@@ -53,10 +53,12 @@ func NewCloudCredentialsAllFlavorsParamsWithHTTPClient(client *http.Client) *Clo
 	}
 }
 
-/* CloudCredentialsAllFlavorsParams contains all the parameters to send to the API endpoint
-   for the cloud credentials all flavors operation.
+/*
+CloudCredentialsAllFlavorsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cloud credentials all flavors operation.
+
+	Typically these are written to a http.Request.
 */
 type CloudCredentialsAllFlavorsParams struct {
 
@@ -72,8 +74,8 @@ type CloudCredentialsAllFlavorsParams struct {
 
 	// EndRAM.
 	//
-	// Format: int32
-	EndRAM *int32
+	// Format: double
+	EndRAM *float64
 
 	/* Limit.
 
@@ -112,8 +114,8 @@ type CloudCredentialsAllFlavorsParams struct {
 
 	// StartRAM.
 	//
-	// Format: int32
-	StartRAM *int32
+	// Format: double
+	StartRAM *float64
 
 	// V.
 	V string
@@ -194,13 +196,13 @@ func (o *CloudCredentialsAllFlavorsParams) SetEndCPU(endCPU *int32) {
 }
 
 // WithEndRAM adds the endRAM to the cloud credentials all flavors params
-func (o *CloudCredentialsAllFlavorsParams) WithEndRAM(endRAM *int32) *CloudCredentialsAllFlavorsParams {
+func (o *CloudCredentialsAllFlavorsParams) WithEndRAM(endRAM *float64) *CloudCredentialsAllFlavorsParams {
 	o.SetEndRAM(endRAM)
 	return o
 }
 
 // SetEndRAM adds the endRam to the cloud credentials all flavors params
-func (o *CloudCredentialsAllFlavorsParams) SetEndRAM(endRAM *int32) {
+func (o *CloudCredentialsAllFlavorsParams) SetEndRAM(endRAM *float64) {
 	o.EndRAM = endRAM
 }
 
@@ -282,13 +284,13 @@ func (o *CloudCredentialsAllFlavorsParams) SetStartCPU(startCPU *int32) {
 }
 
 // WithStartRAM adds the startRAM to the cloud credentials all flavors params
-func (o *CloudCredentialsAllFlavorsParams) WithStartRAM(startRAM *int32) *CloudCredentialsAllFlavorsParams {
+func (o *CloudCredentialsAllFlavorsParams) WithStartRAM(startRAM *float64) *CloudCredentialsAllFlavorsParams {
 	o.SetStartRAM(startRAM)
 	return o
 }
 
 // SetStartRAM adds the startRam to the cloud credentials all flavors params
-func (o *CloudCredentialsAllFlavorsParams) SetStartRAM(startRAM *int32) {
+func (o *CloudCredentialsAllFlavorsParams) SetStartRAM(startRAM *float64) {
 	o.StartRAM = startRAM
 }
 
@@ -336,12 +338,12 @@ func (o *CloudCredentialsAllFlavorsParams) WriteToRequest(r runtime.ClientReques
 	if o.EndRAM != nil {
 
 		// query param endRam
-		var qrEndRAM int32
+		var qrEndRAM float64
 
 		if o.EndRAM != nil {
 			qrEndRAM = *o.EndRAM
 		}
-		qEndRAM := swag.FormatInt32(qrEndRAM)
+		qEndRAM := swag.FormatFloat64(qrEndRAM)
 		if qEndRAM != "" {
 
 			if err := r.SetQueryParam("endRam", qEndRAM); err != nil {
@@ -472,12 +474,12 @@ func (o *CloudCredentialsAllFlavorsParams) WriteToRequest(r runtime.ClientReques
 	if o.StartRAM != nil {
 
 		// query param startRam
-		var qrStartRAM int32
+		var qrStartRAM float64
 
 		if o.StartRAM != nil {
 			qrStartRAM = *o.StartRAM
 		}
-		qStartRAM := swag.FormatInt32(qrStartRAM)
+		qStartRAM := swag.FormatFloat64(qrStartRAM)
 		if qStartRAM != "" {
 
 			if err := r.SetQueryParam("startRam", qStartRAM); err != nil {

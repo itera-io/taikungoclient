@@ -54,10 +54,12 @@ func NewKeycloakEditParamsWithHTTPClient(client *http.Client) *KeycloakEditParam
 	}
 }
 
-/* KeycloakEditParams contains all the parameters to send to the API endpoint
-   for the keycloak edit operation.
+/*
+KeycloakEditParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the keycloak edit operation.
+
+	Typically these are written to a http.Request.
 */
 type KeycloakEditParams struct {
 

@@ -54,10 +54,12 @@ func NewStandAloneUpdateFlavorParamsWithHTTPClient(client *http.Client) *StandAl
 	}
 }
 
-/* StandAloneUpdateFlavorParams contains all the parameters to send to the API endpoint
-   for the stand alone update flavor operation.
+/*
+StandAloneUpdateFlavorParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone update flavor operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneUpdateFlavorParams struct {
 

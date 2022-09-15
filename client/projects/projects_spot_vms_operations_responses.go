@@ -69,7 +69,8 @@ func NewProjectsSpotVmsOperationsOK() *ProjectsSpotVmsOperationsOK {
 	return &ProjectsSpotVmsOperationsOK{}
 }
 
-/* ProjectsSpotVmsOperationsOK describes a response with status code 200, with default header values.
+/*
+ProjectsSpotVmsOperationsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ProjectsSpotVmsOperationsOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this projects spot vms operations o k response has a 2xx status code
+func (o *ProjectsSpotVmsOperationsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this projects spot vms operations o k response has a 3xx status code
+func (o *ProjectsSpotVmsOperationsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects spot vms operations o k response has a 4xx status code
+func (o *ProjectsSpotVmsOperationsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects spot vms operations o k response has a 5xx status code
+func (o *ProjectsSpotVmsOperationsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects spot vms operations o k response a status code equal to that given
+func (o *ProjectsSpotVmsOperationsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProjectsSpotVmsOperationsOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsOK  %+v", 200, o.Payload)
 }
+
+func (o *ProjectsSpotVmsOperationsOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsOK  %+v", 200, o.Payload)
+}
+
 func (o *ProjectsSpotVmsOperationsOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewProjectsSpotVmsOperationsBadRequest() *ProjectsSpotVmsOperationsBadReque
 	return &ProjectsSpotVmsOperationsBadRequest{}
 }
 
-/* ProjectsSpotVmsOperationsBadRequest describes a response with status code 400, with default header values.
+/*
+ProjectsSpotVmsOperationsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ProjectsSpotVmsOperationsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this projects spot vms operations bad request response has a 2xx status code
+func (o *ProjectsSpotVmsOperationsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects spot vms operations bad request response has a 3xx status code
+func (o *ProjectsSpotVmsOperationsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects spot vms operations bad request response has a 4xx status code
+func (o *ProjectsSpotVmsOperationsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects spot vms operations bad request response has a 5xx status code
+func (o *ProjectsSpotVmsOperationsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects spot vms operations bad request response a status code equal to that given
+func (o *ProjectsSpotVmsOperationsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProjectsSpotVmsOperationsBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProjectsSpotVmsOperationsBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProjectsSpotVmsOperationsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewProjectsSpotVmsOperationsUnauthorized() *ProjectsSpotVmsOperationsUnauth
 	return &ProjectsSpotVmsOperationsUnauthorized{}
 }
 
-/* ProjectsSpotVmsOperationsUnauthorized describes a response with status code 401, with default header values.
+/*
+ProjectsSpotVmsOperationsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ProjectsSpotVmsOperationsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects spot vms operations unauthorized response has a 2xx status code
+func (o *ProjectsSpotVmsOperationsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects spot vms operations unauthorized response has a 3xx status code
+func (o *ProjectsSpotVmsOperationsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects spot vms operations unauthorized response has a 4xx status code
+func (o *ProjectsSpotVmsOperationsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects spot vms operations unauthorized response has a 5xx status code
+func (o *ProjectsSpotVmsOperationsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects spot vms operations unauthorized response a status code equal to that given
+func (o *ProjectsSpotVmsOperationsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProjectsSpotVmsOperationsUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProjectsSpotVmsOperationsUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProjectsSpotVmsOperationsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewProjectsSpotVmsOperationsForbidden() *ProjectsSpotVmsOperationsForbidden
 	return &ProjectsSpotVmsOperationsForbidden{}
 }
 
-/* ProjectsSpotVmsOperationsForbidden describes a response with status code 403, with default header values.
+/*
+ProjectsSpotVmsOperationsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ProjectsSpotVmsOperationsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects spot vms operations forbidden response has a 2xx status code
+func (o *ProjectsSpotVmsOperationsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects spot vms operations forbidden response has a 3xx status code
+func (o *ProjectsSpotVmsOperationsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects spot vms operations forbidden response has a 4xx status code
+func (o *ProjectsSpotVmsOperationsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects spot vms operations forbidden response has a 5xx status code
+func (o *ProjectsSpotVmsOperationsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects spot vms operations forbidden response a status code equal to that given
+func (o *ProjectsSpotVmsOperationsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ProjectsSpotVmsOperationsForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ProjectsSpotVmsOperationsForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ProjectsSpotVmsOperationsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewProjectsSpotVmsOperationsNotFound() *ProjectsSpotVmsOperationsNotFound {
 	return &ProjectsSpotVmsOperationsNotFound{}
 }
 
-/* ProjectsSpotVmsOperationsNotFound describes a response with status code 404, with default header values.
+/*
+ProjectsSpotVmsOperationsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ProjectsSpotVmsOperationsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this projects spot vms operations not found response has a 2xx status code
+func (o *ProjectsSpotVmsOperationsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects spot vms operations not found response has a 3xx status code
+func (o *ProjectsSpotVmsOperationsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects spot vms operations not found response has a 4xx status code
+func (o *ProjectsSpotVmsOperationsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this projects spot vms operations not found response has a 5xx status code
+func (o *ProjectsSpotVmsOperationsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this projects spot vms operations not found response a status code equal to that given
+func (o *ProjectsSpotVmsOperationsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProjectsSpotVmsOperationsNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProjectsSpotVmsOperationsNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProjectsSpotVmsOperationsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewProjectsSpotVmsOperationsInternalServerError() *ProjectsSpotVmsOperation
 	return &ProjectsSpotVmsOperationsInternalServerError{}
 }
 
-/* ProjectsSpotVmsOperationsInternalServerError describes a response with status code 500, with default header values.
+/*
+ProjectsSpotVmsOperationsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ProjectsSpotVmsOperationsInternalServerError struct {
 }
 
+// IsSuccess returns true when this projects spot vms operations internal server error response has a 2xx status code
+func (o *ProjectsSpotVmsOperationsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this projects spot vms operations internal server error response has a 3xx status code
+func (o *ProjectsSpotVmsOperationsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this projects spot vms operations internal server error response has a 4xx status code
+func (o *ProjectsSpotVmsOperationsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this projects spot vms operations internal server error response has a 5xx status code
+func (o *ProjectsSpotVmsOperationsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this projects spot vms operations internal server error response a status code equal to that given
+func (o *ProjectsSpotVmsOperationsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProjectsSpotVmsOperationsInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsInternalServerError ", 500)
+}
+
+func (o *ProjectsSpotVmsOperationsInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsInternalServerError ", 500)
 }
 

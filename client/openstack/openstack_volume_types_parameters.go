@@ -54,10 +54,12 @@ func NewOpenstackVolumeTypesParamsWithHTTPClient(client *http.Client) *Openstack
 	}
 }
 
-/* OpenstackVolumeTypesParams contains all the parameters to send to the API endpoint
-   for the openstack volume types operation.
+/*
+OpenstackVolumeTypesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the openstack volume types operation.
+
+	Typically these are written to a http.Request.
 */
 type OpenstackVolumeTypesParams struct {
 

@@ -69,7 +69,8 @@ func NewImagesAzureImagesOK() *ImagesAzureImagesOK {
 	return &ImagesAzureImagesOK{}
 }
 
-/* ImagesAzureImagesOK describes a response with status code 200, with default header values.
+/*
+ImagesAzureImagesOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ImagesAzureImagesOK struct {
 	Payload *models.AzureImageList
 }
 
+// IsSuccess returns true when this images azure images o k response has a 2xx status code
+func (o *ImagesAzureImagesOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this images azure images o k response has a 3xx status code
+func (o *ImagesAzureImagesOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images azure images o k response has a 4xx status code
+func (o *ImagesAzureImagesOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this images azure images o k response has a 5xx status code
+func (o *ImagesAzureImagesOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images azure images o k response a status code equal to that given
+func (o *ImagesAzureImagesOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ImagesAzureImagesOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/{cloudId}/{publisherName}/{offer}/{sku}][%d] imagesAzureImagesOK  %+v", 200, o.Payload)
 }
+
+func (o *ImagesAzureImagesOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/azure/{cloudId}/{publisherName}/{offer}/{sku}][%d] imagesAzureImagesOK  %+v", 200, o.Payload)
+}
+
 func (o *ImagesAzureImagesOK) GetPayload() *models.AzureImageList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewImagesAzureImagesBadRequest() *ImagesAzureImagesBadRequest {
 	return &ImagesAzureImagesBadRequest{}
 }
 
-/* ImagesAzureImagesBadRequest describes a response with status code 400, with default header values.
+/*
+ImagesAzureImagesBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type ImagesAzureImagesBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this images azure images bad request response has a 2xx status code
+func (o *ImagesAzureImagesBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images azure images bad request response has a 3xx status code
+func (o *ImagesAzureImagesBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images azure images bad request response has a 4xx status code
+func (o *ImagesAzureImagesBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images azure images bad request response has a 5xx status code
+func (o *ImagesAzureImagesBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images azure images bad request response a status code equal to that given
+func (o *ImagesAzureImagesBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ImagesAzureImagesBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/{cloudId}/{publisherName}/{offer}/{sku}][%d] imagesAzureImagesBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ImagesAzureImagesBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/azure/{cloudId}/{publisherName}/{offer}/{sku}][%d] imagesAzureImagesBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ImagesAzureImagesBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewImagesAzureImagesUnauthorized() *ImagesAzureImagesUnauthorized {
 	return &ImagesAzureImagesUnauthorized{}
 }
 
-/* ImagesAzureImagesUnauthorized describes a response with status code 401, with default header values.
+/*
+ImagesAzureImagesUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type ImagesAzureImagesUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this images azure images unauthorized response has a 2xx status code
+func (o *ImagesAzureImagesUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images azure images unauthorized response has a 3xx status code
+func (o *ImagesAzureImagesUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images azure images unauthorized response has a 4xx status code
+func (o *ImagesAzureImagesUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images azure images unauthorized response has a 5xx status code
+func (o *ImagesAzureImagesUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images azure images unauthorized response a status code equal to that given
+func (o *ImagesAzureImagesUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ImagesAzureImagesUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/{cloudId}/{publisherName}/{offer}/{sku}][%d] imagesAzureImagesUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ImagesAzureImagesUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/azure/{cloudId}/{publisherName}/{offer}/{sku}][%d] imagesAzureImagesUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ImagesAzureImagesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewImagesAzureImagesForbidden() *ImagesAzureImagesForbidden {
 	return &ImagesAzureImagesForbidden{}
 }
 
-/* ImagesAzureImagesForbidden describes a response with status code 403, with default header values.
+/*
+ImagesAzureImagesForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type ImagesAzureImagesForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this images azure images forbidden response has a 2xx status code
+func (o *ImagesAzureImagesForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images azure images forbidden response has a 3xx status code
+func (o *ImagesAzureImagesForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images azure images forbidden response has a 4xx status code
+func (o *ImagesAzureImagesForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images azure images forbidden response has a 5xx status code
+func (o *ImagesAzureImagesForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images azure images forbidden response a status code equal to that given
+func (o *ImagesAzureImagesForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ImagesAzureImagesForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/{cloudId}/{publisherName}/{offer}/{sku}][%d] imagesAzureImagesForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ImagesAzureImagesForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/azure/{cloudId}/{publisherName}/{offer}/{sku}][%d] imagesAzureImagesForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ImagesAzureImagesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewImagesAzureImagesNotFound() *ImagesAzureImagesNotFound {
 	return &ImagesAzureImagesNotFound{}
 }
 
-/* ImagesAzureImagesNotFound describes a response with status code 404, with default header values.
+/*
+ImagesAzureImagesNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type ImagesAzureImagesNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this images azure images not found response has a 2xx status code
+func (o *ImagesAzureImagesNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images azure images not found response has a 3xx status code
+func (o *ImagesAzureImagesNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images azure images not found response has a 4xx status code
+func (o *ImagesAzureImagesNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images azure images not found response has a 5xx status code
+func (o *ImagesAzureImagesNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images azure images not found response a status code equal to that given
+func (o *ImagesAzureImagesNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ImagesAzureImagesNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/{cloudId}/{publisherName}/{offer}/{sku}][%d] imagesAzureImagesNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ImagesAzureImagesNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/azure/{cloudId}/{publisherName}/{offer}/{sku}][%d] imagesAzureImagesNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ImagesAzureImagesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewImagesAzureImagesInternalServerError() *ImagesAzureImagesInternalServerE
 	return &ImagesAzureImagesInternalServerError{}
 }
 
-/* ImagesAzureImagesInternalServerError describes a response with status code 500, with default header values.
+/*
+ImagesAzureImagesInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ImagesAzureImagesInternalServerError struct {
 }
 
+// IsSuccess returns true when this images azure images internal server error response has a 2xx status code
+func (o *ImagesAzureImagesInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images azure images internal server error response has a 3xx status code
+func (o *ImagesAzureImagesInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images azure images internal server error response has a 4xx status code
+func (o *ImagesAzureImagesInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this images azure images internal server error response has a 5xx status code
+func (o *ImagesAzureImagesInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this images azure images internal server error response a status code equal to that given
+func (o *ImagesAzureImagesInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ImagesAzureImagesInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Images/azure/{cloudId}/{publisherName}/{offer}/{sku}][%d] imagesAzureImagesInternalServerError ", 500)
+}
+
+func (o *ImagesAzureImagesInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/{cloudId}/{publisherName}/{offer}/{sku}][%d] imagesAzureImagesInternalServerError ", 500)
 }
 

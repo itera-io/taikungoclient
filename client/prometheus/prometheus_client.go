@@ -42,11 +42,15 @@ type ClientService interface {
 
 	PrometheusDelete(params *PrometheusDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusDeleteOK, error)
 
+	PrometheusDetails(params *PrometheusDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusDetailsOK, error)
+
 	PrometheusExportCsv(params *PrometheusExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusExportCsvOK, error)
 
 	PrometheusGroupedList(params *PrometheusGroupedListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusGroupedListOK, error)
 
 	PrometheusListOfRules(params *PrometheusListOfRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusListOfRulesOK, error)
+
+	PrometheusMetricName(params *PrometheusMetricNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusMetricNameOK, error)
 
 	PrometheusUpdate(params *PrometheusUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusUpdateOK, error)
 
@@ -54,7 +58,7 @@ type ClientService interface {
 }
 
 /*
-  PrometheusBillingList retrieves all prometheus billing
+PrometheusBillingList retrieves all prometheus billing
 */
 func (a *Client) PrometheusBillingList(params *PrometheusBillingListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusBillingListOK, error) {
 	// TODO: Validate the params before sending
@@ -93,7 +97,7 @@ func (a *Client) PrometheusBillingList(params *PrometheusBillingListParams, auth
 }
 
 /*
-  PrometheusBindOrganizations binds organizations to prometheus rule
+PrometheusBindOrganizations binds organizations to prometheus rule
 */
 func (a *Client) PrometheusBindOrganizations(params *PrometheusBindOrganizationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusBindOrganizationsOK, error) {
 	// TODO: Validate the params before sending
@@ -132,7 +136,7 @@ func (a *Client) PrometheusBindOrganizations(params *PrometheusBindOrganizations
 }
 
 /*
-  PrometheusBindRules binds rules to organizations
+PrometheusBindRules binds rules to organizations
 */
 func (a *Client) PrometheusBindRules(params *PrometheusBindRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusBindRulesOK, error) {
 	// TODO: Validate the params before sending
@@ -171,7 +175,7 @@ func (a *Client) PrometheusBindRules(params *PrometheusBindRulesParams, authInfo
 }
 
 /*
-  PrometheusCreate adds prometheus rule
+PrometheusCreate adds prometheus rule
 */
 func (a *Client) PrometheusCreate(params *PrometheusCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -210,7 +214,7 @@ func (a *Client) PrometheusCreate(params *PrometheusCreateParams, authInfo runti
 }
 
 /*
-  PrometheusCreateBilling adds prometheus billing
+PrometheusCreateBilling adds prometheus billing
 */
 func (a *Client) PrometheusCreateBilling(params *PrometheusCreateBillingParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusCreateBillingOK, error) {
 	// TODO: Validate the params before sending
@@ -249,7 +253,7 @@ func (a *Client) PrometheusCreateBilling(params *PrometheusCreateBillingParams, 
 }
 
 /*
-  PrometheusDelete removes prometheus rule
+PrometheusDelete removes prometheus rule
 */
 func (a *Client) PrometheusDelete(params *PrometheusDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -288,7 +292,46 @@ func (a *Client) PrometheusDelete(params *PrometheusDeleteParams, authInfo runti
 }
 
 /*
-  PrometheusExportCsv exports csv file
+PrometheusDetails retrieves all prometheus rules with detailed info
+*/
+func (a *Client) PrometheusDetails(params *PrometheusDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusDetailsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPrometheusDetailsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Prometheus_Details",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Prometheus/details/{organizationId}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PrometheusDetailsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PrometheusDetailsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Prometheus_Details: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PrometheusExportCsv exports csv file
 */
 func (a *Client) PrometheusExportCsv(params *PrometheusExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusExportCsvOK, error) {
 	// TODO: Validate the params before sending
@@ -327,7 +370,7 @@ func (a *Client) PrometheusExportCsv(params *PrometheusExportCsvParams, authInfo
 }
 
 /*
-  PrometheusGroupedList retrieves a list of grouped prometheus billing
+PrometheusGroupedList retrieves a list of grouped prometheus billing
 */
 func (a *Client) PrometheusGroupedList(params *PrometheusGroupedListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusGroupedListOK, error) {
 	// TODO: Validate the params before sending
@@ -366,7 +409,7 @@ func (a *Client) PrometheusGroupedList(params *PrometheusGroupedListParams, auth
 }
 
 /*
-  PrometheusListOfRules retrieves a list of prometheus rules
+PrometheusListOfRules retrieves a list of prometheus rules
 */
 func (a *Client) PrometheusListOfRules(params *PrometheusListOfRulesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusListOfRulesOK, error) {
 	// TODO: Validate the params before sending
@@ -405,7 +448,46 @@ func (a *Client) PrometheusListOfRules(params *PrometheusListOfRulesParams, auth
 }
 
 /*
-  PrometheusUpdate edits prometheus rule
+PrometheusMetricName fetches prometheus metric names
+*/
+func (a *Client) PrometheusMetricName(params *PrometheusMetricNameParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusMetricNameOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPrometheusMetricNameParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Prometheus_MetricName",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Prometheus/metricname",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PrometheusMetricNameReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PrometheusMetricNameOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Prometheus_MetricName: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PrometheusUpdate edits prometheus rule
 */
 func (a *Client) PrometheusUpdate(params *PrometheusUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PrometheusUpdateOK, error) {
 	// TODO: Validate the params before sending

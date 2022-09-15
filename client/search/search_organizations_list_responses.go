@@ -69,7 +69,8 @@ func NewSearchOrganizationsListOK() *SearchOrganizationsListOK {
 	return &SearchOrganizationsListOK{}
 }
 
-/* SearchOrganizationsListOK describes a response with status code 200, with default header values.
+/*
+SearchOrganizationsListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SearchOrganizationsListOK struct {
 	Payload *models.OrganizationSearchList
 }
 
+// IsSuccess returns true when this search organizations list o k response has a 2xx status code
+func (o *SearchOrganizationsListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this search organizations list o k response has a 3xx status code
+func (o *SearchOrganizationsListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search organizations list o k response has a 4xx status code
+func (o *SearchOrganizationsListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search organizations list o k response has a 5xx status code
+func (o *SearchOrganizationsListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search organizations list o k response a status code equal to that given
+func (o *SearchOrganizationsListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SearchOrganizationsListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListOK  %+v", 200, o.Payload)
 }
+
+func (o *SearchOrganizationsListOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListOK  %+v", 200, o.Payload)
+}
+
 func (o *SearchOrganizationsListOK) GetPayload() *models.OrganizationSearchList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewSearchOrganizationsListBadRequest() *SearchOrganizationsListBadRequest {
 	return &SearchOrganizationsListBadRequest{}
 }
 
-/* SearchOrganizationsListBadRequest describes a response with status code 400, with default header values.
+/*
+SearchOrganizationsListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type SearchOrganizationsListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this search organizations list bad request response has a 2xx status code
+func (o *SearchOrganizationsListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search organizations list bad request response has a 3xx status code
+func (o *SearchOrganizationsListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search organizations list bad request response has a 4xx status code
+func (o *SearchOrganizationsListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search organizations list bad request response has a 5xx status code
+func (o *SearchOrganizationsListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search organizations list bad request response a status code equal to that given
+func (o *SearchOrganizationsListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SearchOrganizationsListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SearchOrganizationsListBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SearchOrganizationsListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewSearchOrganizationsListUnauthorized() *SearchOrganizationsListUnauthoriz
 	return &SearchOrganizationsListUnauthorized{}
 }
 
-/* SearchOrganizationsListUnauthorized describes a response with status code 401, with default header values.
+/*
+SearchOrganizationsListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type SearchOrganizationsListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search organizations list unauthorized response has a 2xx status code
+func (o *SearchOrganizationsListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search organizations list unauthorized response has a 3xx status code
+func (o *SearchOrganizationsListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search organizations list unauthorized response has a 4xx status code
+func (o *SearchOrganizationsListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search organizations list unauthorized response has a 5xx status code
+func (o *SearchOrganizationsListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search organizations list unauthorized response a status code equal to that given
+func (o *SearchOrganizationsListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SearchOrganizationsListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SearchOrganizationsListUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SearchOrganizationsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewSearchOrganizationsListForbidden() *SearchOrganizationsListForbidden {
 	return &SearchOrganizationsListForbidden{}
 }
 
-/* SearchOrganizationsListForbidden describes a response with status code 403, with default header values.
+/*
+SearchOrganizationsListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type SearchOrganizationsListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search organizations list forbidden response has a 2xx status code
+func (o *SearchOrganizationsListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search organizations list forbidden response has a 3xx status code
+func (o *SearchOrganizationsListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search organizations list forbidden response has a 4xx status code
+func (o *SearchOrganizationsListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search organizations list forbidden response has a 5xx status code
+func (o *SearchOrganizationsListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search organizations list forbidden response a status code equal to that given
+func (o *SearchOrganizationsListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SearchOrganizationsListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SearchOrganizationsListForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SearchOrganizationsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewSearchOrganizationsListNotFound() *SearchOrganizationsListNotFound {
 	return &SearchOrganizationsListNotFound{}
 }
 
-/* SearchOrganizationsListNotFound describes a response with status code 404, with default header values.
+/*
+SearchOrganizationsListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type SearchOrganizationsListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search organizations list not found response has a 2xx status code
+func (o *SearchOrganizationsListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search organizations list not found response has a 3xx status code
+func (o *SearchOrganizationsListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search organizations list not found response has a 4xx status code
+func (o *SearchOrganizationsListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search organizations list not found response has a 5xx status code
+func (o *SearchOrganizationsListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search organizations list not found response a status code equal to that given
+func (o *SearchOrganizationsListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SearchOrganizationsListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SearchOrganizationsListNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SearchOrganizationsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewSearchOrganizationsListInternalServerError() *SearchOrganizationsListInt
 	return &SearchOrganizationsListInternalServerError{}
 }
 
-/* SearchOrganizationsListInternalServerError describes a response with status code 500, with default header values.
+/*
+SearchOrganizationsListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SearchOrganizationsListInternalServerError struct {
 }
 
+// IsSuccess returns true when this search organizations list internal server error response has a 2xx status code
+func (o *SearchOrganizationsListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search organizations list internal server error response has a 3xx status code
+func (o *SearchOrganizationsListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search organizations list internal server error response has a 4xx status code
+func (o *SearchOrganizationsListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search organizations list internal server error response has a 5xx status code
+func (o *SearchOrganizationsListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this search organizations list internal server error response a status code equal to that given
+func (o *SearchOrganizationsListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SearchOrganizationsListInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListInternalServerError ", 500)
+}
+
+func (o *SearchOrganizationsListInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListInternalServerError ", 500)
 }
 

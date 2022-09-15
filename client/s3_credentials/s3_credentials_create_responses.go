@@ -69,7 +69,8 @@ func NewS3CredentialsCreateOK() *S3CredentialsCreateOK {
 	return &S3CredentialsCreateOK{}
 }
 
-/* S3CredentialsCreateOK describes a response with status code 200, with default header values.
+/*
+S3CredentialsCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type S3CredentialsCreateOK struct {
 	Payload *models.APIResponse
 }
 
+// IsSuccess returns true when this s3 credentials create o k response has a 2xx status code
+func (o *S3CredentialsCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this s3 credentials create o k response has a 3xx status code
+func (o *S3CredentialsCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials create o k response has a 4xx status code
+func (o *S3CredentialsCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this s3 credentials create o k response has a 5xx status code
+func (o *S3CredentialsCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this s3 credentials create o k response a status code equal to that given
+func (o *S3CredentialsCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *S3CredentialsCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *S3CredentialsCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *S3CredentialsCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewS3CredentialsCreateBadRequest() *S3CredentialsCreateBadRequest {
 	return &S3CredentialsCreateBadRequest{}
 }
 
-/* S3CredentialsCreateBadRequest describes a response with status code 400, with default header values.
+/*
+S3CredentialsCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type S3CredentialsCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this s3 credentials create bad request response has a 2xx status code
+func (o *S3CredentialsCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this s3 credentials create bad request response has a 3xx status code
+func (o *S3CredentialsCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials create bad request response has a 4xx status code
+func (o *S3CredentialsCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this s3 credentials create bad request response has a 5xx status code
+func (o *S3CredentialsCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this s3 credentials create bad request response a status code equal to that given
+func (o *S3CredentialsCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *S3CredentialsCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *S3CredentialsCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *S3CredentialsCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewS3CredentialsCreateUnauthorized() *S3CredentialsCreateUnauthorized {
 	return &S3CredentialsCreateUnauthorized{}
 }
 
-/* S3CredentialsCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+S3CredentialsCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type S3CredentialsCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this s3 credentials create unauthorized response has a 2xx status code
+func (o *S3CredentialsCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this s3 credentials create unauthorized response has a 3xx status code
+func (o *S3CredentialsCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials create unauthorized response has a 4xx status code
+func (o *S3CredentialsCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this s3 credentials create unauthorized response has a 5xx status code
+func (o *S3CredentialsCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this s3 credentials create unauthorized response a status code equal to that given
+func (o *S3CredentialsCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *S3CredentialsCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *S3CredentialsCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *S3CredentialsCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewS3CredentialsCreateForbidden() *S3CredentialsCreateForbidden {
 	return &S3CredentialsCreateForbidden{}
 }
 
-/* S3CredentialsCreateForbidden describes a response with status code 403, with default header values.
+/*
+S3CredentialsCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type S3CredentialsCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this s3 credentials create forbidden response has a 2xx status code
+func (o *S3CredentialsCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this s3 credentials create forbidden response has a 3xx status code
+func (o *S3CredentialsCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials create forbidden response has a 4xx status code
+func (o *S3CredentialsCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this s3 credentials create forbidden response has a 5xx status code
+func (o *S3CredentialsCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this s3 credentials create forbidden response a status code equal to that given
+func (o *S3CredentialsCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *S3CredentialsCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *S3CredentialsCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *S3CredentialsCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewS3CredentialsCreateNotFound() *S3CredentialsCreateNotFound {
 	return &S3CredentialsCreateNotFound{}
 }
 
-/* S3CredentialsCreateNotFound describes a response with status code 404, with default header values.
+/*
+S3CredentialsCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type S3CredentialsCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this s3 credentials create not found response has a 2xx status code
+func (o *S3CredentialsCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this s3 credentials create not found response has a 3xx status code
+func (o *S3CredentialsCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials create not found response has a 4xx status code
+func (o *S3CredentialsCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this s3 credentials create not found response has a 5xx status code
+func (o *S3CredentialsCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this s3 credentials create not found response a status code equal to that given
+func (o *S3CredentialsCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *S3CredentialsCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *S3CredentialsCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *S3CredentialsCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewS3CredentialsCreateInternalServerError() *S3CredentialsCreateInternalSer
 	return &S3CredentialsCreateInternalServerError{}
 }
 
-/* S3CredentialsCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+S3CredentialsCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type S3CredentialsCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this s3 credentials create internal server error response has a 2xx status code
+func (o *S3CredentialsCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this s3 credentials create internal server error response has a 3xx status code
+func (o *S3CredentialsCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials create internal server error response has a 4xx status code
+func (o *S3CredentialsCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this s3 credentials create internal server error response has a 5xx status code
+func (o *S3CredentialsCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this s3 credentials create internal server error response a status code equal to that given
+func (o *S3CredentialsCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *S3CredentialsCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateInternalServerError ", 500)
+}
+
+func (o *S3CredentialsCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateInternalServerError ", 500)
 }
 

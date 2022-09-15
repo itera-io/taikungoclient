@@ -13,6 +13,8 @@ on:
         required: true
       url:
         required: true
+      showback_url:
+        required: true
 
 jobs:
   build:
@@ -31,6 +33,14 @@ jobs:
           SWAGGER_USERNAME: ${{ secrets.username }}
           SWAGGER_PASSWORD: ${{ secrets.password }}
           SWAGGER_URL: ${{ secrets.url }}
+
+      - name: Download showback-swagger.json
+        run: wget -q --user "$SWAGGER_USERNAME" --password "$SWAGGER_PASSWORD" "$SHOWBACK_SWAGGER_URL" -O showback-swagger.json
+        shell: bash
+        env:
+          SWAGGER_USERNAME: ${{ secrets.username }}
+          SWAGGER_PASSWORD: ${{ secrets.password }}
+          SHOWBACK_SWAGGER_URL: ${{ secrets.showback_url }}
 
       - name: Should regenerate client
         id: check
@@ -67,6 +77,11 @@ jobs:
       - name: Delete swagger.json
         if: steps.check.outcome == 'success'
         run: rm swagger.json
+        shell: bash
+
+      - name: Delete showback-swagger.json
+        if: steps.check.outcome == 'success'
+        run: rm showback-swagger.json
         shell: bash
 
       - name: Delete go-swagger

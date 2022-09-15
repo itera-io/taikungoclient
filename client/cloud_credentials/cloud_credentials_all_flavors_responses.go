@@ -69,7 +69,8 @@ func NewCloudCredentialsAllFlavorsOK() *CloudCredentialsAllFlavorsOK {
 	return &CloudCredentialsAllFlavorsOK{}
 }
 
-/* CloudCredentialsAllFlavorsOK describes a response with status code 200, with default header values.
+/*
+CloudCredentialsAllFlavorsOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CloudCredentialsAllFlavorsOK struct {
 	Payload *models.AllFlavorsList
 }
 
+// IsSuccess returns true when this cloud credentials all flavors o k response has a 2xx status code
+func (o *CloudCredentialsAllFlavorsOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this cloud credentials all flavors o k response has a 3xx status code
+func (o *CloudCredentialsAllFlavorsOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials all flavors o k response has a 4xx status code
+func (o *CloudCredentialsAllFlavorsOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cloud credentials all flavors o k response has a 5xx status code
+func (o *CloudCredentialsAllFlavorsOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials all flavors o k response a status code equal to that given
+func (o *CloudCredentialsAllFlavorsOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CloudCredentialsAllFlavorsOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsOK  %+v", 200, o.Payload)
 }
+
+func (o *CloudCredentialsAllFlavorsOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsOK  %+v", 200, o.Payload)
+}
+
 func (o *CloudCredentialsAllFlavorsOK) GetPayload() *models.AllFlavorsList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewCloudCredentialsAllFlavorsBadRequest() *CloudCredentialsAllFlavorsBadReq
 	return &CloudCredentialsAllFlavorsBadRequest{}
 }
 
-/* CloudCredentialsAllFlavorsBadRequest describes a response with status code 400, with default header values.
+/*
+CloudCredentialsAllFlavorsBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type CloudCredentialsAllFlavorsBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials all flavors bad request response has a 2xx status code
+func (o *CloudCredentialsAllFlavorsBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials all flavors bad request response has a 3xx status code
+func (o *CloudCredentialsAllFlavorsBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials all flavors bad request response has a 4xx status code
+func (o *CloudCredentialsAllFlavorsBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials all flavors bad request response has a 5xx status code
+func (o *CloudCredentialsAllFlavorsBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials all flavors bad request response a status code equal to that given
+func (o *CloudCredentialsAllFlavorsBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CloudCredentialsAllFlavorsBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CloudCredentialsAllFlavorsBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CloudCredentialsAllFlavorsBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewCloudCredentialsAllFlavorsUnauthorized() *CloudCredentialsAllFlavorsUnau
 	return &CloudCredentialsAllFlavorsUnauthorized{}
 }
 
-/* CloudCredentialsAllFlavorsUnauthorized describes a response with status code 401, with default header values.
+/*
+CloudCredentialsAllFlavorsUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type CloudCredentialsAllFlavorsUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials all flavors unauthorized response has a 2xx status code
+func (o *CloudCredentialsAllFlavorsUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials all flavors unauthorized response has a 3xx status code
+func (o *CloudCredentialsAllFlavorsUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials all flavors unauthorized response has a 4xx status code
+func (o *CloudCredentialsAllFlavorsUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials all flavors unauthorized response has a 5xx status code
+func (o *CloudCredentialsAllFlavorsUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials all flavors unauthorized response a status code equal to that given
+func (o *CloudCredentialsAllFlavorsUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CloudCredentialsAllFlavorsUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CloudCredentialsAllFlavorsUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CloudCredentialsAllFlavorsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewCloudCredentialsAllFlavorsForbidden() *CloudCredentialsAllFlavorsForbidd
 	return &CloudCredentialsAllFlavorsForbidden{}
 }
 
-/* CloudCredentialsAllFlavorsForbidden describes a response with status code 403, with default header values.
+/*
+CloudCredentialsAllFlavorsForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type CloudCredentialsAllFlavorsForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials all flavors forbidden response has a 2xx status code
+func (o *CloudCredentialsAllFlavorsForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials all flavors forbidden response has a 3xx status code
+func (o *CloudCredentialsAllFlavorsForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials all flavors forbidden response has a 4xx status code
+func (o *CloudCredentialsAllFlavorsForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials all flavors forbidden response has a 5xx status code
+func (o *CloudCredentialsAllFlavorsForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials all flavors forbidden response a status code equal to that given
+func (o *CloudCredentialsAllFlavorsForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CloudCredentialsAllFlavorsForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CloudCredentialsAllFlavorsForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CloudCredentialsAllFlavorsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewCloudCredentialsAllFlavorsNotFound() *CloudCredentialsAllFlavorsNotFound
 	return &CloudCredentialsAllFlavorsNotFound{}
 }
 
-/* CloudCredentialsAllFlavorsNotFound describes a response with status code 404, with default header values.
+/*
+CloudCredentialsAllFlavorsNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type CloudCredentialsAllFlavorsNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this cloud credentials all flavors not found response has a 2xx status code
+func (o *CloudCredentialsAllFlavorsNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials all flavors not found response has a 3xx status code
+func (o *CloudCredentialsAllFlavorsNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials all flavors not found response has a 4xx status code
+func (o *CloudCredentialsAllFlavorsNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this cloud credentials all flavors not found response has a 5xx status code
+func (o *CloudCredentialsAllFlavorsNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this cloud credentials all flavors not found response a status code equal to that given
+func (o *CloudCredentialsAllFlavorsNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CloudCredentialsAllFlavorsNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CloudCredentialsAllFlavorsNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CloudCredentialsAllFlavorsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewCloudCredentialsAllFlavorsInternalServerError() *CloudCredentialsAllFlav
 	return &CloudCredentialsAllFlavorsInternalServerError{}
 }
 
-/* CloudCredentialsAllFlavorsInternalServerError describes a response with status code 500, with default header values.
+/*
+CloudCredentialsAllFlavorsInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CloudCredentialsAllFlavorsInternalServerError struct {
 }
 
+// IsSuccess returns true when this cloud credentials all flavors internal server error response has a 2xx status code
+func (o *CloudCredentialsAllFlavorsInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this cloud credentials all flavors internal server error response has a 3xx status code
+func (o *CloudCredentialsAllFlavorsInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this cloud credentials all flavors internal server error response has a 4xx status code
+func (o *CloudCredentialsAllFlavorsInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this cloud credentials all flavors internal server error response has a 5xx status code
+func (o *CloudCredentialsAllFlavorsInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this cloud credentials all flavors internal server error response a status code equal to that given
+func (o *CloudCredentialsAllFlavorsInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CloudCredentialsAllFlavorsInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsInternalServerError ", 500)
+}
+
+func (o *CloudCredentialsAllFlavorsInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsInternalServerError ", 500)
 }
 

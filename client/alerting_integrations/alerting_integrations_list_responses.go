@@ -69,7 +69,8 @@ func NewAlertingIntegrationsListOK() *AlertingIntegrationsListOK {
 	return &AlertingIntegrationsListOK{}
 }
 
-/* AlertingIntegrationsListOK describes a response with status code 200, with default header values.
+/*
+AlertingIntegrationsListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AlertingIntegrationsListOK struct {
 	Payload []*models.AlertingIntegrationsListDto
 }
 
+// IsSuccess returns true when this alerting integrations list o k response has a 2xx status code
+func (o *AlertingIntegrationsListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this alerting integrations list o k response has a 3xx status code
+func (o *AlertingIntegrationsListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations list o k response has a 4xx status code
+func (o *AlertingIntegrationsListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting integrations list o k response has a 5xx status code
+func (o *AlertingIntegrationsListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations list o k response a status code equal to that given
+func (o *AlertingIntegrationsListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AlertingIntegrationsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListOK  %+v", 200, o.Payload)
 }
+
+func (o *AlertingIntegrationsListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListOK  %+v", 200, o.Payload)
+}
+
 func (o *AlertingIntegrationsListOK) GetPayload() []*models.AlertingIntegrationsListDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAlertingIntegrationsListBadRequest() *AlertingIntegrationsListBadRequest
 	return &AlertingIntegrationsListBadRequest{}
 }
 
-/* AlertingIntegrationsListBadRequest describes a response with status code 400, with default header values.
+/*
+AlertingIntegrationsListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AlertingIntegrationsListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations list bad request response has a 2xx status code
+func (o *AlertingIntegrationsListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations list bad request response has a 3xx status code
+func (o *AlertingIntegrationsListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations list bad request response has a 4xx status code
+func (o *AlertingIntegrationsListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations list bad request response has a 5xx status code
+func (o *AlertingIntegrationsListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations list bad request response a status code equal to that given
+func (o *AlertingIntegrationsListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AlertingIntegrationsListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AlertingIntegrationsListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AlertingIntegrationsListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAlertingIntegrationsListUnauthorized() *AlertingIntegrationsListUnauthor
 	return &AlertingIntegrationsListUnauthorized{}
 }
 
-/* AlertingIntegrationsListUnauthorized describes a response with status code 401, with default header values.
+/*
+AlertingIntegrationsListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AlertingIntegrationsListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations list unauthorized response has a 2xx status code
+func (o *AlertingIntegrationsListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations list unauthorized response has a 3xx status code
+func (o *AlertingIntegrationsListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations list unauthorized response has a 4xx status code
+func (o *AlertingIntegrationsListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations list unauthorized response has a 5xx status code
+func (o *AlertingIntegrationsListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations list unauthorized response a status code equal to that given
+func (o *AlertingIntegrationsListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AlertingIntegrationsListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AlertingIntegrationsListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AlertingIntegrationsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAlertingIntegrationsListForbidden() *AlertingIntegrationsListForbidden {
 	return &AlertingIntegrationsListForbidden{}
 }
 
-/* AlertingIntegrationsListForbidden describes a response with status code 403, with default header values.
+/*
+AlertingIntegrationsListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AlertingIntegrationsListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations list forbidden response has a 2xx status code
+func (o *AlertingIntegrationsListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations list forbidden response has a 3xx status code
+func (o *AlertingIntegrationsListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations list forbidden response has a 4xx status code
+func (o *AlertingIntegrationsListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations list forbidden response has a 5xx status code
+func (o *AlertingIntegrationsListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations list forbidden response a status code equal to that given
+func (o *AlertingIntegrationsListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AlertingIntegrationsListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AlertingIntegrationsListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AlertingIntegrationsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAlertingIntegrationsListNotFound() *AlertingIntegrationsListNotFound {
 	return &AlertingIntegrationsListNotFound{}
 }
 
-/* AlertingIntegrationsListNotFound describes a response with status code 404, with default header values.
+/*
+AlertingIntegrationsListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AlertingIntegrationsListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations list not found response has a 2xx status code
+func (o *AlertingIntegrationsListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations list not found response has a 3xx status code
+func (o *AlertingIntegrationsListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations list not found response has a 4xx status code
+func (o *AlertingIntegrationsListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations list not found response has a 5xx status code
+func (o *AlertingIntegrationsListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations list not found response a status code equal to that given
+func (o *AlertingIntegrationsListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AlertingIntegrationsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AlertingIntegrationsListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AlertingIntegrationsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAlertingIntegrationsListInternalServerError() *AlertingIntegrationsListI
 	return &AlertingIntegrationsListInternalServerError{}
 }
 
-/* AlertingIntegrationsListInternalServerError describes a response with status code 500, with default header values.
+/*
+AlertingIntegrationsListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AlertingIntegrationsListInternalServerError struct {
 }
 
+// IsSuccess returns true when this alerting integrations list internal server error response has a 2xx status code
+func (o *AlertingIntegrationsListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations list internal server error response has a 3xx status code
+func (o *AlertingIntegrationsListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations list internal server error response has a 4xx status code
+func (o *AlertingIntegrationsListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting integrations list internal server error response has a 5xx status code
+func (o *AlertingIntegrationsListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this alerting integrations list internal server error response a status code equal to that given
+func (o *AlertingIntegrationsListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AlertingIntegrationsListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListInternalServerError ", 500)
+}
+
+func (o *AlertingIntegrationsListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingIntegrations/{alertingProfileId}][%d] alertingIntegrationsListInternalServerError ", 500)
 }
 

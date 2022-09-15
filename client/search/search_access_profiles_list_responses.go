@@ -69,7 +69,8 @@ func NewSearchAccessProfilesListOK() *SearchAccessProfilesListOK {
 	return &SearchAccessProfilesListOK{}
 }
 
-/* SearchAccessProfilesListOK describes a response with status code 200, with default header values.
+/*
+SearchAccessProfilesListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SearchAccessProfilesListOK struct {
 	Payload *models.AccessProfilesSearchList
 }
 
+// IsSuccess returns true when this search access profiles list o k response has a 2xx status code
+func (o *SearchAccessProfilesListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this search access profiles list o k response has a 3xx status code
+func (o *SearchAccessProfilesListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search access profiles list o k response has a 4xx status code
+func (o *SearchAccessProfilesListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search access profiles list o k response has a 5xx status code
+func (o *SearchAccessProfilesListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search access profiles list o k response a status code equal to that given
+func (o *SearchAccessProfilesListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SearchAccessProfilesListOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListOK  %+v", 200, o.Payload)
 }
+
+func (o *SearchAccessProfilesListOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListOK  %+v", 200, o.Payload)
+}
+
 func (o *SearchAccessProfilesListOK) GetPayload() *models.AccessProfilesSearchList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewSearchAccessProfilesListBadRequest() *SearchAccessProfilesListBadRequest
 	return &SearchAccessProfilesListBadRequest{}
 }
 
-/* SearchAccessProfilesListBadRequest describes a response with status code 400, with default header values.
+/*
+SearchAccessProfilesListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type SearchAccessProfilesListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this search access profiles list bad request response has a 2xx status code
+func (o *SearchAccessProfilesListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search access profiles list bad request response has a 3xx status code
+func (o *SearchAccessProfilesListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search access profiles list bad request response has a 4xx status code
+func (o *SearchAccessProfilesListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search access profiles list bad request response has a 5xx status code
+func (o *SearchAccessProfilesListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search access profiles list bad request response a status code equal to that given
+func (o *SearchAccessProfilesListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SearchAccessProfilesListBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SearchAccessProfilesListBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SearchAccessProfilesListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewSearchAccessProfilesListUnauthorized() *SearchAccessProfilesListUnauthor
 	return &SearchAccessProfilesListUnauthorized{}
 }
 
-/* SearchAccessProfilesListUnauthorized describes a response with status code 401, with default header values.
+/*
+SearchAccessProfilesListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type SearchAccessProfilesListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search access profiles list unauthorized response has a 2xx status code
+func (o *SearchAccessProfilesListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search access profiles list unauthorized response has a 3xx status code
+func (o *SearchAccessProfilesListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search access profiles list unauthorized response has a 4xx status code
+func (o *SearchAccessProfilesListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search access profiles list unauthorized response has a 5xx status code
+func (o *SearchAccessProfilesListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search access profiles list unauthorized response a status code equal to that given
+func (o *SearchAccessProfilesListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SearchAccessProfilesListUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SearchAccessProfilesListUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SearchAccessProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewSearchAccessProfilesListForbidden() *SearchAccessProfilesListForbidden {
 	return &SearchAccessProfilesListForbidden{}
 }
 
-/* SearchAccessProfilesListForbidden describes a response with status code 403, with default header values.
+/*
+SearchAccessProfilesListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type SearchAccessProfilesListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search access profiles list forbidden response has a 2xx status code
+func (o *SearchAccessProfilesListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search access profiles list forbidden response has a 3xx status code
+func (o *SearchAccessProfilesListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search access profiles list forbidden response has a 4xx status code
+func (o *SearchAccessProfilesListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search access profiles list forbidden response has a 5xx status code
+func (o *SearchAccessProfilesListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search access profiles list forbidden response a status code equal to that given
+func (o *SearchAccessProfilesListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SearchAccessProfilesListForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SearchAccessProfilesListForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SearchAccessProfilesListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewSearchAccessProfilesListNotFound() *SearchAccessProfilesListNotFound {
 	return &SearchAccessProfilesListNotFound{}
 }
 
-/* SearchAccessProfilesListNotFound describes a response with status code 404, with default header values.
+/*
+SearchAccessProfilesListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type SearchAccessProfilesListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this search access profiles list not found response has a 2xx status code
+func (o *SearchAccessProfilesListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search access profiles list not found response has a 3xx status code
+func (o *SearchAccessProfilesListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search access profiles list not found response has a 4xx status code
+func (o *SearchAccessProfilesListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this search access profiles list not found response has a 5xx status code
+func (o *SearchAccessProfilesListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this search access profiles list not found response a status code equal to that given
+func (o *SearchAccessProfilesListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SearchAccessProfilesListNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SearchAccessProfilesListNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SearchAccessProfilesListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewSearchAccessProfilesListInternalServerError() *SearchAccessProfilesListI
 	return &SearchAccessProfilesListInternalServerError{}
 }
 
-/* SearchAccessProfilesListInternalServerError describes a response with status code 500, with default header values.
+/*
+SearchAccessProfilesListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SearchAccessProfilesListInternalServerError struct {
 }
 
+// IsSuccess returns true when this search access profiles list internal server error response has a 2xx status code
+func (o *SearchAccessProfilesListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this search access profiles list internal server error response has a 3xx status code
+func (o *SearchAccessProfilesListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this search access profiles list internal server error response has a 4xx status code
+func (o *SearchAccessProfilesListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this search access profiles list internal server error response has a 5xx status code
+func (o *SearchAccessProfilesListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this search access profiles list internal server error response a status code equal to that given
+func (o *SearchAccessProfilesListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SearchAccessProfilesListInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListInternalServerError ", 500)
+}
+
+func (o *SearchAccessProfilesListInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListInternalServerError ", 500)
 }
 

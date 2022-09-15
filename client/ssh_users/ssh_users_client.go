@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-  SSHUsersCreate creates access profile ssh user
+SSHUsersCreate creates access profile ssh user
 */
 func (a *Client) SSHUsersCreate(params *SSHUsersCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SSHUsersCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +81,7 @@ func (a *Client) SSHUsersCreate(params *SSHUsersCreateParams, authInfo runtime.C
 }
 
 /*
-  SSHUsersDelete deletes access profile ssh user
+SSHUsersDelete deletes access profile ssh user
 */
 func (a *Client) SSHUsersDelete(params *SSHUsersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SSHUsersDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) SSHUsersDelete(params *SSHUsersDeleteParams, authInfo runtime.C
 }
 
 /*
-  SSHUsersEdit edits access profile ssh user
+SSHUsersEdit edits access profile ssh user
 */
 func (a *Client) SSHUsersEdit(params *SSHUsersEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SSHUsersEditOK, error) {
 	// TODO: Validate the params before sending
@@ -159,7 +159,7 @@ func (a *Client) SSHUsersEdit(params *SSHUsersEditParams, authInfo runtime.Clien
 }
 
 /*
-  SSHUsersList lists ssh users by profile id
+SSHUsersList lists ssh users by profile id
 */
 func (a *Client) SSHUsersList(params *SSHUsersListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SSHUsersListOK, error) {
 	// TODO: Validate the params before sending

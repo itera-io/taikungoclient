@@ -69,7 +69,8 @@ func NewUserProjectsUsersListByProjectOK() *UserProjectsUsersListByProjectOK {
 	return &UserProjectsUsersListByProjectOK{}
 }
 
-/* UserProjectsUsersListByProjectOK describes a response with status code 200, with default header values.
+/*
+UserProjectsUsersListByProjectOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type UserProjectsUsersListByProjectOK struct {
 	Payload []*models.CommonStringBasedDropdownDto
 }
 
+// IsSuccess returns true when this user projects users list by project o k response has a 2xx status code
+func (o *UserProjectsUsersListByProjectOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this user projects users list by project o k response has a 3xx status code
+func (o *UserProjectsUsersListByProjectOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user projects users list by project o k response has a 4xx status code
+func (o *UserProjectsUsersListByProjectOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user projects users list by project o k response has a 5xx status code
+func (o *UserProjectsUsersListByProjectOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user projects users list by project o k response a status code equal to that given
+func (o *UserProjectsUsersListByProjectOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UserProjectsUsersListByProjectOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectOK  %+v", 200, o.Payload)
 }
+
+func (o *UserProjectsUsersListByProjectOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectOK  %+v", 200, o.Payload)
+}
+
 func (o *UserProjectsUsersListByProjectOK) GetPayload() []*models.CommonStringBasedDropdownDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewUserProjectsUsersListByProjectBadRequest() *UserProjectsUsersListByProje
 	return &UserProjectsUsersListByProjectBadRequest{}
 }
 
-/* UserProjectsUsersListByProjectBadRequest describes a response with status code 400, with default header values.
+/*
+UserProjectsUsersListByProjectBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type UserProjectsUsersListByProjectBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this user projects users list by project bad request response has a 2xx status code
+func (o *UserProjectsUsersListByProjectBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user projects users list by project bad request response has a 3xx status code
+func (o *UserProjectsUsersListByProjectBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user projects users list by project bad request response has a 4xx status code
+func (o *UserProjectsUsersListByProjectBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user projects users list by project bad request response has a 5xx status code
+func (o *UserProjectsUsersListByProjectBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user projects users list by project bad request response a status code equal to that given
+func (o *UserProjectsUsersListByProjectBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UserProjectsUsersListByProjectBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UserProjectsUsersListByProjectBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UserProjectsUsersListByProjectBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewUserProjectsUsersListByProjectUnauthorized() *UserProjectsUsersListByPro
 	return &UserProjectsUsersListByProjectUnauthorized{}
 }
 
-/* UserProjectsUsersListByProjectUnauthorized describes a response with status code 401, with default header values.
+/*
+UserProjectsUsersListByProjectUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type UserProjectsUsersListByProjectUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user projects users list by project unauthorized response has a 2xx status code
+func (o *UserProjectsUsersListByProjectUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user projects users list by project unauthorized response has a 3xx status code
+func (o *UserProjectsUsersListByProjectUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user projects users list by project unauthorized response has a 4xx status code
+func (o *UserProjectsUsersListByProjectUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user projects users list by project unauthorized response has a 5xx status code
+func (o *UserProjectsUsersListByProjectUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user projects users list by project unauthorized response a status code equal to that given
+func (o *UserProjectsUsersListByProjectUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UserProjectsUsersListByProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *UserProjectsUsersListByProjectUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *UserProjectsUsersListByProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewUserProjectsUsersListByProjectForbidden() *UserProjectsUsersListByProjec
 	return &UserProjectsUsersListByProjectForbidden{}
 }
 
-/* UserProjectsUsersListByProjectForbidden describes a response with status code 403, with default header values.
+/*
+UserProjectsUsersListByProjectForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type UserProjectsUsersListByProjectForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user projects users list by project forbidden response has a 2xx status code
+func (o *UserProjectsUsersListByProjectForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user projects users list by project forbidden response has a 3xx status code
+func (o *UserProjectsUsersListByProjectForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user projects users list by project forbidden response has a 4xx status code
+func (o *UserProjectsUsersListByProjectForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user projects users list by project forbidden response has a 5xx status code
+func (o *UserProjectsUsersListByProjectForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user projects users list by project forbidden response a status code equal to that given
+func (o *UserProjectsUsersListByProjectForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UserProjectsUsersListByProjectForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UserProjectsUsersListByProjectForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UserProjectsUsersListByProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewUserProjectsUsersListByProjectNotFound() *UserProjectsUsersListByProject
 	return &UserProjectsUsersListByProjectNotFound{}
 }
 
-/* UserProjectsUsersListByProjectNotFound describes a response with status code 404, with default header values.
+/*
+UserProjectsUsersListByProjectNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type UserProjectsUsersListByProjectNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this user projects users list by project not found response has a 2xx status code
+func (o *UserProjectsUsersListByProjectNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user projects users list by project not found response has a 3xx status code
+func (o *UserProjectsUsersListByProjectNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user projects users list by project not found response has a 4xx status code
+func (o *UserProjectsUsersListByProjectNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user projects users list by project not found response has a 5xx status code
+func (o *UserProjectsUsersListByProjectNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user projects users list by project not found response a status code equal to that given
+func (o *UserProjectsUsersListByProjectNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UserProjectsUsersListByProjectNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UserProjectsUsersListByProjectNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UserProjectsUsersListByProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewUserProjectsUsersListByProjectInternalServerError() *UserProjectsUsersLi
 	return &UserProjectsUsersListByProjectInternalServerError{}
 }
 
-/* UserProjectsUsersListByProjectInternalServerError describes a response with status code 500, with default header values.
+/*
+UserProjectsUsersListByProjectInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UserProjectsUsersListByProjectInternalServerError struct {
 }
 
+// IsSuccess returns true when this user projects users list by project internal server error response has a 2xx status code
+func (o *UserProjectsUsersListByProjectInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user projects users list by project internal server error response has a 3xx status code
+func (o *UserProjectsUsersListByProjectInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user projects users list by project internal server error response has a 4xx status code
+func (o *UserProjectsUsersListByProjectInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user projects users list by project internal server error response has a 5xx status code
+func (o *UserProjectsUsersListByProjectInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this user projects users list by project internal server error response a status code equal to that given
+func (o *UserProjectsUsersListByProjectInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UserProjectsUsersListByProjectInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectInternalServerError ", 500)
+}
+
+func (o *UserProjectsUsersListByProjectInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/users/list/{projectId}][%d] userProjectsUsersListByProjectInternalServerError ", 500)
 }
 

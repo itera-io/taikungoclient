@@ -54,10 +54,12 @@ func NewCheckerAwsParamsWithHTTPClient(client *http.Client) *CheckerAwsParams {
 	}
 }
 
-/* CheckerAwsParams contains all the parameters to send to the API endpoint
-   for the checker aws operation.
+/*
+CheckerAwsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checker aws operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckerAwsParams struct {
 

@@ -46,7 +46,7 @@ type ClientService interface {
 }
 
 /*
-  OpsCredentialsCreate adds operation credential
+OpsCredentialsCreate adds operation credential
 */
 func (a *Client) OpsCredentialsCreate(params *OpsCredentialsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpsCredentialsCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -85,7 +85,7 @@ func (a *Client) OpsCredentialsCreate(params *OpsCredentialsCreateParams, authIn
 }
 
 /*
-  OpsCredentialsDelete removes operation credential
+OpsCredentialsDelete removes operation credential
 */
 func (a *Client) OpsCredentialsDelete(params *OpsCredentialsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpsCredentialsDeleteOK, *OpsCredentialsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -125,7 +125,7 @@ func (a *Client) OpsCredentialsDelete(params *OpsCredentialsDeleteParams, authIn
 }
 
 /*
-  OpsCredentialsList retrieves all operation credentials
+OpsCredentialsList retrieves all operation credentials
 */
 func (a *Client) OpsCredentialsList(params *OpsCredentialsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpsCredentialsListOK, error) {
 	// TODO: Validate the params before sending
@@ -164,7 +164,7 @@ func (a *Client) OpsCredentialsList(params *OpsCredentialsListParams, authInfo r
 }
 
 /*
-  OpsCredentialsLockManager locks unlock operation credential
+OpsCredentialsLockManager locks unlock operation credential
 */
 func (a *Client) OpsCredentialsLockManager(params *OpsCredentialsLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpsCredentialsLockManagerOK, error) {
 	// TODO: Validate the params before sending
@@ -203,7 +203,7 @@ func (a *Client) OpsCredentialsLockManager(params *OpsCredentialsLockManagerPara
 }
 
 /*
-  OpsCredentialsMakeDefault makes ops credentials default
+OpsCredentialsMakeDefault makes ops credentials default
 */
 func (a *Client) OpsCredentialsMakeDefault(params *OpsCredentialsMakeDefaultParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpsCredentialsMakeDefaultOK, error) {
 	// TODO: Validate the params before sending
@@ -242,7 +242,7 @@ func (a *Client) OpsCredentialsMakeDefault(params *OpsCredentialsMakeDefaultPara
 }
 
 /*
-  OpsCredentialsOperationCredentialsForOrganizationList retrieves operation credentials by organization Id
+OpsCredentialsOperationCredentialsForOrganizationList retrieves operation credentials by organization Id
 */
 func (a *Client) OpsCredentialsOperationCredentialsForOrganizationList(params *OpsCredentialsOperationCredentialsForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OpsCredentialsOperationCredentialsForOrganizationListOK, error) {
 	// TODO: Validate the params before sending

@@ -69,7 +69,8 @@ func NewKubernetesDescribeDeploymentOK() *KubernetesDescribeDeploymentOK {
 	return &KubernetesDescribeDeploymentOK{}
 }
 
-/* KubernetesDescribeDeploymentOK describes a response with status code 200, with default header values.
+/*
+KubernetesDescribeDeploymentOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesDescribeDeploymentOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this kubernetes describe deployment o k response has a 2xx status code
+func (o *KubernetesDescribeDeploymentOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes describe deployment o k response has a 3xx status code
+func (o *KubernetesDescribeDeploymentOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe deployment o k response has a 4xx status code
+func (o *KubernetesDescribeDeploymentOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes describe deployment o k response has a 5xx status code
+func (o *KubernetesDescribeDeploymentOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe deployment o k response a status code equal to that given
+func (o *KubernetesDescribeDeploymentOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesDescribeDeploymentOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesDescribeDeploymentOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesDescribeDeploymentOK) GetPayload() string {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesDescribeDeploymentBadRequest() *KubernetesDescribeDeploymentBa
 	return &KubernetesDescribeDeploymentBadRequest{}
 }
 
-/* KubernetesDescribeDeploymentBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesDescribeDeploymentBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesDescribeDeploymentBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe deployment bad request response has a 2xx status code
+func (o *KubernetesDescribeDeploymentBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe deployment bad request response has a 3xx status code
+func (o *KubernetesDescribeDeploymentBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe deployment bad request response has a 4xx status code
+func (o *KubernetesDescribeDeploymentBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe deployment bad request response has a 5xx status code
+func (o *KubernetesDescribeDeploymentBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe deployment bad request response a status code equal to that given
+func (o *KubernetesDescribeDeploymentBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesDescribeDeploymentBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesDescribeDeploymentBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesDescribeDeploymentBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesDescribeDeploymentUnauthorized() *KubernetesDescribeDeployment
 	return &KubernetesDescribeDeploymentUnauthorized{}
 }
 
-/* KubernetesDescribeDeploymentUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesDescribeDeploymentUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesDescribeDeploymentUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe deployment unauthorized response has a 2xx status code
+func (o *KubernetesDescribeDeploymentUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe deployment unauthorized response has a 3xx status code
+func (o *KubernetesDescribeDeploymentUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe deployment unauthorized response has a 4xx status code
+func (o *KubernetesDescribeDeploymentUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe deployment unauthorized response has a 5xx status code
+func (o *KubernetesDescribeDeploymentUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe deployment unauthorized response a status code equal to that given
+func (o *KubernetesDescribeDeploymentUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesDescribeDeploymentUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesDescribeDeploymentUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesDescribeDeploymentUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesDescribeDeploymentForbidden() *KubernetesDescribeDeploymentFor
 	return &KubernetesDescribeDeploymentForbidden{}
 }
 
-/* KubernetesDescribeDeploymentForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesDescribeDeploymentForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesDescribeDeploymentForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe deployment forbidden response has a 2xx status code
+func (o *KubernetesDescribeDeploymentForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe deployment forbidden response has a 3xx status code
+func (o *KubernetesDescribeDeploymentForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe deployment forbidden response has a 4xx status code
+func (o *KubernetesDescribeDeploymentForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe deployment forbidden response has a 5xx status code
+func (o *KubernetesDescribeDeploymentForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe deployment forbidden response a status code equal to that given
+func (o *KubernetesDescribeDeploymentForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesDescribeDeploymentForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesDescribeDeploymentForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesDescribeDeploymentForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesDescribeDeploymentNotFound() *KubernetesDescribeDeploymentNotF
 	return &KubernetesDescribeDeploymentNotFound{}
 }
 
-/* KubernetesDescribeDeploymentNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesDescribeDeploymentNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesDescribeDeploymentNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes describe deployment not found response has a 2xx status code
+func (o *KubernetesDescribeDeploymentNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe deployment not found response has a 3xx status code
+func (o *KubernetesDescribeDeploymentNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe deployment not found response has a 4xx status code
+func (o *KubernetesDescribeDeploymentNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes describe deployment not found response has a 5xx status code
+func (o *KubernetesDescribeDeploymentNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes describe deployment not found response a status code equal to that given
+func (o *KubernetesDescribeDeploymentNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesDescribeDeploymentNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesDescribeDeploymentNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesDescribeDeploymentNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesDescribeDeploymentInternalServerError() *KubernetesDescribeDep
 	return &KubernetesDescribeDeploymentInternalServerError{}
 }
 
-/* KubernetesDescribeDeploymentInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesDescribeDeploymentInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesDescribeDeploymentInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes describe deployment internal server error response has a 2xx status code
+func (o *KubernetesDescribeDeploymentInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes describe deployment internal server error response has a 3xx status code
+func (o *KubernetesDescribeDeploymentInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes describe deployment internal server error response has a 4xx status code
+func (o *KubernetesDescribeDeploymentInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes describe deployment internal server error response has a 5xx status code
+func (o *KubernetesDescribeDeploymentInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes describe deployment internal server error response a status code equal to that given
+func (o *KubernetesDescribeDeploymentInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesDescribeDeploymentInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentInternalServerError ", 500)
+}
+
+func (o *KubernetesDescribeDeploymentInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentInternalServerError ", 500)
 }
 

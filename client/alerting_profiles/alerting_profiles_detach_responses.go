@@ -69,7 +69,8 @@ func NewAlertingProfilesDetachOK() *AlertingProfilesDetachOK {
 	return &AlertingProfilesDetachOK{}
 }
 
-/* AlertingProfilesDetachOK describes a response with status code 200, with default header values.
+/*
+AlertingProfilesDetachOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AlertingProfilesDetachOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this alerting profiles detach o k response has a 2xx status code
+func (o *AlertingProfilesDetachOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this alerting profiles detach o k response has a 3xx status code
+func (o *AlertingProfilesDetachOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles detach o k response has a 4xx status code
+func (o *AlertingProfilesDetachOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting profiles detach o k response has a 5xx status code
+func (o *AlertingProfilesDetachOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles detach o k response a status code equal to that given
+func (o *AlertingProfilesDetachOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AlertingProfilesDetachOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachOK  %+v", 200, o.Payload)
 }
+
+func (o *AlertingProfilesDetachOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachOK  %+v", 200, o.Payload)
+}
+
 func (o *AlertingProfilesDetachOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAlertingProfilesDetachBadRequest() *AlertingProfilesDetachBadRequest {
 	return &AlertingProfilesDetachBadRequest{}
 }
 
-/* AlertingProfilesDetachBadRequest describes a response with status code 400, with default header values.
+/*
+AlertingProfilesDetachBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AlertingProfilesDetachBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles detach bad request response has a 2xx status code
+func (o *AlertingProfilesDetachBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles detach bad request response has a 3xx status code
+func (o *AlertingProfilesDetachBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles detach bad request response has a 4xx status code
+func (o *AlertingProfilesDetachBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles detach bad request response has a 5xx status code
+func (o *AlertingProfilesDetachBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles detach bad request response a status code equal to that given
+func (o *AlertingProfilesDetachBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AlertingProfilesDetachBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AlertingProfilesDetachBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AlertingProfilesDetachBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAlertingProfilesDetachUnauthorized() *AlertingProfilesDetachUnauthorized
 	return &AlertingProfilesDetachUnauthorized{}
 }
 
-/* AlertingProfilesDetachUnauthorized describes a response with status code 401, with default header values.
+/*
+AlertingProfilesDetachUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AlertingProfilesDetachUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles detach unauthorized response has a 2xx status code
+func (o *AlertingProfilesDetachUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles detach unauthorized response has a 3xx status code
+func (o *AlertingProfilesDetachUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles detach unauthorized response has a 4xx status code
+func (o *AlertingProfilesDetachUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles detach unauthorized response has a 5xx status code
+func (o *AlertingProfilesDetachUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles detach unauthorized response a status code equal to that given
+func (o *AlertingProfilesDetachUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AlertingProfilesDetachUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AlertingProfilesDetachUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AlertingProfilesDetachUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAlertingProfilesDetachForbidden() *AlertingProfilesDetachForbidden {
 	return &AlertingProfilesDetachForbidden{}
 }
 
-/* AlertingProfilesDetachForbidden describes a response with status code 403, with default header values.
+/*
+AlertingProfilesDetachForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AlertingProfilesDetachForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles detach forbidden response has a 2xx status code
+func (o *AlertingProfilesDetachForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles detach forbidden response has a 3xx status code
+func (o *AlertingProfilesDetachForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles detach forbidden response has a 4xx status code
+func (o *AlertingProfilesDetachForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles detach forbidden response has a 5xx status code
+func (o *AlertingProfilesDetachForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles detach forbidden response a status code equal to that given
+func (o *AlertingProfilesDetachForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AlertingProfilesDetachForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AlertingProfilesDetachForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AlertingProfilesDetachForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAlertingProfilesDetachNotFound() *AlertingProfilesDetachNotFound {
 	return &AlertingProfilesDetachNotFound{}
 }
 
-/* AlertingProfilesDetachNotFound describes a response with status code 404, with default header values.
+/*
+AlertingProfilesDetachNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AlertingProfilesDetachNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting profiles detach not found response has a 2xx status code
+func (o *AlertingProfilesDetachNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles detach not found response has a 3xx status code
+func (o *AlertingProfilesDetachNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles detach not found response has a 4xx status code
+func (o *AlertingProfilesDetachNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting profiles detach not found response has a 5xx status code
+func (o *AlertingProfilesDetachNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting profiles detach not found response a status code equal to that given
+func (o *AlertingProfilesDetachNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AlertingProfilesDetachNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AlertingProfilesDetachNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AlertingProfilesDetachNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAlertingProfilesDetachInternalServerError() *AlertingProfilesDetachInter
 	return &AlertingProfilesDetachInternalServerError{}
 }
 
-/* AlertingProfilesDetachInternalServerError describes a response with status code 500, with default header values.
+/*
+AlertingProfilesDetachInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AlertingProfilesDetachInternalServerError struct {
 }
 
+// IsSuccess returns true when this alerting profiles detach internal server error response has a 2xx status code
+func (o *AlertingProfilesDetachInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting profiles detach internal server error response has a 3xx status code
+func (o *AlertingProfilesDetachInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting profiles detach internal server error response has a 4xx status code
+func (o *AlertingProfilesDetachInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting profiles detach internal server error response has a 5xx status code
+func (o *AlertingProfilesDetachInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this alerting profiles detach internal server error response a status code equal to that given
+func (o *AlertingProfilesDetachInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AlertingProfilesDetachInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachInternalServerError ", 500)
+}
+
+func (o *AlertingProfilesDetachInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachInternalServerError ", 500)
 }
 

@@ -22,6 +22,9 @@ type CreateTicketCommand struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	// organization Id
+	OrganizationID int32 `json:"organizationId,omitempty"`
 }
 
 // Validate validates this create ticket command

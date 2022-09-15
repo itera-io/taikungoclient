@@ -69,7 +69,8 @@ func NewKubernetesGetNodeListOK() *KubernetesGetNodeListOK {
 	return &KubernetesGetNodeListOK{}
 }
 
-/* KubernetesGetNodeListOK describes a response with status code 200, with default header values.
+/*
+KubernetesGetNodeListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesGetNodeListOK struct {
 	Payload interface{}
 }
 
+// IsSuccess returns true when this kubernetes get node list o k response has a 2xx status code
+func (o *KubernetesGetNodeListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes get node list o k response has a 3xx status code
+func (o *KubernetesGetNodeListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get node list o k response has a 4xx status code
+func (o *KubernetesGetNodeListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get node list o k response has a 5xx status code
+func (o *KubernetesGetNodeListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get node list o k response a status code equal to that given
+func (o *KubernetesGetNodeListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesGetNodeListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesGetNodeListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesGetNodeListOK) GetPayload() interface{} {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesGetNodeListBadRequest() *KubernetesGetNodeListBadRequest {
 	return &KubernetesGetNodeListBadRequest{}
 }
 
-/* KubernetesGetNodeListBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesGetNodeListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesGetNodeListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get node list bad request response has a 2xx status code
+func (o *KubernetesGetNodeListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get node list bad request response has a 3xx status code
+func (o *KubernetesGetNodeListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get node list bad request response has a 4xx status code
+func (o *KubernetesGetNodeListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get node list bad request response has a 5xx status code
+func (o *KubernetesGetNodeListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get node list bad request response a status code equal to that given
+func (o *KubernetesGetNodeListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesGetNodeListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesGetNodeListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesGetNodeListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesGetNodeListUnauthorized() *KubernetesGetNodeListUnauthorized {
 	return &KubernetesGetNodeListUnauthorized{}
 }
 
-/* KubernetesGetNodeListUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesGetNodeListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesGetNodeListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get node list unauthorized response has a 2xx status code
+func (o *KubernetesGetNodeListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get node list unauthorized response has a 3xx status code
+func (o *KubernetesGetNodeListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get node list unauthorized response has a 4xx status code
+func (o *KubernetesGetNodeListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get node list unauthorized response has a 5xx status code
+func (o *KubernetesGetNodeListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get node list unauthorized response a status code equal to that given
+func (o *KubernetesGetNodeListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesGetNodeListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesGetNodeListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesGetNodeListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesGetNodeListForbidden() *KubernetesGetNodeListForbidden {
 	return &KubernetesGetNodeListForbidden{}
 }
 
-/* KubernetesGetNodeListForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesGetNodeListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesGetNodeListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get node list forbidden response has a 2xx status code
+func (o *KubernetesGetNodeListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get node list forbidden response has a 3xx status code
+func (o *KubernetesGetNodeListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get node list forbidden response has a 4xx status code
+func (o *KubernetesGetNodeListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get node list forbidden response has a 5xx status code
+func (o *KubernetesGetNodeListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get node list forbidden response a status code equal to that given
+func (o *KubernetesGetNodeListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesGetNodeListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesGetNodeListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesGetNodeListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesGetNodeListNotFound() *KubernetesGetNodeListNotFound {
 	return &KubernetesGetNodeListNotFound{}
 }
 
-/* KubernetesGetNodeListNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesGetNodeListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesGetNodeListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get node list not found response has a 2xx status code
+func (o *KubernetesGetNodeListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get node list not found response has a 3xx status code
+func (o *KubernetesGetNodeListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get node list not found response has a 4xx status code
+func (o *KubernetesGetNodeListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get node list not found response has a 5xx status code
+func (o *KubernetesGetNodeListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get node list not found response a status code equal to that given
+func (o *KubernetesGetNodeListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesGetNodeListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesGetNodeListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesGetNodeListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesGetNodeListInternalServerError() *KubernetesGetNodeListInterna
 	return &KubernetesGetNodeListInternalServerError{}
 }
 
-/* KubernetesGetNodeListInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesGetNodeListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesGetNodeListInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes get node list internal server error response has a 2xx status code
+func (o *KubernetesGetNodeListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get node list internal server error response has a 3xx status code
+func (o *KubernetesGetNodeListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get node list internal server error response has a 4xx status code
+func (o *KubernetesGetNodeListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get node list internal server error response has a 5xx status code
+func (o *KubernetesGetNodeListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes get node list internal server error response a status code equal to that given
+func (o *KubernetesGetNodeListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesGetNodeListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListInternalServerError ", 500)
+}
+
+func (o *KubernetesGetNodeListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListInternalServerError ", 500)
 }
 

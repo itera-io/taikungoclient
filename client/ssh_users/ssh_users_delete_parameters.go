@@ -54,10 +54,12 @@ func NewSSHUsersDeleteParamsWithHTTPClient(client *http.Client) *SSHUsersDeleteP
 	}
 }
 
-/* SSHUsersDeleteParams contains all the parameters to send to the API endpoint
-   for the Ssh users delete operation.
+/*
+SSHUsersDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the Ssh users delete operation.
+
+	Typically these are written to a http.Request.
 */
 type SSHUsersDeleteParams struct {
 

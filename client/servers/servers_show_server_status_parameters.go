@@ -53,10 +53,12 @@ func NewServersShowServerStatusParamsWithHTTPClient(client *http.Client) *Server
 	}
 }
 
-/* ServersShowServerStatusParams contains all the parameters to send to the API endpoint
-   for the servers show server status operation.
+/*
+ServersShowServerStatusParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the servers show server status operation.
+
+	Typically these are written to a http.Request.
 */
 type ServersShowServerStatusParams struct {
 

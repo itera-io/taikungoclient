@@ -69,7 +69,8 @@ func NewKubernetesDeletePodOK() *KubernetesDeletePodOK {
 	return &KubernetesDeletePodOK{}
 }
 
-/* KubernetesDeletePodOK describes a response with status code 200, with default header values.
+/*
+KubernetesDeletePodOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesDeletePodOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this kubernetes delete pod o k response has a 2xx status code
+func (o *KubernetesDeletePodOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes delete pod o k response has a 3xx status code
+func (o *KubernetesDeletePodOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes delete pod o k response has a 4xx status code
+func (o *KubernetesDeletePodOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes delete pod o k response has a 5xx status code
+func (o *KubernetesDeletePodOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes delete pod o k response a status code equal to that given
+func (o *KubernetesDeletePodOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesDeletePodOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesDeletePodOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesDeletePodOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewKubernetesDeletePodBadRequest() *KubernetesDeletePodBadRequest {
 	return &KubernetesDeletePodBadRequest{}
 }
 
-/* KubernetesDeletePodBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesDeletePodBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type KubernetesDeletePodBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes delete pod bad request response has a 2xx status code
+func (o *KubernetesDeletePodBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes delete pod bad request response has a 3xx status code
+func (o *KubernetesDeletePodBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes delete pod bad request response has a 4xx status code
+func (o *KubernetesDeletePodBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes delete pod bad request response has a 5xx status code
+func (o *KubernetesDeletePodBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes delete pod bad request response a status code equal to that given
+func (o *KubernetesDeletePodBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesDeletePodBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesDeletePodBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesDeletePodBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewKubernetesDeletePodUnauthorized() *KubernetesDeletePodUnauthorized {
 	return &KubernetesDeletePodUnauthorized{}
 }
 
-/* KubernetesDeletePodUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesDeletePodUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type KubernetesDeletePodUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes delete pod unauthorized response has a 2xx status code
+func (o *KubernetesDeletePodUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes delete pod unauthorized response has a 3xx status code
+func (o *KubernetesDeletePodUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes delete pod unauthorized response has a 4xx status code
+func (o *KubernetesDeletePodUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes delete pod unauthorized response has a 5xx status code
+func (o *KubernetesDeletePodUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes delete pod unauthorized response a status code equal to that given
+func (o *KubernetesDeletePodUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesDeletePodUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesDeletePodUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesDeletePodUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewKubernetesDeletePodForbidden() *KubernetesDeletePodForbidden {
 	return &KubernetesDeletePodForbidden{}
 }
 
-/* KubernetesDeletePodForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesDeletePodForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type KubernetesDeletePodForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes delete pod forbidden response has a 2xx status code
+func (o *KubernetesDeletePodForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes delete pod forbidden response has a 3xx status code
+func (o *KubernetesDeletePodForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes delete pod forbidden response has a 4xx status code
+func (o *KubernetesDeletePodForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes delete pod forbidden response has a 5xx status code
+func (o *KubernetesDeletePodForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes delete pod forbidden response a status code equal to that given
+func (o *KubernetesDeletePodForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesDeletePodForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesDeletePodForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesDeletePodForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewKubernetesDeletePodNotFound() *KubernetesDeletePodNotFound {
 	return &KubernetesDeletePodNotFound{}
 }
 
-/* KubernetesDeletePodNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesDeletePodNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type KubernetesDeletePodNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes delete pod not found response has a 2xx status code
+func (o *KubernetesDeletePodNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes delete pod not found response has a 3xx status code
+func (o *KubernetesDeletePodNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes delete pod not found response has a 4xx status code
+func (o *KubernetesDeletePodNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes delete pod not found response has a 5xx status code
+func (o *KubernetesDeletePodNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes delete pod not found response a status code equal to that given
+func (o *KubernetesDeletePodNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesDeletePodNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesDeletePodNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesDeletePodNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewKubernetesDeletePodInternalServerError() *KubernetesDeletePodInternalSer
 	return &KubernetesDeletePodInternalServerError{}
 }
 
-/* KubernetesDeletePodInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesDeletePodInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesDeletePodInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes delete pod internal server error response has a 2xx status code
+func (o *KubernetesDeletePodInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes delete pod internal server error response has a 3xx status code
+func (o *KubernetesDeletePodInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes delete pod internal server error response has a 4xx status code
+func (o *KubernetesDeletePodInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes delete pod internal server error response has a 5xx status code
+func (o *KubernetesDeletePodInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes delete pod internal server error response a status code equal to that given
+func (o *KubernetesDeletePodInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesDeletePodInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodInternalServerError ", 500)
+}
+
+func (o *KubernetesDeletePodInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/{projectId}/deletepod/{metadataName}/{podNamespace}][%d] kubernetesDeletePodInternalServerError ", 500)
 }
 

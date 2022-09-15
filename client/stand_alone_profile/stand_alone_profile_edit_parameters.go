@@ -54,10 +54,12 @@ func NewStandAloneProfileEditParamsWithHTTPClient(client *http.Client) *StandAlo
 	}
 }
 
-/* StandAloneProfileEditParams contains all the parameters to send to the API endpoint
-   for the stand alone profile edit operation.
+/*
+StandAloneProfileEditParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone profile edit operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneProfileEditParams struct {
 

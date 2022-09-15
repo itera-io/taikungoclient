@@ -53,10 +53,12 @@ func NewPrometheusBillingListParamsWithHTTPClient(client *http.Client) *Promethe
 	}
 }
 
-/* PrometheusBillingListParams contains all the parameters to send to the API endpoint
-   for the prometheus billing list operation.
+/*
+PrometheusBillingListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the prometheus billing list operation.
+
+	Typically these are written to a http.Request.
 */
 type PrometheusBillingListParams struct {
 

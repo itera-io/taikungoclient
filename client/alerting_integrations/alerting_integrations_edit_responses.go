@@ -69,7 +69,8 @@ func NewAlertingIntegrationsEditOK() *AlertingIntegrationsEditOK {
 	return &AlertingIntegrationsEditOK{}
 }
 
-/* AlertingIntegrationsEditOK describes a response with status code 200, with default header values.
+/*
+AlertingIntegrationsEditOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AlertingIntegrationsEditOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this alerting integrations edit o k response has a 2xx status code
+func (o *AlertingIntegrationsEditOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this alerting integrations edit o k response has a 3xx status code
+func (o *AlertingIntegrationsEditOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations edit o k response has a 4xx status code
+func (o *AlertingIntegrationsEditOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting integrations edit o k response has a 5xx status code
+func (o *AlertingIntegrationsEditOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations edit o k response a status code equal to that given
+func (o *AlertingIntegrationsEditOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AlertingIntegrationsEditOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditOK  %+v", 200, o.Payload)
 }
+
+func (o *AlertingIntegrationsEditOK) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditOK  %+v", 200, o.Payload)
+}
+
 func (o *AlertingIntegrationsEditOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAlertingIntegrationsEditBadRequest() *AlertingIntegrationsEditBadRequest
 	return &AlertingIntegrationsEditBadRequest{}
 }
 
-/* AlertingIntegrationsEditBadRequest describes a response with status code 400, with default header values.
+/*
+AlertingIntegrationsEditBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AlertingIntegrationsEditBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations edit bad request response has a 2xx status code
+func (o *AlertingIntegrationsEditBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations edit bad request response has a 3xx status code
+func (o *AlertingIntegrationsEditBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations edit bad request response has a 4xx status code
+func (o *AlertingIntegrationsEditBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations edit bad request response has a 5xx status code
+func (o *AlertingIntegrationsEditBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations edit bad request response a status code equal to that given
+func (o *AlertingIntegrationsEditBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AlertingIntegrationsEditBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AlertingIntegrationsEditBadRequest) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AlertingIntegrationsEditBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAlertingIntegrationsEditUnauthorized() *AlertingIntegrationsEditUnauthor
 	return &AlertingIntegrationsEditUnauthorized{}
 }
 
-/* AlertingIntegrationsEditUnauthorized describes a response with status code 401, with default header values.
+/*
+AlertingIntegrationsEditUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AlertingIntegrationsEditUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations edit unauthorized response has a 2xx status code
+func (o *AlertingIntegrationsEditUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations edit unauthorized response has a 3xx status code
+func (o *AlertingIntegrationsEditUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations edit unauthorized response has a 4xx status code
+func (o *AlertingIntegrationsEditUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations edit unauthorized response has a 5xx status code
+func (o *AlertingIntegrationsEditUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations edit unauthorized response a status code equal to that given
+func (o *AlertingIntegrationsEditUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AlertingIntegrationsEditUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AlertingIntegrationsEditUnauthorized) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AlertingIntegrationsEditUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAlertingIntegrationsEditForbidden() *AlertingIntegrationsEditForbidden {
 	return &AlertingIntegrationsEditForbidden{}
 }
 
-/* AlertingIntegrationsEditForbidden describes a response with status code 403, with default header values.
+/*
+AlertingIntegrationsEditForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AlertingIntegrationsEditForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations edit forbidden response has a 2xx status code
+func (o *AlertingIntegrationsEditForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations edit forbidden response has a 3xx status code
+func (o *AlertingIntegrationsEditForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations edit forbidden response has a 4xx status code
+func (o *AlertingIntegrationsEditForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations edit forbidden response has a 5xx status code
+func (o *AlertingIntegrationsEditForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations edit forbidden response a status code equal to that given
+func (o *AlertingIntegrationsEditForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AlertingIntegrationsEditForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AlertingIntegrationsEditForbidden) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AlertingIntegrationsEditForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAlertingIntegrationsEditNotFound() *AlertingIntegrationsEditNotFound {
 	return &AlertingIntegrationsEditNotFound{}
 }
 
-/* AlertingIntegrationsEditNotFound describes a response with status code 404, with default header values.
+/*
+AlertingIntegrationsEditNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AlertingIntegrationsEditNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations edit not found response has a 2xx status code
+func (o *AlertingIntegrationsEditNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations edit not found response has a 3xx status code
+func (o *AlertingIntegrationsEditNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations edit not found response has a 4xx status code
+func (o *AlertingIntegrationsEditNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations edit not found response has a 5xx status code
+func (o *AlertingIntegrationsEditNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations edit not found response a status code equal to that given
+func (o *AlertingIntegrationsEditNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AlertingIntegrationsEditNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AlertingIntegrationsEditNotFound) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AlertingIntegrationsEditNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAlertingIntegrationsEditInternalServerError() *AlertingIntegrationsEditI
 	return &AlertingIntegrationsEditInternalServerError{}
 }
 
-/* AlertingIntegrationsEditInternalServerError describes a response with status code 500, with default header values.
+/*
+AlertingIntegrationsEditInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AlertingIntegrationsEditInternalServerError struct {
 }
 
+// IsSuccess returns true when this alerting integrations edit internal server error response has a 2xx status code
+func (o *AlertingIntegrationsEditInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations edit internal server error response has a 3xx status code
+func (o *AlertingIntegrationsEditInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations edit internal server error response has a 4xx status code
+func (o *AlertingIntegrationsEditInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting integrations edit internal server error response has a 5xx status code
+func (o *AlertingIntegrationsEditInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this alerting integrations edit internal server error response a status code equal to that given
+func (o *AlertingIntegrationsEditInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AlertingIntegrationsEditInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditInternalServerError ", 500)
+}
+
+func (o *AlertingIntegrationsEditInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditInternalServerError ", 500)
 }
 

@@ -55,10 +55,12 @@ func NewAlertingProfilesAssignEmailsParamsWithHTTPClient(client *http.Client) *A
 	}
 }
 
-/* AlertingProfilesAssignEmailsParams contains all the parameters to send to the API endpoint
-   for the alerting profiles assign emails operation.
+/*
+AlertingProfilesAssignEmailsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the alerting profiles assign emails operation.
+
+	Typically these are written to a http.Request.
 */
 type AlertingProfilesAssignEmailsParams struct {
 

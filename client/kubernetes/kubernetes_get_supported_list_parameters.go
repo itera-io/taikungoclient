@@ -52,10 +52,12 @@ func NewKubernetesGetSupportedListParamsWithHTTPClient(client *http.Client) *Kub
 	}
 }
 
-/* KubernetesGetSupportedListParams contains all the parameters to send to the API endpoint
-   for the kubernetes get supported list operation.
+/*
+KubernetesGetSupportedListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes get supported list operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesGetSupportedListParams struct {
 

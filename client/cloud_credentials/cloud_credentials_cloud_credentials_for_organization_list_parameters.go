@@ -53,10 +53,12 @@ func NewCloudCredentialsCloudCredentialsForOrganizationListParamsWithHTTPClient(
 	}
 }
 
-/* CloudCredentialsCloudCredentialsForOrganizationListParams contains all the parameters to send to the API endpoint
-   for the cloud credentials cloud credentials for organization list operation.
+/*
+CloudCredentialsCloudCredentialsForOrganizationListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cloud credentials cloud credentials for organization list operation.
+
+	Typically these are written to a http.Request.
 */
 type CloudCredentialsCloudCredentialsForOrganizationListParams struct {
 
@@ -64,6 +66,9 @@ type CloudCredentialsCloudCredentialsForOrganizationListParams struct {
 	//
 	// Format: int32
 	OrganizationID *int32
+
+	// Search.
+	Search *string
 
 	// V.
 	V string
@@ -132,6 +137,17 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListParams) SetOrganizat
 	o.OrganizationID = organizationID
 }
 
+// WithSearch adds the search to the cloud credentials cloud credentials for organization list params
+func (o *CloudCredentialsCloudCredentialsForOrganizationListParams) WithSearch(search *string) *CloudCredentialsCloudCredentialsForOrganizationListParams {
+	o.SetSearch(search)
+	return o
+}
+
+// SetSearch adds the search to the cloud credentials cloud credentials for organization list params
+func (o *CloudCredentialsCloudCredentialsForOrganizationListParams) SetSearch(search *string) {
+	o.Search = search
+}
+
 // WithV adds the v to the cloud credentials cloud credentials for organization list params
 func (o *CloudCredentialsCloudCredentialsForOrganizationListParams) WithV(v string) *CloudCredentialsCloudCredentialsForOrganizationListParams {
 	o.SetV(v)
@@ -163,6 +179,23 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListParams) WriteToReque
 		if qOrganizationID != "" {
 
 			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Search != nil {
+
+		// query param search
+		var qrSearch string
+
+		if o.Search != nil {
+			qrSearch = *o.Search
+		}
+		qSearch := qrSearch
+		if qSearch != "" {
+
+			if err := r.SetQueryParam("search", qSearch); err != nil {
 				return err
 			}
 		}

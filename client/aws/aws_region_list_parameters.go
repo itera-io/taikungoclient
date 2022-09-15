@@ -54,10 +54,12 @@ func NewAwsRegionListParamsWithHTTPClient(client *http.Client) *AwsRegionListPar
 	}
 }
 
-/* AwsRegionListParams contains all the parameters to send to the API endpoint
-   for the aws region list operation.
+/*
+AwsRegionListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the aws region list operation.
+
+	Typically these are written to a http.Request.
 */
 type AwsRegionListParams struct {
 

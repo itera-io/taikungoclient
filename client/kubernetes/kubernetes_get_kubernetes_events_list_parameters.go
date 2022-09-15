@@ -53,10 +53,12 @@ func NewKubernetesGetKubernetesEventsListParamsWithHTTPClient(client *http.Clien
 	}
 }
 
-/* KubernetesGetKubernetesEventsListParams contains all the parameters to send to the API endpoint
-   for the kubernetes get kubernetes events list operation.
+/*
+KubernetesGetKubernetesEventsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes get kubernetes events list operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesGetKubernetesEventsListParams struct {
 

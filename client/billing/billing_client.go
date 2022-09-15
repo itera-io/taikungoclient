@@ -30,6 +30,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	BillingCreate(params *BillingCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BillingCreateOK, error)
+
 	BillingExportCsv(params *BillingExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BillingExportCsvOK, error)
 
 	BillingGroupedList(params *BillingGroupedListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BillingGroupedListOK, error)
@@ -40,7 +42,46 @@ type ClientService interface {
 }
 
 /*
-  BillingExportCsv exports csv
+BillingCreate adds billing summary
+*/
+func (a *Client) BillingCreate(params *BillingCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BillingCreateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewBillingCreateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Billing_Create",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Billing/add",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &BillingCreateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*BillingCreateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Billing_Create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+BillingExportCsv exports csv
 */
 func (a *Client) BillingExportCsv(params *BillingExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BillingExportCsvOK, error) {
 	// TODO: Validate the params before sending
@@ -79,7 +120,7 @@ func (a *Client) BillingExportCsv(params *BillingExportCsvParams, authInfo runti
 }
 
 /*
-  BillingGroupedList retrieves a grouped list of billing summaries
+BillingGroupedList retrieves a grouped list of billing summaries
 */
 func (a *Client) BillingGroupedList(params *BillingGroupedListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BillingGroupedListOK, error) {
 	// TODO: Validate the params before sending
@@ -118,7 +159,7 @@ func (a *Client) BillingGroupedList(params *BillingGroupedListParams, authInfo r
 }
 
 /*
-  BillingList retrieves billing info
+BillingList retrieves billing info
 */
 func (a *Client) BillingList(params *BillingListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BillingListOK, error) {
 	// TODO: Validate the params before sending

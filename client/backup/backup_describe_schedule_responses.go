@@ -69,7 +69,8 @@ func NewBackupDescribeScheduleOK() *BackupDescribeScheduleOK {
 	return &BackupDescribeScheduleOK{}
 }
 
-/* BackupDescribeScheduleOK describes a response with status code 200, with default header values.
+/*
+BackupDescribeScheduleOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type BackupDescribeScheduleOK struct {
 	Payload interface{}
 }
 
+// IsSuccess returns true when this backup describe schedule o k response has a 2xx status code
+func (o *BackupDescribeScheduleOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this backup describe schedule o k response has a 3xx status code
+func (o *BackupDescribeScheduleOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup describe schedule o k response has a 4xx status code
+func (o *BackupDescribeScheduleOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this backup describe schedule o k response has a 5xx status code
+func (o *BackupDescribeScheduleOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup describe schedule o k response a status code equal to that given
+func (o *BackupDescribeScheduleOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *BackupDescribeScheduleOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleOK  %+v", 200, o.Payload)
 }
+
+func (o *BackupDescribeScheduleOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleOK  %+v", 200, o.Payload)
+}
+
 func (o *BackupDescribeScheduleOK) GetPayload() interface{} {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewBackupDescribeScheduleBadRequest() *BackupDescribeScheduleBadRequest {
 	return &BackupDescribeScheduleBadRequest{}
 }
 
-/* BackupDescribeScheduleBadRequest describes a response with status code 400, with default header values.
+/*
+BackupDescribeScheduleBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type BackupDescribeScheduleBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this backup describe schedule bad request response has a 2xx status code
+func (o *BackupDescribeScheduleBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup describe schedule bad request response has a 3xx status code
+func (o *BackupDescribeScheduleBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup describe schedule bad request response has a 4xx status code
+func (o *BackupDescribeScheduleBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup describe schedule bad request response has a 5xx status code
+func (o *BackupDescribeScheduleBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup describe schedule bad request response a status code equal to that given
+func (o *BackupDescribeScheduleBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BackupDescribeScheduleBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BackupDescribeScheduleBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BackupDescribeScheduleBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewBackupDescribeScheduleUnauthorized() *BackupDescribeScheduleUnauthorized
 	return &BackupDescribeScheduleUnauthorized{}
 }
 
-/* BackupDescribeScheduleUnauthorized describes a response with status code 401, with default header values.
+/*
+BackupDescribeScheduleUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type BackupDescribeScheduleUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup describe schedule unauthorized response has a 2xx status code
+func (o *BackupDescribeScheduleUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup describe schedule unauthorized response has a 3xx status code
+func (o *BackupDescribeScheduleUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup describe schedule unauthorized response has a 4xx status code
+func (o *BackupDescribeScheduleUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup describe schedule unauthorized response has a 5xx status code
+func (o *BackupDescribeScheduleUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup describe schedule unauthorized response a status code equal to that given
+func (o *BackupDescribeScheduleUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BackupDescribeScheduleUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BackupDescribeScheduleUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BackupDescribeScheduleUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewBackupDescribeScheduleForbidden() *BackupDescribeScheduleForbidden {
 	return &BackupDescribeScheduleForbidden{}
 }
 
-/* BackupDescribeScheduleForbidden describes a response with status code 403, with default header values.
+/*
+BackupDescribeScheduleForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type BackupDescribeScheduleForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup describe schedule forbidden response has a 2xx status code
+func (o *BackupDescribeScheduleForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup describe schedule forbidden response has a 3xx status code
+func (o *BackupDescribeScheduleForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup describe schedule forbidden response has a 4xx status code
+func (o *BackupDescribeScheduleForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup describe schedule forbidden response has a 5xx status code
+func (o *BackupDescribeScheduleForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup describe schedule forbidden response a status code equal to that given
+func (o *BackupDescribeScheduleForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *BackupDescribeScheduleForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleForbidden  %+v", 403, o.Payload)
 }
+
+func (o *BackupDescribeScheduleForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleForbidden  %+v", 403, o.Payload)
+}
+
 func (o *BackupDescribeScheduleForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewBackupDescribeScheduleNotFound() *BackupDescribeScheduleNotFound {
 	return &BackupDescribeScheduleNotFound{}
 }
 
-/* BackupDescribeScheduleNotFound describes a response with status code 404, with default header values.
+/*
+BackupDescribeScheduleNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type BackupDescribeScheduleNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this backup describe schedule not found response has a 2xx status code
+func (o *BackupDescribeScheduleNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup describe schedule not found response has a 3xx status code
+func (o *BackupDescribeScheduleNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup describe schedule not found response has a 4xx status code
+func (o *BackupDescribeScheduleNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this backup describe schedule not found response has a 5xx status code
+func (o *BackupDescribeScheduleNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this backup describe schedule not found response a status code equal to that given
+func (o *BackupDescribeScheduleNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BackupDescribeScheduleNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BackupDescribeScheduleNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BackupDescribeScheduleNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewBackupDescribeScheduleInternalServerError() *BackupDescribeScheduleInter
 	return &BackupDescribeScheduleInternalServerError{}
 }
 
-/* BackupDescribeScheduleInternalServerError describes a response with status code 500, with default header values.
+/*
+BackupDescribeScheduleInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type BackupDescribeScheduleInternalServerError struct {
 }
 
+// IsSuccess returns true when this backup describe schedule internal server error response has a 2xx status code
+func (o *BackupDescribeScheduleInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this backup describe schedule internal server error response has a 3xx status code
+func (o *BackupDescribeScheduleInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this backup describe schedule internal server error response has a 4xx status code
+func (o *BackupDescribeScheduleInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this backup describe schedule internal server error response has a 5xx status code
+func (o *BackupDescribeScheduleInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this backup describe schedule internal server error response a status code equal to that given
+func (o *BackupDescribeScheduleInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BackupDescribeScheduleInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleInternalServerError ", 500)
+}
+
+func (o *BackupDescribeScheduleInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/describe/schedule/{projectId}/{name}][%d] backupDescribeScheduleInternalServerError ", 500)
 }
 

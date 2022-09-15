@@ -69,7 +69,8 @@ func NewImagesUnbindImagesFromProjectOK() *ImagesUnbindImagesFromProjectOK {
 	return &ImagesUnbindImagesFromProjectOK{}
 }
 
-/* ImagesUnbindImagesFromProjectOK describes a response with status code 200, with default header values.
+/*
+ImagesUnbindImagesFromProjectOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type ImagesUnbindImagesFromProjectOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this images unbind images from project o k response has a 2xx status code
+func (o *ImagesUnbindImagesFromProjectOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this images unbind images from project o k response has a 3xx status code
+func (o *ImagesUnbindImagesFromProjectOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images unbind images from project o k response has a 4xx status code
+func (o *ImagesUnbindImagesFromProjectOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this images unbind images from project o k response has a 5xx status code
+func (o *ImagesUnbindImagesFromProjectOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images unbind images from project o k response a status code equal to that given
+func (o *ImagesUnbindImagesFromProjectOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ImagesUnbindImagesFromProjectOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectOK  %+v", 200, o.Payload)
 }
+
+func (o *ImagesUnbindImagesFromProjectOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectOK  %+v", 200, o.Payload)
+}
+
 func (o *ImagesUnbindImagesFromProjectOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewImagesUnbindImagesFromProjectBadRequest() *ImagesUnbindImagesFromProject
 	return &ImagesUnbindImagesFromProjectBadRequest{}
 }
 
-/* ImagesUnbindImagesFromProjectBadRequest describes a response with status code 400, with default header values.
+/*
+ImagesUnbindImagesFromProjectBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type ImagesUnbindImagesFromProjectBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this images unbind images from project bad request response has a 2xx status code
+func (o *ImagesUnbindImagesFromProjectBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images unbind images from project bad request response has a 3xx status code
+func (o *ImagesUnbindImagesFromProjectBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images unbind images from project bad request response has a 4xx status code
+func (o *ImagesUnbindImagesFromProjectBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images unbind images from project bad request response has a 5xx status code
+func (o *ImagesUnbindImagesFromProjectBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images unbind images from project bad request response a status code equal to that given
+func (o *ImagesUnbindImagesFromProjectBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ImagesUnbindImagesFromProjectBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ImagesUnbindImagesFromProjectBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ImagesUnbindImagesFromProjectBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewImagesUnbindImagesFromProjectUnauthorized() *ImagesUnbindImagesFromProje
 	return &ImagesUnbindImagesFromProjectUnauthorized{}
 }
 
-/* ImagesUnbindImagesFromProjectUnauthorized describes a response with status code 401, with default header values.
+/*
+ImagesUnbindImagesFromProjectUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type ImagesUnbindImagesFromProjectUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this images unbind images from project unauthorized response has a 2xx status code
+func (o *ImagesUnbindImagesFromProjectUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images unbind images from project unauthorized response has a 3xx status code
+func (o *ImagesUnbindImagesFromProjectUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images unbind images from project unauthorized response has a 4xx status code
+func (o *ImagesUnbindImagesFromProjectUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images unbind images from project unauthorized response has a 5xx status code
+func (o *ImagesUnbindImagesFromProjectUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images unbind images from project unauthorized response a status code equal to that given
+func (o *ImagesUnbindImagesFromProjectUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ImagesUnbindImagesFromProjectUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ImagesUnbindImagesFromProjectUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ImagesUnbindImagesFromProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewImagesUnbindImagesFromProjectForbidden() *ImagesUnbindImagesFromProjectF
 	return &ImagesUnbindImagesFromProjectForbidden{}
 }
 
-/* ImagesUnbindImagesFromProjectForbidden describes a response with status code 403, with default header values.
+/*
+ImagesUnbindImagesFromProjectForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type ImagesUnbindImagesFromProjectForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this images unbind images from project forbidden response has a 2xx status code
+func (o *ImagesUnbindImagesFromProjectForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images unbind images from project forbidden response has a 3xx status code
+func (o *ImagesUnbindImagesFromProjectForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images unbind images from project forbidden response has a 4xx status code
+func (o *ImagesUnbindImagesFromProjectForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images unbind images from project forbidden response has a 5xx status code
+func (o *ImagesUnbindImagesFromProjectForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images unbind images from project forbidden response a status code equal to that given
+func (o *ImagesUnbindImagesFromProjectForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *ImagesUnbindImagesFromProjectForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectForbidden  %+v", 403, o.Payload)
 }
+
+func (o *ImagesUnbindImagesFromProjectForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectForbidden  %+v", 403, o.Payload)
+}
+
 func (o *ImagesUnbindImagesFromProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewImagesUnbindImagesFromProjectNotFound() *ImagesUnbindImagesFromProjectNo
 	return &ImagesUnbindImagesFromProjectNotFound{}
 }
 
-/* ImagesUnbindImagesFromProjectNotFound describes a response with status code 404, with default header values.
+/*
+ImagesUnbindImagesFromProjectNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type ImagesUnbindImagesFromProjectNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this images unbind images from project not found response has a 2xx status code
+func (o *ImagesUnbindImagesFromProjectNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images unbind images from project not found response has a 3xx status code
+func (o *ImagesUnbindImagesFromProjectNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images unbind images from project not found response has a 4xx status code
+func (o *ImagesUnbindImagesFromProjectNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this images unbind images from project not found response has a 5xx status code
+func (o *ImagesUnbindImagesFromProjectNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this images unbind images from project not found response a status code equal to that given
+func (o *ImagesUnbindImagesFromProjectNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ImagesUnbindImagesFromProjectNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ImagesUnbindImagesFromProjectNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ImagesUnbindImagesFromProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewImagesUnbindImagesFromProjectInternalServerError() *ImagesUnbindImagesFr
 	return &ImagesUnbindImagesFromProjectInternalServerError{}
 }
 
-/* ImagesUnbindImagesFromProjectInternalServerError describes a response with status code 500, with default header values.
+/*
+ImagesUnbindImagesFromProjectInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type ImagesUnbindImagesFromProjectInternalServerError struct {
 }
 
+// IsSuccess returns true when this images unbind images from project internal server error response has a 2xx status code
+func (o *ImagesUnbindImagesFromProjectInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this images unbind images from project internal server error response has a 3xx status code
+func (o *ImagesUnbindImagesFromProjectInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this images unbind images from project internal server error response has a 4xx status code
+func (o *ImagesUnbindImagesFromProjectInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this images unbind images from project internal server error response has a 5xx status code
+func (o *ImagesUnbindImagesFromProjectInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this images unbind images from project internal server error response a status code equal to that given
+func (o *ImagesUnbindImagesFromProjectInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ImagesUnbindImagesFromProjectInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectInternalServerError ", 500)
+}
+
+func (o *ImagesUnbindImagesFromProjectInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectInternalServerError ", 500)
 }
 

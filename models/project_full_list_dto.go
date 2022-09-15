@@ -29,6 +29,9 @@ type ProjectFullListDto struct {
 	// access profiles
 	AccessProfiles *AccessProfilesForProjectListDto `json:"accessProfiles,omitempty"`
 
+	// cidr
+	Cidr string `json:"cidr,omitempty"`
+
 	// cloud credential name
 	CloudCredentialName string `json:"cloudCredentialName,omitempty"`
 
@@ -59,6 +62,9 @@ type ProjectFullListDto struct {
 	// is kubernetes
 	IsKubernetes bool `json:"isKubernetes"`
 
+	// is kubevap enabled
+	IsKubevapEnabled bool `json:"isKubevapEnabled"`
+
 	// is locked
 	IsLocked bool `json:"isLocked"`
 
@@ -71,6 +77,9 @@ type ProjectFullListDto struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// net mask
+	NetMask int32 `json:"netMask,omitempty"`
+
 	// operation
 	Operation string `json:"operation,omitempty"`
 
@@ -79,6 +88,12 @@ type ProjectFullListDto struct {
 
 	// organization name
 	OrganizationName string `json:"organizationName,omitempty"`
+
+	// private Ip
+	PrivateIP string `json:"privateIp,omitempty"`
+
+	// public Ip
+	PublicIP string `json:"publicIp,omitempty"`
 
 	// standalone vms
 	StandaloneVms []*StandAloneVMFullDto `json:"standaloneVms"`

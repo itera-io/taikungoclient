@@ -53,10 +53,12 @@ func NewKubernetesOverviewParamsWithHTTPClient(client *http.Client) *KubernetesO
 	}
 }
 
-/* KubernetesOverviewParams contains all the parameters to send to the API endpoint
-   for the kubernetes overview operation.
+/*
+KubernetesOverviewParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes overview operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesOverviewParams struct {
 

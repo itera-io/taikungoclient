@@ -69,7 +69,8 @@ func NewOrganizationsToggleKeycloakOK() *OrganizationsToggleKeycloakOK {
 	return &OrganizationsToggleKeycloakOK{}
 }
 
-/* OrganizationsToggleKeycloakOK describes a response with status code 200, with default header values.
+/*
+OrganizationsToggleKeycloakOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OrganizationsToggleKeycloakOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this organizations toggle keycloak o k response has a 2xx status code
+func (o *OrganizationsToggleKeycloakOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this organizations toggle keycloak o k response has a 3xx status code
+func (o *OrganizationsToggleKeycloakOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations toggle keycloak o k response has a 4xx status code
+func (o *OrganizationsToggleKeycloakOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations toggle keycloak o k response has a 5xx status code
+func (o *OrganizationsToggleKeycloakOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations toggle keycloak o k response a status code equal to that given
+func (o *OrganizationsToggleKeycloakOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OrganizationsToggleKeycloakOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakOK  %+v", 200, o.Payload)
 }
+
+func (o *OrganizationsToggleKeycloakOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakOK  %+v", 200, o.Payload)
+}
+
 func (o *OrganizationsToggleKeycloakOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewOrganizationsToggleKeycloakBadRequest() *OrganizationsToggleKeycloakBadR
 	return &OrganizationsToggleKeycloakBadRequest{}
 }
 
-/* OrganizationsToggleKeycloakBadRequest describes a response with status code 400, with default header values.
+/*
+OrganizationsToggleKeycloakBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type OrganizationsToggleKeycloakBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this organizations toggle keycloak bad request response has a 2xx status code
+func (o *OrganizationsToggleKeycloakBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations toggle keycloak bad request response has a 3xx status code
+func (o *OrganizationsToggleKeycloakBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations toggle keycloak bad request response has a 4xx status code
+func (o *OrganizationsToggleKeycloakBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations toggle keycloak bad request response has a 5xx status code
+func (o *OrganizationsToggleKeycloakBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations toggle keycloak bad request response a status code equal to that given
+func (o *OrganizationsToggleKeycloakBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OrganizationsToggleKeycloakBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OrganizationsToggleKeycloakBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OrganizationsToggleKeycloakBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewOrganizationsToggleKeycloakUnauthorized() *OrganizationsToggleKeycloakUn
 	return &OrganizationsToggleKeycloakUnauthorized{}
 }
 
-/* OrganizationsToggleKeycloakUnauthorized describes a response with status code 401, with default header values.
+/*
+OrganizationsToggleKeycloakUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type OrganizationsToggleKeycloakUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations toggle keycloak unauthorized response has a 2xx status code
+func (o *OrganizationsToggleKeycloakUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations toggle keycloak unauthorized response has a 3xx status code
+func (o *OrganizationsToggleKeycloakUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations toggle keycloak unauthorized response has a 4xx status code
+func (o *OrganizationsToggleKeycloakUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations toggle keycloak unauthorized response has a 5xx status code
+func (o *OrganizationsToggleKeycloakUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations toggle keycloak unauthorized response a status code equal to that given
+func (o *OrganizationsToggleKeycloakUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OrganizationsToggleKeycloakUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OrganizationsToggleKeycloakUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OrganizationsToggleKeycloakUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewOrganizationsToggleKeycloakForbidden() *OrganizationsToggleKeycloakForbi
 	return &OrganizationsToggleKeycloakForbidden{}
 }
 
-/* OrganizationsToggleKeycloakForbidden describes a response with status code 403, with default header values.
+/*
+OrganizationsToggleKeycloakForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type OrganizationsToggleKeycloakForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations toggle keycloak forbidden response has a 2xx status code
+func (o *OrganizationsToggleKeycloakForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations toggle keycloak forbidden response has a 3xx status code
+func (o *OrganizationsToggleKeycloakForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations toggle keycloak forbidden response has a 4xx status code
+func (o *OrganizationsToggleKeycloakForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations toggle keycloak forbidden response has a 5xx status code
+func (o *OrganizationsToggleKeycloakForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations toggle keycloak forbidden response a status code equal to that given
+func (o *OrganizationsToggleKeycloakForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OrganizationsToggleKeycloakForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OrganizationsToggleKeycloakForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OrganizationsToggleKeycloakForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewOrganizationsToggleKeycloakNotFound() *OrganizationsToggleKeycloakNotFou
 	return &OrganizationsToggleKeycloakNotFound{}
 }
 
-/* OrganizationsToggleKeycloakNotFound describes a response with status code 404, with default header values.
+/*
+OrganizationsToggleKeycloakNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type OrganizationsToggleKeycloakNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations toggle keycloak not found response has a 2xx status code
+func (o *OrganizationsToggleKeycloakNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations toggle keycloak not found response has a 3xx status code
+func (o *OrganizationsToggleKeycloakNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations toggle keycloak not found response has a 4xx status code
+func (o *OrganizationsToggleKeycloakNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations toggle keycloak not found response has a 5xx status code
+func (o *OrganizationsToggleKeycloakNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations toggle keycloak not found response a status code equal to that given
+func (o *OrganizationsToggleKeycloakNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OrganizationsToggleKeycloakNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OrganizationsToggleKeycloakNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OrganizationsToggleKeycloakNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewOrganizationsToggleKeycloakInternalServerError() *OrganizationsToggleKey
 	return &OrganizationsToggleKeycloakInternalServerError{}
 }
 
-/* OrganizationsToggleKeycloakInternalServerError describes a response with status code 500, with default header values.
+/*
+OrganizationsToggleKeycloakInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OrganizationsToggleKeycloakInternalServerError struct {
 }
 
+// IsSuccess returns true when this organizations toggle keycloak internal server error response has a 2xx status code
+func (o *OrganizationsToggleKeycloakInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations toggle keycloak internal server error response has a 3xx status code
+func (o *OrganizationsToggleKeycloakInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations toggle keycloak internal server error response has a 4xx status code
+func (o *OrganizationsToggleKeycloakInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations toggle keycloak internal server error response has a 5xx status code
+func (o *OrganizationsToggleKeycloakInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this organizations toggle keycloak internal server error response a status code equal to that given
+func (o *OrganizationsToggleKeycloakInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OrganizationsToggleKeycloakInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakInternalServerError ", 500)
+}
+
+func (o *OrganizationsToggleKeycloakInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakInternalServerError ", 500)
 }
 

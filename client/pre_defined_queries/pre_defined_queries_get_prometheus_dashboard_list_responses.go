@@ -69,7 +69,8 @@ func NewPreDefinedQueriesGetPrometheusDashboardListOK() *PreDefinedQueriesGetPro
 	return &PreDefinedQueriesGetPrometheusDashboardListOK{}
 }
 
-/* PreDefinedQueriesGetPrometheusDashboardListOK describes a response with status code 200, with default header values.
+/*
+PreDefinedQueriesGetPrometheusDashboardListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type PreDefinedQueriesGetPrometheusDashboardListOK struct {
 	Payload []*models.PrometheusDashboardListDto
 }
 
+// IsSuccess returns true when this pre defined queries get prometheus dashboard list o k response has a 2xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this pre defined queries get prometheus dashboard list o k response has a 3xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this pre defined queries get prometheus dashboard list o k response has a 4xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this pre defined queries get prometheus dashboard list o k response has a 5xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this pre defined queries get prometheus dashboard list o k response a status code equal to that given
+func (o *PreDefinedQueriesGetPrometheusDashboardListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PreDefinedQueriesGetPrometheusDashboardListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListOK  %+v", 200, o.Payload)
 }
+
+func (o *PreDefinedQueriesGetPrometheusDashboardListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListOK  %+v", 200, o.Payload)
+}
+
 func (o *PreDefinedQueriesGetPrometheusDashboardListOK) GetPayload() []*models.PrometheusDashboardListDto {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewPreDefinedQueriesGetPrometheusDashboardListBadRequest() *PreDefinedQueri
 	return &PreDefinedQueriesGetPrometheusDashboardListBadRequest{}
 }
 
-/* PreDefinedQueriesGetPrometheusDashboardListBadRequest describes a response with status code 400, with default header values.
+/*
+PreDefinedQueriesGetPrometheusDashboardListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type PreDefinedQueriesGetPrometheusDashboardListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this pre defined queries get prometheus dashboard list bad request response has a 2xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this pre defined queries get prometheus dashboard list bad request response has a 3xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this pre defined queries get prometheus dashboard list bad request response has a 4xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this pre defined queries get prometheus dashboard list bad request response has a 5xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this pre defined queries get prometheus dashboard list bad request response a status code equal to that given
+func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewPreDefinedQueriesGetPrometheusDashboardListUnauthorized() *PreDefinedQue
 	return &PreDefinedQueriesGetPrometheusDashboardListUnauthorized{}
 }
 
-/* PreDefinedQueriesGetPrometheusDashboardListUnauthorized describes a response with status code 401, with default header values.
+/*
+PreDefinedQueriesGetPrometheusDashboardListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type PreDefinedQueriesGetPrometheusDashboardListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this pre defined queries get prometheus dashboard list unauthorized response has a 2xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this pre defined queries get prometheus dashboard list unauthorized response has a 3xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this pre defined queries get prometheus dashboard list unauthorized response has a 4xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this pre defined queries get prometheus dashboard list unauthorized response has a 5xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this pre defined queries get prometheus dashboard list unauthorized response a status code equal to that given
+func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewPreDefinedQueriesGetPrometheusDashboardListForbidden() *PreDefinedQuerie
 	return &PreDefinedQueriesGetPrometheusDashboardListForbidden{}
 }
 
-/* PreDefinedQueriesGetPrometheusDashboardListForbidden describes a response with status code 403, with default header values.
+/*
+PreDefinedQueriesGetPrometheusDashboardListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type PreDefinedQueriesGetPrometheusDashboardListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this pre defined queries get prometheus dashboard list forbidden response has a 2xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this pre defined queries get prometheus dashboard list forbidden response has a 3xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this pre defined queries get prometheus dashboard list forbidden response has a 4xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this pre defined queries get prometheus dashboard list forbidden response has a 5xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this pre defined queries get prometheus dashboard list forbidden response a status code equal to that given
+func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewPreDefinedQueriesGetPrometheusDashboardListNotFound() *PreDefinedQueries
 	return &PreDefinedQueriesGetPrometheusDashboardListNotFound{}
 }
 
-/* PreDefinedQueriesGetPrometheusDashboardListNotFound describes a response with status code 404, with default header values.
+/*
+PreDefinedQueriesGetPrometheusDashboardListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type PreDefinedQueriesGetPrometheusDashboardListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this pre defined queries get prometheus dashboard list not found response has a 2xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this pre defined queries get prometheus dashboard list not found response has a 3xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this pre defined queries get prometheus dashboard list not found response has a 4xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this pre defined queries get prometheus dashboard list not found response has a 5xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this pre defined queries get prometheus dashboard list not found response a status code equal to that given
+func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewPreDefinedQueriesGetPrometheusDashboardListInternalServerError() *PreDef
 	return &PreDefinedQueriesGetPrometheusDashboardListInternalServerError{}
 }
 
-/* PreDefinedQueriesGetPrometheusDashboardListInternalServerError describes a response with status code 500, with default header values.
+/*
+PreDefinedQueriesGetPrometheusDashboardListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PreDefinedQueriesGetPrometheusDashboardListInternalServerError struct {
 }
 
+// IsSuccess returns true when this pre defined queries get prometheus dashboard list internal server error response has a 2xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this pre defined queries get prometheus dashboard list internal server error response has a 3xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this pre defined queries get prometheus dashboard list internal server error response has a 4xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this pre defined queries get prometheus dashboard list internal server error response has a 5xx status code
+func (o *PreDefinedQueriesGetPrometheusDashboardListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this pre defined queries get prometheus dashboard list internal server error response a status code equal to that given
+func (o *PreDefinedQueriesGetPrometheusDashboardListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PreDefinedQueriesGetPrometheusDashboardListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListInternalServerError ", 500)
+}
+
+func (o *PreDefinedQueriesGetPrometheusDashboardListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListInternalServerError ", 500)
 }
 

@@ -54,10 +54,12 @@ func NewCatalogCreateCatalogAppParamsWithHTTPClient(client *http.Client) *Catalo
 	}
 }
 
-/* CatalogCreateCatalogAppParams contains all the parameters to send to the API endpoint
-   for the catalog create catalog app operation.
+/*
+CatalogCreateCatalogAppParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the catalog create catalog app operation.
+
+	Typically these are written to a http.Request.
 */
 type CatalogCreateCatalogAppParams struct {
 

@@ -54,10 +54,12 @@ func NewProjectGroupsCreateParamsWithHTTPClient(client *http.Client) *ProjectGro
 	}
 }
 
-/* ProjectGroupsCreateParams contains all the parameters to send to the API endpoint
-   for the project groups create operation.
+/*
+ProjectGroupsCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the project groups create operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectGroupsCreateParams struct {
 

@@ -54,10 +54,12 @@ func NewOpaProfilesDisableGatekeeperParamsWithHTTPClient(client *http.Client) *O
 	}
 }
 
-/* OpaProfilesDisableGatekeeperParams contains all the parameters to send to the API endpoint
-   for the opa profiles disable gatekeeper operation.
+/*
+OpaProfilesDisableGatekeeperParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the opa profiles disable gatekeeper operation.
+
+	Typically these are written to a http.Request.
 */
 type OpaProfilesDisableGatekeeperParams struct {
 

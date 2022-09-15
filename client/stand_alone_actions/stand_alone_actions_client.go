@@ -52,7 +52,7 @@ type ClientService interface {
 }
 
 /*
-  StandAloneActionsConsole consoles info standalone vm instance
+StandAloneActionsConsole consoles info standalone vm instance
 */
 func (a *Client) StandAloneActionsConsole(params *StandAloneActionsConsoleParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsConsoleOK, error) {
 	// TODO: Validate the params before sending
@@ -91,7 +91,7 @@ func (a *Client) StandAloneActionsConsole(params *StandAloneActionsConsoleParams
 }
 
 /*
-  StandAloneActionsExportCsv downloads r d p file
+StandAloneActionsExportCsv downloads r d p file
 */
 func (a *Client) StandAloneActionsExportCsv(params *StandAloneActionsExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsExportCsvOK, error) {
 	// TODO: Validate the params before sending
@@ -130,7 +130,7 @@ func (a *Client) StandAloneActionsExportCsv(params *StandAloneActionsExportCsvPa
 }
 
 /*
-  StandAloneActionsInstancePassword retrieves aws windows admin instance password
+StandAloneActionsInstancePassword retrieves aws windows admin instance password
 */
 func (a *Client) StandAloneActionsInstancePassword(params *StandAloneActionsInstancePasswordParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsInstancePasswordOK, error) {
 	// TODO: Validate the params before sending
@@ -169,7 +169,7 @@ func (a *Client) StandAloneActionsInstancePassword(params *StandAloneActionsInst
 }
 
 /*
-  StandAloneActionsReboot reboots standalone vm instance
+StandAloneActionsReboot reboots standalone vm instance
 */
 func (a *Client) StandAloneActionsReboot(params *StandAloneActionsRebootParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsRebootOK, error) {
 	// TODO: Validate the params before sending
@@ -208,7 +208,7 @@ func (a *Client) StandAloneActionsReboot(params *StandAloneActionsRebootParams, 
 }
 
 /*
-  StandAloneActionsShelve shelves standalone vm instance
+StandAloneActionsShelve shelves standalone vm instance
 */
 func (a *Client) StandAloneActionsShelve(params *StandAloneActionsShelveParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsShelveOK, error) {
 	// TODO: Validate the params before sending
@@ -247,7 +247,7 @@ func (a *Client) StandAloneActionsShelve(params *StandAloneActionsShelveParams, 
 }
 
 /*
-  StandAloneActionsShowStandaloneVMStatus shows standalone vm status
+StandAloneActionsShowStandaloneVMStatus shows standalone vm status
 */
 func (a *Client) StandAloneActionsShowStandaloneVMStatus(params *StandAloneActionsShowStandaloneVMStatusParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsShowStandaloneVMStatusOK, error) {
 	// TODO: Validate the params before sending
@@ -286,7 +286,7 @@ func (a *Client) StandAloneActionsShowStandaloneVMStatus(params *StandAloneActio
 }
 
 /*
-  StandAloneActionsStart starts standalone vm instance
+StandAloneActionsStart starts standalone vm instance
 */
 func (a *Client) StandAloneActionsStart(params *StandAloneActionsStartParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsStartOK, error) {
 	// TODO: Validate the params before sending
@@ -325,7 +325,7 @@ func (a *Client) StandAloneActionsStart(params *StandAloneActionsStartParams, au
 }
 
 /*
-  StandAloneActionsStop stops standalone vm instance
+StandAloneActionsStop stops standalone vm instance
 */
 func (a *Client) StandAloneActionsStop(params *StandAloneActionsStopParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsStopOK, error) {
 	// TODO: Validate the params before sending
@@ -364,7 +364,7 @@ func (a *Client) StandAloneActionsStop(params *StandAloneActionsStopParams, auth
 }
 
 /*
-  StandAloneActionsUnshelve unshelves standalone vm instance
+StandAloneActionsUnshelve unshelves standalone vm instance
 */
 func (a *Client) StandAloneActionsUnshelve(params *StandAloneActionsUnshelveParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneActionsUnshelveOK, error) {
 	// TODO: Validate the params before sending

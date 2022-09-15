@@ -54,10 +54,12 @@ func NewStandAloneActionsRebootParamsWithHTTPClient(client *http.Client) *StandA
 	}
 }
 
-/* StandAloneActionsRebootParams contains all the parameters to send to the API endpoint
-   for the stand alone actions reboot operation.
+/*
+StandAloneActionsRebootParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone actions reboot operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneActionsRebootParams struct {
 

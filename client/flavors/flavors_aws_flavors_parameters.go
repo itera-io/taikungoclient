@@ -53,10 +53,12 @@ func NewFlavorsAwsFlavorsParamsWithHTTPClient(client *http.Client) *FlavorsAwsFl
 	}
 }
 
-/* FlavorsAwsFlavorsParams contains all the parameters to send to the API endpoint
-   for the flavors aws flavors operation.
+/*
+FlavorsAwsFlavorsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the flavors aws flavors operation.
+
+	Typically these are written to a http.Request.
 */
 type FlavorsAwsFlavorsParams struct {
 
@@ -72,8 +74,8 @@ type FlavorsAwsFlavorsParams struct {
 
 	// EndRAM.
 	//
-	// Format: int32
-	EndRAM *int32
+	// Format: double
+	EndRAM *float64
 
 	/* Limit.
 
@@ -107,8 +109,8 @@ type FlavorsAwsFlavorsParams struct {
 
 	// StartRAM.
 	//
-	// Format: int32
-	StartRAM *int32
+	// Format: double
+	StartRAM *float64
 
 	// V.
 	V string
@@ -189,13 +191,13 @@ func (o *FlavorsAwsFlavorsParams) SetEndCPU(endCPU *int32) {
 }
 
 // WithEndRAM adds the endRAM to the flavors aws flavors params
-func (o *FlavorsAwsFlavorsParams) WithEndRAM(endRAM *int32) *FlavorsAwsFlavorsParams {
+func (o *FlavorsAwsFlavorsParams) WithEndRAM(endRAM *float64) *FlavorsAwsFlavorsParams {
 	o.SetEndRAM(endRAM)
 	return o
 }
 
 // SetEndRAM adds the endRam to the flavors aws flavors params
-func (o *FlavorsAwsFlavorsParams) SetEndRAM(endRAM *int32) {
+func (o *FlavorsAwsFlavorsParams) SetEndRAM(endRAM *float64) {
 	o.EndRAM = endRAM
 }
 
@@ -266,13 +268,13 @@ func (o *FlavorsAwsFlavorsParams) SetStartCPU(startCPU *int32) {
 }
 
 // WithStartRAM adds the startRAM to the flavors aws flavors params
-func (o *FlavorsAwsFlavorsParams) WithStartRAM(startRAM *int32) *FlavorsAwsFlavorsParams {
+func (o *FlavorsAwsFlavorsParams) WithStartRAM(startRAM *float64) *FlavorsAwsFlavorsParams {
 	o.SetStartRAM(startRAM)
 	return o
 }
 
 // SetStartRAM adds the startRam to the flavors aws flavors params
-func (o *FlavorsAwsFlavorsParams) SetStartRAM(startRAM *int32) {
+func (o *FlavorsAwsFlavorsParams) SetStartRAM(startRAM *float64) {
 	o.StartRAM = startRAM
 }
 
@@ -320,12 +322,12 @@ func (o *FlavorsAwsFlavorsParams) WriteToRequest(r runtime.ClientRequest, reg st
 	if o.EndRAM != nil {
 
 		// query param endRam
-		var qrEndRAM int32
+		var qrEndRAM float64
 
 		if o.EndRAM != nil {
 			qrEndRAM = *o.EndRAM
 		}
-		qEndRAM := swag.FormatInt32(qrEndRAM)
+		qEndRAM := swag.FormatFloat64(qrEndRAM)
 		if qEndRAM != "" {
 
 			if err := r.SetQueryParam("endRam", qEndRAM); err != nil {
@@ -439,12 +441,12 @@ func (o *FlavorsAwsFlavorsParams) WriteToRequest(r runtime.ClientRequest, reg st
 	if o.StartRAM != nil {
 
 		// query param startRam
-		var qrStartRAM int32
+		var qrStartRAM float64
 
 		if o.StartRAM != nil {
 			qrStartRAM = *o.StartRAM
 		}
-		qStartRAM := swag.FormatInt32(qrStartRAM)
+		qStartRAM := swag.FormatFloat64(qrStartRAM)
 		if qStartRAM != "" {
 
 			if err := r.SetQueryParam("startRam", qStartRAM); err != nil {

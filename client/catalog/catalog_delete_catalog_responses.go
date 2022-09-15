@@ -69,7 +69,8 @@ func NewCatalogDeleteCatalogOK() *CatalogDeleteCatalogOK {
 	return &CatalogDeleteCatalogOK{}
 }
 
-/* CatalogDeleteCatalogOK describes a response with status code 200, with default header values.
+/*
+CatalogDeleteCatalogOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type CatalogDeleteCatalogOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this catalog delete catalog o k response has a 2xx status code
+func (o *CatalogDeleteCatalogOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this catalog delete catalog o k response has a 3xx status code
+func (o *CatalogDeleteCatalogOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog delete catalog o k response has a 4xx status code
+func (o *CatalogDeleteCatalogOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this catalog delete catalog o k response has a 5xx status code
+func (o *CatalogDeleteCatalogOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog delete catalog o k response a status code equal to that given
+func (o *CatalogDeleteCatalogOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *CatalogDeleteCatalogOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogOK  %+v", 200, o.Payload)
 }
+
+func (o *CatalogDeleteCatalogOK) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogOK  %+v", 200, o.Payload)
+}
+
 func (o *CatalogDeleteCatalogOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewCatalogDeleteCatalogBadRequest() *CatalogDeleteCatalogBadRequest {
 	return &CatalogDeleteCatalogBadRequest{}
 }
 
-/* CatalogDeleteCatalogBadRequest describes a response with status code 400, with default header values.
+/*
+CatalogDeleteCatalogBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type CatalogDeleteCatalogBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this catalog delete catalog bad request response has a 2xx status code
+func (o *CatalogDeleteCatalogBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog delete catalog bad request response has a 3xx status code
+func (o *CatalogDeleteCatalogBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog delete catalog bad request response has a 4xx status code
+func (o *CatalogDeleteCatalogBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog delete catalog bad request response has a 5xx status code
+func (o *CatalogDeleteCatalogBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog delete catalog bad request response a status code equal to that given
+func (o *CatalogDeleteCatalogBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *CatalogDeleteCatalogBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *CatalogDeleteCatalogBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *CatalogDeleteCatalogBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewCatalogDeleteCatalogUnauthorized() *CatalogDeleteCatalogUnauthorized {
 	return &CatalogDeleteCatalogUnauthorized{}
 }
 
-/* CatalogDeleteCatalogUnauthorized describes a response with status code 401, with default header values.
+/*
+CatalogDeleteCatalogUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type CatalogDeleteCatalogUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog delete catalog unauthorized response has a 2xx status code
+func (o *CatalogDeleteCatalogUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog delete catalog unauthorized response has a 3xx status code
+func (o *CatalogDeleteCatalogUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog delete catalog unauthorized response has a 4xx status code
+func (o *CatalogDeleteCatalogUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog delete catalog unauthorized response has a 5xx status code
+func (o *CatalogDeleteCatalogUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog delete catalog unauthorized response a status code equal to that given
+func (o *CatalogDeleteCatalogUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *CatalogDeleteCatalogUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *CatalogDeleteCatalogUnauthorized) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *CatalogDeleteCatalogUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewCatalogDeleteCatalogForbidden() *CatalogDeleteCatalogForbidden {
 	return &CatalogDeleteCatalogForbidden{}
 }
 
-/* CatalogDeleteCatalogForbidden describes a response with status code 403, with default header values.
+/*
+CatalogDeleteCatalogForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type CatalogDeleteCatalogForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog delete catalog forbidden response has a 2xx status code
+func (o *CatalogDeleteCatalogForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog delete catalog forbidden response has a 3xx status code
+func (o *CatalogDeleteCatalogForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog delete catalog forbidden response has a 4xx status code
+func (o *CatalogDeleteCatalogForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog delete catalog forbidden response has a 5xx status code
+func (o *CatalogDeleteCatalogForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog delete catalog forbidden response a status code equal to that given
+func (o *CatalogDeleteCatalogForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *CatalogDeleteCatalogForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogForbidden  %+v", 403, o.Payload)
 }
+
+func (o *CatalogDeleteCatalogForbidden) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogForbidden  %+v", 403, o.Payload)
+}
+
 func (o *CatalogDeleteCatalogForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewCatalogDeleteCatalogNotFound() *CatalogDeleteCatalogNotFound {
 	return &CatalogDeleteCatalogNotFound{}
 }
 
-/* CatalogDeleteCatalogNotFound describes a response with status code 404, with default header values.
+/*
+CatalogDeleteCatalogNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type CatalogDeleteCatalogNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this catalog delete catalog not found response has a 2xx status code
+func (o *CatalogDeleteCatalogNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog delete catalog not found response has a 3xx status code
+func (o *CatalogDeleteCatalogNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog delete catalog not found response has a 4xx status code
+func (o *CatalogDeleteCatalogNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this catalog delete catalog not found response has a 5xx status code
+func (o *CatalogDeleteCatalogNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this catalog delete catalog not found response a status code equal to that given
+func (o *CatalogDeleteCatalogNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *CatalogDeleteCatalogNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogNotFound  %+v", 404, o.Payload)
 }
+
+func (o *CatalogDeleteCatalogNotFound) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogNotFound  %+v", 404, o.Payload)
+}
+
 func (o *CatalogDeleteCatalogNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewCatalogDeleteCatalogInternalServerError() *CatalogDeleteCatalogInternalS
 	return &CatalogDeleteCatalogInternalServerError{}
 }
 
-/* CatalogDeleteCatalogInternalServerError describes a response with status code 500, with default header values.
+/*
+CatalogDeleteCatalogInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type CatalogDeleteCatalogInternalServerError struct {
 }
 
+// IsSuccess returns true when this catalog delete catalog internal server error response has a 2xx status code
+func (o *CatalogDeleteCatalogInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this catalog delete catalog internal server error response has a 3xx status code
+func (o *CatalogDeleteCatalogInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this catalog delete catalog internal server error response has a 4xx status code
+func (o *CatalogDeleteCatalogInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this catalog delete catalog internal server error response has a 5xx status code
+func (o *CatalogDeleteCatalogInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this catalog delete catalog internal server error response a status code equal to that given
+func (o *CatalogDeleteCatalogInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *CatalogDeleteCatalogInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogInternalServerError ", 500)
+}
+
+func (o *CatalogDeleteCatalogInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogInternalServerError ", 500)
 }
 

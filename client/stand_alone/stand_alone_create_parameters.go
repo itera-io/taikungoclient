@@ -54,10 +54,12 @@ func NewStandAloneCreateParamsWithHTTPClient(client *http.Client) *StandAloneCre
 	}
 }
 
-/* StandAloneCreateParams contains all the parameters to send to the API endpoint
-   for the stand alone create operation.
+/*
+StandAloneCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone create operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneCreateParams struct {
 

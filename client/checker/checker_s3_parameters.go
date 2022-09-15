@@ -54,10 +54,12 @@ func NewCheckerS3ParamsWithHTTPClient(client *http.Client) *CheckerS3Params {
 	}
 }
 
-/* CheckerS3Params contains all the parameters to send to the API endpoint
-   for the checker s3 operation.
+/*
+CheckerS3Params contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checker s3 operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckerS3Params struct {
 

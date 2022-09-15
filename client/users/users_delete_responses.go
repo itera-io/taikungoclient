@@ -75,7 +75,8 @@ func NewUsersDeleteOK() *UsersDeleteOK {
 	return &UsersDeleteOK{}
 }
 
-/* UsersDeleteOK describes a response with status code 200, with default header values.
+/*
+UsersDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -83,9 +84,39 @@ type UsersDeleteOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this users delete o k response has a 2xx status code
+func (o *UsersDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this users delete o k response has a 3xx status code
+func (o *UsersDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users delete o k response has a 4xx status code
+func (o *UsersDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this users delete o k response has a 5xx status code
+func (o *UsersDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users delete o k response a status code equal to that given
+func (o *UsersDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UsersDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *UsersDeleteOK) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *UsersDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -105,14 +136,44 @@ func NewUsersDeleteNoContent() *UsersDeleteNoContent {
 	return &UsersDeleteNoContent{}
 }
 
-/* UsersDeleteNoContent describes a response with status code 204, with default header values.
+/*
+UsersDeleteNoContent describes a response with status code 204, with default header values.
 
 Success
 */
 type UsersDeleteNoContent struct {
 }
 
+// IsSuccess returns true when this users delete no content response has a 2xx status code
+func (o *UsersDeleteNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this users delete no content response has a 3xx status code
+func (o *UsersDeleteNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users delete no content response has a 4xx status code
+func (o *UsersDeleteNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this users delete no content response has a 5xx status code
+func (o *UsersDeleteNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users delete no content response a status code equal to that given
+func (o *UsersDeleteNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
 func (o *UsersDeleteNoContent) Error() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteNoContent ", 204)
+}
+
+func (o *UsersDeleteNoContent) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteNoContent ", 204)
 }
 
@@ -126,7 +187,8 @@ func NewUsersDeleteBadRequest() *UsersDeleteBadRequest {
 	return &UsersDeleteBadRequest{}
 }
 
-/* UsersDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+UsersDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -134,9 +196,39 @@ type UsersDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this users delete bad request response has a 2xx status code
+func (o *UsersDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users delete bad request response has a 3xx status code
+func (o *UsersDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users delete bad request response has a 4xx status code
+func (o *UsersDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users delete bad request response has a 5xx status code
+func (o *UsersDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users delete bad request response a status code equal to that given
+func (o *UsersDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UsersDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UsersDeleteBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UsersDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -158,7 +250,8 @@ func NewUsersDeleteUnauthorized() *UsersDeleteUnauthorized {
 	return &UsersDeleteUnauthorized{}
 }
 
-/* UsersDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+UsersDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -166,9 +259,39 @@ type UsersDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this users delete unauthorized response has a 2xx status code
+func (o *UsersDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users delete unauthorized response has a 3xx status code
+func (o *UsersDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users delete unauthorized response has a 4xx status code
+func (o *UsersDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users delete unauthorized response has a 5xx status code
+func (o *UsersDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users delete unauthorized response a status code equal to that given
+func (o *UsersDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UsersDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *UsersDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *UsersDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -190,7 +313,8 @@ func NewUsersDeleteForbidden() *UsersDeleteForbidden {
 	return &UsersDeleteForbidden{}
 }
 
-/* UsersDeleteForbidden describes a response with status code 403, with default header values.
+/*
+UsersDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -198,9 +322,39 @@ type UsersDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this users delete forbidden response has a 2xx status code
+func (o *UsersDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users delete forbidden response has a 3xx status code
+func (o *UsersDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users delete forbidden response has a 4xx status code
+func (o *UsersDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users delete forbidden response has a 5xx status code
+func (o *UsersDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users delete forbidden response a status code equal to that given
+func (o *UsersDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UsersDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UsersDeleteForbidden) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UsersDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -222,7 +376,8 @@ func NewUsersDeleteNotFound() *UsersDeleteNotFound {
 	return &UsersDeleteNotFound{}
 }
 
-/* UsersDeleteNotFound describes a response with status code 404, with default header values.
+/*
+UsersDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -230,9 +385,39 @@ type UsersDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this users delete not found response has a 2xx status code
+func (o *UsersDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users delete not found response has a 3xx status code
+func (o *UsersDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users delete not found response has a 4xx status code
+func (o *UsersDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users delete not found response has a 5xx status code
+func (o *UsersDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users delete not found response a status code equal to that given
+func (o *UsersDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UsersDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UsersDeleteNotFound) String() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UsersDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -254,14 +439,44 @@ func NewUsersDeleteInternalServerError() *UsersDeleteInternalServerError {
 	return &UsersDeleteInternalServerError{}
 }
 
-/* UsersDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+UsersDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UsersDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this users delete internal server error response has a 2xx status code
+func (o *UsersDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users delete internal server error response has a 3xx status code
+func (o *UsersDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users delete internal server error response has a 4xx status code
+func (o *UsersDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this users delete internal server error response has a 5xx status code
+func (o *UsersDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this users delete internal server error response a status code equal to that given
+func (o *UsersDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UsersDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteInternalServerError ", 500)
+}
+
+func (o *UsersDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteInternalServerError ", 500)
 }
 

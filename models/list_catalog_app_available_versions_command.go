@@ -17,6 +17,9 @@ import (
 // swagger:model ListCatalogAppAvailableVersionsCommand
 type ListCatalogAppAvailableVersionsCommand struct {
 
+	// current version
+	CurrentVersion string `json:"currentVersion,omitempty"`
+
 	// package name
 	PackageName string `json:"packageName,omitempty"`
 

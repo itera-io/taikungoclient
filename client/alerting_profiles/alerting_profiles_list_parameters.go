@@ -53,10 +53,12 @@ func NewAlertingProfilesListParamsWithHTTPClient(client *http.Client) *AlertingP
 	}
 }
 
-/* AlertingProfilesListParams contains all the parameters to send to the API endpoint
-   for the alerting profiles list operation.
+/*
+AlertingProfilesListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the alerting profiles list operation.
+
+	Typically these are written to a http.Request.
 */
 type AlertingProfilesListParams struct {
 

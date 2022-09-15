@@ -53,10 +53,12 @@ func NewImagesPersonalAzureImagesParamsWithHTTPClient(client *http.Client) *Imag
 	}
 }
 
-/* ImagesPersonalAzureImagesParams contains all the parameters to send to the API endpoint
-   for the images personal azure images operation.
+/*
+ImagesPersonalAzureImagesParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the images personal azure images operation.
+
+	Typically these are written to a http.Request.
 */
 type ImagesPersonalAzureImagesParams struct {
 

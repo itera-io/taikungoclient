@@ -32,11 +32,19 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	CatalogAppLockManager(params *CatalogAppLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogAppLockManagerOK, error)
 
+	CatalogAvailablePackageDetails(params *CatalogAvailablePackageDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogAvailablePackageDetailsOK, error)
+
 	CatalogAvailableVersions(params *CatalogAvailableVersionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogAvailableVersionsOK, error)
 
 	CatalogBindProjects(params *CatalogBindProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogBindProjectsOK, error)
 
+	CatalogCatalogAppDetails(params *CatalogCatalogAppDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppDetailsOK, error)
+
+	CatalogCatalogAppParamsDetails(params *CatalogCatalogAppParamsDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppParamsDetailsOK, error)
+
 	CatalogCatalogAppValue(params *CatalogCatalogAppValueParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppValueOK, error)
+
+	CatalogCatalogAppValueAutocomplete(params *CatalogCatalogAppValueAutocompleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppValueAutocompleteOK, error)
 
 	CatalogCatalogDropdown(params *CatalogCatalogDropdownParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogDropdownOK, error)
 
@@ -50,6 +58,12 @@ type ClientService interface {
 
 	CatalogDeleteCatalogApp(params *CatalogDeleteCatalogAppParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogDeleteCatalogAppOK, error)
 
+	CatalogEditCatalog(params *CatalogEditCatalogParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogEditCatalogOK, error)
+
+	CatalogEditCatalogAppParams(params *CatalogEditCatalogAppParamsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogEditCatalogAppParamsOK, error)
+
+	CatalogEditCatalogAppVersion(params *CatalogEditCatalogAppVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogEditCatalogAppVersionOK, error)
+
 	CatalogList(params *CatalogListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogListOK, error)
 
 	CatalogLockManager(params *CatalogLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogLockManagerOK, error)
@@ -58,7 +72,7 @@ type ClientService interface {
 }
 
 /*
-  CatalogAppLockManager locks unlock catalog app
+CatalogAppLockManager locks unlock catalog app
 */
 func (a *Client) CatalogAppLockManager(params *CatalogAppLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogAppLockManagerOK, error) {
 	// TODO: Validate the params before sending
@@ -97,7 +111,46 @@ func (a *Client) CatalogAppLockManager(params *CatalogAppLockManagerParams, auth
 }
 
 /*
-  CatalogAvailableVersions gets available versions for catalog app
+CatalogAvailablePackageDetails availables helm package details
+*/
+func (a *Client) CatalogAvailablePackageDetails(params *CatalogAvailablePackageDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogAvailablePackageDetailsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCatalogAvailablePackageDetailsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Catalog_AvailablePackageDetails",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Catalog/available/{repoName}/{packageName}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CatalogAvailablePackageDetailsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CatalogAvailablePackageDetailsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Catalog_AvailablePackageDetails: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CatalogAvailableVersions gets available versions for catalog app
 */
 func (a *Client) CatalogAvailableVersions(params *CatalogAvailableVersionsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogAvailableVersionsOK, error) {
 	// TODO: Validate the params before sending
@@ -136,7 +189,7 @@ func (a *Client) CatalogAvailableVersions(params *CatalogAvailableVersionsParams
 }
 
 /*
-  CatalogBindProjects binds unbind projects to catalog
+CatalogBindProjects binds unbind projects to catalog
 */
 func (a *Client) CatalogBindProjects(params *CatalogBindProjectsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogBindProjectsOK, error) {
 	// TODO: Validate the params before sending
@@ -175,7 +228,85 @@ func (a *Client) CatalogBindProjects(params *CatalogBindProjectsParams, authInfo
 }
 
 /*
-  CatalogCatalogAppValue gets catalog app yaml value
+CatalogCatalogAppDetails catalogs app details
+*/
+func (a *Client) CatalogCatalogAppDetails(params *CatalogCatalogAppDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppDetailsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCatalogCatalogAppDetailsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Catalog_CatalogAppDetails",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Catalog/catalog-app/{id}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CatalogCatalogAppDetailsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CatalogCatalogAppDetailsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Catalog_CatalogAppDetails: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CatalogCatalogAppParamsDetails catalogs app params details
+*/
+func (a *Client) CatalogCatalogAppParamsDetails(params *CatalogCatalogAppParamsDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppParamsDetailsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCatalogCatalogAppParamsDetailsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Catalog_CatalogAppParamsDetails",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Catalog/catalog-app-params/{id}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CatalogCatalogAppParamsDetailsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CatalogCatalogAppParamsDetailsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Catalog_CatalogAppParamsDetails: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CatalogCatalogAppValue gets catalog app yaml value
 */
 func (a *Client) CatalogCatalogAppValue(params *CatalogCatalogAppValueParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppValueOK, error) {
 	// TODO: Validate the params before sending
@@ -214,7 +345,46 @@ func (a *Client) CatalogCatalogAppValue(params *CatalogCatalogAppValueParams, au
 }
 
 /*
-  CatalogCatalogDropdown catalogs dropdown list for organization
+CatalogCatalogAppValueAutocomplete gets autocomplete dictionary for catalog app value
+*/
+func (a *Client) CatalogCatalogAppValueAutocomplete(params *CatalogCatalogAppValueAutocompleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogAppValueAutocompleteOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCatalogCatalogAppValueAutocompleteParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Catalog_CatalogAppValueAutocomplete",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Catalog/package-value-autocomplete",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CatalogCatalogAppValueAutocompleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CatalogCatalogAppValueAutocompleteOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Catalog_CatalogAppValueAutocomplete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CatalogCatalogDropdown catalogs dropdown list for organization
 */
 func (a *Client) CatalogCatalogDropdown(params *CatalogCatalogDropdownParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogDropdownOK, error) {
 	// TODO: Validate the params before sending
@@ -253,7 +423,7 @@ func (a *Client) CatalogCatalogDropdown(params *CatalogCatalogDropdownParams, au
 }
 
 /*
-  CatalogCatalogList catalogs list for organization
+CatalogCatalogList catalogs list for organization
 */
 func (a *Client) CatalogCatalogList(params *CatalogCatalogListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCatalogListOK, error) {
 	// TODO: Validate the params before sending
@@ -292,7 +462,7 @@ func (a *Client) CatalogCatalogList(params *CatalogCatalogListParams, authInfo r
 }
 
 /*
-  CatalogCreateCatalog creates catalog for organization
+CatalogCreateCatalog creates catalog for organization
 */
 func (a *Client) CatalogCreateCatalog(params *CatalogCreateCatalogParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCreateCatalogOK, error) {
 	// TODO: Validate the params before sending
@@ -331,7 +501,7 @@ func (a *Client) CatalogCreateCatalog(params *CatalogCreateCatalogParams, authIn
 }
 
 /*
-  CatalogCreateCatalogApp adds application to catalog
+CatalogCreateCatalogApp adds application to catalog
 */
 func (a *Client) CatalogCreateCatalogApp(params *CatalogCreateCatalogAppParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogCreateCatalogAppOK, error) {
 	// TODO: Validate the params before sending
@@ -370,7 +540,7 @@ func (a *Client) CatalogCreateCatalogApp(params *CatalogCreateCatalogAppParams, 
 }
 
 /*
-  CatalogDeleteCatalog deletes catalog
+CatalogDeleteCatalog deletes catalog
 */
 func (a *Client) CatalogDeleteCatalog(params *CatalogDeleteCatalogParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogDeleteCatalogOK, error) {
 	// TODO: Validate the params before sending
@@ -409,7 +579,7 @@ func (a *Client) CatalogDeleteCatalog(params *CatalogDeleteCatalogParams, authIn
 }
 
 /*
-  CatalogDeleteCatalogApp deletes catalog app
+CatalogDeleteCatalogApp deletes catalog app by catalog app Id
 */
 func (a *Client) CatalogDeleteCatalogApp(params *CatalogDeleteCatalogAppParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogDeleteCatalogAppOK, error) {
 	// TODO: Validate the params before sending
@@ -448,7 +618,124 @@ func (a *Client) CatalogDeleteCatalogApp(params *CatalogDeleteCatalogAppParams, 
 }
 
 /*
-  CatalogList retrieves all available packages
+CatalogEditCatalog edits catalog for organization
+*/
+func (a *Client) CatalogEditCatalog(params *CatalogEditCatalogParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogEditCatalogOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCatalogEditCatalogParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Catalog_EditCatalog",
+		Method:             "PUT",
+		PathPattern:        "/api/v{v}/Catalog/edit-catalog",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CatalogEditCatalogReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CatalogEditCatalogOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Catalog_EditCatalog: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CatalogEditCatalogAppParams edits catalog app params
+*/
+func (a *Client) CatalogEditCatalogAppParams(params *CatalogEditCatalogAppParamsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogEditCatalogAppParamsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCatalogEditCatalogAppParamsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Catalog_EditCatalogAppParams",
+		Method:             "PUT",
+		PathPattern:        "/api/v{v}/Catalog/edit-catalogapp-params",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CatalogEditCatalogAppParamsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CatalogEditCatalogAppParamsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Catalog_EditCatalogAppParams: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CatalogEditCatalogAppVersion edits catalog app version
+*/
+func (a *Client) CatalogEditCatalogAppVersion(params *CatalogEditCatalogAppVersionParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogEditCatalogAppVersionOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCatalogEditCatalogAppVersionParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Catalog_EditCatalogAppVersion",
+		Method:             "PUT",
+		PathPattern:        "/api/v{v}/Catalog/edit-catalogapp-version",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CatalogEditCatalogAppVersionReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CatalogEditCatalogAppVersionOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Catalog_EditCatalogAppVersion: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CatalogList retrieves all available packages
 */
 func (a *Client) CatalogList(params *CatalogListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogListOK, error) {
 	// TODO: Validate the params before sending
@@ -487,7 +774,7 @@ func (a *Client) CatalogList(params *CatalogListParams, authInfo runtime.ClientA
 }
 
 /*
-  CatalogLockManager locks unlock catalog
+CatalogLockManager locks unlock catalog
 */
 func (a *Client) CatalogLockManager(params *CatalogLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CatalogLockManagerOK, error) {
 	// TODO: Validate the params before sending

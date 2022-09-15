@@ -54,10 +54,12 @@ func NewCheckerOpenstackParamsWithHTTPClient(client *http.Client) *CheckerOpenst
 	}
 }
 
-/* CheckerOpenstackParams contains all the parameters to send to the API endpoint
-   for the checker openstack operation.
+/*
+CheckerOpenstackParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the checker openstack operation.
+
+	Typically these are written to a http.Request.
 */
 type CheckerOpenstackParams struct {
 

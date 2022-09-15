@@ -54,10 +54,12 @@ func NewSearchBackupCredentialsListParamsWithHTTPClient(client *http.Client) *Se
 	}
 }
 
-/* SearchBackupCredentialsListParams contains all the parameters to send to the API endpoint
-   for the search backup credentials list operation.
+/*
+SearchBackupCredentialsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search backup credentials list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchBackupCredentialsListParams struct {
 

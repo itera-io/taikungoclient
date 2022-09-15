@@ -54,10 +54,12 @@ func NewS3CredentialsMakeDefaultParamsWithHTTPClient(client *http.Client) *S3Cre
 	}
 }
 
-/* S3CredentialsMakeDefaultParams contains all the parameters to send to the API endpoint
-   for the s3 credentials make default operation.
+/*
+S3CredentialsMakeDefaultParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the s3 credentials make default operation.
+
+	Typically these are written to a http.Request.
 */
 type S3CredentialsMakeDefaultParams struct {
 

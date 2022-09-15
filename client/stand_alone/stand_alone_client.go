@@ -42,7 +42,17 @@ type ClientService interface {
 
 	StandAloneList(params *StandAloneListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneListOK, error)
 
+	StandAloneListForPoller(params *StandAloneListForPollerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneListForPollerOK, error)
+
+	StandAloneProjectDetails(params *StandAloneProjectDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProjectDetailsOK, error)
+
+	StandAlonePurge(params *StandAlonePurgeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAlonePurgeOK, error)
+
 	StandAloneRepair(params *StandAloneRepairParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneRepairOK, error)
+
+	StandAloneReset(params *StandAloneResetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneResetOK, error)
+
+	StandAloneUpdate(params *StandAloneUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneUpdateOK, error)
 
 	StandAloneUpdateFlavor(params *StandAloneUpdateFlavorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneUpdateFlavorOK, error)
 
@@ -50,7 +60,7 @@ type ClientService interface {
 }
 
 /*
-  StandAloneCommit commits stand alone vm
+StandAloneCommit commits stand alone vm
 */
 func (a *Client) StandAloneCommit(params *StandAloneCommitParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneCommitOK, error) {
 	// TODO: Validate the params before sending
@@ -89,7 +99,7 @@ func (a *Client) StandAloneCommit(params *StandAloneCommitParams, authInfo runti
 }
 
 /*
-  StandAloneCreate creates stand alone vm
+StandAloneCreate creates stand alone vm
 */
 func (a *Client) StandAloneCreate(params *StandAloneCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -128,7 +138,7 @@ func (a *Client) StandAloneCreate(params *StandAloneCreateParams, authInfo runti
 }
 
 /*
-  StandAloneDelete deletes purge stand alone vm
+StandAloneDelete deletes purge stand alone vm
 */
 func (a *Client) StandAloneDelete(params *StandAloneDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -167,7 +177,7 @@ func (a *Client) StandAloneDelete(params *StandAloneDeleteParams, authInfo runti
 }
 
 /*
-  StandAloneDetails retrieves a list of standalone vm with detailed info
+StandAloneDetails retrieves a list of standalone vm with detailed info
 */
 func (a *Client) StandAloneDetails(params *StandAloneDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -206,7 +216,7 @@ func (a *Client) StandAloneDetails(params *StandAloneDetailsParams, authInfo run
 }
 
 /*
-  StandAloneIPManagement enables disable stand alone public ip
+StandAloneIPManagement enables disable stand alone public ip
 */
 func (a *Client) StandAloneIPManagement(params *StandAloneIPManagementParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneIPManagementOK, error) {
 	// TODO: Validate the params before sending
@@ -245,7 +255,7 @@ func (a *Client) StandAloneIPManagement(params *StandAloneIPManagementParams, au
 }
 
 /*
-  StandAloneList lists all standalone vms according to roles
+StandAloneList lists all standalone vms according to roles
 */
 func (a *Client) StandAloneList(params *StandAloneListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneListOK, error) {
 	// TODO: Validate the params before sending
@@ -284,7 +294,124 @@ func (a *Client) StandAloneList(params *StandAloneListParams, authInfo runtime.C
 }
 
 /*
-  StandAloneRepair repairs stand alone vm
+StandAloneListForPoller lists all standalone vms for poller
+*/
+func (a *Client) StandAloneListForPoller(params *StandAloneListForPollerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneListForPollerOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAloneListForPollerParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAlone_ListForPoller",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/StandAlone/forpoller",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAloneListForPollerReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAloneListForPollerOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAlone_ListForPoller: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+StandAloneProjectDetails retrieves details of the project by Id
+*/
+func (a *Client) StandAloneProjectDetails(params *StandAloneProjectDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneProjectDetailsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAloneProjectDetailsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAlone_ProjectDetails",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/StandAlone/project/{projectId}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAloneProjectDetailsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAloneProjectDetailsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAlone_ProjectDetails: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+StandAlonePurge purges stand alone based project
+*/
+func (a *Client) StandAlonePurge(params *StandAlonePurgeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAlonePurgeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAlonePurgeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAlone_Purge",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/StandAlone/purge",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAlonePurgeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAlonePurgeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAlone_Purge: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+StandAloneRepair repairs stand alone vm
 */
 func (a *Client) StandAloneRepair(params *StandAloneRepairParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneRepairOK, error) {
 	// TODO: Validate the params before sending
@@ -323,7 +450,85 @@ func (a *Client) StandAloneRepair(params *StandAloneRepairParams, authInfo runti
 }
 
 /*
-  StandAloneUpdateFlavor updates stand alone vm flavor
+StandAloneReset resets stand alone vm status
+*/
+func (a *Client) StandAloneReset(params *StandAloneResetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneResetOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAloneResetParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAlone_Reset",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/StandAlone/reset",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAloneResetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAloneResetOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAlone_Reset: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+StandAloneUpdate updates stand alone vm
+*/
+func (a *Client) StandAloneUpdate(params *StandAloneUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewStandAloneUpdateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "StandAlone_Update",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/StandAlone/update",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &StandAloneUpdateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*StandAloneUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for StandAlone_Update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+StandAloneUpdateFlavor updates stand alone vm flavor
 */
 func (a *Client) StandAloneUpdateFlavor(params *StandAloneUpdateFlavorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*StandAloneUpdateFlavorOK, error) {
 	// TODO: Validate the params before sending

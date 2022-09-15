@@ -53,10 +53,12 @@ func NewCloudCredentialsDeleteParamsWithHTTPClient(client *http.Client) *CloudCr
 	}
 }
 
-/* CloudCredentialsDeleteParams contains all the parameters to send to the API endpoint
-   for the cloud credentials delete operation.
+/*
+CloudCredentialsDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the cloud credentials delete operation.
+
+	Typically these are written to a http.Request.
 */
 type CloudCredentialsDeleteParams struct {
 

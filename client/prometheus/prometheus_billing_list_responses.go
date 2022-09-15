@@ -69,7 +69,8 @@ func NewPrometheusBillingListOK() *PrometheusBillingListOK {
 	return &PrometheusBillingListOK{}
 }
 
-/* PrometheusBillingListOK describes a response with status code 200, with default header values.
+/*
+PrometheusBillingListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type PrometheusBillingListOK struct {
 	Payload *models.PrometheusBillingInfo
 }
 
+// IsSuccess returns true when this prometheus billing list o k response has a 2xx status code
+func (o *PrometheusBillingListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this prometheus billing list o k response has a 3xx status code
+func (o *PrometheusBillingListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus billing list o k response has a 4xx status code
+func (o *PrometheusBillingListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this prometheus billing list o k response has a 5xx status code
+func (o *PrometheusBillingListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus billing list o k response a status code equal to that given
+func (o *PrometheusBillingListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *PrometheusBillingListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListOK  %+v", 200, o.Payload)
 }
+
+func (o *PrometheusBillingListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListOK  %+v", 200, o.Payload)
+}
+
 func (o *PrometheusBillingListOK) GetPayload() *models.PrometheusBillingInfo {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewPrometheusBillingListBadRequest() *PrometheusBillingListBadRequest {
 	return &PrometheusBillingListBadRequest{}
 }
 
-/* PrometheusBillingListBadRequest describes a response with status code 400, with default header values.
+/*
+PrometheusBillingListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type PrometheusBillingListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this prometheus billing list bad request response has a 2xx status code
+func (o *PrometheusBillingListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus billing list bad request response has a 3xx status code
+func (o *PrometheusBillingListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus billing list bad request response has a 4xx status code
+func (o *PrometheusBillingListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus billing list bad request response has a 5xx status code
+func (o *PrometheusBillingListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus billing list bad request response a status code equal to that given
+func (o *PrometheusBillingListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *PrometheusBillingListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *PrometheusBillingListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *PrometheusBillingListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewPrometheusBillingListUnauthorized() *PrometheusBillingListUnauthorized {
 	return &PrometheusBillingListUnauthorized{}
 }
 
-/* PrometheusBillingListUnauthorized describes a response with status code 401, with default header values.
+/*
+PrometheusBillingListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type PrometheusBillingListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus billing list unauthorized response has a 2xx status code
+func (o *PrometheusBillingListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus billing list unauthorized response has a 3xx status code
+func (o *PrometheusBillingListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus billing list unauthorized response has a 4xx status code
+func (o *PrometheusBillingListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus billing list unauthorized response has a 5xx status code
+func (o *PrometheusBillingListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus billing list unauthorized response a status code equal to that given
+func (o *PrometheusBillingListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *PrometheusBillingListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *PrometheusBillingListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *PrometheusBillingListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewPrometheusBillingListForbidden() *PrometheusBillingListForbidden {
 	return &PrometheusBillingListForbidden{}
 }
 
-/* PrometheusBillingListForbidden describes a response with status code 403, with default header values.
+/*
+PrometheusBillingListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type PrometheusBillingListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus billing list forbidden response has a 2xx status code
+func (o *PrometheusBillingListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus billing list forbidden response has a 3xx status code
+func (o *PrometheusBillingListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus billing list forbidden response has a 4xx status code
+func (o *PrometheusBillingListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus billing list forbidden response has a 5xx status code
+func (o *PrometheusBillingListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus billing list forbidden response a status code equal to that given
+func (o *PrometheusBillingListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *PrometheusBillingListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *PrometheusBillingListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *PrometheusBillingListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewPrometheusBillingListNotFound() *PrometheusBillingListNotFound {
 	return &PrometheusBillingListNotFound{}
 }
 
-/* PrometheusBillingListNotFound describes a response with status code 404, with default header values.
+/*
+PrometheusBillingListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type PrometheusBillingListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this prometheus billing list not found response has a 2xx status code
+func (o *PrometheusBillingListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus billing list not found response has a 3xx status code
+func (o *PrometheusBillingListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus billing list not found response has a 4xx status code
+func (o *PrometheusBillingListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this prometheus billing list not found response has a 5xx status code
+func (o *PrometheusBillingListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this prometheus billing list not found response a status code equal to that given
+func (o *PrometheusBillingListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *PrometheusBillingListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *PrometheusBillingListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *PrometheusBillingListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewPrometheusBillingListInternalServerError() *PrometheusBillingListInterna
 	return &PrometheusBillingListInternalServerError{}
 }
 
-/* PrometheusBillingListInternalServerError describes a response with status code 500, with default header values.
+/*
+PrometheusBillingListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type PrometheusBillingListInternalServerError struct {
 }
 
+// IsSuccess returns true when this prometheus billing list internal server error response has a 2xx status code
+func (o *PrometheusBillingListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this prometheus billing list internal server error response has a 3xx status code
+func (o *PrometheusBillingListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this prometheus billing list internal server error response has a 4xx status code
+func (o *PrometheusBillingListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this prometheus billing list internal server error response has a 5xx status code
+func (o *PrometheusBillingListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this prometheus billing list internal server error response a status code equal to that given
+func (o *PrometheusBillingListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *PrometheusBillingListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListInternalServerError ", 500)
+}
+
+func (o *PrometheusBillingListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListInternalServerError ", 500)
 }
 

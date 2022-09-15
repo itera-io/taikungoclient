@@ -38,6 +38,12 @@ type ClientService interface {
 
 	CloudCredentialsDelete(params *CloudCredentialsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsDeleteOK, *CloudCredentialsDeleteNoContent, error)
 
+	CloudCredentialsExceededQuotas(params *CloudCredentialsExceededQuotasParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsExceededQuotasOK, error)
+
+	CloudCredentialsForCli(params *CloudCredentialsForCliParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsForCliOK, error)
+
+	CloudCredentialsForProject(params *CloudCredentialsForProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsForProjectOK, error)
+
 	CloudCredentialsLockManager(params *CloudCredentialsLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsLockManagerOK, error)
 
 	CloudCredentialsMakeDefault(params *CloudCredentialsMakeDefaultParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsMakeDefaultOK, error)
@@ -46,7 +52,7 @@ type ClientService interface {
 }
 
 /*
-  CloudCredentialsAllFlavors retrieves all flavors
+CloudCredentialsAllFlavors retrieves all flavors
 */
 func (a *Client) CloudCredentialsAllFlavors(params *CloudCredentialsAllFlavorsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsAllFlavorsOK, error) {
 	// TODO: Validate the params before sending
@@ -85,7 +91,7 @@ func (a *Client) CloudCredentialsAllFlavors(params *CloudCredentialsAllFlavorsPa
 }
 
 /*
-  CloudCredentialsCloudCredentialsForOrganizationList retrieves a list of cloud credentials by organization Id
+CloudCredentialsCloudCredentialsForOrganizationList retrieves a list of cloud credentials by organization Id
 */
 func (a *Client) CloudCredentialsCloudCredentialsForOrganizationList(params *CloudCredentialsCloudCredentialsForOrganizationListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsCloudCredentialsForOrganizationListOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +130,7 @@ func (a *Client) CloudCredentialsCloudCredentialsForOrganizationList(params *Clo
 }
 
 /*
-  CloudCredentialsDashboardList retrieves all cloud credentials
+CloudCredentialsDashboardList retrieves all cloud credentials
 */
 func (a *Client) CloudCredentialsDashboardList(params *CloudCredentialsDashboardListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsDashboardListOK, error) {
 	// TODO: Validate the params before sending
@@ -163,7 +169,7 @@ func (a *Client) CloudCredentialsDashboardList(params *CloudCredentialsDashboard
 }
 
 /*
-  CloudCredentialsDelete removes cloud credential by cloud Id
+CloudCredentialsDelete removes cloud credential by cloud Id
 */
 func (a *Client) CloudCredentialsDelete(params *CloudCredentialsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsDeleteOK, *CloudCredentialsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -203,7 +209,124 @@ func (a *Client) CloudCredentialsDelete(params *CloudCredentialsDeleteParams, au
 }
 
 /*
-  CloudCredentialsLockManager locks unlock cloud credential
+CloudCredentialsExceededQuotas retrieves cloud credentials exceeded quotas
+*/
+func (a *Client) CloudCredentialsExceededQuotas(params *CloudCredentialsExceededQuotasParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsExceededQuotasOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCloudCredentialsExceededQuotasParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CloudCredentials_ExceededQuotas",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CloudCredentialsExceededQuotasReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CloudCredentialsExceededQuotasOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CloudCredentials_ExceededQuotas: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CloudCredentialsForCli retrieves cloud credentials for c l i
+*/
+func (a *Client) CloudCredentialsForCli(params *CloudCredentialsForCliParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsForCliOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCloudCredentialsForCliParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CloudCredentials_ForCli",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/CloudCredentials/cli",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CloudCredentialsForCliReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CloudCredentialsForCliOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CloudCredentials_ForCli: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CloudCredentialsForProject retrieves cloud credential details by cloud Id
+*/
+func (a *Client) CloudCredentialsForProject(params *CloudCredentialsForProjectParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsForProjectOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCloudCredentialsForProjectParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CloudCredentials_ForProject",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/CloudCredentials/details",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CloudCredentialsForProjectReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CloudCredentialsForProjectOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CloudCredentials_ForProject: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CloudCredentialsLockManager locks unlock cloud credential
 */
 func (a *Client) CloudCredentialsLockManager(params *CloudCredentialsLockManagerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsLockManagerOK, error) {
 	// TODO: Validate the params before sending
@@ -242,7 +365,7 @@ func (a *Client) CloudCredentialsLockManager(params *CloudCredentialsLockManager
 }
 
 /*
-  CloudCredentialsMakeDefault makes cloud credentials default
+CloudCredentialsMakeDefault makes cloud credentials default
 */
 func (a *Client) CloudCredentialsMakeDefault(params *CloudCredentialsMakeDefaultParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CloudCredentialsMakeDefaultOK, error) {
 	// TODO: Validate the params before sending

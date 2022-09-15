@@ -69,7 +69,8 @@ func NewUsersCreateOK() *UsersCreateOK {
 	return &UsersCreateOK{}
 }
 
-/* UsersCreateOK describes a response with status code 200, with default header values.
+/*
+UsersCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type UsersCreateOK struct {
 	Payload *models.APIResponse
 }
 
+// IsSuccess returns true when this users create o k response has a 2xx status code
+func (o *UsersCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this users create o k response has a 3xx status code
+func (o *UsersCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users create o k response has a 4xx status code
+func (o *UsersCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this users create o k response has a 5xx status code
+func (o *UsersCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users create o k response a status code equal to that given
+func (o *UsersCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UsersCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *UsersCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *UsersCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewUsersCreateBadRequest() *UsersCreateBadRequest {
 	return &UsersCreateBadRequest{}
 }
 
-/* UsersCreateBadRequest describes a response with status code 400, with default header values.
+/*
+UsersCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type UsersCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this users create bad request response has a 2xx status code
+func (o *UsersCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users create bad request response has a 3xx status code
+func (o *UsersCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users create bad request response has a 4xx status code
+func (o *UsersCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users create bad request response has a 5xx status code
+func (o *UsersCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users create bad request response a status code equal to that given
+func (o *UsersCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UsersCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UsersCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UsersCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewUsersCreateUnauthorized() *UsersCreateUnauthorized {
 	return &UsersCreateUnauthorized{}
 }
 
-/* UsersCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+UsersCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type UsersCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this users create unauthorized response has a 2xx status code
+func (o *UsersCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users create unauthorized response has a 3xx status code
+func (o *UsersCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users create unauthorized response has a 4xx status code
+func (o *UsersCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users create unauthorized response has a 5xx status code
+func (o *UsersCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users create unauthorized response a status code equal to that given
+func (o *UsersCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UsersCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *UsersCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *UsersCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewUsersCreateForbidden() *UsersCreateForbidden {
 	return &UsersCreateForbidden{}
 }
 
-/* UsersCreateForbidden describes a response with status code 403, with default header values.
+/*
+UsersCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type UsersCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this users create forbidden response has a 2xx status code
+func (o *UsersCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users create forbidden response has a 3xx status code
+func (o *UsersCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users create forbidden response has a 4xx status code
+func (o *UsersCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users create forbidden response has a 5xx status code
+func (o *UsersCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users create forbidden response a status code equal to that given
+func (o *UsersCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *UsersCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *UsersCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *UsersCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewUsersCreateNotFound() *UsersCreateNotFound {
 	return &UsersCreateNotFound{}
 }
 
-/* UsersCreateNotFound describes a response with status code 404, with default header values.
+/*
+UsersCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type UsersCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this users create not found response has a 2xx status code
+func (o *UsersCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users create not found response has a 3xx status code
+func (o *UsersCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users create not found response has a 4xx status code
+func (o *UsersCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this users create not found response has a 5xx status code
+func (o *UsersCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this users create not found response a status code equal to that given
+func (o *UsersCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UsersCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UsersCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UsersCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewUsersCreateInternalServerError() *UsersCreateInternalServerError {
 	return &UsersCreateInternalServerError{}
 }
 
-/* UsersCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+UsersCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type UsersCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this users create internal server error response has a 2xx status code
+func (o *UsersCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this users create internal server error response has a 3xx status code
+func (o *UsersCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this users create internal server error response has a 4xx status code
+func (o *UsersCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this users create internal server error response has a 5xx status code
+func (o *UsersCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this users create internal server error response a status code equal to that given
+func (o *UsersCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UsersCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateInternalServerError ", 500)
+}
+
+func (o *UsersCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users][%d] usersCreateInternalServerError ", 500)
 }
 

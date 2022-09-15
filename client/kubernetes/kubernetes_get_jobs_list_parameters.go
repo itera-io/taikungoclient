@@ -53,10 +53,12 @@ func NewKubernetesGetJobsListParamsWithHTTPClient(client *http.Client) *Kubernet
 	}
 }
 
-/* KubernetesGetJobsListParams contains all the parameters to send to the API endpoint
-   for the kubernetes get jobs list operation.
+/*
+KubernetesGetJobsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kubernetes get jobs list operation.
+
+	Typically these are written to a http.Request.
 */
 type KubernetesGetJobsListParams struct {
 

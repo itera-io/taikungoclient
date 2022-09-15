@@ -69,7 +69,8 @@ func NewAzureOffersOK() *AzureOffersOK {
 	return &AzureOffersOK{}
 }
 
-/* AzureOffersOK describes a response with status code 200, with default header values.
+/*
+AzureOffersOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AzureOffersOK struct {
 	Payload *models.AzureOffersList
 }
 
+// IsSuccess returns true when this azure offers o k response has a 2xx status code
+func (o *AzureOffersOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this azure offers o k response has a 3xx status code
+func (o *AzureOffersOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure offers o k response has a 4xx status code
+func (o *AzureOffersOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this azure offers o k response has a 5xx status code
+func (o *AzureOffersOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure offers o k response a status code equal to that given
+func (o *AzureOffersOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AzureOffersOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersOK  %+v", 200, o.Payload)
 }
+
+func (o *AzureOffersOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersOK  %+v", 200, o.Payload)
+}
+
 func (o *AzureOffersOK) GetPayload() *models.AzureOffersList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewAzureOffersBadRequest() *AzureOffersBadRequest {
 	return &AzureOffersBadRequest{}
 }
 
-/* AzureOffersBadRequest describes a response with status code 400, with default header values.
+/*
+AzureOffersBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type AzureOffersBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this azure offers bad request response has a 2xx status code
+func (o *AzureOffersBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure offers bad request response has a 3xx status code
+func (o *AzureOffersBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure offers bad request response has a 4xx status code
+func (o *AzureOffersBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure offers bad request response has a 5xx status code
+func (o *AzureOffersBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure offers bad request response a status code equal to that given
+func (o *AzureOffersBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AzureOffersBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AzureOffersBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AzureOffersBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewAzureOffersUnauthorized() *AzureOffersUnauthorized {
 	return &AzureOffersUnauthorized{}
 }
 
-/* AzureOffersUnauthorized describes a response with status code 401, with default header values.
+/*
+AzureOffersUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type AzureOffersUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this azure offers unauthorized response has a 2xx status code
+func (o *AzureOffersUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure offers unauthorized response has a 3xx status code
+func (o *AzureOffersUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure offers unauthorized response has a 4xx status code
+func (o *AzureOffersUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure offers unauthorized response has a 5xx status code
+func (o *AzureOffersUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure offers unauthorized response a status code equal to that given
+func (o *AzureOffersUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AzureOffersUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AzureOffersUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AzureOffersUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewAzureOffersForbidden() *AzureOffersForbidden {
 	return &AzureOffersForbidden{}
 }
 
-/* AzureOffersForbidden describes a response with status code 403, with default header values.
+/*
+AzureOffersForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type AzureOffersForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this azure offers forbidden response has a 2xx status code
+func (o *AzureOffersForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure offers forbidden response has a 3xx status code
+func (o *AzureOffersForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure offers forbidden response has a 4xx status code
+func (o *AzureOffersForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure offers forbidden response has a 5xx status code
+func (o *AzureOffersForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure offers forbidden response a status code equal to that given
+func (o *AzureOffersForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AzureOffersForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AzureOffersForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AzureOffersForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewAzureOffersNotFound() *AzureOffersNotFound {
 	return &AzureOffersNotFound{}
 }
 
-/* AzureOffersNotFound describes a response with status code 404, with default header values.
+/*
+AzureOffersNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type AzureOffersNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this azure offers not found response has a 2xx status code
+func (o *AzureOffersNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure offers not found response has a 3xx status code
+func (o *AzureOffersNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure offers not found response has a 4xx status code
+func (o *AzureOffersNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this azure offers not found response has a 5xx status code
+func (o *AzureOffersNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this azure offers not found response a status code equal to that given
+func (o *AzureOffersNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AzureOffersNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AzureOffersNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AzureOffersNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewAzureOffersInternalServerError() *AzureOffersInternalServerError {
 	return &AzureOffersInternalServerError{}
 }
 
-/* AzureOffersInternalServerError describes a response with status code 500, with default header values.
+/*
+AzureOffersInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AzureOffersInternalServerError struct {
 }
 
+// IsSuccess returns true when this azure offers internal server error response has a 2xx status code
+func (o *AzureOffersInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this azure offers internal server error response has a 3xx status code
+func (o *AzureOffersInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this azure offers internal server error response has a 4xx status code
+func (o *AzureOffersInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this azure offers internal server error response has a 5xx status code
+func (o *AzureOffersInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this azure offers internal server error response a status code equal to that given
+func (o *AzureOffersInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AzureOffersInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersInternalServerError ", 500)
+}
+
+func (o *AzureOffersInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersInternalServerError ", 500)
 }
 

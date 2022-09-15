@@ -53,10 +53,12 @@ func NewAlertingIntegrationsDeleteParamsWithHTTPClient(client *http.Client) *Ale
 	}
 }
 
-/* AlertingIntegrationsDeleteParams contains all the parameters to send to the API endpoint
-   for the alerting integrations delete operation.
+/*
+AlertingIntegrationsDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the alerting integrations delete operation.
+
+	Typically these are written to a http.Request.
 */
 type AlertingIntegrationsDeleteParams struct {
 

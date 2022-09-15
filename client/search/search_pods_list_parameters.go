@@ -54,10 +54,12 @@ func NewSearchPodsListParamsWithHTTPClient(client *http.Client) *SearchPodsListP
 	}
 }
 
-/* SearchPodsListParams contains all the parameters to send to the API endpoint
-   for the search pods list operation.
+/*
+SearchPodsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the search pods list operation.
+
+	Typically these are written to a http.Request.
 */
 type SearchPodsListParams struct {
 

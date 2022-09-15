@@ -44,7 +44,7 @@ type ClientService interface {
 }
 
 /*
-  PreDefinedQueriesCreatePrometheusDashboard creates prometheus dashboard pre defined query
+PreDefinedQueriesCreatePrometheusDashboard creates prometheus dashboard pre defined query
 */
 func (a *Client) PreDefinedQueriesCreatePrometheusDashboard(params *PreDefinedQueriesCreatePrometheusDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesCreatePrometheusDashboardOK, error) {
 	// TODO: Validate the params before sending
@@ -83,7 +83,7 @@ func (a *Client) PreDefinedQueriesCreatePrometheusDashboard(params *PreDefinedQu
 }
 
 /*
-  PreDefinedQueriesDeletePrometheusDashboard deletes prometheus dashboard pre defined query
+PreDefinedQueriesDeletePrometheusDashboard deletes prometheus dashboard pre defined query
 */
 func (a *Client) PreDefinedQueriesDeletePrometheusDashboard(params *PreDefinedQueriesDeletePrometheusDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesDeletePrometheusDashboardOK, error) {
 	// TODO: Validate the params before sending
@@ -122,7 +122,7 @@ func (a *Client) PreDefinedQueriesDeletePrometheusDashboard(params *PreDefinedQu
 }
 
 /*
-  PreDefinedQueriesGetPrometheusCommonDashboardList gets list of pre defined common prometheus dashboard elements
+PreDefinedQueriesGetPrometheusCommonDashboardList gets list of pre defined common prometheus dashboard elements
 */
 func (a *Client) PreDefinedQueriesGetPrometheusCommonDashboardList(params *PreDefinedQueriesGetPrometheusCommonDashboardListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesGetPrometheusCommonDashboardListOK, error) {
 	// TODO: Validate the params before sending
@@ -161,7 +161,7 @@ func (a *Client) PreDefinedQueriesGetPrometheusCommonDashboardList(params *PreDe
 }
 
 /*
-  PreDefinedQueriesGetPrometheusDashboardList gets list of pre defined organization prometheus dashboard elements
+PreDefinedQueriesGetPrometheusDashboardList gets list of pre defined organization prometheus dashboard elements
 */
 func (a *Client) PreDefinedQueriesGetPrometheusDashboardList(params *PreDefinedQueriesGetPrometheusDashboardListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesGetPrometheusDashboardListOK, error) {
 	// TODO: Validate the params before sending
@@ -200,7 +200,7 @@ func (a *Client) PreDefinedQueriesGetPrometheusDashboardList(params *PreDefinedQ
 }
 
 /*
-  PreDefinedQueriesUpdatePrometheusDashboard updates prometheus dashboard pre defined query
+PreDefinedQueriesUpdatePrometheusDashboard updates prometheus dashboard pre defined query
 */
 func (a *Client) PreDefinedQueriesUpdatePrometheusDashboard(params *PreDefinedQueriesUpdatePrometheusDashboardParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PreDefinedQueriesUpdatePrometheusDashboardOK, error) {
 	// TODO: Validate the params before sending

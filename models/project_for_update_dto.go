@@ -21,6 +21,12 @@ type ProjectForUpdateDto struct {
 	// access Ip
 	AccessIP string `json:"accessIp,omitempty"`
 
+	// app enabled
+	AppEnabled bool `json:"appEnabled"`
+
+	// failure reason
+	FailureReason string `json:"failureReason,omitempty"`
+
 	// health
 	Health ProjectHealth `json:"health,omitempty"`
 
@@ -32,6 +38,9 @@ type ProjectForUpdateDto struct {
 
 	// is backup enabled
 	IsBackupEnabled bool `json:"isBackupEnabled"`
+
+	// is kubevap enabled
+	IsKubevapEnabled bool `json:"isKubevapEnabled"`
 
 	// is monitoring enabled
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`

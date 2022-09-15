@@ -69,7 +69,8 @@ func NewSecurityGroupDeleteOK() *SecurityGroupDeleteOK {
 	return &SecurityGroupDeleteOK{}
 }
 
-/* SecurityGroupDeleteOK describes a response with status code 200, with default header values.
+/*
+SecurityGroupDeleteOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SecurityGroupDeleteOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this security group delete o k response has a 2xx status code
+func (o *SecurityGroupDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this security group delete o k response has a 3xx status code
+func (o *SecurityGroupDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group delete o k response has a 4xx status code
+func (o *SecurityGroupDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this security group delete o k response has a 5xx status code
+func (o *SecurityGroupDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this security group delete o k response a status code equal to that given
+func (o *SecurityGroupDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SecurityGroupDeleteOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *SecurityGroupDeleteOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *SecurityGroupDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewSecurityGroupDeleteBadRequest() *SecurityGroupDeleteBadRequest {
 	return &SecurityGroupDeleteBadRequest{}
 }
 
-/* SecurityGroupDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+SecurityGroupDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type SecurityGroupDeleteBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this security group delete bad request response has a 2xx status code
+func (o *SecurityGroupDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this security group delete bad request response has a 3xx status code
+func (o *SecurityGroupDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group delete bad request response has a 4xx status code
+func (o *SecurityGroupDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this security group delete bad request response has a 5xx status code
+func (o *SecurityGroupDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this security group delete bad request response a status code equal to that given
+func (o *SecurityGroupDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SecurityGroupDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SecurityGroupDeleteBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SecurityGroupDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewSecurityGroupDeleteUnauthorized() *SecurityGroupDeleteUnauthorized {
 	return &SecurityGroupDeleteUnauthorized{}
 }
 
-/* SecurityGroupDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+SecurityGroupDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type SecurityGroupDeleteUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this security group delete unauthorized response has a 2xx status code
+func (o *SecurityGroupDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this security group delete unauthorized response has a 3xx status code
+func (o *SecurityGroupDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group delete unauthorized response has a 4xx status code
+func (o *SecurityGroupDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this security group delete unauthorized response has a 5xx status code
+func (o *SecurityGroupDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this security group delete unauthorized response a status code equal to that given
+func (o *SecurityGroupDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SecurityGroupDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SecurityGroupDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SecurityGroupDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewSecurityGroupDeleteForbidden() *SecurityGroupDeleteForbidden {
 	return &SecurityGroupDeleteForbidden{}
 }
 
-/* SecurityGroupDeleteForbidden describes a response with status code 403, with default header values.
+/*
+SecurityGroupDeleteForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type SecurityGroupDeleteForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this security group delete forbidden response has a 2xx status code
+func (o *SecurityGroupDeleteForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this security group delete forbidden response has a 3xx status code
+func (o *SecurityGroupDeleteForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group delete forbidden response has a 4xx status code
+func (o *SecurityGroupDeleteForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this security group delete forbidden response has a 5xx status code
+func (o *SecurityGroupDeleteForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this security group delete forbidden response a status code equal to that given
+func (o *SecurityGroupDeleteForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SecurityGroupDeleteForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SecurityGroupDeleteForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SecurityGroupDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewSecurityGroupDeleteNotFound() *SecurityGroupDeleteNotFound {
 	return &SecurityGroupDeleteNotFound{}
 }
 
-/* SecurityGroupDeleteNotFound describes a response with status code 404, with default header values.
+/*
+SecurityGroupDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type SecurityGroupDeleteNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this security group delete not found response has a 2xx status code
+func (o *SecurityGroupDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this security group delete not found response has a 3xx status code
+func (o *SecurityGroupDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group delete not found response has a 4xx status code
+func (o *SecurityGroupDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this security group delete not found response has a 5xx status code
+func (o *SecurityGroupDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this security group delete not found response a status code equal to that given
+func (o *SecurityGroupDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SecurityGroupDeleteNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SecurityGroupDeleteNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SecurityGroupDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewSecurityGroupDeleteInternalServerError() *SecurityGroupDeleteInternalSer
 	return &SecurityGroupDeleteInternalServerError{}
 }
 
-/* SecurityGroupDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+SecurityGroupDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SecurityGroupDeleteInternalServerError struct {
 }
 
+// IsSuccess returns true when this security group delete internal server error response has a 2xx status code
+func (o *SecurityGroupDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this security group delete internal server error response has a 3xx status code
+func (o *SecurityGroupDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this security group delete internal server error response has a 4xx status code
+func (o *SecurityGroupDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this security group delete internal server error response has a 5xx status code
+func (o *SecurityGroupDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this security group delete internal server error response a status code equal to that given
+func (o *SecurityGroupDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SecurityGroupDeleteInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteInternalServerError ", 500)
+}
+
+func (o *SecurityGroupDeleteInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteInternalServerError ", 500)
 }
 

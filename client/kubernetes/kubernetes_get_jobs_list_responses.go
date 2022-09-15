@@ -69,7 +69,8 @@ func NewKubernetesGetJobsListOK() *KubernetesGetJobsListOK {
 	return &KubernetesGetJobsListOK{}
 }
 
-/* KubernetesGetJobsListOK describes a response with status code 200, with default header values.
+/*
+KubernetesGetJobsListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type KubernetesGetJobsListOK struct {
 	Payload *models.KubernetesJobList
 }
 
+// IsSuccess returns true when this kubernetes get jobs list o k response has a 2xx status code
+func (o *KubernetesGetJobsListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this kubernetes get jobs list o k response has a 3xx status code
+func (o *KubernetesGetJobsListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get jobs list o k response has a 4xx status code
+func (o *KubernetesGetJobsListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get jobs list o k response has a 5xx status code
+func (o *KubernetesGetJobsListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get jobs list o k response a status code equal to that given
+func (o *KubernetesGetJobsListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *KubernetesGetJobsListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/jobs][%d] kubernetesGetJobsListOK  %+v", 200, o.Payload)
 }
+
+func (o *KubernetesGetJobsListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/jobs][%d] kubernetesGetJobsListOK  %+v", 200, o.Payload)
+}
+
 func (o *KubernetesGetJobsListOK) GetPayload() *models.KubernetesJobList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewKubernetesGetJobsListBadRequest() *KubernetesGetJobsListBadRequest {
 	return &KubernetesGetJobsListBadRequest{}
 }
 
-/* KubernetesGetJobsListBadRequest describes a response with status code 400, with default header values.
+/*
+KubernetesGetJobsListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type KubernetesGetJobsListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get jobs list bad request response has a 2xx status code
+func (o *KubernetesGetJobsListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get jobs list bad request response has a 3xx status code
+func (o *KubernetesGetJobsListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get jobs list bad request response has a 4xx status code
+func (o *KubernetesGetJobsListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get jobs list bad request response has a 5xx status code
+func (o *KubernetesGetJobsListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get jobs list bad request response a status code equal to that given
+func (o *KubernetesGetJobsListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *KubernetesGetJobsListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/jobs][%d] kubernetesGetJobsListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *KubernetesGetJobsListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/jobs][%d] kubernetesGetJobsListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *KubernetesGetJobsListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewKubernetesGetJobsListUnauthorized() *KubernetesGetJobsListUnauthorized {
 	return &KubernetesGetJobsListUnauthorized{}
 }
 
-/* KubernetesGetJobsListUnauthorized describes a response with status code 401, with default header values.
+/*
+KubernetesGetJobsListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type KubernetesGetJobsListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get jobs list unauthorized response has a 2xx status code
+func (o *KubernetesGetJobsListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get jobs list unauthorized response has a 3xx status code
+func (o *KubernetesGetJobsListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get jobs list unauthorized response has a 4xx status code
+func (o *KubernetesGetJobsListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get jobs list unauthorized response has a 5xx status code
+func (o *KubernetesGetJobsListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get jobs list unauthorized response a status code equal to that given
+func (o *KubernetesGetJobsListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *KubernetesGetJobsListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/jobs][%d] kubernetesGetJobsListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *KubernetesGetJobsListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/jobs][%d] kubernetesGetJobsListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *KubernetesGetJobsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewKubernetesGetJobsListForbidden() *KubernetesGetJobsListForbidden {
 	return &KubernetesGetJobsListForbidden{}
 }
 
-/* KubernetesGetJobsListForbidden describes a response with status code 403, with default header values.
+/*
+KubernetesGetJobsListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type KubernetesGetJobsListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get jobs list forbidden response has a 2xx status code
+func (o *KubernetesGetJobsListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get jobs list forbidden response has a 3xx status code
+func (o *KubernetesGetJobsListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get jobs list forbidden response has a 4xx status code
+func (o *KubernetesGetJobsListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get jobs list forbidden response has a 5xx status code
+func (o *KubernetesGetJobsListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get jobs list forbidden response a status code equal to that given
+func (o *KubernetesGetJobsListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *KubernetesGetJobsListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/jobs][%d] kubernetesGetJobsListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *KubernetesGetJobsListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/jobs][%d] kubernetesGetJobsListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *KubernetesGetJobsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewKubernetesGetJobsListNotFound() *KubernetesGetJobsListNotFound {
 	return &KubernetesGetJobsListNotFound{}
 }
 
-/* KubernetesGetJobsListNotFound describes a response with status code 404, with default header values.
+/*
+KubernetesGetJobsListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type KubernetesGetJobsListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this kubernetes get jobs list not found response has a 2xx status code
+func (o *KubernetesGetJobsListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get jobs list not found response has a 3xx status code
+func (o *KubernetesGetJobsListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get jobs list not found response has a 4xx status code
+func (o *KubernetesGetJobsListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this kubernetes get jobs list not found response has a 5xx status code
+func (o *KubernetesGetJobsListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this kubernetes get jobs list not found response a status code equal to that given
+func (o *KubernetesGetJobsListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *KubernetesGetJobsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/jobs][%d] kubernetesGetJobsListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *KubernetesGetJobsListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/jobs][%d] kubernetesGetJobsListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *KubernetesGetJobsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewKubernetesGetJobsListInternalServerError() *KubernetesGetJobsListInterna
 	return &KubernetesGetJobsListInternalServerError{}
 }
 
-/* KubernetesGetJobsListInternalServerError describes a response with status code 500, with default header values.
+/*
+KubernetesGetJobsListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type KubernetesGetJobsListInternalServerError struct {
 }
 
+// IsSuccess returns true when this kubernetes get jobs list internal server error response has a 2xx status code
+func (o *KubernetesGetJobsListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this kubernetes get jobs list internal server error response has a 3xx status code
+func (o *KubernetesGetJobsListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this kubernetes get jobs list internal server error response has a 4xx status code
+func (o *KubernetesGetJobsListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this kubernetes get jobs list internal server error response has a 5xx status code
+func (o *KubernetesGetJobsListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this kubernetes get jobs list internal server error response a status code equal to that given
+func (o *KubernetesGetJobsListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *KubernetesGetJobsListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/jobs][%d] kubernetesGetJobsListInternalServerError ", 500)
+}
+
+func (o *KubernetesGetJobsListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/jobs][%d] kubernetesGetJobsListInternalServerError ", 500)
 }
 

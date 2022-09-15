@@ -53,10 +53,12 @@ func NewBackupScheduleByNameParamsWithHTTPClient(client *http.Client) *BackupSch
 	}
 }
 
-/* BackupScheduleByNameParams contains all the parameters to send to the API endpoint
-   for the backup schedule by name operation.
+/*
+BackupScheduleByNameParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the backup schedule by name operation.
+
+	Typically these are written to a http.Request.
 */
 type BackupScheduleByNameParams struct {
 

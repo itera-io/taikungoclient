@@ -69,7 +69,8 @@ func NewAuthResetPasswordOK() *AuthResetPasswordOK {
 	return &AuthResetPasswordOK{}
 }
 
-/* AuthResetPasswordOK describes a response with status code 200, with default header values.
+/*
+AuthResetPasswordOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AuthResetPasswordOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this auth reset password o k response has a 2xx status code
+func (o *AuthResetPasswordOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this auth reset password o k response has a 3xx status code
+func (o *AuthResetPasswordOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this auth reset password o k response has a 4xx status code
+func (o *AuthResetPasswordOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this auth reset password o k response has a 5xx status code
+func (o *AuthResetPasswordOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this auth reset password o k response a status code equal to that given
+func (o *AuthResetPasswordOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AuthResetPasswordOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordOK  %+v", 200, o.Payload)
 }
+
+func (o *AuthResetPasswordOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordOK  %+v", 200, o.Payload)
+}
+
 func (o *AuthResetPasswordOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewAuthResetPasswordBadRequest() *AuthResetPasswordBadRequest {
 	return &AuthResetPasswordBadRequest{}
 }
 
-/* AuthResetPasswordBadRequest describes a response with status code 400, with default header values.
+/*
+AuthResetPasswordBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type AuthResetPasswordBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this auth reset password bad request response has a 2xx status code
+func (o *AuthResetPasswordBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this auth reset password bad request response has a 3xx status code
+func (o *AuthResetPasswordBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this auth reset password bad request response has a 4xx status code
+func (o *AuthResetPasswordBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this auth reset password bad request response has a 5xx status code
+func (o *AuthResetPasswordBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this auth reset password bad request response a status code equal to that given
+func (o *AuthResetPasswordBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AuthResetPasswordBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AuthResetPasswordBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AuthResetPasswordBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewAuthResetPasswordUnauthorized() *AuthResetPasswordUnauthorized {
 	return &AuthResetPasswordUnauthorized{}
 }
 
-/* AuthResetPasswordUnauthorized describes a response with status code 401, with default header values.
+/*
+AuthResetPasswordUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type AuthResetPasswordUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this auth reset password unauthorized response has a 2xx status code
+func (o *AuthResetPasswordUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this auth reset password unauthorized response has a 3xx status code
+func (o *AuthResetPasswordUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this auth reset password unauthorized response has a 4xx status code
+func (o *AuthResetPasswordUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this auth reset password unauthorized response has a 5xx status code
+func (o *AuthResetPasswordUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this auth reset password unauthorized response a status code equal to that given
+func (o *AuthResetPasswordUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AuthResetPasswordUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AuthResetPasswordUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AuthResetPasswordUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewAuthResetPasswordForbidden() *AuthResetPasswordForbidden {
 	return &AuthResetPasswordForbidden{}
 }
 
-/* AuthResetPasswordForbidden describes a response with status code 403, with default header values.
+/*
+AuthResetPasswordForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type AuthResetPasswordForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this auth reset password forbidden response has a 2xx status code
+func (o *AuthResetPasswordForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this auth reset password forbidden response has a 3xx status code
+func (o *AuthResetPasswordForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this auth reset password forbidden response has a 4xx status code
+func (o *AuthResetPasswordForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this auth reset password forbidden response has a 5xx status code
+func (o *AuthResetPasswordForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this auth reset password forbidden response a status code equal to that given
+func (o *AuthResetPasswordForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AuthResetPasswordForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AuthResetPasswordForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AuthResetPasswordForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewAuthResetPasswordNotFound() *AuthResetPasswordNotFound {
 	return &AuthResetPasswordNotFound{}
 }
 
-/* AuthResetPasswordNotFound describes a response with status code 404, with default header values.
+/*
+AuthResetPasswordNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type AuthResetPasswordNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this auth reset password not found response has a 2xx status code
+func (o *AuthResetPasswordNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this auth reset password not found response has a 3xx status code
+func (o *AuthResetPasswordNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this auth reset password not found response has a 4xx status code
+func (o *AuthResetPasswordNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this auth reset password not found response has a 5xx status code
+func (o *AuthResetPasswordNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this auth reset password not found response a status code equal to that given
+func (o *AuthResetPasswordNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AuthResetPasswordNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AuthResetPasswordNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AuthResetPasswordNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewAuthResetPasswordInternalServerError() *AuthResetPasswordInternalServerE
 	return &AuthResetPasswordInternalServerError{}
 }
 
-/* AuthResetPasswordInternalServerError describes a response with status code 500, with default header values.
+/*
+AuthResetPasswordInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AuthResetPasswordInternalServerError struct {
 }
 
+// IsSuccess returns true when this auth reset password internal server error response has a 2xx status code
+func (o *AuthResetPasswordInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this auth reset password internal server error response has a 3xx status code
+func (o *AuthResetPasswordInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this auth reset password internal server error response has a 4xx status code
+func (o *AuthResetPasswordInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this auth reset password internal server error response has a 5xx status code
+func (o *AuthResetPasswordInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this auth reset password internal server error response a status code equal to that given
+func (o *AuthResetPasswordInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AuthResetPasswordInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordInternalServerError ", 500)
+}
+
+func (o *AuthResetPasswordInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordInternalServerError ", 500)
 }
 

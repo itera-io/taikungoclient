@@ -54,10 +54,12 @@ func NewKubeConfigDownloadParamsWithHTTPClient(client *http.Client) *KubeConfigD
 	}
 }
 
-/* KubeConfigDownloadParams contains all the parameters to send to the API endpoint
-   for the kube config download operation.
+/*
+KubeConfigDownloadParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the kube config download operation.
+
+	Typically these are written to a http.Request.
 */
 type KubeConfigDownloadParams struct {
 

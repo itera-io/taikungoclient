@@ -69,7 +69,8 @@ func NewAlertingIntegrationsCreateOK() *AlertingIntegrationsCreateOK {
 	return &AlertingIntegrationsCreateOK{}
 }
 
-/* AlertingIntegrationsCreateOK describes a response with status code 200, with default header values.
+/*
+AlertingIntegrationsCreateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type AlertingIntegrationsCreateOK struct {
 	Payload *models.APIResponse
 }
 
+// IsSuccess returns true when this alerting integrations create o k response has a 2xx status code
+func (o *AlertingIntegrationsCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this alerting integrations create o k response has a 3xx status code
+func (o *AlertingIntegrationsCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations create o k response has a 4xx status code
+func (o *AlertingIntegrationsCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting integrations create o k response has a 5xx status code
+func (o *AlertingIntegrationsCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations create o k response a status code equal to that given
+func (o *AlertingIntegrationsCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AlertingIntegrationsCreateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *AlertingIntegrationsCreateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *AlertingIntegrationsCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewAlertingIntegrationsCreateBadRequest() *AlertingIntegrationsCreateBadReq
 	return &AlertingIntegrationsCreateBadRequest{}
 }
 
-/* AlertingIntegrationsCreateBadRequest describes a response with status code 400, with default header values.
+/*
+AlertingIntegrationsCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type AlertingIntegrationsCreateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations create bad request response has a 2xx status code
+func (o *AlertingIntegrationsCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations create bad request response has a 3xx status code
+func (o *AlertingIntegrationsCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations create bad request response has a 4xx status code
+func (o *AlertingIntegrationsCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations create bad request response has a 5xx status code
+func (o *AlertingIntegrationsCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations create bad request response a status code equal to that given
+func (o *AlertingIntegrationsCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AlertingIntegrationsCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AlertingIntegrationsCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AlertingIntegrationsCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewAlertingIntegrationsCreateUnauthorized() *AlertingIntegrationsCreateUnau
 	return &AlertingIntegrationsCreateUnauthorized{}
 }
 
-/* AlertingIntegrationsCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+AlertingIntegrationsCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type AlertingIntegrationsCreateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations create unauthorized response has a 2xx status code
+func (o *AlertingIntegrationsCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations create unauthorized response has a 3xx status code
+func (o *AlertingIntegrationsCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations create unauthorized response has a 4xx status code
+func (o *AlertingIntegrationsCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations create unauthorized response has a 5xx status code
+func (o *AlertingIntegrationsCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations create unauthorized response a status code equal to that given
+func (o *AlertingIntegrationsCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AlertingIntegrationsCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AlertingIntegrationsCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AlertingIntegrationsCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewAlertingIntegrationsCreateForbidden() *AlertingIntegrationsCreateForbidd
 	return &AlertingIntegrationsCreateForbidden{}
 }
 
-/* AlertingIntegrationsCreateForbidden describes a response with status code 403, with default header values.
+/*
+AlertingIntegrationsCreateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type AlertingIntegrationsCreateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations create forbidden response has a 2xx status code
+func (o *AlertingIntegrationsCreateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations create forbidden response has a 3xx status code
+func (o *AlertingIntegrationsCreateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations create forbidden response has a 4xx status code
+func (o *AlertingIntegrationsCreateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations create forbidden response has a 5xx status code
+func (o *AlertingIntegrationsCreateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations create forbidden response a status code equal to that given
+func (o *AlertingIntegrationsCreateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *AlertingIntegrationsCreateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *AlertingIntegrationsCreateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *AlertingIntegrationsCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewAlertingIntegrationsCreateNotFound() *AlertingIntegrationsCreateNotFound
 	return &AlertingIntegrationsCreateNotFound{}
 }
 
-/* AlertingIntegrationsCreateNotFound describes a response with status code 404, with default header values.
+/*
+AlertingIntegrationsCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type AlertingIntegrationsCreateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this alerting integrations create not found response has a 2xx status code
+func (o *AlertingIntegrationsCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations create not found response has a 3xx status code
+func (o *AlertingIntegrationsCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations create not found response has a 4xx status code
+func (o *AlertingIntegrationsCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this alerting integrations create not found response has a 5xx status code
+func (o *AlertingIntegrationsCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this alerting integrations create not found response a status code equal to that given
+func (o *AlertingIntegrationsCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AlertingIntegrationsCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AlertingIntegrationsCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AlertingIntegrationsCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewAlertingIntegrationsCreateInternalServerError() *AlertingIntegrationsCre
 	return &AlertingIntegrationsCreateInternalServerError{}
 }
 
-/* AlertingIntegrationsCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+AlertingIntegrationsCreateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type AlertingIntegrationsCreateInternalServerError struct {
 }
 
+// IsSuccess returns true when this alerting integrations create internal server error response has a 2xx status code
+func (o *AlertingIntegrationsCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this alerting integrations create internal server error response has a 3xx status code
+func (o *AlertingIntegrationsCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this alerting integrations create internal server error response has a 4xx status code
+func (o *AlertingIntegrationsCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this alerting integrations create internal server error response has a 5xx status code
+func (o *AlertingIntegrationsCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this alerting integrations create internal server error response a status code equal to that given
+func (o *AlertingIntegrationsCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AlertingIntegrationsCreateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateInternalServerError ", 500)
+}
+
+func (o *AlertingIntegrationsCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateInternalServerError ", 500)
 }
 

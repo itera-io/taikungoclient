@@ -32,21 +32,35 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	UsersChangePassword(params *UsersChangePasswordParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersChangePasswordOK, error)
 
+	UsersConfirmEmail(params *UsersConfirmEmailParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersConfirmEmailOK, error)
+
 	UsersCreate(params *UsersCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersCreateOK, error)
 
 	UsersDelete(params *UsersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersDeleteOK, *UsersDeleteNoContent, error)
 
+	UsersDeleteMyAccount(params *UsersDeleteMyAccountParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersDeleteMyAccountOK, error)
+
 	UsersDetails(params *UsersDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersDetailsOK, error)
+
+	UsersExportCsv(params *UsersExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersExportCsvOK, error)
 
 	UsersList(params *UsersListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersListOK, error)
 
+	UsersListSelector(params *UsersListSelectorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersListSelectorOK, error)
+
+	UsersToggleMaintenanceMode(params *UsersToggleMaintenanceModeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersToggleMaintenanceModeOK, error)
+
+	UsersToggleNotificationMode(params *UsersToggleNotificationModeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersToggleNotificationModeOK, error)
+
 	UsersUpdateUser(params *UsersUpdateUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersUpdateUserOK, error)
+
+	UsersVerifyEmail(params *UsersVerifyEmailParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersVerifyEmailOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-  UsersChangePassword changes user password
+UsersChangePassword changes user password
 */
 func (a *Client) UsersChangePassword(params *UsersChangePasswordParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersChangePasswordOK, error) {
 	// TODO: Validate the params before sending
@@ -85,7 +99,46 @@ func (a *Client) UsersChangePassword(params *UsersChangePasswordParams, authInfo
 }
 
 /*
-  UsersCreate creates a new user only valid for admin and moderators moderators don t need to fill the organization Id parameter for admin also by default his organization Id
+UsersConfirmEmail confirms user email
+*/
+func (a *Client) UsersConfirmEmail(params *UsersConfirmEmailParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersConfirmEmailOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUsersConfirmEmailParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Users_ConfirmEmail",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Users/confirmemail",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UsersConfirmEmailReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UsersConfirmEmailOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Users_ConfirmEmail: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UsersCreate creates a new user
 */
 func (a *Client) UsersCreate(params *UsersCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -124,7 +177,7 @@ func (a *Client) UsersCreate(params *UsersCreateParams, authInfo runtime.ClientA
 }
 
 /*
-  UsersDelete deletes user only valid for admin moderators and partner reminder moderators can delete users from their organization only
+UsersDelete deletes user only valid for admin moderators and partner reminder moderators can delete users from their organization only
 */
 func (a *Client) UsersDelete(params *UsersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersDeleteOK, *UsersDeleteNoContent, error) {
 	// TODO: Validate the params before sending
@@ -164,7 +217,46 @@ func (a *Client) UsersDelete(params *UsersDeleteParams, authInfo runtime.ClientA
 }
 
 /*
-  UsersDetails users details API
+UsersDeleteMyAccount deletes my account
+*/
+func (a *Client) UsersDeleteMyAccount(params *UsersDeleteMyAccountParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersDeleteMyAccountOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUsersDeleteMyAccountParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Users_DeleteMyAccount",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Users/delete",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UsersDeleteMyAccountReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UsersDeleteMyAccountOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Users_DeleteMyAccount: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UsersDetails users details API
 */
 func (a *Client) UsersDetails(params *UsersDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersDetailsOK, error) {
 	// TODO: Validate the params before sending
@@ -203,7 +295,46 @@ func (a *Client) UsersDetails(params *UsersDetailsParams, authInfo runtime.Clien
 }
 
 /*
-  UsersList retrieves all users only valid for admin
+UsersExportCsv exports csv file
+*/
+func (a *Client) UsersExportCsv(params *UsersExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersExportCsvOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUsersExportCsvParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Users_ExportCsv",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Users/export",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UsersExportCsvReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UsersExportCsvOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Users_ExportCsv: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UsersList retrieves all users only valid for admin
 */
 func (a *Client) UsersList(params *UsersListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersListOK, error) {
 	// TODO: Validate the params before sending
@@ -242,7 +373,124 @@ func (a *Client) UsersList(params *UsersListParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  UsersUpdateUser updates user credential
+UsersListSelector retrieves projects according to user role
+*/
+func (a *Client) UsersListSelector(params *UsersListSelectorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersListSelectorOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUsersListSelectorParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Users_ListSelector",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Users/list",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UsersListSelectorReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UsersListSelectorOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Users_ListSelector: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UsersToggleMaintenanceMode users toggle maintenance mode API
+*/
+func (a *Client) UsersToggleMaintenanceMode(params *UsersToggleMaintenanceModeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersToggleMaintenanceModeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUsersToggleMaintenanceModeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Users_ToggleMaintenanceMode",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Users/togglemaintenancemode",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UsersToggleMaintenanceModeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UsersToggleMaintenanceModeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Users_ToggleMaintenanceMode: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UsersToggleNotificationMode users toggle notification mode API
+*/
+func (a *Client) UsersToggleNotificationMode(params *UsersToggleNotificationModeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersToggleNotificationModeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUsersToggleNotificationModeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Users_ToggleNotificationMode",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Users/togglenotificationmode",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UsersToggleNotificationModeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UsersToggleNotificationModeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Users_ToggleNotificationMode: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UsersUpdateUser updates user credential
 */
 func (a *Client) UsersUpdateUser(params *UsersUpdateUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersUpdateUserOK, error) {
 	// TODO: Validate the params before sending
@@ -277,6 +525,45 @@ func (a *Client) UsersUpdateUser(params *UsersUpdateUserParams, authInfo runtime
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Users_UpdateUser: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UsersVerifyEmail verifies user email
+*/
+func (a *Client) UsersVerifyEmail(params *UsersVerifyEmailParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersVerifyEmailOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUsersVerifyEmailParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Users_VerifyEmail",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Users/verifyemail",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UsersVerifyEmailReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UsersVerifyEmailOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Users_VerifyEmail: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

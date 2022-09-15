@@ -53,10 +53,12 @@ func NewRepositoryListParamsWithHTTPClient(client *http.Client) *RepositoryListP
 	}
 }
 
-/* RepositoryListParams contains all the parameters to send to the API endpoint
-   for the repository list operation.
+/*
+RepositoryListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the repository list operation.
+
+	Typically these are written to a http.Request.
 */
 type RepositoryListParams struct {
 

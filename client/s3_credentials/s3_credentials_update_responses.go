@@ -69,7 +69,8 @@ func NewS3CredentialsUpdateOK() *S3CredentialsUpdateOK {
 	return &S3CredentialsUpdateOK{}
 }
 
-/* S3CredentialsUpdateOK describes a response with status code 200, with default header values.
+/*
+S3CredentialsUpdateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type S3CredentialsUpdateOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this s3 credentials update o k response has a 2xx status code
+func (o *S3CredentialsUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this s3 credentials update o k response has a 3xx status code
+func (o *S3CredentialsUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials update o k response has a 4xx status code
+func (o *S3CredentialsUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this s3 credentials update o k response has a 5xx status code
+func (o *S3CredentialsUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this s3 credentials update o k response a status code equal to that given
+func (o *S3CredentialsUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *S3CredentialsUpdateOK) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *S3CredentialsUpdateOK) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *S3CredentialsUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewS3CredentialsUpdateBadRequest() *S3CredentialsUpdateBadRequest {
 	return &S3CredentialsUpdateBadRequest{}
 }
 
-/* S3CredentialsUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+S3CredentialsUpdateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type S3CredentialsUpdateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this s3 credentials update bad request response has a 2xx status code
+func (o *S3CredentialsUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this s3 credentials update bad request response has a 3xx status code
+func (o *S3CredentialsUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials update bad request response has a 4xx status code
+func (o *S3CredentialsUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this s3 credentials update bad request response has a 5xx status code
+func (o *S3CredentialsUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this s3 credentials update bad request response a status code equal to that given
+func (o *S3CredentialsUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *S3CredentialsUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *S3CredentialsUpdateBadRequest) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *S3CredentialsUpdateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewS3CredentialsUpdateUnauthorized() *S3CredentialsUpdateUnauthorized {
 	return &S3CredentialsUpdateUnauthorized{}
 }
 
-/* S3CredentialsUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+S3CredentialsUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type S3CredentialsUpdateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this s3 credentials update unauthorized response has a 2xx status code
+func (o *S3CredentialsUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this s3 credentials update unauthorized response has a 3xx status code
+func (o *S3CredentialsUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials update unauthorized response has a 4xx status code
+func (o *S3CredentialsUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this s3 credentials update unauthorized response has a 5xx status code
+func (o *S3CredentialsUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this s3 credentials update unauthorized response a status code equal to that given
+func (o *S3CredentialsUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *S3CredentialsUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *S3CredentialsUpdateUnauthorized) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *S3CredentialsUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewS3CredentialsUpdateForbidden() *S3CredentialsUpdateForbidden {
 	return &S3CredentialsUpdateForbidden{}
 }
 
-/* S3CredentialsUpdateForbidden describes a response with status code 403, with default header values.
+/*
+S3CredentialsUpdateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type S3CredentialsUpdateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this s3 credentials update forbidden response has a 2xx status code
+func (o *S3CredentialsUpdateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this s3 credentials update forbidden response has a 3xx status code
+func (o *S3CredentialsUpdateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials update forbidden response has a 4xx status code
+func (o *S3CredentialsUpdateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this s3 credentials update forbidden response has a 5xx status code
+func (o *S3CredentialsUpdateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this s3 credentials update forbidden response a status code equal to that given
+func (o *S3CredentialsUpdateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *S3CredentialsUpdateForbidden) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *S3CredentialsUpdateForbidden) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *S3CredentialsUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewS3CredentialsUpdateNotFound() *S3CredentialsUpdateNotFound {
 	return &S3CredentialsUpdateNotFound{}
 }
 
-/* S3CredentialsUpdateNotFound describes a response with status code 404, with default header values.
+/*
+S3CredentialsUpdateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type S3CredentialsUpdateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this s3 credentials update not found response has a 2xx status code
+func (o *S3CredentialsUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this s3 credentials update not found response has a 3xx status code
+func (o *S3CredentialsUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials update not found response has a 4xx status code
+func (o *S3CredentialsUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this s3 credentials update not found response has a 5xx status code
+func (o *S3CredentialsUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this s3 credentials update not found response a status code equal to that given
+func (o *S3CredentialsUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *S3CredentialsUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *S3CredentialsUpdateNotFound) String() string {
+	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *S3CredentialsUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewS3CredentialsUpdateInternalServerError() *S3CredentialsUpdateInternalSer
 	return &S3CredentialsUpdateInternalServerError{}
 }
 
-/* S3CredentialsUpdateInternalServerError describes a response with status code 500, with default header values.
+/*
+S3CredentialsUpdateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type S3CredentialsUpdateInternalServerError struct {
 }
 
+// IsSuccess returns true when this s3 credentials update internal server error response has a 2xx status code
+func (o *S3CredentialsUpdateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this s3 credentials update internal server error response has a 3xx status code
+func (o *S3CredentialsUpdateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this s3 credentials update internal server error response has a 4xx status code
+func (o *S3CredentialsUpdateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this s3 credentials update internal server error response has a 5xx status code
+func (o *S3CredentialsUpdateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this s3 credentials update internal server error response a status code equal to that given
+func (o *S3CredentialsUpdateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *S3CredentialsUpdateInternalServerError) Error() string {
+	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateInternalServerError ", 500)
+}
+
+func (o *S3CredentialsUpdateInternalServerError) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/S3Credentials][%d] s3CredentialsUpdateInternalServerError ", 500)
 }
 

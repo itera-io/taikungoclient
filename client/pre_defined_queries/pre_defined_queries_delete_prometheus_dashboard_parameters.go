@@ -53,10 +53,12 @@ func NewPreDefinedQueriesDeletePrometheusDashboardParamsWithHTTPClient(client *h
 	}
 }
 
-/* PreDefinedQueriesDeletePrometheusDashboardParams contains all the parameters to send to the API endpoint
-   for the pre defined queries delete prometheus dashboard operation.
+/*
+PreDefinedQueriesDeletePrometheusDashboardParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the pre defined queries delete prometheus dashboard operation.
+
+	Typically these are written to a http.Request.
 */
 type PreDefinedQueriesDeletePrometheusDashboardParams struct {
 

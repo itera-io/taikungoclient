@@ -30,9 +30,13 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	AwsAwsOwners(params *AwsAwsOwnersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsAwsOwnersOK, error)
+
 	AwsAwsZoneList(params *AwsAwsZoneListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsAwsZoneListOK, error)
 
 	AwsCreate(params *AwsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsCreateOK, error)
+
+	AwsList(params *AwsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsListOK, error)
 
 	AwsRegionList(params *AwsRegionListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsRegionListOK, error)
 
@@ -42,7 +46,46 @@ type ClientService interface {
 }
 
 /*
-  AwsAwsZoneList fetches aws zones
+AwsAwsOwners retrieves aws verified owner list
+*/
+func (a *Client) AwsAwsOwners(params *AwsAwsOwnersParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsAwsOwnersOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAwsAwsOwnersParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Aws_AwsOwners",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Aws/owners",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AwsAwsOwnersReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AwsAwsOwnersOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Aws_AwsOwners: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AwsAwsZoneList fetches aws zones
 */
 func (a *Client) AwsAwsZoneList(params *AwsAwsZoneListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsAwsZoneListOK, error) {
 	// TODO: Validate the params before sending
@@ -81,7 +124,7 @@ func (a *Client) AwsAwsZoneList(params *AwsAwsZoneListParams, authInfo runtime.C
 }
 
 /*
-  AwsCreate adds aws credentials
+AwsCreate adds aws credentials
 */
 func (a *Client) AwsCreate(params *AwsCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +163,46 @@ func (a *Client) AwsCreate(params *AwsCreateParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  AwsRegionList retrieves aws regions list
+AwsList retrieves list of aws cloud credentials
+*/
+func (a *Client) AwsList(params *AwsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAwsListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Aws_List",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/Aws/list",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AwsListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AwsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Aws_List: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AwsRegionList retrieves aws regions list
 */
 func (a *Client) AwsRegionList(params *AwsRegionListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsRegionListOK, error) {
 	// TODO: Validate the params before sending
@@ -159,7 +241,7 @@ func (a *Client) AwsRegionList(params *AwsRegionListParams, authInfo runtime.Cli
 }
 
 /*
-  AwsUpdate updates a w s credentials
+AwsUpdate updates a w s credentials
 */
 func (a *Client) AwsUpdate(params *AwsUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AwsUpdateOK, error) {
 	// TODO: Validate the params before sending

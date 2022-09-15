@@ -54,10 +54,12 @@ func NewStandAloneActionsStartParamsWithHTTPClient(client *http.Client) *StandAl
 	}
 }
 
-/* StandAloneActionsStartParams contains all the parameters to send to the API endpoint
-   for the stand alone actions start operation.
+/*
+StandAloneActionsStartParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the stand alone actions start operation.
+
+	Typically these are written to a http.Request.
 */
 type StandAloneActionsStartParams struct {
 

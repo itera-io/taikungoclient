@@ -69,7 +69,8 @@ func NewOrganizationsUpdateOK() *OrganizationsUpdateOK {
 	return &OrganizationsUpdateOK{}
 }
 
-/* OrganizationsUpdateOK describes a response with status code 200, with default header values.
+/*
+OrganizationsUpdateOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type OrganizationsUpdateOK struct {
 	Payload models.Unit
 }
 
+// IsSuccess returns true when this organizations update o k response has a 2xx status code
+func (o *OrganizationsUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this organizations update o k response has a 3xx status code
+func (o *OrganizationsUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update o k response has a 4xx status code
+func (o *OrganizationsUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations update o k response has a 5xx status code
+func (o *OrganizationsUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations update o k response a status code equal to that given
+func (o *OrganizationsUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OrganizationsUpdateOK) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *OrganizationsUpdateOK) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *OrganizationsUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
@@ -99,7 +130,8 @@ func NewOrganizationsUpdateBadRequest() *OrganizationsUpdateBadRequest {
 	return &OrganizationsUpdateBadRequest{}
 }
 
-/* OrganizationsUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+OrganizationsUpdateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -107,9 +139,39 @@ type OrganizationsUpdateBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this organizations update bad request response has a 2xx status code
+func (o *OrganizationsUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations update bad request response has a 3xx status code
+func (o *OrganizationsUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update bad request response has a 4xx status code
+func (o *OrganizationsUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations update bad request response has a 5xx status code
+func (o *OrganizationsUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations update bad request response a status code equal to that given
+func (o *OrganizationsUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OrganizationsUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OrganizationsUpdateBadRequest) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OrganizationsUpdateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -131,7 +193,8 @@ func NewOrganizationsUpdateUnauthorized() *OrganizationsUpdateUnauthorized {
 	return &OrganizationsUpdateUnauthorized{}
 }
 
-/* OrganizationsUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+OrganizationsUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -139,9 +202,39 @@ type OrganizationsUpdateUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations update unauthorized response has a 2xx status code
+func (o *OrganizationsUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations update unauthorized response has a 3xx status code
+func (o *OrganizationsUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update unauthorized response has a 4xx status code
+func (o *OrganizationsUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations update unauthorized response has a 5xx status code
+func (o *OrganizationsUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations update unauthorized response a status code equal to that given
+func (o *OrganizationsUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OrganizationsUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OrganizationsUpdateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OrganizationsUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -163,7 +256,8 @@ func NewOrganizationsUpdateForbidden() *OrganizationsUpdateForbidden {
 	return &OrganizationsUpdateForbidden{}
 }
 
-/* OrganizationsUpdateForbidden describes a response with status code 403, with default header values.
+/*
+OrganizationsUpdateForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -171,9 +265,39 @@ type OrganizationsUpdateForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations update forbidden response has a 2xx status code
+func (o *OrganizationsUpdateForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations update forbidden response has a 3xx status code
+func (o *OrganizationsUpdateForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update forbidden response has a 4xx status code
+func (o *OrganizationsUpdateForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations update forbidden response has a 5xx status code
+func (o *OrganizationsUpdateForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations update forbidden response a status code equal to that given
+func (o *OrganizationsUpdateForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *OrganizationsUpdateForbidden) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateForbidden  %+v", 403, o.Payload)
 }
+
+func (o *OrganizationsUpdateForbidden) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateForbidden  %+v", 403, o.Payload)
+}
+
 func (o *OrganizationsUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -195,7 +319,8 @@ func NewOrganizationsUpdateNotFound() *OrganizationsUpdateNotFound {
 	return &OrganizationsUpdateNotFound{}
 }
 
-/* OrganizationsUpdateNotFound describes a response with status code 404, with default header values.
+/*
+OrganizationsUpdateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -203,9 +328,39 @@ type OrganizationsUpdateNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this organizations update not found response has a 2xx status code
+func (o *OrganizationsUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations update not found response has a 3xx status code
+func (o *OrganizationsUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update not found response has a 4xx status code
+func (o *OrganizationsUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this organizations update not found response has a 5xx status code
+func (o *OrganizationsUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this organizations update not found response a status code equal to that given
+func (o *OrganizationsUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OrganizationsUpdateNotFound) Error() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OrganizationsUpdateNotFound) String() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OrganizationsUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -227,14 +382,44 @@ func NewOrganizationsUpdateInternalServerError() *OrganizationsUpdateInternalSer
 	return &OrganizationsUpdateInternalServerError{}
 }
 
-/* OrganizationsUpdateInternalServerError describes a response with status code 500, with default header values.
+/*
+OrganizationsUpdateInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type OrganizationsUpdateInternalServerError struct {
 }
 
+// IsSuccess returns true when this organizations update internal server error response has a 2xx status code
+func (o *OrganizationsUpdateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this organizations update internal server error response has a 3xx status code
+func (o *OrganizationsUpdateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this organizations update internal server error response has a 4xx status code
+func (o *OrganizationsUpdateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this organizations update internal server error response has a 5xx status code
+func (o *OrganizationsUpdateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this organizations update internal server error response a status code equal to that given
+func (o *OrganizationsUpdateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OrganizationsUpdateInternalServerError) Error() string {
+	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateInternalServerError ", 500)
+}
+
+func (o *OrganizationsUpdateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateInternalServerError ", 500)
 }
 

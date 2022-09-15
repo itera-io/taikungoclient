@@ -54,10 +54,12 @@ func NewAlertingIntegrationsEditParamsWithHTTPClient(client *http.Client) *Alert
 	}
 }
 
-/* AlertingIntegrationsEditParams contains all the parameters to send to the API endpoint
-   for the alerting integrations edit operation.
+/*
+AlertingIntegrationsEditParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the alerting integrations edit operation.
+
+	Typically these are written to a http.Request.
 */
 type AlertingIntegrationsEditParams struct {
 

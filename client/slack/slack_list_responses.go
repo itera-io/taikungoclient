@@ -69,7 +69,8 @@ func NewSlackListOK() *SlackListOK {
 	return &SlackListOK{}
 }
 
-/* SlackListOK describes a response with status code 200, with default header values.
+/*
+SlackListOK describes a response with status code 200, with default header values.
 
 Success
 */
@@ -77,9 +78,39 @@ type SlackListOK struct {
 	Payload *models.SlackConfigurationList
 }
 
+// IsSuccess returns true when this slack list o k response has a 2xx status code
+func (o *SlackListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this slack list o k response has a 3xx status code
+func (o *SlackListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack list o k response has a 4xx status code
+func (o *SlackListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this slack list o k response has a 5xx status code
+func (o *SlackListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack list o k response a status code equal to that given
+func (o *SlackListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SlackListOK) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListOK  %+v", 200, o.Payload)
 }
+
+func (o *SlackListOK) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListOK  %+v", 200, o.Payload)
+}
+
 func (o *SlackListOK) GetPayload() *models.SlackConfigurationList {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewSlackListBadRequest() *SlackListBadRequest {
 	return &SlackListBadRequest{}
 }
 
-/* SlackListBadRequest describes a response with status code 400, with default header values.
+/*
+SlackListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type SlackListBadRequest struct {
 	Payload *models.ValidationProblemDetails
 }
 
+// IsSuccess returns true when this slack list bad request response has a 2xx status code
+func (o *SlackListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack list bad request response has a 3xx status code
+func (o *SlackListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack list bad request response has a 4xx status code
+func (o *SlackListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack list bad request response has a 5xx status code
+func (o *SlackListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack list bad request response a status code equal to that given
+func (o *SlackListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SlackListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SlackListBadRequest) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SlackListBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewSlackListUnauthorized() *SlackListUnauthorized {
 	return &SlackListUnauthorized{}
 }
 
-/* SlackListUnauthorized describes a response with status code 401, with default header values.
+/*
+SlackListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type SlackListUnauthorized struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this slack list unauthorized response has a 2xx status code
+func (o *SlackListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack list unauthorized response has a 3xx status code
+func (o *SlackListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack list unauthorized response has a 4xx status code
+func (o *SlackListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack list unauthorized response has a 5xx status code
+func (o *SlackListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack list unauthorized response a status code equal to that given
+func (o *SlackListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SlackListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SlackListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SlackListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewSlackListForbidden() *SlackListForbidden {
 	return &SlackListForbidden{}
 }
 
-/* SlackListForbidden describes a response with status code 403, with default header values.
+/*
+SlackListForbidden describes a response with status code 403, with default header values.
 
 Forbidden
 */
@@ -173,9 +267,39 @@ type SlackListForbidden struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this slack list forbidden response has a 2xx status code
+func (o *SlackListForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack list forbidden response has a 3xx status code
+func (o *SlackListForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack list forbidden response has a 4xx status code
+func (o *SlackListForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack list forbidden response has a 5xx status code
+func (o *SlackListForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack list forbidden response a status code equal to that given
+func (o *SlackListForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
 func (o *SlackListForbidden) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListForbidden  %+v", 403, o.Payload)
 }
+
+func (o *SlackListForbidden) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListForbidden  %+v", 403, o.Payload)
+}
+
 func (o *SlackListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewSlackListNotFound() *SlackListNotFound {
 	return &SlackListNotFound{}
 }
 
-/* SlackListNotFound describes a response with status code 404, with default header values.
+/*
+SlackListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -205,9 +330,39 @@ type SlackListNotFound struct {
 	Payload *models.ProblemDetails
 }
 
+// IsSuccess returns true when this slack list not found response has a 2xx status code
+func (o *SlackListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack list not found response has a 3xx status code
+func (o *SlackListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack list not found response has a 4xx status code
+func (o *SlackListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this slack list not found response has a 5xx status code
+func (o *SlackListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this slack list not found response a status code equal to that given
+func (o *SlackListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SlackListNotFound) Error() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SlackListNotFound) String() string {
+	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SlackListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
@@ -229,14 +384,44 @@ func NewSlackListInternalServerError() *SlackListInternalServerError {
 	return &SlackListInternalServerError{}
 }
 
-/* SlackListInternalServerError describes a response with status code 500, with default header values.
+/*
+SlackListInternalServerError describes a response with status code 500, with default header values.
 
 Server Error
 */
 type SlackListInternalServerError struct {
 }
 
+// IsSuccess returns true when this slack list internal server error response has a 2xx status code
+func (o *SlackListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this slack list internal server error response has a 3xx status code
+func (o *SlackListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this slack list internal server error response has a 4xx status code
+func (o *SlackListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this slack list internal server error response has a 5xx status code
+func (o *SlackListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this slack list internal server error response a status code equal to that given
+func (o *SlackListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SlackListInternalServerError) Error() string {
+	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListInternalServerError ", 500)
+}
+
+func (o *SlackListInternalServerError) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListInternalServerError ", 500)
 }
 

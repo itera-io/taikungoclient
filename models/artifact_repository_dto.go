@@ -23,6 +23,9 @@ type ArtifactRepositoryDto struct {
 	// display name
 	DisplayName string `json:"displayName"`
 
+	// has catalog app
+	HasCatalogApp bool `json:"hasCatalogApp"`
+
 	// is bound
 	IsBound bool `json:"isBound"`
 

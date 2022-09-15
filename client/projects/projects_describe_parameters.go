@@ -53,12 +53,17 @@ func NewProjectsDescribeParamsWithHTTPClient(client *http.Client) *ProjectsDescr
 	}
 }
 
-/* ProjectsDescribeParams contains all the parameters to send to the API endpoint
-   for the projects describe operation.
+/*
+ProjectsDescribeParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the projects describe operation.
+
+	Typically these are written to a http.Request.
 */
 type ProjectsDescribeParams struct {
+
+	// IsYaml.
+	IsYaml *bool
 
 	// ProjectID.
 	//
@@ -121,6 +126,17 @@ func (o *ProjectsDescribeParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithIsYaml adds the isYaml to the projects describe params
+func (o *ProjectsDescribeParams) WithIsYaml(isYaml *bool) *ProjectsDescribeParams {
+	o.SetIsYaml(isYaml)
+	return o
+}
+
+// SetIsYaml adds the isYaml to the projects describe params
+func (o *ProjectsDescribeParams) SetIsYaml(isYaml *bool) {
+	o.IsYaml = isYaml
+}
+
 // WithProjectID adds the projectID to the projects describe params
 func (o *ProjectsDescribeParams) WithProjectID(projectID int32) *ProjectsDescribeParams {
 	o.SetProjectID(projectID)
@@ -150,6 +166,23 @@ func (o *ProjectsDescribeParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
+
+	if o.IsYaml != nil {
+
+		// query param isYaml
+		var qrIsYaml bool
+
+		if o.IsYaml != nil {
+			qrIsYaml = *o.IsYaml
+		}
+		qIsYaml := swag.FormatBool(qrIsYaml)
+		if qIsYaml != "" {
+
+			if err := r.SetQueryParam("isYaml", qIsYaml); err != nil {
+				return err
+			}
+		}
+	}
 
 	// path param projectId
 	if err := r.SetPathParam("projectId", swag.FormatInt32(o.ProjectID)); err != nil {

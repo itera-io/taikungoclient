@@ -54,10 +54,12 @@ func NewAzureLocationsParamsWithHTTPClient(client *http.Client) *AzureLocationsP
 	}
 }
 
-/* AzureLocationsParams contains all the parameters to send to the API endpoint
-   for the azure locations operation.
+/*
+AzureLocationsParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the azure locations operation.
+
+	Typically these are written to a http.Request.
 */
 type AzureLocationsParams struct {
 
