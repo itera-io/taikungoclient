@@ -22,9 +22,6 @@ type AzureCredentialsListDto struct {
 	// availability zone
 	AvailabilityZone string `json:"availabilityZone,omitempty"`
 
-	// created at
-	CreatedAt string `json:"createdAt,omitempty"`
-
 	// created by
 	CreatedBy string `json:"createdBy,omitempty"`
 
