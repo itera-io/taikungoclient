@@ -33,6 +33,9 @@ type CredentialsForProjectList struct {
 	// cloud type
 	CloudType CloudType `json:"cloudType,omitempty"`
 
+	// continent name
+	ContinentName string `json:"continentName,omitempty"`
+
 	// google
 	Google *GoogleCredentialForProjectDto `json:"google,omitempty"`
 
