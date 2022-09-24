@@ -42,6 +42,8 @@ type ClientService interface {
 
 	UsersDetails(params *UsersDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersDetailsOK, error)
 
+	UsersDisableUser(params *UsersDisableUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersDisableUserOK, error)
+
 	UsersExportCsv(params *UsersExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersExportCsvOK, error)
 
 	UsersForceToResetPassword(params *UsersForceToResetPasswordParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersForceToResetPasswordOK, error)
@@ -49,6 +51,8 @@ type ClientService interface {
 	UsersList(params *UsersListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersListOK, error)
 
 	UsersListSelector(params *UsersListSelectorParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersListSelectorOK, error)
+
+	UsersToggleDemoMode(params *UsersToggleDemoModeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersToggleDemoModeOK, error)
 
 	UsersToggleMaintenanceMode(params *UsersToggleMaintenanceModeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersToggleMaintenanceModeOK, error)
 
@@ -297,6 +301,45 @@ func (a *Client) UsersDetails(params *UsersDetailsParams, authInfo runtime.Clien
 }
 
 /*
+UsersDisableUser disables user
+*/
+func (a *Client) UsersDisableUser(params *UsersDisableUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersDisableUserOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUsersDisableUserParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Users_DisableUser",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Users/disable",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UsersDisableUserReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UsersDisableUserOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Users_DisableUser: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 UsersExportCsv exports csv file
 */
 func (a *Client) UsersExportCsv(params *UsersExportCsvParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersExportCsvOK, error) {
@@ -449,6 +492,45 @@ func (a *Client) UsersListSelector(params *UsersListSelectorParams, authInfo run
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for Users_ListSelector: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UsersToggleDemoMode toggles demo mode
+*/
+func (a *Client) UsersToggleDemoMode(params *UsersToggleDemoModeParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UsersToggleDemoModeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUsersToggleDemoModeParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "Users_ToggleDemoMode",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/Users/toggle-demo-mode",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UsersToggleDemoModeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UsersToggleDemoModeOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for Users_ToggleDemoMode: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

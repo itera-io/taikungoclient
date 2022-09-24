@@ -21,6 +21,9 @@ type UserDetails struct {
 	// data
 	Data *UserForListDto `json:"data,omitempty"`
 
+	// demo organization
+	DemoOrganization int32 `json:"demoOrganization,omitempty"`
+
 	// is maintenance mode enabled
 	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
 }
