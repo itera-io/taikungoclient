@@ -17,11 +17,11 @@ import (
 // swagger:model GroupedShowbackSummariesByLabelDto
 type GroupedShowbackSummariesByLabelDto struct {
 
-	// price
-	Price float64 `json:"price,omitempty"`
+	// by label
+	ByLabel string `json:"byLabel,omitempty"`
 
-	// start date
-	StartDate string `json:"startDate,omitempty"`
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
 }
 
 // Validate validates this grouped showback summaries by label dto

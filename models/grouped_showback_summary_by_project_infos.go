@@ -25,12 +25,6 @@ type GroupedShowbackSummaryByProjectInfos struct {
 	// data
 	Data []*GroupedShowbackSummariesByProjectDto `json:"data"`
 
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
 	// rule name
 	RuleName string `json:"ruleName,omitempty"`
 

@@ -17,11 +17,11 @@ import (
 // swagger:model GroupedShowbackSummariesByProjectDto
 type GroupedShowbackSummariesByProjectDto struct {
 
-	// price
-	Price float64 `json:"price,omitempty"`
+	// project name
+	ProjectName string `json:"projectName,omitempty"`
 
-	// start date
-	StartDate string `json:"startDate,omitempty"`
+	// total price
+	TotalPrice float64 `json:"totalPrice,omitempty"`
 }
 
 // Validate validates this grouped showback summaries by project dto

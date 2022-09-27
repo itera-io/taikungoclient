@@ -14,22 +14,16 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// GroupedShowbackSummaryByLabelInfos grouped showback summary by label infos
+// GroupedShowbackSummaryByLabelInfo grouped showback summary by label info
 //
-// swagger:model GroupedShowbackSummaryByLabelInfos
-type GroupedShowbackSummaryByLabelInfos struct {
+// swagger:model GroupedShowbackSummaryByLabelInfo
+type GroupedShowbackSummaryByLabelInfo struct {
 
 	// credential name
 	CredentialName string `json:"credentialName,omitempty"`
 
 	// data
 	Data []*GroupedShowbackSummariesByLabelDto `json:"data"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
 
 	// rule name
 	RuleName string `json:"ruleName,omitempty"`
@@ -38,8 +32,8 @@ type GroupedShowbackSummaryByLabelInfos struct {
 	TotalPrice float64 `json:"totalPrice,omitempty"`
 }
 
-// Validate validates this grouped showback summary by label infos
-func (m *GroupedShowbackSummaryByLabelInfos) Validate(formats strfmt.Registry) error {
+// Validate validates this grouped showback summary by label info
+func (m *GroupedShowbackSummaryByLabelInfo) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateData(formats); err != nil {
@@ -52,7 +46,7 @@ func (m *GroupedShowbackSummaryByLabelInfos) Validate(formats strfmt.Registry) e
 	return nil
 }
 
-func (m *GroupedShowbackSummaryByLabelInfos) validateData(formats strfmt.Registry) error {
+func (m *GroupedShowbackSummaryByLabelInfo) validateData(formats strfmt.Registry) error {
 	if swag.IsZero(m.Data) { // not required
 		return nil
 	}
@@ -78,8 +72,8 @@ func (m *GroupedShowbackSummaryByLabelInfos) validateData(formats strfmt.Registr
 	return nil
 }
 
-// ContextValidate validate this grouped showback summary by label infos based on the context it is used
-func (m *GroupedShowbackSummaryByLabelInfos) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this grouped showback summary by label info based on the context it is used
+func (m *GroupedShowbackSummaryByLabelInfo) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateData(ctx, formats); err != nil {
@@ -92,7 +86,7 @@ func (m *GroupedShowbackSummaryByLabelInfos) ContextValidate(ctx context.Context
 	return nil
 }
 
-func (m *GroupedShowbackSummaryByLabelInfos) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
+func (m *GroupedShowbackSummaryByLabelInfo) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Data); i++ {
 
@@ -113,7 +107,7 @@ func (m *GroupedShowbackSummaryByLabelInfos) contextValidateData(ctx context.Con
 }
 
 // MarshalBinary interface implementation
-func (m *GroupedShowbackSummaryByLabelInfos) MarshalBinary() ([]byte, error) {
+func (m *GroupedShowbackSummaryByLabelInfo) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -121,8 +115,8 @@ func (m *GroupedShowbackSummaryByLabelInfos) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *GroupedShowbackSummaryByLabelInfos) UnmarshalBinary(b []byte) error {
-	var res GroupedShowbackSummaryByLabelInfos
+func (m *GroupedShowbackSummaryByLabelInfo) UnmarshalBinary(b []byte) error {
+	var res GroupedShowbackSummaryByLabelInfo
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

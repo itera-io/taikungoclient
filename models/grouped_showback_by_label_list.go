@@ -20,7 +20,7 @@ import (
 type GroupedShowbackByLabelList struct {
 
 	// by label values
-	ByLabelValues []*GroupedShowbackSummaryByLabelInfos `json:"byLabelValues"`
+	ByLabelValues []*GroupedShowbackSummaryByLabelInfo `json:"byLabelValues"`
 }
 
 // Validate validates this grouped showback by label list

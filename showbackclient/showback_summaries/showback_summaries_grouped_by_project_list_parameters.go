@@ -75,9 +75,6 @@ type ShowbackSummariesGroupedByProjectListParams struct {
 	// Format: int32
 	OrganizationID *int32
 
-	// PeriodDuration.
-	PeriodDuration *string
-
 	// ToDate.
 	//
 	// Format: date-time
@@ -172,17 +169,6 @@ func (o *ShowbackSummariesGroupedByProjectListParams) SetOrganizationID(organiza
 	o.OrganizationID = organizationID
 }
 
-// WithPeriodDuration adds the periodDuration to the showback summaries grouped by project list params
-func (o *ShowbackSummariesGroupedByProjectListParams) WithPeriodDuration(periodDuration *string) *ShowbackSummariesGroupedByProjectListParams {
-	o.SetPeriodDuration(periodDuration)
-	return o
-}
-
-// SetPeriodDuration adds the periodDuration to the showback summaries grouped by project list params
-func (o *ShowbackSummariesGroupedByProjectListParams) SetPeriodDuration(periodDuration *string) {
-	o.PeriodDuration = periodDuration
-}
-
 // WithToDate adds the toDate to the showback summaries grouped by project list params
 func (o *ShowbackSummariesGroupedByProjectListParams) WithToDate(toDate *strfmt.DateTime) *ShowbackSummariesGroupedByProjectListParams {
 	o.SetToDate(toDate)
@@ -259,23 +245,6 @@ func (o *ShowbackSummariesGroupedByProjectListParams) WriteToRequest(r runtime.C
 		if qOrganizationID != "" {
 
 			if err := r.SetQueryParam("organizationId", qOrganizationID); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.PeriodDuration != nil {
-
-		// query param periodDuration
-		var qrPeriodDuration string
-
-		if o.PeriodDuration != nil {
-			qrPeriodDuration = *o.PeriodDuration
-		}
-		qPeriodDuration := qrPeriodDuration
-		if qPeriodDuration != "" {
-
-			if err := r.SetQueryParam("periodDuration", qPeriodDuration); err != nil {
 				return err
 			}
 		}
