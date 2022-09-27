@@ -41,6 +41,9 @@ type CredentialsForProjectList struct {
 
 	// openstack
 	Openstack *OpenstackCredentialsForProjectDto `json:"openstack,omitempty"`
+
+	// requires v p n
+	RequiresVPN bool `json:"requiresVPN"`
 }
 
 // Validate validates this credentials for project list
