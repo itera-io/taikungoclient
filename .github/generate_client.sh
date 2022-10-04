@@ -14,9 +14,6 @@ showback_package_name="showbackclient"
 readonly swagger_patch_file="swagger-patch.json"
 readonly showback_swagger_patch_file="showback-swagger-patch.json"
 
-# TODO: DELETE ME, THIS WAS JUST FOR LOCAL TESTS!!!
-# rm -fv "${swagger_patch_file}" "${showback_swagger_patch_file}"
-
 # Delete client/ and models/ directories if they already exist
 rm -rfv client/
 rm -rfv models/
@@ -59,19 +56,13 @@ sed -i "/${refline}/r .github/codegen/custom_error_type.json" "${showback_swagge
 # definitions/ValidationProblemDetails" are replaced with the content of
 # .github/codegen/custom_error_response_schema.json. The latter contains a JSON
 # array of CustomProblemDetailsMg. This is done for both swagger files.
-for refline in 'definitions\/ProblemDetails"'; do
-# for refline in 'definitions\/ProblemDetails"' 'definitions\/ValidationProblemDetails"'; do
+for refline in 'definitions\/ProblemDetails"' 'definitions\/ValidationProblemDetails"'; do
   for swagger_file in "${swagger_patch_file}" "${showback_swagger_patch_file}"; do
     sed -i -e "/${refline}/ {" \
       -e 'r .github/codegen/custom_error_response_schema.json' \
       -e 'd' -e '}' "${swagger_file}"
   done
 done
-
-# TODO: DELETE ME, THIS WAS JUST FOR LOCAL TESTS!!!
-# python -mjson.tool "${swagger_patch_file}" > /dev/null
-# python -mjson.tool "${showback_swagger_patch_file}" > /dev/null
-# exit 0
 
 # Initialize go module
 go mod init "${module_name}"
