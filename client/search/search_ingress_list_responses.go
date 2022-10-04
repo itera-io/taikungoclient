@@ -138,7 +138,7 @@ SearchIngressListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type SearchIngressListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search ingress list bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *SearchIngressListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/ingress][%d] searchIngressListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchIngressListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SearchIngressListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *SearchIngressListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

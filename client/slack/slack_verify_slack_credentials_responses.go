@@ -136,7 +136,7 @@ SlackVerifySlackCredentialsBadRequest describes a response with status code 400,
 Bad Request
 */
 type SlackVerifySlackCredentialsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack verify slack credentials bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *SlackVerifySlackCredentialsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SlackVerifySlackCredentialsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SlackVerifySlackCredentialsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *SlackVerifySlackCredentialsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

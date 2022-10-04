@@ -136,7 +136,7 @@ BillingCreateBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type BillingCreateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this billing create bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *BillingCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BillingCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *BillingCreateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *BillingCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

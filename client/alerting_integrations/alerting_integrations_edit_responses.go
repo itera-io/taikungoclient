@@ -136,7 +136,7 @@ AlertingIntegrationsEditBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type AlertingIntegrationsEditBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting integrations edit bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *AlertingIntegrationsEditBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingIntegrationsEditBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AlertingIntegrationsEditBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsEditBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

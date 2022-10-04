@@ -136,7 +136,7 @@ ShowbackRulesUpdateBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type ShowbackRulesUpdateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback rules update bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *ShowbackRulesUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackRulesUpdateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ShowbackRulesUpdateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *ShowbackRulesUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

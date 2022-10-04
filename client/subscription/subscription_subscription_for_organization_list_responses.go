@@ -136,7 +136,7 @@ SubscriptionSubscriptionForOrganizationListBadRequest describes a response with 
 Bad Request
 */
 type SubscriptionSubscriptionForOrganizationListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this subscription subscription for organization list bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *SubscriptionSubscriptionForOrganizationListBadRequest) String() string 
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/boundlist][%d] subscriptionSubscriptionForOrganizationListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForOrganizationListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SubscriptionSubscriptionForOrganizationListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *SubscriptionSubscriptionForOrganizationListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

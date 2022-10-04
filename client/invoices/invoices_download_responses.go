@@ -126,7 +126,7 @@ InvoicesDownloadBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type InvoicesDownloadBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this invoices download bad request response has a 2xx status code
@@ -162,16 +162,14 @@ func (o *InvoicesDownloadBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *InvoicesDownloadBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *InvoicesDownloadBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *InvoicesDownloadBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

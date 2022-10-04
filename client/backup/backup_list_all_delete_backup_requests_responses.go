@@ -138,7 +138,7 @@ BackupListAllDeleteBackupRequestsBadRequest describes a response with status cod
 Bad Request
 */
 type BackupListAllDeleteBackupRequestsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup list all delete backup requests bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *BackupListAllDeleteBackupRequestsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupListAllDeleteBackupRequestsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *BackupListAllDeleteBackupRequestsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *BackupListAllDeleteBackupRequestsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

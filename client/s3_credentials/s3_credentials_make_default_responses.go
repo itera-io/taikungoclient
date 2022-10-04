@@ -136,7 +136,7 @@ S3CredentialsMakeDefaultBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type S3CredentialsMakeDefaultBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this s3 credentials make default bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *S3CredentialsMakeDefaultBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsMakeDefaultBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *S3CredentialsMakeDefaultBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *S3CredentialsMakeDefaultBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -136,7 +136,7 @@ PrometheusDetailsBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type PrometheusDetailsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus details bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *PrometheusDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusDetailsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *PrometheusDetailsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *PrometheusDetailsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -136,7 +136,7 @@ AdminUpdateUserEmailBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type AdminUpdateUserEmailBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin update user email bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *AdminUpdateUserEmailBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminUpdateUserEmailBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AdminUpdateUserEmailBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserEmailBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

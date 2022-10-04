@@ -136,7 +136,7 @@ CheckerNtpBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type CheckerNtpBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker ntp bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *CheckerNtpBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerNtpBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CheckerNtpBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *CheckerNtpBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

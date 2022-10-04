@@ -136,7 +136,7 @@ ProjectsRepairBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type ProjectsRepairBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects repair bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *ProjectsRepairBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/repair/{projectId}][%d] projectsRepairBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsRepairBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ProjectsRepairBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *ProjectsRepairBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

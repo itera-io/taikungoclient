@@ -136,7 +136,7 @@ CronJobDeleteKubeConfigsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type CronJobDeleteKubeConfigsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete kube configs bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *CronJobDeleteKubeConfigsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteKubeConfigsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CronJobDeleteKubeConfigsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *CronJobDeleteKubeConfigsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

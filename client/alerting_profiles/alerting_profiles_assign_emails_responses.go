@@ -136,7 +136,7 @@ AlertingProfilesAssignEmailsBadRequest describes a response with status code 400
 Bad Request
 */
 type AlertingProfilesAssignEmailsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles assign emails bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *AlertingProfilesAssignEmailsBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesAssignEmailsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AlertingProfilesAssignEmailsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAssignEmailsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

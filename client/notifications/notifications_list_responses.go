@@ -138,7 +138,7 @@ NotificationsListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type NotificationsListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this notifications list bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *NotificationsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NotificationsListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *NotificationsListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *NotificationsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

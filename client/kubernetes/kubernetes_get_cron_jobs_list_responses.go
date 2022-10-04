@@ -138,7 +138,7 @@ KubernetesGetCronJobsListBadRequest describes a response with status code 400, w
 Bad Request
 */
 type KubernetesGetCronJobsListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get cron jobs list bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *KubernetesGetCronJobsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/cronjobs][%d] kubernetesGetCronJobsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetCronJobsListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesGetCronJobsListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *KubernetesGetCronJobsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -138,7 +138,7 @@ RepositoryListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type RepositoryListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this repository list bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *RepositoryListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *RepositoryListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *RepositoryListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *RepositoryListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -136,7 +136,7 @@ KubeConfigDeleteByProjectIDBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubeConfigDeleteByProjectIDBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kube config delete by project Id bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *KubeConfigDeleteByProjectIDBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/delete-by-project-id][%d] kubeConfigDeleteByProjectIdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubeConfigDeleteByProjectIDBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubeConfigDeleteByProjectIDBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *KubeConfigDeleteByProjectIDBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

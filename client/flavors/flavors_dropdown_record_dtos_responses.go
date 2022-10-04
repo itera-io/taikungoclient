@@ -136,7 +136,7 @@ FlavorsDropdownRecordDtosBadRequest describes a response with status code 400, w
 Bad Request
 */
 type FlavorsDropdownRecordDtosBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors dropdown record dtos bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *FlavorsDropdownRecordDtosBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsDropdownRecordDtosBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *FlavorsDropdownRecordDtosBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *FlavorsDropdownRecordDtosBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

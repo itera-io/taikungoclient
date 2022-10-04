@@ -138,7 +138,7 @@ KubeConfigCreateBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type KubeConfigCreateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kube config create bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *KubeConfigCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig][%d] kubeConfigCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubeConfigCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubeConfigCreateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *KubeConfigCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

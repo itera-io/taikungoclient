@@ -136,7 +136,7 @@ StandAloneActionsInstancePasswordBadRequest describes a response with status cod
 Bad Request
 */
 type StandAloneActionsInstancePasswordBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions instance password bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *StandAloneActionsInstancePasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsInstancePasswordBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *StandAloneActionsInstancePasswordBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *StandAloneActionsInstancePasswordBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

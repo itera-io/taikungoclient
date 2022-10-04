@@ -136,7 +136,7 @@ KubernetesCreateKubernetesEventBadRequest describes a response with status code 
 Bad Request
 */
 type KubernetesCreateKubernetesEventBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes create kubernetes event bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *KubernetesCreateKubernetesEventBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/event/{projectId}][%d] kubernetesCreateKubernetesEventBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesCreateKubernetesEventBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesCreateKubernetesEventBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *KubernetesCreateKubernetesEventBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

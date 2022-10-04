@@ -136,7 +136,7 @@ CronJobRemindAlertsBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type CronJobRemindAlertsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job remind alerts bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *CronJobRemindAlertsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/remind-alerts][%d] cronJobRemindAlertsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobRemindAlertsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CronJobRemindAlertsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *CronJobRemindAlertsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -193,7 +193,7 @@ KubesprayDeleteBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type KubesprayDeleteBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubespray delete bad request response has a 2xx status code
@@ -229,16 +229,14 @@ func (o *KubesprayDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubesprayDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubesprayDeleteBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *KubesprayDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

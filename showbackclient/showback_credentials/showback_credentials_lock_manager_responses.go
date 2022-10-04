@@ -136,7 +136,7 @@ ShowbackCredentialsLockManagerBadRequest describes a response with status code 4
 Bad Request
 */
 type ShowbackCredentialsLockManagerBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback credentials lock manager bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *ShowbackCredentialsLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackCredentialsLockManagerBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ShowbackCredentialsLockManagerBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

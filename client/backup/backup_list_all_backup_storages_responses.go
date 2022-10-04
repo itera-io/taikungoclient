@@ -138,7 +138,7 @@ BackupListAllBackupStoragesBadRequest describes a response with status code 400,
 Bad Request
 */
 type BackupListAllBackupStoragesBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup list all backup storages bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *BackupListAllBackupStoragesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupListAllBackupStoragesBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *BackupListAllBackupStoragesBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *BackupListAllBackupStoragesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

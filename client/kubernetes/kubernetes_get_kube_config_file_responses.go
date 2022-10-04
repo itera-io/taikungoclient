@@ -138,7 +138,7 @@ KubernetesGetKubeConfigFileBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesGetKubeConfigFileBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get kube config file bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *KubernetesGetKubeConfigFileBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetKubeConfigFileBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *KubernetesGetKubeConfigFileBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubeConfigFileBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

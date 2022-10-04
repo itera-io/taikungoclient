@@ -138,7 +138,7 @@ SlackListBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type SlackListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack list bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *SlackListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SlackListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *SlackListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *SlackListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

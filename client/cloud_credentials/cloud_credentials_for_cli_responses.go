@@ -138,7 +138,7 @@ CloudCredentialsForCliBadRequest describes a response with status code 400, with
 Bad Request
 */
 type CloudCredentialsForCliBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials for cli bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *CloudCredentialsForCliBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/cli][%d] cloudCredentialsForCliBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsForCliBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CloudCredentialsForCliBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *CloudCredentialsForCliBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -136,7 +136,7 @@ CheckerS3BadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type CheckerS3BadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker s3 bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *CheckerS3BadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/s3][%d] checkerS3BadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerS3BadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CheckerS3BadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *CheckerS3BadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

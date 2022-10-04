@@ -138,7 +138,7 @@ OpsCredentialsLockManagerBadRequest describes a response with status code 400, w
 Bad Request
 */
 type OpsCredentialsLockManagerBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ops credentials lock manager bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *OpsCredentialsLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsLockManagerBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OpsCredentialsLockManagerBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *OpsCredentialsLockManagerBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

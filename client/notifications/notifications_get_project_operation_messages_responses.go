@@ -136,7 +136,7 @@ NotificationsGetProjectOperationMessagesBadRequest describes a response with sta
 Bad Request
 */
 type NotificationsGetProjectOperationMessagesBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this notifications get project operation messages bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *NotificationsGetProjectOperationMessagesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NotificationsGetProjectOperationMessagesBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *NotificationsGetProjectOperationMessagesBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *NotificationsGetProjectOperationMessagesBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

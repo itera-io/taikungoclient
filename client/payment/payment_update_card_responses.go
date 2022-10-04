@@ -136,7 +136,7 @@ PaymentUpdateCardBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type PaymentUpdateCardBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment update card bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *PaymentUpdateCardBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/updatecard][%d] paymentUpdateCardBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentUpdateCardBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *PaymentUpdateCardBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *PaymentUpdateCardBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

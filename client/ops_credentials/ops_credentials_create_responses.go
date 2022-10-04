@@ -138,7 +138,7 @@ OpsCredentialsCreateBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type OpsCredentialsCreateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ops credentials create bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *OpsCredentialsCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials][%d] opsCredentialsCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OpsCredentialsCreateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *OpsCredentialsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

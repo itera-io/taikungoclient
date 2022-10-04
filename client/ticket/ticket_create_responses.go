@@ -136,7 +136,7 @@ TicketCreateBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type TicketCreateBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket create bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *TicketCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *TicketCreateBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *TicketCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

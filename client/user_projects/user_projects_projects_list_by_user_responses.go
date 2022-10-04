@@ -136,7 +136,7 @@ UserProjectsProjectsListByUserBadRequest describes a response with status code 4
 Bad Request
 */
 type UserProjectsProjectsListByUserBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user projects projects list by user bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *UserProjectsProjectsListByUserBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/projects/list][%d] userProjectsProjectsListByUserBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserProjectsProjectsListByUserBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *UserProjectsProjectsListByUserBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *UserProjectsProjectsListByUserBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

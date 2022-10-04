@@ -138,7 +138,7 @@ ServersListBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type ServersListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers list bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *ServersListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers][%d] serversListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ServersListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *ServersListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

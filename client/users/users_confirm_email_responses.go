@@ -136,7 +136,7 @@ UsersConfirmEmailBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type UsersConfirmEmailBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users confirm email bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *UsersConfirmEmailBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersConfirmEmailBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *UsersConfirmEmailBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *UsersConfirmEmailBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

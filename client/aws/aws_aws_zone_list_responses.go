@@ -136,7 +136,7 @@ AwsAwsZoneListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AwsAwsZoneListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws aws zone list bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *AwsAwsZoneListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsAwsZoneListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *AwsAwsZoneListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *AwsAwsZoneListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

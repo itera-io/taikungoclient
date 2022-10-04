@@ -136,7 +136,7 @@ PartnerAddWhiteListDomainBadRequest describes a response with status code 400, w
 Bad Request
 */
 type PartnerAddWhiteListDomainBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner add white list domain bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *PartnerAddWhiteListDomainBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerAddWhiteListDomainBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *PartnerAddWhiteListDomainBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *PartnerAddWhiteListDomainBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -136,7 +136,7 @@ CronJobSyncBackupCredentialsBadRequest describes a response with status code 400
 Bad Request
 */
 type CronJobSyncBackupCredentialsBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job sync backup credentials bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *CronJobSyncBackupCredentialsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobSyncBackupCredentialsBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CronJobSyncBackupCredentialsBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *CronJobSyncBackupCredentialsBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

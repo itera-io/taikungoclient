@@ -136,7 +136,7 @@ CommonGetCountryListBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type CommonGetCountryListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this common get country list bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *CommonGetCountryListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CommonGetCountryListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *CommonGetCountryListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *CommonGetCountryListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

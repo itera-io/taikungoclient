@@ -136,7 +136,7 @@ OrganizationsCreateDefaultProfilersBadRequest describes a response with status c
 Bad Request
 */
 type OrganizationsCreateDefaultProfilersBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations create default profilers bad request response has a 2xx status code
@@ -172,16 +172,14 @@ func (o *OrganizationsCreateDefaultProfilersBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsCreateDefaultProfilersBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *OrganizationsCreateDefaultProfilersBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *OrganizationsCreateDefaultProfilersBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

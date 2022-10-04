@@ -138,7 +138,7 @@ ProjectsListBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type ProjectsListBadRequest struct {
-	Payload *models.ValidationProblemDetails
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects list bad request response has a 2xx status code
@@ -174,16 +174,14 @@ func (o *ProjectsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/Projects][%d] projectsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsListBadRequest) GetPayload() *models.ValidationProblemDetails {
+func (o *ProjectsListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
 func (o *ProjectsListBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ValidationProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
