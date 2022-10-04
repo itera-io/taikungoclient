@@ -201,7 +201,7 @@ KubernetesGetStorageClassesUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesGetStorageClassesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get storage classes unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *KubernetesGetStorageClassesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetStorageClassesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetStorageClassesUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetStorageClassesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ KubernetesGetStorageClassesForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesGetStorageClassesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get storage classes forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *KubernetesGetStorageClassesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetStorageClassesForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetStorageClassesForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetStorageClassesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ KubernetesGetStorageClassesNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesGetStorageClassesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get storage classes not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *KubernetesGetStorageClassesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetStorageClassesNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetStorageClassesNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetStorageClassesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

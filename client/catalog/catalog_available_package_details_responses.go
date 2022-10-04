@@ -201,7 +201,7 @@ CatalogAvailablePackageDetailsUnauthorized describes a response with status code
 Unauthorized
 */
 type CatalogAvailablePackageDetailsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog available package details unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *CatalogAvailablePackageDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogAvailablePackageDetailsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogAvailablePackageDetailsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogAvailablePackageDetailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ CatalogAvailablePackageDetailsForbidden describes a response with status code 40
 Forbidden
 */
 type CatalogAvailablePackageDetailsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog available package details forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *CatalogAvailablePackageDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogAvailablePackageDetailsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogAvailablePackageDetailsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogAvailablePackageDetailsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ CatalogAvailablePackageDetailsNotFound describes a response with status code 404
 Not Found
 */
 type CatalogAvailablePackageDetailsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog available package details not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *CatalogAvailablePackageDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogAvailablePackageDetailsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogAvailablePackageDetailsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogAvailablePackageDetailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

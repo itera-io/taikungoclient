@@ -199,7 +199,7 @@ UsersToggleMaintenanceModeUnauthorized describes a response with status code 401
 Unauthorized
 */
 type UsersToggleMaintenanceModeUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users toggle maintenance mode unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *UsersToggleMaintenanceModeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglemaintenancemode][%d] usersToggleMaintenanceModeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersToggleMaintenanceModeUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UsersToggleMaintenanceModeUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UsersToggleMaintenanceModeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ UsersToggleMaintenanceModeForbidden describes a response with status code 403, w
 Forbidden
 */
 type UsersToggleMaintenanceModeForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users toggle maintenance mode forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *UsersToggleMaintenanceModeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglemaintenancemode][%d] usersToggleMaintenanceModeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersToggleMaintenanceModeForbidden) GetPayload() *models.ProblemDetails {
+func (o *UsersToggleMaintenanceModeForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UsersToggleMaintenanceModeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ UsersToggleMaintenanceModeNotFound describes a response with status code 404, wi
 Not Found
 */
 type UsersToggleMaintenanceModeNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users toggle maintenance mode not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *UsersToggleMaintenanceModeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglemaintenancemode][%d] usersToggleMaintenanceModeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersToggleMaintenanceModeNotFound) GetPayload() *models.ProblemDetails {
+func (o *UsersToggleMaintenanceModeNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UsersToggleMaintenanceModeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

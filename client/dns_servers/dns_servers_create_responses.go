@@ -201,7 +201,7 @@ DNSServersCreateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type DNSServersCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers create unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *DNSServersCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/DnsServers/create][%d] dnsServersCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *DNSServersCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *DNSServersCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DNSServersCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ DNSServersCreateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type DNSServersCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers create forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *DNSServersCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/DnsServers/create][%d] dnsServersCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *DNSServersCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *DNSServersCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DNSServersCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ DNSServersCreateNotFound describes a response with status code 404, with default
 Not Found
 */
 type DNSServersCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers create not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *DNSServersCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/DnsServers/create][%d] dnsServersCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *DNSServersCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *DNSServersCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DNSServersCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

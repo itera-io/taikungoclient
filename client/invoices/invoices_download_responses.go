@@ -189,7 +189,7 @@ InvoicesDownloadUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type InvoicesDownloadUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this invoices download unauthorized response has a 2xx status code
@@ -225,16 +225,14 @@ func (o *InvoicesDownloadUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *InvoicesDownloadUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *InvoicesDownloadUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *InvoicesDownloadUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -252,7 +250,7 @@ InvoicesDownloadForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type InvoicesDownloadForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this invoices download forbidden response has a 2xx status code
@@ -288,16 +286,14 @@ func (o *InvoicesDownloadForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadForbidden  %+v", 403, o.Payload)
 }
 
-func (o *InvoicesDownloadForbidden) GetPayload() *models.ProblemDetails {
+func (o *InvoicesDownloadForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *InvoicesDownloadForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -315,7 +311,7 @@ InvoicesDownloadNotFound describes a response with status code 404, with default
 Not Found
 */
 type InvoicesDownloadNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this invoices download not found response has a 2xx status code
@@ -351,16 +347,14 @@ func (o *InvoicesDownloadNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadNotFound  %+v", 404, o.Payload)
 }
 
-func (o *InvoicesDownloadNotFound) GetPayload() *models.ProblemDetails {
+func (o *InvoicesDownloadNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *InvoicesDownloadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

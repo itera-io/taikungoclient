@@ -199,7 +199,7 @@ AlertingProfilesAssignWebhooksUnauthorized describes a response with status code
 Unauthorized
 */
 type AlertingProfilesAssignWebhooksUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles assign webhooks unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *AlertingProfilesAssignWebhooksUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignwebhooks/{id}][%d] alertingProfilesAssignWebhooksUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesAssignWebhooksUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAssignWebhooksUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAssignWebhooksUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ AlertingProfilesAssignWebhooksForbidden describes a response with status code 40
 Forbidden
 */
 type AlertingProfilesAssignWebhooksForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles assign webhooks forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *AlertingProfilesAssignWebhooksForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignwebhooks/{id}][%d] alertingProfilesAssignWebhooksForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesAssignWebhooksForbidden) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAssignWebhooksForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAssignWebhooksForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ AlertingProfilesAssignWebhooksNotFound describes a response with status code 404
 Not Found
 */
 type AlertingProfilesAssignWebhooksNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles assign webhooks not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *AlertingProfilesAssignWebhooksNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignwebhooks/{id}][%d] alertingProfilesAssignWebhooksNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesAssignWebhooksNotFound) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAssignWebhooksNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAssignWebhooksNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -199,7 +199,7 @@ CheckerNtpUnauthorized describes a response with status code 401, with default h
 Unauthorized
 */
 type CheckerNtpUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker ntp unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *CheckerNtpUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerNtpUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerNtpUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerNtpUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ CheckerNtpForbidden describes a response with status code 403, with default head
 Forbidden
 */
 type CheckerNtpForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker ntp forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *CheckerNtpForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerNtpForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerNtpForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerNtpForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ CheckerNtpNotFound describes a response with status code 404, with default heade
 Not Found
 */
 type CheckerNtpNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker ntp not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *CheckerNtpNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerNtpNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerNtpNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerNtpNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

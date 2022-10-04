@@ -199,7 +199,7 @@ StandAloneActionsRebootUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneActionsRebootUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions reboot unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *StandAloneActionsRebootUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsRebootUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsRebootUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsRebootUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ StandAloneActionsRebootForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneActionsRebootForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions reboot forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *StandAloneActionsRebootForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsRebootForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsRebootForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsRebootForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ StandAloneActionsRebootNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneActionsRebootNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions reboot not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *StandAloneActionsRebootNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsRebootNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsRebootNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsRebootNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

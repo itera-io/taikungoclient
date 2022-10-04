@@ -199,7 +199,7 @@ OpaProfilesUpdateUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpaProfilesUpdateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles update unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *OpaProfilesUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/OpaProfiles][%d] opaProfilesUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesUpdateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesUpdateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpaProfilesUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ OpaProfilesUpdateForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpaProfilesUpdateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles update forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *OpaProfilesUpdateForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/OpaProfiles][%d] opaProfilesUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesUpdateForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesUpdateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpaProfilesUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ OpaProfilesUpdateNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpaProfilesUpdateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles update not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *OpaProfilesUpdateNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/OpaProfiles][%d] opaProfilesUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesUpdateNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesUpdateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpaProfilesUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

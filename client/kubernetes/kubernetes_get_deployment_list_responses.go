@@ -201,7 +201,7 @@ KubernetesGetDeploymentListUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesGetDeploymentListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get deployment list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *KubernetesGetDeploymentListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetDeploymentListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetDeploymentListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetDeploymentListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ KubernetesGetDeploymentListForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesGetDeploymentListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get deployment list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *KubernetesGetDeploymentListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetDeploymentListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetDeploymentListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetDeploymentListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ KubernetesGetDeploymentListNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesGetDeploymentListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get deployment list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *KubernetesGetDeploymentListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetDeploymentListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetDeploymentListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetDeploymentListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

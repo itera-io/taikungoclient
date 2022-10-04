@@ -201,7 +201,7 @@ FlavorsAwsFlavorsUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type FlavorsAwsFlavorsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors aws flavors unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *FlavorsAwsFlavorsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsAwsFlavorsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *FlavorsAwsFlavorsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsAwsFlavorsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ FlavorsAwsFlavorsForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type FlavorsAwsFlavorsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors aws flavors forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *FlavorsAwsFlavorsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsAwsFlavorsForbidden) GetPayload() *models.ProblemDetails {
+func (o *FlavorsAwsFlavorsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsAwsFlavorsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ FlavorsAwsFlavorsNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type FlavorsAwsFlavorsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors aws flavors not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *FlavorsAwsFlavorsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsAwsFlavorsNotFound) GetPayload() *models.ProblemDetails {
+func (o *FlavorsAwsFlavorsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsAwsFlavorsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

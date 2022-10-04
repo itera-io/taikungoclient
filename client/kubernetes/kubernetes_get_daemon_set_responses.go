@@ -201,7 +201,7 @@ KubernetesGetDaemonSetUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesGetDaemonSetUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get daemon set unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *KubernetesGetDaemonSetUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetDaemonSetUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetDaemonSetUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetDaemonSetUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ KubernetesGetDaemonSetForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesGetDaemonSetForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get daemon set forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *KubernetesGetDaemonSetForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetDaemonSetForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetDaemonSetForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetDaemonSetForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ KubernetesGetDaemonSetNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesGetDaemonSetNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get daemon set not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *KubernetesGetDaemonSetNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/daemonset][%d] kubernetesGetDaemonSetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetDaemonSetNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetDaemonSetNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetDaemonSetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

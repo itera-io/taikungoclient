@@ -201,7 +201,7 @@ SearchIngressListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type SearchIngressListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search ingress list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *SearchIngressListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/ingress][%d] searchIngressListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchIngressListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchIngressListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchIngressListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ SearchIngressListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type SearchIngressListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search ingress list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *SearchIngressListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/ingress][%d] searchIngressListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchIngressListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchIngressListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchIngressListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ SearchIngressListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type SearchIngressListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search ingress list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *SearchIngressListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/ingress][%d] searchIngressListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchIngressListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchIngressListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchIngressListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

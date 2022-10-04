@@ -201,7 +201,7 @@ CloudCredentialsExceededQuotasUnauthorized describes a response with status code
 Unauthorized
 */
 type CloudCredentialsExceededQuotasUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials exceeded quotas unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *CloudCredentialsExceededQuotasUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsExceededQuotasUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsExceededQuotasUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsExceededQuotasUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ CloudCredentialsExceededQuotasForbidden describes a response with status code 40
 Forbidden
 */
 type CloudCredentialsExceededQuotasForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials exceeded quotas forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *CloudCredentialsExceededQuotasForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsExceededQuotasForbidden) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsExceededQuotasForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsExceededQuotasForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ CloudCredentialsExceededQuotasNotFound describes a response with status code 404
 Not Found
 */
 type CloudCredentialsExceededQuotasNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials exceeded quotas not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *CloudCredentialsExceededQuotasNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsExceededQuotasNotFound) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsExceededQuotasNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsExceededQuotasNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

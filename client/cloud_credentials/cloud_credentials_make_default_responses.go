@@ -199,7 +199,7 @@ CloudCredentialsMakeDefaultUnauthorized describes a response with status code 40
 Unauthorized
 */
 type CloudCredentialsMakeDefaultUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials make default unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *CloudCredentialsMakeDefaultUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsMakeDefaultUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsMakeDefaultUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsMakeDefaultUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ CloudCredentialsMakeDefaultForbidden describes a response with status code 403, 
 Forbidden
 */
 type CloudCredentialsMakeDefaultForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials make default forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *CloudCredentialsMakeDefaultForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsMakeDefaultForbidden) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsMakeDefaultForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsMakeDefaultForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ CloudCredentialsMakeDefaultNotFound describes a response with status code 404, w
 Not Found
 */
 type CloudCredentialsMakeDefaultNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials make default not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *CloudCredentialsMakeDefaultNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsMakeDefaultNotFound) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsMakeDefaultNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsMakeDefaultNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

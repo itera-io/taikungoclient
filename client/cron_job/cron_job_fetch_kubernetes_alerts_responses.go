@@ -199,7 +199,7 @@ CronJobFetchKubernetesAlertsUnauthorized describes a response with status code 4
 Unauthorized
 */
 type CronJobFetchKubernetesAlertsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes alerts unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *CronJobFetchKubernetesAlertsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesAlertsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchKubernetesAlertsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobFetchKubernetesAlertsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ CronJobFetchKubernetesAlertsForbidden describes a response with status code 403,
 Forbidden
 */
 type CronJobFetchKubernetesAlertsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes alerts forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *CronJobFetchKubernetesAlertsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesAlertsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchKubernetesAlertsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobFetchKubernetesAlertsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ CronJobFetchKubernetesAlertsNotFound describes a response with status code 404, 
 Not Found
 */
 type CronJobFetchKubernetesAlertsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes alerts not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *CronJobFetchKubernetesAlertsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesAlertsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobFetchKubernetesAlertsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobFetchKubernetesAlertsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

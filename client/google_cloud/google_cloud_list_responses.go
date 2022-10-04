@@ -201,7 +201,7 @@ GoogleCloudListUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type GoogleCloudListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this google cloud list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *GoogleCloudListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GoogleCloudListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *GoogleCloudListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ GoogleCloudListForbidden describes a response with status code 403, with default
 Forbidden
 */
 type GoogleCloudListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this google cloud list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *GoogleCloudListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GoogleCloudListForbidden) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *GoogleCloudListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ GoogleCloudListNotFound describes a response with status code 404, with default 
 Not Found
 */
 type GoogleCloudListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this google cloud list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *GoogleCloudListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/GoogleCloud/list][%d] googleCloudListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GoogleCloudListNotFound) GetPayload() *models.ProblemDetails {
+func (o *GoogleCloudListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *GoogleCloudListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

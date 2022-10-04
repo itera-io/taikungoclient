@@ -199,7 +199,7 @@ KubernetesDescribeNetworkPolicyUnauthorized describes a response with status cod
 Unauthorized
 */
 type KubernetesDescribeNetworkPolicyUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe network policy unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *KubernetesDescribeNetworkPolicyUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeNetworkPolicyUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeNetworkPolicyUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeNetworkPolicyUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ KubernetesDescribeNetworkPolicyForbidden describes a response with status code 4
 Forbidden
 */
 type KubernetesDescribeNetworkPolicyForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe network policy forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *KubernetesDescribeNetworkPolicyForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeNetworkPolicyForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeNetworkPolicyForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeNetworkPolicyForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ KubernetesDescribeNetworkPolicyNotFound describes a response with status code 40
 Not Found
 */
 type KubernetesDescribeNetworkPolicyNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe network policy not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *KubernetesDescribeNetworkPolicyNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeNetworkPolicyNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeNetworkPolicyNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeNetworkPolicyNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

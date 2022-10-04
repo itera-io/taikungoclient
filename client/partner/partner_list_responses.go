@@ -201,7 +201,7 @@ PartnerListUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type PartnerListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *PartnerListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner][%d] partnerListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PartnerListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ PartnerListForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type PartnerListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *PartnerListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner][%d] partnerListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerListForbidden) GetPayload() *models.ProblemDetails {
+func (o *PartnerListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ PartnerListNotFound describes a response with status code 404, with default head
 Not Found
 */
 type PartnerListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *PartnerListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner][%d] partnerListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerListNotFound) GetPayload() *models.ProblemDetails {
+func (o *PartnerListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

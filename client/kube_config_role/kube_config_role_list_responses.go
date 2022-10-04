@@ -201,7 +201,7 @@ KubeConfigRoleListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubeConfigRoleListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kube config role list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *KubeConfigRoleListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubeConfigRoleListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigRoleListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubeConfigRoleListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ KubeConfigRoleListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubeConfigRoleListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kube config role list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *KubeConfigRoleListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubeConfigRoleListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigRoleListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubeConfigRoleListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ KubeConfigRoleListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubeConfigRoleListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kube config role list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *KubeConfigRoleListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubeConfigRoleListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigRoleListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubeConfigRoleListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

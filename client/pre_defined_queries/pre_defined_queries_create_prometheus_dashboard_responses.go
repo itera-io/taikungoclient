@@ -199,7 +199,7 @@ PreDefinedQueriesCreatePrometheusDashboardUnauthorized describes a response with
 Unauthorized
 */
 type PreDefinedQueriesCreatePrometheusDashboardUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this pre defined queries create prometheus dashboard unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *PreDefinedQueriesCreatePrometheusDashboardUnauthorized) String() string
 	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/create][%d] preDefinedQueriesCreatePrometheusDashboardUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PreDefinedQueriesCreatePrometheusDashboardUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PreDefinedQueriesCreatePrometheusDashboardUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesCreatePrometheusDashboardUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ PreDefinedQueriesCreatePrometheusDashboardForbidden describes a response with st
 Forbidden
 */
 type PreDefinedQueriesCreatePrometheusDashboardForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this pre defined queries create prometheus dashboard forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *PreDefinedQueriesCreatePrometheusDashboardForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/create][%d] preDefinedQueriesCreatePrometheusDashboardForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PreDefinedQueriesCreatePrometheusDashboardForbidden) GetPayload() *models.ProblemDetails {
+func (o *PreDefinedQueriesCreatePrometheusDashboardForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesCreatePrometheusDashboardForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ PreDefinedQueriesCreatePrometheusDashboardNotFound describes a response with sta
 Not Found
 */
 type PreDefinedQueriesCreatePrometheusDashboardNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this pre defined queries create prometheus dashboard not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *PreDefinedQueriesCreatePrometheusDashboardNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/create][%d] preDefinedQueriesCreatePrometheusDashboardNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PreDefinedQueriesCreatePrometheusDashboardNotFound) GetPayload() *models.ProblemDetails {
+func (o *PreDefinedQueriesCreatePrometheusDashboardNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesCreatePrometheusDashboardNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

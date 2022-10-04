@@ -199,7 +199,7 @@ OpenstackUpdateUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type OpenstackUpdateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack update unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *OpenstackUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/update][%d] openstackUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackUpdateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpenstackUpdateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ OpenstackUpdateForbidden describes a response with status code 403, with default
 Forbidden
 */
 type OpenstackUpdateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack update forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *OpenstackUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/update][%d] openstackUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackUpdateForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpenstackUpdateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ OpenstackUpdateNotFound describes a response with status code 404, with default 
 Not Found
 */
 type OpenstackUpdateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack update not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *OpenstackUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/update][%d] openstackUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackUpdateNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpenstackUpdateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

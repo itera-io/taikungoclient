@@ -201,7 +201,7 @@ SearchDaemonSetListUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type SearchDaemonSetListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search daemon set list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *SearchDaemonSetListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchDaemonSetListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchDaemonSetListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchDaemonSetListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ SearchDaemonSetListForbidden describes a response with status code 403, with def
 Forbidden
 */
 type SearchDaemonSetListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search daemon set list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *SearchDaemonSetListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchDaemonSetListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchDaemonSetListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchDaemonSetListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ SearchDaemonSetListNotFound describes a response with status code 404, with defa
 Not Found
 */
 type SearchDaemonSetListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search daemon set list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *SearchDaemonSetListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchDaemonSetListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchDaemonSetListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchDaemonSetListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

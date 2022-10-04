@@ -199,7 +199,7 @@ KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized describes a 
 Unauthorized
 */
 type KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes profiles kubernetes profiles for organization list unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized) St
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesKubernetesProfilesForOrganizationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ KubernetesProfilesKubernetesProfilesForOrganizationListForbidden describes a res
 Forbidden
 */
 type KubernetesProfilesKubernetesProfilesForOrganizationListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes profiles kubernetes profiles for organization list forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *KubernetesProfilesKubernetesProfilesForOrganizationListForbidden) Strin
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesProfilesKubernetesProfilesForOrganizationListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesKubernetesProfilesForOrganizationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ KubernetesProfilesKubernetesProfilesForOrganizationListNotFound describes a resp
 Not Found
 */
 type KubernetesProfilesKubernetesProfilesForOrganizationListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes profiles kubernetes profiles for organization list not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *KubernetesProfilesKubernetesProfilesForOrganizationListNotFound) String
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles][%d] kubernetesProfilesKubernetesProfilesForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesProfilesKubernetesProfilesForOrganizationListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesProfilesKubernetesProfilesForOrganizationListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesKubernetesProfilesForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

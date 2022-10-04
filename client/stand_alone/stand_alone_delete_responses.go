@@ -199,7 +199,7 @@ StandAloneDeleteUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type StandAloneDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone delete unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *StandAloneDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/delete][%d] standAloneDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneDeleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ StandAloneDeleteForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type StandAloneDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone delete forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *StandAloneDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/delete][%d] standAloneDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneDeleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ StandAloneDeleteNotFound describes a response with status code 404, with default
 Not Found
 */
 type StandAloneDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone delete not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *StandAloneDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/delete][%d] standAloneDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneDeleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

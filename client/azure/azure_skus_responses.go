@@ -201,7 +201,7 @@ AzureSkusUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type AzureSkusUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure skus unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *AzureSkusUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureSkusUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AzureSkusUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureSkusUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ AzureSkusForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type AzureSkusForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure skus forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *AzureSkusForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureSkusForbidden) GetPayload() *models.ProblemDetails {
+func (o *AzureSkusForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureSkusForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ AzureSkusNotFound describes a response with status code 404, with default header
 Not Found
 */
 type AzureSkusNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure skus not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *AzureSkusNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureSkusNotFound) GetPayload() *models.ProblemDetails {
+func (o *AzureSkusNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureSkusNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

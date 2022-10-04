@@ -199,7 +199,7 @@ UserTokenListUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type UserTokenListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token list unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *UserTokenListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserTokenListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UserTokenListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserTokenListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ UserTokenListForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type UserTokenListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token list forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *UserTokenListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserTokenListForbidden) GetPayload() *models.ProblemDetails {
+func (o *UserTokenListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserTokenListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ UserTokenListNotFound describes a response with status code 404, with default he
 Not Found
 */
 type UserTokenListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token list not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *UserTokenListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/list][%d] userTokenListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserTokenListNotFound) GetPayload() *models.ProblemDetails {
+func (o *UserTokenListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserTokenListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

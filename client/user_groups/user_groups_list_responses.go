@@ -201,7 +201,7 @@ UserGroupsListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type UserGroupsListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *UserGroupsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list][%d] userGroupsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserGroupsListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ UserGroupsListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type UserGroupsListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *UserGroupsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list][%d] userGroupsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserGroupsListForbidden) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ UserGroupsListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type UserGroupsListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *UserGroupsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list][%d] userGroupsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserGroupsListNotFound) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

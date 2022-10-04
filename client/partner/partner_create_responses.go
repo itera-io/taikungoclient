@@ -199,7 +199,7 @@ PartnerCreateUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type PartnerCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner create unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *PartnerCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PartnerCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ PartnerCreateForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type PartnerCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner create forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *PartnerCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *PartnerCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ PartnerCreateNotFound describes a response with status code 404, with default he
 Not Found
 */
 type PartnerCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner create not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *PartnerCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *PartnerCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

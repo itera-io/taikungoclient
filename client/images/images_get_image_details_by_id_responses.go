@@ -199,7 +199,7 @@ ImagesGetImageDetailsByIDUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ImagesGetImageDetailsByIDUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images get image details by Id unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *ImagesGetImageDetailsByIDUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesGetImageDetailsByIDUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ImagesGetImageDetailsByIDUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesGetImageDetailsByIDUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ ImagesGetImageDetailsByIDForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ImagesGetImageDetailsByIDForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images get image details by Id forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *ImagesGetImageDetailsByIDForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesGetImageDetailsByIDForbidden) GetPayload() *models.ProblemDetails {
+func (o *ImagesGetImageDetailsByIDForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesGetImageDetailsByIDForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ ImagesGetImageDetailsByIDNotFound describes a response with status code 404, wit
 Not Found
 */
 type ImagesGetImageDetailsByIDNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images get image details by Id not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *ImagesGetImageDetailsByIDNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesGetImageDetailsByIDNotFound) GetPayload() *models.ProblemDetails {
+func (o *ImagesGetImageDetailsByIDNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesGetImageDetailsByIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

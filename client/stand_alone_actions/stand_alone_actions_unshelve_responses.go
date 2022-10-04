@@ -199,7 +199,7 @@ StandAloneActionsUnshelveUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type StandAloneActionsUnshelveUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions unshelve unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *StandAloneActionsUnshelveUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsUnshelveUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsUnshelveUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsUnshelveUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ StandAloneActionsUnshelveForbidden describes a response with status code 403, wi
 Forbidden
 */
 type StandAloneActionsUnshelveForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions unshelve forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *StandAloneActionsUnshelveForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsUnshelveForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsUnshelveForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsUnshelveForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ StandAloneActionsUnshelveNotFound describes a response with status code 404, wit
 Not Found
 */
 type StandAloneActionsUnshelveNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions unshelve not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *StandAloneActionsUnshelveNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsUnshelveNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsUnshelveNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsUnshelveNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

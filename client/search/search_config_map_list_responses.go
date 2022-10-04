@@ -201,7 +201,7 @@ SearchConfigMapListUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type SearchConfigMapListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search config map list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *SearchConfigMapListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchConfigMapListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchConfigMapListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchConfigMapListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ SearchConfigMapListForbidden describes a response with status code 403, with def
 Forbidden
 */
 type SearchConfigMapListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search config map list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *SearchConfigMapListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchConfigMapListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchConfigMapListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchConfigMapListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ SearchConfigMapListNotFound describes a response with status code 404, with defa
 Not Found
 */
 type SearchConfigMapListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search config map list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *SearchConfigMapListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/config-maps][%d] searchConfigMapListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchConfigMapListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchConfigMapListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchConfigMapListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -201,7 +201,7 @@ AccessProfilesCreateUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type AccessProfilesCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles create unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *AccessProfilesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AccessProfilesCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AccessProfilesCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AccessProfilesCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ AccessProfilesCreateForbidden describes a response with status code 403, with de
 Forbidden
 */
 type AccessProfilesCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles create forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *AccessProfilesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AccessProfilesCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *AccessProfilesCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AccessProfilesCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ AccessProfilesCreateNotFound describes a response with status code 404, with def
 Not Found
 */
 type AccessProfilesCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles create not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *AccessProfilesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AccessProfilesCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *AccessProfilesCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AccessProfilesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -199,7 +199,7 @@ CatalogLockManagerUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type CatalogLockManagerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog lock manager unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *CatalogLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/lockmanager][%d] catalogLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogLockManagerUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ CatalogLockManagerForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type CatalogLockManagerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog lock manager forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *CatalogLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/lockmanager][%d] catalogLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogLockManagerForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogLockManagerForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ CatalogLockManagerNotFound describes a response with status code 404, with defau
 Not Found
 */
 type CatalogLockManagerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog lock manager not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *CatalogLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/lockmanager][%d] catalogLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogLockManagerNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogLockManagerNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

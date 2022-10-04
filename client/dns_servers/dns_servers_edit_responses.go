@@ -199,7 +199,7 @@ DNSServersEditUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type DNSServersEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers edit unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *DNSServersEditUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *DNSServersEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *DNSServersEditUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DNSServersEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ DNSServersEditForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type DNSServersEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers edit forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *DNSServersEditForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *DNSServersEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *DNSServersEditForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DNSServersEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ DNSServersEditNotFound describes a response with status code 404, with default h
 Not Found
 */
 type DNSServersEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this dns servers edit not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *DNSServersEditNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *DNSServersEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *DNSServersEditNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DNSServersEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

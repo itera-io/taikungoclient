@@ -201,7 +201,7 @@ BackupListAllBackupStoragesUnauthorized describes a response with status code 40
 Unauthorized
 */
 type BackupListAllBackupStoragesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup list all backup storages unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *BackupListAllBackupStoragesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupListAllBackupStoragesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllBackupStoragesUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupListAllBackupStoragesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ BackupListAllBackupStoragesForbidden describes a response with status code 403, 
 Forbidden
 */
 type BackupListAllBackupStoragesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup list all backup storages forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *BackupListAllBackupStoragesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupListAllBackupStoragesForbidden) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllBackupStoragesForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupListAllBackupStoragesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ BackupListAllBackupStoragesNotFound describes a response with status code 404, w
 Not Found
 */
 type BackupListAllBackupStoragesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this backup list all backup storages not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *BackupListAllBackupStoragesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/location/{projectId}][%d] backupListAllBackupStoragesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupListAllBackupStoragesNotFound) GetPayload() *models.ProblemDetails {
+func (o *BackupListAllBackupStoragesNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BackupListAllBackupStoragesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

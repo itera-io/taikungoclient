@@ -199,7 +199,7 @@ OpenstackRegionsUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type OpenstackRegionsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack regions unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *OpenstackRegionsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackRegionsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpenstackRegionsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackRegionsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ OpenstackRegionsForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type OpenstackRegionsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack regions forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *OpenstackRegionsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackRegionsForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpenstackRegionsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackRegionsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ OpenstackRegionsNotFound describes a response with status code 404, with default
 Not Found
 */
 type OpenstackRegionsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack regions not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *OpenstackRegionsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackRegionsNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpenstackRegionsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackRegionsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

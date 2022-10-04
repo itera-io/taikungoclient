@@ -201,7 +201,7 @@ StandAloneListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type StandAloneListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *StandAloneListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ StandAloneListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type StandAloneListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *StandAloneListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneListForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ StandAloneListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type StandAloneListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *StandAloneListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneListNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

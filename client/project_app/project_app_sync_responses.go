@@ -199,7 +199,7 @@ ProjectAppSyncUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type ProjectAppSyncUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project app sync unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *ProjectAppSyncUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppSyncUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppSyncUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectAppSyncUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ ProjectAppSyncForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type ProjectAppSyncForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project app sync forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *ProjectAppSyncForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppSyncForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppSyncForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectAppSyncForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ ProjectAppSyncNotFound describes a response with status code 404, with default h
 Not Found
 */
 type ProjectAppSyncNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project app sync not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *ProjectAppSyncNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppSyncNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppSyncNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectAppSyncNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

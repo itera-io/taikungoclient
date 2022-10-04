@@ -199,7 +199,7 @@ ProjectsEnableAutoscalingUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ProjectsEnableAutoscalingUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects enable autoscaling unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *ProjectsEnableAutoscalingUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsEnableAutoscalingUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsEnableAutoscalingUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsEnableAutoscalingUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ ProjectsEnableAutoscalingForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ProjectsEnableAutoscalingForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects enable autoscaling forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *ProjectsEnableAutoscalingForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsEnableAutoscalingForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsEnableAutoscalingForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsEnableAutoscalingForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ ProjectsEnableAutoscalingNotFound describes a response with status code 404, wit
 Not Found
 */
 type ProjectsEnableAutoscalingNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects enable autoscaling not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *ProjectsEnableAutoscalingNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsEnableAutoscalingNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsEnableAutoscalingNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsEnableAutoscalingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

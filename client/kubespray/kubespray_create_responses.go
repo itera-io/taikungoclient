@@ -201,7 +201,7 @@ KubesprayCreateUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type KubesprayCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubespray create unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *KubesprayCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubesprayCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubesprayCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubesprayCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ KubesprayCreateForbidden describes a response with status code 403, with default
 Forbidden
 */
 type KubesprayCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubespray create forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *KubesprayCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubesprayCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubesprayCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubesprayCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ KubesprayCreateNotFound describes a response with status code 404, with default 
 Not Found
 */
 type KubesprayCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubespray create not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *KubesprayCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubesprayCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubesprayCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubesprayCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

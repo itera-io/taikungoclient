@@ -199,7 +199,7 @@ UserProjectsProjectsListByUserUnauthorized describes a response with status code
 Unauthorized
 */
 type UserProjectsProjectsListByUserUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user projects projects list by user unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *UserProjectsProjectsListByUserUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/projects/list][%d] userProjectsProjectsListByUserUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserProjectsProjectsListByUserUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UserProjectsProjectsListByUserUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserProjectsProjectsListByUserUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ UserProjectsProjectsListByUserForbidden describes a response with status code 40
 Forbidden
 */
 type UserProjectsProjectsListByUserForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user projects projects list by user forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *UserProjectsProjectsListByUserForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/projects/list][%d] userProjectsProjectsListByUserForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserProjectsProjectsListByUserForbidden) GetPayload() *models.ProblemDetails {
+func (o *UserProjectsProjectsListByUserForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserProjectsProjectsListByUserForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ UserProjectsProjectsListByUserNotFound describes a response with status code 404
 Not Found
 */
 type UserProjectsProjectsListByUserNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user projects projects list by user not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *UserProjectsProjectsListByUserNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/projects/list][%d] userProjectsProjectsListByUserNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserProjectsProjectsListByUserNotFound) GetPayload() *models.ProblemDetails {
+func (o *UserProjectsProjectsListByUserNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserProjectsProjectsListByUserNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

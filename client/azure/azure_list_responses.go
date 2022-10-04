@@ -201,7 +201,7 @@ AzureListUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type AzureListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *AzureListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AzureListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ AzureListForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type AzureListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *AzureListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureListForbidden) GetPayload() *models.ProblemDetails {
+func (o *AzureListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ AzureListNotFound describes a response with status code 404, with default header
 Not Found
 */
 type AzureListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *AzureListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureListNotFound) GetPayload() *models.ProblemDetails {
+func (o *AzureListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

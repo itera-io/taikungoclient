@@ -199,7 +199,7 @@ ProjectsSpotWorkersOperationsUnauthorized describes a response with status code 
 Unauthorized
 */
 type ProjectsSpotWorkersOperationsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects spot workers operations unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *ProjectsSpotWorkersOperationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsSpotWorkersOperationsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectsSpotWorkersOperationsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsSpotWorkersOperationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ ProjectsSpotWorkersOperationsForbidden describes a response with status code 403
 Forbidden
 */
 type ProjectsSpotWorkersOperationsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects spot workers operations forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *ProjectsSpotWorkersOperationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsSpotWorkersOperationsForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectsSpotWorkersOperationsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsSpotWorkersOperationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ ProjectsSpotWorkersOperationsNotFound describes a response with status code 404,
 Not Found
 */
 type ProjectsSpotWorkersOperationsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this projects spot workers operations not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *ProjectsSpotWorkersOperationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsSpotWorkersOperationsNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectsSpotWorkersOperationsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectsSpotWorkersOperationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

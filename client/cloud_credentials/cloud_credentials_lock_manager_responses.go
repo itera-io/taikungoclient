@@ -199,7 +199,7 @@ CloudCredentialsLockManagerUnauthorized describes a response with status code 40
 Unauthorized
 */
 type CloudCredentialsLockManagerUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials lock manager unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *CloudCredentialsLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsLockManagerUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ CloudCredentialsLockManagerForbidden describes a response with status code 403, 
 Forbidden
 */
 type CloudCredentialsLockManagerForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials lock manager forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *CloudCredentialsLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsLockManagerForbidden) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsLockManagerForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ CloudCredentialsLockManagerNotFound describes a response with status code 404, w
 Not Found
 */
 type CloudCredentialsLockManagerNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cloud credentials lock manager not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *CloudCredentialsLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsLockManagerNotFound) GetPayload() *models.ProblemDetails {
+func (o *CloudCredentialsLockManagerNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CloudCredentialsLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

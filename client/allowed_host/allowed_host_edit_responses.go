@@ -199,7 +199,7 @@ AllowedHostEditUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type AllowedHostEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this allowed host edit unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *AllowedHostEditUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AllowedHostEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostEditUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AllowedHostEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ AllowedHostEditForbidden describes a response with status code 403, with default
 Forbidden
 */
 type AllowedHostEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this allowed host edit forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *AllowedHostEditForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AllowedHostEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostEditForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AllowedHostEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ AllowedHostEditNotFound describes a response with status code 404, with default 
 Not Found
 */
 type AllowedHostEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this allowed host edit not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *AllowedHostEditNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AllowedHostEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *AllowedHostEditNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AllowedHostEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

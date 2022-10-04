@@ -199,7 +199,7 @@ CheckerOpenstackTaikunLbImageUnauthorized describes a response with status code 
 Unauthorized
 */
 type CheckerOpenstackTaikunLbImageUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker openstack taikun lb image unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *CheckerOpenstackTaikunLbImageUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerOpenstackTaikunLbImageUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerOpenstackTaikunLbImageUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerOpenstackTaikunLbImageUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ CheckerOpenstackTaikunLbImageForbidden describes a response with status code 403
 Forbidden
 */
 type CheckerOpenstackTaikunLbImageForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker openstack taikun lb image forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *CheckerOpenstackTaikunLbImageForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerOpenstackTaikunLbImageForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerOpenstackTaikunLbImageForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerOpenstackTaikunLbImageForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ CheckerOpenstackTaikunLbImageNotFound describes a response with status code 404,
 Not Found
 */
 type CheckerOpenstackTaikunLbImageNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker openstack taikun lb image not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *CheckerOpenstackTaikunLbImageNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerOpenstackTaikunLbImageNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerOpenstackTaikunLbImageNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerOpenstackTaikunLbImageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

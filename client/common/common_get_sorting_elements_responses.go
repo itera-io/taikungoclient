@@ -199,7 +199,7 @@ CommonGetSortingElementsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type CommonGetSortingElementsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this common get sorting elements unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *CommonGetSortingElementsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CommonGetSortingElementsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CommonGetSortingElementsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CommonGetSortingElementsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ CommonGetSortingElementsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type CommonGetSortingElementsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this common get sorting elements forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *CommonGetSortingElementsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CommonGetSortingElementsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CommonGetSortingElementsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CommonGetSortingElementsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ CommonGetSortingElementsNotFound describes a response with status code 404, with
 Not Found
 */
 type CommonGetSortingElementsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this common get sorting elements not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *CommonGetSortingElementsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CommonGetSortingElementsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CommonGetSortingElementsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CommonGetSortingElementsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

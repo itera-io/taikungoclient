@@ -199,7 +199,7 @@ KubernetesDescribeCrdUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesDescribeCrdUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe crd unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *KubernetesDescribeCrdUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/crd][%d] kubernetesDescribeCrdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeCrdUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeCrdUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeCrdUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ KubernetesDescribeCrdForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesDescribeCrdForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe crd forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *KubernetesDescribeCrdForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/crd][%d] kubernetesDescribeCrdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeCrdForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeCrdForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeCrdForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ KubernetesDescribeCrdNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesDescribeCrdNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe crd not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *KubernetesDescribeCrdNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/crd][%d] kubernetesDescribeCrdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeCrdNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeCrdNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeCrdNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

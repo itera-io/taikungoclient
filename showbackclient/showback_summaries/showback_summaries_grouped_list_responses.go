@@ -201,7 +201,7 @@ ShowbackSummariesGroupedListUnauthorized describes a response with status code 4
 Unauthorized
 */
 type ShowbackSummariesGroupedListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback summaries grouped list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *ShowbackSummariesGroupedListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesGroupedListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ ShowbackSummariesGroupedListForbidden describes a response with status code 403,
 Forbidden
 */
 type ShowbackSummariesGroupedListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback summaries grouped list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *ShowbackSummariesGroupedListForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedListForbidden) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesGroupedListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ ShowbackSummariesGroupedListNotFound describes a response with status code 404, 
 Not Found
 */
 type ShowbackSummariesGroupedListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback summaries grouped list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *ShowbackSummariesGroupedListNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedListNotFound) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesGroupedListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesGroupedListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

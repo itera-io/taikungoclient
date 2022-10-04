@@ -199,7 +199,7 @@ UsersVerifyEmailUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type UsersVerifyEmailUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users verify email unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *UsersVerifyEmailUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersVerifyEmailUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UsersVerifyEmailUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UsersVerifyEmailUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ UsersVerifyEmailForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type UsersVerifyEmailForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users verify email forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *UsersVerifyEmailForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersVerifyEmailForbidden) GetPayload() *models.ProblemDetails {
+func (o *UsersVerifyEmailForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UsersVerifyEmailForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ UsersVerifyEmailNotFound describes a response with status code 404, with default
 Not Found
 */
 type UsersVerifyEmailNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users verify email not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *UsersVerifyEmailNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersVerifyEmailNotFound) GetPayload() *models.ProblemDetails {
+func (o *UsersVerifyEmailNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UsersVerifyEmailNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

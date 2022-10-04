@@ -199,7 +199,7 @@ RepositoryDeleteUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type RepositoryDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository delete unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *RepositoryDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *RepositoryDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *RepositoryDeleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ RepositoryDeleteForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type RepositoryDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository delete forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *RepositoryDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *RepositoryDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *RepositoryDeleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ RepositoryDeleteNotFound describes a response with status code 404, with default
 Not Found
 */
 type RepositoryDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository delete not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *RepositoryDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/unbind][%d] repositoryDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *RepositoryDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *RepositoryDeleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

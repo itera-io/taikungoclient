@@ -201,7 +201,7 @@ ImagesGoogleImagesUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type ImagesGoogleImagesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images google images unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *ImagesGoogleImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesGoogleImagesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ImagesGoogleImagesUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesGoogleImagesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ ImagesGoogleImagesForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type ImagesGoogleImagesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images google images forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *ImagesGoogleImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesGoogleImagesForbidden) GetPayload() *models.ProblemDetails {
+func (o *ImagesGoogleImagesForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesGoogleImagesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ ImagesGoogleImagesNotFound describes a response with status code 404, with defau
 Not Found
 */
 type ImagesGoogleImagesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images google images not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *ImagesGoogleImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesGoogleImagesNotFound) GetPayload() *models.ProblemDetails {
+func (o *ImagesGoogleImagesNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesGoogleImagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -199,7 +199,7 @@ CheckerOpenstackUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type CheckerOpenstackUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker openstack unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *CheckerOpenstackUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack][%d] checkerOpenstackUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerOpenstackUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerOpenstackUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerOpenstackUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ CheckerOpenstackForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type CheckerOpenstackForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker openstack forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *CheckerOpenstackForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack][%d] checkerOpenstackForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerOpenstackForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerOpenstackForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerOpenstackForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ CheckerOpenstackNotFound describes a response with status code 404, with default
 Not Found
 */
 type CheckerOpenstackNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker openstack not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *CheckerOpenstackNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack][%d] checkerOpenstackNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerOpenstackNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerOpenstackNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerOpenstackNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -201,7 +201,7 @@ KubernetesGetKubeConfigFileUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesGetKubeConfigFileUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get kube config file unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *KubernetesGetKubeConfigFileUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetKubeConfigFileUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetKubeConfigFileUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubeConfigFileUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ KubernetesGetKubeConfigFileForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesGetKubeConfigFileForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get kube config file forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *KubernetesGetKubeConfigFileForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetKubeConfigFileForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetKubeConfigFileForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubeConfigFileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ KubernetesGetKubeConfigFileNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesGetKubeConfigFileNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get kube config file not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *KubernetesGetKubeConfigFileNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetKubeConfigFileNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetKubeConfigFileNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubeConfigFileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

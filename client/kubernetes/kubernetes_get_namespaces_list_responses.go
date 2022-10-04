@@ -199,7 +199,7 @@ KubernetesGetNamespacesListUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesGetNamespacesListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get namespaces list unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *KubernetesGetNamespacesListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetNamespacesListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetNamespacesListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetNamespacesListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ KubernetesGetNamespacesListForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesGetNamespacesListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get namespaces list forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *KubernetesGetNamespacesListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetNamespacesListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetNamespacesListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetNamespacesListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ KubernetesGetNamespacesListNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesGetNamespacesListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get namespaces list not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *KubernetesGetNamespacesListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetNamespacesListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetNamespacesListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetNamespacesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

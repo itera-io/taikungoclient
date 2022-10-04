@@ -199,7 +199,7 @@ TicketTransferUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type TicketTransferUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket transfer unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *TicketTransferUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/transfer][%d] ticketTransferUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketTransferUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *TicketTransferUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketTransferUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ TicketTransferForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type TicketTransferForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket transfer forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *TicketTransferForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/transfer][%d] ticketTransferForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketTransferForbidden) GetPayload() *models.ProblemDetails {
+func (o *TicketTransferForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketTransferForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ TicketTransferNotFound describes a response with status code 404, with default h
 Not Found
 */
 type TicketTransferNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket transfer not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *TicketTransferNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/transfer][%d] ticketTransferNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketTransferNotFound) GetPayload() *models.ProblemDetails {
+func (o *TicketTransferNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketTransferNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -199,7 +199,7 @@ StandAloneActionsShowStandaloneVMStatusUnauthorized describes a response with st
 Unauthorized
 */
 type StandAloneActionsShowStandaloneVMStatusUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions show standalone Vm status unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *StandAloneActionsShowStandaloneVMStatusUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsShowStandaloneVMStatusUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsShowStandaloneVMStatusUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsShowStandaloneVMStatusUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ StandAloneActionsShowStandaloneVMStatusForbidden describes a response with statu
 Forbidden
 */
 type StandAloneActionsShowStandaloneVMStatusForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions show standalone Vm status forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *StandAloneActionsShowStandaloneVMStatusForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsShowStandaloneVMStatusForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsShowStandaloneVMStatusForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsShowStandaloneVMStatusForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ StandAloneActionsShowStandaloneVMStatusNotFound describes a response with status
 Not Found
 */
 type StandAloneActionsShowStandaloneVMStatusNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone actions show standalone Vm status not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *StandAloneActionsShowStandaloneVMStatusNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsShowStandaloneVMStatusNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneActionsShowStandaloneVMStatusNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneActionsShowStandaloneVMStatusNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

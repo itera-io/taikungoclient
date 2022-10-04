@@ -201,7 +201,7 @@ AlertingIntegrationsCreateUnauthorized describes a response with status code 401
 Unauthorized
 */
 type AlertingIntegrationsCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting integrations create unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *AlertingIntegrationsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingIntegrationsCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AlertingIntegrationsCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ AlertingIntegrationsCreateForbidden describes a response with status code 403, w
 Forbidden
 */
 type AlertingIntegrationsCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting integrations create forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *AlertingIntegrationsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingIntegrationsCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *AlertingIntegrationsCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ AlertingIntegrationsCreateNotFound describes a response with status code 404, wi
 Not Found
 */
 type AlertingIntegrationsCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting integrations create not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *AlertingIntegrationsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingIntegrationsCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *AlertingIntegrationsCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

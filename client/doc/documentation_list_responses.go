@@ -201,7 +201,7 @@ DocumentationListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type DocumentationListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this documentation list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *DocumentationListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Documentation][%d] documentationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *DocumentationListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *DocumentationListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DocumentationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ DocumentationListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type DocumentationListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this documentation list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *DocumentationListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Documentation][%d] documentationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *DocumentationListForbidden) GetPayload() *models.ProblemDetails {
+func (o *DocumentationListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DocumentationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ DocumentationListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type DocumentationListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this documentation list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *DocumentationListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Documentation][%d] documentationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *DocumentationListNotFound) GetPayload() *models.ProblemDetails {
+func (o *DocumentationListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *DocumentationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -189,7 +189,7 @@ PaymentPayInvoiceUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type PaymentPayInvoiceUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment pay invoice unauthorized response has a 2xx status code
@@ -225,16 +225,14 @@ func (o *PaymentPayInvoiceUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentPayInvoiceUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PaymentPayInvoiceUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentPayInvoiceUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -252,7 +250,7 @@ PaymentPayInvoiceForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type PaymentPayInvoiceForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment pay invoice forbidden response has a 2xx status code
@@ -288,16 +286,14 @@ func (o *PaymentPayInvoiceForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentPayInvoiceForbidden) GetPayload() *models.ProblemDetails {
+func (o *PaymentPayInvoiceForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentPayInvoiceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -315,7 +311,7 @@ PaymentPayInvoiceNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type PaymentPayInvoiceNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment pay invoice not found response has a 2xx status code
@@ -351,16 +347,14 @@ func (o *PaymentPayInvoiceNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentPayInvoiceNotFound) GetPayload() *models.ProblemDetails {
+func (o *PaymentPayInvoiceNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentPayInvoiceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -201,7 +201,7 @@ OpenstackQuotasUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type OpenstackQuotasUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack quotas unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *OpenstackQuotasUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackQuotasUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpenstackQuotasUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackQuotasUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ OpenstackQuotasForbidden describes a response with status code 403, with default
 Forbidden
 */
 type OpenstackQuotasForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack quotas forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *OpenstackQuotasForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackQuotasForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpenstackQuotasForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackQuotasForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ OpenstackQuotasNotFound describes a response with status code 404, with default 
 Not Found
 */
 type OpenstackQuotasNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack quotas not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *OpenstackQuotasNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackQuotasNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpenstackQuotasNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackQuotasNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -199,7 +199,7 @@ CronJobDeleteExpiredRefreshTokensUnauthorized describes a response with status c
 Unauthorized
 */
 type CronJobDeleteExpiredRefreshTokensUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job delete expired refresh tokens unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *CronJobDeleteExpiredRefreshTokensUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/refresh-tokens][%d] cronJobDeleteExpiredRefreshTokensUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredRefreshTokensUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobDeleteExpiredRefreshTokensUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredRefreshTokensUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ CronJobDeleteExpiredRefreshTokensForbidden describes a response with status code
 Forbidden
 */
 type CronJobDeleteExpiredRefreshTokensForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job delete expired refresh tokens forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *CronJobDeleteExpiredRefreshTokensForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/refresh-tokens][%d] cronJobDeleteExpiredRefreshTokensForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredRefreshTokensForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobDeleteExpiredRefreshTokensForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredRefreshTokensForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ CronJobDeleteExpiredRefreshTokensNotFound describes a response with status code 
 Not Found
 */
 type CronJobDeleteExpiredRefreshTokensNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job delete expired refresh tokens not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *CronJobDeleteExpiredRefreshTokensNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/refresh-tokens][%d] cronJobDeleteExpiredRefreshTokensNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredRefreshTokensNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobDeleteExpiredRefreshTokensNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredRefreshTokensNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -199,7 +199,7 @@ PartnerDeleteWhiteListDomainUnauthorized describes a response with status code 4
 Unauthorized
 */
 type PartnerDeleteWhiteListDomainUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner delete white list domain unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *PartnerDeleteWhiteListDomainUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerDeleteWhiteListDomainUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PartnerDeleteWhiteListDomainUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerDeleteWhiteListDomainUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ PartnerDeleteWhiteListDomainForbidden describes a response with status code 403,
 Forbidden
 */
 type PartnerDeleteWhiteListDomainForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner delete white list domain forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *PartnerDeleteWhiteListDomainForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerDeleteWhiteListDomainForbidden) GetPayload() *models.ProblemDetails {
+func (o *PartnerDeleteWhiteListDomainForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerDeleteWhiteListDomainForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ PartnerDeleteWhiteListDomainNotFound describes a response with status code 404, 
 Not Found
 */
 type PartnerDeleteWhiteListDomainNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner delete white list domain not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *PartnerDeleteWhiteListDomainNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerDeleteWhiteListDomainNotFound) GetPayload() *models.ProblemDetails {
+func (o *PartnerDeleteWhiteListDomainNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerDeleteWhiteListDomainNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

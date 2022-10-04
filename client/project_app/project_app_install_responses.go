@@ -201,7 +201,7 @@ ProjectAppInstallUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type ProjectAppInstallUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project app install unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *ProjectAppInstallUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/install][%d] projectAppInstallUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppInstallUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppInstallUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectAppInstallUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ ProjectAppInstallForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type ProjectAppInstallForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project app install forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *ProjectAppInstallForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/install][%d] projectAppInstallForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppInstallForbidden) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppInstallForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectAppInstallForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ ProjectAppInstallNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type ProjectAppInstallNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this project app install not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *ProjectAppInstallNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/install][%d] projectAppInstallNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppInstallNotFound) GetPayload() *models.ProblemDetails {
+func (o *ProjectAppInstallNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ProjectAppInstallNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

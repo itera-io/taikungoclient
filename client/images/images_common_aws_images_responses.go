@@ -199,7 +199,7 @@ ImagesCommonAwsImagesUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type ImagesCommonAwsImagesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images common aws images unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *ImagesCommonAwsImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/common/{cloudId}][%d] imagesCommonAwsImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesCommonAwsImagesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ImagesCommonAwsImagesUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesCommonAwsImagesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ ImagesCommonAwsImagesForbidden describes a response with status code 403, with d
 Forbidden
 */
 type ImagesCommonAwsImagesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images common aws images forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *ImagesCommonAwsImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/common/{cloudId}][%d] imagesCommonAwsImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesCommonAwsImagesForbidden) GetPayload() *models.ProblemDetails {
+func (o *ImagesCommonAwsImagesForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesCommonAwsImagesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ ImagesCommonAwsImagesNotFound describes a response with status code 404, with de
 Not Found
 */
 type ImagesCommonAwsImagesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this images common aws images not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *ImagesCommonAwsImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/common/{cloudId}][%d] imagesCommonAwsImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesCommonAwsImagesNotFound) GetPayload() *models.ProblemDetails {
+func (o *ImagesCommonAwsImagesNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ImagesCommonAwsImagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

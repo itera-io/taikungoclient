@@ -199,7 +199,7 @@ NotificationsCreateUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type NotificationsCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications create unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *NotificationsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NotificationsCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *NotificationsCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NotificationsCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ NotificationsCreateForbidden describes a response with status code 403, with def
 Forbidden
 */
 type NotificationsCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications create forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *NotificationsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NotificationsCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *NotificationsCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NotificationsCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ NotificationsCreateNotFound describes a response with status code 404, with defa
 Not Found
 */
 type NotificationsCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications create not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *NotificationsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NotificationsCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *NotificationsCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NotificationsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

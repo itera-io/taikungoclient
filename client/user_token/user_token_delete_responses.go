@@ -199,7 +199,7 @@ UserTokenDeleteUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type UserTokenDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token delete unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *UserTokenDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserToken/delete/{id}][%d] userTokenDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserTokenDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UserTokenDeleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserTokenDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ UserTokenDeleteForbidden describes a response with status code 403, with default
 Forbidden
 */
 type UserTokenDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token delete forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *UserTokenDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserToken/delete/{id}][%d] userTokenDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserTokenDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *UserTokenDeleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserTokenDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ UserTokenDeleteNotFound describes a response with status code 404, with default 
 Not Found
 */
 type UserTokenDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user token delete not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *UserTokenDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserToken/delete/{id}][%d] userTokenDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserTokenDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *UserTokenDeleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserTokenDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

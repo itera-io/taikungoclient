@@ -199,7 +199,7 @@ TicketDeleteUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type TicketDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket delete unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *TicketDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/{ticketId}][%d] ticketDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *TicketDeleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ TicketDeleteForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type TicketDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket delete forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *TicketDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/{ticketId}][%d] ticketDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *TicketDeleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ TicketDeleteNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type TicketDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket delete not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *TicketDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/{ticketId}][%d] ticketDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *TicketDeleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -201,7 +201,7 @@ NtpServersCreateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type NtpServersCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ntp servers create unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *NtpServersCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/NtpServers/create][%d] ntpServersCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NtpServersCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *NtpServersCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NtpServersCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ NtpServersCreateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type NtpServersCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ntp servers create forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *NtpServersCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/NtpServers/create][%d] ntpServersCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NtpServersCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *NtpServersCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NtpServersCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ NtpServersCreateNotFound describes a response with status code 404, with default
 Not Found
 */
 type NtpServersCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ntp servers create not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *NtpServersCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/NtpServers/create][%d] ntpServersCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NtpServersCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *NtpServersCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NtpServersCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

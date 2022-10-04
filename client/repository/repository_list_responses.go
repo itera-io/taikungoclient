@@ -201,7 +201,7 @@ RepositoryListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type RepositoryListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *RepositoryListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *RepositoryListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *RepositoryListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ RepositoryListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type RepositoryListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *RepositoryListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *RepositoryListForbidden) GetPayload() *models.ProblemDetails {
+func (o *RepositoryListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ RepositoryListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type RepositoryListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *RepositoryListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *RepositoryListNotFound) GetPayload() *models.ProblemDetails {
+func (o *RepositoryListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

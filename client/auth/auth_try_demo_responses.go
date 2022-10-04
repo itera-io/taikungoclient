@@ -199,7 +199,7 @@ AuthTryDemoUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type AuthTryDemoUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this auth try demo unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *AuthTryDemoUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AuthTryDemoUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AuthTryDemoUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AuthTryDemoUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ AuthTryDemoForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type AuthTryDemoForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this auth try demo forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *AuthTryDemoForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AuthTryDemoForbidden) GetPayload() *models.ProblemDetails {
+func (o *AuthTryDemoForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AuthTryDemoForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ AuthTryDemoNotFound describes a response with status code 404, with default head
 Not Found
 */
 type AuthTryDemoNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this auth try demo not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *AuthTryDemoNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AuthTryDemoNotFound) GetPayload() *models.ProblemDetails {
+func (o *AuthTryDemoNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AuthTryDemoNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

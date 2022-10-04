@@ -199,7 +199,7 @@ UsersListSelectorUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type UsersListSelectorUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users list selector unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *UsersListSelectorUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersListSelectorUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UsersListSelectorUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UsersListSelectorUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ UsersListSelectorForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type UsersListSelectorForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users list selector forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *UsersListSelectorForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersListSelectorForbidden) GetPayload() *models.ProblemDetails {
+func (o *UsersListSelectorForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UsersListSelectorForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ UsersListSelectorNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type UsersListSelectorNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this users list selector not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *UsersListSelectorNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersListSelectorNotFound) GetPayload() *models.ProblemDetails {
+func (o *UsersListSelectorNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UsersListSelectorNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

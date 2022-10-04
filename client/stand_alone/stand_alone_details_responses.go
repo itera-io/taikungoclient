@@ -201,7 +201,7 @@ StandAloneDetailsUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type StandAloneDetailsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone details unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *StandAloneDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/{projectId}][%d] standAloneDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneDetailsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneDetailsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneDetailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ StandAloneDetailsForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type StandAloneDetailsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone details forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *StandAloneDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/{projectId}][%d] standAloneDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneDetailsForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneDetailsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneDetailsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ StandAloneDetailsNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type StandAloneDetailsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone details not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *StandAloneDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/{projectId}][%d] standAloneDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneDetailsNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneDetailsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneDetailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

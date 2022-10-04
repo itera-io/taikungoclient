@@ -201,7 +201,7 @@ FlavorsGetSelectedFlavorsForProjectUnauthorized describes a response with status
 Unauthorized
 */
 type FlavorsGetSelectedFlavorsForProjectUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors get selected flavors for project unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ FlavorsGetSelectedFlavorsForProjectForbidden describes a response with status co
 Forbidden
 */
 type FlavorsGetSelectedFlavorsForProjectForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors get selected flavors for project forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *FlavorsGetSelectedFlavorsForProjectForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsGetSelectedFlavorsForProjectForbidden) GetPayload() *models.ProblemDetails {
+func (o *FlavorsGetSelectedFlavorsForProjectForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsGetSelectedFlavorsForProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ FlavorsGetSelectedFlavorsForProjectNotFound describes a response with status cod
 Not Found
 */
 type FlavorsGetSelectedFlavorsForProjectNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors get selected flavors for project not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *FlavorsGetSelectedFlavorsForProjectNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsGetSelectedFlavorsForProjectNotFound) GetPayload() *models.ProblemDetails {
+func (o *FlavorsGetSelectedFlavorsForProjectNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsGetSelectedFlavorsForProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

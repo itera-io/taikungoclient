@@ -201,7 +201,7 @@ ShowbackCredentialsListUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type ShowbackCredentialsListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback credentials list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *ShowbackCredentialsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials][%d] showbackCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackCredentialsListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ ShowbackCredentialsListForbidden describes a response with status code 403, with
 Forbidden
 */
 type ShowbackCredentialsListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback credentials list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *ShowbackCredentialsListForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials][%d] showbackCredentialsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackCredentialsListForbidden) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ ShowbackCredentialsListNotFound describes a response with status code 404, with 
 Not Found
 */
 type ShowbackCredentialsListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback credentials list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *ShowbackCredentialsListNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials][%d] showbackCredentialsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackCredentialsListNotFound) GetPayload() *models.ProblemDetails {
+func (o *ShowbackCredentialsListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

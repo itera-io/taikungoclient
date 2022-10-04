@@ -199,7 +199,7 @@ CheckerYamlUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type CheckerYamlUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker yaml unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *CheckerYamlUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerYamlUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerYamlUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerYamlUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ CheckerYamlForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type CheckerYamlForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker yaml forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *CheckerYamlForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerYamlForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerYamlForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerYamlForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ CheckerYamlNotFound describes a response with status code 404, with default head
 Not Found
 */
 type CheckerYamlNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker yaml not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *CheckerYamlNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerYamlNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerYamlNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerYamlNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -199,7 +199,7 @@ AlertingProfilesDetachUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type AlertingProfilesDetachUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles detach unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *AlertingProfilesDetachUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesDetachUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesDetachUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingProfilesDetachUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ AlertingProfilesDetachForbidden describes a response with status code 403, with 
 Forbidden
 */
 type AlertingProfilesDetachForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles detach forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *AlertingProfilesDetachForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesDetachForbidden) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesDetachForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingProfilesDetachForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ AlertingProfilesDetachNotFound describes a response with status code 404, with d
 Not Found
 */
 type AlertingProfilesDetachNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles detach not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *AlertingProfilesDetachNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesDetachNotFound) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesDetachNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingProfilesDetachNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

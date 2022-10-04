@@ -201,7 +201,7 @@ AccessProfilesListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type AccessProfilesListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *AccessProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AccessProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AccessProfilesListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AccessProfilesListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ AccessProfilesListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type AccessProfilesListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *AccessProfilesListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AccessProfilesListForbidden) GetPayload() *models.ProblemDetails {
+func (o *AccessProfilesListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AccessProfilesListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ AccessProfilesListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type AccessProfilesListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this access profiles list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *AccessProfilesListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AccessProfilesListNotFound) GetPayload() *models.ProblemDetails {
+func (o *AccessProfilesListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AccessProfilesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

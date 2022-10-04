@@ -199,7 +199,7 @@ RepositoryCreateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type RepositoryCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository create unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *RepositoryCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/bind][%d] repositoryCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *RepositoryCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *RepositoryCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ RepositoryCreateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type RepositoryCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository create forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *RepositoryCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/bind][%d] repositoryCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *RepositoryCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *RepositoryCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ RepositoryCreateNotFound describes a response with status code 404, with default
 Not Found
 */
 type RepositoryCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository create not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *RepositoryCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/bind][%d] repositoryCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *RepositoryCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *RepositoryCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -199,7 +199,7 @@ CheckerCronUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type CheckerCronUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker cron unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *CheckerCronUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerCronUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerCronUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerCronUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ CheckerCronForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type CheckerCronForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker cron forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *CheckerCronForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerCronForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerCronForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerCronForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ CheckerCronNotFound describes a response with status code 404, with default head
 Not Found
 */
 type CheckerCronNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker cron not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *CheckerCronNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerCronNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerCronNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerCronNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -199,7 +199,7 @@ CronJobUpdateProjectAppStatusUnauthorized describes a response with status code 
 Unauthorized
 */
 type CronJobUpdateProjectAppStatusUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job update project app status unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *CronJobUpdateProjectAppStatusUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobUpdateProjectAppStatusUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobUpdateProjectAppStatusUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobUpdateProjectAppStatusUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ CronJobUpdateProjectAppStatusForbidden describes a response with status code 403
 Forbidden
 */
 type CronJobUpdateProjectAppStatusForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job update project app status forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *CronJobUpdateProjectAppStatusForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobUpdateProjectAppStatusForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobUpdateProjectAppStatusForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobUpdateProjectAppStatusForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ CronJobUpdateProjectAppStatusNotFound describes a response with status code 404,
 Not Found
 */
 type CronJobUpdateProjectAppStatusNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job update project app status not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *CronJobUpdateProjectAppStatusNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobUpdateProjectAppStatusNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobUpdateProjectAppStatusNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobUpdateProjectAppStatusNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

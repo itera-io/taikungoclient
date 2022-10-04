@@ -199,7 +199,7 @@ BillingCreateUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type BillingCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this billing create unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *BillingCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BillingCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *BillingCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BillingCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ BillingCreateForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type BillingCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this billing create forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *BillingCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BillingCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *BillingCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BillingCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ BillingCreateNotFound describes a response with status code 404, with default he
 Not Found
 */
 type BillingCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this billing create not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *BillingCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BillingCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *BillingCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *BillingCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

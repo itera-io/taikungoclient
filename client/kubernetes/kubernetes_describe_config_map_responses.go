@@ -199,7 +199,7 @@ KubernetesDescribeConfigMapUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesDescribeConfigMapUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe config map unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *KubernetesDescribeConfigMapUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeConfigMapUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeConfigMapUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeConfigMapUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ KubernetesDescribeConfigMapForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesDescribeConfigMapForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe config map forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *KubernetesDescribeConfigMapForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeConfigMapForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeConfigMapForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeConfigMapForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ KubernetesDescribeConfigMapNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesDescribeConfigMapNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe config map not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *KubernetesDescribeConfigMapNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeConfigMapNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribeConfigMapNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeConfigMapNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

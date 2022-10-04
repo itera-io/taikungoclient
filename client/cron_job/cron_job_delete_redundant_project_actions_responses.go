@@ -199,7 +199,7 @@ CronJobDeleteRedundantProjectActionsUnauthorized describes a response with statu
 Unauthorized
 */
 type CronJobDeleteRedundantProjectActionsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job delete redundant project actions unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *CronJobDeleteRedundantProjectActionsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteRedundantProjectActionsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CronJobDeleteRedundantProjectActionsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobDeleteRedundantProjectActionsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ CronJobDeleteRedundantProjectActionsForbidden describes a response with status c
 Forbidden
 */
 type CronJobDeleteRedundantProjectActionsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job delete redundant project actions forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *CronJobDeleteRedundantProjectActionsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteRedundantProjectActionsForbidden) GetPayload() *models.ProblemDetails {
+func (o *CronJobDeleteRedundantProjectActionsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobDeleteRedundantProjectActionsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ CronJobDeleteRedundantProjectActionsNotFound describes a response with status co
 Not Found
 */
 type CronJobDeleteRedundantProjectActionsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this cron job delete redundant project actions not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *CronJobDeleteRedundantProjectActionsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteRedundantProjectActionsNotFound) GetPayload() *models.ProblemDetails {
+func (o *CronJobDeleteRedundantProjectActionsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CronJobDeleteRedundantProjectActionsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

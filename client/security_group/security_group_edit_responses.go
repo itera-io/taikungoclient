@@ -199,7 +199,7 @@ SecurityGroupEditUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type SecurityGroupEditUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this security group edit unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *SecurityGroupEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SecurityGroupEditUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupEditUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SecurityGroupEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ SecurityGroupEditForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type SecurityGroupEditForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this security group edit forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *SecurityGroupEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SecurityGroupEditForbidden) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupEditForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SecurityGroupEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ SecurityGroupEditNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type SecurityGroupEditNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this security group edit not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *SecurityGroupEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SecurityGroupEditNotFound) GetPayload() *models.ProblemDetails {
+func (o *SecurityGroupEditNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SecurityGroupEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

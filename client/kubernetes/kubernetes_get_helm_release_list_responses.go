@@ -201,7 +201,7 @@ KubernetesGetHelmReleaseListUnauthorized describes a response with status code 4
 Unauthorized
 */
 type KubernetesGetHelmReleaseListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get helm release list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *KubernetesGetHelmReleaseListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetHelmReleaseListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetHelmReleaseListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetHelmReleaseListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ KubernetesGetHelmReleaseListForbidden describes a response with status code 403,
 Forbidden
 */
 type KubernetesGetHelmReleaseListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get helm release list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *KubernetesGetHelmReleaseListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetHelmReleaseListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetHelmReleaseListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetHelmReleaseListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ KubernetesGetHelmReleaseListNotFound describes a response with status code 404, 
 Not Found
 */
 type KubernetesGetHelmReleaseListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get helm release list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *KubernetesGetHelmReleaseListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/helmreleases][%d] kubernetesGetHelmReleaseListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetHelmReleaseListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetHelmReleaseListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetHelmReleaseListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

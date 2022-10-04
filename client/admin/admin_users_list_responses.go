@@ -201,7 +201,7 @@ AdminUsersListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type AdminUsersListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin users list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *AdminUsersListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminUsersListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AdminUsersListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminUsersListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ AdminUsersListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type AdminUsersListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin users list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *AdminUsersListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminUsersListForbidden) GetPayload() *models.ProblemDetails {
+func (o *AdminUsersListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminUsersListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ AdminUsersListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type AdminUsersListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin users list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *AdminUsersListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminUsersListNotFound) GetPayload() *models.ProblemDetails {
+func (o *AdminUsersListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminUsersListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

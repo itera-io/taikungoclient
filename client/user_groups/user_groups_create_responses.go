@@ -201,7 +201,7 @@ UserGroupsCreateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type UserGroupsCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups create unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *UserGroupsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/create][%d] userGroupsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserGroupsCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ UserGroupsCreateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type UserGroupsCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups create forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *UserGroupsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/create][%d] userGroupsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserGroupsCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ UserGroupsCreateNotFound describes a response with status code 404, with default
 Not Found
 */
 type UserGroupsCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups create not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *UserGroupsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/create][%d] userGroupsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserGroupsCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

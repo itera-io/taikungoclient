@@ -201,7 +201,7 @@ FlavorsGoogleFlavorsUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type FlavorsGoogleFlavorsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors google flavors unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *FlavorsGoogleFlavorsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsGoogleFlavorsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *FlavorsGoogleFlavorsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsGoogleFlavorsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ FlavorsGoogleFlavorsForbidden describes a response with status code 403, with de
 Forbidden
 */
 type FlavorsGoogleFlavorsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors google flavors forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *FlavorsGoogleFlavorsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsGoogleFlavorsForbidden) GetPayload() *models.ProblemDetails {
+func (o *FlavorsGoogleFlavorsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsGoogleFlavorsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ FlavorsGoogleFlavorsNotFound describes a response with status code 404, with def
 Not Found
 */
 type FlavorsGoogleFlavorsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this flavors google flavors not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *FlavorsGoogleFlavorsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsGoogleFlavorsNotFound) GetPayload() *models.ProblemDetails {
+func (o *FlavorsGoogleFlavorsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *FlavorsGoogleFlavorsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

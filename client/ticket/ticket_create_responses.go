@@ -199,7 +199,7 @@ TicketCreateUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type TicketCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket create unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *TicketCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *TicketCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ TicketCreateForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type TicketCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket create forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *TicketCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *TicketCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ TicketCreateNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type TicketCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ticket create not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *TicketCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/create][%d] ticketCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *TicketCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *TicketCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

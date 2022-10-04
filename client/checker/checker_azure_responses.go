@@ -199,7 +199,7 @@ CheckerAzureUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type CheckerAzureUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker azure unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *CheckerAzureUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerAzureUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CheckerAzureUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerAzureUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ CheckerAzureForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type CheckerAzureForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker azure forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *CheckerAzureForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerAzureForbidden) GetPayload() *models.ProblemDetails {
+func (o *CheckerAzureForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerAzureForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ CheckerAzureNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type CheckerAzureNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this checker azure not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *CheckerAzureNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerAzureNotFound) GetPayload() *models.ProblemDetails {
+func (o *CheckerAzureNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CheckerAzureNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -201,7 +201,7 @@ SearchPersistenceVolumeClaimListUnauthorized describes a response with status co
 Unauthorized
 */
 type SearchPersistenceVolumeClaimListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search persistence volume claim list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *SearchPersistenceVolumeClaimListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchPersistenceVolumeClaimListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchPersistenceVolumeClaimListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchPersistenceVolumeClaimListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ SearchPersistenceVolumeClaimListForbidden describes a response with status code 
 Forbidden
 */
 type SearchPersistenceVolumeClaimListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search persistence volume claim list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *SearchPersistenceVolumeClaimListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchPersistenceVolumeClaimListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchPersistenceVolumeClaimListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchPersistenceVolumeClaimListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ SearchPersistenceVolumeClaimListNotFound describes a response with status code 4
 Not Found
 */
 type SearchPersistenceVolumeClaimListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search persistence volume claim list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *SearchPersistenceVolumeClaimListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchPersistenceVolumeClaimListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchPersistenceVolumeClaimListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchPersistenceVolumeClaimListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

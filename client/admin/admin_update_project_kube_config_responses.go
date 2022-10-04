@@ -199,7 +199,7 @@ AdminUpdateProjectKubeConfigUnauthorized describes a response with status code 4
 Unauthorized
 */
 type AdminUpdateProjectKubeConfigUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin update project kube config unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *AdminUpdateProjectKubeConfigUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminUpdateProjectKubeConfigUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AdminUpdateProjectKubeConfigUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminUpdateProjectKubeConfigUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ AdminUpdateProjectKubeConfigForbidden describes a response with status code 403,
 Forbidden
 */
 type AdminUpdateProjectKubeConfigForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin update project kube config forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *AdminUpdateProjectKubeConfigForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminUpdateProjectKubeConfigForbidden) GetPayload() *models.ProblemDetails {
+func (o *AdminUpdateProjectKubeConfigForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminUpdateProjectKubeConfigForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ AdminUpdateProjectKubeConfigNotFound describes a response with status code 404, 
 Not Found
 */
 type AdminUpdateProjectKubeConfigNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin update project kube config not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *AdminUpdateProjectKubeConfigNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/kubeconfig][%d] adminUpdateProjectKubeConfigNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminUpdateProjectKubeConfigNotFound) GetPayload() *models.ProblemDetails {
+func (o *AdminUpdateProjectKubeConfigNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminUpdateProjectKubeConfigNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

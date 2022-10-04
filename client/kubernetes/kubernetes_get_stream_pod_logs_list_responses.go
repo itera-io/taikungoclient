@@ -199,7 +199,7 @@ KubernetesGetStreamPodLogsListUnauthorized describes a response with status code
 Unauthorized
 */
 type KubernetesGetStreamPodLogsListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get stream pod logs list unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *KubernetesGetStreamPodLogsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/podlogs-stream][%d] kubernetesGetStreamPodLogsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetStreamPodLogsListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetStreamPodLogsListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetStreamPodLogsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ KubernetesGetStreamPodLogsListForbidden describes a response with status code 40
 Forbidden
 */
 type KubernetesGetStreamPodLogsListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get stream pod logs list forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *KubernetesGetStreamPodLogsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/podlogs-stream][%d] kubernetesGetStreamPodLogsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetStreamPodLogsListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetStreamPodLogsListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetStreamPodLogsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ KubernetesGetStreamPodLogsListNotFound describes a response with status code 404
 Not Found
 */
 type KubernetesGetStreamPodLogsListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get stream pod logs list not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *KubernetesGetStreamPodLogsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/podlogs-stream][%d] kubernetesGetStreamPodLogsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetStreamPodLogsListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetStreamPodLogsListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetStreamPodLogsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

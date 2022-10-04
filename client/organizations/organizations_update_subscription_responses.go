@@ -199,7 +199,7 @@ OrganizationsUpdateSubscriptionUnauthorized describes a response with status cod
 Unauthorized
 */
 type OrganizationsUpdateSubscriptionUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations update subscription unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *OrganizationsUpdateSubscriptionUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsUpdateSubscriptionUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsUpdateSubscriptionUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsUpdateSubscriptionUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ OrganizationsUpdateSubscriptionForbidden describes a response with status code 4
 Forbidden
 */
 type OrganizationsUpdateSubscriptionForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations update subscription forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *OrganizationsUpdateSubscriptionForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsUpdateSubscriptionForbidden) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsUpdateSubscriptionForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsUpdateSubscriptionForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ OrganizationsUpdateSubscriptionNotFound describes a response with status code 40
 Not Found
 */
 type OrganizationsUpdateSubscriptionNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations update subscription not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *OrganizationsUpdateSubscriptionNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatesubscription][%d] organizationsUpdateSubscriptionNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsUpdateSubscriptionNotFound) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsUpdateSubscriptionNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsUpdateSubscriptionNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

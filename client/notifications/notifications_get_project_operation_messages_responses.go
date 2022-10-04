@@ -199,7 +199,7 @@ NotificationsGetProjectOperationMessagesUnauthorized describes a response with s
 Unauthorized
 */
 type NotificationsGetProjectOperationMessagesUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications get project operation messages unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *NotificationsGetProjectOperationMessagesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NotificationsGetProjectOperationMessagesUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *NotificationsGetProjectOperationMessagesUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NotificationsGetProjectOperationMessagesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ NotificationsGetProjectOperationMessagesForbidden describes a response with stat
 Forbidden
 */
 type NotificationsGetProjectOperationMessagesForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications get project operation messages forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *NotificationsGetProjectOperationMessagesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NotificationsGetProjectOperationMessagesForbidden) GetPayload() *models.ProblemDetails {
+func (o *NotificationsGetProjectOperationMessagesForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NotificationsGetProjectOperationMessagesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ NotificationsGetProjectOperationMessagesNotFound describes a response with statu
 Not Found
 */
 type NotificationsGetProjectOperationMessagesNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications get project operation messages not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *NotificationsGetProjectOperationMessagesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NotificationsGetProjectOperationMessagesNotFound) GetPayload() *models.ProblemDetails {
+func (o *NotificationsGetProjectOperationMessagesNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NotificationsGetProjectOperationMessagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

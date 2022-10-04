@@ -199,7 +199,7 @@ KubernetesUpdateKubernetesAlertUnauthorized describes a response with status cod
 Unauthorized
 */
 type KubernetesUpdateKubernetesAlertUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes update kubernetes alert unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *KubernetesUpdateKubernetesAlertUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesUpdateKubernetesAlertUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesUpdateKubernetesAlertUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesUpdateKubernetesAlertUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ KubernetesUpdateKubernetesAlertForbidden describes a response with status code 4
 Forbidden
 */
 type KubernetesUpdateKubernetesAlertForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes update kubernetes alert forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *KubernetesUpdateKubernetesAlertForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesUpdateKubernetesAlertForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesUpdateKubernetesAlertForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesUpdateKubernetesAlertForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ KubernetesUpdateKubernetesAlertNotFound describes a response with status code 40
 Not Found
 */
 type KubernetesUpdateKubernetesAlertNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes update kubernetes alert not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *KubernetesUpdateKubernetesAlertNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesUpdateKubernetesAlertNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesUpdateKubernetesAlertNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesUpdateKubernetesAlertNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -199,7 +199,7 @@ AzureSubscriptionsUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type AzureSubscriptionsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure subscriptions unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *AzureSubscriptionsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureSubscriptionsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AzureSubscriptionsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureSubscriptionsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ AzureSubscriptionsForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type AzureSubscriptionsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure subscriptions forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *AzureSubscriptionsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureSubscriptionsForbidden) GetPayload() *models.ProblemDetails {
+func (o *AzureSubscriptionsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureSubscriptionsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ AzureSubscriptionsNotFound describes a response with status code 404, with defau
 Not Found
 */
 type AzureSubscriptionsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this azure subscriptions not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *AzureSubscriptionsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureSubscriptionsNotFound) GetPayload() *models.ProblemDetails {
+func (o *AzureSubscriptionsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AzureSubscriptionsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

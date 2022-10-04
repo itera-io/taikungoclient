@@ -199,7 +199,7 @@ KubernetesDescribePvcUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesDescribePvcUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe pvc unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *KubernetesDescribePvcUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribePvcUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribePvcUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribePvcUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ KubernetesDescribePvcForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesDescribePvcForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe pvc forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *KubernetesDescribePvcForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribePvcForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribePvcForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribePvcForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ KubernetesDescribePvcNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesDescribePvcNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes describe pvc not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *KubernetesDescribePvcNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribePvcNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesDescribePvcNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesDescribePvcNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

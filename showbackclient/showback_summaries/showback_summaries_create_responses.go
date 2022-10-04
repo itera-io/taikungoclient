@@ -199,7 +199,7 @@ ShowbackSummariesCreateUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type ShowbackSummariesCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback summaries create unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *ShowbackSummariesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackSummariesCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ ShowbackSummariesCreateForbidden describes a response with status code 403, with
 Forbidden
 */
 type ShowbackSummariesCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback summaries create forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *ShowbackSummariesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackSummariesCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ ShowbackSummariesCreateNotFound describes a response with status code 404, with 
 Not Found
 */
 type ShowbackSummariesCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback summaries create not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *ShowbackSummariesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackSummariesCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *ShowbackSummariesCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

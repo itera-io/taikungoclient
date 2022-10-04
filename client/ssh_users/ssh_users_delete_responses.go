@@ -199,7 +199,7 @@ SSHUsersDeleteUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type SSHUsersDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ssh users delete unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *SSHUsersDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SSHUsersDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersDeleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SSHUsersDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ SSHUsersDeleteForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type SSHUsersDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ssh users delete forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *SSHUsersDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SSHUsersDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersDeleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SSHUsersDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ SSHUsersDeleteNotFound describes a response with status code 404, with default h
 Not Found
 */
 type SSHUsersDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this ssh users delete not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *SSHUsersDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SSHUsersDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *SSHUsersDeleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SSHUsersDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

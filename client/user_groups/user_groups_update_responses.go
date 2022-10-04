@@ -199,7 +199,7 @@ UserGroupsUpdateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type UserGroupsUpdateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups update unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *UserGroupsUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserGroupsUpdateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsUpdateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ UserGroupsUpdateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type UserGroupsUpdateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups update forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *UserGroupsUpdateForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserGroupsUpdateForbidden) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsUpdateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ UserGroupsUpdateNotFound describes a response with status code 404, with default
 Not Found
 */
 type UserGroupsUpdateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user groups update not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *UserGroupsUpdateNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserGroupsUpdateNotFound) GetPayload() *models.ProblemDetails {
+func (o *UserGroupsUpdateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserGroupsUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -199,7 +199,7 @@ OrganizationsUpdatePaymentMethodUnauthorized describes a response with status co
 Unauthorized
 */
 type OrganizationsUpdatePaymentMethodUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations update payment method unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *OrganizationsUpdatePaymentMethodUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsUpdatePaymentMethodUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsUpdatePaymentMethodUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsUpdatePaymentMethodUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ OrganizationsUpdatePaymentMethodForbidden describes a response with status code 
 Forbidden
 */
 type OrganizationsUpdatePaymentMethodForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations update payment method forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *OrganizationsUpdatePaymentMethodForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsUpdatePaymentMethodForbidden) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsUpdatePaymentMethodForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsUpdatePaymentMethodForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ OrganizationsUpdatePaymentMethodNotFound describes a response with status code 4
 Not Found
 */
 type OrganizationsUpdatePaymentMethodNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations update payment method not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *OrganizationsUpdatePaymentMethodNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsUpdatePaymentMethodNotFound) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsUpdatePaymentMethodNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsUpdatePaymentMethodNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

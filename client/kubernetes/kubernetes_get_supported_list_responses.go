@@ -199,7 +199,7 @@ KubernetesGetSupportedListUnauthorized describes a response with status code 401
 Unauthorized
 */
 type KubernetesGetSupportedListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get supported list unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *KubernetesGetSupportedListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetSupportedListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetSupportedListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetSupportedListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ KubernetesGetSupportedListForbidden describes a response with status code 403, w
 Forbidden
 */
 type KubernetesGetSupportedListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get supported list forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *KubernetesGetSupportedListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetSupportedListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetSupportedListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetSupportedListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ KubernetesGetSupportedListNotFound describes a response with status code 404, wi
 Not Found
 */
 type KubernetesGetSupportedListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get supported list not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *KubernetesGetSupportedListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetSupportedListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetSupportedListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetSupportedListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

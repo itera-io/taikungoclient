@@ -199,7 +199,7 @@ PaymentClearUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type PaymentClearUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment clear unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *PaymentClearUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/clear][%d] paymentClearUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentClearUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PaymentClearUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentClearUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ PaymentClearForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type PaymentClearForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment clear forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *PaymentClearForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/clear][%d] paymentClearForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentClearForbidden) GetPayload() *models.ProblemDetails {
+func (o *PaymentClearForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentClearForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ PaymentClearNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type PaymentClearNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment clear not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *PaymentClearNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/clear][%d] paymentClearNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentClearNotFound) GetPayload() *models.ProblemDetails {
+func (o *PaymentClearNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentClearNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

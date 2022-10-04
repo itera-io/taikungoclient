@@ -199,7 +199,7 @@ AuthForgotPasswordUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type AuthForgotPasswordUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this auth forgot password unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *AuthForgotPasswordUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/forgotpassword][%d] authForgotPasswordUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AuthForgotPasswordUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AuthForgotPasswordUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AuthForgotPasswordUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ AuthForgotPasswordForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type AuthForgotPasswordForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this auth forgot password forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *AuthForgotPasswordForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/forgotpassword][%d] authForgotPasswordForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AuthForgotPasswordForbidden) GetPayload() *models.ProblemDetails {
+func (o *AuthForgotPasswordForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AuthForgotPasswordForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ AuthForgotPasswordNotFound describes a response with status code 404, with defau
 Not Found
 */
 type AuthForgotPasswordNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this auth forgot password not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *AuthForgotPasswordNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/forgotpassword][%d] authForgotPasswordNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AuthForgotPasswordNotFound) GetPayload() *models.ProblemDetails {
+func (o *AuthForgotPasswordNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AuthForgotPasswordNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

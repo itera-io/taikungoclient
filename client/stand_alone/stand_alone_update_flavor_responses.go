@@ -199,7 +199,7 @@ StandAloneUpdateFlavorUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type StandAloneUpdateFlavorUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone update flavor unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *StandAloneUpdateFlavorUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneUpdateFlavorUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *StandAloneUpdateFlavorUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneUpdateFlavorUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ StandAloneUpdateFlavorForbidden describes a response with status code 403, with 
 Forbidden
 */
 type StandAloneUpdateFlavorForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone update flavor forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *StandAloneUpdateFlavorForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneUpdateFlavorForbidden) GetPayload() *models.ProblemDetails {
+func (o *StandAloneUpdateFlavorForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneUpdateFlavorForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ StandAloneUpdateFlavorNotFound describes a response with status code 404, with d
 Not Found
 */
 type StandAloneUpdateFlavorNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this stand alone update flavor not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *StandAloneUpdateFlavorNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update/flavor][%d] standAloneUpdateFlavorNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneUpdateFlavorNotFound) GetPayload() *models.ProblemDetails {
+func (o *StandAloneUpdateFlavorNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *StandAloneUpdateFlavorNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

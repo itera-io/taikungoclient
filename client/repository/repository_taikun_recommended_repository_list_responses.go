@@ -199,7 +199,7 @@ RepositoryTaikunRecommendedRepositoryListUnauthorized describes a response with 
 Unauthorized
 */
 type RepositoryTaikunRecommendedRepositoryListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository taikun recommended repository list unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) String() string 
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ RepositoryTaikunRecommendedRepositoryListForbidden describes a response with sta
 Forbidden
 */
 type RepositoryTaikunRecommendedRepositoryListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository taikun recommended repository list forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *RepositoryTaikunRecommendedRepositoryListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *RepositoryTaikunRecommendedRepositoryListForbidden) GetPayload() *models.ProblemDetails {
+func (o *RepositoryTaikunRecommendedRepositoryListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryTaikunRecommendedRepositoryListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ RepositoryTaikunRecommendedRepositoryListNotFound describes a response with stat
 Not Found
 */
 type RepositoryTaikunRecommendedRepositoryListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this repository taikun recommended repository list not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *RepositoryTaikunRecommendedRepositoryListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *RepositoryTaikunRecommendedRepositoryListNotFound) GetPayload() *models.ProblemDetails {
+func (o *RepositoryTaikunRecommendedRepositoryListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *RepositoryTaikunRecommendedRepositoryListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

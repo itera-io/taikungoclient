@@ -201,7 +201,7 @@ ShowbackRulesCreateUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ShowbackRulesCreateUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback rules create unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *ShowbackRulesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackRulesCreateUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ShowbackRulesCreateUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackRulesCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ ShowbackRulesCreateForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ShowbackRulesCreateForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback rules create forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *ShowbackRulesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackRulesCreateForbidden) GetPayload() *models.ProblemDetails {
+func (o *ShowbackRulesCreateForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackRulesCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ ShowbackRulesCreateNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ShowbackRulesCreateNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback rules create not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *ShowbackRulesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackRulesCreateNotFound) GetPayload() *models.ProblemDetails {
+func (o *ShowbackRulesCreateNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackRulesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

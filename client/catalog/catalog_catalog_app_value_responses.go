@@ -199,7 +199,7 @@ CatalogCatalogAppValueUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type CatalogCatalogAppValueUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog catalog app value unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *CatalogCatalogAppValueUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value][%d] catalogCatalogAppValueUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppValueUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppValueUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ CatalogCatalogAppValueForbidden describes a response with status code 403, with 
 Forbidden
 */
 type CatalogCatalogAppValueForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog catalog app value forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *CatalogCatalogAppValueForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value][%d] catalogCatalogAppValueForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueForbidden) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppValueForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppValueForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ CatalogCatalogAppValueNotFound describes a response with status code 404, with d
 Not Found
 */
 type CatalogCatalogAppValueNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this catalog catalog app value not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *CatalogCatalogAppValueNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value][%d] catalogCatalogAppValueNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueNotFound) GetPayload() *models.ProblemDetails {
+func (o *CatalogCatalogAppValueNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *CatalogCatalogAppValueNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

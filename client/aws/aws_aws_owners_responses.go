@@ -199,7 +199,7 @@ AwsAwsOwnersUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type AwsAwsOwnersUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws aws owners unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *AwsAwsOwnersUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsAwsOwnersUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AwsAwsOwnersUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsAwsOwnersUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ AwsAwsOwnersForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type AwsAwsOwnersForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws aws owners forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *AwsAwsOwnersForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsAwsOwnersForbidden) GetPayload() *models.ProblemDetails {
+func (o *AwsAwsOwnersForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsAwsOwnersForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ AwsAwsOwnersNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type AwsAwsOwnersNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this aws aws owners not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *AwsAwsOwnersNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsAwsOwnersNotFound) GetPayload() *models.ProblemDetails {
+func (o *AwsAwsOwnersNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AwsAwsOwnersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

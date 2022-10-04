@@ -201,7 +201,7 @@ PaymentGetCardInfoUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type PaymentGetCardInfoUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment get card info unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *PaymentGetCardInfoUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/cardinfo][%d] paymentGetCardInfoUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentGetCardInfoUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetCardInfoUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentGetCardInfoUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ PaymentGetCardInfoForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type PaymentGetCardInfoForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment get card info forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *PaymentGetCardInfoForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/cardinfo][%d] paymentGetCardInfoForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentGetCardInfoForbidden) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetCardInfoForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentGetCardInfoForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ PaymentGetCardInfoNotFound describes a response with status code 404, with defau
 Not Found
 */
 type PaymentGetCardInfoNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this payment get card info not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *PaymentGetCardInfoNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/cardinfo][%d] paymentGetCardInfoNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentGetCardInfoNotFound) GetPayload() *models.ProblemDetails {
+func (o *PaymentGetCardInfoNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PaymentGetCardInfoNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

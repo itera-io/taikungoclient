@@ -199,7 +199,7 @@ KubeConfigDownloadUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubeConfigDownloadUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kube config download unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *KubeConfigDownloadUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubeConfigDownloadUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigDownloadUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubeConfigDownloadUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ KubeConfigDownloadForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubeConfigDownloadForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kube config download forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *KubeConfigDownloadForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubeConfigDownloadForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigDownloadForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubeConfigDownloadForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ KubeConfigDownloadNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubeConfigDownloadNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kube config download not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *KubeConfigDownloadNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubeConfigDownloadNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubeConfigDownloadNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubeConfigDownloadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

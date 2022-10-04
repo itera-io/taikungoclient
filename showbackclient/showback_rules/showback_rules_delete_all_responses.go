@@ -199,7 +199,7 @@ ShowbackRulesDeleteAllUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type ShowbackRulesDeleteAllUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback rules delete all unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *ShowbackRulesDeleteAllUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackRulesDeleteAllUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *ShowbackRulesDeleteAllUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackRulesDeleteAllUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ ShowbackRulesDeleteAllForbidden describes a response with status code 403, with 
 Forbidden
 */
 type ShowbackRulesDeleteAllForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback rules delete all forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *ShowbackRulesDeleteAllForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackRulesDeleteAllForbidden) GetPayload() *models.ProblemDetails {
+func (o *ShowbackRulesDeleteAllForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackRulesDeleteAllForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ ShowbackRulesDeleteAllNotFound describes a response with status code 404, with d
 Not Found
 */
 type ShowbackRulesDeleteAllNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this showback rules delete all not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *ShowbackRulesDeleteAllNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackRulesDeleteAllNotFound) GetPayload() *models.ProblemDetails {
+func (o *ShowbackRulesDeleteAllNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *ShowbackRulesDeleteAllNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

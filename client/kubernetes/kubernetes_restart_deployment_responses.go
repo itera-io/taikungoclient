@@ -199,7 +199,7 @@ KubernetesRestartDeploymentUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesRestartDeploymentUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes restart deployment unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *KubernetesRestartDeploymentUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesRestartDeploymentUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartDeploymentUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesRestartDeploymentUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ KubernetesRestartDeploymentForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesRestartDeploymentForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes restart deployment forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *KubernetesRestartDeploymentForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesRestartDeploymentForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartDeploymentForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesRestartDeploymentForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ KubernetesRestartDeploymentNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesRestartDeploymentNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes restart deployment not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *KubernetesRestartDeploymentNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesRestartDeploymentNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesRestartDeploymentNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesRestartDeploymentNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

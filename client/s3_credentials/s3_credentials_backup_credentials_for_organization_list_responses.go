@@ -199,7 +199,7 @@ S3CredentialsBackupCredentialsForOrganizationListUnauthorized describes a respon
 Unauthorized
 */
 type S3CredentialsBackupCredentialsForOrganizationListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this s3 credentials backup credentials for organization list unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *S3CredentialsBackupCredentialsForOrganizationListUnauthorized) String()
 	return fmt.Sprintf("[GET /api/v{v}/S3Credentials][%d] s3CredentialsBackupCredentialsForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *S3CredentialsBackupCredentialsForOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsBackupCredentialsForOrganizationListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *S3CredentialsBackupCredentialsForOrganizationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ S3CredentialsBackupCredentialsForOrganizationListForbidden describes a response 
 Forbidden
 */
 type S3CredentialsBackupCredentialsForOrganizationListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this s3 credentials backup credentials for organization list forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *S3CredentialsBackupCredentialsForOrganizationListForbidden) String() st
 	return fmt.Sprintf("[GET /api/v{v}/S3Credentials][%d] s3CredentialsBackupCredentialsForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *S3CredentialsBackupCredentialsForOrganizationListForbidden) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsBackupCredentialsForOrganizationListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *S3CredentialsBackupCredentialsForOrganizationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ S3CredentialsBackupCredentialsForOrganizationListNotFound describes a response w
 Not Found
 */
 type S3CredentialsBackupCredentialsForOrganizationListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this s3 credentials backup credentials for organization list not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *S3CredentialsBackupCredentialsForOrganizationListNotFound) String() str
 	return fmt.Sprintf("[GET /api/v{v}/S3Credentials][%d] s3CredentialsBackupCredentialsForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *S3CredentialsBackupCredentialsForOrganizationListNotFound) GetPayload() *models.ProblemDetails {
+func (o *S3CredentialsBackupCredentialsForOrganizationListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *S3CredentialsBackupCredentialsForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

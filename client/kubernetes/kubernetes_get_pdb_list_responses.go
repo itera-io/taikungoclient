@@ -201,7 +201,7 @@ KubernetesGetPdbListUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type KubernetesGetPdbListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get pdb list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *KubernetesGetPdbListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pdb][%d] kubernetesGetPdbListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetPdbListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPdbListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetPdbListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ KubernetesGetPdbListForbidden describes a response with status code 403, with de
 Forbidden
 */
 type KubernetesGetPdbListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get pdb list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *KubernetesGetPdbListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pdb][%d] kubernetesGetPdbListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetPdbListForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPdbListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetPdbListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ KubernetesGetPdbListNotFound describes a response with status code 404, with def
 Not Found
 */
 type KubernetesGetPdbListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes get pdb list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *KubernetesGetPdbListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pdb][%d] kubernetesGetPdbListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetPdbListNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesGetPdbListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesGetPdbListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

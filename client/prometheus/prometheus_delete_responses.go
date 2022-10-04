@@ -199,7 +199,7 @@ PrometheusDeleteUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type PrometheusDeleteUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this prometheus delete unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *PrometheusDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Prometheus/{id}][%d] prometheusDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusDeleteUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PrometheusDeleteUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PrometheusDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ PrometheusDeleteForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type PrometheusDeleteForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this prometheus delete forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *PrometheusDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Prometheus/{id}][%d] prometheusDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusDeleteForbidden) GetPayload() *models.ProblemDetails {
+func (o *PrometheusDeleteForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PrometheusDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ PrometheusDeleteNotFound describes a response with status code 404, with default
 Not Found
 */
 type PrometheusDeleteNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this prometheus delete not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *PrometheusDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Prometheus/{id}][%d] prometheusDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusDeleteNotFound) GetPayload() *models.ProblemDetails {
+func (o *PrometheusDeleteNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PrometheusDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

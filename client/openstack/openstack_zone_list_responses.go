@@ -199,7 +199,7 @@ OpenstackZoneListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpenstackZoneListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack zone list unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *OpenstackZoneListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackZoneListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpenstackZoneListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackZoneListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ OpenstackZoneListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpenstackZoneListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack zone list forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *OpenstackZoneListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackZoneListForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpenstackZoneListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackZoneListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ OpenstackZoneListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpenstackZoneListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this openstack zone list not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *OpenstackZoneListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackZoneListNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpenstackZoneListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpenstackZoneListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

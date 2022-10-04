@@ -199,7 +199,7 @@ AlertingProfilesAlertingProfilesForOrganizationListUnauthorized describes a resp
 Unauthorized
 */
 type AlertingProfilesAlertingProfilesForOrganizationListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles alerting profiles for organization list unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *AlertingProfilesAlertingProfilesForOrganizationListUnauthorized) String
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles/list][%d] alertingProfilesAlertingProfilesForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesAlertingProfilesForOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAlertingProfilesForOrganizationListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAlertingProfilesForOrganizationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ AlertingProfilesAlertingProfilesForOrganizationListForbidden describes a respons
 Forbidden
 */
 type AlertingProfilesAlertingProfilesForOrganizationListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles alerting profiles for organization list forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *AlertingProfilesAlertingProfilesForOrganizationListForbidden) String() 
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles/list][%d] alertingProfilesAlertingProfilesForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesAlertingProfilesForOrganizationListForbidden) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAlertingProfilesForOrganizationListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAlertingProfilesForOrganizationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ AlertingProfilesAlertingProfilesForOrganizationListNotFound describes a response
 Not Found
 */
 type AlertingProfilesAlertingProfilesForOrganizationListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this alerting profiles alerting profiles for organization list not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *AlertingProfilesAlertingProfilesForOrganizationListNotFound) String() s
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles/list][%d] alertingProfilesAlertingProfilesForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesAlertingProfilesForOrganizationListNotFound) GetPayload() *models.ProblemDetails {
+func (o *AlertingProfilesAlertingProfilesForOrganizationListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAlertingProfilesForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

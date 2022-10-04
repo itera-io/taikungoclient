@@ -199,7 +199,7 @@ PartnerBindOrganizationsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type PartnerBindOrganizationsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner bind organizations unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *PartnerBindOrganizationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerBindOrganizationsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PartnerBindOrganizationsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerBindOrganizationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ PartnerBindOrganizationsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type PartnerBindOrganizationsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner bind organizations forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *PartnerBindOrganizationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerBindOrganizationsForbidden) GetPayload() *models.ProblemDetails {
+func (o *PartnerBindOrganizationsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerBindOrganizationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ PartnerBindOrganizationsNotFound describes a response with status code 404, with
 Not Found
 */
 type PartnerBindOrganizationsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this partner bind organizations not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *PartnerBindOrganizationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerBindOrganizationsNotFound) GetPayload() *models.ProblemDetails {
+func (o *PartnerBindOrganizationsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PartnerBindOrganizationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

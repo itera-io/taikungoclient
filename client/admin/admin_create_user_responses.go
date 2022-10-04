@@ -199,7 +199,7 @@ AdminCreateUserUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type AdminCreateUserUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin create user unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *AdminCreateUserUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminCreateUserUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *AdminCreateUserUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminCreateUserUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ AdminCreateUserForbidden describes a response with status code 403, with default
 Forbidden
 */
 type AdminCreateUserForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin create user forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *AdminCreateUserForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminCreateUserForbidden) GetPayload() *models.ProblemDetails {
+func (o *AdminCreateUserForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminCreateUserForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ AdminCreateUserNotFound describes a response with status code 404, with default 
 Not Found
 */
 type AdminCreateUserNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this admin create user not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *AdminCreateUserNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminCreateUserNotFound) GetPayload() *models.ProblemDetails {
+func (o *AdminCreateUserNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *AdminCreateUserNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

@@ -201,7 +201,7 @@ SearchPrometheusRulesListUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type SearchPrometheusRulesListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search prometheus rules list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *SearchPrometheusRulesListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchPrometheusRulesListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *SearchPrometheusRulesListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchPrometheusRulesListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ SearchPrometheusRulesListForbidden describes a response with status code 403, wi
 Forbidden
 */
 type SearchPrometheusRulesListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search prometheus rules list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *SearchPrometheusRulesListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchPrometheusRulesListForbidden) GetPayload() *models.ProblemDetails {
+func (o *SearchPrometheusRulesListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchPrometheusRulesListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ SearchPrometheusRulesListNotFound describes a response with status code 404, wit
 Not Found
 */
 type SearchPrometheusRulesListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this search prometheus rules list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *SearchPrometheusRulesListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchPrometheusRulesListNotFound) GetPayload() *models.ProblemDetails {
+func (o *SearchPrometheusRulesListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *SearchPrometheusRulesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

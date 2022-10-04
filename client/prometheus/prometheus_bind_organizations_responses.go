@@ -199,7 +199,7 @@ PrometheusBindOrganizationsUnauthorized describes a response with status code 40
 Unauthorized
 */
 type PrometheusBindOrganizationsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this prometheus bind organizations unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *PrometheusBindOrganizationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusBindOrganizationsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *PrometheusBindOrganizationsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PrometheusBindOrganizationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ PrometheusBindOrganizationsForbidden describes a response with status code 403, 
 Forbidden
 */
 type PrometheusBindOrganizationsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this prometheus bind organizations forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *PrometheusBindOrganizationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusBindOrganizationsForbidden) GetPayload() *models.ProblemDetails {
+func (o *PrometheusBindOrganizationsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PrometheusBindOrganizationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ PrometheusBindOrganizationsNotFound describes a response with status code 404, w
 Not Found
 */
 type PrometheusBindOrganizationsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this prometheus bind organizations not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *PrometheusBindOrganizationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusBindOrganizationsNotFound) GetPayload() *models.ProblemDetails {
+func (o *PrometheusBindOrganizationsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *PrometheusBindOrganizationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

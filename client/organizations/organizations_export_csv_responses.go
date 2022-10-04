@@ -189,7 +189,7 @@ OrganizationsExportCsvUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type OrganizationsExportCsvUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations export csv unauthorized response has a 2xx status code
@@ -225,16 +225,14 @@ func (o *OrganizationsExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsExportCsvUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsExportCsvUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -252,7 +250,7 @@ OrganizationsExportCsvForbidden describes a response with status code 403, with 
 Forbidden
 */
 type OrganizationsExportCsvForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations export csv forbidden response has a 2xx status code
@@ -288,16 +286,14 @@ func (o *OrganizationsExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsExportCsvForbidden) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsExportCsvForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsExportCsvForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -315,7 +311,7 @@ OrganizationsExportCsvNotFound describes a response with status code 404, with d
 Not Found
 */
 type OrganizationsExportCsvNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this organizations export csv not found response has a 2xx status code
@@ -351,16 +347,14 @@ func (o *OrganizationsExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsExportCsvNotFound) GetPayload() *models.ProblemDetails {
+func (o *OrganizationsExportCsvNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OrganizationsExportCsvNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

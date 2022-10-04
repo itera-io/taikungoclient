@@ -201,7 +201,7 @@ NotificationsListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type NotificationsListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications list unauthorized response has a 2xx status code
@@ -237,16 +237,14 @@ func (o *NotificationsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NotificationsListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *NotificationsListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NotificationsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -264,7 +262,7 @@ NotificationsListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type NotificationsListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications list forbidden response has a 2xx status code
@@ -300,16 +298,14 @@ func (o *NotificationsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NotificationsListForbidden) GetPayload() *models.ProblemDetails {
+func (o *NotificationsListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NotificationsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -327,7 +323,7 @@ NotificationsListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type NotificationsListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this notifications list not found response has a 2xx status code
@@ -363,16 +359,14 @@ func (o *NotificationsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NotificationsListNotFound) GetPayload() *models.ProblemDetails {
+func (o *NotificationsListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *NotificationsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

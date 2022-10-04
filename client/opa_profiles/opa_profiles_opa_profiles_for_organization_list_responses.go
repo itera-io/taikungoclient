@@ -199,7 +199,7 @@ OpaProfilesOpaProfilesForOrganizationListUnauthorized describes a response with 
 Unauthorized
 */
 type OpaProfilesOpaProfilesForOrganizationListUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles opa profiles for organization list unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *OpaProfilesOpaProfilesForOrganizationListUnauthorized) String() string 
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles/list][%d] opaProfilesOpaProfilesForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesOpaProfilesForOrganizationListUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesOpaProfilesForOrganizationListUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpaProfilesOpaProfilesForOrganizationListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ OpaProfilesOpaProfilesForOrganizationListForbidden describes a response with sta
 Forbidden
 */
 type OpaProfilesOpaProfilesForOrganizationListForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles opa profiles for organization list forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *OpaProfilesOpaProfilesForOrganizationListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles/list][%d] opaProfilesOpaProfilesForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesOpaProfilesForOrganizationListForbidden) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesOpaProfilesForOrganizationListForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpaProfilesOpaProfilesForOrganizationListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ OpaProfilesOpaProfilesForOrganizationListNotFound describes a response with stat
 Not Found
 */
 type OpaProfilesOpaProfilesForOrganizationListNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this opa profiles opa profiles for organization list not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *OpaProfilesOpaProfilesForOrganizationListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles/list][%d] opaProfilesOpaProfilesForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesOpaProfilesForOrganizationListNotFound) GetPayload() *models.ProblemDetails {
+func (o *OpaProfilesOpaProfilesForOrganizationListNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *OpaProfilesOpaProfilesForOrganizationListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

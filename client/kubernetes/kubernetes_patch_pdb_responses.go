@@ -199,7 +199,7 @@ KubernetesPatchPdbUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubernetesPatchPdbUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch pdb unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *KubernetesPatchPdbUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchPdbUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchPdbUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesPatchPdbUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ KubernetesPatchPdbForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubernetesPatchPdbForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch pdb forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *KubernetesPatchPdbForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchPdbForbidden) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchPdbForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesPatchPdbForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ KubernetesPatchPdbNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubernetesPatchPdbNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this kubernetes patch pdb not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *KubernetesPatchPdbNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pdb][%d] kubernetesPatchPdbNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchPdbNotFound) GetPayload() *models.ProblemDetails {
+func (o *KubernetesPatchPdbNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *KubernetesPatchPdbNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

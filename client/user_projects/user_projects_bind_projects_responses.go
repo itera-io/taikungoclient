@@ -199,7 +199,7 @@ UserProjectsBindProjectsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type UserProjectsBindProjectsUnauthorized struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user projects bind projects unauthorized response has a 2xx status code
@@ -235,16 +235,14 @@ func (o *UserProjectsBindProjectsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserProjectsBindProjectsUnauthorized) GetPayload() *models.ProblemDetails {
+func (o *UserProjectsBindProjectsUnauthorized) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserProjectsBindProjectsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -262,7 +260,7 @@ UserProjectsBindProjectsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type UserProjectsBindProjectsForbidden struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user projects bind projects forbidden response has a 2xx status code
@@ -298,16 +296,14 @@ func (o *UserProjectsBindProjectsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserProjectsBindProjectsForbidden) GetPayload() *models.ProblemDetails {
+func (o *UserProjectsBindProjectsForbidden) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserProjectsBindProjectsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -325,7 +321,7 @@ UserProjectsBindProjectsNotFound describes a response with status code 404, with
 Not Found
 */
 type UserProjectsBindProjectsNotFound struct {
-	Payload *models.ProblemDetails
+	Payload interface{}
 }
 
 // IsSuccess returns true when this user projects bind projects not found response has a 2xx status code
@@ -361,16 +357,14 @@ func (o *UserProjectsBindProjectsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserProjectsBindProjectsNotFound) GetPayload() *models.ProblemDetails {
+func (o *UserProjectsBindProjectsNotFound) GetPayload() interface{} {
 	return o.Payload
 }
 
 func (o *UserProjectsBindProjectsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ProblemDetails)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
