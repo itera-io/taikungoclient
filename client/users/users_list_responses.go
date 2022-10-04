@@ -201,7 +201,7 @@ UsersListUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type UsersListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *UsersListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users][%d] usersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersListUnauthorized) GetPayload() interface{} {
+func (o *UsersListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ UsersListForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type UsersListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *UsersListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users][%d] usersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersListForbidden) GetPayload() interface{} {
+func (o *UsersListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ UsersListNotFound describes a response with status code 404, with default header
 Not Found
 */
 type UsersListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *UsersListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users][%d] usersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersListNotFound) GetPayload() interface{} {
+func (o *UsersListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

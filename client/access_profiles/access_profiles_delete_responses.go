@@ -256,7 +256,7 @@ AccessProfilesDeleteUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type AccessProfilesDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles delete unauthorized response has a 2xx status code
@@ -292,7 +292,7 @@ func (o *AccessProfilesDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AccessProfilesDeleteUnauthorized) GetPayload() interface{} {
+func (o *AccessProfilesDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -317,7 +317,7 @@ AccessProfilesDeleteForbidden describes a response with status code 403, with de
 Forbidden
 */
 type AccessProfilesDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles delete forbidden response has a 2xx status code
@@ -353,7 +353,7 @@ func (o *AccessProfilesDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AccessProfilesDeleteForbidden) GetPayload() interface{} {
+func (o *AccessProfilesDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -378,7 +378,7 @@ AccessProfilesDeleteNotFound describes a response with status code 404, with def
 Not Found
 */
 type AccessProfilesDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles delete not found response has a 2xx status code
@@ -414,7 +414,7 @@ func (o *AccessProfilesDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AccessProfiles/{id}][%d] accessProfilesDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AccessProfilesDeleteNotFound) GetPayload() interface{} {
+func (o *AccessProfilesDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

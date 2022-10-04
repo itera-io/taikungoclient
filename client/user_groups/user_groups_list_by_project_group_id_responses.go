@@ -199,7 +199,7 @@ UserGroupsListByProjectGroupIDUnauthorized describes a response with status code
 Unauthorized
 */
 type UserGroupsListByProjectGroupIDUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user groups list by project group Id unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *UserGroupsListByProjectGroupIDUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list-by-project-group-id][%d] userGroupsListByProjectGroupIdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserGroupsListByProjectGroupIDUnauthorized) GetPayload() interface{} {
+func (o *UserGroupsListByProjectGroupIDUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ UserGroupsListByProjectGroupIDForbidden describes a response with status code 40
 Forbidden
 */
 type UserGroupsListByProjectGroupIDForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user groups list by project group Id forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *UserGroupsListByProjectGroupIDForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list-by-project-group-id][%d] userGroupsListByProjectGroupIdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserGroupsListByProjectGroupIDForbidden) GetPayload() interface{} {
+func (o *UserGroupsListByProjectGroupIDForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ UserGroupsListByProjectGroupIDNotFound describes a response with status code 404
 Not Found
 */
 type UserGroupsListByProjectGroupIDNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user groups list by project group Id not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *UserGroupsListByProjectGroupIDNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list-by-project-group-id][%d] userGroupsListByProjectGroupIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserGroupsListByProjectGroupIDNotFound) GetPayload() interface{} {
+func (o *UserGroupsListByProjectGroupIDNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

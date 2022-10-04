@@ -199,7 +199,7 @@ KubernetesPatchPodUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubernetesPatchPodUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch pod unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesPatchPodUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pod][%d] kubernetesPatchPodUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchPodUnauthorized) GetPayload() interface{} {
+func (o *KubernetesPatchPodUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesPatchPodForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubernetesPatchPodForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch pod forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesPatchPodForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pod][%d] kubernetesPatchPodForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchPodForbidden) GetPayload() interface{} {
+func (o *KubernetesPatchPodForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesPatchPodNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubernetesPatchPodNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch pod not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesPatchPodNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/pod][%d] kubernetesPatchPodNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchPodNotFound) GetPayload() interface{} {
+func (o *KubernetesPatchPodNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

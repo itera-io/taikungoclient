@@ -199,7 +199,7 @@ ProjectAppSyncUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type ProjectAppSyncUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project app sync unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectAppSyncUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppSyncUnauthorized) GetPayload() interface{} {
+func (o *ProjectAppSyncUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectAppSyncForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type ProjectAppSyncForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project app sync forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectAppSyncForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppSyncForbidden) GetPayload() interface{} {
+func (o *ProjectAppSyncForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectAppSyncNotFound describes a response with status code 404, with default h
 Not Found
 */
 type ProjectAppSyncNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project app sync not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectAppSyncNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/sync][%d] projectAppSyncNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppSyncNotFound) GetPayload() interface{} {
+func (o *ProjectAppSyncNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

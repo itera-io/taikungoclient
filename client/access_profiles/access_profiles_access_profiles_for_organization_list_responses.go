@@ -199,7 +199,7 @@ AccessProfilesAccessProfilesForOrganizationListUnauthorized describes a response
 Unauthorized
 */
 type AccessProfilesAccessProfilesForOrganizationListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles access profiles for organization list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AccessProfilesAccessProfilesForOrganizationListUnauthorized) String() s
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles/list][%d] accessProfilesAccessProfilesForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AccessProfilesAccessProfilesForOrganizationListUnauthorized) GetPayload() interface{} {
+func (o *AccessProfilesAccessProfilesForOrganizationListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AccessProfilesAccessProfilesForOrganizationListForbidden describes a response wi
 Forbidden
 */
 type AccessProfilesAccessProfilesForOrganizationListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles access profiles for organization list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AccessProfilesAccessProfilesForOrganizationListForbidden) String() stri
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles/list][%d] accessProfilesAccessProfilesForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AccessProfilesAccessProfilesForOrganizationListForbidden) GetPayload() interface{} {
+func (o *AccessProfilesAccessProfilesForOrganizationListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AccessProfilesAccessProfilesForOrganizationListNotFound describes a response wit
 Not Found
 */
 type AccessProfilesAccessProfilesForOrganizationListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles access profiles for organization list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AccessProfilesAccessProfilesForOrganizationListNotFound) String() strin
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles/list][%d] accessProfilesAccessProfilesForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AccessProfilesAccessProfilesForOrganizationListNotFound) GetPayload() interface{} {
+func (o *AccessProfilesAccessProfilesForOrganizationListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

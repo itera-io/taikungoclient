@@ -199,7 +199,7 @@ OpenstackRegionsUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type OpenstackRegionsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack regions unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OpenstackRegionsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackRegionsUnauthorized) GetPayload() interface{} {
+func (o *OpenstackRegionsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OpenstackRegionsForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type OpenstackRegionsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack regions forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OpenstackRegionsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackRegionsForbidden) GetPayload() interface{} {
+func (o *OpenstackRegionsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OpenstackRegionsNotFound describes a response with status code 404, with default
 Not Found
 */
 type OpenstackRegionsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack regions not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OpenstackRegionsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/regions][%d] openstackRegionsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackRegionsNotFound) GetPayload() interface{} {
+func (o *OpenstackRegionsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ KubernetesCreateKubernetesAlertUnauthorized describes a response with status cod
 Unauthorized
 */
 type KubernetesCreateKubernetesAlertUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes create kubernetes alert unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesCreateKubernetesAlertUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/alert/{projectId}][%d] kubernetesCreateKubernetesAlertUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesCreateKubernetesAlertUnauthorized) GetPayload() interface{} {
+func (o *KubernetesCreateKubernetesAlertUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesCreateKubernetesAlertForbidden describes a response with status code 4
 Forbidden
 */
 type KubernetesCreateKubernetesAlertForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes create kubernetes alert forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesCreateKubernetesAlertForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/alert/{projectId}][%d] kubernetesCreateKubernetesAlertForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesCreateKubernetesAlertForbidden) GetPayload() interface{} {
+func (o *KubernetesCreateKubernetesAlertForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesCreateKubernetesAlertNotFound describes a response with status code 40
 Not Found
 */
 type KubernetesCreateKubernetesAlertNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes create kubernetes alert not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesCreateKubernetesAlertNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/alert/{projectId}][%d] kubernetesCreateKubernetesAlertNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesCreateKubernetesAlertNotFound) GetPayload() interface{} {
+func (o *KubernetesCreateKubernetesAlertNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ AllowedHostEditUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type AllowedHostEditUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this allowed host edit unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AllowedHostEditUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AllowedHostEditUnauthorized) GetPayload() interface{} {
+func (o *AllowedHostEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AllowedHostEditForbidden describes a response with status code 403, with default
 Forbidden
 */
 type AllowedHostEditForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this allowed host edit forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AllowedHostEditForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AllowedHostEditForbidden) GetPayload() interface{} {
+func (o *AllowedHostEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AllowedHostEditNotFound describes a response with status code 404, with default 
 Not Found
 */
 type AllowedHostEditNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this allowed host edit not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AllowedHostEditNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AllowedHost/edit/{id}][%d] allowedHostEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AllowedHostEditNotFound) GetPayload() interface{} {
+func (o *AllowedHostEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

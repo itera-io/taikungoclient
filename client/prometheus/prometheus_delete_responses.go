@@ -199,7 +199,7 @@ PrometheusDeleteUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type PrometheusDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus delete unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PrometheusDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Prometheus/{id}][%d] prometheusDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusDeleteUnauthorized) GetPayload() interface{} {
+func (o *PrometheusDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PrometheusDeleteForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type PrometheusDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus delete forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PrometheusDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Prometheus/{id}][%d] prometheusDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusDeleteForbidden) GetPayload() interface{} {
+func (o *PrometheusDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PrometheusDeleteNotFound describes a response with status code 404, with default
 Not Found
 */
 type PrometheusDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus delete not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PrometheusDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Prometheus/{id}][%d] prometheusDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusDeleteNotFound) GetPayload() interface{} {
+func (o *PrometheusDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

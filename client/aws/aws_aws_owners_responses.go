@@ -199,7 +199,7 @@ AwsAwsOwnersUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type AwsAwsOwnersUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws aws owners unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AwsAwsOwnersUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsAwsOwnersUnauthorized) GetPayload() interface{} {
+func (o *AwsAwsOwnersUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AwsAwsOwnersForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type AwsAwsOwnersForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws aws owners forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AwsAwsOwnersForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsAwsOwnersForbidden) GetPayload() interface{} {
+func (o *AwsAwsOwnersForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AwsAwsOwnersNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type AwsAwsOwnersNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws aws owners not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AwsAwsOwnersNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsAwsOwnersNotFound) GetPayload() interface{} {
+func (o *AwsAwsOwnersNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

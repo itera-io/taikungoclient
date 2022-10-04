@@ -201,7 +201,7 @@ PrometheusCreateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type PrometheusCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *PrometheusCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusCreateUnauthorized) GetPayload() interface{} {
+func (o *PrometheusCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ PrometheusCreateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type PrometheusCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *PrometheusCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusCreateForbidden) GetPayload() interface{} {
+func (o *PrometheusCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ PrometheusCreateNotFound describes a response with status code 404, with default
 Not Found
 */
 type PrometheusCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *PrometheusCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusCreateNotFound) GetPayload() interface{} {
+func (o *PrometheusCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

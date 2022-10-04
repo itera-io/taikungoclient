@@ -199,7 +199,7 @@ CronJobDeleteAwsSpotInstancesUnauthorized describes a response with status code 
 Unauthorized
 */
 type CronJobDeleteAwsSpotInstancesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete aws spot instances unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobDeleteAwsSpotInstancesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteAwsSpotInstancesUnauthorized) GetPayload() interface{} {
+func (o *CronJobDeleteAwsSpotInstancesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobDeleteAwsSpotInstancesForbidden describes a response with status code 403
 Forbidden
 */
 type CronJobDeleteAwsSpotInstancesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete aws spot instances forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobDeleteAwsSpotInstancesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteAwsSpotInstancesForbidden) GetPayload() interface{} {
+func (o *CronJobDeleteAwsSpotInstancesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobDeleteAwsSpotInstancesNotFound describes a response with status code 404,
 Not Found
 */
 type CronJobDeleteAwsSpotInstancesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete aws spot instances not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobDeleteAwsSpotInstancesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteAwsSpotInstancesNotFound) GetPayload() interface{} {
+func (o *CronJobDeleteAwsSpotInstancesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

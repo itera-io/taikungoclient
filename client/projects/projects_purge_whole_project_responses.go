@@ -199,7 +199,7 @@ ProjectsPurgeWholeProjectUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ProjectsPurgeWholeProjectUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects purge whole project unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsPurgeWholeProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsPurgeWholeProjectUnauthorized) GetPayload() interface{} {
+func (o *ProjectsPurgeWholeProjectUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsPurgeWholeProjectForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ProjectsPurgeWholeProjectForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects purge whole project forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsPurgeWholeProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsPurgeWholeProjectForbidden) GetPayload() interface{} {
+func (o *ProjectsPurgeWholeProjectForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsPurgeWholeProjectNotFound describes a response with status code 404, wit
 Not Found
 */
 type ProjectsPurgeWholeProjectNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects purge whole project not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsPurgeWholeProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purgewholeproject][%d] projectsPurgeWholeProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsPurgeWholeProjectNotFound) GetPayload() interface{} {
+func (o *ProjectsPurgeWholeProjectNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

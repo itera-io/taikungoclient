@@ -256,7 +256,7 @@ AlertingProfilesDeleteUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type AlertingProfilesDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles delete unauthorized response has a 2xx status code
@@ -292,7 +292,7 @@ func (o *AlertingProfilesDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesDeleteUnauthorized) GetPayload() interface{} {
+func (o *AlertingProfilesDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -317,7 +317,7 @@ AlertingProfilesDeleteForbidden describes a response with status code 403, with 
 Forbidden
 */
 type AlertingProfilesDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles delete forbidden response has a 2xx status code
@@ -353,7 +353,7 @@ func (o *AlertingProfilesDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesDeleteForbidden) GetPayload() interface{} {
+func (o *AlertingProfilesDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -378,7 +378,7 @@ AlertingProfilesDeleteNotFound describes a response with status code 404, with d
 Not Found
 */
 type AlertingProfilesDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles delete not found response has a 2xx status code
@@ -414,7 +414,7 @@ func (o *AlertingProfilesDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/delete][%d] alertingProfilesDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesDeleteNotFound) GetPayload() interface{} {
+func (o *AlertingProfilesDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

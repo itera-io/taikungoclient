@@ -199,7 +199,7 @@ ServersShowServerStatusUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type ServersShowServerStatusUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers show server status unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ServersShowServerStatusUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/status/{serverId}][%d] serversShowServerStatusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersShowServerStatusUnauthorized) GetPayload() interface{} {
+func (o *ServersShowServerStatusUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ServersShowServerStatusForbidden describes a response with status code 403, with
 Forbidden
 */
 type ServersShowServerStatusForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers show server status forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ServersShowServerStatusForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/status/{serverId}][%d] serversShowServerStatusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersShowServerStatusForbidden) GetPayload() interface{} {
+func (o *ServersShowServerStatusForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ServersShowServerStatusNotFound describes a response with status code 404, with 
 Not Found
 */
 type ServersShowServerStatusNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers show server status not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ServersShowServerStatusNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/status/{serverId}][%d] serversShowServerStatusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersShowServerStatusNotFound) GetPayload() interface{} {
+func (o *ServersShowServerStatusNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

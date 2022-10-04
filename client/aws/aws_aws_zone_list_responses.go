@@ -199,7 +199,7 @@ AwsAwsZoneListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type AwsAwsZoneListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws aws zone list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AwsAwsZoneListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsAwsZoneListUnauthorized) GetPayload() interface{} {
+func (o *AwsAwsZoneListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AwsAwsZoneListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type AwsAwsZoneListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws aws zone list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AwsAwsZoneListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsAwsZoneListForbidden) GetPayload() interface{} {
+func (o *AwsAwsZoneListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AwsAwsZoneListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type AwsAwsZoneListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws aws zone list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AwsAwsZoneListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/zones][%d] awsAwsZoneListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsAwsZoneListNotFound) GetPayload() interface{} {
+func (o *AwsAwsZoneListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ ImagesGetImageDetailsByIDUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ImagesGetImageDetailsByIDUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images get image details by Id unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ImagesGetImageDetailsByIDUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesGetImageDetailsByIDUnauthorized) GetPayload() interface{} {
+func (o *ImagesGetImageDetailsByIDUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ImagesGetImageDetailsByIDForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ImagesGetImageDetailsByIDForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images get image details by Id forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ImagesGetImageDetailsByIDForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesGetImageDetailsByIDForbidden) GetPayload() interface{} {
+func (o *ImagesGetImageDetailsByIDForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ImagesGetImageDetailsByIDNotFound describes a response with status code 404, wit
 Not Found
 */
 type ImagesGetImageDetailsByIDNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images get image details by Id not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ImagesGetImageDetailsByIDNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/details][%d] imagesGetImageDetailsByIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesGetImageDetailsByIDNotFound) GetPayload() interface{} {
+func (o *ImagesGetImageDetailsByIDNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

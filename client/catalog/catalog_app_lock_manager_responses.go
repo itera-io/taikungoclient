@@ -199,7 +199,7 @@ CatalogAppLockManagerUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type CatalogAppLockManagerUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog app lock manager unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CatalogAppLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogAppLockManagerUnauthorized) GetPayload() interface{} {
+func (o *CatalogAppLockManagerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CatalogAppLockManagerForbidden describes a response with status code 403, with d
 Forbidden
 */
 type CatalogAppLockManagerForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog app lock manager forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CatalogAppLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogAppLockManagerForbidden) GetPayload() interface{} {
+func (o *CatalogAppLockManagerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CatalogAppLockManagerNotFound describes a response with status code 404, with de
 Not Found
 */
 type CatalogAppLockManagerNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog app lock manager not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CatalogAppLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-lockmanager][%d] catalogAppLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogAppLockManagerNotFound) GetPayload() interface{} {
+func (o *CatalogAppLockManagerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

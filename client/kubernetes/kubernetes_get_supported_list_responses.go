@@ -199,7 +199,7 @@ KubernetesGetSupportedListUnauthorized describes a response with status code 401
 Unauthorized
 */
 type KubernetesGetSupportedListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get supported list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesGetSupportedListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetSupportedListUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetSupportedListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesGetSupportedListForbidden describes a response with status code 403, w
 Forbidden
 */
 type KubernetesGetSupportedListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get supported list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesGetSupportedListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetSupportedListForbidden) GetPayload() interface{} {
+func (o *KubernetesGetSupportedListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesGetSupportedListNotFound describes a response with status code 404, wi
 Not Found
 */
 type KubernetesGetSupportedListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get supported list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesGetSupportedListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetSupportedListNotFound) GetPayload() interface{} {
+func (o *KubernetesGetSupportedListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

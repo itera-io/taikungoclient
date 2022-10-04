@@ -199,7 +199,7 @@ KubernetesDescribeJobUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesDescribeJobUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe job unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesDescribeJobUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeJobUnauthorized) GetPayload() interface{} {
+func (o *KubernetesDescribeJobUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesDescribeJobForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesDescribeJobForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe job forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesDescribeJobForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeJobForbidden) GetPayload() interface{} {
+func (o *KubernetesDescribeJobForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesDescribeJobNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesDescribeJobNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe job not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesDescribeJobNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeJobNotFound) GetPayload() interface{} {
+func (o *KubernetesDescribeJobNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

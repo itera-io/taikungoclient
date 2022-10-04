@@ -199,7 +199,7 @@ ProjectsLockManagerUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ProjectsLockManagerUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects lock manager unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsLockManagerUnauthorized) GetPayload() interface{} {
+func (o *ProjectsLockManagerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsLockManagerForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ProjectsLockManagerForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects lock manager forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsLockManagerForbidden) GetPayload() interface{} {
+func (o *ProjectsLockManagerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsLockManagerNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ProjectsLockManagerNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects lock manager not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsLockManagerNotFound) GetPayload() interface{} {
+func (o *ProjectsLockManagerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

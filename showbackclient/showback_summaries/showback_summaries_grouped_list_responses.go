@@ -201,7 +201,7 @@ ShowbackSummariesGroupedListUnauthorized describes a response with status code 4
 Unauthorized
 */
 type ShowbackSummariesGroupedListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries grouped list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *ShowbackSummariesGroupedListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedListUnauthorized) GetPayload() interface{} {
+func (o *ShowbackSummariesGroupedListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ ShowbackSummariesGroupedListForbidden describes a response with status code 403,
 Forbidden
 */
 type ShowbackSummariesGroupedListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries grouped list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *ShowbackSummariesGroupedListForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedListForbidden) GetPayload() interface{} {
+func (o *ShowbackSummariesGroupedListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ ShowbackSummariesGroupedListNotFound describes a response with status code 404, 
 Not Found
 */
 type ShowbackSummariesGroupedListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries grouped list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *ShowbackSummariesGroupedListNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped][%d] showbackSummariesGroupedListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedListNotFound) GetPayload() interface{} {
+func (o *ShowbackSummariesGroupedListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

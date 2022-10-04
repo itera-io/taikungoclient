@@ -199,7 +199,7 @@ PrometheusUpdateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type PrometheusUpdateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus update unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PrometheusUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/update/{id}][%d] prometheusUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusUpdateUnauthorized) GetPayload() interface{} {
+func (o *PrometheusUpdateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PrometheusUpdateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type PrometheusUpdateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus update forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PrometheusUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/update/{id}][%d] prometheusUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusUpdateForbidden) GetPayload() interface{} {
+func (o *PrometheusUpdateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PrometheusUpdateNotFound describes a response with status code 404, with default
 Not Found
 */
 type PrometheusUpdateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus update not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PrometheusUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/update/{id}][%d] prometheusUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusUpdateNotFound) GetPayload() interface{} {
+func (o *PrometheusUpdateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

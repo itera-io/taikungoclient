@@ -201,7 +201,7 @@ TicketTicketListUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type TicketTicketListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket ticket list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *TicketTicketListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/list][%d] ticketTicketListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketTicketListUnauthorized) GetPayload() interface{} {
+func (o *TicketTicketListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ TicketTicketListForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type TicketTicketListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket ticket list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *TicketTicketListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/list][%d] ticketTicketListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketTicketListForbidden) GetPayload() interface{} {
+func (o *TicketTicketListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ TicketTicketListNotFound describes a response with status code 404, with default
 Not Found
 */
 type TicketTicketListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket ticket list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *TicketTicketListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/list][%d] ticketTicketListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketTicketListNotFound) GetPayload() interface{} {
+func (o *TicketTicketListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

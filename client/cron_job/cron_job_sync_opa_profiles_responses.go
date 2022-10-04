@@ -199,7 +199,7 @@ CronJobSyncOpaProfilesUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type CronJobSyncOpaProfilesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job sync opa profiles unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobSyncOpaProfilesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobSyncOpaProfilesUnauthorized) GetPayload() interface{} {
+func (o *CronJobSyncOpaProfilesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobSyncOpaProfilesForbidden describes a response with status code 403, with 
 Forbidden
 */
 type CronJobSyncOpaProfilesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job sync opa profiles forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobSyncOpaProfilesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobSyncOpaProfilesForbidden) GetPayload() interface{} {
+func (o *CronJobSyncOpaProfilesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobSyncOpaProfilesNotFound describes a response with status code 404, with d
 Not Found
 */
 type CronJobSyncOpaProfilesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job sync opa profiles not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobSyncOpaProfilesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobSyncOpaProfilesNotFound) GetPayload() interface{} {
+func (o *CronJobSyncOpaProfilesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

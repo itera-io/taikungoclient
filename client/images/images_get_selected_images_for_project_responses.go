@@ -201,7 +201,7 @@ ImagesGetSelectedImagesForProjectUnauthorized describes a response with status c
 Unauthorized
 */
 type ImagesGetSelectedImagesForProjectUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images get selected images for project unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *ImagesGetSelectedImagesForProjectUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/projects/list][%d] imagesGetSelectedImagesForProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesGetSelectedImagesForProjectUnauthorized) GetPayload() interface{} {
+func (o *ImagesGetSelectedImagesForProjectUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ ImagesGetSelectedImagesForProjectForbidden describes a response with status code
 Forbidden
 */
 type ImagesGetSelectedImagesForProjectForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images get selected images for project forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *ImagesGetSelectedImagesForProjectForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/projects/list][%d] imagesGetSelectedImagesForProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesGetSelectedImagesForProjectForbidden) GetPayload() interface{} {
+func (o *ImagesGetSelectedImagesForProjectForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ ImagesGetSelectedImagesForProjectNotFound describes a response with status code 
 Not Found
 */
 type ImagesGetSelectedImagesForProjectNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images get selected images for project not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *ImagesGetSelectedImagesForProjectNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/projects/list][%d] imagesGetSelectedImagesForProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesGetSelectedImagesForProjectNotFound) GetPayload() interface{} {
+func (o *ImagesGetSelectedImagesForProjectNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

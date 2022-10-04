@@ -201,7 +201,7 @@ ShowbackCredentialsCreateUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ShowbackCredentialsCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback credentials create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *ShowbackCredentialsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/create][%d] showbackCredentialsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackCredentialsCreateUnauthorized) GetPayload() interface{} {
+func (o *ShowbackCredentialsCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ ShowbackCredentialsCreateForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ShowbackCredentialsCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback credentials create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *ShowbackCredentialsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/create][%d] showbackCredentialsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackCredentialsCreateForbidden) GetPayload() interface{} {
+func (o *ShowbackCredentialsCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ ShowbackCredentialsCreateNotFound describes a response with status code 404, wit
 Not Found
 */
 type ShowbackCredentialsCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback credentials create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *ShowbackCredentialsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/create][%d] showbackCredentialsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackCredentialsCreateNotFound) GetPayload() interface{} {
+func (o *ShowbackCredentialsCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ FlavorsAwsFlavorsUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type FlavorsAwsFlavorsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors aws flavors unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *FlavorsAwsFlavorsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsAwsFlavorsUnauthorized) GetPayload() interface{} {
+func (o *FlavorsAwsFlavorsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ FlavorsAwsFlavorsForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type FlavorsAwsFlavorsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors aws flavors forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *FlavorsAwsFlavorsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsAwsFlavorsForbidden) GetPayload() interface{} {
+func (o *FlavorsAwsFlavorsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ FlavorsAwsFlavorsNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type FlavorsAwsFlavorsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors aws flavors not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *FlavorsAwsFlavorsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/aws/{cloudId}][%d] flavorsAwsFlavorsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsAwsFlavorsNotFound) GetPayload() interface{} {
+func (o *FlavorsAwsFlavorsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

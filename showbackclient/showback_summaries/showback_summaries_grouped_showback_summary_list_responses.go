@@ -199,7 +199,7 @@ ShowbackSummariesGroupedShowbackSummaryListUnauthorized describes a response wit
 Unauthorized
 */
 type ShowbackSummariesGroupedShowbackSummaryListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries grouped showback summary list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ShowbackSummariesGroupedShowbackSummaryListUnauthorized) String() strin
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/list][%d] showbackSummariesGroupedShowbackSummaryListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedShowbackSummaryListUnauthorized) GetPayload() interface{} {
+func (o *ShowbackSummariesGroupedShowbackSummaryListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ShowbackSummariesGroupedShowbackSummaryListForbidden describes a response with s
 Forbidden
 */
 type ShowbackSummariesGroupedShowbackSummaryListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries grouped showback summary list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ShowbackSummariesGroupedShowbackSummaryListForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/list][%d] showbackSummariesGroupedShowbackSummaryListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedShowbackSummaryListForbidden) GetPayload() interface{} {
+func (o *ShowbackSummariesGroupedShowbackSummaryListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ShowbackSummariesGroupedShowbackSummaryListNotFound describes a response with st
 Not Found
 */
 type ShowbackSummariesGroupedShowbackSummaryListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries grouped showback summary list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ShowbackSummariesGroupedShowbackSummaryListNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/list][%d] showbackSummariesGroupedShowbackSummaryListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedShowbackSummaryListNotFound) GetPayload() interface{} {
+func (o *ShowbackSummariesGroupedShowbackSummaryListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -246,7 +246,7 @@ ProjectsDeleteUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type ProjectsDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects delete unauthorized response has a 2xx status code
@@ -282,7 +282,7 @@ func (o *ProjectsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/delete][%d] projectsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsDeleteUnauthorized) GetPayload() interface{} {
+func (o *ProjectsDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -307,7 +307,7 @@ ProjectsDeleteForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type ProjectsDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects delete forbidden response has a 2xx status code
@@ -343,7 +343,7 @@ func (o *ProjectsDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/delete][%d] projectsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsDeleteForbidden) GetPayload() interface{} {
+func (o *ProjectsDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -368,7 +368,7 @@ ProjectsDeleteNotFound describes a response with status code 404, with default h
 Not Found
 */
 type ProjectsDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects delete not found response has a 2xx status code
@@ -404,7 +404,7 @@ func (o *ProjectsDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/delete][%d] projectsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsDeleteNotFound) GetPayload() interface{} {
+func (o *ProjectsDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

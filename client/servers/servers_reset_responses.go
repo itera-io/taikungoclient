@@ -199,7 +199,7 @@ ServersResetUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type ServersResetUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers reset unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ServersResetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersResetUnauthorized) GetPayload() interface{} {
+func (o *ServersResetUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ServersResetForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type ServersResetForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers reset forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ServersResetForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersResetForbidden) GetPayload() interface{} {
+func (o *ServersResetForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ServersResetNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type ServersResetNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers reset not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ServersResetNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersResetNotFound) GetPayload() interface{} {
+func (o *ServersResetNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

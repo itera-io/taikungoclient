@@ -199,7 +199,7 @@ CloudCredentialsLockManagerUnauthorized describes a response with status code 40
 Unauthorized
 */
 type CloudCredentialsLockManagerUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials lock manager unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CloudCredentialsLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsLockManagerUnauthorized) GetPayload() interface{} {
+func (o *CloudCredentialsLockManagerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CloudCredentialsLockManagerForbidden describes a response with status code 403, 
 Forbidden
 */
 type CloudCredentialsLockManagerForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials lock manager forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CloudCredentialsLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsLockManagerForbidden) GetPayload() interface{} {
+func (o *CloudCredentialsLockManagerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CloudCredentialsLockManagerNotFound describes a response with status code 404, w
 Not Found
 */
 type CloudCredentialsLockManagerNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials lock manager not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CloudCredentialsLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/lockmanager][%d] cloudCredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsLockManagerNotFound) GetPayload() interface{} {
+func (o *CloudCredentialsLockManagerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

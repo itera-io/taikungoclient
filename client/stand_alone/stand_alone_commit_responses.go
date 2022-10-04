@@ -199,7 +199,7 @@ StandAloneCommitUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type StandAloneCommitUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone commit unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneCommitUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneCommitUnauthorized) GetPayload() interface{} {
+func (o *StandAloneCommitUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneCommitForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type StandAloneCommitForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone commit forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneCommitForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneCommitForbidden) GetPayload() interface{} {
+func (o *StandAloneCommitForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneCommitNotFound describes a response with status code 404, with default
 Not Found
 */
 type StandAloneCommitNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone commit not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneCommitNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/commit][%d] standAloneCommitNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneCommitNotFound) GetPayload() interface{} {
+func (o *StandAloneCommitNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

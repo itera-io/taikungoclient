@@ -256,7 +256,7 @@ ServersDeleteUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type ServersDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers delete unauthorized response has a 2xx status code
@@ -292,7 +292,7 @@ func (o *ServersDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersDeleteUnauthorized) GetPayload() interface{} {
+func (o *ServersDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -317,7 +317,7 @@ ServersDeleteForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type ServersDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers delete forbidden response has a 2xx status code
@@ -353,7 +353,7 @@ func (o *ServersDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersDeleteForbidden) GetPayload() interface{} {
+func (o *ServersDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -378,7 +378,7 @@ ServersDeleteNotFound describes a response with status code 404, with default he
 Not Found
 */
 type ServersDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers delete not found response has a 2xx status code
@@ -414,7 +414,7 @@ func (o *ServersDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersDeleteNotFound) GetPayload() interface{} {
+func (o *ServersDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

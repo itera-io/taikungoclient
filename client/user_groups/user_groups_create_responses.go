@@ -201,7 +201,7 @@ UserGroupsCreateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type UserGroupsCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user groups create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *UserGroupsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/create][%d] userGroupsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserGroupsCreateUnauthorized) GetPayload() interface{} {
+func (o *UserGroupsCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ UserGroupsCreateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type UserGroupsCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user groups create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *UserGroupsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/create][%d] userGroupsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserGroupsCreateForbidden) GetPayload() interface{} {
+func (o *UserGroupsCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ UserGroupsCreateNotFound describes a response with status code 404, with default
 Not Found
 */
 type UserGroupsCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user groups create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *UserGroupsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/create][%d] userGroupsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserGroupsCreateNotFound) GetPayload() interface{} {
+func (o *UserGroupsCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

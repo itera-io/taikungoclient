@@ -199,7 +199,7 @@ AdminUpdateUserKubeConfigUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type AdminUpdateUserKubeConfigUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin update user kube config unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AdminUpdateUserKubeConfigUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/userkube][%d] adminUpdateUserKubeConfigUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminUpdateUserKubeConfigUnauthorized) GetPayload() interface{} {
+func (o *AdminUpdateUserKubeConfigUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AdminUpdateUserKubeConfigForbidden describes a response with status code 403, wi
 Forbidden
 */
 type AdminUpdateUserKubeConfigForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin update user kube config forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AdminUpdateUserKubeConfigForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/userkube][%d] adminUpdateUserKubeConfigForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminUpdateUserKubeConfigForbidden) GetPayload() interface{} {
+func (o *AdminUpdateUserKubeConfigForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AdminUpdateUserKubeConfigNotFound describes a response with status code 404, wit
 Not Found
 */
 type AdminUpdateUserKubeConfigNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin update user kube config not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AdminUpdateUserKubeConfigNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/userkube][%d] adminUpdateUserKubeConfigNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminUpdateUserKubeConfigNotFound) GetPayload() interface{} {
+func (o *AdminUpdateUserKubeConfigNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

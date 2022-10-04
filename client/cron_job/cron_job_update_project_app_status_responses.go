@@ -199,7 +199,7 @@ CronJobUpdateProjectAppStatusUnauthorized describes a response with status code 
 Unauthorized
 */
 type CronJobUpdateProjectAppStatusUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job update project app status unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobUpdateProjectAppStatusUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobUpdateProjectAppStatusUnauthorized) GetPayload() interface{} {
+func (o *CronJobUpdateProjectAppStatusUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobUpdateProjectAppStatusForbidden describes a response with status code 403
 Forbidden
 */
 type CronJobUpdateProjectAppStatusForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job update project app status forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobUpdateProjectAppStatusForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobUpdateProjectAppStatusForbidden) GetPayload() interface{} {
+func (o *CronJobUpdateProjectAppStatusForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobUpdateProjectAppStatusNotFound describes a response with status code 404,
 Not Found
 */
 type CronJobUpdateProjectAppStatusNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job update project app status not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobUpdateProjectAppStatusNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobUpdateProjectAppStatusNotFound) GetPayload() interface{} {
+func (o *CronJobUpdateProjectAppStatusNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

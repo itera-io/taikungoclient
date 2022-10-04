@@ -201,7 +201,7 @@ SearchPersistenceVolumeClaimListUnauthorized describes a response with status co
 Unauthorized
 */
 type SearchPersistenceVolumeClaimListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search persistence volume claim list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchPersistenceVolumeClaimListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchPersistenceVolumeClaimListUnauthorized) GetPayload() interface{} {
+func (o *SearchPersistenceVolumeClaimListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchPersistenceVolumeClaimListForbidden describes a response with status code 
 Forbidden
 */
 type SearchPersistenceVolumeClaimListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search persistence volume claim list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchPersistenceVolumeClaimListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchPersistenceVolumeClaimListForbidden) GetPayload() interface{} {
+func (o *SearchPersistenceVolumeClaimListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchPersistenceVolumeClaimListNotFound describes a response with status code 4
 Not Found
 */
 type SearchPersistenceVolumeClaimListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search persistence volume claim list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchPersistenceVolumeClaimListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pvcs][%d] searchPersistenceVolumeClaimListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchPersistenceVolumeClaimListNotFound) GetPayload() interface{} {
+func (o *SearchPersistenceVolumeClaimListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ PrometheusBindOrganizationsUnauthorized describes a response with status code 40
 Unauthorized
 */
 type PrometheusBindOrganizationsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus bind organizations unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PrometheusBindOrganizationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusBindOrganizationsUnauthorized) GetPayload() interface{} {
+func (o *PrometheusBindOrganizationsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PrometheusBindOrganizationsForbidden describes a response with status code 403, 
 Forbidden
 */
 type PrometheusBindOrganizationsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus bind organizations forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PrometheusBindOrganizationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusBindOrganizationsForbidden) GetPayload() interface{} {
+func (o *PrometheusBindOrganizationsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PrometheusBindOrganizationsNotFound describes a response with status code 404, w
 Not Found
 */
 type PrometheusBindOrganizationsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus bind organizations not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PrometheusBindOrganizationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusBindOrganizationsNotFound) GetPayload() interface{} {
+func (o *PrometheusBindOrganizationsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

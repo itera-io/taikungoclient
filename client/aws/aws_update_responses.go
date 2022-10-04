@@ -199,7 +199,7 @@ AwsUpdateUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type AwsUpdateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws update unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AwsUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsUpdateUnauthorized) GetPayload() interface{} {
+func (o *AwsUpdateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AwsUpdateForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type AwsUpdateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws update forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AwsUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsUpdateForbidden) GetPayload() interface{} {
+func (o *AwsUpdateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AwsUpdateNotFound describes a response with status code 404, with default header
 Not Found
 */
 type AwsUpdateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws update not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AwsUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/update][%d] awsUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsUpdateNotFound) GetPayload() interface{} {
+func (o *AwsUpdateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

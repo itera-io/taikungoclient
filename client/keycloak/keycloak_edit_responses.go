@@ -199,7 +199,7 @@ KeycloakEditUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type KeycloakEditUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this keycloak edit unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KeycloakEditUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KeycloakEditUnauthorized) GetPayload() interface{} {
+func (o *KeycloakEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KeycloakEditForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type KeycloakEditForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this keycloak edit forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KeycloakEditForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KeycloakEditForbidden) GetPayload() interface{} {
+func (o *KeycloakEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KeycloakEditNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type KeycloakEditNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this keycloak edit not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KeycloakEditNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Keycloak/edit][%d] keycloakEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KeycloakEditNotFound) GetPayload() interface{} {
+func (o *KeycloakEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

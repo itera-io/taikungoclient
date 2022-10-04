@@ -201,7 +201,7 @@ SearchBackupCredentialsListUnauthorized describes a response with status code 40
 Unauthorized
 */
 type SearchBackupCredentialsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search backup credentials list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchBackupCredentialsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchBackupCredentialsListUnauthorized) GetPayload() interface{} {
+func (o *SearchBackupCredentialsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchBackupCredentialsListForbidden describes a response with status code 403, 
 Forbidden
 */
 type SearchBackupCredentialsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search backup credentials list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchBackupCredentialsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchBackupCredentialsListForbidden) GetPayload() interface{} {
+func (o *SearchBackupCredentialsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchBackupCredentialsListNotFound describes a response with status code 404, w
 Not Found
 */
 type SearchBackupCredentialsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search backup credentials list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchBackupCredentialsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchBackupCredentialsListNotFound) GetPayload() interface{} {
+func (o *SearchBackupCredentialsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ CatalogCreateCatalogUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type CatalogCreateCatalogUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog create catalog unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CatalogCreateCatalogUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/create-catalog][%d] catalogCreateCatalogUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogCreateCatalogUnauthorized) GetPayload() interface{} {
+func (o *CatalogCreateCatalogUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CatalogCreateCatalogForbidden describes a response with status code 403, with de
 Forbidden
 */
 type CatalogCreateCatalogForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog create catalog forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CatalogCreateCatalogForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/create-catalog][%d] catalogCreateCatalogForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogCreateCatalogForbidden) GetPayload() interface{} {
+func (o *CatalogCreateCatalogForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CatalogCreateCatalogNotFound describes a response with status code 404, with def
 Not Found
 */
 type CatalogCreateCatalogNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog create catalog not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CatalogCreateCatalogNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/create-catalog][%d] catalogCreateCatalogNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogCreateCatalogNotFound) GetPayload() interface{} {
+func (o *CatalogCreateCatalogNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

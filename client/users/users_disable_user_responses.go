@@ -199,7 +199,7 @@ UsersDisableUserUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type UsersDisableUserUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users disable user unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *UsersDisableUserUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/disable][%d] usersDisableUserUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersDisableUserUnauthorized) GetPayload() interface{} {
+func (o *UsersDisableUserUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ UsersDisableUserForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type UsersDisableUserForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users disable user forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *UsersDisableUserForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/disable][%d] usersDisableUserForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersDisableUserForbidden) GetPayload() interface{} {
+func (o *UsersDisableUserForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ UsersDisableUserNotFound describes a response with status code 404, with default
 Not Found
 */
 type UsersDisableUserNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users disable user not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *UsersDisableUserNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/disable][%d] usersDisableUserNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersDisableUserNotFound) GetPayload() interface{} {
+func (o *UsersDisableUserNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

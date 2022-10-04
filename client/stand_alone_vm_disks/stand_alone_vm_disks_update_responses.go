@@ -199,7 +199,7 @@ StandAloneVMDisksUpdateUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneVMDisksUpdateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks update unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneVMDisksUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update][%d] standAloneVmDisksUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateUnauthorized) GetPayload() interface{} {
+func (o *StandAloneVMDisksUpdateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneVMDisksUpdateForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneVMDisksUpdateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks update forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneVMDisksUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update][%d] standAloneVmDisksUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateForbidden) GetPayload() interface{} {
+func (o *StandAloneVMDisksUpdateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneVMDisksUpdateNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneVMDisksUpdateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks update not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneVMDisksUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update][%d] standAloneVmDisksUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateNotFound) GetPayload() interface{} {
+func (o *StandAloneVMDisksUpdateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ StandAloneProjectDetailsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type StandAloneProjectDetailsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone project details unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *StandAloneProjectDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneProjectDetailsUnauthorized) GetPayload() interface{} {
+func (o *StandAloneProjectDetailsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ StandAloneProjectDetailsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type StandAloneProjectDetailsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone project details forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *StandAloneProjectDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneProjectDetailsForbidden) GetPayload() interface{} {
+func (o *StandAloneProjectDetailsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ StandAloneProjectDetailsNotFound describes a response with status code 404, with
 Not Found
 */
 type StandAloneProjectDetailsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone project details not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *StandAloneProjectDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/project/{projectId}][%d] standAloneProjectDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneProjectDetailsNotFound) GetPayload() interface{} {
+func (o *StandAloneProjectDetailsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

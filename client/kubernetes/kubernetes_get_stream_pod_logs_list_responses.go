@@ -199,7 +199,7 @@ KubernetesGetStreamPodLogsListUnauthorized describes a response with status code
 Unauthorized
 */
 type KubernetesGetStreamPodLogsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get stream pod logs list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesGetStreamPodLogsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/podlogs-stream][%d] kubernetesGetStreamPodLogsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetStreamPodLogsListUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetStreamPodLogsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesGetStreamPodLogsListForbidden describes a response with status code 40
 Forbidden
 */
 type KubernetesGetStreamPodLogsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get stream pod logs list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesGetStreamPodLogsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/podlogs-stream][%d] kubernetesGetStreamPodLogsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetStreamPodLogsListForbidden) GetPayload() interface{} {
+func (o *KubernetesGetStreamPodLogsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesGetStreamPodLogsListNotFound describes a response with status code 404
 Not Found
 */
 type KubernetesGetStreamPodLogsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get stream pod logs list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesGetStreamPodLogsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/podlogs-stream][%d] kubernetesGetStreamPodLogsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetStreamPodLogsListNotFound) GetPayload() interface{} {
+func (o *KubernetesGetStreamPodLogsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

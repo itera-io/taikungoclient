@@ -201,7 +201,7 @@ AlertingProfilesEditUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type AlertingProfilesEditUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles edit unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *AlertingProfilesEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesEditUnauthorized) GetPayload() interface{} {
+func (o *AlertingProfilesEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ AlertingProfilesEditForbidden describes a response with status code 403, with de
 Forbidden
 */
 type AlertingProfilesEditForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles edit forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *AlertingProfilesEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesEditForbidden) GetPayload() interface{} {
+func (o *AlertingProfilesEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ AlertingProfilesEditNotFound describes a response with status code 404, with def
 Not Found
 */
 type AlertingProfilesEditNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles edit not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *AlertingProfilesEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/edit][%d] alertingProfilesEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesEditNotFound) GetPayload() interface{} {
+func (o *AlertingProfilesEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

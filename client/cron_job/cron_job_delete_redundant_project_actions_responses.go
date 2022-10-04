@@ -199,7 +199,7 @@ CronJobDeleteRedundantProjectActionsUnauthorized describes a response with statu
 Unauthorized
 */
 type CronJobDeleteRedundantProjectActionsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete redundant project actions unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobDeleteRedundantProjectActionsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteRedundantProjectActionsUnauthorized) GetPayload() interface{} {
+func (o *CronJobDeleteRedundantProjectActionsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobDeleteRedundantProjectActionsForbidden describes a response with status c
 Forbidden
 */
 type CronJobDeleteRedundantProjectActionsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete redundant project actions forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobDeleteRedundantProjectActionsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteRedundantProjectActionsForbidden) GetPayload() interface{} {
+func (o *CronJobDeleteRedundantProjectActionsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobDeleteRedundantProjectActionsNotFound describes a response with status co
 Not Found
 */
 type CronJobDeleteRedundantProjectActionsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete redundant project actions not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobDeleteRedundantProjectActionsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteRedundantProjectActionsNotFound) GetPayload() interface{} {
+func (o *CronJobDeleteRedundantProjectActionsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

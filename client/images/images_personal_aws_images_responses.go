@@ -199,7 +199,7 @@ ImagesPersonalAwsImagesUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type ImagesPersonalAwsImagesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images personal aws images unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ImagesPersonalAwsImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesPersonalAwsImagesUnauthorized) GetPayload() interface{} {
+func (o *ImagesPersonalAwsImagesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ImagesPersonalAwsImagesForbidden describes a response with status code 403, with
 Forbidden
 */
 type ImagesPersonalAwsImagesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images personal aws images forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ImagesPersonalAwsImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesPersonalAwsImagesForbidden) GetPayload() interface{} {
+func (o *ImagesPersonalAwsImagesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ImagesPersonalAwsImagesNotFound describes a response with status code 404, with 
 Not Found
 */
 type ImagesPersonalAwsImagesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images personal aws images not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ImagesPersonalAwsImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/aws/personal/{cloudId}][%d] imagesPersonalAwsImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesPersonalAwsImagesNotFound) GetPayload() interface{} {
+func (o *ImagesPersonalAwsImagesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

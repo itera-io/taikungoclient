@@ -256,7 +256,7 @@ OrganizationsDeleteUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type OrganizationsDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations delete unauthorized response has a 2xx status code
@@ -292,7 +292,7 @@ func (o *OrganizationsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsDeleteUnauthorized) GetPayload() interface{} {
+func (o *OrganizationsDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -317,7 +317,7 @@ OrganizationsDeleteForbidden describes a response with status code 403, with def
 Forbidden
 */
 type OrganizationsDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations delete forbidden response has a 2xx status code
@@ -353,7 +353,7 @@ func (o *OrganizationsDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsDeleteForbidden) GetPayload() interface{} {
+func (o *OrganizationsDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -378,7 +378,7 @@ OrganizationsDeleteNotFound describes a response with status code 404, with defa
 Not Found
 */
 type OrganizationsDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations delete not found response has a 2xx status code
@@ -414,7 +414,7 @@ func (o *OrganizationsDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/delete/{organizationId}][%d] organizationsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsDeleteNotFound) GetPayload() interface{} {
+func (o *OrganizationsDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

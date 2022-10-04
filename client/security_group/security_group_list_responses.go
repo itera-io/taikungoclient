@@ -199,7 +199,7 @@ SecurityGroupListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type SecurityGroupListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this security group list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *SecurityGroupListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SecurityGroupListUnauthorized) GetPayload() interface{} {
+func (o *SecurityGroupListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ SecurityGroupListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type SecurityGroupListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this security group list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *SecurityGroupListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SecurityGroupListForbidden) GetPayload() interface{} {
+func (o *SecurityGroupListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ SecurityGroupListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type SecurityGroupListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this security group list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *SecurityGroupListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/list/{standAloneProfileId}][%d] securityGroupListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SecurityGroupListNotFound) GetPayload() interface{} {
+func (o *SecurityGroupListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ UserProjectsProjectsListByUserUnauthorized describes a response with status code
 Unauthorized
 */
 type UserProjectsProjectsListByUserUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user projects projects list by user unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *UserProjectsProjectsListByUserUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/projects/list][%d] userProjectsProjectsListByUserUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserProjectsProjectsListByUserUnauthorized) GetPayload() interface{} {
+func (o *UserProjectsProjectsListByUserUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ UserProjectsProjectsListByUserForbidden describes a response with status code 40
 Forbidden
 */
 type UserProjectsProjectsListByUserForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user projects projects list by user forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *UserProjectsProjectsListByUserForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/projects/list][%d] userProjectsProjectsListByUserForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserProjectsProjectsListByUserForbidden) GetPayload() interface{} {
+func (o *UserProjectsProjectsListByUserForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ UserProjectsProjectsListByUserNotFound describes a response with status code 404
 Not Found
 */
 type UserProjectsProjectsListByUserNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user projects projects list by user not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *UserProjectsProjectsListByUserNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserProjects/projects/list][%d] userProjectsProjectsListByUserNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserProjectsProjectsListByUserNotFound) GetPayload() interface{} {
+func (o *UserProjectsProjectsListByUserNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

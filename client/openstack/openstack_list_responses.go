@@ -201,7 +201,7 @@ OpenstackListUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type OpenstackListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *OpenstackListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackListUnauthorized) GetPayload() interface{} {
+func (o *OpenstackListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ OpenstackListForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type OpenstackListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *OpenstackListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackListForbidden) GetPayload() interface{} {
+func (o *OpenstackListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ OpenstackListNotFound describes a response with status code 404, with default he
 Not Found
 */
 type OpenstackListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *OpenstackListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackListNotFound) GetPayload() interface{} {
+func (o *OpenstackListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ AlertingIntegrationsEditUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type AlertingIntegrationsEditUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting integrations edit unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AlertingIntegrationsEditUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingIntegrationsEditUnauthorized) GetPayload() interface{} {
+func (o *AlertingIntegrationsEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AlertingIntegrationsEditForbidden describes a response with status code 403, wit
 Forbidden
 */
 type AlertingIntegrationsEditForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting integrations edit forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AlertingIntegrationsEditForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingIntegrationsEditForbidden) GetPayload() interface{} {
+func (o *AlertingIntegrationsEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AlertingIntegrationsEditNotFound describes a response with status code 404, with
 Not Found
 */
 type AlertingIntegrationsEditNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting integrations edit not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AlertingIntegrationsEditNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingIntegrationsEditNotFound) GetPayload() interface{} {
+func (o *AlertingIntegrationsEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

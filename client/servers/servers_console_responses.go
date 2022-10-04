@@ -199,7 +199,7 @@ ServersConsoleUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type ServersConsoleUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers console unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ServersConsoleUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersConsoleUnauthorized) GetPayload() interface{} {
+func (o *ServersConsoleUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ServersConsoleForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type ServersConsoleForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers console forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ServersConsoleForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersConsoleForbidden) GetPayload() interface{} {
+func (o *ServersConsoleForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ServersConsoleNotFound describes a response with status code 404, with default h
 Not Found
 */
 type ServersConsoleNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers console not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ServersConsoleNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersConsoleNotFound) GetPayload() interface{} {
+func (o *ServersConsoleNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

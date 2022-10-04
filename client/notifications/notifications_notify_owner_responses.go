@@ -199,7 +199,7 @@ NotificationsNotifyOwnerUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type NotificationsNotifyOwnerUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this notifications notify owner unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *NotificationsNotifyOwnerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NotificationsNotifyOwnerUnauthorized) GetPayload() interface{} {
+func (o *NotificationsNotifyOwnerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ NotificationsNotifyOwnerForbidden describes a response with status code 403, wit
 Forbidden
 */
 type NotificationsNotifyOwnerForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this notifications notify owner forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *NotificationsNotifyOwnerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NotificationsNotifyOwnerForbidden) GetPayload() interface{} {
+func (o *NotificationsNotifyOwnerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ NotificationsNotifyOwnerNotFound describes a response with status code 404, with
 Not Found
 */
 type NotificationsNotifyOwnerNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this notifications notify owner not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *NotificationsNotifyOwnerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/notifyowner][%d] notificationsNotifyOwnerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NotificationsNotifyOwnerNotFound) GetPayload() interface{} {
+func (o *NotificationsNotifyOwnerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

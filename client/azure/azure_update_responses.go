@@ -199,7 +199,7 @@ AzureUpdateUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type AzureUpdateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure update unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AzureUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureUpdateUnauthorized) GetPayload() interface{} {
+func (o *AzureUpdateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AzureUpdateForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type AzureUpdateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure update forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AzureUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureUpdateForbidden) GetPayload() interface{} {
+func (o *AzureUpdateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AzureUpdateNotFound describes a response with status code 404, with default head
 Not Found
 */
 type AzureUpdateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure update not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AzureUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/update][%d] azureUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureUpdateNotFound) GetPayload() interface{} {
+func (o *AzureUpdateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

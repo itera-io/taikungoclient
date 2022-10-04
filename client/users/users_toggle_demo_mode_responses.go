@@ -199,7 +199,7 @@ UsersToggleDemoModeUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type UsersToggleDemoModeUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users toggle demo mode unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *UsersToggleDemoModeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/toggle-demo-mode][%d] usersToggleDemoModeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersToggleDemoModeUnauthorized) GetPayload() interface{} {
+func (o *UsersToggleDemoModeUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ UsersToggleDemoModeForbidden describes a response with status code 403, with def
 Forbidden
 */
 type UsersToggleDemoModeForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users toggle demo mode forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *UsersToggleDemoModeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/toggle-demo-mode][%d] usersToggleDemoModeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersToggleDemoModeForbidden) GetPayload() interface{} {
+func (o *UsersToggleDemoModeForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ UsersToggleDemoModeNotFound describes a response with status code 404, with defa
 Not Found
 */
 type UsersToggleDemoModeNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users toggle demo mode not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *UsersToggleDemoModeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/toggle-demo-mode][%d] usersToggleDemoModeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersToggleDemoModeNotFound) GetPayload() interface{} {
+func (o *UsersToggleDemoModeNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

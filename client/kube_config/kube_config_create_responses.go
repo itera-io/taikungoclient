@@ -201,7 +201,7 @@ KubeConfigCreateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type KubeConfigCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kube config create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubeConfigCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig][%d] kubeConfigCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubeConfigCreateUnauthorized) GetPayload() interface{} {
+func (o *KubeConfigCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubeConfigCreateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type KubeConfigCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kube config create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubeConfigCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig][%d] kubeConfigCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubeConfigCreateForbidden) GetPayload() interface{} {
+func (o *KubeConfigCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubeConfigCreateNotFound describes a response with status code 404, with default
 Not Found
 */
 type KubeConfigCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kube config create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubeConfigCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig][%d] kubeConfigCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubeConfigCreateNotFound) GetPayload() interface{} {
+func (o *KubeConfigCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

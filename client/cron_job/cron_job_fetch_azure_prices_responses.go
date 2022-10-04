@@ -199,7 +199,7 @@ CronJobFetchAzurePricesUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type CronJobFetchAzurePricesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job fetch azure prices unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobFetchAzurePricesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobFetchAzurePricesUnauthorized) GetPayload() interface{} {
+func (o *CronJobFetchAzurePricesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobFetchAzurePricesForbidden describes a response with status code 403, with
 Forbidden
 */
 type CronJobFetchAzurePricesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job fetch azure prices forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobFetchAzurePricesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobFetchAzurePricesForbidden) GetPayload() interface{} {
+func (o *CronJobFetchAzurePricesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobFetchAzurePricesNotFound describes a response with status code 404, with 
 Not Found
 */
 type CronJobFetchAzurePricesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job fetch azure prices not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobFetchAzurePricesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-prices][%d] cronJobFetchAzurePricesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobFetchAzurePricesNotFound) GetPayload() interface{} {
+func (o *CronJobFetchAzurePricesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

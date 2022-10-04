@@ -201,7 +201,7 @@ CloudCredentialsForCliUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type CloudCredentialsForCliUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials for cli unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *CloudCredentialsForCliUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/cli][%d] cloudCredentialsForCliUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsForCliUnauthorized) GetPayload() interface{} {
+func (o *CloudCredentialsForCliUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ CloudCredentialsForCliForbidden describes a response with status code 403, with 
 Forbidden
 */
 type CloudCredentialsForCliForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials for cli forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *CloudCredentialsForCliForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/cli][%d] cloudCredentialsForCliForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsForCliForbidden) GetPayload() interface{} {
+func (o *CloudCredentialsForCliForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ CloudCredentialsForCliNotFound describes a response with status code 404, with d
 Not Found
 */
 type CloudCredentialsForCliNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials for cli not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *CloudCredentialsForCliNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/cli][%d] cloudCredentialsForCliNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsForCliNotFound) GetPayload() interface{} {
+func (o *CloudCredentialsForCliNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

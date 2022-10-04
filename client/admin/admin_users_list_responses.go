@@ -201,7 +201,7 @@ AdminUsersListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type AdminUsersListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin users list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *AdminUsersListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminUsersListUnauthorized) GetPayload() interface{} {
+func (o *AdminUsersListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ AdminUsersListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type AdminUsersListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin users list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *AdminUsersListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminUsersListForbidden) GetPayload() interface{} {
+func (o *AdminUsersListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ AdminUsersListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type AdminUsersListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin users list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *AdminUsersListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminUsersListNotFound) GetPayload() interface{} {
+func (o *AdminUsersListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

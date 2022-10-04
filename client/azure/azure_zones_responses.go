@@ -199,7 +199,7 @@ AzureZonesUnauthorized describes a response with status code 401, with default h
 Unauthorized
 */
 type AzureZonesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure zones unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AzureZonesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureZonesUnauthorized) GetPayload() interface{} {
+func (o *AzureZonesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AzureZonesForbidden describes a response with status code 403, with default head
 Forbidden
 */
 type AzureZonesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure zones forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AzureZonesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureZonesForbidden) GetPayload() interface{} {
+func (o *AzureZonesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AzureZonesNotFound describes a response with status code 404, with default heade
 Not Found
 */
 type AzureZonesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure zones not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AzureZonesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureZonesNotFound) GetPayload() interface{} {
+func (o *AzureZonesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

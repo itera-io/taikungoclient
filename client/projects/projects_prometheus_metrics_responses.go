@@ -199,7 +199,7 @@ ProjectsPrometheusMetricsUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ProjectsPrometheusMetricsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects prometheus metrics unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsPrometheusMetricsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsPrometheusMetricsUnauthorized) GetPayload() interface{} {
+func (o *ProjectsPrometheusMetricsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsPrometheusMetricsForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ProjectsPrometheusMetricsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects prometheus metrics forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsPrometheusMetricsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsPrometheusMetricsForbidden) GetPayload() interface{} {
+func (o *ProjectsPrometheusMetricsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsPrometheusMetricsNotFound describes a response with status code 404, wit
 Not Found
 */
 type ProjectsPrometheusMetricsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects prometheus metrics not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsPrometheusMetricsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/prometheusmetrics][%d] projectsPrometheusMetricsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsPrometheusMetricsNotFound) GetPayload() interface{} {
+func (o *ProjectsPrometheusMetricsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

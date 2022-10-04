@@ -199,7 +199,7 @@ ProjectsProjectMonitoringAlertsUnauthorized describes a response with status cod
 Unauthorized
 */
 type ProjectsProjectMonitoringAlertsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects project monitoring alerts unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsProjectMonitoringAlertsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsProjectMonitoringAlertsUnauthorized) GetPayload() interface{} {
+func (o *ProjectsProjectMonitoringAlertsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsProjectMonitoringAlertsForbidden describes a response with status code 4
 Forbidden
 */
 type ProjectsProjectMonitoringAlertsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects project monitoring alerts forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsProjectMonitoringAlertsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsProjectMonitoringAlertsForbidden) GetPayload() interface{} {
+func (o *ProjectsProjectMonitoringAlertsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsProjectMonitoringAlertsNotFound describes a response with status code 40
 Not Found
 */
 type ProjectsProjectMonitoringAlertsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects project monitoring alerts not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsProjectMonitoringAlertsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoringalerts][%d] projectsProjectMonitoringAlertsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsProjectMonitoringAlertsNotFound) GetPayload() interface{} {
+func (o *ProjectsProjectMonitoringAlertsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

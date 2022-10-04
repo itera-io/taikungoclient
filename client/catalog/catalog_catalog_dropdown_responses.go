@@ -199,7 +199,7 @@ CatalogCatalogDropdownUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type CatalogCatalogDropdownUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog catalog dropdown unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CatalogCatalogDropdownUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/dropdown-list][%d] catalogCatalogDropdownUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogCatalogDropdownUnauthorized) GetPayload() interface{} {
+func (o *CatalogCatalogDropdownUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CatalogCatalogDropdownForbidden describes a response with status code 403, with 
 Forbidden
 */
 type CatalogCatalogDropdownForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog catalog dropdown forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CatalogCatalogDropdownForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/dropdown-list][%d] catalogCatalogDropdownForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogCatalogDropdownForbidden) GetPayload() interface{} {
+func (o *CatalogCatalogDropdownForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CatalogCatalogDropdownNotFound describes a response with status code 404, with d
 Not Found
 */
 type CatalogCatalogDropdownNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog catalog dropdown not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CatalogCatalogDropdownNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/dropdown-list][%d] catalogCatalogDropdownNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogCatalogDropdownNotFound) GetPayload() interface{} {
+func (o *CatalogCatalogDropdownNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ FlavorsDropdownRecordDtosUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type FlavorsDropdownRecordDtosUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors dropdown record dtos unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *FlavorsDropdownRecordDtosUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsDropdownRecordDtosUnauthorized) GetPayload() interface{} {
+func (o *FlavorsDropdownRecordDtosUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ FlavorsDropdownRecordDtosForbidden describes a response with status code 403, wi
 Forbidden
 */
 type FlavorsDropdownRecordDtosForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors dropdown record dtos forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *FlavorsDropdownRecordDtosForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsDropdownRecordDtosForbidden) GetPayload() interface{} {
+func (o *FlavorsDropdownRecordDtosForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ FlavorsDropdownRecordDtosNotFound describes a response with status code 404, wit
 Not Found
 */
 type FlavorsDropdownRecordDtosNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors dropdown record dtos not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *FlavorsDropdownRecordDtosNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsDropdownRecordDtosNotFound) GetPayload() interface{} {
+func (o *FlavorsDropdownRecordDtosNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -189,7 +189,7 @@ AuthRegisterUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type AuthRegisterUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this auth register unauthorized response has a 2xx status code
@@ -225,7 +225,7 @@ func (o *AuthRegisterUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/register][%d] authRegisterUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AuthRegisterUnauthorized) GetPayload() interface{} {
+func (o *AuthRegisterUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -250,7 +250,7 @@ AuthRegisterForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type AuthRegisterForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this auth register forbidden response has a 2xx status code
@@ -286,7 +286,7 @@ func (o *AuthRegisterForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/register][%d] authRegisterForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AuthRegisterForbidden) GetPayload() interface{} {
+func (o *AuthRegisterForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -311,7 +311,7 @@ AuthRegisterNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type AuthRegisterNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this auth register not found response has a 2xx status code
@@ -347,7 +347,7 @@ func (o *AuthRegisterNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/register][%d] authRegisterNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AuthRegisterNotFound) GetPayload() interface{} {
+func (o *AuthRegisterNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

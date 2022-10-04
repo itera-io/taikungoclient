@@ -199,7 +199,7 @@ StandAloneProfileEditUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type StandAloneProfileEditUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone profile edit unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneProfileEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneProfileEditUnauthorized) GetPayload() interface{} {
+func (o *StandAloneProfileEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneProfileEditForbidden describes a response with status code 403, with d
 Forbidden
 */
 type StandAloneProfileEditForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone profile edit forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneProfileEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneProfileEditForbidden) GetPayload() interface{} {
+func (o *StandAloneProfileEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneProfileEditNotFound describes a response with status code 404, with de
 Not Found
 */
 type StandAloneProfileEditNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone profile edit not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneProfileEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/edit][%d] standAloneProfileEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneProfileEditNotFound) GetPayload() interface{} {
+func (o *StandAloneProfileEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

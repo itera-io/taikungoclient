@@ -201,7 +201,7 @@ CloudCredentialsDashboardListUnauthorized describes a response with status code 
 Unauthorized
 */
 type CloudCredentialsDashboardListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials dashboard list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *CloudCredentialsDashboardListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsDashboardListUnauthorized) GetPayload() interface{} {
+func (o *CloudCredentialsDashboardListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ CloudCredentialsDashboardListForbidden describes a response with status code 403
 Forbidden
 */
 type CloudCredentialsDashboardListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials dashboard list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *CloudCredentialsDashboardListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsDashboardListForbidden) GetPayload() interface{} {
+func (o *CloudCredentialsDashboardListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ CloudCredentialsDashboardListNotFound describes a response with status code 404,
 Not Found
 */
 type CloudCredentialsDashboardListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials dashboard list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *CloudCredentialsDashboardListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/list][%d] cloudCredentialsDashboardListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsDashboardListNotFound) GetPayload() interface{} {
+func (o *CloudCredentialsDashboardListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ PreDefinedQueriesUpdatePrometheusDashboardUnauthorized describes a response with
 Unauthorized
 */
 type PreDefinedQueriesUpdatePrometheusDashboardUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this pre defined queries update prometheus dashboard unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PreDefinedQueriesUpdatePrometheusDashboardUnauthorized) String() string
 	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/update][%d] preDefinedQueriesUpdatePrometheusDashboardUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PreDefinedQueriesUpdatePrometheusDashboardUnauthorized) GetPayload() interface{} {
+func (o *PreDefinedQueriesUpdatePrometheusDashboardUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PreDefinedQueriesUpdatePrometheusDashboardForbidden describes a response with st
 Forbidden
 */
 type PreDefinedQueriesUpdatePrometheusDashboardForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this pre defined queries update prometheus dashboard forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PreDefinedQueriesUpdatePrometheusDashboardForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/update][%d] preDefinedQueriesUpdatePrometheusDashboardForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PreDefinedQueriesUpdatePrometheusDashboardForbidden) GetPayload() interface{} {
+func (o *PreDefinedQueriesUpdatePrometheusDashboardForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PreDefinedQueriesUpdatePrometheusDashboardNotFound describes a response with sta
 Not Found
 */
 type PreDefinedQueriesUpdatePrometheusDashboardNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this pre defined queries update prometheus dashboard not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PreDefinedQueriesUpdatePrometheusDashboardNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/PreDefinedQueries/prometheus/dashboard/update][%d] preDefinedQueriesUpdatePrometheusDashboardNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PreDefinedQueriesUpdatePrometheusDashboardNotFound) GetPayload() interface{} {
+func (o *PreDefinedQueriesUpdatePrometheusDashboardNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

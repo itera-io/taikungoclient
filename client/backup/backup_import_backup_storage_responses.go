@@ -199,7 +199,7 @@ BackupImportBackupStorageUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type BackupImportBackupStorageUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup import backup storage unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *BackupImportBackupStorageUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupImportBackupStorageUnauthorized) GetPayload() interface{} {
+func (o *BackupImportBackupStorageUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ BackupImportBackupStorageForbidden describes a response with status code 403, wi
 Forbidden
 */
 type BackupImportBackupStorageForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup import backup storage forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *BackupImportBackupStorageForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupImportBackupStorageForbidden) GetPayload() interface{} {
+func (o *BackupImportBackupStorageForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ BackupImportBackupStorageNotFound describes a response with status code 404, wit
 Not Found
 */
 type BackupImportBackupStorageNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup import backup storage not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *BackupImportBackupStorageNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupImportBackupStorageNotFound) GetPayload() interface{} {
+func (o *BackupImportBackupStorageNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

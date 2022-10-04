@@ -199,7 +199,7 @@ KubernetesProfilesLockManagerUnauthorized describes a response with status code 
 Unauthorized
 */
 type KubernetesProfilesLockManagerUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes profiles lock manager unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesProfilesLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesProfilesLockManagerUnauthorized) GetPayload() interface{} {
+func (o *KubernetesProfilesLockManagerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesProfilesLockManagerForbidden describes a response with status code 403
 Forbidden
 */
 type KubernetesProfilesLockManagerForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes profiles lock manager forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesProfilesLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesProfilesLockManagerForbidden) GetPayload() interface{} {
+func (o *KubernetesProfilesLockManagerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesProfilesLockManagerNotFound describes a response with status code 404,
 Not Found
 */
 type KubernetesProfilesLockManagerNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes profiles lock manager not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesProfilesLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubernetesProfiles/lockmanager][%d] kubernetesProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesProfilesLockManagerNotFound) GetPayload() interface{} {
+func (o *KubernetesProfilesLockManagerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

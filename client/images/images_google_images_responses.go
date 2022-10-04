@@ -201,7 +201,7 @@ ImagesGoogleImagesUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type ImagesGoogleImagesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images google images unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *ImagesGoogleImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesGoogleImagesUnauthorized) GetPayload() interface{} {
+func (o *ImagesGoogleImagesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ ImagesGoogleImagesForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type ImagesGoogleImagesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images google images forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *ImagesGoogleImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesGoogleImagesForbidden) GetPayload() interface{} {
+func (o *ImagesGoogleImagesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ ImagesGoogleImagesNotFound describes a response with status code 404, with defau
 Not Found
 */
 type ImagesGoogleImagesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images google images not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *ImagesGoogleImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/{cloudId}/{type}][%d] imagesGoogleImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesGoogleImagesNotFound) GetPayload() interface{} {
+func (o *ImagesGoogleImagesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

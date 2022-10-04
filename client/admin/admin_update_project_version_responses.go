@@ -199,7 +199,7 @@ AdminUpdateProjectVersionUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type AdminUpdateProjectVersionUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin update project version unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AdminUpdateProjectVersionUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminUpdateProjectVersionUnauthorized) GetPayload() interface{} {
+func (o *AdminUpdateProjectVersionUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AdminUpdateProjectVersionForbidden describes a response with status code 403, wi
 Forbidden
 */
 type AdminUpdateProjectVersionForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin update project version forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AdminUpdateProjectVersionForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminUpdateProjectVersionForbidden) GetPayload() interface{} {
+func (o *AdminUpdateProjectVersionForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AdminUpdateProjectVersionNotFound describes a response with status code 404, wit
 Not Found
 */
 type AdminUpdateProjectVersionNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin update project version not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AdminUpdateProjectVersionNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/projects/update/version][%d] adminUpdateProjectVersionNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminUpdateProjectVersionNotFound) GetPayload() interface{} {
+func (o *AdminUpdateProjectVersionNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

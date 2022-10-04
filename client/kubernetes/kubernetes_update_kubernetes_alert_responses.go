@@ -199,7 +199,7 @@ KubernetesUpdateKubernetesAlertUnauthorized describes a response with status cod
 Unauthorized
 */
 type KubernetesUpdateKubernetesAlertUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes update kubernetes alert unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesUpdateKubernetesAlertUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesUpdateKubernetesAlertUnauthorized) GetPayload() interface{} {
+func (o *KubernetesUpdateKubernetesAlertUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesUpdateKubernetesAlertForbidden describes a response with status code 4
 Forbidden
 */
 type KubernetesUpdateKubernetesAlertForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes update kubernetes alert forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesUpdateKubernetesAlertForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesUpdateKubernetesAlertForbidden) GetPayload() interface{} {
+func (o *KubernetesUpdateKubernetesAlertForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesUpdateKubernetesAlertNotFound describes a response with status code 40
 Not Found
 */
 type KubernetesUpdateKubernetesAlertNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes update kubernetes alert not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesUpdateKubernetesAlertNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Kubernetes/updatealert/{alertId}][%d] kubernetesUpdateKubernetesAlertNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesUpdateKubernetesAlertNotFound) GetPayload() interface{} {
+func (o *KubernetesUpdateKubernetesAlertNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

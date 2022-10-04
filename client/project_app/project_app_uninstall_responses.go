@@ -199,7 +199,7 @@ ProjectAppUninstallUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ProjectAppUninstallUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project app uninstall unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectAppUninstallUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectApp/uninstall/{projectAppId}][%d] projectAppUninstallUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppUninstallUnauthorized) GetPayload() interface{} {
+func (o *ProjectAppUninstallUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectAppUninstallForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ProjectAppUninstallForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project app uninstall forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectAppUninstallForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectApp/uninstall/{projectAppId}][%d] projectAppUninstallForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppUninstallForbidden) GetPayload() interface{} {
+func (o *ProjectAppUninstallForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectAppUninstallNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ProjectAppUninstallNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project app uninstall not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectAppUninstallNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectApp/uninstall/{projectAppId}][%d] projectAppUninstallNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppUninstallNotFound) GetPayload() interface{} {
+func (o *ProjectAppUninstallNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

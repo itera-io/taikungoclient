@@ -199,7 +199,7 @@ TicketDeleteUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type TicketDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket delete unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *TicketDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/{ticketId}][%d] ticketDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketDeleteUnauthorized) GetPayload() interface{} {
+func (o *TicketDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ TicketDeleteForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type TicketDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket delete forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *TicketDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/{ticketId}][%d] ticketDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketDeleteForbidden) GetPayload() interface{} {
+func (o *TicketDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ TicketDeleteNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type TicketDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket delete not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *TicketDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Ticket/delete/{ticketId}][%d] ticketDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketDeleteNotFound) GetPayload() interface{} {
+func (o *TicketDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ ProjectQuotasListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type ProjectQuotasListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project quotas list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *ProjectQuotasListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectQuotasListUnauthorized) GetPayload() interface{} {
+func (o *ProjectQuotasListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ ProjectQuotasListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type ProjectQuotasListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project quotas list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *ProjectQuotasListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectQuotasListForbidden) GetPayload() interface{} {
+func (o *ProjectQuotasListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ ProjectQuotasListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type ProjectQuotasListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project quotas list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *ProjectQuotasListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectQuotasListNotFound) GetPayload() interface{} {
+func (o *ProjectQuotasListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

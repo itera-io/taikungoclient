@@ -199,7 +199,7 @@ BackupDeleteScheduleUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type BackupDeleteScheduleUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup delete schedule unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *BackupDeleteScheduleUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupDeleteScheduleUnauthorized) GetPayload() interface{} {
+func (o *BackupDeleteScheduleUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ BackupDeleteScheduleForbidden describes a response with status code 403, with de
 Forbidden
 */
 type BackupDeleteScheduleForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup delete schedule forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *BackupDeleteScheduleForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupDeleteScheduleForbidden) GetPayload() interface{} {
+func (o *BackupDeleteScheduleForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ BackupDeleteScheduleNotFound describes a response with status code 404, with def
 Not Found
 */
 type BackupDeleteScheduleNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup delete schedule not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *BackupDeleteScheduleNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/schedule][%d] backupDeleteScheduleNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupDeleteScheduleNotFound) GetPayload() interface{} {
+func (o *BackupDeleteScheduleNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

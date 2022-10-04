@@ -199,7 +199,7 @@ InvoicesCreateUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type InvoicesCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this invoices create unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *InvoicesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/create][%d] invoicesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *InvoicesCreateUnauthorized) GetPayload() interface{} {
+func (o *InvoicesCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ InvoicesCreateForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type InvoicesCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this invoices create forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *InvoicesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/create][%d] invoicesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *InvoicesCreateForbidden) GetPayload() interface{} {
+func (o *InvoicesCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ InvoicesCreateNotFound describes a response with status code 404, with default h
 Not Found
 */
 type InvoicesCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this invoices create not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *InvoicesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/create][%d] invoicesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *InvoicesCreateNotFound) GetPayload() interface{} {
+func (o *InvoicesCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ ImagesOpenstackImagesUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type ImagesOpenstackImagesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images openstack images unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *ImagesOpenstackImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesOpenstackImagesUnauthorized) GetPayload() interface{} {
+func (o *ImagesOpenstackImagesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ ImagesOpenstackImagesForbidden describes a response with status code 403, with d
 Forbidden
 */
 type ImagesOpenstackImagesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images openstack images forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *ImagesOpenstackImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesOpenstackImagesForbidden) GetPayload() interface{} {
+func (o *ImagesOpenstackImagesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ ImagesOpenstackImagesNotFound describes a response with status code 404, with de
 Not Found
 */
 type ImagesOpenstackImagesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images openstack images not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *ImagesOpenstackImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/openstack/{cloudId}][%d] imagesOpenstackImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesOpenstackImagesNotFound) GetPayload() interface{} {
+func (o *ImagesOpenstackImagesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

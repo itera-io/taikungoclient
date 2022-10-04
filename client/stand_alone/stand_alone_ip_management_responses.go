@@ -199,7 +199,7 @@ StandAloneIPManagementUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type StandAloneIPManagementUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Ip management unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneIPManagementUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneIPManagementUnauthorized) GetPayload() interface{} {
+func (o *StandAloneIPManagementUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneIPManagementForbidden describes a response with status code 403, with 
 Forbidden
 */
 type StandAloneIPManagementForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Ip management forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneIPManagementForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneIPManagementForbidden) GetPayload() interface{} {
+func (o *StandAloneIPManagementForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneIPManagementNotFound describes a response with status code 404, with d
 Not Found
 */
 type StandAloneIPManagementNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Ip management not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneIPManagementNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneIPManagementNotFound) GetPayload() interface{} {
+func (o *StandAloneIPManagementNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

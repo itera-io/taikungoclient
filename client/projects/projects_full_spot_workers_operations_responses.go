@@ -199,7 +199,7 @@ ProjectsFullSpotWorkersOperationsUnauthorized describes a response with status c
 Unauthorized
 */
 type ProjectsFullSpotWorkersOperationsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects full spot workers operations unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsFullSpotWorkersOperationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsFullSpotWorkersOperationsUnauthorized) GetPayload() interface{} {
+func (o *ProjectsFullSpotWorkersOperationsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsFullSpotWorkersOperationsForbidden describes a response with status code
 Forbidden
 */
 type ProjectsFullSpotWorkersOperationsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects full spot workers operations forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsFullSpotWorkersOperationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsFullSpotWorkersOperationsForbidden) GetPayload() interface{} {
+func (o *ProjectsFullSpotWorkersOperationsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsFullSpotWorkersOperationsNotFound describes a response with status code 
 Not Found
 */
 type ProjectsFullSpotWorkersOperationsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects full spot workers operations not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsFullSpotWorkersOperationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsFullSpotWorkersOperationsNotFound) GetPayload() interface{} {
+func (o *ProjectsFullSpotWorkersOperationsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

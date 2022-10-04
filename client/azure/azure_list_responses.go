@@ -201,7 +201,7 @@ AzureListUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type AzureListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *AzureListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureListUnauthorized) GetPayload() interface{} {
+func (o *AzureListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ AzureListForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type AzureListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *AzureListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureListForbidden) GetPayload() interface{} {
+func (o *AzureListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ AzureListNotFound describes a response with status code 404, with default header
 Not Found
 */
 type AzureListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *AzureListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/list][%d] azureListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureListNotFound) GetPayload() interface{} {
+func (o *AzureListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

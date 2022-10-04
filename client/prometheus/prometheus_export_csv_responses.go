@@ -189,7 +189,7 @@ PrometheusExportCsvUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type PrometheusExportCsvUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus export csv unauthorized response has a 2xx status code
@@ -225,7 +225,7 @@ func (o *PrometheusExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusExportCsvUnauthorized) GetPayload() interface{} {
+func (o *PrometheusExportCsvUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -250,7 +250,7 @@ PrometheusExportCsvForbidden describes a response with status code 403, with def
 Forbidden
 */
 type PrometheusExportCsvForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus export csv forbidden response has a 2xx status code
@@ -286,7 +286,7 @@ func (o *PrometheusExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusExportCsvForbidden) GetPayload() interface{} {
+func (o *PrometheusExportCsvForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -311,7 +311,7 @@ PrometheusExportCsvNotFound describes a response with status code 404, with defa
 Not Found
 */
 type PrometheusExportCsvNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus export csv not found response has a 2xx status code
@@ -347,7 +347,7 @@ func (o *PrometheusExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/export][%d] prometheusExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusExportCsvNotFound) GetPayload() interface{} {
+func (o *PrometheusExportCsvNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

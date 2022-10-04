@@ -199,7 +199,7 @@ StandAloneActionsInstancePasswordUnauthorized describes a response with status c
 Unauthorized
 */
 type StandAloneActionsInstancePasswordUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions instance password unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneActionsInstancePasswordUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsInstancePasswordUnauthorized) GetPayload() interface{} {
+func (o *StandAloneActionsInstancePasswordUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneActionsInstancePasswordForbidden describes a response with status code
 Forbidden
 */
 type StandAloneActionsInstancePasswordForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions instance password forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneActionsInstancePasswordForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsInstancePasswordForbidden) GetPayload() interface{} {
+func (o *StandAloneActionsInstancePasswordForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneActionsInstancePasswordNotFound describes a response with status code 
 Not Found
 */
 type StandAloneActionsInstancePasswordNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions instance password not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneActionsInstancePasswordNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsInstancePasswordNotFound) GetPayload() interface{} {
+func (o *StandAloneActionsInstancePasswordNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

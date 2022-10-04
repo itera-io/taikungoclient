@@ -199,7 +199,7 @@ KubernetesGetDashboardUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesGetDashboardUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get dashboard unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesGetDashboardUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetDashboardUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetDashboardUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesGetDashboardForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesGetDashboardForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get dashboard forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesGetDashboardForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetDashboardForbidden) GetPayload() interface{} {
+func (o *KubernetesGetDashboardForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesGetDashboardNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesGetDashboardNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get dashboard not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesGetDashboardNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetDashboardNotFound) GetPayload() interface{} {
+func (o *KubernetesGetDashboardNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

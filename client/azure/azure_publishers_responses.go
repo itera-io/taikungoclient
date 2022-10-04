@@ -201,7 +201,7 @@ AzurePublishersUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type AzurePublishersUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure publishers unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *AzurePublishersUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzurePublishersUnauthorized) GetPayload() interface{} {
+func (o *AzurePublishersUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ AzurePublishersForbidden describes a response with status code 403, with default
 Forbidden
 */
 type AzurePublishersForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure publishers forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *AzurePublishersForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzurePublishersForbidden) GetPayload() interface{} {
+func (o *AzurePublishersForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ AzurePublishersNotFound describes a response with status code 404, with default 
 Not Found
 */
 type AzurePublishersNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure publishers not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *AzurePublishersNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzurePublishersNotFound) GetPayload() interface{} {
+func (o *AzurePublishersNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ AuthRefreshTokenUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type AuthRefreshTokenUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this auth refresh token unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *AuthRefreshTokenUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AuthRefreshTokenUnauthorized) GetPayload() interface{} {
+func (o *AuthRefreshTokenUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ AuthRefreshTokenForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type AuthRefreshTokenForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this auth refresh token forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *AuthRefreshTokenForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AuthRefreshTokenForbidden) GetPayload() interface{} {
+func (o *AuthRefreshTokenForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ AuthRefreshTokenNotFound describes a response with status code 404, with default
 Not Found
 */
 type AuthRefreshTokenNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this auth refresh token not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *AuthRefreshTokenNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/refresh][%d] authRefreshTokenNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AuthRefreshTokenNotFound) GetPayload() interface{} {
+func (o *AuthRefreshTokenNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

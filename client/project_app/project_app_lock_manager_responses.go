@@ -199,7 +199,7 @@ ProjectAppLockManagerUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type ProjectAppLockManagerUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project app lock manager unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectAppLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppLockManagerUnauthorized) GetPayload() interface{} {
+func (o *ProjectAppLockManagerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectAppLockManagerForbidden describes a response with status code 403, with d
 Forbidden
 */
 type ProjectAppLockManagerForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project app lock manager forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectAppLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppLockManagerForbidden) GetPayload() interface{} {
+func (o *ProjectAppLockManagerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectAppLockManagerNotFound describes a response with status code 404, with de
 Not Found
 */
 type ProjectAppLockManagerNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project app lock manager not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectAppLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/lockmanager][%d] projectAppLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppLockManagerNotFound) GetPayload() interface{} {
+func (o *ProjectAppLockManagerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

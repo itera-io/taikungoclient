@@ -199,7 +199,7 @@ OrganizationsAcceptOfferUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type OrganizationsAcceptOfferUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations accept offer unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OrganizationsAcceptOfferUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsAcceptOfferUnauthorized) GetPayload() interface{} {
+func (o *OrganizationsAcceptOfferUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OrganizationsAcceptOfferForbidden describes a response with status code 403, wit
 Forbidden
 */
 type OrganizationsAcceptOfferForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations accept offer forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OrganizationsAcceptOfferForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsAcceptOfferForbidden) GetPayload() interface{} {
+func (o *OrganizationsAcceptOfferForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OrganizationsAcceptOfferNotFound describes a response with status code 404, with
 Not Found
 */
 type OrganizationsAcceptOfferNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations accept offer not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OrganizationsAcceptOfferNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/accept-offer][%d] organizationsAcceptOfferNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsAcceptOfferNotFound) GetPayload() interface{} {
+func (o *OrganizationsAcceptOfferNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

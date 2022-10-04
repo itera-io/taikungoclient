@@ -199,7 +199,7 @@ KubernetesDescribeDeploymentUnauthorized describes a response with status code 4
 Unauthorized
 */
 type KubernetesDescribeDeploymentUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe deployment unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesDescribeDeploymentUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeDeploymentUnauthorized) GetPayload() interface{} {
+func (o *KubernetesDescribeDeploymentUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesDescribeDeploymentForbidden describes a response with status code 403,
 Forbidden
 */
 type KubernetesDescribeDeploymentForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe deployment forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesDescribeDeploymentForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeDeploymentForbidden) GetPayload() interface{} {
+func (o *KubernetesDescribeDeploymentForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesDescribeDeploymentNotFound describes a response with status code 404, 
 Not Found
 */
 type KubernetesDescribeDeploymentNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe deployment not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesDescribeDeploymentNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/deployment][%d] kubernetesDescribeDeploymentNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeDeploymentNotFound) GetPayload() interface{} {
+func (o *KubernetesDescribeDeploymentNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

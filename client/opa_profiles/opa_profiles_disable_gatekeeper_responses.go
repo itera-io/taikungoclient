@@ -199,7 +199,7 @@ OpaProfilesDisableGatekeeperUnauthorized describes a response with status code 4
 Unauthorized
 */
 type OpaProfilesDisableGatekeeperUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles disable gatekeeper unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OpaProfilesDisableGatekeeperUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesDisableGatekeeperUnauthorized) GetPayload() interface{} {
+func (o *OpaProfilesDisableGatekeeperUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OpaProfilesDisableGatekeeperForbidden describes a response with status code 403,
 Forbidden
 */
 type OpaProfilesDisableGatekeeperForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles disable gatekeeper forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OpaProfilesDisableGatekeeperForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesDisableGatekeeperForbidden) GetPayload() interface{} {
+func (o *OpaProfilesDisableGatekeeperForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OpaProfilesDisableGatekeeperNotFound describes a response with status code 404, 
 Not Found
 */
 type OpaProfilesDisableGatekeeperNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles disable gatekeeper not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OpaProfilesDisableGatekeeperNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/disablegatekeeper][%d] opaProfilesDisableGatekeeperNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesDisableGatekeeperNotFound) GetPayload() interface{} {
+func (o *OpaProfilesDisableGatekeeperNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

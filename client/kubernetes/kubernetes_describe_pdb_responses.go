@@ -199,7 +199,7 @@ KubernetesDescribePdbUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesDescribePdbUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe pdb unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesDescribePdbUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribePdbUnauthorized) GetPayload() interface{} {
+func (o *KubernetesDescribePdbUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesDescribePdbForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesDescribePdbForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe pdb forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesDescribePdbForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribePdbForbidden) GetPayload() interface{} {
+func (o *KubernetesDescribePdbForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesDescribePdbNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesDescribePdbNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe pdb not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesDescribePdbNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribePdbNotFound) GetPayload() interface{} {
+func (o *KubernetesDescribePdbNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

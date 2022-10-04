@@ -199,7 +199,7 @@ PartnerPartnerListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type PartnerPartnerListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner partner list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PartnerPartnerListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerPartnerListUnauthorized) GetPayload() interface{} {
+func (o *PartnerPartnerListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PartnerPartnerListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type PartnerPartnerListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner partner list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PartnerPartnerListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerPartnerListForbidden) GetPayload() interface{} {
+func (o *PartnerPartnerListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PartnerPartnerListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type PartnerPartnerListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner partner list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PartnerPartnerListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/list][%d] partnerPartnerListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerPartnerListNotFound) GetPayload() interface{} {
+func (o *PartnerPartnerListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ AdminDeleteOrganizationUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type AdminDeleteOrganizationUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin delete organization unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AdminDeleteOrganizationUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminDeleteOrganizationUnauthorized) GetPayload() interface{} {
+func (o *AdminDeleteOrganizationUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AdminDeleteOrganizationForbidden describes a response with status code 403, with
 Forbidden
 */
 type AdminDeleteOrganizationForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin delete organization forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AdminDeleteOrganizationForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminDeleteOrganizationForbidden) GetPayload() interface{} {
+func (o *AdminDeleteOrganizationForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AdminDeleteOrganizationNotFound describes a response with status code 404, with 
 Not Found
 */
 type AdminDeleteOrganizationNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin delete organization not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AdminDeleteOrganizationNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminDeleteOrganizationNotFound) GetPayload() interface{} {
+func (o *AdminDeleteOrganizationNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

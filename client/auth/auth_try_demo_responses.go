@@ -199,7 +199,7 @@ AuthTryDemoUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type AuthTryDemoUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this auth try demo unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AuthTryDemoUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AuthTryDemoUnauthorized) GetPayload() interface{} {
+func (o *AuthTryDemoUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AuthTryDemoForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type AuthTryDemoForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this auth try demo forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AuthTryDemoForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AuthTryDemoForbidden) GetPayload() interface{} {
+func (o *AuthTryDemoForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AuthTryDemoNotFound describes a response with status code 404, with default head
 Not Found
 */
 type AuthTryDemoNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this auth try demo not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AuthTryDemoNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AuthTryDemoNotFound) GetPayload() interface{} {
+func (o *AuthTryDemoNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

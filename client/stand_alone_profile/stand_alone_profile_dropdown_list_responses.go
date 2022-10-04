@@ -199,7 +199,7 @@ StandAloneProfileDropdownListUnauthorized describes a response with status code 
 Unauthorized
 */
 type StandAloneProfileDropdownListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone profile dropdown list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneProfileDropdownListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile/list][%d] standAloneProfileDropdownListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneProfileDropdownListUnauthorized) GetPayload() interface{} {
+func (o *StandAloneProfileDropdownListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneProfileDropdownListForbidden describes a response with status code 403
 Forbidden
 */
 type StandAloneProfileDropdownListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone profile dropdown list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneProfileDropdownListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile/list][%d] standAloneProfileDropdownListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneProfileDropdownListForbidden) GetPayload() interface{} {
+func (o *StandAloneProfileDropdownListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneProfileDropdownListNotFound describes a response with status code 404,
 Not Found
 */
 type StandAloneProfileDropdownListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone profile dropdown list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneProfileDropdownListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile/list][%d] standAloneProfileDropdownListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneProfileDropdownListNotFound) GetPayload() interface{} {
+func (o *StandAloneProfileDropdownListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

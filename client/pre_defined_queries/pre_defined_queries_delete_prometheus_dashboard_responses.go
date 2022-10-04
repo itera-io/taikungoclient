@@ -199,7 +199,7 @@ PreDefinedQueriesDeletePrometheusDashboardUnauthorized describes a response with
 Unauthorized
 */
 type PreDefinedQueriesDeletePrometheusDashboardUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this pre defined queries delete prometheus dashboard unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorized) String() string
 	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorized) GetPayload() interface{} {
+func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PreDefinedQueriesDeletePrometheusDashboardForbidden describes a response with st
 Forbidden
 */
 type PreDefinedQueriesDeletePrometheusDashboardForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this pre defined queries delete prometheus dashboard forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PreDefinedQueriesDeletePrometheusDashboardForbidden) GetPayload() interface{} {
+func (o *PreDefinedQueriesDeletePrometheusDashboardForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PreDefinedQueriesDeletePrometheusDashboardNotFound describes a response with sta
 Not Found
 */
 type PreDefinedQueriesDeletePrometheusDashboardNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this pre defined queries delete prometheus dashboard not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PreDefinedQueriesDeletePrometheusDashboardNotFound) GetPayload() interface{} {
+func (o *PreDefinedQueriesDeletePrometheusDashboardNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

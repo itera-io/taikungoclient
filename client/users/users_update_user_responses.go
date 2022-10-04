@@ -189,7 +189,7 @@ UsersUpdateUserUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type UsersUpdateUserUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users update user unauthorized response has a 2xx status code
@@ -225,7 +225,7 @@ func (o *UsersUpdateUserUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersUpdateUserUnauthorized) GetPayload() interface{} {
+func (o *UsersUpdateUserUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -250,7 +250,7 @@ UsersUpdateUserForbidden describes a response with status code 403, with default
 Forbidden
 */
 type UsersUpdateUserForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users update user forbidden response has a 2xx status code
@@ -286,7 +286,7 @@ func (o *UsersUpdateUserForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersUpdateUserForbidden) GetPayload() interface{} {
+func (o *UsersUpdateUserForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -311,7 +311,7 @@ UsersUpdateUserNotFound describes a response with status code 404, with default 
 Not Found
 */
 type UsersUpdateUserNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users update user not found response has a 2xx status code
@@ -347,7 +347,7 @@ func (o *UsersUpdateUserNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersUpdateUserNotFound) GetPayload() interface{} {
+func (o *UsersUpdateUserNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ CatalogEditCatalogUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type CatalogEditCatalogUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog edit catalog unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CatalogEditCatalogUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogEditCatalogUnauthorized) GetPayload() interface{} {
+func (o *CatalogEditCatalogUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CatalogEditCatalogForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type CatalogEditCatalogForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog edit catalog forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CatalogEditCatalogForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogEditCatalogForbidden) GetPayload() interface{} {
+func (o *CatalogEditCatalogForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CatalogEditCatalogNotFound describes a response with status code 404, with defau
 Not Found
 */
 type CatalogEditCatalogNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog edit catalog not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CatalogEditCatalogNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalog][%d] catalogEditCatalogNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogEditCatalogNotFound) GetPayload() interface{} {
+func (o *CatalogEditCatalogNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

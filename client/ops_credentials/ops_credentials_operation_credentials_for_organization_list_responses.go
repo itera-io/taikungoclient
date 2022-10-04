@@ -199,7 +199,7 @@ OpsCredentialsOperationCredentialsForOrganizationListUnauthorized describes a re
 Unauthorized
 */
 type OpsCredentialsOperationCredentialsForOrganizationListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) Stri
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) GetPayload() interface{} {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OpsCredentialsOperationCredentialsForOrganizationListForbidden describes a respo
 Forbidden
 */
 type OpsCredentialsOperationCredentialsForOrganizationListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) String(
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) GetPayload() interface{} {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OpsCredentialsOperationCredentialsForOrganizationListNotFound describes a respon
 Not Found
 */
 type OpsCredentialsOperationCredentialsForOrganizationListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ops credentials operation credentials for organization list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) String()
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials][%d] opsCredentialsOperationCredentialsForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) GetPayload() interface{} {
+func (o *OpsCredentialsOperationCredentialsForOrganizationListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

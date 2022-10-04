@@ -199,7 +199,7 @@ BackupClearProjectUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type BackupClearProjectUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup clear project unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *BackupClearProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupClearProjectUnauthorized) GetPayload() interface{} {
+func (o *BackupClearProjectUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ BackupClearProjectForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type BackupClearProjectForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup clear project forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *BackupClearProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupClearProjectForbidden) GetPayload() interface{} {
+func (o *BackupClearProjectForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ BackupClearProjectNotFound describes a response with status code 404, with defau
 Not Found
 */
 type BackupClearProjectNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup clear project not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *BackupClearProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/clear/project][%d] backupClearProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupClearProjectNotFound) GetPayload() interface{} {
+func (o *BackupClearProjectNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

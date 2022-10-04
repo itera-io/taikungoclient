@@ -199,7 +199,7 @@ ProjectsMonitoringOperationsUnauthorized describes a response with status code 4
 Unauthorized
 */
 type ProjectsMonitoringOperationsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects monitoring operations unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsMonitoringOperationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsMonitoringOperationsUnauthorized) GetPayload() interface{} {
+func (o *ProjectsMonitoringOperationsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsMonitoringOperationsForbidden describes a response with status code 403,
 Forbidden
 */
 type ProjectsMonitoringOperationsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects monitoring operations forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsMonitoringOperationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsMonitoringOperationsForbidden) GetPayload() interface{} {
+func (o *ProjectsMonitoringOperationsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsMonitoringOperationsNotFound describes a response with status code 404, 
 Not Found
 */
 type ProjectsMonitoringOperationsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects monitoring operations not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsMonitoringOperationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsMonitoringOperationsNotFound) GetPayload() interface{} {
+func (o *ProjectsMonitoringOperationsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

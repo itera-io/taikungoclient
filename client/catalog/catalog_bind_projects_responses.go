@@ -199,7 +199,7 @@ CatalogBindProjectsUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type CatalogBindProjectsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog bind projects unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CatalogBindProjectsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogBindProjectsUnauthorized) GetPayload() interface{} {
+func (o *CatalogBindProjectsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CatalogBindProjectsForbidden describes a response with status code 403, with def
 Forbidden
 */
 type CatalogBindProjectsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog bind projects forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CatalogBindProjectsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogBindProjectsForbidden) GetPayload() interface{} {
+func (o *CatalogBindProjectsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CatalogBindProjectsNotFound describes a response with status code 404, with defa
 Not Found
 */
 type CatalogBindProjectsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog bind projects not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CatalogBindProjectsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/bind-project][%d] catalogBindProjectsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogBindProjectsNotFound) GetPayload() interface{} {
+func (o *CatalogBindProjectsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

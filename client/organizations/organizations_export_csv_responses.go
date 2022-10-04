@@ -189,7 +189,7 @@ OrganizationsExportCsvUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type OrganizationsExportCsvUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations export csv unauthorized response has a 2xx status code
@@ -225,7 +225,7 @@ func (o *OrganizationsExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsExportCsvUnauthorized) GetPayload() interface{} {
+func (o *OrganizationsExportCsvUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -250,7 +250,7 @@ OrganizationsExportCsvForbidden describes a response with status code 403, with 
 Forbidden
 */
 type OrganizationsExportCsvForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations export csv forbidden response has a 2xx status code
@@ -286,7 +286,7 @@ func (o *OrganizationsExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsExportCsvForbidden) GetPayload() interface{} {
+func (o *OrganizationsExportCsvForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -311,7 +311,7 @@ OrganizationsExportCsvNotFound describes a response with status code 404, with d
 Not Found
 */
 type OrganizationsExportCsvNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations export csv not found response has a 2xx status code
@@ -347,7 +347,7 @@ func (o *OrganizationsExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsExportCsvNotFound) GetPayload() interface{} {
+func (o *OrganizationsExportCsvNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

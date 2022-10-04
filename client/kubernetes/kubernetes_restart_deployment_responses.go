@@ -199,7 +199,7 @@ KubernetesRestartDeploymentUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesRestartDeploymentUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes restart deployment unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesRestartDeploymentUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesRestartDeploymentUnauthorized) GetPayload() interface{} {
+func (o *KubernetesRestartDeploymentUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesRestartDeploymentForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesRestartDeploymentForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes restart deployment forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesRestartDeploymentForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesRestartDeploymentForbidden) GetPayload() interface{} {
+func (o *KubernetesRestartDeploymentForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesRestartDeploymentNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesRestartDeploymentNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes restart deployment not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesRestartDeploymentNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/deployment][%d] kubernetesRestartDeploymentNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesRestartDeploymentNotFound) GetPayload() interface{} {
+func (o *KubernetesRestartDeploymentNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ SearchStandAloneProfilesListUnauthorized describes a response with status code 4
 Unauthorized
 */
 type SearchStandAloneProfilesListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search stand alone profiles list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchStandAloneProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchStandAloneProfilesListUnauthorized) GetPayload() interface{} {
+func (o *SearchStandAloneProfilesListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchStandAloneProfilesListForbidden describes a response with status code 403,
 Forbidden
 */
 type SearchStandAloneProfilesListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search stand alone profiles list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchStandAloneProfilesListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchStandAloneProfilesListForbidden) GetPayload() interface{} {
+func (o *SearchStandAloneProfilesListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchStandAloneProfilesListNotFound describes a response with status code 404, 
 Not Found
 */
 type SearchStandAloneProfilesListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search stand alone profiles list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchStandAloneProfilesListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/stand-alone-profiles][%d] searchStandAloneProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchStandAloneProfilesListNotFound) GetPayload() interface{} {
+func (o *SearchStandAloneProfilesListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

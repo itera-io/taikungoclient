@@ -199,7 +199,7 @@ CheckerAzureCPUQuotaUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type CheckerAzureCPUQuotaUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker azure Cpu quota unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CheckerAzureCPUQuotaUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerAzureCPUQuotaUnauthorized) GetPayload() interface{} {
+func (o *CheckerAzureCPUQuotaUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CheckerAzureCPUQuotaForbidden describes a response with status code 403, with de
 Forbidden
 */
 type CheckerAzureCPUQuotaForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker azure Cpu quota forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CheckerAzureCPUQuotaForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerAzureCPUQuotaForbidden) GetPayload() interface{} {
+func (o *CheckerAzureCPUQuotaForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CheckerAzureCPUQuotaNotFound describes a response with status code 404, with def
 Not Found
 */
 type CheckerAzureCPUQuotaNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker azure Cpu quota not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CheckerAzureCPUQuotaNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerAzureCPUQuotaNotFound) GetPayload() interface{} {
+func (o *CheckerAzureCPUQuotaNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

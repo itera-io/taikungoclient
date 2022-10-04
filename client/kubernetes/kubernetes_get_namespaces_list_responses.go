@@ -199,7 +199,7 @@ KubernetesGetNamespacesListUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesGetNamespacesListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get namespaces list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesGetNamespacesListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetNamespacesListUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetNamespacesListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesGetNamespacesListForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesGetNamespacesListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get namespaces list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesGetNamespacesListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetNamespacesListForbidden) GetPayload() interface{} {
+func (o *KubernetesGetNamespacesListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesGetNamespacesListNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesGetNamespacesListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get namespaces list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesGetNamespacesListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/namespaces][%d] kubernetesGetNamespacesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetNamespacesListNotFound) GetPayload() interface{} {
+func (o *KubernetesGetNamespacesListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

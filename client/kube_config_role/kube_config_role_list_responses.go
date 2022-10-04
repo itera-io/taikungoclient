@@ -201,7 +201,7 @@ KubeConfigRoleListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubeConfigRoleListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kube config role list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubeConfigRoleListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubeConfigRoleListUnauthorized) GetPayload() interface{} {
+func (o *KubeConfigRoleListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubeConfigRoleListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubeConfigRoleListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kube config role list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubeConfigRoleListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubeConfigRoleListForbidden) GetPayload() interface{} {
+func (o *KubeConfigRoleListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubeConfigRoleListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubeConfigRoleListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kube config role list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubeConfigRoleListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfigRole][%d] kubeConfigRoleListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubeConfigRoleListNotFound) GetPayload() interface{} {
+func (o *KubeConfigRoleListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

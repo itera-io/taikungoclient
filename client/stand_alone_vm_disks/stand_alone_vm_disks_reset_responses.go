@@ -199,7 +199,7 @@ StandAloneVMDisksResetUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type StandAloneVMDisksResetUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks reset unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneVMDisksResetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksResetUnauthorized) GetPayload() interface{} {
+func (o *StandAloneVMDisksResetUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneVMDisksResetForbidden describes a response with status code 403, with 
 Forbidden
 */
 type StandAloneVMDisksResetForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks reset forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneVMDisksResetForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksResetForbidden) GetPayload() interface{} {
+func (o *StandAloneVMDisksResetForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneVMDisksResetNotFound describes a response with status code 404, with d
 Not Found
 */
 type StandAloneVMDisksResetNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks reset not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneVMDisksResetNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/reset][%d] standAloneVmDisksResetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksResetNotFound) GetPayload() interface{} {
+func (o *StandAloneVMDisksResetNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

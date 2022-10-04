@@ -199,7 +199,7 @@ ProjectsPurgeUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type ProjectsPurgeUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects purge unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsPurgeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsPurgeUnauthorized) GetPayload() interface{} {
+func (o *ProjectsPurgeUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsPurgeForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type ProjectsPurgeForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects purge forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsPurgeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsPurgeForbidden) GetPayload() interface{} {
+func (o *ProjectsPurgeForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsPurgeNotFound describes a response with status code 404, with default he
 Not Found
 */
 type ProjectsPurgeNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects purge not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsPurgeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/purge][%d] projectsPurgeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsPurgeNotFound) GetPayload() interface{} {
+func (o *ProjectsPurgeNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

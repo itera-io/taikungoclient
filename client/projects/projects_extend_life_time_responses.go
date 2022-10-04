@@ -199,7 +199,7 @@ ProjectsExtendLifeTimeUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type ProjectsExtendLifeTimeUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects extend life time unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsExtendLifeTimeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsExtendLifeTimeUnauthorized) GetPayload() interface{} {
+func (o *ProjectsExtendLifeTimeUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsExtendLifeTimeForbidden describes a response with status code 403, with 
 Forbidden
 */
 type ProjectsExtendLifeTimeForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects extend life time forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsExtendLifeTimeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsExtendLifeTimeForbidden) GetPayload() interface{} {
+func (o *ProjectsExtendLifeTimeForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsExtendLifeTimeNotFound describes a response with status code 404, with d
 Not Found
 */
 type ProjectsExtendLifeTimeNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects extend life time not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsExtendLifeTimeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsExtendLifeTimeNotFound) GetPayload() interface{} {
+func (o *ProjectsExtendLifeTimeNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ KubernetesGetStorageClassesUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesGetStorageClassesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get storage classes unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubernetesGetStorageClassesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetStorageClassesUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetStorageClassesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubernetesGetStorageClassesForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesGetStorageClassesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get storage classes forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubernetesGetStorageClassesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetStorageClassesForbidden) GetPayload() interface{} {
+func (o *KubernetesGetStorageClassesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubernetesGetStorageClassesNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesGetStorageClassesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get storage classes not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubernetesGetStorageClassesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/storageclass][%d] kubernetesGetStorageClassesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetStorageClassesNotFound) GetPayload() interface{} {
+func (o *KubernetesGetStorageClassesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

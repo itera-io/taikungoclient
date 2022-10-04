@@ -199,7 +199,7 @@ CronJobDeletePendingOrganizationsUnauthorized describes a response with status c
 Unauthorized
 */
 type CronJobDeletePendingOrganizationsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete pending organizations unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobDeletePendingOrganizationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeletePendingOrganizationsUnauthorized) GetPayload() interface{} {
+func (o *CronJobDeletePendingOrganizationsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobDeletePendingOrganizationsForbidden describes a response with status code
 Forbidden
 */
 type CronJobDeletePendingOrganizationsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete pending organizations forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobDeletePendingOrganizationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeletePendingOrganizationsForbidden) GetPayload() interface{} {
+func (o *CronJobDeletePendingOrganizationsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobDeletePendingOrganizationsNotFound describes a response with status code 
 Not Found
 */
 type CronJobDeletePendingOrganizationsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete pending organizations not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobDeletePendingOrganizationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeletePendingOrganizationsNotFound) GetPayload() interface{} {
+func (o *CronJobDeletePendingOrganizationsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

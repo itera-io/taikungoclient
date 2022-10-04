@@ -201,7 +201,7 @@ ProjectsCreateUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type ProjectsCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *ProjectsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsCreateUnauthorized) GetPayload() interface{} {
+func (o *ProjectsCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ ProjectsCreateForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type ProjectsCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *ProjectsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsCreateForbidden) GetPayload() interface{} {
+func (o *ProjectsCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ ProjectsCreateNotFound describes a response with status code 404, with default h
 Not Found
 */
 type ProjectsCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *ProjectsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects][%d] projectsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsCreateNotFound) GetPayload() interface{} {
+func (o *ProjectsCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ OpaProfilesLockManagerUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type OpaProfilesLockManagerUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles lock manager unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OpaProfilesLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesLockManagerUnauthorized) GetPayload() interface{} {
+func (o *OpaProfilesLockManagerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OpaProfilesLockManagerForbidden describes a response with status code 403, with 
 Forbidden
 */
 type OpaProfilesLockManagerForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles lock manager forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OpaProfilesLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesLockManagerForbidden) GetPayload() interface{} {
+func (o *OpaProfilesLockManagerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OpaProfilesLockManagerNotFound describes a response with status code 404, with d
 Not Found
 */
 type OpaProfilesLockManagerNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles lock manager not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OpaProfilesLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/lockmanager][%d] opaProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesLockManagerNotFound) GetPayload() interface{} {
+func (o *OpaProfilesLockManagerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

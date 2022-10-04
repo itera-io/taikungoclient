@@ -199,7 +199,7 @@ ProjectActionsEditUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type ProjectActionsEditUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project actions edit unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectActionsEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/update/{projectId}][%d] projectActionsEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectActionsEditUnauthorized) GetPayload() interface{} {
+func (o *ProjectActionsEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectActionsEditForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type ProjectActionsEditForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project actions edit forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectActionsEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/update/{projectId}][%d] projectActionsEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectActionsEditForbidden) GetPayload() interface{} {
+func (o *ProjectActionsEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectActionsEditNotFound describes a response with status code 404, with defau
 Not Found
 */
 type ProjectActionsEditNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project actions edit not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectActionsEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/update/{projectId}][%d] projectActionsEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectActionsEditNotFound) GetPayload() interface{} {
+func (o *ProjectActionsEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

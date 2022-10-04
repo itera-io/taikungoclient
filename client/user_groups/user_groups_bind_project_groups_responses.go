@@ -199,7 +199,7 @@ UserGroupsBindProjectGroupsUnauthorized describes a response with status code 40
 Unauthorized
 */
 type UserGroupsBindProjectGroupsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user groups bind project groups unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *UserGroupsBindProjectGroupsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserGroupsBindProjectGroupsUnauthorized) GetPayload() interface{} {
+func (o *UserGroupsBindProjectGroupsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ UserGroupsBindProjectGroupsForbidden describes a response with status code 403, 
 Forbidden
 */
 type UserGroupsBindProjectGroupsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user groups bind project groups forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *UserGroupsBindProjectGroupsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserGroupsBindProjectGroupsForbidden) GetPayload() interface{} {
+func (o *UserGroupsBindProjectGroupsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ UserGroupsBindProjectGroupsNotFound describes a response with status code 404, w
 Not Found
 */
 type UserGroupsBindProjectGroupsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user groups bind project groups not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *UserGroupsBindProjectGroupsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserGroups/bind-project-groups][%d] userGroupsBindProjectGroupsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserGroupsBindProjectGroupsNotFound) GetPayload() interface{} {
+func (o *UserGroupsBindProjectGroupsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ PartnerListUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type PartnerListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *PartnerListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner][%d] partnerListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerListUnauthorized) GetPayload() interface{} {
+func (o *PartnerListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ PartnerListForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type PartnerListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *PartnerListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner][%d] partnerListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerListForbidden) GetPayload() interface{} {
+func (o *PartnerListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ PartnerListNotFound describes a response with status code 404, with default head
 Not Found
 */
 type PartnerListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *PartnerListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner][%d] partnerListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerListNotFound) GetPayload() interface{} {
+func (o *PartnerListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

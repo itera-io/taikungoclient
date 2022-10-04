@@ -201,7 +201,7 @@ SecurityGroupCreateUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type SecurityGroupCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this security group create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SecurityGroupCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SecurityGroupCreateUnauthorized) GetPayload() interface{} {
+func (o *SecurityGroupCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SecurityGroupCreateForbidden describes a response with status code 403, with def
 Forbidden
 */
 type SecurityGroupCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this security group create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SecurityGroupCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SecurityGroupCreateForbidden) GetPayload() interface{} {
+func (o *SecurityGroupCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SecurityGroupCreateNotFound describes a response with status code 404, with defa
 Not Found
 */
 type SecurityGroupCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this security group create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SecurityGroupCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/create][%d] securityGroupCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SecurityGroupCreateNotFound) GetPayload() interface{} {
+func (o *SecurityGroupCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ ProjectsUpgradeUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type ProjectsUpgradeUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects upgrade unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsUpgradeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsUpgradeUnauthorized) GetPayload() interface{} {
+func (o *ProjectsUpgradeUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsUpgradeForbidden describes a response with status code 403, with default
 Forbidden
 */
 type ProjectsUpgradeForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects upgrade forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsUpgradeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsUpgradeForbidden) GetPayload() interface{} {
+func (o *ProjectsUpgradeForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsUpgradeNotFound describes a response with status code 404, with default 
 Not Found
 */
 type ProjectsUpgradeNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects upgrade not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsUpgradeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsUpgradeNotFound) GetPayload() interface{} {
+func (o *ProjectsUpgradeNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

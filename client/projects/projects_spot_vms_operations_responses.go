@@ -199,7 +199,7 @@ ProjectsSpotVmsOperationsUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ProjectsSpotVmsOperationsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects spot vms operations unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsSpotVmsOperationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsSpotVmsOperationsUnauthorized) GetPayload() interface{} {
+func (o *ProjectsSpotVmsOperationsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsSpotVmsOperationsForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ProjectsSpotVmsOperationsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects spot vms operations forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsSpotVmsOperationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsSpotVmsOperationsForbidden) GetPayload() interface{} {
+func (o *ProjectsSpotVmsOperationsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsSpotVmsOperationsNotFound describes a response with status code 404, wit
 Not Found
 */
 type ProjectsSpotVmsOperationsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects spot vms operations not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsSpotVmsOperationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsSpotVmsOperationsNotFound) GetPayload() interface{} {
+func (o *ProjectsSpotVmsOperationsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

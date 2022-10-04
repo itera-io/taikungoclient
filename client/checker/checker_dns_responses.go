@@ -199,7 +199,7 @@ CheckerDNSUnauthorized describes a response with status code 401, with default h
 Unauthorized
 */
 type CheckerDNSUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker Dns unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CheckerDNSUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/dns][%d] checkerDnsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerDNSUnauthorized) GetPayload() interface{} {
+func (o *CheckerDNSUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CheckerDNSForbidden describes a response with status code 403, with default head
 Forbidden
 */
 type CheckerDNSForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker Dns forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CheckerDNSForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/dns][%d] checkerDnsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerDNSForbidden) GetPayload() interface{} {
+func (o *CheckerDNSForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CheckerDNSNotFound describes a response with status code 404, with default heade
 Not Found
 */
 type CheckerDNSNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker Dns not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CheckerDNSNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/dns][%d] checkerDnsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerDNSNotFound) GetPayload() interface{} {
+func (o *CheckerDNSNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

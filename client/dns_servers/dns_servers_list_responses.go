@@ -199,7 +199,7 @@ DNSServersListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type DNSServersListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this dns servers list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *DNSServersListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *DNSServersListUnauthorized) GetPayload() interface{} {
+func (o *DNSServersListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ DNSServersListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type DNSServersListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this dns servers list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *DNSServersListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *DNSServersListForbidden) GetPayload() interface{} {
+func (o *DNSServersListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ DNSServersListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type DNSServersListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this dns servers list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *DNSServersListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/DnsServers/list/{accessProfileId}][%d] dnsServersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *DNSServersListNotFound) GetPayload() interface{} {
+func (o *DNSServersListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

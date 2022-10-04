@@ -199,7 +199,7 @@ ProjectsResetProjectStatusUnauthorized describes a response with status code 401
 Unauthorized
 */
 type ProjectsResetProjectStatusUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects reset project status unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsResetProjectStatusUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsResetProjectStatusUnauthorized) GetPayload() interface{} {
+func (o *ProjectsResetProjectStatusUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsResetProjectStatusForbidden describes a response with status code 403, w
 Forbidden
 */
 type ProjectsResetProjectStatusForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects reset project status forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsResetProjectStatusForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsResetProjectStatusForbidden) GetPayload() interface{} {
+func (o *ProjectsResetProjectStatusForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsResetProjectStatusNotFound describes a response with status code 404, wi
 Not Found
 */
 type ProjectsResetProjectStatusNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects reset project status not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsResetProjectStatusNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsResetProjectStatusNotFound) GetPayload() interface{} {
+func (o *ProjectsResetProjectStatusNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

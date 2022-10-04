@@ -199,7 +199,7 @@ OpenstackSubnetsUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type OpenstackSubnetsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack subnets unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OpenstackSubnetsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackSubnetsUnauthorized) GetPayload() interface{} {
+func (o *OpenstackSubnetsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OpenstackSubnetsForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type OpenstackSubnetsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack subnets forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OpenstackSubnetsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackSubnetsForbidden) GetPayload() interface{} {
+func (o *OpenstackSubnetsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OpenstackSubnetsNotFound describes a response with status code 404, with default
 Not Found
 */
 type OpenstackSubnetsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack subnets not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OpenstackSubnetsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/subnets][%d] openstackSubnetsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackSubnetsNotFound) GetPayload() interface{} {
+func (o *OpenstackSubnetsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

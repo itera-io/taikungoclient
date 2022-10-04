@@ -256,7 +256,7 @@ SubscriptionDeleteUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type SubscriptionDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this subscription delete unauthorized response has a 2xx status code
@@ -292,7 +292,7 @@ func (o *SubscriptionDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SubscriptionDeleteUnauthorized) GetPayload() interface{} {
+func (o *SubscriptionDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -317,7 +317,7 @@ SubscriptionDeleteForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type SubscriptionDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this subscription delete forbidden response has a 2xx status code
@@ -353,7 +353,7 @@ func (o *SubscriptionDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SubscriptionDeleteForbidden) GetPayload() interface{} {
+func (o *SubscriptionDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -378,7 +378,7 @@ SubscriptionDeleteNotFound describes a response with status code 404, with defau
 Not Found
 */
 type SubscriptionDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this subscription delete not found response has a 2xx status code
@@ -414,7 +414,7 @@ func (o *SubscriptionDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SubscriptionDeleteNotFound) GetPayload() interface{} {
+func (o *SubscriptionDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

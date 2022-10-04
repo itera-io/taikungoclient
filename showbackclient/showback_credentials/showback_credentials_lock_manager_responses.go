@@ -199,7 +199,7 @@ ShowbackCredentialsLockManagerUnauthorized describes a response with status code
 Unauthorized
 */
 type ShowbackCredentialsLockManagerUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback credentials lock manager unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ShowbackCredentialsLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackCredentialsLockManagerUnauthorized) GetPayload() interface{} {
+func (o *ShowbackCredentialsLockManagerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ShowbackCredentialsLockManagerForbidden describes a response with status code 40
 Forbidden
 */
 type ShowbackCredentialsLockManagerForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback credentials lock manager forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ShowbackCredentialsLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackCredentialsLockManagerForbidden) GetPayload() interface{} {
+func (o *ShowbackCredentialsLockManagerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ShowbackCredentialsLockManagerNotFound describes a response with status code 404
 Not Found
 */
 type ShowbackCredentialsLockManagerNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback credentials lock manager not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ShowbackCredentialsLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackCredentials/lockmanager][%d] showbackCredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackCredentialsLockManagerNotFound) GetPayload() interface{} {
+func (o *ShowbackCredentialsLockManagerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

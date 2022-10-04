@@ -199,7 +199,7 @@ OrganizationsCreateDefaultProfilersUnauthorized describes a response with status
 Unauthorized
 */
 type OrganizationsCreateDefaultProfilersUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations create default profilers unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OrganizationsCreateDefaultProfilersUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsCreateDefaultProfilersUnauthorized) GetPayload() interface{} {
+func (o *OrganizationsCreateDefaultProfilersUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OrganizationsCreateDefaultProfilersForbidden describes a response with status co
 Forbidden
 */
 type OrganizationsCreateDefaultProfilersForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations create default profilers forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OrganizationsCreateDefaultProfilersForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsCreateDefaultProfilersForbidden) GetPayload() interface{} {
+func (o *OrganizationsCreateDefaultProfilersForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OrganizationsCreateDefaultProfilersNotFound describes a response with status cod
 Not Found
 */
 type OrganizationsCreateDefaultProfilersNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations create default profilers not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OrganizationsCreateDefaultProfilersNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/createdefaultprofilers][%d] organizationsCreateDefaultProfilersNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsCreateDefaultProfilersNotFound) GetPayload() interface{} {
+func (o *OrganizationsCreateDefaultProfilersNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

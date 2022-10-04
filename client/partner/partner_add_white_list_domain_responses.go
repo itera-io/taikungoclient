@@ -199,7 +199,7 @@ PartnerAddWhiteListDomainUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type PartnerAddWhiteListDomainUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner add white list domain unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PartnerAddWhiteListDomainUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerAddWhiteListDomainUnauthorized) GetPayload() interface{} {
+func (o *PartnerAddWhiteListDomainUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PartnerAddWhiteListDomainForbidden describes a response with status code 403, wi
 Forbidden
 */
 type PartnerAddWhiteListDomainForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner add white list domain forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PartnerAddWhiteListDomainForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerAddWhiteListDomainForbidden) GetPayload() interface{} {
+func (o *PartnerAddWhiteListDomainForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PartnerAddWhiteListDomainNotFound describes a response with status code 404, wit
 Not Found
 */
 type PartnerAddWhiteListDomainNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner add white list domain not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PartnerAddWhiteListDomainNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/add/whitelist/domain][%d] partnerAddWhiteListDomainNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerAddWhiteListDomainNotFound) GetPayload() interface{} {
+func (o *PartnerAddWhiteListDomainNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

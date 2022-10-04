@@ -189,7 +189,7 @@ PaymentPayInvoiceUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type PaymentPayInvoiceUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment pay invoice unauthorized response has a 2xx status code
@@ -225,7 +225,7 @@ func (o *PaymentPayInvoiceUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentPayInvoiceUnauthorized) GetPayload() interface{} {
+func (o *PaymentPayInvoiceUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -250,7 +250,7 @@ PaymentPayInvoiceForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type PaymentPayInvoiceForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment pay invoice forbidden response has a 2xx status code
@@ -286,7 +286,7 @@ func (o *PaymentPayInvoiceForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentPayInvoiceForbidden) GetPayload() interface{} {
+func (o *PaymentPayInvoiceForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -311,7 +311,7 @@ PaymentPayInvoiceNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type PaymentPayInvoiceNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment pay invoice not found response has a 2xx status code
@@ -347,7 +347,7 @@ func (o *PaymentPayInvoiceNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentPayInvoiceNotFound) GetPayload() interface{} {
+func (o *PaymentPayInvoiceNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ KubernetesPatchNodeUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type KubernetesPatchNodeUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch node unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesPatchNodeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchNodeUnauthorized) GetPayload() interface{} {
+func (o *KubernetesPatchNodeUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesPatchNodeForbidden describes a response with status code 403, with def
 Forbidden
 */
 type KubernetesPatchNodeForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch node forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesPatchNodeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchNodeForbidden) GetPayload() interface{} {
+func (o *KubernetesPatchNodeForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesPatchNodeNotFound describes a response with status code 404, with defa
 Not Found
 */
 type KubernetesPatchNodeNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch node not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesPatchNodeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchNodeNotFound) GetPayload() interface{} {
+func (o *KubernetesPatchNodeNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

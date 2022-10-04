@@ -199,7 +199,7 @@ AlertingProfilesAssignWebhooksUnauthorized describes a response with status code
 Unauthorized
 */
 type AlertingProfilesAssignWebhooksUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles assign webhooks unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AlertingProfilesAssignWebhooksUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignwebhooks/{id}][%d] alertingProfilesAssignWebhooksUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesAssignWebhooksUnauthorized) GetPayload() interface{} {
+func (o *AlertingProfilesAssignWebhooksUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AlertingProfilesAssignWebhooksForbidden describes a response with status code 40
 Forbidden
 */
 type AlertingProfilesAssignWebhooksForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles assign webhooks forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AlertingProfilesAssignWebhooksForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignwebhooks/{id}][%d] alertingProfilesAssignWebhooksForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesAssignWebhooksForbidden) GetPayload() interface{} {
+func (o *AlertingProfilesAssignWebhooksForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AlertingProfilesAssignWebhooksNotFound describes a response with status code 404
 Not Found
 */
 type AlertingProfilesAssignWebhooksNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles assign webhooks not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AlertingProfilesAssignWebhooksNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignwebhooks/{id}][%d] alertingProfilesAssignWebhooksNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesAssignWebhooksNotFound) GetPayload() interface{} {
+func (o *AlertingProfilesAssignWebhooksNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

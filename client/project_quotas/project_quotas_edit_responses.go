@@ -199,7 +199,7 @@ ProjectQuotasEditUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type ProjectQuotasEditUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project quotas edit unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectQuotasEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectQuotasEditUnauthorized) GetPayload() interface{} {
+func (o *ProjectQuotasEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectQuotasEditForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type ProjectQuotasEditForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project quotas edit forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectQuotasEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectQuotasEditForbidden) GetPayload() interface{} {
+func (o *ProjectQuotasEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectQuotasEditNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type ProjectQuotasEditNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project quotas edit not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectQuotasEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectQuotas/update][%d] projectQuotasEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectQuotasEditNotFound) GetPayload() interface{} {
+func (o *ProjectQuotasEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

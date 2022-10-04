@@ -199,7 +199,7 @@ FlavorsUnbindFromProjectUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type FlavorsUnbindFromProjectUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors unbind from project unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *FlavorsUnbindFromProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/unbind][%d] flavorsUnbindFromProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsUnbindFromProjectUnauthorized) GetPayload() interface{} {
+func (o *FlavorsUnbindFromProjectUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ FlavorsUnbindFromProjectForbidden describes a response with status code 403, wit
 Forbidden
 */
 type FlavorsUnbindFromProjectForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors unbind from project forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *FlavorsUnbindFromProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/unbind][%d] flavorsUnbindFromProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsUnbindFromProjectForbidden) GetPayload() interface{} {
+func (o *FlavorsUnbindFromProjectForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ FlavorsUnbindFromProjectNotFound describes a response with status code 404, with
 Not Found
 */
 type FlavorsUnbindFromProjectNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors unbind from project not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *FlavorsUnbindFromProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/unbind][%d] flavorsUnbindFromProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsUnbindFromProjectNotFound) GetPayload() interface{} {
+func (o *FlavorsUnbindFromProjectNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ ShowbackCredentialsDropdownUnauthorized describes a response with status code 40
 Unauthorized
 */
 type ShowbackCredentialsDropdownUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback credentials dropdown unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ShowbackCredentialsDropdownUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackCredentialsDropdownUnauthorized) GetPayload() interface{} {
+func (o *ShowbackCredentialsDropdownUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ShowbackCredentialsDropdownForbidden describes a response with status code 403, 
 Forbidden
 */
 type ShowbackCredentialsDropdownForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback credentials dropdown forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ShowbackCredentialsDropdownForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackCredentialsDropdownForbidden) GetPayload() interface{} {
+func (o *ShowbackCredentialsDropdownForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ShowbackCredentialsDropdownNotFound describes a response with status code 404, w
 Not Found
 */
 type ShowbackCredentialsDropdownNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback credentials dropdown not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ShowbackCredentialsDropdownNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackCredentials/list][%d] showbackCredentialsDropdownNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackCredentialsDropdownNotFound) GetPayload() interface{} {
+func (o *ShowbackCredentialsDropdownNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ CronJobDeleteExpiredHistoryLogsUnauthorized describes a response with status cod
 Unauthorized
 */
 type CronJobDeleteExpiredHistoryLogsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete expired history logs unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobDeleteExpiredHistoryLogsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredHistoryLogsUnauthorized) GetPayload() interface{} {
+func (o *CronJobDeleteExpiredHistoryLogsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobDeleteExpiredHistoryLogsForbidden describes a response with status code 4
 Forbidden
 */
 type CronJobDeleteExpiredHistoryLogsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete expired history logs forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobDeleteExpiredHistoryLogsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredHistoryLogsForbidden) GetPayload() interface{} {
+func (o *CronJobDeleteExpiredHistoryLogsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobDeleteExpiredHistoryLogsNotFound describes a response with status code 40
 Not Found
 */
 type CronJobDeleteExpiredHistoryLogsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete expired history logs not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobDeleteExpiredHistoryLogsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/history-logs][%d] cronJobDeleteExpiredHistoryLogsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredHistoryLogsNotFound) GetPayload() interface{} {
+func (o *CronJobDeleteExpiredHistoryLogsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

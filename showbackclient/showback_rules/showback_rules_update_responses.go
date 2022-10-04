@@ -199,7 +199,7 @@ ShowbackRulesUpdateUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ShowbackRulesUpdateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback rules update unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ShowbackRulesUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackRulesUpdateUnauthorized) GetPayload() interface{} {
+func (o *ShowbackRulesUpdateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ShowbackRulesUpdateForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ShowbackRulesUpdateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback rules update forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ShowbackRulesUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackRulesUpdateForbidden) GetPayload() interface{} {
+func (o *ShowbackRulesUpdateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ShowbackRulesUpdateNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ShowbackRulesUpdateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback rules update not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ShowbackRulesUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/update][%d] showbackRulesUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackRulesUpdateNotFound) GetPayload() interface{} {
+func (o *ShowbackRulesUpdateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

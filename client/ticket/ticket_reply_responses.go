@@ -199,7 +199,7 @@ TicketReplyUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type TicketReplyUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket reply unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *TicketReplyUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/reply][%d] ticketReplyUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketReplyUnauthorized) GetPayload() interface{} {
+func (o *TicketReplyUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ TicketReplyForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type TicketReplyForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket reply forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *TicketReplyForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/reply][%d] ticketReplyForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketReplyForbidden) GetPayload() interface{} {
+func (o *TicketReplyForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ TicketReplyNotFound describes a response with status code 404, with default head
 Not Found
 */
 type TicketReplyNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket reply not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *TicketReplyNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/reply][%d] ticketReplyNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketReplyNotFound) GetPayload() interface{} {
+func (o *TicketReplyNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

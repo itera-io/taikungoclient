@@ -201,7 +201,7 @@ SSHUsersCreateUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type SSHUsersCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ssh users create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SSHUsersCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/create][%d] sshUsersCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SSHUsersCreateUnauthorized) GetPayload() interface{} {
+func (o *SSHUsersCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SSHUsersCreateForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type SSHUsersCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ssh users create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SSHUsersCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/create][%d] sshUsersCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SSHUsersCreateForbidden) GetPayload() interface{} {
+func (o *SSHUsersCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SSHUsersCreateNotFound describes a response with status code 404, with default h
 Not Found
 */
 type SSHUsersCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ssh users create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SSHUsersCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/create][%d] sshUsersCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SSHUsersCreateNotFound) GetPayload() interface{} {
+func (o *SSHUsersCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ KubernetesRestartDaemonSetUnauthorized describes a response with status code 401
 Unauthorized
 */
 type KubernetesRestartDaemonSetUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes restart daemon set unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesRestartDaemonSetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesRestartDaemonSetUnauthorized) GetPayload() interface{} {
+func (o *KubernetesRestartDaemonSetUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesRestartDaemonSetForbidden describes a response with status code 403, w
 Forbidden
 */
 type KubernetesRestartDaemonSetForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes restart daemon set forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesRestartDaemonSetForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesRestartDaemonSetForbidden) GetPayload() interface{} {
+func (o *KubernetesRestartDaemonSetForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesRestartDaemonSetNotFound describes a response with status code 404, wi
 Not Found
 */
 type KubernetesRestartDaemonSetNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes restart daemon set not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesRestartDaemonSetNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/restart/daemonset][%d] kubernetesRestartDaemonSetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesRestartDaemonSetNotFound) GetPayload() interface{} {
+func (o *KubernetesRestartDaemonSetNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ AuthResetPasswordUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type AuthResetPasswordUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this auth reset password unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AuthResetPasswordUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AuthResetPasswordUnauthorized) GetPayload() interface{} {
+func (o *AuthResetPasswordUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AuthResetPasswordForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type AuthResetPasswordForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this auth reset password forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AuthResetPasswordForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AuthResetPasswordForbidden) GetPayload() interface{} {
+func (o *AuthResetPasswordForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AuthResetPasswordNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type AuthResetPasswordNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this auth reset password not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AuthResetPasswordNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/resetpassword][%d] authResetPasswordNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AuthResetPasswordNotFound) GetPayload() interface{} {
+func (o *AuthResetPasswordNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

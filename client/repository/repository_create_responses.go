@@ -199,7 +199,7 @@ RepositoryCreateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type RepositoryCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this repository create unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *RepositoryCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/bind][%d] repositoryCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *RepositoryCreateUnauthorized) GetPayload() interface{} {
+func (o *RepositoryCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ RepositoryCreateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type RepositoryCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this repository create forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *RepositoryCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/bind][%d] repositoryCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *RepositoryCreateForbidden) GetPayload() interface{} {
+func (o *RepositoryCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ RepositoryCreateNotFound describes a response with status code 404, with default
 Not Found
 */
 type RepositoryCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this repository create not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *RepositoryCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/bind][%d] repositoryCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *RepositoryCreateNotFound) GetPayload() interface{} {
+func (o *RepositoryCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ AdminUpdateUserEmailUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type AdminUpdateUserEmailUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin update user email unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AdminUpdateUserEmailUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminUpdateUserEmailUnauthorized) GetPayload() interface{} {
+func (o *AdminUpdateUserEmailUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AdminUpdateUserEmailForbidden describes a response with status code 403, with de
 Forbidden
 */
 type AdminUpdateUserEmailForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin update user email forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AdminUpdateUserEmailForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminUpdateUserEmailForbidden) GetPayload() interface{} {
+func (o *AdminUpdateUserEmailForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AdminUpdateUserEmailNotFound describes a response with status code 404, with def
 Not Found
 */
 type AdminUpdateUserEmailNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin update user email not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AdminUpdateUserEmailNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminUpdateUserEmailNotFound) GetPayload() interface{} {
+func (o *AdminUpdateUserEmailNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ CheckerYamlUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type CheckerYamlUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker yaml unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CheckerYamlUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerYamlUnauthorized) GetPayload() interface{} {
+func (o *CheckerYamlUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CheckerYamlForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type CheckerYamlForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker yaml forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CheckerYamlForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerYamlForbidden) GetPayload() interface{} {
+func (o *CheckerYamlForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CheckerYamlNotFound describes a response with status code 404, with default head
 Not Found
 */
 type CheckerYamlNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker yaml not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CheckerYamlNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/yaml][%d] checkerYamlNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerYamlNotFound) GetPayload() interface{} {
+func (o *CheckerYamlNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

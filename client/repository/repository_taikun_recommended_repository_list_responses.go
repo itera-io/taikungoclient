@@ -199,7 +199,7 @@ RepositoryTaikunRecommendedRepositoryListUnauthorized describes a response with 
 Unauthorized
 */
 type RepositoryTaikunRecommendedRepositoryListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this repository taikun recommended repository list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) String() string 
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) GetPayload() interface{} {
+func (o *RepositoryTaikunRecommendedRepositoryListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ RepositoryTaikunRecommendedRepositoryListForbidden describes a response with sta
 Forbidden
 */
 type RepositoryTaikunRecommendedRepositoryListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this repository taikun recommended repository list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *RepositoryTaikunRecommendedRepositoryListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *RepositoryTaikunRecommendedRepositoryListForbidden) GetPayload() interface{} {
+func (o *RepositoryTaikunRecommendedRepositoryListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ RepositoryTaikunRecommendedRepositoryListNotFound describes a response with stat
 Not Found
 */
 type RepositoryTaikunRecommendedRepositoryListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this repository taikun recommended repository list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *RepositoryTaikunRecommendedRepositoryListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/recommended][%d] repositoryTaikunRecommendedRepositoryListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *RepositoryTaikunRecommendedRepositoryListNotFound) GetPayload() interface{} {
+func (o *RepositoryTaikunRecommendedRepositoryListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

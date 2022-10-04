@@ -201,7 +201,7 @@ SearchPrometheusRulesListUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type SearchPrometheusRulesListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search prometheus rules list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchPrometheusRulesListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchPrometheusRulesListUnauthorized) GetPayload() interface{} {
+func (o *SearchPrometheusRulesListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchPrometheusRulesListForbidden describes a response with status code 403, wi
 Forbidden
 */
 type SearchPrometheusRulesListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search prometheus rules list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchPrometheusRulesListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchPrometheusRulesListForbidden) GetPayload() interface{} {
+func (o *SearchPrometheusRulesListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchPrometheusRulesListNotFound describes a response with status code 404, wit
 Not Found
 */
 type SearchPrometheusRulesListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search prometheus rules list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchPrometheusRulesListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/prometheus-rules][%d] searchPrometheusRulesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchPrometheusRulesListNotFound) GetPayload() interface{} {
+func (o *SearchPrometheusRulesListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

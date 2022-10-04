@@ -201,7 +201,7 @@ PaymentGetFinalPriceUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type PaymentGetFinalPriceUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment get final price unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *PaymentGetFinalPriceUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentGetFinalPriceUnauthorized) GetPayload() interface{} {
+func (o *PaymentGetFinalPriceUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ PaymentGetFinalPriceForbidden describes a response with status code 403, with de
 Forbidden
 */
 type PaymentGetFinalPriceForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment get final price forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *PaymentGetFinalPriceForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentGetFinalPriceForbidden) GetPayload() interface{} {
+func (o *PaymentGetFinalPriceForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ PaymentGetFinalPriceNotFound describes a response with status code 404, with def
 Not Found
 */
 type PaymentGetFinalPriceNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment get final price not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *PaymentGetFinalPriceNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/finalprice][%d] paymentGetFinalPriceNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentGetFinalPriceNotFound) GetPayload() interface{} {
+func (o *PaymentGetFinalPriceNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ KubesprayCreateUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type KubesprayCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubespray create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubesprayCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubesprayCreateUnauthorized) GetPayload() interface{} {
+func (o *KubesprayCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubesprayCreateForbidden describes a response with status code 403, with default
 Forbidden
 */
 type KubesprayCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubespray create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubesprayCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubesprayCreateForbidden) GetPayload() interface{} {
+func (o *KubesprayCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubesprayCreateNotFound describes a response with status code 404, with default 
 Not Found
 */
 type KubesprayCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubespray create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubesprayCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubespray][%d] kubesprayCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubesprayCreateNotFound) GetPayload() interface{} {
+func (o *KubesprayCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

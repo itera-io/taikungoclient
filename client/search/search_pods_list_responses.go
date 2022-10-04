@@ -201,7 +201,7 @@ SearchPodsListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type SearchPodsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search pods list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchPodsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchPodsListUnauthorized) GetPayload() interface{} {
+func (o *SearchPodsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchPodsListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type SearchPodsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search pods list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchPodsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchPodsListForbidden) GetPayload() interface{} {
+func (o *SearchPodsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchPodsListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type SearchPodsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search pods list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchPodsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/pods][%d] searchPodsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchPodsListNotFound) GetPayload() interface{} {
+func (o *SearchPodsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ BackupDeleteBackupLocationUnauthorized describes a response with status code 401
 Unauthorized
 */
 type BackupDeleteBackupLocationUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup delete backup location unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *BackupDeleteBackupLocationUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupDeleteBackupLocationUnauthorized) GetPayload() interface{} {
+func (o *BackupDeleteBackupLocationUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ BackupDeleteBackupLocationForbidden describes a response with status code 403, w
 Forbidden
 */
 type BackupDeleteBackupLocationForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup delete backup location forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *BackupDeleteBackupLocationForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupDeleteBackupLocationForbidden) GetPayload() interface{} {
+func (o *BackupDeleteBackupLocationForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ BackupDeleteBackupLocationNotFound describes a response with status code 404, wi
 Not Found
 */
 type BackupDeleteBackupLocationNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup delete backup location not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *BackupDeleteBackupLocationNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/location][%d] backupDeleteBackupLocationNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupDeleteBackupLocationNotFound) GetPayload() interface{} {
+func (o *BackupDeleteBackupLocationNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ OpaProfilesMakeDefaultUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type OpaProfilesMakeDefaultUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles make default unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OpaProfilesMakeDefaultUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesMakeDefaultUnauthorized) GetPayload() interface{} {
+func (o *OpaProfilesMakeDefaultUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OpaProfilesMakeDefaultForbidden describes a response with status code 403, with 
 Forbidden
 */
 type OpaProfilesMakeDefaultForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles make default forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OpaProfilesMakeDefaultForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesMakeDefaultForbidden) GetPayload() interface{} {
+func (o *OpaProfilesMakeDefaultForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OpaProfilesMakeDefaultNotFound describes a response with status code 404, with d
 Not Found
 */
 type OpaProfilesMakeDefaultNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles make default not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OpaProfilesMakeDefaultNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesMakeDefaultNotFound) GetPayload() interface{} {
+func (o *OpaProfilesMakeDefaultNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ KubernetesDeleteAlertsUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesDeleteAlertsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes delete alerts unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesDeleteAlertsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDeleteAlertsUnauthorized) GetPayload() interface{} {
+func (o *KubernetesDeleteAlertsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesDeleteAlertsForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesDeleteAlertsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes delete alerts forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesDeleteAlertsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDeleteAlertsForbidden) GetPayload() interface{} {
+func (o *KubernetesDeleteAlertsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesDeleteAlertsNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesDeleteAlertsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes delete alerts not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesDeleteAlertsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/removealerts][%d] kubernetesDeleteAlertsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDeleteAlertsNotFound) GetPayload() interface{} {
+func (o *KubernetesDeleteAlertsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

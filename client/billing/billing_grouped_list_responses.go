@@ -199,7 +199,7 @@ BillingGroupedListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type BillingGroupedListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this billing grouped list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *BillingGroupedListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BillingGroupedListUnauthorized) GetPayload() interface{} {
+func (o *BillingGroupedListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ BillingGroupedListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type BillingGroupedListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this billing grouped list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *BillingGroupedListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BillingGroupedListForbidden) GetPayload() interface{} {
+func (o *BillingGroupedListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ BillingGroupedListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type BillingGroupedListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this billing grouped list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *BillingGroupedListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BillingGroupedListNotFound) GetPayload() interface{} {
+func (o *BillingGroupedListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ OpaProfilesOpaProfilesForOrganizationListUnauthorized describes a response with 
 Unauthorized
 */
 type OpaProfilesOpaProfilesForOrganizationListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles opa profiles for organization list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OpaProfilesOpaProfilesForOrganizationListUnauthorized) String() string 
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles/list][%d] opaProfilesOpaProfilesForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesOpaProfilesForOrganizationListUnauthorized) GetPayload() interface{} {
+func (o *OpaProfilesOpaProfilesForOrganizationListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OpaProfilesOpaProfilesForOrganizationListForbidden describes a response with sta
 Forbidden
 */
 type OpaProfilesOpaProfilesForOrganizationListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles opa profiles for organization list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OpaProfilesOpaProfilesForOrganizationListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles/list][%d] opaProfilesOpaProfilesForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesOpaProfilesForOrganizationListForbidden) GetPayload() interface{} {
+func (o *OpaProfilesOpaProfilesForOrganizationListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OpaProfilesOpaProfilesForOrganizationListNotFound describes a response with stat
 Not Found
 */
 type OpaProfilesOpaProfilesForOrganizationListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles opa profiles for organization list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OpaProfilesOpaProfilesForOrganizationListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles/list][%d] opaProfilesOpaProfilesForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesOpaProfilesForOrganizationListNotFound) GetPayload() interface{} {
+func (o *OpaProfilesOpaProfilesForOrganizationListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ ProjectRevisionsEditUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type ProjectRevisionsEditUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project revisions edit unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectRevisionsEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectRevisionsEditUnauthorized) GetPayload() interface{} {
+func (o *ProjectRevisionsEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectRevisionsEditForbidden describes a response with status code 403, with de
 Forbidden
 */
 type ProjectRevisionsEditForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project revisions edit forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectRevisionsEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectRevisionsEditForbidden) GetPayload() interface{} {
+func (o *ProjectRevisionsEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectRevisionsEditNotFound describes a response with status code 404, with def
 Not Found
 */
 type ProjectRevisionsEditNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project revisions edit not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectRevisionsEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectRevisions/update/{projectId}][%d] projectRevisionsEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectRevisionsEditNotFound) GetPayload() interface{} {
+func (o *ProjectRevisionsEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

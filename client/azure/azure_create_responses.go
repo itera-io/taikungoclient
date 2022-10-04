@@ -201,7 +201,7 @@ AzureCreateUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type AzureCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *AzureCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureCreateUnauthorized) GetPayload() interface{} {
+func (o *AzureCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ AzureCreateForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type AzureCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *AzureCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureCreateForbidden) GetPayload() interface{} {
+func (o *AzureCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ AzureCreateNotFound describes a response with status code 404, with default head
 Not Found
 */
 type AzureCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *AzureCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureCreateNotFound) GetPayload() interface{} {
+func (o *AzureCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

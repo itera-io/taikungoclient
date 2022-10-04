@@ -199,7 +199,7 @@ CronJobFetchAzureEuroPricesUnauthorized describes a response with status code 40
 Unauthorized
 */
 type CronJobFetchAzureEuroPricesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job fetch azure euro prices unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobFetchAzureEuroPricesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-euro-prices][%d] cronJobFetchAzureEuroPricesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobFetchAzureEuroPricesUnauthorized) GetPayload() interface{} {
+func (o *CronJobFetchAzureEuroPricesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobFetchAzureEuroPricesForbidden describes a response with status code 403, 
 Forbidden
 */
 type CronJobFetchAzureEuroPricesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job fetch azure euro prices forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobFetchAzureEuroPricesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-euro-prices][%d] cronJobFetchAzureEuroPricesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobFetchAzureEuroPricesForbidden) GetPayload() interface{} {
+func (o *CronJobFetchAzureEuroPricesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobFetchAzureEuroPricesNotFound describes a response with status code 404, w
 Not Found
 */
 type CronJobFetchAzureEuroPricesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job fetch azure euro prices not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobFetchAzureEuroPricesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-azure-euro-prices][%d] cronJobFetchAzureEuroPricesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobFetchAzureEuroPricesNotFound) GetPayload() interface{} {
+func (o *CronJobFetchAzureEuroPricesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

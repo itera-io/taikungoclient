@@ -201,7 +201,7 @@ SearchOrganizationsListUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type SearchOrganizationsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search organizations list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchOrganizationsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchOrganizationsListUnauthorized) GetPayload() interface{} {
+func (o *SearchOrganizationsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchOrganizationsListForbidden describes a response with status code 403, with
 Forbidden
 */
 type SearchOrganizationsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search organizations list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchOrganizationsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchOrganizationsListForbidden) GetPayload() interface{} {
+func (o *SearchOrganizationsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchOrganizationsListNotFound describes a response with status code 404, with 
 Not Found
 */
 type SearchOrganizationsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search organizations list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchOrganizationsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/organizations][%d] searchOrganizationsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchOrganizationsListNotFound) GetPayload() interface{} {
+func (o *SearchOrganizationsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

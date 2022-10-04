@@ -189,7 +189,7 @@ BillingExportCsvUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type BillingExportCsvUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this billing export csv unauthorized response has a 2xx status code
@@ -225,7 +225,7 @@ func (o *BillingExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BillingExportCsvUnauthorized) GetPayload() interface{} {
+func (o *BillingExportCsvUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -250,7 +250,7 @@ BillingExportCsvForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type BillingExportCsvForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this billing export csv forbidden response has a 2xx status code
@@ -286,7 +286,7 @@ func (o *BillingExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BillingExportCsvForbidden) GetPayload() interface{} {
+func (o *BillingExportCsvForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -311,7 +311,7 @@ BillingExportCsvNotFound describes a response with status code 404, with default
 Not Found
 */
 type BillingExportCsvNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this billing export csv not found response has a 2xx status code
@@ -347,7 +347,7 @@ func (o *BillingExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BillingExportCsvNotFound) GetPayload() interface{} {
+func (o *BillingExportCsvNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ ServersDetailsUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type ServersDetailsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers details unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *ServersDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersDetailsUnauthorized) GetPayload() interface{} {
+func (o *ServersDetailsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ ServersDetailsForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type ServersDetailsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers details forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *ServersDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersDetailsForbidden) GetPayload() interface{} {
+func (o *ServersDetailsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ ServersDetailsNotFound describes a response with status code 404, with default h
 Not Found
 */
 type ServersDetailsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers details not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *ServersDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersDetailsNotFound) GetPayload() interface{} {
+func (o *ServersDetailsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

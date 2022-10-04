@@ -199,7 +199,7 @@ ProjectsEditHealthStatusUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type ProjectsEditHealthStatusUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects edit health status unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsEditHealthStatusUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsEditHealthStatusUnauthorized) GetPayload() interface{} {
+func (o *ProjectsEditHealthStatusUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsEditHealthStatusForbidden describes a response with status code 403, wit
 Forbidden
 */
 type ProjectsEditHealthStatusForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects edit health status forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsEditHealthStatusForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsEditHealthStatusForbidden) GetPayload() interface{} {
+func (o *ProjectsEditHealthStatusForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsEditHealthStatusNotFound describes a response with status code 404, with
 Not Found
 */
 type ProjectsEditHealthStatusNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects edit health status not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsEditHealthStatusNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/updatehealth/{projectId}][%d] projectsEditHealthStatusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsEditHealthStatusNotFound) GetPayload() interface{} {
+func (o *ProjectsEditHealthStatusNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

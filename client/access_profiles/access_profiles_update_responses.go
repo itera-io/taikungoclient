@@ -199,7 +199,7 @@ AccessProfilesUpdateUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type AccessProfilesUpdateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles update unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AccessProfilesUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AccessProfilesUpdateUnauthorized) GetPayload() interface{} {
+func (o *AccessProfilesUpdateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AccessProfilesUpdateForbidden describes a response with status code 403, with de
 Forbidden
 */
 type AccessProfilesUpdateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles update forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AccessProfilesUpdateForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AccessProfilesUpdateForbidden) GetPayload() interface{} {
+func (o *AccessProfilesUpdateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AccessProfilesUpdateNotFound describes a response with status code 404, with def
 Not Found
 */
 type AccessProfilesUpdateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles update not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AccessProfilesUpdateNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AccessProfilesUpdateNotFound) GetPayload() interface{} {
+func (o *AccessProfilesUpdateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

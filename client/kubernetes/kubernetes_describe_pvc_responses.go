@@ -199,7 +199,7 @@ KubernetesDescribePvcUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesDescribePvcUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe pvc unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesDescribePvcUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribePvcUnauthorized) GetPayload() interface{} {
+func (o *KubernetesDescribePvcUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesDescribePvcForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesDescribePvcForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe pvc forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesDescribePvcForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribePvcForbidden) GetPayload() interface{} {
+func (o *KubernetesDescribePvcForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesDescribePvcNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesDescribePvcNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe pvc not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesDescribePvcNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribePvcNotFound) GetPayload() interface{} {
+func (o *KubernetesDescribePvcNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

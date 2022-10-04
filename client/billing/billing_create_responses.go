@@ -199,7 +199,7 @@ BillingCreateUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type BillingCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this billing create unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *BillingCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BillingCreateUnauthorized) GetPayload() interface{} {
+func (o *BillingCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ BillingCreateForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type BillingCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this billing create forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *BillingCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BillingCreateForbidden) GetPayload() interface{} {
+func (o *BillingCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ BillingCreateNotFound describes a response with status code 404, with default he
 Not Found
 */
 type BillingCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this billing create not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *BillingCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Billing/add][%d] billingCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BillingCreateNotFound) GetPayload() interface{} {
+func (o *BillingCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

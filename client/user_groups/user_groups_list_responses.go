@@ -201,7 +201,7 @@ UserGroupsListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type UserGroupsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user groups list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *UserGroupsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list][%d] userGroupsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserGroupsListUnauthorized) GetPayload() interface{} {
+func (o *UserGroupsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ UserGroupsListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type UserGroupsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user groups list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *UserGroupsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list][%d] userGroupsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserGroupsListForbidden) GetPayload() interface{} {
+func (o *UserGroupsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ UserGroupsListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type UserGroupsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user groups list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *UserGroupsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserGroups/list][%d] userGroupsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserGroupsListNotFound) GetPayload() interface{} {
+func (o *UserGroupsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

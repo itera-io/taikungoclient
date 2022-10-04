@@ -201,7 +201,7 @@ UsersDetailsUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type UsersDetailsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users details unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *UsersDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/userinfo][%d] usersDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersDetailsUnauthorized) GetPayload() interface{} {
+func (o *UsersDetailsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ UsersDetailsForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type UsersDetailsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users details forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *UsersDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/userinfo][%d] usersDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersDetailsForbidden) GetPayload() interface{} {
+func (o *UsersDetailsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ UsersDetailsNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type UsersDetailsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users details not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *UsersDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/userinfo][%d] usersDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersDetailsNotFound) GetPayload() interface{} {
+func (o *UsersDetailsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

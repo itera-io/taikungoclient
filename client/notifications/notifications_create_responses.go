@@ -199,7 +199,7 @@ NotificationsCreateUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type NotificationsCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this notifications create unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *NotificationsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NotificationsCreateUnauthorized) GetPayload() interface{} {
+func (o *NotificationsCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ NotificationsCreateForbidden describes a response with status code 403, with def
 Forbidden
 */
 type NotificationsCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this notifications create forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *NotificationsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NotificationsCreateForbidden) GetPayload() interface{} {
+func (o *NotificationsCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ NotificationsCreateNotFound describes a response with status code 404, with defa
 Not Found
 */
 type NotificationsCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this notifications create not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *NotificationsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/add][%d] notificationsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NotificationsCreateNotFound) GetPayload() interface{} {
+func (o *NotificationsCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

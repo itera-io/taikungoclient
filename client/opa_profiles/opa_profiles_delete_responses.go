@@ -199,7 +199,7 @@ OpaProfilesDeleteUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpaProfilesDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles delete unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OpaProfilesDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesDeleteUnauthorized) GetPayload() interface{} {
+func (o *OpaProfilesDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OpaProfilesDeleteForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpaProfilesDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles delete forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OpaProfilesDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesDeleteForbidden) GetPayload() interface{} {
+func (o *OpaProfilesDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OpaProfilesDeleteNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpaProfilesDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles delete not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OpaProfilesDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/delete][%d] opaProfilesDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesDeleteNotFound) GetPayload() interface{} {
+func (o *OpaProfilesDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

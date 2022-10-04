@@ -199,7 +199,7 @@ ShowbackRulesDeleteAllUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type ShowbackRulesDeleteAllUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback rules delete all unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ShowbackRulesDeleteAllUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackRulesDeleteAllUnauthorized) GetPayload() interface{} {
+func (o *ShowbackRulesDeleteAllUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ShowbackRulesDeleteAllForbidden describes a response with status code 403, with 
 Forbidden
 */
 type ShowbackRulesDeleteAllForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback rules delete all forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ShowbackRulesDeleteAllForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackRulesDeleteAllForbidden) GetPayload() interface{} {
+func (o *ShowbackRulesDeleteAllForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ShowbackRulesDeleteAllNotFound describes a response with status code 404, with d
 Not Found
 */
 type ShowbackRulesDeleteAllNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback rules delete all not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ShowbackRulesDeleteAllNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackRulesDeleteAllNotFound) GetPayload() interface{} {
+func (o *ShowbackRulesDeleteAllNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

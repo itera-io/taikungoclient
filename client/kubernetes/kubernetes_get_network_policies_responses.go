@@ -201,7 +201,7 @@ KubernetesGetNetworkPoliciesUnauthorized describes a response with status code 4
 Unauthorized
 */
 type KubernetesGetNetworkPoliciesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get network policies unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubernetesGetNetworkPoliciesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/network-policies][%d] kubernetesGetNetworkPoliciesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetNetworkPoliciesUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetNetworkPoliciesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubernetesGetNetworkPoliciesForbidden describes a response with status code 403,
 Forbidden
 */
 type KubernetesGetNetworkPoliciesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get network policies forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubernetesGetNetworkPoliciesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/network-policies][%d] kubernetesGetNetworkPoliciesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetNetworkPoliciesForbidden) GetPayload() interface{} {
+func (o *KubernetesGetNetworkPoliciesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubernetesGetNetworkPoliciesNotFound describes a response with status code 404, 
 Not Found
 */
 type KubernetesGetNetworkPoliciesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get network policies not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubernetesGetNetworkPoliciesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/network-policies][%d] kubernetesGetNetworkPoliciesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetNetworkPoliciesNotFound) GetPayload() interface{} {
+func (o *KubernetesGetNetworkPoliciesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

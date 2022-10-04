@@ -189,7 +189,7 @@ InvoicesDownloadUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type InvoicesDownloadUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this invoices download unauthorized response has a 2xx status code
@@ -225,7 +225,7 @@ func (o *InvoicesDownloadUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *InvoicesDownloadUnauthorized) GetPayload() interface{} {
+func (o *InvoicesDownloadUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -250,7 +250,7 @@ InvoicesDownloadForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type InvoicesDownloadForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this invoices download forbidden response has a 2xx status code
@@ -286,7 +286,7 @@ func (o *InvoicesDownloadForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadForbidden  %+v", 403, o.Payload)
 }
 
-func (o *InvoicesDownloadForbidden) GetPayload() interface{} {
+func (o *InvoicesDownloadForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -311,7 +311,7 @@ InvoicesDownloadNotFound describes a response with status code 404, with default
 Not Found
 */
 type InvoicesDownloadNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this invoices download not found response has a 2xx status code
@@ -347,7 +347,7 @@ func (o *InvoicesDownloadNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/download][%d] invoicesDownloadNotFound  %+v", 404, o.Payload)
 }
 
-func (o *InvoicesDownloadNotFound) GetPayload() interface{} {
+func (o *InvoicesDownloadNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

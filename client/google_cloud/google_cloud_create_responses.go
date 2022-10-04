@@ -201,7 +201,7 @@ GoogleCloudCreateUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type GoogleCloudCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this google cloud create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *GoogleCloudCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GoogleCloudCreateUnauthorized) GetPayload() interface{} {
+func (o *GoogleCloudCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ GoogleCloudCreateForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type GoogleCloudCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this google cloud create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *GoogleCloudCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GoogleCloudCreateForbidden) GetPayload() interface{} {
+func (o *GoogleCloudCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ GoogleCloudCreateNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type GoogleCloudCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this google cloud create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *GoogleCloudCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/create][%d] googleCloudCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GoogleCloudCreateNotFound) GetPayload() interface{} {
+func (o *GoogleCloudCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

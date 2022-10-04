@@ -199,7 +199,7 @@ OpenstackZoneListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpenstackZoneListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack zone list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OpenstackZoneListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackZoneListUnauthorized) GetPayload() interface{} {
+func (o *OpenstackZoneListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OpenstackZoneListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpenstackZoneListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack zone list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OpenstackZoneListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackZoneListForbidden) GetPayload() interface{} {
+func (o *OpenstackZoneListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OpenstackZoneListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpenstackZoneListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack zone list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OpenstackZoneListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackZoneListNotFound) GetPayload() interface{} {
+func (o *OpenstackZoneListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

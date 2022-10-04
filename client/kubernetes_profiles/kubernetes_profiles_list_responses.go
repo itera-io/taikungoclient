@@ -201,7 +201,7 @@ KubernetesProfilesListUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesProfilesListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes profiles list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubernetesProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesProfilesListUnauthorized) GetPayload() interface{} {
+func (o *KubernetesProfilesListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubernetesProfilesListForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesProfilesListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes profiles list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubernetesProfilesListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesProfilesListForbidden) GetPayload() interface{} {
+func (o *KubernetesProfilesListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubernetesProfilesListNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesProfilesListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes profiles list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubernetesProfilesListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesProfilesListNotFound) GetPayload() interface{} {
+func (o *KubernetesProfilesListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

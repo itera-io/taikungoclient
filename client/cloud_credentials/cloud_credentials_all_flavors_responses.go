@@ -201,7 +201,7 @@ CloudCredentialsAllFlavorsUnauthorized describes a response with status code 401
 Unauthorized
 */
 type CloudCredentialsAllFlavorsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials all flavors unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *CloudCredentialsAllFlavorsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsAllFlavorsUnauthorized) GetPayload() interface{} {
+func (o *CloudCredentialsAllFlavorsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ CloudCredentialsAllFlavorsForbidden describes a response with status code 403, w
 Forbidden
 */
 type CloudCredentialsAllFlavorsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials all flavors forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *CloudCredentialsAllFlavorsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsAllFlavorsForbidden) GetPayload() interface{} {
+func (o *CloudCredentialsAllFlavorsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ CloudCredentialsAllFlavorsNotFound describes a response with status code 404, wi
 Not Found
 */
 type CloudCredentialsAllFlavorsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials all flavors not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *CloudCredentialsAllFlavorsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsAllFlavorsNotFound) GetPayload() interface{} {
+func (o *CloudCredentialsAllFlavorsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

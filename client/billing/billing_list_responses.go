@@ -201,7 +201,7 @@ BillingListUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type BillingListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this billing list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *BillingListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BillingListUnauthorized) GetPayload() interface{} {
+func (o *BillingListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ BillingListForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type BillingListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this billing list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *BillingListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BillingListForbidden) GetPayload() interface{} {
+func (o *BillingListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ BillingListNotFound describes a response with status code 404, with default head
 Not Found
 */
 type BillingListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this billing list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *BillingListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing][%d] billingListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BillingListNotFound) GetPayload() interface{} {
+func (o *BillingListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

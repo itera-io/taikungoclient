@@ -199,7 +199,7 @@ PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized describes a respon
 Unauthorized
 */
 type PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus common dashboard list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized) String()
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/common][%d] preDefinedQueriesGetPrometheusCommonDashboardListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized) GetPayload() interface{} {
+func (o *PreDefinedQueriesGetPrometheusCommonDashboardListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PreDefinedQueriesGetPrometheusCommonDashboardListForbidden describes a response 
 Forbidden
 */
 type PreDefinedQueriesGetPrometheusCommonDashboardListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus common dashboard list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PreDefinedQueriesGetPrometheusCommonDashboardListForbidden) String() st
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/common][%d] preDefinedQueriesGetPrometheusCommonDashboardListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusCommonDashboardListForbidden) GetPayload() interface{} {
+func (o *PreDefinedQueriesGetPrometheusCommonDashboardListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PreDefinedQueriesGetPrometheusCommonDashboardListNotFound describes a response w
 Not Found
 */
 type PreDefinedQueriesGetPrometheusCommonDashboardListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus common dashboard list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PreDefinedQueriesGetPrometheusCommonDashboardListNotFound) String() str
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/common][%d] preDefinedQueriesGetPrometheusCommonDashboardListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusCommonDashboardListNotFound) GetPayload() interface{} {
+func (o *PreDefinedQueriesGetPrometheusCommonDashboardListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

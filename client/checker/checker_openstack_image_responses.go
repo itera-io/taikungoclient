@@ -199,7 +199,7 @@ CheckerOpenstackImageUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type CheckerOpenstackImageUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker openstack image unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CheckerOpenstackImageUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerOpenstackImageUnauthorized) GetPayload() interface{} {
+func (o *CheckerOpenstackImageUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CheckerOpenstackImageForbidden describes a response with status code 403, with d
 Forbidden
 */
 type CheckerOpenstackImageForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker openstack image forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CheckerOpenstackImageForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerOpenstackImageForbidden) GetPayload() interface{} {
+func (o *CheckerOpenstackImageForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CheckerOpenstackImageNotFound describes a response with status code 404, with de
 Not Found
 */
 type CheckerOpenstackImageNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker openstack image not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CheckerOpenstackImageNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/openstack-image/{id}][%d] checkerOpenstackImageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerOpenstackImageNotFound) GetPayload() interface{} {
+func (o *CheckerOpenstackImageNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ KubernetesDescribeCrdUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesDescribeCrdUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe crd unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesDescribeCrdUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/crd][%d] kubernetesDescribeCrdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeCrdUnauthorized) GetPayload() interface{} {
+func (o *KubernetesDescribeCrdUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesDescribeCrdForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesDescribeCrdForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe crd forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesDescribeCrdForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/crd][%d] kubernetesDescribeCrdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeCrdForbidden) GetPayload() interface{} {
+func (o *KubernetesDescribeCrdForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesDescribeCrdNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesDescribeCrdNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe crd not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesDescribeCrdNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/crd][%d] kubernetesDescribeCrdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeCrdNotFound) GetPayload() interface{} {
+func (o *KubernetesDescribeCrdNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

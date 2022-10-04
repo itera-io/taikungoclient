@@ -201,7 +201,7 @@ RepositoryListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type RepositoryListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this repository list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *RepositoryListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *RepositoryListUnauthorized) GetPayload() interface{} {
+func (o *RepositoryListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ RepositoryListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type RepositoryListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this repository list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *RepositoryListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *RepositoryListForbidden) GetPayload() interface{} {
+func (o *RepositoryListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ RepositoryListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type RepositoryListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this repository list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *RepositoryListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *RepositoryListNotFound) GetPayload() interface{} {
+func (o *RepositoryListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

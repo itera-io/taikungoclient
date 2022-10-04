@@ -256,7 +256,7 @@ ProjectsDeleteWholeProjectUnauthorized describes a response with status code 401
 Unauthorized
 */
 type ProjectsDeleteWholeProjectUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects delete whole project unauthorized response has a 2xx status code
@@ -292,7 +292,7 @@ func (o *ProjectsDeleteWholeProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsDeleteWholeProjectUnauthorized) GetPayload() interface{} {
+func (o *ProjectsDeleteWholeProjectUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -317,7 +317,7 @@ ProjectsDeleteWholeProjectForbidden describes a response with status code 403, w
 Forbidden
 */
 type ProjectsDeleteWholeProjectForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects delete whole project forbidden response has a 2xx status code
@@ -353,7 +353,7 @@ func (o *ProjectsDeleteWholeProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsDeleteWholeProjectForbidden) GetPayload() interface{} {
+func (o *ProjectsDeleteWholeProjectForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -378,7 +378,7 @@ ProjectsDeleteWholeProjectNotFound describes a response with status code 404, wi
 Not Found
 */
 type ProjectsDeleteWholeProjectNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects delete whole project not found response has a 2xx status code
@@ -414,7 +414,7 @@ func (o *ProjectsDeleteWholeProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsDeleteWholeProjectNotFound) GetPayload() interface{} {
+func (o *ProjectsDeleteWholeProjectNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

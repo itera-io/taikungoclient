@@ -201,7 +201,7 @@ StandAloneProfileListUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type StandAloneProfileListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone profile list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *StandAloneProfileListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile][%d] standAloneProfileListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneProfileListUnauthorized) GetPayload() interface{} {
+func (o *StandAloneProfileListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ StandAloneProfileListForbidden describes a response with status code 403, with d
 Forbidden
 */
 type StandAloneProfileListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone profile list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *StandAloneProfileListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile][%d] standAloneProfileListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneProfileListForbidden) GetPayload() interface{} {
+func (o *StandAloneProfileListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ StandAloneProfileListNotFound describes a response with status code 404, with de
 Not Found
 */
 type StandAloneProfileListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone profile list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *StandAloneProfileListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneProfile][%d] standAloneProfileListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneProfileListNotFound) GetPayload() interface{} {
+func (o *StandAloneProfileListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

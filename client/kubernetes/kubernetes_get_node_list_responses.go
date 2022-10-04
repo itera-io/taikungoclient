@@ -199,7 +199,7 @@ KubernetesGetNodeListUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesGetNodeListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get node list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesGetNodeListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetNodeListUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetNodeListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesGetNodeListForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesGetNodeListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get node list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesGetNodeListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetNodeListForbidden) GetPayload() interface{} {
+func (o *KubernetesGetNodeListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesGetNodeListNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesGetNodeListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get node list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesGetNodeListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/node][%d] kubernetesGetNodeListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetNodeListNotFound) GetPayload() interface{} {
+func (o *KubernetesGetNodeListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

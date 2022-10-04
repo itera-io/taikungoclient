@@ -189,7 +189,7 @@ ProjectsLokiLogsUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type ProjectsLokiLogsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects loki logs unauthorized response has a 2xx status code
@@ -225,7 +225,7 @@ func (o *ProjectsLokiLogsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsLokiLogsUnauthorized) GetPayload() interface{} {
+func (o *ProjectsLokiLogsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -250,7 +250,7 @@ ProjectsLokiLogsForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type ProjectsLokiLogsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects loki logs forbidden response has a 2xx status code
@@ -286,7 +286,7 @@ func (o *ProjectsLokiLogsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsLokiLogsForbidden) GetPayload() interface{} {
+func (o *ProjectsLokiLogsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -311,7 +311,7 @@ ProjectsLokiLogsNotFound describes a response with status code 404, with default
 Not Found
 */
 type ProjectsLokiLogsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects loki logs not found response has a 2xx status code
@@ -347,7 +347,7 @@ func (o *ProjectsLokiLogsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsLokiLogsNotFound) GetPayload() interface{} {
+func (o *ProjectsLokiLogsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

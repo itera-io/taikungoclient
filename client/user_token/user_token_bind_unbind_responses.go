@@ -199,7 +199,7 @@ UserTokenBindUnbindUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type UserTokenBindUnbindUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user token bind unbind unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *UserTokenBindUnbindUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserTokenBindUnbindUnauthorized) GetPayload() interface{} {
+func (o *UserTokenBindUnbindUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ UserTokenBindUnbindForbidden describes a response with status code 403, with def
 Forbidden
 */
 type UserTokenBindUnbindForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user token bind unbind forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *UserTokenBindUnbindForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserTokenBindUnbindForbidden) GetPayload() interface{} {
+func (o *UserTokenBindUnbindForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ UserTokenBindUnbindNotFound describes a response with status code 404, with defa
 Not Found
 */
 type UserTokenBindUnbindNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user token bind unbind not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *UserTokenBindUnbindNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserTokenBindUnbindNotFound) GetPayload() interface{} {
+func (o *UserTokenBindUnbindNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ CheckerOpenstackTaikunLbImageUnauthorized describes a response with status code 
 Unauthorized
 */
 type CheckerOpenstackTaikunLbImageUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker openstack taikun lb image unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CheckerOpenstackTaikunLbImageUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerOpenstackTaikunLbImageUnauthorized) GetPayload() interface{} {
+func (o *CheckerOpenstackTaikunLbImageUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CheckerOpenstackTaikunLbImageForbidden describes a response with status code 403
 Forbidden
 */
 type CheckerOpenstackTaikunLbImageForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker openstack taikun lb image forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CheckerOpenstackTaikunLbImageForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerOpenstackTaikunLbImageForbidden) GetPayload() interface{} {
+func (o *CheckerOpenstackTaikunLbImageForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CheckerOpenstackTaikunLbImageNotFound describes a response with status code 404,
 Not Found
 */
 type CheckerOpenstackTaikunLbImageNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker openstack taikun lb image not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CheckerOpenstackTaikunLbImageNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/taikun-lb-image/{id}][%d] checkerOpenstackTaikunLbImageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerOpenstackTaikunLbImageNotFound) GetPayload() interface{} {
+func (o *CheckerOpenstackTaikunLbImageNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

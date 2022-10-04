@@ -199,7 +199,7 @@ KubernetesCreateKubernetesEventUnauthorized describes a response with status cod
 Unauthorized
 */
 type KubernetesCreateKubernetesEventUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes create kubernetes event unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesCreateKubernetesEventUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/event/{projectId}][%d] kubernetesCreateKubernetesEventUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesCreateKubernetesEventUnauthorized) GetPayload() interface{} {
+func (o *KubernetesCreateKubernetesEventUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesCreateKubernetesEventForbidden describes a response with status code 4
 Forbidden
 */
 type KubernetesCreateKubernetesEventForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes create kubernetes event forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesCreateKubernetesEventForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/event/{projectId}][%d] kubernetesCreateKubernetesEventForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesCreateKubernetesEventForbidden) GetPayload() interface{} {
+func (o *KubernetesCreateKubernetesEventForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesCreateKubernetesEventNotFound describes a response with status code 40
 Not Found
 */
 type KubernetesCreateKubernetesEventNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes create kubernetes event not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesCreateKubernetesEventNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/event/{projectId}][%d] kubernetesCreateKubernetesEventNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesCreateKubernetesEventNotFound) GetPayload() interface{} {
+func (o *KubernetesCreateKubernetesEventNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

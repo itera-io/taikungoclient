@@ -199,7 +199,7 @@ BackupDisableBackupUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type BackupDisableBackupUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup disable backup unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *BackupDisableBackupUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/disablebackup][%d] backupDisableBackupUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupDisableBackupUnauthorized) GetPayload() interface{} {
+func (o *BackupDisableBackupUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ BackupDisableBackupForbidden describes a response with status code 403, with def
 Forbidden
 */
 type BackupDisableBackupForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup disable backup forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *BackupDisableBackupForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/disablebackup][%d] backupDisableBackupForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupDisableBackupForbidden) GetPayload() interface{} {
+func (o *BackupDisableBackupForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ BackupDisableBackupNotFound describes a response with status code 404, with defa
 Not Found
 */
 type BackupDisableBackupNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup disable backup not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *BackupDisableBackupNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/disablebackup][%d] backupDisableBackupNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupDisableBackupNotFound) GetPayload() interface{} {
+func (o *BackupDisableBackupNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ AlertingIntegrationsCreateUnauthorized describes a response with status code 401
 Unauthorized
 */
 type AlertingIntegrationsCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting integrations create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *AlertingIntegrationsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingIntegrationsCreateUnauthorized) GetPayload() interface{} {
+func (o *AlertingIntegrationsCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ AlertingIntegrationsCreateForbidden describes a response with status code 403, w
 Forbidden
 */
 type AlertingIntegrationsCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting integrations create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *AlertingIntegrationsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingIntegrationsCreateForbidden) GetPayload() interface{} {
+func (o *AlertingIntegrationsCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ AlertingIntegrationsCreateNotFound describes a response with status code 404, wi
 Not Found
 */
 type AlertingIntegrationsCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting integrations create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *AlertingIntegrationsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingIntegrations/create][%d] alertingIntegrationsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingIntegrationsCreateNotFound) GetPayload() interface{} {
+func (o *AlertingIntegrationsCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

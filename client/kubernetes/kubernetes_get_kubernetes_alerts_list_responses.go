@@ -201,7 +201,7 @@ KubernetesGetKubernetesAlertsListUnauthorized describes a response with status c
 Unauthorized
 */
 type KubernetesGetKubernetesAlertsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get kubernetes alerts list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubernetesGetKubernetesAlertsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetKubernetesAlertsListUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetKubernetesAlertsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubernetesGetKubernetesAlertsListForbidden describes a response with status code
 Forbidden
 */
 type KubernetesGetKubernetesAlertsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get kubernetes alerts list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubernetesGetKubernetesAlertsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetKubernetesAlertsListForbidden) GetPayload() interface{} {
+func (o *KubernetesGetKubernetesAlertsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubernetesGetKubernetesAlertsListNotFound describes a response with status code 
 Not Found
 */
 type KubernetesGetKubernetesAlertsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get kubernetes alerts list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubernetesGetKubernetesAlertsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/alerts][%d] kubernetesGetKubernetesAlertsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetKubernetesAlertsListNotFound) GetPayload() interface{} {
+func (o *KubernetesGetKubernetesAlertsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ SearchCloudCredentialsListUnauthorized describes a response with status code 401
 Unauthorized
 */
 type SearchCloudCredentialsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search cloud credentials list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchCloudCredentialsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchCloudCredentialsListUnauthorized) GetPayload() interface{} {
+func (o *SearchCloudCredentialsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchCloudCredentialsListForbidden describes a response with status code 403, w
 Forbidden
 */
 type SearchCloudCredentialsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search cloud credentials list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchCloudCredentialsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchCloudCredentialsListForbidden) GetPayload() interface{} {
+func (o *SearchCloudCredentialsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchCloudCredentialsListNotFound describes a response with status code 404, wi
 Not Found
 */
 type SearchCloudCredentialsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search cloud credentials list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchCloudCredentialsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchCloudCredentialsListNotFound) GetPayload() interface{} {
+func (o *SearchCloudCredentialsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

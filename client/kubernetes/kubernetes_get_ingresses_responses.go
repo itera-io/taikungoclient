@@ -201,7 +201,7 @@ KubernetesGetIngressesUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesGetIngressesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get ingresses unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubernetesGetIngressesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/ingress][%d] kubernetesGetIngressesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetIngressesUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetIngressesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubernetesGetIngressesForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesGetIngressesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get ingresses forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubernetesGetIngressesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/ingress][%d] kubernetesGetIngressesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetIngressesForbidden) GetPayload() interface{} {
+func (o *KubernetesGetIngressesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubernetesGetIngressesNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesGetIngressesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get ingresses not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubernetesGetIngressesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/ingress][%d] kubernetesGetIngressesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetIngressesNotFound) GetPayload() interface{} {
+func (o *KubernetesGetIngressesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

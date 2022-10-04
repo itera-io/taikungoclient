@@ -201,7 +201,7 @@ KubernetesGetPodListUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type KubernetesGetPodListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get pod list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubernetesGetPodListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pod][%d] kubernetesGetPodListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetPodListUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetPodListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubernetesGetPodListForbidden describes a response with status code 403, with de
 Forbidden
 */
 type KubernetesGetPodListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get pod list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubernetesGetPodListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pod][%d] kubernetesGetPodListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetPodListForbidden) GetPayload() interface{} {
+func (o *KubernetesGetPodListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubernetesGetPodListNotFound describes a response with status code 404, with def
 Not Found
 */
 type KubernetesGetPodListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get pod list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubernetesGetPodListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pod][%d] kubernetesGetPodListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetPodListNotFound) GetPayload() interface{} {
+func (o *KubernetesGetPodListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

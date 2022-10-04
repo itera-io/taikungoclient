@@ -199,7 +199,7 @@ KubeConfigDownloadUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubeConfigDownloadUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kube config download unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubeConfigDownloadUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubeConfigDownloadUnauthorized) GetPayload() interface{} {
+func (o *KubeConfigDownloadUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubeConfigDownloadForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubeConfigDownloadForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kube config download forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubeConfigDownloadForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubeConfigDownloadForbidden) GetPayload() interface{} {
+func (o *KubeConfigDownloadForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubeConfigDownloadNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubeConfigDownloadNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kube config download not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubeConfigDownloadNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubeConfigDownloadNotFound) GetPayload() interface{} {
+func (o *KubeConfigDownloadNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

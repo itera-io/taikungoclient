@@ -201,7 +201,7 @@ StandAloneVMDisksCreateUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneVMDisksCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *StandAloneVMDisksCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksCreateUnauthorized) GetPayload() interface{} {
+func (o *StandAloneVMDisksCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ StandAloneVMDisksCreateForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneVMDisksCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *StandAloneVMDisksCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksCreateForbidden) GetPayload() interface{} {
+func (o *StandAloneVMDisksCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ StandAloneVMDisksCreateNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneVMDisksCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *StandAloneVMDisksCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/create][%d] standAloneVmDisksCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksCreateNotFound) GetPayload() interface{} {
+func (o *StandAloneVMDisksCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

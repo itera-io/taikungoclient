@@ -201,7 +201,7 @@ SearchIngressListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type SearchIngressListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search ingress list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchIngressListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/ingress][%d] searchIngressListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchIngressListUnauthorized) GetPayload() interface{} {
+func (o *SearchIngressListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchIngressListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type SearchIngressListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search ingress list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchIngressListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/ingress][%d] searchIngressListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchIngressListForbidden) GetPayload() interface{} {
+func (o *SearchIngressListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchIngressListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type SearchIngressListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search ingress list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchIngressListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/ingress][%d] searchIngressListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchIngressListNotFound) GetPayload() interface{} {
+func (o *SearchIngressListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

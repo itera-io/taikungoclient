@@ -199,7 +199,7 @@ SlackSlackConfigurationForOrganizationListUnauthorized describes a response with
 Unauthorized
 */
 type SlackSlackConfigurationForOrganizationListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack slack configuration for organization list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *SlackSlackConfigurationForOrganizationListUnauthorized) String() string
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SlackSlackConfigurationForOrganizationListUnauthorized) GetPayload() interface{} {
+func (o *SlackSlackConfigurationForOrganizationListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ SlackSlackConfigurationForOrganizationListForbidden describes a response with st
 Forbidden
 */
 type SlackSlackConfigurationForOrganizationListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack slack configuration for organization list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *SlackSlackConfigurationForOrganizationListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SlackSlackConfigurationForOrganizationListForbidden) GetPayload() interface{} {
+func (o *SlackSlackConfigurationForOrganizationListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ SlackSlackConfigurationForOrganizationListNotFound describes a response with sta
 Not Found
 */
 type SlackSlackConfigurationForOrganizationListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack slack configuration for organization list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *SlackSlackConfigurationForOrganizationListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack/list][%d] slackSlackConfigurationForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SlackSlackConfigurationForOrganizationListNotFound) GetPayload() interface{} {
+func (o *SlackSlackConfigurationForOrganizationListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

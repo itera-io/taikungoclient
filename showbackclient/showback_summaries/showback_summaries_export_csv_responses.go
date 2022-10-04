@@ -189,7 +189,7 @@ ShowbackSummariesExportCsvUnauthorized describes a response with status code 401
 Unauthorized
 */
 type ShowbackSummariesExportCsvUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries export csv unauthorized response has a 2xx status code
@@ -225,7 +225,7 @@ func (o *ShowbackSummariesExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackSummariesExportCsvUnauthorized) GetPayload() interface{} {
+func (o *ShowbackSummariesExportCsvUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -250,7 +250,7 @@ ShowbackSummariesExportCsvForbidden describes a response with status code 403, w
 Forbidden
 */
 type ShowbackSummariesExportCsvForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries export csv forbidden response has a 2xx status code
@@ -286,7 +286,7 @@ func (o *ShowbackSummariesExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackSummariesExportCsvForbidden) GetPayload() interface{} {
+func (o *ShowbackSummariesExportCsvForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -311,7 +311,7 @@ ShowbackSummariesExportCsvNotFound describes a response with status code 404, wi
 Not Found
 */
 type ShowbackSummariesExportCsvNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries export csv not found response has a 2xx status code
@@ -347,7 +347,7 @@ func (o *ShowbackSummariesExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackSummariesExportCsvNotFound) GetPayload() interface{} {
+func (o *ShowbackSummariesExportCsvNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

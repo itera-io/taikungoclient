@@ -199,7 +199,7 @@ CheckerUserCheckerUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type CheckerUserCheckerUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker user checker unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CheckerUserCheckerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerUserCheckerUnauthorized) GetPayload() interface{} {
+func (o *CheckerUserCheckerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CheckerUserCheckerForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type CheckerUserCheckerForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker user checker forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CheckerUserCheckerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerUserCheckerForbidden) GetPayload() interface{} {
+func (o *CheckerUserCheckerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CheckerUserCheckerNotFound describes a response with status code 404, with defau
 Not Found
 */
 type CheckerUserCheckerNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker user checker not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CheckerUserCheckerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/user][%d] checkerUserCheckerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerUserCheckerNotFound) GetPayload() interface{} {
+func (o *CheckerUserCheckerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ SearchKubernetesProfilesListUnauthorized describes a response with status code 4
 Unauthorized
 */
 type SearchKubernetesProfilesListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search kubernetes profiles list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchKubernetesProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchKubernetesProfilesListUnauthorized) GetPayload() interface{} {
+func (o *SearchKubernetesProfilesListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchKubernetesProfilesListForbidden describes a response with status code 403,
 Forbidden
 */
 type SearchKubernetesProfilesListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search kubernetes profiles list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchKubernetesProfilesListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchKubernetesProfilesListForbidden) GetPayload() interface{} {
+func (o *SearchKubernetesProfilesListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchKubernetesProfilesListNotFound describes a response with status code 404, 
 Not Found
 */
 type SearchKubernetesProfilesListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search kubernetes profiles list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchKubernetesProfilesListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/kubernetes-profiles][%d] searchKubernetesProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchKubernetesProfilesListNotFound) GetPayload() interface{} {
+func (o *SearchKubernetesProfilesListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

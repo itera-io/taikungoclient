@@ -201,7 +201,7 @@ AccessProfilesListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type AccessProfilesListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *AccessProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AccessProfilesListUnauthorized) GetPayload() interface{} {
+func (o *AccessProfilesListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ AccessProfilesListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type AccessProfilesListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *AccessProfilesListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AccessProfilesListForbidden) GetPayload() interface{} {
+func (o *AccessProfilesListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ AccessProfilesListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type AccessProfilesListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *AccessProfilesListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AccessProfiles][%d] accessProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AccessProfilesListNotFound) GetPayload() interface{} {
+func (o *AccessProfilesListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

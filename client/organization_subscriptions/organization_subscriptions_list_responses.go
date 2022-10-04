@@ -201,7 +201,7 @@ OrganizationSubscriptionsListUnauthorized describes a response with status code 
 Unauthorized
 */
 type OrganizationSubscriptionsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organization subscriptions list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *OrganizationSubscriptionsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationSubscriptionsListUnauthorized) GetPayload() interface{} {
+func (o *OrganizationSubscriptionsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ OrganizationSubscriptionsListForbidden describes a response with status code 403
 Forbidden
 */
 type OrganizationSubscriptionsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organization subscriptions list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *OrganizationSubscriptionsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationSubscriptionsListForbidden) GetPayload() interface{} {
+func (o *OrganizationSubscriptionsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ OrganizationSubscriptionsListNotFound describes a response with status code 404,
 Not Found
 */
 type OrganizationSubscriptionsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organization subscriptions list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *OrganizationSubscriptionsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OrganizationSubscriptions][%d] organizationSubscriptionsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationSubscriptionsListNotFound) GetPayload() interface{} {
+func (o *OrganizationSubscriptionsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

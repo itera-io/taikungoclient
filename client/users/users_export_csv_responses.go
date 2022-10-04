@@ -189,7 +189,7 @@ UsersExportCsvUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type UsersExportCsvUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users export csv unauthorized response has a 2xx status code
@@ -225,7 +225,7 @@ func (o *UsersExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersExportCsvUnauthorized) GetPayload() interface{} {
+func (o *UsersExportCsvUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -250,7 +250,7 @@ UsersExportCsvForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type UsersExportCsvForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users export csv forbidden response has a 2xx status code
@@ -286,7 +286,7 @@ func (o *UsersExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersExportCsvForbidden) GetPayload() interface{} {
+func (o *UsersExportCsvForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -311,7 +311,7 @@ UsersExportCsvNotFound describes a response with status code 404, with default h
 Not Found
 */
 type UsersExportCsvNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users export csv not found response has a 2xx status code
@@ -347,7 +347,7 @@ func (o *UsersExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/export][%d] usersExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersExportCsvNotFound) GetPayload() interface{} {
+func (o *UsersExportCsvNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

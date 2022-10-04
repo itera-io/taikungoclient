@@ -199,7 +199,7 @@ AdminUpdateUserPasswordUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type AdminUpdateUserPasswordUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin update user password unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AdminUpdateUserPasswordUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminUpdateUserPasswordUnauthorized) GetPayload() interface{} {
+func (o *AdminUpdateUserPasswordUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AdminUpdateUserPasswordForbidden describes a response with status code 403, with
 Forbidden
 */
 type AdminUpdateUserPasswordForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin update user password forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AdminUpdateUserPasswordForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminUpdateUserPasswordForbidden) GetPayload() interface{} {
+func (o *AdminUpdateUserPasswordForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AdminUpdateUserPasswordNotFound describes a response with status code 404, with 
 Not Found
 */
 type AdminUpdateUserPasswordNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin update user password not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AdminUpdateUserPasswordNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminUpdateUserPasswordNotFound) GetPayload() interface{} {
+func (o *AdminUpdateUserPasswordNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

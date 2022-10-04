@@ -199,7 +199,7 @@ CronJobSyncBackupCredentialsUnauthorized describes a response with status code 4
 Unauthorized
 */
 type CronJobSyncBackupCredentialsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job sync backup credentials unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobSyncBackupCredentialsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobSyncBackupCredentialsUnauthorized) GetPayload() interface{} {
+func (o *CronJobSyncBackupCredentialsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobSyncBackupCredentialsForbidden describes a response with status code 403,
 Forbidden
 */
 type CronJobSyncBackupCredentialsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job sync backup credentials forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobSyncBackupCredentialsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobSyncBackupCredentialsForbidden) GetPayload() interface{} {
+func (o *CronJobSyncBackupCredentialsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobSyncBackupCredentialsNotFound describes a response with status code 404, 
 Not Found
 */
 type CronJobSyncBackupCredentialsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job sync backup credentials not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobSyncBackupCredentialsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-backup-credentials][%d] cronJobSyncBackupCredentialsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobSyncBackupCredentialsNotFound) GetPayload() interface{} {
+func (o *CronJobSyncBackupCredentialsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

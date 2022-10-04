@@ -199,7 +199,7 @@ CatalogEditCatalogAppParamsUnauthorized describes a response with status code 40
 Unauthorized
 */
 type CatalogEditCatalogAppParamsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog edit catalog app params unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CatalogEditCatalogAppParamsUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-params][%d] catalogEditCatalogAppParamsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppParamsUnauthorized) GetPayload() interface{} {
+func (o *CatalogEditCatalogAppParamsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CatalogEditCatalogAppParamsForbidden describes a response with status code 403, 
 Forbidden
 */
 type CatalogEditCatalogAppParamsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog edit catalog app params forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CatalogEditCatalogAppParamsForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-params][%d] catalogEditCatalogAppParamsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppParamsForbidden) GetPayload() interface{} {
+func (o *CatalogEditCatalogAppParamsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CatalogEditCatalogAppParamsNotFound describes a response with status code 404, w
 Not Found
 */
 type CatalogEditCatalogAppParamsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog edit catalog app params not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CatalogEditCatalogAppParamsNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-params][%d] catalogEditCatalogAppParamsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppParamsNotFound) GetPayload() interface{} {
+func (o *CatalogEditCatalogAppParamsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

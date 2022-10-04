@@ -199,7 +199,7 @@ ProjectsListWithAlertsUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type ProjectsListWithAlertsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects list with alerts unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsListWithAlertsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsListWithAlertsUnauthorized) GetPayload() interface{} {
+func (o *ProjectsListWithAlertsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsListWithAlertsForbidden describes a response with status code 403, with 
 Forbidden
 */
 type ProjectsListWithAlertsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects list with alerts forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsListWithAlertsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsListWithAlertsForbidden) GetPayload() interface{} {
+func (o *ProjectsListWithAlertsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsListWithAlertsNotFound describes a response with status code 404, with d
 Not Found
 */
 type ProjectsListWithAlertsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects list with alerts not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsListWithAlertsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/foralerting][%d] projectsListWithAlertsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsListWithAlertsNotFound) GetPayload() interface{} {
+func (o *ProjectsListWithAlertsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

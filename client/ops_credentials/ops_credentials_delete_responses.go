@@ -256,7 +256,7 @@ OpsCredentialsDeleteUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type OpsCredentialsDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ops credentials delete unauthorized response has a 2xx status code
@@ -292,7 +292,7 @@ func (o *OpsCredentialsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpsCredentialsDeleteUnauthorized) GetPayload() interface{} {
+func (o *OpsCredentialsDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -317,7 +317,7 @@ OpsCredentialsDeleteForbidden describes a response with status code 403, with de
 Forbidden
 */
 type OpsCredentialsDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ops credentials delete forbidden response has a 2xx status code
@@ -353,7 +353,7 @@ func (o *OpsCredentialsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpsCredentialsDeleteForbidden) GetPayload() interface{} {
+func (o *OpsCredentialsDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -378,7 +378,7 @@ OpsCredentialsDeleteNotFound describes a response with status code 404, with def
 Not Found
 */
 type OpsCredentialsDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ops credentials delete not found response has a 2xx status code
@@ -414,7 +414,7 @@ func (o *OpsCredentialsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/OpsCredentials/{id}][%d] opsCredentialsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpsCredentialsDeleteNotFound) GetPayload() interface{} {
+func (o *OpsCredentialsDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

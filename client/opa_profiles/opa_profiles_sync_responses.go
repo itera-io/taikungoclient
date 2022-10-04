@@ -199,7 +199,7 @@ OpaProfilesSyncUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type OpaProfilesSyncUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles sync unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OpaProfilesSyncUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesSyncUnauthorized) GetPayload() interface{} {
+func (o *OpaProfilesSyncUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OpaProfilesSyncForbidden describes a response with status code 403, with default
 Forbidden
 */
 type OpaProfilesSyncForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles sync forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OpaProfilesSyncForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesSyncForbidden) GetPayload() interface{} {
+func (o *OpaProfilesSyncForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OpaProfilesSyncNotFound describes a response with status code 404, with default 
 Not Found
 */
 type OpaProfilesSyncNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles sync not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OpaProfilesSyncNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/sync][%d] opaProfilesSyncNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesSyncNotFound) GetPayload() interface{} {
+func (o *OpaProfilesSyncNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

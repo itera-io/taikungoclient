@@ -199,7 +199,7 @@ CatalogCatalogAppValueUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type CatalogCatalogAppValueUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog catalog app value unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CatalogCatalogAppValueUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value][%d] catalogCatalogAppValueUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueUnauthorized) GetPayload() interface{} {
+func (o *CatalogCatalogAppValueUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CatalogCatalogAppValueForbidden describes a response with status code 403, with 
 Forbidden
 */
 type CatalogCatalogAppValueForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog catalog app value forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CatalogCatalogAppValueForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value][%d] catalogCatalogAppValueForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueForbidden) GetPayload() interface{} {
+func (o *CatalogCatalogAppValueForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CatalogCatalogAppValueNotFound describes a response with status code 404, with d
 Not Found
 */
 type CatalogCatalogAppValueNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog catalog app value not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CatalogCatalogAppValueNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value][%d] catalogCatalogAppValueNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueNotFound) GetPayload() interface{} {
+func (o *CatalogCatalogAppValueNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

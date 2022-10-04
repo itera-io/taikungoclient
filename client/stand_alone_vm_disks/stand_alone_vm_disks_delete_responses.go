@@ -199,7 +199,7 @@ StandAloneVMDisksDeleteUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneVMDisksDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks delete unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneVMDisksDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksDeleteUnauthorized) GetPayload() interface{} {
+func (o *StandAloneVMDisksDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneVMDisksDeleteForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneVMDisksDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks delete forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneVMDisksDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksDeleteForbidden) GetPayload() interface{} {
+func (o *StandAloneVMDisksDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneVMDisksDeleteNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneVMDisksDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks delete not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneVMDisksDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/delete][%d] standAloneVmDisksDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksDeleteNotFound) GetPayload() interface{} {
+func (o *StandAloneVMDisksDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ FlavorsOpenstackFlavorsUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type FlavorsOpenstackFlavorsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors openstack flavors unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *FlavorsOpenstackFlavorsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsOpenstackFlavorsUnauthorized) GetPayload() interface{} {
+func (o *FlavorsOpenstackFlavorsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ FlavorsOpenstackFlavorsForbidden describes a response with status code 403, with
 Forbidden
 */
 type FlavorsOpenstackFlavorsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors openstack flavors forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *FlavorsOpenstackFlavorsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsOpenstackFlavorsForbidden) GetPayload() interface{} {
+func (o *FlavorsOpenstackFlavorsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ FlavorsOpenstackFlavorsNotFound describes a response with status code 404, with 
 Not Found
 */
 type FlavorsOpenstackFlavorsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors openstack flavors not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *FlavorsOpenstackFlavorsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsOpenstackFlavorsNotFound) GetPayload() interface{} {
+func (o *FlavorsOpenstackFlavorsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

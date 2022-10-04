@@ -199,7 +199,7 @@ AdminMakeOwnerUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type AdminMakeOwnerUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin make owner unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AdminMakeOwnerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminMakeOwnerUnauthorized) GetPayload() interface{} {
+func (o *AdminMakeOwnerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AdminMakeOwnerForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type AdminMakeOwnerForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin make owner forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AdminMakeOwnerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminMakeOwnerForbidden) GetPayload() interface{} {
+func (o *AdminMakeOwnerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AdminMakeOwnerNotFound describes a response with status code 404, with default h
 Not Found
 */
 type AdminMakeOwnerNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin make owner not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AdminMakeOwnerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/owner][%d] adminMakeOwnerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminMakeOwnerNotFound) GetPayload() interface{} {
+func (o *AdminMakeOwnerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ PartnerCreateUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type PartnerCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner create unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PartnerCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerCreateUnauthorized) GetPayload() interface{} {
+func (o *PartnerCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PartnerCreateForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type PartnerCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner create forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PartnerCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerCreateForbidden) GetPayload() interface{} {
+func (o *PartnerCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PartnerCreateNotFound describes a response with status code 404, with default he
 Not Found
 */
 type PartnerCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner create not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PartnerCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/create][%d] partnerCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerCreateNotFound) GetPayload() interface{} {
+func (o *PartnerCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

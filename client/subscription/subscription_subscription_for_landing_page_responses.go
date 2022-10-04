@@ -199,7 +199,7 @@ SubscriptionSubscriptionForLandingPageUnauthorized describes a response with sta
 Unauthorized
 */
 type SubscriptionSubscriptionForLandingPageUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this subscription subscription for landing page unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *SubscriptionSubscriptionForLandingPageUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForLandingPageUnauthorized) GetPayload() interface{} {
+func (o *SubscriptionSubscriptionForLandingPageUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ SubscriptionSubscriptionForLandingPageForbidden describes a response with status
 Forbidden
 */
 type SubscriptionSubscriptionForLandingPageForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this subscription subscription for landing page forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *SubscriptionSubscriptionForLandingPageForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForLandingPageForbidden) GetPayload() interface{} {
+func (o *SubscriptionSubscriptionForLandingPageForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ SubscriptionSubscriptionForLandingPageNotFound describes a response with status 
 Not Found
 */
 type SubscriptionSubscriptionForLandingPageNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this subscription subscription for landing page not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *SubscriptionSubscriptionForLandingPageNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/public][%d] subscriptionSubscriptionForLandingPageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForLandingPageNotFound) GetPayload() interface{} {
+func (o *SubscriptionSubscriptionForLandingPageNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

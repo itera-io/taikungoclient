@@ -199,7 +199,7 @@ InvoicesEditUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type InvoicesEditUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this invoices edit unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *InvoicesEditUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *InvoicesEditUnauthorized) GetPayload() interface{} {
+func (o *InvoicesEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ InvoicesEditForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type InvoicesEditForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this invoices edit forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *InvoicesEditForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *InvoicesEditForbidden) GetPayload() interface{} {
+func (o *InvoicesEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ InvoicesEditNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type InvoicesEditNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this invoices edit not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *InvoicesEditNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Invoices/update/{invoiceId}][%d] invoicesEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *InvoicesEditNotFound) GetPayload() interface{} {
+func (o *InvoicesEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ AzureDashboardUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type AzureDashboardUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure dashboard unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AzureDashboardUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureDashboardUnauthorized) GetPayload() interface{} {
+func (o *AzureDashboardUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AzureDashboardForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type AzureDashboardForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure dashboard forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AzureDashboardForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureDashboardForbidden) GetPayload() interface{} {
+func (o *AzureDashboardForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AzureDashboardNotFound describes a response with status code 404, with default h
 Not Found
 */
 type AzureDashboardNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure dashboard not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AzureDashboardNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/quota/list][%d] azureDashboardNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureDashboardNotFound) GetPayload() interface{} {
+func (o *AzureDashboardNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ CronJobRemindAlertsUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type CronJobRemindAlertsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job remind alerts unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobRemindAlertsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/remind-alerts][%d] cronJobRemindAlertsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobRemindAlertsUnauthorized) GetPayload() interface{} {
+func (o *CronJobRemindAlertsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobRemindAlertsForbidden describes a response with status code 403, with def
 Forbidden
 */
 type CronJobRemindAlertsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job remind alerts forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobRemindAlertsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/remind-alerts][%d] cronJobRemindAlertsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobRemindAlertsForbidden) GetPayload() interface{} {
+func (o *CronJobRemindAlertsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobRemindAlertsNotFound describes a response with status code 404, with defa
 Not Found
 */
 type CronJobRemindAlertsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job remind alerts not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobRemindAlertsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/remind-alerts][%d] cronJobRemindAlertsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobRemindAlertsNotFound) GetPayload() interface{} {
+func (o *CronJobRemindAlertsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

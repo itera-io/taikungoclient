@@ -201,7 +201,7 @@ KubeConfigListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type KubeConfigListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kube config list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubeConfigListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubeConfigListUnauthorized) GetPayload() interface{} {
+func (o *KubeConfigListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubeConfigListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type KubeConfigListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kube config list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubeConfigListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubeConfigListForbidden) GetPayload() interface{} {
+func (o *KubeConfigListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubeConfigListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type KubeConfigListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kube config list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubeConfigListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubeConfigListNotFound) GetPayload() interface{} {
+func (o *KubeConfigListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

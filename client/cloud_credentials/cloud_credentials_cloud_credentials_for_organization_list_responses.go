@@ -199,7 +199,7 @@ CloudCredentialsCloudCredentialsForOrganizationListUnauthorized describes a resp
 Unauthorized
 */
 type CloudCredentialsCloudCredentialsForOrganizationListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials cloud credentials for organization list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListUnauthorized) String
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials][%d] cloudCredentialsCloudCredentialsForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsCloudCredentialsForOrganizationListUnauthorized) GetPayload() interface{} {
+func (o *CloudCredentialsCloudCredentialsForOrganizationListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CloudCredentialsCloudCredentialsForOrganizationListForbidden describes a respons
 Forbidden
 */
 type CloudCredentialsCloudCredentialsForOrganizationListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials cloud credentials for organization list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListForbidden) String() 
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials][%d] cloudCredentialsCloudCredentialsForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsCloudCredentialsForOrganizationListForbidden) GetPayload() interface{} {
+func (o *CloudCredentialsCloudCredentialsForOrganizationListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CloudCredentialsCloudCredentialsForOrganizationListNotFound describes a response
 Not Found
 */
 type CloudCredentialsCloudCredentialsForOrganizationListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials cloud credentials for organization list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CloudCredentialsCloudCredentialsForOrganizationListNotFound) String() s
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials][%d] cloudCredentialsCloudCredentialsForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsCloudCredentialsForOrganizationListNotFound) GetPayload() interface{} {
+func (o *CloudCredentialsCloudCredentialsForOrganizationListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

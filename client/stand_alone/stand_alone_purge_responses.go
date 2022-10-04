@@ -199,7 +199,7 @@ StandAlonePurgeUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type StandAlonePurgeUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone purge unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAlonePurgeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAlonePurgeUnauthorized) GetPayload() interface{} {
+func (o *StandAlonePurgeUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAlonePurgeForbidden describes a response with status code 403, with default
 Forbidden
 */
 type StandAlonePurgeForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone purge forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAlonePurgeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAlonePurgeForbidden) GetPayload() interface{} {
+func (o *StandAlonePurgeForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAlonePurgeNotFound describes a response with status code 404, with default 
 Not Found
 */
 type StandAlonePurgeNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone purge not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAlonePurgeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/purge][%d] standAlonePurgeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAlonePurgeNotFound) GetPayload() interface{} {
+func (o *StandAlonePurgeNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

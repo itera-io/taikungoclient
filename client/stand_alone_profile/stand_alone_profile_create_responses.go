@@ -201,7 +201,7 @@ StandAloneProfileCreateUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneProfileCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone profile create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *StandAloneProfileCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneProfileCreateUnauthorized) GetPayload() interface{} {
+func (o *StandAloneProfileCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ StandAloneProfileCreateForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneProfileCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone profile create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *StandAloneProfileCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneProfileCreateForbidden) GetPayload() interface{} {
+func (o *StandAloneProfileCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ StandAloneProfileCreateNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneProfileCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone profile create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *StandAloneProfileCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneProfileCreateNotFound) GetPayload() interface{} {
+func (o *StandAloneProfileCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ CloudCredentialsMakeDefaultUnauthorized describes a response with status code 40
 Unauthorized
 */
 type CloudCredentialsMakeDefaultUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials make default unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CloudCredentialsMakeDefaultUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsMakeDefaultUnauthorized) GetPayload() interface{} {
+func (o *CloudCredentialsMakeDefaultUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CloudCredentialsMakeDefaultForbidden describes a response with status code 403, 
 Forbidden
 */
 type CloudCredentialsMakeDefaultForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials make default forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CloudCredentialsMakeDefaultForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsMakeDefaultForbidden) GetPayload() interface{} {
+func (o *CloudCredentialsMakeDefaultForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CloudCredentialsMakeDefaultNotFound describes a response with status code 404, w
 Not Found
 */
 type CloudCredentialsMakeDefaultNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials make default not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CloudCredentialsMakeDefaultNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsMakeDefaultNotFound) GetPayload() interface{} {
+func (o *CloudCredentialsMakeDefaultNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

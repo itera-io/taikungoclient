@@ -201,7 +201,7 @@ ShowbackSummariesGroupedByProjectListUnauthorized describes a response with stat
 Unauthorized
 */
 type ShowbackSummariesGroupedByProjectListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries grouped by project list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *ShowbackSummariesGroupedByProjectListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byProject][%d] showbackSummariesGroupedByProjectListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByProjectListUnauthorized) GetPayload() interface{} {
+func (o *ShowbackSummariesGroupedByProjectListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ ShowbackSummariesGroupedByProjectListForbidden describes a response with status 
 Forbidden
 */
 type ShowbackSummariesGroupedByProjectListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries grouped by project list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *ShowbackSummariesGroupedByProjectListForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byProject][%d] showbackSummariesGroupedByProjectListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByProjectListForbidden) GetPayload() interface{} {
+func (o *ShowbackSummariesGroupedByProjectListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ ShowbackSummariesGroupedByProjectListNotFound describes a response with status c
 Not Found
 */
 type ShowbackSummariesGroupedByProjectListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries grouped by project list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *ShowbackSummariesGroupedByProjectListNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byProject][%d] showbackSummariesGroupedByProjectListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByProjectListNotFound) GetPayload() interface{} {
+func (o *ShowbackSummariesGroupedByProjectListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

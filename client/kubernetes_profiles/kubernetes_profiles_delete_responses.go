@@ -256,7 +256,7 @@ KubernetesProfilesDeleteUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type KubernetesProfilesDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes profiles delete unauthorized response has a 2xx status code
@@ -292,7 +292,7 @@ func (o *KubernetesProfilesDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesProfilesDeleteUnauthorized) GetPayload() interface{} {
+func (o *KubernetesProfilesDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -317,7 +317,7 @@ KubernetesProfilesDeleteForbidden describes a response with status code 403, wit
 Forbidden
 */
 type KubernetesProfilesDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes profiles delete forbidden response has a 2xx status code
@@ -353,7 +353,7 @@ func (o *KubernetesProfilesDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesProfilesDeleteForbidden) GetPayload() interface{} {
+func (o *KubernetesProfilesDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -378,7 +378,7 @@ KubernetesProfilesDeleteNotFound describes a response with status code 404, with
 Not Found
 */
 type KubernetesProfilesDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes profiles delete not found response has a 2xx status code
@@ -414,7 +414,7 @@ func (o *KubernetesProfilesDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/KubernetesProfiles/{id}][%d] kubernetesProfilesDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesProfilesDeleteNotFound) GetPayload() interface{} {
+func (o *KubernetesProfilesDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

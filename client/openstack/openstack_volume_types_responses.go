@@ -199,7 +199,7 @@ OpenstackVolumeTypesUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type OpenstackVolumeTypesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack volume types unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OpenstackVolumeTypesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackVolumeTypesUnauthorized) GetPayload() interface{} {
+func (o *OpenstackVolumeTypesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OpenstackVolumeTypesForbidden describes a response with status code 403, with de
 Forbidden
 */
 type OpenstackVolumeTypesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack volume types forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OpenstackVolumeTypesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackVolumeTypesForbidden) GetPayload() interface{} {
+func (o *OpenstackVolumeTypesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OpenstackVolumeTypesNotFound describes a response with status code 404, with def
 Not Found
 */
 type OpenstackVolumeTypesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack volume types not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OpenstackVolumeTypesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackVolumeTypesNotFound) GetPayload() interface{} {
+func (o *OpenstackVolumeTypesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

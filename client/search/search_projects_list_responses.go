@@ -201,7 +201,7 @@ SearchProjectsListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type SearchProjectsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search projects list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchProjectsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/projects][%d] searchProjectsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchProjectsListUnauthorized) GetPayload() interface{} {
+func (o *SearchProjectsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchProjectsListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type SearchProjectsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search projects list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchProjectsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/projects][%d] searchProjectsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchProjectsListForbidden) GetPayload() interface{} {
+func (o *SearchProjectsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchProjectsListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type SearchProjectsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search projects list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchProjectsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/projects][%d] searchProjectsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchProjectsListNotFound) GetPayload() interface{} {
+func (o *SearchProjectsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

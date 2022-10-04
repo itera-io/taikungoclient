@@ -201,7 +201,7 @@ KubernetesGetPdbListUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type KubernetesGetPdbListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get pdb list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubernetesGetPdbListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pdb][%d] kubernetesGetPdbListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetPdbListUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetPdbListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubernetesGetPdbListForbidden describes a response with status code 403, with de
 Forbidden
 */
 type KubernetesGetPdbListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get pdb list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubernetesGetPdbListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pdb][%d] kubernetesGetPdbListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetPdbListForbidden) GetPayload() interface{} {
+func (o *KubernetesGetPdbListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubernetesGetPdbListNotFound describes a response with status code 404, with def
 Not Found
 */
 type KubernetesGetPdbListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get pdb list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubernetesGetPdbListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pdb][%d] kubernetesGetPdbListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetPdbListNotFound) GetPayload() interface{} {
+func (o *KubernetesGetPdbListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

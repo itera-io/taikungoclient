@@ -199,7 +199,7 @@ UsersListSelectorUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type UsersListSelectorUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users list selector unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *UsersListSelectorUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersListSelectorUnauthorized) GetPayload() interface{} {
+func (o *UsersListSelectorUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ UsersListSelectorForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type UsersListSelectorForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users list selector forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *UsersListSelectorForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersListSelectorForbidden) GetPayload() interface{} {
+func (o *UsersListSelectorForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ UsersListSelectorNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type UsersListSelectorNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users list selector not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *UsersListSelectorNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersListSelectorNotFound) GetPayload() interface{} {
+func (o *UsersListSelectorNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

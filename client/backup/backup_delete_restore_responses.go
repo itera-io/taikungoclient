@@ -199,7 +199,7 @@ BackupDeleteRestoreUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type BackupDeleteRestoreUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup delete restore unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *BackupDeleteRestoreUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/restore][%d] backupDeleteRestoreUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupDeleteRestoreUnauthorized) GetPayload() interface{} {
+func (o *BackupDeleteRestoreUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ BackupDeleteRestoreForbidden describes a response with status code 403, with def
 Forbidden
 */
 type BackupDeleteRestoreForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup delete restore forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *BackupDeleteRestoreForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/restore][%d] backupDeleteRestoreForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupDeleteRestoreForbidden) GetPayload() interface{} {
+func (o *BackupDeleteRestoreForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ BackupDeleteRestoreNotFound describes a response with status code 404, with defa
 Not Found
 */
 type BackupDeleteRestoreNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup delete restore not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *BackupDeleteRestoreNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/restore][%d] backupDeleteRestoreNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupDeleteRestoreNotFound) GetPayload() interface{} {
+func (o *BackupDeleteRestoreNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

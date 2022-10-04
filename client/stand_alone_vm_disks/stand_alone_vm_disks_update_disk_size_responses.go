@@ -199,7 +199,7 @@ StandAloneVMDisksUpdateDiskSizeUnauthorized describes a response with status cod
 Unauthorized
 */
 type StandAloneVMDisksUpdateDiskSizeUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks update disk size unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneVMDisksUpdateDiskSizeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update-size][%d] standAloneVmDisksUpdateDiskSizeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateDiskSizeUnauthorized) GetPayload() interface{} {
+func (o *StandAloneVMDisksUpdateDiskSizeUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneVMDisksUpdateDiskSizeForbidden describes a response with status code 4
 Forbidden
 */
 type StandAloneVMDisksUpdateDiskSizeForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks update disk size forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneVMDisksUpdateDiskSizeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update-size][%d] standAloneVmDisksUpdateDiskSizeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateDiskSizeForbidden) GetPayload() interface{} {
+func (o *StandAloneVMDisksUpdateDiskSizeForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneVMDisksUpdateDiskSizeNotFound describes a response with status code 40
 Not Found
 */
 type StandAloneVMDisksUpdateDiskSizeNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks update disk size not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneVMDisksUpdateDiskSizeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update-size][%d] standAloneVmDisksUpdateDiskSizeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateDiskSizeNotFound) GetPayload() interface{} {
+func (o *StandAloneVMDisksUpdateDiskSizeNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

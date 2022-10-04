@@ -199,7 +199,7 @@ AdminAddBalanceUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type AdminAddBalanceUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin add balance unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AdminAddBalanceUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminAddBalanceUnauthorized) GetPayload() interface{} {
+func (o *AdminAddBalanceUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AdminAddBalanceForbidden describes a response with status code 403, with default
 Forbidden
 */
 type AdminAddBalanceForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin add balance forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AdminAddBalanceForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminAddBalanceForbidden) GetPayload() interface{} {
+func (o *AdminAddBalanceForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AdminAddBalanceNotFound describes a response with status code 404, with default 
 Not Found
 */
 type AdminAddBalanceNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin add balance not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AdminAddBalanceNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminAddBalanceNotFound) GetPayload() interface{} {
+func (o *AdminAddBalanceNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

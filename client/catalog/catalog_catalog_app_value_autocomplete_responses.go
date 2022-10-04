@@ -199,7 +199,7 @@ CatalogCatalogAppValueAutocompleteUnauthorized describes a response with status 
 Unauthorized
 */
 type CatalogCatalogAppValueAutocompleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog catalog app value autocomplete unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CatalogCatalogAppValueAutocompleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueAutocompleteUnauthorized) GetPayload() interface{} {
+func (o *CatalogCatalogAppValueAutocompleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CatalogCatalogAppValueAutocompleteForbidden describes a response with status cod
 Forbidden
 */
 type CatalogCatalogAppValueAutocompleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog catalog app value autocomplete forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CatalogCatalogAppValueAutocompleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueAutocompleteForbidden) GetPayload() interface{} {
+func (o *CatalogCatalogAppValueAutocompleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CatalogCatalogAppValueAutocompleteNotFound describes a response with status code
 Not Found
 */
 type CatalogCatalogAppValueAutocompleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog catalog app value autocomplete not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CatalogCatalogAppValueAutocompleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/package-value-autocomplete][%d] catalogCatalogAppValueAutocompleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogCatalogAppValueAutocompleteNotFound) GetPayload() interface{} {
+func (o *CatalogCatalogAppValueAutocompleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

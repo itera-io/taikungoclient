@@ -201,7 +201,7 @@ CatalogListUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type CatalogListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *CatalogListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogListUnauthorized) GetPayload() interface{} {
+func (o *CatalogListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ CatalogListForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type CatalogListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *CatalogListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogListForbidden) GetPayload() interface{} {
+func (o *CatalogListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ CatalogListNotFound describes a response with status code 404, with default head
 Not Found
 */
 type CatalogListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *CatalogListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogListNotFound) GetPayload() interface{} {
+func (o *CatalogListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

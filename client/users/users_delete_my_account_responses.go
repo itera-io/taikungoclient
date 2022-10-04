@@ -199,7 +199,7 @@ UsersDeleteMyAccountUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type UsersDeleteMyAccountUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users delete my account unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *UsersDeleteMyAccountUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/delete][%d] usersDeleteMyAccountUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersDeleteMyAccountUnauthorized) GetPayload() interface{} {
+func (o *UsersDeleteMyAccountUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ UsersDeleteMyAccountForbidden describes a response with status code 403, with de
 Forbidden
 */
 type UsersDeleteMyAccountForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users delete my account forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *UsersDeleteMyAccountForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/delete][%d] usersDeleteMyAccountForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersDeleteMyAccountForbidden) GetPayload() interface{} {
+func (o *UsersDeleteMyAccountForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ UsersDeleteMyAccountNotFound describes a response with status code 404, with def
 Not Found
 */
 type UsersDeleteMyAccountNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users delete my account not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *UsersDeleteMyAccountNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/delete][%d] usersDeleteMyAccountNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersDeleteMyAccountNotFound) GetPayload() interface{} {
+func (o *UsersDeleteMyAccountNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

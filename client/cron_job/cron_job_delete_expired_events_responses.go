@@ -199,7 +199,7 @@ CronJobDeleteExpiredEventsUnauthorized describes a response with status code 401
 Unauthorized
 */
 type CronJobDeleteExpiredEventsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete expired events unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobDeleteExpiredEventsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/events][%d] cronJobDeleteExpiredEventsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredEventsUnauthorized) GetPayload() interface{} {
+func (o *CronJobDeleteExpiredEventsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobDeleteExpiredEventsForbidden describes a response with status code 403, w
 Forbidden
 */
 type CronJobDeleteExpiredEventsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete expired events forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobDeleteExpiredEventsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/events][%d] cronJobDeleteExpiredEventsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredEventsForbidden) GetPayload() interface{} {
+func (o *CronJobDeleteExpiredEventsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobDeleteExpiredEventsNotFound describes a response with status code 404, wi
 Not Found
 */
 type CronJobDeleteExpiredEventsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete expired events not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobDeleteExpiredEventsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/events][%d] cronJobDeleteExpiredEventsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredEventsNotFound) GetPayload() interface{} {
+func (o *CronJobDeleteExpiredEventsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

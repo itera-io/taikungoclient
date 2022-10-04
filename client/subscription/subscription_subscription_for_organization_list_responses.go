@@ -199,7 +199,7 @@ SubscriptionSubscriptionForOrganizationListUnauthorized describes a response wit
 Unauthorized
 */
 type SubscriptionSubscriptionForOrganizationListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this subscription subscription for organization list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *SubscriptionSubscriptionForOrganizationListUnauthorized) String() strin
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/boundlist][%d] subscriptionSubscriptionForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForOrganizationListUnauthorized) GetPayload() interface{} {
+func (o *SubscriptionSubscriptionForOrganizationListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ SubscriptionSubscriptionForOrganizationListForbidden describes a response with s
 Forbidden
 */
 type SubscriptionSubscriptionForOrganizationListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this subscription subscription for organization list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *SubscriptionSubscriptionForOrganizationListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/boundlist][%d] subscriptionSubscriptionForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForOrganizationListForbidden) GetPayload() interface{} {
+func (o *SubscriptionSubscriptionForOrganizationListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ SubscriptionSubscriptionForOrganizationListNotFound describes a response with st
 Not Found
 */
 type SubscriptionSubscriptionForOrganizationListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this subscription subscription for organization list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *SubscriptionSubscriptionForOrganizationListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription/boundlist][%d] subscriptionSubscriptionForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SubscriptionSubscriptionForOrganizationListNotFound) GetPayload() interface{} {
+func (o *SubscriptionSubscriptionForOrganizationListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

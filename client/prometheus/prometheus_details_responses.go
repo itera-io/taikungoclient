@@ -199,7 +199,7 @@ PrometheusDetailsUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type PrometheusDetailsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus details unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PrometheusDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusDetailsUnauthorized) GetPayload() interface{} {
+func (o *PrometheusDetailsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PrometheusDetailsForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type PrometheusDetailsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus details forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PrometheusDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusDetailsForbidden) GetPayload() interface{} {
+func (o *PrometheusDetailsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PrometheusDetailsNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type PrometheusDetailsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus details not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PrometheusDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/details/{organizationId}][%d] prometheusDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusDetailsNotFound) GetPayload() interface{} {
+func (o *PrometheusDetailsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

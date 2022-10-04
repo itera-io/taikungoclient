@@ -201,7 +201,7 @@ KubernetesGetPersistentVolumeClaimUnauthorized describes a response with status 
 Unauthorized
 */
 type KubernetesGetPersistentVolumeClaimUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get persistent volume claim unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubernetesGetPersistentVolumeClaimUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetPersistentVolumeClaimUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetPersistentVolumeClaimUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubernetesGetPersistentVolumeClaimForbidden describes a response with status cod
 Forbidden
 */
 type KubernetesGetPersistentVolumeClaimForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get persistent volume claim forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubernetesGetPersistentVolumeClaimForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetPersistentVolumeClaimForbidden) GetPayload() interface{} {
+func (o *KubernetesGetPersistentVolumeClaimForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubernetesGetPersistentVolumeClaimNotFound describes a response with status code
 Not Found
 */
 type KubernetesGetPersistentVolumeClaimNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get persistent volume claim not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubernetesGetPersistentVolumeClaimNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pvc][%d] kubernetesGetPersistentVolumeClaimNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetPersistentVolumeClaimNotFound) GetPayload() interface{} {
+func (o *KubernetesGetPersistentVolumeClaimNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

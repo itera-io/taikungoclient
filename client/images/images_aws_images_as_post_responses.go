@@ -201,7 +201,7 @@ ImagesAwsImagesAsPostUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type ImagesAwsImagesAsPostUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images aws images as post unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *ImagesAwsImagesAsPostUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/aws][%d] imagesAwsImagesAsPostUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesAwsImagesAsPostUnauthorized) GetPayload() interface{} {
+func (o *ImagesAwsImagesAsPostUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ ImagesAwsImagesAsPostForbidden describes a response with status code 403, with d
 Forbidden
 */
 type ImagesAwsImagesAsPostForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images aws images as post forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *ImagesAwsImagesAsPostForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/aws][%d] imagesAwsImagesAsPostForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesAwsImagesAsPostForbidden) GetPayload() interface{} {
+func (o *ImagesAwsImagesAsPostForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ ImagesAwsImagesAsPostNotFound describes a response with status code 404, with de
 Not Found
 */
 type ImagesAwsImagesAsPostNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images aws images as post not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *ImagesAwsImagesAsPostNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/aws][%d] imagesAwsImagesAsPostNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesAwsImagesAsPostNotFound) GetPayload() interface{} {
+func (o *ImagesAwsImagesAsPostNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

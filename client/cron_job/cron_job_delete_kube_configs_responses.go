@@ -199,7 +199,7 @@ CronJobDeleteKubeConfigsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type CronJobDeleteKubeConfigsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete kube configs unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobDeleteKubeConfigsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteKubeConfigsUnauthorized) GetPayload() interface{} {
+func (o *CronJobDeleteKubeConfigsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobDeleteKubeConfigsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type CronJobDeleteKubeConfigsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete kube configs forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobDeleteKubeConfigsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteKubeConfigsForbidden) GetPayload() interface{} {
+func (o *CronJobDeleteKubeConfigsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobDeleteKubeConfigsNotFound describes a response with status code 404, with
 Not Found
 */
 type CronJobDeleteKubeConfigsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete kube configs not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobDeleteKubeConfigsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteKubeConfigsNotFound) GetPayload() interface{} {
+func (o *CronJobDeleteKubeConfigsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

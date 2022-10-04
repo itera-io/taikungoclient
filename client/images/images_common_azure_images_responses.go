@@ -199,7 +199,7 @@ ImagesCommonAzureImagesUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type ImagesCommonAzureImagesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images common azure images unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ImagesCommonAzureImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/common/{cloudId}][%d] imagesCommonAzureImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesCommonAzureImagesUnauthorized) GetPayload() interface{} {
+func (o *ImagesCommonAzureImagesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ImagesCommonAzureImagesForbidden describes a response with status code 403, with
 Forbidden
 */
 type ImagesCommonAzureImagesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images common azure images forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ImagesCommonAzureImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/common/{cloudId}][%d] imagesCommonAzureImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesCommonAzureImagesForbidden) GetPayload() interface{} {
+func (o *ImagesCommonAzureImagesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ImagesCommonAzureImagesNotFound describes a response with status code 404, with 
 Not Found
 */
 type ImagesCommonAzureImagesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images common azure images not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ImagesCommonAzureImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/common/{cloudId}][%d] imagesCommonAzureImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesCommonAzureImagesNotFound) GetPayload() interface{} {
+func (o *ImagesCommonAzureImagesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

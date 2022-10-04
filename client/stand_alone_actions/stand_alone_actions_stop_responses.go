@@ -199,7 +199,7 @@ StandAloneActionsStopUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type StandAloneActionsStopUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions stop unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneActionsStopUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsStopUnauthorized) GetPayload() interface{} {
+func (o *StandAloneActionsStopUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneActionsStopForbidden describes a response with status code 403, with d
 Forbidden
 */
 type StandAloneActionsStopForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions stop forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneActionsStopForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsStopForbidden) GetPayload() interface{} {
+func (o *StandAloneActionsStopForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneActionsStopNotFound describes a response with status code 404, with de
 Not Found
 */
 type StandAloneActionsStopNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions stop not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneActionsStopNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsStopNotFound) GetPayload() interface{} {
+func (o *StandAloneActionsStopNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

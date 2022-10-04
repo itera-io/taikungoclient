@@ -201,7 +201,7 @@ SearchDaemonSetListUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type SearchDaemonSetListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search daemon set list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchDaemonSetListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchDaemonSetListUnauthorized) GetPayload() interface{} {
+func (o *SearchDaemonSetListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchDaemonSetListForbidden describes a response with status code 403, with def
 Forbidden
 */
 type SearchDaemonSetListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search daemon set list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchDaemonSetListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchDaemonSetListForbidden) GetPayload() interface{} {
+func (o *SearchDaemonSetListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchDaemonSetListNotFound describes a response with status code 404, with defa
 Not Found
 */
 type SearchDaemonSetListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search daemon set list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchDaemonSetListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/daemon-sets][%d] searchDaemonSetListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchDaemonSetListNotFound) GetPayload() interface{} {
+func (o *SearchDaemonSetListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

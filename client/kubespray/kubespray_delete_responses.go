@@ -256,7 +256,7 @@ KubesprayDeleteUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type KubesprayDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubespray delete unauthorized response has a 2xx status code
@@ -292,7 +292,7 @@ func (o *KubesprayDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubesprayDeleteUnauthorized) GetPayload() interface{} {
+func (o *KubesprayDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -317,7 +317,7 @@ KubesprayDeleteForbidden describes a response with status code 403, with default
 Forbidden
 */
 type KubesprayDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubespray delete forbidden response has a 2xx status code
@@ -353,7 +353,7 @@ func (o *KubesprayDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubesprayDeleteForbidden) GetPayload() interface{} {
+func (o *KubesprayDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -378,7 +378,7 @@ KubesprayDeleteNotFound describes a response with status code 404, with default 
 Not Found
 */
 type KubesprayDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubespray delete not found response has a 2xx status code
@@ -414,7 +414,7 @@ func (o *KubesprayDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Kubespray/{id}][%d] kubesprayDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubesprayDeleteNotFound) GetPayload() interface{} {
+func (o *KubesprayDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

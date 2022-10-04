@@ -201,7 +201,7 @@ CatalogAvailablePackageDetailsUnauthorized describes a response with status code
 Unauthorized
 */
 type CatalogAvailablePackageDetailsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog available package details unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *CatalogAvailablePackageDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogAvailablePackageDetailsUnauthorized) GetPayload() interface{} {
+func (o *CatalogAvailablePackageDetailsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ CatalogAvailablePackageDetailsForbidden describes a response with status code 40
 Forbidden
 */
 type CatalogAvailablePackageDetailsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog available package details forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *CatalogAvailablePackageDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogAvailablePackageDetailsForbidden) GetPayload() interface{} {
+func (o *CatalogAvailablePackageDetailsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ CatalogAvailablePackageDetailsNotFound describes a response with status code 404
 Not Found
 */
 type CatalogAvailablePackageDetailsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog available package details not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *CatalogAvailablePackageDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/{repoName}/{packageName}][%d] catalogAvailablePackageDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogAvailablePackageDetailsNotFound) GetPayload() interface{} {
+func (o *CatalogAvailablePackageDetailsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

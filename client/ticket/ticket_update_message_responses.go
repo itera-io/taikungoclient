@@ -199,7 +199,7 @@ TicketUpdateMessageUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type TicketUpdateMessageUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket update message unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *TicketUpdateMessageUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketUpdateMessageUnauthorized) GetPayload() interface{} {
+func (o *TicketUpdateMessageUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ TicketUpdateMessageForbidden describes a response with status code 403, with def
 Forbidden
 */
 type TicketUpdateMessageForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket update message forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *TicketUpdateMessageForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketUpdateMessageForbidden) GetPayload() interface{} {
+func (o *TicketUpdateMessageForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ TicketUpdateMessageNotFound describes a response with status code 404, with defa
 Not Found
 */
 type TicketUpdateMessageNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket update message not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *TicketUpdateMessageNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/edit/message][%d] ticketUpdateMessageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketUpdateMessageNotFound) GetPayload() interface{} {
+func (o *TicketUpdateMessageNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

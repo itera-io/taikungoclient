@@ -199,7 +199,7 @@ CatalogEditCatalogAppVersionUnauthorized describes a response with status code 4
 Unauthorized
 */
 type CatalogEditCatalogAppVersionUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog edit catalog app version unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CatalogEditCatalogAppVersionUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppVersionUnauthorized) GetPayload() interface{} {
+func (o *CatalogEditCatalogAppVersionUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CatalogEditCatalogAppVersionForbidden describes a response with status code 403,
 Forbidden
 */
 type CatalogEditCatalogAppVersionForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog edit catalog app version forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CatalogEditCatalogAppVersionForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppVersionForbidden) GetPayload() interface{} {
+func (o *CatalogEditCatalogAppVersionForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CatalogEditCatalogAppVersionNotFound describes a response with status code 404, 
 Not Found
 */
 type CatalogEditCatalogAppVersionNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog edit catalog app version not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CatalogEditCatalogAppVersionNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-version][%d] catalogEditCatalogAppVersionNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppVersionNotFound) GetPayload() interface{} {
+func (o *CatalogEditCatalogAppVersionNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

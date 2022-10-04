@@ -199,7 +199,7 @@ SSHUsersListUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type SSHUsersListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ssh users list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *SSHUsersListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/SshUsers/list/{accessProfileId}][%d] sshUsersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SSHUsersListUnauthorized) GetPayload() interface{} {
+func (o *SSHUsersListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ SSHUsersListForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type SSHUsersListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ssh users list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *SSHUsersListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/SshUsers/list/{accessProfileId}][%d] sshUsersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SSHUsersListForbidden) GetPayload() interface{} {
+func (o *SSHUsersListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ SSHUsersListNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type SSHUsersListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ssh users list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *SSHUsersListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/SshUsers/list/{accessProfileId}][%d] sshUsersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SSHUsersListNotFound) GetPayload() interface{} {
+func (o *SSHUsersListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

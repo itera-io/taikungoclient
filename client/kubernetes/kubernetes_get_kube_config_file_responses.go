@@ -201,7 +201,7 @@ KubernetesGetKubeConfigFileUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesGetKubeConfigFileUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get kube config file unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubernetesGetKubeConfigFileUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetKubeConfigFileUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetKubeConfigFileUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubernetesGetKubeConfigFileForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesGetKubeConfigFileForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get kube config file forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubernetesGetKubeConfigFileForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetKubeConfigFileForbidden) GetPayload() interface{} {
+func (o *KubernetesGetKubeConfigFileForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubernetesGetKubeConfigFileNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesGetKubeConfigFileNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get kube config file not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubernetesGetKubeConfigFileNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetKubeConfigFileNotFound) GetPayload() interface{} {
+func (o *KubernetesGetKubeConfigFileNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

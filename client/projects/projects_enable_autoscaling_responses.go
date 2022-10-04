@@ -199,7 +199,7 @@ ProjectsEnableAutoscalingUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ProjectsEnableAutoscalingUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects enable autoscaling unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsEnableAutoscalingUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsEnableAutoscalingUnauthorized) GetPayload() interface{} {
+func (o *ProjectsEnableAutoscalingUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsEnableAutoscalingForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ProjectsEnableAutoscalingForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects enable autoscaling forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsEnableAutoscalingForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsEnableAutoscalingForbidden) GetPayload() interface{} {
+func (o *ProjectsEnableAutoscalingForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsEnableAutoscalingNotFound describes a response with status code 404, wit
 Not Found
 */
 type ProjectsEnableAutoscalingNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects enable autoscaling not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsEnableAutoscalingNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/enable/autoscaling][%d] projectsEnableAutoscalingNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsEnableAutoscalingNotFound) GetPayload() interface{} {
+func (o *ProjectsEnableAutoscalingNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

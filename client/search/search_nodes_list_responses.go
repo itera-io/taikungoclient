@@ -201,7 +201,7 @@ SearchNodesListUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type SearchNodesListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search nodes list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchNodesListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/nodes][%d] searchNodesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchNodesListUnauthorized) GetPayload() interface{} {
+func (o *SearchNodesListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchNodesListForbidden describes a response with status code 403, with default
 Forbidden
 */
 type SearchNodesListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search nodes list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchNodesListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/nodes][%d] searchNodesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchNodesListForbidden) GetPayload() interface{} {
+func (o *SearchNodesListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchNodesListNotFound describes a response with status code 404, with default 
 Not Found
 */
 type SearchNodesListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search nodes list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchNodesListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/nodes][%d] searchNodesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchNodesListNotFound) GetPayload() interface{} {
+func (o *SearchNodesListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ TicketTransferListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type TicketTransferListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket transfer list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *TicketTransferListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketTransferListUnauthorized) GetPayload() interface{} {
+func (o *TicketTransferListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ TicketTransferListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type TicketTransferListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket transfer list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *TicketTransferListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketTransferListForbidden) GetPayload() interface{} {
+func (o *TicketTransferListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ TicketTransferListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type TicketTransferListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket transfer list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *TicketTransferListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketTransferListNotFound) GetPayload() interface{} {
+func (o *TicketTransferListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

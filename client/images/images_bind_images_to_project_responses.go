@@ -199,7 +199,7 @@ ImagesBindImagesToProjectUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ImagesBindImagesToProjectUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images bind images to project unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ImagesBindImagesToProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/bind][%d] imagesBindImagesToProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesBindImagesToProjectUnauthorized) GetPayload() interface{} {
+func (o *ImagesBindImagesToProjectUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ImagesBindImagesToProjectForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ImagesBindImagesToProjectForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images bind images to project forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ImagesBindImagesToProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/bind][%d] imagesBindImagesToProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesBindImagesToProjectForbidden) GetPayload() interface{} {
+func (o *ImagesBindImagesToProjectForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ImagesBindImagesToProjectNotFound describes a response with status code 404, wit
 Not Found
 */
 type ImagesBindImagesToProjectNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images bind images to project not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ImagesBindImagesToProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/bind][%d] imagesBindImagesToProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesBindImagesToProjectNotFound) GetPayload() interface{} {
+func (o *ImagesBindImagesToProjectNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

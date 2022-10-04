@@ -201,7 +201,7 @@ ProjectsDetailsUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type ProjectsDetailsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects details unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *ProjectsDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/{projectId}][%d] projectsDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsDetailsUnauthorized) GetPayload() interface{} {
+func (o *ProjectsDetailsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ ProjectsDetailsForbidden describes a response with status code 403, with default
 Forbidden
 */
 type ProjectsDetailsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects details forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *ProjectsDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/{projectId}][%d] projectsDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsDetailsForbidden) GetPayload() interface{} {
+func (o *ProjectsDetailsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ ProjectsDetailsNotFound describes a response with status code 404, with default 
 Not Found
 */
 type ProjectsDetailsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects details not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *ProjectsDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/{projectId}][%d] projectsDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsDetailsNotFound) GetPayload() interface{} {
+func (o *ProjectsDetailsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

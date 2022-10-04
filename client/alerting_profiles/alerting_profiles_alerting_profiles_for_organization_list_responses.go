@@ -199,7 +199,7 @@ AlertingProfilesAlertingProfilesForOrganizationListUnauthorized describes a resp
 Unauthorized
 */
 type AlertingProfilesAlertingProfilesForOrganizationListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles alerting profiles for organization list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AlertingProfilesAlertingProfilesForOrganizationListUnauthorized) String
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles/list][%d] alertingProfilesAlertingProfilesForOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesAlertingProfilesForOrganizationListUnauthorized) GetPayload() interface{} {
+func (o *AlertingProfilesAlertingProfilesForOrganizationListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AlertingProfilesAlertingProfilesForOrganizationListForbidden describes a respons
 Forbidden
 */
 type AlertingProfilesAlertingProfilesForOrganizationListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles alerting profiles for organization list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AlertingProfilesAlertingProfilesForOrganizationListForbidden) String() 
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles/list][%d] alertingProfilesAlertingProfilesForOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesAlertingProfilesForOrganizationListForbidden) GetPayload() interface{} {
+func (o *AlertingProfilesAlertingProfilesForOrganizationListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AlertingProfilesAlertingProfilesForOrganizationListNotFound describes a response
 Not Found
 */
 type AlertingProfilesAlertingProfilesForOrganizationListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles alerting profiles for organization list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AlertingProfilesAlertingProfilesForOrganizationListNotFound) String() s
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles/list][%d] alertingProfilesAlertingProfilesForOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesAlertingProfilesForOrganizationListNotFound) GetPayload() interface{} {
+func (o *AlertingProfilesAlertingProfilesForOrganizationListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

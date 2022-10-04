@@ -199,7 +199,7 @@ KubernetesGetCrdListUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type KubernetesGetCrdListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get crd list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesGetCrdListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetCrdListUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetCrdListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesGetCrdListForbidden describes a response with status code 403, with de
 Forbidden
 */
 type KubernetesGetCrdListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get crd list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesGetCrdListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetCrdListForbidden) GetPayload() interface{} {
+func (o *KubernetesGetCrdListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesGetCrdListNotFound describes a response with status code 404, with def
 Not Found
 */
 type KubernetesGetCrdListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get crd list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesGetCrdListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetCrdListNotFound) GetPayload() interface{} {
+func (o *KubernetesGetCrdListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

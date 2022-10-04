@@ -199,7 +199,7 @@ ImagesPersonalAzureImagesUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ImagesPersonalAzureImagesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images personal azure images unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ImagesPersonalAzureImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesPersonalAzureImagesUnauthorized) GetPayload() interface{} {
+func (o *ImagesPersonalAzureImagesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ImagesPersonalAzureImagesForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ImagesPersonalAzureImagesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images personal azure images forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ImagesPersonalAzureImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesPersonalAzureImagesForbidden) GetPayload() interface{} {
+func (o *ImagesPersonalAzureImagesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ImagesPersonalAzureImagesNotFound describes a response with status code 404, wit
 Not Found
 */
 type ImagesPersonalAzureImagesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images personal azure images not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ImagesPersonalAzureImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesPersonalAzureImagesNotFound) GetPayload() interface{} {
+func (o *ImagesPersonalAzureImagesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

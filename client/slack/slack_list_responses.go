@@ -201,7 +201,7 @@ SlackListUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type SlackListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SlackListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SlackListUnauthorized) GetPayload() interface{} {
+func (o *SlackListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SlackListForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type SlackListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SlackListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SlackListForbidden) GetPayload() interface{} {
+func (o *SlackListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SlackListNotFound describes a response with status code 404, with default header
 Not Found
 */
 type SlackListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SlackListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Slack][%d] slackListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SlackListNotFound) GetPayload() interface{} {
+func (o *SlackListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

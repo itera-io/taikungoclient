@@ -256,7 +256,7 @@ UserGroupsDeleteUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type UserGroupsDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user groups delete unauthorized response has a 2xx status code
@@ -292,7 +292,7 @@ func (o *UserGroupsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserGroupsDeleteUnauthorized) GetPayload() interface{} {
+func (o *UserGroupsDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -317,7 +317,7 @@ UserGroupsDeleteForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type UserGroupsDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user groups delete forbidden response has a 2xx status code
@@ -353,7 +353,7 @@ func (o *UserGroupsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserGroupsDeleteForbidden) GetPayload() interface{} {
+func (o *UserGroupsDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -378,7 +378,7 @@ UserGroupsDeleteNotFound describes a response with status code 404, with default
 Not Found
 */
 type UserGroupsDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user groups delete not found response has a 2xx status code
@@ -414,7 +414,7 @@ func (o *UserGroupsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserGroupsDeleteNotFound) GetPayload() interface{} {
+func (o *UserGroupsDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

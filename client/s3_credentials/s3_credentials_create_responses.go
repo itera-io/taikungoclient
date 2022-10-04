@@ -201,7 +201,7 @@ S3CredentialsCreateUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type S3CredentialsCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this s3 credentials create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *S3CredentialsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *S3CredentialsCreateUnauthorized) GetPayload() interface{} {
+func (o *S3CredentialsCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ S3CredentialsCreateForbidden describes a response with status code 403, with def
 Forbidden
 */
 type S3CredentialsCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this s3 credentials create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *S3CredentialsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *S3CredentialsCreateForbidden) GetPayload() interface{} {
+func (o *S3CredentialsCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ S3CredentialsCreateNotFound describes a response with status code 404, with defa
 Not Found
 */
 type S3CredentialsCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this s3 credentials create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *S3CredentialsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials][%d] s3CredentialsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *S3CredentialsCreateNotFound) GetPayload() interface{} {
+func (o *S3CredentialsCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

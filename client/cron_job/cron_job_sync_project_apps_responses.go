@@ -199,7 +199,7 @@ CronJobSyncProjectAppsUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type CronJobSyncProjectAppsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job sync project apps unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobSyncProjectAppsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobSyncProjectAppsUnauthorized) GetPayload() interface{} {
+func (o *CronJobSyncProjectAppsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobSyncProjectAppsForbidden describes a response with status code 403, with 
 Forbidden
 */
 type CronJobSyncProjectAppsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job sync project apps forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobSyncProjectAppsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobSyncProjectAppsForbidden) GetPayload() interface{} {
+func (o *CronJobSyncProjectAppsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobSyncProjectAppsNotFound describes a response with status code 404, with d
 Not Found
 */
 type CronJobSyncProjectAppsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job sync project apps not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobSyncProjectAppsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-project-apps][%d] cronJobSyncProjectAppsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobSyncProjectAppsNotFound) GetPayload() interface{} {
+func (o *CronJobSyncProjectAppsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

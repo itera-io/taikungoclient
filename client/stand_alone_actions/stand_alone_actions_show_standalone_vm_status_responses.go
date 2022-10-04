@@ -199,7 +199,7 @@ StandAloneActionsShowStandaloneVMStatusUnauthorized describes a response with st
 Unauthorized
 */
 type StandAloneActionsShowStandaloneVMStatusUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions show standalone Vm status unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneActionsShowStandaloneVMStatusUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsShowStandaloneVMStatusUnauthorized) GetPayload() interface{} {
+func (o *StandAloneActionsShowStandaloneVMStatusUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneActionsShowStandaloneVMStatusForbidden describes a response with statu
 Forbidden
 */
 type StandAloneActionsShowStandaloneVMStatusForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions show standalone Vm status forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneActionsShowStandaloneVMStatusForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsShowStandaloneVMStatusForbidden) GetPayload() interface{} {
+func (o *StandAloneActionsShowStandaloneVMStatusForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneActionsShowStandaloneVMStatusNotFound describes a response with status
 Not Found
 */
 type StandAloneActionsShowStandaloneVMStatusNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions show standalone Vm status not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneActionsShowStandaloneVMStatusNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/status/{id}][%d] standAloneActionsShowStandaloneVmStatusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsShowStandaloneVMStatusNotFound) GetPayload() interface{} {
+func (o *StandAloneActionsShowStandaloneVMStatusNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

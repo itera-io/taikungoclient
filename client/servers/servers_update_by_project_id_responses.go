@@ -199,7 +199,7 @@ ServersUpdateByProjectIDUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type ServersUpdateByProjectIDUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers update by project Id unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ServersUpdateByProjectIDUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersUpdateByProjectIDUnauthorized) GetPayload() interface{} {
+func (o *ServersUpdateByProjectIDUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ServersUpdateByProjectIDForbidden describes a response with status code 403, wit
 Forbidden
 */
 type ServersUpdateByProjectIDForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers update by project Id forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ServersUpdateByProjectIDForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersUpdateByProjectIDForbidden) GetPayload() interface{} {
+func (o *ServersUpdateByProjectIDForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ServersUpdateByProjectIDNotFound describes a response with status code 404, with
 Not Found
 */
 type ServersUpdateByProjectIDNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers update by project Id not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ServersUpdateByProjectIDNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersUpdateByProjectIDNotFound) GetPayload() interface{} {
+func (o *ServersUpdateByProjectIDNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

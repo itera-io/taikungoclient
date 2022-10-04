@@ -199,7 +199,7 @@ OrganizationsUpdateUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type OrganizationsUpdateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations update unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OrganizationsUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsUpdateUnauthorized) GetPayload() interface{} {
+func (o *OrganizationsUpdateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OrganizationsUpdateForbidden describes a response with status code 403, with def
 Forbidden
 */
 type OrganizationsUpdateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations update forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OrganizationsUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsUpdateForbidden) GetPayload() interface{} {
+func (o *OrganizationsUpdateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OrganizationsUpdateNotFound describes a response with status code 404, with defa
 Not Found
 */
 type OrganizationsUpdateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations update not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OrganizationsUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/update][%d] organizationsUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsUpdateNotFound) GetPayload() interface{} {
+func (o *OrganizationsUpdateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

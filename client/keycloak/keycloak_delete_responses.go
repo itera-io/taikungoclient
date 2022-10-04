@@ -199,7 +199,7 @@ KeycloakDeleteUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type KeycloakDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this keycloak delete unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KeycloakDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KeycloakDeleteUnauthorized) GetPayload() interface{} {
+func (o *KeycloakDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KeycloakDeleteForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type KeycloakDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this keycloak delete forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KeycloakDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KeycloakDeleteForbidden) GetPayload() interface{} {
+func (o *KeycloakDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KeycloakDeleteNotFound describes a response with status code 404, with default h
 Not Found
 */
 type KeycloakDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this keycloak delete not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KeycloakDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/delete][%d] keycloakDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KeycloakDeleteNotFound) GetPayload() interface{} {
+func (o *KeycloakDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ FlavorsGoogleFlavorsUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type FlavorsGoogleFlavorsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors google flavors unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *FlavorsGoogleFlavorsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsGoogleFlavorsUnauthorized) GetPayload() interface{} {
+func (o *FlavorsGoogleFlavorsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ FlavorsGoogleFlavorsForbidden describes a response with status code 403, with de
 Forbidden
 */
 type FlavorsGoogleFlavorsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors google flavors forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *FlavorsGoogleFlavorsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsGoogleFlavorsForbidden) GetPayload() interface{} {
+func (o *FlavorsGoogleFlavorsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ FlavorsGoogleFlavorsNotFound describes a response with status code 404, with def
 Not Found
 */
 type FlavorsGoogleFlavorsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors google flavors not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *FlavorsGoogleFlavorsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsGoogleFlavorsNotFound) GetPayload() interface{} {
+func (o *FlavorsGoogleFlavorsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

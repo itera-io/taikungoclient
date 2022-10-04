@@ -199,7 +199,7 @@ SSHUsersEditUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type SSHUsersEditUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ssh users edit unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *SSHUsersEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/edit][%d] sshUsersEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SSHUsersEditUnauthorized) GetPayload() interface{} {
+func (o *SSHUsersEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ SSHUsersEditForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type SSHUsersEditForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ssh users edit forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *SSHUsersEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/edit][%d] sshUsersEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SSHUsersEditForbidden) GetPayload() interface{} {
+func (o *SSHUsersEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ SSHUsersEditNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type SSHUsersEditNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ssh users edit not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *SSHUsersEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/edit][%d] sshUsersEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SSHUsersEditNotFound) GetPayload() interface{} {
+func (o *SSHUsersEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

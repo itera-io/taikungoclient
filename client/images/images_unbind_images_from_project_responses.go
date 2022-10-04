@@ -199,7 +199,7 @@ ImagesUnbindImagesFromProjectUnauthorized describes a response with status code 
 Unauthorized
 */
 type ImagesUnbindImagesFromProjectUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images unbind images from project unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ImagesUnbindImagesFromProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesUnbindImagesFromProjectUnauthorized) GetPayload() interface{} {
+func (o *ImagesUnbindImagesFromProjectUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ImagesUnbindImagesFromProjectForbidden describes a response with status code 403
 Forbidden
 */
 type ImagesUnbindImagesFromProjectForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images unbind images from project forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ImagesUnbindImagesFromProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesUnbindImagesFromProjectForbidden) GetPayload() interface{} {
+func (o *ImagesUnbindImagesFromProjectForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ImagesUnbindImagesFromProjectNotFound describes a response with status code 404,
 Not Found
 */
 type ImagesUnbindImagesFromProjectNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images unbind images from project not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ImagesUnbindImagesFromProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Images/unbind][%d] imagesUnbindImagesFromProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesUnbindImagesFromProjectNotFound) GetPayload() interface{} {
+func (o *ImagesUnbindImagesFromProjectNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

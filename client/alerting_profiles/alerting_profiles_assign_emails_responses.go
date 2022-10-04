@@ -199,7 +199,7 @@ AlertingProfilesAssignEmailsUnauthorized describes a response with status code 4
 Unauthorized
 */
 type AlertingProfilesAssignEmailsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles assign emails unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AlertingProfilesAssignEmailsUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesAssignEmailsUnauthorized) GetPayload() interface{} {
+func (o *AlertingProfilesAssignEmailsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AlertingProfilesAssignEmailsForbidden describes a response with status code 403,
 Forbidden
 */
 type AlertingProfilesAssignEmailsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles assign emails forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AlertingProfilesAssignEmailsForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesAssignEmailsForbidden) GetPayload() interface{} {
+func (o *AlertingProfilesAssignEmailsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AlertingProfilesAssignEmailsNotFound describes a response with status code 404, 
 Not Found
 */
 type AlertingProfilesAssignEmailsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles assign emails not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AlertingProfilesAssignEmailsNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingProfiles/assignemails/{id}][%d] alertingProfilesAssignEmailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesAssignEmailsNotFound) GetPayload() interface{} {
+func (o *AlertingProfilesAssignEmailsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

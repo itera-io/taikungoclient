@@ -201,7 +201,7 @@ KubesprayListUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type KubesprayListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubespray list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubesprayListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubespray][%d] kubesprayListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubesprayListUnauthorized) GetPayload() interface{} {
+func (o *KubesprayListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubesprayListForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type KubesprayListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubespray list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubesprayListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubespray][%d] kubesprayListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubesprayListForbidden) GetPayload() interface{} {
+func (o *KubesprayListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubesprayListNotFound describes a response with status code 404, with default he
 Not Found
 */
 type KubesprayListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubespray list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubesprayListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubespray][%d] kubesprayListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubesprayListNotFound) GetPayload() interface{} {
+func (o *KubesprayListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

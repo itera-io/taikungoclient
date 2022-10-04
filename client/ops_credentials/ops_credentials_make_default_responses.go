@@ -199,7 +199,7 @@ OpsCredentialsMakeDefaultUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type OpsCredentialsMakeDefaultUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ops credentials make default unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OpsCredentialsMakeDefaultUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpsCredentialsMakeDefaultUnauthorized) GetPayload() interface{} {
+func (o *OpsCredentialsMakeDefaultUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OpsCredentialsMakeDefaultForbidden describes a response with status code 403, wi
 Forbidden
 */
 type OpsCredentialsMakeDefaultForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ops credentials make default forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OpsCredentialsMakeDefaultForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpsCredentialsMakeDefaultForbidden) GetPayload() interface{} {
+func (o *OpsCredentialsMakeDefaultForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OpsCredentialsMakeDefaultNotFound describes a response with status code 404, wit
 Not Found
 */
 type OpsCredentialsMakeDefaultNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ops credentials make default not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OpsCredentialsMakeDefaultNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpsCredentialsMakeDefaultNotFound) GetPayload() interface{} {
+func (o *OpsCredentialsMakeDefaultNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

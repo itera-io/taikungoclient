@@ -199,7 +199,7 @@ PaymentCreateCustomerUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type PaymentCreateCustomerUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment create customer unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PaymentCreateCustomerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentCreateCustomerUnauthorized) GetPayload() interface{} {
+func (o *PaymentCreateCustomerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PaymentCreateCustomerForbidden describes a response with status code 403, with d
 Forbidden
 */
 type PaymentCreateCustomerForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment create customer forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PaymentCreateCustomerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentCreateCustomerForbidden) GetPayload() interface{} {
+func (o *PaymentCreateCustomerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PaymentCreateCustomerNotFound describes a response with status code 404, with de
 Not Found
 */
 type PaymentCreateCustomerNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment create customer not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PaymentCreateCustomerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/createcustomer][%d] paymentCreateCustomerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentCreateCustomerNotFound) GetPayload() interface{} {
+func (o *PaymentCreateCustomerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

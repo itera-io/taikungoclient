@@ -201,7 +201,7 @@ OrganizationsLeaveTaikunUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type OrganizationsLeaveTaikunUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations leave taikun unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *OrganizationsLeaveTaikunUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsLeaveTaikunUnauthorized) GetPayload() interface{} {
+func (o *OrganizationsLeaveTaikunUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ OrganizationsLeaveTaikunForbidden describes a response with status code 403, wit
 Forbidden
 */
 type OrganizationsLeaveTaikunForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations leave taikun forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *OrganizationsLeaveTaikunForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsLeaveTaikunForbidden) GetPayload() interface{} {
+func (o *OrganizationsLeaveTaikunForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ OrganizationsLeaveTaikunNotFound describes a response with status code 404, with
 Not Found
 */
 type OrganizationsLeaveTaikunNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations leave taikun not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *OrganizationsLeaveTaikunNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsLeaveTaikunNotFound) GetPayload() interface{} {
+func (o *OrganizationsLeaveTaikunNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ ProjectsListForBillingUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type ProjectsListForBillingUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects list for billing unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsListForBillingUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forbilling][%d] projectsListForBillingUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsListForBillingUnauthorized) GetPayload() interface{} {
+func (o *ProjectsListForBillingUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsListForBillingForbidden describes a response with status code 403, with 
 Forbidden
 */
 type ProjectsListForBillingForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects list for billing forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsListForBillingForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forbilling][%d] projectsListForBillingForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsListForBillingForbidden) GetPayload() interface{} {
+func (o *ProjectsListForBillingForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsListForBillingNotFound describes a response with status code 404, with d
 Not Found
 */
 type ProjectsListForBillingNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects list for billing not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsListForBillingNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forbilling][%d] projectsListForBillingNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsListForBillingNotFound) GetPayload() interface{} {
+func (o *ProjectsListForBillingNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

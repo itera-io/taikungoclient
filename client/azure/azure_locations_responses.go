@@ -199,7 +199,7 @@ AzureLocationsUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type AzureLocationsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure locations unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AzureLocationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureLocationsUnauthorized) GetPayload() interface{} {
+func (o *AzureLocationsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AzureLocationsForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type AzureLocationsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure locations forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AzureLocationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureLocationsForbidden) GetPayload() interface{} {
+func (o *AzureLocationsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AzureLocationsNotFound describes a response with status code 404, with default h
 Not Found
 */
 type AzureLocationsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this azure locations not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AzureLocationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/locations][%d] azureLocationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureLocationsNotFound) GetPayload() interface{} {
+func (o *AzureLocationsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

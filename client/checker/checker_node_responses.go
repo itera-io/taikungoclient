@@ -199,7 +199,7 @@ CheckerNodeUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type CheckerNodeUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker node unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CheckerNodeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/node][%d] checkerNodeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerNodeUnauthorized) GetPayload() interface{} {
+func (o *CheckerNodeUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CheckerNodeForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type CheckerNodeForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker node forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CheckerNodeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/node][%d] checkerNodeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerNodeForbidden) GetPayload() interface{} {
+func (o *CheckerNodeForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CheckerNodeNotFound describes a response with status code 404, with default head
 Not Found
 */
 type CheckerNodeNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker node not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CheckerNodeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/node][%d] checkerNodeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerNodeNotFound) GetPayload() interface{} {
+func (o *CheckerNodeNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

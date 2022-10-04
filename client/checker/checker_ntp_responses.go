@@ -199,7 +199,7 @@ CheckerNtpUnauthorized describes a response with status code 401, with default h
 Unauthorized
 */
 type CheckerNtpUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker ntp unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CheckerNtpUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerNtpUnauthorized) GetPayload() interface{} {
+func (o *CheckerNtpUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CheckerNtpForbidden describes a response with status code 403, with default head
 Forbidden
 */
 type CheckerNtpForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker ntp forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CheckerNtpForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerNtpForbidden) GetPayload() interface{} {
+func (o *CheckerNtpForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CheckerNtpNotFound describes a response with status code 404, with default heade
 Not Found
 */
 type CheckerNtpNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker ntp not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CheckerNtpNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerNtpNotFound) GetPayload() interface{} {
+func (o *CheckerNtpNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ StandAloneActionsShelveUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneActionsShelveUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions shelve unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneActionsShelveUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/shelve][%d] standAloneActionsShelveUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsShelveUnauthorized) GetPayload() interface{} {
+func (o *StandAloneActionsShelveUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneActionsShelveForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneActionsShelveForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions shelve forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneActionsShelveForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/shelve][%d] standAloneActionsShelveForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsShelveForbidden) GetPayload() interface{} {
+func (o *StandAloneActionsShelveForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneActionsShelveNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneActionsShelveNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions shelve not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneActionsShelveNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/shelve][%d] standAloneActionsShelveNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsShelveNotFound) GetPayload() interface{} {
+func (o *StandAloneActionsShelveNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

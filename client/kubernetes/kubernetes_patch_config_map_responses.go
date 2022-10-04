@@ -199,7 +199,7 @@ KubernetesPatchConfigMapUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type KubernetesPatchConfigMapUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch config map unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesPatchConfigMapUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchConfigMapUnauthorized) GetPayload() interface{} {
+func (o *KubernetesPatchConfigMapUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesPatchConfigMapForbidden describes a response with status code 403, wit
 Forbidden
 */
 type KubernetesPatchConfigMapForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch config map forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesPatchConfigMapForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchConfigMapForbidden) GetPayload() interface{} {
+func (o *KubernetesPatchConfigMapForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesPatchConfigMapNotFound describes a response with status code 404, with
 Not Found
 */
 type KubernetesPatchConfigMapNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch config map not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesPatchConfigMapNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/configmap][%d] kubernetesPatchConfigMapNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchConfigMapNotFound) GetPayload() interface{} {
+func (o *KubernetesPatchConfigMapNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

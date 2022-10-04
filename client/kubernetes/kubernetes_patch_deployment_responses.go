@@ -199,7 +199,7 @@ KubernetesPatchDeploymentUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type KubernetesPatchDeploymentUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch deployment unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesPatchDeploymentUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/deployment][%d] kubernetesPatchDeploymentUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchDeploymentUnauthorized) GetPayload() interface{} {
+func (o *KubernetesPatchDeploymentUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesPatchDeploymentForbidden describes a response with status code 403, wi
 Forbidden
 */
 type KubernetesPatchDeploymentForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch deployment forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesPatchDeploymentForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/deployment][%d] kubernetesPatchDeploymentForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchDeploymentForbidden) GetPayload() interface{} {
+func (o *KubernetesPatchDeploymentForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesPatchDeploymentNotFound describes a response with status code 404, wit
 Not Found
 */
 type KubernetesPatchDeploymentNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch deployment not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesPatchDeploymentNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/deployment][%d] kubernetesPatchDeploymentNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchDeploymentNotFound) GetPayload() interface{} {
+func (o *KubernetesPatchDeploymentNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ StandAloneActionsConsoleUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type StandAloneActionsConsoleUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions console unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneActionsConsoleUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsConsoleUnauthorized) GetPayload() interface{} {
+func (o *StandAloneActionsConsoleUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneActionsConsoleForbidden describes a response with status code 403, wit
 Forbidden
 */
 type StandAloneActionsConsoleForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions console forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneActionsConsoleForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsConsoleForbidden) GetPayload() interface{} {
+func (o *StandAloneActionsConsoleForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneActionsConsoleNotFound describes a response with status code 404, with
 Not Found
 */
 type StandAloneActionsConsoleNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions console not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneActionsConsoleNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/console][%d] standAloneActionsConsoleNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsConsoleNotFound) GetPayload() interface{} {
+func (o *StandAloneActionsConsoleNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

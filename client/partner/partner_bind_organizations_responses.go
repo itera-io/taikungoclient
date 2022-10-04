@@ -199,7 +199,7 @@ PartnerBindOrganizationsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type PartnerBindOrganizationsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner bind organizations unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PartnerBindOrganizationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerBindOrganizationsUnauthorized) GetPayload() interface{} {
+func (o *PartnerBindOrganizationsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PartnerBindOrganizationsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type PartnerBindOrganizationsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner bind organizations forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PartnerBindOrganizationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerBindOrganizationsForbidden) GetPayload() interface{} {
+func (o *PartnerBindOrganizationsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PartnerBindOrganizationsNotFound describes a response with status code 404, with
 Not Found
 */
 type PartnerBindOrganizationsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner bind organizations not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PartnerBindOrganizationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerBindOrganizationsNotFound) GetPayload() interface{} {
+func (o *PartnerBindOrganizationsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ CronJobPurgeExpiredProjectsUnauthorized describes a response with status code 40
 Unauthorized
 */
 type CronJobPurgeExpiredProjectsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job purge expired projects unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobPurgeExpiredProjectsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobPurgeExpiredProjectsUnauthorized) GetPayload() interface{} {
+func (o *CronJobPurgeExpiredProjectsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobPurgeExpiredProjectsForbidden describes a response with status code 403, 
 Forbidden
 */
 type CronJobPurgeExpiredProjectsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job purge expired projects forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobPurgeExpiredProjectsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobPurgeExpiredProjectsForbidden) GetPayload() interface{} {
+func (o *CronJobPurgeExpiredProjectsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobPurgeExpiredProjectsNotFound describes a response with status code 404, w
 Not Found
 */
 type CronJobPurgeExpiredProjectsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job purge expired projects not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobPurgeExpiredProjectsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobPurgeExpiredProjectsNotFound) GetPayload() interface{} {
+func (o *CronJobPurgeExpiredProjectsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

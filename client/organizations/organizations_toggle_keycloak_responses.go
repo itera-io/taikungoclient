@@ -199,7 +199,7 @@ OrganizationsToggleKeycloakUnauthorized describes a response with status code 40
 Unauthorized
 */
 type OrganizationsToggleKeycloakUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations toggle keycloak unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OrganizationsToggleKeycloakUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsToggleKeycloakUnauthorized) GetPayload() interface{} {
+func (o *OrganizationsToggleKeycloakUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OrganizationsToggleKeycloakForbidden describes a response with status code 403, 
 Forbidden
 */
 type OrganizationsToggleKeycloakForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations toggle keycloak forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OrganizationsToggleKeycloakForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsToggleKeycloakForbidden) GetPayload() interface{} {
+func (o *OrganizationsToggleKeycloakForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OrganizationsToggleKeycloakNotFound describes a response with status code 404, w
 Not Found
 */
 type OrganizationsToggleKeycloakNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations toggle keycloak not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OrganizationsToggleKeycloakNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsToggleKeycloakNotFound) GetPayload() interface{} {
+func (o *OrganizationsToggleKeycloakNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

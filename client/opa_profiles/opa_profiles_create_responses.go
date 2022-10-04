@@ -201,7 +201,7 @@ OpaProfilesCreateUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpaProfilesCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *OpaProfilesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesCreateUnauthorized) GetPayload() interface{} {
+func (o *OpaProfilesCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ OpaProfilesCreateForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpaProfilesCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *OpaProfilesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesCreateForbidden) GetPayload() interface{} {
+func (o *OpaProfilesCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ OpaProfilesCreateNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpaProfilesCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *OpaProfilesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesCreateNotFound) GetPayload() interface{} {
+func (o *OpaProfilesCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

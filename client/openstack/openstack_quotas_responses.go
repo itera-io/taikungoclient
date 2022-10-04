@@ -201,7 +201,7 @@ OpenstackQuotasUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type OpenstackQuotasUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack quotas unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *OpenstackQuotasUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackQuotasUnauthorized) GetPayload() interface{} {
+func (o *OpenstackQuotasUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ OpenstackQuotasForbidden describes a response with status code 403, with default
 Forbidden
 */
 type OpenstackQuotasForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack quotas forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *OpenstackQuotasForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackQuotasForbidden) GetPayload() interface{} {
+func (o *OpenstackQuotasForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ OpenstackQuotasNotFound describes a response with status code 404, with default 
 Not Found
 */
 type OpenstackQuotasNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack quotas not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *OpenstackQuotasNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackQuotasNotFound) GetPayload() interface{} {
+func (o *OpenstackQuotasNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

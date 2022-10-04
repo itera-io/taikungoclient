@@ -199,7 +199,7 @@ CheckerAzureUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type CheckerAzureUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker azure unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CheckerAzureUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerAzureUnauthorized) GetPayload() interface{} {
+func (o *CheckerAzureUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CheckerAzureForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type CheckerAzureForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker azure forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CheckerAzureForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerAzureForbidden) GetPayload() interface{} {
+func (o *CheckerAzureForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CheckerAzureNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type CheckerAzureNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker azure not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CheckerAzureNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure][%d] checkerAzureNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerAzureNotFound) GetPayload() interface{} {
+func (o *CheckerAzureNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

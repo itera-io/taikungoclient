@@ -199,7 +199,7 @@ CatalogDeleteCatalogAppUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type CatalogDeleteCatalogAppUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog delete catalog app unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CatalogDeleteCatalogAppUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete-app/{id}][%d] catalogDeleteCatalogAppUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogAppUnauthorized) GetPayload() interface{} {
+func (o *CatalogDeleteCatalogAppUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CatalogDeleteCatalogAppForbidden describes a response with status code 403, with
 Forbidden
 */
 type CatalogDeleteCatalogAppForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog delete catalog app forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CatalogDeleteCatalogAppForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete-app/{id}][%d] catalogDeleteCatalogAppForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogAppForbidden) GetPayload() interface{} {
+func (o *CatalogDeleteCatalogAppForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CatalogDeleteCatalogAppNotFound describes a response with status code 404, with 
 Not Found
 */
 type CatalogDeleteCatalogAppNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog delete catalog app not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CatalogDeleteCatalogAppNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete-app/{id}][%d] catalogDeleteCatalogAppNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogAppNotFound) GetPayload() interface{} {
+func (o *CatalogDeleteCatalogAppNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

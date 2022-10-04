@@ -199,7 +199,7 @@ KubernetesDownloadUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubernetesDownloadUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes download unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesDownloadUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDownloadUnauthorized) GetPayload() interface{} {
+func (o *KubernetesDownloadUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesDownloadForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubernetesDownloadForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes download forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesDownloadForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDownloadForbidden) GetPayload() interface{} {
+func (o *KubernetesDownloadForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesDownloadNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubernetesDownloadNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes download not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesDownloadNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDownloadNotFound) GetPayload() interface{} {
+func (o *KubernetesDownloadNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

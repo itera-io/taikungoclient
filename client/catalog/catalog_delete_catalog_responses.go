@@ -199,7 +199,7 @@ CatalogDeleteCatalogUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type CatalogDeleteCatalogUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog delete catalog unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CatalogDeleteCatalogUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogUnauthorized) GetPayload() interface{} {
+func (o *CatalogDeleteCatalogUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CatalogDeleteCatalogForbidden describes a response with status code 403, with de
 Forbidden
 */
 type CatalogDeleteCatalogForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog delete catalog forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CatalogDeleteCatalogForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogForbidden) GetPayload() interface{} {
+func (o *CatalogDeleteCatalogForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CatalogDeleteCatalogNotFound describes a response with status code 404, with def
 Not Found
 */
 type CatalogDeleteCatalogNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog delete catalog not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CatalogDeleteCatalogNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Catalog/delete/{id}][%d] catalogDeleteCatalogNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogDeleteCatalogNotFound) GetPayload() interface{} {
+func (o *CatalogDeleteCatalogNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

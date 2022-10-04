@@ -201,7 +201,7 @@ AwsListUnauthorized describes a response with status code 401, with default head
 Unauthorized
 */
 type AwsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *AwsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/list][%d] awsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsListUnauthorized) GetPayload() interface{} {
+func (o *AwsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ AwsListForbidden describes a response with status code 403, with default header 
 Forbidden
 */
 type AwsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *AwsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/list][%d] awsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsListForbidden) GetPayload() interface{} {
+func (o *AwsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ AwsListNotFound describes a response with status code 404, with default header v
 Not Found
 */
 type AwsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *AwsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/list][%d] awsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsListNotFound) GetPayload() interface{} {
+func (o *AwsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ OrganizationsUpdatePaymentMethodUnauthorized describes a response with status co
 Unauthorized
 */
 type OrganizationsUpdatePaymentMethodUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations update payment method unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OrganizationsUpdatePaymentMethodUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsUpdatePaymentMethodUnauthorized) GetPayload() interface{} {
+func (o *OrganizationsUpdatePaymentMethodUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OrganizationsUpdatePaymentMethodForbidden describes a response with status code 
 Forbidden
 */
 type OrganizationsUpdatePaymentMethodForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations update payment method forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OrganizationsUpdatePaymentMethodForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsUpdatePaymentMethodForbidden) GetPayload() interface{} {
+func (o *OrganizationsUpdatePaymentMethodForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OrganizationsUpdatePaymentMethodNotFound describes a response with status code 4
 Not Found
 */
 type OrganizationsUpdatePaymentMethodNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations update payment method not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OrganizationsUpdatePaymentMethodNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsUpdatePaymentMethodNotFound) GetPayload() interface{} {
+func (o *OrganizationsUpdatePaymentMethodNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

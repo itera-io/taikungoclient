@@ -201,7 +201,7 @@ SlackCreateUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type SlackCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SlackCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SlackCreateUnauthorized) GetPayload() interface{} {
+func (o *SlackCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SlackCreateForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type SlackCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SlackCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SlackCreateForbidden) GetPayload() interface{} {
+func (o *SlackCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SlackCreateNotFound describes a response with status code 404, with default head
 Not Found
 */
 type SlackCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SlackCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/create][%d] slackCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SlackCreateNotFound) GetPayload() interface{} {
+func (o *SlackCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

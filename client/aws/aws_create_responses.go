@@ -201,7 +201,7 @@ AwsCreateUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type AwsCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *AwsCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsCreateUnauthorized) GetPayload() interface{} {
+func (o *AwsCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ AwsCreateForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type AwsCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *AwsCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsCreateForbidden) GetPayload() interface{} {
+func (o *AwsCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ AwsCreateNotFound describes a response with status code 404, with default header
 Not Found
 */
 type AwsCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *AwsCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/create][%d] awsCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsCreateNotFound) GetPayload() interface{} {
+func (o *AwsCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ CheckerGoogleUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type CheckerGoogleUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker google unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CheckerGoogleUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerGoogleUnauthorized) GetPayload() interface{} {
+func (o *CheckerGoogleUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CheckerGoogleForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type CheckerGoogleForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker google forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CheckerGoogleForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerGoogleForbidden) GetPayload() interface{} {
+func (o *CheckerGoogleForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CheckerGoogleNotFound describes a response with status code 404, with default he
 Not Found
 */
 type CheckerGoogleNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker google not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CheckerGoogleNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/google][%d] checkerGoogleNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerGoogleNotFound) GetPayload() interface{} {
+func (o *CheckerGoogleNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

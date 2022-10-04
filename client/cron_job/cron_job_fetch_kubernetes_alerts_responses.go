@@ -199,7 +199,7 @@ CronJobFetchKubernetesAlertsUnauthorized describes a response with status code 4
 Unauthorized
 */
 type CronJobFetchKubernetesAlertsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes alerts unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobFetchKubernetesAlertsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesAlertsUnauthorized) GetPayload() interface{} {
+func (o *CronJobFetchKubernetesAlertsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobFetchKubernetesAlertsForbidden describes a response with status code 403,
 Forbidden
 */
 type CronJobFetchKubernetesAlertsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes alerts forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobFetchKubernetesAlertsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesAlertsForbidden) GetPayload() interface{} {
+func (o *CronJobFetchKubernetesAlertsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobFetchKubernetesAlertsNotFound describes a response with status code 404, 
 Not Found
 */
 type CronJobFetchKubernetesAlertsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes alerts not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobFetchKubernetesAlertsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-alerts][%d] cronJobFetchKubernetesAlertsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesAlertsNotFound) GetPayload() interface{} {
+func (o *CronJobFetchKubernetesAlertsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

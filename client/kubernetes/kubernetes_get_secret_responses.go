@@ -201,7 +201,7 @@ KubernetesGetSecretUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type KubernetesGetSecretUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get secret unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubernetesGetSecretUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetSecretUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetSecretUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubernetesGetSecretForbidden describes a response with status code 403, with def
 Forbidden
 */
 type KubernetesGetSecretForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get secret forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubernetesGetSecretForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetSecretForbidden) GetPayload() interface{} {
+func (o *KubernetesGetSecretForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubernetesGetSecretNotFound describes a response with status code 404, with defa
 Not Found
 */
 type KubernetesGetSecretNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get secret not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubernetesGetSecretNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/secret][%d] kubernetesGetSecretNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetSecretNotFound) GetPayload() interface{} {
+func (o *KubernetesGetSecretNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ StandAloneVMDisksPurgeUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type StandAloneVMDisksPurgeUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks purge unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneVMDisksPurgeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksPurgeUnauthorized) GetPayload() interface{} {
+func (o *StandAloneVMDisksPurgeUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneVMDisksPurgeForbidden describes a response with status code 403, with 
 Forbidden
 */
 type StandAloneVMDisksPurgeForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks purge forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneVMDisksPurgeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksPurgeForbidden) GetPayload() interface{} {
+func (o *StandAloneVMDisksPurgeForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneVMDisksPurgeNotFound describes a response with status code 404, with d
 Not Found
 */
 type StandAloneVMDisksPurgeNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone Vm disks purge not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneVMDisksPurgeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksPurgeNotFound) GetPayload() interface{} {
+func (o *StandAloneVMDisksPurgeNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

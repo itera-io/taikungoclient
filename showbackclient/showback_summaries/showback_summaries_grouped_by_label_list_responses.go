@@ -201,7 +201,7 @@ ShowbackSummariesGroupedByLabelListUnauthorized describes a response with status
 Unauthorized
 */
 type ShowbackSummariesGroupedByLabelListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries grouped by label list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *ShowbackSummariesGroupedByLabelListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byLabel][%d] showbackSummariesGroupedByLabelListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByLabelListUnauthorized) GetPayload() interface{} {
+func (o *ShowbackSummariesGroupedByLabelListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ ShowbackSummariesGroupedByLabelListForbidden describes a response with status co
 Forbidden
 */
 type ShowbackSummariesGroupedByLabelListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries grouped by label list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *ShowbackSummariesGroupedByLabelListForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byLabel][%d] showbackSummariesGroupedByLabelListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByLabelListForbidden) GetPayload() interface{} {
+func (o *ShowbackSummariesGroupedByLabelListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ ShowbackSummariesGroupedByLabelListNotFound describes a response with status cod
 Not Found
 */
 type ShowbackSummariesGroupedByLabelListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries grouped by label list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *ShowbackSummariesGroupedByLabelListNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/grouped/byLabel][%d] showbackSummariesGroupedByLabelListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackSummariesGroupedByLabelListNotFound) GetPayload() interface{} {
+func (o *ShowbackSummariesGroupedByLabelListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

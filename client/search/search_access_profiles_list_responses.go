@@ -201,7 +201,7 @@ SearchAccessProfilesListUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type SearchAccessProfilesListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search access profiles list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchAccessProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchAccessProfilesListUnauthorized) GetPayload() interface{} {
+func (o *SearchAccessProfilesListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchAccessProfilesListForbidden describes a response with status code 403, wit
 Forbidden
 */
 type SearchAccessProfilesListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search access profiles list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchAccessProfilesListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchAccessProfilesListForbidden) GetPayload() interface{} {
+func (o *SearchAccessProfilesListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchAccessProfilesListNotFound describes a response with status code 404, with
 Not Found
 */
 type SearchAccessProfilesListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search access profiles list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchAccessProfilesListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchAccessProfilesListNotFound) GetPayload() interface{} {
+func (o *SearchAccessProfilesListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

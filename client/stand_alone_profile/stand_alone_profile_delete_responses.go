@@ -199,7 +199,7 @@ StandAloneProfileDeleteUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneProfileDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone profile delete unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneProfileDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneProfileDeleteUnauthorized) GetPayload() interface{} {
+func (o *StandAloneProfileDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneProfileDeleteForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneProfileDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone profile delete forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneProfileDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneProfileDeleteForbidden) GetPayload() interface{} {
+func (o *StandAloneProfileDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneProfileDeleteNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneProfileDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone profile delete not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneProfileDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneProfileDeleteNotFound) GetPayload() interface{} {
+func (o *StandAloneProfileDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

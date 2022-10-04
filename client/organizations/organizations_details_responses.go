@@ -201,7 +201,7 @@ OrganizationsDetailsUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type OrganizationsDetailsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations details unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *OrganizationsDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsDetailsUnauthorized) GetPayload() interface{} {
+func (o *OrganizationsDetailsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ OrganizationsDetailsForbidden describes a response with status code 403, with de
 Forbidden
 */
 type OrganizationsDetailsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations details forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *OrganizationsDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsDetailsForbidden) GetPayload() interface{} {
+func (o *OrganizationsDetailsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ OrganizationsDetailsNotFound describes a response with status code 404, with def
 Not Found
 */
 type OrganizationsDetailsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations details not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *OrganizationsDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/details/{organizationId}][%d] organizationsDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsDetailsNotFound) GetPayload() interface{} {
+func (o *OrganizationsDetailsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

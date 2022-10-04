@@ -201,7 +201,7 @@ BackupListAllDeleteBackupRequestsUnauthorized describes a response with status c
 Unauthorized
 */
 type BackupListAllDeleteBackupRequestsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup list all delete backup requests unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *BackupListAllDeleteBackupRequestsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupListAllDeleteBackupRequestsUnauthorized) GetPayload() interface{} {
+func (o *BackupListAllDeleteBackupRequestsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ BackupListAllDeleteBackupRequestsForbidden describes a response with status code
 Forbidden
 */
 type BackupListAllDeleteBackupRequestsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup list all delete backup requests forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *BackupListAllDeleteBackupRequestsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupListAllDeleteBackupRequestsForbidden) GetPayload() interface{} {
+func (o *BackupListAllDeleteBackupRequestsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ BackupListAllDeleteBackupRequestsNotFound describes a response with status code 
 Not Found
 */
 type BackupListAllDeleteBackupRequestsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup list all delete backup requests not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *BackupListAllDeleteBackupRequestsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/delelete-requests/{projectId}][%d] backupListAllDeleteBackupRequestsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupListAllDeleteBackupRequestsNotFound) GetPayload() interface{} {
+func (o *BackupListAllDeleteBackupRequestsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

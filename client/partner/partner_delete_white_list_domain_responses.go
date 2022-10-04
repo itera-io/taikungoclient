@@ -199,7 +199,7 @@ PartnerDeleteWhiteListDomainUnauthorized describes a response with status code 4
 Unauthorized
 */
 type PartnerDeleteWhiteListDomainUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner delete white list domain unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PartnerDeleteWhiteListDomainUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerDeleteWhiteListDomainUnauthorized) GetPayload() interface{} {
+func (o *PartnerDeleteWhiteListDomainUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PartnerDeleteWhiteListDomainForbidden describes a response with status code 403,
 Forbidden
 */
 type PartnerDeleteWhiteListDomainForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner delete white list domain forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PartnerDeleteWhiteListDomainForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerDeleteWhiteListDomainForbidden) GetPayload() interface{} {
+func (o *PartnerDeleteWhiteListDomainForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PartnerDeleteWhiteListDomainNotFound describes a response with status code 404, 
 Not Found
 */
 type PartnerDeleteWhiteListDomainNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner delete white list domain not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PartnerDeleteWhiteListDomainNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerDeleteWhiteListDomainNotFound) GetPayload() interface{} {
+func (o *PartnerDeleteWhiteListDomainNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

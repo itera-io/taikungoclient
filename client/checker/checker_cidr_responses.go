@@ -199,7 +199,7 @@ CheckerCidrUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type CheckerCidrUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker cidr unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CheckerCidrUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerCidrUnauthorized) GetPayload() interface{} {
+func (o *CheckerCidrUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CheckerCidrForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type CheckerCidrForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker cidr forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CheckerCidrForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerCidrForbidden) GetPayload() interface{} {
+func (o *CheckerCidrForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CheckerCidrNotFound describes a response with status code 404, with default head
 Not Found
 */
 type CheckerCidrNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker cidr not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CheckerCidrNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cidr][%d] checkerCidrNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerCidrNotFound) GetPayload() interface{} {
+func (o *CheckerCidrNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

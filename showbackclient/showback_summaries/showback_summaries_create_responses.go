@@ -199,7 +199,7 @@ ShowbackSummariesCreateUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type ShowbackSummariesCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries create unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ShowbackSummariesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackSummariesCreateUnauthorized) GetPayload() interface{} {
+func (o *ShowbackSummariesCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ShowbackSummariesCreateForbidden describes a response with status code 403, with
 Forbidden
 */
 type ShowbackSummariesCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries create forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ShowbackSummariesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackSummariesCreateForbidden) GetPayload() interface{} {
+func (o *ShowbackSummariesCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ShowbackSummariesCreateNotFound describes a response with status code 404, with 
 Not Found
 */
 type ShowbackSummariesCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback summaries create not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ShowbackSummariesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackSummariesCreateNotFound) GetPayload() interface{} {
+func (o *ShowbackSummariesCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

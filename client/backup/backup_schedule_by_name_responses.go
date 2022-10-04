@@ -201,7 +201,7 @@ BackupScheduleByNameUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type BackupScheduleByNameUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup schedule by name unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *BackupScheduleByNameUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedule/{projectId}/{name}][%d] backupScheduleByNameUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupScheduleByNameUnauthorized) GetPayload() interface{} {
+func (o *BackupScheduleByNameUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ BackupScheduleByNameForbidden describes a response with status code 403, with de
 Forbidden
 */
 type BackupScheduleByNameForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup schedule by name forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *BackupScheduleByNameForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedule/{projectId}/{name}][%d] backupScheduleByNameForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupScheduleByNameForbidden) GetPayload() interface{} {
+func (o *BackupScheduleByNameForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ BackupScheduleByNameNotFound describes a response with status code 404, with def
 Not Found
 */
 type BackupScheduleByNameNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup schedule by name not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *BackupScheduleByNameNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedule/{projectId}/{name}][%d] backupScheduleByNameNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupScheduleByNameNotFound) GetPayload() interface{} {
+func (o *BackupScheduleByNameNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

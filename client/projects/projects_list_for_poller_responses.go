@@ -201,7 +201,7 @@ ProjectsListForPollerUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type ProjectsListForPollerUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects list for poller unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *ProjectsListForPollerUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsListForPollerUnauthorized) GetPayload() interface{} {
+func (o *ProjectsListForPollerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ ProjectsListForPollerForbidden describes a response with status code 403, with d
 Forbidden
 */
 type ProjectsListForPollerForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects list for poller forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *ProjectsListForPollerForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsListForPollerForbidden) GetPayload() interface{} {
+func (o *ProjectsListForPollerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ ProjectsListForPollerNotFound describes a response with status code 404, with de
 Not Found
 */
 type ProjectsListForPollerNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects list for poller not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *ProjectsListForPollerNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/forpoller][%d] projectsListForPollerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsListForPollerNotFound) GetPayload() interface{} {
+func (o *ProjectsListForPollerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

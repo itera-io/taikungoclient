@@ -199,7 +199,7 @@ UserProjectsBindUsersUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type UserProjectsBindUsersUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user projects bind users unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *UserProjectsBindUsersUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindusers][%d] userProjectsBindUsersUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserProjectsBindUsersUnauthorized) GetPayload() interface{} {
+func (o *UserProjectsBindUsersUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ UserProjectsBindUsersForbidden describes a response with status code 403, with d
 Forbidden
 */
 type UserProjectsBindUsersForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user projects bind users forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *UserProjectsBindUsersForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindusers][%d] userProjectsBindUsersForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserProjectsBindUsersForbidden) GetPayload() interface{} {
+func (o *UserProjectsBindUsersForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ UserProjectsBindUsersNotFound describes a response with status code 404, with de
 Not Found
 */
 type UserProjectsBindUsersNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user projects bind users not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *UserProjectsBindUsersNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindusers][%d] userProjectsBindUsersNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserProjectsBindUsersNotFound) GetPayload() interface{} {
+func (o *UserProjectsBindUsersNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

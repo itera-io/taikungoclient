@@ -256,7 +256,7 @@ UsersDeleteUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type UsersDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users delete unauthorized response has a 2xx status code
@@ -292,7 +292,7 @@ func (o *UsersDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersDeleteUnauthorized) GetPayload() interface{} {
+func (o *UsersDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -317,7 +317,7 @@ UsersDeleteForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type UsersDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users delete forbidden response has a 2xx status code
@@ -353,7 +353,7 @@ func (o *UsersDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersDeleteForbidden) GetPayload() interface{} {
+func (o *UsersDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -378,7 +378,7 @@ UsersDeleteNotFound describes a response with status code 404, with default head
 Not Found
 */
 type UsersDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users delete not found response has a 2xx status code
@@ -414,7 +414,7 @@ func (o *UsersDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/Users/{id}][%d] usersDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersDeleteNotFound) GetPayload() interface{} {
+func (o *UsersDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

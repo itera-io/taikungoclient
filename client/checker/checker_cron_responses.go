@@ -199,7 +199,7 @@ CheckerCronUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type CheckerCronUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker cron unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CheckerCronUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerCronUnauthorized) GetPayload() interface{} {
+func (o *CheckerCronUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CheckerCronForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type CheckerCronForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker cron forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CheckerCronForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerCronForbidden) GetPayload() interface{} {
+func (o *CheckerCronForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CheckerCronNotFound describes a response with status code 404, with default head
 Not Found
 */
 type CheckerCronNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker cron not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CheckerCronNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/cron][%d] checkerCronNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerCronNotFound) GetPayload() interface{} {
+func (o *CheckerCronNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

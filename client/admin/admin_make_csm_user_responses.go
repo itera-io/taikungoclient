@@ -199,7 +199,7 @@ AdminMakeCsmUserUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type AdminMakeCsmUserUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin make csm user unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AdminMakeCsmUserUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminMakeCsmUserUnauthorized) GetPayload() interface{} {
+func (o *AdminMakeCsmUserUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AdminMakeCsmUserForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type AdminMakeCsmUserForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin make csm user forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AdminMakeCsmUserForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminMakeCsmUserForbidden) GetPayload() interface{} {
+func (o *AdminMakeCsmUserForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AdminMakeCsmUserNotFound describes a response with status code 404, with default
 Not Found
 */
 type AdminMakeCsmUserNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin make csm user not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AdminMakeCsmUserNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminMakeCsmUserNotFound) GetPayload() interface{} {
+func (o *AdminMakeCsmUserNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ BackupCreateUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type BackupCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup create unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *BackupCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupCreateUnauthorized) GetPayload() interface{} {
+func (o *BackupCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ BackupCreateForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type BackupCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup create forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *BackupCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupCreateForbidden) GetPayload() interface{} {
+func (o *BackupCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ BackupCreateNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type BackupCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup create not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *BackupCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupCreateNotFound) GetPayload() interface{} {
+func (o *BackupCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

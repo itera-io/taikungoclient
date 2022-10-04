@@ -199,7 +199,7 @@ SlackDeleteMultipleUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type SlackDeleteMultipleUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack delete multiple unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *SlackDeleteMultipleUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SlackDeleteMultipleUnauthorized) GetPayload() interface{} {
+func (o *SlackDeleteMultipleUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ SlackDeleteMultipleForbidden describes a response with status code 403, with def
 Forbidden
 */
 type SlackDeleteMultipleForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack delete multiple forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *SlackDeleteMultipleForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SlackDeleteMultipleForbidden) GetPayload() interface{} {
+func (o *SlackDeleteMultipleForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ SlackDeleteMultipleNotFound describes a response with status code 404, with defa
 Not Found
 */
 type SlackDeleteMultipleNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack delete multiple not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *SlackDeleteMultipleNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SlackDeleteMultipleNotFound) GetPayload() interface{} {
+func (o *SlackDeleteMultipleNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

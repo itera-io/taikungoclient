@@ -199,7 +199,7 @@ KeycloakCreateUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type KeycloakCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this keycloak create unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KeycloakCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KeycloakCreateUnauthorized) GetPayload() interface{} {
+func (o *KeycloakCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KeycloakCreateForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type KeycloakCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this keycloak create forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KeycloakCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KeycloakCreateForbidden) GetPayload() interface{} {
+func (o *KeycloakCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KeycloakCreateNotFound describes a response with status code 404, with default h
 Not Found
 */
 type KeycloakCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this keycloak create not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KeycloakCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/create][%d] keycloakCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KeycloakCreateNotFound) GetPayload() interface{} {
+func (o *KeycloakCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

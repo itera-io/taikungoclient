@@ -199,7 +199,7 @@ TicketCloseUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type TicketCloseUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket close unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *TicketCloseUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/close][%d] ticketCloseUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketCloseUnauthorized) GetPayload() interface{} {
+func (o *TicketCloseUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ TicketCloseForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type TicketCloseForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket close forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *TicketCloseForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/close][%d] ticketCloseForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketCloseForbidden) GetPayload() interface{} {
+func (o *TicketCloseForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ TicketCloseNotFound describes a response with status code 404, with default head
 Not Found
 */
 type TicketCloseNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ticket close not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *TicketCloseNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/close][%d] ticketCloseNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketCloseNotFound) GetPayload() interface{} {
+func (o *TicketCloseNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

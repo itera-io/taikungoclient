@@ -199,7 +199,7 @@ StandAloneResetUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type StandAloneResetUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone reset unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneResetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneResetUnauthorized) GetPayload() interface{} {
+func (o *StandAloneResetUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneResetForbidden describes a response with status code 403, with default
 Forbidden
 */
 type StandAloneResetForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone reset forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneResetForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneResetForbidden) GetPayload() interface{} {
+func (o *StandAloneResetForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneResetNotFound describes a response with status code 404, with default 
 Not Found
 */
 type StandAloneResetNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone reset not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneResetNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneResetNotFound) GetPayload() interface{} {
+func (o *StandAloneResetNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

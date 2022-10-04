@@ -199,7 +199,7 @@ ProjectsSpotWorkersOperationsUnauthorized describes a response with status code 
 Unauthorized
 */
 type ProjectsSpotWorkersOperationsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects spot workers operations unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsSpotWorkersOperationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsSpotWorkersOperationsUnauthorized) GetPayload() interface{} {
+func (o *ProjectsSpotWorkersOperationsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsSpotWorkersOperationsForbidden describes a response with status code 403
 Forbidden
 */
 type ProjectsSpotWorkersOperationsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects spot workers operations forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsSpotWorkersOperationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsSpotWorkersOperationsForbidden) GetPayload() interface{} {
+func (o *ProjectsSpotWorkersOperationsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsSpotWorkersOperationsNotFound describes a response with status code 404,
 Not Found
 */
 type ProjectsSpotWorkersOperationsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects spot workers operations not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsSpotWorkersOperationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsSpotWorkersOperationsNotFound) GetPayload() interface{} {
+func (o *ProjectsSpotWorkersOperationsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

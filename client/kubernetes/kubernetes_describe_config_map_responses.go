@@ -199,7 +199,7 @@ KubernetesDescribeConfigMapUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesDescribeConfigMapUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe config map unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesDescribeConfigMapUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeConfigMapUnauthorized) GetPayload() interface{} {
+func (o *KubernetesDescribeConfigMapUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesDescribeConfigMapForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesDescribeConfigMapForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe config map forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesDescribeConfigMapForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeConfigMapForbidden) GetPayload() interface{} {
+func (o *KubernetesDescribeConfigMapForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesDescribeConfigMapNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesDescribeConfigMapNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe config map not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesDescribeConfigMapNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeConfigMapNotFound) GetPayload() interface{} {
+func (o *KubernetesDescribeConfigMapNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

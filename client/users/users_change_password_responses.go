@@ -199,7 +199,7 @@ UsersChangePasswordUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type UsersChangePasswordUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users change password unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *UsersChangePasswordUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/changepassword][%d] usersChangePasswordUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersChangePasswordUnauthorized) GetPayload() interface{} {
+func (o *UsersChangePasswordUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ UsersChangePasswordForbidden describes a response with status code 403, with def
 Forbidden
 */
 type UsersChangePasswordForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users change password forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *UsersChangePasswordForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/changepassword][%d] usersChangePasswordForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersChangePasswordForbidden) GetPayload() interface{} {
+func (o *UsersChangePasswordForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ UsersChangePasswordNotFound describes a response with status code 404, with defa
 Not Found
 */
 type UsersChangePasswordNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users change password not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *UsersChangePasswordNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/changepassword][%d] usersChangePasswordNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersChangePasswordNotFound) GetPayload() interface{} {
+func (o *UsersChangePasswordNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

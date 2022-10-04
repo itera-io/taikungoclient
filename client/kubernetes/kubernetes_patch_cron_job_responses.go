@@ -199,7 +199,7 @@ KubernetesPatchCronJobUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesPatchCronJobUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch cron job unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesPatchCronJobUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/cronjob][%d] kubernetesPatchCronJobUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchCronJobUnauthorized) GetPayload() interface{} {
+func (o *KubernetesPatchCronJobUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesPatchCronJobForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesPatchCronJobForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch cron job forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesPatchCronJobForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/cronjob][%d] kubernetesPatchCronJobForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchCronJobForbidden) GetPayload() interface{} {
+func (o *KubernetesPatchCronJobForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesPatchCronJobNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesPatchCronJobNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch cron job not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesPatchCronJobNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/cronjob][%d] kubernetesPatchCronJobNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchCronJobNotFound) GetPayload() interface{} {
+func (o *KubernetesPatchCronJobNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

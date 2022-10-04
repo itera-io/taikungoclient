@@ -201,7 +201,7 @@ InvoicesInvoicesUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type InvoicesInvoicesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this invoices invoices unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *InvoicesInvoicesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Invoices/list][%d] invoicesInvoicesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *InvoicesInvoicesUnauthorized) GetPayload() interface{} {
+func (o *InvoicesInvoicesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ InvoicesInvoicesForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type InvoicesInvoicesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this invoices invoices forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *InvoicesInvoicesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Invoices/list][%d] invoicesInvoicesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *InvoicesInvoicesForbidden) GetPayload() interface{} {
+func (o *InvoicesInvoicesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ InvoicesInvoicesNotFound describes a response with status code 404, with default
 Not Found
 */
 type InvoicesInvoicesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this invoices invoices not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *InvoicesInvoicesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Invoices/list][%d] invoicesInvoicesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *InvoicesInvoicesNotFound) GetPayload() interface{} {
+func (o *InvoicesInvoicesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ GoogleCloudRegionListUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type GoogleCloudRegionListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this google cloud region list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *GoogleCloudRegionListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GoogleCloudRegionListUnauthorized) GetPayload() interface{} {
+func (o *GoogleCloudRegionListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ GoogleCloudRegionListForbidden describes a response with status code 403, with d
 Forbidden
 */
 type GoogleCloudRegionListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this google cloud region list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *GoogleCloudRegionListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GoogleCloudRegionListForbidden) GetPayload() interface{} {
+func (o *GoogleCloudRegionListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ GoogleCloudRegionListNotFound describes a response with status code 404, with de
 Not Found
 */
 type GoogleCloudRegionListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this google cloud region list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *GoogleCloudRegionListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/regions][%d] googleCloudRegionListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GoogleCloudRegionListNotFound) GetPayload() interface{} {
+func (o *GoogleCloudRegionListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

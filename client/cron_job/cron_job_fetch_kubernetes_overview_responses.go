@@ -199,7 +199,7 @@ CronJobFetchKubernetesOverviewUnauthorized describes a response with status code
 Unauthorized
 */
 type CronJobFetchKubernetesOverviewUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes overview unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobFetchKubernetesOverviewUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesOverviewUnauthorized) GetPayload() interface{} {
+func (o *CronJobFetchKubernetesOverviewUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobFetchKubernetesOverviewForbidden describes a response with status code 40
 Forbidden
 */
 type CronJobFetchKubernetesOverviewForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes overview forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobFetchKubernetesOverviewForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesOverviewForbidden) GetPayload() interface{} {
+func (o *CronJobFetchKubernetesOverviewForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobFetchKubernetesOverviewNotFound describes a response with status code 404
 Not Found
 */
 type CronJobFetchKubernetesOverviewNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job fetch kubernetes overview not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobFetchKubernetesOverviewNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-kubernetes-overview][%d] cronJobFetchKubernetesOverviewNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobFetchKubernetesOverviewNotFound) GetPayload() interface{} {
+func (o *CronJobFetchKubernetesOverviewNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ StandAloneActionsRebootUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneActionsRebootUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions reboot unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *StandAloneActionsRebootUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsRebootUnauthorized) GetPayload() interface{} {
+func (o *StandAloneActionsRebootUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ StandAloneActionsRebootForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneActionsRebootForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions reboot forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *StandAloneActionsRebootForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsRebootForbidden) GetPayload() interface{} {
+func (o *StandAloneActionsRebootForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ StandAloneActionsRebootNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneActionsRebootNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions reboot not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *StandAloneActionsRebootNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/reboot][%d] standAloneActionsRebootNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsRebootNotFound) GetPayload() interface{} {
+func (o *StandAloneActionsRebootNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

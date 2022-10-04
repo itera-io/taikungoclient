@@ -199,7 +199,7 @@ AlertingProfilesVerifyWebhookUnauthorized describes a response with status code 
 Unauthorized
 */
 type AlertingProfilesVerifyWebhookUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles verify webhook unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AlertingProfilesVerifyWebhookUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesVerifyWebhookUnauthorized) GetPayload() interface{} {
+func (o *AlertingProfilesVerifyWebhookUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AlertingProfilesVerifyWebhookForbidden describes a response with status code 403
 Forbidden
 */
 type AlertingProfilesVerifyWebhookForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles verify webhook forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AlertingProfilesVerifyWebhookForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesVerifyWebhookForbidden) GetPayload() interface{} {
+func (o *AlertingProfilesVerifyWebhookForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AlertingProfilesVerifyWebhookNotFound describes a response with status code 404,
 Not Found
 */
 type AlertingProfilesVerifyWebhookNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles verify webhook not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AlertingProfilesVerifyWebhookNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/verifywebhook][%d] alertingProfilesVerifyWebhookNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesVerifyWebhookNotFound) GetPayload() interface{} {
+func (o *AlertingProfilesVerifyWebhookNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

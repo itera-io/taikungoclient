@@ -201,7 +201,7 @@ KeycloakLoginUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type KeycloakLoginUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this keycloak login unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KeycloakLoginUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/login][%d] keycloakLoginUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KeycloakLoginUnauthorized) GetPayload() interface{} {
+func (o *KeycloakLoginUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KeycloakLoginForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type KeycloakLoginForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this keycloak login forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KeycloakLoginForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/login][%d] keycloakLoginForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KeycloakLoginForbidden) GetPayload() interface{} {
+func (o *KeycloakLoginForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KeycloakLoginNotFound describes a response with status code 404, with default he
 Not Found
 */
 type KeycloakLoginNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this keycloak login not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KeycloakLoginNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Keycloak/login][%d] keycloakLoginNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KeycloakLoginNotFound) GetPayload() interface{} {
+func (o *KeycloakLoginNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

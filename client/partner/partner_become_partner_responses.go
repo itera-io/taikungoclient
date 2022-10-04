@@ -199,7 +199,7 @@ PartnerBecomePartnerUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type PartnerBecomePartnerUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner become partner unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PartnerBecomePartnerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/become-a-partner][%d] partnerBecomePartnerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerBecomePartnerUnauthorized) GetPayload() interface{} {
+func (o *PartnerBecomePartnerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PartnerBecomePartnerForbidden describes a response with status code 403, with de
 Forbidden
 */
 type PartnerBecomePartnerForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner become partner forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PartnerBecomePartnerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/become-a-partner][%d] partnerBecomePartnerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerBecomePartnerForbidden) GetPayload() interface{} {
+func (o *PartnerBecomePartnerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PartnerBecomePartnerNotFound describes a response with status code 404, with def
 Not Found
 */
 type PartnerBecomePartnerNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner become partner not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PartnerBecomePartnerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/become-a-partner][%d] partnerBecomePartnerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerBecomePartnerNotFound) GetPayload() interface{} {
+func (o *PartnerBecomePartnerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

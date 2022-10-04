@@ -201,7 +201,7 @@ AuthLoginUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type AuthLoginUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this auth login unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *AuthLoginUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AuthLoginUnauthorized) GetPayload() interface{} {
+func (o *AuthLoginUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ AuthLoginForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type AuthLoginForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this auth login forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *AuthLoginForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AuthLoginForbidden) GetPayload() interface{} {
+func (o *AuthLoginForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ AuthLoginNotFound describes a response with status code 404, with default header
 Not Found
 */
 type AuthLoginNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this auth login not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *AuthLoginNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/login][%d] authLoginNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AuthLoginNotFound) GetPayload() interface{} {
+func (o *AuthLoginNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

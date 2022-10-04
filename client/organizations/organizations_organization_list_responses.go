@@ -199,7 +199,7 @@ OrganizationsOrganizationListUnauthorized describes a response with status code 
 Unauthorized
 */
 type OrganizationsOrganizationListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations organization list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OrganizationsOrganizationListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsOrganizationListUnauthorized) GetPayload() interface{} {
+func (o *OrganizationsOrganizationListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OrganizationsOrganizationListForbidden describes a response with status code 403
 Forbidden
 */
 type OrganizationsOrganizationListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations organization list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OrganizationsOrganizationListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsOrganizationListForbidden) GetPayload() interface{} {
+func (o *OrganizationsOrganizationListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OrganizationsOrganizationListNotFound describes a response with status code 404,
 Not Found
 */
 type OrganizationsOrganizationListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this organizations organization list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OrganizationsOrganizationListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/list][%d] organizationsOrganizationListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsOrganizationListNotFound) GetPayload() interface{} {
+func (o *OrganizationsOrganizationListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

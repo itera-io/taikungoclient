@@ -201,7 +201,7 @@ FlavorsGetSelectedFlavorsForProjectUnauthorized describes a response with status
 Unauthorized
 */
 type FlavorsGetSelectedFlavorsForProjectUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors get selected flavors for project unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) GetPayload() interface{} {
+func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ FlavorsGetSelectedFlavorsForProjectForbidden describes a response with status co
 Forbidden
 */
 type FlavorsGetSelectedFlavorsForProjectForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors get selected flavors for project forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *FlavorsGetSelectedFlavorsForProjectForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsGetSelectedFlavorsForProjectForbidden) GetPayload() interface{} {
+func (o *FlavorsGetSelectedFlavorsForProjectForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ FlavorsGetSelectedFlavorsForProjectNotFound describes a response with status cod
 Not Found
 */
 type FlavorsGetSelectedFlavorsForProjectNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors get selected flavors for project not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *FlavorsGetSelectedFlavorsForProjectNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsGetSelectedFlavorsForProjectNotFound) GetPayload() interface{} {
+func (o *FlavorsGetSelectedFlavorsForProjectNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

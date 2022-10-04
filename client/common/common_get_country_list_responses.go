@@ -199,7 +199,7 @@ CommonGetCountryListUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type CommonGetCountryListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this common get country list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CommonGetCountryListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CommonGetCountryListUnauthorized) GetPayload() interface{} {
+func (o *CommonGetCountryListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CommonGetCountryListForbidden describes a response with status code 403, with de
 Forbidden
 */
 type CommonGetCountryListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this common get country list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CommonGetCountryListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CommonGetCountryListForbidden) GetPayload() interface{} {
+func (o *CommonGetCountryListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CommonGetCountryListNotFound describes a response with status code 404, with def
 Not Found
 */
 type CommonGetCountryListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this common get country list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CommonGetCountryListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CommonGetCountryListNotFound) GetPayload() interface{} {
+func (o *CommonGetCountryListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

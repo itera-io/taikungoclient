@@ -199,7 +199,7 @@ CheckerOrganizationUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type CheckerOrganizationUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker organization unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CheckerOrganizationUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerOrganizationUnauthorized) GetPayload() interface{} {
+func (o *CheckerOrganizationUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CheckerOrganizationForbidden describes a response with status code 403, with def
 Forbidden
 */
 type CheckerOrganizationForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker organization forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CheckerOrganizationForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerOrganizationForbidden) GetPayload() interface{} {
+func (o *CheckerOrganizationForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CheckerOrganizationNotFound describes a response with status code 404, with defa
 Not Found
 */
 type CheckerOrganizationNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker organization not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CheckerOrganizationNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerOrganizationNotFound) GetPayload() interface{} {
+func (o *CheckerOrganizationNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

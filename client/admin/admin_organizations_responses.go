@@ -201,7 +201,7 @@ AdminOrganizationsUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type AdminOrganizationsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin organizations unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *AdminOrganizationsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminOrganizationsUnauthorized) GetPayload() interface{} {
+func (o *AdminOrganizationsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ AdminOrganizationsForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type AdminOrganizationsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin organizations forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *AdminOrganizationsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminOrganizationsForbidden) GetPayload() interface{} {
+func (o *AdminOrganizationsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ AdminOrganizationsNotFound describes a response with status code 404, with defau
 Not Found
 */
 type AdminOrganizationsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin organizations not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *AdminOrganizationsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/organizations/list][%d] adminOrganizationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminOrganizationsNotFound) GetPayload() interface{} {
+func (o *AdminOrganizationsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

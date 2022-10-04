@@ -199,7 +199,7 @@ CronJobUpdateProjectQuotaMessageUnauthorized describes a response with status co
 Unauthorized
 */
 type CronJobUpdateProjectQuotaMessageUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job update project quota message unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobUpdateProjectQuotaMessageUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobUpdateProjectQuotaMessageUnauthorized) GetPayload() interface{} {
+func (o *CronJobUpdateProjectQuotaMessageUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobUpdateProjectQuotaMessageForbidden describes a response with status code 
 Forbidden
 */
 type CronJobUpdateProjectQuotaMessageForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job update project quota message forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobUpdateProjectQuotaMessageForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobUpdateProjectQuotaMessageForbidden) GetPayload() interface{} {
+func (o *CronJobUpdateProjectQuotaMessageForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobUpdateProjectQuotaMessageNotFound describes a response with status code 4
 Not Found
 */
 type CronJobUpdateProjectQuotaMessageNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job update project quota message not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobUpdateProjectQuotaMessageNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobUpdateProjectQuotaMessageNotFound) GetPayload() interface{} {
+func (o *CronJobUpdateProjectQuotaMessageNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

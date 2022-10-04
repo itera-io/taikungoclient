@@ -199,7 +199,7 @@ PrometheusBindRulesUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type PrometheusBindRulesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus bind rules unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PrometheusBindRulesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusBindRulesUnauthorized) GetPayload() interface{} {
+func (o *PrometheusBindRulesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PrometheusBindRulesForbidden describes a response with status code 403, with def
 Forbidden
 */
 type PrometheusBindRulesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus bind rules forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PrometheusBindRulesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusBindRulesForbidden) GetPayload() interface{} {
+func (o *PrometheusBindRulesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PrometheusBindRulesNotFound describes a response with status code 404, with defa
 Not Found
 */
 type PrometheusBindRulesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus bind rules not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PrometheusBindRulesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusBindRulesNotFound) GetPayload() interface{} {
+func (o *PrometheusBindRulesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

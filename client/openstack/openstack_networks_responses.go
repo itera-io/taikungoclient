@@ -199,7 +199,7 @@ OpenstackNetworksUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpenstackNetworksUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack networks unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *OpenstackNetworksUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackNetworksUnauthorized) GetPayload() interface{} {
+func (o *OpenstackNetworksUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ OpenstackNetworksForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpenstackNetworksForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack networks forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *OpenstackNetworksForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackNetworksForbidden) GetPayload() interface{} {
+func (o *OpenstackNetworksForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ OpenstackNetworksNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpenstackNetworksNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this openstack networks not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *OpenstackNetworksNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/networks][%d] openstackNetworksNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackNetworksNotFound) GetPayload() interface{} {
+func (o *OpenstackNetworksNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ CheckerAwsUnauthorized describes a response with status code 401, with default h
 Unauthorized
 */
 type CheckerAwsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker aws unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CheckerAwsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerAwsUnauthorized) GetPayload() interface{} {
+func (o *CheckerAwsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CheckerAwsForbidden describes a response with status code 403, with default head
 Forbidden
 */
 type CheckerAwsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker aws forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CheckerAwsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerAwsForbidden) GetPayload() interface{} {
+func (o *CheckerAwsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CheckerAwsNotFound describes a response with status code 404, with default heade
 Not Found
 */
 type CheckerAwsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker aws not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CheckerAwsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerAwsNotFound) GetPayload() interface{} {
+func (o *CheckerAwsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

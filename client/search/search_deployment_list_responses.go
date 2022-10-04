@@ -201,7 +201,7 @@ SearchDeploymentListUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type SearchDeploymentListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search deployment list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchDeploymentListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/deployments][%d] searchDeploymentListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchDeploymentListUnauthorized) GetPayload() interface{} {
+func (o *SearchDeploymentListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchDeploymentListForbidden describes a response with status code 403, with de
 Forbidden
 */
 type SearchDeploymentListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search deployment list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchDeploymentListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/deployments][%d] searchDeploymentListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchDeploymentListForbidden) GetPayload() interface{} {
+func (o *SearchDeploymentListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchDeploymentListNotFound describes a response with status code 404, with def
 Not Found
 */
 type SearchDeploymentListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search deployment list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchDeploymentListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/deployments][%d] searchDeploymentListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchDeploymentListNotFound) GetPayload() interface{} {
+func (o *SearchDeploymentListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

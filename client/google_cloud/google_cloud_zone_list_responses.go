@@ -199,7 +199,7 @@ GoogleCloudZoneListUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type GoogleCloudZoneListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this google cloud zone list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *GoogleCloudZoneListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GoogleCloudZoneListUnauthorized) GetPayload() interface{} {
+func (o *GoogleCloudZoneListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ GoogleCloudZoneListForbidden describes a response with status code 403, with def
 Forbidden
 */
 type GoogleCloudZoneListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this google cloud zone list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *GoogleCloudZoneListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GoogleCloudZoneListForbidden) GetPayload() interface{} {
+func (o *GoogleCloudZoneListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ GoogleCloudZoneListNotFound describes a response with status code 404, with defa
 Not Found
 */
 type GoogleCloudZoneListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this google cloud zone list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *GoogleCloudZoneListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GoogleCloudZoneListNotFound) GetPayload() interface{} {
+func (o *GoogleCloudZoneListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

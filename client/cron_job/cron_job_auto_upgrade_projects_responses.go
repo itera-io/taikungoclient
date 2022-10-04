@@ -199,7 +199,7 @@ CronJobAutoUpgradeProjectsUnauthorized describes a response with status code 401
 Unauthorized
 */
 type CronJobAutoUpgradeProjectsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job auto upgrade projects unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobAutoUpgradeProjectsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobAutoUpgradeProjectsUnauthorized) GetPayload() interface{} {
+func (o *CronJobAutoUpgradeProjectsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobAutoUpgradeProjectsForbidden describes a response with status code 403, w
 Forbidden
 */
 type CronJobAutoUpgradeProjectsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job auto upgrade projects forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobAutoUpgradeProjectsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobAutoUpgradeProjectsForbidden) GetPayload() interface{} {
+func (o *CronJobAutoUpgradeProjectsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobAutoUpgradeProjectsNotFound describes a response with status code 404, wi
 Not Found
 */
 type CronJobAutoUpgradeProjectsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job auto upgrade projects not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobAutoUpgradeProjectsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/auto-upgrade-projects][%d] cronJobAutoUpgradeProjectsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobAutoUpgradeProjectsNotFound) GetPayload() interface{} {
+func (o *CronJobAutoUpgradeProjectsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

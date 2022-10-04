@@ -199,7 +199,7 @@ SlackVerifySlackCredentialsUnauthorized describes a response with status code 40
 Unauthorized
 */
 type SlackVerifySlackCredentialsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack verify slack credentials unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *SlackVerifySlackCredentialsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SlackVerifySlackCredentialsUnauthorized) GetPayload() interface{} {
+func (o *SlackVerifySlackCredentialsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ SlackVerifySlackCredentialsForbidden describes a response with status code 403, 
 Forbidden
 */
 type SlackVerifySlackCredentialsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack verify slack credentials forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *SlackVerifySlackCredentialsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SlackVerifySlackCredentialsForbidden) GetPayload() interface{} {
+func (o *SlackVerifySlackCredentialsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ SlackVerifySlackCredentialsNotFound describes a response with status code 404, w
 Not Found
 */
 type SlackVerifySlackCredentialsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this slack verify slack credentials not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *SlackVerifySlackCredentialsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SlackVerifySlackCredentialsNotFound) GetPayload() interface{} {
+func (o *SlackVerifySlackCredentialsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ UserTokenAvailableEndpointListUnauthorized describes a response with status code
 Unauthorized
 */
 type UserTokenAvailableEndpointListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user token available endpoint list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *UserTokenAvailableEndpointListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserTokenAvailableEndpointListUnauthorized) GetPayload() interface{} {
+func (o *UserTokenAvailableEndpointListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ UserTokenAvailableEndpointListForbidden describes a response with status code 40
 Forbidden
 */
 type UserTokenAvailableEndpointListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user token available endpoint list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *UserTokenAvailableEndpointListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserTokenAvailableEndpointListForbidden) GetPayload() interface{} {
+func (o *UserTokenAvailableEndpointListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ UserTokenAvailableEndpointListNotFound describes a response with status code 404
 Not Found
 */
 type UserTokenAvailableEndpointListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user token available endpoint list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *UserTokenAvailableEndpointListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserTokenAvailableEndpointListNotFound) GetPayload() interface{} {
+func (o *UserTokenAvailableEndpointListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ KubernetesDescribeNetworkPolicyUnauthorized describes a response with status cod
 Unauthorized
 */
 type KubernetesDescribeNetworkPolicyUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe network policy unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesDescribeNetworkPolicyUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeNetworkPolicyUnauthorized) GetPayload() interface{} {
+func (o *KubernetesDescribeNetworkPolicyUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesDescribeNetworkPolicyForbidden describes a response with status code 4
 Forbidden
 */
 type KubernetesDescribeNetworkPolicyForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe network policy forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesDescribeNetworkPolicyForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeNetworkPolicyForbidden) GetPayload() interface{} {
+func (o *KubernetesDescribeNetworkPolicyForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesDescribeNetworkPolicyNotFound describes a response with status code 40
 Not Found
 */
 type KubernetesDescribeNetworkPolicyNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe network policy not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesDescribeNetworkPolicyNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeNetworkPolicyNotFound) GetPayload() interface{} {
+func (o *KubernetesDescribeNetworkPolicyNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

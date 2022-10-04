@@ -199,7 +199,7 @@ PrometheusCreateBillingUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type PrometheusCreateBillingUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus create billing unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PrometheusCreateBillingUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusCreateBillingUnauthorized) GetPayload() interface{} {
+func (o *PrometheusCreateBillingUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PrometheusCreateBillingForbidden describes a response with status code 403, with
 Forbidden
 */
 type PrometheusCreateBillingForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus create billing forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PrometheusCreateBillingForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusCreateBillingForbidden) GetPayload() interface{} {
+func (o *PrometheusCreateBillingForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PrometheusCreateBillingNotFound describes a response with status code 404, with 
 Not Found
 */
 type PrometheusCreateBillingNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus create billing not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PrometheusCreateBillingNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/billing][%d] prometheusCreateBillingNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusCreateBillingNotFound) GetPayload() interface{} {
+func (o *PrometheusCreateBillingNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ ServersRebootUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type ServersRebootUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers reboot unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ServersRebootUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersRebootUnauthorized) GetPayload() interface{} {
+func (o *ServersRebootUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ServersRebootForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type ServersRebootForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers reboot forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ServersRebootForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersRebootForbidden) GetPayload() interface{} {
+func (o *ServersRebootForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ServersRebootNotFound describes a response with status code 404, with default he
 Not Found
 */
 type ServersRebootNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers reboot not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ServersRebootNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersRebootNotFound) GetPayload() interface{} {
+func (o *ServersRebootNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -201,7 +201,7 @@ FlavorsAzureFlavorsUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type FlavorsAzureFlavorsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors azure flavors unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *FlavorsAzureFlavorsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/azure/{cloudId}][%d] flavorsAzureFlavorsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsAzureFlavorsUnauthorized) GetPayload() interface{} {
+func (o *FlavorsAzureFlavorsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ FlavorsAzureFlavorsForbidden describes a response with status code 403, with def
 Forbidden
 */
 type FlavorsAzureFlavorsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors azure flavors forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *FlavorsAzureFlavorsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/azure/{cloudId}][%d] flavorsAzureFlavorsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsAzureFlavorsForbidden) GetPayload() interface{} {
+func (o *FlavorsAzureFlavorsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ FlavorsAzureFlavorsNotFound describes a response with status code 404, with defa
 Not Found
 */
 type FlavorsAzureFlavorsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this flavors azure flavors not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *FlavorsAzureFlavorsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/azure/{cloudId}][%d] flavorsAzureFlavorsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsAzureFlavorsNotFound) GetPayload() interface{} {
+func (o *FlavorsAzureFlavorsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

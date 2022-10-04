@@ -199,7 +199,7 @@ KubernetesGetPodLogsListUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type KubernetesGetPodLogsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get pod logs list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesGetPodLogsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/podlogs][%d] kubernetesGetPodLogsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetPodLogsListUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetPodLogsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesGetPodLogsListForbidden describes a response with status code 403, wit
 Forbidden
 */
 type KubernetesGetPodLogsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get pod logs list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesGetPodLogsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/podlogs][%d] kubernetesGetPodLogsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetPodLogsListForbidden) GetPayload() interface{} {
+func (o *KubernetesGetPodLogsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesGetPodLogsListNotFound describes a response with status code 404, with
 Not Found
 */
 type KubernetesGetPodLogsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get pod logs list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesGetPodLogsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/podlogs][%d] kubernetesGetPodLogsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetPodLogsListNotFound) GetPayload() interface{} {
+func (o *KubernetesGetPodLogsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

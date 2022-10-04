@@ -199,7 +199,7 @@ KubernetesSilenceManagerUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type KubernetesSilenceManagerUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes silence manager unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesSilenceManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesSilenceManagerUnauthorized) GetPayload() interface{} {
+func (o *KubernetesSilenceManagerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesSilenceManagerForbidden describes a response with status code 403, wit
 Forbidden
 */
 type KubernetesSilenceManagerForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes silence manager forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesSilenceManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesSilenceManagerForbidden) GetPayload() interface{} {
+func (o *KubernetesSilenceManagerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesSilenceManagerNotFound describes a response with status code 404, with
 Not Found
 */
 type KubernetesSilenceManagerNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes silence manager not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesSilenceManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesSilenceManagerNotFound) GetPayload() interface{} {
+func (o *KubernetesSilenceManagerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

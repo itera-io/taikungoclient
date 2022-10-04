@@ -201,7 +201,7 @@ KubernetesGetCronJobsListUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type KubernetesGetCronJobsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get cron jobs list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubernetesGetCronJobsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/cronjobs][%d] kubernetesGetCronJobsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetCronJobsListUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetCronJobsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubernetesGetCronJobsListForbidden describes a response with status code 403, wi
 Forbidden
 */
 type KubernetesGetCronJobsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get cron jobs list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubernetesGetCronJobsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/cronjobs][%d] kubernetesGetCronJobsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetCronJobsListForbidden) GetPayload() interface{} {
+func (o *KubernetesGetCronJobsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubernetesGetCronJobsListNotFound describes a response with status code 404, wit
 Not Found
 */
 type KubernetesGetCronJobsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get cron jobs list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubernetesGetCronJobsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/cronjobs][%d] kubernetesGetCronJobsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetCronJobsListNotFound) GetPayload() interface{} {
+func (o *KubernetesGetCronJobsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

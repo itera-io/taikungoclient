@@ -201,7 +201,7 @@ CatalogCatalogListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type CatalogCatalogListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog catalog list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *CatalogCatalogListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/list][%d] catalogCatalogListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogCatalogListUnauthorized) GetPayload() interface{} {
+func (o *CatalogCatalogListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ CatalogCatalogListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type CatalogCatalogListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog catalog list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *CatalogCatalogListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/list][%d] catalogCatalogListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogCatalogListForbidden) GetPayload() interface{} {
+func (o *CatalogCatalogListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ CatalogCatalogListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type CatalogCatalogListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog catalog list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *CatalogCatalogListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/list][%d] catalogCatalogListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogCatalogListNotFound) GetPayload() interface{} {
+func (o *CatalogCatalogListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

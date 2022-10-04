@@ -201,7 +201,7 @@ StandAloneListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type StandAloneListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *StandAloneListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneListUnauthorized) GetPayload() interface{} {
+func (o *StandAloneListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ StandAloneListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type StandAloneListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *StandAloneListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneListForbidden) GetPayload() interface{} {
+func (o *StandAloneListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ StandAloneListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type StandAloneListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *StandAloneListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneListNotFound) GetPayload() interface{} {
+func (o *StandAloneListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

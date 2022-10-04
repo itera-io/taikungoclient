@@ -256,7 +256,7 @@ ProjectGroupsDeleteUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ProjectGroupsDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project groups delete unauthorized response has a 2xx status code
@@ -292,7 +292,7 @@ func (o *ProjectGroupsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectGroupsDeleteUnauthorized) GetPayload() interface{} {
+func (o *ProjectGroupsDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -317,7 +317,7 @@ ProjectGroupsDeleteForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ProjectGroupsDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project groups delete forbidden response has a 2xx status code
@@ -353,7 +353,7 @@ func (o *ProjectGroupsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectGroupsDeleteForbidden) GetPayload() interface{} {
+func (o *ProjectGroupsDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -378,7 +378,7 @@ ProjectGroupsDeleteNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ProjectGroupsDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project groups delete not found response has a 2xx status code
@@ -414,7 +414,7 @@ func (o *ProjectGroupsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/ProjectGroups/{ProjectGroupId}][%d] projectGroupsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectGroupsDeleteNotFound) GetPayload() interface{} {
+func (o *ProjectGroupsDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

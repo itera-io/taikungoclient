@@ -199,7 +199,7 @@ AccessProfilesLockManagerUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type AccessProfilesLockManagerUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles lock manager unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AccessProfilesLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AccessProfilesLockManagerUnauthorized) GetPayload() interface{} {
+func (o *AccessProfilesLockManagerUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AccessProfilesLockManagerForbidden describes a response with status code 403, wi
 Forbidden
 */
 type AccessProfilesLockManagerForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles lock manager forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AccessProfilesLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AccessProfilesLockManagerForbidden) GetPayload() interface{} {
+func (o *AccessProfilesLockManagerForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AccessProfilesLockManagerNotFound describes a response with status code 404, wit
 Not Found
 */
 type AccessProfilesLockManagerNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles lock manager not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AccessProfilesLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AccessProfilesLockManagerNotFound) GetPayload() interface{} {
+func (o *AccessProfilesLockManagerNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

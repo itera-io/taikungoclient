@@ -199,7 +199,7 @@ AlertingProfilesDetachUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type AlertingProfilesDetachUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles detach unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AlertingProfilesDetachUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesDetachUnauthorized) GetPayload() interface{} {
+func (o *AlertingProfilesDetachUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AlertingProfilesDetachForbidden describes a response with status code 403, with 
 Forbidden
 */
 type AlertingProfilesDetachForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles detach forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AlertingProfilesDetachForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesDetachForbidden) GetPayload() interface{} {
+func (o *AlertingProfilesDetachForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AlertingProfilesDetachNotFound describes a response with status code 404, with d
 Not Found
 */
 type AlertingProfilesDetachNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles detach not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AlertingProfilesDetachNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/detach][%d] alertingProfilesDetachNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesDetachNotFound) GetPayload() interface{} {
+func (o *AlertingProfilesDetachNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

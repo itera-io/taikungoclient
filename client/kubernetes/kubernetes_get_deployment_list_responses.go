@@ -201,7 +201,7 @@ KubernetesGetDeploymentListUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesGetDeploymentListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get deployment list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubernetesGetDeploymentListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetDeploymentListUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetDeploymentListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubernetesGetDeploymentListForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesGetDeploymentListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get deployment list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubernetesGetDeploymentListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetDeploymentListForbidden) GetPayload() interface{} {
+func (o *KubernetesGetDeploymentListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubernetesGetDeploymentListNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesGetDeploymentListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get deployment list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubernetesGetDeploymentListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/deployment][%d] kubernetesGetDeploymentListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetDeploymentListNotFound) GetPayload() interface{} {
+func (o *KubernetesGetDeploymentListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

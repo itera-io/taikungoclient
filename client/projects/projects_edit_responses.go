@@ -199,7 +199,7 @@ ProjectsEditUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type ProjectsEditUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects edit unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectsEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsEditUnauthorized) GetPayload() interface{} {
+func (o *ProjectsEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectsEditForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type ProjectsEditForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects edit forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectsEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsEditForbidden) GetPayload() interface{} {
+func (o *ProjectsEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectsEditNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type ProjectsEditNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this projects edit not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectsEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/update/{projectId}][%d] projectsEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsEditNotFound) GetPayload() interface{} {
+func (o *ProjectsEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

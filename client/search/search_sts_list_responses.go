@@ -201,7 +201,7 @@ SearchStsListUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type SearchStsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search sts list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchStsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/sts][%d] searchStsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchStsListUnauthorized) GetPayload() interface{} {
+func (o *SearchStsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchStsListForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type SearchStsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search sts list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchStsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/sts][%d] searchStsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchStsListForbidden) GetPayload() interface{} {
+func (o *SearchStsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchStsListNotFound describes a response with status code 404, with default he
 Not Found
 */
 type SearchStsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search sts list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchStsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/sts][%d] searchStsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchStsListNotFound) GetPayload() interface{} {
+func (o *SearchStsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

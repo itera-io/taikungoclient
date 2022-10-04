@@ -199,7 +199,7 @@ NtpServersEditUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type NtpServersEditUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ntp servers edit unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *NtpServersEditUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NtpServersEditUnauthorized) GetPayload() interface{} {
+func (o *NtpServersEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ NtpServersEditForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type NtpServersEditForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ntp servers edit forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *NtpServersEditForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NtpServersEditForbidden) GetPayload() interface{} {
+func (o *NtpServersEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ NtpServersEditNotFound describes a response with status code 404, with default h
 Not Found
 */
 type NtpServersEditNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ntp servers edit not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *NtpServersEditNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NtpServersEditNotFound) GetPayload() interface{} {
+func (o *NtpServersEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

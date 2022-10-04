@@ -199,7 +199,7 @@ CommonGetSortingElementsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type CommonGetSortingElementsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this common get sorting elements unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CommonGetSortingElementsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CommonGetSortingElementsUnauthorized) GetPayload() interface{} {
+func (o *CommonGetSortingElementsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CommonGetSortingElementsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type CommonGetSortingElementsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this common get sorting elements forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CommonGetSortingElementsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CommonGetSortingElementsForbidden) GetPayload() interface{} {
+func (o *CommonGetSortingElementsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CommonGetSortingElementsNotFound describes a response with status code 404, with
 Not Found
 */
 type CommonGetSortingElementsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this common get sorting elements not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CommonGetSortingElementsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/sorting-elements/{type}][%d] commonGetSortingElementsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CommonGetSortingElementsNotFound) GetPayload() interface{} {
+func (o *CommonGetSortingElementsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

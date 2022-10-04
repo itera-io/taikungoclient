@@ -199,7 +199,7 @@ CronJobDeleteExpiredRefreshTokensUnauthorized describes a response with status c
 Unauthorized
 */
 type CronJobDeleteExpiredRefreshTokensUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete expired refresh tokens unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobDeleteExpiredRefreshTokensUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/refresh-tokens][%d] cronJobDeleteExpiredRefreshTokensUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredRefreshTokensUnauthorized) GetPayload() interface{} {
+func (o *CronJobDeleteExpiredRefreshTokensUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobDeleteExpiredRefreshTokensForbidden describes a response with status code
 Forbidden
 */
 type CronJobDeleteExpiredRefreshTokensForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete expired refresh tokens forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobDeleteExpiredRefreshTokensForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/refresh-tokens][%d] cronJobDeleteExpiredRefreshTokensForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredRefreshTokensForbidden) GetPayload() interface{} {
+func (o *CronJobDeleteExpiredRefreshTokensForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobDeleteExpiredRefreshTokensNotFound describes a response with status code 
 Not Found
 */
 type CronJobDeleteExpiredRefreshTokensNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete expired refresh tokens not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobDeleteExpiredRefreshTokensNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/refresh-tokens][%d] cronJobDeleteExpiredRefreshTokensNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredRefreshTokensNotFound) GetPayload() interface{} {
+func (o *CronJobDeleteExpiredRefreshTokensNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

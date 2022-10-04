@@ -199,7 +199,7 @@ UsersToggleNotificationModeUnauthorized describes a response with status code 40
 Unauthorized
 */
 type UsersToggleNotificationModeUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users toggle notification mode unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *UsersToggleNotificationModeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersToggleNotificationModeUnauthorized) GetPayload() interface{} {
+func (o *UsersToggleNotificationModeUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ UsersToggleNotificationModeForbidden describes a response with status code 403, 
 Forbidden
 */
 type UsersToggleNotificationModeForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users toggle notification mode forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *UsersToggleNotificationModeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersToggleNotificationModeForbidden) GetPayload() interface{} {
+func (o *UsersToggleNotificationModeForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ UsersToggleNotificationModeNotFound describes a response with status code 404, w
 Not Found
 */
 type UsersToggleNotificationModeNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users toggle notification mode not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *UsersToggleNotificationModeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglenotificationmode][%d] usersToggleNotificationModeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersToggleNotificationModeNotFound) GetPayload() interface{} {
+func (o *UsersToggleNotificationModeNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

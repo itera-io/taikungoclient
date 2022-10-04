@@ -201,7 +201,7 @@ CloudCredentialsExceededQuotasUnauthorized describes a response with status code
 Unauthorized
 */
 type CloudCredentialsExceededQuotasUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials exceeded quotas unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *CloudCredentialsExceededQuotasUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsExceededQuotasUnauthorized) GetPayload() interface{} {
+func (o *CloudCredentialsExceededQuotasUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ CloudCredentialsExceededQuotasForbidden describes a response with status code 40
 Forbidden
 */
 type CloudCredentialsExceededQuotasForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials exceeded quotas forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *CloudCredentialsExceededQuotasForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsExceededQuotasForbidden) GetPayload() interface{} {
+func (o *CloudCredentialsExceededQuotasForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ CloudCredentialsExceededQuotasNotFound describes a response with status code 404
 Not Found
 */
 type CloudCredentialsExceededQuotasNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials exceeded quotas not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *CloudCredentialsExceededQuotasNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/exceeded-quotas/{organizationId}][%d] cloudCredentialsExceededQuotasNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsExceededQuotasNotFound) GetPayload() interface{} {
+func (o *CloudCredentialsExceededQuotasNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

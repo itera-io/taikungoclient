@@ -199,7 +199,7 @@ CronJobFetchOrganizationDetailsUnauthorized describes a response with status cod
 Unauthorized
 */
 type CronJobFetchOrganizationDetailsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job fetch organization details unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobFetchOrganizationDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobFetchOrganizationDetailsUnauthorized) GetPayload() interface{} {
+func (o *CronJobFetchOrganizationDetailsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobFetchOrganizationDetailsForbidden describes a response with status code 4
 Forbidden
 */
 type CronJobFetchOrganizationDetailsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job fetch organization details forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobFetchOrganizationDetailsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobFetchOrganizationDetailsForbidden) GetPayload() interface{} {
+func (o *CronJobFetchOrganizationDetailsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobFetchOrganizationDetailsNotFound describes a response with status code 40
 Not Found
 */
 type CronJobFetchOrganizationDetailsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job fetch organization details not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobFetchOrganizationDetailsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/fetch-organization-details][%d] cronJobFetchOrganizationDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobFetchOrganizationDetailsNotFound) GetPayload() interface{} {
+func (o *CronJobFetchOrganizationDetailsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

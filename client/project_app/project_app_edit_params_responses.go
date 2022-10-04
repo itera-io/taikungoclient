@@ -199,7 +199,7 @@ ProjectAppEditParamsUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type ProjectAppEditParamsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project app edit params unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ProjectAppEditParamsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppEditParamsUnauthorized) GetPayload() interface{} {
+func (o *ProjectAppEditParamsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ProjectAppEditParamsForbidden describes a response with status code 403, with de
 Forbidden
 */
 type ProjectAppEditParamsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project app edit params forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ProjectAppEditParamsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppEditParamsForbidden) GetPayload() interface{} {
+func (o *ProjectAppEditParamsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ProjectAppEditParamsNotFound describes a response with status code 404, with def
 Not Found
 */
 type ProjectAppEditParamsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project app edit params not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ProjectAppEditParamsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/edit-params][%d] projectAppEditParamsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppEditParamsNotFound) GetPayload() interface{} {
+func (o *ProjectAppEditParamsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

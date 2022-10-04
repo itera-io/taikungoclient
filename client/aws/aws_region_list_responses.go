@@ -199,7 +199,7 @@ AwsRegionListUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type AwsRegionListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws region list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AwsRegionListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsRegionListUnauthorized) GetPayload() interface{} {
+func (o *AwsRegionListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AwsRegionListForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type AwsRegionListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws region list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AwsRegionListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsRegionListForbidden) GetPayload() interface{} {
+func (o *AwsRegionListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AwsRegionListNotFound describes a response with status code 404, with default he
 Not Found
 */
 type AwsRegionListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this aws region list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AwsRegionListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsRegionListNotFound) GetPayload() interface{} {
+func (o *AwsRegionListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ PrometheusGroupedListUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type PrometheusGroupedListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus grouped list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PrometheusGroupedListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusGroupedListUnauthorized) GetPayload() interface{} {
+func (o *PrometheusGroupedListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PrometheusGroupedListForbidden describes a response with status code 403, with d
 Forbidden
 */
 type PrometheusGroupedListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus grouped list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PrometheusGroupedListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusGroupedListForbidden) GetPayload() interface{} {
+func (o *PrometheusGroupedListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PrometheusGroupedListNotFound describes a response with status code 404, with de
 Not Found
 */
 type PrometheusGroupedListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus grouped list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PrometheusGroupedListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusGroupedListNotFound) GetPayload() interface{} {
+func (o *PrometheusGroupedListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

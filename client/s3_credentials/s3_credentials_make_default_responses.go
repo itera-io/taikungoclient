@@ -199,7 +199,7 @@ S3CredentialsMakeDefaultUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type S3CredentialsMakeDefaultUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this s3 credentials make default unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *S3CredentialsMakeDefaultUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *S3CredentialsMakeDefaultUnauthorized) GetPayload() interface{} {
+func (o *S3CredentialsMakeDefaultUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ S3CredentialsMakeDefaultForbidden describes a response with status code 403, wit
 Forbidden
 */
 type S3CredentialsMakeDefaultForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this s3 credentials make default forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *S3CredentialsMakeDefaultForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultForbidden  %+v", 403, o.Payload)
 }
 
-func (o *S3CredentialsMakeDefaultForbidden) GetPayload() interface{} {
+func (o *S3CredentialsMakeDefaultForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ S3CredentialsMakeDefaultNotFound describes a response with status code 404, with
 Not Found
 */
 type S3CredentialsMakeDefaultNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this s3 credentials make default not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *S3CredentialsMakeDefaultNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
 }
 
-func (o *S3CredentialsMakeDefaultNotFound) GetPayload() interface{} {
+func (o *S3CredentialsMakeDefaultNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

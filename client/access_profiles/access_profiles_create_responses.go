@@ -201,7 +201,7 @@ AccessProfilesCreateUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type AccessProfilesCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *AccessProfilesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AccessProfilesCreateUnauthorized) GetPayload() interface{} {
+func (o *AccessProfilesCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ AccessProfilesCreateForbidden describes a response with status code 403, with de
 Forbidden
 */
 type AccessProfilesCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *AccessProfilesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AccessProfilesCreateForbidden) GetPayload() interface{} {
+func (o *AccessProfilesCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ AccessProfilesCreateNotFound describes a response with status code 404, with def
 Not Found
 */
 type AccessProfilesCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this access profiles create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *AccessProfilesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AccessProfilesCreateNotFound) GetPayload() interface{} {
+func (o *AccessProfilesCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

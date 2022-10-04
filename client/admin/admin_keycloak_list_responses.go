@@ -201,7 +201,7 @@ AdminKeycloakListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type AdminKeycloakListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin keycloak list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *AdminKeycloakListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminKeycloakListUnauthorized) GetPayload() interface{} {
+func (o *AdminKeycloakListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ AdminKeycloakListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type AdminKeycloakListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin keycloak list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *AdminKeycloakListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminKeycloakListForbidden) GetPayload() interface{} {
+func (o *AdminKeycloakListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ AdminKeycloakListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type AdminKeycloakListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin keycloak list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *AdminKeycloakListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminKeycloakListNotFound) GetPayload() interface{} {
+func (o *AdminKeycloakListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ CronJobDeleteExpiredAlertsUnauthorized describes a response with status code 401
 Unauthorized
 */
 type CronJobDeleteExpiredAlertsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete expired alerts unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobDeleteExpiredAlertsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredAlertsUnauthorized) GetPayload() interface{} {
+func (o *CronJobDeleteExpiredAlertsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobDeleteExpiredAlertsForbidden describes a response with status code 403, w
 Forbidden
 */
 type CronJobDeleteExpiredAlertsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete expired alerts forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobDeleteExpiredAlertsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredAlertsForbidden) GetPayload() interface{} {
+func (o *CronJobDeleteExpiredAlertsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobDeleteExpiredAlertsNotFound describes a response with status code 404, wi
 Not Found
 */
 type CronJobDeleteExpiredAlertsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job delete expired alerts not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobDeleteExpiredAlertsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/alerts][%d] cronJobDeleteExpiredAlertsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredAlertsNotFound) GetPayload() interface{} {
+func (o *CronJobDeleteExpiredAlertsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

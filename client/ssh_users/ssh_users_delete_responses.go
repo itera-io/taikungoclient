@@ -199,7 +199,7 @@ SSHUsersDeleteUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type SSHUsersDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ssh users delete unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *SSHUsersDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SSHUsersDeleteUnauthorized) GetPayload() interface{} {
+func (o *SSHUsersDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ SSHUsersDeleteForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type SSHUsersDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ssh users delete forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *SSHUsersDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SSHUsersDeleteForbidden) GetPayload() interface{} {
+func (o *SSHUsersDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ SSHUsersDeleteNotFound describes a response with status code 404, with default h
 Not Found
 */
 type SSHUsersDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ssh users delete not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *SSHUsersDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SshUsers/delete][%d] sshUsersDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SSHUsersDeleteNotFound) GetPayload() interface{} {
+func (o *SSHUsersDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

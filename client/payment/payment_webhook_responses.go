@@ -199,7 +199,7 @@ PaymentWebhookUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type PaymentWebhookUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment webhook unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PaymentWebhookUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentWebhookUnauthorized) GetPayload() interface{} {
+func (o *PaymentWebhookUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PaymentWebhookForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type PaymentWebhookForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment webhook forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PaymentWebhookForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentWebhookForbidden) GetPayload() interface{} {
+func (o *PaymentWebhookForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PaymentWebhookNotFound describes a response with status code 404, with default h
 Not Found
 */
 type PaymentWebhookNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment webhook not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PaymentWebhookNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentWebhookNotFound) GetPayload() interface{} {
+func (o *PaymentWebhookNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

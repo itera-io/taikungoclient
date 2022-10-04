@@ -201,7 +201,7 @@ CommonGetEnumValuesUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type CommonGetEnumValuesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this common get enum values unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *CommonGetEnumValuesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CommonGetEnumValuesUnauthorized) GetPayload() interface{} {
+func (o *CommonGetEnumValuesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ CommonGetEnumValuesForbidden describes a response with status code 403, with def
 Forbidden
 */
 type CommonGetEnumValuesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this common get enum values forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *CommonGetEnumValuesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CommonGetEnumValuesForbidden) GetPayload() interface{} {
+func (o *CommonGetEnumValuesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ CommonGetEnumValuesNotFound describes a response with status code 404, with defa
 Not Found
 */
 type CommonGetEnumValuesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this common get enum values not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *CommonGetEnumValuesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/enumvalues][%d] commonGetEnumValuesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CommonGetEnumValuesNotFound) GetPayload() interface{} {
+func (o *CommonGetEnumValuesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

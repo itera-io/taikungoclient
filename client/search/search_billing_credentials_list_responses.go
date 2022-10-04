@@ -201,7 +201,7 @@ SearchBillingCredentialsListUnauthorized describes a response with status code 4
 Unauthorized
 */
 type SearchBillingCredentialsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search billing credentials list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SearchBillingCredentialsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchBillingCredentialsListUnauthorized) GetPayload() interface{} {
+func (o *SearchBillingCredentialsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SearchBillingCredentialsListForbidden describes a response with status code 403,
 Forbidden
 */
 type SearchBillingCredentialsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search billing credentials list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SearchBillingCredentialsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchBillingCredentialsListForbidden) GetPayload() interface{} {
+func (o *SearchBillingCredentialsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SearchBillingCredentialsListNotFound describes a response with status code 404, 
 Not Found
 */
 type SearchBillingCredentialsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this search billing credentials list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SearchBillingCredentialsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/billing-credentials][%d] searchBillingCredentialsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchBillingCredentialsListNotFound) GetPayload() interface{} {
+func (o *SearchBillingCredentialsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

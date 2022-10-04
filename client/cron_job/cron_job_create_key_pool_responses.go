@@ -199,7 +199,7 @@ CronJobCreateKeyPoolUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type CronJobCreateKeyPoolUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job create key pool unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CronJobCreateKeyPoolUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobCreateKeyPoolUnauthorized) GetPayload() interface{} {
+func (o *CronJobCreateKeyPoolUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CronJobCreateKeyPoolForbidden describes a response with status code 403, with de
 Forbidden
 */
 type CronJobCreateKeyPoolForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job create key pool forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CronJobCreateKeyPoolForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobCreateKeyPoolForbidden) GetPayload() interface{} {
+func (o *CronJobCreateKeyPoolForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CronJobCreateKeyPoolNotFound describes a response with status code 404, with def
 Not Found
 */
 type CronJobCreateKeyPoolNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cron job create key pool not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CronJobCreateKeyPoolNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobCreateKeyPoolNotFound) GetPayload() interface{} {
+func (o *CronJobCreateKeyPoolNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ UsersConfirmEmailUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type UsersConfirmEmailUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users confirm email unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *UsersConfirmEmailUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersConfirmEmailUnauthorized) GetPayload() interface{} {
+func (o *UsersConfirmEmailUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ UsersConfirmEmailForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type UsersConfirmEmailForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users confirm email forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *UsersConfirmEmailForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersConfirmEmailForbidden) GetPayload() interface{} {
+func (o *UsersConfirmEmailForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ UsersConfirmEmailNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type UsersConfirmEmailNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users confirm email not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *UsersConfirmEmailNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/confirmemail][%d] usersConfirmEmailNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersConfirmEmailNotFound) GetPayload() interface{} {
+func (o *UsersConfirmEmailNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

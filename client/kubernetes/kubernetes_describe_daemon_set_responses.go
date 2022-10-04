@@ -199,7 +199,7 @@ KubernetesDescribeDaemonSetUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesDescribeDaemonSetUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe daemon set unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesDescribeDaemonSetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeDaemonSetUnauthorized) GetPayload() interface{} {
+func (o *KubernetesDescribeDaemonSetUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesDescribeDaemonSetForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesDescribeDaemonSetForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe daemon set forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesDescribeDaemonSetForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeDaemonSetForbidden) GetPayload() interface{} {
+func (o *KubernetesDescribeDaemonSetForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesDescribeDaemonSetNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesDescribeDaemonSetNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes describe daemon set not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesDescribeDaemonSetNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeDaemonSetNotFound) GetPayload() interface{} {
+func (o *KubernetesDescribeDaemonSetNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

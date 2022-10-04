@@ -201,7 +201,7 @@ PartnerPartnerInfoRegistrationUnauthorized describes a response with status code
 Unauthorized
 */
 type PartnerPartnerInfoRegistrationUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner partner info registration unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *PartnerPartnerInfoRegistrationUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerPartnerInfoRegistrationUnauthorized) GetPayload() interface{} {
+func (o *PartnerPartnerInfoRegistrationUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ PartnerPartnerInfoRegistrationForbidden describes a response with status code 40
 Forbidden
 */
 type PartnerPartnerInfoRegistrationForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner partner info registration forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *PartnerPartnerInfoRegistrationForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerPartnerInfoRegistrationForbidden) GetPayload() interface{} {
+func (o *PartnerPartnerInfoRegistrationForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ PartnerPartnerInfoRegistrationNotFound describes a response with status code 404
 Not Found
 */
 type PartnerPartnerInfoRegistrationNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner partner info registration not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *PartnerPartnerInfoRegistrationNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerPartnerInfoRegistrationNotFound) GetPayload() interface{} {
+func (o *PartnerPartnerInfoRegistrationNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

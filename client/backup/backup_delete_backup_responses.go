@@ -199,7 +199,7 @@ BackupDeleteBackupUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type BackupDeleteBackupUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup delete backup unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *BackupDeleteBackupUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/backup][%d] backupDeleteBackupUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupDeleteBackupUnauthorized) GetPayload() interface{} {
+func (o *BackupDeleteBackupUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ BackupDeleteBackupForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type BackupDeleteBackupForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup delete backup forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *BackupDeleteBackupForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/backup][%d] backupDeleteBackupForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupDeleteBackupForbidden) GetPayload() interface{} {
+func (o *BackupDeleteBackupForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ BackupDeleteBackupNotFound describes a response with status code 404, with defau
 Not Found
 */
 type BackupDeleteBackupNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup delete backup not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *BackupDeleteBackupNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/delete/backup][%d] backupDeleteBackupNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupDeleteBackupNotFound) GetPayload() interface{} {
+func (o *BackupDeleteBackupNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

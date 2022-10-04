@@ -201,7 +201,7 @@ UserTokenCreateUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type UserTokenCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user token create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *UserTokenCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserTokenCreateUnauthorized) GetPayload() interface{} {
+func (o *UserTokenCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ UserTokenCreateForbidden describes a response with status code 403, with default
 Forbidden
 */
 type UserTokenCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user token create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *UserTokenCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserTokenCreateForbidden) GetPayload() interface{} {
+func (o *UserTokenCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ UserTokenCreateNotFound describes a response with status code 404, with default 
 Not Found
 */
 type UserTokenCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user token create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *UserTokenCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/create][%d] userTokenCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserTokenCreateNotFound) GetPayload() interface{} {
+func (o *UserTokenCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

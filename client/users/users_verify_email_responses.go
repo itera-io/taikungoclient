@@ -199,7 +199,7 @@ UsersVerifyEmailUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type UsersVerifyEmailUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users verify email unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *UsersVerifyEmailUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersVerifyEmailUnauthorized) GetPayload() interface{} {
+func (o *UsersVerifyEmailUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ UsersVerifyEmailForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type UsersVerifyEmailForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users verify email forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *UsersVerifyEmailForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersVerifyEmailForbidden) GetPayload() interface{} {
+func (o *UsersVerifyEmailForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ UsersVerifyEmailNotFound describes a response with status code 404, with default
 Not Found
 */
 type UsersVerifyEmailNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this users verify email not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *UsersVerifyEmailNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/verifyemail][%d] usersVerifyEmailNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersVerifyEmailNotFound) GetPayload() interface{} {
+func (o *UsersVerifyEmailNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

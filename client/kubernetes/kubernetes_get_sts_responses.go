@@ -201,7 +201,7 @@ KubernetesGetStsUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type KubernetesGetStsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get sts unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubernetesGetStsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/sts][%d] kubernetesGetStsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetStsUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetStsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubernetesGetStsForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type KubernetesGetStsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get sts forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubernetesGetStsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/sts][%d] kubernetesGetStsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetStsForbidden) GetPayload() interface{} {
+func (o *KubernetesGetStsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubernetesGetStsNotFound describes a response with status code 404, with default
 Not Found
 */
 type KubernetesGetStsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get sts not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubernetesGetStsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/sts][%d] kubernetesGetStsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetStsNotFound) GetPayload() interface{} {
+func (o *KubernetesGetStsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

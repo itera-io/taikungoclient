@@ -199,7 +199,7 @@ CatalogCatalogAppParamsDetailsUnauthorized describes a response with status code
 Unauthorized
 */
 type CatalogCatalogAppParamsDetailsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog catalog app params details unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CatalogCatalogAppParamsDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogCatalogAppParamsDetailsUnauthorized) GetPayload() interface{} {
+func (o *CatalogCatalogAppParamsDetailsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CatalogCatalogAppParamsDetailsForbidden describes a response with status code 40
 Forbidden
 */
 type CatalogCatalogAppParamsDetailsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog catalog app params details forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CatalogCatalogAppParamsDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogCatalogAppParamsDetailsForbidden) GetPayload() interface{} {
+func (o *CatalogCatalogAppParamsDetailsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CatalogCatalogAppParamsDetailsNotFound describes a response with status code 404
 Not Found
 */
 type CatalogCatalogAppParamsDetailsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this catalog catalog app params details not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CatalogCatalogAppParamsDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/catalog-app-params/{id}][%d] catalogCatalogAppParamsDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogCatalogAppParamsDetailsNotFound) GetPayload() interface{} {
+func (o *CatalogCatalogAppParamsDetailsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

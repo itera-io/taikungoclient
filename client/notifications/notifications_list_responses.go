@@ -201,7 +201,7 @@ NotificationsListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type NotificationsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this notifications list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *NotificationsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NotificationsListUnauthorized) GetPayload() interface{} {
+func (o *NotificationsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ NotificationsListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type NotificationsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this notifications list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *NotificationsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NotificationsListForbidden) GetPayload() interface{} {
+func (o *NotificationsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ NotificationsListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type NotificationsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this notifications list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *NotificationsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NotificationsListNotFound) GetPayload() interface{} {
+func (o *NotificationsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

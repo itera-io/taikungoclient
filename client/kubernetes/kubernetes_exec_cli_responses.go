@@ -199,7 +199,7 @@ KubernetesExecCliUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type KubernetesExecCliUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes exec cli unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesExecCliUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesExecCliUnauthorized) GetPayload() interface{} {
+func (o *KubernetesExecCliUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesExecCliForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type KubernetesExecCliForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes exec cli forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesExecCliForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesExecCliForbidden) GetPayload() interface{} {
+func (o *KubernetesExecCliForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesExecCliNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type KubernetesExecCliNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes exec cli not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesExecCliNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesExecCliNotFound) GetPayload() interface{} {
+func (o *KubernetesExecCliNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

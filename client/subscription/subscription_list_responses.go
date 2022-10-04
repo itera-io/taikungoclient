@@ -201,7 +201,7 @@ SubscriptionListUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type SubscriptionListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this subscription list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *SubscriptionListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription][%d] subscriptionListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SubscriptionListUnauthorized) GetPayload() interface{} {
+func (o *SubscriptionListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ SubscriptionListForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type SubscriptionListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this subscription list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *SubscriptionListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription][%d] subscriptionListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SubscriptionListForbidden) GetPayload() interface{} {
+func (o *SubscriptionListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ SubscriptionListNotFound describes a response with status code 404, with default
 Not Found
 */
 type SubscriptionListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this subscription list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *SubscriptionListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Subscription][%d] subscriptionListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SubscriptionListNotFound) GetPayload() interface{} {
+func (o *SubscriptionListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

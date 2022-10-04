@@ -256,7 +256,7 @@ AlertingIntegrationsDeleteUnauthorized describes a response with status code 401
 Unauthorized
 */
 type AlertingIntegrationsDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting integrations delete unauthorized response has a 2xx status code
@@ -292,7 +292,7 @@ func (o *AlertingIntegrationsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingIntegrationsDeleteUnauthorized) GetPayload() interface{} {
+func (o *AlertingIntegrationsDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -317,7 +317,7 @@ AlertingIntegrationsDeleteForbidden describes a response with status code 403, w
 Forbidden
 */
 type AlertingIntegrationsDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting integrations delete forbidden response has a 2xx status code
@@ -353,7 +353,7 @@ func (o *AlertingIntegrationsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingIntegrationsDeleteForbidden) GetPayload() interface{} {
+func (o *AlertingIntegrationsDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -378,7 +378,7 @@ AlertingIntegrationsDeleteNotFound describes a response with status code 404, wi
 Not Found
 */
 type AlertingIntegrationsDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting integrations delete not found response has a 2xx status code
@@ -414,7 +414,7 @@ func (o *AlertingIntegrationsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingIntegrationsDeleteNotFound) GetPayload() interface{} {
+func (o *AlertingIntegrationsDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

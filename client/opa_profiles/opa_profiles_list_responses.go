@@ -201,7 +201,7 @@ OpaProfilesListUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type OpaProfilesListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *OpaProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesListUnauthorized) GetPayload() interface{} {
+func (o *OpaProfilesListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ OpaProfilesListForbidden describes a response with status code 403, with default
 Forbidden
 */
 type OpaProfilesListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *OpaProfilesListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesListForbidden) GetPayload() interface{} {
+func (o *OpaProfilesListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ OpaProfilesListNotFound describes a response with status code 404, with default 
 Not Found
 */
 type OpaProfilesListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this opa profiles list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *OpaProfilesListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesListNotFound) GetPayload() interface{} {
+func (o *OpaProfilesListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

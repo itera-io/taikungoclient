@@ -201,7 +201,7 @@ BackupListAllBackupsUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type BackupListAllBackupsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup list all backups unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *BackupListAllBackupsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/backups/{projectId}][%d] backupListAllBackupsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupListAllBackupsUnauthorized) GetPayload() interface{} {
+func (o *BackupListAllBackupsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ BackupListAllBackupsForbidden describes a response with status code 403, with de
 Forbidden
 */
 type BackupListAllBackupsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup list all backups forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *BackupListAllBackupsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/backups/{projectId}][%d] backupListAllBackupsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupListAllBackupsForbidden) GetPayload() interface{} {
+func (o *BackupListAllBackupsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ BackupListAllBackupsNotFound describes a response with status code 404, with def
 Not Found
 */
 type BackupListAllBackupsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup list all backups not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *BackupListAllBackupsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/backups/{projectId}][%d] backupListAllBackupsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupListAllBackupsNotFound) GetPayload() interface{} {
+func (o *BackupListAllBackupsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

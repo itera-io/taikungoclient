@@ -201,7 +201,7 @@ BackupListAllRestoresUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type BackupListAllRestoresUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup list all restores unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *BackupListAllRestoresUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/restores/{projectId}][%d] backupListAllRestoresUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupListAllRestoresUnauthorized) GetPayload() interface{} {
+func (o *BackupListAllRestoresUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ BackupListAllRestoresForbidden describes a response with status code 403, with d
 Forbidden
 */
 type BackupListAllRestoresForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup list all restores forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *BackupListAllRestoresForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/restores/{projectId}][%d] backupListAllRestoresForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupListAllRestoresForbidden) GetPayload() interface{} {
+func (o *BackupListAllRestoresForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ BackupListAllRestoresNotFound describes a response with status code 404, with de
 Not Found
 */
 type BackupListAllRestoresNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this backup list all restores not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *BackupListAllRestoresNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/restores/{projectId}][%d] backupListAllRestoresNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupListAllRestoresNotFound) GetPayload() interface{} {
+func (o *BackupListAllRestoresNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

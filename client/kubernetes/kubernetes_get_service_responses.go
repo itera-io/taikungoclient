@@ -201,7 +201,7 @@ KubernetesGetServiceUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type KubernetesGetServiceUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get service unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *KubernetesGetServiceUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetServiceUnauthorized) GetPayload() interface{} {
+func (o *KubernetesGetServiceUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ KubernetesGetServiceForbidden describes a response with status code 403, with de
 Forbidden
 */
 type KubernetesGetServiceForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get service forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *KubernetesGetServiceForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetServiceForbidden) GetPayload() interface{} {
+func (o *KubernetesGetServiceForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ KubernetesGetServiceNotFound describes a response with status code 404, with def
 Not Found
 */
 type KubernetesGetServiceNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes get service not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *KubernetesGetServiceNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetServiceNotFound) GetPayload() interface{} {
+func (o *KubernetesGetServiceNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

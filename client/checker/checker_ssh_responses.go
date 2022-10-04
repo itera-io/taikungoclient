@@ -199,7 +199,7 @@ CheckerSSHUnauthorized describes a response with status code 401, with default h
 Unauthorized
 */
 type CheckerSSHUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker Ssh unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *CheckerSSHUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerSSHUnauthorized) GetPayload() interface{} {
+func (o *CheckerSSHUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ CheckerSSHForbidden describes a response with status code 403, with default head
 Forbidden
 */
 type CheckerSSHForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker Ssh forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *CheckerSSHForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerSSHForbidden) GetPayload() interface{} {
+func (o *CheckerSSHForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ CheckerSSHNotFound describes a response with status code 404, with default heade
 Not Found
 */
 type CheckerSSHNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this checker Ssh not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *CheckerSSHNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerSSHNotFound) GetPayload() interface{} {
+func (o *CheckerSSHNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

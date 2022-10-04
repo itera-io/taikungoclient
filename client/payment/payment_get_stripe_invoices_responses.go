@@ -201,7 +201,7 @@ PaymentGetStripeInvoicesUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type PaymentGetStripeInvoicesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment get stripe invoices unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *PaymentGetStripeInvoicesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentGetStripeInvoicesUnauthorized) GetPayload() interface{} {
+func (o *PaymentGetStripeInvoicesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ PaymentGetStripeInvoicesForbidden describes a response with status code 403, wit
 Forbidden
 */
 type PaymentGetStripeInvoicesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment get stripe invoices forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *PaymentGetStripeInvoicesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentGetStripeInvoicesForbidden) GetPayload() interface{} {
+func (o *PaymentGetStripeInvoicesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ PaymentGetStripeInvoicesNotFound describes a response with status code 404, with
 Not Found
 */
 type PaymentGetStripeInvoicesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this payment get stripe invoices not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *PaymentGetStripeInvoicesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Payment/stripeinvoices/{subscriptionId}][%d] paymentGetStripeInvoicesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentGetStripeInvoicesNotFound) GetPayload() interface{} {
+func (o *PaymentGetStripeInvoicesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

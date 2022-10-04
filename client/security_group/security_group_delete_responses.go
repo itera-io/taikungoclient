@@ -199,7 +199,7 @@ SecurityGroupDeleteUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type SecurityGroupDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this security group delete unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *SecurityGroupDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SecurityGroupDeleteUnauthorized) GetPayload() interface{} {
+func (o *SecurityGroupDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ SecurityGroupDeleteForbidden describes a response with status code 403, with def
 Forbidden
 */
 type SecurityGroupDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this security group delete forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *SecurityGroupDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SecurityGroupDeleteForbidden) GetPayload() interface{} {
+func (o *SecurityGroupDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ SecurityGroupDeleteNotFound describes a response with status code 404, with defa
 Not Found
 */
 type SecurityGroupDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this security group delete not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *SecurityGroupDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/delete][%d] securityGroupDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SecurityGroupDeleteNotFound) GetPayload() interface{} {
+func (o *SecurityGroupDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

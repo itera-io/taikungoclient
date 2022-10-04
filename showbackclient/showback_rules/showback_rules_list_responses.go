@@ -138,7 +138,7 @@ ShowbackRulesListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type ShowbackRulesListBadRequest struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback rules list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *ShowbackRulesListBadRequest) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackRules][%d] showbackRulesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackRulesListBadRequest) GetPayload() interface{} {
+func (o *ShowbackRulesListBadRequest) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ ShowbackRulesListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type ShowbackRulesListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback rules list unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ShowbackRulesListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackRules][%d] showbackRulesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackRulesListUnauthorized) GetPayload() interface{} {
+func (o *ShowbackRulesListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ShowbackRulesListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type ShowbackRulesListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback rules list forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ShowbackRulesListForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackRules][%d] showbackRulesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackRulesListForbidden) GetPayload() interface{} {
+func (o *ShowbackRulesListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ShowbackRulesListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type ShowbackRulesListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this showback rules list not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ShowbackRulesListNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackRules][%d] showbackRulesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackRulesListNotFound) GetPayload() interface{} {
+func (o *ShowbackRulesListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

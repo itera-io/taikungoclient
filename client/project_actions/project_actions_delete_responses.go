@@ -246,7 +246,7 @@ ProjectActionsDeleteUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type ProjectActionsDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project actions delete unauthorized response has a 2xx status code
@@ -282,7 +282,7 @@ func (o *ProjectActionsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectActionsDeleteUnauthorized) GetPayload() interface{} {
+func (o *ProjectActionsDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -307,7 +307,7 @@ ProjectActionsDeleteForbidden describes a response with status code 403, with de
 Forbidden
 */
 type ProjectActionsDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project actions delete forbidden response has a 2xx status code
@@ -343,7 +343,7 @@ func (o *ProjectActionsDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectActionsDeleteForbidden) GetPayload() interface{} {
+func (o *ProjectActionsDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -368,7 +368,7 @@ ProjectActionsDeleteNotFound describes a response with status code 404, with def
 Not Found
 */
 type ProjectActionsDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project actions delete not found response has a 2xx status code
@@ -404,7 +404,7 @@ func (o *ProjectActionsDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectActionsDeleteNotFound) GetPayload() interface{} {
+func (o *ProjectActionsDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

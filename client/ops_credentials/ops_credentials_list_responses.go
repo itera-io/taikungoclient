@@ -201,7 +201,7 @@ OpsCredentialsListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type OpsCredentialsListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ops credentials list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *OpsCredentialsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpsCredentialsListUnauthorized) GetPayload() interface{} {
+func (o *OpsCredentialsListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ OpsCredentialsListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type OpsCredentialsListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ops credentials list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *OpsCredentialsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpsCredentialsListForbidden) GetPayload() interface{} {
+func (o *OpsCredentialsListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ OpsCredentialsListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type OpsCredentialsListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this ops credentials list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *OpsCredentialsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpsCredentials/list][%d] opsCredentialsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpsCredentialsListNotFound) GetPayload() interface{} {
+func (o *OpsCredentialsListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

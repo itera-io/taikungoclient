@@ -199,7 +199,7 @@ SecurityGroupEditUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type SecurityGroupEditUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this security group edit unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *SecurityGroupEditUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SecurityGroupEditUnauthorized) GetPayload() interface{} {
+func (o *SecurityGroupEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ SecurityGroupEditForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type SecurityGroupEditForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this security group edit forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *SecurityGroupEditForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SecurityGroupEditForbidden) GetPayload() interface{} {
+func (o *SecurityGroupEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ SecurityGroupEditNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type SecurityGroupEditNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this security group edit not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *SecurityGroupEditNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/SecurityGroup/edit][%d] securityGroupEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SecurityGroupEditNotFound) GetPayload() interface{} {
+func (o *SecurityGroupEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

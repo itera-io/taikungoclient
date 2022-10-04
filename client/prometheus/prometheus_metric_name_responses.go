@@ -199,7 +199,7 @@ PrometheusMetricNameUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type PrometheusMetricNameUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus metric name unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PrometheusMetricNameUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusMetricNameUnauthorized) GetPayload() interface{} {
+func (o *PrometheusMetricNameUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PrometheusMetricNameForbidden describes a response with status code 403, with de
 Forbidden
 */
 type PrometheusMetricNameForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus metric name forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PrometheusMetricNameForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusMetricNameForbidden) GetPayload() interface{} {
+func (o *PrometheusMetricNameForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PrometheusMetricNameNotFound describes a response with status code 404, with def
 Not Found
 */
 type PrometheusMetricNameNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus metric name not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PrometheusMetricNameNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/metricname][%d] prometheusMetricNameNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusMetricNameNotFound) GetPayload() interface{} {
+func (o *PrometheusMetricNameNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

@@ -199,7 +199,7 @@ AlertingProfilesAttachUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type AlertingProfilesAttachUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles attach unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AlertingProfilesAttachUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesAttachUnauthorized) GetPayload() interface{} {
+func (o *AlertingProfilesAttachUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AlertingProfilesAttachForbidden describes a response with status code 403, with 
 Forbidden
 */
 type AlertingProfilesAttachForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles attach forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AlertingProfilesAttachForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesAttachForbidden) GetPayload() interface{} {
+func (o *AlertingProfilesAttachForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AlertingProfilesAttachNotFound describes a response with status code 404, with d
 Not Found
 */
 type AlertingProfilesAttachNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this alerting profiles attach not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AlertingProfilesAttachNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesAttachNotFound) GetPayload() interface{} {
+func (o *AlertingProfilesAttachNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

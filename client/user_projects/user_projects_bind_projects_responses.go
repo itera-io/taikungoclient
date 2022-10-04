@@ -199,7 +199,7 @@ UserProjectsBindProjectsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type UserProjectsBindProjectsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user projects bind projects unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *UserProjectsBindProjectsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserProjectsBindProjectsUnauthorized) GetPayload() interface{} {
+func (o *UserProjectsBindProjectsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ UserProjectsBindProjectsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type UserProjectsBindProjectsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user projects bind projects forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *UserProjectsBindProjectsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserProjectsBindProjectsForbidden) GetPayload() interface{} {
+func (o *UserProjectsBindProjectsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ UserProjectsBindProjectsNotFound describes a response with status code 404, with
 Not Found
 */
 type UserProjectsBindProjectsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this user projects bind projects not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *UserProjectsBindProjectsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindprojects][%d] userProjectsBindProjectsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserProjectsBindProjectsNotFound) GetPayload() interface{} {
+func (o *UserProjectsBindProjectsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

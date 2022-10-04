@@ -201,7 +201,7 @@ PrometheusBillingListUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type PrometheusBillingListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus billing list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *PrometheusBillingListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusBillingListUnauthorized) GetPayload() interface{} {
+func (o *PrometheusBillingListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ PrometheusBillingListForbidden describes a response with status code 403, with d
 Forbidden
 */
 type PrometheusBillingListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus billing list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *PrometheusBillingListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusBillingListForbidden) GetPayload() interface{} {
+func (o *PrometheusBillingListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ PrometheusBillingListNotFound describes a response with status code 404, with de
 Not Found
 */
 type PrometheusBillingListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this prometheus billing list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *PrometheusBillingListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusBillingListNotFound) GetPayload() interface{} {
+func (o *PrometheusBillingListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

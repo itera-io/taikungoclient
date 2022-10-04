@@ -201,7 +201,7 @@ ProjectAppListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type ProjectAppListUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project app list unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *ProjectAppListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/list][%d] projectAppListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppListUnauthorized) GetPayload() interface{} {
+func (o *ProjectAppListUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ ProjectAppListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type ProjectAppListForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project app list forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *ProjectAppListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/list][%d] projectAppListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppListForbidden) GetPayload() interface{} {
+func (o *ProjectAppListForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ ProjectAppListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type ProjectAppListNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this project app list not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *ProjectAppListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectApp/list][%d] projectAppListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppListNotFound) GetPayload() interface{} {
+func (o *ProjectAppListNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

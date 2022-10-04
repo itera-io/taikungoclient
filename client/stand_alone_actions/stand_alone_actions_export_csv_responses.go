@@ -189,7 +189,7 @@ StandAloneActionsExportCsvUnauthorized describes a response with status code 401
 Unauthorized
 */
 type StandAloneActionsExportCsvUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions export csv unauthorized response has a 2xx status code
@@ -225,7 +225,7 @@ func (o *StandAloneActionsExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsExportCsvUnauthorized) GetPayload() interface{} {
+func (o *StandAloneActionsExportCsvUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -250,7 +250,7 @@ StandAloneActionsExportCsvForbidden describes a response with status code 403, w
 Forbidden
 */
 type StandAloneActionsExportCsvForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions export csv forbidden response has a 2xx status code
@@ -286,7 +286,7 @@ func (o *StandAloneActionsExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsExportCsvForbidden) GetPayload() interface{} {
+func (o *StandAloneActionsExportCsvForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -311,7 +311,7 @@ StandAloneActionsExportCsvNotFound describes a response with status code 404, wi
 Not Found
 */
 type StandAloneActionsExportCsvNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this stand alone actions export csv not found response has a 2xx status code
@@ -347,7 +347,7 @@ func (o *StandAloneActionsExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsExportCsvNotFound) GetPayload() interface{} {
+func (o *StandAloneActionsExportCsvNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

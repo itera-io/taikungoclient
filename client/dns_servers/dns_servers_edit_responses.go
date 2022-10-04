@@ -199,7 +199,7 @@ DNSServersEditUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type DNSServersEditUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this dns servers edit unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *DNSServersEditUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *DNSServersEditUnauthorized) GetPayload() interface{} {
+func (o *DNSServersEditUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ DNSServersEditForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type DNSServersEditForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this dns servers edit forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *DNSServersEditForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *DNSServersEditForbidden) GetPayload() interface{} {
+func (o *DNSServersEditForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ DNSServersEditNotFound describes a response with status code 404, with default h
 Not Found
 */
 type DNSServersEditNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this dns servers edit not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *DNSServersEditNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/DnsServers/edit/{id}][%d] dnsServersEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *DNSServersEditNotFound) GetPayload() interface{} {
+func (o *DNSServersEditNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

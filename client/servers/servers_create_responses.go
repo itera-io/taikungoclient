@@ -201,7 +201,7 @@ ServersCreateUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type ServersCreateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers create unauthorized response has a 2xx status code
@@ -237,7 +237,7 @@ func (o *ServersCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers][%d] serversCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersCreateUnauthorized) GetPayload() interface{} {
+func (o *ServersCreateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -262,7 +262,7 @@ ServersCreateForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type ServersCreateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers create forbidden response has a 2xx status code
@@ -298,7 +298,7 @@ func (o *ServersCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers][%d] serversCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersCreateForbidden) GetPayload() interface{} {
+func (o *ServersCreateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -323,7 +323,7 @@ ServersCreateNotFound describes a response with status code 404, with default he
 Not Found
 */
 type ServersCreateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this servers create not found response has a 2xx status code
@@ -359,7 +359,7 @@ func (o *ServersCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers][%d] serversCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersCreateNotFound) GetPayload() interface{} {
+func (o *ServersCreateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

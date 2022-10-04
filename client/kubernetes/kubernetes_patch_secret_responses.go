@@ -199,7 +199,7 @@ KubernetesPatchSecretUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesPatchSecretUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch secret unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *KubernetesPatchSecretUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchSecretUnauthorized) GetPayload() interface{} {
+func (o *KubernetesPatchSecretUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ KubernetesPatchSecretForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesPatchSecretForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch secret forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *KubernetesPatchSecretForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchSecretForbidden) GetPayload() interface{} {
+func (o *KubernetesPatchSecretForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ KubernetesPatchSecretNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesPatchSecretNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this kubernetes patch secret not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *KubernetesPatchSecretNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchSecretNotFound) GetPayload() interface{} {
+func (o *KubernetesPatchSecretNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

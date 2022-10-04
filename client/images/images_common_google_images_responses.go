@@ -199,7 +199,7 @@ ImagesCommonGoogleImagesUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type ImagesCommonGoogleImagesUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images common google images unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *ImagesCommonGoogleImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/common/{cloudId}][%d] imagesCommonGoogleImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesCommonGoogleImagesUnauthorized) GetPayload() interface{} {
+func (o *ImagesCommonGoogleImagesUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ ImagesCommonGoogleImagesForbidden describes a response with status code 403, wit
 Forbidden
 */
 type ImagesCommonGoogleImagesForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images common google images forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *ImagesCommonGoogleImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/common/{cloudId}][%d] imagesCommonGoogleImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesCommonGoogleImagesForbidden) GetPayload() interface{} {
+func (o *ImagesCommonGoogleImagesForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ ImagesCommonGoogleImagesNotFound describes a response with status code 404, with
 Not Found
 */
 type ImagesCommonGoogleImagesNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this images common google images not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *ImagesCommonGoogleImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/google/common/{cloudId}][%d] imagesCommonGoogleImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesCommonGoogleImagesNotFound) GetPayload() interface{} {
+func (o *ImagesCommonGoogleImagesNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

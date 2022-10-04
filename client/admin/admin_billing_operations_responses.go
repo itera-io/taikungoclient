@@ -199,7 +199,7 @@ AdminBillingOperationsUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type AdminBillingOperationsUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin billing operations unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *AdminBillingOperationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminBillingOperationsUnauthorized) GetPayload() interface{} {
+func (o *AdminBillingOperationsUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ AdminBillingOperationsForbidden describes a response with status code 403, with 
 Forbidden
 */
 type AdminBillingOperationsForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin billing operations forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *AdminBillingOperationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminBillingOperationsForbidden) GetPayload() interface{} {
+func (o *AdminBillingOperationsForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ AdminBillingOperationsNotFound describes a response with status code 404, with d
 Not Found
 */
 type AdminBillingOperationsNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this admin billing operations not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *AdminBillingOperationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/cloudcredentials/billing][%d] adminBillingOperationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminBillingOperationsNotFound) GetPayload() interface{} {
+func (o *AdminBillingOperationsNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

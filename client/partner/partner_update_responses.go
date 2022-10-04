@@ -199,7 +199,7 @@ PartnerUpdateUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type PartnerUpdateUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner update unauthorized response has a 2xx status code
@@ -235,7 +235,7 @@ func (o *PartnerUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerUpdateUnauthorized) GetPayload() interface{} {
+func (o *PartnerUpdateUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -260,7 +260,7 @@ PartnerUpdateForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type PartnerUpdateForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner update forbidden response has a 2xx status code
@@ -296,7 +296,7 @@ func (o *PartnerUpdateForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerUpdateForbidden) GetPayload() interface{} {
+func (o *PartnerUpdateForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -321,7 +321,7 @@ PartnerUpdateNotFound describes a response with status code 404, with default he
 Not Found
 */
 type PartnerUpdateNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this partner update not found response has a 2xx status code
@@ -357,7 +357,7 @@ func (o *PartnerUpdateNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Partner/update/{id}][%d] partnerUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerUpdateNotFound) GetPayload() interface{} {
+func (o *PartnerUpdateNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 

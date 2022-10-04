@@ -256,7 +256,7 @@ CloudCredentialsDeleteUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type CloudCredentialsDeleteUnauthorized struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials delete unauthorized response has a 2xx status code
@@ -292,7 +292,7 @@ func (o *CloudCredentialsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsDeleteUnauthorized) GetPayload() interface{} {
+func (o *CloudCredentialsDeleteUnauthorized) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -317,7 +317,7 @@ CloudCredentialsDeleteForbidden describes a response with status code 403, with 
 Forbidden
 */
 type CloudCredentialsDeleteForbidden struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials delete forbidden response has a 2xx status code
@@ -353,7 +353,7 @@ func (o *CloudCredentialsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsDeleteForbidden) GetPayload() interface{} {
+func (o *CloudCredentialsDeleteForbidden) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
@@ -378,7 +378,7 @@ CloudCredentialsDeleteNotFound describes a response with status code 404, with d
 Not Found
 */
 type CloudCredentialsDeleteNotFound struct {
-	Payload interface{}
+	Payload []*models.CustomProblemDetailsMg
 }
 
 // IsSuccess returns true when this cloud credentials delete not found response has a 2xx status code
@@ -414,7 +414,7 @@ func (o *CloudCredentialsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/CloudCredentials/{cloudId}][%d] cloudCredentialsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsDeleteNotFound) GetPayload() interface{} {
+func (o *CloudCredentialsDeleteNotFound) GetPayload() []*models.CustomProblemDetailsMg {
 	return o.Payload
 }
 
