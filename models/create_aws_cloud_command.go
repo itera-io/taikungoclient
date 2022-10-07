@@ -20,14 +20,14 @@ type CreateAwsCloudCommand struct {
 	// aws access key Id
 	AwsAccessKeyID string `json:"awsAccessKeyId,omitempty"`
 
-	// aws availability zone
-	AwsAvailabilityZone string `json:"awsAvailabilityZone,omitempty"`
-
 	// aws region
 	AwsRegion string `json:"awsRegion,omitempty"`
 
 	// aws secret access key
 	AwsSecretAccessKey string `json:"awsSecretAccessKey,omitempty"`
+
+	// az count
+	AzCount int32 `json:"azCount,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`
