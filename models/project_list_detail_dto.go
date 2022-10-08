@@ -55,6 +55,9 @@ type ProjectListDetailDto struct {
 	// expired at
 	ExpiredAt string `json:"expiredAt,omitempty"`
 
+	// has expiration warning
+	HasExpirationWarning bool `json:"hasExpirationWarning"`
+
 	// has kube config file
 	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
 

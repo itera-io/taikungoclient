@@ -32,6 +32,9 @@ type ProjectForListDto struct {
 	// autoscaling credential
 	AutoscalingCredential *AutoscalingListDto `json:"autoscalingCredential,omitempty"`
 
+	// aws project a z subnets
+	AwsProjectAZSubnets []*AwsProjectAZSubnetDto `json:"awsProjectAZSubnets"`
+
 	// bastion
 	Bastion int32 `json:"bastion,omitempty"`
 
@@ -229,6 +232,10 @@ func (m *ProjectForListDto) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateAwsProjectAZSubnets(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateBoundUsers(formats); err != nil {
 		res = append(res, err)
 	}
@@ -292,6 +299,32 @@ func (m *ProjectForListDto) validateAutoscalingCredential(formats strfmt.Registr
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *ProjectForListDto) validateAwsProjectAZSubnets(formats strfmt.Registry) error {
+	if swag.IsZero(m.AwsProjectAZSubnets) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.AwsProjectAZSubnets); i++ {
+		if swag.IsZero(m.AwsProjectAZSubnets[i]) { // not required
+			continue
+		}
+
+		if m.AwsProjectAZSubnets[i] != nil {
+			if err := m.AwsProjectAZSubnets[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("awsProjectAZSubnets" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("awsProjectAZSubnets" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -430,6 +463,10 @@ func (m *ProjectForListDto) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateAwsProjectAZSubnets(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateBoundUsers(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -483,6 +520,26 @@ func (m *ProjectForListDto) contextValidateAutoscalingCredential(ctx context.Con
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *ProjectForListDto) contextValidateAwsProjectAZSubnets(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.AwsProjectAZSubnets); i++ {
+
+		if m.AwsProjectAZSubnets[i] != nil {
+			if err := m.AwsProjectAZSubnets[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("awsProjectAZSubnets" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("awsProjectAZSubnets" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil

@@ -224,6 +224,9 @@ type ProjectDetailsForServersDto struct {
 	// vm volume size limit
 	VMVolumeSizeLimit int64 `json:"vmVolumeSizeLimit,omitempty"`
 
+	// warning message
+	WarningMessage string `json:"warningMessage,omitempty"`
+
 	// worker
 	Worker int32 `json:"worker,omitempty"`
 }
