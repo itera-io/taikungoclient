@@ -22,9 +22,6 @@ type CatalogListDto struct {
 	// bound applications
 	BoundApplications []*AvailablePackagesDto `json:"boundApplications"`
 
-	// bound applications count
-	BoundApplicationsCount int32 `json:"boundApplicationsCount,omitempty"`
-
 	// bound projects
 	BoundProjects []*CommonDropdownDto `json:"boundProjects"`
 

@@ -17,8 +17,8 @@ import (
 // swagger:model CreateAzureCloudCommand
 type CreateAzureCloudCommand struct {
 
-	// azure availability zone
-	AzureAvailabilityZone string `json:"azureAvailabilityZone,omitempty"`
+	// az count
+	AzCount int32 `json:"azCount,omitempty"`
 
 	// azure client Id
 	AzureClientID string `json:"azureClientId,omitempty"`

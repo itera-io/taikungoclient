@@ -75,7 +75,7 @@ AzureZonesOK describes a response with status code 200, with default header valu
 Success
 */
 type AzureZonesOK struct {
-	Payload []string
+	Payload *models.AzResult
 }
 
 // IsSuccess returns true when this azure zones o k response has a 2xx status code
@@ -111,14 +111,16 @@ func (o *AzureZonesOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesOK  %+v", 200, o.Payload)
 }
 
-func (o *AzureZonesOK) GetPayload() []string {
+func (o *AzureZonesOK) GetPayload() *models.AzResult {
 	return o.Payload
 }
 
 func (o *AzureZonesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.AzResult)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

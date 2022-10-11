@@ -30,6 +30,9 @@ type AvailablePackagesDto struct {
 	// description
 	Description string `json:"description,omitempty"`
 
+	// installed instance count
+	InstalledInstanceCount int32 `json:"installedInstanceCount,omitempty"`
+
 	// logo image Id
 	LogoImageID string `json:"logoImageId,omitempty"`
 

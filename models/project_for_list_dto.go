@@ -32,6 +32,9 @@ type ProjectForListDto struct {
 	// autoscaling credential
 	AutoscalingCredential *AutoscalingListDto `json:"autoscalingCredential,omitempty"`
 
+	// availability zones
+	AvailabilityZones []string `json:"availabilityZones"`
+
 	// aws project a z subnets
 	AwsProjectAZSubnets []*AwsProjectAZSubnetDto `json:"awsProjectAZSubnets"`
 
