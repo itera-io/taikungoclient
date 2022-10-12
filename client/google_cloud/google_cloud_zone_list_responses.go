@@ -75,7 +75,7 @@ GoogleCloudZoneListOK describes a response with status code 200, with default he
 Success
 */
 type GoogleCloudZoneListOK struct {
-	Payload []string
+	Payload *models.AzResult
 }
 
 // IsSuccess returns true when this google cloud zone list o k response has a 2xx status code
@@ -111,14 +111,16 @@ func (o *GoogleCloudZoneListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListOK  %+v", 200, o.Payload)
 }
 
-func (o *GoogleCloudZoneListOK) GetPayload() []string {
+func (o *GoogleCloudZoneListOK) GetPayload() *models.AzResult {
 	return o.Payload
 }
 
 func (o *GoogleCloudZoneListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.AzResult)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

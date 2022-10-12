@@ -68,6 +68,8 @@ type ClientService interface {
 
 	CronJobRemindAlerts(params *CronJobRemindAlertsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobRemindAlertsOK, error)
 
+	CronJobSendEmailAboutProjectExpiration(params *CronJobSendEmailAboutProjectExpirationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobSendEmailAboutProjectExpirationOK, error)
+
 	CronJobSyncBackupCredentials(params *CronJobSyncBackupCredentialsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobSyncBackupCredentialsOK, error)
 
 	CronJobSyncOpaProfiles(params *CronJobSyncOpaProfilesParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobSyncOpaProfilesOK, error)
@@ -823,6 +825,45 @@ func (a *Client) CronJobRemindAlerts(params *CronJobRemindAlertsParams, authInfo
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for CronJob_RemindAlerts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CronJobSendEmailAboutProjectExpiration sends email to the users about project expiration
+*/
+func (a *Client) CronJobSendEmailAboutProjectExpiration(params *CronJobSendEmailAboutProjectExpirationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CronJobSendEmailAboutProjectExpirationOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCronJobSendEmailAboutProjectExpirationParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "CronJob_SendEmailAboutProjectExpiration",
+		Method:             "POST",
+		PathPattern:        "/api/v{v}/CronJob/project-expiration",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/*+json", "application/json", "application/json-patch+json", "text/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CronJobSendEmailAboutProjectExpirationReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CronJobSendEmailAboutProjectExpirationOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for CronJob_SendEmailAboutProjectExpiration: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -64,8 +64,8 @@ type GoogleCredentialsListDto struct {
 	// region
 	Region string `json:"region,omitempty"`
 
-	// zone
-	Zone string `json:"zone,omitempty"`
+	// zones
+	Zones []string `json:"zones"`
 }
 
 // Validate validates this google credentials list dto
