@@ -68,6 +68,9 @@ type UserTokenAvailableEndpointListParams struct {
 	// IsAdd.
 	IsAdd *bool
 
+	// IsReadonly.
+	IsReadonly *bool
+
 	// Limit.
 	//
 	// Format: int32
@@ -163,6 +166,17 @@ func (o *UserTokenAvailableEndpointListParams) WithIsAdd(isAdd *bool) *UserToken
 // SetIsAdd adds the isAdd to the user token available endpoint list params
 func (o *UserTokenAvailableEndpointListParams) SetIsAdd(isAdd *bool) {
 	o.IsAdd = isAdd
+}
+
+// WithIsReadonly adds the isReadonly to the user token available endpoint list params
+func (o *UserTokenAvailableEndpointListParams) WithIsReadonly(isReadonly *bool) *UserTokenAvailableEndpointListParams {
+	o.SetIsReadonly(isReadonly)
+	return o
+}
+
+// SetIsReadonly adds the isReadonly to the user token available endpoint list params
+func (o *UserTokenAvailableEndpointListParams) SetIsReadonly(isReadonly *bool) {
+	o.IsReadonly = isReadonly
 }
 
 // WithLimit adds the limit to the user token available endpoint list params
@@ -268,6 +282,23 @@ func (o *UserTokenAvailableEndpointListParams) WriteToRequest(r runtime.ClientRe
 		if qIsAdd != "" {
 
 			if err := r.SetQueryParam("isAdd", qIsAdd); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.IsReadonly != nil {
+
+		// query param isReadonly
+		var qrIsReadonly bool
+
+		if o.IsReadonly != nil {
+			qrIsReadonly = *o.IsReadonly
+		}
+		qIsReadonly := swag.FormatBool(qrIsReadonly)
+		if qIsReadonly != "" {
+
+			if err := r.SetQueryParam("isReadonly", qIsReadonly); err != nil {
 				return err
 			}
 		}

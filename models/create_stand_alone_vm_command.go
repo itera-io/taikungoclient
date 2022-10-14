@@ -19,6 +19,9 @@ import (
 // swagger:model CreateStandAloneVmCommand
 type CreateStandAloneVMCommand struct {
 
+	// availability zone
+	AvailabilityZone string `json:"availabilityZone,omitempty"`
+
 	// cloud init
 	CloudInit string `json:"cloudInit,omitempty"`
 
