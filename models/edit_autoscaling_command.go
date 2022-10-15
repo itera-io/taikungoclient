@@ -12,16 +12,10 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// AutoscalingListDto autoscaling list dto
+// EditAutoscalingCommand edit autoscaling command
 //
-// swagger:model AutoscalingListDto
-type AutoscalingListDto struct {
-
-	// access key
-	AccessKey string `json:"accessKey,omitempty"`
-
-	// autoscaling group name
-	AutoscalingGroupName string `json:"autoscalingGroupName,omitempty"`
+// swagger:model EditAutoscalingCommand
+type EditAutoscalingCommand struct {
 
 	// disk size
 	DiskSize float64 `json:"diskSize,omitempty"`
@@ -35,25 +29,25 @@ type AutoscalingListDto struct {
 	// min size
 	MinSize int32 `json:"minSize,omitempty"`
 
-	// secret key
-	SecretKey string `json:"secretKey,omitempty"`
+	// project Id
+	ProjectID int32 `json:"projectId,omitempty"`
 
 	// spot enabled
 	SpotEnabled bool `json:"spotEnabled"`
 }
 
-// Validate validates this autoscaling list dto
-func (m *AutoscalingListDto) Validate(formats strfmt.Registry) error {
+// Validate validates this edit autoscaling command
+func (m *EditAutoscalingCommand) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this autoscaling list dto based on context it is used
-func (m *AutoscalingListDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this edit autoscaling command based on context it is used
+func (m *EditAutoscalingCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *AutoscalingListDto) MarshalBinary() ([]byte, error) {
+func (m *EditAutoscalingCommand) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -61,8 +55,8 @@ func (m *AutoscalingListDto) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *AutoscalingListDto) UnmarshalBinary(b []byte) error {
-	var res AutoscalingListDto
+func (m *EditAutoscalingCommand) UnmarshalBinary(b []byte) error {
+	var res EditAutoscalingCommand
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

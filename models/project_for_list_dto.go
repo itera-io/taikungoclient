@@ -29,9 +29,6 @@ type ProjectForListDto struct {
 	// access profiles
 	AccessProfiles *AccessProfilesForProjectListDto `json:"accessProfiles,omitempty"`
 
-	// autoscaling credential
-	AutoscalingCredential *AutoscalingListDto `json:"autoscalingCredential,omitempty"`
-
 	// availability zones
 	AvailabilityZones []string `json:"availabilityZones"`
 
@@ -82,6 +79,9 @@ type ProjectForListDto struct {
 
 	// is auto upgrade
 	IsAutoUpgrade bool `json:"isAutoUpgrade"`
+
+	// is autoscaling enabled
+	IsAutoscalingEnabled bool `json:"isAutoscalingEnabled"`
 
 	// is backup enabled
 	IsBackupEnabled bool `json:"isBackupEnabled"`
@@ -231,10 +231,6 @@ func (m *ProjectForListDto) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateAutoscalingCredential(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateAwsProjectAZSubnets(formats); err != nil {
 		res = append(res, err)
 	}
@@ -280,25 +276,6 @@ func (m *ProjectForListDto) validateAccessProfiles(formats strfmt.Registry) erro
 				return ve.ValidateName("accessProfiles")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("accessProfiles")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ProjectForListDto) validateAutoscalingCredential(formats strfmt.Registry) error {
-	if swag.IsZero(m.AutoscalingCredential) { // not required
-		return nil
-	}
-
-	if m.AutoscalingCredential != nil {
-		if err := m.AutoscalingCredential.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("autoscalingCredential")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("autoscalingCredential")
 			}
 			return err
 		}
@@ -462,10 +439,6 @@ func (m *ProjectForListDto) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateAutoscalingCredential(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateAwsProjectAZSubnets(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -504,22 +477,6 @@ func (m *ProjectForListDto) contextValidateAccessProfiles(ctx context.Context, f
 				return ve.ValidateName("accessProfiles")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("accessProfiles")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *ProjectForListDto) contextValidateAutoscalingCredential(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.AutoscalingCredential != nil {
-		if err := m.AutoscalingCredential.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("autoscalingCredential")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("autoscalingCredential")
 			}
 			return err
 		}

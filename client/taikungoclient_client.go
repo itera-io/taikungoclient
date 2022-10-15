@@ -16,6 +16,7 @@ import (
 	"github.com/itera-io/taikungoclient/client/alerting_profiles"
 	"github.com/itera-io/taikungoclient/client/allowed_host"
 	"github.com/itera-io/taikungoclient/client/auth"
+	"github.com/itera-io/taikungoclient/client/autoscaling"
 	"github.com/itera-io/taikungoclient/client/aws"
 	"github.com/itera-io/taikungoclient/client/azure"
 	"github.com/itera-io/taikungoclient/client/backup"
@@ -138,6 +139,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Taikungocl
 	cli.AlertingProfiles = alerting_profiles.New(transport, formats)
 	cli.AllowedHost = allowed_host.New(transport, formats)
 	cli.Auth = auth.New(transport, formats)
+	cli.Autoscaling = autoscaling.New(transport, formats)
 	cli.Aws = aws.New(transport, formats)
 	cli.Azure = azure.New(transport, formats)
 	cli.Backup = backup.New(transport, formats)
@@ -248,6 +250,8 @@ type Taikungoclient struct {
 	AllowedHost allowed_host.ClientService
 
 	Auth auth.ClientService
+
+	Autoscaling autoscaling.ClientService
 
 	Aws aws.ClientService
 
@@ -371,6 +375,7 @@ func (c *Taikungoclient) SetTransport(transport runtime.ClientTransport) {
 	c.AlertingProfiles.SetTransport(transport)
 	c.AllowedHost.SetTransport(transport)
 	c.Auth.SetTransport(transport)
+	c.Autoscaling.SetTransport(transport)
 	c.Aws.SetTransport(transport)
 	c.Azure.SetTransport(transport)
 	c.Backup.SetTransport(transport)
