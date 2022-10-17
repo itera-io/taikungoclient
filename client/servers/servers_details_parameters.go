@@ -76,6 +76,9 @@ type ServersDetailsParams struct {
 	// V.
 	V string
 
+	// WithAutoscalingGroup.
+	WithAutoscalingGroup *string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -173,6 +176,17 @@ func (o *ServersDetailsParams) SetV(v string) {
 	o.V = v
 }
 
+// WithWithAutoscalingGroup adds the withAutoscalingGroup to the servers details params
+func (o *ServersDetailsParams) WithWithAutoscalingGroup(withAutoscalingGroup *string) *ServersDetailsParams {
+	o.SetWithAutoscalingGroup(withAutoscalingGroup)
+	return o
+}
+
+// SetWithAutoscalingGroup adds the withAutoscalingGroup to the servers details params
+func (o *ServersDetailsParams) SetWithAutoscalingGroup(withAutoscalingGroup *string) {
+	o.WithAutoscalingGroup = withAutoscalingGroup
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ServersDetailsParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -223,6 +237,23 @@ func (o *ServersDetailsParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 	// path param v
 	if err := r.SetPathParam("v", o.V); err != nil {
 		return err
+	}
+
+	if o.WithAutoscalingGroup != nil {
+
+		// query param withAutoscalingGroup
+		var qrWithAutoscalingGroup string
+
+		if o.WithAutoscalingGroup != nil {
+			qrWithAutoscalingGroup = *o.WithAutoscalingGroup
+		}
+		qWithAutoscalingGroup := qrWithAutoscalingGroup
+		if qWithAutoscalingGroup != "" {
+
+			if err := r.SetQueryParam("withAutoscalingGroup", qWithAutoscalingGroup); err != nil {
+				return err
+			}
+		}
 	}
 
 	if len(res) > 0 {
