@@ -22,6 +22,9 @@ type OpenstackCredentialsListDto struct {
 	// availability zone
 	AvailabilityZone string `json:"availabilityZone,omitempty"`
 
+	// continent name
+	ContinentName string `json:"continentName,omitempty"`
+
 	// created at
 	CreatedAt string `json:"createdAt,omitempty"`
 

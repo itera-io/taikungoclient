@@ -25,6 +25,9 @@ type GoogleCredentialsListDto struct {
 	// billing account name
 	BillingAccountName string `json:"billingAccountName,omitempty"`
 
+	// continent name
+	ContinentName string `json:"continentName,omitempty"`
+
 	// created at
 	CreatedAt string `json:"createdAt,omitempty"`
 

@@ -22,6 +22,9 @@ type AzureCredentialsListDto struct {
 	// availability zones
 	AvailabilityZones []string `json:"availabilityZones"`
 
+	// continent name
+	ContinentName string `json:"continentName,omitempty"`
+
 	// created at
 	CreatedAt string `json:"createdAt,omitempty"`
 
