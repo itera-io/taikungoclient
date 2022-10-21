@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	ProjectInfracostsDelete(params *ProjectInfracostsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectInfracostsDeleteOK, *ProjectInfracostsDeleteNoContent, error)
 
+	ProjectInfracostsDetails(params *ProjectInfracostsDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectInfracostsDetailsOK, error)
+
 	ProjectInfracostsEdit(params *ProjectInfracostsEditParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectInfracostsEditOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
@@ -74,6 +76,45 @@ func (a *Client) ProjectInfracostsDelete(params *ProjectInfracostsDeleteParams, 
 	}
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for project_infracosts: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ProjectInfracostsDetails projects infracost details
+*/
+func (a *Client) ProjectInfracostsDetails(params *ProjectInfracostsDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProjectInfracostsDetailsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectInfracostsDetailsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "ProjectInfracosts_Details",
+		Method:             "GET",
+		PathPattern:        "/api/v{v}/ProjectInfracosts/{id}",
+		ProducesMediaTypes: []string{"application/json", "text/json", "text/plain"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectInfracostsDetailsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ProjectInfracostsDetailsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for ProjectInfracosts_Details: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

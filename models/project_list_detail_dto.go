@@ -112,6 +112,9 @@ type ProjectListDetailDto struct {
 	// status
 	Status string `json:"status,omitempty"`
 
+	// total hourly cost
+	TotalHourlyCost float64 `json:"totalHourlyCost,omitempty"`
+
 	// total servers count
 	TotalServersCount int32 `json:"totalServersCount,omitempty"`
 

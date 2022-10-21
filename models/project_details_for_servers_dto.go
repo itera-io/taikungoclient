@@ -197,6 +197,9 @@ type ProjectDetailsForServersDto struct {
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
 
+	// total hourly cost
+	TotalHourlyCost float64 `json:"totalHourlyCost,omitempty"`
+
 	// used Cpu
 	UsedCPU int64 `json:"usedCpu,omitempty"`
 
