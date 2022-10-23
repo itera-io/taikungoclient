@@ -49,8 +49,17 @@ sed -i "s/${refline}/\"x-omitempty\": false,${refline}/g" "${showback_swagger_pa
 go mod init "${module_name}"
 
 # Generate the client
-./swagger generate client -f "${swagger_patch_file}" -A "${app_name}" $@
-./swagger generate client -f "${showback_swagger_patch_file}" -c "${showback_package_name}" -A "${showback_app_name}" $@
+swagger generate client \
+  -f "${swagger_patch_file}" \
+  -A "${app_name}" $@
+
+# Generate showback client
+swagger generate client \
+  -f "${showback_swagger_patch_file}" \
+  -c "${showback_package_name}" \
+  -A "${showback_app_name}" $@
+
+# Remove swagger patch files
 rm -f "${swagger_patch_file}"
 rm -f "${showback_swagger_patch_file}"
 
