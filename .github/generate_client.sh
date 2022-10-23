@@ -45,25 +45,6 @@ refline="\"type\": \"boolean\""
 sed -i "s/${refline}/\"x-omitempty\": false,${refline}/g" "${swagger_patch_file}"
 sed -i "s/${refline}/\"x-omitempty\": false,${refline}/g" "${showback_swagger_patch_file}"
 
-# Add new CustomProblemDetailsMg definition in both swagger files.
-# MG in CustomProblemDetailsMg stands for Manually Generated, the name of this
-# resource has to be unique enough not to conflict with any future definitions
-refline="\"definitions\": {"
-sed -i "/${refline}/r .github/codegen/custom_error_type.json" "${swagger_patch_file}"
-sed -i "/${refline}/r .github/codegen/custom_error_type.json" "${showback_swagger_patch_file}"
-
-# Lines containing definitions/ProblemDetails" or
-# definitions/ValidationProblemDetails" are replaced with the content of
-# .github/codegen/custom_error_response_schema.json. The latter contains a JSON
-# array of CustomProblemDetailsMg. This is done for both swagger files.
-for refline in 'definitions\/ProblemDetails"' 'definitions\/ValidationProblemDetails"'; do
-  for swagger_file in "${swagger_patch_file}" "${showback_swagger_patch_file}"; do
-    sed -i -e "/${refline}/ {" \
-      -e 'r .github/codegen/custom_error_response_schema.json' \
-      -e 'd' -e '}' "${swagger_file}"
-  done
-done
-
 # Initialize go module
 go mod init "${module_name}"
 
