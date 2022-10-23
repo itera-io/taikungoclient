@@ -15,7 +15,7 @@ readonly swagger_patch_file="swagger-patch.json"
 readonly showback_swagger_patch_file="showback-swagger-patch.json"
 
 # Delete client/ and models/ directories if they already exist
-rm -rfv client/
+rm -rfv client/ showbackclient/
 rm -rfv models/
 
 # Delete go.mod and go.sum files if they already exist
