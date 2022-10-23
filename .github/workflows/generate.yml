@@ -50,7 +50,8 @@ jobs:
       - name: Should regenerate client
         id: check
         shell: bash
-        run: [[ ${{ inputs.force }} = true ]] || ./.github/should_regenerate_client.sh
+        run: |
+          [[ ${{ inputs.force }} = true ]] || ./.github/should_regenerate_client.sh
         continue-on-error: true
 
       - name: Setup Git
