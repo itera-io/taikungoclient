@@ -1,6 +1,12 @@
 name: Generate Dev Client
 on:
   workflow_dispatch:
+    inputs:
+      force:
+        required: true
+        type: boolean
+        description: 'Force client generation'
+        default: false
   schedule:
     - cron: "0 0 * * *"
 
@@ -9,6 +15,7 @@ jobs:
     uses: itera-io/taikungoclient/.github/workflows/generate.yml@dev
     with:
       branch: dev
+      force: ${{ inputs.force }}
     secrets:
       username: ${{ secrets.SWAGGER_USERNAME }}
       password: ${{ secrets.SWAGGER_PASSWORD }}
