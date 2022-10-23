@@ -55,12 +55,12 @@ sed -i "s/${refline}/\"x-omitempty\": false,${refline}/g" "${showback_swagger_pa
 go mod init "${module_name}"
 
 # Generate the client
-swagger generate client \
+./swagger generate client \
   -f "${swagger_patch_file}" \
   -A "${app_name}" ${swagger_generate_client_options} $@
 
 # Generate showback client
-swagger generate client \
+./swagger generate client \
   -f "${showback_swagger_patch_file}" \
   -c "${showback_package_name}" \
   -A "${showback_app_name}" ${swagger_generate_client_options} $@
