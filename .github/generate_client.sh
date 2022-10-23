@@ -14,6 +14,9 @@ showback_package_name="showbackclient"
 readonly swagger_patch_file="swagger-patch.json"
 readonly showback_swagger_patch_file="showback-swagger-patch.json"
 
+# Delete swagger patch files if leftover from previous run
+rm -fv ${swagger_patch_file} ${showback_swagger_patch_file}
+
 # Delete client/ and models/ directories if they already exist
 rm -rfv client/ showbackclient/
 rm -rfv models/
