@@ -10,6 +10,9 @@ app_name="taikungoclient"
 showback_app_name="showbackgoclient"
 showback_package_name="showbackclient"
 
+# Swagger generate client options
+readonly swagger_generate_client_options="--with-expand"
+
 # Temporary swagger patch files
 readonly swagger_patch_file="swagger-patch.json"
 readonly showback_swagger_patch_file="showback-swagger-patch.json"
@@ -54,13 +57,13 @@ go mod init "${module_name}"
 # Generate the client
 swagger generate client \
   -f "${swagger_patch_file}" \
-  -A "${app_name}" $@
+  -A "${app_name}" ${swagger_generate_client_options} $@
 
 # Generate showback client
 swagger generate client \
   -f "${showback_swagger_patch_file}" \
   -c "${showback_package_name}" \
-  -A "${showback_app_name}" $@
+  -A "${showback_app_name}" ${swagger_generate_client_options} $@
 
 # Remove swagger patch files
 rm -f "${swagger_patch_file}"
