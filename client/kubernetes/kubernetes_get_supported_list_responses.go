@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesGetSupportedListReader is a Reader for the KubernetesGetSupportedList structure.
@@ -136,7 +136,7 @@ KubernetesGetSupportedListBadRequest describes a response with status code 400, 
 Bad Request
 */
 type KubernetesGetSupportedListBadRequest struct {
-	Payload []*KubernetesGetSupportedListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes get supported list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesGetSupportedListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetSupportedListBadRequest) GetPayload() []*KubernetesGetSupportedListBadRequestBodyItems0 {
+func (o *KubernetesGetSupportedListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesGetSupportedListUnauthorized describes a response with status code 401
 Unauthorized
 */
 type KubernetesGetSupportedListUnauthorized struct {
-	Payload *KubernetesGetSupportedListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get supported list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesGetSupportedListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetSupportedListUnauthorized) GetPayload() *KubernetesGetSupportedListUnauthorizedBody {
+func (o *KubernetesGetSupportedListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetSupportedListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetSupportedListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesGetSupportedListForbidden describes a response with status code 403, w
 Forbidden
 */
 type KubernetesGetSupportedListForbidden struct {
-	Payload *KubernetesGetSupportedListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get supported list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesGetSupportedListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetSupportedListForbidden) GetPayload() *KubernetesGetSupportedListForbiddenBody {
+func (o *KubernetesGetSupportedListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetSupportedListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetSupportedListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesGetSupportedListNotFound describes a response with status code 404, wi
 Not Found
 */
 type KubernetesGetSupportedListNotFound struct {
-	Payload *KubernetesGetSupportedListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get supported list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesGetSupportedListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/supported/list][%d] kubernetesGetSupportedListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetSupportedListNotFound) GetPayload() *KubernetesGetSupportedListNotFoundBody {
+func (o *KubernetesGetSupportedListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetSupportedListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetSupportedListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *KubernetesGetSupportedListInternalServerError) String() string {
 
 func (o *KubernetesGetSupportedListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesGetSupportedListBadRequestBodyItems0 kubernetes get supported list bad request body items0
-swagger:model KubernetesGetSupportedListBadRequestBodyItems0
-*/
-type KubernetesGetSupportedListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes get supported list bad request body items0
-func (o *KubernetesGetSupportedListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get supported list bad request body items0 based on context it is used
-func (o *KubernetesGetSupportedListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetSupportedListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetSupportedListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetSupportedListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetSupportedListForbiddenBody kubernetes get supported list forbidden body
-swagger:model KubernetesGetSupportedListForbiddenBody
-*/
-type KubernetesGetSupportedListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get supported list forbidden body
-func (o *KubernetesGetSupportedListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get supported list forbidden body based on context it is used
-func (o *KubernetesGetSupportedListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetSupportedListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetSupportedListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetSupportedListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetSupportedListNotFoundBody kubernetes get supported list not found body
-swagger:model KubernetesGetSupportedListNotFoundBody
-*/
-type KubernetesGetSupportedListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get supported list not found body
-func (o *KubernetesGetSupportedListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get supported list not found body based on context it is used
-func (o *KubernetesGetSupportedListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetSupportedListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetSupportedListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetSupportedListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetSupportedListUnauthorizedBody kubernetes get supported list unauthorized body
-swagger:model KubernetesGetSupportedListUnauthorizedBody
-*/
-type KubernetesGetSupportedListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get supported list unauthorized body
-func (o *KubernetesGetSupportedListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get supported list unauthorized body based on context it is used
-func (o *KubernetesGetSupportedListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetSupportedListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetSupportedListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetSupportedListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

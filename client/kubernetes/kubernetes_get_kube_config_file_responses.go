@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesGetKubeConfigFileReader is a Reader for the KubernetesGetKubeConfigFile structure.
@@ -75,7 +75,7 @@ KubernetesGetKubeConfigFileOK describes a response with status code 200, with de
 Success
 */
 type KubernetesGetKubeConfigFileOK struct {
-	Payload *KubernetesGetKubeConfigFileOKBody
+	Payload *models.KubeConfigResponse
 }
 
 // IsSuccess returns true when this kubernetes get kube config file o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *KubernetesGetKubeConfigFileOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesGetKubeConfigFileOK) GetPayload() *KubernetesGetKubeConfigFileOKBody {
+func (o *KubernetesGetKubeConfigFileOK) GetPayload() *models.KubeConfigResponse {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubeConfigFileOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetKubeConfigFileOKBody)
+	o.Payload = new(models.KubeConfigResponse)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ KubernetesGetKubeConfigFileBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesGetKubeConfigFileBadRequest struct {
-	Payload []*KubernetesGetKubeConfigFileBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes get kube config file bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *KubernetesGetKubeConfigFileBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetKubeConfigFileBadRequest) GetPayload() []*KubernetesGetKubeConfigFileBadRequestBodyItems0 {
+func (o *KubernetesGetKubeConfigFileBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ KubernetesGetKubeConfigFileUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesGetKubeConfigFileUnauthorized struct {
-	Payload *KubernetesGetKubeConfigFileUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get kube config file unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *KubernetesGetKubeConfigFileUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetKubeConfigFileUnauthorized) GetPayload() *KubernetesGetKubeConfigFileUnauthorizedBody {
+func (o *KubernetesGetKubeConfigFileUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubeConfigFileUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetKubeConfigFileUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ KubernetesGetKubeConfigFileForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesGetKubeConfigFileForbidden struct {
-	Payload *KubernetesGetKubeConfigFileForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get kube config file forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *KubernetesGetKubeConfigFileForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetKubeConfigFileForbidden) GetPayload() *KubernetesGetKubeConfigFileForbiddenBody {
+func (o *KubernetesGetKubeConfigFileForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubeConfigFileForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetKubeConfigFileForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ KubernetesGetKubeConfigFileNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesGetKubeConfigFileNotFound struct {
-	Payload *KubernetesGetKubeConfigFileNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get kube config file not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *KubernetesGetKubeConfigFileNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/kubeconfig][%d] kubernetesGetKubeConfigFileNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetKubeConfigFileNotFound) GetPayload() *KubernetesGetKubeConfigFileNotFoundBody {
+func (o *KubernetesGetKubeConfigFileNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetKubeConfigFileNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetKubeConfigFileNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,234 +425,5 @@ func (o *KubernetesGetKubeConfigFileInternalServerError) String() string {
 
 func (o *KubernetesGetKubeConfigFileInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesGetKubeConfigFileBadRequestBodyItems0 kubernetes get kube config file bad request body items0
-swagger:model KubernetesGetKubeConfigFileBadRequestBodyItems0
-*/
-type KubernetesGetKubeConfigFileBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes get kube config file bad request body items0
-func (o *KubernetesGetKubeConfigFileBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get kube config file bad request body items0 based on context it is used
-func (o *KubernetesGetKubeConfigFileBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetKubeConfigFileBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetKubeConfigFileBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetKubeConfigFileBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetKubeConfigFileForbiddenBody kubernetes get kube config file forbidden body
-swagger:model KubernetesGetKubeConfigFileForbiddenBody
-*/
-type KubernetesGetKubeConfigFileForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get kube config file forbidden body
-func (o *KubernetesGetKubeConfigFileForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get kube config file forbidden body based on context it is used
-func (o *KubernetesGetKubeConfigFileForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetKubeConfigFileForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetKubeConfigFileForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetKubeConfigFileForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetKubeConfigFileNotFoundBody kubernetes get kube config file not found body
-swagger:model KubernetesGetKubeConfigFileNotFoundBody
-*/
-type KubernetesGetKubeConfigFileNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get kube config file not found body
-func (o *KubernetesGetKubeConfigFileNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get kube config file not found body based on context it is used
-func (o *KubernetesGetKubeConfigFileNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetKubeConfigFileNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetKubeConfigFileNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetKubeConfigFileNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetKubeConfigFileOKBody kubernetes get kube config file o k body
-swagger:model KubernetesGetKubeConfigFileOKBody
-*/
-type KubernetesGetKubeConfigFileOKBody struct {
-
-	// data
-	Data string `json:"data,omitempty"`
-}
-
-// Validate validates this kubernetes get kube config file o k body
-func (o *KubernetesGetKubeConfigFileOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get kube config file o k body based on context it is used
-func (o *KubernetesGetKubeConfigFileOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetKubeConfigFileOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetKubeConfigFileOKBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetKubeConfigFileOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetKubeConfigFileUnauthorizedBody kubernetes get kube config file unauthorized body
-swagger:model KubernetesGetKubeConfigFileUnauthorizedBody
-*/
-type KubernetesGetKubeConfigFileUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get kube config file unauthorized body
-func (o *KubernetesGetKubeConfigFileUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get kube config file unauthorized body based on context it is used
-func (o *KubernetesGetKubeConfigFileUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetKubeConfigFileUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetKubeConfigFileUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetKubeConfigFileUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewS3CredentialsLockManagerParams creates a new S3CredentialsLockManagerParams object,
@@ -62,7 +64,7 @@ S3CredentialsLockManagerParams contains all the parameters to send to the API en
 type S3CredentialsLockManagerParams struct {
 
 	// Body.
-	Body S3CredentialsLockManagerBody
+	Body *models.BackupLockManagerCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *S3CredentialsLockManagerParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the s3 credentials lock manager params
-func (o *S3CredentialsLockManagerParams) WithBody(body S3CredentialsLockManagerBody) *S3CredentialsLockManagerParams {
+func (o *S3CredentialsLockManagerParams) WithBody(body *models.BackupLockManagerCommand) *S3CredentialsLockManagerParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the s3 credentials lock manager params
-func (o *S3CredentialsLockManagerParams) SetBody(body S3CredentialsLockManagerBody) {
+func (o *S3CredentialsLockManagerParams) SetBody(body *models.BackupLockManagerCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *S3CredentialsLockManagerParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

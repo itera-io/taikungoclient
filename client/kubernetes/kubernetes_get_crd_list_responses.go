@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesGetCrdListReader is a Reader for the KubernetesGetCrdList structure.
@@ -136,7 +136,7 @@ KubernetesGetCrdListBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type KubernetesGetCrdListBadRequest struct {
-	Payload []*KubernetesGetCrdListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes get crd list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesGetCrdListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetCrdListBadRequest) GetPayload() []*KubernetesGetCrdListBadRequestBodyItems0 {
+func (o *KubernetesGetCrdListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesGetCrdListUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type KubernetesGetCrdListUnauthorized struct {
-	Payload *KubernetesGetCrdListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get crd list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesGetCrdListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetCrdListUnauthorized) GetPayload() *KubernetesGetCrdListUnauthorizedBody {
+func (o *KubernetesGetCrdListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetCrdListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetCrdListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesGetCrdListForbidden describes a response with status code 403, with de
 Forbidden
 */
 type KubernetesGetCrdListForbidden struct {
-	Payload *KubernetesGetCrdListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get crd list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesGetCrdListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetCrdListForbidden) GetPayload() *KubernetesGetCrdListForbiddenBody {
+func (o *KubernetesGetCrdListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetCrdListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetCrdListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesGetCrdListNotFound describes a response with status code 404, with def
 Not Found
 */
 type KubernetesGetCrdListNotFound struct {
-	Payload *KubernetesGetCrdListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get crd list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesGetCrdListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/crd][%d] kubernetesGetCrdListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetCrdListNotFound) GetPayload() *KubernetesGetCrdListNotFoundBody {
+func (o *KubernetesGetCrdListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetCrdListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetCrdListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *KubernetesGetCrdListInternalServerError) String() string {
 
 func (o *KubernetesGetCrdListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesGetCrdListBadRequestBodyItems0 kubernetes get crd list bad request body items0
-swagger:model KubernetesGetCrdListBadRequestBodyItems0
-*/
-type KubernetesGetCrdListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes get crd list bad request body items0
-func (o *KubernetesGetCrdListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get crd list bad request body items0 based on context it is used
-func (o *KubernetesGetCrdListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetCrdListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetCrdListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetCrdListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetCrdListForbiddenBody kubernetes get crd list forbidden body
-swagger:model KubernetesGetCrdListForbiddenBody
-*/
-type KubernetesGetCrdListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get crd list forbidden body
-func (o *KubernetesGetCrdListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get crd list forbidden body based on context it is used
-func (o *KubernetesGetCrdListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetCrdListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetCrdListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetCrdListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetCrdListNotFoundBody kubernetes get crd list not found body
-swagger:model KubernetesGetCrdListNotFoundBody
-*/
-type KubernetesGetCrdListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get crd list not found body
-func (o *KubernetesGetCrdListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get crd list not found body based on context it is used
-func (o *KubernetesGetCrdListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetCrdListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetCrdListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetCrdListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetCrdListUnauthorizedBody kubernetes get crd list unauthorized body
-swagger:model KubernetesGetCrdListUnauthorizedBody
-*/
-type KubernetesGetCrdListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get crd list unauthorized body
-func (o *KubernetesGetCrdListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get crd list unauthorized body based on context it is used
-func (o *KubernetesGetCrdListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetCrdListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetCrdListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetCrdListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package user_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // UserGroupsDeleteReader is a Reader for the UserGroupsDelete structure.
@@ -81,7 +81,7 @@ UserGroupsDeleteOK describes a response with status code 200, with default heade
 Success
 */
 type UserGroupsDeleteOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this user groups delete o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *UserGroupsDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *UserGroupsDeleteOK) GetPayload() interface{} {
+func (o *UserGroupsDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ UserGroupsDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type UserGroupsDeleteBadRequest struct {
-	Payload []*UserGroupsDeleteBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this user groups delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *UserGroupsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserGroupsDeleteBadRequest) GetPayload() []*UserGroupsDeleteBadRequestBodyItems0 {
+func (o *UserGroupsDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ UserGroupsDeleteUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type UserGroupsDeleteUnauthorized struct {
-	Payload *UserGroupsDeleteUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user groups delete unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *UserGroupsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserGroupsDeleteUnauthorized) GetPayload() *UserGroupsDeleteUnauthorizedBody {
+func (o *UserGroupsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserGroupsDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserGroupsDeleteUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ UserGroupsDeleteForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type UserGroupsDeleteForbidden struct {
-	Payload *UserGroupsDeleteForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user groups delete forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *UserGroupsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserGroupsDeleteForbidden) GetPayload() *UserGroupsDeleteForbiddenBody {
+func (o *UserGroupsDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserGroupsDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserGroupsDeleteForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ UserGroupsDeleteNotFound describes a response with status code 404, with default
 Not Found
 */
 type UserGroupsDeleteNotFound struct {
-	Payload *UserGroupsDeleteNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user groups delete not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *UserGroupsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/UserGroups/{userGroupId}][%d] userGroupsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserGroupsDeleteNotFound) GetPayload() *UserGroupsDeleteNotFoundBody {
+func (o *UserGroupsDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserGroupsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserGroupsDeleteNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,196 +480,5 @@ func (o *UserGroupsDeleteInternalServerError) String() string {
 
 func (o *UserGroupsDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-UserGroupsDeleteBadRequestBodyItems0 user groups delete bad request body items0
-swagger:model UserGroupsDeleteBadRequestBodyItems0
-*/
-type UserGroupsDeleteBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this user groups delete bad request body items0
-func (o *UserGroupsDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user groups delete bad request body items0 based on context it is used
-func (o *UserGroupsDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserGroupsDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserGroupsDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res UserGroupsDeleteBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserGroupsDeleteForbiddenBody user groups delete forbidden body
-swagger:model UserGroupsDeleteForbiddenBody
-*/
-type UserGroupsDeleteForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this user groups delete forbidden body
-func (o *UserGroupsDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user groups delete forbidden body based on context it is used
-func (o *UserGroupsDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserGroupsDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserGroupsDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res UserGroupsDeleteForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserGroupsDeleteNotFoundBody user groups delete not found body
-swagger:model UserGroupsDeleteNotFoundBody
-*/
-type UserGroupsDeleteNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this user groups delete not found body
-func (o *UserGroupsDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user groups delete not found body based on context it is used
-func (o *UserGroupsDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserGroupsDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserGroupsDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res UserGroupsDeleteNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserGroupsDeleteUnauthorizedBody user groups delete unauthorized body
-swagger:model UserGroupsDeleteUnauthorizedBody
-*/
-type UserGroupsDeleteUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this user groups delete unauthorized body
-func (o *UserGroupsDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user groups delete unauthorized body based on context it is used
-func (o *UserGroupsDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserGroupsDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserGroupsDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res UserGroupsDeleteUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

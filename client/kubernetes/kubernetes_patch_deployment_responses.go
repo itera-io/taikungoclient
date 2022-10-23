@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesPatchDeploymentReader is a Reader for the KubernetesPatchDeployment structure.
@@ -75,7 +75,7 @@ KubernetesPatchDeploymentOK describes a response with status code 200, with defa
 Success
 */
 type KubernetesPatchDeploymentOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this kubernetes patch deployment o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KubernetesPatchDeploymentOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/deployment][%d] kubernetesPatchDeploymentOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesPatchDeploymentOK) GetPayload() interface{} {
+func (o *KubernetesPatchDeploymentOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KubernetesPatchDeploymentBadRequest describes a response with status code 400, w
 Bad Request
 */
 type KubernetesPatchDeploymentBadRequest struct {
-	Payload []*KubernetesPatchDeploymentBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes patch deployment bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesPatchDeploymentBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/deployment][%d] kubernetesPatchDeploymentBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchDeploymentBadRequest) GetPayload() []*KubernetesPatchDeploymentBadRequestBodyItems0 {
+func (o *KubernetesPatchDeploymentBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesPatchDeploymentUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type KubernetesPatchDeploymentUnauthorized struct {
-	Payload *KubernetesPatchDeploymentUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch deployment unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesPatchDeploymentUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/deployment][%d] kubernetesPatchDeploymentUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchDeploymentUnauthorized) GetPayload() *KubernetesPatchDeploymentUnauthorizedBody {
+func (o *KubernetesPatchDeploymentUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchDeploymentUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesPatchDeploymentUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesPatchDeploymentForbidden describes a response with status code 403, wi
 Forbidden
 */
 type KubernetesPatchDeploymentForbidden struct {
-	Payload *KubernetesPatchDeploymentForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch deployment forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesPatchDeploymentForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/deployment][%d] kubernetesPatchDeploymentForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchDeploymentForbidden) GetPayload() *KubernetesPatchDeploymentForbiddenBody {
+func (o *KubernetesPatchDeploymentForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchDeploymentForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesPatchDeploymentForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesPatchDeploymentNotFound describes a response with status code 404, wit
 Not Found
 */
 type KubernetesPatchDeploymentNotFound struct {
-	Payload *KubernetesPatchDeploymentNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch deployment not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesPatchDeploymentNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/deployment][%d] kubernetesPatchDeploymentNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchDeploymentNotFound) GetPayload() *KubernetesPatchDeploymentNotFoundBody {
+func (o *KubernetesPatchDeploymentNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchDeploymentNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesPatchDeploymentNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,243 +423,5 @@ func (o *KubernetesPatchDeploymentInternalServerError) String() string {
 
 func (o *KubernetesPatchDeploymentInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesPatchDeploymentBadRequestBodyItems0 kubernetes patch deployment bad request body items0
-swagger:model KubernetesPatchDeploymentBadRequestBodyItems0
-*/
-type KubernetesPatchDeploymentBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes patch deployment bad request body items0
-func (o *KubernetesPatchDeploymentBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes patch deployment bad request body items0 based on context it is used
-func (o *KubernetesPatchDeploymentBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchDeploymentBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchDeploymentBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchDeploymentBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesPatchDeploymentBody kubernetes patch deployment body
-swagger:model KubernetesPatchDeploymentBody
-*/
-type KubernetesPatchDeploymentBody struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// yaml
-	Yaml string `json:"yaml,omitempty"`
-}
-
-// Validate validates this kubernetes patch deployment body
-func (o *KubernetesPatchDeploymentBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes patch deployment body based on context it is used
-func (o *KubernetesPatchDeploymentBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchDeploymentBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchDeploymentBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchDeploymentBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesPatchDeploymentForbiddenBody kubernetes patch deployment forbidden body
-swagger:model KubernetesPatchDeploymentForbiddenBody
-*/
-type KubernetesPatchDeploymentForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes patch deployment forbidden body
-func (o *KubernetesPatchDeploymentForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes patch deployment forbidden body based on context it is used
-func (o *KubernetesPatchDeploymentForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchDeploymentForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchDeploymentForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchDeploymentForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesPatchDeploymentNotFoundBody kubernetes patch deployment not found body
-swagger:model KubernetesPatchDeploymentNotFoundBody
-*/
-type KubernetesPatchDeploymentNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes patch deployment not found body
-func (o *KubernetesPatchDeploymentNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes patch deployment not found body based on context it is used
-func (o *KubernetesPatchDeploymentNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchDeploymentNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchDeploymentNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchDeploymentNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesPatchDeploymentUnauthorizedBody kubernetes patch deployment unauthorized body
-swagger:model KubernetesPatchDeploymentUnauthorizedBody
-*/
-type KubernetesPatchDeploymentUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes patch deployment unauthorized body
-func (o *KubernetesPatchDeploymentUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes patch deployment unauthorized body based on context it is used
-func (o *KubernetesPatchDeploymentUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchDeploymentUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchDeploymentUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchDeploymentUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

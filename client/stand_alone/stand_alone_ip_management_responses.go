@@ -6,13 +6,13 @@ package stand_alone
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneIPManagementReader is a Reader for the StandAloneIPManagement structure.
@@ -75,7 +75,7 @@ StandAloneIPManagementOK describes a response with status code 200, with default
 Success
 */
 type StandAloneIPManagementOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone Ip management o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneIPManagementOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneIPManagementOK) GetPayload() interface{} {
+func (o *StandAloneIPManagementOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneIPManagementBadRequest describes a response with status code 400, with
 Bad Request
 */
 type StandAloneIPManagementBadRequest struct {
-	Payload []*StandAloneIPManagementBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone Ip management bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneIPManagementBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneIPManagementBadRequest) GetPayload() []*StandAloneIPManagementBadRequestBodyItems0 {
+func (o *StandAloneIPManagementBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneIPManagementUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type StandAloneIPManagementUnauthorized struct {
-	Payload *StandAloneIPManagementUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Ip management unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneIPManagementUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneIPManagementUnauthorized) GetPayload() *StandAloneIPManagementUnauthorizedBody {
+func (o *StandAloneIPManagementUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneIPManagementUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneIPManagementUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneIPManagementForbidden describes a response with status code 403, with 
 Forbidden
 */
 type StandAloneIPManagementForbidden struct {
-	Payload *StandAloneIPManagementForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Ip management forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneIPManagementForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneIPManagementForbidden) GetPayload() *StandAloneIPManagementForbiddenBody {
+func (o *StandAloneIPManagementForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneIPManagementForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneIPManagementForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneIPManagementNotFound describes a response with status code 404, with d
 Not Found
 */
 type StandAloneIPManagementNotFound struct {
-	Payload *StandAloneIPManagementNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Ip management not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneIPManagementNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/ip/management][%d] standAloneIpManagementNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneIPManagementNotFound) GetPayload() *StandAloneIPManagementNotFoundBody {
+func (o *StandAloneIPManagementNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneIPManagementNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneIPManagementNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *StandAloneIPManagementInternalServerError) String() string {
 
 func (o *StandAloneIPManagementInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-StandAloneIPManagementBadRequestBodyItems0 stand alone IP management bad request body items0
-swagger:model StandAloneIPManagementBadRequestBodyItems0
-*/
-type StandAloneIPManagementBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this stand alone IP management bad request body items0
-func (o *StandAloneIPManagementBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone IP management bad request body items0 based on context it is used
-func (o *StandAloneIPManagementBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneIPManagementBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneIPManagementBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneIPManagementBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneIPManagementBody stand alone IP management body
-swagger:model StandAloneIPManagementBody
-*/
-type StandAloneIPManagementBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// mode
-	Mode string `json:"mode,omitempty"`
-}
-
-// Validate validates this stand alone IP management body
-func (o *StandAloneIPManagementBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone IP management body based on context it is used
-func (o *StandAloneIPManagementBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneIPManagementBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneIPManagementBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneIPManagementBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneIPManagementForbiddenBody stand alone IP management forbidden body
-swagger:model StandAloneIPManagementForbiddenBody
-*/
-type StandAloneIPManagementForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone IP management forbidden body
-func (o *StandAloneIPManagementForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone IP management forbidden body based on context it is used
-func (o *StandAloneIPManagementForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneIPManagementForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneIPManagementForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneIPManagementForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneIPManagementNotFoundBody stand alone IP management not found body
-swagger:model StandAloneIPManagementNotFoundBody
-*/
-type StandAloneIPManagementNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone IP management not found body
-func (o *StandAloneIPManagementNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone IP management not found body based on context it is used
-func (o *StandAloneIPManagementNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneIPManagementNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneIPManagementNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneIPManagementNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneIPManagementUnauthorizedBody stand alone IP management unauthorized body
-swagger:model StandAloneIPManagementUnauthorizedBody
-*/
-type StandAloneIPManagementUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone IP management unauthorized body
-func (o *StandAloneIPManagementUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone IP management unauthorized body based on context it is used
-func (o *StandAloneIPManagementUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneIPManagementUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneIPManagementUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneIPManagementUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

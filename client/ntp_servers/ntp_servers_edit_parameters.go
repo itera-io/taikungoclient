@@ -15,6 +15,8 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewNtpServersEditParams creates a new NtpServersEditParams object,
@@ -63,7 +65,7 @@ NtpServersEditParams contains all the parameters to send to the API endpoint
 type NtpServersEditParams struct {
 
 	// Body.
-	Body NtpServersEditBody
+	Body *models.DNSNtpAddressEditDto
 
 	// ID.
 	//
@@ -127,13 +129,13 @@ func (o *NtpServersEditParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the ntp servers edit params
-func (o *NtpServersEditParams) WithBody(body NtpServersEditBody) *NtpServersEditParams {
+func (o *NtpServersEditParams) WithBody(body *models.DNSNtpAddressEditDto) *NtpServersEditParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the ntp servers edit params
-func (o *NtpServersEditParams) SetBody(body NtpServersEditBody) {
+func (o *NtpServersEditParams) SetBody(body *models.DNSNtpAddressEditDto) {
 	o.Body = body
 }
 
@@ -166,8 +168,10 @@ func (o *NtpServersEditParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param id

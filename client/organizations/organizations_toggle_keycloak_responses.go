@@ -6,13 +6,13 @@ package organizations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // OrganizationsToggleKeycloakReader is a Reader for the OrganizationsToggleKeycloak structure.
@@ -75,7 +75,7 @@ OrganizationsToggleKeycloakOK describes a response with status code 200, with de
 Success
 */
 type OrganizationsToggleKeycloakOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this organizations toggle keycloak o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OrganizationsToggleKeycloakOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakOK  %+v", 200, o.Payload)
 }
 
-func (o *OrganizationsToggleKeycloakOK) GetPayload() interface{} {
+func (o *OrganizationsToggleKeycloakOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OrganizationsToggleKeycloakBadRequest describes a response with status code 400,
 Bad Request
 */
 type OrganizationsToggleKeycloakBadRequest struct {
-	Payload []*OrganizationsToggleKeycloakBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this organizations toggle keycloak bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OrganizationsToggleKeycloakBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsToggleKeycloakBadRequest) GetPayload() []*OrganizationsToggleKeycloakBadRequestBodyItems0 {
+func (o *OrganizationsToggleKeycloakBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OrganizationsToggleKeycloakUnauthorized describes a response with status code 40
 Unauthorized
 */
 type OrganizationsToggleKeycloakUnauthorized struct {
-	Payload *OrganizationsToggleKeycloakUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations toggle keycloak unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OrganizationsToggleKeycloakUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsToggleKeycloakUnauthorized) GetPayload() *OrganizationsToggleKeycloakUnauthorizedBody {
+func (o *OrganizationsToggleKeycloakUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsToggleKeycloakUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OrganizationsToggleKeycloakUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OrganizationsToggleKeycloakForbidden describes a response with status code 403, 
 Forbidden
 */
 type OrganizationsToggleKeycloakForbidden struct {
-	Payload *OrganizationsToggleKeycloakForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations toggle keycloak forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OrganizationsToggleKeycloakForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsToggleKeycloakForbidden) GetPayload() *OrganizationsToggleKeycloakForbiddenBody {
+func (o *OrganizationsToggleKeycloakForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsToggleKeycloakForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OrganizationsToggleKeycloakForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OrganizationsToggleKeycloakNotFound describes a response with status code 404, w
 Not Found
 */
 type OrganizationsToggleKeycloakNotFound struct {
-	Payload *OrganizationsToggleKeycloakNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations toggle keycloak not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OrganizationsToggleKeycloakNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/toggle/keycloak][%d] organizationsToggleKeycloakNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsToggleKeycloakNotFound) GetPayload() *OrganizationsToggleKeycloakNotFoundBody {
+func (o *OrganizationsToggleKeycloakNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsToggleKeycloakNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OrganizationsToggleKeycloakNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *OrganizationsToggleKeycloakInternalServerError) String() string {
 
 func (o *OrganizationsToggleKeycloakInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-OrganizationsToggleKeycloakBadRequestBodyItems0 organizations toggle keycloak bad request body items0
-swagger:model OrganizationsToggleKeycloakBadRequestBodyItems0
-*/
-type OrganizationsToggleKeycloakBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this organizations toggle keycloak bad request body items0
-func (o *OrganizationsToggleKeycloakBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations toggle keycloak bad request body items0 based on context it is used
-func (o *OrganizationsToggleKeycloakBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsToggleKeycloakBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsToggleKeycloakBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OrganizationsToggleKeycloakBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsToggleKeycloakBody organizations toggle keycloak body
-swagger:model OrganizationsToggleKeycloakBody
-*/
-type OrganizationsToggleKeycloakBody struct {
-
-	// mode
-	Mode string `json:"mode,omitempty"`
-}
-
-// Validate validates this organizations toggle keycloak body
-func (o *OrganizationsToggleKeycloakBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations toggle keycloak body based on context it is used
-func (o *OrganizationsToggleKeycloakBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsToggleKeycloakBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsToggleKeycloakBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsToggleKeycloakBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsToggleKeycloakForbiddenBody organizations toggle keycloak forbidden body
-swagger:model OrganizationsToggleKeycloakForbiddenBody
-*/
-type OrganizationsToggleKeycloakForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this organizations toggle keycloak forbidden body
-func (o *OrganizationsToggleKeycloakForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations toggle keycloak forbidden body based on context it is used
-func (o *OrganizationsToggleKeycloakForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsToggleKeycloakForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsToggleKeycloakForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsToggleKeycloakForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsToggleKeycloakNotFoundBody organizations toggle keycloak not found body
-swagger:model OrganizationsToggleKeycloakNotFoundBody
-*/
-type OrganizationsToggleKeycloakNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this organizations toggle keycloak not found body
-func (o *OrganizationsToggleKeycloakNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations toggle keycloak not found body based on context it is used
-func (o *OrganizationsToggleKeycloakNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsToggleKeycloakNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsToggleKeycloakNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsToggleKeycloakNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsToggleKeycloakUnauthorizedBody organizations toggle keycloak unauthorized body
-swagger:model OrganizationsToggleKeycloakUnauthorizedBody
-*/
-type OrganizationsToggleKeycloakUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this organizations toggle keycloak unauthorized body
-func (o *OrganizationsToggleKeycloakUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations toggle keycloak unauthorized body based on context it is used
-func (o *OrganizationsToggleKeycloakUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsToggleKeycloakUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsToggleKeycloakUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsToggleKeycloakUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

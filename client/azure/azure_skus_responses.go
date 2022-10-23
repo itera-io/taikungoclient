@@ -6,13 +6,13 @@ package azure
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AzureSkusReader is a Reader for the AzureSkus structure.
@@ -75,7 +75,7 @@ AzureSkusOK describes a response with status code 200, with default header value
 Success
 */
 type AzureSkusOK struct {
-	Payload *AzureSkusOKBody
+	Payload *models.AzureSkusList
 }
 
 // IsSuccess returns true when this azure skus o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *AzureSkusOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusOK  %+v", 200, o.Payload)
 }
 
-func (o *AzureSkusOK) GetPayload() *AzureSkusOKBody {
+func (o *AzureSkusOK) GetPayload() *models.AzureSkusList {
 	return o.Payload
 }
 
 func (o *AzureSkusOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureSkusOKBody)
+	o.Payload = new(models.AzureSkusList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ AzureSkusBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AzureSkusBadRequest struct {
-	Payload []*AzureSkusBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this azure skus bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AzureSkusBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureSkusBadRequest) GetPayload() []*AzureSkusBadRequestBodyItems0 {
+func (o *AzureSkusBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ AzureSkusUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type AzureSkusUnauthorized struct {
-	Payload *AzureSkusUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure skus unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *AzureSkusUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureSkusUnauthorized) GetPayload() *AzureSkusUnauthorizedBody {
+func (o *AzureSkusUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureSkusUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureSkusUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ AzureSkusForbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type AzureSkusForbidden struct {
-	Payload *AzureSkusForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure skus forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *AzureSkusForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureSkusForbidden) GetPayload() *AzureSkusForbiddenBody {
+func (o *AzureSkusForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureSkusForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureSkusForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ AzureSkusNotFound describes a response with status code 404, with default header
 Not Found
 */
 type AzureSkusNotFound struct {
-	Payload *AzureSkusNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure skus not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *AzureSkusNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/skus/{cloudId}/{publisher}/{offer}][%d] azureSkusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureSkusNotFound) GetPayload() *AzureSkusNotFoundBody {
+func (o *AzureSkusNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureSkusNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureSkusNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,237 +425,5 @@ func (o *AzureSkusInternalServerError) String() string {
 
 func (o *AzureSkusInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AzureSkusBadRequestBodyItems0 azure skus bad request body items0
-swagger:model AzureSkusBadRequestBodyItems0
-*/
-type AzureSkusBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this azure skus bad request body items0
-func (o *AzureSkusBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure skus bad request body items0 based on context it is used
-func (o *AzureSkusBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureSkusBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureSkusBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AzureSkusBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureSkusForbiddenBody azure skus forbidden body
-swagger:model AzureSkusForbiddenBody
-*/
-type AzureSkusForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure skus forbidden body
-func (o *AzureSkusForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure skus forbidden body based on context it is used
-func (o *AzureSkusForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureSkusForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureSkusForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AzureSkusForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureSkusNotFoundBody azure skus not found body
-swagger:model AzureSkusNotFoundBody
-*/
-type AzureSkusNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure skus not found body
-func (o *AzureSkusNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure skus not found body based on context it is used
-func (o *AzureSkusNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureSkusNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureSkusNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AzureSkusNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureSkusOKBody azure skus o k body
-swagger:model AzureSkusOKBody
-*/
-type AzureSkusOKBody struct {
-
-	// data
-	Data []string `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this azure skus o k body
-func (o *AzureSkusOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure skus o k body based on context it is used
-func (o *AzureSkusOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureSkusOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureSkusOKBody) UnmarshalBinary(b []byte) error {
-	var res AzureSkusOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureSkusUnauthorizedBody azure skus unauthorized body
-swagger:model AzureSkusUnauthorizedBody
-*/
-type AzureSkusUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure skus unauthorized body
-func (o *AzureSkusUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure skus unauthorized body based on context it is used
-func (o *AzureSkusUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureSkusUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureSkusUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AzureSkusUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

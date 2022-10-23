@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewPrometheusMetricNameParams creates a new PrometheusMetricNameParams object,
@@ -62,7 +64,7 @@ PrometheusMetricNameParams contains all the parameters to send to the API endpoi
 type PrometheusMetricNameParams struct {
 
 	// Body.
-	Body PrometheusMetricNameBody
+	Body *models.MetricNameCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *PrometheusMetricNameParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the prometheus metric name params
-func (o *PrometheusMetricNameParams) WithBody(body PrometheusMetricNameBody) *PrometheusMetricNameParams {
+func (o *PrometheusMetricNameParams) WithBody(body *models.MetricNameCommand) *PrometheusMetricNameParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the prometheus metric name params
-func (o *PrometheusMetricNameParams) SetBody(body PrometheusMetricNameBody) {
+func (o *PrometheusMetricNameParams) SetBody(body *models.MetricNameCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *PrometheusMetricNameParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

@@ -32,7 +32,7 @@ type StandaloneVmsListForDetailsDto struct {
 	CurrentFlavor string `json:"currentFlavor,omitempty"`
 
 	// disks
-	Disks []*StandaloneVmsListForDetailsDtoDisksItems0 `json:"disks"`
+	Disks []*StandAloneVMDiskForDetailsDto `json:"disks"`
 
 	// id
 	ID int32 `json:"id,omitempty"`
@@ -59,7 +59,7 @@ type StandaloneVmsListForDetailsDto struct {
 	Name string `json:"name,omitempty"`
 
 	// profile
-	Profile *StandaloneVmsListForDetailsDtoProfile `json:"profile,omitempty"`
+	Profile *StandAloneProfileForDetailsDto `json:"profile,omitempty"`
 
 	// public Ip
 	PublicIP string `json:"publicIp,omitempty"`
@@ -77,7 +77,7 @@ type StandaloneVmsListForDetailsDto struct {
 	SSHPublicKey string `json:"sshPublicKey,omitempty"`
 
 	// stand alone meta datas
-	StandAloneMetaDatas []*StandaloneVmsListForDetailsDtoStandAloneMetaDatasItems0 `json:"standAloneMetaDatas"`
+	StandAloneMetaDatas []*StandAloneMetaDataDtoForVM `json:"standAloneMetaDatas"`
 
 	// status
 	Status string `json:"status,omitempty"`
@@ -274,272 +274,6 @@ func (m *StandaloneVmsListForDetailsDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *StandaloneVmsListForDetailsDto) UnmarshalBinary(b []byte) error {
 	var res StandaloneVmsListForDetailsDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// StandaloneVmsListForDetailsDtoDisksItems0 standalone vms list for details dto disks items0
-//
-// swagger:model StandaloneVmsListForDetailsDtoDisksItems0
-type StandaloneVmsListForDetailsDtoDisksItems0 struct {
-
-	// current size
-	CurrentSize int64 `json:"currentSize,omitempty"`
-
-	// device name
-	DeviceName string `json:"deviceName,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// lun Id
-	LunID string `json:"lunId,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// status
-	Status string `json:"status,omitempty"`
-
-	// target size
-	TargetSize int64 `json:"targetSize,omitempty"`
-
-	// volume type
-	VolumeType string `json:"volumeType,omitempty"`
-}
-
-// Validate validates this standalone vms list for details dto disks items0
-func (m *StandaloneVmsListForDetailsDtoDisksItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this standalone vms list for details dto disks items0 based on context it is used
-func (m *StandaloneVmsListForDetailsDtoDisksItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *StandaloneVmsListForDetailsDtoDisksItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *StandaloneVmsListForDetailsDtoDisksItems0) UnmarshalBinary(b []byte) error {
-	var res StandaloneVmsListForDetailsDtoDisksItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// StandaloneVmsListForDetailsDtoProfile standalone vms list for details dto profile
-//
-// swagger:model StandaloneVmsListForDetailsDtoProfile
-type StandaloneVmsListForDetailsDtoProfile struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// public key
-	PublicKey string `json:"publicKey,omitempty"`
-
-	// security groups
-	SecurityGroups []*StandaloneVmsListForDetailsDtoProfileSecurityGroupsItems0 `json:"securityGroups"`
-}
-
-// Validate validates this standalone vms list for details dto profile
-func (m *StandaloneVmsListForDetailsDtoProfile) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateSecurityGroups(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *StandaloneVmsListForDetailsDtoProfile) validateSecurityGroups(formats strfmt.Registry) error {
-	if swag.IsZero(m.SecurityGroups) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.SecurityGroups); i++ {
-		if swag.IsZero(m.SecurityGroups[i]) { // not required
-			continue
-		}
-
-		if m.SecurityGroups[i] != nil {
-			if err := m.SecurityGroups[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("profile" + "." + "securityGroups" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("profile" + "." + "securityGroups" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this standalone vms list for details dto profile based on the context it is used
-func (m *StandaloneVmsListForDetailsDtoProfile) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateSecurityGroups(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *StandaloneVmsListForDetailsDtoProfile) contextValidateSecurityGroups(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.SecurityGroups); i++ {
-
-		if m.SecurityGroups[i] != nil {
-			if err := m.SecurityGroups[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("profile" + "." + "securityGroups" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("profile" + "." + "securityGroups" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *StandaloneVmsListForDetailsDtoProfile) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *StandaloneVmsListForDetailsDtoProfile) UnmarshalBinary(b []byte) error {
-	var res StandaloneVmsListForDetailsDtoProfile
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// StandaloneVmsListForDetailsDtoProfileSecurityGroupsItems0 standalone vms list for details dto profile security groups items0
-//
-// swagger:model StandaloneVmsListForDetailsDtoProfileSecurityGroupsItems0
-type StandaloneVmsListForDetailsDtoProfileSecurityGroupsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// is rdp port enabled
-	IsRdpPortEnabled bool `json:"isRdpPortEnabled"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// port max range
-	PortMaxRange int32 `json:"portMaxRange,omitempty"`
-
-	// port min range
-	PortMinRange int32 `json:"portMinRange,omitempty"`
-
-	// protocol
-	Protocol string `json:"protocol,omitempty"`
-
-	// remote Ip prefix
-	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
-}
-
-// Validate validates this standalone vms list for details dto profile security groups items0
-func (m *StandaloneVmsListForDetailsDtoProfileSecurityGroupsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this standalone vms list for details dto profile security groups items0 based on context it is used
-func (m *StandaloneVmsListForDetailsDtoProfileSecurityGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *StandaloneVmsListForDetailsDtoProfileSecurityGroupsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *StandaloneVmsListForDetailsDtoProfileSecurityGroupsItems0) UnmarshalBinary(b []byte) error {
-	var res StandaloneVmsListForDetailsDtoProfileSecurityGroupsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// StandaloneVmsListForDetailsDtoStandAloneMetaDatasItems0 standalone vms list for details dto stand alone meta datas items0
-//
-// swagger:model StandaloneVmsListForDetailsDtoStandAloneMetaDatasItems0
-type StandaloneVmsListForDetailsDtoStandAloneMetaDatasItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// key
-	Key string `json:"key,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this standalone vms list for details dto stand alone meta datas items0
-func (m *StandaloneVmsListForDetailsDtoStandAloneMetaDatasItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this standalone vms list for details dto stand alone meta datas items0 based on context it is used
-func (m *StandaloneVmsListForDetailsDtoStandAloneMetaDatasItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *StandaloneVmsListForDetailsDtoStandAloneMetaDatasItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *StandaloneVmsListForDetailsDtoStandAloneMetaDatasItems0) UnmarshalBinary(b []byte) error {
-	var res StandaloneVmsListForDetailsDtoStandAloneMetaDatasItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

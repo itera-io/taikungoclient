@@ -6,13 +6,13 @@ package servers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ServersUpdateByProjectIDReader is a Reader for the ServersUpdateByProjectID structure.
@@ -75,7 +75,7 @@ ServersUpdateByProjectIDOK describes a response with status code 200, with defau
 Success
 */
 type ServersUpdateByProjectIDOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this servers update by project Id o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ServersUpdateByProjectIDOK) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdOK  %+v", 200, o.Payload)
 }
 
-func (o *ServersUpdateByProjectIDOK) GetPayload() interface{} {
+func (o *ServersUpdateByProjectIDOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ServersUpdateByProjectIDBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type ServersUpdateByProjectIDBadRequest struct {
-	Payload []*ServersUpdateByProjectIDBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this servers update by project Id bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ServersUpdateByProjectIDBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersUpdateByProjectIDBadRequest) GetPayload() []*ServersUpdateByProjectIDBadRequestBodyItems0 {
+func (o *ServersUpdateByProjectIDBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ServersUpdateByProjectIDUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type ServersUpdateByProjectIDUnauthorized struct {
-	Payload *ServersUpdateByProjectIDUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers update by project Id unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ServersUpdateByProjectIDUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersUpdateByProjectIDUnauthorized) GetPayload() *ServersUpdateByProjectIDUnauthorizedBody {
+func (o *ServersUpdateByProjectIDUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersUpdateByProjectIDUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersUpdateByProjectIDUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ServersUpdateByProjectIDForbidden describes a response with status code 403, wit
 Forbidden
 */
 type ServersUpdateByProjectIDForbidden struct {
-	Payload *ServersUpdateByProjectIDForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers update by project Id forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ServersUpdateByProjectIDForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersUpdateByProjectIDForbidden) GetPayload() *ServersUpdateByProjectIDForbiddenBody {
+func (o *ServersUpdateByProjectIDForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersUpdateByProjectIDForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersUpdateByProjectIDForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ServersUpdateByProjectIDNotFound describes a response with status code 404, with
 Not Found
 */
 type ServersUpdateByProjectIDNotFound struct {
-	Payload *ServersUpdateByProjectIDNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers update by project Id not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ServersUpdateByProjectIDNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Servers/update/{projectId}][%d] serversUpdateByProjectIdNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersUpdateByProjectIDNotFound) GetPayload() *ServersUpdateByProjectIDNotFoundBody {
+func (o *ServersUpdateByProjectIDNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersUpdateByProjectIDNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersUpdateByProjectIDNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *ServersUpdateByProjectIDInternalServerError) String() string {
 
 func (o *ServersUpdateByProjectIDInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ServersUpdateByProjectIDBadRequestBodyItems0 servers update by project ID bad request body items0
-swagger:model ServersUpdateByProjectIDBadRequestBodyItems0
-*/
-type ServersUpdateByProjectIDBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this servers update by project ID bad request body items0
-func (o *ServersUpdateByProjectIDBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers update by project ID bad request body items0 based on context it is used
-func (o *ServersUpdateByProjectIDBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersUpdateByProjectIDBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersUpdateByProjectIDBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ServersUpdateByProjectIDBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersUpdateByProjectIDForbiddenBody servers update by project ID forbidden body
-swagger:model ServersUpdateByProjectIDForbiddenBody
-*/
-type ServersUpdateByProjectIDForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers update by project ID forbidden body
-func (o *ServersUpdateByProjectIDForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers update by project ID forbidden body based on context it is used
-func (o *ServersUpdateByProjectIDForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersUpdateByProjectIDForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersUpdateByProjectIDForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ServersUpdateByProjectIDForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersUpdateByProjectIDNotFoundBody servers update by project ID not found body
-swagger:model ServersUpdateByProjectIDNotFoundBody
-*/
-type ServersUpdateByProjectIDNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers update by project ID not found body
-func (o *ServersUpdateByProjectIDNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers update by project ID not found body based on context it is used
-func (o *ServersUpdateByProjectIDNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersUpdateByProjectIDNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersUpdateByProjectIDNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ServersUpdateByProjectIDNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersUpdateByProjectIDParamsBodyItems0 servers update by project ID params body items0
-swagger:model ServersUpdateByProjectIDParamsBodyItems0
-*/
-type ServersUpdateByProjectIDParamsBodyItems0 struct {
-
-	// ip address
-	IPAddress string `json:"ipAddress,omitempty"`
-
-	// server health
-	ServerHealth string `json:"serverHealth,omitempty"`
-}
-
-// Validate validates this servers update by project ID params body items0
-func (o *ServersUpdateByProjectIDParamsBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers update by project ID params body items0 based on context it is used
-func (o *ServersUpdateByProjectIDParamsBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersUpdateByProjectIDParamsBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersUpdateByProjectIDParamsBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ServersUpdateByProjectIDParamsBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersUpdateByProjectIDUnauthorizedBody servers update by project ID unauthorized body
-swagger:model ServersUpdateByProjectIDUnauthorizedBody
-*/
-type ServersUpdateByProjectIDUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers update by project ID unauthorized body
-func (o *ServersUpdateByProjectIDUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers update by project ID unauthorized body based on context it is used
-func (o *ServersUpdateByProjectIDUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersUpdateByProjectIDUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersUpdateByProjectIDUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ServersUpdateByProjectIDUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

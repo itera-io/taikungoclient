@@ -6,13 +6,13 @@ package ntp_servers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NtpServersDeleteReader is a Reader for the NtpServersDelete structure.
@@ -81,7 +81,7 @@ NtpServersDeleteOK describes a response with status code 200, with default heade
 Success
 */
 type NtpServersDeleteOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this ntp servers delete o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *NtpServersDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *NtpServersDeleteOK) GetPayload() interface{} {
+func (o *NtpServersDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ NtpServersDeleteBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type NtpServersDeleteBadRequest struct {
-	Payload []*NtpServersDeleteBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this ntp servers delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *NtpServersDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NtpServersDeleteBadRequest) GetPayload() []*NtpServersDeleteBadRequestBodyItems0 {
+func (o *NtpServersDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ NtpServersDeleteUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type NtpServersDeleteUnauthorized struct {
-	Payload *NtpServersDeleteUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ntp servers delete unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *NtpServersDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NtpServersDeleteUnauthorized) GetPayload() *NtpServersDeleteUnauthorizedBody {
+func (o *NtpServersDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NtpServersDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(NtpServersDeleteUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ NtpServersDeleteForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type NtpServersDeleteForbidden struct {
-	Payload *NtpServersDeleteForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ntp servers delete forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *NtpServersDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NtpServersDeleteForbidden) GetPayload() *NtpServersDeleteForbiddenBody {
+func (o *NtpServersDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NtpServersDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(NtpServersDeleteForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ NtpServersDeleteNotFound describes a response with status code 404, with default
 Not Found
 */
 type NtpServersDeleteNotFound struct {
-	Payload *NtpServersDeleteNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ntp servers delete not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *NtpServersDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/NtpServers/{id}][%d] ntpServersDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NtpServersDeleteNotFound) GetPayload() *NtpServersDeleteNotFoundBody {
+func (o *NtpServersDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NtpServersDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(NtpServersDeleteNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,196 +480,5 @@ func (o *NtpServersDeleteInternalServerError) String() string {
 
 func (o *NtpServersDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-NtpServersDeleteBadRequestBodyItems0 ntp servers delete bad request body items0
-swagger:model NtpServersDeleteBadRequestBodyItems0
-*/
-type NtpServersDeleteBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this ntp servers delete bad request body items0
-func (o *NtpServersDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ntp servers delete bad request body items0 based on context it is used
-func (o *NtpServersDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NtpServersDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NtpServersDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res NtpServersDeleteBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NtpServersDeleteForbiddenBody ntp servers delete forbidden body
-swagger:model NtpServersDeleteForbiddenBody
-*/
-type NtpServersDeleteForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ntp servers delete forbidden body
-func (o *NtpServersDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ntp servers delete forbidden body based on context it is used
-func (o *NtpServersDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NtpServersDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NtpServersDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res NtpServersDeleteForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NtpServersDeleteNotFoundBody ntp servers delete not found body
-swagger:model NtpServersDeleteNotFoundBody
-*/
-type NtpServersDeleteNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ntp servers delete not found body
-func (o *NtpServersDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ntp servers delete not found body based on context it is used
-func (o *NtpServersDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NtpServersDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NtpServersDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res NtpServersDeleteNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NtpServersDeleteUnauthorizedBody ntp servers delete unauthorized body
-swagger:model NtpServersDeleteUnauthorizedBody
-*/
-type NtpServersDeleteUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ntp servers delete unauthorized body
-func (o *NtpServersDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ntp servers delete unauthorized body based on context it is used
-func (o *NtpServersDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NtpServersDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NtpServersDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res NtpServersDeleteUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package slack
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // SlackDeleteMultipleReader is a Reader for the SlackDeleteMultiple structure.
@@ -75,7 +75,7 @@ SlackDeleteMultipleOK describes a response with status code 200, with default he
 Success
 */
 type SlackDeleteMultipleOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this slack delete multiple o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *SlackDeleteMultipleOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleOK  %+v", 200, o.Payload)
 }
 
-func (o *SlackDeleteMultipleOK) GetPayload() interface{} {
+func (o *SlackDeleteMultipleOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ SlackDeleteMultipleBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type SlackDeleteMultipleBadRequest struct {
-	Payload []*SlackDeleteMultipleBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this slack delete multiple bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SlackDeleteMultipleBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SlackDeleteMultipleBadRequest) GetPayload() []*SlackDeleteMultipleBadRequestBodyItems0 {
+func (o *SlackDeleteMultipleBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ SlackDeleteMultipleUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type SlackDeleteMultipleUnauthorized struct {
-	Payload *SlackDeleteMultipleUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack delete multiple unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *SlackDeleteMultipleUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SlackDeleteMultipleUnauthorized) GetPayload() *SlackDeleteMultipleUnauthorizedBody {
+func (o *SlackDeleteMultipleUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackDeleteMultipleUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SlackDeleteMultipleUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ SlackDeleteMultipleForbidden describes a response with status code 403, with def
 Forbidden
 */
 type SlackDeleteMultipleForbidden struct {
-	Payload *SlackDeleteMultipleForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack delete multiple forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *SlackDeleteMultipleForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SlackDeleteMultipleForbidden) GetPayload() *SlackDeleteMultipleForbiddenBody {
+func (o *SlackDeleteMultipleForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackDeleteMultipleForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SlackDeleteMultipleForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ SlackDeleteMultipleNotFound describes a response with status code 404, with defa
 Not Found
 */
 type SlackDeleteMultipleNotFound struct {
-	Payload *SlackDeleteMultipleNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack delete multiple not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *SlackDeleteMultipleNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/delete-multiple][%d] slackDeleteMultipleNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SlackDeleteMultipleNotFound) GetPayload() *SlackDeleteMultipleNotFoundBody {
+func (o *SlackDeleteMultipleNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackDeleteMultipleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SlackDeleteMultipleNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *SlackDeleteMultipleInternalServerError) String() string {
 
 func (o *SlackDeleteMultipleInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-SlackDeleteMultipleBadRequestBodyItems0 slack delete multiple bad request body items0
-swagger:model SlackDeleteMultipleBadRequestBodyItems0
-*/
-type SlackDeleteMultipleBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this slack delete multiple bad request body items0
-func (o *SlackDeleteMultipleBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this slack delete multiple bad request body items0 based on context it is used
-func (o *SlackDeleteMultipleBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SlackDeleteMultipleBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SlackDeleteMultipleBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res SlackDeleteMultipleBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SlackDeleteMultipleBody slack delete multiple body
-swagger:model SlackDeleteMultipleBody
-*/
-type SlackDeleteMultipleBody struct {
-
-	// ids
-	Ids []int32 `json:"ids"`
-}
-
-// Validate validates this slack delete multiple body
-func (o *SlackDeleteMultipleBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this slack delete multiple body based on context it is used
-func (o *SlackDeleteMultipleBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SlackDeleteMultipleBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SlackDeleteMultipleBody) UnmarshalBinary(b []byte) error {
-	var res SlackDeleteMultipleBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SlackDeleteMultipleForbiddenBody slack delete multiple forbidden body
-swagger:model SlackDeleteMultipleForbiddenBody
-*/
-type SlackDeleteMultipleForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this slack delete multiple forbidden body
-func (o *SlackDeleteMultipleForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this slack delete multiple forbidden body based on context it is used
-func (o *SlackDeleteMultipleForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SlackDeleteMultipleForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SlackDeleteMultipleForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res SlackDeleteMultipleForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SlackDeleteMultipleNotFoundBody slack delete multiple not found body
-swagger:model SlackDeleteMultipleNotFoundBody
-*/
-type SlackDeleteMultipleNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this slack delete multiple not found body
-func (o *SlackDeleteMultipleNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this slack delete multiple not found body based on context it is used
-func (o *SlackDeleteMultipleNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SlackDeleteMultipleNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SlackDeleteMultipleNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res SlackDeleteMultipleNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SlackDeleteMultipleUnauthorizedBody slack delete multiple unauthorized body
-swagger:model SlackDeleteMultipleUnauthorizedBody
-*/
-type SlackDeleteMultipleUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this slack delete multiple unauthorized body
-func (o *SlackDeleteMultipleUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this slack delete multiple unauthorized body based on context it is used
-func (o *SlackDeleteMultipleUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SlackDeleteMultipleUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SlackDeleteMultipleUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res SlackDeleteMultipleUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

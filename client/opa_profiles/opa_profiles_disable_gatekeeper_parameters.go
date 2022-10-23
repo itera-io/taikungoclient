@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOpaProfilesDisableGatekeeperParams creates a new OpaProfilesDisableGatekeeperParams object,
@@ -62,7 +64,7 @@ OpaProfilesDisableGatekeeperParams contains all the parameters to send to the AP
 type OpaProfilesDisableGatekeeperParams struct {
 
 	// Body.
-	Body OpaProfilesDisableGatekeeperBody
+	Body *models.DisableGatekeeperCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *OpaProfilesDisableGatekeeperParams) SetHTTPClient(client *http.Client) 
 }
 
 // WithBody adds the body to the opa profiles disable gatekeeper params
-func (o *OpaProfilesDisableGatekeeperParams) WithBody(body OpaProfilesDisableGatekeeperBody) *OpaProfilesDisableGatekeeperParams {
+func (o *OpaProfilesDisableGatekeeperParams) WithBody(body *models.DisableGatekeeperCommand) *OpaProfilesDisableGatekeeperParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the opa profiles disable gatekeeper params
-func (o *OpaProfilesDisableGatekeeperParams) SetBody(body OpaProfilesDisableGatekeeperBody) {
+func (o *OpaProfilesDisableGatekeeperParams) SetBody(body *models.DisableGatekeeperCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *OpaProfilesDisableGatekeeperParams) WriteToRequest(r runtime.ClientRequ
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

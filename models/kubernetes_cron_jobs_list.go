@@ -20,7 +20,7 @@ import (
 type KubernetesCronJobsList struct {
 
 	// data
-	Data []*KubernetesCronJobsListDataItems0 `json:"data"`
+	Data []*KubernetesCronJobDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,58 +111,6 @@ func (m *KubernetesCronJobsList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *KubernetesCronJobsList) UnmarshalBinary(b []byte) error {
 	var res KubernetesCronJobsList
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// KubernetesCronJobsListDataItems0 kubernetes cron jobs list data items0
-//
-// swagger:model KubernetesCronJobsListDataItems0
-type KubernetesCronJobsListDataItems0 struct {
-
-	// age
-	Age string `json:"age,omitempty"`
-
-	// last schedule
-	LastSchedule string `json:"lastSchedule,omitempty"`
-
-	// metadata name
-	MetadataName string `json:"metadataName,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// schedule
-	Schedule string `json:"schedule,omitempty"`
-
-	// suspend
-	Suspend bool `json:"suspend"`
-}
-
-// Validate validates this kubernetes cron jobs list data items0
-func (m *KubernetesCronJobsListDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes cron jobs list data items0 based on context it is used
-func (m *KubernetesCronJobsListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *KubernetesCronJobsListDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *KubernetesCronJobsListDataItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesCronJobsListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

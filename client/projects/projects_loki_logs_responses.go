@@ -6,16 +6,13 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsLokiLogsReader is a Reader for the ProjectsLokiLogs structure.
@@ -129,7 +126,7 @@ ProjectsLokiLogsBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type ProjectsLokiLogsBadRequest struct {
-	Payload []*ProjectsLokiLogsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects loki logs bad request response has a 2xx status code
@@ -165,7 +162,7 @@ func (o *ProjectsLokiLogsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsLokiLogsBadRequest) GetPayload() []*ProjectsLokiLogsBadRequestBodyItems0 {
+func (o *ProjectsLokiLogsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -190,7 +187,7 @@ ProjectsLokiLogsUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type ProjectsLokiLogsUnauthorized struct {
-	Payload *ProjectsLokiLogsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects loki logs unauthorized response has a 2xx status code
@@ -226,13 +223,13 @@ func (o *ProjectsLokiLogsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsLokiLogsUnauthorized) GetPayload() *ProjectsLokiLogsUnauthorizedBody {
+func (o *ProjectsLokiLogsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsLokiLogsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsLokiLogsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -253,7 +250,7 @@ ProjectsLokiLogsForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type ProjectsLokiLogsForbidden struct {
-	Payload *ProjectsLokiLogsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects loki logs forbidden response has a 2xx status code
@@ -289,13 +286,13 @@ func (o *ProjectsLokiLogsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsLokiLogsForbidden) GetPayload() *ProjectsLokiLogsForbiddenBody {
+func (o *ProjectsLokiLogsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsLokiLogsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsLokiLogsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -316,7 +313,7 @@ ProjectsLokiLogsNotFound describes a response with status code 404, with default
 Not Found
 */
 type ProjectsLokiLogsNotFound struct {
-	Payload *ProjectsLokiLogsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects loki logs not found response has a 2xx status code
@@ -352,13 +349,13 @@ func (o *ProjectsLokiLogsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lokilogs][%d] projectsLokiLogsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsLokiLogsNotFound) GetPayload() *ProjectsLokiLogsNotFoundBody {
+func (o *ProjectsLokiLogsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsLokiLogsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsLokiLogsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -416,492 +413,5 @@ func (o *ProjectsLokiLogsInternalServerError) String() string {
 
 func (o *ProjectsLokiLogsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectsLokiLogsBadRequestBodyItems0 projects loki logs bad request body items0
-swagger:model ProjectsLokiLogsBadRequestBodyItems0
-*/
-type ProjectsLokiLogsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this projects loki logs bad request body items0
-func (o *ProjectsLokiLogsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects loki logs bad request body items0 based on context it is used
-func (o *ProjectsLokiLogsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsLokiLogsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsLokiLogsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectsLokiLogsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsLokiLogsBody projects loki logs body
-swagger:model ProjectsLokiLogsBody
-*/
-type ProjectsLokiLogsBody struct {
-
-	// can download
-	CanDownload bool `json:"canDownload"`
-
-	// direction
-	Direction string `json:"direction,omitempty"`
-
-	// end
-	// Format: date-time
-	End *strfmt.DateTime `json:"end,omitempty"`
-
-	// filters
-	Filters []*ProjectsLokiLogsParamsBodyFiltersItems0 `json:"filters"`
-
-	// limit
-	Limit int32 `json:"limit,omitempty"`
-
-	// parameters
-	Parameters []*ProjectsLokiLogsParamsBodyParametersItems0 `json:"parameters"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// start
-	// Format: date-time
-	Start *strfmt.DateTime `json:"start,omitempty"`
-}
-
-// Validate validates this projects loki logs body
-func (o *ProjectsLokiLogsBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateEnd(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateFilters(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateParameters(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateStart(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ProjectsLokiLogsBody) validateEnd(formats strfmt.Registry) error {
-	if swag.IsZero(o.End) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("body"+"."+"end", "body", "date-time", o.End.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (o *ProjectsLokiLogsBody) validateFilters(formats strfmt.Registry) error {
-	if swag.IsZero(o.Filters) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Filters); i++ {
-		if swag.IsZero(o.Filters[i]) { // not required
-			continue
-		}
-
-		if o.Filters[i] != nil {
-			if err := o.Filters[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "filters" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "filters" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *ProjectsLokiLogsBody) validateParameters(formats strfmt.Registry) error {
-	if swag.IsZero(o.Parameters) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Parameters); i++ {
-		if swag.IsZero(o.Parameters[i]) { // not required
-			continue
-		}
-
-		if o.Parameters[i] != nil {
-			if err := o.Parameters[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *ProjectsLokiLogsBody) validateStart(formats strfmt.Registry) error {
-	if swag.IsZero(o.Start) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("body"+"."+"start", "body", "date-time", o.Start.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this projects loki logs body based on the context it is used
-func (o *ProjectsLokiLogsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateFilters(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateParameters(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ProjectsLokiLogsBody) contextValidateFilters(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Filters); i++ {
-
-		if o.Filters[i] != nil {
-			if err := o.Filters[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "filters" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "filters" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *ProjectsLokiLogsBody) contextValidateParameters(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Parameters); i++ {
-
-		if o.Parameters[i] != nil {
-			if err := o.Parameters[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsLokiLogsBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsLokiLogsBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsLokiLogsBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsLokiLogsForbiddenBody projects loki logs forbidden body
-swagger:model ProjectsLokiLogsForbiddenBody
-*/
-type ProjectsLokiLogsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects loki logs forbidden body
-func (o *ProjectsLokiLogsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects loki logs forbidden body based on context it is used
-func (o *ProjectsLokiLogsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsLokiLogsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsLokiLogsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsLokiLogsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsLokiLogsNotFoundBody projects loki logs not found body
-swagger:model ProjectsLokiLogsNotFoundBody
-*/
-type ProjectsLokiLogsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects loki logs not found body
-func (o *ProjectsLokiLogsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects loki logs not found body based on context it is used
-func (o *ProjectsLokiLogsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsLokiLogsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsLokiLogsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsLokiLogsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsLokiLogsParamsBodyFiltersItems0 projects loki logs params body filters items0
-swagger:model ProjectsLokiLogsParamsBodyFiltersItems0
-*/
-type ProjectsLokiLogsParamsBodyFiltersItems0 struct {
-
-	// operator
-	Operator string `json:"operator,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this projects loki logs params body filters items0
-func (o *ProjectsLokiLogsParamsBodyFiltersItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects loki logs params body filters items0 based on context it is used
-func (o *ProjectsLokiLogsParamsBodyFiltersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsLokiLogsParamsBodyFiltersItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsLokiLogsParamsBodyFiltersItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectsLokiLogsParamsBodyFiltersItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsLokiLogsParamsBodyParametersItems0 projects loki logs params body parameters items0
-swagger:model ProjectsLokiLogsParamsBodyParametersItems0
-*/
-type ProjectsLokiLogsParamsBodyParametersItems0 struct {
-
-	// label
-	Label string `json:"label,omitempty"`
-
-	// operator
-	Operator string `json:"operator,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this projects loki logs params body parameters items0
-func (o *ProjectsLokiLogsParamsBodyParametersItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects loki logs params body parameters items0 based on context it is used
-func (o *ProjectsLokiLogsParamsBodyParametersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsLokiLogsParamsBodyParametersItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsLokiLogsParamsBodyParametersItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectsLokiLogsParamsBodyParametersItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsLokiLogsUnauthorizedBody projects loki logs unauthorized body
-swagger:model ProjectsLokiLogsUnauthorizedBody
-*/
-type ProjectsLokiLogsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects loki logs unauthorized body
-func (o *ProjectsLokiLogsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects loki logs unauthorized body based on context it is used
-func (o *ProjectsLokiLogsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsLokiLogsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsLokiLogsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsLokiLogsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

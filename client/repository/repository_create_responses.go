@@ -6,15 +6,13 @@ package repository
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // RepositoryCreateReader is a Reader for the RepositoryCreate structure.
@@ -77,7 +75,7 @@ RepositoryCreateOK describes a response with status code 200, with default heade
 Success
 */
 type RepositoryCreateOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this repository create o k response has a 2xx status code
@@ -113,7 +111,7 @@ func (o *RepositoryCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/bind][%d] repositoryCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *RepositoryCreateOK) GetPayload() interface{} {
+func (o *RepositoryCreateOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -138,7 +136,7 @@ RepositoryCreateBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type RepositoryCreateBadRequest struct {
-	Payload []*RepositoryCreateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this repository create bad request response has a 2xx status code
@@ -174,7 +172,7 @@ func (o *RepositoryCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/bind][%d] repositoryCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *RepositoryCreateBadRequest) GetPayload() []*RepositoryCreateBadRequestBodyItems0 {
+func (o *RepositoryCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +197,7 @@ RepositoryCreateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type RepositoryCreateUnauthorized struct {
-	Payload *RepositoryCreateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this repository create unauthorized response has a 2xx status code
@@ -235,13 +233,13 @@ func (o *RepositoryCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/bind][%d] repositoryCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *RepositoryCreateUnauthorized) GetPayload() *RepositoryCreateUnauthorizedBody {
+func (o *RepositoryCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *RepositoryCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(RepositoryCreateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +260,7 @@ RepositoryCreateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type RepositoryCreateForbidden struct {
-	Payload *RepositoryCreateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this repository create forbidden response has a 2xx status code
@@ -298,13 +296,13 @@ func (o *RepositoryCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/bind][%d] repositoryCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *RepositoryCreateForbidden) GetPayload() *RepositoryCreateForbiddenBody {
+func (o *RepositoryCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *RepositoryCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(RepositoryCreateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +323,7 @@ RepositoryCreateNotFound describes a response with status code 404, with default
 Not Found
 */
 type RepositoryCreateNotFound struct {
-	Payload *RepositoryCreateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this repository create not found response has a 2xx status code
@@ -361,13 +359,13 @@ func (o *RepositoryCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Repository/bind][%d] repositoryCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *RepositoryCreateNotFound) GetPayload() *RepositoryCreateNotFoundBody {
+func (o *RepositoryCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *RepositoryCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(RepositoryCreateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,339 +423,5 @@ func (o *RepositoryCreateInternalServerError) String() string {
 
 func (o *RepositoryCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-RepositoryCreateBadRequestBodyItems0 repository create bad request body items0
-swagger:model RepositoryCreateBadRequestBodyItems0
-*/
-type RepositoryCreateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this repository create bad request body items0
-func (o *RepositoryCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this repository create bad request body items0 based on context it is used
-func (o *RepositoryCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *RepositoryCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *RepositoryCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res RepositoryCreateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-RepositoryCreateBody repository create body
-swagger:model RepositoryCreateBody
-*/
-type RepositoryCreateBody struct {
-
-	// filtering elements
-	FilteringElements []*RepositoryCreateParamsBodyFilteringElementsItems0 `json:"filteringElements"`
-}
-
-// Validate validates this repository create body
-func (o *RepositoryCreateBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateFilteringElements(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *RepositoryCreateBody) validateFilteringElements(formats strfmt.Registry) error {
-	if swag.IsZero(o.FilteringElements) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.FilteringElements); i++ {
-		if swag.IsZero(o.FilteringElements[i]) { // not required
-			continue
-		}
-
-		if o.FilteringElements[i] != nil {
-			if err := o.FilteringElements[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "filteringElements" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "filteringElements" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this repository create body based on the context it is used
-func (o *RepositoryCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateFilteringElements(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *RepositoryCreateBody) contextValidateFilteringElements(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.FilteringElements); i++ {
-
-		if o.FilteringElements[i] != nil {
-			if err := o.FilteringElements[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "filteringElements" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "filteringElements" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *RepositoryCreateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *RepositoryCreateBody) UnmarshalBinary(b []byte) error {
-	var res RepositoryCreateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-RepositoryCreateForbiddenBody repository create forbidden body
-swagger:model RepositoryCreateForbiddenBody
-*/
-type RepositoryCreateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this repository create forbidden body
-func (o *RepositoryCreateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this repository create forbidden body based on context it is used
-func (o *RepositoryCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *RepositoryCreateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *RepositoryCreateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res RepositoryCreateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-RepositoryCreateNotFoundBody repository create not found body
-swagger:model RepositoryCreateNotFoundBody
-*/
-type RepositoryCreateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this repository create not found body
-func (o *RepositoryCreateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this repository create not found body based on context it is used
-func (o *RepositoryCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *RepositoryCreateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *RepositoryCreateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res RepositoryCreateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-RepositoryCreateParamsBodyFilteringElementsItems0 repository create params body filtering elements items0
-swagger:model RepositoryCreateParamsBodyFilteringElementsItems0
-*/
-type RepositoryCreateParamsBodyFilteringElementsItems0 struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-}
-
-// Validate validates this repository create params body filtering elements items0
-func (o *RepositoryCreateParamsBodyFilteringElementsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this repository create params body filtering elements items0 based on context it is used
-func (o *RepositoryCreateParamsBodyFilteringElementsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *RepositoryCreateParamsBodyFilteringElementsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *RepositoryCreateParamsBodyFilteringElementsItems0) UnmarshalBinary(b []byte) error {
-	var res RepositoryCreateParamsBodyFilteringElementsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-RepositoryCreateUnauthorizedBody repository create unauthorized body
-swagger:model RepositoryCreateUnauthorizedBody
-*/
-type RepositoryCreateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this repository create unauthorized body
-func (o *RepositoryCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this repository create unauthorized body based on context it is used
-func (o *RepositoryCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *RepositoryCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *RepositoryCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res RepositoryCreateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

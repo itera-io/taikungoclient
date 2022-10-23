@@ -6,13 +6,13 @@ package stand_alone_profile
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneProfileDeleteReader is a Reader for the StandAloneProfileDelete structure.
@@ -75,7 +75,7 @@ StandAloneProfileDeleteOK describes a response with status code 200, with defaul
 Success
 */
 type StandAloneProfileDeleteOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone profile delete o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneProfileDeleteOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneProfileDeleteOK) GetPayload() interface{} {
+func (o *StandAloneProfileDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneProfileDeleteBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneProfileDeleteBadRequest struct {
-	Payload []*StandAloneProfileDeleteBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone profile delete bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneProfileDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileDeleteBadRequest) GetPayload() []*StandAloneProfileDeleteBadRequestBodyItems0 {
+func (o *StandAloneProfileDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneProfileDeleteUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneProfileDeleteUnauthorized struct {
-	Payload *StandAloneProfileDeleteUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone profile delete unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneProfileDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneProfileDeleteUnauthorized) GetPayload() *StandAloneProfileDeleteUnauthorizedBody {
+func (o *StandAloneProfileDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneProfileDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneProfileDeleteUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneProfileDeleteForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneProfileDeleteForbidden struct {
-	Payload *StandAloneProfileDeleteForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone profile delete forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneProfileDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneProfileDeleteForbidden) GetPayload() *StandAloneProfileDeleteForbiddenBody {
+func (o *StandAloneProfileDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneProfileDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneProfileDeleteForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneProfileDeleteNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneProfileDeleteNotFound struct {
-	Payload *StandAloneProfileDeleteNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone profile delete not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneProfileDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/delete][%d] standAloneProfileDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneProfileDeleteNotFound) GetPayload() *StandAloneProfileDeleteNotFoundBody {
+func (o *StandAloneProfileDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneProfileDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneProfileDeleteNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *StandAloneProfileDeleteInternalServerError) String() string {
 
 func (o *StandAloneProfileDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-StandAloneProfileDeleteBadRequestBodyItems0 stand alone profile delete bad request body items0
-swagger:model StandAloneProfileDeleteBadRequestBodyItems0
-*/
-type StandAloneProfileDeleteBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this stand alone profile delete bad request body items0
-func (o *StandAloneProfileDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone profile delete bad request body items0 based on context it is used
-func (o *StandAloneProfileDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneProfileDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneProfileDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneProfileDeleteBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneProfileDeleteBody stand alone profile delete body
-swagger:model StandAloneProfileDeleteBody
-*/
-type StandAloneProfileDeleteBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-}
-
-// Validate validates this stand alone profile delete body
-func (o *StandAloneProfileDeleteBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone profile delete body based on context it is used
-func (o *StandAloneProfileDeleteBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneProfileDeleteBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneProfileDeleteBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneProfileDeleteBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneProfileDeleteForbiddenBody stand alone profile delete forbidden body
-swagger:model StandAloneProfileDeleteForbiddenBody
-*/
-type StandAloneProfileDeleteForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone profile delete forbidden body
-func (o *StandAloneProfileDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone profile delete forbidden body based on context it is used
-func (o *StandAloneProfileDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneProfileDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneProfileDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneProfileDeleteForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneProfileDeleteNotFoundBody stand alone profile delete not found body
-swagger:model StandAloneProfileDeleteNotFoundBody
-*/
-type StandAloneProfileDeleteNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone profile delete not found body
-func (o *StandAloneProfileDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone profile delete not found body based on context it is used
-func (o *StandAloneProfileDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneProfileDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneProfileDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneProfileDeleteNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneProfileDeleteUnauthorizedBody stand alone profile delete unauthorized body
-swagger:model StandAloneProfileDeleteUnauthorizedBody
-*/
-type StandAloneProfileDeleteUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone profile delete unauthorized body
-func (o *StandAloneProfileDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone profile delete unauthorized body based on context it is used
-func (o *StandAloneProfileDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneProfileDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneProfileDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneProfileDeleteUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

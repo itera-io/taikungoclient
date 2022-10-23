@@ -6,15 +6,13 @@ package user_projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // UserProjectsBindUsersReader is a Reader for the UserProjectsBindUsers structure.
@@ -77,7 +75,7 @@ UserProjectsBindUsersOK describes a response with status code 200, with default 
 Success
 */
 type UserProjectsBindUsersOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this user projects bind users o k response has a 2xx status code
@@ -113,7 +111,7 @@ func (o *UserProjectsBindUsersOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindusers][%d] userProjectsBindUsersOK  %+v", 200, o.Payload)
 }
 
-func (o *UserProjectsBindUsersOK) GetPayload() interface{} {
+func (o *UserProjectsBindUsersOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -138,7 +136,7 @@ UserProjectsBindUsersBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type UserProjectsBindUsersBadRequest struct {
-	Payload []*UserProjectsBindUsersBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this user projects bind users bad request response has a 2xx status code
@@ -174,7 +172,7 @@ func (o *UserProjectsBindUsersBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindusers][%d] userProjectsBindUsersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserProjectsBindUsersBadRequest) GetPayload() []*UserProjectsBindUsersBadRequestBodyItems0 {
+func (o *UserProjectsBindUsersBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +197,7 @@ UserProjectsBindUsersUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type UserProjectsBindUsersUnauthorized struct {
-	Payload *UserProjectsBindUsersUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user projects bind users unauthorized response has a 2xx status code
@@ -235,13 +233,13 @@ func (o *UserProjectsBindUsersUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindusers][%d] userProjectsBindUsersUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserProjectsBindUsersUnauthorized) GetPayload() *UserProjectsBindUsersUnauthorizedBody {
+func (o *UserProjectsBindUsersUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserProjectsBindUsersUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserProjectsBindUsersUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +260,7 @@ UserProjectsBindUsersForbidden describes a response with status code 403, with d
 Forbidden
 */
 type UserProjectsBindUsersForbidden struct {
-	Payload *UserProjectsBindUsersForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user projects bind users forbidden response has a 2xx status code
@@ -298,13 +296,13 @@ func (o *UserProjectsBindUsersForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindusers][%d] userProjectsBindUsersForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserProjectsBindUsersForbidden) GetPayload() *UserProjectsBindUsersForbiddenBody {
+func (o *UserProjectsBindUsersForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserProjectsBindUsersForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserProjectsBindUsersForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +323,7 @@ UserProjectsBindUsersNotFound describes a response with status code 404, with de
 Not Found
 */
 type UserProjectsBindUsersNotFound struct {
-	Payload *UserProjectsBindUsersNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user projects bind users not found response has a 2xx status code
@@ -361,13 +359,13 @@ func (o *UserProjectsBindUsersNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserProjects/bindusers][%d] userProjectsBindUsersNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserProjectsBindUsersNotFound) GetPayload() *UserProjectsBindUsersNotFoundBody {
+func (o *UserProjectsBindUsersNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserProjectsBindUsersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserProjectsBindUsersNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,345 +423,5 @@ func (o *UserProjectsBindUsersInternalServerError) String() string {
 
 func (o *UserProjectsBindUsersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-UserProjectsBindUsersBadRequestBodyItems0 user projects bind users bad request body items0
-swagger:model UserProjectsBindUsersBadRequestBodyItems0
-*/
-type UserProjectsBindUsersBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this user projects bind users bad request body items0
-func (o *UserProjectsBindUsersBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user projects bind users bad request body items0 based on context it is used
-func (o *UserProjectsBindUsersBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserProjectsBindUsersBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserProjectsBindUsersBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res UserProjectsBindUsersBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserProjectsBindUsersBody user projects bind users body
-swagger:model UserProjectsBindUsersBody
-*/
-type UserProjectsBindUsersBody struct {
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// users
-	Users []*UserProjectsBindUsersParamsBodyUsersItems0 `json:"users"`
-}
-
-// Validate validates this user projects bind users body
-func (o *UserProjectsBindUsersBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateUsers(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *UserProjectsBindUsersBody) validateUsers(formats strfmt.Registry) error {
-	if swag.IsZero(o.Users) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Users); i++ {
-		if swag.IsZero(o.Users[i]) { // not required
-			continue
-		}
-
-		if o.Users[i] != nil {
-			if err := o.Users[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "users" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "users" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this user projects bind users body based on the context it is used
-func (o *UserProjectsBindUsersBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateUsers(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *UserProjectsBindUsersBody) contextValidateUsers(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Users); i++ {
-
-		if o.Users[i] != nil {
-			if err := o.Users[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "users" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "users" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserProjectsBindUsersBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserProjectsBindUsersBody) UnmarshalBinary(b []byte) error {
-	var res UserProjectsBindUsersBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserProjectsBindUsersForbiddenBody user projects bind users forbidden body
-swagger:model UserProjectsBindUsersForbiddenBody
-*/
-type UserProjectsBindUsersForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this user projects bind users forbidden body
-func (o *UserProjectsBindUsersForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user projects bind users forbidden body based on context it is used
-func (o *UserProjectsBindUsersForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserProjectsBindUsersForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserProjectsBindUsersForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res UserProjectsBindUsersForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserProjectsBindUsersNotFoundBody user projects bind users not found body
-swagger:model UserProjectsBindUsersNotFoundBody
-*/
-type UserProjectsBindUsersNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this user projects bind users not found body
-func (o *UserProjectsBindUsersNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user projects bind users not found body based on context it is used
-func (o *UserProjectsBindUsersNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserProjectsBindUsersNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserProjectsBindUsersNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res UserProjectsBindUsersNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserProjectsBindUsersParamsBodyUsersItems0 user projects bind users params body users items0
-swagger:model UserProjectsBindUsersParamsBodyUsersItems0
-*/
-type UserProjectsBindUsersParamsBodyUsersItems0 struct {
-
-	// is bound
-	IsBound bool `json:"isBound"`
-
-	// user Id
-	UserID string `json:"userId,omitempty"`
-
-	// user name
-	UserName string `json:"userName,omitempty"`
-}
-
-// Validate validates this user projects bind users params body users items0
-func (o *UserProjectsBindUsersParamsBodyUsersItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user projects bind users params body users items0 based on context it is used
-func (o *UserProjectsBindUsersParamsBodyUsersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserProjectsBindUsersParamsBodyUsersItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserProjectsBindUsersParamsBodyUsersItems0) UnmarshalBinary(b []byte) error {
-	var res UserProjectsBindUsersParamsBodyUsersItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserProjectsBindUsersUnauthorizedBody user projects bind users unauthorized body
-swagger:model UserProjectsBindUsersUnauthorizedBody
-*/
-type UserProjectsBindUsersUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this user projects bind users unauthorized body
-func (o *UserProjectsBindUsersUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user projects bind users unauthorized body based on context it is used
-func (o *UserProjectsBindUsersUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserProjectsBindUsersUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserProjectsBindUsersUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res UserProjectsBindUsersUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

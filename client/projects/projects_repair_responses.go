@@ -6,13 +6,13 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsRepairReader is a Reader for the ProjectsRepair structure.
@@ -75,7 +75,7 @@ ProjectsRepairOK describes a response with status code 200, with default header 
 Success
 */
 type ProjectsRepairOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects repair o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectsRepairOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/repair/{projectId}][%d] projectsRepairOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsRepairOK) GetPayload() interface{} {
+func (o *ProjectsRepairOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectsRepairBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type ProjectsRepairBadRequest struct {
-	Payload []*ProjectsRepairBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects repair bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsRepairBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/repair/{projectId}][%d] projectsRepairBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsRepairBadRequest) GetPayload() []*ProjectsRepairBadRequestBodyItems0 {
+func (o *ProjectsRepairBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectsRepairUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type ProjectsRepairUnauthorized struct {
-	Payload *ProjectsRepairUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects repair unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectsRepairUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/repair/{projectId}][%d] projectsRepairUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsRepairUnauthorized) GetPayload() *ProjectsRepairUnauthorizedBody {
+func (o *ProjectsRepairUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsRepairUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsRepairUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectsRepairForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type ProjectsRepairForbidden struct {
-	Payload *ProjectsRepairForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects repair forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectsRepairForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/repair/{projectId}][%d] projectsRepairForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsRepairForbidden) GetPayload() *ProjectsRepairForbiddenBody {
+func (o *ProjectsRepairForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsRepairForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsRepairForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectsRepairNotFound describes a response with status code 404, with default h
 Not Found
 */
 type ProjectsRepairNotFound struct {
-	Payload *ProjectsRepairNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects repair not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectsRepairNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/repair/{projectId}][%d] projectsRepairNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsRepairNotFound) GetPayload() *ProjectsRepairNotFoundBody {
+func (o *ProjectsRepairNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsRepairNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsRepairNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *ProjectsRepairInternalServerError) String() string {
 
 func (o *ProjectsRepairInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectsRepairBadRequestBodyItems0 projects repair bad request body items0
-swagger:model ProjectsRepairBadRequestBodyItems0
-*/
-type ProjectsRepairBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this projects repair bad request body items0
-func (o *ProjectsRepairBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects repair bad request body items0 based on context it is used
-func (o *ProjectsRepairBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsRepairBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsRepairBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectsRepairBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsRepairForbiddenBody projects repair forbidden body
-swagger:model ProjectsRepairForbiddenBody
-*/
-type ProjectsRepairForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects repair forbidden body
-func (o *ProjectsRepairForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects repair forbidden body based on context it is used
-func (o *ProjectsRepairForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsRepairForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsRepairForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsRepairForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsRepairNotFoundBody projects repair not found body
-swagger:model ProjectsRepairNotFoundBody
-*/
-type ProjectsRepairNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects repair not found body
-func (o *ProjectsRepairNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects repair not found body based on context it is used
-func (o *ProjectsRepairNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsRepairNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsRepairNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsRepairNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsRepairUnauthorizedBody projects repair unauthorized body
-swagger:model ProjectsRepairUnauthorizedBody
-*/
-type ProjectsRepairUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects repair unauthorized body
-func (o *ProjectsRepairUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects repair unauthorized body based on context it is used
-func (o *ProjectsRepairUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsRepairUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsRepairUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsRepairUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

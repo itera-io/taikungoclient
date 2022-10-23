@@ -20,7 +20,7 @@ import (
 type StorageClasses struct {
 
 	// data
-	Data []*StorageClassesDataItems0 `json:"data"`
+	Data []*StorageClassDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,58 +111,6 @@ func (m *StorageClasses) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *StorageClasses) UnmarshalBinary(b []byte) error {
 	var res StorageClasses
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// StorageClassesDataItems0 storage classes data items0
-//
-// swagger:model StorageClassesDataItems0
-type StorageClassesDataItems0 struct {
-
-	// age
-	Age string `json:"age,omitempty"`
-
-	// allow volume expansion
-	AllowVolumeExpansion bool `json:"allowVolumeExpansion"`
-
-	// metadata name
-	MetadataName string `json:"metadataName,omitempty"`
-
-	// provisioner
-	Provisioner string `json:"provisioner,omitempty"`
-
-	// reclaim policy
-	ReclaimPolicy string `json:"reclaimPolicy,omitempty"`
-
-	// volume binding mode
-	VolumeBindingMode string `json:"volumeBindingMode,omitempty"`
-}
-
-// Validate validates this storage classes data items0
-func (m *StorageClassesDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this storage classes data items0 based on context it is used
-func (m *StorageClassesDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *StorageClassesDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *StorageClassesDataItems0) UnmarshalBinary(b []byte) error {
-	var res StorageClassesDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -6,13 +6,13 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsDescribeReader is a Reader for the ProjectsDescribe structure.
@@ -136,7 +136,7 @@ ProjectsDescribeBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type ProjectsDescribeBadRequest struct {
-	Payload []*ProjectsDescribeBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects describe bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsDescribeBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/describe/{projectId}][%d] projectsDescribeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsDescribeBadRequest) GetPayload() []*ProjectsDescribeBadRequestBodyItems0 {
+func (o *ProjectsDescribeBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectsDescribeUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type ProjectsDescribeUnauthorized struct {
-	Payload *ProjectsDescribeUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects describe unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectsDescribeUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/describe/{projectId}][%d] projectsDescribeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsDescribeUnauthorized) GetPayload() *ProjectsDescribeUnauthorizedBody {
+func (o *ProjectsDescribeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsDescribeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsDescribeUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectsDescribeForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type ProjectsDescribeForbidden struct {
-	Payload *ProjectsDescribeForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects describe forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectsDescribeForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/describe/{projectId}][%d] projectsDescribeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsDescribeForbidden) GetPayload() *ProjectsDescribeForbiddenBody {
+func (o *ProjectsDescribeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsDescribeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsDescribeForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectsDescribeNotFound describes a response with status code 404, with default
 Not Found
 */
 type ProjectsDescribeNotFound struct {
-	Payload *ProjectsDescribeNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects describe not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectsDescribeNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Projects/describe/{projectId}][%d] projectsDescribeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsDescribeNotFound) GetPayload() *ProjectsDescribeNotFoundBody {
+func (o *ProjectsDescribeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsDescribeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsDescribeNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *ProjectsDescribeInternalServerError) String() string {
 
 func (o *ProjectsDescribeInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectsDescribeBadRequestBodyItems0 projects describe bad request body items0
-swagger:model ProjectsDescribeBadRequestBodyItems0
-*/
-type ProjectsDescribeBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this projects describe bad request body items0
-func (o *ProjectsDescribeBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects describe bad request body items0 based on context it is used
-func (o *ProjectsDescribeBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsDescribeBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsDescribeBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectsDescribeBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsDescribeForbiddenBody projects describe forbidden body
-swagger:model ProjectsDescribeForbiddenBody
-*/
-type ProjectsDescribeForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects describe forbidden body
-func (o *ProjectsDescribeForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects describe forbidden body based on context it is used
-func (o *ProjectsDescribeForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsDescribeForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsDescribeForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsDescribeForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsDescribeNotFoundBody projects describe not found body
-swagger:model ProjectsDescribeNotFoundBody
-*/
-type ProjectsDescribeNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects describe not found body
-func (o *ProjectsDescribeNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects describe not found body based on context it is used
-func (o *ProjectsDescribeNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsDescribeNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsDescribeNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsDescribeNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsDescribeUnauthorizedBody projects describe unauthorized body
-swagger:model ProjectsDescribeUnauthorizedBody
-*/
-type ProjectsDescribeUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects describe unauthorized body
-func (o *ProjectsDescribeUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects describe unauthorized body based on context it is used
-func (o *ProjectsDescribeUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsDescribeUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsDescribeUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsDescribeUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

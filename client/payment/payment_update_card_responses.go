@@ -6,13 +6,13 @@ package payment
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PaymentUpdateCardReader is a Reader for the PaymentUpdateCard structure.
@@ -75,7 +75,7 @@ PaymentUpdateCardOK describes a response with status code 200, with default head
 Success
 */
 type PaymentUpdateCardOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this payment update card o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *PaymentUpdateCardOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/updatecard][%d] paymentUpdateCardOK  %+v", 200, o.Payload)
 }
 
-func (o *PaymentUpdateCardOK) GetPayload() interface{} {
+func (o *PaymentUpdateCardOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ PaymentUpdateCardBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type PaymentUpdateCardBadRequest struct {
-	Payload []*PaymentUpdateCardBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this payment update card bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PaymentUpdateCardBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/updatecard][%d] paymentUpdateCardBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentUpdateCardBadRequest) GetPayload() []*PaymentUpdateCardBadRequestBodyItems0 {
+func (o *PaymentUpdateCardBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ PaymentUpdateCardUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type PaymentUpdateCardUnauthorized struct {
-	Payload *PaymentUpdateCardUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment update card unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *PaymentUpdateCardUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/updatecard][%d] paymentUpdateCardUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentUpdateCardUnauthorized) GetPayload() *PaymentUpdateCardUnauthorizedBody {
+func (o *PaymentUpdateCardUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentUpdateCardUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PaymentUpdateCardUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ PaymentUpdateCardForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type PaymentUpdateCardForbidden struct {
-	Payload *PaymentUpdateCardForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment update card forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *PaymentUpdateCardForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/updatecard][%d] paymentUpdateCardForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentUpdateCardForbidden) GetPayload() *PaymentUpdateCardForbiddenBody {
+func (o *PaymentUpdateCardForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentUpdateCardForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PaymentUpdateCardForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ PaymentUpdateCardNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type PaymentUpdateCardNotFound struct {
-	Payload *PaymentUpdateCardNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment update card not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *PaymentUpdateCardNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/updatecard][%d] paymentUpdateCardNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentUpdateCardNotFound) GetPayload() *PaymentUpdateCardNotFoundBody {
+func (o *PaymentUpdateCardNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentUpdateCardNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PaymentUpdateCardNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *PaymentUpdateCardInternalServerError) String() string {
 
 func (o *PaymentUpdateCardInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PaymentUpdateCardBadRequestBodyItems0 payment update card bad request body items0
-swagger:model PaymentUpdateCardBadRequestBodyItems0
-*/
-type PaymentUpdateCardBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this payment update card bad request body items0
-func (o *PaymentUpdateCardBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment update card bad request body items0 based on context it is used
-func (o *PaymentUpdateCardBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentUpdateCardBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentUpdateCardBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PaymentUpdateCardBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PaymentUpdateCardBody payment update card body
-swagger:model PaymentUpdateCardBody
-*/
-type PaymentUpdateCardBody struct {
-
-	// payment method Id
-	PaymentMethodID string `json:"paymentMethodId,omitempty"`
-}
-
-// Validate validates this payment update card body
-func (o *PaymentUpdateCardBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment update card body based on context it is used
-func (o *PaymentUpdateCardBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentUpdateCardBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentUpdateCardBody) UnmarshalBinary(b []byte) error {
-	var res PaymentUpdateCardBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PaymentUpdateCardForbiddenBody payment update card forbidden body
-swagger:model PaymentUpdateCardForbiddenBody
-*/
-type PaymentUpdateCardForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this payment update card forbidden body
-func (o *PaymentUpdateCardForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment update card forbidden body based on context it is used
-func (o *PaymentUpdateCardForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentUpdateCardForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentUpdateCardForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PaymentUpdateCardForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PaymentUpdateCardNotFoundBody payment update card not found body
-swagger:model PaymentUpdateCardNotFoundBody
-*/
-type PaymentUpdateCardNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this payment update card not found body
-func (o *PaymentUpdateCardNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment update card not found body based on context it is used
-func (o *PaymentUpdateCardNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentUpdateCardNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentUpdateCardNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PaymentUpdateCardNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PaymentUpdateCardUnauthorizedBody payment update card unauthorized body
-swagger:model PaymentUpdateCardUnauthorizedBody
-*/
-type PaymentUpdateCardUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this payment update card unauthorized body
-func (o *PaymentUpdateCardUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment update card unauthorized body based on context it is used
-func (o *PaymentUpdateCardUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentUpdateCardUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentUpdateCardUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PaymentUpdateCardUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

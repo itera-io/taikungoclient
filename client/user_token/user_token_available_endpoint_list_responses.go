@@ -6,15 +6,13 @@ package user_token
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // UserTokenAvailableEndpointListReader is a Reader for the UserTokenAvailableEndpointList structure.
@@ -77,7 +75,7 @@ UserTokenAvailableEndpointListOK describes a response with status code 200, with
 Success
 */
 type UserTokenAvailableEndpointListOK struct {
-	Payload *UserTokenAvailableEndpointListOKBody
+	Payload *models.AvailableEndpointsList
 }
 
 // IsSuccess returns true when this user token available endpoint list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *UserTokenAvailableEndpointListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListOK  %+v", 200, o.Payload)
 }
 
-func (o *UserTokenAvailableEndpointListOK) GetPayload() *UserTokenAvailableEndpointListOKBody {
+func (o *UserTokenAvailableEndpointListOK) GetPayload() *models.AvailableEndpointsList {
 	return o.Payload
 }
 
 func (o *UserTokenAvailableEndpointListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserTokenAvailableEndpointListOKBody)
+	o.Payload = new(models.AvailableEndpointsList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ UserTokenAvailableEndpointListBadRequest describes a response with status code 4
 Bad Request
 */
 type UserTokenAvailableEndpointListBadRequest struct {
-	Payload []*UserTokenAvailableEndpointListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this user token available endpoint list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *UserTokenAvailableEndpointListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserTokenAvailableEndpointListBadRequest) GetPayload() []*UserTokenAvailableEndpointListBadRequestBodyItems0 {
+func (o *UserTokenAvailableEndpointListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ UserTokenAvailableEndpointListUnauthorized describes a response with status code
 Unauthorized
 */
 type UserTokenAvailableEndpointListUnauthorized struct {
-	Payload *UserTokenAvailableEndpointListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user token available endpoint list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *UserTokenAvailableEndpointListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserTokenAvailableEndpointListUnauthorized) GetPayload() *UserTokenAvailableEndpointListUnauthorizedBody {
+func (o *UserTokenAvailableEndpointListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserTokenAvailableEndpointListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserTokenAvailableEndpointListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ UserTokenAvailableEndpointListForbidden describes a response with status code 40
 Forbidden
 */
 type UserTokenAvailableEndpointListForbidden struct {
-	Payload *UserTokenAvailableEndpointListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user token available endpoint list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *UserTokenAvailableEndpointListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserTokenAvailableEndpointListForbidden) GetPayload() *UserTokenAvailableEndpointListForbiddenBody {
+func (o *UserTokenAvailableEndpointListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserTokenAvailableEndpointListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserTokenAvailableEndpointListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ UserTokenAvailableEndpointListNotFound describes a response with status code 404
 Not Found
 */
 type UserTokenAvailableEndpointListNotFound struct {
-	Payload *UserTokenAvailableEndpointListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user token available endpoint list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *UserTokenAvailableEndpointListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/UserToken/available-endpoints][%d] userTokenAvailableEndpointListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserTokenAvailableEndpointListNotFound) GetPayload() *UserTokenAvailableEndpointListNotFoundBody {
+func (o *UserTokenAvailableEndpointListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserTokenAvailableEndpointListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserTokenAvailableEndpointListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,351 +425,5 @@ func (o *UserTokenAvailableEndpointListInternalServerError) String() string {
 
 func (o *UserTokenAvailableEndpointListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-UserTokenAvailableEndpointListBadRequestBodyItems0 user token available endpoint list bad request body items0
-swagger:model UserTokenAvailableEndpointListBadRequestBodyItems0
-*/
-type UserTokenAvailableEndpointListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this user token available endpoint list bad request body items0
-func (o *UserTokenAvailableEndpointListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user token available endpoint list bad request body items0 based on context it is used
-func (o *UserTokenAvailableEndpointListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserTokenAvailableEndpointListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserTokenAvailableEndpointListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res UserTokenAvailableEndpointListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserTokenAvailableEndpointListForbiddenBody user token available endpoint list forbidden body
-swagger:model UserTokenAvailableEndpointListForbiddenBody
-*/
-type UserTokenAvailableEndpointListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this user token available endpoint list forbidden body
-func (o *UserTokenAvailableEndpointListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user token available endpoint list forbidden body based on context it is used
-func (o *UserTokenAvailableEndpointListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserTokenAvailableEndpointListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserTokenAvailableEndpointListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res UserTokenAvailableEndpointListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserTokenAvailableEndpointListNotFoundBody user token available endpoint list not found body
-swagger:model UserTokenAvailableEndpointListNotFoundBody
-*/
-type UserTokenAvailableEndpointListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this user token available endpoint list not found body
-func (o *UserTokenAvailableEndpointListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user token available endpoint list not found body based on context it is used
-func (o *UserTokenAvailableEndpointListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserTokenAvailableEndpointListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserTokenAvailableEndpointListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res UserTokenAvailableEndpointListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserTokenAvailableEndpointListOKBody user token available endpoint list o k body
-swagger:model UserTokenAvailableEndpointListOKBody
-*/
-type UserTokenAvailableEndpointListOKBody struct {
-
-	// data
-	Data []*UserTokenAvailableEndpointListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this user token available endpoint list o k body
-func (o *UserTokenAvailableEndpointListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *UserTokenAvailableEndpointListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("userTokenAvailableEndpointListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("userTokenAvailableEndpointListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this user token available endpoint list o k body based on the context it is used
-func (o *UserTokenAvailableEndpointListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *UserTokenAvailableEndpointListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("userTokenAvailableEndpointListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("userTokenAvailableEndpointListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserTokenAvailableEndpointListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserTokenAvailableEndpointListOKBody) UnmarshalBinary(b []byte) error {
-	var res UserTokenAvailableEndpointListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserTokenAvailableEndpointListOKBodyDataItems0 user token available endpoint list o k body data items0
-swagger:model UserTokenAvailableEndpointListOKBodyDataItems0
-*/
-type UserTokenAvailableEndpointListOKBodyDataItems0 struct {
-
-	// controller
-	Controller string `json:"controller,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// method
-	Method string `json:"method,omitempty"`
-
-	// path
-	Path string `json:"path,omitempty"`
-}
-
-// Validate validates this user token available endpoint list o k body data items0
-func (o *UserTokenAvailableEndpointListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user token available endpoint list o k body data items0 based on context it is used
-func (o *UserTokenAvailableEndpointListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserTokenAvailableEndpointListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserTokenAvailableEndpointListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res UserTokenAvailableEndpointListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserTokenAvailableEndpointListUnauthorizedBody user token available endpoint list unauthorized body
-swagger:model UserTokenAvailableEndpointListUnauthorizedBody
-*/
-type UserTokenAvailableEndpointListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this user token available endpoint list unauthorized body
-func (o *UserTokenAvailableEndpointListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user token available endpoint list unauthorized body based on context it is used
-func (o *UserTokenAvailableEndpointListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserTokenAvailableEndpointListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserTokenAvailableEndpointListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res UserTokenAvailableEndpointListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

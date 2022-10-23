@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobCreateKeyPoolParams creates a new CronJobCreateKeyPoolParams object,
@@ -62,7 +64,7 @@ CronJobCreateKeyPoolParams contains all the parameters to send to the API endpoi
 type CronJobCreateKeyPoolParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.CreateKeyPoolCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CronJobCreateKeyPoolParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the cron job create key pool params
-func (o *CronJobCreateKeyPoolParams) WithBody(body interface{}) *CronJobCreateKeyPoolParams {
+func (o *CronJobCreateKeyPoolParams) WithBody(body models.CreateKeyPoolCommand) *CronJobCreateKeyPoolParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job create key pool params
-func (o *CronJobCreateKeyPoolParams) SetBody(body interface{}) {
+func (o *CronJobCreateKeyPoolParams) SetBody(body models.CreateKeyPoolCommand) {
 	o.Body = body
 }
 

@@ -56,13 +56,13 @@ type CatalogAppDetailsDto struct {
 	PackageID string `json:"packageId,omitempty"`
 
 	// project apps
-	ProjectApps []*CatalogAppDetailsDtoProjectAppsItems0 `json:"projectApps"`
+	ProjectApps []*ProjectAppDto `json:"projectApps"`
 
 	// readme
 	Readme string `json:"readme,omitempty"`
 
 	// security report
-	SecurityReport *CatalogAppDetailsDtoSecurityReport `json:"securityReport,omitempty"`
+	SecurityReport *SecurityReportSummaryDto `json:"securityReport,omitempty"`
 
 	// stars
 	Stars int32 `json:"stars,omitempty"`
@@ -202,113 +202,6 @@ func (m *CatalogAppDetailsDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *CatalogAppDetailsDto) UnmarshalBinary(b []byte) error {
 	var res CatalogAppDetailsDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// CatalogAppDetailsDtoProjectAppsItems0 catalog app details dto project apps items0
-//
-// swagger:model CatalogAppDetailsDtoProjectAppsItems0
-type CatalogAppDetailsDtoProjectAppsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// is locked
-	IsLocked bool `json:"isLocked"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
-
-	// status
-	Status string `json:"status,omitempty"`
-
-	// version
-	Version string `json:"version,omitempty"`
-}
-
-// Validate validates this catalog app details dto project apps items0
-func (m *CatalogAppDetailsDtoProjectAppsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog app details dto project apps items0 based on context it is used
-func (m *CatalogAppDetailsDtoProjectAppsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *CatalogAppDetailsDtoProjectAppsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *CatalogAppDetailsDtoProjectAppsItems0) UnmarshalBinary(b []byte) error {
-	var res CatalogAppDetailsDtoProjectAppsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// CatalogAppDetailsDtoSecurityReport catalog app details dto security report
-//
-// swagger:model CatalogAppDetailsDtoSecurityReport
-type CatalogAppDetailsDtoSecurityReport struct {
-
-	// critical
-	Critical int64 `json:"critical,omitempty"`
-
-	// high
-	High int64 `json:"high,omitempty"`
-
-	// low
-	Low int64 `json:"low,omitempty"`
-
-	// medium
-	Medium int64 `json:"medium,omitempty"`
-
-	// unknown
-	Unknown int64 `json:"unknown,omitempty"`
-}
-
-// Validate validates this catalog app details dto security report
-func (m *CatalogAppDetailsDtoSecurityReport) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog app details dto security report based on context it is used
-func (m *CatalogAppDetailsDtoSecurityReport) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *CatalogAppDetailsDtoSecurityReport) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *CatalogAppDetailsDtoSecurityReport) UnmarshalBinary(b []byte) error {
-	var res CatalogAppDetailsDtoSecurityReport
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

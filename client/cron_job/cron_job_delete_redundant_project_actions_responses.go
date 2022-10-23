@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobDeleteRedundantProjectActionsReader is a Reader for the CronJobDeleteRedundantProjectActions structure.
@@ -75,7 +75,7 @@ CronJobDeleteRedundantProjectActionsOK describes a response with status code 200
 Success
 */
 type CronJobDeleteRedundantProjectActionsOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job delete redundant project actions o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobDeleteRedundantProjectActionsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobDeleteRedundantProjectActionsOK) GetPayload() interface{} {
+func (o *CronJobDeleteRedundantProjectActionsOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobDeleteRedundantProjectActionsBadRequest describes a response with status 
 Bad Request
 */
 type CronJobDeleteRedundantProjectActionsBadRequest struct {
-	Payload []*CronJobDeleteRedundantProjectActionsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job delete redundant project actions bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobDeleteRedundantProjectActionsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteRedundantProjectActionsBadRequest) GetPayload() []*CronJobDeleteRedundantProjectActionsBadRequestBodyItems0 {
+func (o *CronJobDeleteRedundantProjectActionsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobDeleteRedundantProjectActionsUnauthorized describes a response with statu
 Unauthorized
 */
 type CronJobDeleteRedundantProjectActionsUnauthorized struct {
-	Payload *CronJobDeleteRedundantProjectActionsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete redundant project actions unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobDeleteRedundantProjectActionsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteRedundantProjectActionsUnauthorized) GetPayload() *CronJobDeleteRedundantProjectActionsUnauthorizedBody {
+func (o *CronJobDeleteRedundantProjectActionsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteRedundantProjectActionsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobDeleteRedundantProjectActionsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobDeleteRedundantProjectActionsForbidden describes a response with status c
 Forbidden
 */
 type CronJobDeleteRedundantProjectActionsForbidden struct {
-	Payload *CronJobDeleteRedundantProjectActionsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete redundant project actions forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobDeleteRedundantProjectActionsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteRedundantProjectActionsForbidden) GetPayload() *CronJobDeleteRedundantProjectActionsForbiddenBody {
+func (o *CronJobDeleteRedundantProjectActionsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteRedundantProjectActionsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobDeleteRedundantProjectActionsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobDeleteRedundantProjectActionsNotFound describes a response with status co
 Not Found
 */
 type CronJobDeleteRedundantProjectActionsNotFound struct {
-	Payload *CronJobDeleteRedundantProjectActionsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete redundant project actions not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobDeleteRedundantProjectActionsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-actions][%d] cronJobDeleteRedundantProjectActionsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteRedundantProjectActionsNotFound) GetPayload() *CronJobDeleteRedundantProjectActionsNotFoundBody {
+func (o *CronJobDeleteRedundantProjectActionsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteRedundantProjectActionsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobDeleteRedundantProjectActionsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *CronJobDeleteRedundantProjectActionsInternalServerError) String() strin
 
 func (o *CronJobDeleteRedundantProjectActionsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CronJobDeleteRedundantProjectActionsBadRequestBodyItems0 cron job delete redundant project actions bad request body items0
-swagger:model CronJobDeleteRedundantProjectActionsBadRequestBodyItems0
-*/
-type CronJobDeleteRedundantProjectActionsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this cron job delete redundant project actions bad request body items0
-func (o *CronJobDeleteRedundantProjectActionsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete redundant project actions bad request body items0 based on context it is used
-func (o *CronJobDeleteRedundantProjectActionsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteRedundantProjectActionsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteRedundantProjectActionsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteRedundantProjectActionsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobDeleteRedundantProjectActionsForbiddenBody cron job delete redundant project actions forbidden body
-swagger:model CronJobDeleteRedundantProjectActionsForbiddenBody
-*/
-type CronJobDeleteRedundantProjectActionsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job delete redundant project actions forbidden body
-func (o *CronJobDeleteRedundantProjectActionsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete redundant project actions forbidden body based on context it is used
-func (o *CronJobDeleteRedundantProjectActionsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteRedundantProjectActionsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteRedundantProjectActionsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteRedundantProjectActionsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobDeleteRedundantProjectActionsNotFoundBody cron job delete redundant project actions not found body
-swagger:model CronJobDeleteRedundantProjectActionsNotFoundBody
-*/
-type CronJobDeleteRedundantProjectActionsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job delete redundant project actions not found body
-func (o *CronJobDeleteRedundantProjectActionsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete redundant project actions not found body based on context it is used
-func (o *CronJobDeleteRedundantProjectActionsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteRedundantProjectActionsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteRedundantProjectActionsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteRedundantProjectActionsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobDeleteRedundantProjectActionsUnauthorizedBody cron job delete redundant project actions unauthorized body
-swagger:model CronJobDeleteRedundantProjectActionsUnauthorizedBody
-*/
-type CronJobDeleteRedundantProjectActionsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job delete redundant project actions unauthorized body
-func (o *CronJobDeleteRedundantProjectActionsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete redundant project actions unauthorized body based on context it is used
-func (o *CronJobDeleteRedundantProjectActionsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteRedundantProjectActionsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteRedundantProjectActionsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteRedundantProjectActionsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

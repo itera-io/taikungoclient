@@ -6,13 +6,13 @@ package s3_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // S3CredentialsDeleteReader is a Reader for the S3CredentialsDelete structure.
@@ -81,7 +81,7 @@ S3CredentialsDeleteOK describes a response with status code 200, with default he
 Success
 */
 type S3CredentialsDeleteOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this s3 credentials delete o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *S3CredentialsDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *S3CredentialsDeleteOK) GetPayload() interface{} {
+func (o *S3CredentialsDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ S3CredentialsDeleteBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type S3CredentialsDeleteBadRequest struct {
-	Payload []*S3CredentialsDeleteBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this s3 credentials delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *S3CredentialsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsDeleteBadRequest) GetPayload() []*S3CredentialsDeleteBadRequestBodyItems0 {
+func (o *S3CredentialsDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ S3CredentialsDeleteUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type S3CredentialsDeleteUnauthorized struct {
-	Payload *S3CredentialsDeleteUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials delete unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *S3CredentialsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *S3CredentialsDeleteUnauthorized) GetPayload() *S3CredentialsDeleteUnauthorizedBody {
+func (o *S3CredentialsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(S3CredentialsDeleteUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ S3CredentialsDeleteForbidden describes a response with status code 403, with def
 Forbidden
 */
 type S3CredentialsDeleteForbidden struct {
-	Payload *S3CredentialsDeleteForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials delete forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *S3CredentialsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *S3CredentialsDeleteForbidden) GetPayload() *S3CredentialsDeleteForbiddenBody {
+func (o *S3CredentialsDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(S3CredentialsDeleteForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ S3CredentialsDeleteNotFound describes a response with status code 404, with defa
 Not Found
 */
 type S3CredentialsDeleteNotFound struct {
-	Payload *S3CredentialsDeleteNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials delete not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *S3CredentialsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/S3Credentials/{id}][%d] s3CredentialsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *S3CredentialsDeleteNotFound) GetPayload() *S3CredentialsDeleteNotFoundBody {
+func (o *S3CredentialsDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(S3CredentialsDeleteNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,196 +480,5 @@ func (o *S3CredentialsDeleteInternalServerError) String() string {
 
 func (o *S3CredentialsDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-S3CredentialsDeleteBadRequestBodyItems0 s3 credentials delete bad request body items0
-swagger:model S3CredentialsDeleteBadRequestBodyItems0
-*/
-type S3CredentialsDeleteBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this s3 credentials delete bad request body items0
-func (o *S3CredentialsDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this s3 credentials delete bad request body items0 based on context it is used
-func (o *S3CredentialsDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *S3CredentialsDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *S3CredentialsDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res S3CredentialsDeleteBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-S3CredentialsDeleteForbiddenBody s3 credentials delete forbidden body
-swagger:model S3CredentialsDeleteForbiddenBody
-*/
-type S3CredentialsDeleteForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this s3 credentials delete forbidden body
-func (o *S3CredentialsDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this s3 credentials delete forbidden body based on context it is used
-func (o *S3CredentialsDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *S3CredentialsDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *S3CredentialsDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res S3CredentialsDeleteForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-S3CredentialsDeleteNotFoundBody s3 credentials delete not found body
-swagger:model S3CredentialsDeleteNotFoundBody
-*/
-type S3CredentialsDeleteNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this s3 credentials delete not found body
-func (o *S3CredentialsDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this s3 credentials delete not found body based on context it is used
-func (o *S3CredentialsDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *S3CredentialsDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *S3CredentialsDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res S3CredentialsDeleteNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-S3CredentialsDeleteUnauthorizedBody s3 credentials delete unauthorized body
-swagger:model S3CredentialsDeleteUnauthorizedBody
-*/
-type S3CredentialsDeleteUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this s3 credentials delete unauthorized body
-func (o *S3CredentialsDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this s3 credentials delete unauthorized body based on context it is used
-func (o *S3CredentialsDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *S3CredentialsDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *S3CredentialsDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res S3CredentialsDeleteUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

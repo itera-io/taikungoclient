@@ -6,13 +6,13 @@ package allowed_host
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AllowedHostCreateReader is a Reader for the AllowedHostCreate structure.
@@ -75,7 +75,7 @@ AllowedHostCreateOK describes a response with status code 200, with default head
 Success
 */
 type AllowedHostCreateOK struct {
-	Payload *AllowedHostCreateOKBody
+	Payload *models.APIResponse
 }
 
 // IsSuccess returns true when this allowed host create o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *AllowedHostCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AllowedHost/create][%d] allowedHostCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *AllowedHostCreateOK) GetPayload() *AllowedHostCreateOKBody {
+func (o *AllowedHostCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *AllowedHostCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AllowedHostCreateOKBody)
+	o.Payload = new(models.APIResponse)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ AllowedHostCreateBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AllowedHostCreateBadRequest struct {
-	Payload []*AllowedHostCreateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this allowed host create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AllowedHostCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AllowedHost/create][%d] allowedHostCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AllowedHostCreateBadRequest) GetPayload() []*AllowedHostCreateBadRequestBodyItems0 {
+func (o *AllowedHostCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ AllowedHostCreateUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type AllowedHostCreateUnauthorized struct {
-	Payload *AllowedHostCreateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this allowed host create unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *AllowedHostCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AllowedHost/create][%d] allowedHostCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AllowedHostCreateUnauthorized) GetPayload() *AllowedHostCreateUnauthorizedBody {
+func (o *AllowedHostCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AllowedHostCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AllowedHostCreateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ AllowedHostCreateForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type AllowedHostCreateForbidden struct {
-	Payload *AllowedHostCreateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this allowed host create forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *AllowedHostCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AllowedHost/create][%d] allowedHostCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AllowedHostCreateForbidden) GetPayload() *AllowedHostCreateForbiddenBody {
+func (o *AllowedHostCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AllowedHostCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AllowedHostCreateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ AllowedHostCreateNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type AllowedHostCreateNotFound struct {
-	Payload *AllowedHostCreateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this allowed host create not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *AllowedHostCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AllowedHost/create][%d] allowedHostCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AllowedHostCreateNotFound) GetPayload() *AllowedHostCreateNotFoundBody {
+func (o *AllowedHostCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AllowedHostCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AllowedHostCreateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,293 +425,5 @@ func (o *AllowedHostCreateInternalServerError) String() string {
 
 func (o *AllowedHostCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AllowedHostCreateBadRequestBodyItems0 allowed host create bad request body items0
-swagger:model AllowedHostCreateBadRequestBodyItems0
-*/
-type AllowedHostCreateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this allowed host create bad request body items0
-func (o *AllowedHostCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this allowed host create bad request body items0 based on context it is used
-func (o *AllowedHostCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AllowedHostCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AllowedHostCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AllowedHostCreateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AllowedHostCreateBody allowed host create body
-swagger:model AllowedHostCreateBody
-*/
-type AllowedHostCreateBody struct {
-
-	// access profile Id
-	AccessProfileID int32 `json:"accessProfileId,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-
-	// ip address
-	IPAddress string `json:"ipAddress,omitempty"`
-
-	// mask bits
-	MaskBits int32 `json:"maskBits,omitempty"`
-}
-
-// Validate validates this allowed host create body
-func (o *AllowedHostCreateBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this allowed host create body based on context it is used
-func (o *AllowedHostCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AllowedHostCreateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AllowedHostCreateBody) UnmarshalBinary(b []byte) error {
-	var res AllowedHostCreateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AllowedHostCreateForbiddenBody allowed host create forbidden body
-swagger:model AllowedHostCreateForbiddenBody
-*/
-type AllowedHostCreateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this allowed host create forbidden body
-func (o *AllowedHostCreateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this allowed host create forbidden body based on context it is used
-func (o *AllowedHostCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AllowedHostCreateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AllowedHostCreateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AllowedHostCreateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AllowedHostCreateNotFoundBody allowed host create not found body
-swagger:model AllowedHostCreateNotFoundBody
-*/
-type AllowedHostCreateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this allowed host create not found body
-func (o *AllowedHostCreateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this allowed host create not found body based on context it is used
-func (o *AllowedHostCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AllowedHostCreateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AllowedHostCreateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AllowedHostCreateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AllowedHostCreateOKBody allowed host create o k body
-swagger:model AllowedHostCreateOKBody
-*/
-type AllowedHostCreateOKBody struct {
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// is error
-	IsError bool `json:"isError"`
-
-	// message
-	Message string `json:"message,omitempty"`
-
-	// result
-	Result interface{} `json:"result,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-}
-
-// Validate validates this allowed host create o k body
-func (o *AllowedHostCreateOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this allowed host create o k body based on context it is used
-func (o *AllowedHostCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AllowedHostCreateOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AllowedHostCreateOKBody) UnmarshalBinary(b []byte) error {
-	var res AllowedHostCreateOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AllowedHostCreateUnauthorizedBody allowed host create unauthorized body
-swagger:model AllowedHostCreateUnauthorizedBody
-*/
-type AllowedHostCreateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this allowed host create unauthorized body
-func (o *AllowedHostCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this allowed host create unauthorized body based on context it is used
-func (o *AllowedHostCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AllowedHostCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AllowedHostCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AllowedHostCreateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

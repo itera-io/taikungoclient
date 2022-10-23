@@ -6,13 +6,13 @@ package auth
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AuthForgotPasswordReader is a Reader for the AuthForgotPassword structure.
@@ -75,7 +75,7 @@ AuthForgotPasswordOK describes a response with status code 200, with default hea
 Success
 */
 type AuthForgotPasswordOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this auth forgot password o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AuthForgotPasswordOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/forgotpassword][%d] authForgotPasswordOK  %+v", 200, o.Payload)
 }
 
-func (o *AuthForgotPasswordOK) GetPayload() interface{} {
+func (o *AuthForgotPasswordOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AuthForgotPasswordBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type AuthForgotPasswordBadRequest struct {
-	Payload []*AuthForgotPasswordBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this auth forgot password bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AuthForgotPasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/forgotpassword][%d] authForgotPasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AuthForgotPasswordBadRequest) GetPayload() []*AuthForgotPasswordBadRequestBodyItems0 {
+func (o *AuthForgotPasswordBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AuthForgotPasswordUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type AuthForgotPasswordUnauthorized struct {
-	Payload *AuthForgotPasswordUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth forgot password unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AuthForgotPasswordUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/forgotpassword][%d] authForgotPasswordUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AuthForgotPasswordUnauthorized) GetPayload() *AuthForgotPasswordUnauthorizedBody {
+func (o *AuthForgotPasswordUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthForgotPasswordUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AuthForgotPasswordUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AuthForgotPasswordForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type AuthForgotPasswordForbidden struct {
-	Payload *AuthForgotPasswordForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth forgot password forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AuthForgotPasswordForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/forgotpassword][%d] authForgotPasswordForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AuthForgotPasswordForbidden) GetPayload() *AuthForgotPasswordForbiddenBody {
+func (o *AuthForgotPasswordForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthForgotPasswordForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AuthForgotPasswordForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AuthForgotPasswordNotFound describes a response with status code 404, with defau
 Not Found
 */
 type AuthForgotPasswordNotFound struct {
-	Payload *AuthForgotPasswordNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth forgot password not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AuthForgotPasswordNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/forgotpassword][%d] authForgotPasswordNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AuthForgotPasswordNotFound) GetPayload() *AuthForgotPasswordNotFoundBody {
+func (o *AuthForgotPasswordNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthForgotPasswordNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AuthForgotPasswordNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *AuthForgotPasswordInternalServerError) String() string {
 
 func (o *AuthForgotPasswordInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AuthForgotPasswordBadRequestBodyItems0 auth forgot password bad request body items0
-swagger:model AuthForgotPasswordBadRequestBodyItems0
-*/
-type AuthForgotPasswordBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this auth forgot password bad request body items0
-func (o *AuthForgotPasswordBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this auth forgot password bad request body items0 based on context it is used
-func (o *AuthForgotPasswordBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AuthForgotPasswordBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AuthForgotPasswordBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AuthForgotPasswordBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AuthForgotPasswordBody auth forgot password body
-swagger:model AuthForgotPasswordBody
-*/
-type AuthForgotPasswordBody struct {
-
-	// email
-	Email string `json:"email,omitempty"`
-}
-
-// Validate validates this auth forgot password body
-func (o *AuthForgotPasswordBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this auth forgot password body based on context it is used
-func (o *AuthForgotPasswordBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AuthForgotPasswordBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AuthForgotPasswordBody) UnmarshalBinary(b []byte) error {
-	var res AuthForgotPasswordBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AuthForgotPasswordForbiddenBody auth forgot password forbidden body
-swagger:model AuthForgotPasswordForbiddenBody
-*/
-type AuthForgotPasswordForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this auth forgot password forbidden body
-func (o *AuthForgotPasswordForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this auth forgot password forbidden body based on context it is used
-func (o *AuthForgotPasswordForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AuthForgotPasswordForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AuthForgotPasswordForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AuthForgotPasswordForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AuthForgotPasswordNotFoundBody auth forgot password not found body
-swagger:model AuthForgotPasswordNotFoundBody
-*/
-type AuthForgotPasswordNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this auth forgot password not found body
-func (o *AuthForgotPasswordNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this auth forgot password not found body based on context it is used
-func (o *AuthForgotPasswordNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AuthForgotPasswordNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AuthForgotPasswordNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AuthForgotPasswordNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AuthForgotPasswordUnauthorizedBody auth forgot password unauthorized body
-swagger:model AuthForgotPasswordUnauthorizedBody
-*/
-type AuthForgotPasswordUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this auth forgot password unauthorized body
-func (o *AuthForgotPasswordUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this auth forgot password unauthorized body based on context it is used
-func (o *AuthForgotPasswordUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AuthForgotPasswordUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AuthForgotPasswordUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AuthForgotPasswordUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -6,15 +6,13 @@ package flavors
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // FlavorsGoogleFlavorsReader is a Reader for the FlavorsGoogleFlavors structure.
@@ -77,7 +75,7 @@ FlavorsGoogleFlavorsOK describes a response with status code 200, with default h
 Success
 */
 type FlavorsGoogleFlavorsOK struct {
-	Payload *FlavorsGoogleFlavorsOKBody
+	Payload *models.GoogleFlavorList
 }
 
 // IsSuccess returns true when this flavors google flavors o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *FlavorsGoogleFlavorsOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsOK  %+v", 200, o.Payload)
 }
 
-func (o *FlavorsGoogleFlavorsOK) GetPayload() *FlavorsGoogleFlavorsOKBody {
+func (o *FlavorsGoogleFlavorsOK) GetPayload() *models.GoogleFlavorList {
 	return o.Payload
 }
 
 func (o *FlavorsGoogleFlavorsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsGoogleFlavorsOKBody)
+	o.Payload = new(models.GoogleFlavorList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ FlavorsGoogleFlavorsBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type FlavorsGoogleFlavorsBadRequest struct {
-	Payload []*FlavorsGoogleFlavorsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this flavors google flavors bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *FlavorsGoogleFlavorsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsGoogleFlavorsBadRequest) GetPayload() []*FlavorsGoogleFlavorsBadRequestBodyItems0 {
+func (o *FlavorsGoogleFlavorsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ FlavorsGoogleFlavorsUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type FlavorsGoogleFlavorsUnauthorized struct {
-	Payload *FlavorsGoogleFlavorsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors google flavors unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *FlavorsGoogleFlavorsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsGoogleFlavorsUnauthorized) GetPayload() *FlavorsGoogleFlavorsUnauthorizedBody {
+func (o *FlavorsGoogleFlavorsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsGoogleFlavorsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsGoogleFlavorsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ FlavorsGoogleFlavorsForbidden describes a response with status code 403, with de
 Forbidden
 */
 type FlavorsGoogleFlavorsForbidden struct {
-	Payload *FlavorsGoogleFlavorsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors google flavors forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *FlavorsGoogleFlavorsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsGoogleFlavorsForbidden) GetPayload() *FlavorsGoogleFlavorsForbiddenBody {
+func (o *FlavorsGoogleFlavorsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsGoogleFlavorsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsGoogleFlavorsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ FlavorsGoogleFlavorsNotFound describes a response with status code 404, with def
 Not Found
 */
 type FlavorsGoogleFlavorsNotFound struct {
-	Payload *FlavorsGoogleFlavorsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors google flavors not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *FlavorsGoogleFlavorsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/google/{cloudId}][%d] flavorsGoogleFlavorsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsGoogleFlavorsNotFound) GetPayload() *FlavorsGoogleFlavorsNotFoundBody {
+func (o *FlavorsGoogleFlavorsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsGoogleFlavorsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsGoogleFlavorsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,360 +425,5 @@ func (o *FlavorsGoogleFlavorsInternalServerError) String() string {
 
 func (o *FlavorsGoogleFlavorsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-FlavorsGoogleFlavorsBadRequestBodyItems0 flavors google flavors bad request body items0
-swagger:model FlavorsGoogleFlavorsBadRequestBodyItems0
-*/
-type FlavorsGoogleFlavorsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this flavors google flavors bad request body items0
-func (o *FlavorsGoogleFlavorsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors google flavors bad request body items0 based on context it is used
-func (o *FlavorsGoogleFlavorsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsGoogleFlavorsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsGoogleFlavorsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res FlavorsGoogleFlavorsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsGoogleFlavorsForbiddenBody flavors google flavors forbidden body
-swagger:model FlavorsGoogleFlavorsForbiddenBody
-*/
-type FlavorsGoogleFlavorsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this flavors google flavors forbidden body
-func (o *FlavorsGoogleFlavorsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors google flavors forbidden body based on context it is used
-func (o *FlavorsGoogleFlavorsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsGoogleFlavorsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsGoogleFlavorsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsGoogleFlavorsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsGoogleFlavorsNotFoundBody flavors google flavors not found body
-swagger:model FlavorsGoogleFlavorsNotFoundBody
-*/
-type FlavorsGoogleFlavorsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this flavors google flavors not found body
-func (o *FlavorsGoogleFlavorsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors google flavors not found body based on context it is used
-func (o *FlavorsGoogleFlavorsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsGoogleFlavorsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsGoogleFlavorsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsGoogleFlavorsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsGoogleFlavorsOKBody flavors google flavors o k body
-swagger:model FlavorsGoogleFlavorsOKBody
-*/
-type FlavorsGoogleFlavorsOKBody struct {
-
-	// data
-	Data []*FlavorsGoogleFlavorsOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this flavors google flavors o k body
-func (o *FlavorsGoogleFlavorsOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *FlavorsGoogleFlavorsOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("flavorsGoogleFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("flavorsGoogleFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this flavors google flavors o k body based on the context it is used
-func (o *FlavorsGoogleFlavorsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *FlavorsGoogleFlavorsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("flavorsGoogleFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("flavorsGoogleFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsGoogleFlavorsOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsGoogleFlavorsOKBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsGoogleFlavorsOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsGoogleFlavorsOKBodyDataItems0 flavors google flavors o k body data items0
-swagger:model FlavorsGoogleFlavorsOKBodyDataItems0
-*/
-type FlavorsGoogleFlavorsOKBodyDataItems0 struct {
-
-	// cpu
-	CPU int32 `json:"cpu,omitempty"`
-
-	// description
-	Description interface{} `json:"description,omitempty"`
-
-	// linux price
-	LinuxPrice string `json:"linuxPrice,omitempty"`
-
-	// linux spot price
-	LinuxSpotPrice string `json:"linuxSpotPrice,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// ram
-	RAM int64 `json:"ram,omitempty"`
-
-	// windows price
-	WindowsPrice string `json:"windowsPrice,omitempty"`
-
-	// windows spot price
-	WindowsSpotPrice string `json:"windowsSpotPrice,omitempty"`
-}
-
-// Validate validates this flavors google flavors o k body data items0
-func (o *FlavorsGoogleFlavorsOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors google flavors o k body data items0 based on context it is used
-func (o *FlavorsGoogleFlavorsOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsGoogleFlavorsOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsGoogleFlavorsOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res FlavorsGoogleFlavorsOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsGoogleFlavorsUnauthorizedBody flavors google flavors unauthorized body
-swagger:model FlavorsGoogleFlavorsUnauthorizedBody
-*/
-type FlavorsGoogleFlavorsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this flavors google flavors unauthorized body
-func (o *FlavorsGoogleFlavorsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors google flavors unauthorized body based on context it is used
-func (o *FlavorsGoogleFlavorsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsGoogleFlavorsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsGoogleFlavorsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsGoogleFlavorsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobCreateKeyPoolReader is a Reader for the CronJobCreateKeyPool structure.
@@ -75,7 +75,7 @@ CronJobCreateKeyPoolOK describes a response with status code 200, with default h
 Success
 */
 type CronJobCreateKeyPoolOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job create key pool o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobCreateKeyPoolOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobCreateKeyPoolOK) GetPayload() interface{} {
+func (o *CronJobCreateKeyPoolOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobCreateKeyPoolBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type CronJobCreateKeyPoolBadRequest struct {
-	Payload []*CronJobCreateKeyPoolBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job create key pool bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobCreateKeyPoolBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobCreateKeyPoolBadRequest) GetPayload() []*CronJobCreateKeyPoolBadRequestBodyItems0 {
+func (o *CronJobCreateKeyPoolBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobCreateKeyPoolUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type CronJobCreateKeyPoolUnauthorized struct {
-	Payload *CronJobCreateKeyPoolUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job create key pool unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobCreateKeyPoolUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobCreateKeyPoolUnauthorized) GetPayload() *CronJobCreateKeyPoolUnauthorizedBody {
+func (o *CronJobCreateKeyPoolUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobCreateKeyPoolUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobCreateKeyPoolUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobCreateKeyPoolForbidden describes a response with status code 403, with de
 Forbidden
 */
 type CronJobCreateKeyPoolForbidden struct {
-	Payload *CronJobCreateKeyPoolForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job create key pool forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobCreateKeyPoolForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobCreateKeyPoolForbidden) GetPayload() *CronJobCreateKeyPoolForbiddenBody {
+func (o *CronJobCreateKeyPoolForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobCreateKeyPoolForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobCreateKeyPoolForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobCreateKeyPoolNotFound describes a response with status code 404, with def
 Not Found
 */
 type CronJobCreateKeyPoolNotFound struct {
-	Payload *CronJobCreateKeyPoolNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job create key pool not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobCreateKeyPoolNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/create-key-pool][%d] cronJobCreateKeyPoolNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobCreateKeyPoolNotFound) GetPayload() *CronJobCreateKeyPoolNotFoundBody {
+func (o *CronJobCreateKeyPoolNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobCreateKeyPoolNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobCreateKeyPoolNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *CronJobCreateKeyPoolInternalServerError) String() string {
 
 func (o *CronJobCreateKeyPoolInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CronJobCreateKeyPoolBadRequestBodyItems0 cron job create key pool bad request body items0
-swagger:model CronJobCreateKeyPoolBadRequestBodyItems0
-*/
-type CronJobCreateKeyPoolBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this cron job create key pool bad request body items0
-func (o *CronJobCreateKeyPoolBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job create key pool bad request body items0 based on context it is used
-func (o *CronJobCreateKeyPoolBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobCreateKeyPoolBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobCreateKeyPoolBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CronJobCreateKeyPoolBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobCreateKeyPoolForbiddenBody cron job create key pool forbidden body
-swagger:model CronJobCreateKeyPoolForbiddenBody
-*/
-type CronJobCreateKeyPoolForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job create key pool forbidden body
-func (o *CronJobCreateKeyPoolForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job create key pool forbidden body based on context it is used
-func (o *CronJobCreateKeyPoolForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobCreateKeyPoolForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobCreateKeyPoolForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CronJobCreateKeyPoolForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobCreateKeyPoolNotFoundBody cron job create key pool not found body
-swagger:model CronJobCreateKeyPoolNotFoundBody
-*/
-type CronJobCreateKeyPoolNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job create key pool not found body
-func (o *CronJobCreateKeyPoolNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job create key pool not found body based on context it is used
-func (o *CronJobCreateKeyPoolNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobCreateKeyPoolNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobCreateKeyPoolNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CronJobCreateKeyPoolNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobCreateKeyPoolUnauthorizedBody cron job create key pool unauthorized body
-swagger:model CronJobCreateKeyPoolUnauthorizedBody
-*/
-type CronJobCreateKeyPoolUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job create key pool unauthorized body
-func (o *CronJobCreateKeyPoolUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job create key pool unauthorized body based on context it is used
-func (o *CronJobCreateKeyPoolUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobCreateKeyPoolUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobCreateKeyPoolUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CronJobCreateKeyPoolUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package auth
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AuthTryDemoReader is a Reader for the AuthTryDemo structure.
@@ -75,7 +75,7 @@ AuthTryDemoOK describes a response with status code 200, with default header val
 Success
 */
 type AuthTryDemoOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this auth try demo o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AuthTryDemoOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoOK  %+v", 200, o.Payload)
 }
 
-func (o *AuthTryDemoOK) GetPayload() interface{} {
+func (o *AuthTryDemoOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AuthTryDemoBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type AuthTryDemoBadRequest struct {
-	Payload []*AuthTryDemoBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this auth try demo bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AuthTryDemoBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AuthTryDemoBadRequest) GetPayload() []*AuthTryDemoBadRequestBodyItems0 {
+func (o *AuthTryDemoBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AuthTryDemoUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type AuthTryDemoUnauthorized struct {
-	Payload *AuthTryDemoUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth try demo unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AuthTryDemoUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AuthTryDemoUnauthorized) GetPayload() *AuthTryDemoUnauthorizedBody {
+func (o *AuthTryDemoUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthTryDemoUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AuthTryDemoUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AuthTryDemoForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type AuthTryDemoForbidden struct {
-	Payload *AuthTryDemoForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth try demo forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AuthTryDemoForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AuthTryDemoForbidden) GetPayload() *AuthTryDemoForbiddenBody {
+func (o *AuthTryDemoForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthTryDemoForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AuthTryDemoForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AuthTryDemoNotFound describes a response with status code 404, with default head
 Not Found
 */
 type AuthTryDemoNotFound struct {
-	Payload *AuthTryDemoNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this auth try demo not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AuthTryDemoNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Auth/try-demo][%d] authTryDemoNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AuthTryDemoNotFound) GetPayload() *AuthTryDemoNotFoundBody {
+func (o *AuthTryDemoNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AuthTryDemoNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AuthTryDemoNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *AuthTryDemoInternalServerError) String() string {
 
 func (o *AuthTryDemoInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AuthTryDemoBadRequestBodyItems0 auth try demo bad request body items0
-swagger:model AuthTryDemoBadRequestBodyItems0
-*/
-type AuthTryDemoBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this auth try demo bad request body items0
-func (o *AuthTryDemoBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this auth try demo bad request body items0 based on context it is used
-func (o *AuthTryDemoBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AuthTryDemoBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AuthTryDemoBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AuthTryDemoBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AuthTryDemoBody auth try demo body
-swagger:model AuthTryDemoBody
-*/
-type AuthTryDemoBody struct {
-
-	// uuid
-	UUID string `json:"uuid,omitempty"`
-}
-
-// Validate validates this auth try demo body
-func (o *AuthTryDemoBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this auth try demo body based on context it is used
-func (o *AuthTryDemoBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AuthTryDemoBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AuthTryDemoBody) UnmarshalBinary(b []byte) error {
-	var res AuthTryDemoBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AuthTryDemoForbiddenBody auth try demo forbidden body
-swagger:model AuthTryDemoForbiddenBody
-*/
-type AuthTryDemoForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this auth try demo forbidden body
-func (o *AuthTryDemoForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this auth try demo forbidden body based on context it is used
-func (o *AuthTryDemoForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AuthTryDemoForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AuthTryDemoForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AuthTryDemoForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AuthTryDemoNotFoundBody auth try demo not found body
-swagger:model AuthTryDemoNotFoundBody
-*/
-type AuthTryDemoNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this auth try demo not found body
-func (o *AuthTryDemoNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this auth try demo not found body based on context it is used
-func (o *AuthTryDemoNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AuthTryDemoNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AuthTryDemoNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AuthTryDemoNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AuthTryDemoUnauthorizedBody auth try demo unauthorized body
-swagger:model AuthTryDemoUnauthorizedBody
-*/
-type AuthTryDemoUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this auth try demo unauthorized body
-func (o *AuthTryDemoUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this auth try demo unauthorized body based on context it is used
-func (o *AuthTryDemoUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AuthTryDemoUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AuthTryDemoUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AuthTryDemoUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

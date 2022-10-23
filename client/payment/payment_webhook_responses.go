@@ -6,13 +6,13 @@ package payment
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PaymentWebhookReader is a Reader for the PaymentWebhook structure.
@@ -75,7 +75,7 @@ PaymentWebhookOK describes a response with status code 200, with default header 
 Success
 */
 type PaymentWebhookOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this payment webhook o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *PaymentWebhookOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookOK  %+v", 200, o.Payload)
 }
 
-func (o *PaymentWebhookOK) GetPayload() interface{} {
+func (o *PaymentWebhookOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ PaymentWebhookBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type PaymentWebhookBadRequest struct {
-	Payload []*PaymentWebhookBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this payment webhook bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PaymentWebhookBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentWebhookBadRequest) GetPayload() []*PaymentWebhookBadRequestBodyItems0 {
+func (o *PaymentWebhookBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ PaymentWebhookUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type PaymentWebhookUnauthorized struct {
-	Payload *PaymentWebhookUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment webhook unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *PaymentWebhookUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentWebhookUnauthorized) GetPayload() *PaymentWebhookUnauthorizedBody {
+func (o *PaymentWebhookUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentWebhookUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PaymentWebhookUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ PaymentWebhookForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type PaymentWebhookForbidden struct {
-	Payload *PaymentWebhookForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment webhook forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *PaymentWebhookForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentWebhookForbidden) GetPayload() *PaymentWebhookForbiddenBody {
+func (o *PaymentWebhookForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentWebhookForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PaymentWebhookForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ PaymentWebhookNotFound describes a response with status code 404, with default h
 Not Found
 */
 type PaymentWebhookNotFound struct {
-	Payload *PaymentWebhookNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment webhook not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *PaymentWebhookNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/webhook][%d] paymentWebhookNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentWebhookNotFound) GetPayload() *PaymentWebhookNotFoundBody {
+func (o *PaymentWebhookNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentWebhookNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PaymentWebhookNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *PaymentWebhookInternalServerError) String() string {
 
 func (o *PaymentWebhookInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PaymentWebhookBadRequestBodyItems0 payment webhook bad request body items0
-swagger:model PaymentWebhookBadRequestBodyItems0
-*/
-type PaymentWebhookBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this payment webhook bad request body items0
-func (o *PaymentWebhookBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment webhook bad request body items0 based on context it is used
-func (o *PaymentWebhookBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentWebhookBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentWebhookBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PaymentWebhookBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PaymentWebhookForbiddenBody payment webhook forbidden body
-swagger:model PaymentWebhookForbiddenBody
-*/
-type PaymentWebhookForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this payment webhook forbidden body
-func (o *PaymentWebhookForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment webhook forbidden body based on context it is used
-func (o *PaymentWebhookForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentWebhookForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentWebhookForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PaymentWebhookForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PaymentWebhookNotFoundBody payment webhook not found body
-swagger:model PaymentWebhookNotFoundBody
-*/
-type PaymentWebhookNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this payment webhook not found body
-func (o *PaymentWebhookNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment webhook not found body based on context it is used
-func (o *PaymentWebhookNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentWebhookNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentWebhookNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PaymentWebhookNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PaymentWebhookUnauthorizedBody payment webhook unauthorized body
-swagger:model PaymentWebhookUnauthorizedBody
-*/
-type PaymentWebhookUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this payment webhook unauthorized body
-func (o *PaymentWebhookUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment webhook unauthorized body based on context it is used
-func (o *PaymentWebhookUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentWebhookUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentWebhookUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PaymentWebhookUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

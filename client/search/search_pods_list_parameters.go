@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSearchPodsListParams creates a new SearchPodsListParams object,
@@ -62,7 +64,7 @@ SearchPodsListParams contains all the parameters to send to the API endpoint
 type SearchPodsListParams struct {
 
 	// Body.
-	Body SearchPodsListBody
+	Body *models.PodsSearchCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *SearchPodsListParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the search pods list params
-func (o *SearchPodsListParams) WithBody(body SearchPodsListBody) *SearchPodsListParams {
+func (o *SearchPodsListParams) WithBody(body *models.PodsSearchCommand) *SearchPodsListParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the search pods list params
-func (o *SearchPodsListParams) SetBody(body SearchPodsListBody) {
+func (o *SearchPodsListParams) SetBody(body *models.PodsSearchCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *SearchPodsListParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

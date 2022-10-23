@@ -6,15 +6,13 @@ package aws
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AwsListReader is a Reader for the AwsList structure.
@@ -77,7 +75,7 @@ AwsListOK describes a response with status code 200, with default header values.
 Success
 */
 type AwsListOK struct {
-	Payload *AwsListOKBody
+	Payload *models.AwsCredentialList
 }
 
 // IsSuccess returns true when this aws list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *AwsListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/list][%d] awsListOK  %+v", 200, o.Payload)
 }
 
-func (o *AwsListOK) GetPayload() *AwsListOKBody {
+func (o *AwsListOK) GetPayload() *models.AwsCredentialList {
 	return o.Payload
 }
 
 func (o *AwsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AwsListOKBody)
+	o.Payload = new(models.AwsCredentialList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ AwsListBadRequest describes a response with status code 400, with default header
 Bad Request
 */
 type AwsListBadRequest struct {
-	Payload []*AwsListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this aws list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *AwsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/list][%d] awsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsListBadRequest) GetPayload() []*AwsListBadRequestBodyItems0 {
+func (o *AwsListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ AwsListUnauthorized describes a response with status code 401, with default head
 Unauthorized
 */
 type AwsListUnauthorized struct {
-	Payload *AwsListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *AwsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/list][%d] awsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsListUnauthorized) GetPayload() *AwsListUnauthorizedBody {
+func (o *AwsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AwsListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ AwsListForbidden describes a response with status code 403, with default header 
 Forbidden
 */
 type AwsListForbidden struct {
-	Payload *AwsListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *AwsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/list][%d] awsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsListForbidden) GetPayload() *AwsListForbiddenBody {
+func (o *AwsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AwsListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ AwsListNotFound describes a response with status code 404, with default header v
 Not Found
 */
 type AwsListNotFound struct {
-	Payload *AwsListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *AwsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/list][%d] awsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsListNotFound) GetPayload() *AwsListNotFoundBody {
+func (o *AwsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AwsListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,486 +425,5 @@ func (o *AwsListInternalServerError) String() string {
 
 func (o *AwsListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AwsListBadRequestBodyItems0 aws list bad request body items0
-swagger:model AwsListBadRequestBodyItems0
-*/
-type AwsListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this aws list bad request body items0
-func (o *AwsListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws list bad request body items0 based on context it is used
-func (o *AwsListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AwsListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AwsListForbiddenBody aws list forbidden body
-swagger:model AwsListForbiddenBody
-*/
-type AwsListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this aws list forbidden body
-func (o *AwsListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws list forbidden body based on context it is used
-func (o *AwsListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AwsListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AwsListNotFoundBody aws list not found body
-swagger:model AwsListNotFoundBody
-*/
-type AwsListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this aws list not found body
-func (o *AwsListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws list not found body based on context it is used
-func (o *AwsListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AwsListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AwsListOKBody aws list o k body
-swagger:model AwsListOKBody
-*/
-type AwsListOKBody struct {
-
-	// data
-	Data []*AwsListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this aws list o k body
-func (o *AwsListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AwsListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("awsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("awsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this aws list o k body based on the context it is used
-func (o *AwsListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AwsListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("awsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("awsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsListOKBody) UnmarshalBinary(b []byte) error {
-	var res AwsListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AwsListOKBodyDataItems0 aws list o k body data items0
-swagger:model AwsListOKBodyDataItems0
-*/
-type AwsListOKBodyDataItems0 struct {
-
-	// availability zones
-	AvailabilityZones []string `json:"availabilityZones"`
-
-	// continent name
-	ContinentName string `json:"continentName,omitempty"`
-
-	// created at
-	CreatedAt string `json:"createdAt,omitempty"`
-
-	// created by
-	CreatedBy string `json:"createdBy,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// is default
-	IsDefault bool `json:"isDefault"`
-
-	// is locked
-	IsLocked bool `json:"isLocked"`
-
-	// last modified
-	LastModified string `json:"lastModified,omitempty"`
-
-	// last modified by
-	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// project count
-	ProjectCount int32 `json:"projectCount,omitempty"`
-
-	// projects
-	Projects []*AwsListOKBodyDataItems0ProjectsItems0 `json:"projects"`
-
-	// region
-	Region string `json:"region,omitempty"`
-}
-
-// Validate validates this aws list o k body data items0
-func (o *AwsListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateProjects(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AwsListOKBodyDataItems0) validateProjects(formats strfmt.Registry) error {
-	if swag.IsZero(o.Projects) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Projects); i++ {
-		if swag.IsZero(o.Projects[i]) { // not required
-			continue
-		}
-
-		if o.Projects[i] != nil {
-			if err := o.Projects[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this aws list o k body data items0 based on the context it is used
-func (o *AwsListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateProjects(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AwsListOKBodyDataItems0) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Projects); i++ {
-
-		if o.Projects[i] != nil {
-			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res AwsListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AwsListOKBodyDataItems0ProjectsItems0 aws list o k body data items0 projects items0
-swagger:model AwsListOKBodyDataItems0ProjectsItems0
-*/
-type AwsListOKBodyDataItems0ProjectsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this aws list o k body data items0 projects items0
-func (o *AwsListOKBodyDataItems0ProjectsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws list o k body data items0 projects items0 based on context it is used
-func (o *AwsListOKBodyDataItems0ProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsListOKBodyDataItems0ProjectsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsListOKBodyDataItems0ProjectsItems0) UnmarshalBinary(b []byte) error {
-	var res AwsListOKBodyDataItems0ProjectsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AwsListUnauthorizedBody aws list unauthorized body
-swagger:model AwsListUnauthorizedBody
-*/
-type AwsListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this aws list unauthorized body
-func (o *AwsListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws list unauthorized body based on context it is used
-func (o *AwsListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AwsListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

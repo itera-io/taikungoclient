@@ -6,13 +6,13 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsSpotVmsOperationsReader is a Reader for the ProjectsSpotVmsOperations structure.
@@ -75,7 +75,7 @@ ProjectsSpotVmsOperationsOK describes a response with status code 200, with defa
 Success
 */
 type ProjectsSpotVmsOperationsOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects spot vms operations o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectsSpotVmsOperationsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsSpotVmsOperationsOK) GetPayload() interface{} {
+func (o *ProjectsSpotVmsOperationsOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectsSpotVmsOperationsBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ProjectsSpotVmsOperationsBadRequest struct {
-	Payload []*ProjectsSpotVmsOperationsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects spot vms operations bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsSpotVmsOperationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsSpotVmsOperationsBadRequest) GetPayload() []*ProjectsSpotVmsOperationsBadRequestBodyItems0 {
+func (o *ProjectsSpotVmsOperationsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectsSpotVmsOperationsUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ProjectsSpotVmsOperationsUnauthorized struct {
-	Payload *ProjectsSpotVmsOperationsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects spot vms operations unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectsSpotVmsOperationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsSpotVmsOperationsUnauthorized) GetPayload() *ProjectsSpotVmsOperationsUnauthorizedBody {
+func (o *ProjectsSpotVmsOperationsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsSpotVmsOperationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsSpotVmsOperationsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectsSpotVmsOperationsForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ProjectsSpotVmsOperationsForbidden struct {
-	Payload *ProjectsSpotVmsOperationsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects spot vms operations forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectsSpotVmsOperationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsSpotVmsOperationsForbidden) GetPayload() *ProjectsSpotVmsOperationsForbiddenBody {
+func (o *ProjectsSpotVmsOperationsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsSpotVmsOperationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsSpotVmsOperationsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectsSpotVmsOperationsNotFound describes a response with status code 404, wit
 Not Found
 */
 type ProjectsSpotVmsOperationsNotFound struct {
-	Payload *ProjectsSpotVmsOperationsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects spot vms operations not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectsSpotVmsOperationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-vms][%d] projectsSpotVmsOperationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsSpotVmsOperationsNotFound) GetPayload() *ProjectsSpotVmsOperationsNotFoundBody {
+func (o *ProjectsSpotVmsOperationsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsSpotVmsOperationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsSpotVmsOperationsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *ProjectsSpotVmsOperationsInternalServerError) String() string {
 
 func (o *ProjectsSpotVmsOperationsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectsSpotVmsOperationsBadRequestBodyItems0 projects spot vms operations bad request body items0
-swagger:model ProjectsSpotVmsOperationsBadRequestBodyItems0
-*/
-type ProjectsSpotVmsOperationsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this projects spot vms operations bad request body items0
-func (o *ProjectsSpotVmsOperationsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects spot vms operations bad request body items0 based on context it is used
-func (o *ProjectsSpotVmsOperationsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsSpotVmsOperationsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsSpotVmsOperationsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectsSpotVmsOperationsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsSpotVmsOperationsBody projects spot vms operations body
-swagger:model ProjectsSpotVmsOperationsBody
-*/
-type ProjectsSpotVmsOperationsBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// mode
-	Mode string `json:"mode,omitempty"`
-}
-
-// Validate validates this projects spot vms operations body
-func (o *ProjectsSpotVmsOperationsBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects spot vms operations body based on context it is used
-func (o *ProjectsSpotVmsOperationsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsSpotVmsOperationsBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsSpotVmsOperationsBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsSpotVmsOperationsBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsSpotVmsOperationsForbiddenBody projects spot vms operations forbidden body
-swagger:model ProjectsSpotVmsOperationsForbiddenBody
-*/
-type ProjectsSpotVmsOperationsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects spot vms operations forbidden body
-func (o *ProjectsSpotVmsOperationsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects spot vms operations forbidden body based on context it is used
-func (o *ProjectsSpotVmsOperationsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsSpotVmsOperationsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsSpotVmsOperationsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsSpotVmsOperationsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsSpotVmsOperationsNotFoundBody projects spot vms operations not found body
-swagger:model ProjectsSpotVmsOperationsNotFoundBody
-*/
-type ProjectsSpotVmsOperationsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects spot vms operations not found body
-func (o *ProjectsSpotVmsOperationsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects spot vms operations not found body based on context it is used
-func (o *ProjectsSpotVmsOperationsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsSpotVmsOperationsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsSpotVmsOperationsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsSpotVmsOperationsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsSpotVmsOperationsUnauthorizedBody projects spot vms operations unauthorized body
-swagger:model ProjectsSpotVmsOperationsUnauthorizedBody
-*/
-type ProjectsSpotVmsOperationsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects spot vms operations unauthorized body
-func (o *ProjectsSpotVmsOperationsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects spot vms operations unauthorized body based on context it is used
-func (o *ProjectsSpotVmsOperationsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsSpotVmsOperationsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsSpotVmsOperationsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsSpotVmsOperationsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

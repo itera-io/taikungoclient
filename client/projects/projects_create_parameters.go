@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectsCreateParams creates a new ProjectsCreateParams object,
@@ -65,7 +67,7 @@ type ProjectsCreateParams struct {
 
 	   Create command
 	*/
-	Body ProjectsCreateBody
+	Body *models.CreateProjectCommand
 
 	// V.
 	V string
@@ -124,13 +126,13 @@ func (o *ProjectsCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the projects create params
-func (o *ProjectsCreateParams) WithBody(body ProjectsCreateBody) *ProjectsCreateParams {
+func (o *ProjectsCreateParams) WithBody(body *models.CreateProjectCommand) *ProjectsCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the projects create params
-func (o *ProjectsCreateParams) SetBody(body ProjectsCreateBody) {
+func (o *ProjectsCreateParams) SetBody(body *models.CreateProjectCommand) {
 	o.Body = body
 }
 
@@ -152,8 +154,10 @@ func (o *ProjectsCreateParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

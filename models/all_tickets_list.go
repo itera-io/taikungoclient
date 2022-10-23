@@ -20,7 +20,7 @@ import (
 type AllTicketsList struct {
 
 	// data
-	Data []*AllTicketsListDataItems0 `json:"data"`
+	Data []*AllTicketsDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,82 +111,6 @@ func (m *AllTicketsList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AllTicketsList) UnmarshalBinary(b []byte) error {
 	var res AllTicketsList
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// AllTicketsListDataItems0 all tickets list data items0
-//
-// swagger:model AllTicketsListDataItems0
-type AllTicketsListDataItems0 struct {
-
-	// created at
-	CreatedAt string `json:"createdAt,omitempty"`
-
-	// created by
-	CreatedBy string `json:"createdBy,omitempty"`
-
-	// current status date
-	CurrentStatusDate string `json:"currentStatusDate,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// last modifier
-	LastModifier string `json:"lastModifier,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// number
-	Number int32 `json:"number,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// partner logo
-	PartnerLogo string `json:"partnerLogo,omitempty"`
-
-	// partner name
-	PartnerName string `json:"partnerName,omitempty"`
-
-	// status
-	Status string `json:"status,omitempty"`
-
-	// user Id
-	UserID string `json:"userId,omitempty"`
-}
-
-// Validate validates this all tickets list data items0
-func (m *AllTicketsListDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this all tickets list data items0 based on context it is used
-func (m *AllTicketsListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *AllTicketsListDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *AllTicketsListDataItems0) UnmarshalBinary(b []byte) error {
-	var res AllTicketsListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

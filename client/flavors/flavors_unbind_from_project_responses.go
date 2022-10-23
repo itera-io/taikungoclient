@@ -6,13 +6,13 @@ package flavors
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // FlavorsUnbindFromProjectReader is a Reader for the FlavorsUnbindFromProject structure.
@@ -75,7 +75,7 @@ FlavorsUnbindFromProjectOK describes a response with status code 200, with defau
 Success
 */
 type FlavorsUnbindFromProjectOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this flavors unbind from project o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *FlavorsUnbindFromProjectOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/unbind][%d] flavorsUnbindFromProjectOK  %+v", 200, o.Payload)
 }
 
-func (o *FlavorsUnbindFromProjectOK) GetPayload() interface{} {
+func (o *FlavorsUnbindFromProjectOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ FlavorsUnbindFromProjectBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type FlavorsUnbindFromProjectBadRequest struct {
-	Payload []*FlavorsUnbindFromProjectBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this flavors unbind from project bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *FlavorsUnbindFromProjectBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/unbind][%d] flavorsUnbindFromProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsUnbindFromProjectBadRequest) GetPayload() []*FlavorsUnbindFromProjectBadRequestBodyItems0 {
+func (o *FlavorsUnbindFromProjectBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ FlavorsUnbindFromProjectUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type FlavorsUnbindFromProjectUnauthorized struct {
-	Payload *FlavorsUnbindFromProjectUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors unbind from project unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *FlavorsUnbindFromProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/unbind][%d] flavorsUnbindFromProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsUnbindFromProjectUnauthorized) GetPayload() *FlavorsUnbindFromProjectUnauthorizedBody {
+func (o *FlavorsUnbindFromProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsUnbindFromProjectUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsUnbindFromProjectUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ FlavorsUnbindFromProjectForbidden describes a response with status code 403, wit
 Forbidden
 */
 type FlavorsUnbindFromProjectForbidden struct {
-	Payload *FlavorsUnbindFromProjectForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors unbind from project forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *FlavorsUnbindFromProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/unbind][%d] flavorsUnbindFromProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsUnbindFromProjectForbidden) GetPayload() *FlavorsUnbindFromProjectForbiddenBody {
+func (o *FlavorsUnbindFromProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsUnbindFromProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsUnbindFromProjectForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ FlavorsUnbindFromProjectNotFound describes a response with status code 404, with
 Not Found
 */
 type FlavorsUnbindFromProjectNotFound struct {
-	Payload *FlavorsUnbindFromProjectNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors unbind from project not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *FlavorsUnbindFromProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Flavors/unbind][%d] flavorsUnbindFromProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsUnbindFromProjectNotFound) GetPayload() *FlavorsUnbindFromProjectNotFoundBody {
+func (o *FlavorsUnbindFromProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsUnbindFromProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsUnbindFromProjectNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *FlavorsUnbindFromProjectInternalServerError) String() string {
 
 func (o *FlavorsUnbindFromProjectInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-FlavorsUnbindFromProjectBadRequestBodyItems0 flavors unbind from project bad request body items0
-swagger:model FlavorsUnbindFromProjectBadRequestBodyItems0
-*/
-type FlavorsUnbindFromProjectBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this flavors unbind from project bad request body items0
-func (o *FlavorsUnbindFromProjectBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors unbind from project bad request body items0 based on context it is used
-func (o *FlavorsUnbindFromProjectBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsUnbindFromProjectBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsUnbindFromProjectBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res FlavorsUnbindFromProjectBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsUnbindFromProjectBody flavors unbind from project body
-swagger:model FlavorsUnbindFromProjectBody
-*/
-type FlavorsUnbindFromProjectBody struct {
-
-	// ids
-	Ids []int32 `json:"ids"`
-}
-
-// Validate validates this flavors unbind from project body
-func (o *FlavorsUnbindFromProjectBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors unbind from project body based on context it is used
-func (o *FlavorsUnbindFromProjectBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsUnbindFromProjectBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsUnbindFromProjectBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsUnbindFromProjectBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsUnbindFromProjectForbiddenBody flavors unbind from project forbidden body
-swagger:model FlavorsUnbindFromProjectForbiddenBody
-*/
-type FlavorsUnbindFromProjectForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this flavors unbind from project forbidden body
-func (o *FlavorsUnbindFromProjectForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors unbind from project forbidden body based on context it is used
-func (o *FlavorsUnbindFromProjectForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsUnbindFromProjectForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsUnbindFromProjectForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsUnbindFromProjectForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsUnbindFromProjectNotFoundBody flavors unbind from project not found body
-swagger:model FlavorsUnbindFromProjectNotFoundBody
-*/
-type FlavorsUnbindFromProjectNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this flavors unbind from project not found body
-func (o *FlavorsUnbindFromProjectNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors unbind from project not found body based on context it is used
-func (o *FlavorsUnbindFromProjectNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsUnbindFromProjectNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsUnbindFromProjectNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsUnbindFromProjectNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsUnbindFromProjectUnauthorizedBody flavors unbind from project unauthorized body
-swagger:model FlavorsUnbindFromProjectUnauthorizedBody
-*/
-type FlavorsUnbindFromProjectUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this flavors unbind from project unauthorized body
-func (o *FlavorsUnbindFromProjectUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors unbind from project unauthorized body based on context it is used
-func (o *FlavorsUnbindFromProjectUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsUnbindFromProjectUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsUnbindFromProjectUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsUnbindFromProjectUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -7,12 +7,10 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // ResetProjectStatusCommand reset project status command
@@ -24,8 +22,7 @@ type ResetProjectStatusCommand struct {
 	ProjectID int32 `json:"projectId,omitempty"`
 
 	// status
-	// Enum: [100 145 150 154 155 156 160 165 200 250 300 400 500 550 600 700 800 900 1000 1100]
-	Status int32 `json:"status,omitempty"`
+	Status ProjectStatus `json:"status,omitempty"`
 }
 
 // Validate validates this reset project status command
@@ -42,41 +39,48 @@ func (m *ResetProjectStatusCommand) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var resetProjectStatusCommandTypeStatusPropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,145,150,154,155,156,160,165,200,250,300,400,500,550,600,700,800,900,1000,1100]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		resetProjectStatusCommandTypeStatusPropEnum = append(resetProjectStatusCommandTypeStatusPropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *ResetProjectStatusCommand) validateStatusEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, resetProjectStatusCommandTypeStatusPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *ResetProjectStatusCommand) validateStatus(formats strfmt.Registry) error {
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateStatusEnum("status", "body", m.Status); err != nil {
+	if err := m.Status.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("status")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("status")
+		}
 		return err
 	}
 
 	return nil
 }
 
-// ContextValidate validates this reset project status command based on context it is used
+// ContextValidate validate this reset project status command based on the context it is used
 func (m *ResetProjectStatusCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResetProjectStatusCommand) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Status.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("status")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("status")
+		}
+		return err
+	}
+
 	return nil
 }
 

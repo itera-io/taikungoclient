@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSearchPersistenceVolumeClaimListParams creates a new SearchPersistenceVolumeClaimListParams object,
@@ -62,7 +64,7 @@ SearchPersistenceVolumeClaimListParams contains all the parameters to send to th
 type SearchPersistenceVolumeClaimListParams struct {
 
 	// Body.
-	Body SearchPersistenceVolumeClaimListBody
+	Body *models.PvcSearchCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *SearchPersistenceVolumeClaimListParams) SetHTTPClient(client *http.Clie
 }
 
 // WithBody adds the body to the search persistence volume claim list params
-func (o *SearchPersistenceVolumeClaimListParams) WithBody(body SearchPersistenceVolumeClaimListBody) *SearchPersistenceVolumeClaimListParams {
+func (o *SearchPersistenceVolumeClaimListParams) WithBody(body *models.PvcSearchCommand) *SearchPersistenceVolumeClaimListParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the search persistence volume claim list params
-func (o *SearchPersistenceVolumeClaimListParams) SetBody(body SearchPersistenceVolumeClaimListBody) {
+func (o *SearchPersistenceVolumeClaimListParams) SetBody(body *models.PvcSearchCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *SearchPersistenceVolumeClaimListParams) WriteToRequest(r runtime.Client
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

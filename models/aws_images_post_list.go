@@ -20,7 +20,7 @@ import (
 type AwsImagesPostList struct {
 
 	// data
-	Data []*AwsImagesPostListDataItems0 `json:"data"`
+	Data []*AwsExtendedImagesListDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,61 +111,6 @@ func (m *AwsImagesPostList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AwsImagesPostList) UnmarshalBinary(b []byte) error {
 	var res AwsImagesPostList
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// AwsImagesPostListDataItems0 aws images post list data items0
-//
-// swagger:model AwsImagesPostListDataItems0
-type AwsImagesPostListDataItems0 struct {
-
-	// description
-	Description string `json:"description,omitempty"`
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// logo
-	Logo string `json:"logo,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// owner alias
-	OwnerAlias string `json:"ownerAlias,omitempty"`
-
-	// owner Id
-	OwnerID string `json:"ownerId,omitempty"`
-
-	// platform details
-	PlatformDetails string `json:"platformDetails,omitempty"`
-}
-
-// Validate validates this aws images post list data items0
-func (m *AwsImagesPostListDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws images post list data items0 based on context it is used
-func (m *AwsImagesPostListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *AwsImagesPostListDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *AwsImagesPostListDataItems0) UnmarshalBinary(b []byte) error {
-	var res AwsImagesPostListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

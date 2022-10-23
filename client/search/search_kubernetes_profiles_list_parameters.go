@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSearchKubernetesProfilesListParams creates a new SearchKubernetesProfilesListParams object,
@@ -62,7 +64,7 @@ SearchKubernetesProfilesListParams contains all the parameters to send to the AP
 type SearchKubernetesProfilesListParams struct {
 
 	// Body.
-	Body SearchKubernetesProfilesListBody
+	Body *models.KubernetesProfilesSearchCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *SearchKubernetesProfilesListParams) SetHTTPClient(client *http.Client) 
 }
 
 // WithBody adds the body to the search kubernetes profiles list params
-func (o *SearchKubernetesProfilesListParams) WithBody(body SearchKubernetesProfilesListBody) *SearchKubernetesProfilesListParams {
+func (o *SearchKubernetesProfilesListParams) WithBody(body *models.KubernetesProfilesSearchCommand) *SearchKubernetesProfilesListParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the search kubernetes profiles list params
-func (o *SearchKubernetesProfilesListParams) SetBody(body SearchKubernetesProfilesListBody) {
+func (o *SearchKubernetesProfilesListParams) SetBody(body *models.KubernetesProfilesSearchCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *SearchKubernetesProfilesListParams) WriteToRequest(r runtime.ClientRequ
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

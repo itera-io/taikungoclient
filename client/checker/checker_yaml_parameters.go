@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCheckerYamlParams creates a new CheckerYamlParams object,
@@ -62,7 +64,7 @@ CheckerYamlParams contains all the parameters to send to the API endpoint
 type CheckerYamlParams struct {
 
 	// Body.
-	Body CheckerYamlBody
+	Body *models.YamlValidatorCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CheckerYamlParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the checker yaml params
-func (o *CheckerYamlParams) WithBody(body CheckerYamlBody) *CheckerYamlParams {
+func (o *CheckerYamlParams) WithBody(body *models.YamlValidatorCommand) *CheckerYamlParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the checker yaml params
-func (o *CheckerYamlParams) SetBody(body CheckerYamlBody) {
+func (o *CheckerYamlParams) SetBody(body *models.YamlValidatorCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *CheckerYamlParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

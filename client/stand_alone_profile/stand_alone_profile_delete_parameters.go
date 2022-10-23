@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneProfileDeleteParams creates a new StandAloneProfileDeleteParams object,
@@ -62,7 +64,7 @@ StandAloneProfileDeleteParams contains all the parameters to send to the API end
 type StandAloneProfileDeleteParams struct {
 
 	// Body.
-	Body StandAloneProfileDeleteBody
+	Body *models.DeleteStandAloneProfileCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *StandAloneProfileDeleteParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone profile delete params
-func (o *StandAloneProfileDeleteParams) WithBody(body StandAloneProfileDeleteBody) *StandAloneProfileDeleteParams {
+func (o *StandAloneProfileDeleteParams) WithBody(body *models.DeleteStandAloneProfileCommand) *StandAloneProfileDeleteParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone profile delete params
-func (o *StandAloneProfileDeleteParams) SetBody(body StandAloneProfileDeleteBody) {
+func (o *StandAloneProfileDeleteParams) SetBody(body *models.DeleteStandAloneProfileCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *StandAloneProfileDeleteParams) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

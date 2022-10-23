@@ -20,7 +20,7 @@ import (
 type ConfigMaps struct {
 
 	// data
-	Data []*ConfigMapsDataItems0 `json:"data"`
+	Data []*ConfigMapDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,49 +111,6 @@ func (m *ConfigMaps) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ConfigMaps) UnmarshalBinary(b []byte) error {
 	var res ConfigMaps
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// ConfigMapsDataItems0 config maps data items0
-//
-// swagger:model ConfigMapsDataItems0
-type ConfigMapsDataItems0 struct {
-
-	// age
-	Age string `json:"age,omitempty"`
-
-	// metadata name
-	MetadataName string `json:"metadataName,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-}
-
-// Validate validates this config maps data items0
-func (m *ConfigMapsDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this config maps data items0 based on context it is used
-func (m *ConfigMapsDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *ConfigMapsDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *ConfigMapsDataItems0) UnmarshalBinary(b []byte) error {
-	var res ConfigMapsDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

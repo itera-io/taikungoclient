@@ -6,15 +6,13 @@ package project_quotas
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectQuotasListReader is a Reader for the ProjectQuotasList structure.
@@ -77,7 +75,7 @@ ProjectQuotasListOK describes a response with status code 200, with default head
 Success
 */
 type ProjectQuotasListOK struct {
-	Payload *ProjectQuotasListOKBody
+	Payload *models.ProjectQuotaList
 }
 
 // IsSuccess returns true when this project quotas list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *ProjectQuotasListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectQuotasListOK) GetPayload() *ProjectQuotasListOKBody {
+func (o *ProjectQuotasListOK) GetPayload() *models.ProjectQuotaList {
 	return o.Payload
 }
 
 func (o *ProjectQuotasListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectQuotasListOKBody)
+	o.Payload = new(models.ProjectQuotaList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ ProjectQuotasListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type ProjectQuotasListBadRequest struct {
-	Payload []*ProjectQuotasListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this project quotas list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *ProjectQuotasListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectQuotasListBadRequest) GetPayload() []*ProjectQuotasListBadRequestBodyItems0 {
+func (o *ProjectQuotasListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ ProjectQuotasListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type ProjectQuotasListUnauthorized struct {
-	Payload *ProjectQuotasListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project quotas list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *ProjectQuotasListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectQuotasListUnauthorized) GetPayload() *ProjectQuotasListUnauthorizedBody {
+func (o *ProjectQuotasListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectQuotasListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectQuotasListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ ProjectQuotasListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type ProjectQuotasListForbidden struct {
-	Payload *ProjectQuotasListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project quotas list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *ProjectQuotasListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectQuotasListForbidden) GetPayload() *ProjectQuotasListForbiddenBody {
+func (o *ProjectQuotasListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectQuotasListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectQuotasListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ ProjectQuotasListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type ProjectQuotasListNotFound struct {
-	Payload *ProjectQuotasListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project quotas list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *ProjectQuotasListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectQuotas][%d] projectQuotasListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectQuotasListNotFound) GetPayload() *ProjectQuotasListNotFoundBody {
+func (o *ProjectQuotasListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectQuotasListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectQuotasListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,360 +425,5 @@ func (o *ProjectQuotasListInternalServerError) String() string {
 
 func (o *ProjectQuotasListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectQuotasListBadRequestBodyItems0 project quotas list bad request body items0
-swagger:model ProjectQuotasListBadRequestBodyItems0
-*/
-type ProjectQuotasListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this project quotas list bad request body items0
-func (o *ProjectQuotasListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project quotas list bad request body items0 based on context it is used
-func (o *ProjectQuotasListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectQuotasListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectQuotasListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectQuotasListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectQuotasListForbiddenBody project quotas list forbidden body
-swagger:model ProjectQuotasListForbiddenBody
-*/
-type ProjectQuotasListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this project quotas list forbidden body
-func (o *ProjectQuotasListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project quotas list forbidden body based on context it is used
-func (o *ProjectQuotasListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectQuotasListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectQuotasListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectQuotasListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectQuotasListNotFoundBody project quotas list not found body
-swagger:model ProjectQuotasListNotFoundBody
-*/
-type ProjectQuotasListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this project quotas list not found body
-func (o *ProjectQuotasListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project quotas list not found body based on context it is used
-func (o *ProjectQuotasListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectQuotasListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectQuotasListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectQuotasListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectQuotasListOKBody project quotas list o k body
-swagger:model ProjectQuotasListOKBody
-*/
-type ProjectQuotasListOKBody struct {
-
-	// data
-	Data []*ProjectQuotasListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this project quotas list o k body
-func (o *ProjectQuotasListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ProjectQuotasListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projectQuotasListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projectQuotasListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this project quotas list o k body based on the context it is used
-func (o *ProjectQuotasListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ProjectQuotasListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projectQuotasListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projectQuotasListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectQuotasListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectQuotasListOKBody) UnmarshalBinary(b []byte) error {
-	var res ProjectQuotasListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectQuotasListOKBodyDataItems0 project quotas list o k body data items0
-swagger:model ProjectQuotasListOKBodyDataItems0
-*/
-type ProjectQuotasListOKBodyDataItems0 struct {
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
-
-	// server Cpu
-	ServerCPU int64 `json:"serverCpu,omitempty"`
-
-	// server disk size
-	ServerDiskSize int64 `json:"serverDiskSize,omitempty"`
-
-	// server Ram
-	ServerRAM int64 `json:"serverRam,omitempty"`
-
-	// vm Cpu
-	VMCPU int64 `json:"vmCpu,omitempty"`
-
-	// vm Ram
-	VMRAM int64 `json:"vmRam,omitempty"`
-
-	// vm volume size
-	VMVolumeSize int64 `json:"vmVolumeSize,omitempty"`
-}
-
-// Validate validates this project quotas list o k body data items0
-func (o *ProjectQuotasListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project quotas list o k body data items0 based on context it is used
-func (o *ProjectQuotasListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectQuotasListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectQuotasListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectQuotasListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectQuotasListUnauthorizedBody project quotas list unauthorized body
-swagger:model ProjectQuotasListUnauthorizedBody
-*/
-type ProjectQuotasListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this project quotas list unauthorized body
-func (o *ProjectQuotasListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project quotas list unauthorized body based on context it is used
-func (o *ProjectQuotasListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectQuotasListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectQuotasListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectQuotasListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobSyncOpaProfilesParams creates a new CronJobSyncOpaProfilesParams object,
@@ -62,7 +64,7 @@ CronJobSyncOpaProfilesParams contains all the parameters to send to the API endp
 type CronJobSyncOpaProfilesParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.SyncOpaProfilesCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CronJobSyncOpaProfilesParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the cron job sync opa profiles params
-func (o *CronJobSyncOpaProfilesParams) WithBody(body interface{}) *CronJobSyncOpaProfilesParams {
+func (o *CronJobSyncOpaProfilesParams) WithBody(body models.SyncOpaProfilesCommand) *CronJobSyncOpaProfilesParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job sync opa profiles params
-func (o *CronJobSyncOpaProfilesParams) SetBody(body interface{}) {
+func (o *CronJobSyncOpaProfilesParams) SetBody(body models.SyncOpaProfilesCommand) {
 	o.Body = body
 }
 

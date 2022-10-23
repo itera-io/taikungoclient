@@ -6,14 +6,13 @@ package showback_summaries
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ShowbackSummariesExportCsvReader is a Reader for the ShowbackSummariesExportCsv structure.
@@ -127,7 +126,7 @@ ShowbackSummariesExportCsvBadRequest describes a response with status code 400, 
 Bad Request
 */
 type ShowbackSummariesExportCsvBadRequest struct {
-	Payload *ShowbackSummariesExportCsvBadRequestBody
+	Payload *models.ValidationProblemDetails
 }
 
 // IsSuccess returns true when this showback summaries export csv bad request response has a 2xx status code
@@ -163,13 +162,13 @@ func (o *ShowbackSummariesExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackSummariesExportCsvBadRequest) GetPayload() *ShowbackSummariesExportCsvBadRequestBody {
+func (o *ShowbackSummariesExportCsvBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesExportCsvBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackSummariesExportCsvBadRequestBody)
+	o.Payload = new(models.ValidationProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -190,7 +189,7 @@ ShowbackSummariesExportCsvUnauthorized describes a response with status code 401
 Unauthorized
 */
 type ShowbackSummariesExportCsvUnauthorized struct {
-	Payload *ShowbackSummariesExportCsvUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback summaries export csv unauthorized response has a 2xx status code
@@ -226,13 +225,13 @@ func (o *ShowbackSummariesExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackSummariesExportCsvUnauthorized) GetPayload() *ShowbackSummariesExportCsvUnauthorizedBody {
+func (o *ShowbackSummariesExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesExportCsvUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackSummariesExportCsvUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -253,7 +252,7 @@ ShowbackSummariesExportCsvForbidden describes a response with status code 403, w
 Forbidden
 */
 type ShowbackSummariesExportCsvForbidden struct {
-	Payload *ShowbackSummariesExportCsvForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback summaries export csv forbidden response has a 2xx status code
@@ -289,13 +288,13 @@ func (o *ShowbackSummariesExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackSummariesExportCsvForbidden) GetPayload() *ShowbackSummariesExportCsvForbiddenBody {
+func (o *ShowbackSummariesExportCsvForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesExportCsvForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackSummariesExportCsvForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -316,7 +315,7 @@ ShowbackSummariesExportCsvNotFound describes a response with status code 404, wi
 Not Found
 */
 type ShowbackSummariesExportCsvNotFound struct {
-	Payload *ShowbackSummariesExportCsvNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback summaries export csv not found response has a 2xx status code
@@ -352,13 +351,13 @@ func (o *ShowbackSummariesExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /showback/v{v}/ShowbackSummaries/export][%d] showbackSummariesExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackSummariesExportCsvNotFound) GetPayload() *ShowbackSummariesExportCsvNotFoundBody {
+func (o *ShowbackSummariesExportCsvNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesExportCsvNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackSummariesExportCsvNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -416,223 +415,5 @@ func (o *ShowbackSummariesExportCsvInternalServerError) String() string {
 
 func (o *ShowbackSummariesExportCsvInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ShowbackSummariesExportCsvBadRequestBody showback summaries export csv bad request body
-swagger:model ShowbackSummariesExportCsvBadRequestBody
-*/
-type ShowbackSummariesExportCsvBadRequestBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// errors
-	// Read Only: true
-	Errors map[string][]string `json:"errors,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback summaries export csv bad request body
-func (o *ShowbackSummariesExportCsvBadRequestBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validate this showback summaries export csv bad request body based on the context it is used
-func (o *ShowbackSummariesExportCsvBadRequestBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateErrors(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ShowbackSummariesExportCsvBadRequestBody) contextValidateErrors(ctx context.Context, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackSummariesExportCsvBadRequestBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackSummariesExportCsvBadRequestBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackSummariesExportCsvBadRequestBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackSummariesExportCsvForbiddenBody showback summaries export csv forbidden body
-swagger:model ShowbackSummariesExportCsvForbiddenBody
-*/
-type ShowbackSummariesExportCsvForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback summaries export csv forbidden body
-func (o *ShowbackSummariesExportCsvForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback summaries export csv forbidden body based on context it is used
-func (o *ShowbackSummariesExportCsvForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackSummariesExportCsvForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackSummariesExportCsvForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackSummariesExportCsvForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackSummariesExportCsvNotFoundBody showback summaries export csv not found body
-swagger:model ShowbackSummariesExportCsvNotFoundBody
-*/
-type ShowbackSummariesExportCsvNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback summaries export csv not found body
-func (o *ShowbackSummariesExportCsvNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback summaries export csv not found body based on context it is used
-func (o *ShowbackSummariesExportCsvNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackSummariesExportCsvNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackSummariesExportCsvNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackSummariesExportCsvNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackSummariesExportCsvUnauthorizedBody showback summaries export csv unauthorized body
-swagger:model ShowbackSummariesExportCsvUnauthorizedBody
-*/
-type ShowbackSummariesExportCsvUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback summaries export csv unauthorized body
-func (o *ShowbackSummariesExportCsvUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback summaries export csv unauthorized body based on context it is used
-func (o *ShowbackSummariesExportCsvUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackSummariesExportCsvUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackSummariesExportCsvUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackSummariesExportCsvUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

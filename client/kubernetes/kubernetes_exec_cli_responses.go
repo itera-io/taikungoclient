@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesExecCliReader is a Reader for the KubernetesExecCli structure.
@@ -136,7 +136,7 @@ KubernetesExecCliBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type KubernetesExecCliBadRequest struct {
-	Payload []*KubernetesExecCliBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes exec cli bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesExecCliBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesExecCliBadRequest) GetPayload() []*KubernetesExecCliBadRequestBodyItems0 {
+func (o *KubernetesExecCliBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesExecCliUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type KubernetesExecCliUnauthorized struct {
-	Payload *KubernetesExecCliUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes exec cli unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesExecCliUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesExecCliUnauthorized) GetPayload() *KubernetesExecCliUnauthorizedBody {
+func (o *KubernetesExecCliUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesExecCliUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesExecCliUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesExecCliForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type KubernetesExecCliForbidden struct {
-	Payload *KubernetesExecCliForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes exec cli forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesExecCliForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesExecCliForbidden) GetPayload() *KubernetesExecCliForbiddenBody {
+func (o *KubernetesExecCliForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesExecCliForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesExecCliForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesExecCliNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type KubernetesExecCliNotFound struct {
-	Payload *KubernetesExecCliNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes exec cli not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesExecCliNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/cli][%d] kubernetesExecCliNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesExecCliNotFound) GetPayload() *KubernetesExecCliNotFoundBody {
+func (o *KubernetesExecCliNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesExecCliNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesExecCliNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,246 +423,5 @@ func (o *KubernetesExecCliInternalServerError) String() string {
 
 func (o *KubernetesExecCliInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesExecCliBadRequestBodyItems0 kubernetes exec cli bad request body items0
-swagger:model KubernetesExecCliBadRequestBodyItems0
-*/
-type KubernetesExecCliBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes exec cli bad request body items0
-func (o *KubernetesExecCliBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes exec cli bad request body items0 based on context it is used
-func (o *KubernetesExecCliBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesExecCliBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesExecCliBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesExecCliBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesExecCliBody kubernetes exec cli body
-swagger:model KubernetesExecCliBody
-*/
-type KubernetesExecCliBody struct {
-
-	// command
-	Command []string `json:"command"`
-
-	// container
-	Container string `json:"container,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this kubernetes exec cli body
-func (o *KubernetesExecCliBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes exec cli body based on context it is used
-func (o *KubernetesExecCliBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesExecCliBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesExecCliBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesExecCliBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesExecCliForbiddenBody kubernetes exec cli forbidden body
-swagger:model KubernetesExecCliForbiddenBody
-*/
-type KubernetesExecCliForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes exec cli forbidden body
-func (o *KubernetesExecCliForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes exec cli forbidden body based on context it is used
-func (o *KubernetesExecCliForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesExecCliForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesExecCliForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesExecCliForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesExecCliNotFoundBody kubernetes exec cli not found body
-swagger:model KubernetesExecCliNotFoundBody
-*/
-type KubernetesExecCliNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes exec cli not found body
-func (o *KubernetesExecCliNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes exec cli not found body based on context it is used
-func (o *KubernetesExecCliNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesExecCliNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesExecCliNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesExecCliNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesExecCliUnauthorizedBody kubernetes exec cli unauthorized body
-swagger:model KubernetesExecCliUnauthorizedBody
-*/
-type KubernetesExecCliUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes exec cli unauthorized body
-func (o *KubernetesExecCliUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes exec cli unauthorized body based on context it is used
-func (o *KubernetesExecCliUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesExecCliUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesExecCliUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesExecCliUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

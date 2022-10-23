@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesDescribeServiceParams creates a new KubernetesDescribeServiceParams object,
@@ -62,7 +64,7 @@ KubernetesDescribeServiceParams contains all the parameters to send to the API e
 type KubernetesDescribeServiceParams struct {
 
 	// Body.
-	Body KubernetesDescribeServiceBody
+	Body *models.DescribeServiceCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *KubernetesDescribeServiceParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the kubernetes describe service params
-func (o *KubernetesDescribeServiceParams) WithBody(body KubernetesDescribeServiceBody) *KubernetesDescribeServiceParams {
+func (o *KubernetesDescribeServiceParams) WithBody(body *models.DescribeServiceCommand) *KubernetesDescribeServiceParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes describe service params
-func (o *KubernetesDescribeServiceParams) SetBody(body KubernetesDescribeServiceBody) {
+func (o *KubernetesDescribeServiceParams) SetBody(body *models.DescribeServiceCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *KubernetesDescribeServiceParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKeycloakLoginParams creates a new KeycloakLoginParams object,
@@ -62,7 +64,7 @@ KeycloakLoginParams contains all the parameters to send to the API endpoint
 type KeycloakLoginParams struct {
 
 	// Body.
-	Body KeycloakLoginBody
+	Body *models.LoginWithKeycloakCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *KeycloakLoginParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the keycloak login params
-func (o *KeycloakLoginParams) WithBody(body KeycloakLoginBody) *KeycloakLoginParams {
+func (o *KeycloakLoginParams) WithBody(body *models.LoginWithKeycloakCommand) *KeycloakLoginParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the keycloak login params
-func (o *KeycloakLoginParams) SetBody(body KeycloakLoginBody) {
+func (o *KeycloakLoginParams) SetBody(body *models.LoginWithKeycloakCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *KeycloakLoginParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

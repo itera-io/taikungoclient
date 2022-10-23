@@ -6,13 +6,13 @@ package openstack
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // OpenstackVolumeTypesReader is a Reader for the OpenstackVolumeTypes structure.
@@ -136,7 +136,7 @@ OpenstackVolumeTypesBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type OpenstackVolumeTypesBadRequest struct {
-	Payload []*OpenstackVolumeTypesBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this openstack volume types bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpenstackVolumeTypesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackVolumeTypesBadRequest) GetPayload() []*OpenstackVolumeTypesBadRequestBodyItems0 {
+func (o *OpenstackVolumeTypesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OpenstackVolumeTypesUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type OpenstackVolumeTypesUnauthorized struct {
-	Payload *OpenstackVolumeTypesUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack volume types unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OpenstackVolumeTypesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackVolumeTypesUnauthorized) GetPayload() *OpenstackVolumeTypesUnauthorizedBody {
+func (o *OpenstackVolumeTypesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackVolumeTypesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackVolumeTypesUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OpenstackVolumeTypesForbidden describes a response with status code 403, with de
 Forbidden
 */
 type OpenstackVolumeTypesForbidden struct {
-	Payload *OpenstackVolumeTypesForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack volume types forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OpenstackVolumeTypesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackVolumeTypesForbidden) GetPayload() *OpenstackVolumeTypesForbiddenBody {
+func (o *OpenstackVolumeTypesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackVolumeTypesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackVolumeTypesForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OpenstackVolumeTypesNotFound describes a response with status code 404, with def
 Not Found
 */
 type OpenstackVolumeTypesNotFound struct {
-	Payload *OpenstackVolumeTypesNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack volume types not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OpenstackVolumeTypesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/volumes][%d] openstackVolumeTypesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackVolumeTypesNotFound) GetPayload() *OpenstackVolumeTypesNotFoundBody {
+func (o *OpenstackVolumeTypesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackVolumeTypesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackVolumeTypesNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,258 +423,5 @@ func (o *OpenstackVolumeTypesInternalServerError) String() string {
 
 func (o *OpenstackVolumeTypesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-OpenstackVolumeTypesBadRequestBodyItems0 openstack volume types bad request body items0
-swagger:model OpenstackVolumeTypesBadRequestBodyItems0
-*/
-type OpenstackVolumeTypesBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this openstack volume types bad request body items0
-func (o *OpenstackVolumeTypesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack volume types bad request body items0 based on context it is used
-func (o *OpenstackVolumeTypesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackVolumeTypesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackVolumeTypesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OpenstackVolumeTypesBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackVolumeTypesBody openstack volume types body
-swagger:model OpenstackVolumeTypesBody
-*/
-type OpenstackVolumeTypesBody struct {
-
-	// application cred enabled
-	ApplicationCredEnabled bool `json:"applicationCredEnabled"`
-
-	// is admin
-	IsAdmin bool `json:"isAdmin"`
-
-	// open stack domain
-	OpenStackDomain string `json:"openStackDomain,omitempty"`
-
-	// open stack password
-	OpenStackPassword string `json:"openStackPassword,omitempty"`
-
-	// open stack region
-	OpenStackRegion string `json:"openStackRegion,omitempty"`
-
-	// open stack Url
-	OpenStackURL string `json:"openStackUrl,omitempty"`
-
-	// open stack user
-	OpenStackUser string `json:"openStackUser,omitempty"`
-
-	// openstack project
-	OpenstackProject string `json:"openstackProject,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this openstack volume types body
-func (o *OpenstackVolumeTypesBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack volume types body based on context it is used
-func (o *OpenstackVolumeTypesBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackVolumeTypesBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackVolumeTypesBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackVolumeTypesBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackVolumeTypesForbiddenBody openstack volume types forbidden body
-swagger:model OpenstackVolumeTypesForbiddenBody
-*/
-type OpenstackVolumeTypesForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this openstack volume types forbidden body
-func (o *OpenstackVolumeTypesForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack volume types forbidden body based on context it is used
-func (o *OpenstackVolumeTypesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackVolumeTypesForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackVolumeTypesForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackVolumeTypesForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackVolumeTypesNotFoundBody openstack volume types not found body
-swagger:model OpenstackVolumeTypesNotFoundBody
-*/
-type OpenstackVolumeTypesNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this openstack volume types not found body
-func (o *OpenstackVolumeTypesNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack volume types not found body based on context it is used
-func (o *OpenstackVolumeTypesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackVolumeTypesNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackVolumeTypesNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackVolumeTypesNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackVolumeTypesUnauthorizedBody openstack volume types unauthorized body
-swagger:model OpenstackVolumeTypesUnauthorizedBody
-*/
-type OpenstackVolumeTypesUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this openstack volume types unauthorized body
-func (o *OpenstackVolumeTypesUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack volume types unauthorized body based on context it is used
-func (o *OpenstackVolumeTypesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackVolumeTypesUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackVolumeTypesUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackVolumeTypesUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

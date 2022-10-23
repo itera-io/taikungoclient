@@ -6,13 +6,13 @@ package stand_alone_vm_disks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneVMDisksUpdateReader is a Reader for the StandAloneVMDisksUpdate structure.
@@ -75,7 +75,7 @@ StandAloneVMDisksUpdateOK describes a response with status code 200, with defaul
 Success
 */
 type StandAloneVMDisksUpdateOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone Vm disks update o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneVMDisksUpdateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update][%d] standAloneVmDisksUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateOK) GetPayload() interface{} {
+func (o *StandAloneVMDisksUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneVMDisksUpdateBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneVMDisksUpdateBadRequest struct {
-	Payload []*StandAloneVMDisksUpdateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone Vm disks update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneVMDisksUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update][%d] standAloneVmDisksUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateBadRequest) GetPayload() []*StandAloneVMDisksUpdateBadRequestBodyItems0 {
+func (o *StandAloneVMDisksUpdateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneVMDisksUpdateUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneVMDisksUpdateUnauthorized struct {
-	Payload *StandAloneVMDisksUpdateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks update unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneVMDisksUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update][%d] standAloneVmDisksUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateUnauthorized) GetPayload() *StandAloneVMDisksUpdateUnauthorizedBody {
+func (o *StandAloneVMDisksUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneVMDisksUpdateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneVMDisksUpdateForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneVMDisksUpdateForbidden struct {
-	Payload *StandAloneVMDisksUpdateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks update forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneVMDisksUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update][%d] standAloneVmDisksUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateForbidden) GetPayload() *StandAloneVMDisksUpdateForbiddenBody {
+func (o *StandAloneVMDisksUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneVMDisksUpdateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneVMDisksUpdateNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneVMDisksUpdateNotFound struct {
-	Payload *StandAloneVMDisksUpdateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks update not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneVMDisksUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/update][%d] standAloneVmDisksUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksUpdateNotFound) GetPayload() *StandAloneVMDisksUpdateNotFoundBody {
+func (o *StandAloneVMDisksUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneVMDisksUpdateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *StandAloneVMDisksUpdateInternalServerError) String() string {
 
 func (o *StandAloneVMDisksUpdateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-StandAloneVMDisksUpdateBadRequestBodyItems0 stand alone VM disks update bad request body items0
-swagger:model StandAloneVMDisksUpdateBadRequestBodyItems0
-*/
-type StandAloneVMDisksUpdateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this stand alone VM disks update bad request body items0
-func (o *StandAloneVMDisksUpdateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone VM disks update bad request body items0 based on context it is used
-func (o *StandAloneVMDisksUpdateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneVMDisksUpdateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneVMDisksUpdateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneVMDisksUpdateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneVMDisksUpdateBody stand alone VM disks update body
-swagger:model StandAloneVMDisksUpdateBody
-*/
-type StandAloneVMDisksUpdateBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// size
-	Size int64 `json:"size,omitempty"`
-}
-
-// Validate validates this stand alone VM disks update body
-func (o *StandAloneVMDisksUpdateBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone VM disks update body based on context it is used
-func (o *StandAloneVMDisksUpdateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneVMDisksUpdateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneVMDisksUpdateBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneVMDisksUpdateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneVMDisksUpdateForbiddenBody stand alone VM disks update forbidden body
-swagger:model StandAloneVMDisksUpdateForbiddenBody
-*/
-type StandAloneVMDisksUpdateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone VM disks update forbidden body
-func (o *StandAloneVMDisksUpdateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone VM disks update forbidden body based on context it is used
-func (o *StandAloneVMDisksUpdateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneVMDisksUpdateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneVMDisksUpdateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneVMDisksUpdateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneVMDisksUpdateNotFoundBody stand alone VM disks update not found body
-swagger:model StandAloneVMDisksUpdateNotFoundBody
-*/
-type StandAloneVMDisksUpdateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone VM disks update not found body
-func (o *StandAloneVMDisksUpdateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone VM disks update not found body based on context it is used
-func (o *StandAloneVMDisksUpdateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneVMDisksUpdateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneVMDisksUpdateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneVMDisksUpdateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneVMDisksUpdateUnauthorizedBody stand alone VM disks update unauthorized body
-swagger:model StandAloneVMDisksUpdateUnauthorizedBody
-*/
-type StandAloneVMDisksUpdateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone VM disks update unauthorized body
-func (o *StandAloneVMDisksUpdateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone VM disks update unauthorized body based on context it is used
-func (o *StandAloneVMDisksUpdateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneVMDisksUpdateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneVMDisksUpdateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneVMDisksUpdateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

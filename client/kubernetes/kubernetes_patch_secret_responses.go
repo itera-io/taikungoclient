@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesPatchSecretReader is a Reader for the KubernetesPatchSecret structure.
@@ -75,7 +75,7 @@ KubernetesPatchSecretOK describes a response with status code 200, with default 
 Success
 */
 type KubernetesPatchSecretOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this kubernetes patch secret o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KubernetesPatchSecretOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesPatchSecretOK) GetPayload() interface{} {
+func (o *KubernetesPatchSecretOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KubernetesPatchSecretBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesPatchSecretBadRequest struct {
-	Payload []*KubernetesPatchSecretBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes patch secret bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesPatchSecretBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchSecretBadRequest) GetPayload() []*KubernetesPatchSecretBadRequestBodyItems0 {
+func (o *KubernetesPatchSecretBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesPatchSecretUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesPatchSecretUnauthorized struct {
-	Payload *KubernetesPatchSecretUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch secret unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesPatchSecretUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchSecretUnauthorized) GetPayload() *KubernetesPatchSecretUnauthorizedBody {
+func (o *KubernetesPatchSecretUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchSecretUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesPatchSecretUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesPatchSecretForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesPatchSecretForbidden struct {
-	Payload *KubernetesPatchSecretForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch secret forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesPatchSecretForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchSecretForbidden) GetPayload() *KubernetesPatchSecretForbiddenBody {
+func (o *KubernetesPatchSecretForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchSecretForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesPatchSecretForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesPatchSecretNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesPatchSecretNotFound struct {
-	Payload *KubernetesPatchSecretNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch secret not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesPatchSecretNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/secret][%d] kubernetesPatchSecretNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchSecretNotFound) GetPayload() *KubernetesPatchSecretNotFoundBody {
+func (o *KubernetesPatchSecretNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchSecretNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesPatchSecretNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,243 +423,5 @@ func (o *KubernetesPatchSecretInternalServerError) String() string {
 
 func (o *KubernetesPatchSecretInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesPatchSecretBadRequestBodyItems0 kubernetes patch secret bad request body items0
-swagger:model KubernetesPatchSecretBadRequestBodyItems0
-*/
-type KubernetesPatchSecretBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes patch secret bad request body items0
-func (o *KubernetesPatchSecretBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes patch secret bad request body items0 based on context it is used
-func (o *KubernetesPatchSecretBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchSecretBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchSecretBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchSecretBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesPatchSecretBody kubernetes patch secret body
-swagger:model KubernetesPatchSecretBody
-*/
-type KubernetesPatchSecretBody struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// yaml
-	Yaml string `json:"yaml,omitempty"`
-}
-
-// Validate validates this kubernetes patch secret body
-func (o *KubernetesPatchSecretBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes patch secret body based on context it is used
-func (o *KubernetesPatchSecretBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchSecretBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchSecretBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchSecretBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesPatchSecretForbiddenBody kubernetes patch secret forbidden body
-swagger:model KubernetesPatchSecretForbiddenBody
-*/
-type KubernetesPatchSecretForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes patch secret forbidden body
-func (o *KubernetesPatchSecretForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes patch secret forbidden body based on context it is used
-func (o *KubernetesPatchSecretForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchSecretForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchSecretForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchSecretForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesPatchSecretNotFoundBody kubernetes patch secret not found body
-swagger:model KubernetesPatchSecretNotFoundBody
-*/
-type KubernetesPatchSecretNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes patch secret not found body
-func (o *KubernetesPatchSecretNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes patch secret not found body based on context it is used
-func (o *KubernetesPatchSecretNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchSecretNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchSecretNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchSecretNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesPatchSecretUnauthorizedBody kubernetes patch secret unauthorized body
-swagger:model KubernetesPatchSecretUnauthorizedBody
-*/
-type KubernetesPatchSecretUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes patch secret unauthorized body
-func (o *KubernetesPatchSecretUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes patch secret unauthorized body based on context it is used
-func (o *KubernetesPatchSecretUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchSecretUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchSecretUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchSecretUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

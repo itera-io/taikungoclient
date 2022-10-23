@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobSendEmailAboutProjectExpirationReader is a Reader for the CronJobSendEmailAboutProjectExpiration structure.
@@ -75,7 +75,7 @@ CronJobSendEmailAboutProjectExpirationOK describes a response with status code 2
 Success
 */
 type CronJobSendEmailAboutProjectExpirationOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job send email about project expiration o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobSendEmailAboutProjectExpirationOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobSendEmailAboutProjectExpirationOK) GetPayload() interface{} {
+func (o *CronJobSendEmailAboutProjectExpirationOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobSendEmailAboutProjectExpirationBadRequest describes a response with statu
 Bad Request
 */
 type CronJobSendEmailAboutProjectExpirationBadRequest struct {
-	Payload []*CronJobSendEmailAboutProjectExpirationBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job send email about project expiration bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobSendEmailAboutProjectExpirationBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobSendEmailAboutProjectExpirationBadRequest) GetPayload() []*CronJobSendEmailAboutProjectExpirationBadRequestBodyItems0 {
+func (o *CronJobSendEmailAboutProjectExpirationBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobSendEmailAboutProjectExpirationUnauthorized describes a response with sta
 Unauthorized
 */
 type CronJobSendEmailAboutProjectExpirationUnauthorized struct {
-	Payload *CronJobSendEmailAboutProjectExpirationUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job send email about project expiration unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobSendEmailAboutProjectExpirationUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobSendEmailAboutProjectExpirationUnauthorized) GetPayload() *CronJobSendEmailAboutProjectExpirationUnauthorizedBody {
+func (o *CronJobSendEmailAboutProjectExpirationUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobSendEmailAboutProjectExpirationUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobSendEmailAboutProjectExpirationUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobSendEmailAboutProjectExpirationForbidden describes a response with status
 Forbidden
 */
 type CronJobSendEmailAboutProjectExpirationForbidden struct {
-	Payload *CronJobSendEmailAboutProjectExpirationForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job send email about project expiration forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobSendEmailAboutProjectExpirationForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobSendEmailAboutProjectExpirationForbidden) GetPayload() *CronJobSendEmailAboutProjectExpirationForbiddenBody {
+func (o *CronJobSendEmailAboutProjectExpirationForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobSendEmailAboutProjectExpirationForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobSendEmailAboutProjectExpirationForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobSendEmailAboutProjectExpirationNotFound describes a response with status 
 Not Found
 */
 type CronJobSendEmailAboutProjectExpirationNotFound struct {
-	Payload *CronJobSendEmailAboutProjectExpirationNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job send email about project expiration not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobSendEmailAboutProjectExpirationNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-expiration][%d] cronJobSendEmailAboutProjectExpirationNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobSendEmailAboutProjectExpirationNotFound) GetPayload() *CronJobSendEmailAboutProjectExpirationNotFoundBody {
+func (o *CronJobSendEmailAboutProjectExpirationNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobSendEmailAboutProjectExpirationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobSendEmailAboutProjectExpirationNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *CronJobSendEmailAboutProjectExpirationInternalServerError) String() str
 
 func (o *CronJobSendEmailAboutProjectExpirationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CronJobSendEmailAboutProjectExpirationBadRequestBodyItems0 cron job send email about project expiration bad request body items0
-swagger:model CronJobSendEmailAboutProjectExpirationBadRequestBodyItems0
-*/
-type CronJobSendEmailAboutProjectExpirationBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this cron job send email about project expiration bad request body items0
-func (o *CronJobSendEmailAboutProjectExpirationBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job send email about project expiration bad request body items0 based on context it is used
-func (o *CronJobSendEmailAboutProjectExpirationBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobSendEmailAboutProjectExpirationBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobSendEmailAboutProjectExpirationBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CronJobSendEmailAboutProjectExpirationBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobSendEmailAboutProjectExpirationForbiddenBody cron job send email about project expiration forbidden body
-swagger:model CronJobSendEmailAboutProjectExpirationForbiddenBody
-*/
-type CronJobSendEmailAboutProjectExpirationForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job send email about project expiration forbidden body
-func (o *CronJobSendEmailAboutProjectExpirationForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job send email about project expiration forbidden body based on context it is used
-func (o *CronJobSendEmailAboutProjectExpirationForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobSendEmailAboutProjectExpirationForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobSendEmailAboutProjectExpirationForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CronJobSendEmailAboutProjectExpirationForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobSendEmailAboutProjectExpirationNotFoundBody cron job send email about project expiration not found body
-swagger:model CronJobSendEmailAboutProjectExpirationNotFoundBody
-*/
-type CronJobSendEmailAboutProjectExpirationNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job send email about project expiration not found body
-func (o *CronJobSendEmailAboutProjectExpirationNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job send email about project expiration not found body based on context it is used
-func (o *CronJobSendEmailAboutProjectExpirationNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobSendEmailAboutProjectExpirationNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobSendEmailAboutProjectExpirationNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CronJobSendEmailAboutProjectExpirationNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobSendEmailAboutProjectExpirationUnauthorizedBody cron job send email about project expiration unauthorized body
-swagger:model CronJobSendEmailAboutProjectExpirationUnauthorizedBody
-*/
-type CronJobSendEmailAboutProjectExpirationUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job send email about project expiration unauthorized body
-func (o *CronJobSendEmailAboutProjectExpirationUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job send email about project expiration unauthorized body based on context it is used
-func (o *CronJobSendEmailAboutProjectExpirationUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobSendEmailAboutProjectExpirationUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobSendEmailAboutProjectExpirationUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CronJobSendEmailAboutProjectExpirationUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

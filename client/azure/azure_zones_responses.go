@@ -6,13 +6,13 @@ package azure
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AzureZonesReader is a Reader for the AzureZones structure.
@@ -75,7 +75,7 @@ AzureZonesOK describes a response with status code 200, with default header valu
 Success
 */
 type AzureZonesOK struct {
-	Payload *AzureZonesOKBody
+	Payload *models.AzResult
 }
 
 // IsSuccess returns true when this azure zones o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *AzureZonesOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesOK  %+v", 200, o.Payload)
 }
 
-func (o *AzureZonesOK) GetPayload() *AzureZonesOKBody {
+func (o *AzureZonesOK) GetPayload() *models.AzResult {
 	return o.Payload
 }
 
 func (o *AzureZonesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureZonesOKBody)
+	o.Payload = new(models.AzResult)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ AzureZonesBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type AzureZonesBadRequest struct {
-	Payload []*AzureZonesBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this azure zones bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AzureZonesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureZonesBadRequest) GetPayload() []*AzureZonesBadRequestBodyItems0 {
+func (o *AzureZonesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ AzureZonesUnauthorized describes a response with status code 401, with default h
 Unauthorized
 */
 type AzureZonesUnauthorized struct {
-	Payload *AzureZonesUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure zones unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *AzureZonesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureZonesUnauthorized) GetPayload() *AzureZonesUnauthorizedBody {
+func (o *AzureZonesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureZonesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureZonesUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ AzureZonesForbidden describes a response with status code 403, with default head
 Forbidden
 */
 type AzureZonesForbidden struct {
-	Payload *AzureZonesForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure zones forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *AzureZonesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureZonesForbidden) GetPayload() *AzureZonesForbiddenBody {
+func (o *AzureZonesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureZonesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureZonesForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ AzureZonesNotFound describes a response with status code 404, with default heade
 Not Found
 */
 type AzureZonesNotFound struct {
-	Payload *AzureZonesNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure zones not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *AzureZonesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/zones][%d] azureZonesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureZonesNotFound) GetPayload() *AzureZonesNotFoundBody {
+func (o *AzureZonesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureZonesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureZonesNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,290 +425,5 @@ func (o *AzureZonesInternalServerError) String() string {
 
 func (o *AzureZonesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AzureZonesBadRequestBodyItems0 azure zones bad request body items0
-swagger:model AzureZonesBadRequestBodyItems0
-*/
-type AzureZonesBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this azure zones bad request body items0
-func (o *AzureZonesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure zones bad request body items0 based on context it is used
-func (o *AzureZonesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureZonesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureZonesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AzureZonesBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureZonesBody azure zones body
-swagger:model AzureZonesBody
-*/
-type AzureZonesBody struct {
-
-	// azure client Id
-	AzureClientID string `json:"azureClientId,omitempty"`
-
-	// azure client secret
-	AzureClientSecret string `json:"azureClientSecret,omitempty"`
-
-	// azure location
-	AzureLocation string `json:"azureLocation,omitempty"`
-
-	// azure subscription Id
-	AzureSubscriptionID string `json:"azureSubscriptionId,omitempty"`
-
-	// azure tenant Id
-	AzureTenantID string `json:"azureTenantId,omitempty"`
-
-	// cloud Id
-	CloudID int32 `json:"cloudId,omitempty"`
-}
-
-// Validate validates this azure zones body
-func (o *AzureZonesBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure zones body based on context it is used
-func (o *AzureZonesBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureZonesBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureZonesBody) UnmarshalBinary(b []byte) error {
-	var res AzureZonesBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureZonesForbiddenBody azure zones forbidden body
-swagger:model AzureZonesForbiddenBody
-*/
-type AzureZonesForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure zones forbidden body
-func (o *AzureZonesForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure zones forbidden body based on context it is used
-func (o *AzureZonesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureZonesForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureZonesForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AzureZonesForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureZonesNotFoundBody azure zones not found body
-swagger:model AzureZonesNotFoundBody
-*/
-type AzureZonesNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure zones not found body
-func (o *AzureZonesNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure zones not found body based on context it is used
-func (o *AzureZonesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureZonesNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureZonesNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AzureZonesNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureZonesOKBody azure zones o k body
-swagger:model AzureZonesOKBody
-*/
-type AzureZonesOKBody struct {
-
-	// list
-	List []string `json:"list"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this azure zones o k body
-func (o *AzureZonesOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure zones o k body based on context it is used
-func (o *AzureZonesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureZonesOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureZonesOKBody) UnmarshalBinary(b []byte) error {
-	var res AzureZonesOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureZonesUnauthorizedBody azure zones unauthorized body
-swagger:model AzureZonesUnauthorizedBody
-*/
-type AzureZonesUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure zones unauthorized body
-func (o *AzureZonesUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure zones unauthorized body based on context it is used
-func (o *AzureZonesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureZonesUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureZonesUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AzureZonesUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -71,7 +71,7 @@ type OpenstackCredentialsListDto struct {
 	ProjectCount int32 `json:"projectCount,omitempty"`
 
 	// projects
-	Projects []*OpenstackCredentialsListDtoProjectsItems0 `json:"projects"`
+	Projects []*CommonDropdownDto `json:"projects"`
 
 	// public network
 	PublicNetwork string `json:"publicNetwork,omitempty"`
@@ -177,46 +177,6 @@ func (m *OpenstackCredentialsListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *OpenstackCredentialsListDto) UnmarshalBinary(b []byte) error {
 	var res OpenstackCredentialsListDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// OpenstackCredentialsListDtoProjectsItems0 openstack credentials list dto projects items0
-//
-// swagger:model OpenstackCredentialsListDtoProjectsItems0
-type OpenstackCredentialsListDtoProjectsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this openstack credentials list dto projects items0
-func (m *OpenstackCredentialsListDtoProjectsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack credentials list dto projects items0 based on context it is used
-func (m *OpenstackCredentialsListDtoProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *OpenstackCredentialsListDtoProjectsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *OpenstackCredentialsListDtoProjectsItems0) UnmarshalBinary(b []byte) error {
-	var res OpenstackCredentialsListDtoProjectsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -6,13 +6,13 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsMonitoringOperationsReader is a Reader for the ProjectsMonitoringOperations structure.
@@ -75,7 +75,7 @@ ProjectsMonitoringOperationsOK describes a response with status code 200, with d
 Success
 */
 type ProjectsMonitoringOperationsOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects monitoring operations o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectsMonitoringOperationsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsMonitoringOperationsOK) GetPayload() interface{} {
+func (o *ProjectsMonitoringOperationsOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectsMonitoringOperationsBadRequest describes a response with status code 400
 Bad Request
 */
 type ProjectsMonitoringOperationsBadRequest struct {
-	Payload []*ProjectsMonitoringOperationsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects monitoring operations bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsMonitoringOperationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsMonitoringOperationsBadRequest) GetPayload() []*ProjectsMonitoringOperationsBadRequestBodyItems0 {
+func (o *ProjectsMonitoringOperationsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectsMonitoringOperationsUnauthorized describes a response with status code 4
 Unauthorized
 */
 type ProjectsMonitoringOperationsUnauthorized struct {
-	Payload *ProjectsMonitoringOperationsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects monitoring operations unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectsMonitoringOperationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsMonitoringOperationsUnauthorized) GetPayload() *ProjectsMonitoringOperationsUnauthorizedBody {
+func (o *ProjectsMonitoringOperationsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsMonitoringOperationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsMonitoringOperationsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectsMonitoringOperationsForbidden describes a response with status code 403,
 Forbidden
 */
 type ProjectsMonitoringOperationsForbidden struct {
-	Payload *ProjectsMonitoringOperationsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects monitoring operations forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectsMonitoringOperationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsMonitoringOperationsForbidden) GetPayload() *ProjectsMonitoringOperationsForbiddenBody {
+func (o *ProjectsMonitoringOperationsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsMonitoringOperationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsMonitoringOperationsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectsMonitoringOperationsNotFound describes a response with status code 404, 
 Not Found
 */
 type ProjectsMonitoringOperationsNotFound struct {
-	Payload *ProjectsMonitoringOperationsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects monitoring operations not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectsMonitoringOperationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/monitoring][%d] projectsMonitoringOperationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsMonitoringOperationsNotFound) GetPayload() *ProjectsMonitoringOperationsNotFoundBody {
+func (o *ProjectsMonitoringOperationsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsMonitoringOperationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsMonitoringOperationsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *ProjectsMonitoringOperationsInternalServerError) String() string {
 
 func (o *ProjectsMonitoringOperationsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectsMonitoringOperationsBadRequestBodyItems0 projects monitoring operations bad request body items0
-swagger:model ProjectsMonitoringOperationsBadRequestBodyItems0
-*/
-type ProjectsMonitoringOperationsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this projects monitoring operations bad request body items0
-func (o *ProjectsMonitoringOperationsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects monitoring operations bad request body items0 based on context it is used
-func (o *ProjectsMonitoringOperationsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsMonitoringOperationsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsMonitoringOperationsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectsMonitoringOperationsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsMonitoringOperationsBody projects monitoring operations body
-swagger:model ProjectsMonitoringOperationsBody
-*/
-type ProjectsMonitoringOperationsBody struct {
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this projects monitoring operations body
-func (o *ProjectsMonitoringOperationsBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects monitoring operations body based on context it is used
-func (o *ProjectsMonitoringOperationsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsMonitoringOperationsBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsMonitoringOperationsBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsMonitoringOperationsBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsMonitoringOperationsForbiddenBody projects monitoring operations forbidden body
-swagger:model ProjectsMonitoringOperationsForbiddenBody
-*/
-type ProjectsMonitoringOperationsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects monitoring operations forbidden body
-func (o *ProjectsMonitoringOperationsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects monitoring operations forbidden body based on context it is used
-func (o *ProjectsMonitoringOperationsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsMonitoringOperationsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsMonitoringOperationsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsMonitoringOperationsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsMonitoringOperationsNotFoundBody projects monitoring operations not found body
-swagger:model ProjectsMonitoringOperationsNotFoundBody
-*/
-type ProjectsMonitoringOperationsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects monitoring operations not found body
-func (o *ProjectsMonitoringOperationsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects monitoring operations not found body based on context it is used
-func (o *ProjectsMonitoringOperationsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsMonitoringOperationsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsMonitoringOperationsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsMonitoringOperationsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsMonitoringOperationsUnauthorizedBody projects monitoring operations unauthorized body
-swagger:model ProjectsMonitoringOperationsUnauthorizedBody
-*/
-type ProjectsMonitoringOperationsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects monitoring operations unauthorized body
-func (o *ProjectsMonitoringOperationsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects monitoring operations unauthorized body based on context it is used
-func (o *ProjectsMonitoringOperationsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsMonitoringOperationsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsMonitoringOperationsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsMonitoringOperationsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

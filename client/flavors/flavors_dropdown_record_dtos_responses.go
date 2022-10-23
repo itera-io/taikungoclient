@@ -6,15 +6,13 @@ package flavors
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // FlavorsDropdownRecordDtosReader is a Reader for the FlavorsDropdownRecordDtos structure.
@@ -77,7 +75,7 @@ FlavorsDropdownRecordDtosOK describes a response with status code 200, with defa
 Success
 */
 type FlavorsDropdownRecordDtosOK struct {
-	Payload []*FlavorsDropdownRecordDtosOKBodyItems0
+	Payload []*models.CloudCredentialsDropdownRecordDto
 }
 
 // IsSuccess returns true when this flavors dropdown record dtos o k response has a 2xx status code
@@ -113,7 +111,7 @@ func (o *FlavorsDropdownRecordDtosOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosOK  %+v", 200, o.Payload)
 }
 
-func (o *FlavorsDropdownRecordDtosOK) GetPayload() []*FlavorsDropdownRecordDtosOKBodyItems0 {
+func (o *FlavorsDropdownRecordDtosOK) GetPayload() []*models.CloudCredentialsDropdownRecordDto {
 	return o.Payload
 }
 
@@ -138,7 +136,7 @@ FlavorsDropdownRecordDtosBadRequest describes a response with status code 400, w
 Bad Request
 */
 type FlavorsDropdownRecordDtosBadRequest struct {
-	Payload []*FlavorsDropdownRecordDtosBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this flavors dropdown record dtos bad request response has a 2xx status code
@@ -174,7 +172,7 @@ func (o *FlavorsDropdownRecordDtosBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsDropdownRecordDtosBadRequest) GetPayload() []*FlavorsDropdownRecordDtosBadRequestBodyItems0 {
+func (o *FlavorsDropdownRecordDtosBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +197,7 @@ FlavorsDropdownRecordDtosUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type FlavorsDropdownRecordDtosUnauthorized struct {
-	Payload *FlavorsDropdownRecordDtosUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors dropdown record dtos unauthorized response has a 2xx status code
@@ -235,13 +233,13 @@ func (o *FlavorsDropdownRecordDtosUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsDropdownRecordDtosUnauthorized) GetPayload() *FlavorsDropdownRecordDtosUnauthorizedBody {
+func (o *FlavorsDropdownRecordDtosUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsDropdownRecordDtosUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsDropdownRecordDtosUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +260,7 @@ FlavorsDropdownRecordDtosForbidden describes a response with status code 403, wi
 Forbidden
 */
 type FlavorsDropdownRecordDtosForbidden struct {
-	Payload *FlavorsDropdownRecordDtosForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors dropdown record dtos forbidden response has a 2xx status code
@@ -298,13 +296,13 @@ func (o *FlavorsDropdownRecordDtosForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsDropdownRecordDtosForbidden) GetPayload() *FlavorsDropdownRecordDtosForbiddenBody {
+func (o *FlavorsDropdownRecordDtosForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsDropdownRecordDtosForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsDropdownRecordDtosForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +323,7 @@ FlavorsDropdownRecordDtosNotFound describes a response with status code 404, wit
 Not Found
 */
 type FlavorsDropdownRecordDtosNotFound struct {
-	Payload *FlavorsDropdownRecordDtosNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors dropdown record dtos not found response has a 2xx status code
@@ -361,13 +359,13 @@ func (o *FlavorsDropdownRecordDtosNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/credentials/dropdown/list][%d] flavorsDropdownRecordDtosNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsDropdownRecordDtosNotFound) GetPayload() *FlavorsDropdownRecordDtosNotFoundBody {
+func (o *FlavorsDropdownRecordDtosNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsDropdownRecordDtosNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsDropdownRecordDtosNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,354 +423,5 @@ func (o *FlavorsDropdownRecordDtosInternalServerError) String() string {
 
 func (o *FlavorsDropdownRecordDtosInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-FlavorsDropdownRecordDtosBadRequestBodyItems0 flavors dropdown record dtos bad request body items0
-swagger:model FlavorsDropdownRecordDtosBadRequestBodyItems0
-*/
-type FlavorsDropdownRecordDtosBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this flavors dropdown record dtos bad request body items0
-func (o *FlavorsDropdownRecordDtosBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors dropdown record dtos bad request body items0 based on context it is used
-func (o *FlavorsDropdownRecordDtosBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsDropdownRecordDtosBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsDropdownRecordDtosBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res FlavorsDropdownRecordDtosBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsDropdownRecordDtosForbiddenBody flavors dropdown record dtos forbidden body
-swagger:model FlavorsDropdownRecordDtosForbiddenBody
-*/
-type FlavorsDropdownRecordDtosForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this flavors dropdown record dtos forbidden body
-func (o *FlavorsDropdownRecordDtosForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors dropdown record dtos forbidden body based on context it is used
-func (o *FlavorsDropdownRecordDtosForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsDropdownRecordDtosForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsDropdownRecordDtosForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsDropdownRecordDtosForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsDropdownRecordDtosNotFoundBody flavors dropdown record dtos not found body
-swagger:model FlavorsDropdownRecordDtosNotFoundBody
-*/
-type FlavorsDropdownRecordDtosNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this flavors dropdown record dtos not found body
-func (o *FlavorsDropdownRecordDtosNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors dropdown record dtos not found body based on context it is used
-func (o *FlavorsDropdownRecordDtosNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsDropdownRecordDtosNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsDropdownRecordDtosNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsDropdownRecordDtosNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsDropdownRecordDtosOKBodyItems0 flavors dropdown record dtos o k body items0
-swagger:model FlavorsDropdownRecordDtosOKBodyItems0
-*/
-type FlavorsDropdownRecordDtosOKBodyItems0 struct {
-
-	// cloud type
-	CloudType string `json:"cloudType,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// projects
-	Projects []*FlavorsDropdownRecordDtosOKBodyItems0ProjectsItems0 `json:"projects"`
-}
-
-// Validate validates this flavors dropdown record dtos o k body items0
-func (o *FlavorsDropdownRecordDtosOKBodyItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateProjects(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *FlavorsDropdownRecordDtosOKBodyItems0) validateProjects(formats strfmt.Registry) error {
-	if swag.IsZero(o.Projects) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Projects); i++ {
-		if swag.IsZero(o.Projects[i]) { // not required
-			continue
-		}
-
-		if o.Projects[i] != nil {
-			if err := o.Projects[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this flavors dropdown record dtos o k body items0 based on the context it is used
-func (o *FlavorsDropdownRecordDtosOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateProjects(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *FlavorsDropdownRecordDtosOKBodyItems0) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Projects); i++ {
-
-		if o.Projects[i] != nil {
-			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsDropdownRecordDtosOKBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsDropdownRecordDtosOKBodyItems0) UnmarshalBinary(b []byte) error {
-	var res FlavorsDropdownRecordDtosOKBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsDropdownRecordDtosOKBodyItems0ProjectsItems0 flavors dropdown record dtos o k body items0 projects items0
-swagger:model FlavorsDropdownRecordDtosOKBodyItems0ProjectsItems0
-*/
-type FlavorsDropdownRecordDtosOKBodyItems0ProjectsItems0 struct {
-
-	// flavors
-	Flavors []string `json:"flavors"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// images
-	Images []string `json:"images"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this flavors dropdown record dtos o k body items0 projects items0
-func (o *FlavorsDropdownRecordDtosOKBodyItems0ProjectsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors dropdown record dtos o k body items0 projects items0 based on context it is used
-func (o *FlavorsDropdownRecordDtosOKBodyItems0ProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsDropdownRecordDtosOKBodyItems0ProjectsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsDropdownRecordDtosOKBodyItems0ProjectsItems0) UnmarshalBinary(b []byte) error {
-	var res FlavorsDropdownRecordDtosOKBodyItems0ProjectsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsDropdownRecordDtosUnauthorizedBody flavors dropdown record dtos unauthorized body
-swagger:model FlavorsDropdownRecordDtosUnauthorizedBody
-*/
-type FlavorsDropdownRecordDtosUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this flavors dropdown record dtos unauthorized body
-func (o *FlavorsDropdownRecordDtosUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors dropdown record dtos unauthorized body based on context it is used
-func (o *FlavorsDropdownRecordDtosUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsDropdownRecordDtosUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsDropdownRecordDtosUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsDropdownRecordDtosUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

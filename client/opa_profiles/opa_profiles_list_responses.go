@@ -6,15 +6,13 @@ package opa_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // OpaProfilesListReader is a Reader for the OpaProfilesList structure.
@@ -77,7 +75,7 @@ OpaProfilesListOK describes a response with status code 200, with default header
 Success
 */
 type OpaProfilesListOK struct {
-	Payload *OpaProfilesListOKBody
+	Payload *models.OpaProfileList
 }
 
 // IsSuccess returns true when this opa profiles list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *OpaProfilesListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListOK  %+v", 200, o.Payload)
 }
 
-func (o *OpaProfilesListOK) GetPayload() *OpaProfilesListOKBody {
+func (o *OpaProfilesListOK) GetPayload() *models.OpaProfileList {
 	return o.Payload
 }
 
 func (o *OpaProfilesListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpaProfilesListOKBody)
+	o.Payload = new(models.OpaProfileList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ OpaProfilesListBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type OpaProfilesListBadRequest struct {
-	Payload []*OpaProfilesListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this opa profiles list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *OpaProfilesListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesListBadRequest) GetPayload() []*OpaProfilesListBadRequestBodyItems0 {
+func (o *OpaProfilesListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ OpaProfilesListUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type OpaProfilesListUnauthorized struct {
-	Payload *OpaProfilesListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *OpaProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesListUnauthorized) GetPayload() *OpaProfilesListUnauthorizedBody {
+func (o *OpaProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpaProfilesListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ OpaProfilesListForbidden describes a response with status code 403, with default
 Forbidden
 */
 type OpaProfilesListForbidden struct {
-	Payload *OpaProfilesListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *OpaProfilesListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesListForbidden) GetPayload() *OpaProfilesListForbiddenBody {
+func (o *OpaProfilesListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpaProfilesListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ OpaProfilesListNotFound describes a response with status code 404, with default 
 Not Found
 */
 type OpaProfilesListNotFound struct {
-	Payload *OpaProfilesListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *OpaProfilesListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/OpaProfiles][%d] opaProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesListNotFound) GetPayload() *OpaProfilesListNotFoundBody {
+func (o *OpaProfilesListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpaProfilesListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,492 +425,5 @@ func (o *OpaProfilesListInternalServerError) String() string {
 
 func (o *OpaProfilesListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-OpaProfilesListBadRequestBodyItems0 opa profiles list bad request body items0
-swagger:model OpaProfilesListBadRequestBodyItems0
-*/
-type OpaProfilesListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this opa profiles list bad request body items0
-func (o *OpaProfilesListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles list bad request body items0 based on context it is used
-func (o *OpaProfilesListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesListForbiddenBody opa profiles list forbidden body
-swagger:model OpaProfilesListForbiddenBody
-*/
-type OpaProfilesListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this opa profiles list forbidden body
-func (o *OpaProfilesListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles list forbidden body based on context it is used
-func (o *OpaProfilesListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesListNotFoundBody opa profiles list not found body
-swagger:model OpaProfilesListNotFoundBody
-*/
-type OpaProfilesListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this opa profiles list not found body
-func (o *OpaProfilesListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles list not found body based on context it is used
-func (o *OpaProfilesListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesListOKBody opa profiles list o k body
-swagger:model OpaProfilesListOKBody
-*/
-type OpaProfilesListOKBody struct {
-
-	// data
-	Data []*OpaProfilesListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this opa profiles list o k body
-func (o *OpaProfilesListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *OpaProfilesListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("opaProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("opaProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this opa profiles list o k body based on the context it is used
-func (o *OpaProfilesListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *OpaProfilesListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("opaProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("opaProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesListOKBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesListOKBodyDataItems0 opa profiles list o k body data items0
-swagger:model OpaProfilesListOKBodyDataItems0
-*/
-type OpaProfilesListOKBodyDataItems0 struct {
-
-	// allowed repo
-	AllowedRepo []string `json:"allowedRepo"`
-
-	// created at
-	CreatedAt string `json:"createdAt,omitempty"`
-
-	// forbid Http ingress
-	ForbidHTTPIngress bool `json:"forbidHttpIngress"`
-
-	// forbid node port
-	ForbidNodePort bool `json:"forbidNodePort"`
-
-	// forbid specific tags
-	ForbidSpecificTags []string `json:"forbidSpecificTags"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// ingress whitelist
-	IngressWhitelist []string `json:"ingressWhitelist"`
-
-	// is default
-	IsDefault bool `json:"isDefault"`
-
-	// is locked
-	IsLocked bool `json:"isLocked"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// projects
-	Projects []*OpaProfilesListOKBodyDataItems0ProjectsItems0 `json:"projects"`
-
-	// require probe
-	RequireProbe bool `json:"requireProbe"`
-
-	// revision
-	Revision int32 `json:"revision,omitempty"`
-
-	// unique ingresses
-	UniqueIngresses bool `json:"uniqueIngresses"`
-
-	// unique service selector
-	UniqueServiceSelector bool `json:"uniqueServiceSelector"`
-}
-
-// Validate validates this opa profiles list o k body data items0
-func (o *OpaProfilesListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateProjects(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *OpaProfilesListOKBodyDataItems0) validateProjects(formats strfmt.Registry) error {
-	if swag.IsZero(o.Projects) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Projects); i++ {
-		if swag.IsZero(o.Projects[i]) { // not required
-			continue
-		}
-
-		if o.Projects[i] != nil {
-			if err := o.Projects[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this opa profiles list o k body data items0 based on the context it is used
-func (o *OpaProfilesListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateProjects(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *OpaProfilesListOKBodyDataItems0) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Projects); i++ {
-
-		if o.Projects[i] != nil {
-			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesListOKBodyDataItems0ProjectsItems0 opa profiles list o k body data items0 projects items0
-swagger:model OpaProfilesListOKBodyDataItems0ProjectsItems0
-*/
-type OpaProfilesListOKBodyDataItems0ProjectsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this opa profiles list o k body data items0 projects items0
-func (o *OpaProfilesListOKBodyDataItems0ProjectsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles list o k body data items0 projects items0 based on context it is used
-func (o *OpaProfilesListOKBodyDataItems0ProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesListOKBodyDataItems0ProjectsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesListOKBodyDataItems0ProjectsItems0) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesListOKBodyDataItems0ProjectsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesListUnauthorizedBody opa profiles list unauthorized body
-swagger:model OpaProfilesListUnauthorizedBody
-*/
-type OpaProfilesListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this opa profiles list unauthorized body
-func (o *OpaProfilesListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles list unauthorized body based on context it is used
-func (o *OpaProfilesListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

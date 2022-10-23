@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAdminUpdateProjectVersionParams creates a new AdminUpdateProjectVersionParams object,
@@ -62,7 +64,7 @@ AdminUpdateProjectVersionParams contains all the parameters to send to the API e
 type AdminUpdateProjectVersionParams struct {
 
 	// Body.
-	Body AdminUpdateProjectVersionBody
+	Body *models.AdminProjectUpdateCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *AdminUpdateProjectVersionParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the admin update project version params
-func (o *AdminUpdateProjectVersionParams) WithBody(body AdminUpdateProjectVersionBody) *AdminUpdateProjectVersionParams {
+func (o *AdminUpdateProjectVersionParams) WithBody(body *models.AdminProjectUpdateCommand) *AdminUpdateProjectVersionParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the admin update project version params
-func (o *AdminUpdateProjectVersionParams) SetBody(body AdminUpdateProjectVersionBody) {
+func (o *AdminUpdateProjectVersionParams) SetBody(body *models.AdminProjectUpdateCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *AdminUpdateProjectVersionParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

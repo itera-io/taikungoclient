@@ -6,13 +6,13 @@ package ntp_servers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NtpServersEditReader is a Reader for the NtpServersEdit structure.
@@ -75,7 +75,7 @@ NtpServersEditOK describes a response with status code 200, with default header 
 Success
 */
 type NtpServersEditOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this ntp servers edit o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *NtpServersEditOK) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditOK  %+v", 200, o.Payload)
 }
 
-func (o *NtpServersEditOK) GetPayload() interface{} {
+func (o *NtpServersEditOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ NtpServersEditBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type NtpServersEditBadRequest struct {
-	Payload []*NtpServersEditBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this ntp servers edit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *NtpServersEditBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NtpServersEditBadRequest) GetPayload() []*NtpServersEditBadRequestBodyItems0 {
+func (o *NtpServersEditBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ NtpServersEditUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type NtpServersEditUnauthorized struct {
-	Payload *NtpServersEditUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ntp servers edit unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *NtpServersEditUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NtpServersEditUnauthorized) GetPayload() *NtpServersEditUnauthorizedBody {
+func (o *NtpServersEditUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NtpServersEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(NtpServersEditUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ NtpServersEditForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type NtpServersEditForbidden struct {
-	Payload *NtpServersEditForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ntp servers edit forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *NtpServersEditForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NtpServersEditForbidden) GetPayload() *NtpServersEditForbiddenBody {
+func (o *NtpServersEditForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NtpServersEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(NtpServersEditForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ NtpServersEditNotFound describes a response with status code 404, with default h
 Not Found
 */
 type NtpServersEditNotFound struct {
-	Payload *NtpServersEditNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ntp servers edit not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *NtpServersEditNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/NtpServers/edit/{id}][%d] ntpServersEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NtpServersEditNotFound) GetPayload() *NtpServersEditNotFoundBody {
+func (o *NtpServersEditNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NtpServersEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(NtpServersEditNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *NtpServersEditInternalServerError) String() string {
 
 func (o *NtpServersEditInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-NtpServersEditBadRequestBodyItems0 ntp servers edit bad request body items0
-swagger:model NtpServersEditBadRequestBodyItems0
-*/
-type NtpServersEditBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this ntp servers edit bad request body items0
-func (o *NtpServersEditBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ntp servers edit bad request body items0 based on context it is used
-func (o *NtpServersEditBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NtpServersEditBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NtpServersEditBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res NtpServersEditBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NtpServersEditBody ntp servers edit body
-swagger:model NtpServersEditBody
-*/
-type NtpServersEditBody struct {
-
-	// address
-	Address string `json:"address,omitempty"`
-}
-
-// Validate validates this ntp servers edit body
-func (o *NtpServersEditBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ntp servers edit body based on context it is used
-func (o *NtpServersEditBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NtpServersEditBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NtpServersEditBody) UnmarshalBinary(b []byte) error {
-	var res NtpServersEditBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NtpServersEditForbiddenBody ntp servers edit forbidden body
-swagger:model NtpServersEditForbiddenBody
-*/
-type NtpServersEditForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ntp servers edit forbidden body
-func (o *NtpServersEditForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ntp servers edit forbidden body based on context it is used
-func (o *NtpServersEditForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NtpServersEditForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NtpServersEditForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res NtpServersEditForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NtpServersEditNotFoundBody ntp servers edit not found body
-swagger:model NtpServersEditNotFoundBody
-*/
-type NtpServersEditNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ntp servers edit not found body
-func (o *NtpServersEditNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ntp servers edit not found body based on context it is used
-func (o *NtpServersEditNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NtpServersEditNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NtpServersEditNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res NtpServersEditNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NtpServersEditUnauthorizedBody ntp servers edit unauthorized body
-swagger:model NtpServersEditUnauthorizedBody
-*/
-type NtpServersEditUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ntp servers edit unauthorized body
-func (o *NtpServersEditUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ntp servers edit unauthorized body based on context it is used
-func (o *NtpServersEditUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NtpServersEditUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NtpServersEditUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res NtpServersEditUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

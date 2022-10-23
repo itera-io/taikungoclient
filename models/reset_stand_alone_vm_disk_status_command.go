@@ -7,12 +7,10 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // ResetStandAloneVMDiskStatusCommand reset stand alone Vm disk status command
@@ -27,8 +25,7 @@ type ResetStandAloneVMDiskStatusCommand struct {
 	StandAloneVMID int32 `json:"standAloneVmId,omitempty"`
 
 	// status
-	// Enum: [100 200 300 400 500 600]
-	Status int32 `json:"status,omitempty"`
+	Status StandAloneVMDiskStatus `json:"status,omitempty"`
 }
 
 // Validate validates this reset stand alone Vm disk status command
@@ -45,41 +42,48 @@ func (m *ResetStandAloneVMDiskStatusCommand) Validate(formats strfmt.Registry) e
 	return nil
 }
 
-var resetStandAloneVmDiskStatusCommandTypeStatusPropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200,300,400,500,600]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		resetStandAloneVmDiskStatusCommandTypeStatusPropEnum = append(resetStandAloneVmDiskStatusCommandTypeStatusPropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *ResetStandAloneVMDiskStatusCommand) validateStatusEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, resetStandAloneVmDiskStatusCommandTypeStatusPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *ResetStandAloneVMDiskStatusCommand) validateStatus(formats strfmt.Registry) error {
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateStatusEnum("status", "body", m.Status); err != nil {
+	if err := m.Status.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("status")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("status")
+		}
 		return err
 	}
 
 	return nil
 }
 
-// ContextValidate validates this reset stand alone Vm disk status command based on context it is used
+// ContextValidate validate this reset stand alone Vm disk status command based on the context it is used
 func (m *ResetStandAloneVMDiskStatusCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResetStandAloneVMDiskStatusCommand) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Status.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("status")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("status")
+		}
+		return err
+	}
+
 	return nil
 }
 

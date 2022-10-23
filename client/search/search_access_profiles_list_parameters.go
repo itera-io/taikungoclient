@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSearchAccessProfilesListParams creates a new SearchAccessProfilesListParams object,
@@ -62,7 +64,7 @@ SearchAccessProfilesListParams contains all the parameters to send to the API en
 type SearchAccessProfilesListParams struct {
 
 	// Body.
-	Body SearchAccessProfilesListBody
+	Body *models.AccessProfilesSearchCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *SearchAccessProfilesListParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the search access profiles list params
-func (o *SearchAccessProfilesListParams) WithBody(body SearchAccessProfilesListBody) *SearchAccessProfilesListParams {
+func (o *SearchAccessProfilesListParams) WithBody(body *models.AccessProfilesSearchCommand) *SearchAccessProfilesListParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the search access profiles list params
-func (o *SearchAccessProfilesListParams) SetBody(body SearchAccessProfilesListBody) {
+func (o *SearchAccessProfilesListParams) SetBody(body *models.AccessProfilesSearchCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *SearchAccessProfilesListParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

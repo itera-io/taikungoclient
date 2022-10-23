@@ -6,13 +6,13 @@ package catalog
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CatalogAvailableVersionsReader is a Reader for the CatalogAvailableVersions structure.
@@ -136,7 +136,7 @@ CatalogAvailableVersionsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type CatalogAvailableVersionsBadRequest struct {
-	Payload []*CatalogAvailableVersionsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this catalog available versions bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CatalogAvailableVersionsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogAvailableVersionsBadRequest) GetPayload() []*CatalogAvailableVersionsBadRequestBodyItems0 {
+func (o *CatalogAvailableVersionsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CatalogAvailableVersionsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type CatalogAvailableVersionsUnauthorized struct {
-	Payload *CatalogAvailableVersionsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog available versions unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CatalogAvailableVersionsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogAvailableVersionsUnauthorized) GetPayload() *CatalogAvailableVersionsUnauthorizedBody {
+func (o *CatalogAvailableVersionsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogAvailableVersionsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CatalogAvailableVersionsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CatalogAvailableVersionsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type CatalogAvailableVersionsForbidden struct {
-	Payload *CatalogAvailableVersionsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog available versions forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CatalogAvailableVersionsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogAvailableVersionsForbidden) GetPayload() *CatalogAvailableVersionsForbiddenBody {
+func (o *CatalogAvailableVersionsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogAvailableVersionsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CatalogAvailableVersionsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CatalogAvailableVersionsNotFound describes a response with status code 404, with
 Not Found
 */
 type CatalogAvailableVersionsNotFound struct {
-	Payload *CatalogAvailableVersionsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog available versions not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CatalogAvailableVersionsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/available/versions][%d] catalogAvailableVersionsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogAvailableVersionsNotFound) GetPayload() *CatalogAvailableVersionsNotFoundBody {
+func (o *CatalogAvailableVersionsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogAvailableVersionsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CatalogAvailableVersionsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,240 +423,5 @@ func (o *CatalogAvailableVersionsInternalServerError) String() string {
 
 func (o *CatalogAvailableVersionsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CatalogAvailableVersionsBadRequestBodyItems0 catalog available versions bad request body items0
-swagger:model CatalogAvailableVersionsBadRequestBodyItems0
-*/
-type CatalogAvailableVersionsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this catalog available versions bad request body items0
-func (o *CatalogAvailableVersionsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog available versions bad request body items0 based on context it is used
-func (o *CatalogAvailableVersionsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogAvailableVersionsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogAvailableVersionsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CatalogAvailableVersionsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogAvailableVersionsBody catalog available versions body
-swagger:model CatalogAvailableVersionsBody
-*/
-type CatalogAvailableVersionsBody struct {
-
-	// current version
-	CurrentVersion string `json:"currentVersion,omitempty"`
-
-	// package name
-	PackageName string `json:"packageName,omitempty"`
-
-	// repo name
-	RepoName string `json:"repoName,omitempty"`
-}
-
-// Validate validates this catalog available versions body
-func (o *CatalogAvailableVersionsBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog available versions body based on context it is used
-func (o *CatalogAvailableVersionsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogAvailableVersionsBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogAvailableVersionsBody) UnmarshalBinary(b []byte) error {
-	var res CatalogAvailableVersionsBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogAvailableVersionsForbiddenBody catalog available versions forbidden body
-swagger:model CatalogAvailableVersionsForbiddenBody
-*/
-type CatalogAvailableVersionsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this catalog available versions forbidden body
-func (o *CatalogAvailableVersionsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog available versions forbidden body based on context it is used
-func (o *CatalogAvailableVersionsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogAvailableVersionsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogAvailableVersionsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CatalogAvailableVersionsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogAvailableVersionsNotFoundBody catalog available versions not found body
-swagger:model CatalogAvailableVersionsNotFoundBody
-*/
-type CatalogAvailableVersionsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this catalog available versions not found body
-func (o *CatalogAvailableVersionsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog available versions not found body based on context it is used
-func (o *CatalogAvailableVersionsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogAvailableVersionsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogAvailableVersionsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CatalogAvailableVersionsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogAvailableVersionsUnauthorizedBody catalog available versions unauthorized body
-swagger:model CatalogAvailableVersionsUnauthorizedBody
-*/
-type CatalogAvailableVersionsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this catalog available versions unauthorized body
-func (o *CatalogAvailableVersionsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog available versions unauthorized body based on context it is used
-func (o *CatalogAvailableVersionsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogAvailableVersionsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogAvailableVersionsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CatalogAvailableVersionsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

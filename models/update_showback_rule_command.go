@@ -7,13 +7,11 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // UpdateShowbackRuleCommand update showback rule command
@@ -31,11 +29,10 @@ type UpdateShowbackRuleCommand struct {
 	ID int32 `json:"id,omitempty"`
 
 	// kind
-	// Enum: [100 200]
-	Kind int32 `json:"kind,omitempty"`
+	Kind EShowbackType `json:"kind,omitempty"`
 
 	// labels
-	Labels []*UpdateShowbackRuleCommandLabelsItems0 `json:"labels"`
+	Labels []*ShowbackLabelCreateDto `json:"labels"`
 
 	// metric name
 	MetricName string `json:"metricName,omitempty"`
@@ -50,8 +47,7 @@ type UpdateShowbackRuleCommand struct {
 	ProjectAlertLimit int32 `json:"projectAlertLimit,omitempty"`
 
 	// type
-	// Enum: [100 200]
-	Type int32 `json:"type,omitempty"`
+	Type EPrometheusType `json:"type,omitempty"`
 }
 
 // Validate validates this update showback rule command
@@ -76,33 +72,17 @@ func (m *UpdateShowbackRuleCommand) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var updateShowbackRuleCommandTypeKindPropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		updateShowbackRuleCommandTypeKindPropEnum = append(updateShowbackRuleCommandTypeKindPropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *UpdateShowbackRuleCommand) validateKindEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, updateShowbackRuleCommandTypeKindPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *UpdateShowbackRuleCommand) validateKind(formats strfmt.Registry) error {
 	if swag.IsZero(m.Kind) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateKindEnum("kind", "body", m.Kind); err != nil {
+	if err := m.Kind.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("kind")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("kind")
+		}
 		return err
 	}
 
@@ -135,33 +115,17 @@ func (m *UpdateShowbackRuleCommand) validateLabels(formats strfmt.Registry) erro
 	return nil
 }
 
-var updateShowbackRuleCommandTypeTypePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		updateShowbackRuleCommandTypeTypePropEnum = append(updateShowbackRuleCommandTypeTypePropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *UpdateShowbackRuleCommand) validateTypeEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, updateShowbackRuleCommandTypeTypePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *UpdateShowbackRuleCommand) validateType(formats strfmt.Registry) error {
 	if swag.IsZero(m.Type) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateTypeEnum("type", "body", m.Type); err != nil {
+	if err := m.Type.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("type")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("type")
+		}
 		return err
 	}
 
@@ -172,13 +136,35 @@ func (m *UpdateShowbackRuleCommand) validateType(formats strfmt.Registry) error 
 func (m *UpdateShowbackRuleCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateKind(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateLabels(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *UpdateShowbackRuleCommand) contextValidateKind(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Kind.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("kind")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("kind")
+		}
+		return err
+	}
+
 	return nil
 }
 
@@ -202,6 +188,20 @@ func (m *UpdateShowbackRuleCommand) contextValidateLabels(ctx context.Context, f
 	return nil
 }
 
+func (m *UpdateShowbackRuleCommand) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Type.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("type")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("type")
+		}
+		return err
+	}
+
+	return nil
+}
+
 // MarshalBinary interface implementation
 func (m *UpdateShowbackRuleCommand) MarshalBinary() ([]byte, error) {
 	if m == nil {
@@ -213,46 +213,6 @@ func (m *UpdateShowbackRuleCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *UpdateShowbackRuleCommand) UnmarshalBinary(b []byte) error {
 	var res UpdateShowbackRuleCommand
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// UpdateShowbackRuleCommandLabelsItems0 update showback rule command labels items0
-//
-// swagger:model UpdateShowbackRuleCommandLabelsItems0
-type UpdateShowbackRuleCommandLabelsItems0 struct {
-
-	// label
-	Label string `json:"label,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this update showback rule command labels items0
-func (m *UpdateShowbackRuleCommandLabelsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this update showback rule command labels items0 based on context it is used
-func (m *UpdateShowbackRuleCommandLabelsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *UpdateShowbackRuleCommandLabelsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *UpdateShowbackRuleCommandLabelsItems0) UnmarshalBinary(b []byte) error {
-	var res UpdateShowbackRuleCommandLabelsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAzureUpdateParams creates a new AzureUpdateParams object,
@@ -62,7 +64,7 @@ AzureUpdateParams contains all the parameters to send to the API endpoint
 type AzureUpdateParams struct {
 
 	// Body.
-	Body AzureUpdateBody
+	Body *models.UpdateAzureCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *AzureUpdateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the azure update params
-func (o *AzureUpdateParams) WithBody(body AzureUpdateBody) *AzureUpdateParams {
+func (o *AzureUpdateParams) WithBody(body *models.UpdateAzureCommand) *AzureUpdateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the azure update params
-func (o *AzureUpdateParams) SetBody(body AzureUpdateBody) {
+func (o *AzureUpdateParams) SetBody(body *models.UpdateAzureCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *AzureUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

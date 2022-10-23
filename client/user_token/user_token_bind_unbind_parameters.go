@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewUserTokenBindUnbindParams creates a new UserTokenBindUnbindParams object,
@@ -65,7 +67,7 @@ type UserTokenBindUnbindParams struct {
 
 	   Create command
 	*/
-	Body UserTokenBindUnbindBody
+	Body *models.BindUnbindEndpointToTokenCommand
 
 	// V.
 	V string
@@ -124,13 +126,13 @@ func (o *UserTokenBindUnbindParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the user token bind unbind params
-func (o *UserTokenBindUnbindParams) WithBody(body UserTokenBindUnbindBody) *UserTokenBindUnbindParams {
+func (o *UserTokenBindUnbindParams) WithBody(body *models.BindUnbindEndpointToTokenCommand) *UserTokenBindUnbindParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the user token bind unbind params
-func (o *UserTokenBindUnbindParams) SetBody(body UserTokenBindUnbindBody) {
+func (o *UserTokenBindUnbindParams) SetBody(body *models.BindUnbindEndpointToTokenCommand) {
 	o.Body = body
 }
 
@@ -152,8 +154,10 @@ func (o *UserTokenBindUnbindParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

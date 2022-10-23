@@ -6,13 +6,13 @@ package access_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AccessProfilesUpdateReader is a Reader for the AccessProfilesUpdate structure.
@@ -75,7 +75,7 @@ AccessProfilesUpdateOK describes a response with status code 200, with default h
 Success
 */
 type AccessProfilesUpdateOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this access profiles update o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AccessProfilesUpdateOK) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *AccessProfilesUpdateOK) GetPayload() interface{} {
+func (o *AccessProfilesUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AccessProfilesUpdateBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type AccessProfilesUpdateBadRequest struct {
-	Payload []*AccessProfilesUpdateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this access profiles update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AccessProfilesUpdateBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AccessProfilesUpdateBadRequest) GetPayload() []*AccessProfilesUpdateBadRequestBodyItems0 {
+func (o *AccessProfilesUpdateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AccessProfilesUpdateUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type AccessProfilesUpdateUnauthorized struct {
-	Payload *AccessProfilesUpdateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles update unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AccessProfilesUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AccessProfilesUpdateUnauthorized) GetPayload() *AccessProfilesUpdateUnauthorizedBody {
+func (o *AccessProfilesUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AccessProfilesUpdateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AccessProfilesUpdateForbidden describes a response with status code 403, with de
 Forbidden
 */
 type AccessProfilesUpdateForbidden struct {
-	Payload *AccessProfilesUpdateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles update forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AccessProfilesUpdateForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AccessProfilesUpdateForbidden) GetPayload() *AccessProfilesUpdateForbiddenBody {
+func (o *AccessProfilesUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AccessProfilesUpdateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AccessProfilesUpdateNotFound describes a response with status code 404, with def
 Not Found
 */
 type AccessProfilesUpdateNotFound struct {
-	Payload *AccessProfilesUpdateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles update not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AccessProfilesUpdateNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AccessProfiles/update/{id}][%d] accessProfilesUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AccessProfilesUpdateNotFound) GetPayload() *AccessProfilesUpdateNotFoundBody {
+func (o *AccessProfilesUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AccessProfilesUpdateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *AccessProfilesUpdateInternalServerError) String() string {
 
 func (o *AccessProfilesUpdateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AccessProfilesUpdateBadRequestBodyItems0 access profiles update bad request body items0
-swagger:model AccessProfilesUpdateBadRequestBodyItems0
-*/
-type AccessProfilesUpdateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this access profiles update bad request body items0
-func (o *AccessProfilesUpdateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles update bad request body items0 based on context it is used
-func (o *AccessProfilesUpdateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesUpdateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesUpdateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesUpdateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesUpdateBody access profiles update body
-swagger:model AccessProfilesUpdateBody
-*/
-type AccessProfilesUpdateBody struct {
-
-	// http proxy
-	HTTPProxy string `json:"httpProxy,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this access profiles update body
-func (o *AccessProfilesUpdateBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles update body based on context it is used
-func (o *AccessProfilesUpdateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesUpdateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesUpdateBody) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesUpdateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesUpdateForbiddenBody access profiles update forbidden body
-swagger:model AccessProfilesUpdateForbiddenBody
-*/
-type AccessProfilesUpdateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this access profiles update forbidden body
-func (o *AccessProfilesUpdateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles update forbidden body based on context it is used
-func (o *AccessProfilesUpdateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesUpdateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesUpdateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesUpdateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesUpdateNotFoundBody access profiles update not found body
-swagger:model AccessProfilesUpdateNotFoundBody
-*/
-type AccessProfilesUpdateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this access profiles update not found body
-func (o *AccessProfilesUpdateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles update not found body based on context it is used
-func (o *AccessProfilesUpdateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesUpdateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesUpdateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesUpdateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesUpdateUnauthorizedBody access profiles update unauthorized body
-swagger:model AccessProfilesUpdateUnauthorizedBody
-*/
-type AccessProfilesUpdateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this access profiles update unauthorized body
-func (o *AccessProfilesUpdateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles update unauthorized body based on context it is used
-func (o *AccessProfilesUpdateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesUpdateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesUpdateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesUpdateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

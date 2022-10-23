@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesDescribeIngressReader is a Reader for the KubernetesDescribeIngress structure.
@@ -136,7 +136,7 @@ KubernetesDescribeIngressBadRequest describes a response with status code 400, w
 Bad Request
 */
 type KubernetesDescribeIngressBadRequest struct {
-	Payload []*KubernetesDescribeIngressBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes describe ingress bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeIngressBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeIngressBadRequest) GetPayload() []*KubernetesDescribeIngressBadRequestBodyItems0 {
+func (o *KubernetesDescribeIngressBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesDescribeIngressUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type KubernetesDescribeIngressUnauthorized struct {
-	Payload *KubernetesDescribeIngressUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe ingress unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesDescribeIngressUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeIngressUnauthorized) GetPayload() *KubernetesDescribeIngressUnauthorizedBody {
+func (o *KubernetesDescribeIngressUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeIngressUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeIngressUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesDescribeIngressForbidden describes a response with status code 403, wi
 Forbidden
 */
 type KubernetesDescribeIngressForbidden struct {
-	Payload *KubernetesDescribeIngressForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe ingress forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesDescribeIngressForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeIngressForbidden) GetPayload() *KubernetesDescribeIngressForbiddenBody {
+func (o *KubernetesDescribeIngressForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeIngressForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeIngressForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesDescribeIngressNotFound describes a response with status code 404, wit
 Not Found
 */
 type KubernetesDescribeIngressNotFound struct {
-	Payload *KubernetesDescribeIngressNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe ingress not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesDescribeIngressNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/ingress][%d] kubernetesDescribeIngressNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeIngressNotFound) GetPayload() *KubernetesDescribeIngressNotFoundBody {
+func (o *KubernetesDescribeIngressNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeIngressNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeIngressNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,240 +423,5 @@ func (o *KubernetesDescribeIngressInternalServerError) String() string {
 
 func (o *KubernetesDescribeIngressInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesDescribeIngressBadRequestBodyItems0 kubernetes describe ingress bad request body items0
-swagger:model KubernetesDescribeIngressBadRequestBodyItems0
-*/
-type KubernetesDescribeIngressBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes describe ingress bad request body items0
-func (o *KubernetesDescribeIngressBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe ingress bad request body items0 based on context it is used
-func (o *KubernetesDescribeIngressBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeIngressBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeIngressBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeIngressBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeIngressBody kubernetes describe ingress body
-swagger:model KubernetesDescribeIngressBody
-*/
-type KubernetesDescribeIngressBody struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this kubernetes describe ingress body
-func (o *KubernetesDescribeIngressBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe ingress body based on context it is used
-func (o *KubernetesDescribeIngressBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeIngressBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeIngressBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeIngressBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeIngressForbiddenBody kubernetes describe ingress forbidden body
-swagger:model KubernetesDescribeIngressForbiddenBody
-*/
-type KubernetesDescribeIngressForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe ingress forbidden body
-func (o *KubernetesDescribeIngressForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe ingress forbidden body based on context it is used
-func (o *KubernetesDescribeIngressForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeIngressForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeIngressForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeIngressForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeIngressNotFoundBody kubernetes describe ingress not found body
-swagger:model KubernetesDescribeIngressNotFoundBody
-*/
-type KubernetesDescribeIngressNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe ingress not found body
-func (o *KubernetesDescribeIngressNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe ingress not found body based on context it is used
-func (o *KubernetesDescribeIngressNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeIngressNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeIngressNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeIngressNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeIngressUnauthorizedBody kubernetes describe ingress unauthorized body
-swagger:model KubernetesDescribeIngressUnauthorizedBody
-*/
-type KubernetesDescribeIngressUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe ingress unauthorized body
-func (o *KubernetesDescribeIngressUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe ingress unauthorized body based on context it is used
-func (o *KubernetesDescribeIngressUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeIngressUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeIngressUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeIngressUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

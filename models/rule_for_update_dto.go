@@ -7,13 +7,11 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // RuleForUpdateDto rule for update dto
@@ -22,13 +20,13 @@ import (
 type RuleForUpdateDto struct {
 
 	// labels to add
-	LabelsToAdd []*RuleForUpdateDtoLabelsToAddItems0 `json:"labelsToAdd"`
+	LabelsToAdd []*PrometheusLabelListDto `json:"labelsToAdd"`
 
 	// labels to delete
-	LabelsToDelete []*RuleForUpdateDtoLabelsToDeleteItems0 `json:"labelsToDelete"`
+	LabelsToDelete []*PrometheusLabelDeleteDto `json:"labelsToDelete"`
 
 	// labels to update
-	LabelsToUpdate []*RuleForUpdateDtoLabelsToUpdateItems0 `json:"labelsToUpdate"`
+	LabelsToUpdate []*PrometheusLabelUpdateDto `json:"labelsToUpdate"`
 
 	// metric name
 	MetricName string `json:"metricName,omitempty"`
@@ -49,8 +47,7 @@ type RuleForUpdateDto struct {
 	RuleDiscountRate int32 `json:"ruleDiscountRate"`
 
 	// type
-	// Enum: [100 200]
-	Type int32 `json:"type,omitempty"`
+	Type PrometheusType `json:"type,omitempty"`
 }
 
 // Validate validates this rule for update dto
@@ -157,33 +154,17 @@ func (m *RuleForUpdateDto) validateLabelsToUpdate(formats strfmt.Registry) error
 	return nil
 }
 
-var ruleForUpdateDtoTypeTypePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		ruleForUpdateDtoTypeTypePropEnum = append(ruleForUpdateDtoTypeTypePropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *RuleForUpdateDto) validateTypeEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, ruleForUpdateDtoTypeTypePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *RuleForUpdateDto) validateType(formats strfmt.Registry) error {
 	if swag.IsZero(m.Type) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateTypeEnum("type", "body", m.Type); err != nil {
+	if err := m.Type.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("type")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("type")
+		}
 		return err
 	}
 
@@ -203,6 +184,10 @@ func (m *RuleForUpdateDto) ContextValidate(ctx context.Context, formats strfmt.R
 	}
 
 	if err := m.contextValidateLabelsToUpdate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -272,6 +257,20 @@ func (m *RuleForUpdateDto) contextValidateLabelsToUpdate(ctx context.Context, fo
 	return nil
 }
 
+func (m *RuleForUpdateDto) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Type.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("type")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("type")
+		}
+		return err
+	}
+
+	return nil
+}
+
 // MarshalBinary interface implementation
 func (m *RuleForUpdateDto) MarshalBinary() ([]byte, error) {
 	if m == nil {
@@ -283,126 +282,6 @@ func (m *RuleForUpdateDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *RuleForUpdateDto) UnmarshalBinary(b []byte) error {
 	var res RuleForUpdateDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// RuleForUpdateDtoLabelsToAddItems0 rule for update dto labels to add items0
-//
-// swagger:model RuleForUpdateDtoLabelsToAddItems0
-type RuleForUpdateDtoLabelsToAddItems0 struct {
-
-	// label
-	Label string `json:"label,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this rule for update dto labels to add items0
-func (m *RuleForUpdateDtoLabelsToAddItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this rule for update dto labels to add items0 based on context it is used
-func (m *RuleForUpdateDtoLabelsToAddItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *RuleForUpdateDtoLabelsToAddItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *RuleForUpdateDtoLabelsToAddItems0) UnmarshalBinary(b []byte) error {
-	var res RuleForUpdateDtoLabelsToAddItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// RuleForUpdateDtoLabelsToDeleteItems0 rule for update dto labels to delete items0
-//
-// swagger:model RuleForUpdateDtoLabelsToDeleteItems0
-type RuleForUpdateDtoLabelsToDeleteItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-}
-
-// Validate validates this rule for update dto labels to delete items0
-func (m *RuleForUpdateDtoLabelsToDeleteItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this rule for update dto labels to delete items0 based on context it is used
-func (m *RuleForUpdateDtoLabelsToDeleteItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *RuleForUpdateDtoLabelsToDeleteItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *RuleForUpdateDtoLabelsToDeleteItems0) UnmarshalBinary(b []byte) error {
-	var res RuleForUpdateDtoLabelsToDeleteItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// RuleForUpdateDtoLabelsToUpdateItems0 rule for update dto labels to update items0
-//
-// swagger:model RuleForUpdateDtoLabelsToUpdateItems0
-type RuleForUpdateDtoLabelsToUpdateItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// label
-	Label string `json:"label,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this rule for update dto labels to update items0
-func (m *RuleForUpdateDtoLabelsToUpdateItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this rule for update dto labels to update items0 based on context it is used
-func (m *RuleForUpdateDtoLabelsToUpdateItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *RuleForUpdateDtoLabelsToUpdateItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *RuleForUpdateDtoLabelsToUpdateItems0) UnmarshalBinary(b []byte) error {
-	var res RuleForUpdateDtoLabelsToUpdateItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -7,12 +7,10 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // UpdateUserCommand update user command
@@ -39,8 +37,7 @@ type UpdateUserCommand struct {
 	IsApprovedByPartner bool `json:"isApprovedByPartner"`
 
 	// role
-	// Enum: [100 200 250 400 6000]
-	Role int32 `json:"role,omitempty"`
+	Role UserRole `json:"role,omitempty"`
 
 	// username
 	Username string `json:"username,omitempty"`
@@ -60,41 +57,48 @@ func (m *UpdateUserCommand) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var updateUserCommandTypeRolePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200,250,400,6000]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		updateUserCommandTypeRolePropEnum = append(updateUserCommandTypeRolePropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *UpdateUserCommand) validateRoleEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, updateUserCommandTypeRolePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *UpdateUserCommand) validateRole(formats strfmt.Registry) error {
 	if swag.IsZero(m.Role) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateRoleEnum("role", "body", m.Role); err != nil {
+	if err := m.Role.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("role")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("role")
+		}
 		return err
 	}
 
 	return nil
 }
 
-// ContextValidate validates this update user command based on context it is used
+// ContextValidate validate this update user command based on the context it is used
 func (m *UpdateUserCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateRole(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *UpdateUserCommand) contextValidateRole(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Role.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("role")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("role")
+		}
+		return err
+	}
+
 	return nil
 }
 

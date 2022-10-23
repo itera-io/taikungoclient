@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesDescribeStsReader is a Reader for the KubernetesDescribeSts structure.
@@ -136,7 +136,7 @@ KubernetesDescribeStsBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesDescribeStsBadRequest struct {
-	Payload []*KubernetesDescribeStsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes describe sts bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeStsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/sts][%d] kubernetesDescribeStsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeStsBadRequest) GetPayload() []*KubernetesDescribeStsBadRequestBodyItems0 {
+func (o *KubernetesDescribeStsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesDescribeStsUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesDescribeStsUnauthorized struct {
-	Payload *KubernetesDescribeStsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe sts unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesDescribeStsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/sts][%d] kubernetesDescribeStsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeStsUnauthorized) GetPayload() *KubernetesDescribeStsUnauthorizedBody {
+func (o *KubernetesDescribeStsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeStsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeStsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesDescribeStsForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesDescribeStsForbidden struct {
-	Payload *KubernetesDescribeStsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe sts forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesDescribeStsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/sts][%d] kubernetesDescribeStsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeStsForbidden) GetPayload() *KubernetesDescribeStsForbiddenBody {
+func (o *KubernetesDescribeStsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeStsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeStsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesDescribeStsNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesDescribeStsNotFound struct {
-	Payload *KubernetesDescribeStsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe sts not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesDescribeStsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/sts][%d] kubernetesDescribeStsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeStsNotFound) GetPayload() *KubernetesDescribeStsNotFoundBody {
+func (o *KubernetesDescribeStsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeStsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeStsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,240 +423,5 @@ func (o *KubernetesDescribeStsInternalServerError) String() string {
 
 func (o *KubernetesDescribeStsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesDescribeStsBadRequestBodyItems0 kubernetes describe sts bad request body items0
-swagger:model KubernetesDescribeStsBadRequestBodyItems0
-*/
-type KubernetesDescribeStsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes describe sts bad request body items0
-func (o *KubernetesDescribeStsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe sts bad request body items0 based on context it is used
-func (o *KubernetesDescribeStsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeStsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeStsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeStsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeStsBody kubernetes describe sts body
-swagger:model KubernetesDescribeStsBody
-*/
-type KubernetesDescribeStsBody struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this kubernetes describe sts body
-func (o *KubernetesDescribeStsBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe sts body based on context it is used
-func (o *KubernetesDescribeStsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeStsBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeStsBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeStsBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeStsForbiddenBody kubernetes describe sts forbidden body
-swagger:model KubernetesDescribeStsForbiddenBody
-*/
-type KubernetesDescribeStsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe sts forbidden body
-func (o *KubernetesDescribeStsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe sts forbidden body based on context it is used
-func (o *KubernetesDescribeStsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeStsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeStsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeStsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeStsNotFoundBody kubernetes describe sts not found body
-swagger:model KubernetesDescribeStsNotFoundBody
-*/
-type KubernetesDescribeStsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe sts not found body
-func (o *KubernetesDescribeStsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe sts not found body based on context it is used
-func (o *KubernetesDescribeStsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeStsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeStsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeStsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeStsUnauthorizedBody kubernetes describe sts unauthorized body
-swagger:model KubernetesDescribeStsUnauthorizedBody
-*/
-type KubernetesDescribeStsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe sts unauthorized body
-func (o *KubernetesDescribeStsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe sts unauthorized body based on context it is used
-func (o *KubernetesDescribeStsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeStsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeStsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeStsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

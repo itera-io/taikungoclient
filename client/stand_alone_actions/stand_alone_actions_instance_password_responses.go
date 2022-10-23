@@ -6,13 +6,13 @@ package stand_alone_actions
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneActionsInstancePasswordReader is a Reader for the StandAloneActionsInstancePassword structure.
@@ -136,7 +136,7 @@ StandAloneActionsInstancePasswordBadRequest describes a response with status cod
 Bad Request
 */
 type StandAloneActionsInstancePasswordBadRequest struct {
-	Payload []*StandAloneActionsInstancePasswordBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone actions instance password bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneActionsInstancePasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsInstancePasswordBadRequest) GetPayload() []*StandAloneActionsInstancePasswordBadRequestBodyItems0 {
+func (o *StandAloneActionsInstancePasswordBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneActionsInstancePasswordUnauthorized describes a response with status c
 Unauthorized
 */
 type StandAloneActionsInstancePasswordUnauthorized struct {
-	Payload *StandAloneActionsInstancePasswordUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions instance password unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneActionsInstancePasswordUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsInstancePasswordUnauthorized) GetPayload() *StandAloneActionsInstancePasswordUnauthorizedBody {
+func (o *StandAloneActionsInstancePasswordUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsInstancePasswordUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneActionsInstancePasswordUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneActionsInstancePasswordForbidden describes a response with status code
 Forbidden
 */
 type StandAloneActionsInstancePasswordForbidden struct {
-	Payload *StandAloneActionsInstancePasswordForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions instance password forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneActionsInstancePasswordForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsInstancePasswordForbidden) GetPayload() *StandAloneActionsInstancePasswordForbiddenBody {
+func (o *StandAloneActionsInstancePasswordForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsInstancePasswordForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneActionsInstancePasswordForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneActionsInstancePasswordNotFound describes a response with status code 
 Not Found
 */
 type StandAloneActionsInstancePasswordNotFound struct {
-	Payload *StandAloneActionsInstancePasswordNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions instance password not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneActionsInstancePasswordNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/password][%d] standAloneActionsInstancePasswordNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsInstancePasswordNotFound) GetPayload() *StandAloneActionsInstancePasswordNotFoundBody {
+func (o *StandAloneActionsInstancePasswordNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsInstancePasswordNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneActionsInstancePasswordNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *StandAloneActionsInstancePasswordInternalServerError) String() string {
 
 func (o *StandAloneActionsInstancePasswordInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-StandAloneActionsInstancePasswordBadRequestBodyItems0 stand alone actions instance password bad request body items0
-swagger:model StandAloneActionsInstancePasswordBadRequestBodyItems0
-*/
-type StandAloneActionsInstancePasswordBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this stand alone actions instance password bad request body items0
-func (o *StandAloneActionsInstancePasswordBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions instance password bad request body items0 based on context it is used
-func (o *StandAloneActionsInstancePasswordBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsInstancePasswordBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsInstancePasswordBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsInstancePasswordBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneActionsInstancePasswordForbiddenBody stand alone actions instance password forbidden body
-swagger:model StandAloneActionsInstancePasswordForbiddenBody
-*/
-type StandAloneActionsInstancePasswordForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone actions instance password forbidden body
-func (o *StandAloneActionsInstancePasswordForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions instance password forbidden body based on context it is used
-func (o *StandAloneActionsInstancePasswordForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsInstancePasswordForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsInstancePasswordForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsInstancePasswordForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneActionsInstancePasswordNotFoundBody stand alone actions instance password not found body
-swagger:model StandAloneActionsInstancePasswordNotFoundBody
-*/
-type StandAloneActionsInstancePasswordNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone actions instance password not found body
-func (o *StandAloneActionsInstancePasswordNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions instance password not found body based on context it is used
-func (o *StandAloneActionsInstancePasswordNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsInstancePasswordNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsInstancePasswordNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsInstancePasswordNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneActionsInstancePasswordUnauthorizedBody stand alone actions instance password unauthorized body
-swagger:model StandAloneActionsInstancePasswordUnauthorizedBody
-*/
-type StandAloneActionsInstancePasswordUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone actions instance password unauthorized body
-func (o *StandAloneActionsInstancePasswordUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions instance password unauthorized body based on context it is used
-func (o *StandAloneActionsInstancePasswordUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsInstancePasswordUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsInstancePasswordUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsInstancePasswordUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

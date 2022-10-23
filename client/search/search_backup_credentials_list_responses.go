@@ -6,15 +6,13 @@ package search
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // SearchBackupCredentialsListReader is a Reader for the SearchBackupCredentialsList structure.
@@ -77,7 +75,7 @@ SearchBackupCredentialsListOK describes a response with status code 200, with de
 Success
 */
 type SearchBackupCredentialsListOK struct {
-	Payload *SearchBackupCredentialsListOKBody
+	Payload *models.BackupCredentialsSearchList
 }
 
 // IsSuccess returns true when this search backup credentials list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *SearchBackupCredentialsListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListOK  %+v", 200, o.Payload)
 }
 
-func (o *SearchBackupCredentialsListOK) GetPayload() *SearchBackupCredentialsListOKBody {
+func (o *SearchBackupCredentialsListOK) GetPayload() *models.BackupCredentialsSearchList {
 	return o.Payload
 }
 
 func (o *SearchBackupCredentialsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchBackupCredentialsListOKBody)
+	o.Payload = new(models.BackupCredentialsSearchList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ SearchBackupCredentialsListBadRequest describes a response with status code 400,
 Bad Request
 */
 type SearchBackupCredentialsListBadRequest struct {
-	Payload []*SearchBackupCredentialsListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this search backup credentials list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *SearchBackupCredentialsListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchBackupCredentialsListBadRequest) GetPayload() []*SearchBackupCredentialsListBadRequestBodyItems0 {
+func (o *SearchBackupCredentialsListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ SearchBackupCredentialsListUnauthorized describes a response with status code 40
 Unauthorized
 */
 type SearchBackupCredentialsListUnauthorized struct {
-	Payload *SearchBackupCredentialsListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search backup credentials list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *SearchBackupCredentialsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchBackupCredentialsListUnauthorized) GetPayload() *SearchBackupCredentialsListUnauthorizedBody {
+func (o *SearchBackupCredentialsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchBackupCredentialsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchBackupCredentialsListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ SearchBackupCredentialsListForbidden describes a response with status code 403, 
 Forbidden
 */
 type SearchBackupCredentialsListForbidden struct {
-	Payload *SearchBackupCredentialsListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search backup credentials list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *SearchBackupCredentialsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchBackupCredentialsListForbidden) GetPayload() *SearchBackupCredentialsListForbiddenBody {
+func (o *SearchBackupCredentialsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchBackupCredentialsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchBackupCredentialsListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ SearchBackupCredentialsListNotFound describes a response with status code 404, w
 Not Found
 */
 type SearchBackupCredentialsListNotFound struct {
-	Payload *SearchBackupCredentialsListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search backup credentials list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *SearchBackupCredentialsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/backup-credentials][%d] searchBackupCredentialsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchBackupCredentialsListNotFound) GetPayload() *SearchBackupCredentialsListNotFoundBody {
+func (o *SearchBackupCredentialsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchBackupCredentialsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchBackupCredentialsListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,392 +425,5 @@ func (o *SearchBackupCredentialsListInternalServerError) String() string {
 
 func (o *SearchBackupCredentialsListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-SearchBackupCredentialsListBadRequestBodyItems0 search backup credentials list bad request body items0
-swagger:model SearchBackupCredentialsListBadRequestBodyItems0
-*/
-type SearchBackupCredentialsListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this search backup credentials list bad request body items0
-func (o *SearchBackupCredentialsListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search backup credentials list bad request body items0 based on context it is used
-func (o *SearchBackupCredentialsListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchBackupCredentialsListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchBackupCredentialsListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res SearchBackupCredentialsListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchBackupCredentialsListBody search backup credentials list body
-swagger:model SearchBackupCredentialsListBody
-*/
-type SearchBackupCredentialsListBody struct {
-
-	// limit
-	Limit int32 `json:"limit,omitempty"`
-
-	// offset
-	Offset int32 `json:"offset,omitempty"`
-
-	// search term
-	SearchTerm string `json:"searchTerm,omitempty"`
-}
-
-// Validate validates this search backup credentials list body
-func (o *SearchBackupCredentialsListBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search backup credentials list body based on context it is used
-func (o *SearchBackupCredentialsListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchBackupCredentialsListBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchBackupCredentialsListBody) UnmarshalBinary(b []byte) error {
-	var res SearchBackupCredentialsListBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchBackupCredentialsListForbiddenBody search backup credentials list forbidden body
-swagger:model SearchBackupCredentialsListForbiddenBody
-*/
-type SearchBackupCredentialsListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this search backup credentials list forbidden body
-func (o *SearchBackupCredentialsListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search backup credentials list forbidden body based on context it is used
-func (o *SearchBackupCredentialsListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchBackupCredentialsListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchBackupCredentialsListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res SearchBackupCredentialsListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchBackupCredentialsListNotFoundBody search backup credentials list not found body
-swagger:model SearchBackupCredentialsListNotFoundBody
-*/
-type SearchBackupCredentialsListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this search backup credentials list not found body
-func (o *SearchBackupCredentialsListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search backup credentials list not found body based on context it is used
-func (o *SearchBackupCredentialsListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchBackupCredentialsListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchBackupCredentialsListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res SearchBackupCredentialsListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchBackupCredentialsListOKBody search backup credentials list o k body
-swagger:model SearchBackupCredentialsListOKBody
-*/
-type SearchBackupCredentialsListOKBody struct {
-
-	// data
-	Data []*SearchBackupCredentialsListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this search backup credentials list o k body
-func (o *SearchBackupCredentialsListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *SearchBackupCredentialsListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("searchBackupCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("searchBackupCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this search backup credentials list o k body based on the context it is used
-func (o *SearchBackupCredentialsListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *SearchBackupCredentialsListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("searchBackupCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("searchBackupCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchBackupCredentialsListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchBackupCredentialsListOKBody) UnmarshalBinary(b []byte) error {
-	var res SearchBackupCredentialsListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchBackupCredentialsListOKBodyDataItems0 search backup credentials list o k body data items0
-swagger:model SearchBackupCredentialsListOKBodyDataItems0
-*/
-type SearchBackupCredentialsListOKBodyDataItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-}
-
-// Validate validates this search backup credentials list o k body data items0
-func (o *SearchBackupCredentialsListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search backup credentials list o k body data items0 based on context it is used
-func (o *SearchBackupCredentialsListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchBackupCredentialsListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchBackupCredentialsListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res SearchBackupCredentialsListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchBackupCredentialsListUnauthorizedBody search backup credentials list unauthorized body
-swagger:model SearchBackupCredentialsListUnauthorizedBody
-*/
-type SearchBackupCredentialsListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this search backup credentials list unauthorized body
-func (o *SearchBackupCredentialsListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search backup credentials list unauthorized body based on context it is used
-func (o *SearchBackupCredentialsListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchBackupCredentialsListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchBackupCredentialsListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res SearchBackupCredentialsListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -19,7 +19,7 @@ import (
 type AwsOwnerDetails struct {
 
 	// image
-	Image *AwsOwnerDetailsImage `json:"image,omitempty"`
+	Image *AwsCommonImages `json:"image,omitempty"`
 
 	// owner Id
 	OwnerID string `json:"ownerId,omitempty"`
@@ -102,49 +102,6 @@ func (m *AwsOwnerDetails) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AwsOwnerDetails) UnmarshalBinary(b []byte) error {
 	var res AwsOwnerDetails
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// AwsOwnerDetailsImage aws owner details image
-//
-// swagger:model AwsOwnerDetailsImage
-type AwsOwnerDetailsImage struct {
-
-	// display name
-	DisplayName string `json:"displayName"`
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this aws owner details image
-func (m *AwsOwnerDetailsImage) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws owner details image based on context it is used
-func (m *AwsOwnerDetailsImage) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *AwsOwnerDetailsImage) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *AwsOwnerDetailsImage) UnmarshalBinary(b []byte) error {
-	var res AwsOwnerDetailsImage
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

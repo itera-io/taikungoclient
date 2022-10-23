@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCatalogCatalogAppValueAutocompleteParams creates a new CatalogCatalogAppValueAutocompleteParams object,
@@ -62,7 +64,7 @@ CatalogCatalogAppValueAutocompleteParams contains all the parameters to send to 
 type CatalogCatalogAppValueAutocompleteParams struct {
 
 	// Body.
-	Body CatalogCatalogAppValueAutocompleteBody
+	Body *models.GetCatalogAppValueAutocompleteCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CatalogCatalogAppValueAutocompleteParams) SetHTTPClient(client *http.Cl
 }
 
 // WithBody adds the body to the catalog catalog app value autocomplete params
-func (o *CatalogCatalogAppValueAutocompleteParams) WithBody(body CatalogCatalogAppValueAutocompleteBody) *CatalogCatalogAppValueAutocompleteParams {
+func (o *CatalogCatalogAppValueAutocompleteParams) WithBody(body *models.GetCatalogAppValueAutocompleteCommand) *CatalogCatalogAppValueAutocompleteParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the catalog catalog app value autocomplete params
-func (o *CatalogCatalogAppValueAutocompleteParams) SetBody(body CatalogCatalogAppValueAutocompleteBody) {
+func (o *CatalogCatalogAppValueAutocompleteParams) SetBody(body *models.GetCatalogAppValueAutocompleteCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *CatalogCatalogAppValueAutocompleteParams) WriteToRequest(r runtime.Clie
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

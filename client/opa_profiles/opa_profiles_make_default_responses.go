@@ -6,13 +6,13 @@ package opa_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // OpaProfilesMakeDefaultReader is a Reader for the OpaProfilesMakeDefault structure.
@@ -75,7 +75,7 @@ OpaProfilesMakeDefaultOK describes a response with status code 200, with default
 Success
 */
 type OpaProfilesMakeDefaultOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this opa profiles make default o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OpaProfilesMakeDefaultOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultOK  %+v", 200, o.Payload)
 }
 
-func (o *OpaProfilesMakeDefaultOK) GetPayload() interface{} {
+func (o *OpaProfilesMakeDefaultOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OpaProfilesMakeDefaultBadRequest describes a response with status code 400, with
 Bad Request
 */
 type OpaProfilesMakeDefaultBadRequest struct {
-	Payload []*OpaProfilesMakeDefaultBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this opa profiles make default bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpaProfilesMakeDefaultBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesMakeDefaultBadRequest) GetPayload() []*OpaProfilesMakeDefaultBadRequestBodyItems0 {
+func (o *OpaProfilesMakeDefaultBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OpaProfilesMakeDefaultUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type OpaProfilesMakeDefaultUnauthorized struct {
-	Payload *OpaProfilesMakeDefaultUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles make default unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OpaProfilesMakeDefaultUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesMakeDefaultUnauthorized) GetPayload() *OpaProfilesMakeDefaultUnauthorizedBody {
+func (o *OpaProfilesMakeDefaultUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesMakeDefaultUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpaProfilesMakeDefaultUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OpaProfilesMakeDefaultForbidden describes a response with status code 403, with 
 Forbidden
 */
 type OpaProfilesMakeDefaultForbidden struct {
-	Payload *OpaProfilesMakeDefaultForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles make default forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OpaProfilesMakeDefaultForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesMakeDefaultForbidden) GetPayload() *OpaProfilesMakeDefaultForbiddenBody {
+func (o *OpaProfilesMakeDefaultForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesMakeDefaultForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpaProfilesMakeDefaultForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OpaProfilesMakeDefaultNotFound describes a response with status code 404, with d
 Not Found
 */
 type OpaProfilesMakeDefaultNotFound struct {
-	Payload *OpaProfilesMakeDefaultNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles make default not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OpaProfilesMakeDefaultNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles/make-default][%d] opaProfilesMakeDefaultNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesMakeDefaultNotFound) GetPayload() *OpaProfilesMakeDefaultNotFoundBody {
+func (o *OpaProfilesMakeDefaultNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesMakeDefaultNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpaProfilesMakeDefaultNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *OpaProfilesMakeDefaultInternalServerError) String() string {
 
 func (o *OpaProfilesMakeDefaultInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-OpaProfilesMakeDefaultBadRequestBodyItems0 opa profiles make default bad request body items0
-swagger:model OpaProfilesMakeDefaultBadRequestBodyItems0
-*/
-type OpaProfilesMakeDefaultBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this opa profiles make default bad request body items0
-func (o *OpaProfilesMakeDefaultBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles make default bad request body items0 based on context it is used
-func (o *OpaProfilesMakeDefaultBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesMakeDefaultBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesMakeDefaultBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesMakeDefaultBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesMakeDefaultBody opa profiles make default body
-swagger:model OpaProfilesMakeDefaultBody
-*/
-type OpaProfilesMakeDefaultBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-}
-
-// Validate validates this opa profiles make default body
-func (o *OpaProfilesMakeDefaultBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles make default body based on context it is used
-func (o *OpaProfilesMakeDefaultBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesMakeDefaultBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesMakeDefaultBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesMakeDefaultBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesMakeDefaultForbiddenBody opa profiles make default forbidden body
-swagger:model OpaProfilesMakeDefaultForbiddenBody
-*/
-type OpaProfilesMakeDefaultForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this opa profiles make default forbidden body
-func (o *OpaProfilesMakeDefaultForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles make default forbidden body based on context it is used
-func (o *OpaProfilesMakeDefaultForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesMakeDefaultForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesMakeDefaultForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesMakeDefaultForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesMakeDefaultNotFoundBody opa profiles make default not found body
-swagger:model OpaProfilesMakeDefaultNotFoundBody
-*/
-type OpaProfilesMakeDefaultNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this opa profiles make default not found body
-func (o *OpaProfilesMakeDefaultNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles make default not found body based on context it is used
-func (o *OpaProfilesMakeDefaultNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesMakeDefaultNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesMakeDefaultNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesMakeDefaultNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesMakeDefaultUnauthorizedBody opa profiles make default unauthorized body
-swagger:model OpaProfilesMakeDefaultUnauthorizedBody
-*/
-type OpaProfilesMakeDefaultUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this opa profiles make default unauthorized body
-func (o *OpaProfilesMakeDefaultUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles make default unauthorized body based on context it is used
-func (o *OpaProfilesMakeDefaultUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesMakeDefaultUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesMakeDefaultUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesMakeDefaultUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

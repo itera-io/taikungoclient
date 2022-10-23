@@ -32,7 +32,7 @@ type StandaloneProfileListDto struct {
 	Revision int32 `json:"revision,omitempty"`
 
 	// stand alone profile security groups
-	StandAloneProfileSecurityGroups []*StandaloneProfileListDtoStandAloneProfileSecurityGroupsItems0 `json:"standAloneProfileSecurityGroups"`
+	StandAloneProfileSecurityGroups []*StandaloneProfileSecurityGroupListDto `json:"standAloneProfileSecurityGroups"`
 }
 
 // Validate validates this standalone profile list dto
@@ -120,58 +120,6 @@ func (m *StandaloneProfileListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *StandaloneProfileListDto) UnmarshalBinary(b []byte) error {
 	var res StandaloneProfileListDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// StandaloneProfileListDtoStandAloneProfileSecurityGroupsItems0 standalone profile list dto stand alone profile security groups items0
-//
-// swagger:model StandaloneProfileListDtoStandAloneProfileSecurityGroupsItems0
-type StandaloneProfileListDtoStandAloneProfileSecurityGroupsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// port max range
-	PortMaxRange int32 `json:"portMaxRange,omitempty"`
-
-	// port min range
-	PortMinRange int32 `json:"portMinRange,omitempty"`
-
-	// protocol
-	Protocol string `json:"protocol,omitempty"`
-
-	// remote Ip prefix
-	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
-}
-
-// Validate validates this standalone profile list dto stand alone profile security groups items0
-func (m *StandaloneProfileListDtoStandAloneProfileSecurityGroupsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this standalone profile list dto stand alone profile security groups items0 based on context it is used
-func (m *StandaloneProfileListDtoStandAloneProfileSecurityGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *StandaloneProfileListDtoStandAloneProfileSecurityGroupsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *StandaloneProfileListDtoStandAloneProfileSecurityGroupsItems0) UnmarshalBinary(b []byte) error {
-	var res StandaloneProfileListDtoStandAloneProfileSecurityGroupsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -20,7 +20,7 @@ import (
 type PrometheusRulesSearchList struct {
 
 	// data
-	Data []*PrometheusRulesSearchListDataItems0 `json:"data"`
+	Data []*PrometheusRulesSearchResponseData `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,49 +111,6 @@ func (m *PrometheusRulesSearchList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PrometheusRulesSearchList) UnmarshalBinary(b []byte) error {
 	var res PrometheusRulesSearchList
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// PrometheusRulesSearchListDataItems0 prometheus rules search list data items0
-//
-// swagger:model PrometheusRulesSearchListDataItems0
-type PrometheusRulesSearchListDataItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// partner
-	Partner int32 `json:"partner,omitempty"`
-}
-
-// Validate validates this prometheus rules search list data items0
-func (m *PrometheusRulesSearchListDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus rules search list data items0 based on context it is used
-func (m *PrometheusRulesSearchListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *PrometheusRulesSearchListDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *PrometheusRulesSearchListDataItems0) UnmarshalBinary(b []byte) error {
-	var res PrometheusRulesSearchListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

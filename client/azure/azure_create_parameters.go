@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAzureCreateParams creates a new AzureCreateParams object,
@@ -62,7 +64,7 @@ AzureCreateParams contains all the parameters to send to the API endpoint
 type AzureCreateParams struct {
 
 	// Body.
-	Body AzureCreateBody
+	Body *models.CreateAzureCloudCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *AzureCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the azure create params
-func (o *AzureCreateParams) WithBody(body AzureCreateBody) *AzureCreateParams {
+func (o *AzureCreateParams) WithBody(body *models.CreateAzureCloudCommand) *AzureCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the azure create params
-func (o *AzureCreateParams) SetBody(body AzureCreateBody) {
+func (o *AzureCreateParams) SetBody(body *models.CreateAzureCloudCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *AzureCreateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

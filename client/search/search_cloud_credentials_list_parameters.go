@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSearchCloudCredentialsListParams creates a new SearchCloudCredentialsListParams object,
@@ -62,7 +64,7 @@ SearchCloudCredentialsListParams contains all the parameters to send to the API 
 type SearchCloudCredentialsListParams struct {
 
 	// Body.
-	Body SearchCloudCredentialsListBody
+	Body *models.CloudCredentialsSearchCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *SearchCloudCredentialsListParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the search cloud credentials list params
-func (o *SearchCloudCredentialsListParams) WithBody(body SearchCloudCredentialsListBody) *SearchCloudCredentialsListParams {
+func (o *SearchCloudCredentialsListParams) WithBody(body *models.CloudCredentialsSearchCommand) *SearchCloudCredentialsListParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the search cloud credentials list params
-func (o *SearchCloudCredentialsListParams) SetBody(body SearchCloudCredentialsListBody) {
+func (o *SearchCloudCredentialsListParams) SetBody(body *models.CloudCredentialsSearchCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *SearchCloudCredentialsListParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

@@ -6,13 +6,13 @@ package alerting_integrations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AlertingIntegrationsDeleteReader is a Reader for the AlertingIntegrationsDelete structure.
@@ -81,7 +81,7 @@ AlertingIntegrationsDeleteOK describes a response with status code 200, with def
 Success
 */
 type AlertingIntegrationsDeleteOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this alerting integrations delete o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *AlertingIntegrationsDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *AlertingIntegrationsDeleteOK) GetPayload() interface{} {
+func (o *AlertingIntegrationsDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ AlertingIntegrationsDeleteBadRequest describes a response with status code 400, 
 Bad Request
 */
 type AlertingIntegrationsDeleteBadRequest struct {
-	Payload []*AlertingIntegrationsDeleteBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this alerting integrations delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *AlertingIntegrationsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingIntegrationsDeleteBadRequest) GetPayload() []*AlertingIntegrationsDeleteBadRequestBodyItems0 {
+func (o *AlertingIntegrationsDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ AlertingIntegrationsDeleteUnauthorized describes a response with status code 401
 Unauthorized
 */
 type AlertingIntegrationsDeleteUnauthorized struct {
-	Payload *AlertingIntegrationsDeleteUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting integrations delete unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *AlertingIntegrationsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingIntegrationsDeleteUnauthorized) GetPayload() *AlertingIntegrationsDeleteUnauthorizedBody {
+func (o *AlertingIntegrationsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AlertingIntegrationsDeleteUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ AlertingIntegrationsDeleteForbidden describes a response with status code 403, w
 Forbidden
 */
 type AlertingIntegrationsDeleteForbidden struct {
-	Payload *AlertingIntegrationsDeleteForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting integrations delete forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *AlertingIntegrationsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingIntegrationsDeleteForbidden) GetPayload() *AlertingIntegrationsDeleteForbiddenBody {
+func (o *AlertingIntegrationsDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AlertingIntegrationsDeleteForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ AlertingIntegrationsDeleteNotFound describes a response with status code 404, wi
 Not Found
 */
 type AlertingIntegrationsDeleteNotFound struct {
-	Payload *AlertingIntegrationsDeleteNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting integrations delete not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *AlertingIntegrationsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AlertingIntegrations/{id}][%d] alertingIntegrationsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingIntegrationsDeleteNotFound) GetPayload() *AlertingIntegrationsDeleteNotFoundBody {
+func (o *AlertingIntegrationsDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AlertingIntegrationsDeleteNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,196 +480,5 @@ func (o *AlertingIntegrationsDeleteInternalServerError) String() string {
 
 func (o *AlertingIntegrationsDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AlertingIntegrationsDeleteBadRequestBodyItems0 alerting integrations delete bad request body items0
-swagger:model AlertingIntegrationsDeleteBadRequestBodyItems0
-*/
-type AlertingIntegrationsDeleteBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this alerting integrations delete bad request body items0
-func (o *AlertingIntegrationsDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting integrations delete bad request body items0 based on context it is used
-func (o *AlertingIntegrationsDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingIntegrationsDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingIntegrationsDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AlertingIntegrationsDeleteBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingIntegrationsDeleteForbiddenBody alerting integrations delete forbidden body
-swagger:model AlertingIntegrationsDeleteForbiddenBody
-*/
-type AlertingIntegrationsDeleteForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this alerting integrations delete forbidden body
-func (o *AlertingIntegrationsDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting integrations delete forbidden body based on context it is used
-func (o *AlertingIntegrationsDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingIntegrationsDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingIntegrationsDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AlertingIntegrationsDeleteForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingIntegrationsDeleteNotFoundBody alerting integrations delete not found body
-swagger:model AlertingIntegrationsDeleteNotFoundBody
-*/
-type AlertingIntegrationsDeleteNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this alerting integrations delete not found body
-func (o *AlertingIntegrationsDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting integrations delete not found body based on context it is used
-func (o *AlertingIntegrationsDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingIntegrationsDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingIntegrationsDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AlertingIntegrationsDeleteNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingIntegrationsDeleteUnauthorizedBody alerting integrations delete unauthorized body
-swagger:model AlertingIntegrationsDeleteUnauthorizedBody
-*/
-type AlertingIntegrationsDeleteUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this alerting integrations delete unauthorized body
-func (o *AlertingIntegrationsDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting integrations delete unauthorized body based on context it is used
-func (o *AlertingIntegrationsDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingIntegrationsDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingIntegrationsDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AlertingIntegrationsDeleteUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

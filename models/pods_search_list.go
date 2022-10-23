@@ -20,7 +20,7 @@ import (
 type PodsSearchList struct {
 
 	// data
-	Data []*PodsSearchListDataItems0 `json:"data"`
+	Data []*CommonSearchKubernetesResponseData `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,58 +111,6 @@ func (m *PodsSearchList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *PodsSearchList) UnmarshalBinary(b []byte) error {
 	var res PodsSearchList
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// PodsSearchListDataItems0 pods search list data items0
-//
-// swagger:model PodsSearchListDataItems0
-type PodsSearchListDataItems0 struct {
-
-	// metadata name
-	MetadataName string `json:"metadataName,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
-}
-
-// Validate validates this pods search list data items0
-func (m *PodsSearchListDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this pods search list data items0 based on context it is used
-func (m *PodsSearchListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *PodsSearchListDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *PodsSearchListDataItems0) UnmarshalBinary(b []byte) error {
-	var res PodsSearchListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

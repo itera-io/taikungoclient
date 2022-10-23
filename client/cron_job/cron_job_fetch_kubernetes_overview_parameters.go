@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobFetchKubernetesOverviewParams creates a new CronJobFetchKubernetesOverviewParams object,
@@ -62,7 +64,7 @@ CronJobFetchKubernetesOverviewParams contains all the parameters to send to the 
 type CronJobFetchKubernetesOverviewParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.FetchKubernetesOverviewDataCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CronJobFetchKubernetesOverviewParams) SetHTTPClient(client *http.Client
 }
 
 // WithBody adds the body to the cron job fetch kubernetes overview params
-func (o *CronJobFetchKubernetesOverviewParams) WithBody(body interface{}) *CronJobFetchKubernetesOverviewParams {
+func (o *CronJobFetchKubernetesOverviewParams) WithBody(body models.FetchKubernetesOverviewDataCommand) *CronJobFetchKubernetesOverviewParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job fetch kubernetes overview params
-func (o *CronJobFetchKubernetesOverviewParams) SetBody(body interface{}) {
+func (o *CronJobFetchKubernetesOverviewParams) SetBody(body models.FetchKubernetesOverviewDataCommand) {
 	o.Body = body
 }
 

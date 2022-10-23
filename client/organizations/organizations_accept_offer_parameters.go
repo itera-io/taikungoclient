@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOrganizationsAcceptOfferParams creates a new OrganizationsAcceptOfferParams object,
@@ -62,7 +64,7 @@ OrganizationsAcceptOfferParams contains all the parameters to send to the API en
 type OrganizationsAcceptOfferParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.AcceptOfferCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *OrganizationsAcceptOfferParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the organizations accept offer params
-func (o *OrganizationsAcceptOfferParams) WithBody(body interface{}) *OrganizationsAcceptOfferParams {
+func (o *OrganizationsAcceptOfferParams) WithBody(body models.AcceptOfferCommand) *OrganizationsAcceptOfferParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the organizations accept offer params
-func (o *OrganizationsAcceptOfferParams) SetBody(body interface{}) {
+func (o *OrganizationsAcceptOfferParams) SetBody(body models.AcceptOfferCommand) {
 	o.Body = body
 }
 

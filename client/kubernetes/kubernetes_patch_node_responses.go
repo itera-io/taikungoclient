@@ -6,15 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesPatchNodeReader is a Reader for the KubernetesPatchNode structure.
@@ -77,7 +75,7 @@ KubernetesPatchNodeOK describes a response with status code 200, with default he
 Success
 */
 type KubernetesPatchNodeOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this kubernetes patch node o k response has a 2xx status code
@@ -113,7 +111,7 @@ func (o *KubernetesPatchNodeOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesPatchNodeOK) GetPayload() interface{} {
+func (o *KubernetesPatchNodeOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -138,7 +136,7 @@ KubernetesPatchNodeBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type KubernetesPatchNodeBadRequest struct {
-	Payload []*KubernetesPatchNodeBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes patch node bad request response has a 2xx status code
@@ -174,7 +172,7 @@ func (o *KubernetesPatchNodeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesPatchNodeBadRequest) GetPayload() []*KubernetesPatchNodeBadRequestBodyItems0 {
+func (o *KubernetesPatchNodeBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +197,7 @@ KubernetesPatchNodeUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type KubernetesPatchNodeUnauthorized struct {
-	Payload *KubernetesPatchNodeUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch node unauthorized response has a 2xx status code
@@ -235,13 +233,13 @@ func (o *KubernetesPatchNodeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesPatchNodeUnauthorized) GetPayload() *KubernetesPatchNodeUnauthorizedBody {
+func (o *KubernetesPatchNodeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchNodeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesPatchNodeUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +260,7 @@ KubernetesPatchNodeForbidden describes a response with status code 403, with def
 Forbidden
 */
 type KubernetesPatchNodeForbidden struct {
-	Payload *KubernetesPatchNodeForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch node forbidden response has a 2xx status code
@@ -298,13 +296,13 @@ func (o *KubernetesPatchNodeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesPatchNodeForbidden) GetPayload() *KubernetesPatchNodeForbiddenBody {
+func (o *KubernetesPatchNodeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchNodeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesPatchNodeForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +323,7 @@ KubernetesPatchNodeNotFound describes a response with status code 404, with defa
 Not Found
 */
 type KubernetesPatchNodeNotFound struct {
-	Payload *KubernetesPatchNodeNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes patch node not found response has a 2xx status code
@@ -361,13 +359,13 @@ func (o *KubernetesPatchNodeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/patch/node][%d] kubernetesPatchNodeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesPatchNodeNotFound) GetPayload() *KubernetesPatchNodeNotFoundBody {
+func (o *KubernetesPatchNodeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesPatchNodeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesPatchNodeNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,348 +423,5 @@ func (o *KubernetesPatchNodeInternalServerError) String() string {
 
 func (o *KubernetesPatchNodeInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesPatchNodeBadRequestBodyItems0 kubernetes patch node bad request body items0
-swagger:model KubernetesPatchNodeBadRequestBodyItems0
-*/
-type KubernetesPatchNodeBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes patch node bad request body items0
-func (o *KubernetesPatchNodeBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes patch node bad request body items0 based on context it is used
-func (o *KubernetesPatchNodeBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchNodeBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchNodeBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchNodeBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesPatchNodeBody kubernetes patch node body
-swagger:model KubernetesPatchNodeBody
-*/
-type KubernetesPatchNodeBody struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// parameters
-	Parameters []*KubernetesPatchNodeParamsBodyParametersItems0 `json:"parameters"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this kubernetes patch node body
-func (o *KubernetesPatchNodeBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateParameters(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *KubernetesPatchNodeBody) validateParameters(formats strfmt.Registry) error {
-	if swag.IsZero(o.Parameters) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Parameters); i++ {
-		if swag.IsZero(o.Parameters[i]) { // not required
-			continue
-		}
-
-		if o.Parameters[i] != nil {
-			if err := o.Parameters[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this kubernetes patch node body based on the context it is used
-func (o *KubernetesPatchNodeBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateParameters(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *KubernetesPatchNodeBody) contextValidateParameters(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Parameters); i++ {
-
-		if o.Parameters[i] != nil {
-			if err := o.Parameters[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchNodeBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchNodeBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchNodeBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesPatchNodeForbiddenBody kubernetes patch node forbidden body
-swagger:model KubernetesPatchNodeForbiddenBody
-*/
-type KubernetesPatchNodeForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes patch node forbidden body
-func (o *KubernetesPatchNodeForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes patch node forbidden body based on context it is used
-func (o *KubernetesPatchNodeForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchNodeForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchNodeForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchNodeForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesPatchNodeNotFoundBody kubernetes patch node not found body
-swagger:model KubernetesPatchNodeNotFoundBody
-*/
-type KubernetesPatchNodeNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes patch node not found body
-func (o *KubernetesPatchNodeNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes patch node not found body based on context it is used
-func (o *KubernetesPatchNodeNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchNodeNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchNodeNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchNodeNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesPatchNodeParamsBodyParametersItems0 kubernetes patch node params body parameters items0
-swagger:model KubernetesPatchNodeParamsBodyParametersItems0
-*/
-type KubernetesPatchNodeParamsBodyParametersItems0 struct {
-
-	// key
-	Key string `json:"key,omitempty"`
-
-	// mode
-	Mode string `json:"mode,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this kubernetes patch node params body parameters items0
-func (o *KubernetesPatchNodeParamsBodyParametersItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes patch node params body parameters items0 based on context it is used
-func (o *KubernetesPatchNodeParamsBodyParametersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchNodeParamsBodyParametersItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchNodeParamsBodyParametersItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchNodeParamsBodyParametersItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesPatchNodeUnauthorizedBody kubernetes patch node unauthorized body
-swagger:model KubernetesPatchNodeUnauthorizedBody
-*/
-type KubernetesPatchNodeUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes patch node unauthorized body
-func (o *KubernetesPatchNodeUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes patch node unauthorized body based on context it is used
-func (o *KubernetesPatchNodeUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesPatchNodeUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesPatchNodeUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesPatchNodeUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

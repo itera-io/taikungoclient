@@ -6,14 +6,13 @@ package showback_rules
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ShowbackRulesDeleteAllReader is a Reader for the ShowbackRulesDeleteAll structure.
@@ -76,7 +75,7 @@ ShowbackRulesDeleteAllOK describes a response with status code 200, with default
 Success
 */
 type ShowbackRulesDeleteAllOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this showback rules delete all o k response has a 2xx status code
@@ -112,7 +111,7 @@ func (o *ShowbackRulesDeleteAllOK) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllOK  %+v", 200, o.Payload)
 }
 
-func (o *ShowbackRulesDeleteAllOK) GetPayload() interface{} {
+func (o *ShowbackRulesDeleteAllOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -137,7 +136,7 @@ ShowbackRulesDeleteAllBadRequest describes a response with status code 400, with
 Bad Request
 */
 type ShowbackRulesDeleteAllBadRequest struct {
-	Payload *ShowbackRulesDeleteAllBadRequestBody
+	Payload *models.ValidationProblemDetails
 }
 
 // IsSuccess returns true when this showback rules delete all bad request response has a 2xx status code
@@ -173,13 +172,13 @@ func (o *ShowbackRulesDeleteAllBadRequest) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackRulesDeleteAllBadRequest) GetPayload() *ShowbackRulesDeleteAllBadRequestBody {
+func (o *ShowbackRulesDeleteAllBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesDeleteAllBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackRulesDeleteAllBadRequestBody)
+	o.Payload = new(models.ValidationProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -200,7 +199,7 @@ ShowbackRulesDeleteAllUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type ShowbackRulesDeleteAllUnauthorized struct {
-	Payload *ShowbackRulesDeleteAllUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback rules delete all unauthorized response has a 2xx status code
@@ -236,13 +235,13 @@ func (o *ShowbackRulesDeleteAllUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackRulesDeleteAllUnauthorized) GetPayload() *ShowbackRulesDeleteAllUnauthorizedBody {
+func (o *ShowbackRulesDeleteAllUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesDeleteAllUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackRulesDeleteAllUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -263,7 +262,7 @@ ShowbackRulesDeleteAllForbidden describes a response with status code 403, with 
 Forbidden
 */
 type ShowbackRulesDeleteAllForbidden struct {
-	Payload *ShowbackRulesDeleteAllForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback rules delete all forbidden response has a 2xx status code
@@ -299,13 +298,13 @@ func (o *ShowbackRulesDeleteAllForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackRulesDeleteAllForbidden) GetPayload() *ShowbackRulesDeleteAllForbiddenBody {
+func (o *ShowbackRulesDeleteAllForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesDeleteAllForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackRulesDeleteAllForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -326,7 +325,7 @@ ShowbackRulesDeleteAllNotFound describes a response with status code 404, with d
 Not Found
 */
 type ShowbackRulesDeleteAllNotFound struct {
-	Payload *ShowbackRulesDeleteAllNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback rules delete all not found response has a 2xx status code
@@ -362,13 +361,13 @@ func (o *ShowbackRulesDeleteAllNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/delete][%d] showbackRulesDeleteAllNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackRulesDeleteAllNotFound) GetPayload() *ShowbackRulesDeleteAllNotFoundBody {
+func (o *ShowbackRulesDeleteAllNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesDeleteAllNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackRulesDeleteAllNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -426,261 +425,5 @@ func (o *ShowbackRulesDeleteAllInternalServerError) String() string {
 
 func (o *ShowbackRulesDeleteAllInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ShowbackRulesDeleteAllBadRequestBody showback rules delete all bad request body
-swagger:model ShowbackRulesDeleteAllBadRequestBody
-*/
-type ShowbackRulesDeleteAllBadRequestBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// errors
-	// Read Only: true
-	Errors map[string][]string `json:"errors,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback rules delete all bad request body
-func (o *ShowbackRulesDeleteAllBadRequestBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validate this showback rules delete all bad request body based on the context it is used
-func (o *ShowbackRulesDeleteAllBadRequestBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateErrors(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ShowbackRulesDeleteAllBadRequestBody) contextValidateErrors(ctx context.Context, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackRulesDeleteAllBadRequestBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackRulesDeleteAllBadRequestBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackRulesDeleteAllBadRequestBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackRulesDeleteAllBody showback rules delete all body
-swagger:model ShowbackRulesDeleteAllBody
-*/
-type ShowbackRulesDeleteAllBody struct {
-
-	// ids
-	Ids []int32 `json:"ids"`
-}
-
-// Validate validates this showback rules delete all body
-func (o *ShowbackRulesDeleteAllBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback rules delete all body based on context it is used
-func (o *ShowbackRulesDeleteAllBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackRulesDeleteAllBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackRulesDeleteAllBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackRulesDeleteAllBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackRulesDeleteAllForbiddenBody showback rules delete all forbidden body
-swagger:model ShowbackRulesDeleteAllForbiddenBody
-*/
-type ShowbackRulesDeleteAllForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback rules delete all forbidden body
-func (o *ShowbackRulesDeleteAllForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback rules delete all forbidden body based on context it is used
-func (o *ShowbackRulesDeleteAllForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackRulesDeleteAllForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackRulesDeleteAllForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackRulesDeleteAllForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackRulesDeleteAllNotFoundBody showback rules delete all not found body
-swagger:model ShowbackRulesDeleteAllNotFoundBody
-*/
-type ShowbackRulesDeleteAllNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback rules delete all not found body
-func (o *ShowbackRulesDeleteAllNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback rules delete all not found body based on context it is used
-func (o *ShowbackRulesDeleteAllNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackRulesDeleteAllNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackRulesDeleteAllNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackRulesDeleteAllNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackRulesDeleteAllUnauthorizedBody showback rules delete all unauthorized body
-swagger:model ShowbackRulesDeleteAllUnauthorizedBody
-*/
-type ShowbackRulesDeleteAllUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback rules delete all unauthorized body
-func (o *ShowbackRulesDeleteAllUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback rules delete all unauthorized body based on context it is used
-func (o *ShowbackRulesDeleteAllUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackRulesDeleteAllUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackRulesDeleteAllUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackRulesDeleteAllUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

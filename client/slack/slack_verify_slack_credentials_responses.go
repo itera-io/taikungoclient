@@ -6,13 +6,13 @@ package slack
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // SlackVerifySlackCredentialsReader is a Reader for the SlackVerifySlackCredentials structure.
@@ -75,7 +75,7 @@ SlackVerifySlackCredentialsOK describes a response with status code 200, with de
 Success
 */
 type SlackVerifySlackCredentialsOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this slack verify slack credentials o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *SlackVerifySlackCredentialsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsOK  %+v", 200, o.Payload)
 }
 
-func (o *SlackVerifySlackCredentialsOK) GetPayload() interface{} {
+func (o *SlackVerifySlackCredentialsOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ SlackVerifySlackCredentialsBadRequest describes a response with status code 400,
 Bad Request
 */
 type SlackVerifySlackCredentialsBadRequest struct {
-	Payload []*SlackVerifySlackCredentialsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this slack verify slack credentials bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SlackVerifySlackCredentialsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SlackVerifySlackCredentialsBadRequest) GetPayload() []*SlackVerifySlackCredentialsBadRequestBodyItems0 {
+func (o *SlackVerifySlackCredentialsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ SlackVerifySlackCredentialsUnauthorized describes a response with status code 40
 Unauthorized
 */
 type SlackVerifySlackCredentialsUnauthorized struct {
-	Payload *SlackVerifySlackCredentialsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack verify slack credentials unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *SlackVerifySlackCredentialsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SlackVerifySlackCredentialsUnauthorized) GetPayload() *SlackVerifySlackCredentialsUnauthorizedBody {
+func (o *SlackVerifySlackCredentialsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackVerifySlackCredentialsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SlackVerifySlackCredentialsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ SlackVerifySlackCredentialsForbidden describes a response with status code 403, 
 Forbidden
 */
 type SlackVerifySlackCredentialsForbidden struct {
-	Payload *SlackVerifySlackCredentialsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack verify slack credentials forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *SlackVerifySlackCredentialsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SlackVerifySlackCredentialsForbidden) GetPayload() *SlackVerifySlackCredentialsForbiddenBody {
+func (o *SlackVerifySlackCredentialsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackVerifySlackCredentialsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SlackVerifySlackCredentialsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ SlackVerifySlackCredentialsNotFound describes a response with status code 404, w
 Not Found
 */
 type SlackVerifySlackCredentialsNotFound struct {
-	Payload *SlackVerifySlackCredentialsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack verify slack credentials not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *SlackVerifySlackCredentialsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Slack/verify][%d] slackVerifySlackCredentialsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SlackVerifySlackCredentialsNotFound) GetPayload() *SlackVerifySlackCredentialsNotFoundBody {
+func (o *SlackVerifySlackCredentialsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackVerifySlackCredentialsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SlackVerifySlackCredentialsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,240 +423,5 @@ func (o *SlackVerifySlackCredentialsInternalServerError) String() string {
 
 func (o *SlackVerifySlackCredentialsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-SlackVerifySlackCredentialsBadRequestBodyItems0 slack verify slack credentials bad request body items0
-swagger:model SlackVerifySlackCredentialsBadRequestBodyItems0
-*/
-type SlackVerifySlackCredentialsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this slack verify slack credentials bad request body items0
-func (o *SlackVerifySlackCredentialsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this slack verify slack credentials bad request body items0 based on context it is used
-func (o *SlackVerifySlackCredentialsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SlackVerifySlackCredentialsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SlackVerifySlackCredentialsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res SlackVerifySlackCredentialsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SlackVerifySlackCredentialsBody slack verify slack credentials body
-swagger:model SlackVerifySlackCredentialsBody
-*/
-type SlackVerifySlackCredentialsBody struct {
-
-	// channel
-	Channel string `json:"channel,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// url
-	URL string `json:"url,omitempty"`
-}
-
-// Validate validates this slack verify slack credentials body
-func (o *SlackVerifySlackCredentialsBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this slack verify slack credentials body based on context it is used
-func (o *SlackVerifySlackCredentialsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SlackVerifySlackCredentialsBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SlackVerifySlackCredentialsBody) UnmarshalBinary(b []byte) error {
-	var res SlackVerifySlackCredentialsBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SlackVerifySlackCredentialsForbiddenBody slack verify slack credentials forbidden body
-swagger:model SlackVerifySlackCredentialsForbiddenBody
-*/
-type SlackVerifySlackCredentialsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this slack verify slack credentials forbidden body
-func (o *SlackVerifySlackCredentialsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this slack verify slack credentials forbidden body based on context it is used
-func (o *SlackVerifySlackCredentialsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SlackVerifySlackCredentialsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SlackVerifySlackCredentialsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res SlackVerifySlackCredentialsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SlackVerifySlackCredentialsNotFoundBody slack verify slack credentials not found body
-swagger:model SlackVerifySlackCredentialsNotFoundBody
-*/
-type SlackVerifySlackCredentialsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this slack verify slack credentials not found body
-func (o *SlackVerifySlackCredentialsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this slack verify slack credentials not found body based on context it is used
-func (o *SlackVerifySlackCredentialsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SlackVerifySlackCredentialsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SlackVerifySlackCredentialsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res SlackVerifySlackCredentialsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SlackVerifySlackCredentialsUnauthorizedBody slack verify slack credentials unauthorized body
-swagger:model SlackVerifySlackCredentialsUnauthorizedBody
-*/
-type SlackVerifySlackCredentialsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this slack verify slack credentials unauthorized body
-func (o *SlackVerifySlackCredentialsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this slack verify slack credentials unauthorized body based on context it is used
-func (o *SlackVerifySlackCredentialsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SlackVerifySlackCredentialsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SlackVerifySlackCredentialsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res SlackVerifySlackCredentialsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

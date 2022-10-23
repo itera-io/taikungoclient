@@ -20,7 +20,7 @@ import (
 type AvailableEndpointsList struct {
 
 	// data
-	Data []*AvailableEndpointsListDataItems0 `json:"data"`
+	Data []*EndpointElements `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,55 +111,6 @@ func (m *AvailableEndpointsList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AvailableEndpointsList) UnmarshalBinary(b []byte) error {
 	var res AvailableEndpointsList
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// AvailableEndpointsListDataItems0 available endpoints list data items0
-//
-// swagger:model AvailableEndpointsListDataItems0
-type AvailableEndpointsListDataItems0 struct {
-
-	// controller
-	Controller string `json:"controller,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// method
-	Method string `json:"method,omitempty"`
-
-	// path
-	Path string `json:"path,omitempty"`
-}
-
-// Validate validates this available endpoints list data items0
-func (m *AvailableEndpointsListDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this available endpoints list data items0 based on context it is used
-func (m *AvailableEndpointsListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *AvailableEndpointsListDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *AvailableEndpointsListDataItems0) UnmarshalBinary(b []byte) error {
-	var res AvailableEndpointsListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

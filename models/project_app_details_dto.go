@@ -50,7 +50,7 @@ type ProjectAppDetailsDto struct {
 	Namespace string `json:"namespace,omitempty"`
 
 	// project app params
-	ProjectAppParams []*ProjectAppDetailsDtoProjectAppParamsItems0 `json:"projectAppParams"`
+	ProjectAppParams []*ProjectAppParamDto `json:"projectAppParams"`
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
@@ -156,52 +156,6 @@ func (m *ProjectAppDetailsDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ProjectAppDetailsDto) UnmarshalBinary(b []byte) error {
 	var res ProjectAppDetailsDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// ProjectAppDetailsDtoProjectAppParamsItems0 project app details dto project app params items0
-//
-// swagger:model ProjectAppDetailsDtoProjectAppParamsItems0
-type ProjectAppDetailsDtoProjectAppParamsItems0 struct {
-
-	// is changeable
-	IsChangeable bool `json:"isChangeable"`
-
-	// is readonly
-	IsReadonly bool `json:"isReadonly"`
-
-	// key
-	Key string `json:"key,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this project app details dto project app params items0
-func (m *ProjectAppDetailsDtoProjectAppParamsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project app details dto project app params items0 based on context it is used
-func (m *ProjectAppDetailsDtoProjectAppParamsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *ProjectAppDetailsDtoProjectAppParamsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *ProjectAppDetailsDtoProjectAppParamsItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectAppDetailsDtoProjectAppParamsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

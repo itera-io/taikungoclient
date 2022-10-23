@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewRepositoryCreateParams creates a new RepositoryCreateParams object,
@@ -62,7 +64,7 @@ RepositoryCreateParams contains all the parameters to send to the API endpoint
 type RepositoryCreateParams struct {
 
 	// Body.
-	Body RepositoryCreateBody
+	Body *models.BindAppRepositoryCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *RepositoryCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the repository create params
-func (o *RepositoryCreateParams) WithBody(body RepositoryCreateBody) *RepositoryCreateParams {
+func (o *RepositoryCreateParams) WithBody(body *models.BindAppRepositoryCommand) *RepositoryCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the repository create params
-func (o *RepositoryCreateParams) SetBody(body RepositoryCreateBody) {
+func (o *RepositoryCreateParams) SetBody(body *models.BindAppRepositoryCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *RepositoryCreateParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

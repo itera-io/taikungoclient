@@ -20,7 +20,7 @@ import (
 type AzureFlavorList struct {
 
 	// data
-	Data []*AzureFlavorListDataItems0 `json:"data"`
+	Data []*AzureFlavorsWithPriceDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,67 +111,6 @@ func (m *AzureFlavorList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AzureFlavorList) UnmarshalBinary(b []byte) error {
 	var res AzureFlavorList
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// AzureFlavorListDataItems0 azure flavor list data items0
-//
-// swagger:model AzureFlavorListDataItems0
-type AzureFlavorListDataItems0 struct {
-
-	// cpu
-	CPU int32 `json:"cpu,omitempty"`
-
-	// description
-	Description interface{} `json:"description,omitempty"`
-
-	// linux price
-	LinuxPrice string `json:"linuxPrice,omitempty"`
-
-	// linux spot price
-	LinuxSpotPrice string `json:"linuxSpotPrice,omitempty"`
-
-	// max data disk count
-	MaxDataDiskCount float64 `json:"maxDataDiskCount,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// ram
-	RAM int64 `json:"ram,omitempty"`
-
-	// windows price
-	WindowsPrice string `json:"windowsPrice,omitempty"`
-
-	// windows spot price
-	WindowsSpotPrice string `json:"windowsSpotPrice,omitempty"`
-}
-
-// Validate validates this azure flavor list data items0
-func (m *AzureFlavorListDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure flavor list data items0 based on context it is used
-func (m *AzureFlavorListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *AzureFlavorListDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *AzureFlavorListDataItems0) UnmarshalBinary(b []byte) error {
-	var res AzureFlavorListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

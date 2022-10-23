@@ -6,13 +6,13 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsDeleteWholeProjectReader is a Reader for the ProjectsDeleteWholeProject structure.
@@ -81,7 +81,7 @@ ProjectsDeleteWholeProjectOK describes a response with status code 200, with def
 Success
 */
 type ProjectsDeleteWholeProjectOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects delete whole project o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *ProjectsDeleteWholeProjectOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsDeleteWholeProjectOK) GetPayload() interface{} {
+func (o *ProjectsDeleteWholeProjectOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ ProjectsDeleteWholeProjectBadRequest describes a response with status code 400, 
 Bad Request
 */
 type ProjectsDeleteWholeProjectBadRequest struct {
-	Payload []*ProjectsDeleteWholeProjectBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects delete whole project bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *ProjectsDeleteWholeProjectBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsDeleteWholeProjectBadRequest) GetPayload() []*ProjectsDeleteWholeProjectBadRequestBodyItems0 {
+func (o *ProjectsDeleteWholeProjectBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ ProjectsDeleteWholeProjectUnauthorized describes a response with status code 401
 Unauthorized
 */
 type ProjectsDeleteWholeProjectUnauthorized struct {
-	Payload *ProjectsDeleteWholeProjectUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects delete whole project unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *ProjectsDeleteWholeProjectUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsDeleteWholeProjectUnauthorized) GetPayload() *ProjectsDeleteWholeProjectUnauthorizedBody {
+func (o *ProjectsDeleteWholeProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsDeleteWholeProjectUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsDeleteWholeProjectUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ ProjectsDeleteWholeProjectForbidden describes a response with status code 403, w
 Forbidden
 */
 type ProjectsDeleteWholeProjectForbidden struct {
-	Payload *ProjectsDeleteWholeProjectForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects delete whole project forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *ProjectsDeleteWholeProjectForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsDeleteWholeProjectForbidden) GetPayload() *ProjectsDeleteWholeProjectForbiddenBody {
+func (o *ProjectsDeleteWholeProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsDeleteWholeProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsDeleteWholeProjectForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ ProjectsDeleteWholeProjectNotFound describes a response with status code 404, wi
 Not Found
 */
 type ProjectsDeleteWholeProjectNotFound struct {
-	Payload *ProjectsDeleteWholeProjectNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects delete whole project not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *ProjectsDeleteWholeProjectNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/deletewholeproject][%d] projectsDeleteWholeProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsDeleteWholeProjectNotFound) GetPayload() *ProjectsDeleteWholeProjectNotFoundBody {
+func (o *ProjectsDeleteWholeProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsDeleteWholeProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsDeleteWholeProjectNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,234 +480,5 @@ func (o *ProjectsDeleteWholeProjectInternalServerError) String() string {
 
 func (o *ProjectsDeleteWholeProjectInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectsDeleteWholeProjectBadRequestBodyItems0 projects delete whole project bad request body items0
-swagger:model ProjectsDeleteWholeProjectBadRequestBodyItems0
-*/
-type ProjectsDeleteWholeProjectBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this projects delete whole project bad request body items0
-func (o *ProjectsDeleteWholeProjectBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects delete whole project bad request body items0 based on context it is used
-func (o *ProjectsDeleteWholeProjectBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsDeleteWholeProjectBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsDeleteWholeProjectBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectsDeleteWholeProjectBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsDeleteWholeProjectBody projects delete whole project body
-swagger:model ProjectsDeleteWholeProjectBody
-*/
-type ProjectsDeleteWholeProjectBody struct {
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this projects delete whole project body
-func (o *ProjectsDeleteWholeProjectBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects delete whole project body based on context it is used
-func (o *ProjectsDeleteWholeProjectBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsDeleteWholeProjectBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsDeleteWholeProjectBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsDeleteWholeProjectBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsDeleteWholeProjectForbiddenBody projects delete whole project forbidden body
-swagger:model ProjectsDeleteWholeProjectForbiddenBody
-*/
-type ProjectsDeleteWholeProjectForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects delete whole project forbidden body
-func (o *ProjectsDeleteWholeProjectForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects delete whole project forbidden body based on context it is used
-func (o *ProjectsDeleteWholeProjectForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsDeleteWholeProjectForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsDeleteWholeProjectForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsDeleteWholeProjectForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsDeleteWholeProjectNotFoundBody projects delete whole project not found body
-swagger:model ProjectsDeleteWholeProjectNotFoundBody
-*/
-type ProjectsDeleteWholeProjectNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects delete whole project not found body
-func (o *ProjectsDeleteWholeProjectNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects delete whole project not found body based on context it is used
-func (o *ProjectsDeleteWholeProjectNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsDeleteWholeProjectNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsDeleteWholeProjectNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsDeleteWholeProjectNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsDeleteWholeProjectUnauthorizedBody projects delete whole project unauthorized body
-swagger:model ProjectsDeleteWholeProjectUnauthorizedBody
-*/
-type ProjectsDeleteWholeProjectUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects delete whole project unauthorized body
-func (o *ProjectsDeleteWholeProjectUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects delete whole project unauthorized body based on context it is used
-func (o *ProjectsDeleteWholeProjectUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsDeleteWholeProjectUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsDeleteWholeProjectUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsDeleteWholeProjectUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

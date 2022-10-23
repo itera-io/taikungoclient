@@ -6,15 +6,13 @@ package user_token
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // UserTokenBindUnbindReader is a Reader for the UserTokenBindUnbind structure.
@@ -77,7 +75,7 @@ UserTokenBindUnbindOK describes a response with status code 200, with default he
 Success
 */
 type UserTokenBindUnbindOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this user token bind unbind o k response has a 2xx status code
@@ -113,7 +111,7 @@ func (o *UserTokenBindUnbindOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindOK  %+v", 200, o.Payload)
 }
 
-func (o *UserTokenBindUnbindOK) GetPayload() interface{} {
+func (o *UserTokenBindUnbindOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -138,7 +136,7 @@ UserTokenBindUnbindBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type UserTokenBindUnbindBadRequest struct {
-	Payload []*UserTokenBindUnbindBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this user token bind unbind bad request response has a 2xx status code
@@ -174,7 +172,7 @@ func (o *UserTokenBindUnbindBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserTokenBindUnbindBadRequest) GetPayload() []*UserTokenBindUnbindBadRequestBodyItems0 {
+func (o *UserTokenBindUnbindBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +197,7 @@ UserTokenBindUnbindUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type UserTokenBindUnbindUnauthorized struct {
-	Payload *UserTokenBindUnbindUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user token bind unbind unauthorized response has a 2xx status code
@@ -235,13 +233,13 @@ func (o *UserTokenBindUnbindUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserTokenBindUnbindUnauthorized) GetPayload() *UserTokenBindUnbindUnauthorizedBody {
+func (o *UserTokenBindUnbindUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserTokenBindUnbindUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserTokenBindUnbindUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +260,7 @@ UserTokenBindUnbindForbidden describes a response with status code 403, with def
 Forbidden
 */
 type UserTokenBindUnbindForbidden struct {
-	Payload *UserTokenBindUnbindForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user token bind unbind forbidden response has a 2xx status code
@@ -298,13 +296,13 @@ func (o *UserTokenBindUnbindForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserTokenBindUnbindForbidden) GetPayload() *UserTokenBindUnbindForbiddenBody {
+func (o *UserTokenBindUnbindForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserTokenBindUnbindForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserTokenBindUnbindForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +323,7 @@ UserTokenBindUnbindNotFound describes a response with status code 404, with defa
 Not Found
 */
 type UserTokenBindUnbindNotFound struct {
-	Payload *UserTokenBindUnbindNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user token bind unbind not found response has a 2xx status code
@@ -361,13 +359,13 @@ func (o *UserTokenBindUnbindNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/UserToken/bind-unbind][%d] userTokenBindUnbindNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserTokenBindUnbindNotFound) GetPayload() *UserTokenBindUnbindNotFoundBody {
+func (o *UserTokenBindUnbindNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserTokenBindUnbindNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserTokenBindUnbindNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,351 +423,5 @@ func (o *UserTokenBindUnbindInternalServerError) String() string {
 
 func (o *UserTokenBindUnbindInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-UserTokenBindUnbindBadRequestBodyItems0 user token bind unbind bad request body items0
-swagger:model UserTokenBindUnbindBadRequestBodyItems0
-*/
-type UserTokenBindUnbindBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this user token bind unbind bad request body items0
-func (o *UserTokenBindUnbindBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user token bind unbind bad request body items0 based on context it is used
-func (o *UserTokenBindUnbindBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserTokenBindUnbindBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserTokenBindUnbindBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res UserTokenBindUnbindBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserTokenBindUnbindBody user token bind unbind body
-swagger:model UserTokenBindUnbindBody
-*/
-type UserTokenBindUnbindBody struct {
-
-	// endpoints
-	Endpoints []*UserTokenBindUnbindParamsBodyEndpointsItems0 `json:"endpoints"`
-
-	// token Id
-	TokenID string `json:"tokenId,omitempty"`
-}
-
-// Validate validates this user token bind unbind body
-func (o *UserTokenBindUnbindBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateEndpoints(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *UserTokenBindUnbindBody) validateEndpoints(formats strfmt.Registry) error {
-	if swag.IsZero(o.Endpoints) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Endpoints); i++ {
-		if swag.IsZero(o.Endpoints[i]) { // not required
-			continue
-		}
-
-		if o.Endpoints[i] != nil {
-			if err := o.Endpoints[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "endpoints" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "endpoints" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this user token bind unbind body based on the context it is used
-func (o *UserTokenBindUnbindBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateEndpoints(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *UserTokenBindUnbindBody) contextValidateEndpoints(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Endpoints); i++ {
-
-		if o.Endpoints[i] != nil {
-			if err := o.Endpoints[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "endpoints" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "endpoints" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserTokenBindUnbindBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserTokenBindUnbindBody) UnmarshalBinary(b []byte) error {
-	var res UserTokenBindUnbindBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserTokenBindUnbindForbiddenBody user token bind unbind forbidden body
-swagger:model UserTokenBindUnbindForbiddenBody
-*/
-type UserTokenBindUnbindForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this user token bind unbind forbidden body
-func (o *UserTokenBindUnbindForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user token bind unbind forbidden body based on context it is used
-func (o *UserTokenBindUnbindForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserTokenBindUnbindForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserTokenBindUnbindForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res UserTokenBindUnbindForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserTokenBindUnbindNotFoundBody user token bind unbind not found body
-swagger:model UserTokenBindUnbindNotFoundBody
-*/
-type UserTokenBindUnbindNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this user token bind unbind not found body
-func (o *UserTokenBindUnbindNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user token bind unbind not found body based on context it is used
-func (o *UserTokenBindUnbindNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserTokenBindUnbindNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserTokenBindUnbindNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res UserTokenBindUnbindNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserTokenBindUnbindParamsBodyEndpointsItems0 user token bind unbind params body endpoints items0
-swagger:model UserTokenBindUnbindParamsBodyEndpointsItems0
-*/
-type UserTokenBindUnbindParamsBodyEndpointsItems0 struct {
-
-	// controller
-	Controller string `json:"controller,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// method
-	Method string `json:"method,omitempty"`
-
-	// path
-	Path string `json:"path,omitempty"`
-}
-
-// Validate validates this user token bind unbind params body endpoints items0
-func (o *UserTokenBindUnbindParamsBodyEndpointsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user token bind unbind params body endpoints items0 based on context it is used
-func (o *UserTokenBindUnbindParamsBodyEndpointsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserTokenBindUnbindParamsBodyEndpointsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserTokenBindUnbindParamsBodyEndpointsItems0) UnmarshalBinary(b []byte) error {
-	var res UserTokenBindUnbindParamsBodyEndpointsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserTokenBindUnbindUnauthorizedBody user token bind unbind unauthorized body
-swagger:model UserTokenBindUnbindUnauthorizedBody
-*/
-type UserTokenBindUnbindUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this user token bind unbind unauthorized body
-func (o *UserTokenBindUnbindUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user token bind unbind unauthorized body based on context it is used
-func (o *UserTokenBindUnbindUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserTokenBindUnbindUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserTokenBindUnbindUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res UserTokenBindUnbindUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

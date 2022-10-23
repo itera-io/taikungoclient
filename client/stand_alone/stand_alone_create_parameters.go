@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneCreateParams creates a new StandAloneCreateParams object,
@@ -62,7 +64,7 @@ StandAloneCreateParams contains all the parameters to send to the API endpoint
 type StandAloneCreateParams struct {
 
 	// Body.
-	Body StandAloneCreateBody
+	Body *models.CreateStandAloneVMCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *StandAloneCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone create params
-func (o *StandAloneCreateParams) WithBody(body StandAloneCreateBody) *StandAloneCreateParams {
+func (o *StandAloneCreateParams) WithBody(body *models.CreateStandAloneVMCommand) *StandAloneCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone create params
-func (o *StandAloneCreateParams) SetBody(body StandAloneCreateBody) {
+func (o *StandAloneCreateParams) SetBody(body *models.CreateStandAloneVMCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *StandAloneCreateParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

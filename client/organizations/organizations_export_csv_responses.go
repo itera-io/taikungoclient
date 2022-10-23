@@ -6,13 +6,13 @@ package organizations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // OrganizationsExportCsvReader is a Reader for the OrganizationsExportCsv structure.
@@ -126,7 +126,7 @@ OrganizationsExportCsvBadRequest describes a response with status code 400, with
 Bad Request
 */
 type OrganizationsExportCsvBadRequest struct {
-	Payload []*OrganizationsExportCsvBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this organizations export csv bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *OrganizationsExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsExportCsvBadRequest) GetPayload() []*OrganizationsExportCsvBadRequestBodyItems0 {
+func (o *OrganizationsExportCsvBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -187,7 +187,7 @@ OrganizationsExportCsvUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type OrganizationsExportCsvUnauthorized struct {
-	Payload *OrganizationsExportCsvUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations export csv unauthorized response has a 2xx status code
@@ -223,13 +223,13 @@ func (o *OrganizationsExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsExportCsvUnauthorized) GetPayload() *OrganizationsExportCsvUnauthorizedBody {
+func (o *OrganizationsExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsExportCsvUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OrganizationsExportCsvUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -250,7 +250,7 @@ OrganizationsExportCsvForbidden describes a response with status code 403, with 
 Forbidden
 */
 type OrganizationsExportCsvForbidden struct {
-	Payload *OrganizationsExportCsvForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations export csv forbidden response has a 2xx status code
@@ -286,13 +286,13 @@ func (o *OrganizationsExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsExportCsvForbidden) GetPayload() *OrganizationsExportCsvForbiddenBody {
+func (o *OrganizationsExportCsvForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsExportCsvForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OrganizationsExportCsvForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -313,7 +313,7 @@ OrganizationsExportCsvNotFound describes a response with status code 404, with d
 Not Found
 */
 type OrganizationsExportCsvNotFound struct {
-	Payload *OrganizationsExportCsvNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations export csv not found response has a 2xx status code
@@ -349,13 +349,13 @@ func (o *OrganizationsExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Organizations/export][%d] organizationsExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsExportCsvNotFound) GetPayload() *OrganizationsExportCsvNotFoundBody {
+func (o *OrganizationsExportCsvNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsExportCsvNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OrganizationsExportCsvNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -413,196 +413,5 @@ func (o *OrganizationsExportCsvInternalServerError) String() string {
 
 func (o *OrganizationsExportCsvInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-OrganizationsExportCsvBadRequestBodyItems0 organizations export csv bad request body items0
-swagger:model OrganizationsExportCsvBadRequestBodyItems0
-*/
-type OrganizationsExportCsvBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this organizations export csv bad request body items0
-func (o *OrganizationsExportCsvBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations export csv bad request body items0 based on context it is used
-func (o *OrganizationsExportCsvBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsExportCsvBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsExportCsvBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OrganizationsExportCsvBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsExportCsvForbiddenBody organizations export csv forbidden body
-swagger:model OrganizationsExportCsvForbiddenBody
-*/
-type OrganizationsExportCsvForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this organizations export csv forbidden body
-func (o *OrganizationsExportCsvForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations export csv forbidden body based on context it is used
-func (o *OrganizationsExportCsvForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsExportCsvForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsExportCsvForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsExportCsvForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsExportCsvNotFoundBody organizations export csv not found body
-swagger:model OrganizationsExportCsvNotFoundBody
-*/
-type OrganizationsExportCsvNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this organizations export csv not found body
-func (o *OrganizationsExportCsvNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations export csv not found body based on context it is used
-func (o *OrganizationsExportCsvNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsExportCsvNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsExportCsvNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsExportCsvNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsExportCsvUnauthorizedBody organizations export csv unauthorized body
-swagger:model OrganizationsExportCsvUnauthorizedBody
-*/
-type OrganizationsExportCsvUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this organizations export csv unauthorized body
-func (o *OrganizationsExportCsvUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations export csv unauthorized body based on context it is used
-func (o *OrganizationsExportCsvUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsExportCsvUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsExportCsvUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsExportCsvUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

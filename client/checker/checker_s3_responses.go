@@ -6,13 +6,13 @@ package checker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CheckerS3Reader is a Reader for the CheckerS3 structure.
@@ -75,7 +75,7 @@ CheckerS3OK describes a response with status code 200, with default header value
 Success
 */
 type CheckerS3OK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this checker s3 o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CheckerS3OK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/s3][%d] checkerS3OK  %+v", 200, o.Payload)
 }
 
-func (o *CheckerS3OK) GetPayload() interface{} {
+func (o *CheckerS3OK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CheckerS3BadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type CheckerS3BadRequest struct {
-	Payload []*CheckerS3BadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this checker s3 bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerS3BadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/s3][%d] checkerS3BadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerS3BadRequest) GetPayload() []*CheckerS3BadRequestBodyItems0 {
+func (o *CheckerS3BadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CheckerS3Unauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type CheckerS3Unauthorized struct {
-	Payload *CheckerS3UnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker s3 unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CheckerS3Unauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/s3][%d] checkerS3Unauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerS3Unauthorized) GetPayload() *CheckerS3UnauthorizedBody {
+func (o *CheckerS3Unauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerS3Unauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerS3UnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CheckerS3Forbidden describes a response with status code 403, with default heade
 Forbidden
 */
 type CheckerS3Forbidden struct {
-	Payload *CheckerS3ForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker s3 forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CheckerS3Forbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/s3][%d] checkerS3Forbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerS3Forbidden) GetPayload() *CheckerS3ForbiddenBody {
+func (o *CheckerS3Forbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerS3Forbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerS3ForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CheckerS3NotFound describes a response with status code 404, with default header
 Not Found
 */
 type CheckerS3NotFound struct {
-	Payload *CheckerS3NotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker s3 not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CheckerS3NotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/s3][%d] checkerS3NotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerS3NotFound) GetPayload() *CheckerS3NotFoundBody {
+func (o *CheckerS3NotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerS3NotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerS3NotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,243 +423,5 @@ func (o *CheckerS3InternalServerError) String() string {
 
 func (o *CheckerS3InternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CheckerS3BadRequestBodyItems0 checker s3 bad request body items0
-swagger:model CheckerS3BadRequestBodyItems0
-*/
-type CheckerS3BadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this checker s3 bad request body items0
-func (o *CheckerS3BadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker s3 bad request body items0 based on context it is used
-func (o *CheckerS3BadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerS3BadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerS3BadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CheckerS3BadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerS3Body checker s3 body
-swagger:model CheckerS3Body
-*/
-type CheckerS3Body struct {
-
-	// s3 access key Id
-	S3AccessKeyID string `json:"s3AccessKeyId,omitempty"`
-
-	// s3 endpoint
-	S3Endpoint string `json:"s3Endpoint,omitempty"`
-
-	// s3 region
-	S3Region string `json:"s3Region,omitempty"`
-
-	// s3 secret key
-	S3SecretKey string `json:"s3SecretKey,omitempty"`
-}
-
-// Validate validates this checker s3 body
-func (o *CheckerS3Body) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker s3 body based on context it is used
-func (o *CheckerS3Body) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerS3Body) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerS3Body) UnmarshalBinary(b []byte) error {
-	var res CheckerS3Body
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerS3ForbiddenBody checker s3 forbidden body
-swagger:model CheckerS3ForbiddenBody
-*/
-type CheckerS3ForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker s3 forbidden body
-func (o *CheckerS3ForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker s3 forbidden body based on context it is used
-func (o *CheckerS3ForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerS3ForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerS3ForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CheckerS3ForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerS3NotFoundBody checker s3 not found body
-swagger:model CheckerS3NotFoundBody
-*/
-type CheckerS3NotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker s3 not found body
-func (o *CheckerS3NotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker s3 not found body based on context it is used
-func (o *CheckerS3NotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerS3NotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerS3NotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CheckerS3NotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerS3UnauthorizedBody checker s3 unauthorized body
-swagger:model CheckerS3UnauthorizedBody
-*/
-type CheckerS3UnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker s3 unauthorized body
-func (o *CheckerS3UnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker s3 unauthorized body based on context it is used
-func (o *CheckerS3UnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerS3UnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerS3UnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CheckerS3UnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -15,6 +15,8 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSlackUpdateParams creates a new SlackUpdateParams object,
@@ -63,7 +65,7 @@ SlackUpdateParams contains all the parameters to send to the API endpoint
 type SlackUpdateParams struct {
 
 	// Body.
-	Body SlackUpdateBody
+	Body *models.UpdateSlackConfigurationDto
 
 	// ID.
 	//
@@ -127,13 +129,13 @@ func (o *SlackUpdateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the slack update params
-func (o *SlackUpdateParams) WithBody(body SlackUpdateBody) *SlackUpdateParams {
+func (o *SlackUpdateParams) WithBody(body *models.UpdateSlackConfigurationDto) *SlackUpdateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the slack update params
-func (o *SlackUpdateParams) SetBody(body SlackUpdateBody) {
+func (o *SlackUpdateParams) SetBody(body *models.UpdateSlackConfigurationDto) {
 	o.Body = body
 }
 
@@ -166,8 +168,10 @@ func (o *SlackUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param id

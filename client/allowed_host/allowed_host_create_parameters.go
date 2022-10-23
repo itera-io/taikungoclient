@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAllowedHostCreateParams creates a new AllowedHostCreateParams object,
@@ -62,7 +64,7 @@ AllowedHostCreateParams contains all the parameters to send to the API endpoint
 type AllowedHostCreateParams struct {
 
 	// Body.
-	Body AllowedHostCreateBody
+	Body *models.CreateAllowedHostCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *AllowedHostCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the allowed host create params
-func (o *AllowedHostCreateParams) WithBody(body AllowedHostCreateBody) *AllowedHostCreateParams {
+func (o *AllowedHostCreateParams) WithBody(body *models.CreateAllowedHostCommand) *AllowedHostCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the allowed host create params
-func (o *AllowedHostCreateParams) SetBody(body AllowedHostCreateBody) {
+func (o *AllowedHostCreateParams) SetBody(body *models.CreateAllowedHostCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *AllowedHostCreateParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

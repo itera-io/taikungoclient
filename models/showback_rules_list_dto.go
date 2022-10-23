@@ -41,7 +41,7 @@ type ShowbackRulesListDto struct {
 	Kind string `json:"kind,omitempty"`
 
 	// labels
-	Labels []*ShowbackRulesListDtoLabelsItems0 `json:"labels"`
+	Labels []*ShowbackLabelCreateDto `json:"labels"`
 
 	// last modified
 	LastModified string `json:"lastModified,omitempty"`
@@ -162,46 +162,6 @@ func (m *ShowbackRulesListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ShowbackRulesListDto) UnmarshalBinary(b []byte) error {
 	var res ShowbackRulesListDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// ShowbackRulesListDtoLabelsItems0 showback rules list dto labels items0
-//
-// swagger:model ShowbackRulesListDtoLabelsItems0
-type ShowbackRulesListDtoLabelsItems0 struct {
-
-	// label
-	Label string `json:"label,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this showback rules list dto labels items0
-func (m *ShowbackRulesListDtoLabelsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback rules list dto labels items0 based on context it is used
-func (m *ShowbackRulesListDtoLabelsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *ShowbackRulesListDtoLabelsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *ShowbackRulesListDtoLabelsItems0) UnmarshalBinary(b []byte) error {
-	var res ShowbackRulesListDtoLabelsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

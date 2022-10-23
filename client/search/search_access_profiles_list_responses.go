@@ -6,15 +6,13 @@ package search
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // SearchAccessProfilesListReader is a Reader for the SearchAccessProfilesList structure.
@@ -77,7 +75,7 @@ SearchAccessProfilesListOK describes a response with status code 200, with defau
 Success
 */
 type SearchAccessProfilesListOK struct {
-	Payload *SearchAccessProfilesListOKBody
+	Payload *models.AccessProfilesSearchList
 }
 
 // IsSuccess returns true when this search access profiles list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *SearchAccessProfilesListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListOK  %+v", 200, o.Payload)
 }
 
-func (o *SearchAccessProfilesListOK) GetPayload() *SearchAccessProfilesListOKBody {
+func (o *SearchAccessProfilesListOK) GetPayload() *models.AccessProfilesSearchList {
 	return o.Payload
 }
 
 func (o *SearchAccessProfilesListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchAccessProfilesListOKBody)
+	o.Payload = new(models.AccessProfilesSearchList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ SearchAccessProfilesListBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type SearchAccessProfilesListBadRequest struct {
-	Payload []*SearchAccessProfilesListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this search access profiles list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *SearchAccessProfilesListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchAccessProfilesListBadRequest) GetPayload() []*SearchAccessProfilesListBadRequestBodyItems0 {
+func (o *SearchAccessProfilesListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ SearchAccessProfilesListUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type SearchAccessProfilesListUnauthorized struct {
-	Payload *SearchAccessProfilesListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search access profiles list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *SearchAccessProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchAccessProfilesListUnauthorized) GetPayload() *SearchAccessProfilesListUnauthorizedBody {
+func (o *SearchAccessProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchAccessProfilesListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchAccessProfilesListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ SearchAccessProfilesListForbidden describes a response with status code 403, wit
 Forbidden
 */
 type SearchAccessProfilesListForbidden struct {
-	Payload *SearchAccessProfilesListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search access profiles list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *SearchAccessProfilesListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchAccessProfilesListForbidden) GetPayload() *SearchAccessProfilesListForbiddenBody {
+func (o *SearchAccessProfilesListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchAccessProfilesListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchAccessProfilesListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ SearchAccessProfilesListNotFound describes a response with status code 404, with
 Not Found
 */
 type SearchAccessProfilesListNotFound struct {
-	Payload *SearchAccessProfilesListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search access profiles list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *SearchAccessProfilesListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/access-profiles][%d] searchAccessProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchAccessProfilesListNotFound) GetPayload() *SearchAccessProfilesListNotFoundBody {
+func (o *SearchAccessProfilesListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchAccessProfilesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchAccessProfilesListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,392 +425,5 @@ func (o *SearchAccessProfilesListInternalServerError) String() string {
 
 func (o *SearchAccessProfilesListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-SearchAccessProfilesListBadRequestBodyItems0 search access profiles list bad request body items0
-swagger:model SearchAccessProfilesListBadRequestBodyItems0
-*/
-type SearchAccessProfilesListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this search access profiles list bad request body items0
-func (o *SearchAccessProfilesListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search access profiles list bad request body items0 based on context it is used
-func (o *SearchAccessProfilesListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchAccessProfilesListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchAccessProfilesListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res SearchAccessProfilesListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchAccessProfilesListBody search access profiles list body
-swagger:model SearchAccessProfilesListBody
-*/
-type SearchAccessProfilesListBody struct {
-
-	// limit
-	Limit int32 `json:"limit,omitempty"`
-
-	// offset
-	Offset int32 `json:"offset,omitempty"`
-
-	// search term
-	SearchTerm string `json:"searchTerm,omitempty"`
-}
-
-// Validate validates this search access profiles list body
-func (o *SearchAccessProfilesListBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search access profiles list body based on context it is used
-func (o *SearchAccessProfilesListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchAccessProfilesListBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchAccessProfilesListBody) UnmarshalBinary(b []byte) error {
-	var res SearchAccessProfilesListBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchAccessProfilesListForbiddenBody search access profiles list forbidden body
-swagger:model SearchAccessProfilesListForbiddenBody
-*/
-type SearchAccessProfilesListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this search access profiles list forbidden body
-func (o *SearchAccessProfilesListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search access profiles list forbidden body based on context it is used
-func (o *SearchAccessProfilesListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchAccessProfilesListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchAccessProfilesListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res SearchAccessProfilesListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchAccessProfilesListNotFoundBody search access profiles list not found body
-swagger:model SearchAccessProfilesListNotFoundBody
-*/
-type SearchAccessProfilesListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this search access profiles list not found body
-func (o *SearchAccessProfilesListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search access profiles list not found body based on context it is used
-func (o *SearchAccessProfilesListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchAccessProfilesListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchAccessProfilesListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res SearchAccessProfilesListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchAccessProfilesListOKBody search access profiles list o k body
-swagger:model SearchAccessProfilesListOKBody
-*/
-type SearchAccessProfilesListOKBody struct {
-
-	// data
-	Data []*SearchAccessProfilesListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this search access profiles list o k body
-func (o *SearchAccessProfilesListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *SearchAccessProfilesListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("searchAccessProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("searchAccessProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this search access profiles list o k body based on the context it is used
-func (o *SearchAccessProfilesListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *SearchAccessProfilesListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("searchAccessProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("searchAccessProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchAccessProfilesListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchAccessProfilesListOKBody) UnmarshalBinary(b []byte) error {
-	var res SearchAccessProfilesListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchAccessProfilesListOKBodyDataItems0 search access profiles list o k body data items0
-swagger:model SearchAccessProfilesListOKBodyDataItems0
-*/
-type SearchAccessProfilesListOKBodyDataItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-}
-
-// Validate validates this search access profiles list o k body data items0
-func (o *SearchAccessProfilesListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search access profiles list o k body data items0 based on context it is used
-func (o *SearchAccessProfilesListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchAccessProfilesListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchAccessProfilesListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res SearchAccessProfilesListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchAccessProfilesListUnauthorizedBody search access profiles list unauthorized body
-swagger:model SearchAccessProfilesListUnauthorizedBody
-*/
-type SearchAccessProfilesListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this search access profiles list unauthorized body
-func (o *SearchAccessProfilesListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search access profiles list unauthorized body based on context it is used
-func (o *SearchAccessProfilesListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchAccessProfilesListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchAccessProfilesListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res SearchAccessProfilesListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

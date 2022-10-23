@@ -6,13 +6,13 @@ package kube_config
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubeConfigDownloadReader is a Reader for the KubeConfigDownload structure.
@@ -136,7 +136,7 @@ KubeConfigDownloadBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubeConfigDownloadBadRequest struct {
-	Payload []*KubeConfigDownloadBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kube config download bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubeConfigDownloadBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubeConfigDownloadBadRequest) GetPayload() []*KubeConfigDownloadBadRequestBodyItems0 {
+func (o *KubeConfigDownloadBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubeConfigDownloadUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubeConfigDownloadUnauthorized struct {
-	Payload *KubeConfigDownloadUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kube config download unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubeConfigDownloadUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubeConfigDownloadUnauthorized) GetPayload() *KubeConfigDownloadUnauthorizedBody {
+func (o *KubeConfigDownloadUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubeConfigDownloadUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubeConfigDownloadUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubeConfigDownloadForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubeConfigDownloadForbidden struct {
-	Payload *KubeConfigDownloadForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kube config download forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubeConfigDownloadForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubeConfigDownloadForbidden) GetPayload() *KubeConfigDownloadForbiddenBody {
+func (o *KubeConfigDownloadForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubeConfigDownloadForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubeConfigDownloadForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubeConfigDownloadNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubeConfigDownloadNotFound struct {
-	Payload *KubeConfigDownloadNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kube config download not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubeConfigDownloadNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/KubeConfig/download][%d] kubeConfigDownloadNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubeConfigDownloadNotFound) GetPayload() *KubeConfigDownloadNotFoundBody {
+func (o *KubeConfigDownloadNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubeConfigDownloadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubeConfigDownloadNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *KubeConfigDownloadInternalServerError) String() string {
 
 func (o *KubeConfigDownloadInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubeConfigDownloadBadRequestBodyItems0 kube config download bad request body items0
-swagger:model KubeConfigDownloadBadRequestBodyItems0
-*/
-type KubeConfigDownloadBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kube config download bad request body items0
-func (o *KubeConfigDownloadBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kube config download bad request body items0 based on context it is used
-func (o *KubeConfigDownloadBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubeConfigDownloadBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubeConfigDownloadBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubeConfigDownloadBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubeConfigDownloadBody kube config download body
-swagger:model KubeConfigDownloadBody
-*/
-type KubeConfigDownloadBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this kube config download body
-func (o *KubeConfigDownloadBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kube config download body based on context it is used
-func (o *KubeConfigDownloadBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubeConfigDownloadBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubeConfigDownloadBody) UnmarshalBinary(b []byte) error {
-	var res KubeConfigDownloadBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubeConfigDownloadForbiddenBody kube config download forbidden body
-swagger:model KubeConfigDownloadForbiddenBody
-*/
-type KubeConfigDownloadForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kube config download forbidden body
-func (o *KubeConfigDownloadForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kube config download forbidden body based on context it is used
-func (o *KubeConfigDownloadForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubeConfigDownloadForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubeConfigDownloadForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubeConfigDownloadForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubeConfigDownloadNotFoundBody kube config download not found body
-swagger:model KubeConfigDownloadNotFoundBody
-*/
-type KubeConfigDownloadNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kube config download not found body
-func (o *KubeConfigDownloadNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kube config download not found body based on context it is used
-func (o *KubeConfigDownloadNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubeConfigDownloadNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubeConfigDownloadNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubeConfigDownloadNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubeConfigDownloadUnauthorizedBody kube config download unauthorized body
-swagger:model KubeConfigDownloadUnauthorizedBody
-*/
-type KubeConfigDownloadUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kube config download unauthorized body
-func (o *KubeConfigDownloadUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kube config download unauthorized body based on context it is used
-func (o *KubeConfigDownloadUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubeConfigDownloadUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubeConfigDownloadUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubeConfigDownloadUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

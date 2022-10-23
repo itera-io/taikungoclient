@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobFetchAzurePricesParams creates a new CronJobFetchAzurePricesParams object,
@@ -62,7 +64,7 @@ CronJobFetchAzurePricesParams contains all the parameters to send to the API end
 type CronJobFetchAzurePricesParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.FetchAzureFlavorPricesCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CronJobFetchAzurePricesParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the cron job fetch azure prices params
-func (o *CronJobFetchAzurePricesParams) WithBody(body interface{}) *CronJobFetchAzurePricesParams {
+func (o *CronJobFetchAzurePricesParams) WithBody(body models.FetchAzureFlavorPricesCommand) *CronJobFetchAzurePricesParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job fetch azure prices params
-func (o *CronJobFetchAzurePricesParams) SetBody(body interface{}) {
+func (o *CronJobFetchAzurePricesParams) SetBody(body models.FetchAzureFlavorPricesCommand) {
 	o.Body = body
 }
 

@@ -6,16 +6,13 @@ package admin
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AdminCreateUserReader is a Reader for the AdminCreateUser structure.
@@ -78,7 +75,7 @@ AdminCreateUserOK describes a response with status code 200, with default header
 Success
 */
 type AdminCreateUserOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this admin create user o k response has a 2xx status code
@@ -114,7 +111,7 @@ func (o *AdminCreateUserOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserOK  %+v", 200, o.Payload)
 }
 
-func (o *AdminCreateUserOK) GetPayload() interface{} {
+func (o *AdminCreateUserOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -139,7 +136,7 @@ AdminCreateUserBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type AdminCreateUserBadRequest struct {
-	Payload []*AdminCreateUserBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this admin create user bad request response has a 2xx status code
@@ -175,7 +172,7 @@ func (o *AdminCreateUserBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminCreateUserBadRequest) GetPayload() []*AdminCreateUserBadRequestBodyItems0 {
+func (o *AdminCreateUserBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -200,7 +197,7 @@ AdminCreateUserUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type AdminCreateUserUnauthorized struct {
-	Payload *AdminCreateUserUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin create user unauthorized response has a 2xx status code
@@ -236,13 +233,13 @@ func (o *AdminCreateUserUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminCreateUserUnauthorized) GetPayload() *AdminCreateUserUnauthorizedBody {
+func (o *AdminCreateUserUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminCreateUserUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminCreateUserUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -263,7 +260,7 @@ AdminCreateUserForbidden describes a response with status code 403, with default
 Forbidden
 */
 type AdminCreateUserForbidden struct {
-	Payload *AdminCreateUserForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin create user forbidden response has a 2xx status code
@@ -299,13 +296,13 @@ func (o *AdminCreateUserForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminCreateUserForbidden) GetPayload() *AdminCreateUserForbiddenBody {
+func (o *AdminCreateUserForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminCreateUserForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminCreateUserForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -326,7 +323,7 @@ AdminCreateUserNotFound describes a response with status code 404, with default 
 Not Found
 */
 type AdminCreateUserNotFound struct {
-	Payload *AdminCreateUserNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin create user not found response has a 2xx status code
@@ -362,13 +359,13 @@ func (o *AdminCreateUserNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/create][%d] adminCreateUserNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminCreateUserNotFound) GetPayload() *AdminCreateUserNotFoundBody {
+func (o *AdminCreateUserNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminCreateUserNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminCreateUserNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -426,289 +423,5 @@ func (o *AdminCreateUserInternalServerError) String() string {
 
 func (o *AdminCreateUserInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AdminCreateUserBadRequestBodyItems0 admin create user bad request body items0
-swagger:model AdminCreateUserBadRequestBodyItems0
-*/
-type AdminCreateUserBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this admin create user bad request body items0
-func (o *AdminCreateUserBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin create user bad request body items0 based on context it is used
-func (o *AdminCreateUserBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminCreateUserBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminCreateUserBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AdminCreateUserBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminCreateUserBody admin create user body
-swagger:model AdminCreateUserBody
-*/
-type AdminCreateUserBody struct {
-
-	// email
-	Email string `json:"email,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// password
-	Password string `json:"password,omitempty"`
-
-	// role
-	// Enum: [100 200 250 400 6000]
-	Role int32 `json:"role,omitempty"`
-
-	// username
-	Username string `json:"username,omitempty"`
-}
-
-// Validate validates this admin create user body
-func (o *AdminCreateUserBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateRole(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-var adminCreateUserBodyTypeRolePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200,250,400,6000]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		adminCreateUserBodyTypeRolePropEnum = append(adminCreateUserBodyTypeRolePropEnum, v)
-	}
-}
-
-// prop value enum
-func (o *AdminCreateUserBody) validateRoleEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, adminCreateUserBodyTypeRolePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AdminCreateUserBody) validateRole(formats strfmt.Registry) error {
-	if swag.IsZero(o.Role) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := o.validateRoleEnum("body"+"."+"role", "body", o.Role); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this admin create user body based on context it is used
-func (o *AdminCreateUserBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminCreateUserBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminCreateUserBody) UnmarshalBinary(b []byte) error {
-	var res AdminCreateUserBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminCreateUserForbiddenBody admin create user forbidden body
-swagger:model AdminCreateUserForbiddenBody
-*/
-type AdminCreateUserForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin create user forbidden body
-func (o *AdminCreateUserForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin create user forbidden body based on context it is used
-func (o *AdminCreateUserForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminCreateUserForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminCreateUserForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AdminCreateUserForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminCreateUserNotFoundBody admin create user not found body
-swagger:model AdminCreateUserNotFoundBody
-*/
-type AdminCreateUserNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin create user not found body
-func (o *AdminCreateUserNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin create user not found body based on context it is used
-func (o *AdminCreateUserNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminCreateUserNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminCreateUserNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AdminCreateUserNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminCreateUserUnauthorizedBody admin create user unauthorized body
-swagger:model AdminCreateUserUnauthorizedBody
-*/
-type AdminCreateUserUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin create user unauthorized body
-func (o *AdminCreateUserUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin create user unauthorized body based on context it is used
-func (o *AdminCreateUserUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminCreateUserUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminCreateUserUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AdminCreateUserUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -6,15 +6,13 @@ package servers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ServersListReader is a Reader for the ServersList structure.
@@ -77,7 +75,7 @@ ServersListOK describes a response with status code 200, with default header val
 Success
 */
 type ServersListOK struct {
-	Payload *ServersListOKBody
+	Payload *models.ServersList
 }
 
 // IsSuccess returns true when this servers list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *ServersListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers][%d] serversListOK  %+v", 200, o.Payload)
 }
 
-func (o *ServersListOK) GetPayload() *ServersListOKBody {
+func (o *ServersListOK) GetPayload() *models.ServersList {
 	return o.Payload
 }
 
 func (o *ServersListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersListOKBody)
+	o.Payload = new(models.ServersList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ ServersListBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type ServersListBadRequest struct {
-	Payload []*ServersListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this servers list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *ServersListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers][%d] serversListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersListBadRequest) GetPayload() []*ServersListBadRequestBodyItems0 {
+func (o *ServersListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ ServersListUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type ServersListUnauthorized struct {
-	Payload *ServersListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *ServersListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers][%d] serversListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersListUnauthorized) GetPayload() *ServersListUnauthorizedBody {
+func (o *ServersListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ ServersListForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type ServersListForbidden struct {
-	Payload *ServersListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *ServersListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers][%d] serversListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersListForbidden) GetPayload() *ServersListForbiddenBody {
+func (o *ServersListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ ServersListNotFound describes a response with status code 404, with default head
 Not Found
 */
 type ServersListNotFound struct {
-	Payload *ServersListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *ServersListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers][%d] serversListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersListNotFound) GetPayload() *ServersListNotFoundBody {
+func (o *ServersListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,531 +425,5 @@ func (o *ServersListInternalServerError) String() string {
 
 func (o *ServersListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ServersListBadRequestBodyItems0 servers list bad request body items0
-swagger:model ServersListBadRequestBodyItems0
-*/
-type ServersListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this servers list bad request body items0
-func (o *ServersListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers list bad request body items0 based on context it is used
-func (o *ServersListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ServersListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersListForbiddenBody servers list forbidden body
-swagger:model ServersListForbiddenBody
-*/
-type ServersListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers list forbidden body
-func (o *ServersListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers list forbidden body based on context it is used
-func (o *ServersListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ServersListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersListNotFoundBody servers list not found body
-swagger:model ServersListNotFoundBody
-*/
-type ServersListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers list not found body
-func (o *ServersListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers list not found body based on context it is used
-func (o *ServersListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ServersListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersListOKBody servers list o k body
-swagger:model ServersListOKBody
-*/
-type ServersListOKBody struct {
-
-	// data
-	Data []*ServersListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this servers list o k body
-func (o *ServersListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ServersListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("serversListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("serversListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this servers list o k body based on the context it is used
-func (o *ServersListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ServersListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("serversListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("serversListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersListOKBody) UnmarshalBinary(b []byte) error {
-	var res ServersListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersListOKBodyDataItems0 servers list o k body data items0
-swagger:model ServersListOKBodyDataItems0
-*/
-type ServersListOKBodyDataItems0 struct {
-
-	// autoscaling group
-	AutoscalingGroup string `json:"autoscalingGroup,omitempty"`
-
-	// availability zone
-	AvailabilityZone string `json:"availabilityZone,omitempty"`
-
-	// aws host name
-	AwsHostName string `json:"awsHostName,omitempty"`
-
-	// aws instance type
-	AwsInstanceType string `json:"awsInstanceType,omitempty"`
-
-	// azure Vm size
-	AzureVMSize string `json:"azureVmSize,omitempty"`
-
-	// cloud type
-	CloudType string `json:"cloudType,omitempty"`
-
-	// cpu
-	CPU int32 `json:"cpu,omitempty"`
-
-	// created at
-	CreatedAt string `json:"createdAt,omitempty"`
-
-	// created by
-	CreatedBy string `json:"createdBy,omitempty"`
-
-	// disk size
-	DiskSize int64 `json:"diskSize,omitempty"`
-
-	// google machine type
-	GoogleMachineType string `json:"googleMachineType,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// ip address
-	IPAddress string `json:"ipAddress,omitempty"`
-
-	// kubernetes health
-	KubernetesHealth string `json:"kubernetesHealth,omitempty"`
-
-	// kubernetes node labels
-	KubernetesNodeLabels []*ServersListOKBodyDataItems0KubernetesNodeLabelsItems0 `json:"kubernetesNodeLabels"`
-
-	// last modified
-	LastModified string `json:"lastModified,omitempty"`
-
-	// last modified by
-	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// openstack flavor
-	OpenstackFlavor string `json:"openstackFlavor,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
-
-	// provider ID
-	ProviderID string `json:"providerID,omitempty"`
-
-	// ram
-	RAM int64 `json:"ram,omitempty"`
-
-	// role
-	Role string `json:"role,omitempty"`
-
-	// shut off
-	ShutOff bool `json:"shutOff"`
-
-	// spot instance
-	SpotInstance bool `json:"spotInstance"`
-
-	// spot price
-	SpotPrice string `json:"spotPrice,omitempty"`
-
-	// status
-	Status string `json:"status,omitempty"`
-}
-
-// Validate validates this servers list o k body data items0
-func (o *ServersListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateKubernetesNodeLabels(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ServersListOKBodyDataItems0) validateKubernetesNodeLabels(formats strfmt.Registry) error {
-	if swag.IsZero(o.KubernetesNodeLabels) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.KubernetesNodeLabels); i++ {
-		if swag.IsZero(o.KubernetesNodeLabels[i]) { // not required
-			continue
-		}
-
-		if o.KubernetesNodeLabels[i] != nil {
-			if err := o.KubernetesNodeLabels[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this servers list o k body data items0 based on the context it is used
-func (o *ServersListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateKubernetesNodeLabels(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ServersListOKBodyDataItems0) contextValidateKubernetesNodeLabels(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.KubernetesNodeLabels); i++ {
-
-		if o.KubernetesNodeLabels[i] != nil {
-			if err := o.KubernetesNodeLabels[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res ServersListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersListOKBodyDataItems0KubernetesNodeLabelsItems0 servers list o k body data items0 kubernetes node labels items0
-swagger:model ServersListOKBodyDataItems0KubernetesNodeLabelsItems0
-*/
-type ServersListOKBodyDataItems0KubernetesNodeLabelsItems0 struct {
-
-	// key
-	Key string `json:"key,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this servers list o k body data items0 kubernetes node labels items0
-func (o *ServersListOKBodyDataItems0KubernetesNodeLabelsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers list o k body data items0 kubernetes node labels items0 based on context it is used
-func (o *ServersListOKBodyDataItems0KubernetesNodeLabelsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersListOKBodyDataItems0KubernetesNodeLabelsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersListOKBodyDataItems0KubernetesNodeLabelsItems0) UnmarshalBinary(b []byte) error {
-	var res ServersListOKBodyDataItems0KubernetesNodeLabelsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersListUnauthorizedBody servers list unauthorized body
-swagger:model ServersListUnauthorizedBody
-*/
-type ServersListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers list unauthorized body
-func (o *ServersListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers list unauthorized body based on context it is used
-func (o *ServersListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ServersListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

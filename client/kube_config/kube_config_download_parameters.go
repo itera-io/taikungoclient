@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubeConfigDownloadParams creates a new KubeConfigDownloadParams object,
@@ -62,7 +64,7 @@ KubeConfigDownloadParams contains all the parameters to send to the API endpoint
 type KubeConfigDownloadParams struct {
 
 	// Body.
-	Body KubeConfigDownloadBody
+	Body *models.DownloadKubeConfigCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *KubeConfigDownloadParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the kube config download params
-func (o *KubeConfigDownloadParams) WithBody(body KubeConfigDownloadBody) *KubeConfigDownloadParams {
+func (o *KubeConfigDownloadParams) WithBody(body *models.DownloadKubeConfigCommand) *KubeConfigDownloadParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kube config download params
-func (o *KubeConfigDownloadParams) SetBody(body KubeConfigDownloadBody) {
+func (o *KubeConfigDownloadParams) SetBody(body *models.DownloadKubeConfigCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *KubeConfigDownloadParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

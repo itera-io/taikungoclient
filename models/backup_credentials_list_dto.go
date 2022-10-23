@@ -47,7 +47,7 @@ type BackupCredentialsListDto struct {
 	OrganizationName string `json:"organizationName,omitempty"`
 
 	// projects
-	Projects []*BackupCredentialsListDtoProjectsItems0 `json:"projects"`
+	Projects []*CommonDropdownDto `json:"projects"`
 
 	// s3 access key Id
 	S3AccessKeyID string `json:"s3AccessKeyId,omitempty"`
@@ -147,46 +147,6 @@ func (m *BackupCredentialsListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BackupCredentialsListDto) UnmarshalBinary(b []byte) error {
 	var res BackupCredentialsListDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// BackupCredentialsListDtoProjectsItems0 backup credentials list dto projects items0
-//
-// swagger:model BackupCredentialsListDtoProjectsItems0
-type BackupCredentialsListDtoProjectsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this backup credentials list dto projects items0
-func (m *BackupCredentialsListDtoProjectsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this backup credentials list dto projects items0 based on context it is used
-func (m *BackupCredentialsListDtoProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *BackupCredentialsListDtoProjectsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *BackupCredentialsListDtoProjectsItems0) UnmarshalBinary(b []byte) error {
-	var res BackupCredentialsListDtoProjectsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

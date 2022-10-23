@@ -29,7 +29,7 @@ type CloudCredentialsDropdownRecordDto struct {
 	Name string `json:"name,omitempty"`
 
 	// projects
-	Projects []*CloudCredentialsDropdownRecordDtoProjectsItems0 `json:"projects"`
+	Projects []*ProjectWithFlavorsAndImagesDto `json:"projects"`
 }
 
 // Validate validates this cloud credentials dropdown record dto
@@ -117,52 +117,6 @@ func (m *CloudCredentialsDropdownRecordDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *CloudCredentialsDropdownRecordDto) UnmarshalBinary(b []byte) error {
 	var res CloudCredentialsDropdownRecordDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// CloudCredentialsDropdownRecordDtoProjectsItems0 cloud credentials dropdown record dto projects items0
-//
-// swagger:model CloudCredentialsDropdownRecordDtoProjectsItems0
-type CloudCredentialsDropdownRecordDtoProjectsItems0 struct {
-
-	// flavors
-	Flavors []string `json:"flavors"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// images
-	Images []string `json:"images"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this cloud credentials dropdown record dto projects items0
-func (m *CloudCredentialsDropdownRecordDtoProjectsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials dropdown record dto projects items0 based on context it is used
-func (m *CloudCredentialsDropdownRecordDtoProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *CloudCredentialsDropdownRecordDtoProjectsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *CloudCredentialsDropdownRecordDtoProjectsItems0) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsDropdownRecordDtoProjectsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

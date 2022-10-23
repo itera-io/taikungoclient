@@ -6,13 +6,13 @@ package users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // UsersToggleMaintenanceModeReader is a Reader for the UsersToggleMaintenanceMode structure.
@@ -75,7 +75,7 @@ UsersToggleMaintenanceModeOK describes a response with status code 200, with def
 Success
 */
 type UsersToggleMaintenanceModeOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this users toggle maintenance mode o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *UsersToggleMaintenanceModeOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglemaintenancemode][%d] usersToggleMaintenanceModeOK  %+v", 200, o.Payload)
 }
 
-func (o *UsersToggleMaintenanceModeOK) GetPayload() interface{} {
+func (o *UsersToggleMaintenanceModeOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ UsersToggleMaintenanceModeBadRequest describes a response with status code 400, 
 Bad Request
 */
 type UsersToggleMaintenanceModeBadRequest struct {
-	Payload []*UsersToggleMaintenanceModeBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this users toggle maintenance mode bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UsersToggleMaintenanceModeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglemaintenancemode][%d] usersToggleMaintenanceModeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersToggleMaintenanceModeBadRequest) GetPayload() []*UsersToggleMaintenanceModeBadRequestBodyItems0 {
+func (o *UsersToggleMaintenanceModeBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ UsersToggleMaintenanceModeUnauthorized describes a response with status code 401
 Unauthorized
 */
 type UsersToggleMaintenanceModeUnauthorized struct {
-	Payload *UsersToggleMaintenanceModeUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users toggle maintenance mode unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *UsersToggleMaintenanceModeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglemaintenancemode][%d] usersToggleMaintenanceModeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersToggleMaintenanceModeUnauthorized) GetPayload() *UsersToggleMaintenanceModeUnauthorizedBody {
+func (o *UsersToggleMaintenanceModeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersToggleMaintenanceModeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UsersToggleMaintenanceModeUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ UsersToggleMaintenanceModeForbidden describes a response with status code 403, w
 Forbidden
 */
 type UsersToggleMaintenanceModeForbidden struct {
-	Payload *UsersToggleMaintenanceModeForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users toggle maintenance mode forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *UsersToggleMaintenanceModeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglemaintenancemode][%d] usersToggleMaintenanceModeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersToggleMaintenanceModeForbidden) GetPayload() *UsersToggleMaintenanceModeForbiddenBody {
+func (o *UsersToggleMaintenanceModeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersToggleMaintenanceModeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UsersToggleMaintenanceModeForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ UsersToggleMaintenanceModeNotFound describes a response with status code 404, wi
 Not Found
 */
 type UsersToggleMaintenanceModeNotFound struct {
-	Payload *UsersToggleMaintenanceModeNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users toggle maintenance mode not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *UsersToggleMaintenanceModeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/togglemaintenancemode][%d] usersToggleMaintenanceModeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersToggleMaintenanceModeNotFound) GetPayload() *UsersToggleMaintenanceModeNotFoundBody {
+func (o *UsersToggleMaintenanceModeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersToggleMaintenanceModeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UsersToggleMaintenanceModeNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *UsersToggleMaintenanceModeInternalServerError) String() string {
 
 func (o *UsersToggleMaintenanceModeInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-UsersToggleMaintenanceModeBadRequestBodyItems0 users toggle maintenance mode bad request body items0
-swagger:model UsersToggleMaintenanceModeBadRequestBodyItems0
-*/
-type UsersToggleMaintenanceModeBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this users toggle maintenance mode bad request body items0
-func (o *UsersToggleMaintenanceModeBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users toggle maintenance mode bad request body items0 based on context it is used
-func (o *UsersToggleMaintenanceModeBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersToggleMaintenanceModeBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersToggleMaintenanceModeBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res UsersToggleMaintenanceModeBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UsersToggleMaintenanceModeForbiddenBody users toggle maintenance mode forbidden body
-swagger:model UsersToggleMaintenanceModeForbiddenBody
-*/
-type UsersToggleMaintenanceModeForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this users toggle maintenance mode forbidden body
-func (o *UsersToggleMaintenanceModeForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users toggle maintenance mode forbidden body based on context it is used
-func (o *UsersToggleMaintenanceModeForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersToggleMaintenanceModeForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersToggleMaintenanceModeForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res UsersToggleMaintenanceModeForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UsersToggleMaintenanceModeNotFoundBody users toggle maintenance mode not found body
-swagger:model UsersToggleMaintenanceModeNotFoundBody
-*/
-type UsersToggleMaintenanceModeNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this users toggle maintenance mode not found body
-func (o *UsersToggleMaintenanceModeNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users toggle maintenance mode not found body based on context it is used
-func (o *UsersToggleMaintenanceModeNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersToggleMaintenanceModeNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersToggleMaintenanceModeNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res UsersToggleMaintenanceModeNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UsersToggleMaintenanceModeUnauthorizedBody users toggle maintenance mode unauthorized body
-swagger:model UsersToggleMaintenanceModeUnauthorizedBody
-*/
-type UsersToggleMaintenanceModeUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this users toggle maintenance mode unauthorized body
-func (o *UsersToggleMaintenanceModeUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users toggle maintenance mode unauthorized body based on context it is used
-func (o *UsersToggleMaintenanceModeUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersToggleMaintenanceModeUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersToggleMaintenanceModeUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res UsersToggleMaintenanceModeUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

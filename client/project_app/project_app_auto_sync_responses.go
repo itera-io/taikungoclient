@@ -6,13 +6,13 @@ package project_app
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectAppAutoSyncReader is a Reader for the ProjectAppAutoSync structure.
@@ -75,7 +75,7 @@ ProjectAppAutoSyncOK describes a response with status code 200, with default hea
 Success
 */
 type ProjectAppAutoSyncOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this project app auto sync o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectAppAutoSyncOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectAppAutoSyncOK) GetPayload() interface{} {
+func (o *ProjectAppAutoSyncOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectAppAutoSyncBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type ProjectAppAutoSyncBadRequest struct {
-	Payload []*ProjectAppAutoSyncBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this project app auto sync bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectAppAutoSyncBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectAppAutoSyncBadRequest) GetPayload() []*ProjectAppAutoSyncBadRequestBodyItems0 {
+func (o *ProjectAppAutoSyncBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectAppAutoSyncUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type ProjectAppAutoSyncUnauthorized struct {
-	Payload *ProjectAppAutoSyncUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app auto sync unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectAppAutoSyncUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectAppAutoSyncUnauthorized) GetPayload() *ProjectAppAutoSyncUnauthorizedBody {
+func (o *ProjectAppAutoSyncUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppAutoSyncUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectAppAutoSyncUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectAppAutoSyncForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type ProjectAppAutoSyncForbidden struct {
-	Payload *ProjectAppAutoSyncForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app auto sync forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectAppAutoSyncForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectAppAutoSyncForbidden) GetPayload() *ProjectAppAutoSyncForbiddenBody {
+func (o *ProjectAppAutoSyncForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppAutoSyncForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectAppAutoSyncForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectAppAutoSyncNotFound describes a response with status code 404, with defau
 Not Found
 */
 type ProjectAppAutoSyncNotFound struct {
-	Payload *ProjectAppAutoSyncNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project app auto sync not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectAppAutoSyncNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectApp/autosync][%d] projectAppAutoSyncNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectAppAutoSyncNotFound) GetPayload() *ProjectAppAutoSyncNotFoundBody {
+func (o *ProjectAppAutoSyncNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectAppAutoSyncNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectAppAutoSyncNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *ProjectAppAutoSyncInternalServerError) String() string {
 
 func (o *ProjectAppAutoSyncInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectAppAutoSyncBadRequestBodyItems0 project app auto sync bad request body items0
-swagger:model ProjectAppAutoSyncBadRequestBodyItems0
-*/
-type ProjectAppAutoSyncBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this project app auto sync bad request body items0
-func (o *ProjectAppAutoSyncBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project app auto sync bad request body items0 based on context it is used
-func (o *ProjectAppAutoSyncBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectAppAutoSyncBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectAppAutoSyncBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectAppAutoSyncBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectAppAutoSyncBody project app auto sync body
-swagger:model ProjectAppAutoSyncBody
-*/
-type ProjectAppAutoSyncBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// mode
-	Mode string `json:"mode,omitempty"`
-}
-
-// Validate validates this project app auto sync body
-func (o *ProjectAppAutoSyncBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project app auto sync body based on context it is used
-func (o *ProjectAppAutoSyncBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectAppAutoSyncBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectAppAutoSyncBody) UnmarshalBinary(b []byte) error {
-	var res ProjectAppAutoSyncBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectAppAutoSyncForbiddenBody project app auto sync forbidden body
-swagger:model ProjectAppAutoSyncForbiddenBody
-*/
-type ProjectAppAutoSyncForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this project app auto sync forbidden body
-func (o *ProjectAppAutoSyncForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project app auto sync forbidden body based on context it is used
-func (o *ProjectAppAutoSyncForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectAppAutoSyncForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectAppAutoSyncForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectAppAutoSyncForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectAppAutoSyncNotFoundBody project app auto sync not found body
-swagger:model ProjectAppAutoSyncNotFoundBody
-*/
-type ProjectAppAutoSyncNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this project app auto sync not found body
-func (o *ProjectAppAutoSyncNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project app auto sync not found body based on context it is used
-func (o *ProjectAppAutoSyncNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectAppAutoSyncNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectAppAutoSyncNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectAppAutoSyncNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectAppAutoSyncUnauthorizedBody project app auto sync unauthorized body
-swagger:model ProjectAppAutoSyncUnauthorizedBody
-*/
-type ProjectAppAutoSyncUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this project app auto sync unauthorized body
-func (o *ProjectAppAutoSyncUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project app auto sync unauthorized body based on context it is used
-func (o *ProjectAppAutoSyncUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectAppAutoSyncUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectAppAutoSyncUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectAppAutoSyncUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

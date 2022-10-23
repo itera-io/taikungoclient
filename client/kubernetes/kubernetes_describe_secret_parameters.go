@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesDescribeSecretParams creates a new KubernetesDescribeSecretParams object,
@@ -62,7 +64,7 @@ KubernetesDescribeSecretParams contains all the parameters to send to the API en
 type KubernetesDescribeSecretParams struct {
 
 	// Body.
-	Body KubernetesDescribeSecretBody
+	Body *models.DescribeSecretCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *KubernetesDescribeSecretParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the kubernetes describe secret params
-func (o *KubernetesDescribeSecretParams) WithBody(body KubernetesDescribeSecretBody) *KubernetesDescribeSecretParams {
+func (o *KubernetesDescribeSecretParams) WithBody(body *models.DescribeSecretCommand) *KubernetesDescribeSecretParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes describe secret params
-func (o *KubernetesDescribeSecretParams) SetBody(body KubernetesDescribeSecretBody) {
+func (o *KubernetesDescribeSecretParams) SetBody(body *models.DescribeSecretCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *KubernetesDescribeSecretParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

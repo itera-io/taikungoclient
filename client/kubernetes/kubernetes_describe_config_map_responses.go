@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesDescribeConfigMapReader is a Reader for the KubernetesDescribeConfigMap structure.
@@ -136,7 +136,7 @@ KubernetesDescribeConfigMapBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesDescribeConfigMapBadRequest struct {
-	Payload []*KubernetesDescribeConfigMapBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes describe config map bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeConfigMapBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeConfigMapBadRequest) GetPayload() []*KubernetesDescribeConfigMapBadRequestBodyItems0 {
+func (o *KubernetesDescribeConfigMapBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesDescribeConfigMapUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesDescribeConfigMapUnauthorized struct {
-	Payload *KubernetesDescribeConfigMapUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe config map unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesDescribeConfigMapUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeConfigMapUnauthorized) GetPayload() *KubernetesDescribeConfigMapUnauthorizedBody {
+func (o *KubernetesDescribeConfigMapUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeConfigMapUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeConfigMapUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesDescribeConfigMapForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesDescribeConfigMapForbidden struct {
-	Payload *KubernetesDescribeConfigMapForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe config map forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesDescribeConfigMapForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeConfigMapForbidden) GetPayload() *KubernetesDescribeConfigMapForbiddenBody {
+func (o *KubernetesDescribeConfigMapForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeConfigMapForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeConfigMapForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesDescribeConfigMapNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesDescribeConfigMapNotFound struct {
-	Payload *KubernetesDescribeConfigMapNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe config map not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesDescribeConfigMapNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/configmap][%d] kubernetesDescribeConfigMapNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeConfigMapNotFound) GetPayload() *KubernetesDescribeConfigMapNotFoundBody {
+func (o *KubernetesDescribeConfigMapNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeConfigMapNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeConfigMapNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,240 +423,5 @@ func (o *KubernetesDescribeConfigMapInternalServerError) String() string {
 
 func (o *KubernetesDescribeConfigMapInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesDescribeConfigMapBadRequestBodyItems0 kubernetes describe config map bad request body items0
-swagger:model KubernetesDescribeConfigMapBadRequestBodyItems0
-*/
-type KubernetesDescribeConfigMapBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes describe config map bad request body items0
-func (o *KubernetesDescribeConfigMapBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe config map bad request body items0 based on context it is used
-func (o *KubernetesDescribeConfigMapBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeConfigMapBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeConfigMapBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeConfigMapBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeConfigMapBody kubernetes describe config map body
-swagger:model KubernetesDescribeConfigMapBody
-*/
-type KubernetesDescribeConfigMapBody struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this kubernetes describe config map body
-func (o *KubernetesDescribeConfigMapBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe config map body based on context it is used
-func (o *KubernetesDescribeConfigMapBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeConfigMapBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeConfigMapBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeConfigMapBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeConfigMapForbiddenBody kubernetes describe config map forbidden body
-swagger:model KubernetesDescribeConfigMapForbiddenBody
-*/
-type KubernetesDescribeConfigMapForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe config map forbidden body
-func (o *KubernetesDescribeConfigMapForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe config map forbidden body based on context it is used
-func (o *KubernetesDescribeConfigMapForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeConfigMapForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeConfigMapForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeConfigMapForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeConfigMapNotFoundBody kubernetes describe config map not found body
-swagger:model KubernetesDescribeConfigMapNotFoundBody
-*/
-type KubernetesDescribeConfigMapNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe config map not found body
-func (o *KubernetesDescribeConfigMapNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe config map not found body based on context it is used
-func (o *KubernetesDescribeConfigMapNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeConfigMapNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeConfigMapNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeConfigMapNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeConfigMapUnauthorizedBody kubernetes describe config map unauthorized body
-swagger:model KubernetesDescribeConfigMapUnauthorizedBody
-*/
-type KubernetesDescribeConfigMapUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe config map unauthorized body
-func (o *KubernetesDescribeConfigMapUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe config map unauthorized body based on context it is used
-func (o *KubernetesDescribeConfigMapUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeConfigMapUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeConfigMapUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeConfigMapUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

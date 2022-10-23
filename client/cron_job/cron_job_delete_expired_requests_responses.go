@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobDeleteExpiredRequestsReader is a Reader for the CronJobDeleteExpiredRequests structure.
@@ -75,7 +75,7 @@ CronJobDeleteExpiredRequestsOK describes a response with status code 200, with d
 Success
 */
 type CronJobDeleteExpiredRequestsOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job delete expired requests o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobDeleteExpiredRequestsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredRequestsOK) GetPayload() interface{} {
+func (o *CronJobDeleteExpiredRequestsOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobDeleteExpiredRequestsBadRequest describes a response with status code 400
 Bad Request
 */
 type CronJobDeleteExpiredRequestsBadRequest struct {
-	Payload []*CronJobDeleteExpiredRequestsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job delete expired requests bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobDeleteExpiredRequestsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredRequestsBadRequest) GetPayload() []*CronJobDeleteExpiredRequestsBadRequestBodyItems0 {
+func (o *CronJobDeleteExpiredRequestsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobDeleteExpiredRequestsUnauthorized describes a response with status code 4
 Unauthorized
 */
 type CronJobDeleteExpiredRequestsUnauthorized struct {
-	Payload *CronJobDeleteExpiredRequestsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete expired requests unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobDeleteExpiredRequestsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredRequestsUnauthorized) GetPayload() *CronJobDeleteExpiredRequestsUnauthorizedBody {
+func (o *CronJobDeleteExpiredRequestsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredRequestsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobDeleteExpiredRequestsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobDeleteExpiredRequestsForbidden describes a response with status code 403,
 Forbidden
 */
 type CronJobDeleteExpiredRequestsForbidden struct {
-	Payload *CronJobDeleteExpiredRequestsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete expired requests forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobDeleteExpiredRequestsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredRequestsForbidden) GetPayload() *CronJobDeleteExpiredRequestsForbiddenBody {
+func (o *CronJobDeleteExpiredRequestsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredRequestsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobDeleteExpiredRequestsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobDeleteExpiredRequestsNotFound describes a response with status code 404, 
 Not Found
 */
 type CronJobDeleteExpiredRequestsNotFound struct {
-	Payload *CronJobDeleteExpiredRequestsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete expired requests not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobDeleteExpiredRequestsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/taikun-requests][%d] cronJobDeleteExpiredRequestsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteExpiredRequestsNotFound) GetPayload() *CronJobDeleteExpiredRequestsNotFoundBody {
+func (o *CronJobDeleteExpiredRequestsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteExpiredRequestsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobDeleteExpiredRequestsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *CronJobDeleteExpiredRequestsInternalServerError) String() string {
 
 func (o *CronJobDeleteExpiredRequestsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CronJobDeleteExpiredRequestsBadRequestBodyItems0 cron job delete expired requests bad request body items0
-swagger:model CronJobDeleteExpiredRequestsBadRequestBodyItems0
-*/
-type CronJobDeleteExpiredRequestsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this cron job delete expired requests bad request body items0
-func (o *CronJobDeleteExpiredRequestsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete expired requests bad request body items0 based on context it is used
-func (o *CronJobDeleteExpiredRequestsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteExpiredRequestsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteExpiredRequestsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteExpiredRequestsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobDeleteExpiredRequestsForbiddenBody cron job delete expired requests forbidden body
-swagger:model CronJobDeleteExpiredRequestsForbiddenBody
-*/
-type CronJobDeleteExpiredRequestsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job delete expired requests forbidden body
-func (o *CronJobDeleteExpiredRequestsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete expired requests forbidden body based on context it is used
-func (o *CronJobDeleteExpiredRequestsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteExpiredRequestsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteExpiredRequestsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteExpiredRequestsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobDeleteExpiredRequestsNotFoundBody cron job delete expired requests not found body
-swagger:model CronJobDeleteExpiredRequestsNotFoundBody
-*/
-type CronJobDeleteExpiredRequestsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job delete expired requests not found body
-func (o *CronJobDeleteExpiredRequestsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete expired requests not found body based on context it is used
-func (o *CronJobDeleteExpiredRequestsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteExpiredRequestsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteExpiredRequestsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteExpiredRequestsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobDeleteExpiredRequestsUnauthorizedBody cron job delete expired requests unauthorized body
-swagger:model CronJobDeleteExpiredRequestsUnauthorizedBody
-*/
-type CronJobDeleteExpiredRequestsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job delete expired requests unauthorized body
-func (o *CronJobDeleteExpiredRequestsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete expired requests unauthorized body based on context it is used
-func (o *CronJobDeleteExpiredRequestsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteExpiredRequestsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteExpiredRequestsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteExpiredRequestsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

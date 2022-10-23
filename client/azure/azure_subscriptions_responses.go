@@ -6,13 +6,13 @@ package azure
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AzureSubscriptionsReader is a Reader for the AzureSubscriptions structure.
@@ -75,7 +75,7 @@ AzureSubscriptionsOK describes a response with status code 200, with default hea
 Success
 */
 type AzureSubscriptionsOK struct {
-	Payload []*AzureSubscriptionsOKBodyItems0
+	Payload []*models.CommonStringBasedDropdownDto
 }
 
 // IsSuccess returns true when this azure subscriptions o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AzureSubscriptionsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsOK  %+v", 200, o.Payload)
 }
 
-func (o *AzureSubscriptionsOK) GetPayload() []*AzureSubscriptionsOKBodyItems0 {
+func (o *AzureSubscriptionsOK) GetPayload() []*models.CommonStringBasedDropdownDto {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AzureSubscriptionsBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type AzureSubscriptionsBadRequest struct {
-	Payload []*AzureSubscriptionsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this azure subscriptions bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AzureSubscriptionsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureSubscriptionsBadRequest) GetPayload() []*AzureSubscriptionsBadRequestBodyItems0 {
+func (o *AzureSubscriptionsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AzureSubscriptionsUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type AzureSubscriptionsUnauthorized struct {
-	Payload *AzureSubscriptionsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure subscriptions unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AzureSubscriptionsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureSubscriptionsUnauthorized) GetPayload() *AzureSubscriptionsUnauthorizedBody {
+func (o *AzureSubscriptionsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureSubscriptionsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureSubscriptionsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AzureSubscriptionsForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type AzureSubscriptionsForbidden struct {
-	Payload *AzureSubscriptionsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure subscriptions forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AzureSubscriptionsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureSubscriptionsForbidden) GetPayload() *AzureSubscriptionsForbiddenBody {
+func (o *AzureSubscriptionsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureSubscriptionsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureSubscriptionsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AzureSubscriptionsNotFound describes a response with status code 404, with defau
 Not Found
 */
 type AzureSubscriptionsNotFound struct {
-	Payload *AzureSubscriptionsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure subscriptions not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AzureSubscriptionsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/subscriptions][%d] azureSubscriptionsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureSubscriptionsNotFound) GetPayload() *AzureSubscriptionsNotFoundBody {
+func (o *AzureSubscriptionsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureSubscriptionsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureSubscriptionsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,281 +423,5 @@ func (o *AzureSubscriptionsInternalServerError) String() string {
 
 func (o *AzureSubscriptionsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AzureSubscriptionsBadRequestBodyItems0 azure subscriptions bad request body items0
-swagger:model AzureSubscriptionsBadRequestBodyItems0
-*/
-type AzureSubscriptionsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this azure subscriptions bad request body items0
-func (o *AzureSubscriptionsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure subscriptions bad request body items0 based on context it is used
-func (o *AzureSubscriptionsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureSubscriptionsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureSubscriptionsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AzureSubscriptionsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureSubscriptionsBody azure subscriptions body
-swagger:model AzureSubscriptionsBody
-*/
-type AzureSubscriptionsBody struct {
-
-	// client Id
-	ClientID string `json:"clientId,omitempty"`
-
-	// client secret
-	ClientSecret string `json:"clientSecret,omitempty"`
-
-	// tenant Id
-	TenantID string `json:"tenantId,omitempty"`
-}
-
-// Validate validates this azure subscriptions body
-func (o *AzureSubscriptionsBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure subscriptions body based on context it is used
-func (o *AzureSubscriptionsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureSubscriptionsBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureSubscriptionsBody) UnmarshalBinary(b []byte) error {
-	var res AzureSubscriptionsBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureSubscriptionsForbiddenBody azure subscriptions forbidden body
-swagger:model AzureSubscriptionsForbiddenBody
-*/
-type AzureSubscriptionsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure subscriptions forbidden body
-func (o *AzureSubscriptionsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure subscriptions forbidden body based on context it is used
-func (o *AzureSubscriptionsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureSubscriptionsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureSubscriptionsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AzureSubscriptionsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureSubscriptionsNotFoundBody azure subscriptions not found body
-swagger:model AzureSubscriptionsNotFoundBody
-*/
-type AzureSubscriptionsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure subscriptions not found body
-func (o *AzureSubscriptionsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure subscriptions not found body based on context it is used
-func (o *AzureSubscriptionsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureSubscriptionsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureSubscriptionsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AzureSubscriptionsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureSubscriptionsOKBodyItems0 azure subscriptions o k body items0
-swagger:model AzureSubscriptionsOKBodyItems0
-*/
-type AzureSubscriptionsOKBodyItems0 struct {
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this azure subscriptions o k body items0
-func (o *AzureSubscriptionsOKBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure subscriptions o k body items0 based on context it is used
-func (o *AzureSubscriptionsOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureSubscriptionsOKBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureSubscriptionsOKBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AzureSubscriptionsOKBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureSubscriptionsUnauthorizedBody azure subscriptions unauthorized body
-swagger:model AzureSubscriptionsUnauthorizedBody
-*/
-type AzureSubscriptionsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure subscriptions unauthorized body
-func (o *AzureSubscriptionsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure subscriptions unauthorized body based on context it is used
-func (o *AzureSubscriptionsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureSubscriptionsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureSubscriptionsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AzureSubscriptionsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

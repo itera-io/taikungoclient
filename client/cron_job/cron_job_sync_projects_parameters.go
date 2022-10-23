@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobSyncProjectsParams creates a new CronJobSyncProjectsParams object,
@@ -62,7 +64,7 @@ CronJobSyncProjectsParams contains all the parameters to send to the API endpoin
 type CronJobSyncProjectsParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.SyncProjectsCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CronJobSyncProjectsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the cron job sync projects params
-func (o *CronJobSyncProjectsParams) WithBody(body interface{}) *CronJobSyncProjectsParams {
+func (o *CronJobSyncProjectsParams) WithBody(body models.SyncProjectsCommand) *CronJobSyncProjectsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job sync projects params
-func (o *CronJobSyncProjectsParams) SetBody(body interface{}) {
+func (o *CronJobSyncProjectsParams) SetBody(body models.SyncProjectsCommand) {
 	o.Body = body
 }
 

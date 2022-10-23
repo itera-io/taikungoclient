@@ -20,7 +20,7 @@ import (
 type BindAppRepositoryCommand struct {
 
 	// filtering elements
-	FilteringElements []*BindAppRepositoryCommandFilteringElementsItems0 `json:"filteringElements"`
+	FilteringElements []*FilteringElementDto `json:"filteringElements"`
 }
 
 // Validate validates this bind app repository command
@@ -108,46 +108,6 @@ func (m *BindAppRepositoryCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BindAppRepositoryCommand) UnmarshalBinary(b []byte) error {
 	var res BindAppRepositoryCommand
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// BindAppRepositoryCommandFilteringElementsItems0 bind app repository command filtering elements items0
-//
-// swagger:model BindAppRepositoryCommandFilteringElementsItems0
-type BindAppRepositoryCommandFilteringElementsItems0 struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-}
-
-// Validate validates this bind app repository command filtering elements items0
-func (m *BindAppRepositoryCommandFilteringElementsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this bind app repository command filtering elements items0 based on context it is used
-func (m *BindAppRepositoryCommandFilteringElementsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *BindAppRepositoryCommandFilteringElementsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *BindAppRepositoryCommandFilteringElementsItems0) UnmarshalBinary(b []byte) error {
-	var res BindAppRepositoryCommandFilteringElementsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

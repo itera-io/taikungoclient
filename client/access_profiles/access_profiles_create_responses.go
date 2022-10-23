@@ -6,15 +6,13 @@ package access_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AccessProfilesCreateReader is a Reader for the AccessProfilesCreate structure.
@@ -77,7 +75,7 @@ AccessProfilesCreateOK describes a response with status code 200, with default h
 Success
 */
 type AccessProfilesCreateOK struct {
-	Payload *AccessProfilesCreateOKBody
+	Payload *models.APIResponse
 }
 
 // IsSuccess returns true when this access profiles create o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *AccessProfilesCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *AccessProfilesCreateOK) GetPayload() *AccessProfilesCreateOKBody {
+func (o *AccessProfilesCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *AccessProfilesCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AccessProfilesCreateOKBody)
+	o.Payload = new(models.APIResponse)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ AccessProfilesCreateBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type AccessProfilesCreateBadRequest struct {
-	Payload []*AccessProfilesCreateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this access profiles create bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *AccessProfilesCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AccessProfilesCreateBadRequest) GetPayload() []*AccessProfilesCreateBadRequestBodyItems0 {
+func (o *AccessProfilesCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ AccessProfilesCreateUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type AccessProfilesCreateUnauthorized struct {
-	Payload *AccessProfilesCreateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles create unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *AccessProfilesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AccessProfilesCreateUnauthorized) GetPayload() *AccessProfilesCreateUnauthorizedBody {
+func (o *AccessProfilesCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AccessProfilesCreateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ AccessProfilesCreateForbidden describes a response with status code 403, with de
 Forbidden
 */
 type AccessProfilesCreateForbidden struct {
-	Payload *AccessProfilesCreateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles create forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *AccessProfilesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AccessProfilesCreateForbidden) GetPayload() *AccessProfilesCreateForbiddenBody {
+func (o *AccessProfilesCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AccessProfilesCreateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ AccessProfilesCreateNotFound describes a response with status code 404, with def
 Not Found
 */
 type AccessProfilesCreateNotFound struct {
-	Payload *AccessProfilesCreateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles create not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *AccessProfilesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/create][%d] accessProfilesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AccessProfilesCreateNotFound) GetPayload() *AccessProfilesCreateNotFoundBody {
+func (o *AccessProfilesCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AccessProfilesCreateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,689 +425,5 @@ func (o *AccessProfilesCreateInternalServerError) String() string {
 
 func (o *AccessProfilesCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AccessProfilesCreateBadRequestBodyItems0 access profiles create bad request body items0
-swagger:model AccessProfilesCreateBadRequestBodyItems0
-*/
-type AccessProfilesCreateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this access profiles create bad request body items0
-func (o *AccessProfilesCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles create bad request body items0 based on context it is used
-func (o *AccessProfilesCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesCreateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesCreateBody access profiles create body
-swagger:model AccessProfilesCreateBody
-*/
-type AccessProfilesCreateBody struct {
-
-	// allowed hosts
-	AllowedHosts []*AccessProfilesCreateParamsBodyAllowedHostsItems0 `json:"allowedHosts"`
-
-	// dns servers
-	DNSServers []*AccessProfilesCreateParamsBodyDNSServersItems0 `json:"dnsServers"`
-
-	// http proxy
-	HTTPProxy string `json:"httpProxy,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// ntp servers
-	NtpServers []*AccessProfilesCreateParamsBodyNtpServersItems0 `json:"ntpServers"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// ssh users
-	SSHUsers []*AccessProfilesCreateParamsBodySSHUsersItems0 `json:"sshUsers"`
-}
-
-// Validate validates this access profiles create body
-func (o *AccessProfilesCreateBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateAllowedHosts(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateDNSServers(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateNtpServers(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateSSHUsers(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AccessProfilesCreateBody) validateAllowedHosts(formats strfmt.Registry) error {
-	if swag.IsZero(o.AllowedHosts) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.AllowedHosts); i++ {
-		if swag.IsZero(o.AllowedHosts[i]) { // not required
-			continue
-		}
-
-		if o.AllowedHosts[i] != nil {
-			if err := o.AllowedHosts[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "allowedHosts" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "allowedHosts" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *AccessProfilesCreateBody) validateDNSServers(formats strfmt.Registry) error {
-	if swag.IsZero(o.DNSServers) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.DNSServers); i++ {
-		if swag.IsZero(o.DNSServers[i]) { // not required
-			continue
-		}
-
-		if o.DNSServers[i] != nil {
-			if err := o.DNSServers[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "dnsServers" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "dnsServers" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *AccessProfilesCreateBody) validateNtpServers(formats strfmt.Registry) error {
-	if swag.IsZero(o.NtpServers) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.NtpServers); i++ {
-		if swag.IsZero(o.NtpServers[i]) { // not required
-			continue
-		}
-
-		if o.NtpServers[i] != nil {
-			if err := o.NtpServers[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "ntpServers" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "ntpServers" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *AccessProfilesCreateBody) validateSSHUsers(formats strfmt.Registry) error {
-	if swag.IsZero(o.SSHUsers) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.SSHUsers); i++ {
-		if swag.IsZero(o.SSHUsers[i]) { // not required
-			continue
-		}
-
-		if o.SSHUsers[i] != nil {
-			if err := o.SSHUsers[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "sshUsers" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "sshUsers" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this access profiles create body based on the context it is used
-func (o *AccessProfilesCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateAllowedHosts(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateDNSServers(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateNtpServers(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateSSHUsers(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AccessProfilesCreateBody) contextValidateAllowedHosts(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.AllowedHosts); i++ {
-
-		if o.AllowedHosts[i] != nil {
-			if err := o.AllowedHosts[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "allowedHosts" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "allowedHosts" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *AccessProfilesCreateBody) contextValidateDNSServers(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.DNSServers); i++ {
-
-		if o.DNSServers[i] != nil {
-			if err := o.DNSServers[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "dnsServers" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "dnsServers" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *AccessProfilesCreateBody) contextValidateNtpServers(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.NtpServers); i++ {
-
-		if o.NtpServers[i] != nil {
-			if err := o.NtpServers[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "ntpServers" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "ntpServers" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *AccessProfilesCreateBody) contextValidateSSHUsers(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.SSHUsers); i++ {
-
-		if o.SSHUsers[i] != nil {
-			if err := o.SSHUsers[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "sshUsers" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "sshUsers" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesCreateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesCreateBody) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesCreateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesCreateForbiddenBody access profiles create forbidden body
-swagger:model AccessProfilesCreateForbiddenBody
-*/
-type AccessProfilesCreateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this access profiles create forbidden body
-func (o *AccessProfilesCreateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles create forbidden body based on context it is used
-func (o *AccessProfilesCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesCreateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesCreateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesCreateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesCreateNotFoundBody access profiles create not found body
-swagger:model AccessProfilesCreateNotFoundBody
-*/
-type AccessProfilesCreateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this access profiles create not found body
-func (o *AccessProfilesCreateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles create not found body based on context it is used
-func (o *AccessProfilesCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesCreateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesCreateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesCreateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesCreateOKBody access profiles create o k body
-swagger:model AccessProfilesCreateOKBody
-*/
-type AccessProfilesCreateOKBody struct {
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// is error
-	IsError bool `json:"isError"`
-
-	// message
-	Message string `json:"message,omitempty"`
-
-	// result
-	Result interface{} `json:"result,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-}
-
-// Validate validates this access profiles create o k body
-func (o *AccessProfilesCreateOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles create o k body based on context it is used
-func (o *AccessProfilesCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesCreateOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesCreateOKBody) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesCreateOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesCreateParamsBodyAllowedHostsItems0 access profiles create params body allowed hosts items0
-swagger:model AccessProfilesCreateParamsBodyAllowedHostsItems0
-*/
-type AccessProfilesCreateParamsBodyAllowedHostsItems0 struct {
-
-	// description
-	Description string `json:"description,omitempty"`
-
-	// ip address
-	IPAddress string `json:"ipAddress,omitempty"`
-
-	// mask bits
-	MaskBits int32 `json:"maskBits,omitempty"`
-}
-
-// Validate validates this access profiles create params body allowed hosts items0
-func (o *AccessProfilesCreateParamsBodyAllowedHostsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles create params body allowed hosts items0 based on context it is used
-func (o *AccessProfilesCreateParamsBodyAllowedHostsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesCreateParamsBodyAllowedHostsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesCreateParamsBodyAllowedHostsItems0) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesCreateParamsBodyAllowedHostsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesCreateParamsBodyDNSServersItems0 access profiles create params body DNS servers items0
-swagger:model AccessProfilesCreateParamsBodyDNSServersItems0
-*/
-type AccessProfilesCreateParamsBodyDNSServersItems0 struct {
-
-	// address
-	Address string `json:"address,omitempty"`
-}
-
-// Validate validates this access profiles create params body DNS servers items0
-func (o *AccessProfilesCreateParamsBodyDNSServersItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles create params body DNS servers items0 based on context it is used
-func (o *AccessProfilesCreateParamsBodyDNSServersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesCreateParamsBodyDNSServersItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesCreateParamsBodyDNSServersItems0) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesCreateParamsBodyDNSServersItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesCreateParamsBodyNtpServersItems0 access profiles create params body ntp servers items0
-swagger:model AccessProfilesCreateParamsBodyNtpServersItems0
-*/
-type AccessProfilesCreateParamsBodyNtpServersItems0 struct {
-
-	// address
-	Address string `json:"address,omitempty"`
-}
-
-// Validate validates this access profiles create params body ntp servers items0
-func (o *AccessProfilesCreateParamsBodyNtpServersItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles create params body ntp servers items0 based on context it is used
-func (o *AccessProfilesCreateParamsBodyNtpServersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesCreateParamsBodyNtpServersItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesCreateParamsBodyNtpServersItems0) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesCreateParamsBodyNtpServersItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesCreateParamsBodySSHUsersItems0 access profiles create params body SSH users items0
-swagger:model AccessProfilesCreateParamsBodySSHUsersItems0
-*/
-type AccessProfilesCreateParamsBodySSHUsersItems0 struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// ssh public key
-	SSHPublicKey string `json:"sshPublicKey,omitempty"`
-}
-
-// Validate validates this access profiles create params body SSH users items0
-func (o *AccessProfilesCreateParamsBodySSHUsersItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles create params body SSH users items0 based on context it is used
-func (o *AccessProfilesCreateParamsBodySSHUsersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesCreateParamsBodySSHUsersItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesCreateParamsBodySSHUsersItems0) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesCreateParamsBodySSHUsersItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesCreateUnauthorizedBody access profiles create unauthorized body
-swagger:model AccessProfilesCreateUnauthorizedBody
-*/
-type AccessProfilesCreateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this access profiles create unauthorized body
-func (o *AccessProfilesCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles create unauthorized body based on context it is used
-func (o *AccessProfilesCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesCreateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

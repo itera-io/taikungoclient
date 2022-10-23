@@ -6,14 +6,13 @@ package openstack
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // OpenstackQuotasReader is a Reader for the OpenstackQuotas structure.
@@ -76,7 +75,7 @@ OpenstackQuotasOK describes a response with status code 200, with default header
 Success
 */
 type OpenstackQuotasOK struct {
-	Payload *OpenstackQuotasOKBody
+	Payload *models.OpenstackQuotaList
 }
 
 // IsSuccess returns true when this openstack quotas o k response has a 2xx status code
@@ -112,13 +111,13 @@ func (o *OpenstackQuotasOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasOK  %+v", 200, o.Payload)
 }
 
-func (o *OpenstackQuotasOK) GetPayload() *OpenstackQuotasOKBody {
+func (o *OpenstackQuotasOK) GetPayload() *models.OpenstackQuotaList {
 	return o.Payload
 }
 
 func (o *OpenstackQuotasOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackQuotasOKBody)
+	o.Payload = new(models.OpenstackQuotaList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -139,7 +138,7 @@ OpenstackQuotasBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type OpenstackQuotasBadRequest struct {
-	Payload []*OpenstackQuotasBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this openstack quotas bad request response has a 2xx status code
@@ -175,7 +174,7 @@ func (o *OpenstackQuotasBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackQuotasBadRequest) GetPayload() []*OpenstackQuotasBadRequestBodyItems0 {
+func (o *OpenstackQuotasBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -200,7 +199,7 @@ OpenstackQuotasUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type OpenstackQuotasUnauthorized struct {
-	Payload *OpenstackQuotasUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack quotas unauthorized response has a 2xx status code
@@ -236,13 +235,13 @@ func (o *OpenstackQuotasUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackQuotasUnauthorized) GetPayload() *OpenstackQuotasUnauthorizedBody {
+func (o *OpenstackQuotasUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackQuotasUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackQuotasUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -263,7 +262,7 @@ OpenstackQuotasForbidden describes a response with status code 403, with default
 Forbidden
 */
 type OpenstackQuotasForbidden struct {
-	Payload *OpenstackQuotasForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack quotas forbidden response has a 2xx status code
@@ -299,13 +298,13 @@ func (o *OpenstackQuotasForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackQuotasForbidden) GetPayload() *OpenstackQuotasForbiddenBody {
+func (o *OpenstackQuotasForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackQuotasForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackQuotasForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -326,7 +325,7 @@ OpenstackQuotasNotFound describes a response with status code 404, with default 
 Not Found
 */
 type OpenstackQuotasNotFound struct {
-	Payload *OpenstackQuotasNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack quotas not found response has a 2xx status code
@@ -362,13 +361,13 @@ func (o *OpenstackQuotasNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/quotas][%d] openstackQuotasNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackQuotasNotFound) GetPayload() *OpenstackQuotasNotFoundBody {
+func (o *OpenstackQuotasNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackQuotasNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackQuotasNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -426,600 +425,5 @@ func (o *OpenstackQuotasInternalServerError) String() string {
 
 func (o *OpenstackQuotasInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-OpenstackQuotasBadRequestBodyItems0 openstack quotas bad request body items0
-swagger:model OpenstackQuotasBadRequestBodyItems0
-*/
-type OpenstackQuotasBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this openstack quotas bad request body items0
-func (o *OpenstackQuotasBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack quotas bad request body items0 based on context it is used
-func (o *OpenstackQuotasBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackQuotasBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackQuotasBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OpenstackQuotasBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackQuotasBody openstack quotas body
-swagger:model OpenstackQuotasBody
-*/
-type OpenstackQuotasBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-}
-
-// Validate validates this openstack quotas body
-func (o *OpenstackQuotasBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack quotas body based on context it is used
-func (o *OpenstackQuotasBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackQuotasBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackQuotasBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackQuotasBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackQuotasForbiddenBody openstack quotas forbidden body
-swagger:model OpenstackQuotasForbiddenBody
-*/
-type OpenstackQuotasForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this openstack quotas forbidden body
-func (o *OpenstackQuotasForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack quotas forbidden body based on context it is used
-func (o *OpenstackQuotasForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackQuotasForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackQuotasForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackQuotasForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackQuotasNotFoundBody openstack quotas not found body
-swagger:model OpenstackQuotasNotFoundBody
-*/
-type OpenstackQuotasNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this openstack quotas not found body
-func (o *OpenstackQuotasNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack quotas not found body based on context it is used
-func (o *OpenstackQuotasNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackQuotasNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackQuotasNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackQuotasNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackQuotasOKBody openstack quotas o k body
-swagger:model OpenstackQuotasOKBody
-*/
-type OpenstackQuotasOKBody struct {
-
-	// compute
-	Compute *OpenstackQuotasOKBodyCompute `json:"compute,omitempty"`
-
-	// network
-	Network *OpenstackQuotasOKBodyNetwork `json:"network,omitempty"`
-
-	// volume
-	Volume *OpenstackQuotasOKBodyVolume `json:"volume,omitempty"`
-}
-
-// Validate validates this openstack quotas o k body
-func (o *OpenstackQuotasOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateCompute(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateNetwork(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateVolume(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *OpenstackQuotasOKBody) validateCompute(formats strfmt.Registry) error {
-	if swag.IsZero(o.Compute) { // not required
-		return nil
-	}
-
-	if o.Compute != nil {
-		if err := o.Compute.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("openstackQuotasOK" + "." + "compute")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("openstackQuotasOK" + "." + "compute")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *OpenstackQuotasOKBody) validateNetwork(formats strfmt.Registry) error {
-	if swag.IsZero(o.Network) { // not required
-		return nil
-	}
-
-	if o.Network != nil {
-		if err := o.Network.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("openstackQuotasOK" + "." + "network")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("openstackQuotasOK" + "." + "network")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *OpenstackQuotasOKBody) validateVolume(formats strfmt.Registry) error {
-	if swag.IsZero(o.Volume) { // not required
-		return nil
-	}
-
-	if o.Volume != nil {
-		if err := o.Volume.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("openstackQuotasOK" + "." + "volume")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("openstackQuotasOK" + "." + "volume")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this openstack quotas o k body based on the context it is used
-func (o *OpenstackQuotasOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateCompute(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateNetwork(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateVolume(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *OpenstackQuotasOKBody) contextValidateCompute(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Compute != nil {
-		if err := o.Compute.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("openstackQuotasOK" + "." + "compute")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("openstackQuotasOK" + "." + "compute")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *OpenstackQuotasOKBody) contextValidateNetwork(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Network != nil {
-		if err := o.Network.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("openstackQuotasOK" + "." + "network")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("openstackQuotasOK" + "." + "network")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *OpenstackQuotasOKBody) contextValidateVolume(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Volume != nil {
-		if err := o.Volume.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("openstackQuotasOK" + "." + "volume")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("openstackQuotasOK" + "." + "volume")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackQuotasOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackQuotasOKBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackQuotasOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackQuotasOKBodyCompute openstack quotas o k body compute
-swagger:model OpenstackQuotasOKBodyCompute
-*/
-type OpenstackQuotasOKBodyCompute struct {
-
-	// max server groups
-	MaxServerGroups int64 `json:"maxServerGroups,omitempty"`
-
-	// max total cores
-	MaxTotalCores int64 `json:"maxTotalCores,omitempty"`
-
-	// max total instances
-	MaxTotalInstances int64 `json:"maxTotalInstances,omitempty"`
-
-	// max total Ram size
-	MaxTotalRAMSize int64 `json:"maxTotalRamSize,omitempty"`
-
-	// used Cpu size
-	UsedCPUSize int64 `json:"usedCpuSize,omitempty"`
-
-	// used instance size
-	UsedInstanceSize int64 `json:"usedInstanceSize,omitempty"`
-
-	// used Ram size
-	UsedRAMSize int64 `json:"usedRamSize,omitempty"`
-
-	// used server groups
-	UsedServerGroups int64 `json:"usedServerGroups,omitempty"`
-}
-
-// Validate validates this openstack quotas o k body compute
-func (o *OpenstackQuotasOKBodyCompute) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack quotas o k body compute based on context it is used
-func (o *OpenstackQuotasOKBodyCompute) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackQuotasOKBodyCompute) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackQuotasOKBodyCompute) UnmarshalBinary(b []byte) error {
-	var res OpenstackQuotasOKBodyCompute
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackQuotasOKBodyNetwork openstack quotas o k body network
-swagger:model OpenstackQuotasOKBodyNetwork
-*/
-type OpenstackQuotasOKBodyNetwork struct {
-
-	// floating Ip limit
-	FloatingIPLimit int64 `json:"floatingIpLimit,omitempty"`
-
-	// floating Ip used
-	FloatingIPUsed int64 `json:"floatingIpUsed,omitempty"`
-
-	// network limit
-	NetworkLimit int64 `json:"networkLimit,omitempty"`
-
-	// network used
-	NetworkUsed int64 `json:"networkUsed,omitempty"`
-
-	// port limit
-	PortLimit int64 `json:"portLimit,omitempty"`
-
-	// port used
-	PortUsed int64 `json:"portUsed,omitempty"`
-
-	// router limit
-	RouterLimit int64 `json:"routerLimit,omitempty"`
-
-	// router used
-	RouterUsed int64 `json:"routerUsed,omitempty"`
-
-	// security group limit
-	SecurityGroupLimit int64 `json:"securityGroupLimit,omitempty"`
-
-	// security group rule limit
-	SecurityGroupRuleLimit int64 `json:"securityGroupRuleLimit,omitempty"`
-
-	// security group rule used
-	SecurityGroupRuleUsed int64 `json:"securityGroupRuleUsed,omitempty"`
-
-	// security group used
-	SecurityGroupUsed int64 `json:"securityGroupUsed,omitempty"`
-
-	// subnet limit
-	SubnetLimit int64 `json:"subnetLimit,omitempty"`
-
-	// subnet used
-	SubnetUsed int64 `json:"subnetUsed,omitempty"`
-}
-
-// Validate validates this openstack quotas o k body network
-func (o *OpenstackQuotasOKBodyNetwork) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack quotas o k body network based on context it is used
-func (o *OpenstackQuotasOKBodyNetwork) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackQuotasOKBodyNetwork) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackQuotasOKBodyNetwork) UnmarshalBinary(b []byte) error {
-	var res OpenstackQuotasOKBodyNetwork
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackQuotasOKBodyVolume openstack quotas o k body volume
-swagger:model OpenstackQuotasOKBodyVolume
-*/
-type OpenstackQuotasOKBodyVolume struct {
-
-	// count volume size
-	CountVolumeSize int64 `json:"countVolumeSize,omitempty"`
-
-	// max count volume size
-	MaxCountVolumeSize int64 `json:"maxCountVolumeSize,omitempty"`
-
-	// max total volume size
-	MaxTotalVolumeSize int64 `json:"maxTotalVolumeSize,omitempty"`
-
-	// used volume size
-	UsedVolumeSize int64 `json:"usedVolumeSize,omitempty"`
-}
-
-// Validate validates this openstack quotas o k body volume
-func (o *OpenstackQuotasOKBodyVolume) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack quotas o k body volume based on context it is used
-func (o *OpenstackQuotasOKBodyVolume) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackQuotasOKBodyVolume) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackQuotasOKBodyVolume) UnmarshalBinary(b []byte) error {
-	var res OpenstackQuotasOKBodyVolume
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackQuotasUnauthorizedBody openstack quotas unauthorized body
-swagger:model OpenstackQuotasUnauthorizedBody
-*/
-type OpenstackQuotasUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this openstack quotas unauthorized body
-func (o *OpenstackQuotasUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack quotas unauthorized body based on context it is used
-func (o *OpenstackQuotasUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackQuotasUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackQuotasUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackQuotasUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

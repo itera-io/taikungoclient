@@ -6,15 +6,13 @@ package flavors
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // FlavorsGetSelectedFlavorsForProjectReader is a Reader for the FlavorsGetSelectedFlavorsForProject structure.
@@ -77,7 +75,7 @@ FlavorsGetSelectedFlavorsForProjectOK describes a response with status code 200,
 Success
 */
 type FlavorsGetSelectedFlavorsForProjectOK struct {
-	Payload *FlavorsGetSelectedFlavorsForProjectOKBody
+	Payload *models.BoundFlavorsForProjectsList
 }
 
 // IsSuccess returns true when this flavors get selected flavors for project o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *FlavorsGetSelectedFlavorsForProjectOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectOK  %+v", 200, o.Payload)
 }
 
-func (o *FlavorsGetSelectedFlavorsForProjectOK) GetPayload() *FlavorsGetSelectedFlavorsForProjectOKBody {
+func (o *FlavorsGetSelectedFlavorsForProjectOK) GetPayload() *models.BoundFlavorsForProjectsList {
 	return o.Payload
 }
 
 func (o *FlavorsGetSelectedFlavorsForProjectOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsGetSelectedFlavorsForProjectOKBody)
+	o.Payload = new(models.BoundFlavorsForProjectsList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ FlavorsGetSelectedFlavorsForProjectBadRequest describes a response with status c
 Bad Request
 */
 type FlavorsGetSelectedFlavorsForProjectBadRequest struct {
-	Payload []*FlavorsGetSelectedFlavorsForProjectBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this flavors get selected flavors for project bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) GetPayload() []*FlavorsGetSelectedFlavorsForProjectBadRequestBodyItems0 {
+func (o *FlavorsGetSelectedFlavorsForProjectBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ FlavorsGetSelectedFlavorsForProjectUnauthorized describes a response with status
 Unauthorized
 */
 type FlavorsGetSelectedFlavorsForProjectUnauthorized struct {
-	Payload *FlavorsGetSelectedFlavorsForProjectUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors get selected flavors for project unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) GetPayload() *FlavorsGetSelectedFlavorsForProjectUnauthorizedBody {
+func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsGetSelectedFlavorsForProjectUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsGetSelectedFlavorsForProjectUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ FlavorsGetSelectedFlavorsForProjectForbidden describes a response with status co
 Forbidden
 */
 type FlavorsGetSelectedFlavorsForProjectForbidden struct {
-	Payload *FlavorsGetSelectedFlavorsForProjectForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors get selected flavors for project forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *FlavorsGetSelectedFlavorsForProjectForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsGetSelectedFlavorsForProjectForbidden) GetPayload() *FlavorsGetSelectedFlavorsForProjectForbiddenBody {
+func (o *FlavorsGetSelectedFlavorsForProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsGetSelectedFlavorsForProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsGetSelectedFlavorsForProjectForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ FlavorsGetSelectedFlavorsForProjectNotFound describes a response with status cod
 Not Found
 */
 type FlavorsGetSelectedFlavorsForProjectNotFound struct {
-	Payload *FlavorsGetSelectedFlavorsForProjectNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors get selected flavors for project not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *FlavorsGetSelectedFlavorsForProjectNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/projects/list][%d] flavorsGetSelectedFlavorsForProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsGetSelectedFlavorsForProjectNotFound) GetPayload() *FlavorsGetSelectedFlavorsForProjectNotFoundBody {
+func (o *FlavorsGetSelectedFlavorsForProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsGetSelectedFlavorsForProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsGetSelectedFlavorsForProjectNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,384 +425,5 @@ func (o *FlavorsGetSelectedFlavorsForProjectInternalServerError) String() string
 
 func (o *FlavorsGetSelectedFlavorsForProjectInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-FlavorsGetSelectedFlavorsForProjectBadRequestBodyItems0 flavors get selected flavors for project bad request body items0
-swagger:model FlavorsGetSelectedFlavorsForProjectBadRequestBodyItems0
-*/
-type FlavorsGetSelectedFlavorsForProjectBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this flavors get selected flavors for project bad request body items0
-func (o *FlavorsGetSelectedFlavorsForProjectBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors get selected flavors for project bad request body items0 based on context it is used
-func (o *FlavorsGetSelectedFlavorsForProjectBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsGetSelectedFlavorsForProjectBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsGetSelectedFlavorsForProjectBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res FlavorsGetSelectedFlavorsForProjectBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsGetSelectedFlavorsForProjectForbiddenBody flavors get selected flavors for project forbidden body
-swagger:model FlavorsGetSelectedFlavorsForProjectForbiddenBody
-*/
-type FlavorsGetSelectedFlavorsForProjectForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this flavors get selected flavors for project forbidden body
-func (o *FlavorsGetSelectedFlavorsForProjectForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors get selected flavors for project forbidden body based on context it is used
-func (o *FlavorsGetSelectedFlavorsForProjectForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsGetSelectedFlavorsForProjectForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsGetSelectedFlavorsForProjectForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsGetSelectedFlavorsForProjectForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsGetSelectedFlavorsForProjectNotFoundBody flavors get selected flavors for project not found body
-swagger:model FlavorsGetSelectedFlavorsForProjectNotFoundBody
-*/
-type FlavorsGetSelectedFlavorsForProjectNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this flavors get selected flavors for project not found body
-func (o *FlavorsGetSelectedFlavorsForProjectNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors get selected flavors for project not found body based on context it is used
-func (o *FlavorsGetSelectedFlavorsForProjectNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsGetSelectedFlavorsForProjectNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsGetSelectedFlavorsForProjectNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsGetSelectedFlavorsForProjectNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsGetSelectedFlavorsForProjectOKBody flavors get selected flavors for project o k body
-swagger:model FlavorsGetSelectedFlavorsForProjectOKBody
-*/
-type FlavorsGetSelectedFlavorsForProjectOKBody struct {
-
-	// data
-	Data []*FlavorsGetSelectedFlavorsForProjectOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this flavors get selected flavors for project o k body
-func (o *FlavorsGetSelectedFlavorsForProjectOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *FlavorsGetSelectedFlavorsForProjectOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("flavorsGetSelectedFlavorsForProjectOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("flavorsGetSelectedFlavorsForProjectOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this flavors get selected flavors for project o k body based on the context it is used
-func (o *FlavorsGetSelectedFlavorsForProjectOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *FlavorsGetSelectedFlavorsForProjectOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("flavorsGetSelectedFlavorsForProjectOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("flavorsGetSelectedFlavorsForProjectOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsGetSelectedFlavorsForProjectOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsGetSelectedFlavorsForProjectOKBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsGetSelectedFlavorsForProjectOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsGetSelectedFlavorsForProjectOKBodyDataItems0 flavors get selected flavors for project o k body data items0
-swagger:model FlavorsGetSelectedFlavorsForProjectOKBodyDataItems0
-*/
-type FlavorsGetSelectedFlavorsForProjectOKBodyDataItems0 struct {
-
-	// cpu
-	CPU int32 `json:"cpu,omitempty"`
-
-	// has linux spot price
-	HasLinuxSpotPrice bool `json:"hasLinuxSpotPrice"`
-
-	// has windows spot price
-	HasWindowsSpotPrice bool `json:"hasWindowsSpotPrice"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// is aws
-	IsAws bool `json:"isAws"`
-
-	// is azure
-	IsAzure bool `json:"isAzure"`
-
-	// is openstack
-	IsOpenstack bool `json:"isOpenstack"`
-
-	// linux price
-	LinuxPrice string `json:"linuxPrice,omitempty"`
-
-	// linux spot price
-	LinuxSpotPrice string `json:"linuxSpotPrice,omitempty"`
-
-	// max data disk count
-	MaxDataDiskCount int32 `json:"maxDataDiskCount,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
-
-	// ram
-	RAM int64 `json:"ram,omitempty"`
-
-	// windows price
-	WindowsPrice string `json:"windowsPrice,omitempty"`
-
-	// windows spot price
-	WindowsSpotPrice string `json:"windowsSpotPrice,omitempty"`
-}
-
-// Validate validates this flavors get selected flavors for project o k body data items0
-func (o *FlavorsGetSelectedFlavorsForProjectOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors get selected flavors for project o k body data items0 based on context it is used
-func (o *FlavorsGetSelectedFlavorsForProjectOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsGetSelectedFlavorsForProjectOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsGetSelectedFlavorsForProjectOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res FlavorsGetSelectedFlavorsForProjectOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsGetSelectedFlavorsForProjectUnauthorizedBody flavors get selected flavors for project unauthorized body
-swagger:model FlavorsGetSelectedFlavorsForProjectUnauthorizedBody
-*/
-type FlavorsGetSelectedFlavorsForProjectUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this flavors get selected flavors for project unauthorized body
-func (o *FlavorsGetSelectedFlavorsForProjectUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors get selected flavors for project unauthorized body based on context it is used
-func (o *FlavorsGetSelectedFlavorsForProjectUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsGetSelectedFlavorsForProjectUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsGetSelectedFlavorsForProjectUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsGetSelectedFlavorsForProjectUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

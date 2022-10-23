@@ -28,7 +28,7 @@ type OrganizationSubscriptionDto struct {
 	ID int32 `json:"id,omitempty"`
 
 	// invoices
-	Invoices []*OrganizationSubscriptionDtoInvoicesItems0 `json:"invoices"`
+	Invoices []*InvoiceDto `json:"invoices"`
 
 	// organization Id
 	OrganizationID int32 `json:"organizationId,omitempty"`
@@ -170,129 +170,6 @@ func (m *OrganizationSubscriptionDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *OrganizationSubscriptionDto) UnmarshalBinary(b []byte) error {
 	var res OrganizationSubscriptionDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// OrganizationSubscriptionDtoInvoicesItems0 organization subscription dto invoices items0
-//
-// swagger:model OrganizationSubscriptionDtoInvoicesItems0
-type OrganizationSubscriptionDtoInvoicesItems0 struct {
-
-	// document number
-	DocumentNumber string `json:"documentNumber,omitempty"`
-
-	// due date
-	// Format: date-time
-	DueDate *strfmt.DateTime `json:"dueDate,omitempty"`
-
-	// end date
-	// Format: date-time
-	EndDate *strfmt.DateTime `json:"endDate,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// is paid
-	IsPaid bool `json:"isPaid"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization subscription Id
-	OrganizationSubscriptionID int32 `json:"organizationSubscriptionId,omitempty"`
-
-	// price
-	Price float64 `json:"price,omitempty"`
-
-	// required payment action
-	RequiredPaymentAction bool `json:"requiredPaymentAction"`
-
-	// start date
-	// Format: date-time
-	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
-
-	// stripe invoice Id
-	StripeInvoiceID string `json:"stripeInvoiceId,omitempty"`
-}
-
-// Validate validates this organization subscription dto invoices items0
-func (m *OrganizationSubscriptionDtoInvoicesItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateDueDate(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateEndDate(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateStartDate(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *OrganizationSubscriptionDtoInvoicesItems0) validateDueDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.DueDate) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("dueDate", "body", "date-time", m.DueDate.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *OrganizationSubscriptionDtoInvoicesItems0) validateEndDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.EndDate) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("endDate", "body", "date-time", m.EndDate.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *OrganizationSubscriptionDtoInvoicesItems0) validateStartDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.StartDate) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("startDate", "body", "date-time", m.StartDate.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this organization subscription dto invoices items0 based on context it is used
-func (m *OrganizationSubscriptionDtoInvoicesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *OrganizationSubscriptionDtoInvoicesItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *OrganizationSubscriptionDtoInvoicesItems0) UnmarshalBinary(b []byte) error {
-	var res OrganizationSubscriptionDtoInvoicesItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

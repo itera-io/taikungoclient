@@ -6,16 +6,13 @@ package servers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ServersResetReader is a Reader for the ServersReset structure.
@@ -78,7 +75,7 @@ ServersResetOK describes a response with status code 200, with default header va
 Success
 */
 type ServersResetOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this servers reset o k response has a 2xx status code
@@ -114,7 +111,7 @@ func (o *ServersResetOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetOK  %+v", 200, o.Payload)
 }
 
-func (o *ServersResetOK) GetPayload() interface{} {
+func (o *ServersResetOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -139,7 +136,7 @@ ServersResetBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type ServersResetBadRequest struct {
-	Payload []*ServersResetBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this servers reset bad request response has a 2xx status code
@@ -175,7 +172,7 @@ func (o *ServersResetBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersResetBadRequest) GetPayload() []*ServersResetBadRequestBodyItems0 {
+func (o *ServersResetBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -200,7 +197,7 @@ ServersResetUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type ServersResetUnauthorized struct {
-	Payload *ServersResetUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers reset unauthorized response has a 2xx status code
@@ -236,13 +233,13 @@ func (o *ServersResetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersResetUnauthorized) GetPayload() *ServersResetUnauthorizedBody {
+func (o *ServersResetUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersResetUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersResetUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -263,7 +260,7 @@ ServersResetForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type ServersResetForbidden struct {
-	Payload *ServersResetForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers reset forbidden response has a 2xx status code
@@ -299,13 +296,13 @@ func (o *ServersResetForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersResetForbidden) GetPayload() *ServersResetForbiddenBody {
+func (o *ServersResetForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersResetForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersResetForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -326,7 +323,7 @@ ServersResetNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type ServersResetNotFound struct {
-	Payload *ServersResetNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers reset not found response has a 2xx status code
@@ -362,13 +359,13 @@ func (o *ServersResetNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reset][%d] serversResetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersResetNotFound) GetPayload() *ServersResetNotFoundBody {
+func (o *ServersResetNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersResetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersResetNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -426,283 +423,5 @@ func (o *ServersResetInternalServerError) String() string {
 
 func (o *ServersResetInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ServersResetBadRequestBodyItems0 servers reset bad request body items0
-swagger:model ServersResetBadRequestBodyItems0
-*/
-type ServersResetBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this servers reset bad request body items0
-func (o *ServersResetBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers reset bad request body items0 based on context it is used
-func (o *ServersResetBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersResetBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersResetBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ServersResetBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersResetBody servers reset body
-swagger:model ServersResetBody
-*/
-type ServersResetBody struct {
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// server ids
-	ServerIds []int32 `json:"serverIds"`
-
-	// status
-	// Enum: [100 200 250 300 400 500 600 700 800]
-	Status int32 `json:"status,omitempty"`
-}
-
-// Validate validates this servers reset body
-func (o *ServersResetBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateStatus(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-var serversResetBodyTypeStatusPropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200,250,300,400,500,600,700,800]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		serversResetBodyTypeStatusPropEnum = append(serversResetBodyTypeStatusPropEnum, v)
-	}
-}
-
-// prop value enum
-func (o *ServersResetBody) validateStatusEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, serversResetBodyTypeStatusPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ServersResetBody) validateStatus(formats strfmt.Registry) error {
-	if swag.IsZero(o.Status) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := o.validateStatusEnum("body"+"."+"status", "body", o.Status); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this servers reset body based on context it is used
-func (o *ServersResetBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersResetBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersResetBody) UnmarshalBinary(b []byte) error {
-	var res ServersResetBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersResetForbiddenBody servers reset forbidden body
-swagger:model ServersResetForbiddenBody
-*/
-type ServersResetForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers reset forbidden body
-func (o *ServersResetForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers reset forbidden body based on context it is used
-func (o *ServersResetForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersResetForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersResetForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ServersResetForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersResetNotFoundBody servers reset not found body
-swagger:model ServersResetNotFoundBody
-*/
-type ServersResetNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers reset not found body
-func (o *ServersResetNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers reset not found body based on context it is used
-func (o *ServersResetNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersResetNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersResetNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ServersResetNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersResetUnauthorizedBody servers reset unauthorized body
-swagger:model ServersResetUnauthorizedBody
-*/
-type ServersResetUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers reset unauthorized body
-func (o *ServersResetUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers reset unauthorized body based on context it is used
-func (o *ServersResetUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersResetUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersResetUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ServersResetUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSSHUsersCreateParams creates a new SSHUsersCreateParams object,
@@ -62,7 +64,7 @@ SSHUsersCreateParams contains all the parameters to send to the API endpoint
 type SSHUsersCreateParams struct {
 
 	// Body.
-	Body SSHUsersCreateBody
+	Body *models.CreateSSHUserCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *SSHUsersCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the Ssh users create params
-func (o *SSHUsersCreateParams) WithBody(body SSHUsersCreateBody) *SSHUsersCreateParams {
+func (o *SSHUsersCreateParams) WithBody(body *models.CreateSSHUserCommand) *SSHUsersCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the Ssh users create params
-func (o *SSHUsersCreateParams) SetBody(body SSHUsersCreateBody) {
+func (o *SSHUsersCreateParams) SetBody(body *models.CreateSSHUserCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *SSHUsersCreateParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

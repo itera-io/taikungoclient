@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneRepairParams creates a new StandAloneRepairParams object,
@@ -62,7 +64,7 @@ StandAloneRepairParams contains all the parameters to send to the API endpoint
 type StandAloneRepairParams struct {
 
 	// Body.
-	Body StandAloneRepairBody
+	Body *models.RepairStandAloneVMCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *StandAloneRepairParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone repair params
-func (o *StandAloneRepairParams) WithBody(body StandAloneRepairBody) *StandAloneRepairParams {
+func (o *StandAloneRepairParams) WithBody(body *models.RepairStandAloneVMCommand) *StandAloneRepairParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone repair params
-func (o *StandAloneRepairParams) SetBody(body StandAloneRepairBody) {
+func (o *StandAloneRepairParams) SetBody(body *models.RepairStandAloneVMCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *StandAloneRepairParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

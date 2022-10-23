@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOpsCredentialsCreateParams creates a new OpsCredentialsCreateParams object,
@@ -62,7 +64,7 @@ OpsCredentialsCreateParams contains all the parameters to send to the API endpoi
 type OpsCredentialsCreateParams struct {
 
 	// Body.
-	Body OpsCredentialsCreateBody
+	Body *models.OperationCredentialsCreateCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *OpsCredentialsCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the ops credentials create params
-func (o *OpsCredentialsCreateParams) WithBody(body OpsCredentialsCreateBody) *OpsCredentialsCreateParams {
+func (o *OpsCredentialsCreateParams) WithBody(body *models.OperationCredentialsCreateCommand) *OpsCredentialsCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the ops credentials create params
-func (o *OpsCredentialsCreateParams) SetBody(body OpsCredentialsCreateBody) {
+func (o *OpsCredentialsCreateParams) SetBody(body *models.OperationCredentialsCreateCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *OpsCredentialsCreateParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

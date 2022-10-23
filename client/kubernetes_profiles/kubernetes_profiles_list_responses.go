@@ -6,15 +6,13 @@ package kubernetes_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesProfilesListReader is a Reader for the KubernetesProfilesList structure.
@@ -77,7 +75,7 @@ KubernetesProfilesListOK describes a response with status code 200, with default
 Success
 */
 type KubernetesProfilesListOK struct {
-	Payload *KubernetesProfilesListOKBody
+	Payload *models.KubernetesProfilesList
 }
 
 // IsSuccess returns true when this kubernetes profiles list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *KubernetesProfilesListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesProfilesListOK) GetPayload() *KubernetesProfilesListOKBody {
+func (o *KubernetesProfilesListOK) GetPayload() *models.KubernetesProfilesList {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesProfilesListOKBody)
+	o.Payload = new(models.KubernetesProfilesList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ KubernetesProfilesListBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesProfilesListBadRequest struct {
-	Payload []*KubernetesProfilesListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes profiles list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *KubernetesProfilesListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesProfilesListBadRequest) GetPayload() []*KubernetesProfilesListBadRequestBodyItems0 {
+func (o *KubernetesProfilesListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ KubernetesProfilesListUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesProfilesListUnauthorized struct {
-	Payload *KubernetesProfilesListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes profiles list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *KubernetesProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesProfilesListUnauthorized) GetPayload() *KubernetesProfilesListUnauthorizedBody {
+func (o *KubernetesProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesProfilesListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ KubernetesProfilesListForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesProfilesListForbidden struct {
-	Payload *KubernetesProfilesListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes profiles list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *KubernetesProfilesListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesProfilesListForbidden) GetPayload() *KubernetesProfilesListForbiddenBody {
+func (o *KubernetesProfilesListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesProfilesListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ KubernetesProfilesListNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesProfilesListNotFound struct {
-	Payload *KubernetesProfilesListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes profiles list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *KubernetesProfilesListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubernetesProfiles/list][%d] kubernetesProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesProfilesListNotFound) GetPayload() *KubernetesProfilesListNotFoundBody {
+func (o *KubernetesProfilesListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesProfilesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesProfilesListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,489 +425,5 @@ func (o *KubernetesProfilesListInternalServerError) String() string {
 
 func (o *KubernetesProfilesListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesProfilesListBadRequestBodyItems0 kubernetes profiles list bad request body items0
-swagger:model KubernetesProfilesListBadRequestBodyItems0
-*/
-type KubernetesProfilesListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes profiles list bad request body items0
-func (o *KubernetesProfilesListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes profiles list bad request body items0 based on context it is used
-func (o *KubernetesProfilesListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesProfilesListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesProfilesListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesProfilesListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesProfilesListForbiddenBody kubernetes profiles list forbidden body
-swagger:model KubernetesProfilesListForbiddenBody
-*/
-type KubernetesProfilesListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes profiles list forbidden body
-func (o *KubernetesProfilesListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes profiles list forbidden body based on context it is used
-func (o *KubernetesProfilesListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesProfilesListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesProfilesListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesProfilesListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesProfilesListNotFoundBody kubernetes profiles list not found body
-swagger:model KubernetesProfilesListNotFoundBody
-*/
-type KubernetesProfilesListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes profiles list not found body
-func (o *KubernetesProfilesListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes profiles list not found body based on context it is used
-func (o *KubernetesProfilesListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesProfilesListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesProfilesListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesProfilesListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesProfilesListOKBody kubernetes profiles list o k body
-swagger:model KubernetesProfilesListOKBody
-*/
-type KubernetesProfilesListOKBody struct {
-
-	// data
-	Data []*KubernetesProfilesListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this kubernetes profiles list o k body
-func (o *KubernetesProfilesListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *KubernetesProfilesListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("kubernetesProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("kubernetesProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this kubernetes profiles list o k body based on the context it is used
-func (o *KubernetesProfilesListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *KubernetesProfilesListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("kubernetesProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("kubernetesProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesProfilesListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesProfilesListOKBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesProfilesListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesProfilesListOKBodyDataItems0 kubernetes profiles list o k body data items0
-swagger:model KubernetesProfilesListOKBodyDataItems0
-*/
-type KubernetesProfilesListOKBodyDataItems0 struct {
-
-	// allow scheduling on master
-	AllowSchedulingOnMaster bool `json:"allowSchedulingOnMaster"`
-
-	// cni
-	Cni string `json:"cni,omitempty"`
-
-	// created at
-	CreatedAt string `json:"createdAt,omitempty"`
-
-	// created by
-	CreatedBy string `json:"createdBy,omitempty"`
-
-	// expose node port on bastion
-	ExposeNodePortOnBastion bool `json:"exposeNodePortOnBastion"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// is locked
-	IsLocked bool `json:"isLocked"`
-
-	// last modified
-	LastModified string `json:"lastModified,omitempty"`
-
-	// last modified by
-	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// octavia enabled
-	OctaviaEnabled bool `json:"octaviaEnabled"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// projects
-	Projects []*KubernetesProfilesListOKBodyDataItems0ProjectsItems0 `json:"projects"`
-
-	// taikun l b enabled
-	TaikunLBEnabled bool `json:"taikunLBEnabled"`
-
-	// unique cluster name
-	UniqueClusterName bool `json:"uniqueClusterName"`
-}
-
-// Validate validates this kubernetes profiles list o k body data items0
-func (o *KubernetesProfilesListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateProjects(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *KubernetesProfilesListOKBodyDataItems0) validateProjects(formats strfmt.Registry) error {
-	if swag.IsZero(o.Projects) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Projects); i++ {
-		if swag.IsZero(o.Projects[i]) { // not required
-			continue
-		}
-
-		if o.Projects[i] != nil {
-			if err := o.Projects[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this kubernetes profiles list o k body data items0 based on the context it is used
-func (o *KubernetesProfilesListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateProjects(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *KubernetesProfilesListOKBodyDataItems0) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Projects); i++ {
-
-		if o.Projects[i] != nil {
-			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesProfilesListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesProfilesListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesProfilesListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesProfilesListOKBodyDataItems0ProjectsItems0 kubernetes profiles list o k body data items0 projects items0
-swagger:model KubernetesProfilesListOKBodyDataItems0ProjectsItems0
-*/
-type KubernetesProfilesListOKBodyDataItems0ProjectsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this kubernetes profiles list o k body data items0 projects items0
-func (o *KubernetesProfilesListOKBodyDataItems0ProjectsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes profiles list o k body data items0 projects items0 based on context it is used
-func (o *KubernetesProfilesListOKBodyDataItems0ProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesProfilesListOKBodyDataItems0ProjectsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesProfilesListOKBodyDataItems0ProjectsItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesProfilesListOKBodyDataItems0ProjectsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesProfilesListUnauthorizedBody kubernetes profiles list unauthorized body
-swagger:model KubernetesProfilesListUnauthorizedBody
-*/
-type KubernetesProfilesListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes profiles list unauthorized body
-func (o *KubernetesProfilesListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes profiles list unauthorized body based on context it is used
-func (o *KubernetesProfilesListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesProfilesListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesProfilesListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesProfilesListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

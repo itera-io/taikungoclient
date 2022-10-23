@@ -6,13 +6,13 @@ package alerting_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AlertingProfilesAttachReader is a Reader for the AlertingProfilesAttach structure.
@@ -75,7 +75,7 @@ AlertingProfilesAttachOK describes a response with status code 200, with default
 Success
 */
 type AlertingProfilesAttachOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this alerting profiles attach o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AlertingProfilesAttachOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachOK  %+v", 200, o.Payload)
 }
 
-func (o *AlertingProfilesAttachOK) GetPayload() interface{} {
+func (o *AlertingProfilesAttachOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AlertingProfilesAttachBadRequest describes a response with status code 400, with
 Bad Request
 */
 type AlertingProfilesAttachBadRequest struct {
-	Payload []*AlertingProfilesAttachBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this alerting profiles attach bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AlertingProfilesAttachBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesAttachBadRequest) GetPayload() []*AlertingProfilesAttachBadRequestBodyItems0 {
+func (o *AlertingProfilesAttachBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AlertingProfilesAttachUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type AlertingProfilesAttachUnauthorized struct {
-	Payload *AlertingProfilesAttachUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles attach unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AlertingProfilesAttachUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesAttachUnauthorized) GetPayload() *AlertingProfilesAttachUnauthorizedBody {
+func (o *AlertingProfilesAttachUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAttachUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AlertingProfilesAttachUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AlertingProfilesAttachForbidden describes a response with status code 403, with 
 Forbidden
 */
 type AlertingProfilesAttachForbidden struct {
-	Payload *AlertingProfilesAttachForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles attach forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AlertingProfilesAttachForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesAttachForbidden) GetPayload() *AlertingProfilesAttachForbiddenBody {
+func (o *AlertingProfilesAttachForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAttachForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AlertingProfilesAttachForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AlertingProfilesAttachNotFound describes a response with status code 404, with d
 Not Found
 */
 type AlertingProfilesAttachNotFound struct {
-	Payload *AlertingProfilesAttachNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles attach not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AlertingProfilesAttachNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AlertingProfiles/attach][%d] alertingProfilesAttachNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesAttachNotFound) GetPayload() *AlertingProfilesAttachNotFoundBody {
+func (o *AlertingProfilesAttachNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesAttachNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AlertingProfilesAttachNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *AlertingProfilesAttachInternalServerError) String() string {
 
 func (o *AlertingProfilesAttachInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AlertingProfilesAttachBadRequestBodyItems0 alerting profiles attach bad request body items0
-swagger:model AlertingProfilesAttachBadRequestBodyItems0
-*/
-type AlertingProfilesAttachBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this alerting profiles attach bad request body items0
-func (o *AlertingProfilesAttachBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting profiles attach bad request body items0 based on context it is used
-func (o *AlertingProfilesAttachBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingProfilesAttachBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingProfilesAttachBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesAttachBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingProfilesAttachBody alerting profiles attach body
-swagger:model AlertingProfilesAttachBody
-*/
-type AlertingProfilesAttachBody struct {
-
-	// alerting profile Id
-	AlertingProfileID int32 `json:"alertingProfileId,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this alerting profiles attach body
-func (o *AlertingProfilesAttachBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting profiles attach body based on context it is used
-func (o *AlertingProfilesAttachBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingProfilesAttachBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingProfilesAttachBody) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesAttachBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingProfilesAttachForbiddenBody alerting profiles attach forbidden body
-swagger:model AlertingProfilesAttachForbiddenBody
-*/
-type AlertingProfilesAttachForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this alerting profiles attach forbidden body
-func (o *AlertingProfilesAttachForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting profiles attach forbidden body based on context it is used
-func (o *AlertingProfilesAttachForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingProfilesAttachForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingProfilesAttachForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesAttachForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingProfilesAttachNotFoundBody alerting profiles attach not found body
-swagger:model AlertingProfilesAttachNotFoundBody
-*/
-type AlertingProfilesAttachNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this alerting profiles attach not found body
-func (o *AlertingProfilesAttachNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting profiles attach not found body based on context it is used
-func (o *AlertingProfilesAttachNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingProfilesAttachNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingProfilesAttachNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesAttachNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingProfilesAttachUnauthorizedBody alerting profiles attach unauthorized body
-swagger:model AlertingProfilesAttachUnauthorizedBody
-*/
-type AlertingProfilesAttachUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this alerting profiles attach unauthorized body
-func (o *AlertingProfilesAttachUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting profiles attach unauthorized body based on context it is used
-func (o *AlertingProfilesAttachUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingProfilesAttachUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingProfilesAttachUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesAttachUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

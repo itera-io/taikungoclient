@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAdminAddBalanceParams creates a new AdminAddBalanceParams object,
@@ -62,7 +64,7 @@ AdminAddBalanceParams contains all the parameters to send to the API endpoint
 type AdminAddBalanceParams struct {
 
 	// Body.
-	Body AdminAddBalanceBody
+	Body *models.AdminAddBalanceCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *AdminAddBalanceParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the admin add balance params
-func (o *AdminAddBalanceParams) WithBody(body AdminAddBalanceBody) *AdminAddBalanceParams {
+func (o *AdminAddBalanceParams) WithBody(body *models.AdminAddBalanceCommand) *AdminAddBalanceParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the admin add balance params
-func (o *AdminAddBalanceParams) SetBody(body AdminAddBalanceBody) {
+func (o *AdminAddBalanceParams) SetBody(body *models.AdminAddBalanceCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *AdminAddBalanceParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

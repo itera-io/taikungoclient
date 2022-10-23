@@ -6,15 +6,13 @@ package openstack
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // OpenstackListReader is a Reader for the OpenstackList structure.
@@ -77,7 +75,7 @@ OpenstackListOK describes a response with status code 200, with default header v
 Success
 */
 type OpenstackListOK struct {
-	Payload *OpenstackListOKBody
+	Payload *models.OpenstackCredentialList
 }
 
 // IsSuccess returns true when this openstack list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *OpenstackListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListOK  %+v", 200, o.Payload)
 }
 
-func (o *OpenstackListOK) GetPayload() *OpenstackListOKBody {
+func (o *OpenstackListOK) GetPayload() *models.OpenstackCredentialList {
 	return o.Payload
 }
 
 func (o *OpenstackListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackListOKBody)
+	o.Payload = new(models.OpenstackCredentialList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ OpenstackListBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type OpenstackListBadRequest struct {
-	Payload []*OpenstackListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this openstack list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *OpenstackListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackListBadRequest) GetPayload() []*OpenstackListBadRequestBodyItems0 {
+func (o *OpenstackListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ OpenstackListUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type OpenstackListUnauthorized struct {
-	Payload *OpenstackListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *OpenstackListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackListUnauthorized) GetPayload() *OpenstackListUnauthorizedBody {
+func (o *OpenstackListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ OpenstackListForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type OpenstackListForbidden struct {
-	Payload *OpenstackListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *OpenstackListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackListForbidden) GetPayload() *OpenstackListForbiddenBody {
+func (o *OpenstackListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ OpenstackListNotFound describes a response with status code 404, with default he
 Not Found
 */
 type OpenstackListNotFound struct {
-	Payload *OpenstackListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *OpenstackListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Openstack/list][%d] openstackListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackListNotFound) GetPayload() *OpenstackListNotFoundBody {
+func (o *OpenstackListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,513 +425,5 @@ func (o *OpenstackListInternalServerError) String() string {
 
 func (o *OpenstackListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-OpenstackListBadRequestBodyItems0 openstack list bad request body items0
-swagger:model OpenstackListBadRequestBodyItems0
-*/
-type OpenstackListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this openstack list bad request body items0
-func (o *OpenstackListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack list bad request body items0 based on context it is used
-func (o *OpenstackListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OpenstackListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackListForbiddenBody openstack list forbidden body
-swagger:model OpenstackListForbiddenBody
-*/
-type OpenstackListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this openstack list forbidden body
-func (o *OpenstackListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack list forbidden body based on context it is used
-func (o *OpenstackListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackListNotFoundBody openstack list not found body
-swagger:model OpenstackListNotFoundBody
-*/
-type OpenstackListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this openstack list not found body
-func (o *OpenstackListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack list not found body based on context it is used
-func (o *OpenstackListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackListOKBody openstack list o k body
-swagger:model OpenstackListOKBody
-*/
-type OpenstackListOKBody struct {
-
-	// data
-	Data []*OpenstackListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this openstack list o k body
-func (o *OpenstackListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *OpenstackListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("openstackListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("openstackListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this openstack list o k body based on the context it is used
-func (o *OpenstackListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *OpenstackListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("openstackListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("openstackListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackListOKBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackListOKBodyDataItems0 openstack list o k body data items0
-swagger:model OpenstackListOKBodyDataItems0
-*/
-type OpenstackListOKBodyDataItems0 struct {
-
-	// availability zone
-	AvailabilityZone string `json:"availabilityZone,omitempty"`
-
-	// continent name
-	ContinentName string `json:"continentName,omitempty"`
-
-	// created at
-	CreatedAt string `json:"createdAt,omitempty"`
-
-	// created by
-	CreatedBy string `json:"createdBy,omitempty"`
-
-	// domain
-	Domain string `json:"domain,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// import network
-	ImportNetwork bool `json:"importNetwork"`
-
-	// internal subnet Id
-	InternalSubnetID string `json:"internalSubnetId,omitempty"`
-
-	// is default
-	IsDefault bool `json:"isDefault"`
-
-	// is locked
-	IsLocked bool `json:"isLocked"`
-
-	// last modified
-	LastModified string `json:"lastModified,omitempty"`
-
-	// last modified by
-	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// project
-	Project string `json:"project,omitempty"`
-
-	// project count
-	ProjectCount int32 `json:"projectCount,omitempty"`
-
-	// projects
-	Projects []*OpenstackListOKBodyDataItems0ProjectsItems0 `json:"projects"`
-
-	// public network
-	PublicNetwork string `json:"publicNetwork,omitempty"`
-
-	// region
-	Region string `json:"region,omitempty"`
-
-	// tenant Id
-	TenantID string `json:"tenantId,omitempty"`
-
-	// url
-	URL string `json:"url,omitempty"`
-
-	// user
-	User string `json:"user,omitempty"`
-
-	// volume type
-	VolumeType string `json:"volumeType,omitempty"`
-}
-
-// Validate validates this openstack list o k body data items0
-func (o *OpenstackListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateProjects(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *OpenstackListOKBodyDataItems0) validateProjects(formats strfmt.Registry) error {
-	if swag.IsZero(o.Projects) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Projects); i++ {
-		if swag.IsZero(o.Projects[i]) { // not required
-			continue
-		}
-
-		if o.Projects[i] != nil {
-			if err := o.Projects[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this openstack list o k body data items0 based on the context it is used
-func (o *OpenstackListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateProjects(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *OpenstackListOKBodyDataItems0) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Projects); i++ {
-
-		if o.Projects[i] != nil {
-			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res OpenstackListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackListOKBodyDataItems0ProjectsItems0 openstack list o k body data items0 projects items0
-swagger:model OpenstackListOKBodyDataItems0ProjectsItems0
-*/
-type OpenstackListOKBodyDataItems0ProjectsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this openstack list o k body data items0 projects items0
-func (o *OpenstackListOKBodyDataItems0ProjectsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack list o k body data items0 projects items0 based on context it is used
-func (o *OpenstackListOKBodyDataItems0ProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackListOKBodyDataItems0ProjectsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackListOKBodyDataItems0ProjectsItems0) UnmarshalBinary(b []byte) error {
-	var res OpenstackListOKBodyDataItems0ProjectsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackListUnauthorizedBody openstack list unauthorized body
-swagger:model OpenstackListUnauthorizedBody
-*/
-type OpenstackListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this openstack list unauthorized body
-func (o *OpenstackListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack list unauthorized body based on context it is used
-func (o *OpenstackListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

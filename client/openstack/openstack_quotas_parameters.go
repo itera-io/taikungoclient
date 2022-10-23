@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOpenstackQuotasParams creates a new OpenstackQuotasParams object,
@@ -62,7 +64,7 @@ OpenstackQuotasParams contains all the parameters to send to the API endpoint
 type OpenstackQuotasParams struct {
 
 	// Body.
-	Body OpenstackQuotasBody
+	Body *models.OpenstackQuotasCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *OpenstackQuotasParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the openstack quotas params
-func (o *OpenstackQuotasParams) WithBody(body OpenstackQuotasBody) *OpenstackQuotasParams {
+func (o *OpenstackQuotasParams) WithBody(body *models.OpenstackQuotasCommand) *OpenstackQuotasParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the openstack quotas params
-func (o *OpenstackQuotasParams) SetBody(body OpenstackQuotasBody) {
+func (o *OpenstackQuotasParams) SetBody(body *models.OpenstackQuotasCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *OpenstackQuotasParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

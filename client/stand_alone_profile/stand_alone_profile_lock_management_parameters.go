@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneProfileLockManagementParams creates a new StandAloneProfileLockManagementParams object,
@@ -62,7 +64,7 @@ StandAloneProfileLockManagementParams contains all the parameters to send to the
 type StandAloneProfileLockManagementParams struct {
 
 	// Body.
-	Body StandAloneProfileLockManagementBody
+	Body *models.StandAloneProfileLockManagementCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *StandAloneProfileLockManagementParams) SetHTTPClient(client *http.Clien
 }
 
 // WithBody adds the body to the stand alone profile lock management params
-func (o *StandAloneProfileLockManagementParams) WithBody(body StandAloneProfileLockManagementBody) *StandAloneProfileLockManagementParams {
+func (o *StandAloneProfileLockManagementParams) WithBody(body *models.StandAloneProfileLockManagementCommand) *StandAloneProfileLockManagementParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone profile lock management params
-func (o *StandAloneProfileLockManagementParams) SetBody(body StandAloneProfileLockManagementBody) {
+func (o *StandAloneProfileLockManagementParams) SetBody(body *models.StandAloneProfileLockManagementCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *StandAloneProfileLockManagementParams) WriteToRequest(r runtime.ClientR
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

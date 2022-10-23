@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewS3CredentialsUpdateParams creates a new S3CredentialsUpdateParams object,
@@ -62,7 +64,7 @@ S3CredentialsUpdateParams contains all the parameters to send to the API endpoin
 type S3CredentialsUpdateParams struct {
 
 	// Body.
-	Body S3CredentialsUpdateBody
+	Body *models.BackupCredentialsUpdateCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *S3CredentialsUpdateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the s3 credentials update params
-func (o *S3CredentialsUpdateParams) WithBody(body S3CredentialsUpdateBody) *S3CredentialsUpdateParams {
+func (o *S3CredentialsUpdateParams) WithBody(body *models.BackupCredentialsUpdateCommand) *S3CredentialsUpdateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the s3 credentials update params
-func (o *S3CredentialsUpdateParams) SetBody(body S3CredentialsUpdateBody) {
+func (o *S3CredentialsUpdateParams) SetBody(body *models.BackupCredentialsUpdateCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *S3CredentialsUpdateParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

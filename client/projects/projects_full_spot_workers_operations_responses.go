@@ -6,13 +6,13 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsFullSpotWorkersOperationsReader is a Reader for the ProjectsFullSpotWorkersOperations structure.
@@ -75,7 +75,7 @@ ProjectsFullSpotWorkersOperationsOK describes a response with status code 200, w
 Success
 */
 type ProjectsFullSpotWorkersOperationsOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects full spot workers operations o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectsFullSpotWorkersOperationsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsFullSpotWorkersOperationsOK) GetPayload() interface{} {
+func (o *ProjectsFullSpotWorkersOperationsOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectsFullSpotWorkersOperationsBadRequest describes a response with status cod
 Bad Request
 */
 type ProjectsFullSpotWorkersOperationsBadRequest struct {
-	Payload []*ProjectsFullSpotWorkersOperationsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects full spot workers operations bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsFullSpotWorkersOperationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsFullSpotWorkersOperationsBadRequest) GetPayload() []*ProjectsFullSpotWorkersOperationsBadRequestBodyItems0 {
+func (o *ProjectsFullSpotWorkersOperationsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectsFullSpotWorkersOperationsUnauthorized describes a response with status c
 Unauthorized
 */
 type ProjectsFullSpotWorkersOperationsUnauthorized struct {
-	Payload *ProjectsFullSpotWorkersOperationsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects full spot workers operations unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectsFullSpotWorkersOperationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsFullSpotWorkersOperationsUnauthorized) GetPayload() *ProjectsFullSpotWorkersOperationsUnauthorizedBody {
+func (o *ProjectsFullSpotWorkersOperationsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsFullSpotWorkersOperationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsFullSpotWorkersOperationsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectsFullSpotWorkersOperationsForbidden describes a response with status code
 Forbidden
 */
 type ProjectsFullSpotWorkersOperationsForbidden struct {
-	Payload *ProjectsFullSpotWorkersOperationsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects full spot workers operations forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectsFullSpotWorkersOperationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsFullSpotWorkersOperationsForbidden) GetPayload() *ProjectsFullSpotWorkersOperationsForbiddenBody {
+func (o *ProjectsFullSpotWorkersOperationsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsFullSpotWorkersOperationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsFullSpotWorkersOperationsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectsFullSpotWorkersOperationsNotFound describes a response with status code 
 Not Found
 */
 type ProjectsFullSpotWorkersOperationsNotFound struct {
-	Payload *ProjectsFullSpotWorkersOperationsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects full spot workers operations not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectsFullSpotWorkersOperationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-full-spot][%d] projectsFullSpotWorkersOperationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsFullSpotWorkersOperationsNotFound) GetPayload() *ProjectsFullSpotWorkersOperationsNotFoundBody {
+func (o *ProjectsFullSpotWorkersOperationsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsFullSpotWorkersOperationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsFullSpotWorkersOperationsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *ProjectsFullSpotWorkersOperationsInternalServerError) String() string {
 
 func (o *ProjectsFullSpotWorkersOperationsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectsFullSpotWorkersOperationsBadRequestBodyItems0 projects full spot workers operations bad request body items0
-swagger:model ProjectsFullSpotWorkersOperationsBadRequestBodyItems0
-*/
-type ProjectsFullSpotWorkersOperationsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this projects full spot workers operations bad request body items0
-func (o *ProjectsFullSpotWorkersOperationsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects full spot workers operations bad request body items0 based on context it is used
-func (o *ProjectsFullSpotWorkersOperationsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsFullSpotWorkersOperationsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsFullSpotWorkersOperationsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectsFullSpotWorkersOperationsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsFullSpotWorkersOperationsBody projects full spot workers operations body
-swagger:model ProjectsFullSpotWorkersOperationsBody
-*/
-type ProjectsFullSpotWorkersOperationsBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// mode
-	Mode string `json:"mode,omitempty"`
-}
-
-// Validate validates this projects full spot workers operations body
-func (o *ProjectsFullSpotWorkersOperationsBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects full spot workers operations body based on context it is used
-func (o *ProjectsFullSpotWorkersOperationsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsFullSpotWorkersOperationsBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsFullSpotWorkersOperationsBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsFullSpotWorkersOperationsBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsFullSpotWorkersOperationsForbiddenBody projects full spot workers operations forbidden body
-swagger:model ProjectsFullSpotWorkersOperationsForbiddenBody
-*/
-type ProjectsFullSpotWorkersOperationsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects full spot workers operations forbidden body
-func (o *ProjectsFullSpotWorkersOperationsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects full spot workers operations forbidden body based on context it is used
-func (o *ProjectsFullSpotWorkersOperationsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsFullSpotWorkersOperationsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsFullSpotWorkersOperationsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsFullSpotWorkersOperationsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsFullSpotWorkersOperationsNotFoundBody projects full spot workers operations not found body
-swagger:model ProjectsFullSpotWorkersOperationsNotFoundBody
-*/
-type ProjectsFullSpotWorkersOperationsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects full spot workers operations not found body
-func (o *ProjectsFullSpotWorkersOperationsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects full spot workers operations not found body based on context it is used
-func (o *ProjectsFullSpotWorkersOperationsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsFullSpotWorkersOperationsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsFullSpotWorkersOperationsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsFullSpotWorkersOperationsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsFullSpotWorkersOperationsUnauthorizedBody projects full spot workers operations unauthorized body
-swagger:model ProjectsFullSpotWorkersOperationsUnauthorizedBody
-*/
-type ProjectsFullSpotWorkersOperationsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects full spot workers operations unauthorized body
-func (o *ProjectsFullSpotWorkersOperationsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects full spot workers operations unauthorized body based on context it is used
-func (o *ProjectsFullSpotWorkersOperationsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsFullSpotWorkersOperationsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsFullSpotWorkersOperationsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsFullSpotWorkersOperationsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

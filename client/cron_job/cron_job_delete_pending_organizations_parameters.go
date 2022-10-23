@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobDeletePendingOrganizationsParams creates a new CronJobDeletePendingOrganizationsParams object,
@@ -62,7 +64,7 @@ CronJobDeletePendingOrganizationsParams contains all the parameters to send to t
 type CronJobDeletePendingOrganizationsParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.DeleteRegisterExpiredOrganizationCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CronJobDeletePendingOrganizationsParams) SetHTTPClient(client *http.Cli
 }
 
 // WithBody adds the body to the cron job delete pending organizations params
-func (o *CronJobDeletePendingOrganizationsParams) WithBody(body interface{}) *CronJobDeletePendingOrganizationsParams {
+func (o *CronJobDeletePendingOrganizationsParams) WithBody(body models.DeleteRegisterExpiredOrganizationCommand) *CronJobDeletePendingOrganizationsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job delete pending organizations params
-func (o *CronJobDeletePendingOrganizationsParams) SetBody(body interface{}) {
+func (o *CronJobDeletePendingOrganizationsParams) SetBody(body models.DeleteRegisterExpiredOrganizationCommand) {
 	o.Body = body
 }
 

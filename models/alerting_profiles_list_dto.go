@@ -26,7 +26,7 @@ type AlertingProfilesListDto struct {
 	CreatedBy string `json:"createdBy,omitempty"`
 
 	// emails
-	Emails []*AlertingProfilesListDtoEmailsItems0 `json:"emails"`
+	Emails []*AlertingEmailDto `json:"emails"`
 
 	// id
 	ID int32 `json:"id,omitempty"`
@@ -50,7 +50,7 @@ type AlertingProfilesListDto struct {
 	OrganizationName string `json:"organizationName,omitempty"`
 
 	// projects
-	Projects []*AlertingProfilesListDtoProjectsItems0 `json:"projects"`
+	Projects []*CommonDropdownDto `json:"projects"`
 
 	// reminder
 	Reminder string `json:"reminder,omitempty"`
@@ -62,7 +62,7 @@ type AlertingProfilesListDto struct {
 	SlackConfigurationName string `json:"slackConfigurationName,omitempty"`
 
 	// webhooks
-	Webhooks []*AlertingProfilesListDtoWebhooksItems0 `json:"webhooks"`
+	Webhooks []*AlertingWebhookDto `json:"webhooks"`
 }
 
 // Validate validates this alerting profiles list dto
@@ -258,233 +258,6 @@ func (m *AlertingProfilesListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AlertingProfilesListDto) UnmarshalBinary(b []byte) error {
 	var res AlertingProfilesListDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// AlertingProfilesListDtoEmailsItems0 alerting profiles list dto emails items0
-//
-// swagger:model AlertingProfilesListDtoEmailsItems0
-type AlertingProfilesListDtoEmailsItems0 struct {
-
-	// email
-	Email string `json:"email,omitempty"`
-}
-
-// Validate validates this alerting profiles list dto emails items0
-func (m *AlertingProfilesListDtoEmailsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting profiles list dto emails items0 based on context it is used
-func (m *AlertingProfilesListDtoEmailsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *AlertingProfilesListDtoEmailsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *AlertingProfilesListDtoEmailsItems0) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesListDtoEmailsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// AlertingProfilesListDtoProjectsItems0 alerting profiles list dto projects items0
-//
-// swagger:model AlertingProfilesListDtoProjectsItems0
-type AlertingProfilesListDtoProjectsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this alerting profiles list dto projects items0
-func (m *AlertingProfilesListDtoProjectsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting profiles list dto projects items0 based on context it is used
-func (m *AlertingProfilesListDtoProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *AlertingProfilesListDtoProjectsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *AlertingProfilesListDtoProjectsItems0) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesListDtoProjectsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// AlertingProfilesListDtoWebhooksItems0 alerting profiles list dto webhooks items0
-//
-// swagger:model AlertingProfilesListDtoWebhooksItems0
-type AlertingProfilesListDtoWebhooksItems0 struct {
-
-	// headers
-	Headers []*AlertingProfilesListDtoWebhooksItems0HeadersItems0 `json:"headers"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// url
-	URL string `json:"url,omitempty"`
-}
-
-// Validate validates this alerting profiles list dto webhooks items0
-func (m *AlertingProfilesListDtoWebhooksItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateHeaders(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *AlertingProfilesListDtoWebhooksItems0) validateHeaders(formats strfmt.Registry) error {
-	if swag.IsZero(m.Headers) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.Headers); i++ {
-		if swag.IsZero(m.Headers[i]) { // not required
-			continue
-		}
-
-		if m.Headers[i] != nil {
-			if err := m.Headers[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("headers" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("headers" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this alerting profiles list dto webhooks items0 based on the context it is used
-func (m *AlertingProfilesListDtoWebhooksItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateHeaders(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *AlertingProfilesListDtoWebhooksItems0) contextValidateHeaders(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.Headers); i++ {
-
-		if m.Headers[i] != nil {
-			if err := m.Headers[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("headers" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("headers" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *AlertingProfilesListDtoWebhooksItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *AlertingProfilesListDtoWebhooksItems0) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesListDtoWebhooksItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// AlertingProfilesListDtoWebhooksItems0HeadersItems0 alerting profiles list dto webhooks items0 headers items0
-//
-// swagger:model AlertingProfilesListDtoWebhooksItems0HeadersItems0
-type AlertingProfilesListDtoWebhooksItems0HeadersItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// key
-	Key string `json:"key,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this alerting profiles list dto webhooks items0 headers items0
-func (m *AlertingProfilesListDtoWebhooksItems0HeadersItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting profiles list dto webhooks items0 headers items0 based on context it is used
-func (m *AlertingProfilesListDtoWebhooksItems0HeadersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *AlertingProfilesListDtoWebhooksItems0HeadersItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *AlertingProfilesListDtoWebhooksItems0HeadersItems0) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesListDtoWebhooksItems0HeadersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

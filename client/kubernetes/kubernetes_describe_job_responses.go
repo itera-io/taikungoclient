@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesDescribeJobReader is a Reader for the KubernetesDescribeJob structure.
@@ -136,7 +136,7 @@ KubernetesDescribeJobBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesDescribeJobBadRequest struct {
-	Payload []*KubernetesDescribeJobBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes describe job bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeJobBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeJobBadRequest) GetPayload() []*KubernetesDescribeJobBadRequestBodyItems0 {
+func (o *KubernetesDescribeJobBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesDescribeJobUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesDescribeJobUnauthorized struct {
-	Payload *KubernetesDescribeJobUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe job unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesDescribeJobUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeJobUnauthorized) GetPayload() *KubernetesDescribeJobUnauthorizedBody {
+func (o *KubernetesDescribeJobUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeJobUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeJobUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesDescribeJobForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesDescribeJobForbidden struct {
-	Payload *KubernetesDescribeJobForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe job forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesDescribeJobForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeJobForbidden) GetPayload() *KubernetesDescribeJobForbiddenBody {
+func (o *KubernetesDescribeJobForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeJobForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeJobForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesDescribeJobNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesDescribeJobNotFound struct {
-	Payload *KubernetesDescribeJobNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe job not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesDescribeJobNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/job][%d] kubernetesDescribeJobNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeJobNotFound) GetPayload() *KubernetesDescribeJobNotFoundBody {
+func (o *KubernetesDescribeJobNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeJobNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeJobNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,240 +423,5 @@ func (o *KubernetesDescribeJobInternalServerError) String() string {
 
 func (o *KubernetesDescribeJobInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesDescribeJobBadRequestBodyItems0 kubernetes describe job bad request body items0
-swagger:model KubernetesDescribeJobBadRequestBodyItems0
-*/
-type KubernetesDescribeJobBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes describe job bad request body items0
-func (o *KubernetesDescribeJobBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe job bad request body items0 based on context it is used
-func (o *KubernetesDescribeJobBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeJobBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeJobBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeJobBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeJobBody kubernetes describe job body
-swagger:model KubernetesDescribeJobBody
-*/
-type KubernetesDescribeJobBody struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this kubernetes describe job body
-func (o *KubernetesDescribeJobBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe job body based on context it is used
-func (o *KubernetesDescribeJobBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeJobBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeJobBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeJobBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeJobForbiddenBody kubernetes describe job forbidden body
-swagger:model KubernetesDescribeJobForbiddenBody
-*/
-type KubernetesDescribeJobForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe job forbidden body
-func (o *KubernetesDescribeJobForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe job forbidden body based on context it is used
-func (o *KubernetesDescribeJobForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeJobForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeJobForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeJobForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeJobNotFoundBody kubernetes describe job not found body
-swagger:model KubernetesDescribeJobNotFoundBody
-*/
-type KubernetesDescribeJobNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe job not found body
-func (o *KubernetesDescribeJobNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe job not found body based on context it is used
-func (o *KubernetesDescribeJobNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeJobNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeJobNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeJobNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeJobUnauthorizedBody kubernetes describe job unauthorized body
-swagger:model KubernetesDescribeJobUnauthorizedBody
-*/
-type KubernetesDescribeJobUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe job unauthorized body
-func (o *KubernetesDescribeJobUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe job unauthorized body based on context it is used
-func (o *KubernetesDescribeJobUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeJobUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeJobUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeJobUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

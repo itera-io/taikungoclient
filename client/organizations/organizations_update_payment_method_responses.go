@@ -6,13 +6,13 @@ package organizations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // OrganizationsUpdatePaymentMethodReader is a Reader for the OrganizationsUpdatePaymentMethod structure.
@@ -75,7 +75,7 @@ OrganizationsUpdatePaymentMethodOK describes a response with status code 200, wi
 Success
 */
 type OrganizationsUpdatePaymentMethodOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this organizations update payment method o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OrganizationsUpdatePaymentMethodOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodOK  %+v", 200, o.Payload)
 }
 
-func (o *OrganizationsUpdatePaymentMethodOK) GetPayload() interface{} {
+func (o *OrganizationsUpdatePaymentMethodOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OrganizationsUpdatePaymentMethodBadRequest describes a response with status code
 Bad Request
 */
 type OrganizationsUpdatePaymentMethodBadRequest struct {
-	Payload []*OrganizationsUpdatePaymentMethodBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this organizations update payment method bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OrganizationsUpdatePaymentMethodBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsUpdatePaymentMethodBadRequest) GetPayload() []*OrganizationsUpdatePaymentMethodBadRequestBodyItems0 {
+func (o *OrganizationsUpdatePaymentMethodBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OrganizationsUpdatePaymentMethodUnauthorized describes a response with status co
 Unauthorized
 */
 type OrganizationsUpdatePaymentMethodUnauthorized struct {
-	Payload *OrganizationsUpdatePaymentMethodUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations update payment method unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OrganizationsUpdatePaymentMethodUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsUpdatePaymentMethodUnauthorized) GetPayload() *OrganizationsUpdatePaymentMethodUnauthorizedBody {
+func (o *OrganizationsUpdatePaymentMethodUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsUpdatePaymentMethodUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OrganizationsUpdatePaymentMethodUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OrganizationsUpdatePaymentMethodForbidden describes a response with status code 
 Forbidden
 */
 type OrganizationsUpdatePaymentMethodForbidden struct {
-	Payload *OrganizationsUpdatePaymentMethodForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations update payment method forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OrganizationsUpdatePaymentMethodForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsUpdatePaymentMethodForbidden) GetPayload() *OrganizationsUpdatePaymentMethodForbiddenBody {
+func (o *OrganizationsUpdatePaymentMethodForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsUpdatePaymentMethodForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OrganizationsUpdatePaymentMethodForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OrganizationsUpdatePaymentMethodNotFound describes a response with status code 4
 Not Found
 */
 type OrganizationsUpdatePaymentMethodNotFound struct {
-	Payload *OrganizationsUpdatePaymentMethodNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations update payment method not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OrganizationsUpdatePaymentMethodNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/updatepaymentmethod][%d] organizationsUpdatePaymentMethodNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsUpdatePaymentMethodNotFound) GetPayload() *OrganizationsUpdatePaymentMethodNotFoundBody {
+func (o *OrganizationsUpdatePaymentMethodNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsUpdatePaymentMethodNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OrganizationsUpdatePaymentMethodNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,240 +423,5 @@ func (o *OrganizationsUpdatePaymentMethodInternalServerError) String() string {
 
 func (o *OrganizationsUpdatePaymentMethodInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-OrganizationsUpdatePaymentMethodBadRequestBodyItems0 organizations update payment method bad request body items0
-swagger:model OrganizationsUpdatePaymentMethodBadRequestBodyItems0
-*/
-type OrganizationsUpdatePaymentMethodBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this organizations update payment method bad request body items0
-func (o *OrganizationsUpdatePaymentMethodBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations update payment method bad request body items0 based on context it is used
-func (o *OrganizationsUpdatePaymentMethodBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsUpdatePaymentMethodBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsUpdatePaymentMethodBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OrganizationsUpdatePaymentMethodBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsUpdatePaymentMethodBody organizations update payment method body
-swagger:model OrganizationsUpdatePaymentMethodBody
-*/
-type OrganizationsUpdatePaymentMethodBody struct {
-
-	// payment intent Id
-	PaymentIntentID string `json:"paymentIntentId,omitempty"`
-
-	// payment method Id
-	PaymentMethodID string `json:"paymentMethodId,omitempty"`
-
-	// uuid
-	UUID string `json:"uuid,omitempty"`
-}
-
-// Validate validates this organizations update payment method body
-func (o *OrganizationsUpdatePaymentMethodBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations update payment method body based on context it is used
-func (o *OrganizationsUpdatePaymentMethodBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsUpdatePaymentMethodBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsUpdatePaymentMethodBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsUpdatePaymentMethodBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsUpdatePaymentMethodForbiddenBody organizations update payment method forbidden body
-swagger:model OrganizationsUpdatePaymentMethodForbiddenBody
-*/
-type OrganizationsUpdatePaymentMethodForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this organizations update payment method forbidden body
-func (o *OrganizationsUpdatePaymentMethodForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations update payment method forbidden body based on context it is used
-func (o *OrganizationsUpdatePaymentMethodForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsUpdatePaymentMethodForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsUpdatePaymentMethodForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsUpdatePaymentMethodForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsUpdatePaymentMethodNotFoundBody organizations update payment method not found body
-swagger:model OrganizationsUpdatePaymentMethodNotFoundBody
-*/
-type OrganizationsUpdatePaymentMethodNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this organizations update payment method not found body
-func (o *OrganizationsUpdatePaymentMethodNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations update payment method not found body based on context it is used
-func (o *OrganizationsUpdatePaymentMethodNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsUpdatePaymentMethodNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsUpdatePaymentMethodNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsUpdatePaymentMethodNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsUpdatePaymentMethodUnauthorizedBody organizations update payment method unauthorized body
-swagger:model OrganizationsUpdatePaymentMethodUnauthorizedBody
-*/
-type OrganizationsUpdatePaymentMethodUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this organizations update payment method unauthorized body
-func (o *OrganizationsUpdatePaymentMethodUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations update payment method unauthorized body based on context it is used
-func (o *OrganizationsUpdatePaymentMethodUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsUpdatePaymentMethodUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsUpdatePaymentMethodUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsUpdatePaymentMethodUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

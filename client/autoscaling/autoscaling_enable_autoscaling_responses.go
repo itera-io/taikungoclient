@@ -6,13 +6,13 @@ package autoscaling
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AutoscalingEnableAutoscalingReader is a Reader for the AutoscalingEnableAutoscaling structure.
@@ -75,7 +75,7 @@ AutoscalingEnableAutoscalingOK describes a response with status code 200, with d
 Success
 */
 type AutoscalingEnableAutoscalingOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this autoscaling enable autoscaling o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AutoscalingEnableAutoscalingOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/enable][%d] autoscalingEnableAutoscalingOK  %+v", 200, o.Payload)
 }
 
-func (o *AutoscalingEnableAutoscalingOK) GetPayload() interface{} {
+func (o *AutoscalingEnableAutoscalingOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AutoscalingEnableAutoscalingBadRequest describes a response with status code 400
 Bad Request
 */
 type AutoscalingEnableAutoscalingBadRequest struct {
-	Payload []*AutoscalingEnableAutoscalingBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this autoscaling enable autoscaling bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AutoscalingEnableAutoscalingBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/enable][%d] autoscalingEnableAutoscalingBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AutoscalingEnableAutoscalingBadRequest) GetPayload() []*AutoscalingEnableAutoscalingBadRequestBodyItems0 {
+func (o *AutoscalingEnableAutoscalingBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AutoscalingEnableAutoscalingUnauthorized describes a response with status code 4
 Unauthorized
 */
 type AutoscalingEnableAutoscalingUnauthorized struct {
-	Payload *AutoscalingEnableAutoscalingUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this autoscaling enable autoscaling unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AutoscalingEnableAutoscalingUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/enable][%d] autoscalingEnableAutoscalingUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AutoscalingEnableAutoscalingUnauthorized) GetPayload() *AutoscalingEnableAutoscalingUnauthorizedBody {
+func (o *AutoscalingEnableAutoscalingUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AutoscalingEnableAutoscalingUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AutoscalingEnableAutoscalingUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AutoscalingEnableAutoscalingForbidden describes a response with status code 403,
 Forbidden
 */
 type AutoscalingEnableAutoscalingForbidden struct {
-	Payload *AutoscalingEnableAutoscalingForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this autoscaling enable autoscaling forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AutoscalingEnableAutoscalingForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/enable][%d] autoscalingEnableAutoscalingForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AutoscalingEnableAutoscalingForbidden) GetPayload() *AutoscalingEnableAutoscalingForbiddenBody {
+func (o *AutoscalingEnableAutoscalingForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AutoscalingEnableAutoscalingForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AutoscalingEnableAutoscalingForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AutoscalingEnableAutoscalingNotFound describes a response with status code 404, 
 Not Found
 */
 type AutoscalingEnableAutoscalingNotFound struct {
-	Payload *AutoscalingEnableAutoscalingNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this autoscaling enable autoscaling not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AutoscalingEnableAutoscalingNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Autoscaling/enable][%d] autoscalingEnableAutoscalingNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AutoscalingEnableAutoscalingNotFound) GetPayload() *AutoscalingEnableAutoscalingNotFoundBody {
+func (o *AutoscalingEnableAutoscalingNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AutoscalingEnableAutoscalingNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AutoscalingEnableAutoscalingNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,252 +423,5 @@ func (o *AutoscalingEnableAutoscalingInternalServerError) String() string {
 
 func (o *AutoscalingEnableAutoscalingInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AutoscalingEnableAutoscalingBadRequestBodyItems0 autoscaling enable autoscaling bad request body items0
-swagger:model AutoscalingEnableAutoscalingBadRequestBodyItems0
-*/
-type AutoscalingEnableAutoscalingBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this autoscaling enable autoscaling bad request body items0
-func (o *AutoscalingEnableAutoscalingBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this autoscaling enable autoscaling bad request body items0 based on context it is used
-func (o *AutoscalingEnableAutoscalingBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AutoscalingEnableAutoscalingBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AutoscalingEnableAutoscalingBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AutoscalingEnableAutoscalingBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AutoscalingEnableAutoscalingBody autoscaling enable autoscaling body
-swagger:model AutoscalingEnableAutoscalingBody
-*/
-type AutoscalingEnableAutoscalingBody struct {
-
-	// autoscaling group name
-	AutoscalingGroupName string `json:"autoscalingGroupName,omitempty"`
-
-	// disk size
-	DiskSize float64 `json:"diskSize,omitempty"`
-
-	// flavor
-	Flavor string `json:"flavor,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// max size
-	MaxSize int32 `json:"maxSize,omitempty"`
-
-	// min size
-	MinSize int32 `json:"minSize,omitempty"`
-
-	// spot enabled
-	SpotEnabled bool `json:"spotEnabled"`
-}
-
-// Validate validates this autoscaling enable autoscaling body
-func (o *AutoscalingEnableAutoscalingBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this autoscaling enable autoscaling body based on context it is used
-func (o *AutoscalingEnableAutoscalingBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AutoscalingEnableAutoscalingBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AutoscalingEnableAutoscalingBody) UnmarshalBinary(b []byte) error {
-	var res AutoscalingEnableAutoscalingBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AutoscalingEnableAutoscalingForbiddenBody autoscaling enable autoscaling forbidden body
-swagger:model AutoscalingEnableAutoscalingForbiddenBody
-*/
-type AutoscalingEnableAutoscalingForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this autoscaling enable autoscaling forbidden body
-func (o *AutoscalingEnableAutoscalingForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this autoscaling enable autoscaling forbidden body based on context it is used
-func (o *AutoscalingEnableAutoscalingForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AutoscalingEnableAutoscalingForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AutoscalingEnableAutoscalingForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AutoscalingEnableAutoscalingForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AutoscalingEnableAutoscalingNotFoundBody autoscaling enable autoscaling not found body
-swagger:model AutoscalingEnableAutoscalingNotFoundBody
-*/
-type AutoscalingEnableAutoscalingNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this autoscaling enable autoscaling not found body
-func (o *AutoscalingEnableAutoscalingNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this autoscaling enable autoscaling not found body based on context it is used
-func (o *AutoscalingEnableAutoscalingNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AutoscalingEnableAutoscalingNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AutoscalingEnableAutoscalingNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AutoscalingEnableAutoscalingNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AutoscalingEnableAutoscalingUnauthorizedBody autoscaling enable autoscaling unauthorized body
-swagger:model AutoscalingEnableAutoscalingUnauthorizedBody
-*/
-type AutoscalingEnableAutoscalingUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this autoscaling enable autoscaling unauthorized body
-func (o *AutoscalingEnableAutoscalingUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this autoscaling enable autoscaling unauthorized body based on context it is used
-func (o *AutoscalingEnableAutoscalingUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AutoscalingEnableAutoscalingUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AutoscalingEnableAutoscalingUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AutoscalingEnableAutoscalingUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

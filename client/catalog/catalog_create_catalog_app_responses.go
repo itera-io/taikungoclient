@@ -6,15 +6,13 @@ package catalog
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CatalogCreateCatalogAppReader is a Reader for the CatalogCreateCatalogApp structure.
@@ -77,7 +75,7 @@ CatalogCreateCatalogAppOK describes a response with status code 200, with defaul
 Success
 */
 type CatalogCreateCatalogAppOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this catalog create catalog app o k response has a 2xx status code
@@ -113,7 +111,7 @@ func (o *CatalogCreateCatalogAppOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-to-catalog][%d] catalogCreateCatalogAppOK  %+v", 200, o.Payload)
 }
 
-func (o *CatalogCreateCatalogAppOK) GetPayload() interface{} {
+func (o *CatalogCreateCatalogAppOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -138,7 +136,7 @@ CatalogCreateCatalogAppBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type CatalogCreateCatalogAppBadRequest struct {
-	Payload []*CatalogCreateCatalogAppBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this catalog create catalog app bad request response has a 2xx status code
@@ -174,7 +172,7 @@ func (o *CatalogCreateCatalogAppBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-to-catalog][%d] catalogCreateCatalogAppBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogCreateCatalogAppBadRequest) GetPayload() []*CatalogCreateCatalogAppBadRequestBodyItems0 {
+func (o *CatalogCreateCatalogAppBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +197,7 @@ CatalogCreateCatalogAppUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type CatalogCreateCatalogAppUnauthorized struct {
-	Payload *CatalogCreateCatalogAppUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog create catalog app unauthorized response has a 2xx status code
@@ -235,13 +233,13 @@ func (o *CatalogCreateCatalogAppUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-to-catalog][%d] catalogCreateCatalogAppUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogCreateCatalogAppUnauthorized) GetPayload() *CatalogCreateCatalogAppUnauthorizedBody {
+func (o *CatalogCreateCatalogAppUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogCreateCatalogAppUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CatalogCreateCatalogAppUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +260,7 @@ CatalogCreateCatalogAppForbidden describes a response with status code 403, with
 Forbidden
 */
 type CatalogCreateCatalogAppForbidden struct {
-	Payload *CatalogCreateCatalogAppForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog create catalog app forbidden response has a 2xx status code
@@ -298,13 +296,13 @@ func (o *CatalogCreateCatalogAppForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-to-catalog][%d] catalogCreateCatalogAppForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogCreateCatalogAppForbidden) GetPayload() *CatalogCreateCatalogAppForbiddenBody {
+func (o *CatalogCreateCatalogAppForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogCreateCatalogAppForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CatalogCreateCatalogAppForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +323,7 @@ CatalogCreateCatalogAppNotFound describes a response with status code 404, with 
 Not Found
 */
 type CatalogCreateCatalogAppNotFound struct {
-	Payload *CatalogCreateCatalogAppNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog create catalog app not found response has a 2xx status code
@@ -361,13 +359,13 @@ func (o *CatalogCreateCatalogAppNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Catalog/app-to-catalog][%d] catalogCreateCatalogAppNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogCreateCatalogAppNotFound) GetPayload() *CatalogCreateCatalogAppNotFoundBody {
+func (o *CatalogCreateCatalogAppNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogCreateCatalogAppNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CatalogCreateCatalogAppNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,357 +423,5 @@ func (o *CatalogCreateCatalogAppInternalServerError) String() string {
 
 func (o *CatalogCreateCatalogAppInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CatalogCreateCatalogAppBadRequestBodyItems0 catalog create catalog app bad request body items0
-swagger:model CatalogCreateCatalogAppBadRequestBodyItems0
-*/
-type CatalogCreateCatalogAppBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this catalog create catalog app bad request body items0
-func (o *CatalogCreateCatalogAppBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog create catalog app bad request body items0 based on context it is used
-func (o *CatalogCreateCatalogAppBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogCreateCatalogAppBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogCreateCatalogAppBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CatalogCreateCatalogAppBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogCreateCatalogAppBody catalog create catalog app body
-swagger:model CatalogCreateCatalogAppBody
-*/
-type CatalogCreateCatalogAppBody struct {
-
-	// catalog Id
-	CatalogID int32 `json:"catalogId,omitempty"`
-
-	// package name
-	PackageName string `json:"packageName,omitempty"`
-
-	// parameters
-	Parameters []*CatalogCreateCatalogAppParamsBodyParametersItems0 `json:"parameters"`
-
-	// repo name
-	RepoName string `json:"repoName,omitempty"`
-
-	// version
-	Version string `json:"version,omitempty"`
-}
-
-// Validate validates this catalog create catalog app body
-func (o *CatalogCreateCatalogAppBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateParameters(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *CatalogCreateCatalogAppBody) validateParameters(formats strfmt.Registry) error {
-	if swag.IsZero(o.Parameters) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Parameters); i++ {
-		if swag.IsZero(o.Parameters[i]) { // not required
-			continue
-		}
-
-		if o.Parameters[i] != nil {
-			if err := o.Parameters[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this catalog create catalog app body based on the context it is used
-func (o *CatalogCreateCatalogAppBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateParameters(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *CatalogCreateCatalogAppBody) contextValidateParameters(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Parameters); i++ {
-
-		if o.Parameters[i] != nil {
-			if err := o.Parameters[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogCreateCatalogAppBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogCreateCatalogAppBody) UnmarshalBinary(b []byte) error {
-	var res CatalogCreateCatalogAppBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogCreateCatalogAppForbiddenBody catalog create catalog app forbidden body
-swagger:model CatalogCreateCatalogAppForbiddenBody
-*/
-type CatalogCreateCatalogAppForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this catalog create catalog app forbidden body
-func (o *CatalogCreateCatalogAppForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog create catalog app forbidden body based on context it is used
-func (o *CatalogCreateCatalogAppForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogCreateCatalogAppForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogCreateCatalogAppForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CatalogCreateCatalogAppForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogCreateCatalogAppNotFoundBody catalog create catalog app not found body
-swagger:model CatalogCreateCatalogAppNotFoundBody
-*/
-type CatalogCreateCatalogAppNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this catalog create catalog app not found body
-func (o *CatalogCreateCatalogAppNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog create catalog app not found body based on context it is used
-func (o *CatalogCreateCatalogAppNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogCreateCatalogAppNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogCreateCatalogAppNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CatalogCreateCatalogAppNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogCreateCatalogAppParamsBodyParametersItems0 catalog create catalog app params body parameters items0
-swagger:model CatalogCreateCatalogAppParamsBodyParametersItems0
-*/
-type CatalogCreateCatalogAppParamsBodyParametersItems0 struct {
-
-	// is changeable
-	IsChangeable bool `json:"isChangeable"`
-
-	// is readonly
-	IsReadonly bool `json:"isReadonly"`
-
-	// key
-	Key string `json:"key,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this catalog create catalog app params body parameters items0
-func (o *CatalogCreateCatalogAppParamsBodyParametersItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog create catalog app params body parameters items0 based on context it is used
-func (o *CatalogCreateCatalogAppParamsBodyParametersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogCreateCatalogAppParamsBodyParametersItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogCreateCatalogAppParamsBodyParametersItems0) UnmarshalBinary(b []byte) error {
-	var res CatalogCreateCatalogAppParamsBodyParametersItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogCreateCatalogAppUnauthorizedBody catalog create catalog app unauthorized body
-swagger:model CatalogCreateCatalogAppUnauthorizedBody
-*/
-type CatalogCreateCatalogAppUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this catalog create catalog app unauthorized body
-func (o *CatalogCreateCatalogAppUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog create catalog app unauthorized body based on context it is used
-func (o *CatalogCreateCatalogAppUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogCreateCatalogAppUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogCreateCatalogAppUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CatalogCreateCatalogAppUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

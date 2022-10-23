@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobDeleteKubeConfigsReader is a Reader for the CronJobDeleteKubeConfigs structure.
@@ -75,7 +75,7 @@ CronJobDeleteKubeConfigsOK describes a response with status code 200, with defau
 Success
 */
 type CronJobDeleteKubeConfigsOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job delete kube configs o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobDeleteKubeConfigsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobDeleteKubeConfigsOK) GetPayload() interface{} {
+func (o *CronJobDeleteKubeConfigsOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobDeleteKubeConfigsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type CronJobDeleteKubeConfigsBadRequest struct {
-	Payload []*CronJobDeleteKubeConfigsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job delete kube configs bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobDeleteKubeConfigsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteKubeConfigsBadRequest) GetPayload() []*CronJobDeleteKubeConfigsBadRequestBodyItems0 {
+func (o *CronJobDeleteKubeConfigsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobDeleteKubeConfigsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type CronJobDeleteKubeConfigsUnauthorized struct {
-	Payload *CronJobDeleteKubeConfigsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete kube configs unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobDeleteKubeConfigsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteKubeConfigsUnauthorized) GetPayload() *CronJobDeleteKubeConfigsUnauthorizedBody {
+func (o *CronJobDeleteKubeConfigsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteKubeConfigsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobDeleteKubeConfigsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobDeleteKubeConfigsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type CronJobDeleteKubeConfigsForbidden struct {
-	Payload *CronJobDeleteKubeConfigsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete kube configs forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobDeleteKubeConfigsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteKubeConfigsForbidden) GetPayload() *CronJobDeleteKubeConfigsForbiddenBody {
+func (o *CronJobDeleteKubeConfigsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteKubeConfigsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobDeleteKubeConfigsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobDeleteKubeConfigsNotFound describes a response with status code 404, with
 Not Found
 */
 type CronJobDeleteKubeConfigsNotFound struct {
-	Payload *CronJobDeleteKubeConfigsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete kube configs not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobDeleteKubeConfigsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-kube-configs][%d] cronJobDeleteKubeConfigsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteKubeConfigsNotFound) GetPayload() *CronJobDeleteKubeConfigsNotFoundBody {
+func (o *CronJobDeleteKubeConfigsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteKubeConfigsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobDeleteKubeConfigsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *CronJobDeleteKubeConfigsInternalServerError) String() string {
 
 func (o *CronJobDeleteKubeConfigsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CronJobDeleteKubeConfigsBadRequestBodyItems0 cron job delete kube configs bad request body items0
-swagger:model CronJobDeleteKubeConfigsBadRequestBodyItems0
-*/
-type CronJobDeleteKubeConfigsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this cron job delete kube configs bad request body items0
-func (o *CronJobDeleteKubeConfigsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete kube configs bad request body items0 based on context it is used
-func (o *CronJobDeleteKubeConfigsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteKubeConfigsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteKubeConfigsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteKubeConfigsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobDeleteKubeConfigsForbiddenBody cron job delete kube configs forbidden body
-swagger:model CronJobDeleteKubeConfigsForbiddenBody
-*/
-type CronJobDeleteKubeConfigsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job delete kube configs forbidden body
-func (o *CronJobDeleteKubeConfigsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete kube configs forbidden body based on context it is used
-func (o *CronJobDeleteKubeConfigsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteKubeConfigsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteKubeConfigsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteKubeConfigsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobDeleteKubeConfigsNotFoundBody cron job delete kube configs not found body
-swagger:model CronJobDeleteKubeConfigsNotFoundBody
-*/
-type CronJobDeleteKubeConfigsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job delete kube configs not found body
-func (o *CronJobDeleteKubeConfigsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete kube configs not found body based on context it is used
-func (o *CronJobDeleteKubeConfigsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteKubeConfigsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteKubeConfigsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteKubeConfigsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobDeleteKubeConfigsUnauthorizedBody cron job delete kube configs unauthorized body
-swagger:model CronJobDeleteKubeConfigsUnauthorizedBody
-*/
-type CronJobDeleteKubeConfigsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job delete kube configs unauthorized body
-func (o *CronJobDeleteKubeConfigsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete kube configs unauthorized body based on context it is used
-func (o *CronJobDeleteKubeConfigsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteKubeConfigsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteKubeConfigsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteKubeConfigsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

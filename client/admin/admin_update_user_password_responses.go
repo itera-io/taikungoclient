@@ -6,13 +6,13 @@ package admin
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AdminUpdateUserPasswordReader is a Reader for the AdminUpdateUserPassword structure.
@@ -75,7 +75,7 @@ AdminUpdateUserPasswordOK describes a response with status code 200, with defaul
 Success
 */
 type AdminUpdateUserPasswordOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this admin update user password o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AdminUpdateUserPasswordOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordOK  %+v", 200, o.Payload)
 }
 
-func (o *AdminUpdateUserPasswordOK) GetPayload() interface{} {
+func (o *AdminUpdateUserPasswordOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AdminUpdateUserPasswordBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type AdminUpdateUserPasswordBadRequest struct {
-	Payload []*AdminUpdateUserPasswordBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this admin update user password bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminUpdateUserPasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminUpdateUserPasswordBadRequest) GetPayload() []*AdminUpdateUserPasswordBadRequestBodyItems0 {
+func (o *AdminUpdateUserPasswordBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AdminUpdateUserPasswordUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type AdminUpdateUserPasswordUnauthorized struct {
-	Payload *AdminUpdateUserPasswordUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin update user password unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AdminUpdateUserPasswordUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminUpdateUserPasswordUnauthorized) GetPayload() *AdminUpdateUserPasswordUnauthorizedBody {
+func (o *AdminUpdateUserPasswordUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserPasswordUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminUpdateUserPasswordUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AdminUpdateUserPasswordForbidden describes a response with status code 403, with
 Forbidden
 */
 type AdminUpdateUserPasswordForbidden struct {
-	Payload *AdminUpdateUserPasswordForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin update user password forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AdminUpdateUserPasswordForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminUpdateUserPasswordForbidden) GetPayload() *AdminUpdateUserPasswordForbiddenBody {
+func (o *AdminUpdateUserPasswordForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserPasswordForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminUpdateUserPasswordForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AdminUpdateUserPasswordNotFound describes a response with status code 404, with 
 Not Found
 */
 type AdminUpdateUserPasswordNotFound struct {
-	Payload *AdminUpdateUserPasswordNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin update user password not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AdminUpdateUserPasswordNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/password][%d] adminUpdateUserPasswordNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminUpdateUserPasswordNotFound) GetPayload() *AdminUpdateUserPasswordNotFoundBody {
+func (o *AdminUpdateUserPasswordNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserPasswordNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminUpdateUserPasswordNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *AdminUpdateUserPasswordInternalServerError) String() string {
 
 func (o *AdminUpdateUserPasswordInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AdminUpdateUserPasswordBadRequestBodyItems0 admin update user password bad request body items0
-swagger:model AdminUpdateUserPasswordBadRequestBodyItems0
-*/
-type AdminUpdateUserPasswordBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this admin update user password bad request body items0
-func (o *AdminUpdateUserPasswordBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin update user password bad request body items0 based on context it is used
-func (o *AdminUpdateUserPasswordBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUpdateUserPasswordBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUpdateUserPasswordBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AdminUpdateUserPasswordBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminUpdateUserPasswordBody admin update user password body
-swagger:model AdminUpdateUserPasswordBody
-*/
-type AdminUpdateUserPasswordBody struct {
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// password
-	Password string `json:"password,omitempty"`
-}
-
-// Validate validates this admin update user password body
-func (o *AdminUpdateUserPasswordBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin update user password body based on context it is used
-func (o *AdminUpdateUserPasswordBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUpdateUserPasswordBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUpdateUserPasswordBody) UnmarshalBinary(b []byte) error {
-	var res AdminUpdateUserPasswordBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminUpdateUserPasswordForbiddenBody admin update user password forbidden body
-swagger:model AdminUpdateUserPasswordForbiddenBody
-*/
-type AdminUpdateUserPasswordForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin update user password forbidden body
-func (o *AdminUpdateUserPasswordForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin update user password forbidden body based on context it is used
-func (o *AdminUpdateUserPasswordForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUpdateUserPasswordForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUpdateUserPasswordForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AdminUpdateUserPasswordForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminUpdateUserPasswordNotFoundBody admin update user password not found body
-swagger:model AdminUpdateUserPasswordNotFoundBody
-*/
-type AdminUpdateUserPasswordNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin update user password not found body
-func (o *AdminUpdateUserPasswordNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin update user password not found body based on context it is used
-func (o *AdminUpdateUserPasswordNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUpdateUserPasswordNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUpdateUserPasswordNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AdminUpdateUserPasswordNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminUpdateUserPasswordUnauthorizedBody admin update user password unauthorized body
-swagger:model AdminUpdateUserPasswordUnauthorizedBody
-*/
-type AdminUpdateUserPasswordUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin update user password unauthorized body
-func (o *AdminUpdateUserPasswordUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin update user password unauthorized body based on context it is used
-func (o *AdminUpdateUserPasswordUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUpdateUserPasswordUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUpdateUserPasswordUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AdminUpdateUserPasswordUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

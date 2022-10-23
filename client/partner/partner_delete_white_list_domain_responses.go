@@ -6,13 +6,13 @@ package partner
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PartnerDeleteWhiteListDomainReader is a Reader for the PartnerDeleteWhiteListDomain structure.
@@ -75,7 +75,7 @@ PartnerDeleteWhiteListDomainOK describes a response with status code 200, with d
 Success
 */
 type PartnerDeleteWhiteListDomainOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this partner delete white list domain o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *PartnerDeleteWhiteListDomainOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainOK  %+v", 200, o.Payload)
 }
 
-func (o *PartnerDeleteWhiteListDomainOK) GetPayload() interface{} {
+func (o *PartnerDeleteWhiteListDomainOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ PartnerDeleteWhiteListDomainBadRequest describes a response with status code 400
 Bad Request
 */
 type PartnerDeleteWhiteListDomainBadRequest struct {
-	Payload []*PartnerDeleteWhiteListDomainBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this partner delete white list domain bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PartnerDeleteWhiteListDomainBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerDeleteWhiteListDomainBadRequest) GetPayload() []*PartnerDeleteWhiteListDomainBadRequestBodyItems0 {
+func (o *PartnerDeleteWhiteListDomainBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ PartnerDeleteWhiteListDomainUnauthorized describes a response with status code 4
 Unauthorized
 */
 type PartnerDeleteWhiteListDomainUnauthorized struct {
-	Payload *PartnerDeleteWhiteListDomainUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner delete white list domain unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *PartnerDeleteWhiteListDomainUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerDeleteWhiteListDomainUnauthorized) GetPayload() *PartnerDeleteWhiteListDomainUnauthorizedBody {
+func (o *PartnerDeleteWhiteListDomainUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerDeleteWhiteListDomainUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PartnerDeleteWhiteListDomainUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ PartnerDeleteWhiteListDomainForbidden describes a response with status code 403,
 Forbidden
 */
 type PartnerDeleteWhiteListDomainForbidden struct {
-	Payload *PartnerDeleteWhiteListDomainForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner delete white list domain forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *PartnerDeleteWhiteListDomainForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerDeleteWhiteListDomainForbidden) GetPayload() *PartnerDeleteWhiteListDomainForbiddenBody {
+func (o *PartnerDeleteWhiteListDomainForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerDeleteWhiteListDomainForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PartnerDeleteWhiteListDomainForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ PartnerDeleteWhiteListDomainNotFound describes a response with status code 404, 
 Not Found
 */
 type PartnerDeleteWhiteListDomainNotFound struct {
-	Payload *PartnerDeleteWhiteListDomainNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner delete white list domain not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *PartnerDeleteWhiteListDomainNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/delete/whitelist/domain][%d] partnerDeleteWhiteListDomainNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerDeleteWhiteListDomainNotFound) GetPayload() *PartnerDeleteWhiteListDomainNotFoundBody {
+func (o *PartnerDeleteWhiteListDomainNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerDeleteWhiteListDomainNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PartnerDeleteWhiteListDomainNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *PartnerDeleteWhiteListDomainInternalServerError) String() string {
 
 func (o *PartnerDeleteWhiteListDomainInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PartnerDeleteWhiteListDomainBadRequestBodyItems0 partner delete white list domain bad request body items0
-swagger:model PartnerDeleteWhiteListDomainBadRequestBodyItems0
-*/
-type PartnerDeleteWhiteListDomainBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this partner delete white list domain bad request body items0
-func (o *PartnerDeleteWhiteListDomainBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner delete white list domain bad request body items0 based on context it is used
-func (o *PartnerDeleteWhiteListDomainBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerDeleteWhiteListDomainBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerDeleteWhiteListDomainBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PartnerDeleteWhiteListDomainBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerDeleteWhiteListDomainBody partner delete white list domain body
-swagger:model PartnerDeleteWhiteListDomainBody
-*/
-type PartnerDeleteWhiteListDomainBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-}
-
-// Validate validates this partner delete white list domain body
-func (o *PartnerDeleteWhiteListDomainBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner delete white list domain body based on context it is used
-func (o *PartnerDeleteWhiteListDomainBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerDeleteWhiteListDomainBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerDeleteWhiteListDomainBody) UnmarshalBinary(b []byte) error {
-	var res PartnerDeleteWhiteListDomainBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerDeleteWhiteListDomainForbiddenBody partner delete white list domain forbidden body
-swagger:model PartnerDeleteWhiteListDomainForbiddenBody
-*/
-type PartnerDeleteWhiteListDomainForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this partner delete white list domain forbidden body
-func (o *PartnerDeleteWhiteListDomainForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner delete white list domain forbidden body based on context it is used
-func (o *PartnerDeleteWhiteListDomainForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerDeleteWhiteListDomainForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerDeleteWhiteListDomainForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PartnerDeleteWhiteListDomainForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerDeleteWhiteListDomainNotFoundBody partner delete white list domain not found body
-swagger:model PartnerDeleteWhiteListDomainNotFoundBody
-*/
-type PartnerDeleteWhiteListDomainNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this partner delete white list domain not found body
-func (o *PartnerDeleteWhiteListDomainNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner delete white list domain not found body based on context it is used
-func (o *PartnerDeleteWhiteListDomainNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerDeleteWhiteListDomainNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerDeleteWhiteListDomainNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PartnerDeleteWhiteListDomainNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerDeleteWhiteListDomainUnauthorizedBody partner delete white list domain unauthorized body
-swagger:model PartnerDeleteWhiteListDomainUnauthorizedBody
-*/
-type PartnerDeleteWhiteListDomainUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this partner delete white list domain unauthorized body
-func (o *PartnerDeleteWhiteListDomainUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner delete white list domain unauthorized body based on context it is used
-func (o *PartnerDeleteWhiteListDomainUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerDeleteWhiteListDomainUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerDeleteWhiteListDomainUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PartnerDeleteWhiteListDomainUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

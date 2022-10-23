@@ -6,16 +6,13 @@ package cloud_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CloudCredentialsForProjectReader is a Reader for the CloudCredentialsForProject structure.
@@ -78,7 +75,7 @@ CloudCredentialsForProjectOK describes a response with status code 200, with def
 Success
 */
 type CloudCredentialsForProjectOK struct {
-	Payload *CloudCredentialsForProjectOKBody
+	Payload *models.CredentialsForProjectList
 }
 
 // IsSuccess returns true when this cloud credentials for project o k response has a 2xx status code
@@ -114,13 +111,13 @@ func (o *CloudCredentialsForProjectOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectOK  %+v", 200, o.Payload)
 }
 
-func (o *CloudCredentialsForProjectOK) GetPayload() *CloudCredentialsForProjectOKBody {
+func (o *CloudCredentialsForProjectOK) GetPayload() *models.CredentialsForProjectList {
 	return o.Payload
 }
 
 func (o *CloudCredentialsForProjectOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CloudCredentialsForProjectOKBody)
+	o.Payload = new(models.CredentialsForProjectList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -141,7 +138,7 @@ CloudCredentialsForProjectBadRequest describes a response with status code 400, 
 Bad Request
 */
 type CloudCredentialsForProjectBadRequest struct {
-	Payload []*CloudCredentialsForProjectBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cloud credentials for project bad request response has a 2xx status code
@@ -177,7 +174,7 @@ func (o *CloudCredentialsForProjectBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsForProjectBadRequest) GetPayload() []*CloudCredentialsForProjectBadRequestBodyItems0 {
+func (o *CloudCredentialsForProjectBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -202,7 +199,7 @@ CloudCredentialsForProjectUnauthorized describes a response with status code 401
 Unauthorized
 */
 type CloudCredentialsForProjectUnauthorized struct {
-	Payload *CloudCredentialsForProjectUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials for project unauthorized response has a 2xx status code
@@ -238,13 +235,13 @@ func (o *CloudCredentialsForProjectUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsForProjectUnauthorized) GetPayload() *CloudCredentialsForProjectUnauthorizedBody {
+func (o *CloudCredentialsForProjectUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsForProjectUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CloudCredentialsForProjectUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -265,7 +262,7 @@ CloudCredentialsForProjectForbidden describes a response with status code 403, w
 Forbidden
 */
 type CloudCredentialsForProjectForbidden struct {
-	Payload *CloudCredentialsForProjectForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials for project forbidden response has a 2xx status code
@@ -301,13 +298,13 @@ func (o *CloudCredentialsForProjectForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsForProjectForbidden) GetPayload() *CloudCredentialsForProjectForbiddenBody {
+func (o *CloudCredentialsForProjectForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsForProjectForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CloudCredentialsForProjectForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -328,7 +325,7 @@ CloudCredentialsForProjectNotFound describes a response with status code 404, wi
 Not Found
 */
 type CloudCredentialsForProjectNotFound struct {
-	Payload *CloudCredentialsForProjectNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials for project not found response has a 2xx status code
@@ -364,13 +361,13 @@ func (o *CloudCredentialsForProjectNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/details][%d] cloudCredentialsForProjectNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsForProjectNotFound) GetPayload() *CloudCredentialsForProjectNotFoundBody {
+func (o *CloudCredentialsForProjectNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsForProjectNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CloudCredentialsForProjectNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -428,693 +425,5 @@ func (o *CloudCredentialsForProjectInternalServerError) String() string {
 
 func (o *CloudCredentialsForProjectInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CloudCredentialsForProjectBadRequestBodyItems0 cloud credentials for project bad request body items0
-swagger:model CloudCredentialsForProjectBadRequestBodyItems0
-*/
-type CloudCredentialsForProjectBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this cloud credentials for project bad request body items0
-func (o *CloudCredentialsForProjectBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials for project bad request body items0 based on context it is used
-func (o *CloudCredentialsForProjectBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsForProjectBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsForProjectBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsForProjectBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsForProjectForbiddenBody cloud credentials for project forbidden body
-swagger:model CloudCredentialsForProjectForbiddenBody
-*/
-type CloudCredentialsForProjectForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cloud credentials for project forbidden body
-func (o *CloudCredentialsForProjectForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials for project forbidden body based on context it is used
-func (o *CloudCredentialsForProjectForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsForProjectForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsForProjectForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsForProjectForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsForProjectNotFoundBody cloud credentials for project not found body
-swagger:model CloudCredentialsForProjectNotFoundBody
-*/
-type CloudCredentialsForProjectNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cloud credentials for project not found body
-func (o *CloudCredentialsForProjectNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials for project not found body based on context it is used
-func (o *CloudCredentialsForProjectNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsForProjectNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsForProjectNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsForProjectNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsForProjectOKBody cloud credentials for project o k body
-swagger:model CloudCredentialsForProjectOKBody
-*/
-type CloudCredentialsForProjectOKBody struct {
-
-	// aws
-	Aws *CloudCredentialsForProjectOKBodyAws `json:"aws,omitempty"`
-
-	// azure
-	Azure *CloudCredentialsForProjectOKBodyAzure `json:"azure,omitempty"`
-
-	// billing enabled
-	BillingEnabled bool `json:"billingEnabled"`
-
-	// cloud credential revision
-	CloudCredentialRevision int32 `json:"cloudCredentialRevision,omitempty"`
-
-	// cloud type
-	// Enum: [100 200 300 400]
-	CloudType int32 `json:"cloudType,omitempty"`
-
-	// continent name
-	ContinentName string `json:"continentName,omitempty"`
-
-	// google
-	Google *CloudCredentialsForProjectOKBodyGoogle `json:"google,omitempty"`
-
-	// openstack
-	Openstack *CloudCredentialsForProjectOKBodyOpenstack `json:"openstack,omitempty"`
-
-	// requires v p n
-	RequiresVPN bool `json:"requiresVPN"`
-}
-
-// Validate validates this cloud credentials for project o k body
-func (o *CloudCredentialsForProjectOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateAws(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateAzure(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateCloudType(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateGoogle(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateOpenstack(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *CloudCredentialsForProjectOKBody) validateAws(formats strfmt.Registry) error {
-	if swag.IsZero(o.Aws) { // not required
-		return nil
-	}
-
-	if o.Aws != nil {
-		if err := o.Aws.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("cloudCredentialsForProjectOK" + "." + "aws")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("cloudCredentialsForProjectOK" + "." + "aws")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *CloudCredentialsForProjectOKBody) validateAzure(formats strfmt.Registry) error {
-	if swag.IsZero(o.Azure) { // not required
-		return nil
-	}
-
-	if o.Azure != nil {
-		if err := o.Azure.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("cloudCredentialsForProjectOK" + "." + "azure")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("cloudCredentialsForProjectOK" + "." + "azure")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-var cloudCredentialsForProjectOKBodyTypeCloudTypePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200,300,400]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		cloudCredentialsForProjectOKBodyTypeCloudTypePropEnum = append(cloudCredentialsForProjectOKBodyTypeCloudTypePropEnum, v)
-	}
-}
-
-// prop value enum
-func (o *CloudCredentialsForProjectOKBody) validateCloudTypeEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, cloudCredentialsForProjectOKBodyTypeCloudTypePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *CloudCredentialsForProjectOKBody) validateCloudType(formats strfmt.Registry) error {
-	if swag.IsZero(o.CloudType) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := o.validateCloudTypeEnum("cloudCredentialsForProjectOK"+"."+"cloudType", "body", o.CloudType); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (o *CloudCredentialsForProjectOKBody) validateGoogle(formats strfmt.Registry) error {
-	if swag.IsZero(o.Google) { // not required
-		return nil
-	}
-
-	if o.Google != nil {
-		if err := o.Google.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("cloudCredentialsForProjectOK" + "." + "google")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("cloudCredentialsForProjectOK" + "." + "google")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *CloudCredentialsForProjectOKBody) validateOpenstack(formats strfmt.Registry) error {
-	if swag.IsZero(o.Openstack) { // not required
-		return nil
-	}
-
-	if o.Openstack != nil {
-		if err := o.Openstack.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("cloudCredentialsForProjectOK" + "." + "openstack")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("cloudCredentialsForProjectOK" + "." + "openstack")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this cloud credentials for project o k body based on the context it is used
-func (o *CloudCredentialsForProjectOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateAws(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateAzure(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateGoogle(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateOpenstack(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *CloudCredentialsForProjectOKBody) contextValidateAws(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Aws != nil {
-		if err := o.Aws.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("cloudCredentialsForProjectOK" + "." + "aws")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("cloudCredentialsForProjectOK" + "." + "aws")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *CloudCredentialsForProjectOKBody) contextValidateAzure(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Azure != nil {
-		if err := o.Azure.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("cloudCredentialsForProjectOK" + "." + "azure")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("cloudCredentialsForProjectOK" + "." + "azure")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *CloudCredentialsForProjectOKBody) contextValidateGoogle(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Google != nil {
-		if err := o.Google.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("cloudCredentialsForProjectOK" + "." + "google")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("cloudCredentialsForProjectOK" + "." + "google")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *CloudCredentialsForProjectOKBody) contextValidateOpenstack(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Openstack != nil {
-		if err := o.Openstack.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("cloudCredentialsForProjectOK" + "." + "openstack")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("cloudCredentialsForProjectOK" + "." + "openstack")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsForProjectOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsForProjectOKBody) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsForProjectOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsForProjectOKBodyAws cloud credentials for project o k body aws
-swagger:model CloudCredentialsForProjectOKBodyAws
-*/
-type CloudCredentialsForProjectOKBodyAws struct {
-
-	// aws access key Id
-	AwsAccessKeyID string `json:"awsAccessKeyId,omitempty"`
-
-	// aws region
-	AwsRegion string `json:"awsRegion,omitempty"`
-
-	// aws secret access key
-	AwsSecretAccessKey string `json:"awsSecretAccessKey,omitempty"`
-}
-
-// Validate validates this cloud credentials for project o k body aws
-func (o *CloudCredentialsForProjectOKBodyAws) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials for project o k body aws based on context it is used
-func (o *CloudCredentialsForProjectOKBodyAws) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsForProjectOKBodyAws) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsForProjectOKBodyAws) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsForProjectOKBodyAws
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsForProjectOKBodyAzure cloud credentials for project o k body azure
-swagger:model CloudCredentialsForProjectOKBodyAzure
-*/
-type CloudCredentialsForProjectOKBodyAzure struct {
-
-	// azure client Id
-	AzureClientID string `json:"azureClientId,omitempty"`
-
-	// azure client secret
-	AzureClientSecret string `json:"azureClientSecret,omitempty"`
-
-	// azure location
-	AzureLocation string `json:"azureLocation,omitempty"`
-
-	// azure subscription Id
-	AzureSubscriptionID string `json:"azureSubscriptionId,omitempty"`
-
-	// azure tenant Id
-	AzureTenantID string `json:"azureTenantId,omitempty"`
-}
-
-// Validate validates this cloud credentials for project o k body azure
-func (o *CloudCredentialsForProjectOKBodyAzure) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials for project o k body azure based on context it is used
-func (o *CloudCredentialsForProjectOKBodyAzure) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsForProjectOKBodyAzure) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsForProjectOKBodyAzure) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsForProjectOKBodyAzure
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsForProjectOKBodyGoogle cloud credentials for project o k body google
-swagger:model CloudCredentialsForProjectOKBodyGoogle
-*/
-type CloudCredentialsForProjectOKBodyGoogle struct {
-
-	// billing account Id
-	BillingAccountID string `json:"billingAccountId,omitempty"`
-
-	// config
-	Config string `json:"config,omitempty"`
-
-	// folder Id
-	FolderID string `json:"folderId,omitempty"`
-
-	// region
-	Region string `json:"region,omitempty"`
-
-	// zone
-	Zone string `json:"zone,omitempty"`
-}
-
-// Validate validates this cloud credentials for project o k body google
-func (o *CloudCredentialsForProjectOKBodyGoogle) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials for project o k body google based on context it is used
-func (o *CloudCredentialsForProjectOKBodyGoogle) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsForProjectOKBodyGoogle) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsForProjectOKBodyGoogle) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsForProjectOKBodyGoogle
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsForProjectOKBodyOpenstack cloud credentials for project o k body openstack
-swagger:model CloudCredentialsForProjectOKBodyOpenstack
-*/
-type CloudCredentialsForProjectOKBodyOpenstack struct {
-
-	// open stack availability zone
-	OpenStackAvailabilityZone string `json:"openStackAvailabilityZone,omitempty"`
-
-	// open stack domain
-	OpenStackDomain string `json:"openStackDomain,omitempty"`
-
-	// open stack import network
-	OpenStackImportNetwork bool `json:"openStackImportNetwork"`
-
-	// open stack internal subnet Id
-	OpenStackInternalSubnetID string `json:"openStackInternalSubnetId,omitempty"`
-
-	// open stack password
-	OpenStackPassword string `json:"openStackPassword,omitempty"`
-
-	// open stack project
-	OpenStackProject string `json:"openStackProject,omitempty"`
-
-	// open stack public network
-	OpenStackPublicNetwork string `json:"openStackPublicNetwork,omitempty"`
-
-	// open stack region
-	OpenStackRegion string `json:"openStackRegion,omitempty"`
-
-	// open stack tenant Id
-	OpenStackTenantID string `json:"openStackTenantId,omitempty"`
-
-	// open stack Url
-	OpenStackURL string `json:"openStackUrl,omitempty"`
-
-	// open stack user
-	OpenStackUser string `json:"openStackUser,omitempty"`
-
-	// open stack volume type
-	OpenStackVolumeType string `json:"openStackVolumeType,omitempty"`
-}
-
-// Validate validates this cloud credentials for project o k body openstack
-func (o *CloudCredentialsForProjectOKBodyOpenstack) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials for project o k body openstack based on context it is used
-func (o *CloudCredentialsForProjectOKBodyOpenstack) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsForProjectOKBodyOpenstack) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsForProjectOKBodyOpenstack) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsForProjectOKBodyOpenstack
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsForProjectUnauthorizedBody cloud credentials for project unauthorized body
-swagger:model CloudCredentialsForProjectUnauthorizedBody
-*/
-type CloudCredentialsForProjectUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cloud credentials for project unauthorized body
-func (o *CloudCredentialsForProjectUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials for project unauthorized body based on context it is used
-func (o *CloudCredentialsForProjectUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsForProjectUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsForProjectUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsForProjectUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

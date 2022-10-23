@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAzureZonesParams creates a new AzureZonesParams object,
@@ -62,7 +64,7 @@ AzureZonesParams contains all the parameters to send to the API endpoint
 type AzureZonesParams struct {
 
 	// Body.
-	Body AzureZonesBody
+	Body *models.AzureZonesCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *AzureZonesParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the azure zones params
-func (o *AzureZonesParams) WithBody(body AzureZonesBody) *AzureZonesParams {
+func (o *AzureZonesParams) WithBody(body *models.AzureZonesCommand) *AzureZonesParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the azure zones params
-func (o *AzureZonesParams) SetBody(body AzureZonesBody) {
+func (o *AzureZonesParams) SetBody(body *models.AzureZonesCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *AzureZonesParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

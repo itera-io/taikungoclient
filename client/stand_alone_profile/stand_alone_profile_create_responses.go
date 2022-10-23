@@ -6,17 +6,13 @@ package stand_alone_profile
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"encoding/json"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneProfileCreateReader is a Reader for the StandAloneProfileCreate structure.
@@ -79,7 +75,7 @@ StandAloneProfileCreateOK describes a response with status code 200, with defaul
 Success
 */
 type StandAloneProfileCreateOK struct {
-	Payload *StandAloneProfileCreateOKBody
+	Payload *models.APIResponse
 }
 
 // IsSuccess returns true when this stand alone profile create o k response has a 2xx status code
@@ -115,13 +111,13 @@ func (o *StandAloneProfileCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneProfileCreateOK) GetPayload() *StandAloneProfileCreateOKBody {
+func (o *StandAloneProfileCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *StandAloneProfileCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneProfileCreateOKBody)
+	o.Payload = new(models.APIResponse)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -142,7 +138,7 @@ StandAloneProfileCreateBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneProfileCreateBadRequest struct {
-	Payload []*StandAloneProfileCreateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone profile create bad request response has a 2xx status code
@@ -178,7 +174,7 @@ func (o *StandAloneProfileCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneProfileCreateBadRequest) GetPayload() []*StandAloneProfileCreateBadRequestBodyItems0 {
+func (o *StandAloneProfileCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -203,7 +199,7 @@ StandAloneProfileCreateUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneProfileCreateUnauthorized struct {
-	Payload *StandAloneProfileCreateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone profile create unauthorized response has a 2xx status code
@@ -239,13 +235,13 @@ func (o *StandAloneProfileCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneProfileCreateUnauthorized) GetPayload() *StandAloneProfileCreateUnauthorizedBody {
+func (o *StandAloneProfileCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneProfileCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneProfileCreateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -266,7 +262,7 @@ StandAloneProfileCreateForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneProfileCreateForbidden struct {
-	Payload *StandAloneProfileCreateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone profile create forbidden response has a 2xx status code
@@ -302,13 +298,13 @@ func (o *StandAloneProfileCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneProfileCreateForbidden) GetPayload() *StandAloneProfileCreateForbiddenBody {
+func (o *StandAloneProfileCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneProfileCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneProfileCreateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -329,7 +325,7 @@ StandAloneProfileCreateNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneProfileCreateNotFound struct {
-	Payload *StandAloneProfileCreateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone profile create not found response has a 2xx status code
@@ -365,13 +361,13 @@ func (o *StandAloneProfileCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneProfile/create][%d] standAloneProfileCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneProfileCreateNotFound) GetPayload() *StandAloneProfileCreateNotFoundBody {
+func (o *StandAloneProfileCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneProfileCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneProfileCreateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -429,450 +425,5 @@ func (o *StandAloneProfileCreateInternalServerError) String() string {
 
 func (o *StandAloneProfileCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-StandAloneProfileCreateBadRequestBodyItems0 stand alone profile create bad request body items0
-swagger:model StandAloneProfileCreateBadRequestBodyItems0
-*/
-type StandAloneProfileCreateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this stand alone profile create bad request body items0
-func (o *StandAloneProfileCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone profile create bad request body items0 based on context it is used
-func (o *StandAloneProfileCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneProfileCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneProfileCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneProfileCreateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneProfileCreateBody stand alone profile create body
-swagger:model StandAloneProfileCreateBody
-*/
-type StandAloneProfileCreateBody struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// public key
-	PublicKey string `json:"publicKey,omitempty"`
-
-	// security groups
-	SecurityGroups []*StandAloneProfileCreateParamsBodySecurityGroupsItems0 `json:"securityGroups"`
-}
-
-// Validate validates this stand alone profile create body
-func (o *StandAloneProfileCreateBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateSecurityGroups(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneProfileCreateBody) validateSecurityGroups(formats strfmt.Registry) error {
-	if swag.IsZero(o.SecurityGroups) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.SecurityGroups); i++ {
-		if swag.IsZero(o.SecurityGroups[i]) { // not required
-			continue
-		}
-
-		if o.SecurityGroups[i] != nil {
-			if err := o.SecurityGroups[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "securityGroups" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "securityGroups" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this stand alone profile create body based on the context it is used
-func (o *StandAloneProfileCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateSecurityGroups(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneProfileCreateBody) contextValidateSecurityGroups(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.SecurityGroups); i++ {
-
-		if o.SecurityGroups[i] != nil {
-			if err := o.SecurityGroups[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "securityGroups" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "securityGroups" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneProfileCreateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneProfileCreateBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneProfileCreateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneProfileCreateForbiddenBody stand alone profile create forbidden body
-swagger:model StandAloneProfileCreateForbiddenBody
-*/
-type StandAloneProfileCreateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone profile create forbidden body
-func (o *StandAloneProfileCreateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone profile create forbidden body based on context it is used
-func (o *StandAloneProfileCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneProfileCreateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneProfileCreateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneProfileCreateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneProfileCreateNotFoundBody stand alone profile create not found body
-swagger:model StandAloneProfileCreateNotFoundBody
-*/
-type StandAloneProfileCreateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone profile create not found body
-func (o *StandAloneProfileCreateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone profile create not found body based on context it is used
-func (o *StandAloneProfileCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneProfileCreateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneProfileCreateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneProfileCreateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneProfileCreateOKBody stand alone profile create o k body
-swagger:model StandAloneProfileCreateOKBody
-*/
-type StandAloneProfileCreateOKBody struct {
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// is error
-	IsError bool `json:"isError"`
-
-	// message
-	Message string `json:"message,omitempty"`
-
-	// result
-	Result interface{} `json:"result,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-}
-
-// Validate validates this stand alone profile create o k body
-func (o *StandAloneProfileCreateOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone profile create o k body based on context it is used
-func (o *StandAloneProfileCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneProfileCreateOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneProfileCreateOKBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneProfileCreateOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneProfileCreateParamsBodySecurityGroupsItems0 stand alone profile create params body security groups items0
-swagger:model StandAloneProfileCreateParamsBodySecurityGroupsItems0
-*/
-type StandAloneProfileCreateParamsBodySecurityGroupsItems0 struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// port max range
-	PortMaxRange int32 `json:"portMaxRange,omitempty"`
-
-	// port min range
-	PortMinRange int32 `json:"portMinRange,omitempty"`
-
-	// protocol
-	// Enum: [100 200 300]
-	Protocol int32 `json:"protocol,omitempty"`
-
-	// remote Ip prefix
-	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
-}
-
-// Validate validates this stand alone profile create params body security groups items0
-func (o *StandAloneProfileCreateParamsBodySecurityGroupsItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateProtocol(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-var standAloneProfileCreateParamsBodySecurityGroupsItems0TypeProtocolPropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200,300]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		standAloneProfileCreateParamsBodySecurityGroupsItems0TypeProtocolPropEnum = append(standAloneProfileCreateParamsBodySecurityGroupsItems0TypeProtocolPropEnum, v)
-	}
-}
-
-// prop value enum
-func (o *StandAloneProfileCreateParamsBodySecurityGroupsItems0) validateProtocolEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, standAloneProfileCreateParamsBodySecurityGroupsItems0TypeProtocolPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *StandAloneProfileCreateParamsBodySecurityGroupsItems0) validateProtocol(formats strfmt.Registry) error {
-	if swag.IsZero(o.Protocol) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := o.validateProtocolEnum("protocol", "body", o.Protocol); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this stand alone profile create params body security groups items0 based on context it is used
-func (o *StandAloneProfileCreateParamsBodySecurityGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneProfileCreateParamsBodySecurityGroupsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneProfileCreateParamsBodySecurityGroupsItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneProfileCreateParamsBodySecurityGroupsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneProfileCreateUnauthorizedBody stand alone profile create unauthorized body
-swagger:model StandAloneProfileCreateUnauthorizedBody
-*/
-type StandAloneProfileCreateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone profile create unauthorized body
-func (o *StandAloneProfileCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone profile create unauthorized body based on context it is used
-func (o *StandAloneProfileCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneProfileCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneProfileCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneProfileCreateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

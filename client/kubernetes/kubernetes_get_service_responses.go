@@ -6,15 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesGetServiceReader is a Reader for the KubernetesGetService structure.
@@ -77,7 +75,7 @@ KubernetesGetServiceOK describes a response with status code 200, with default h
 Success
 */
 type KubernetesGetServiceOK struct {
-	Payload *KubernetesGetServiceOKBody
+	Payload *models.Services
 }
 
 // IsSuccess returns true when this kubernetes get service o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *KubernetesGetServiceOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesGetServiceOK) GetPayload() *KubernetesGetServiceOKBody {
+func (o *KubernetesGetServiceOK) GetPayload() *models.Services {
 	return o.Payload
 }
 
 func (o *KubernetesGetServiceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetServiceOKBody)
+	o.Payload = new(models.Services)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ KubernetesGetServiceBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type KubernetesGetServiceBadRequest struct {
-	Payload []*KubernetesGetServiceBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes get service bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *KubernetesGetServiceBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetServiceBadRequest) GetPayload() []*KubernetesGetServiceBadRequestBodyItems0 {
+func (o *KubernetesGetServiceBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ KubernetesGetServiceUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type KubernetesGetServiceUnauthorized struct {
-	Payload *KubernetesGetServiceUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get service unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *KubernetesGetServiceUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetServiceUnauthorized) GetPayload() *KubernetesGetServiceUnauthorizedBody {
+func (o *KubernetesGetServiceUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetServiceUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetServiceUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ KubernetesGetServiceForbidden describes a response with status code 403, with de
 Forbidden
 */
 type KubernetesGetServiceForbidden struct {
-	Payload *KubernetesGetServiceForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get service forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *KubernetesGetServiceForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetServiceForbidden) GetPayload() *KubernetesGetServiceForbiddenBody {
+func (o *KubernetesGetServiceForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetServiceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetServiceForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ KubernetesGetServiceNotFound describes a response with status code 404, with def
 Not Found
 */
 type KubernetesGetServiceNotFound struct {
-	Payload *KubernetesGetServiceNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get service not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *KubernetesGetServiceNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/service][%d] kubernetesGetServiceNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetServiceNotFound) GetPayload() *KubernetesGetServiceNotFoundBody {
+func (o *KubernetesGetServiceNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetServiceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetServiceNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,351 +425,5 @@ func (o *KubernetesGetServiceInternalServerError) String() string {
 
 func (o *KubernetesGetServiceInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesGetServiceBadRequestBodyItems0 kubernetes get service bad request body items0
-swagger:model KubernetesGetServiceBadRequestBodyItems0
-*/
-type KubernetesGetServiceBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes get service bad request body items0
-func (o *KubernetesGetServiceBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get service bad request body items0 based on context it is used
-func (o *KubernetesGetServiceBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetServiceBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetServiceBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetServiceBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetServiceForbiddenBody kubernetes get service forbidden body
-swagger:model KubernetesGetServiceForbiddenBody
-*/
-type KubernetesGetServiceForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get service forbidden body
-func (o *KubernetesGetServiceForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get service forbidden body based on context it is used
-func (o *KubernetesGetServiceForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetServiceForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetServiceForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetServiceForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetServiceNotFoundBody kubernetes get service not found body
-swagger:model KubernetesGetServiceNotFoundBody
-*/
-type KubernetesGetServiceNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get service not found body
-func (o *KubernetesGetServiceNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get service not found body based on context it is used
-func (o *KubernetesGetServiceNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetServiceNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetServiceNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetServiceNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetServiceOKBody kubernetes get service o k body
-swagger:model KubernetesGetServiceOKBody
-*/
-type KubernetesGetServiceOKBody struct {
-
-	// data
-	Data []*KubernetesGetServiceOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this kubernetes get service o k body
-func (o *KubernetesGetServiceOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *KubernetesGetServiceOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("kubernetesGetServiceOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("kubernetesGetServiceOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this kubernetes get service o k body based on the context it is used
-func (o *KubernetesGetServiceOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *KubernetesGetServiceOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("kubernetesGetServiceOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("kubernetesGetServiceOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetServiceOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetServiceOKBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetServiceOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetServiceOKBodyDataItems0 kubernetes get service o k body data items0
-swagger:model KubernetesGetServiceOKBodyDataItems0
-*/
-type KubernetesGetServiceOKBodyDataItems0 struct {
-
-	// age
-	Age string `json:"age,omitempty"`
-
-	// ip
-	IP interface{} `json:"ip,omitempty"`
-
-	// metadata name
-	MetadataName string `json:"metadataName,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get service o k body data items0
-func (o *KubernetesGetServiceOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get service o k body data items0 based on context it is used
-func (o *KubernetesGetServiceOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetServiceOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetServiceOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetServiceOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetServiceUnauthorizedBody kubernetes get service unauthorized body
-swagger:model KubernetesGetServiceUnauthorizedBody
-*/
-type KubernetesGetServiceUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get service unauthorized body
-func (o *KubernetesGetServiceUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get service unauthorized body based on context it is used
-func (o *KubernetesGetServiceUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetServiceUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetServiceUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetServiceUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

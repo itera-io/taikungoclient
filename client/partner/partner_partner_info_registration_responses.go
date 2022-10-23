@@ -6,13 +6,13 @@ package partner
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PartnerPartnerInfoRegistrationReader is a Reader for the PartnerPartnerInfoRegistration structure.
@@ -75,7 +75,7 @@ PartnerPartnerInfoRegistrationOK describes a response with status code 200, with
 Success
 */
 type PartnerPartnerInfoRegistrationOK struct {
-	Payload *PartnerPartnerInfoRegistrationOKBody
+	Payload *models.PartnerRecordDto
 }
 
 // IsSuccess returns true when this partner partner info registration o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *PartnerPartnerInfoRegistrationOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationOK  %+v", 200, o.Payload)
 }
 
-func (o *PartnerPartnerInfoRegistrationOK) GetPayload() *PartnerPartnerInfoRegistrationOKBody {
+func (o *PartnerPartnerInfoRegistrationOK) GetPayload() *models.PartnerRecordDto {
 	return o.Payload
 }
 
 func (o *PartnerPartnerInfoRegistrationOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PartnerPartnerInfoRegistrationOKBody)
+	o.Payload = new(models.PartnerRecordDto)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ PartnerPartnerInfoRegistrationBadRequest describes a response with status code 4
 Bad Request
 */
 type PartnerPartnerInfoRegistrationBadRequest struct {
-	Payload []*PartnerPartnerInfoRegistrationBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this partner partner info registration bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *PartnerPartnerInfoRegistrationBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerPartnerInfoRegistrationBadRequest) GetPayload() []*PartnerPartnerInfoRegistrationBadRequestBodyItems0 {
+func (o *PartnerPartnerInfoRegistrationBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ PartnerPartnerInfoRegistrationUnauthorized describes a response with status code
 Unauthorized
 */
 type PartnerPartnerInfoRegistrationUnauthorized struct {
-	Payload *PartnerPartnerInfoRegistrationUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner partner info registration unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *PartnerPartnerInfoRegistrationUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerPartnerInfoRegistrationUnauthorized) GetPayload() *PartnerPartnerInfoRegistrationUnauthorizedBody {
+func (o *PartnerPartnerInfoRegistrationUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerPartnerInfoRegistrationUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PartnerPartnerInfoRegistrationUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ PartnerPartnerInfoRegistrationForbidden describes a response with status code 40
 Forbidden
 */
 type PartnerPartnerInfoRegistrationForbidden struct {
-	Payload *PartnerPartnerInfoRegistrationForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner partner info registration forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *PartnerPartnerInfoRegistrationForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerPartnerInfoRegistrationForbidden) GetPayload() *PartnerPartnerInfoRegistrationForbiddenBody {
+func (o *PartnerPartnerInfoRegistrationForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerPartnerInfoRegistrationForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PartnerPartnerInfoRegistrationForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ PartnerPartnerInfoRegistrationNotFound describes a response with status code 404
 Not Found
 */
 type PartnerPartnerInfoRegistrationNotFound struct {
-	Payload *PartnerPartnerInfoRegistrationNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner partner info registration not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *PartnerPartnerInfoRegistrationNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/info][%d] partnerPartnerInfoRegistrationNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerPartnerInfoRegistrationNotFound) GetPayload() *PartnerPartnerInfoRegistrationNotFoundBody {
+func (o *PartnerPartnerInfoRegistrationNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerPartnerInfoRegistrationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PartnerPartnerInfoRegistrationNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,243 +425,5 @@ func (o *PartnerPartnerInfoRegistrationInternalServerError) String() string {
 
 func (o *PartnerPartnerInfoRegistrationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PartnerPartnerInfoRegistrationBadRequestBodyItems0 partner partner info registration bad request body items0
-swagger:model PartnerPartnerInfoRegistrationBadRequestBodyItems0
-*/
-type PartnerPartnerInfoRegistrationBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this partner partner info registration bad request body items0
-func (o *PartnerPartnerInfoRegistrationBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner partner info registration bad request body items0 based on context it is used
-func (o *PartnerPartnerInfoRegistrationBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerPartnerInfoRegistrationBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerPartnerInfoRegistrationBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PartnerPartnerInfoRegistrationBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerPartnerInfoRegistrationForbiddenBody partner partner info registration forbidden body
-swagger:model PartnerPartnerInfoRegistrationForbiddenBody
-*/
-type PartnerPartnerInfoRegistrationForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this partner partner info registration forbidden body
-func (o *PartnerPartnerInfoRegistrationForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner partner info registration forbidden body based on context it is used
-func (o *PartnerPartnerInfoRegistrationForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerPartnerInfoRegistrationForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerPartnerInfoRegistrationForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PartnerPartnerInfoRegistrationForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerPartnerInfoRegistrationNotFoundBody partner partner info registration not found body
-swagger:model PartnerPartnerInfoRegistrationNotFoundBody
-*/
-type PartnerPartnerInfoRegistrationNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this partner partner info registration not found body
-func (o *PartnerPartnerInfoRegistrationNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner partner info registration not found body based on context it is used
-func (o *PartnerPartnerInfoRegistrationNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerPartnerInfoRegistrationNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerPartnerInfoRegistrationNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PartnerPartnerInfoRegistrationNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerPartnerInfoRegistrationOKBody partner partner info registration o k body
-swagger:model PartnerPartnerInfoRegistrationOKBody
-*/
-type PartnerPartnerInfoRegistrationOKBody struct {
-
-	// allow registration
-	AllowRegistration bool `json:"allowRegistration"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// image Url
-	ImageURL string `json:"imageUrl,omitempty"`
-
-	// payment enabled
-	PaymentEnabled bool `json:"paymentEnabled"`
-}
-
-// Validate validates this partner partner info registration o k body
-func (o *PartnerPartnerInfoRegistrationOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner partner info registration o k body based on context it is used
-func (o *PartnerPartnerInfoRegistrationOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerPartnerInfoRegistrationOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerPartnerInfoRegistrationOKBody) UnmarshalBinary(b []byte) error {
-	var res PartnerPartnerInfoRegistrationOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerPartnerInfoRegistrationUnauthorizedBody partner partner info registration unauthorized body
-swagger:model PartnerPartnerInfoRegistrationUnauthorizedBody
-*/
-type PartnerPartnerInfoRegistrationUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this partner partner info registration unauthorized body
-func (o *PartnerPartnerInfoRegistrationUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner partner info registration unauthorized body based on context it is used
-func (o *PartnerPartnerInfoRegistrationUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerPartnerInfoRegistrationUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerPartnerInfoRegistrationUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PartnerPartnerInfoRegistrationUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

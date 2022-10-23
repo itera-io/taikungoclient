@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAlonePurgeParams creates a new StandAlonePurgeParams object,
@@ -62,7 +64,7 @@ StandAlonePurgeParams contains all the parameters to send to the API endpoint
 type StandAlonePurgeParams struct {
 
 	// Body.
-	Body StandAlonePurgeBody
+	Body *models.PurgeStandAloneCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *StandAlonePurgeParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone purge params
-func (o *StandAlonePurgeParams) WithBody(body StandAlonePurgeBody) *StandAlonePurgeParams {
+func (o *StandAlonePurgeParams) WithBody(body *models.PurgeStandAloneCommand) *StandAlonePurgeParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone purge params
-func (o *StandAlonePurgeParams) SetBody(body StandAlonePurgeBody) {
+func (o *StandAlonePurgeParams) SetBody(body *models.PurgeStandAloneCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *StandAlonePurgeParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

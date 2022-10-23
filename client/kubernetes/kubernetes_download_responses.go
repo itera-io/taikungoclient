@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesDownloadReader is a Reader for the KubernetesDownload structure.
@@ -136,7 +136,7 @@ KubernetesDownloadBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type KubernetesDownloadBadRequest struct {
-	Payload []*KubernetesDownloadBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes download bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDownloadBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDownloadBadRequest) GetPayload() []*KubernetesDownloadBadRequestBodyItems0 {
+func (o *KubernetesDownloadBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesDownloadUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type KubernetesDownloadUnauthorized struct {
-	Payload *KubernetesDownloadUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes download unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesDownloadUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDownloadUnauthorized) GetPayload() *KubernetesDownloadUnauthorizedBody {
+func (o *KubernetesDownloadUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDownloadUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDownloadUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesDownloadForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type KubernetesDownloadForbidden struct {
-	Payload *KubernetesDownloadForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes download forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesDownloadForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDownloadForbidden) GetPayload() *KubernetesDownloadForbiddenBody {
+func (o *KubernetesDownloadForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDownloadForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDownloadForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesDownloadNotFound describes a response with status code 404, with defau
 Not Found
 */
 type KubernetesDownloadNotFound struct {
-	Payload *KubernetesDownloadNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes download not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesDownloadNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/download][%d] kubernetesDownloadNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDownloadNotFound) GetPayload() *KubernetesDownloadNotFoundBody {
+func (o *KubernetesDownloadNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDownloadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDownloadNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *KubernetesDownloadInternalServerError) String() string {
 
 func (o *KubernetesDownloadInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesDownloadBadRequestBodyItems0 kubernetes download bad request body items0
-swagger:model KubernetesDownloadBadRequestBodyItems0
-*/
-type KubernetesDownloadBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes download bad request body items0
-func (o *KubernetesDownloadBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes download bad request body items0 based on context it is used
-func (o *KubernetesDownloadBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDownloadBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDownloadBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesDownloadBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDownloadForbiddenBody kubernetes download forbidden body
-swagger:model KubernetesDownloadForbiddenBody
-*/
-type KubernetesDownloadForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes download forbidden body
-func (o *KubernetesDownloadForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes download forbidden body based on context it is used
-func (o *KubernetesDownloadForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDownloadForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDownloadForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDownloadForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDownloadNotFoundBody kubernetes download not found body
-swagger:model KubernetesDownloadNotFoundBody
-*/
-type KubernetesDownloadNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes download not found body
-func (o *KubernetesDownloadNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes download not found body based on context it is used
-func (o *KubernetesDownloadNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDownloadNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDownloadNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDownloadNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDownloadUnauthorizedBody kubernetes download unauthorized body
-swagger:model KubernetesDownloadUnauthorizedBody
-*/
-type KubernetesDownloadUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes download unauthorized body
-func (o *KubernetesDownloadUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes download unauthorized body based on context it is used
-func (o *KubernetesDownloadUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDownloadUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDownloadUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDownloadUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

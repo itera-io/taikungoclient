@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectsExtendLifeTimeParams creates a new ProjectsExtendLifeTimeParams object,
@@ -65,7 +67,7 @@ type ProjectsExtendLifeTimeParams struct {
 
 	   Command
 	*/
-	Body ProjectsExtendLifeTimeBody
+	Body *models.ProjectExtendLifeTimeCommand
 
 	// V.
 	V string
@@ -124,13 +126,13 @@ func (o *ProjectsExtendLifeTimeParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the projects extend life time params
-func (o *ProjectsExtendLifeTimeParams) WithBody(body ProjectsExtendLifeTimeBody) *ProjectsExtendLifeTimeParams {
+func (o *ProjectsExtendLifeTimeParams) WithBody(body *models.ProjectExtendLifeTimeCommand) *ProjectsExtendLifeTimeParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the projects extend life time params
-func (o *ProjectsExtendLifeTimeParams) SetBody(body ProjectsExtendLifeTimeBody) {
+func (o *ProjectsExtendLifeTimeParams) SetBody(body *models.ProjectExtendLifeTimeCommand) {
 	o.Body = body
 }
 
@@ -152,8 +154,10 @@ func (o *ProjectsExtendLifeTimeParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

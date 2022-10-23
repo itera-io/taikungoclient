@@ -6,13 +6,13 @@ package admin
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AdminAddBalanceReader is a Reader for the AdminAddBalance structure.
@@ -75,7 +75,7 @@ AdminAddBalanceOK describes a response with status code 200, with default header
 Success
 */
 type AdminAddBalanceOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this admin add balance o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AdminAddBalanceOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceOK  %+v", 200, o.Payload)
 }
 
-func (o *AdminAddBalanceOK) GetPayload() interface{} {
+func (o *AdminAddBalanceOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AdminAddBalanceBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type AdminAddBalanceBadRequest struct {
-	Payload []*AdminAddBalanceBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this admin add balance bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminAddBalanceBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminAddBalanceBadRequest) GetPayload() []*AdminAddBalanceBadRequestBodyItems0 {
+func (o *AdminAddBalanceBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AdminAddBalanceUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type AdminAddBalanceUnauthorized struct {
-	Payload *AdminAddBalanceUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin add balance unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AdminAddBalanceUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminAddBalanceUnauthorized) GetPayload() *AdminAddBalanceUnauthorizedBody {
+func (o *AdminAddBalanceUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminAddBalanceUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminAddBalanceUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AdminAddBalanceForbidden describes a response with status code 403, with default
 Forbidden
 */
 type AdminAddBalanceForbidden struct {
-	Payload *AdminAddBalanceForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin add balance forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AdminAddBalanceForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminAddBalanceForbidden) GetPayload() *AdminAddBalanceForbiddenBody {
+func (o *AdminAddBalanceForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminAddBalanceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminAddBalanceForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AdminAddBalanceNotFound describes a response with status code 404, with default 
 Not Found
 */
 type AdminAddBalanceNotFound struct {
-	Payload *AdminAddBalanceNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin add balance not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AdminAddBalanceNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/add/balance][%d] adminAddBalanceNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminAddBalanceNotFound) GetPayload() *AdminAddBalanceNotFoundBody {
+func (o *AdminAddBalanceNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminAddBalanceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminAddBalanceNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *AdminAddBalanceInternalServerError) String() string {
 
 func (o *AdminAddBalanceInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AdminAddBalanceBadRequestBodyItems0 admin add balance bad request body items0
-swagger:model AdminAddBalanceBadRequestBodyItems0
-*/
-type AdminAddBalanceBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this admin add balance bad request body items0
-func (o *AdminAddBalanceBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin add balance bad request body items0 based on context it is used
-func (o *AdminAddBalanceBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminAddBalanceBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminAddBalanceBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AdminAddBalanceBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminAddBalanceBody admin add balance body
-swagger:model AdminAddBalanceBody
-*/
-type AdminAddBalanceBody struct {
-
-	// balance
-	Balance int64 `json:"balance,omitempty"`
-
-	// customer Id
-	CustomerID string `json:"customerId,omitempty"`
-}
-
-// Validate validates this admin add balance body
-func (o *AdminAddBalanceBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin add balance body based on context it is used
-func (o *AdminAddBalanceBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminAddBalanceBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminAddBalanceBody) UnmarshalBinary(b []byte) error {
-	var res AdminAddBalanceBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminAddBalanceForbiddenBody admin add balance forbidden body
-swagger:model AdminAddBalanceForbiddenBody
-*/
-type AdminAddBalanceForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin add balance forbidden body
-func (o *AdminAddBalanceForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin add balance forbidden body based on context it is used
-func (o *AdminAddBalanceForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminAddBalanceForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminAddBalanceForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AdminAddBalanceForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminAddBalanceNotFoundBody admin add balance not found body
-swagger:model AdminAddBalanceNotFoundBody
-*/
-type AdminAddBalanceNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin add balance not found body
-func (o *AdminAddBalanceNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin add balance not found body based on context it is used
-func (o *AdminAddBalanceNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminAddBalanceNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminAddBalanceNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AdminAddBalanceNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminAddBalanceUnauthorizedBody admin add balance unauthorized body
-swagger:model AdminAddBalanceUnauthorizedBody
-*/
-type AdminAddBalanceUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin add balance unauthorized body
-func (o *AdminAddBalanceUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin add balance unauthorized body based on context it is used
-func (o *AdminAddBalanceUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminAddBalanceUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminAddBalanceUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AdminAddBalanceUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

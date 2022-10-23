@@ -7,12 +7,10 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // EditSecurityGroupCommand edit security group command
@@ -33,8 +31,7 @@ type EditSecurityGroupCommand struct {
 	PortMinRange int32 `json:"portMinRange,omitempty"`
 
 	// protocol
-	// Enum: [100 200 300]
-	Protocol int32 `json:"protocol,omitempty"`
+	Protocol SecurityGroupProtocol `json:"protocol,omitempty"`
 
 	// remote Ip prefix
 	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
@@ -54,41 +51,48 @@ func (m *EditSecurityGroupCommand) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var editSecurityGroupCommandTypeProtocolPropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200,300]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		editSecurityGroupCommandTypeProtocolPropEnum = append(editSecurityGroupCommandTypeProtocolPropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *EditSecurityGroupCommand) validateProtocolEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, editSecurityGroupCommandTypeProtocolPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *EditSecurityGroupCommand) validateProtocol(formats strfmt.Registry) error {
 	if swag.IsZero(m.Protocol) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateProtocolEnum("protocol", "body", m.Protocol); err != nil {
+	if err := m.Protocol.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("protocol")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("protocol")
+		}
 		return err
 	}
 
 	return nil
 }
 
-// ContextValidate validates this edit security group command based on context it is used
+// ContextValidate validate this edit security group command based on the context it is used
 func (m *EditSecurityGroupCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateProtocol(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *EditSecurityGroupCommand) contextValidateProtocol(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Protocol.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("protocol")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("protocol")
+		}
+		return err
+	}
+
 	return nil
 }
 

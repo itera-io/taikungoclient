@@ -7,12 +7,10 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // CreateSlackConfigurationCommand create slack configuration command
@@ -30,8 +28,7 @@ type CreateSlackConfigurationCommand struct {
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
 	// slack type
-	// Enum: [100 200]
-	SlackType int32 `json:"slackType,omitempty"`
+	SlackType SlackType `json:"slackType,omitempty"`
 
 	// url
 	URL string `json:"url,omitempty"`
@@ -51,41 +48,48 @@ func (m *CreateSlackConfigurationCommand) Validate(formats strfmt.Registry) erro
 	return nil
 }
 
-var createSlackConfigurationCommandTypeSlackTypePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		createSlackConfigurationCommandTypeSlackTypePropEnum = append(createSlackConfigurationCommandTypeSlackTypePropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *CreateSlackConfigurationCommand) validateSlackTypeEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, createSlackConfigurationCommandTypeSlackTypePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *CreateSlackConfigurationCommand) validateSlackType(formats strfmt.Registry) error {
 	if swag.IsZero(m.SlackType) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateSlackTypeEnum("slackType", "body", m.SlackType); err != nil {
+	if err := m.SlackType.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("slackType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("slackType")
+		}
 		return err
 	}
 
 	return nil
 }
 
-// ContextValidate validates this create slack configuration command based on context it is used
+// ContextValidate validate this create slack configuration command based on the context it is used
 func (m *CreateSlackConfigurationCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateSlackType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *CreateSlackConfigurationCommand) contextValidateSlackType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.SlackType.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("slackType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("slackType")
+		}
+		return err
+	}
+
 	return nil
 }
 

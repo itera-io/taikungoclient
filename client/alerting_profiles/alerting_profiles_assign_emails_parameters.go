@@ -15,6 +15,8 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAlertingProfilesAssignEmailsParams creates a new AlertingProfilesAssignEmailsParams object,
@@ -63,7 +65,7 @@ AlertingProfilesAssignEmailsParams contains all the parameters to send to the AP
 type AlertingProfilesAssignEmailsParams struct {
 
 	// Body.
-	Body []*AlertingProfilesAssignEmailsParamsBodyItems0
+	Body []*models.AlertingEmailDto
 
 	// ID.
 	//
@@ -127,13 +129,13 @@ func (o *AlertingProfilesAssignEmailsParams) SetHTTPClient(client *http.Client) 
 }
 
 // WithBody adds the body to the alerting profiles assign emails params
-func (o *AlertingProfilesAssignEmailsParams) WithBody(body []*AlertingProfilesAssignEmailsParamsBodyItems0) *AlertingProfilesAssignEmailsParams {
+func (o *AlertingProfilesAssignEmailsParams) WithBody(body []*models.AlertingEmailDto) *AlertingProfilesAssignEmailsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the alerting profiles assign emails params
-func (o *AlertingProfilesAssignEmailsParams) SetBody(body []*AlertingProfilesAssignEmailsParamsBodyItems0) {
+func (o *AlertingProfilesAssignEmailsParams) SetBody(body []*models.AlertingEmailDto) {
 	o.Body = body
 }
 

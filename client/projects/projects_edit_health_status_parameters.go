@@ -15,6 +15,8 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectsEditHealthStatusParams creates a new ProjectsEditHealthStatusParams object,
@@ -65,7 +67,7 @@ type ProjectsEditHealthStatusParams struct {
 	// Body.
 	//
 	// Format: int32
-	Body int32
+	Body models.ProjectHealth
 
 	// ProjectID.
 	//
@@ -129,13 +131,13 @@ func (o *ProjectsEditHealthStatusParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the projects edit health status params
-func (o *ProjectsEditHealthStatusParams) WithBody(body int32) *ProjectsEditHealthStatusParams {
+func (o *ProjectsEditHealthStatusParams) WithBody(body models.ProjectHealth) *ProjectsEditHealthStatusParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the projects edit health status params
-func (o *ProjectsEditHealthStatusParams) SetBody(body int32) {
+func (o *ProjectsEditHealthStatusParams) SetBody(body models.ProjectHealth) {
 	o.Body = body
 }
 

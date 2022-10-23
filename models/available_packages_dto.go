@@ -46,10 +46,10 @@ type AvailablePackagesDto struct {
 	PackageID string `json:"packageId,omitempty"`
 
 	// repository
-	Repository *AvailablePackagesDtoRepository `json:"repository,omitempty"`
+	Repository *Repository `json:"repository,omitempty"`
 
 	// security report summary
-	SecurityReportSummary *AvailablePackagesDtoSecurityReportSummary `json:"securityReportSummary,omitempty"`
+	SecurityReportSummary *SecurityReportSummary `json:"securityReportSummary,omitempty"`
 
 	// signed
 	Signed bool `json:"signed"`
@@ -181,116 +181,6 @@ func (m *AvailablePackagesDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AvailablePackagesDto) UnmarshalBinary(b []byte) error {
 	var res AvailablePackagesDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// AvailablePackagesDtoRepository available packages dto repository
-//
-// swagger:model AvailablePackagesDtoRepository
-type AvailablePackagesDtoRepository struct {
-
-	// kind
-	Kind int64 `json:"kind,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// official
-	Official bool `json:"official"`
-
-	// organization display name
-	OrganizationDisplayName string `json:"organizationDisplayName,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// repository Id
-	RepositoryID string `json:"repositoryId,omitempty"`
-
-	// scanner disabled
-	ScannerDisabled bool `json:"scannerDisabled"`
-
-	// url
-	URL string `json:"url,omitempty"`
-
-	// verified publisher
-	VerifiedPublisher bool `json:"verifiedPublisher"`
-}
-
-// Validate validates this available packages dto repository
-func (m *AvailablePackagesDtoRepository) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this available packages dto repository based on context it is used
-func (m *AvailablePackagesDtoRepository) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *AvailablePackagesDtoRepository) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *AvailablePackagesDtoRepository) UnmarshalBinary(b []byte) error {
-	var res AvailablePackagesDtoRepository
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// AvailablePackagesDtoSecurityReportSummary available packages dto security report summary
-//
-// swagger:model AvailablePackagesDtoSecurityReportSummary
-type AvailablePackagesDtoSecurityReportSummary struct {
-
-	// critical
-	Critical int64 `json:"critical,omitempty"`
-
-	// high
-	High int64 `json:"high,omitempty"`
-
-	// low
-	Low int64 `json:"low,omitempty"`
-
-	// medium
-	Medium int64 `json:"medium,omitempty"`
-
-	// unknown
-	Unknown int64 `json:"unknown,omitempty"`
-}
-
-// Validate validates this available packages dto security report summary
-func (m *AvailablePackagesDtoSecurityReportSummary) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this available packages dto security report summary based on context it is used
-func (m *AvailablePackagesDtoSecurityReportSummary) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *AvailablePackagesDtoSecurityReportSummary) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *AvailablePackagesDtoSecurityReportSummary) UnmarshalBinary(b []byte) error {
-	var res AvailablePackagesDtoSecurityReportSummary
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

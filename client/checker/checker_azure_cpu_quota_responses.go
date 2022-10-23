@@ -6,13 +6,13 @@ package checker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CheckerAzureCPUQuotaReader is a Reader for the CheckerAzureCPUQuota structure.
@@ -75,7 +75,7 @@ CheckerAzureCPUQuotaOK describes a response with status code 200, with default h
 Success
 */
 type CheckerAzureCPUQuotaOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this checker azure Cpu quota o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CheckerAzureCPUQuotaOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaOK  %+v", 200, o.Payload)
 }
 
-func (o *CheckerAzureCPUQuotaOK) GetPayload() interface{} {
+func (o *CheckerAzureCPUQuotaOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CheckerAzureCPUQuotaBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type CheckerAzureCPUQuotaBadRequest struct {
-	Payload []*CheckerAzureCPUQuotaBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this checker azure Cpu quota bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerAzureCPUQuotaBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerAzureCPUQuotaBadRequest) GetPayload() []*CheckerAzureCPUQuotaBadRequestBodyItems0 {
+func (o *CheckerAzureCPUQuotaBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CheckerAzureCPUQuotaUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type CheckerAzureCPUQuotaUnauthorized struct {
-	Payload *CheckerAzureCPUQuotaUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker azure Cpu quota unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CheckerAzureCPUQuotaUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerAzureCPUQuotaUnauthorized) GetPayload() *CheckerAzureCPUQuotaUnauthorizedBody {
+func (o *CheckerAzureCPUQuotaUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerAzureCPUQuotaUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerAzureCPUQuotaUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CheckerAzureCPUQuotaForbidden describes a response with status code 403, with de
 Forbidden
 */
 type CheckerAzureCPUQuotaForbidden struct {
-	Payload *CheckerAzureCPUQuotaForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker azure Cpu quota forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CheckerAzureCPUQuotaForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerAzureCPUQuotaForbidden) GetPayload() *CheckerAzureCPUQuotaForbiddenBody {
+func (o *CheckerAzureCPUQuotaForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerAzureCPUQuotaForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerAzureCPUQuotaForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CheckerAzureCPUQuotaNotFound describes a response with status code 404, with def
 Not Found
 */
 type CheckerAzureCPUQuotaNotFound struct {
-	Payload *CheckerAzureCPUQuotaNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker azure Cpu quota not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CheckerAzureCPUQuotaNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/azure/quota/cpu][%d] checkerAzureCpuQuotaNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerAzureCPUQuotaNotFound) GetPayload() *CheckerAzureCPUQuotaNotFoundBody {
+func (o *CheckerAzureCPUQuotaNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerAzureCPUQuotaNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerAzureCPUQuotaNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *CheckerAzureCPUQuotaInternalServerError) String() string {
 
 func (o *CheckerAzureCPUQuotaInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CheckerAzureCPUQuotaBadRequestBodyItems0 checker azure CPU quota bad request body items0
-swagger:model CheckerAzureCPUQuotaBadRequestBodyItems0
-*/
-type CheckerAzureCPUQuotaBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this checker azure CPU quota bad request body items0
-func (o *CheckerAzureCPUQuotaBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker azure CPU quota bad request body items0 based on context it is used
-func (o *CheckerAzureCPUQuotaBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerAzureCPUQuotaBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerAzureCPUQuotaBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CheckerAzureCPUQuotaBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerAzureCPUQuotaBody checker azure CPU quota body
-swagger:model CheckerAzureCPUQuotaBody
-*/
-type CheckerAzureCPUQuotaBody struct {
-
-	// cloud Id
-	CloudID int32 `json:"cloudId,omitempty"`
-}
-
-// Validate validates this checker azure CPU quota body
-func (o *CheckerAzureCPUQuotaBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker azure CPU quota body based on context it is used
-func (o *CheckerAzureCPUQuotaBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerAzureCPUQuotaBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerAzureCPUQuotaBody) UnmarshalBinary(b []byte) error {
-	var res CheckerAzureCPUQuotaBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerAzureCPUQuotaForbiddenBody checker azure CPU quota forbidden body
-swagger:model CheckerAzureCPUQuotaForbiddenBody
-*/
-type CheckerAzureCPUQuotaForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker azure CPU quota forbidden body
-func (o *CheckerAzureCPUQuotaForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker azure CPU quota forbidden body based on context it is used
-func (o *CheckerAzureCPUQuotaForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerAzureCPUQuotaForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerAzureCPUQuotaForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CheckerAzureCPUQuotaForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerAzureCPUQuotaNotFoundBody checker azure CPU quota not found body
-swagger:model CheckerAzureCPUQuotaNotFoundBody
-*/
-type CheckerAzureCPUQuotaNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker azure CPU quota not found body
-func (o *CheckerAzureCPUQuotaNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker azure CPU quota not found body based on context it is used
-func (o *CheckerAzureCPUQuotaNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerAzureCPUQuotaNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerAzureCPUQuotaNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CheckerAzureCPUQuotaNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerAzureCPUQuotaUnauthorizedBody checker azure CPU quota unauthorized body
-swagger:model CheckerAzureCPUQuotaUnauthorizedBody
-*/
-type CheckerAzureCPUQuotaUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker azure CPU quota unauthorized body
-func (o *CheckerAzureCPUQuotaUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker azure CPU quota unauthorized body based on context it is used
-func (o *CheckerAzureCPUQuotaUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerAzureCPUQuotaUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerAzureCPUQuotaUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CheckerAzureCPUQuotaUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

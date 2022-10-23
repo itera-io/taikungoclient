@@ -6,13 +6,13 @@ package checker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CheckerNtpReader is a Reader for the CheckerNtp structure.
@@ -75,7 +75,7 @@ CheckerNtpOK describes a response with status code 200, with default header valu
 Success
 */
 type CheckerNtpOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this checker ntp o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CheckerNtpOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpOK  %+v", 200, o.Payload)
 }
 
-func (o *CheckerNtpOK) GetPayload() interface{} {
+func (o *CheckerNtpOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CheckerNtpBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type CheckerNtpBadRequest struct {
-	Payload []*CheckerNtpBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this checker ntp bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerNtpBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerNtpBadRequest) GetPayload() []*CheckerNtpBadRequestBodyItems0 {
+func (o *CheckerNtpBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CheckerNtpUnauthorized describes a response with status code 401, with default h
 Unauthorized
 */
 type CheckerNtpUnauthorized struct {
-	Payload *CheckerNtpUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker ntp unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CheckerNtpUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerNtpUnauthorized) GetPayload() *CheckerNtpUnauthorizedBody {
+func (o *CheckerNtpUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerNtpUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerNtpUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CheckerNtpForbidden describes a response with status code 403, with default head
 Forbidden
 */
 type CheckerNtpForbidden struct {
-	Payload *CheckerNtpForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker ntp forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CheckerNtpForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerNtpForbidden) GetPayload() *CheckerNtpForbiddenBody {
+func (o *CheckerNtpForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerNtpForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerNtpForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CheckerNtpNotFound describes a response with status code 404, with default heade
 Not Found
 */
 type CheckerNtpNotFound struct {
-	Payload *CheckerNtpNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker ntp not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CheckerNtpNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ntp][%d] checkerNtpNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerNtpNotFound) GetPayload() *CheckerNtpNotFoundBody {
+func (o *CheckerNtpNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerNtpNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerNtpNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *CheckerNtpInternalServerError) String() string {
 
 func (o *CheckerNtpInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CheckerNtpBadRequestBodyItems0 checker ntp bad request body items0
-swagger:model CheckerNtpBadRequestBodyItems0
-*/
-type CheckerNtpBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this checker ntp bad request body items0
-func (o *CheckerNtpBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker ntp bad request body items0 based on context it is used
-func (o *CheckerNtpBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerNtpBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerNtpBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CheckerNtpBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerNtpBody checker ntp body
-swagger:model CheckerNtpBody
-*/
-type CheckerNtpBody struct {
-
-	// address
-	Address string `json:"address,omitempty"`
-}
-
-// Validate validates this checker ntp body
-func (o *CheckerNtpBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker ntp body based on context it is used
-func (o *CheckerNtpBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerNtpBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerNtpBody) UnmarshalBinary(b []byte) error {
-	var res CheckerNtpBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerNtpForbiddenBody checker ntp forbidden body
-swagger:model CheckerNtpForbiddenBody
-*/
-type CheckerNtpForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker ntp forbidden body
-func (o *CheckerNtpForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker ntp forbidden body based on context it is used
-func (o *CheckerNtpForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerNtpForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerNtpForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CheckerNtpForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerNtpNotFoundBody checker ntp not found body
-swagger:model CheckerNtpNotFoundBody
-*/
-type CheckerNtpNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker ntp not found body
-func (o *CheckerNtpNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker ntp not found body based on context it is used
-func (o *CheckerNtpNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerNtpNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerNtpNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CheckerNtpNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerNtpUnauthorizedBody checker ntp unauthorized body
-swagger:model CheckerNtpUnauthorizedBody
-*/
-type CheckerNtpUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker ntp unauthorized body
-func (o *CheckerNtpUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker ntp unauthorized body based on context it is used
-func (o *CheckerNtpUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerNtpUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerNtpUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CheckerNtpUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

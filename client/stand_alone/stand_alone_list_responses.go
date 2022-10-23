@@ -6,15 +6,13 @@ package stand_alone
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneListReader is a Reader for the StandAloneList structure.
@@ -77,7 +75,7 @@ StandAloneListOK describes a response with status code 200, with default header 
 Success
 */
 type StandAloneListOK struct {
-	Payload *StandAloneListOKBody
+	Payload *models.StandaloneVmsList
 }
 
 // IsSuccess returns true when this stand alone list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *StandAloneListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneListOK) GetPayload() *StandAloneListOKBody {
+func (o *StandAloneListOK) GetPayload() *models.StandaloneVmsList {
 	return o.Payload
 }
 
 func (o *StandAloneListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneListOKBody)
+	o.Payload = new(models.StandaloneVmsList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ StandAloneListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type StandAloneListBadRequest struct {
-	Payload []*StandAloneListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *StandAloneListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneListBadRequest) GetPayload() []*StandAloneListBadRequestBodyItems0 {
+func (o *StandAloneListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ StandAloneListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type StandAloneListUnauthorized struct {
-	Payload *StandAloneListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *StandAloneListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneListUnauthorized) GetPayload() *StandAloneListUnauthorizedBody {
+func (o *StandAloneListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ StandAloneListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type StandAloneListForbidden struct {
-	Payload *StandAloneListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *StandAloneListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneListForbidden) GetPayload() *StandAloneListForbiddenBody {
+func (o *StandAloneListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ StandAloneListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type StandAloneListNotFound struct {
-	Payload *StandAloneListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *StandAloneListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone][%d] standAloneListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneListNotFound) GetPayload() *StandAloneListNotFoundBody {
+func (o *StandAloneListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,625 +425,5 @@ func (o *StandAloneListInternalServerError) String() string {
 
 func (o *StandAloneListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-StandAloneListBadRequestBodyItems0 stand alone list bad request body items0
-swagger:model StandAloneListBadRequestBodyItems0
-*/
-type StandAloneListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this stand alone list bad request body items0
-func (o *StandAloneListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone list bad request body items0 based on context it is used
-func (o *StandAloneListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneListForbiddenBody stand alone list forbidden body
-swagger:model StandAloneListForbiddenBody
-*/
-type StandAloneListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone list forbidden body
-func (o *StandAloneListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone list forbidden body based on context it is used
-func (o *StandAloneListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneListNotFoundBody stand alone list not found body
-swagger:model StandAloneListNotFoundBody
-*/
-type StandAloneListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone list not found body
-func (o *StandAloneListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone list not found body based on context it is used
-func (o *StandAloneListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneListOKBody stand alone list o k body
-swagger:model StandAloneListOKBody
-*/
-type StandAloneListOKBody struct {
-
-	// data
-	Data []*StandAloneListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this stand alone list o k body
-func (o *StandAloneListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("standAloneListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("standAloneListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this stand alone list o k body based on the context it is used
-func (o *StandAloneListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("standAloneListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("standAloneListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListOKBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneListOKBodyDataItems0 stand alone list o k body data items0
-swagger:model StandAloneListOKBodyDataItems0
-*/
-type StandAloneListOKBodyDataItems0 struct {
-
-	// cloud type
-	CloudType string `json:"cloudType,omitempty"`
-
-	// cpu
-	CPU int32 `json:"cpu,omitempty"`
-
-	// created at
-	CreatedAt string `json:"createdAt,omitempty"`
-
-	// created by
-	CreatedBy string `json:"createdBy,omitempty"`
-
-	// flavor Id
-	FlavorID string `json:"flavorId,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// image name
-	ImageName string `json:"imageName,omitempty"`
-
-	// ip address
-	IPAddress string `json:"ipAddress,omitempty"`
-
-	// is windows
-	IsWindows bool `json:"isWindows"`
-
-	// last modified
-	LastModified string `json:"lastModified,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
-
-	// public Ip
-	PublicIP string `json:"publicIp,omitempty"`
-
-	// public Ip enabled
-	PublicIPEnabled bool `json:"publicIpEnabled"`
-
-	// ram
-	RAM int64 `json:"ram,omitempty"`
-
-	// revision
-	Revision int32 `json:"revision,omitempty"`
-
-	// stand alone profile
-	StandAloneProfile *StandAloneListOKBodyDataItems0StandAloneProfile `json:"standAloneProfile,omitempty"`
-
-	// status
-	Status string `json:"status,omitempty"`
-
-	// volume size
-	VolumeSize int64 `json:"volumeSize,omitempty"`
-
-	// volume type
-	VolumeType string `json:"volumeType,omitempty"`
-}
-
-// Validate validates this stand alone list o k body data items0
-func (o *StandAloneListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateStandAloneProfile(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneListOKBodyDataItems0) validateStandAloneProfile(formats strfmt.Registry) error {
-	if swag.IsZero(o.StandAloneProfile) { // not required
-		return nil
-	}
-
-	if o.StandAloneProfile != nil {
-		if err := o.StandAloneProfile.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("standAloneProfile")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("standAloneProfile")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this stand alone list o k body data items0 based on the context it is used
-func (o *StandAloneListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateStandAloneProfile(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneListOKBodyDataItems0) contextValidateStandAloneProfile(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.StandAloneProfile != nil {
-		if err := o.StandAloneProfile.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("standAloneProfile")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("standAloneProfile")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneListOKBodyDataItems0StandAloneProfile stand alone list o k body data items0 stand alone profile
-swagger:model StandAloneListOKBodyDataItems0StandAloneProfile
-*/
-type StandAloneListOKBodyDataItems0StandAloneProfile struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// is locked
-	IsLocked bool `json:"isLocked"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// revision
-	Revision int32 `json:"revision,omitempty"`
-
-	// stand alone profile security groups
-	StandAloneProfileSecurityGroups []*StandAloneListOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0 `json:"standAloneProfileSecurityGroups"`
-}
-
-// Validate validates this stand alone list o k body data items0 stand alone profile
-func (o *StandAloneListOKBodyDataItems0StandAloneProfile) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateStandAloneProfileSecurityGroups(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneListOKBodyDataItems0StandAloneProfile) validateStandAloneProfileSecurityGroups(formats strfmt.Registry) error {
-	if swag.IsZero(o.StandAloneProfileSecurityGroups) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.StandAloneProfileSecurityGroups); i++ {
-		if swag.IsZero(o.StandAloneProfileSecurityGroups[i]) { // not required
-			continue
-		}
-
-		if o.StandAloneProfileSecurityGroups[i] != nil {
-			if err := o.StandAloneProfileSecurityGroups[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this stand alone list o k body data items0 stand alone profile based on the context it is used
-func (o *StandAloneListOKBodyDataItems0StandAloneProfile) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateStandAloneProfileSecurityGroups(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneListOKBodyDataItems0StandAloneProfile) contextValidateStandAloneProfileSecurityGroups(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.StandAloneProfileSecurityGroups); i++ {
-
-		if o.StandAloneProfileSecurityGroups[i] != nil {
-			if err := o.StandAloneProfileSecurityGroups[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListOKBodyDataItems0StandAloneProfile) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListOKBodyDataItems0StandAloneProfile) UnmarshalBinary(b []byte) error {
-	var res StandAloneListOKBodyDataItems0StandAloneProfile
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneListOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0 stand alone list o k body data items0 stand alone profile stand alone profile security groups items0
-swagger:model StandAloneListOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0
-*/
-type StandAloneListOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// port max range
-	PortMaxRange int32 `json:"portMaxRange,omitempty"`
-
-	// port min range
-	PortMinRange int32 `json:"portMinRange,omitempty"`
-
-	// protocol
-	Protocol string `json:"protocol,omitempty"`
-
-	// remote Ip prefix
-	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
-}
-
-// Validate validates this stand alone list o k body data items0 stand alone profile stand alone profile security groups items0
-func (o *StandAloneListOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone list o k body data items0 stand alone profile stand alone profile security groups items0 based on context it is used
-func (o *StandAloneListOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneListOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneListUnauthorizedBody stand alone list unauthorized body
-swagger:model StandAloneListUnauthorizedBody
-*/
-type StandAloneListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone list unauthorized body
-func (o *StandAloneListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone list unauthorized body based on context it is used
-func (o *StandAloneListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

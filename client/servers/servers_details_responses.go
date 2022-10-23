@@ -6,15 +6,13 @@ package servers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ServersDetailsReader is a Reader for the ServersDetails structure.
@@ -77,7 +75,7 @@ ServersDetailsOK describes a response with status code 200, with default header 
 Success
 */
 type ServersDetailsOK struct {
-	Payload *ServersDetailsOKBody
+	Payload *models.ServersListForDetails
 }
 
 // IsSuccess returns true when this servers details o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *ServersDetailsOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsOK  %+v", 200, o.Payload)
 }
 
-func (o *ServersDetailsOK) GetPayload() *ServersDetailsOKBody {
+func (o *ServersDetailsOK) GetPayload() *models.ServersListForDetails {
 	return o.Payload
 }
 
 func (o *ServersDetailsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersDetailsOKBody)
+	o.Payload = new(models.ServersListForDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ ServersDetailsBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type ServersDetailsBadRequest struct {
-	Payload []*ServersDetailsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this servers details bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *ServersDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersDetailsBadRequest) GetPayload() []*ServersDetailsBadRequestBodyItems0 {
+func (o *ServersDetailsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ ServersDetailsUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type ServersDetailsUnauthorized struct {
-	Payload *ServersDetailsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers details unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *ServersDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersDetailsUnauthorized) GetPayload() *ServersDetailsUnauthorizedBody {
+func (o *ServersDetailsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersDetailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersDetailsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ ServersDetailsForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type ServersDetailsForbidden struct {
-	Payload *ServersDetailsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers details forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *ServersDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersDetailsForbidden) GetPayload() *ServersDetailsForbiddenBody {
+func (o *ServersDetailsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersDetailsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersDetailsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ ServersDetailsNotFound describes a response with status code 404, with default h
 Not Found
 */
 type ServersDetailsNotFound struct {
-	Payload *ServersDetailsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers details not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *ServersDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Servers/{projectId}][%d] serversDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersDetailsNotFound) GetPayload() *ServersDetailsNotFoundBody {
+func (o *ServersDetailsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersDetailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersDetailsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,825 +425,5 @@ func (o *ServersDetailsInternalServerError) String() string {
 
 func (o *ServersDetailsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ServersDetailsBadRequestBodyItems0 servers details bad request body items0
-swagger:model ServersDetailsBadRequestBodyItems0
-*/
-type ServersDetailsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this servers details bad request body items0
-func (o *ServersDetailsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers details bad request body items0 based on context it is used
-func (o *ServersDetailsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersDetailsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersDetailsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ServersDetailsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersDetailsForbiddenBody servers details forbidden body
-swagger:model ServersDetailsForbiddenBody
-*/
-type ServersDetailsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers details forbidden body
-func (o *ServersDetailsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers details forbidden body based on context it is used
-func (o *ServersDetailsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersDetailsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersDetailsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ServersDetailsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersDetailsNotFoundBody servers details not found body
-swagger:model ServersDetailsNotFoundBody
-*/
-type ServersDetailsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers details not found body
-func (o *ServersDetailsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers details not found body based on context it is used
-func (o *ServersDetailsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersDetailsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersDetailsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ServersDetailsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersDetailsOKBody servers details o k body
-swagger:model ServersDetailsOKBody
-*/
-type ServersDetailsOKBody struct {
-
-	// data
-	Data []*ServersDetailsOKBodyDataItems0 `json:"data"`
-
-	// project
-	Project *ServersDetailsOKBodyProject `json:"project,omitempty"`
-}
-
-// Validate validates this servers details o k body
-func (o *ServersDetailsOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateProject(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ServersDetailsOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("serversDetailsOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("serversDetailsOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *ServersDetailsOKBody) validateProject(formats strfmt.Registry) error {
-	if swag.IsZero(o.Project) { // not required
-		return nil
-	}
-
-	if o.Project != nil {
-		if err := o.Project.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("serversDetailsOK" + "." + "project")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("serversDetailsOK" + "." + "project")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this servers details o k body based on the context it is used
-func (o *ServersDetailsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateProject(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ServersDetailsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("serversDetailsOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("serversDetailsOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *ServersDetailsOKBody) contextValidateProject(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Project != nil {
-		if err := o.Project.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("serversDetailsOK" + "." + "project")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("serversDetailsOK" + "." + "project")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersDetailsOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersDetailsOKBody) UnmarshalBinary(b []byte) error {
-	var res ServersDetailsOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersDetailsOKBodyDataItems0 servers details o k body data items0
-swagger:model ServersDetailsOKBodyDataItems0
-*/
-type ServersDetailsOKBodyDataItems0 struct {
-
-	// autoscaling group
-	AutoscalingGroup string `json:"autoscalingGroup,omitempty"`
-
-	// availability zone
-	AvailabilityZone string `json:"availabilityZone,omitempty"`
-
-	// aws host name
-	AwsHostName string `json:"awsHostName,omitempty"`
-
-	// aws instance type
-	AwsInstanceType string `json:"awsInstanceType,omitempty"`
-
-	// azure Vm size
-	AzureVMSize string `json:"azureVmSize,omitempty"`
-
-	// cloud type
-	CloudType string `json:"cloudType,omitempty"`
-
-	// cpu
-	CPU int32 `json:"cpu,omitempty"`
-
-	// created at
-	CreatedAt string `json:"createdAt,omitempty"`
-
-	// created by
-	CreatedBy string `json:"createdBy,omitempty"`
-
-	// disk size
-	DiskSize int64 `json:"diskSize,omitempty"`
-
-	// google machine type
-	GoogleMachineType string `json:"googleMachineType,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// ip address
-	IPAddress string `json:"ipAddress,omitempty"`
-
-	// kubernetes health
-	KubernetesHealth string `json:"kubernetesHealth,omitempty"`
-
-	// kubernetes node labels
-	KubernetesNodeLabels []*ServersDetailsOKBodyDataItems0KubernetesNodeLabelsItems0 `json:"kubernetesNodeLabels"`
-
-	// last modified
-	LastModified string `json:"lastModified,omitempty"`
-
-	// last modified by
-	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// openstack flavor
-	OpenstackFlavor string `json:"openstackFlavor,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
-
-	// provider ID
-	ProviderID string `json:"providerID,omitempty"`
-
-	// ram
-	RAM int64 `json:"ram,omitempty"`
-
-	// role
-	Role string `json:"role,omitempty"`
-
-	// shut off
-	ShutOff bool `json:"shutOff"`
-
-	// spot instance
-	SpotInstance bool `json:"spotInstance"`
-
-	// spot price
-	SpotPrice string `json:"spotPrice,omitempty"`
-
-	// status
-	Status string `json:"status,omitempty"`
-}
-
-// Validate validates this servers details o k body data items0
-func (o *ServersDetailsOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateKubernetesNodeLabels(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ServersDetailsOKBodyDataItems0) validateKubernetesNodeLabels(formats strfmt.Registry) error {
-	if swag.IsZero(o.KubernetesNodeLabels) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.KubernetesNodeLabels); i++ {
-		if swag.IsZero(o.KubernetesNodeLabels[i]) { // not required
-			continue
-		}
-
-		if o.KubernetesNodeLabels[i] != nil {
-			if err := o.KubernetesNodeLabels[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this servers details o k body data items0 based on the context it is used
-func (o *ServersDetailsOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateKubernetesNodeLabels(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ServersDetailsOKBodyDataItems0) contextValidateKubernetesNodeLabels(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.KubernetesNodeLabels); i++ {
-
-		if o.KubernetesNodeLabels[i] != nil {
-			if err := o.KubernetesNodeLabels[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("kubernetesNodeLabels" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersDetailsOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersDetailsOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res ServersDetailsOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersDetailsOKBodyDataItems0KubernetesNodeLabelsItems0 servers details o k body data items0 kubernetes node labels items0
-swagger:model ServersDetailsOKBodyDataItems0KubernetesNodeLabelsItems0
-*/
-type ServersDetailsOKBodyDataItems0KubernetesNodeLabelsItems0 struct {
-
-	// key
-	Key string `json:"key,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this servers details o k body data items0 kubernetes node labels items0
-func (o *ServersDetailsOKBodyDataItems0KubernetesNodeLabelsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers details o k body data items0 kubernetes node labels items0 based on context it is used
-func (o *ServersDetailsOKBodyDataItems0KubernetesNodeLabelsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersDetailsOKBodyDataItems0KubernetesNodeLabelsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersDetailsOKBodyDataItems0KubernetesNodeLabelsItems0) UnmarshalBinary(b []byte) error {
-	var res ServersDetailsOKBodyDataItems0KubernetesNodeLabelsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersDetailsOKBodyProject servers details o k body project
-swagger:model ServersDetailsOKBodyProject
-*/
-type ServersDetailsOKBodyProject struct {
-
-	// access Ip
-	AccessIP string `json:"accessIp,omitempty"`
-
-	// access profile Id
-	AccessProfileID int32 `json:"accessProfileId,omitempty"`
-
-	// access profile name
-	AccessProfileName string `json:"accessProfileName,omitempty"`
-
-	// access profile revision
-	AccessProfileRevision int32 `json:"accessProfileRevision,omitempty"`
-
-	// alerting profile Id
-	AlertingProfileID int32 `json:"alertingProfileId,omitempty"`
-
-	// alerting profile name
-	AlertingProfileName string `json:"alertingProfileName,omitempty"`
-
-	// alerts total count
-	AlertsTotalCount int32 `json:"alertsTotalCount,omitempty"`
-
-	// allow full spot kubernetes
-	AllowFullSpotKubernetes bool `json:"allowFullSpotKubernetes"`
-
-	// allow spot v ms
-	AllowSpotVMs bool `json:"allowSpotVMs"`
-
-	// allow spot workers
-	AllowSpotWorkers bool `json:"allowSpotWorkers"`
-
-	// bastion
-	Bastion int32 `json:"bastion,omitempty"`
-
-	// certification expired at
-	CertificationExpiredAt string `json:"certificationExpiredAt,omitempty"`
-
-	// cloud credential revision
-	CloudCredentialRevision int32 `json:"cloudCredentialRevision,omitempty"`
-
-	// cloud Id
-	CloudID int32 `json:"cloudId,omitempty"`
-
-	// cloud name
-	CloudName string `json:"cloudName,omitempty"`
-
-	// cloud provider message
-	CloudProviderMessage string `json:"cloudProviderMessage,omitempty"`
-
-	// cloud type
-	CloudType string `json:"cloudType,omitempty"`
-
-	// cpu limit
-	CPULimit int64 `json:"cpuLimit,omitempty"`
-
-	// delete on expiration
-	DeleteOnExpiration bool `json:"deleteOnExpiration"`
-
-	// disk size limit
-	DiskSizeLimit int64 `json:"diskSizeLimit,omitempty"`
-
-	// expired at
-	ExpiredAt string `json:"expiredAt,omitempty"`
-
-	// failure reason
-	FailureReason string `json:"failureReason,omitempty"`
-
-	// has alerting profile
-	HasAlertingProfile bool `json:"hasAlertingProfile"`
-
-	// has kube config file
-	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
-
-	// has next version
-	HasNextVersion bool `json:"hasNextVersion"`
-
-	// has selected flavors
-	HasSelectedFlavors bool `json:"hasSelectedFlavors"`
-
-	// is all failed upgrade
-	IsAllFailedUpgrade bool `json:"isAllFailedUpgrade"`
-
-	// is all ready
-	IsAllReady bool `json:"isAllReady"`
-
-	// is auto upgrade
-	IsAutoUpgrade bool `json:"isAutoUpgrade"`
-
-	// is backup enabled
-	IsBackupEnabled bool `json:"isBackupEnabled"`
-
-	// is deprecated
-	IsDeprecated bool `json:"isDeprecated"`
-
-	// is kubernetes
-	IsKubernetes bool `json:"isKubernetes"`
-
-	// is kubernetes current version kubevap enabled
-	IsKubernetesCurrentVersionKubevapEnabled bool `json:"isKubernetesCurrentVersionKubevapEnabled"`
-
-	// is kubevap enabled
-	IsKubevapEnabled bool `json:"isKubevapEnabled"`
-
-	// is locked
-	IsLocked bool `json:"isLocked"`
-
-	// is maintenance mode enabled
-	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
-
-	// is monitoring enabled
-	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
-
-	// is opa enabled
-	IsOpaEnabled bool `json:"isOpaEnabled"`
-
-	// kube current version
-	KubeCurrentVersion string `json:"kubeCurrentVersion,omitempty"`
-
-	// kubernetes current version
-	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion,omitempty"`
-
-	// kubernetes profile Id
-	KubernetesProfileID int32 `json:"kubernetesProfileId,omitempty"`
-
-	// kubernetes profile name
-	KubernetesProfileName string `json:"kubernetesProfileName,omitempty"`
-
-	// master
-	Master int32 `json:"master,omitempty"`
-
-	// master ready
-	MasterReady int32 `json:"masterReady,omitempty"`
-
-	// max spot price
-	MaxSpotPrice float64 `json:"maxSpotPrice,omitempty"`
-
-	// opa profile Id
-	OpaProfileID int32 `json:"opaProfileId,omitempty"`
-
-	// opa profile name
-	OpaProfileName string `json:"opaProfileName,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// project cloud revision
-	ProjectCloudRevision int32 `json:"projectCloudRevision,omitempty"`
-
-	// project health
-	ProjectHealth string `json:"projectHealth,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
-
-	// project revision
-	ProjectRevision int32 `json:"projectRevision,omitempty"`
-
-	// project status
-	ProjectStatus string `json:"projectStatus,omitempty"`
-
-	// quota Id
-	QuotaID int32 `json:"quotaId,omitempty"`
-
-	// quota message
-	QuotaMessage string `json:"quotaMessage,omitempty"`
-
-	// ram limit
-	RAMLimit int64 `json:"ramLimit,omitempty"`
-
-	// s3 credential Id
-	S3CredentialID int32 `json:"s3CredentialId,omitempty"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-
-	// total hourly cost
-	TotalHourlyCost float64 `json:"totalHourlyCost,omitempty"`
-
-	// used Cpu
-	UsedCPU int64 `json:"usedCpu,omitempty"`
-
-	// used disk size
-	UsedDiskSize int64 `json:"usedDiskSize,omitempty"`
-
-	// used Ram
-	UsedRAM int64 `json:"usedRam,omitempty"`
-
-	// vm Cpu limit
-	VMCPULimit int64 `json:"vmCpuLimit,omitempty"`
-
-	// vm Ram limit
-	VMRAMLimit int64 `json:"vmRamLimit,omitempty"`
-
-	// vm used Cpu
-	VMUsedCPU int64 `json:"vmUsedCpu,omitempty"`
-
-	// vm used Ram
-	VMUsedRAM int64 `json:"vmUsedRam,omitempty"`
-
-	// vm used volume size
-	VMUsedVolumeSize int64 `json:"vmUsedVolumeSize,omitempty"`
-
-	// vm volume size limit
-	VMVolumeSizeLimit int64 `json:"vmVolumeSizeLimit,omitempty"`
-
-	// warning message
-	WarningMessage string `json:"warningMessage,omitempty"`
-
-	// worker
-	Worker int32 `json:"worker,omitempty"`
-}
-
-// Validate validates this servers details o k body project
-func (o *ServersDetailsOKBodyProject) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers details o k body project based on context it is used
-func (o *ServersDetailsOKBodyProject) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersDetailsOKBodyProject) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersDetailsOKBodyProject) UnmarshalBinary(b []byte) error {
-	var res ServersDetailsOKBodyProject
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersDetailsUnauthorizedBody servers details unauthorized body
-swagger:model ServersDetailsUnauthorizedBody
-*/
-type ServersDetailsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers details unauthorized body
-func (o *ServersDetailsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers details unauthorized body based on context it is used
-func (o *ServersDetailsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersDetailsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersDetailsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ServersDetailsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -6,15 +6,13 @@ package billing
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // BillingGroupedListReader is a Reader for the BillingGroupedList structure.
@@ -77,7 +75,7 @@ BillingGroupedListOK describes a response with status code 200, with default hea
 Success
 */
 type BillingGroupedListOK struct {
-	Payload []*BillingGroupedListOKBodyItems0
+	Payload []*models.GroupedBillingInfo
 }
 
 // IsSuccess returns true when this billing grouped list o k response has a 2xx status code
@@ -113,7 +111,7 @@ func (o *BillingGroupedListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListOK  %+v", 200, o.Payload)
 }
 
-func (o *BillingGroupedListOK) GetPayload() []*BillingGroupedListOKBodyItems0 {
+func (o *BillingGroupedListOK) GetPayload() []*models.GroupedBillingInfo {
 	return o.Payload
 }
 
@@ -138,7 +136,7 @@ BillingGroupedListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type BillingGroupedListBadRequest struct {
-	Payload []*BillingGroupedListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this billing grouped list bad request response has a 2xx status code
@@ -174,7 +172,7 @@ func (o *BillingGroupedListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BillingGroupedListBadRequest) GetPayload() []*BillingGroupedListBadRequestBodyItems0 {
+func (o *BillingGroupedListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +197,7 @@ BillingGroupedListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type BillingGroupedListUnauthorized struct {
-	Payload *BillingGroupedListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this billing grouped list unauthorized response has a 2xx status code
@@ -235,13 +233,13 @@ func (o *BillingGroupedListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BillingGroupedListUnauthorized) GetPayload() *BillingGroupedListUnauthorizedBody {
+func (o *BillingGroupedListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BillingGroupedListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BillingGroupedListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +260,7 @@ BillingGroupedListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type BillingGroupedListForbidden struct {
-	Payload *BillingGroupedListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this billing grouped list forbidden response has a 2xx status code
@@ -298,13 +296,13 @@ func (o *BillingGroupedListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BillingGroupedListForbidden) GetPayload() *BillingGroupedListForbiddenBody {
+func (o *BillingGroupedListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BillingGroupedListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BillingGroupedListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +323,7 @@ BillingGroupedListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type BillingGroupedListNotFound struct {
-	Payload *BillingGroupedListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this billing grouped list not found response has a 2xx status code
@@ -361,13 +359,13 @@ func (o *BillingGroupedListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/grouped][%d] billingGroupedListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BillingGroupedListNotFound) GetPayload() *BillingGroupedListNotFoundBody {
+func (o *BillingGroupedListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BillingGroupedListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BillingGroupedListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,345 +423,5 @@ func (o *BillingGroupedListInternalServerError) String() string {
 
 func (o *BillingGroupedListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-BillingGroupedListBadRequestBodyItems0 billing grouped list bad request body items0
-swagger:model BillingGroupedListBadRequestBodyItems0
-*/
-type BillingGroupedListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this billing grouped list bad request body items0
-func (o *BillingGroupedListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this billing grouped list bad request body items0 based on context it is used
-func (o *BillingGroupedListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BillingGroupedListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BillingGroupedListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res BillingGroupedListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BillingGroupedListForbiddenBody billing grouped list forbidden body
-swagger:model BillingGroupedListForbiddenBody
-*/
-type BillingGroupedListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this billing grouped list forbidden body
-func (o *BillingGroupedListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this billing grouped list forbidden body based on context it is used
-func (o *BillingGroupedListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BillingGroupedListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BillingGroupedListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res BillingGroupedListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BillingGroupedListNotFoundBody billing grouped list not found body
-swagger:model BillingGroupedListNotFoundBody
-*/
-type BillingGroupedListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this billing grouped list not found body
-func (o *BillingGroupedListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this billing grouped list not found body based on context it is used
-func (o *BillingGroupedListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BillingGroupedListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BillingGroupedListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res BillingGroupedListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BillingGroupedListOKBodyItems0 billing grouped list o k body items0
-swagger:model BillingGroupedListOKBodyItems0
-*/
-type BillingGroupedListOKBodyItems0 struct {
-
-	// data
-	Data []*BillingGroupedListOKBodyItems0DataItems0 `json:"data"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
-}
-
-// Validate validates this billing grouped list o k body items0
-func (o *BillingGroupedListOKBodyItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *BillingGroupedListOKBodyItems0) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this billing grouped list o k body items0 based on the context it is used
-func (o *BillingGroupedListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *BillingGroupedListOKBodyItems0) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BillingGroupedListOKBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BillingGroupedListOKBodyItems0) UnmarshalBinary(b []byte) error {
-	var res BillingGroupedListOKBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BillingGroupedListOKBodyItems0DataItems0 billing grouped list o k body items0 data items0
-swagger:model BillingGroupedListOKBodyItems0DataItems0
-*/
-type BillingGroupedListOKBodyItems0DataItems0 struct {
-
-	// start date
-	StartDate string `json:"startDate,omitempty"`
-
-	// tcu
-	Tcu int64 `json:"tcu,omitempty"`
-}
-
-// Validate validates this billing grouped list o k body items0 data items0
-func (o *BillingGroupedListOKBodyItems0DataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this billing grouped list o k body items0 data items0 based on context it is used
-func (o *BillingGroupedListOKBodyItems0DataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BillingGroupedListOKBodyItems0DataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BillingGroupedListOKBodyItems0DataItems0) UnmarshalBinary(b []byte) error {
-	var res BillingGroupedListOKBodyItems0DataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BillingGroupedListUnauthorizedBody billing grouped list unauthorized body
-swagger:model BillingGroupedListUnauthorizedBody
-*/
-type BillingGroupedListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this billing grouped list unauthorized body
-func (o *BillingGroupedListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this billing grouped list unauthorized body based on context it is used
-func (o *BillingGroupedListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BillingGroupedListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BillingGroupedListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res BillingGroupedListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

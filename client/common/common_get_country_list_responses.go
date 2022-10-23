@@ -6,13 +6,13 @@ package common
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CommonGetCountryListReader is a Reader for the CommonGetCountryList structure.
@@ -75,7 +75,7 @@ CommonGetCountryListOK describes a response with status code 200, with default h
 Success
 */
 type CommonGetCountryListOK struct {
-	Payload []*CommonGetCountryListOKBodyItems0
+	Payload []*models.CountryListDto
 }
 
 // IsSuccess returns true when this common get country list o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CommonGetCountryListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListOK  %+v", 200, o.Payload)
 }
 
-func (o *CommonGetCountryListOK) GetPayload() []*CommonGetCountryListOKBodyItems0 {
+func (o *CommonGetCountryListOK) GetPayload() []*models.CountryListDto {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CommonGetCountryListBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type CommonGetCountryListBadRequest struct {
-	Payload []*CommonGetCountryListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this common get country list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CommonGetCountryListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CommonGetCountryListBadRequest) GetPayload() []*CommonGetCountryListBadRequestBodyItems0 {
+func (o *CommonGetCountryListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CommonGetCountryListUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type CommonGetCountryListUnauthorized struct {
-	Payload *CommonGetCountryListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this common get country list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CommonGetCountryListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CommonGetCountryListUnauthorized) GetPayload() *CommonGetCountryListUnauthorizedBody {
+func (o *CommonGetCountryListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CommonGetCountryListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CommonGetCountryListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CommonGetCountryListForbidden describes a response with status code 403, with de
 Forbidden
 */
 type CommonGetCountryListForbidden struct {
-	Payload *CommonGetCountryListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this common get country list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CommonGetCountryListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CommonGetCountryListForbidden) GetPayload() *CommonGetCountryListForbiddenBody {
+func (o *CommonGetCountryListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CommonGetCountryListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CommonGetCountryListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CommonGetCountryListNotFound describes a response with status code 404, with def
 Not Found
 */
 type CommonGetCountryListNotFound struct {
-	Payload *CommonGetCountryListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this common get country list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CommonGetCountryListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Common/countries][%d] commonGetCountryListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CommonGetCountryListNotFound) GetPayload() *CommonGetCountryListNotFoundBody {
+func (o *CommonGetCountryListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CommonGetCountryListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CommonGetCountryListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *CommonGetCountryListInternalServerError) String() string {
 
 func (o *CommonGetCountryListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CommonGetCountryListBadRequestBodyItems0 common get country list bad request body items0
-swagger:model CommonGetCountryListBadRequestBodyItems0
-*/
-type CommonGetCountryListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this common get country list bad request body items0
-func (o *CommonGetCountryListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this common get country list bad request body items0 based on context it is used
-func (o *CommonGetCountryListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CommonGetCountryListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CommonGetCountryListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CommonGetCountryListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CommonGetCountryListForbiddenBody common get country list forbidden body
-swagger:model CommonGetCountryListForbiddenBody
-*/
-type CommonGetCountryListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this common get country list forbidden body
-func (o *CommonGetCountryListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this common get country list forbidden body based on context it is used
-func (o *CommonGetCountryListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CommonGetCountryListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CommonGetCountryListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CommonGetCountryListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CommonGetCountryListNotFoundBody common get country list not found body
-swagger:model CommonGetCountryListNotFoundBody
-*/
-type CommonGetCountryListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this common get country list not found body
-func (o *CommonGetCountryListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this common get country list not found body based on context it is used
-func (o *CommonGetCountryListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CommonGetCountryListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CommonGetCountryListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CommonGetCountryListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CommonGetCountryListOKBodyItems0 common get country list o k body items0
-swagger:model CommonGetCountryListOKBodyItems0
-*/
-type CommonGetCountryListOKBodyItems0 struct {
-
-	// is eu
-	IsEu bool `json:"isEu"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this common get country list o k body items0
-func (o *CommonGetCountryListOKBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this common get country list o k body items0 based on context it is used
-func (o *CommonGetCountryListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CommonGetCountryListOKBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CommonGetCountryListOKBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CommonGetCountryListOKBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CommonGetCountryListUnauthorizedBody common get country list unauthorized body
-swagger:model CommonGetCountryListUnauthorizedBody
-*/
-type CommonGetCountryListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this common get country list unauthorized body
-func (o *CommonGetCountryListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this common get country list unauthorized body based on context it is used
-func (o *CommonGetCountryListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CommonGetCountryListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CommonGetCountryListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CommonGetCountryListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

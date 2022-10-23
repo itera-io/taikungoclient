@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewPartnerBecomePartnerParams creates a new PartnerBecomePartnerParams object,
@@ -62,7 +64,7 @@ PartnerBecomePartnerParams contains all the parameters to send to the API endpoi
 type PartnerBecomePartnerParams struct {
 
 	// Body.
-	Body PartnerBecomePartnerBody
+	Body *models.BecomePartnerCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *PartnerBecomePartnerParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the partner become partner params
-func (o *PartnerBecomePartnerParams) WithBody(body PartnerBecomePartnerBody) *PartnerBecomePartnerParams {
+func (o *PartnerBecomePartnerParams) WithBody(body *models.BecomePartnerCommand) *PartnerBecomePartnerParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the partner become partner params
-func (o *PartnerBecomePartnerParams) SetBody(body PartnerBecomePartnerBody) {
+func (o *PartnerBecomePartnerParams) SetBody(body *models.BecomePartnerCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *PartnerBecomePartnerParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

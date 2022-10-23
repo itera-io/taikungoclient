@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSlackDeleteMultipleParams creates a new SlackDeleteMultipleParams object,
@@ -62,7 +64,7 @@ SlackDeleteMultipleParams contains all the parameters to send to the API endpoin
 type SlackDeleteMultipleParams struct {
 
 	// Body.
-	Body SlackDeleteMultipleBody
+	Body *models.DeleteSlackConfigCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *SlackDeleteMultipleParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the slack delete multiple params
-func (o *SlackDeleteMultipleParams) WithBody(body SlackDeleteMultipleBody) *SlackDeleteMultipleParams {
+func (o *SlackDeleteMultipleParams) WithBody(body *models.DeleteSlackConfigCommand) *SlackDeleteMultipleParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the slack delete multiple params
-func (o *SlackDeleteMultipleParams) SetBody(body SlackDeleteMultipleBody) {
+func (o *SlackDeleteMultipleParams) SetBody(body *models.DeleteSlackConfigCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *SlackDeleteMultipleParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

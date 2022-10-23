@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesDescribeNetworkPolicyReader is a Reader for the KubernetesDescribeNetworkPolicy structure.
@@ -136,7 +136,7 @@ KubernetesDescribeNetworkPolicyBadRequest describes a response with status code 
 Bad Request
 */
 type KubernetesDescribeNetworkPolicyBadRequest struct {
-	Payload []*KubernetesDescribeNetworkPolicyBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes describe network policy bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeNetworkPolicyBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeNetworkPolicyBadRequest) GetPayload() []*KubernetesDescribeNetworkPolicyBadRequestBodyItems0 {
+func (o *KubernetesDescribeNetworkPolicyBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesDescribeNetworkPolicyUnauthorized describes a response with status cod
 Unauthorized
 */
 type KubernetesDescribeNetworkPolicyUnauthorized struct {
-	Payload *KubernetesDescribeNetworkPolicyUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe network policy unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesDescribeNetworkPolicyUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeNetworkPolicyUnauthorized) GetPayload() *KubernetesDescribeNetworkPolicyUnauthorizedBody {
+func (o *KubernetesDescribeNetworkPolicyUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeNetworkPolicyUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeNetworkPolicyUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesDescribeNetworkPolicyForbidden describes a response with status code 4
 Forbidden
 */
 type KubernetesDescribeNetworkPolicyForbidden struct {
-	Payload *KubernetesDescribeNetworkPolicyForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe network policy forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesDescribeNetworkPolicyForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeNetworkPolicyForbidden) GetPayload() *KubernetesDescribeNetworkPolicyForbiddenBody {
+func (o *KubernetesDescribeNetworkPolicyForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeNetworkPolicyForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeNetworkPolicyForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesDescribeNetworkPolicyNotFound describes a response with status code 40
 Not Found
 */
 type KubernetesDescribeNetworkPolicyNotFound struct {
-	Payload *KubernetesDescribeNetworkPolicyNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe network policy not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesDescribeNetworkPolicyNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/network-policy][%d] kubernetesDescribeNetworkPolicyNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeNetworkPolicyNotFound) GetPayload() *KubernetesDescribeNetworkPolicyNotFoundBody {
+func (o *KubernetesDescribeNetworkPolicyNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeNetworkPolicyNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeNetworkPolicyNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,240 +423,5 @@ func (o *KubernetesDescribeNetworkPolicyInternalServerError) String() string {
 
 func (o *KubernetesDescribeNetworkPolicyInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesDescribeNetworkPolicyBadRequestBodyItems0 kubernetes describe network policy bad request body items0
-swagger:model KubernetesDescribeNetworkPolicyBadRequestBodyItems0
-*/
-type KubernetesDescribeNetworkPolicyBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes describe network policy bad request body items0
-func (o *KubernetesDescribeNetworkPolicyBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe network policy bad request body items0 based on context it is used
-func (o *KubernetesDescribeNetworkPolicyBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeNetworkPolicyBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeNetworkPolicyBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeNetworkPolicyBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeNetworkPolicyBody kubernetes describe network policy body
-swagger:model KubernetesDescribeNetworkPolicyBody
-*/
-type KubernetesDescribeNetworkPolicyBody struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this kubernetes describe network policy body
-func (o *KubernetesDescribeNetworkPolicyBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe network policy body based on context it is used
-func (o *KubernetesDescribeNetworkPolicyBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeNetworkPolicyBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeNetworkPolicyBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeNetworkPolicyBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeNetworkPolicyForbiddenBody kubernetes describe network policy forbidden body
-swagger:model KubernetesDescribeNetworkPolicyForbiddenBody
-*/
-type KubernetesDescribeNetworkPolicyForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe network policy forbidden body
-func (o *KubernetesDescribeNetworkPolicyForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe network policy forbidden body based on context it is used
-func (o *KubernetesDescribeNetworkPolicyForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeNetworkPolicyForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeNetworkPolicyForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeNetworkPolicyForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeNetworkPolicyNotFoundBody kubernetes describe network policy not found body
-swagger:model KubernetesDescribeNetworkPolicyNotFoundBody
-*/
-type KubernetesDescribeNetworkPolicyNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe network policy not found body
-func (o *KubernetesDescribeNetworkPolicyNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe network policy not found body based on context it is used
-func (o *KubernetesDescribeNetworkPolicyNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeNetworkPolicyNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeNetworkPolicyNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeNetworkPolicyNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeNetworkPolicyUnauthorizedBody kubernetes describe network policy unauthorized body
-swagger:model KubernetesDescribeNetworkPolicyUnauthorizedBody
-*/
-type KubernetesDescribeNetworkPolicyUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe network policy unauthorized body
-func (o *KubernetesDescribeNetworkPolicyUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe network policy unauthorized body based on context it is used
-func (o *KubernetesDescribeNetworkPolicyUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeNetworkPolicyUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeNetworkPolicyUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeNetworkPolicyUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

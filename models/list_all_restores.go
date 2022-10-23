@@ -12,7 +12,6 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // ListAllRestores list all restores
@@ -21,7 +20,7 @@ import (
 type ListAllRestores struct {
 
 	// data
-	Data []*ListAllRestoresDataItems0 `json:"data"`
+	Data []*CRestoreDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -112,129 +111,6 @@ func (m *ListAllRestores) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ListAllRestores) UnmarshalBinary(b []byte) error {
 	var res ListAllRestores
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// ListAllRestoresDataItems0 list all restores data items0
-//
-// swagger:model ListAllRestoresDataItems0
-type ListAllRestoresDataItems0 struct {
-
-	// backup name
-	BackupName string `json:"backupName,omitempty"`
-
-	// completion date time
-	// Format: date-time
-	CompletionDateTime *strfmt.DateTime `json:"completionDateTime,omitempty"`
-
-	// created at
-	// Format: date-time
-	CreatedAt *strfmt.DateTime `json:"createdAt,omitempty"`
-
-	// exclude namespaces
-	ExcludeNamespaces []string `json:"excludeNamespaces"`
-
-	// include namespaces
-	IncludeNamespaces []string `json:"includeNamespaces"`
-
-	// metadata name
-	MetadataName string `json:"metadataName,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// phase
-	Phase string `json:"phase,omitempty"`
-
-	// schedule name
-	ScheduleName string `json:"scheduleName,omitempty"`
-
-	// start time stamp
-	// Format: date-time
-	StartTimeStamp *strfmt.DateTime `json:"startTimeStamp,omitempty"`
-
-	// warnings
-	Warnings int64 `json:"warnings,omitempty"`
-}
-
-// Validate validates this list all restores data items0
-func (m *ListAllRestoresDataItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateCompletionDateTime(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateCreatedAt(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateStartTimeStamp(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ListAllRestoresDataItems0) validateCompletionDateTime(formats strfmt.Registry) error {
-	if swag.IsZero(m.CompletionDateTime) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("completionDateTime", "body", "date-time", m.CompletionDateTime.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *ListAllRestoresDataItems0) validateCreatedAt(formats strfmt.Registry) error {
-	if swag.IsZero(m.CreatedAt) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("createdAt", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *ListAllRestoresDataItems0) validateStartTimeStamp(formats strfmt.Registry) error {
-	if swag.IsZero(m.StartTimeStamp) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("startTimeStamp", "body", "date-time", m.StartTimeStamp.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this list all restores data items0 based on context it is used
-func (m *ListAllRestoresDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *ListAllRestoresDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *ListAllRestoresDataItems0) UnmarshalBinary(b []byte) error {
-	var res ListAllRestoresDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

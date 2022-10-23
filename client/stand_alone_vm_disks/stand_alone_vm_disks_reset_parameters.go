@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneVMDisksResetParams creates a new StandAloneVMDisksResetParams object,
@@ -62,7 +64,7 @@ StandAloneVMDisksResetParams contains all the parameters to send to the API endp
 type StandAloneVMDisksResetParams struct {
 
 	// Body.
-	Body StandAloneVMDisksResetBody
+	Body *models.ResetStandAloneVMDiskStatusCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *StandAloneVMDisksResetParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the stand alone Vm disks reset params
-func (o *StandAloneVMDisksResetParams) WithBody(body StandAloneVMDisksResetBody) *StandAloneVMDisksResetParams {
+func (o *StandAloneVMDisksResetParams) WithBody(body *models.ResetStandAloneVMDiskStatusCommand) *StandAloneVMDisksResetParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone Vm disks reset params
-func (o *StandAloneVMDisksResetParams) SetBody(body StandAloneVMDisksResetBody) {
+func (o *StandAloneVMDisksResetParams) SetBody(body *models.ResetStandAloneVMDiskStatusCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *StandAloneVMDisksResetParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

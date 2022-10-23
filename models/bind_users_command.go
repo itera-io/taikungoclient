@@ -23,7 +23,7 @@ type BindUsersCommand struct {
 	ProjectID int32 `json:"projectId,omitempty"`
 
 	// users
-	Users []*BindUsersCommandUsersItems0 `json:"users"`
+	Users []*UpdateProjectUserDto `json:"users"`
 }
 
 // Validate validates this bind users command
@@ -111,49 +111,6 @@ func (m *BindUsersCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BindUsersCommand) UnmarshalBinary(b []byte) error {
 	var res BindUsersCommand
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// BindUsersCommandUsersItems0 bind users command users items0
-//
-// swagger:model BindUsersCommandUsersItems0
-type BindUsersCommandUsersItems0 struct {
-
-	// is bound
-	IsBound bool `json:"isBound"`
-
-	// user Id
-	UserID string `json:"userId,omitempty"`
-
-	// user name
-	UserName string `json:"userName,omitempty"`
-}
-
-// Validate validates this bind users command users items0
-func (m *BindUsersCommandUsersItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this bind users command users items0 based on context it is used
-func (m *BindUsersCommandUsersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *BindUsersCommandUsersItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *BindUsersCommandUsersItems0) UnmarshalBinary(b []byte) error {
-	var res BindUsersCommandUsersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

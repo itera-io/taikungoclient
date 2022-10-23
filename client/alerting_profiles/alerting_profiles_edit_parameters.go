@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAlertingProfilesEditParams creates a new AlertingProfilesEditParams object,
@@ -62,7 +64,7 @@ AlertingProfilesEditParams contains all the parameters to send to the API endpoi
 type AlertingProfilesEditParams struct {
 
 	// Body.
-	Body AlertingProfilesEditBody
+	Body *models.UpdateAlertingProfileCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *AlertingProfilesEditParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the alerting profiles edit params
-func (o *AlertingProfilesEditParams) WithBody(body AlertingProfilesEditBody) *AlertingProfilesEditParams {
+func (o *AlertingProfilesEditParams) WithBody(body *models.UpdateAlertingProfileCommand) *AlertingProfilesEditParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the alerting profiles edit params
-func (o *AlertingProfilesEditParams) SetBody(body AlertingProfilesEditBody) {
+func (o *AlertingProfilesEditParams) SetBody(body *models.UpdateAlertingProfileCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *AlertingProfilesEditParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

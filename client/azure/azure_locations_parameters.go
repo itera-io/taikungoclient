@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAzureLocationsParams creates a new AzureLocationsParams object,
@@ -62,7 +64,7 @@ AzureLocationsParams contains all the parameters to send to the API endpoint
 type AzureLocationsParams struct {
 
 	// Body.
-	Body AzureLocationsBody
+	Body *models.AzureLocationsCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *AzureLocationsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the azure locations params
-func (o *AzureLocationsParams) WithBody(body AzureLocationsBody) *AzureLocationsParams {
+func (o *AzureLocationsParams) WithBody(body *models.AzureLocationsCommand) *AzureLocationsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the azure locations params
-func (o *AzureLocationsParams) SetBody(body AzureLocationsBody) {
+func (o *AzureLocationsParams) SetBody(body *models.AzureLocationsCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *AzureLocationsParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

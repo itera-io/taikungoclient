@@ -6,13 +6,13 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsSpotWorkersOperationsReader is a Reader for the ProjectsSpotWorkersOperations structure.
@@ -75,7 +75,7 @@ ProjectsSpotWorkersOperationsOK describes a response with status code 200, with 
 Success
 */
 type ProjectsSpotWorkersOperationsOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects spot workers operations o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectsSpotWorkersOperationsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsSpotWorkersOperationsOK) GetPayload() interface{} {
+func (o *ProjectsSpotWorkersOperationsOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectsSpotWorkersOperationsBadRequest describes a response with status code 40
 Bad Request
 */
 type ProjectsSpotWorkersOperationsBadRequest struct {
-	Payload []*ProjectsSpotWorkersOperationsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects spot workers operations bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsSpotWorkersOperationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsSpotWorkersOperationsBadRequest) GetPayload() []*ProjectsSpotWorkersOperationsBadRequestBodyItems0 {
+func (o *ProjectsSpotWorkersOperationsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectsSpotWorkersOperationsUnauthorized describes a response with status code 
 Unauthorized
 */
 type ProjectsSpotWorkersOperationsUnauthorized struct {
-	Payload *ProjectsSpotWorkersOperationsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects spot workers operations unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectsSpotWorkersOperationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsSpotWorkersOperationsUnauthorized) GetPayload() *ProjectsSpotWorkersOperationsUnauthorizedBody {
+func (o *ProjectsSpotWorkersOperationsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsSpotWorkersOperationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsSpotWorkersOperationsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectsSpotWorkersOperationsForbidden describes a response with status code 403
 Forbidden
 */
 type ProjectsSpotWorkersOperationsForbidden struct {
-	Payload *ProjectsSpotWorkersOperationsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects spot workers operations forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectsSpotWorkersOperationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsSpotWorkersOperationsForbidden) GetPayload() *ProjectsSpotWorkersOperationsForbiddenBody {
+func (o *ProjectsSpotWorkersOperationsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsSpotWorkersOperationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsSpotWorkersOperationsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectsSpotWorkersOperationsNotFound describes a response with status code 404,
 Not Found
 */
 type ProjectsSpotWorkersOperationsNotFound struct {
-	Payload *ProjectsSpotWorkersOperationsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects spot workers operations not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectsSpotWorkersOperationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/toggle-spot-workers][%d] projectsSpotWorkersOperationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsSpotWorkersOperationsNotFound) GetPayload() *ProjectsSpotWorkersOperationsNotFoundBody {
+func (o *ProjectsSpotWorkersOperationsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsSpotWorkersOperationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsSpotWorkersOperationsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *ProjectsSpotWorkersOperationsInternalServerError) String() string {
 
 func (o *ProjectsSpotWorkersOperationsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectsSpotWorkersOperationsBadRequestBodyItems0 projects spot workers operations bad request body items0
-swagger:model ProjectsSpotWorkersOperationsBadRequestBodyItems0
-*/
-type ProjectsSpotWorkersOperationsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this projects spot workers operations bad request body items0
-func (o *ProjectsSpotWorkersOperationsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects spot workers operations bad request body items0 based on context it is used
-func (o *ProjectsSpotWorkersOperationsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsSpotWorkersOperationsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsSpotWorkersOperationsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectsSpotWorkersOperationsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsSpotWorkersOperationsBody projects spot workers operations body
-swagger:model ProjectsSpotWorkersOperationsBody
-*/
-type ProjectsSpotWorkersOperationsBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// mode
-	Mode string `json:"mode,omitempty"`
-}
-
-// Validate validates this projects spot workers operations body
-func (o *ProjectsSpotWorkersOperationsBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects spot workers operations body based on context it is used
-func (o *ProjectsSpotWorkersOperationsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsSpotWorkersOperationsBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsSpotWorkersOperationsBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsSpotWorkersOperationsBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsSpotWorkersOperationsForbiddenBody projects spot workers operations forbidden body
-swagger:model ProjectsSpotWorkersOperationsForbiddenBody
-*/
-type ProjectsSpotWorkersOperationsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects spot workers operations forbidden body
-func (o *ProjectsSpotWorkersOperationsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects spot workers operations forbidden body based on context it is used
-func (o *ProjectsSpotWorkersOperationsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsSpotWorkersOperationsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsSpotWorkersOperationsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsSpotWorkersOperationsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsSpotWorkersOperationsNotFoundBody projects spot workers operations not found body
-swagger:model ProjectsSpotWorkersOperationsNotFoundBody
-*/
-type ProjectsSpotWorkersOperationsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects spot workers operations not found body
-func (o *ProjectsSpotWorkersOperationsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects spot workers operations not found body based on context it is used
-func (o *ProjectsSpotWorkersOperationsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsSpotWorkersOperationsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsSpotWorkersOperationsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsSpotWorkersOperationsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsSpotWorkersOperationsUnauthorizedBody projects spot workers operations unauthorized body
-swagger:model ProjectsSpotWorkersOperationsUnauthorizedBody
-*/
-type ProjectsSpotWorkersOperationsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects spot workers operations unauthorized body
-func (o *ProjectsSpotWorkersOperationsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects spot workers operations unauthorized body based on context it is used
-func (o *ProjectsSpotWorkersOperationsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsSpotWorkersOperationsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsSpotWorkersOperationsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsSpotWorkersOperationsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

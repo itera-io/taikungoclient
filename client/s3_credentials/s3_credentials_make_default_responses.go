@@ -6,13 +6,13 @@ package s3_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // S3CredentialsMakeDefaultReader is a Reader for the S3CredentialsMakeDefault structure.
@@ -75,7 +75,7 @@ S3CredentialsMakeDefaultOK describes a response with status code 200, with defau
 Success
 */
 type S3CredentialsMakeDefaultOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this s3 credentials make default o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *S3CredentialsMakeDefaultOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultOK  %+v", 200, o.Payload)
 }
 
-func (o *S3CredentialsMakeDefaultOK) GetPayload() interface{} {
+func (o *S3CredentialsMakeDefaultOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ S3CredentialsMakeDefaultBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type S3CredentialsMakeDefaultBadRequest struct {
-	Payload []*S3CredentialsMakeDefaultBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this s3 credentials make default bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *S3CredentialsMakeDefaultBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *S3CredentialsMakeDefaultBadRequest) GetPayload() []*S3CredentialsMakeDefaultBadRequestBodyItems0 {
+func (o *S3CredentialsMakeDefaultBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ S3CredentialsMakeDefaultUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type S3CredentialsMakeDefaultUnauthorized struct {
-	Payload *S3CredentialsMakeDefaultUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials make default unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *S3CredentialsMakeDefaultUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *S3CredentialsMakeDefaultUnauthorized) GetPayload() *S3CredentialsMakeDefaultUnauthorizedBody {
+func (o *S3CredentialsMakeDefaultUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsMakeDefaultUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(S3CredentialsMakeDefaultUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ S3CredentialsMakeDefaultForbidden describes a response with status code 403, wit
 Forbidden
 */
 type S3CredentialsMakeDefaultForbidden struct {
-	Payload *S3CredentialsMakeDefaultForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials make default forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *S3CredentialsMakeDefaultForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultForbidden  %+v", 403, o.Payload)
 }
 
-func (o *S3CredentialsMakeDefaultForbidden) GetPayload() *S3CredentialsMakeDefaultForbiddenBody {
+func (o *S3CredentialsMakeDefaultForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsMakeDefaultForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(S3CredentialsMakeDefaultForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ S3CredentialsMakeDefaultNotFound describes a response with status code 404, with
 Not Found
 */
 type S3CredentialsMakeDefaultNotFound struct {
-	Payload *S3CredentialsMakeDefaultNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this s3 credentials make default not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *S3CredentialsMakeDefaultNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/S3Credentials/makedefault][%d] s3CredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
 }
 
-func (o *S3CredentialsMakeDefaultNotFound) GetPayload() *S3CredentialsMakeDefaultNotFoundBody {
+func (o *S3CredentialsMakeDefaultNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *S3CredentialsMakeDefaultNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(S3CredentialsMakeDefaultNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *S3CredentialsMakeDefaultInternalServerError) String() string {
 
 func (o *S3CredentialsMakeDefaultInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-S3CredentialsMakeDefaultBadRequestBodyItems0 s3 credentials make default bad request body items0
-swagger:model S3CredentialsMakeDefaultBadRequestBodyItems0
-*/
-type S3CredentialsMakeDefaultBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this s3 credentials make default bad request body items0
-func (o *S3CredentialsMakeDefaultBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this s3 credentials make default bad request body items0 based on context it is used
-func (o *S3CredentialsMakeDefaultBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *S3CredentialsMakeDefaultBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *S3CredentialsMakeDefaultBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res S3CredentialsMakeDefaultBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-S3CredentialsMakeDefaultBody s3 credentials make default body
-swagger:model S3CredentialsMakeDefaultBody
-*/
-type S3CredentialsMakeDefaultBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-}
-
-// Validate validates this s3 credentials make default body
-func (o *S3CredentialsMakeDefaultBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this s3 credentials make default body based on context it is used
-func (o *S3CredentialsMakeDefaultBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *S3CredentialsMakeDefaultBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *S3CredentialsMakeDefaultBody) UnmarshalBinary(b []byte) error {
-	var res S3CredentialsMakeDefaultBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-S3CredentialsMakeDefaultForbiddenBody s3 credentials make default forbidden body
-swagger:model S3CredentialsMakeDefaultForbiddenBody
-*/
-type S3CredentialsMakeDefaultForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this s3 credentials make default forbidden body
-func (o *S3CredentialsMakeDefaultForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this s3 credentials make default forbidden body based on context it is used
-func (o *S3CredentialsMakeDefaultForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *S3CredentialsMakeDefaultForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *S3CredentialsMakeDefaultForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res S3CredentialsMakeDefaultForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-S3CredentialsMakeDefaultNotFoundBody s3 credentials make default not found body
-swagger:model S3CredentialsMakeDefaultNotFoundBody
-*/
-type S3CredentialsMakeDefaultNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this s3 credentials make default not found body
-func (o *S3CredentialsMakeDefaultNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this s3 credentials make default not found body based on context it is used
-func (o *S3CredentialsMakeDefaultNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *S3CredentialsMakeDefaultNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *S3CredentialsMakeDefaultNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res S3CredentialsMakeDefaultNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-S3CredentialsMakeDefaultUnauthorizedBody s3 credentials make default unauthorized body
-swagger:model S3CredentialsMakeDefaultUnauthorizedBody
-*/
-type S3CredentialsMakeDefaultUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this s3 credentials make default unauthorized body
-func (o *S3CredentialsMakeDefaultUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this s3 credentials make default unauthorized body based on context it is used
-func (o *S3CredentialsMakeDefaultUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *S3CredentialsMakeDefaultUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *S3CredentialsMakeDefaultUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res S3CredentialsMakeDefaultUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

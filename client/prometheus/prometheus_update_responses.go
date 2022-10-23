@@ -6,17 +6,13 @@ package prometheus
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"encoding/json"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PrometheusUpdateReader is a Reader for the PrometheusUpdate structure.
@@ -79,7 +75,7 @@ PrometheusUpdateOK describes a response with status code 200, with default heade
 Success
 */
 type PrometheusUpdateOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this prometheus update o k response has a 2xx status code
@@ -115,7 +111,7 @@ func (o *PrometheusUpdateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/update/{id}][%d] prometheusUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *PrometheusUpdateOK) GetPayload() interface{} {
+func (o *PrometheusUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -140,7 +136,7 @@ PrometheusUpdateBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type PrometheusUpdateBadRequest struct {
-	Payload []*PrometheusUpdateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this prometheus update bad request response has a 2xx status code
@@ -176,7 +172,7 @@ func (o *PrometheusUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/update/{id}][%d] prometheusUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusUpdateBadRequest) GetPayload() []*PrometheusUpdateBadRequestBodyItems0 {
+func (o *PrometheusUpdateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +197,7 @@ PrometheusUpdateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type PrometheusUpdateUnauthorized struct {
-	Payload *PrometheusUpdateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus update unauthorized response has a 2xx status code
@@ -237,13 +233,13 @@ func (o *PrometheusUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/update/{id}][%d] prometheusUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusUpdateUnauthorized) GetPayload() *PrometheusUpdateUnauthorizedBody {
+func (o *PrometheusUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusUpdateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +260,7 @@ PrometheusUpdateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type PrometheusUpdateForbidden struct {
-	Payload *PrometheusUpdateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus update forbidden response has a 2xx status code
@@ -300,13 +296,13 @@ func (o *PrometheusUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/update/{id}][%d] prometheusUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusUpdateForbidden) GetPayload() *PrometheusUpdateForbiddenBody {
+func (o *PrometheusUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusUpdateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +323,7 @@ PrometheusUpdateNotFound describes a response with status code 404, with default
 Not Found
 */
 type PrometheusUpdateNotFound struct {
-	Payload *PrometheusUpdateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus update not found response has a 2xx status code
@@ -363,13 +359,13 @@ func (o *PrometheusUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/update/{id}][%d] prometheusUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusUpdateNotFound) GetPayload() *PrometheusUpdateNotFoundBody {
+func (o *PrometheusUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusUpdateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,594 +423,5 @@ func (o *PrometheusUpdateInternalServerError) String() string {
 
 func (o *PrometheusUpdateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PrometheusUpdateBadRequestBodyItems0 prometheus update bad request body items0
-swagger:model PrometheusUpdateBadRequestBodyItems0
-*/
-type PrometheusUpdateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this prometheus update bad request body items0
-func (o *PrometheusUpdateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus update bad request body items0 based on context it is used
-func (o *PrometheusUpdateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusUpdateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusUpdateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PrometheusUpdateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusUpdateBody prometheus update body
-swagger:model PrometheusUpdateBody
-*/
-type PrometheusUpdateBody struct {
-
-	// labels to add
-	LabelsToAdd []*PrometheusUpdateParamsBodyLabelsToAddItems0 `json:"labelsToAdd"`
-
-	// labels to delete
-	LabelsToDelete []*PrometheusUpdateParamsBodyLabelsToDeleteItems0 `json:"labelsToDelete"`
-
-	// labels to update
-	LabelsToUpdate []*PrometheusUpdateParamsBodyLabelsToUpdateItems0 `json:"labelsToUpdate"`
-
-	// metric name
-	MetricName string `json:"metricName,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// operation credential Id
-	OperationCredentialID int32 `json:"operationCredentialId,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// price
-	Price float64 `json:"price,omitempty"`
-
-	// rule discount rate
-	RuleDiscountRate int32 `json:"ruleDiscountRate"`
-
-	// type
-	// Enum: [100 200]
-	Type int32 `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus update body
-func (o *PrometheusUpdateBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateLabelsToAdd(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateLabelsToDelete(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateLabelsToUpdate(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateType(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PrometheusUpdateBody) validateLabelsToAdd(formats strfmt.Registry) error {
-	if swag.IsZero(o.LabelsToAdd) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.LabelsToAdd); i++ {
-		if swag.IsZero(o.LabelsToAdd[i]) { // not required
-			continue
-		}
-
-		if o.LabelsToAdd[i] != nil {
-			if err := o.LabelsToAdd[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "labelsToAdd" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "labelsToAdd" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *PrometheusUpdateBody) validateLabelsToDelete(formats strfmt.Registry) error {
-	if swag.IsZero(o.LabelsToDelete) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.LabelsToDelete); i++ {
-		if swag.IsZero(o.LabelsToDelete[i]) { // not required
-			continue
-		}
-
-		if o.LabelsToDelete[i] != nil {
-			if err := o.LabelsToDelete[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "labelsToDelete" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "labelsToDelete" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *PrometheusUpdateBody) validateLabelsToUpdate(formats strfmt.Registry) error {
-	if swag.IsZero(o.LabelsToUpdate) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.LabelsToUpdate); i++ {
-		if swag.IsZero(o.LabelsToUpdate[i]) { // not required
-			continue
-		}
-
-		if o.LabelsToUpdate[i] != nil {
-			if err := o.LabelsToUpdate[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "labelsToUpdate" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "labelsToUpdate" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-var prometheusUpdateBodyTypeTypePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		prometheusUpdateBodyTypeTypePropEnum = append(prometheusUpdateBodyTypeTypePropEnum, v)
-	}
-}
-
-// prop value enum
-func (o *PrometheusUpdateBody) validateTypeEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, prometheusUpdateBodyTypeTypePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *PrometheusUpdateBody) validateType(formats strfmt.Registry) error {
-	if swag.IsZero(o.Type) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := o.validateTypeEnum("body"+"."+"type", "body", o.Type); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this prometheus update body based on the context it is used
-func (o *PrometheusUpdateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateLabelsToAdd(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateLabelsToDelete(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateLabelsToUpdate(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PrometheusUpdateBody) contextValidateLabelsToAdd(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.LabelsToAdd); i++ {
-
-		if o.LabelsToAdd[i] != nil {
-			if err := o.LabelsToAdd[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "labelsToAdd" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "labelsToAdd" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *PrometheusUpdateBody) contextValidateLabelsToDelete(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.LabelsToDelete); i++ {
-
-		if o.LabelsToDelete[i] != nil {
-			if err := o.LabelsToDelete[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "labelsToDelete" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "labelsToDelete" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *PrometheusUpdateBody) contextValidateLabelsToUpdate(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.LabelsToUpdate); i++ {
-
-		if o.LabelsToUpdate[i] != nil {
-			if err := o.LabelsToUpdate[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "labelsToUpdate" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "labelsToUpdate" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusUpdateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusUpdateBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusUpdateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusUpdateForbiddenBody prometheus update forbidden body
-swagger:model PrometheusUpdateForbiddenBody
-*/
-type PrometheusUpdateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus update forbidden body
-func (o *PrometheusUpdateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus update forbidden body based on context it is used
-func (o *PrometheusUpdateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusUpdateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusUpdateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusUpdateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusUpdateNotFoundBody prometheus update not found body
-swagger:model PrometheusUpdateNotFoundBody
-*/
-type PrometheusUpdateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus update not found body
-func (o *PrometheusUpdateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus update not found body based on context it is used
-func (o *PrometheusUpdateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusUpdateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusUpdateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusUpdateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusUpdateParamsBodyLabelsToAddItems0 prometheus update params body labels to add items0
-swagger:model PrometheusUpdateParamsBodyLabelsToAddItems0
-*/
-type PrometheusUpdateParamsBodyLabelsToAddItems0 struct {
-
-	// label
-	Label string `json:"label,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this prometheus update params body labels to add items0
-func (o *PrometheusUpdateParamsBodyLabelsToAddItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus update params body labels to add items0 based on context it is used
-func (o *PrometheusUpdateParamsBodyLabelsToAddItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusUpdateParamsBodyLabelsToAddItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusUpdateParamsBodyLabelsToAddItems0) UnmarshalBinary(b []byte) error {
-	var res PrometheusUpdateParamsBodyLabelsToAddItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusUpdateParamsBodyLabelsToDeleteItems0 prometheus update params body labels to delete items0
-swagger:model PrometheusUpdateParamsBodyLabelsToDeleteItems0
-*/
-type PrometheusUpdateParamsBodyLabelsToDeleteItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-}
-
-// Validate validates this prometheus update params body labels to delete items0
-func (o *PrometheusUpdateParamsBodyLabelsToDeleteItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus update params body labels to delete items0 based on context it is used
-func (o *PrometheusUpdateParamsBodyLabelsToDeleteItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusUpdateParamsBodyLabelsToDeleteItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusUpdateParamsBodyLabelsToDeleteItems0) UnmarshalBinary(b []byte) error {
-	var res PrometheusUpdateParamsBodyLabelsToDeleteItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusUpdateParamsBodyLabelsToUpdateItems0 prometheus update params body labels to update items0
-swagger:model PrometheusUpdateParamsBodyLabelsToUpdateItems0
-*/
-type PrometheusUpdateParamsBodyLabelsToUpdateItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// label
-	Label string `json:"label,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this prometheus update params body labels to update items0
-func (o *PrometheusUpdateParamsBodyLabelsToUpdateItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus update params body labels to update items0 based on context it is used
-func (o *PrometheusUpdateParamsBodyLabelsToUpdateItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusUpdateParamsBodyLabelsToUpdateItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusUpdateParamsBodyLabelsToUpdateItems0) UnmarshalBinary(b []byte) error {
-	var res PrometheusUpdateParamsBodyLabelsToUpdateItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusUpdateUnauthorizedBody prometheus update unauthorized body
-swagger:model PrometheusUpdateUnauthorizedBody
-*/
-type PrometheusUpdateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus update unauthorized body
-func (o *PrometheusUpdateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus update unauthorized body based on context it is used
-func (o *PrometheusUpdateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusUpdateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusUpdateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusUpdateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -7,12 +7,10 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // RemindUsersByAlertingProfileCommand remind users by alerting profile command
@@ -21,8 +19,7 @@ import (
 type RemindUsersByAlertingProfileCommand struct {
 
 	// reminder
-	// Enum: [100 200 300 -1]
-	Reminder int32 `json:"reminder,omitempty"`
+	Reminder AlertingReminder `json:"reminder,omitempty"`
 }
 
 // Validate validates this remind users by alerting profile command
@@ -39,41 +36,48 @@ func (m *RemindUsersByAlertingProfileCommand) Validate(formats strfmt.Registry) 
 	return nil
 }
 
-var remindUsersByAlertingProfileCommandTypeReminderPropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200,300,-1]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		remindUsersByAlertingProfileCommandTypeReminderPropEnum = append(remindUsersByAlertingProfileCommandTypeReminderPropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *RemindUsersByAlertingProfileCommand) validateReminderEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, remindUsersByAlertingProfileCommandTypeReminderPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *RemindUsersByAlertingProfileCommand) validateReminder(formats strfmt.Registry) error {
 	if swag.IsZero(m.Reminder) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateReminderEnum("reminder", "body", m.Reminder); err != nil {
+	if err := m.Reminder.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("reminder")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("reminder")
+		}
 		return err
 	}
 
 	return nil
 }
 
-// ContextValidate validates this remind users by alerting profile command based on context it is used
+// ContextValidate validate this remind users by alerting profile command based on the context it is used
 func (m *RemindUsersByAlertingProfileCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateReminder(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *RemindUsersByAlertingProfileCommand) contextValidateReminder(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Reminder.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("reminder")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("reminder")
+		}
+		return err
+	}
+
 	return nil
 }
 

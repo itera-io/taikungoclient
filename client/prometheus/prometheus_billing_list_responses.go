@@ -6,16 +6,13 @@ package prometheus
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PrometheusBillingListReader is a Reader for the PrometheusBillingList structure.
@@ -78,7 +75,7 @@ PrometheusBillingListOK describes a response with status code 200, with default 
 Success
 */
 type PrometheusBillingListOK struct {
-	Payload *PrometheusBillingListOKBody
+	Payload *models.PrometheusBillingInfo
 }
 
 // IsSuccess returns true when this prometheus billing list o k response has a 2xx status code
@@ -114,13 +111,13 @@ func (o *PrometheusBillingListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListOK  %+v", 200, o.Payload)
 }
 
-func (o *PrometheusBillingListOK) GetPayload() *PrometheusBillingListOKBody {
+func (o *PrometheusBillingListOK) GetPayload() *models.PrometheusBillingInfo {
 	return o.Payload
 }
 
 func (o *PrometheusBillingListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusBillingListOKBody)
+	o.Payload = new(models.PrometheusBillingInfo)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -141,7 +138,7 @@ PrometheusBillingListBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type PrometheusBillingListBadRequest struct {
-	Payload []*PrometheusBillingListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this prometheus billing list bad request response has a 2xx status code
@@ -177,7 +174,7 @@ func (o *PrometheusBillingListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusBillingListBadRequest) GetPayload() []*PrometheusBillingListBadRequestBodyItems0 {
+func (o *PrometheusBillingListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -202,7 +199,7 @@ PrometheusBillingListUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type PrometheusBillingListUnauthorized struct {
-	Payload *PrometheusBillingListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus billing list unauthorized response has a 2xx status code
@@ -238,13 +235,13 @@ func (o *PrometheusBillingListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusBillingListUnauthorized) GetPayload() *PrometheusBillingListUnauthorizedBody {
+func (o *PrometheusBillingListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusBillingListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusBillingListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -265,7 +262,7 @@ PrometheusBillingListForbidden describes a response with status code 403, with d
 Forbidden
 */
 type PrometheusBillingListForbidden struct {
-	Payload *PrometheusBillingListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus billing list forbidden response has a 2xx status code
@@ -301,13 +298,13 @@ func (o *PrometheusBillingListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusBillingListForbidden) GetPayload() *PrometheusBillingListForbiddenBody {
+func (o *PrometheusBillingListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusBillingListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusBillingListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -328,7 +325,7 @@ PrometheusBillingListNotFound describes a response with status code 404, with de
 Not Found
 */
 type PrometheusBillingListNotFound struct {
-	Payload *PrometheusBillingListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus billing list not found response has a 2xx status code
@@ -364,13 +361,13 @@ func (o *PrometheusBillingListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/billing][%d] prometheusBillingListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusBillingListNotFound) GetPayload() *PrometheusBillingListNotFoundBody {
+func (o *PrometheusBillingListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusBillingListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusBillingListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -428,402 +425,5 @@ func (o *PrometheusBillingListInternalServerError) String() string {
 
 func (o *PrometheusBillingListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PrometheusBillingListBadRequestBodyItems0 prometheus billing list bad request body items0
-swagger:model PrometheusBillingListBadRequestBodyItems0
-*/
-type PrometheusBillingListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this prometheus billing list bad request body items0
-func (o *PrometheusBillingListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus billing list bad request body items0 based on context it is used
-func (o *PrometheusBillingListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBillingListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBillingListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PrometheusBillingListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusBillingListForbiddenBody prometheus billing list forbidden body
-swagger:model PrometheusBillingListForbiddenBody
-*/
-type PrometheusBillingListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus billing list forbidden body
-func (o *PrometheusBillingListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus billing list forbidden body based on context it is used
-func (o *PrometheusBillingListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBillingListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBillingListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusBillingListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusBillingListNotFoundBody prometheus billing list not found body
-swagger:model PrometheusBillingListNotFoundBody
-*/
-type PrometheusBillingListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus billing list not found body
-func (o *PrometheusBillingListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus billing list not found body based on context it is used
-func (o *PrometheusBillingListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBillingListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBillingListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusBillingListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusBillingListOKBody prometheus billing list o k body
-swagger:model PrometheusBillingListOKBody
-*/
-type PrometheusBillingListOKBody struct {
-
-	// data
-	Data []*PrometheusBillingListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-
-	// total price
-	TotalPrice float64 `json:"totalPrice,omitempty"`
-}
-
-// Validate validates this prometheus billing list o k body
-func (o *PrometheusBillingListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PrometheusBillingListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("prometheusBillingListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("prometheusBillingListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this prometheus billing list o k body based on the context it is used
-func (o *PrometheusBillingListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PrometheusBillingListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("prometheusBillingListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("prometheusBillingListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBillingListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBillingListOKBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusBillingListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusBillingListOKBodyDataItems0 prometheus billing list o k body data items0
-swagger:model PrometheusBillingListOKBodyDataItems0
-*/
-type PrometheusBillingListOKBodyDataItems0 struct {
-
-	// created by
-	CreatedBy string `json:"createdBy,omitempty"`
-
-	// end date
-	// Format: date-time
-	EndDate *strfmt.DateTime `json:"endDate,omitempty"`
-
-	// last modified
-	LastModified string `json:"lastModified,omitempty"`
-
-	// last modified by
-	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
-
-	// price
-	Price float64 `json:"price,omitempty"`
-
-	// prometheus rule Id
-	PrometheusRuleID int32 `json:"prometheusRuleId,omitempty"`
-
-	// rule name
-	RuleName string `json:"ruleName,omitempty"`
-
-	// start date
-	// Format: date-time
-	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
-}
-
-// Validate validates this prometheus billing list o k body data items0
-func (o *PrometheusBillingListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateEndDate(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateStartDate(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PrometheusBillingListOKBodyDataItems0) validateEndDate(formats strfmt.Registry) error {
-	if swag.IsZero(o.EndDate) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("endDate", "body", "date-time", o.EndDate.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (o *PrometheusBillingListOKBodyDataItems0) validateStartDate(formats strfmt.Registry) error {
-	if swag.IsZero(o.StartDate) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("startDate", "body", "date-time", o.StartDate.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this prometheus billing list o k body data items0 based on context it is used
-func (o *PrometheusBillingListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBillingListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBillingListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res PrometheusBillingListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusBillingListUnauthorizedBody prometheus billing list unauthorized body
-swagger:model PrometheusBillingListUnauthorizedBody
-*/
-type PrometheusBillingListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus billing list unauthorized body
-func (o *PrometheusBillingListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus billing list unauthorized body based on context it is used
-func (o *PrometheusBillingListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBillingListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBillingListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusBillingListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

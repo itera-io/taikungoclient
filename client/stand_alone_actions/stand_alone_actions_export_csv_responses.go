@@ -6,13 +6,13 @@ package stand_alone_actions
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneActionsExportCsvReader is a Reader for the StandAloneActionsExportCsv structure.
@@ -126,7 +126,7 @@ StandAloneActionsExportCsvBadRequest describes a response with status code 400, 
 Bad Request
 */
 type StandAloneActionsExportCsvBadRequest struct {
-	Payload []*StandAloneActionsExportCsvBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone actions export csv bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *StandAloneActionsExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsExportCsvBadRequest) GetPayload() []*StandAloneActionsExportCsvBadRequestBodyItems0 {
+func (o *StandAloneActionsExportCsvBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -187,7 +187,7 @@ StandAloneActionsExportCsvUnauthorized describes a response with status code 401
 Unauthorized
 */
 type StandAloneActionsExportCsvUnauthorized struct {
-	Payload *StandAloneActionsExportCsvUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions export csv unauthorized response has a 2xx status code
@@ -223,13 +223,13 @@ func (o *StandAloneActionsExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsExportCsvUnauthorized) GetPayload() *StandAloneActionsExportCsvUnauthorizedBody {
+func (o *StandAloneActionsExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsExportCsvUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneActionsExportCsvUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -250,7 +250,7 @@ StandAloneActionsExportCsvForbidden describes a response with status code 403, w
 Forbidden
 */
 type StandAloneActionsExportCsvForbidden struct {
-	Payload *StandAloneActionsExportCsvForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions export csv forbidden response has a 2xx status code
@@ -286,13 +286,13 @@ func (o *StandAloneActionsExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsExportCsvForbidden) GetPayload() *StandAloneActionsExportCsvForbiddenBody {
+func (o *StandAloneActionsExportCsvForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsExportCsvForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneActionsExportCsvForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -313,7 +313,7 @@ StandAloneActionsExportCsvNotFound describes a response with status code 404, wi
 Not Found
 */
 type StandAloneActionsExportCsvNotFound struct {
-	Payload *StandAloneActionsExportCsvNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions export csv not found response has a 2xx status code
@@ -349,13 +349,13 @@ func (o *StandAloneActionsExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAloneActions/download/rdp/{id}][%d] standAloneActionsExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsExportCsvNotFound) GetPayload() *StandAloneActionsExportCsvNotFoundBody {
+func (o *StandAloneActionsExportCsvNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsExportCsvNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneActionsExportCsvNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -413,196 +413,5 @@ func (o *StandAloneActionsExportCsvInternalServerError) String() string {
 
 func (o *StandAloneActionsExportCsvInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-StandAloneActionsExportCsvBadRequestBodyItems0 stand alone actions export csv bad request body items0
-swagger:model StandAloneActionsExportCsvBadRequestBodyItems0
-*/
-type StandAloneActionsExportCsvBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this stand alone actions export csv bad request body items0
-func (o *StandAloneActionsExportCsvBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions export csv bad request body items0 based on context it is used
-func (o *StandAloneActionsExportCsvBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsExportCsvBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsExportCsvBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsExportCsvBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneActionsExportCsvForbiddenBody stand alone actions export csv forbidden body
-swagger:model StandAloneActionsExportCsvForbiddenBody
-*/
-type StandAloneActionsExportCsvForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone actions export csv forbidden body
-func (o *StandAloneActionsExportCsvForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions export csv forbidden body based on context it is used
-func (o *StandAloneActionsExportCsvForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsExportCsvForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsExportCsvForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsExportCsvForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneActionsExportCsvNotFoundBody stand alone actions export csv not found body
-swagger:model StandAloneActionsExportCsvNotFoundBody
-*/
-type StandAloneActionsExportCsvNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone actions export csv not found body
-func (o *StandAloneActionsExportCsvNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions export csv not found body based on context it is used
-func (o *StandAloneActionsExportCsvNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsExportCsvNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsExportCsvNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsExportCsvNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneActionsExportCsvUnauthorizedBody stand alone actions export csv unauthorized body
-swagger:model StandAloneActionsExportCsvUnauthorizedBody
-*/
-type StandAloneActionsExportCsvUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone actions export csv unauthorized body
-func (o *StandAloneActionsExportCsvUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions export csv unauthorized body based on context it is used
-func (o *StandAloneActionsExportCsvUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsExportCsvUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsExportCsvUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsExportCsvUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

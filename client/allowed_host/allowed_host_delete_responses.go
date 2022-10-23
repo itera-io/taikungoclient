@@ -6,13 +6,13 @@ package allowed_host
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AllowedHostDeleteReader is a Reader for the AllowedHostDelete structure.
@@ -81,7 +81,7 @@ AllowedHostDeleteOK describes a response with status code 200, with default head
 Success
 */
 type AllowedHostDeleteOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this allowed host delete o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *AllowedHostDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *AllowedHostDeleteOK) GetPayload() interface{} {
+func (o *AllowedHostDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ AllowedHostDeleteBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AllowedHostDeleteBadRequest struct {
-	Payload []*AllowedHostDeleteBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this allowed host delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *AllowedHostDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AllowedHostDeleteBadRequest) GetPayload() []*AllowedHostDeleteBadRequestBodyItems0 {
+func (o *AllowedHostDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ AllowedHostDeleteUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type AllowedHostDeleteUnauthorized struct {
-	Payload *AllowedHostDeleteUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this allowed host delete unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *AllowedHostDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AllowedHostDeleteUnauthorized) GetPayload() *AllowedHostDeleteUnauthorizedBody {
+func (o *AllowedHostDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AllowedHostDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AllowedHostDeleteUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ AllowedHostDeleteForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type AllowedHostDeleteForbidden struct {
-	Payload *AllowedHostDeleteForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this allowed host delete forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *AllowedHostDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AllowedHostDeleteForbidden) GetPayload() *AllowedHostDeleteForbiddenBody {
+func (o *AllowedHostDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AllowedHostDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AllowedHostDeleteForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ AllowedHostDeleteNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type AllowedHostDeleteNotFound struct {
-	Payload *AllowedHostDeleteNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this allowed host delete not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *AllowedHostDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/AllowedHost/{id}][%d] allowedHostDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AllowedHostDeleteNotFound) GetPayload() *AllowedHostDeleteNotFoundBody {
+func (o *AllowedHostDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AllowedHostDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AllowedHostDeleteNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,196 +480,5 @@ func (o *AllowedHostDeleteInternalServerError) String() string {
 
 func (o *AllowedHostDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AllowedHostDeleteBadRequestBodyItems0 allowed host delete bad request body items0
-swagger:model AllowedHostDeleteBadRequestBodyItems0
-*/
-type AllowedHostDeleteBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this allowed host delete bad request body items0
-func (o *AllowedHostDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this allowed host delete bad request body items0 based on context it is used
-func (o *AllowedHostDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AllowedHostDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AllowedHostDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AllowedHostDeleteBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AllowedHostDeleteForbiddenBody allowed host delete forbidden body
-swagger:model AllowedHostDeleteForbiddenBody
-*/
-type AllowedHostDeleteForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this allowed host delete forbidden body
-func (o *AllowedHostDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this allowed host delete forbidden body based on context it is used
-func (o *AllowedHostDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AllowedHostDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AllowedHostDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AllowedHostDeleteForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AllowedHostDeleteNotFoundBody allowed host delete not found body
-swagger:model AllowedHostDeleteNotFoundBody
-*/
-type AllowedHostDeleteNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this allowed host delete not found body
-func (o *AllowedHostDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this allowed host delete not found body based on context it is used
-func (o *AllowedHostDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AllowedHostDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AllowedHostDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AllowedHostDeleteNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AllowedHostDeleteUnauthorizedBody allowed host delete unauthorized body
-swagger:model AllowedHostDeleteUnauthorizedBody
-*/
-type AllowedHostDeleteUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this allowed host delete unauthorized body
-func (o *AllowedHostDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this allowed host delete unauthorized body based on context it is used
-func (o *AllowedHostDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AllowedHostDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AllowedHostDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AllowedHostDeleteUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

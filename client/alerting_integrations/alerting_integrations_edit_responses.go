@@ -6,16 +6,13 @@ package alerting_integrations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AlertingIntegrationsEditReader is a Reader for the AlertingIntegrationsEdit structure.
@@ -78,7 +75,7 @@ AlertingIntegrationsEditOK describes a response with status code 200, with defau
 Success
 */
 type AlertingIntegrationsEditOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this alerting integrations edit o k response has a 2xx status code
@@ -114,7 +111,7 @@ func (o *AlertingIntegrationsEditOK) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditOK  %+v", 200, o.Payload)
 }
 
-func (o *AlertingIntegrationsEditOK) GetPayload() interface{} {
+func (o *AlertingIntegrationsEditOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -139,7 +136,7 @@ AlertingIntegrationsEditBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type AlertingIntegrationsEditBadRequest struct {
-	Payload []*AlertingIntegrationsEditBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this alerting integrations edit bad request response has a 2xx status code
@@ -175,7 +172,7 @@ func (o *AlertingIntegrationsEditBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingIntegrationsEditBadRequest) GetPayload() []*AlertingIntegrationsEditBadRequestBodyItems0 {
+func (o *AlertingIntegrationsEditBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -200,7 +197,7 @@ AlertingIntegrationsEditUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type AlertingIntegrationsEditUnauthorized struct {
-	Payload *AlertingIntegrationsEditUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting integrations edit unauthorized response has a 2xx status code
@@ -236,13 +233,13 @@ func (o *AlertingIntegrationsEditUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingIntegrationsEditUnauthorized) GetPayload() *AlertingIntegrationsEditUnauthorizedBody {
+func (o *AlertingIntegrationsEditUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsEditUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AlertingIntegrationsEditUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -263,7 +260,7 @@ AlertingIntegrationsEditForbidden describes a response with status code 403, wit
 Forbidden
 */
 type AlertingIntegrationsEditForbidden struct {
-	Payload *AlertingIntegrationsEditForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting integrations edit forbidden response has a 2xx status code
@@ -299,13 +296,13 @@ func (o *AlertingIntegrationsEditForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingIntegrationsEditForbidden) GetPayload() *AlertingIntegrationsEditForbiddenBody {
+func (o *AlertingIntegrationsEditForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsEditForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AlertingIntegrationsEditForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -326,7 +323,7 @@ AlertingIntegrationsEditNotFound describes a response with status code 404, with
 Not Found
 */
 type AlertingIntegrationsEditNotFound struct {
-	Payload *AlertingIntegrationsEditNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting integrations edit not found response has a 2xx status code
@@ -362,13 +359,13 @@ func (o *AlertingIntegrationsEditNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/AlertingIntegrations/edit][%d] alertingIntegrationsEditNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingIntegrationsEditNotFound) GetPayload() *AlertingIntegrationsEditNotFoundBody {
+func (o *AlertingIntegrationsEditNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingIntegrationsEditNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AlertingIntegrationsEditNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -426,289 +423,5 @@ func (o *AlertingIntegrationsEditInternalServerError) String() string {
 
 func (o *AlertingIntegrationsEditInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AlertingIntegrationsEditBadRequestBodyItems0 alerting integrations edit bad request body items0
-swagger:model AlertingIntegrationsEditBadRequestBodyItems0
-*/
-type AlertingIntegrationsEditBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this alerting integrations edit bad request body items0
-func (o *AlertingIntegrationsEditBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting integrations edit bad request body items0 based on context it is used
-func (o *AlertingIntegrationsEditBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingIntegrationsEditBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingIntegrationsEditBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AlertingIntegrationsEditBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingIntegrationsEditBody alerting integrations edit body
-swagger:model AlertingIntegrationsEditBody
-*/
-type AlertingIntegrationsEditBody struct {
-
-	// alerting integration type
-	// Enum: [100 200 300 400]
-	AlertingIntegrationType int32 `json:"alertingIntegrationType,omitempty"`
-
-	// alerting profile Id
-	AlertingProfileID int32 `json:"alertingProfileId,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// token
-	Token string `json:"token,omitempty"`
-
-	// url
-	URL string `json:"url,omitempty"`
-}
-
-// Validate validates this alerting integrations edit body
-func (o *AlertingIntegrationsEditBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateAlertingIntegrationType(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-var alertingIntegrationsEditBodyTypeAlertingIntegrationTypePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200,300,400]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		alertingIntegrationsEditBodyTypeAlertingIntegrationTypePropEnum = append(alertingIntegrationsEditBodyTypeAlertingIntegrationTypePropEnum, v)
-	}
-}
-
-// prop value enum
-func (o *AlertingIntegrationsEditBody) validateAlertingIntegrationTypeEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, alertingIntegrationsEditBodyTypeAlertingIntegrationTypePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *AlertingIntegrationsEditBody) validateAlertingIntegrationType(formats strfmt.Registry) error {
-	if swag.IsZero(o.AlertingIntegrationType) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := o.validateAlertingIntegrationTypeEnum("body"+"."+"alertingIntegrationType", "body", o.AlertingIntegrationType); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this alerting integrations edit body based on context it is used
-func (o *AlertingIntegrationsEditBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingIntegrationsEditBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingIntegrationsEditBody) UnmarshalBinary(b []byte) error {
-	var res AlertingIntegrationsEditBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingIntegrationsEditForbiddenBody alerting integrations edit forbidden body
-swagger:model AlertingIntegrationsEditForbiddenBody
-*/
-type AlertingIntegrationsEditForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this alerting integrations edit forbidden body
-func (o *AlertingIntegrationsEditForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting integrations edit forbidden body based on context it is used
-func (o *AlertingIntegrationsEditForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingIntegrationsEditForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingIntegrationsEditForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AlertingIntegrationsEditForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingIntegrationsEditNotFoundBody alerting integrations edit not found body
-swagger:model AlertingIntegrationsEditNotFoundBody
-*/
-type AlertingIntegrationsEditNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this alerting integrations edit not found body
-func (o *AlertingIntegrationsEditNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting integrations edit not found body based on context it is used
-func (o *AlertingIntegrationsEditNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingIntegrationsEditNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingIntegrationsEditNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AlertingIntegrationsEditNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingIntegrationsEditUnauthorizedBody alerting integrations edit unauthorized body
-swagger:model AlertingIntegrationsEditUnauthorizedBody
-*/
-type AlertingIntegrationsEditUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this alerting integrations edit unauthorized body
-func (o *AlertingIntegrationsEditUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting integrations edit unauthorized body based on context it is used
-func (o *AlertingIntegrationsEditUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingIntegrationsEditUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingIntegrationsEditUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AlertingIntegrationsEditUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

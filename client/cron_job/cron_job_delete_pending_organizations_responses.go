@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobDeletePendingOrganizationsReader is a Reader for the CronJobDeletePendingOrganizations structure.
@@ -75,7 +75,7 @@ CronJobDeletePendingOrganizationsOK describes a response with status code 200, w
 Success
 */
 type CronJobDeletePendingOrganizationsOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job delete pending organizations o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobDeletePendingOrganizationsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobDeletePendingOrganizationsOK) GetPayload() interface{} {
+func (o *CronJobDeletePendingOrganizationsOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobDeletePendingOrganizationsBadRequest describes a response with status cod
 Bad Request
 */
 type CronJobDeletePendingOrganizationsBadRequest struct {
-	Payload []*CronJobDeletePendingOrganizationsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job delete pending organizations bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobDeletePendingOrganizationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeletePendingOrganizationsBadRequest) GetPayload() []*CronJobDeletePendingOrganizationsBadRequestBodyItems0 {
+func (o *CronJobDeletePendingOrganizationsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobDeletePendingOrganizationsUnauthorized describes a response with status c
 Unauthorized
 */
 type CronJobDeletePendingOrganizationsUnauthorized struct {
-	Payload *CronJobDeletePendingOrganizationsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete pending organizations unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobDeletePendingOrganizationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeletePendingOrganizationsUnauthorized) GetPayload() *CronJobDeletePendingOrganizationsUnauthorizedBody {
+func (o *CronJobDeletePendingOrganizationsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeletePendingOrganizationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobDeletePendingOrganizationsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobDeletePendingOrganizationsForbidden describes a response with status code
 Forbidden
 */
 type CronJobDeletePendingOrganizationsForbidden struct {
-	Payload *CronJobDeletePendingOrganizationsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete pending organizations forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobDeletePendingOrganizationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeletePendingOrganizationsForbidden) GetPayload() *CronJobDeletePendingOrganizationsForbiddenBody {
+func (o *CronJobDeletePendingOrganizationsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeletePendingOrganizationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobDeletePendingOrganizationsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobDeletePendingOrganizationsNotFound describes a response with status code 
 Not Found
 */
 type CronJobDeletePendingOrganizationsNotFound struct {
-	Payload *CronJobDeletePendingOrganizationsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete pending organizations not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobDeletePendingOrganizationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/organizations][%d] cronJobDeletePendingOrganizationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeletePendingOrganizationsNotFound) GetPayload() *CronJobDeletePendingOrganizationsNotFoundBody {
+func (o *CronJobDeletePendingOrganizationsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeletePendingOrganizationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobDeletePendingOrganizationsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *CronJobDeletePendingOrganizationsInternalServerError) String() string {
 
 func (o *CronJobDeletePendingOrganizationsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CronJobDeletePendingOrganizationsBadRequestBodyItems0 cron job delete pending organizations bad request body items0
-swagger:model CronJobDeletePendingOrganizationsBadRequestBodyItems0
-*/
-type CronJobDeletePendingOrganizationsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this cron job delete pending organizations bad request body items0
-func (o *CronJobDeletePendingOrganizationsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete pending organizations bad request body items0 based on context it is used
-func (o *CronJobDeletePendingOrganizationsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeletePendingOrganizationsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeletePendingOrganizationsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CronJobDeletePendingOrganizationsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobDeletePendingOrganizationsForbiddenBody cron job delete pending organizations forbidden body
-swagger:model CronJobDeletePendingOrganizationsForbiddenBody
-*/
-type CronJobDeletePendingOrganizationsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job delete pending organizations forbidden body
-func (o *CronJobDeletePendingOrganizationsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete pending organizations forbidden body based on context it is used
-func (o *CronJobDeletePendingOrganizationsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeletePendingOrganizationsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeletePendingOrganizationsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CronJobDeletePendingOrganizationsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobDeletePendingOrganizationsNotFoundBody cron job delete pending organizations not found body
-swagger:model CronJobDeletePendingOrganizationsNotFoundBody
-*/
-type CronJobDeletePendingOrganizationsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job delete pending organizations not found body
-func (o *CronJobDeletePendingOrganizationsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete pending organizations not found body based on context it is used
-func (o *CronJobDeletePendingOrganizationsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeletePendingOrganizationsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeletePendingOrganizationsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CronJobDeletePendingOrganizationsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobDeletePendingOrganizationsUnauthorizedBody cron job delete pending organizations unauthorized body
-swagger:model CronJobDeletePendingOrganizationsUnauthorizedBody
-*/
-type CronJobDeletePendingOrganizationsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job delete pending organizations unauthorized body
-func (o *CronJobDeletePendingOrganizationsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete pending organizations unauthorized body based on context it is used
-func (o *CronJobDeletePendingOrganizationsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeletePendingOrganizationsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeletePendingOrganizationsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CronJobDeletePendingOrganizationsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package google_cloud
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // GoogleCloudZoneListReader is a Reader for the GoogleCloudZoneList structure.
@@ -75,7 +75,7 @@ GoogleCloudZoneListOK describes a response with status code 200, with default he
 Success
 */
 type GoogleCloudZoneListOK struct {
-	Payload *GoogleCloudZoneListOKBody
+	Payload *models.AzResult
 }
 
 // IsSuccess returns true when this google cloud zone list o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *GoogleCloudZoneListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListOK  %+v", 200, o.Payload)
 }
 
-func (o *GoogleCloudZoneListOK) GetPayload() *GoogleCloudZoneListOKBody {
+func (o *GoogleCloudZoneListOK) GetPayload() *models.AzResult {
 	return o.Payload
 }
 
 func (o *GoogleCloudZoneListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(GoogleCloudZoneListOKBody)
+	o.Payload = new(models.AzResult)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ GoogleCloudZoneListBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type GoogleCloudZoneListBadRequest struct {
-	Payload []*GoogleCloudZoneListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this google cloud zone list bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *GoogleCloudZoneListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *GoogleCloudZoneListBadRequest) GetPayload() []*GoogleCloudZoneListBadRequestBodyItems0 {
+func (o *GoogleCloudZoneListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ GoogleCloudZoneListUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type GoogleCloudZoneListUnauthorized struct {
-	Payload *GoogleCloudZoneListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud zone list unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *GoogleCloudZoneListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *GoogleCloudZoneListUnauthorized) GetPayload() *GoogleCloudZoneListUnauthorizedBody {
+func (o *GoogleCloudZoneListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudZoneListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(GoogleCloudZoneListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ GoogleCloudZoneListForbidden describes a response with status code 403, with def
 Forbidden
 */
 type GoogleCloudZoneListForbidden struct {
-	Payload *GoogleCloudZoneListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud zone list forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *GoogleCloudZoneListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *GoogleCloudZoneListForbidden) GetPayload() *GoogleCloudZoneListForbiddenBody {
+func (o *GoogleCloudZoneListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudZoneListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(GoogleCloudZoneListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ GoogleCloudZoneListNotFound describes a response with status code 404, with defa
 Not Found
 */
 type GoogleCloudZoneListNotFound struct {
-	Payload *GoogleCloudZoneListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this google cloud zone list not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *GoogleCloudZoneListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/GoogleCloud/zones][%d] googleCloudZoneListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *GoogleCloudZoneListNotFound) GetPayload() *GoogleCloudZoneListNotFoundBody {
+func (o *GoogleCloudZoneListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *GoogleCloudZoneListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(GoogleCloudZoneListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,237 +425,5 @@ func (o *GoogleCloudZoneListInternalServerError) String() string {
 
 func (o *GoogleCloudZoneListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-GoogleCloudZoneListBadRequestBodyItems0 google cloud zone list bad request body items0
-swagger:model GoogleCloudZoneListBadRequestBodyItems0
-*/
-type GoogleCloudZoneListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this google cloud zone list bad request body items0
-func (o *GoogleCloudZoneListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this google cloud zone list bad request body items0 based on context it is used
-func (o *GoogleCloudZoneListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *GoogleCloudZoneListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *GoogleCloudZoneListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res GoogleCloudZoneListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-GoogleCloudZoneListForbiddenBody google cloud zone list forbidden body
-swagger:model GoogleCloudZoneListForbiddenBody
-*/
-type GoogleCloudZoneListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this google cloud zone list forbidden body
-func (o *GoogleCloudZoneListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this google cloud zone list forbidden body based on context it is used
-func (o *GoogleCloudZoneListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *GoogleCloudZoneListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *GoogleCloudZoneListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res GoogleCloudZoneListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-GoogleCloudZoneListNotFoundBody google cloud zone list not found body
-swagger:model GoogleCloudZoneListNotFoundBody
-*/
-type GoogleCloudZoneListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this google cloud zone list not found body
-func (o *GoogleCloudZoneListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this google cloud zone list not found body based on context it is used
-func (o *GoogleCloudZoneListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *GoogleCloudZoneListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *GoogleCloudZoneListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res GoogleCloudZoneListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-GoogleCloudZoneListOKBody google cloud zone list o k body
-swagger:model GoogleCloudZoneListOKBody
-*/
-type GoogleCloudZoneListOKBody struct {
-
-	// list
-	List []string `json:"list"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this google cloud zone list o k body
-func (o *GoogleCloudZoneListOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this google cloud zone list o k body based on context it is used
-func (o *GoogleCloudZoneListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *GoogleCloudZoneListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *GoogleCloudZoneListOKBody) UnmarshalBinary(b []byte) error {
-	var res GoogleCloudZoneListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-GoogleCloudZoneListUnauthorizedBody google cloud zone list unauthorized body
-swagger:model GoogleCloudZoneListUnauthorizedBody
-*/
-type GoogleCloudZoneListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this google cloud zone list unauthorized body
-func (o *GoogleCloudZoneListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this google cloud zone list unauthorized body based on context it is used
-func (o *GoogleCloudZoneListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *GoogleCloudZoneListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *GoogleCloudZoneListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res GoogleCloudZoneListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

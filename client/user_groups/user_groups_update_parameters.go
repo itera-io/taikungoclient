@@ -15,6 +15,8 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewUserGroupsUpdateParams creates a new UserGroupsUpdateParams object,
@@ -63,7 +65,7 @@ UserGroupsUpdateParams contains all the parameters to send to the API endpoint
 type UserGroupsUpdateParams struct {
 
 	// Body.
-	Body UserGroupsUpdateBody
+	Body *models.UpdateUserGroupDto
 
 	// UserGroupID.
 	//
@@ -127,13 +129,13 @@ func (o *UserGroupsUpdateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the user groups update params
-func (o *UserGroupsUpdateParams) WithBody(body UserGroupsUpdateBody) *UserGroupsUpdateParams {
+func (o *UserGroupsUpdateParams) WithBody(body *models.UpdateUserGroupDto) *UserGroupsUpdateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the user groups update params
-func (o *UserGroupsUpdateParams) SetBody(body UserGroupsUpdateBody) {
+func (o *UserGroupsUpdateParams) SetBody(body *models.UpdateUserGroupDto) {
 	o.Body = body
 }
 
@@ -166,8 +168,10 @@ func (o *UserGroupsUpdateParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	if o.UserGroupID != nil {

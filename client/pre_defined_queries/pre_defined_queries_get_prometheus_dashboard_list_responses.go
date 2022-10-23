@@ -6,15 +6,13 @@ package pre_defined_queries
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PreDefinedQueriesGetPrometheusDashboardListReader is a Reader for the PreDefinedQueriesGetPrometheusDashboardList structure.
@@ -77,7 +75,7 @@ PreDefinedQueriesGetPrometheusDashboardListOK describes a response with status c
 Success
 */
 type PreDefinedQueriesGetPrometheusDashboardListOK struct {
-	Payload []*PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0
+	Payload []*models.PrometheusDashboardListDto
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus dashboard list o k response has a 2xx status code
@@ -113,7 +111,7 @@ func (o *PreDefinedQueriesGetPrometheusDashboardListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListOK  %+v", 200, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusDashboardListOK) GetPayload() []*PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0 {
+func (o *PreDefinedQueriesGetPrometheusDashboardListOK) GetPayload() []*models.PrometheusDashboardListDto {
 	return o.Payload
 }
 
@@ -138,7 +136,7 @@ PreDefinedQueriesGetPrometheusDashboardListBadRequest describes a response with 
 Bad Request
 */
 type PreDefinedQueriesGetPrometheusDashboardListBadRequest struct {
-	Payload []*PreDefinedQueriesGetPrometheusDashboardListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus dashboard list bad request response has a 2xx status code
@@ -174,7 +172,7 @@ func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequest) String() string 
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequest) GetPayload() []*PreDefinedQueriesGetPrometheusDashboardListBadRequestBodyItems0 {
+func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +197,7 @@ PreDefinedQueriesGetPrometheusDashboardListUnauthorized describes a response wit
 Unauthorized
 */
 type PreDefinedQueriesGetPrometheusDashboardListUnauthorized struct {
-	Payload *PreDefinedQueriesGetPrometheusDashboardListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus dashboard list unauthorized response has a 2xx status code
@@ -235,13 +233,13 @@ func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) String() strin
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) GetPayload() *PreDefinedQueriesGetPrometheusDashboardListUnauthorizedBody {
+func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PreDefinedQueriesGetPrometheusDashboardListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +260,7 @@ PreDefinedQueriesGetPrometheusDashboardListForbidden describes a response with s
 Forbidden
 */
 type PreDefinedQueriesGetPrometheusDashboardListForbidden struct {
-	Payload *PreDefinedQueriesGetPrometheusDashboardListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus dashboard list forbidden response has a 2xx status code
@@ -298,13 +296,13 @@ func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) GetPayload() *PreDefinedQueriesGetPrometheusDashboardListForbiddenBody {
+func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PreDefinedQueriesGetPrometheusDashboardListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +323,7 @@ PreDefinedQueriesGetPrometheusDashboardListNotFound describes a response with st
 Not Found
 */
 type PreDefinedQueriesGetPrometheusDashboardListNotFound struct {
-	Payload *PreDefinedQueriesGetPrometheusDashboardListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this pre defined queries get prometheus dashboard list not found response has a 2xx status code
@@ -361,13 +359,13 @@ func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/PreDefinedQueries/prometheus/dashboard/list][%d] preDefinedQueriesGetPrometheusDashboardListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) GetPayload() *PreDefinedQueriesGetPrometheusDashboardListNotFoundBody {
+func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PreDefinedQueriesGetPrometheusDashboardListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,354 +423,5 @@ func (o *PreDefinedQueriesGetPrometheusDashboardListInternalServerError) String(
 
 func (o *PreDefinedQueriesGetPrometheusDashboardListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PreDefinedQueriesGetPrometheusDashboardListBadRequestBodyItems0 pre defined queries get prometheus dashboard list bad request body items0
-swagger:model PreDefinedQueriesGetPrometheusDashboardListBadRequestBodyItems0
-*/
-type PreDefinedQueriesGetPrometheusDashboardListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this pre defined queries get prometheus dashboard list bad request body items0
-func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this pre defined queries get prometheus dashboard list bad request body items0 based on context it is used
-func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PreDefinedQueriesGetPrometheusDashboardListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PreDefinedQueriesGetPrometheusDashboardListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PreDefinedQueriesGetPrometheusDashboardListForbiddenBody pre defined queries get prometheus dashboard list forbidden body
-swagger:model PreDefinedQueriesGetPrometheusDashboardListForbiddenBody
-*/
-type PreDefinedQueriesGetPrometheusDashboardListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this pre defined queries get prometheus dashboard list forbidden body
-func (o *PreDefinedQueriesGetPrometheusDashboardListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this pre defined queries get prometheus dashboard list forbidden body based on context it is used
-func (o *PreDefinedQueriesGetPrometheusDashboardListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PreDefinedQueriesGetPrometheusDashboardListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PreDefinedQueriesGetPrometheusDashboardListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PreDefinedQueriesGetPrometheusDashboardListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PreDefinedQueriesGetPrometheusDashboardListNotFoundBody pre defined queries get prometheus dashboard list not found body
-swagger:model PreDefinedQueriesGetPrometheusDashboardListNotFoundBody
-*/
-type PreDefinedQueriesGetPrometheusDashboardListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this pre defined queries get prometheus dashboard list not found body
-func (o *PreDefinedQueriesGetPrometheusDashboardListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this pre defined queries get prometheus dashboard list not found body based on context it is used
-func (o *PreDefinedQueriesGetPrometheusDashboardListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PreDefinedQueriesGetPrometheusDashboardListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PreDefinedQueriesGetPrometheusDashboardListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PreDefinedQueriesGetPrometheusDashboardListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0 pre defined queries get prometheus dashboard list o k body items0
-swagger:model PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0
-*/
-type PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0 struct {
-
-	// category name
-	CategoryName string `json:"categoryName,omitempty"`
-
-	// data
-	Data []*PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0DataItems0 `json:"data"`
-}
-
-// Validate validates this pre defined queries get prometheus dashboard list o k body items0
-func (o *PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this pre defined queries get prometheus dashboard list o k body items0 based on the context it is used
-func (o *PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0DataItems0 pre defined queries get prometheus dashboard list o k body items0 data items0
-swagger:model PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0DataItems0
-*/
-type PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0DataItems0 struct {
-
-	// description
-	Description string `json:"description,omitempty"`
-
-	// expression decoded
-	ExpressionDecoded string `json:"expressionDecoded,omitempty"`
-
-	// expression encoded
-	ExpressionEncoded string `json:"expressionEncoded,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// is readonly
-	IsReadonly bool `json:"isReadonly"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this pre defined queries get prometheus dashboard list o k body items0 data items0
-func (o *PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0DataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this pre defined queries get prometheus dashboard list o k body items0 data items0 based on context it is used
-func (o *PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0DataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0DataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0DataItems0) UnmarshalBinary(b []byte) error {
-	var res PreDefinedQueriesGetPrometheusDashboardListOKBodyItems0DataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PreDefinedQueriesGetPrometheusDashboardListUnauthorizedBody pre defined queries get prometheus dashboard list unauthorized body
-swagger:model PreDefinedQueriesGetPrometheusDashboardListUnauthorizedBody
-*/
-type PreDefinedQueriesGetPrometheusDashboardListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this pre defined queries get prometheus dashboard list unauthorized body
-func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this pre defined queries get prometheus dashboard list unauthorized body based on context it is used
-func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PreDefinedQueriesGetPrometheusDashboardListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PreDefinedQueriesGetPrometheusDashboardListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

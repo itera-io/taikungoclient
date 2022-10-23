@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCheckerAzureCPUQuotaParams creates a new CheckerAzureCPUQuotaParams object,
@@ -62,7 +64,7 @@ CheckerAzureCPUQuotaParams contains all the parameters to send to the API endpoi
 type CheckerAzureCPUQuotaParams struct {
 
 	// Body.
-	Body CheckerAzureCPUQuotaBody
+	Body *models.CheckAzureCPUQuotaCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CheckerAzureCPUQuotaParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the checker azure Cpu quota params
-func (o *CheckerAzureCPUQuotaParams) WithBody(body CheckerAzureCPUQuotaBody) *CheckerAzureCPUQuotaParams {
+func (o *CheckerAzureCPUQuotaParams) WithBody(body *models.CheckAzureCPUQuotaCommand) *CheckerAzureCPUQuotaParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the checker azure Cpu quota params
-func (o *CheckerAzureCPUQuotaParams) SetBody(body CheckerAzureCPUQuotaBody) {
+func (o *CheckerAzureCPUQuotaParams) SetBody(body *models.CheckAzureCPUQuotaCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *CheckerAzureCPUQuotaParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

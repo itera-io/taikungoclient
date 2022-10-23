@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesGetDashboardReader is a Reader for the KubernetesGetDashboard structure.
@@ -136,7 +136,7 @@ KubernetesGetDashboardBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesGetDashboardBadRequest struct {
-	Payload []*KubernetesGetDashboardBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes get dashboard bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesGetDashboardBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetDashboardBadRequest) GetPayload() []*KubernetesGetDashboardBadRequestBodyItems0 {
+func (o *KubernetesGetDashboardBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesGetDashboardUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesGetDashboardUnauthorized struct {
-	Payload *KubernetesGetDashboardUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get dashboard unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesGetDashboardUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetDashboardUnauthorized) GetPayload() *KubernetesGetDashboardUnauthorizedBody {
+func (o *KubernetesGetDashboardUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetDashboardUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetDashboardUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesGetDashboardForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesGetDashboardForbidden struct {
-	Payload *KubernetesGetDashboardForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get dashboard forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesGetDashboardForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetDashboardForbidden) GetPayload() *KubernetesGetDashboardForbiddenBody {
+func (o *KubernetesGetDashboardForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetDashboardForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetDashboardForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesGetDashboardNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesGetDashboardNotFound struct {
-	Payload *KubernetesGetDashboardNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get dashboard not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesGetDashboardNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/dashboard][%d] kubernetesGetDashboardNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetDashboardNotFound) GetPayload() *KubernetesGetDashboardNotFoundBody {
+func (o *KubernetesGetDashboardNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetDashboardNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetDashboardNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *KubernetesGetDashboardInternalServerError) String() string {
 
 func (o *KubernetesGetDashboardInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesGetDashboardBadRequestBodyItems0 kubernetes get dashboard bad request body items0
-swagger:model KubernetesGetDashboardBadRequestBodyItems0
-*/
-type KubernetesGetDashboardBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes get dashboard bad request body items0
-func (o *KubernetesGetDashboardBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get dashboard bad request body items0 based on context it is used
-func (o *KubernetesGetDashboardBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetDashboardBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetDashboardBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetDashboardBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetDashboardForbiddenBody kubernetes get dashboard forbidden body
-swagger:model KubernetesGetDashboardForbiddenBody
-*/
-type KubernetesGetDashboardForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get dashboard forbidden body
-func (o *KubernetesGetDashboardForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get dashboard forbidden body based on context it is used
-func (o *KubernetesGetDashboardForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetDashboardForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetDashboardForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetDashboardForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetDashboardNotFoundBody kubernetes get dashboard not found body
-swagger:model KubernetesGetDashboardNotFoundBody
-*/
-type KubernetesGetDashboardNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get dashboard not found body
-func (o *KubernetesGetDashboardNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get dashboard not found body based on context it is used
-func (o *KubernetesGetDashboardNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetDashboardNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetDashboardNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetDashboardNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetDashboardUnauthorizedBody kubernetes get dashboard unauthorized body
-swagger:model KubernetesGetDashboardUnauthorizedBody
-*/
-type KubernetesGetDashboardUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get dashboard unauthorized body
-func (o *KubernetesGetDashboardUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get dashboard unauthorized body based on context it is used
-func (o *KubernetesGetDashboardUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetDashboardUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetDashboardUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetDashboardUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

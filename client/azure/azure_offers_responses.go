@@ -6,13 +6,13 @@ package azure
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AzureOffersReader is a Reader for the AzureOffers structure.
@@ -75,7 +75,7 @@ AzureOffersOK describes a response with status code 200, with default header val
 Success
 */
 type AzureOffersOK struct {
-	Payload *AzureOffersOKBody
+	Payload *models.AzureOffersList
 }
 
 // IsSuccess returns true when this azure offers o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *AzureOffersOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersOK  %+v", 200, o.Payload)
 }
 
-func (o *AzureOffersOK) GetPayload() *AzureOffersOKBody {
+func (o *AzureOffersOK) GetPayload() *models.AzureOffersList {
 	return o.Payload
 }
 
 func (o *AzureOffersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureOffersOKBody)
+	o.Payload = new(models.AzureOffersList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ AzureOffersBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type AzureOffersBadRequest struct {
-	Payload []*AzureOffersBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this azure offers bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AzureOffersBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureOffersBadRequest) GetPayload() []*AzureOffersBadRequestBodyItems0 {
+func (o *AzureOffersBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ AzureOffersUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type AzureOffersUnauthorized struct {
-	Payload *AzureOffersUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure offers unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *AzureOffersUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureOffersUnauthorized) GetPayload() *AzureOffersUnauthorizedBody {
+func (o *AzureOffersUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureOffersUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureOffersUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ AzureOffersForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type AzureOffersForbidden struct {
-	Payload *AzureOffersForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure offers forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *AzureOffersForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureOffersForbidden) GetPayload() *AzureOffersForbiddenBody {
+func (o *AzureOffersForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureOffersForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureOffersForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ AzureOffersNotFound describes a response with status code 404, with default head
 Not Found
 */
 type AzureOffersNotFound struct {
-	Payload *AzureOffersNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure offers not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *AzureOffersNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/offers/{cloudId}/{publisher}][%d] azureOffersNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureOffersNotFound) GetPayload() *AzureOffersNotFoundBody {
+func (o *AzureOffersNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureOffersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureOffersNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,237 +425,5 @@ func (o *AzureOffersInternalServerError) String() string {
 
 func (o *AzureOffersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AzureOffersBadRequestBodyItems0 azure offers bad request body items0
-swagger:model AzureOffersBadRequestBodyItems0
-*/
-type AzureOffersBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this azure offers bad request body items0
-func (o *AzureOffersBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure offers bad request body items0 based on context it is used
-func (o *AzureOffersBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureOffersBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureOffersBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AzureOffersBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureOffersForbiddenBody azure offers forbidden body
-swagger:model AzureOffersForbiddenBody
-*/
-type AzureOffersForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure offers forbidden body
-func (o *AzureOffersForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure offers forbidden body based on context it is used
-func (o *AzureOffersForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureOffersForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureOffersForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AzureOffersForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureOffersNotFoundBody azure offers not found body
-swagger:model AzureOffersNotFoundBody
-*/
-type AzureOffersNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure offers not found body
-func (o *AzureOffersNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure offers not found body based on context it is used
-func (o *AzureOffersNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureOffersNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureOffersNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AzureOffersNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureOffersOKBody azure offers o k body
-swagger:model AzureOffersOKBody
-*/
-type AzureOffersOKBody struct {
-
-	// data
-	Data []string `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this azure offers o k body
-func (o *AzureOffersOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure offers o k body based on context it is used
-func (o *AzureOffersOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureOffersOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureOffersOKBody) UnmarshalBinary(b []byte) error {
-	var res AzureOffersOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureOffersUnauthorizedBody azure offers unauthorized body
-swagger:model AzureOffersUnauthorizedBody
-*/
-type AzureOffersUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure offers unauthorized body
-func (o *AzureOffersUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure offers unauthorized body based on context it is used
-func (o *AzureOffersUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureOffersUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureOffersUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AzureOffersUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

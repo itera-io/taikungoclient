@@ -6,15 +6,13 @@ package flavors
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // FlavorsOpenstackFlavorsReader is a Reader for the FlavorsOpenstackFlavors structure.
@@ -77,7 +75,7 @@ FlavorsOpenstackFlavorsOK describes a response with status code 200, with defaul
 Success
 */
 type FlavorsOpenstackFlavorsOK struct {
-	Payload *FlavorsOpenstackFlavorsOKBody
+	Payload *models.OpenstackFlavorList
 }
 
 // IsSuccess returns true when this flavors openstack flavors o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *FlavorsOpenstackFlavorsOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsOK  %+v", 200, o.Payload)
 }
 
-func (o *FlavorsOpenstackFlavorsOK) GetPayload() *FlavorsOpenstackFlavorsOKBody {
+func (o *FlavorsOpenstackFlavorsOK) GetPayload() *models.OpenstackFlavorList {
 	return o.Payload
 }
 
 func (o *FlavorsOpenstackFlavorsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsOpenstackFlavorsOKBody)
+	o.Payload = new(models.OpenstackFlavorList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ FlavorsOpenstackFlavorsBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type FlavorsOpenstackFlavorsBadRequest struct {
-	Payload []*FlavorsOpenstackFlavorsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this flavors openstack flavors bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *FlavorsOpenstackFlavorsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *FlavorsOpenstackFlavorsBadRequest) GetPayload() []*FlavorsOpenstackFlavorsBadRequestBodyItems0 {
+func (o *FlavorsOpenstackFlavorsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ FlavorsOpenstackFlavorsUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type FlavorsOpenstackFlavorsUnauthorized struct {
-	Payload *FlavorsOpenstackFlavorsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors openstack flavors unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *FlavorsOpenstackFlavorsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *FlavorsOpenstackFlavorsUnauthorized) GetPayload() *FlavorsOpenstackFlavorsUnauthorizedBody {
+func (o *FlavorsOpenstackFlavorsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsOpenstackFlavorsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsOpenstackFlavorsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ FlavorsOpenstackFlavorsForbidden describes a response with status code 403, with
 Forbidden
 */
 type FlavorsOpenstackFlavorsForbidden struct {
-	Payload *FlavorsOpenstackFlavorsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors openstack flavors forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *FlavorsOpenstackFlavorsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *FlavorsOpenstackFlavorsForbidden) GetPayload() *FlavorsOpenstackFlavorsForbiddenBody {
+func (o *FlavorsOpenstackFlavorsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsOpenstackFlavorsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsOpenstackFlavorsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ FlavorsOpenstackFlavorsNotFound describes a response with status code 404, with 
 Not Found
 */
 type FlavorsOpenstackFlavorsNotFound struct {
-	Payload *FlavorsOpenstackFlavorsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this flavors openstack flavors not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *FlavorsOpenstackFlavorsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Flavors/openstack/{cloudId}][%d] flavorsOpenstackFlavorsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *FlavorsOpenstackFlavorsNotFound) GetPayload() *FlavorsOpenstackFlavorsNotFoundBody {
+func (o *FlavorsOpenstackFlavorsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *FlavorsOpenstackFlavorsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(FlavorsOpenstackFlavorsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,348 +425,5 @@ func (o *FlavorsOpenstackFlavorsInternalServerError) String() string {
 
 func (o *FlavorsOpenstackFlavorsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-FlavorsOpenstackFlavorsBadRequestBodyItems0 flavors openstack flavors bad request body items0
-swagger:model FlavorsOpenstackFlavorsBadRequestBodyItems0
-*/
-type FlavorsOpenstackFlavorsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this flavors openstack flavors bad request body items0
-func (o *FlavorsOpenstackFlavorsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors openstack flavors bad request body items0 based on context it is used
-func (o *FlavorsOpenstackFlavorsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsOpenstackFlavorsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsOpenstackFlavorsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res FlavorsOpenstackFlavorsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsOpenstackFlavorsForbiddenBody flavors openstack flavors forbidden body
-swagger:model FlavorsOpenstackFlavorsForbiddenBody
-*/
-type FlavorsOpenstackFlavorsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this flavors openstack flavors forbidden body
-func (o *FlavorsOpenstackFlavorsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors openstack flavors forbidden body based on context it is used
-func (o *FlavorsOpenstackFlavorsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsOpenstackFlavorsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsOpenstackFlavorsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsOpenstackFlavorsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsOpenstackFlavorsNotFoundBody flavors openstack flavors not found body
-swagger:model FlavorsOpenstackFlavorsNotFoundBody
-*/
-type FlavorsOpenstackFlavorsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this flavors openstack flavors not found body
-func (o *FlavorsOpenstackFlavorsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors openstack flavors not found body based on context it is used
-func (o *FlavorsOpenstackFlavorsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsOpenstackFlavorsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsOpenstackFlavorsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsOpenstackFlavorsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsOpenstackFlavorsOKBody flavors openstack flavors o k body
-swagger:model FlavorsOpenstackFlavorsOKBody
-*/
-type FlavorsOpenstackFlavorsOKBody struct {
-
-	// data
-	Data []*FlavorsOpenstackFlavorsOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this flavors openstack flavors o k body
-func (o *FlavorsOpenstackFlavorsOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *FlavorsOpenstackFlavorsOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("flavorsOpenstackFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("flavorsOpenstackFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this flavors openstack flavors o k body based on the context it is used
-func (o *FlavorsOpenstackFlavorsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *FlavorsOpenstackFlavorsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("flavorsOpenstackFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("flavorsOpenstackFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsOpenstackFlavorsOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsOpenstackFlavorsOKBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsOpenstackFlavorsOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsOpenstackFlavorsOKBodyDataItems0 flavors openstack flavors o k body data items0
-swagger:model FlavorsOpenstackFlavorsOKBodyDataItems0
-*/
-type FlavorsOpenstackFlavorsOKBodyDataItems0 struct {
-
-	// cpu
-	CPU int64 `json:"cpu,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// ram
-	RAM int64 `json:"ram,omitempty"`
-}
-
-// Validate validates this flavors openstack flavors o k body data items0
-func (o *FlavorsOpenstackFlavorsOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors openstack flavors o k body data items0 based on context it is used
-func (o *FlavorsOpenstackFlavorsOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsOpenstackFlavorsOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsOpenstackFlavorsOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res FlavorsOpenstackFlavorsOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-FlavorsOpenstackFlavorsUnauthorizedBody flavors openstack flavors unauthorized body
-swagger:model FlavorsOpenstackFlavorsUnauthorizedBody
-*/
-type FlavorsOpenstackFlavorsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this flavors openstack flavors unauthorized body
-func (o *FlavorsOpenstackFlavorsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this flavors openstack flavors unauthorized body based on context it is used
-func (o *FlavorsOpenstackFlavorsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *FlavorsOpenstackFlavorsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *FlavorsOpenstackFlavorsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res FlavorsOpenstackFlavorsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

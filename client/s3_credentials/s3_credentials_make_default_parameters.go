@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewS3CredentialsMakeDefaultParams creates a new S3CredentialsMakeDefaultParams object,
@@ -62,7 +64,7 @@ S3CredentialsMakeDefaultParams contains all the parameters to send to the API en
 type S3CredentialsMakeDefaultParams struct {
 
 	// Body.
-	Body S3CredentialsMakeDefaultBody
+	Body *models.BackupMakeDefaultCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *S3CredentialsMakeDefaultParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the s3 credentials make default params
-func (o *S3CredentialsMakeDefaultParams) WithBody(body S3CredentialsMakeDefaultBody) *S3CredentialsMakeDefaultParams {
+func (o *S3CredentialsMakeDefaultParams) WithBody(body *models.BackupMakeDefaultCommand) *S3CredentialsMakeDefaultParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the s3 credentials make default params
-func (o *S3CredentialsMakeDefaultParams) SetBody(body S3CredentialsMakeDefaultBody) {
+func (o *S3CredentialsMakeDefaultParams) SetBody(body *models.BackupMakeDefaultCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *S3CredentialsMakeDefaultParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

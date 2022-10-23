@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAdminBillingOperationsParams creates a new AdminBillingOperationsParams object,
@@ -62,7 +64,7 @@ AdminBillingOperationsParams contains all the parameters to send to the API endp
 type AdminBillingOperationsParams struct {
 
 	// Body.
-	Body AdminBillingOperationsBody
+	Body *models.AdminBillingOperationCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *AdminBillingOperationsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the admin billing operations params
-func (o *AdminBillingOperationsParams) WithBody(body AdminBillingOperationsBody) *AdminBillingOperationsParams {
+func (o *AdminBillingOperationsParams) WithBody(body *models.AdminBillingOperationCommand) *AdminBillingOperationsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the admin billing operations params
-func (o *AdminBillingOperationsParams) SetBody(body AdminBillingOperationsBody) {
+func (o *AdminBillingOperationsParams) SetBody(body *models.AdminBillingOperationCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *AdminBillingOperationsParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

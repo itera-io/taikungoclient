@@ -6,13 +6,13 @@ package servers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ServersConsoleReader is a Reader for the ServersConsole structure.
@@ -136,7 +136,7 @@ ServersConsoleBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type ServersConsoleBadRequest struct {
-	Payload []*ServersConsoleBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this servers console bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ServersConsoleBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersConsoleBadRequest) GetPayload() []*ServersConsoleBadRequestBodyItems0 {
+func (o *ServersConsoleBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ServersConsoleUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type ServersConsoleUnauthorized struct {
-	Payload *ServersConsoleUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers console unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ServersConsoleUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersConsoleUnauthorized) GetPayload() *ServersConsoleUnauthorizedBody {
+func (o *ServersConsoleUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersConsoleUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersConsoleUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ServersConsoleForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type ServersConsoleForbidden struct {
-	Payload *ServersConsoleForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers console forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ServersConsoleForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersConsoleForbidden) GetPayload() *ServersConsoleForbiddenBody {
+func (o *ServersConsoleForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersConsoleForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersConsoleForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ServersConsoleNotFound describes a response with status code 404, with default h
 Not Found
 */
 type ServersConsoleNotFound struct {
-	Payload *ServersConsoleNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers console not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ServersConsoleNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/console][%d] serversConsoleNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersConsoleNotFound) GetPayload() *ServersConsoleNotFoundBody {
+func (o *ServersConsoleNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersConsoleNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersConsoleNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *ServersConsoleInternalServerError) String() string {
 
 func (o *ServersConsoleInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ServersConsoleBadRequestBodyItems0 servers console bad request body items0
-swagger:model ServersConsoleBadRequestBodyItems0
-*/
-type ServersConsoleBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this servers console bad request body items0
-func (o *ServersConsoleBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers console bad request body items0 based on context it is used
-func (o *ServersConsoleBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersConsoleBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersConsoleBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ServersConsoleBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersConsoleBody servers console body
-swagger:model ServersConsoleBody
-*/
-type ServersConsoleBody struct {
-
-	// server Id
-	ServerID int32 `json:"serverId,omitempty"`
-}
-
-// Validate validates this servers console body
-func (o *ServersConsoleBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers console body based on context it is used
-func (o *ServersConsoleBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersConsoleBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersConsoleBody) UnmarshalBinary(b []byte) error {
-	var res ServersConsoleBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersConsoleForbiddenBody servers console forbidden body
-swagger:model ServersConsoleForbiddenBody
-*/
-type ServersConsoleForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers console forbidden body
-func (o *ServersConsoleForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers console forbidden body based on context it is used
-func (o *ServersConsoleForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersConsoleForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersConsoleForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ServersConsoleForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersConsoleNotFoundBody servers console not found body
-swagger:model ServersConsoleNotFoundBody
-*/
-type ServersConsoleNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers console not found body
-func (o *ServersConsoleNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers console not found body based on context it is used
-func (o *ServersConsoleNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersConsoleNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersConsoleNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ServersConsoleNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersConsoleUnauthorizedBody servers console unauthorized body
-swagger:model ServersConsoleUnauthorizedBody
-*/
-type ServersConsoleUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers console unauthorized body
-func (o *ServersConsoleUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers console unauthorized body based on context it is used
-func (o *ServersConsoleUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersConsoleUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersConsoleUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ServersConsoleUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

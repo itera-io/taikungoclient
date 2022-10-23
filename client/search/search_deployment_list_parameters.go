@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSearchDeploymentListParams creates a new SearchDeploymentListParams object,
@@ -62,7 +64,7 @@ SearchDeploymentListParams contains all the parameters to send to the API endpoi
 type SearchDeploymentListParams struct {
 
 	// Body.
-	Body SearchDeploymentListBody
+	Body *models.DeploymentSearchCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *SearchDeploymentListParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the search deployment list params
-func (o *SearchDeploymentListParams) WithBody(body SearchDeploymentListBody) *SearchDeploymentListParams {
+func (o *SearchDeploymentListParams) WithBody(body *models.DeploymentSearchCommand) *SearchDeploymentListParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the search deployment list params
-func (o *SearchDeploymentListParams) SetBody(body SearchDeploymentListBody) {
+func (o *SearchDeploymentListParams) SetBody(body *models.DeploymentSearchCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *SearchDeploymentListParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectsLokiLogsParams creates a new ProjectsLokiLogsParams object,
@@ -62,7 +64,7 @@ ProjectsLokiLogsParams contains all the parameters to send to the API endpoint
 type ProjectsLokiLogsParams struct {
 
 	// Body.
-	Body ProjectsLokiLogsBody
+	Body *models.LokiResponseDto
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *ProjectsLokiLogsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the projects loki logs params
-func (o *ProjectsLokiLogsParams) WithBody(body ProjectsLokiLogsBody) *ProjectsLokiLogsParams {
+func (o *ProjectsLokiLogsParams) WithBody(body *models.LokiResponseDto) *ProjectsLokiLogsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the projects loki logs params
-func (o *ProjectsLokiLogsParams) SetBody(body ProjectsLokiLogsBody) {
+func (o *ProjectsLokiLogsParams) SetBody(body *models.LokiResponseDto) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *ProjectsLokiLogsParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

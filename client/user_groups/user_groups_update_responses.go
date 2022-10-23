@@ -6,13 +6,13 @@ package user_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // UserGroupsUpdateReader is a Reader for the UserGroupsUpdate structure.
@@ -75,7 +75,7 @@ UserGroupsUpdateOK describes a response with status code 200, with default heade
 Success
 */
 type UserGroupsUpdateOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this user groups update o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *UserGroupsUpdateOK) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *UserGroupsUpdateOK) GetPayload() interface{} {
+func (o *UserGroupsUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ UserGroupsUpdateBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type UserGroupsUpdateBadRequest struct {
-	Payload []*UserGroupsUpdateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this user groups update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UserGroupsUpdateBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UserGroupsUpdateBadRequest) GetPayload() []*UserGroupsUpdateBadRequestBodyItems0 {
+func (o *UserGroupsUpdateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ UserGroupsUpdateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type UserGroupsUpdateUnauthorized struct {
-	Payload *UserGroupsUpdateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user groups update unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *UserGroupsUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UserGroupsUpdateUnauthorized) GetPayload() *UserGroupsUpdateUnauthorizedBody {
+func (o *UserGroupsUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserGroupsUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserGroupsUpdateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ UserGroupsUpdateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type UserGroupsUpdateForbidden struct {
-	Payload *UserGroupsUpdateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user groups update forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *UserGroupsUpdateForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UserGroupsUpdateForbidden) GetPayload() *UserGroupsUpdateForbiddenBody {
+func (o *UserGroupsUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserGroupsUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserGroupsUpdateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ UserGroupsUpdateNotFound describes a response with status code 404, with default
 Not Found
 */
 type UserGroupsUpdateNotFound struct {
-	Payload *UserGroupsUpdateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this user groups update not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *UserGroupsUpdateNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/UserGroups/update][%d] userGroupsUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UserGroupsUpdateNotFound) GetPayload() *UserGroupsUpdateNotFoundBody {
+func (o *UserGroupsUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UserGroupsUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UserGroupsUpdateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *UserGroupsUpdateInternalServerError) String() string {
 
 func (o *UserGroupsUpdateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-UserGroupsUpdateBadRequestBodyItems0 user groups update bad request body items0
-swagger:model UserGroupsUpdateBadRequestBodyItems0
-*/
-type UserGroupsUpdateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this user groups update bad request body items0
-func (o *UserGroupsUpdateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user groups update bad request body items0 based on context it is used
-func (o *UserGroupsUpdateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserGroupsUpdateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserGroupsUpdateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res UserGroupsUpdateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserGroupsUpdateBody user groups update body
-swagger:model UserGroupsUpdateBody
-*/
-type UserGroupsUpdateBody struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this user groups update body
-func (o *UserGroupsUpdateBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user groups update body based on context it is used
-func (o *UserGroupsUpdateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserGroupsUpdateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserGroupsUpdateBody) UnmarshalBinary(b []byte) error {
-	var res UserGroupsUpdateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserGroupsUpdateForbiddenBody user groups update forbidden body
-swagger:model UserGroupsUpdateForbiddenBody
-*/
-type UserGroupsUpdateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this user groups update forbidden body
-func (o *UserGroupsUpdateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user groups update forbidden body based on context it is used
-func (o *UserGroupsUpdateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserGroupsUpdateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserGroupsUpdateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res UserGroupsUpdateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserGroupsUpdateNotFoundBody user groups update not found body
-swagger:model UserGroupsUpdateNotFoundBody
-*/
-type UserGroupsUpdateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this user groups update not found body
-func (o *UserGroupsUpdateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user groups update not found body based on context it is used
-func (o *UserGroupsUpdateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserGroupsUpdateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserGroupsUpdateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res UserGroupsUpdateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UserGroupsUpdateUnauthorizedBody user groups update unauthorized body
-swagger:model UserGroupsUpdateUnauthorizedBody
-*/
-type UserGroupsUpdateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this user groups update unauthorized body
-func (o *UserGroupsUpdateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user groups update unauthorized body based on context it is used
-func (o *UserGroupsUpdateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UserGroupsUpdateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UserGroupsUpdateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res UserGroupsUpdateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

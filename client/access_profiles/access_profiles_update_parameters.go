@@ -15,6 +15,8 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAccessProfilesUpdateParams creates a new AccessProfilesUpdateParams object,
@@ -63,7 +65,7 @@ AccessProfilesUpdateParams contains all the parameters to send to the API endpoi
 type AccessProfilesUpdateParams struct {
 
 	// Body.
-	Body AccessProfilesUpdateBody
+	Body *models.UpdateAccessProfileDto
 
 	// ID.
 	//
@@ -127,13 +129,13 @@ func (o *AccessProfilesUpdateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the access profiles update params
-func (o *AccessProfilesUpdateParams) WithBody(body AccessProfilesUpdateBody) *AccessProfilesUpdateParams {
+func (o *AccessProfilesUpdateParams) WithBody(body *models.UpdateAccessProfileDto) *AccessProfilesUpdateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the access profiles update params
-func (o *AccessProfilesUpdateParams) SetBody(body AccessProfilesUpdateBody) {
+func (o *AccessProfilesUpdateParams) SetBody(body *models.UpdateAccessProfileDto) {
 	o.Body = body
 }
 
@@ -166,8 +168,10 @@ func (o *AccessProfilesUpdateParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param id

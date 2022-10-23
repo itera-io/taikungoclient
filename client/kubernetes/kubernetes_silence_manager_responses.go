@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesSilenceManagerReader is a Reader for the KubernetesSilenceManager structure.
@@ -75,7 +75,7 @@ KubernetesSilenceManagerOK describes a response with status code 200, with defau
 Success
 */
 type KubernetesSilenceManagerOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this kubernetes silence manager o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *KubernetesSilenceManagerOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesSilenceManagerOK) GetPayload() interface{} {
+func (o *KubernetesSilenceManagerOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ KubernetesSilenceManagerBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type KubernetesSilenceManagerBadRequest struct {
-	Payload []*KubernetesSilenceManagerBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes silence manager bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesSilenceManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesSilenceManagerBadRequest) GetPayload() []*KubernetesSilenceManagerBadRequestBodyItems0 {
+func (o *KubernetesSilenceManagerBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesSilenceManagerUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type KubernetesSilenceManagerUnauthorized struct {
-	Payload *KubernetesSilenceManagerUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes silence manager unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesSilenceManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesSilenceManagerUnauthorized) GetPayload() *KubernetesSilenceManagerUnauthorizedBody {
+func (o *KubernetesSilenceManagerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesSilenceManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesSilenceManagerUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesSilenceManagerForbidden describes a response with status code 403, wit
 Forbidden
 */
 type KubernetesSilenceManagerForbidden struct {
-	Payload *KubernetesSilenceManagerForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes silence manager forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesSilenceManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesSilenceManagerForbidden) GetPayload() *KubernetesSilenceManagerForbiddenBody {
+func (o *KubernetesSilenceManagerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesSilenceManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesSilenceManagerForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesSilenceManagerNotFound describes a response with status code 404, with
 Not Found
 */
 type KubernetesSilenceManagerNotFound struct {
-	Payload *KubernetesSilenceManagerNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes silence manager not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesSilenceManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/silencemanager][%d] kubernetesSilenceManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesSilenceManagerNotFound) GetPayload() *KubernetesSilenceManagerNotFoundBody {
+func (o *KubernetesSilenceManagerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesSilenceManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesSilenceManagerNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,240 +423,5 @@ func (o *KubernetesSilenceManagerInternalServerError) String() string {
 
 func (o *KubernetesSilenceManagerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesSilenceManagerBadRequestBodyItems0 kubernetes silence manager bad request body items0
-swagger:model KubernetesSilenceManagerBadRequestBodyItems0
-*/
-type KubernetesSilenceManagerBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes silence manager bad request body items0
-func (o *KubernetesSilenceManagerBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes silence manager bad request body items0 based on context it is used
-func (o *KubernetesSilenceManagerBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesSilenceManagerBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesSilenceManagerBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesSilenceManagerBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesSilenceManagerBody kubernetes silence manager body
-swagger:model KubernetesSilenceManagerBody
-*/
-type KubernetesSilenceManagerBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// mode
-	Mode string `json:"mode,omitempty"`
-
-	// reason
-	Reason string `json:"reason,omitempty"`
-}
-
-// Validate validates this kubernetes silence manager body
-func (o *KubernetesSilenceManagerBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes silence manager body based on context it is used
-func (o *KubernetesSilenceManagerBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesSilenceManagerBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesSilenceManagerBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesSilenceManagerBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesSilenceManagerForbiddenBody kubernetes silence manager forbidden body
-swagger:model KubernetesSilenceManagerForbiddenBody
-*/
-type KubernetesSilenceManagerForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes silence manager forbidden body
-func (o *KubernetesSilenceManagerForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes silence manager forbidden body based on context it is used
-func (o *KubernetesSilenceManagerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesSilenceManagerForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesSilenceManagerForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesSilenceManagerForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesSilenceManagerNotFoundBody kubernetes silence manager not found body
-swagger:model KubernetesSilenceManagerNotFoundBody
-*/
-type KubernetesSilenceManagerNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes silence manager not found body
-func (o *KubernetesSilenceManagerNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes silence manager not found body based on context it is used
-func (o *KubernetesSilenceManagerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesSilenceManagerNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesSilenceManagerNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesSilenceManagerNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesSilenceManagerUnauthorizedBody kubernetes silence manager unauthorized body
-swagger:model KubernetesSilenceManagerUnauthorizedBody
-*/
-type KubernetesSilenceManagerUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes silence manager unauthorized body
-func (o *KubernetesSilenceManagerUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes silence manager unauthorized body based on context it is used
-func (o *KubernetesSilenceManagerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesSilenceManagerUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesSilenceManagerUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesSilenceManagerUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

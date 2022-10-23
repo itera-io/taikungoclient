@@ -23,7 +23,7 @@ type GroupedShowbackSummaryByProjectInfos struct {
 	CredentialName string `json:"credentialName,omitempty"`
 
 	// data
-	Data []*GroupedShowbackSummaryByProjectInfosDataItems0 `json:"data"`
+	Data []*GroupedShowbackSummariesByProjectDto `json:"data"`
 
 	// rule name
 	RuleName string `json:"ruleName,omitempty"`
@@ -117,46 +117,6 @@ func (m *GroupedShowbackSummaryByProjectInfos) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *GroupedShowbackSummaryByProjectInfos) UnmarshalBinary(b []byte) error {
 	var res GroupedShowbackSummaryByProjectInfos
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// GroupedShowbackSummaryByProjectInfosDataItems0 grouped showback summary by project infos data items0
-//
-// swagger:model GroupedShowbackSummaryByProjectInfosDataItems0
-type GroupedShowbackSummaryByProjectInfosDataItems0 struct {
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
-
-	// total price
-	TotalPrice float64 `json:"totalPrice,omitempty"`
-}
-
-// Validate validates this grouped showback summary by project infos data items0
-func (m *GroupedShowbackSummaryByProjectInfosDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this grouped showback summary by project infos data items0 based on context it is used
-func (m *GroupedShowbackSummaryByProjectInfosDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *GroupedShowbackSummaryByProjectInfosDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *GroupedShowbackSummaryByProjectInfosDataItems0) UnmarshalBinary(b []byte) error {
-	var res GroupedShowbackSummaryByProjectInfosDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

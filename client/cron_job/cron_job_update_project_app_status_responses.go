@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobUpdateProjectAppStatusReader is a Reader for the CronJobUpdateProjectAppStatus structure.
@@ -75,7 +75,7 @@ CronJobUpdateProjectAppStatusOK describes a response with status code 200, with 
 Success
 */
 type CronJobUpdateProjectAppStatusOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job update project app status o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobUpdateProjectAppStatusOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobUpdateProjectAppStatusOK) GetPayload() interface{} {
+func (o *CronJobUpdateProjectAppStatusOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobUpdateProjectAppStatusBadRequest describes a response with status code 40
 Bad Request
 */
 type CronJobUpdateProjectAppStatusBadRequest struct {
-	Payload []*CronJobUpdateProjectAppStatusBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job update project app status bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobUpdateProjectAppStatusBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobUpdateProjectAppStatusBadRequest) GetPayload() []*CronJobUpdateProjectAppStatusBadRequestBodyItems0 {
+func (o *CronJobUpdateProjectAppStatusBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobUpdateProjectAppStatusUnauthorized describes a response with status code 
 Unauthorized
 */
 type CronJobUpdateProjectAppStatusUnauthorized struct {
-	Payload *CronJobUpdateProjectAppStatusUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job update project app status unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobUpdateProjectAppStatusUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobUpdateProjectAppStatusUnauthorized) GetPayload() *CronJobUpdateProjectAppStatusUnauthorizedBody {
+func (o *CronJobUpdateProjectAppStatusUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobUpdateProjectAppStatusUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobUpdateProjectAppStatusUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobUpdateProjectAppStatusForbidden describes a response with status code 403
 Forbidden
 */
 type CronJobUpdateProjectAppStatusForbidden struct {
-	Payload *CronJobUpdateProjectAppStatusForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job update project app status forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobUpdateProjectAppStatusForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobUpdateProjectAppStatusForbidden) GetPayload() *CronJobUpdateProjectAppStatusForbiddenBody {
+func (o *CronJobUpdateProjectAppStatusForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobUpdateProjectAppStatusForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobUpdateProjectAppStatusForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobUpdateProjectAppStatusNotFound describes a response with status code 404,
 Not Found
 */
 type CronJobUpdateProjectAppStatusNotFound struct {
-	Payload *CronJobUpdateProjectAppStatusNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job update project app status not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobUpdateProjectAppStatusNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-app-status][%d] cronJobUpdateProjectAppStatusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobUpdateProjectAppStatusNotFound) GetPayload() *CronJobUpdateProjectAppStatusNotFoundBody {
+func (o *CronJobUpdateProjectAppStatusNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobUpdateProjectAppStatusNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobUpdateProjectAppStatusNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *CronJobUpdateProjectAppStatusInternalServerError) String() string {
 
 func (o *CronJobUpdateProjectAppStatusInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CronJobUpdateProjectAppStatusBadRequestBodyItems0 cron job update project app status bad request body items0
-swagger:model CronJobUpdateProjectAppStatusBadRequestBodyItems0
-*/
-type CronJobUpdateProjectAppStatusBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this cron job update project app status bad request body items0
-func (o *CronJobUpdateProjectAppStatusBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job update project app status bad request body items0 based on context it is used
-func (o *CronJobUpdateProjectAppStatusBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobUpdateProjectAppStatusBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobUpdateProjectAppStatusBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CronJobUpdateProjectAppStatusBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobUpdateProjectAppStatusForbiddenBody cron job update project app status forbidden body
-swagger:model CronJobUpdateProjectAppStatusForbiddenBody
-*/
-type CronJobUpdateProjectAppStatusForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job update project app status forbidden body
-func (o *CronJobUpdateProjectAppStatusForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job update project app status forbidden body based on context it is used
-func (o *CronJobUpdateProjectAppStatusForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobUpdateProjectAppStatusForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobUpdateProjectAppStatusForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CronJobUpdateProjectAppStatusForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobUpdateProjectAppStatusNotFoundBody cron job update project app status not found body
-swagger:model CronJobUpdateProjectAppStatusNotFoundBody
-*/
-type CronJobUpdateProjectAppStatusNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job update project app status not found body
-func (o *CronJobUpdateProjectAppStatusNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job update project app status not found body based on context it is used
-func (o *CronJobUpdateProjectAppStatusNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobUpdateProjectAppStatusNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobUpdateProjectAppStatusNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CronJobUpdateProjectAppStatusNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobUpdateProjectAppStatusUnauthorizedBody cron job update project app status unauthorized body
-swagger:model CronJobUpdateProjectAppStatusUnauthorizedBody
-*/
-type CronJobUpdateProjectAppStatusUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job update project app status unauthorized body
-func (o *CronJobUpdateProjectAppStatusUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job update project app status unauthorized body based on context it is used
-func (o *CronJobUpdateProjectAppStatusUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobUpdateProjectAppStatusUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobUpdateProjectAppStatusUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CronJobUpdateProjectAppStatusUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

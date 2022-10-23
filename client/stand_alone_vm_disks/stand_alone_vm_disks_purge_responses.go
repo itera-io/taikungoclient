@@ -6,13 +6,13 @@ package stand_alone_vm_disks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneVMDisksPurgeReader is a Reader for the StandAloneVMDisksPurge structure.
@@ -75,7 +75,7 @@ StandAloneVMDisksPurgeOK describes a response with status code 200, with default
 Success
 */
 type StandAloneVMDisksPurgeOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone Vm disks purge o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneVMDisksPurgeOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneVMDisksPurgeOK) GetPayload() interface{} {
+func (o *StandAloneVMDisksPurgeOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneVMDisksPurgeBadRequest describes a response with status code 400, with
 Bad Request
 */
 type StandAloneVMDisksPurgeBadRequest struct {
-	Payload []*StandAloneVMDisksPurgeBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone Vm disks purge bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneVMDisksPurgeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneVMDisksPurgeBadRequest) GetPayload() []*StandAloneVMDisksPurgeBadRequestBodyItems0 {
+func (o *StandAloneVMDisksPurgeBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneVMDisksPurgeUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type StandAloneVMDisksPurgeUnauthorized struct {
-	Payload *StandAloneVMDisksPurgeUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks purge unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneVMDisksPurgeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneVMDisksPurgeUnauthorized) GetPayload() *StandAloneVMDisksPurgeUnauthorizedBody {
+func (o *StandAloneVMDisksPurgeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksPurgeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneVMDisksPurgeUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneVMDisksPurgeForbidden describes a response with status code 403, with 
 Forbidden
 */
 type StandAloneVMDisksPurgeForbidden struct {
-	Payload *StandAloneVMDisksPurgeForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks purge forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneVMDisksPurgeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneVMDisksPurgeForbidden) GetPayload() *StandAloneVMDisksPurgeForbiddenBody {
+func (o *StandAloneVMDisksPurgeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksPurgeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneVMDisksPurgeForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneVMDisksPurgeNotFound describes a response with status code 404, with d
 Not Found
 */
 type StandAloneVMDisksPurgeNotFound struct {
-	Payload *StandAloneVMDisksPurgeNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone Vm disks purge not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneVMDisksPurgeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneVmDisks/purge][%d] standAloneVmDisksPurgeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneVMDisksPurgeNotFound) GetPayload() *StandAloneVMDisksPurgeNotFoundBody {
+func (o *StandAloneVMDisksPurgeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneVMDisksPurgeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneVMDisksPurgeNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *StandAloneVMDisksPurgeInternalServerError) String() string {
 
 func (o *StandAloneVMDisksPurgeInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-StandAloneVMDisksPurgeBadRequestBodyItems0 stand alone VM disks purge bad request body items0
-swagger:model StandAloneVMDisksPurgeBadRequestBodyItems0
-*/
-type StandAloneVMDisksPurgeBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this stand alone VM disks purge bad request body items0
-func (o *StandAloneVMDisksPurgeBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone VM disks purge bad request body items0 based on context it is used
-func (o *StandAloneVMDisksPurgeBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneVMDisksPurgeBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneVMDisksPurgeBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneVMDisksPurgeBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneVMDisksPurgeBody stand alone VM disks purge body
-swagger:model StandAloneVMDisksPurgeBody
-*/
-type StandAloneVMDisksPurgeBody struct {
-
-	// standalone Vm Id
-	StandaloneVMID int32 `json:"standaloneVmId,omitempty"`
-
-	// vm disk ids
-	VMDiskIds []int32 `json:"vmDiskIds"`
-}
-
-// Validate validates this stand alone VM disks purge body
-func (o *StandAloneVMDisksPurgeBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone VM disks purge body based on context it is used
-func (o *StandAloneVMDisksPurgeBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneVMDisksPurgeBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneVMDisksPurgeBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneVMDisksPurgeBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneVMDisksPurgeForbiddenBody stand alone VM disks purge forbidden body
-swagger:model StandAloneVMDisksPurgeForbiddenBody
-*/
-type StandAloneVMDisksPurgeForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone VM disks purge forbidden body
-func (o *StandAloneVMDisksPurgeForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone VM disks purge forbidden body based on context it is used
-func (o *StandAloneVMDisksPurgeForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneVMDisksPurgeForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneVMDisksPurgeForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneVMDisksPurgeForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneVMDisksPurgeNotFoundBody stand alone VM disks purge not found body
-swagger:model StandAloneVMDisksPurgeNotFoundBody
-*/
-type StandAloneVMDisksPurgeNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone VM disks purge not found body
-func (o *StandAloneVMDisksPurgeNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone VM disks purge not found body based on context it is used
-func (o *StandAloneVMDisksPurgeNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneVMDisksPurgeNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneVMDisksPurgeNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneVMDisksPurgeNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneVMDisksPurgeUnauthorizedBody stand alone VM disks purge unauthorized body
-swagger:model StandAloneVMDisksPurgeUnauthorizedBody
-*/
-type StandAloneVMDisksPurgeUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone VM disks purge unauthorized body
-func (o *StandAloneVMDisksPurgeUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone VM disks purge unauthorized body based on context it is used
-func (o *StandAloneVMDisksPurgeUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneVMDisksPurgeUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneVMDisksPurgeUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneVMDisksPurgeUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

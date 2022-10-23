@@ -6,15 +6,13 @@ package catalog
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CatalogEditCatalogAppParamsReader is a Reader for the CatalogEditCatalogAppParams structure.
@@ -77,7 +75,7 @@ CatalogEditCatalogAppParamsOK describes a response with status code 200, with de
 Success
 */
 type CatalogEditCatalogAppParamsOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this catalog edit catalog app params o k response has a 2xx status code
@@ -113,7 +111,7 @@ func (o *CatalogEditCatalogAppParamsOK) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-params][%d] catalogEditCatalogAppParamsOK  %+v", 200, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppParamsOK) GetPayload() interface{} {
+func (o *CatalogEditCatalogAppParamsOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -138,7 +136,7 @@ CatalogEditCatalogAppParamsBadRequest describes a response with status code 400,
 Bad Request
 */
 type CatalogEditCatalogAppParamsBadRequest struct {
-	Payload []*CatalogEditCatalogAppParamsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this catalog edit catalog app params bad request response has a 2xx status code
@@ -174,7 +172,7 @@ func (o *CatalogEditCatalogAppParamsBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-params][%d] catalogEditCatalogAppParamsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppParamsBadRequest) GetPayload() []*CatalogEditCatalogAppParamsBadRequestBodyItems0 {
+func (o *CatalogEditCatalogAppParamsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +197,7 @@ CatalogEditCatalogAppParamsUnauthorized describes a response with status code 40
 Unauthorized
 */
 type CatalogEditCatalogAppParamsUnauthorized struct {
-	Payload *CatalogEditCatalogAppParamsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog edit catalog app params unauthorized response has a 2xx status code
@@ -235,13 +233,13 @@ func (o *CatalogEditCatalogAppParamsUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-params][%d] catalogEditCatalogAppParamsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppParamsUnauthorized) GetPayload() *CatalogEditCatalogAppParamsUnauthorizedBody {
+func (o *CatalogEditCatalogAppParamsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogAppParamsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CatalogEditCatalogAppParamsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +260,7 @@ CatalogEditCatalogAppParamsForbidden describes a response with status code 403, 
 Forbidden
 */
 type CatalogEditCatalogAppParamsForbidden struct {
-	Payload *CatalogEditCatalogAppParamsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog edit catalog app params forbidden response has a 2xx status code
@@ -298,13 +296,13 @@ func (o *CatalogEditCatalogAppParamsForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-params][%d] catalogEditCatalogAppParamsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppParamsForbidden) GetPayload() *CatalogEditCatalogAppParamsForbiddenBody {
+func (o *CatalogEditCatalogAppParamsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogAppParamsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CatalogEditCatalogAppParamsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +323,7 @@ CatalogEditCatalogAppParamsNotFound describes a response with status code 404, w
 Not Found
 */
 type CatalogEditCatalogAppParamsNotFound struct {
-	Payload *CatalogEditCatalogAppParamsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog edit catalog app params not found response has a 2xx status code
@@ -361,13 +359,13 @@ func (o *CatalogEditCatalogAppParamsNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Catalog/edit-catalogapp-params][%d] catalogEditCatalogAppParamsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogEditCatalogAppParamsNotFound) GetPayload() *CatalogEditCatalogAppParamsNotFoundBody {
+func (o *CatalogEditCatalogAppParamsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogEditCatalogAppParamsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CatalogEditCatalogAppParamsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,348 +423,5 @@ func (o *CatalogEditCatalogAppParamsInternalServerError) String() string {
 
 func (o *CatalogEditCatalogAppParamsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CatalogEditCatalogAppParamsBadRequestBodyItems0 catalog edit catalog app params bad request body items0
-swagger:model CatalogEditCatalogAppParamsBadRequestBodyItems0
-*/
-type CatalogEditCatalogAppParamsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this catalog edit catalog app params bad request body items0
-func (o *CatalogEditCatalogAppParamsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog edit catalog app params bad request body items0 based on context it is used
-func (o *CatalogEditCatalogAppParamsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogEditCatalogAppParamsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogEditCatalogAppParamsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CatalogEditCatalogAppParamsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogEditCatalogAppParamsBody catalog edit catalog app params body
-swagger:model CatalogEditCatalogAppParamsBody
-*/
-type CatalogEditCatalogAppParamsBody struct {
-
-	// catalog app Id
-	CatalogAppID int32 `json:"catalogAppId,omitempty"`
-
-	// parameters
-	Parameters []*CatalogEditCatalogAppParamsParamsBodyParametersItems0 `json:"parameters"`
-}
-
-// Validate validates this catalog edit catalog app params body
-func (o *CatalogEditCatalogAppParamsBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateParameters(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *CatalogEditCatalogAppParamsBody) validateParameters(formats strfmt.Registry) error {
-	if swag.IsZero(o.Parameters) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Parameters); i++ {
-		if swag.IsZero(o.Parameters[i]) { // not required
-			continue
-		}
-
-		if o.Parameters[i] != nil {
-			if err := o.Parameters[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this catalog edit catalog app params body based on the context it is used
-func (o *CatalogEditCatalogAppParamsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateParameters(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *CatalogEditCatalogAppParamsBody) contextValidateParameters(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Parameters); i++ {
-
-		if o.Parameters[i] != nil {
-			if err := o.Parameters[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "parameters" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogEditCatalogAppParamsBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogEditCatalogAppParamsBody) UnmarshalBinary(b []byte) error {
-	var res CatalogEditCatalogAppParamsBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogEditCatalogAppParamsForbiddenBody catalog edit catalog app params forbidden body
-swagger:model CatalogEditCatalogAppParamsForbiddenBody
-*/
-type CatalogEditCatalogAppParamsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this catalog edit catalog app params forbidden body
-func (o *CatalogEditCatalogAppParamsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog edit catalog app params forbidden body based on context it is used
-func (o *CatalogEditCatalogAppParamsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogEditCatalogAppParamsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogEditCatalogAppParamsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CatalogEditCatalogAppParamsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogEditCatalogAppParamsNotFoundBody catalog edit catalog app params not found body
-swagger:model CatalogEditCatalogAppParamsNotFoundBody
-*/
-type CatalogEditCatalogAppParamsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this catalog edit catalog app params not found body
-func (o *CatalogEditCatalogAppParamsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog edit catalog app params not found body based on context it is used
-func (o *CatalogEditCatalogAppParamsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogEditCatalogAppParamsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogEditCatalogAppParamsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CatalogEditCatalogAppParamsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogEditCatalogAppParamsParamsBodyParametersItems0 catalog edit catalog app params params body parameters items0
-swagger:model CatalogEditCatalogAppParamsParamsBodyParametersItems0
-*/
-type CatalogEditCatalogAppParamsParamsBodyParametersItems0 struct {
-
-	// is changeable
-	IsChangeable bool `json:"isChangeable"`
-
-	// is readonly
-	IsReadonly bool `json:"isReadonly"`
-
-	// key
-	Key string `json:"key,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this catalog edit catalog app params params body parameters items0
-func (o *CatalogEditCatalogAppParamsParamsBodyParametersItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog edit catalog app params params body parameters items0 based on context it is used
-func (o *CatalogEditCatalogAppParamsParamsBodyParametersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogEditCatalogAppParamsParamsBodyParametersItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogEditCatalogAppParamsParamsBodyParametersItems0) UnmarshalBinary(b []byte) error {
-	var res CatalogEditCatalogAppParamsParamsBodyParametersItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogEditCatalogAppParamsUnauthorizedBody catalog edit catalog app params unauthorized body
-swagger:model CatalogEditCatalogAppParamsUnauthorizedBody
-*/
-type CatalogEditCatalogAppParamsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this catalog edit catalog app params unauthorized body
-func (o *CatalogEditCatalogAppParamsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog edit catalog app params unauthorized body based on context it is used
-func (o *CatalogEditCatalogAppParamsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogEditCatalogAppParamsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogEditCatalogAppParamsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CatalogEditCatalogAppParamsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

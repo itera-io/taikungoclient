@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCloudCredentialsMakeDefaultParams creates a new CloudCredentialsMakeDefaultParams object,
@@ -62,7 +64,7 @@ CloudCredentialsMakeDefaultParams contains all the parameters to send to the API
 type CloudCredentialsMakeDefaultParams struct {
 
 	// Body.
-	Body CloudCredentialsMakeDefaultBody
+	Body *models.CredentialMakeDefaultCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CloudCredentialsMakeDefaultParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the cloud credentials make default params
-func (o *CloudCredentialsMakeDefaultParams) WithBody(body CloudCredentialsMakeDefaultBody) *CloudCredentialsMakeDefaultParams {
+func (o *CloudCredentialsMakeDefaultParams) WithBody(body *models.CredentialMakeDefaultCommand) *CloudCredentialsMakeDefaultParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cloud credentials make default params
-func (o *CloudCredentialsMakeDefaultParams) SetBody(body CloudCredentialsMakeDefaultBody) {
+func (o *CloudCredentialsMakeDefaultParams) SetBody(body *models.CredentialMakeDefaultCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *CloudCredentialsMakeDefaultParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

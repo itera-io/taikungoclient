@@ -7,12 +7,10 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // NotificationSendCommand notification send command
@@ -21,19 +19,16 @@ import (
 type NotificationSendCommand struct {
 
 	// action status
-	// Enum: [0 1 2]
-	ActionStatus int32 `json:"actionStatus,omitempty"`
+	ActionStatus ActionStatus `json:"actionStatus,omitempty"`
 
 	// action type
-	// Enum: [10 20 30 32 34 36 38 40 42 44 50 60 70 80 90 100 105 110 120 130 140 150 155 156 160 165 170 175 176 177 180 190 200 210 220 230 240 250 260 270 280 290 300 310 320 330 340 350 360 370 380 390]
-	ActionType int32 `json:"actionType,omitempty"`
+	ActionType ActionType `json:"actionType,omitempty"`
 
 	// project Id
 	ProjectID int32 `json:"projectId,omitempty"`
 
 	// project type
-	// Enum: [100 200]
-	ProjectType int32 `json:"projectType,omitempty"`
+	ProjectType ProjectType `json:"projectType,omitempty"`
 }
 
 // Validate validates this notification send command
@@ -58,56 +53,20 @@ func (m *NotificationSendCommand) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var notificationSendCommandTypeActionStatusPropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[0,1,2]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		notificationSendCommandTypeActionStatusPropEnum = append(notificationSendCommandTypeActionStatusPropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *NotificationSendCommand) validateActionStatusEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, notificationSendCommandTypeActionStatusPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *NotificationSendCommand) validateActionStatus(formats strfmt.Registry) error {
 	if swag.IsZero(m.ActionStatus) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateActionStatusEnum("actionStatus", "body", m.ActionStatus); err != nil {
+	if err := m.ActionStatus.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("actionStatus")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("actionStatus")
+		}
 		return err
 	}
 
-	return nil
-}
-
-var notificationSendCommandTypeActionTypePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[10,20,30,32,34,36,38,40,42,44,50,60,70,80,90,100,105,110,120,130,140,150,155,156,160,165,170,175,176,177,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		notificationSendCommandTypeActionTypePropEnum = append(notificationSendCommandTypeActionTypePropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *NotificationSendCommand) validateActionTypeEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, notificationSendCommandTypeActionTypePropEnum, true); err != nil {
-		return err
-	}
 	return nil
 }
 
@@ -116,31 +75,15 @@ func (m *NotificationSendCommand) validateActionType(formats strfmt.Registry) er
 		return nil
 	}
 
-	// value enum
-	if err := m.validateActionTypeEnum("actionType", "body", m.ActionType); err != nil {
+	if err := m.ActionType.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("actionType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("actionType")
+		}
 		return err
 	}
 
-	return nil
-}
-
-var notificationSendCommandTypeProjectTypePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		notificationSendCommandTypeProjectTypePropEnum = append(notificationSendCommandTypeProjectTypePropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *NotificationSendCommand) validateProjectTypeEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, notificationSendCommandTypeProjectTypePropEnum, true); err != nil {
-		return err
-	}
 	return nil
 }
 
@@ -149,16 +92,79 @@ func (m *NotificationSendCommand) validateProjectType(formats strfmt.Registry) e
 		return nil
 	}
 
-	// value enum
-	if err := m.validateProjectTypeEnum("projectType", "body", m.ProjectType); err != nil {
+	if err := m.ProjectType.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("projectType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("projectType")
+		}
 		return err
 	}
 
 	return nil
 }
 
-// ContextValidate validates this notification send command based on context it is used
+// ContextValidate validate this notification send command based on the context it is used
 func (m *NotificationSendCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateActionStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateActionType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProjectType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *NotificationSendCommand) contextValidateActionStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.ActionStatus.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("actionStatus")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("actionStatus")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *NotificationSendCommand) contextValidateActionType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.ActionType.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("actionType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("actionType")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *NotificationSendCommand) contextValidateProjectType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.ProjectType.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("projectType")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("projectType")
+		}
+		return err
+	}
+
 	return nil
 }
 

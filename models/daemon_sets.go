@@ -20,7 +20,7 @@ import (
 type DaemonSets struct {
 
 	// data
-	Data []*DaemonSetsDataItems0 `json:"data"`
+	Data []*DaemonSetDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,52 +111,6 @@ func (m *DaemonSets) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *DaemonSets) UnmarshalBinary(b []byte) error {
 	var res DaemonSets
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// DaemonSetsDataItems0 daemon sets data items0
-//
-// swagger:model DaemonSetsDataItems0
-type DaemonSetsDataItems0 struct {
-
-	// age
-	Age string `json:"age,omitempty"`
-
-	// metadata name
-	MetadataName string `json:"metadataName,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// status
-	Status string `json:"status,omitempty"`
-}
-
-// Validate validates this daemon sets data items0
-func (m *DaemonSetsDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this daemon sets data items0 based on context it is used
-func (m *DaemonSetsDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *DaemonSetsDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *DaemonSetsDataItems0) UnmarshalBinary(b []byte) error {
-	var res DaemonSetsDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

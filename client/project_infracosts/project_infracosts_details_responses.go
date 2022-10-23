@@ -6,16 +6,13 @@ package project_infracosts
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectInfracostsDetailsReader is a Reader for the ProjectInfracostsDetails structure.
@@ -78,7 +75,7 @@ ProjectInfracostsDetailsOK describes a response with status code 200, with defau
 Success
 */
 type ProjectInfracostsDetailsOK struct {
-	Payload *ProjectInfracostsDetailsOKBody
+	Payload *models.EstimatedInfracost
 }
 
 // IsSuccess returns true when this project infracosts details o k response has a 2xx status code
@@ -114,13 +111,13 @@ func (o *ProjectInfracostsDetailsOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectInfracostsDetailsOK) GetPayload() *ProjectInfracostsDetailsOKBody {
+func (o *ProjectInfracostsDetailsOK) GetPayload() *models.EstimatedInfracost {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsDetailsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectInfracostsDetailsOKBody)
+	o.Payload = new(models.EstimatedInfracost)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -141,7 +138,7 @@ ProjectInfracostsDetailsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type ProjectInfracostsDetailsBadRequest struct {
-	Payload []*ProjectInfracostsDetailsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this project infracosts details bad request response has a 2xx status code
@@ -177,7 +174,7 @@ func (o *ProjectInfracostsDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectInfracostsDetailsBadRequest) GetPayload() []*ProjectInfracostsDetailsBadRequestBodyItems0 {
+func (o *ProjectInfracostsDetailsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -202,7 +199,7 @@ ProjectInfracostsDetailsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type ProjectInfracostsDetailsUnauthorized struct {
-	Payload *ProjectInfracostsDetailsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project infracosts details unauthorized response has a 2xx status code
@@ -238,13 +235,13 @@ func (o *ProjectInfracostsDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectInfracostsDetailsUnauthorized) GetPayload() *ProjectInfracostsDetailsUnauthorizedBody {
+func (o *ProjectInfracostsDetailsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsDetailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectInfracostsDetailsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -265,7 +262,7 @@ ProjectInfracostsDetailsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type ProjectInfracostsDetailsForbidden struct {
-	Payload *ProjectInfracostsDetailsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project infracosts details forbidden response has a 2xx status code
@@ -301,13 +298,13 @@ func (o *ProjectInfracostsDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectInfracostsDetailsForbidden) GetPayload() *ProjectInfracostsDetailsForbiddenBody {
+func (o *ProjectInfracostsDetailsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsDetailsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectInfracostsDetailsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -328,7 +325,7 @@ ProjectInfracostsDetailsNotFound describes a response with status code 404, with
 Not Found
 */
 type ProjectInfracostsDetailsNotFound struct {
-	Payload *ProjectInfracostsDetailsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project infracosts details not found response has a 2xx status code
@@ -364,13 +361,13 @@ func (o *ProjectInfracostsDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/ProjectInfracosts/{id}][%d] projectInfracostsDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectInfracostsDetailsNotFound) GetPayload() *ProjectInfracostsDetailsNotFoundBody {
+func (o *ProjectInfracostsDetailsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectInfracostsDetailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectInfracostsDetailsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -428,967 +425,5 @@ func (o *ProjectInfracostsDetailsInternalServerError) String() string {
 
 func (o *ProjectInfracostsDetailsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectInfracostsDetailsBadRequestBodyItems0 project infracosts details bad request body items0
-swagger:model ProjectInfracostsDetailsBadRequestBodyItems0
-*/
-type ProjectInfracostsDetailsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this project infracosts details bad request body items0
-func (o *ProjectInfracostsDetailsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project infracosts details bad request body items0 based on context it is used
-func (o *ProjectInfracostsDetailsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectInfracostsDetailsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectInfracostsDetailsForbiddenBody project infracosts details forbidden body
-swagger:model ProjectInfracostsDetailsForbiddenBody
-*/
-type ProjectInfracostsDetailsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this project infracosts details forbidden body
-func (o *ProjectInfracostsDetailsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project infracosts details forbidden body based on context it is used
-func (o *ProjectInfracostsDetailsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectInfracostsDetailsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectInfracostsDetailsNotFoundBody project infracosts details not found body
-swagger:model ProjectInfracostsDetailsNotFoundBody
-*/
-type ProjectInfracostsDetailsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this project infracosts details not found body
-func (o *ProjectInfracostsDetailsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project infracosts details not found body based on context it is used
-func (o *ProjectInfracostsDetailsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectInfracostsDetailsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectInfracostsDetailsOKBody project infracosts details o k body
-swagger:model ProjectInfracostsDetailsOKBody
-*/
-type ProjectInfracostsDetailsOKBody struct {
-
-	// resources
-	Resources []*ProjectInfracostsDetailsOKBodyResourcesItems0 `json:"resources"`
-
-	// total hourly cost
-	TotalHourlyCost string `json:"totalHourlyCost,omitempty"`
-
-	// total monthly cost
-	TotalMonthlyCost string `json:"totalMonthlyCost,omitempty"`
-}
-
-// Validate validates this project infracosts details o k body
-func (o *ProjectInfracostsDetailsOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateResources(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ProjectInfracostsDetailsOKBody) validateResources(formats strfmt.Registry) error {
-	if swag.IsZero(o.Resources) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Resources); i++ {
-		if swag.IsZero(o.Resources[i]) { // not required
-			continue
-		}
-
-		if o.Resources[i] != nil {
-			if err := o.Resources[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projectInfracostsDetailsOK" + "." + "resources" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projectInfracostsDetailsOK" + "." + "resources" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this project infracosts details o k body based on the context it is used
-func (o *ProjectInfracostsDetailsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateResources(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ProjectInfracostsDetailsOKBody) contextValidateResources(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Resources); i++ {
-
-		if o.Resources[i] != nil {
-			if err := o.Resources[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projectInfracostsDetailsOK" + "." + "resources" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projectInfracostsDetailsOK" + "." + "resources" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsOKBody) UnmarshalBinary(b []byte) error {
-	var res ProjectInfracostsDetailsOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectInfracostsDetailsOKBodyResourcesItems0 project infracosts details o k body resources items0
-swagger:model ProjectInfracostsDetailsOKBodyResourcesItems0
-*/
-type ProjectInfracostsDetailsOKBodyResourcesItems0 struct {
-
-	// cost components
-	CostComponents []*ProjectInfracostsDetailsOKBodyResourcesItems0CostComponentsItems0 `json:"costComponents"`
-
-	// hourly cost
-	HourlyCost string `json:"hourlyCost,omitempty"`
-
-	// metadata
-	Metadata *ProjectInfracostsDetailsOKBodyResourcesItems0Metadata `json:"metadata,omitempty"`
-
-	// monthly cost
-	MonthlyCost string `json:"monthlyCost,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// subresources
-	Subresources []*ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0 `json:"subresources"`
-}
-
-// Validate validates this project infracosts details o k body resources items0
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateCostComponents(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateMetadata(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateSubresources(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0) validateCostComponents(formats strfmt.Registry) error {
-	if swag.IsZero(o.CostComponents) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.CostComponents); i++ {
-		if swag.IsZero(o.CostComponents[i]) { // not required
-			continue
-		}
-
-		if o.CostComponents[i] != nil {
-			if err := o.CostComponents[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("costComponents" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("costComponents" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0) validateMetadata(formats strfmt.Registry) error {
-	if swag.IsZero(o.Metadata) { // not required
-		return nil
-	}
-
-	if o.Metadata != nil {
-		if err := o.Metadata.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("metadata")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("metadata")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0) validateSubresources(formats strfmt.Registry) error {
-	if swag.IsZero(o.Subresources) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Subresources); i++ {
-		if swag.IsZero(o.Subresources[i]) { // not required
-			continue
-		}
-
-		if o.Subresources[i] != nil {
-			if err := o.Subresources[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("subresources" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("subresources" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this project infracosts details o k body resources items0 based on the context it is used
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateCostComponents(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateMetadata(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateSubresources(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0) contextValidateCostComponents(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.CostComponents); i++ {
-
-		if o.CostComponents[i] != nil {
-			if err := o.CostComponents[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("costComponents" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("costComponents" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0) contextValidateMetadata(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Metadata != nil {
-		if err := o.Metadata.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("metadata")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("metadata")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0) contextValidateSubresources(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Subresources); i++ {
-
-		if o.Subresources[i] != nil {
-			if err := o.Subresources[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("subresources" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("subresources" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectInfracostsDetailsOKBodyResourcesItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectInfracostsDetailsOKBodyResourcesItems0CostComponentsItems0 project infracosts details o k body resources items0 cost components items0
-swagger:model ProjectInfracostsDetailsOKBodyResourcesItems0CostComponentsItems0
-*/
-type ProjectInfracostsDetailsOKBodyResourcesItems0CostComponentsItems0 struct {
-
-	// hourly cost
-	HourlyCost string `json:"hourlyCost,omitempty"`
-
-	// hourly quantity
-	HourlyQuantity string `json:"hourlyQuantity,omitempty"`
-
-	// monthly cost
-	MonthlyCost string `json:"monthlyCost,omitempty"`
-
-	// monthly quantity
-	MonthlyQuantity string `json:"monthlyQuantity,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// price
-	Price string `json:"price,omitempty"`
-
-	// unit
-	Unit string `json:"unit,omitempty"`
-}
-
-// Validate validates this project infracosts details o k body resources items0 cost components items0
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0CostComponentsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project infracosts details o k body resources items0 cost components items0 based on context it is used
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0CostComponentsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0CostComponentsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0CostComponentsItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectInfracostsDetailsOKBodyResourcesItems0CostComponentsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectInfracostsDetailsOKBodyResourcesItems0Metadata project infracosts details o k body resources items0 metadata
-swagger:model ProjectInfracostsDetailsOKBodyResourcesItems0Metadata
-*/
-type ProjectInfracostsDetailsOKBodyResourcesItems0Metadata struct {
-
-	// infracost command
-	InfracostCommand string `json:"infracostCommand,omitempty"`
-
-	// path
-	Path string `json:"path,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-
-	// vcs branch
-	VcsBranch string `json:"vcsBranch,omitempty"`
-
-	// vcs commit author email
-	VcsCommitAuthorEmail string `json:"vcsCommitAuthorEmail,omitempty"`
-
-	// vcs commit author name
-	VcsCommitAuthorName string `json:"vcsCommitAuthorName,omitempty"`
-
-	// vcs commit message
-	VcsCommitMessage string `json:"vcsCommitMessage,omitempty"`
-
-	// vcs commit sha
-	VcsCommitSha string `json:"vcsCommitSha,omitempty"`
-
-	// vcs commit timestamp
-	// Format: date-time
-	VcsCommitTimestamp *strfmt.DateTime `json:"vcsCommitTimestamp,omitempty"`
-
-	// vcs repository Url
-	VcsRepositoryURL string `json:"vcsRepositoryUrl,omitempty"`
-
-	// vcs sub path
-	VcsSubPath string `json:"vcsSubPath,omitempty"`
-}
-
-// Validate validates this project infracosts details o k body resources items0 metadata
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0Metadata) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateVcsCommitTimestamp(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0Metadata) validateVcsCommitTimestamp(formats strfmt.Registry) error {
-	if swag.IsZero(o.VcsCommitTimestamp) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("metadata"+"."+"vcsCommitTimestamp", "body", "date-time", o.VcsCommitTimestamp.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this project infracosts details o k body resources items0 metadata based on context it is used
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0Metadata) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0Metadata) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0Metadata) UnmarshalBinary(b []byte) error {
-	var res ProjectInfracostsDetailsOKBodyResourcesItems0Metadata
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0 project infracosts details o k body resources items0 subresources items0
-swagger:model ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0
-*/
-type ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0 struct {
-
-	// cost components
-	CostComponents []*ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0CostComponentsItems0 `json:"costComponents"`
-
-	// hourly cost
-	HourlyCost string `json:"hourlyCost,omitempty"`
-
-	// metadata
-	Metadata *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0Metadata `json:"metadata,omitempty"`
-
-	// monthly cost
-	MonthlyCost string `json:"monthlyCost,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this project infracosts details o k body resources items0 subresources items0
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateCostComponents(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateMetadata(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0) validateCostComponents(formats strfmt.Registry) error {
-	if swag.IsZero(o.CostComponents) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.CostComponents); i++ {
-		if swag.IsZero(o.CostComponents[i]) { // not required
-			continue
-		}
-
-		if o.CostComponents[i] != nil {
-			if err := o.CostComponents[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("costComponents" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("costComponents" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0) validateMetadata(formats strfmt.Registry) error {
-	if swag.IsZero(o.Metadata) { // not required
-		return nil
-	}
-
-	if o.Metadata != nil {
-		if err := o.Metadata.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("metadata")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("metadata")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this project infracosts details o k body resources items0 subresources items0 based on the context it is used
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateCostComponents(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateMetadata(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0) contextValidateCostComponents(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.CostComponents); i++ {
-
-		if o.CostComponents[i] != nil {
-			if err := o.CostComponents[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("costComponents" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("costComponents" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0) contextValidateMetadata(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Metadata != nil {
-		if err := o.Metadata.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("metadata")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("metadata")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0CostComponentsItems0 project infracosts details o k body resources items0 subresources items0 cost components items0
-swagger:model ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0CostComponentsItems0
-*/
-type ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0CostComponentsItems0 struct {
-
-	// hourly cost
-	HourlyCost string `json:"hourlyCost,omitempty"`
-
-	// hourly quantity
-	HourlyQuantity string `json:"hourlyQuantity,omitempty"`
-
-	// monthly cost
-	MonthlyCost string `json:"monthlyCost,omitempty"`
-
-	// monthly quantity
-	MonthlyQuantity string `json:"monthlyQuantity,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// price
-	Price string `json:"price,omitempty"`
-
-	// unit
-	Unit string `json:"unit,omitempty"`
-}
-
-// Validate validates this project infracosts details o k body resources items0 subresources items0 cost components items0
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0CostComponentsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project infracosts details o k body resources items0 subresources items0 cost components items0 based on context it is used
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0CostComponentsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0CostComponentsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0CostComponentsItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0CostComponentsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0Metadata project infracosts details o k body resources items0 subresources items0 metadata
-swagger:model ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0Metadata
-*/
-type ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0Metadata struct {
-
-	// infracost command
-	InfracostCommand string `json:"infracostCommand,omitempty"`
-
-	// path
-	Path string `json:"path,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-
-	// vcs branch
-	VcsBranch string `json:"vcsBranch,omitempty"`
-
-	// vcs commit author email
-	VcsCommitAuthorEmail string `json:"vcsCommitAuthorEmail,omitempty"`
-
-	// vcs commit author name
-	VcsCommitAuthorName string `json:"vcsCommitAuthorName,omitempty"`
-
-	// vcs commit message
-	VcsCommitMessage string `json:"vcsCommitMessage,omitempty"`
-
-	// vcs commit sha
-	VcsCommitSha string `json:"vcsCommitSha,omitempty"`
-
-	// vcs commit timestamp
-	// Format: date-time
-	VcsCommitTimestamp *strfmt.DateTime `json:"vcsCommitTimestamp,omitempty"`
-
-	// vcs repository Url
-	VcsRepositoryURL string `json:"vcsRepositoryUrl,omitempty"`
-
-	// vcs sub path
-	VcsSubPath string `json:"vcsSubPath,omitempty"`
-}
-
-// Validate validates this project infracosts details o k body resources items0 subresources items0 metadata
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0Metadata) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateVcsCommitTimestamp(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0Metadata) validateVcsCommitTimestamp(formats strfmt.Registry) error {
-	if swag.IsZero(o.VcsCommitTimestamp) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("metadata"+"."+"vcsCommitTimestamp", "body", "date-time", o.VcsCommitTimestamp.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this project infracosts details o k body resources items0 subresources items0 metadata based on context it is used
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0Metadata) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0Metadata) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0Metadata) UnmarshalBinary(b []byte) error {
-	var res ProjectInfracostsDetailsOKBodyResourcesItems0SubresourcesItems0Metadata
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectInfracostsDetailsUnauthorizedBody project infracosts details unauthorized body
-swagger:model ProjectInfracostsDetailsUnauthorizedBody
-*/
-type ProjectInfracostsDetailsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this project infracosts details unauthorized body
-func (o *ProjectInfracostsDetailsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project infracosts details unauthorized body based on context it is used
-func (o *ProjectInfracostsDetailsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectInfracostsDetailsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectInfracostsDetailsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

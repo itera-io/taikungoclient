@@ -23,7 +23,7 @@ type WhiteListDomainCreateCommand struct {
 	PartnerID int32 `json:"partnerId,omitempty"`
 
 	// white list domains
-	WhiteListDomains []*WhiteListDomainCreateCommandWhiteListDomainsItems0 `json:"whiteListDomains"`
+	WhiteListDomains []*WhiteListDomainCreateDto `json:"whiteListDomains"`
 }
 
 // Validate validates this white list domain create command
@@ -111,43 +111,6 @@ func (m *WhiteListDomainCreateCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *WhiteListDomainCreateCommand) UnmarshalBinary(b []byte) error {
 	var res WhiteListDomainCreateCommand
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// WhiteListDomainCreateCommandWhiteListDomainsItems0 white list domain create command white list domains items0
-//
-// swagger:model WhiteListDomainCreateCommandWhiteListDomainsItems0
-type WhiteListDomainCreateCommandWhiteListDomainsItems0 struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this white list domain create command white list domains items0
-func (m *WhiteListDomainCreateCommandWhiteListDomainsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this white list domain create command white list domains items0 based on context it is used
-func (m *WhiteListDomainCreateCommandWhiteListDomainsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *WhiteListDomainCreateCommandWhiteListDomainsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *WhiteListDomainCreateCommandWhiteListDomainsItems0) UnmarshalBinary(b []byte) error {
-	var res WhiteListDomainCreateCommandWhiteListDomainsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

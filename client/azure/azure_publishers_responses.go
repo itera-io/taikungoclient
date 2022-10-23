@@ -6,13 +6,13 @@ package azure
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AzurePublishersReader is a Reader for the AzurePublishers structure.
@@ -75,7 +75,7 @@ AzurePublishersOK describes a response with status code 200, with default header
 Success
 */
 type AzurePublishersOK struct {
-	Payload *AzurePublishersOKBody
+	Payload *models.AzurePublishersList
 }
 
 // IsSuccess returns true when this azure publishers o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *AzurePublishersOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersOK  %+v", 200, o.Payload)
 }
 
-func (o *AzurePublishersOK) GetPayload() *AzurePublishersOKBody {
+func (o *AzurePublishersOK) GetPayload() *models.AzurePublishersList {
 	return o.Payload
 }
 
 func (o *AzurePublishersOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzurePublishersOKBody)
+	o.Payload = new(models.AzurePublishersList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ AzurePublishersBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type AzurePublishersBadRequest struct {
-	Payload []*AzurePublishersBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this azure publishers bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AzurePublishersBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzurePublishersBadRequest) GetPayload() []*AzurePublishersBadRequestBodyItems0 {
+func (o *AzurePublishersBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ AzurePublishersUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type AzurePublishersUnauthorized struct {
-	Payload *AzurePublishersUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure publishers unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *AzurePublishersUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzurePublishersUnauthorized) GetPayload() *AzurePublishersUnauthorizedBody {
+func (o *AzurePublishersUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzurePublishersUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzurePublishersUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ AzurePublishersForbidden describes a response with status code 403, with default
 Forbidden
 */
 type AzurePublishersForbidden struct {
-	Payload *AzurePublishersForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure publishers forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *AzurePublishersForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzurePublishersForbidden) GetPayload() *AzurePublishersForbiddenBody {
+func (o *AzurePublishersForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzurePublishersForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzurePublishersForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ AzurePublishersNotFound describes a response with status code 404, with default 
 Not Found
 */
 type AzurePublishersNotFound struct {
-	Payload *AzurePublishersNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure publishers not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *AzurePublishersNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Azure/publishers/{cloudId}][%d] azurePublishersNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzurePublishersNotFound) GetPayload() *AzurePublishersNotFoundBody {
+func (o *AzurePublishersNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzurePublishersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzurePublishersNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,237 +425,5 @@ func (o *AzurePublishersInternalServerError) String() string {
 
 func (o *AzurePublishersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AzurePublishersBadRequestBodyItems0 azure publishers bad request body items0
-swagger:model AzurePublishersBadRequestBodyItems0
-*/
-type AzurePublishersBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this azure publishers bad request body items0
-func (o *AzurePublishersBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure publishers bad request body items0 based on context it is used
-func (o *AzurePublishersBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzurePublishersBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzurePublishersBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AzurePublishersBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzurePublishersForbiddenBody azure publishers forbidden body
-swagger:model AzurePublishersForbiddenBody
-*/
-type AzurePublishersForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure publishers forbidden body
-func (o *AzurePublishersForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure publishers forbidden body based on context it is used
-func (o *AzurePublishersForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzurePublishersForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzurePublishersForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AzurePublishersForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzurePublishersNotFoundBody azure publishers not found body
-swagger:model AzurePublishersNotFoundBody
-*/
-type AzurePublishersNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure publishers not found body
-func (o *AzurePublishersNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure publishers not found body based on context it is used
-func (o *AzurePublishersNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzurePublishersNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzurePublishersNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AzurePublishersNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzurePublishersOKBody azure publishers o k body
-swagger:model AzurePublishersOKBody
-*/
-type AzurePublishersOKBody struct {
-
-	// data
-	Data []string `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this azure publishers o k body
-func (o *AzurePublishersOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure publishers o k body based on context it is used
-func (o *AzurePublishersOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzurePublishersOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzurePublishersOKBody) UnmarshalBinary(b []byte) error {
-	var res AzurePublishersOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzurePublishersUnauthorizedBody azure publishers unauthorized body
-swagger:model AzurePublishersUnauthorizedBody
-*/
-type AzurePublishersUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure publishers unauthorized body
-func (o *AzurePublishersUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure publishers unauthorized body based on context it is used
-func (o *AzurePublishersUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzurePublishersUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzurePublishersUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AzurePublishersUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

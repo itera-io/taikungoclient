@@ -50,7 +50,7 @@ type ShowbackCredentialsListDto struct {
 	Password string `json:"password,omitempty"`
 
 	// rules
-	Rules []*ShowbackCredentialsListDtoRulesItems0 `json:"rules"`
+	Rules []*ShowbackRuleEntityDto `json:"rules"`
 
 	// url
 	URL string `json:"url,omitempty"`
@@ -144,46 +144,6 @@ func (m *ShowbackCredentialsListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ShowbackCredentialsListDto) UnmarshalBinary(b []byte) error {
 	var res ShowbackCredentialsListDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// ShowbackCredentialsListDtoRulesItems0 showback credentials list dto rules items0
-//
-// swagger:model ShowbackCredentialsListDtoRulesItems0
-type ShowbackCredentialsListDtoRulesItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this showback credentials list dto rules items0
-func (m *ShowbackCredentialsListDtoRulesItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback credentials list dto rules items0 based on context it is used
-func (m *ShowbackCredentialsListDtoRulesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *ShowbackCredentialsListDtoRulesItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *ShowbackCredentialsListDtoRulesItems0) UnmarshalBinary(b []byte) error {
-	var res ShowbackCredentialsListDtoRulesItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

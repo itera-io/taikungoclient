@@ -20,7 +20,7 @@ import (
 type Invoices struct {
 
 	// data
-	Data []*InvoicesDataItems0 `json:"data"`
+	Data []*InvoiceListDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,82 +111,6 @@ func (m *Invoices) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *Invoices) UnmarshalBinary(b []byte) error {
 	var res Invoices
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// InvoicesDataItems0 invoices data items0
-//
-// swagger:model InvoicesDataItems0
-type InvoicesDataItems0 struct {
-
-	// end date
-	EndDate string `json:"endDate,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// invoice Id
-	InvoiceID string `json:"invoiceId,omitempty"`
-
-	// invoice number
-	InvoiceNumber string `json:"invoiceNumber,omitempty"`
-
-	// is paid
-	IsPaid bool `json:"isPaid"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// organization subscription Id
-	OrganizationSubscriptionID int32 `json:"organizationSubscriptionId,omitempty"`
-
-	// price
-	Price float64 `json:"price,omitempty"`
-
-	// required payment action
-	RequiredPaymentAction bool `json:"requiredPaymentAction"`
-
-	// start date
-	StartDate string `json:"startDate,omitempty"`
-
-	// subscription name
-	SubscriptionName string `json:"subscriptionName,omitempty"`
-
-	// subscription type
-	SubscriptionType string `json:"subscriptionType,omitempty"`
-}
-
-// Validate validates this invoices data items0
-func (m *InvoicesDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this invoices data items0 based on context it is used
-func (m *InvoicesDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *InvoicesDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *InvoicesDataItems0) UnmarshalBinary(b []byte) error {
-	var res InvoicesDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -6,16 +6,13 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsResetProjectStatusReader is a Reader for the ProjectsResetProjectStatus structure.
@@ -78,7 +75,7 @@ ProjectsResetProjectStatusOK describes a response with status code 200, with def
 Success
 */
 type ProjectsResetProjectStatusOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects reset project status o k response has a 2xx status code
@@ -114,7 +111,7 @@ func (o *ProjectsResetProjectStatusOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsResetProjectStatusOK) GetPayload() interface{} {
+func (o *ProjectsResetProjectStatusOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -139,7 +136,7 @@ ProjectsResetProjectStatusBadRequest describes a response with status code 400, 
 Bad Request
 */
 type ProjectsResetProjectStatusBadRequest struct {
-	Payload []*ProjectsResetProjectStatusBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects reset project status bad request response has a 2xx status code
@@ -175,7 +172,7 @@ func (o *ProjectsResetProjectStatusBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsResetProjectStatusBadRequest) GetPayload() []*ProjectsResetProjectStatusBadRequestBodyItems0 {
+func (o *ProjectsResetProjectStatusBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -200,7 +197,7 @@ ProjectsResetProjectStatusUnauthorized describes a response with status code 401
 Unauthorized
 */
 type ProjectsResetProjectStatusUnauthorized struct {
-	Payload *ProjectsResetProjectStatusUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects reset project status unauthorized response has a 2xx status code
@@ -236,13 +233,13 @@ func (o *ProjectsResetProjectStatusUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsResetProjectStatusUnauthorized) GetPayload() *ProjectsResetProjectStatusUnauthorizedBody {
+func (o *ProjectsResetProjectStatusUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsResetProjectStatusUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsResetProjectStatusUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -263,7 +260,7 @@ ProjectsResetProjectStatusForbidden describes a response with status code 403, w
 Forbidden
 */
 type ProjectsResetProjectStatusForbidden struct {
-	Payload *ProjectsResetProjectStatusForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects reset project status forbidden response has a 2xx status code
@@ -299,13 +296,13 @@ func (o *ProjectsResetProjectStatusForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsResetProjectStatusForbidden) GetPayload() *ProjectsResetProjectStatusForbiddenBody {
+func (o *ProjectsResetProjectStatusForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsResetProjectStatusForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsResetProjectStatusForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -326,7 +323,7 @@ ProjectsResetProjectStatusNotFound describes a response with status code 404, wi
 Not Found
 */
 type ProjectsResetProjectStatusNotFound struct {
-	Payload *ProjectsResetProjectStatusNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects reset project status not found response has a 2xx status code
@@ -362,13 +359,13 @@ func (o *ProjectsResetProjectStatusNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/reset][%d] projectsResetProjectStatusNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsResetProjectStatusNotFound) GetPayload() *ProjectsResetProjectStatusNotFoundBody {
+func (o *ProjectsResetProjectStatusNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsResetProjectStatusNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsResetProjectStatusNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -426,280 +423,5 @@ func (o *ProjectsResetProjectStatusInternalServerError) String() string {
 
 func (o *ProjectsResetProjectStatusInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectsResetProjectStatusBadRequestBodyItems0 projects reset project status bad request body items0
-swagger:model ProjectsResetProjectStatusBadRequestBodyItems0
-*/
-type ProjectsResetProjectStatusBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this projects reset project status bad request body items0
-func (o *ProjectsResetProjectStatusBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects reset project status bad request body items0 based on context it is used
-func (o *ProjectsResetProjectStatusBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsResetProjectStatusBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsResetProjectStatusBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectsResetProjectStatusBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsResetProjectStatusBody projects reset project status body
-swagger:model ProjectsResetProjectStatusBody
-*/
-type ProjectsResetProjectStatusBody struct {
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// status
-	// Enum: [100 145 150 154 155 156 160 165 200 250 300 400 500 550 600 700 800 900 1000 1100]
-	Status int32 `json:"status,omitempty"`
-}
-
-// Validate validates this projects reset project status body
-func (o *ProjectsResetProjectStatusBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateStatus(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-var projectsResetProjectStatusBodyTypeStatusPropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,145,150,154,155,156,160,165,200,250,300,400,500,550,600,700,800,900,1000,1100]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		projectsResetProjectStatusBodyTypeStatusPropEnum = append(projectsResetProjectStatusBodyTypeStatusPropEnum, v)
-	}
-}
-
-// prop value enum
-func (o *ProjectsResetProjectStatusBody) validateStatusEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, projectsResetProjectStatusBodyTypeStatusPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ProjectsResetProjectStatusBody) validateStatus(formats strfmt.Registry) error {
-	if swag.IsZero(o.Status) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := o.validateStatusEnum("body"+"."+"status", "body", o.Status); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this projects reset project status body based on context it is used
-func (o *ProjectsResetProjectStatusBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsResetProjectStatusBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsResetProjectStatusBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsResetProjectStatusBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsResetProjectStatusForbiddenBody projects reset project status forbidden body
-swagger:model ProjectsResetProjectStatusForbiddenBody
-*/
-type ProjectsResetProjectStatusForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects reset project status forbidden body
-func (o *ProjectsResetProjectStatusForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects reset project status forbidden body based on context it is used
-func (o *ProjectsResetProjectStatusForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsResetProjectStatusForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsResetProjectStatusForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsResetProjectStatusForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsResetProjectStatusNotFoundBody projects reset project status not found body
-swagger:model ProjectsResetProjectStatusNotFoundBody
-*/
-type ProjectsResetProjectStatusNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects reset project status not found body
-func (o *ProjectsResetProjectStatusNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects reset project status not found body based on context it is used
-func (o *ProjectsResetProjectStatusNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsResetProjectStatusNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsResetProjectStatusNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsResetProjectStatusNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsResetProjectStatusUnauthorizedBody projects reset project status unauthorized body
-swagger:model ProjectsResetProjectStatusUnauthorizedBody
-*/
-type ProjectsResetProjectStatusUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects reset project status unauthorized body
-func (o *ProjectsResetProjectStatusUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects reset project status unauthorized body based on context it is used
-func (o *ProjectsResetProjectStatusUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsResetProjectStatusUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsResetProjectStatusUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsResetProjectStatusUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

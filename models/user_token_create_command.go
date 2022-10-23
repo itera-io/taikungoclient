@@ -21,7 +21,7 @@ import (
 type UserTokenCreateCommand struct {
 
 	// endpoints
-	Endpoints []*UserTokenCreateCommandEndpointsItems0 `json:"endpoints"`
+	Endpoints []*AvailableEndpointData `json:"endpoints"`
 
 	// expire date
 	// Format: date-time
@@ -135,55 +135,6 @@ func (m *UserTokenCreateCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *UserTokenCreateCommand) UnmarshalBinary(b []byte) error {
 	var res UserTokenCreateCommand
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// UserTokenCreateCommandEndpointsItems0 user token create command endpoints items0
-//
-// swagger:model UserTokenCreateCommandEndpointsItems0
-type UserTokenCreateCommandEndpointsItems0 struct {
-
-	// controller
-	Controller string `json:"controller,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// method
-	Method string `json:"method,omitempty"`
-
-	// path
-	Path string `json:"path,omitempty"`
-}
-
-// Validate validates this user token create command endpoints items0
-func (m *UserTokenCreateCommandEndpointsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this user token create command endpoints items0 based on context it is used
-func (m *UserTokenCreateCommandEndpointsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *UserTokenCreateCommandEndpointsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *UserTokenCreateCommandEndpointsItems0) UnmarshalBinary(b []byte) error {
-	var res UserTokenCreateCommandEndpointsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

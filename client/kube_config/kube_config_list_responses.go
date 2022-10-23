@@ -6,15 +6,13 @@ package kube_config
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubeConfigListReader is a Reader for the KubeConfigList structure.
@@ -77,7 +75,7 @@ KubeConfigListOK describes a response with status code 200, with default header 
 Success
 */
 type KubeConfigListOK struct {
-	Payload *KubeConfigListOKBody
+	Payload *models.KubeConfigForUserList
 }
 
 // IsSuccess returns true when this kube config list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *KubeConfigListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListOK  %+v", 200, o.Payload)
 }
 
-func (o *KubeConfigListOK) GetPayload() *KubeConfigListOKBody {
+func (o *KubeConfigListOK) GetPayload() *models.KubeConfigForUserList {
 	return o.Payload
 }
 
 func (o *KubeConfigListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubeConfigListOKBody)
+	o.Payload = new(models.KubeConfigForUserList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ KubeConfigListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type KubeConfigListBadRequest struct {
-	Payload []*KubeConfigListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kube config list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *KubeConfigListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubeConfigListBadRequest) GetPayload() []*KubeConfigListBadRequestBodyItems0 {
+func (o *KubeConfigListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ KubeConfigListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type KubeConfigListUnauthorized struct {
-	Payload *KubeConfigListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kube config list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *KubeConfigListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubeConfigListUnauthorized) GetPayload() *KubeConfigListUnauthorizedBody {
+func (o *KubeConfigListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubeConfigListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubeConfigListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ KubeConfigListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type KubeConfigListForbidden struct {
-	Payload *KubeConfigListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kube config list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *KubeConfigListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubeConfigListForbidden) GetPayload() *KubeConfigListForbiddenBody {
+func (o *KubeConfigListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubeConfigListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubeConfigListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ KubeConfigListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type KubeConfigListNotFound struct {
-	Payload *KubeConfigListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kube config list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *KubeConfigListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/KubeConfig][%d] kubeConfigListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubeConfigListNotFound) GetPayload() *KubeConfigListNotFoundBody {
+func (o *KubeConfigListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubeConfigListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubeConfigListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,372 +425,5 @@ func (o *KubeConfigListInternalServerError) String() string {
 
 func (o *KubeConfigListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubeConfigListBadRequestBodyItems0 kube config list bad request body items0
-swagger:model KubeConfigListBadRequestBodyItems0
-*/
-type KubeConfigListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kube config list bad request body items0
-func (o *KubeConfigListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kube config list bad request body items0 based on context it is used
-func (o *KubeConfigListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubeConfigListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubeConfigListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubeConfigListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubeConfigListForbiddenBody kube config list forbidden body
-swagger:model KubeConfigListForbiddenBody
-*/
-type KubeConfigListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kube config list forbidden body
-func (o *KubeConfigListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kube config list forbidden body based on context it is used
-func (o *KubeConfigListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubeConfigListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubeConfigListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubeConfigListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubeConfigListNotFoundBody kube config list not found body
-swagger:model KubeConfigListNotFoundBody
-*/
-type KubeConfigListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kube config list not found body
-func (o *KubeConfigListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kube config list not found body based on context it is used
-func (o *KubeConfigListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubeConfigListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubeConfigListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubeConfigListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubeConfigListOKBody kube config list o k body
-swagger:model KubeConfigListOKBody
-*/
-type KubeConfigListOKBody struct {
-
-	// data
-	Data []*KubeConfigListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this kube config list o k body
-func (o *KubeConfigListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *KubeConfigListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("kubeConfigListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("kubeConfigListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this kube config list o k body based on the context it is used
-func (o *KubeConfigListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *KubeConfigListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("kubeConfigListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("kubeConfigListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubeConfigListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubeConfigListOKBody) UnmarshalBinary(b []byte) error {
-	var res KubeConfigListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubeConfigListOKBodyDataItems0 kube config list o k body data items0
-swagger:model KubeConfigListOKBodyDataItems0
-*/
-type KubeConfigListOKBodyDataItems0 struct {
-
-	// created at
-	CreatedAt string `json:"createdAt,omitempty"`
-
-	// created by
-	CreatedBy string `json:"createdBy,omitempty"`
-
-	// display name
-	DisplayName string `json:"displayName"`
-
-	// expiration date
-	ExpirationDate string `json:"expirationDate,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// is accessible for all
-	IsAccessibleForAll bool `json:"isAccessibleForAll"`
-
-	// is accessible for manager
-	IsAccessibleForManager bool `json:"isAccessibleForManager"`
-
-	// kube config role name
-	KubeConfigRoleName string `json:"kubeConfigRoleName,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
-
-	// user Id
-	UserID string `json:"userId,omitempty"`
-}
-
-// Validate validates this kube config list o k body data items0
-func (o *KubeConfigListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kube config list o k body data items0 based on context it is used
-func (o *KubeConfigListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubeConfigListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubeConfigListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res KubeConfigListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubeConfigListUnauthorizedBody kube config list unauthorized body
-swagger:model KubeConfigListUnauthorizedBody
-*/
-type KubeConfigListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kube config list unauthorized body
-func (o *KubeConfigListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kube config list unauthorized body based on context it is used
-func (o *KubeConfigListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubeConfigListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubeConfigListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubeConfigListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

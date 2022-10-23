@@ -6,15 +6,13 @@ package partner
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PartnerDetailsReader is a Reader for the PartnerDetails structure.
@@ -77,7 +75,7 @@ PartnerDetailsOK describes a response with status code 200, with default header 
 Success
 */
 type PartnerDetailsOK struct {
-	Payload *PartnerDetailsOKBody
+	Payload *models.PartnerDetailsDto
 }
 
 // IsSuccess returns true when this partner details o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *PartnerDetailsOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/details][%d] partnerDetailsOK  %+v", 200, o.Payload)
 }
 
-func (o *PartnerDetailsOK) GetPayload() *PartnerDetailsOKBody {
+func (o *PartnerDetailsOK) GetPayload() *models.PartnerDetailsDto {
 	return o.Payload
 }
 
 func (o *PartnerDetailsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PartnerDetailsOKBody)
+	o.Payload = new(models.PartnerDetailsDto)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ PartnerDetailsBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type PartnerDetailsBadRequest struct {
-	Payload []*PartnerDetailsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this partner details bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *PartnerDetailsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/details][%d] partnerDetailsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerDetailsBadRequest) GetPayload() []*PartnerDetailsBadRequestBodyItems0 {
+func (o *PartnerDetailsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ PartnerDetailsUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type PartnerDetailsUnauthorized struct {
-	Payload *PartnerDetailsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner details unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *PartnerDetailsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/details][%d] partnerDetailsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerDetailsUnauthorized) GetPayload() *PartnerDetailsUnauthorizedBody {
+func (o *PartnerDetailsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerDetailsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PartnerDetailsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ PartnerDetailsForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type PartnerDetailsForbidden struct {
-	Payload *PartnerDetailsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner details forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *PartnerDetailsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/details][%d] partnerDetailsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerDetailsForbidden) GetPayload() *PartnerDetailsForbiddenBody {
+func (o *PartnerDetailsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerDetailsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PartnerDetailsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ PartnerDetailsNotFound describes a response with status code 404, with default h
 Not Found
 */
 type PartnerDetailsNotFound struct {
-	Payload *PartnerDetailsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner details not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *PartnerDetailsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Partner/details][%d] partnerDetailsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerDetailsNotFound) GetPayload() *PartnerDetailsNotFoundBody {
+func (o *PartnerDetailsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerDetailsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PartnerDetailsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,479 +425,5 @@ func (o *PartnerDetailsInternalServerError) String() string {
 
 func (o *PartnerDetailsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PartnerDetailsBadRequestBodyItems0 partner details bad request body items0
-swagger:model PartnerDetailsBadRequestBodyItems0
-*/
-type PartnerDetailsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this partner details bad request body items0
-func (o *PartnerDetailsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner details bad request body items0 based on context it is used
-func (o *PartnerDetailsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerDetailsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerDetailsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PartnerDetailsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerDetailsForbiddenBody partner details forbidden body
-swagger:model PartnerDetailsForbiddenBody
-*/
-type PartnerDetailsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this partner details forbidden body
-func (o *PartnerDetailsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner details forbidden body based on context it is used
-func (o *PartnerDetailsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerDetailsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerDetailsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PartnerDetailsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerDetailsNotFoundBody partner details not found body
-swagger:model PartnerDetailsNotFoundBody
-*/
-type PartnerDetailsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this partner details not found body
-func (o *PartnerDetailsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner details not found body based on context it is used
-func (o *PartnerDetailsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerDetailsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerDetailsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PartnerDetailsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerDetailsOKBody partner details o k body
-swagger:model PartnerDetailsOKBody
-*/
-type PartnerDetailsOKBody struct {
-
-	// address
-	Address string `json:"address,omitempty"`
-
-	// allow registration
-	AllowRegistration bool `json:"allowRegistration"`
-
-	// city
-	City string `json:"city,omitempty"`
-
-	// country
-	Country string `json:"country,omitempty"`
-
-	// domain
-	Domain string `json:"domain,omitempty"`
-
-	// email
-	Email string `json:"email,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// link
-	Link string `json:"link,omitempty"`
-
-	// logo
-	Logo string `json:"logo,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organizations
-	Organizations []*PartnerDetailsOKBodyOrganizationsItems0 `json:"organizations"`
-
-	// payment enabled
-	PaymentEnabled bool `json:"paymentEnabled"`
-
-	// phone
-	Phone string `json:"phone,omitempty"`
-
-	// required user approval
-	RequiredUserApproval bool `json:"requiredUserApproval"`
-
-	// vat number
-	VatNumber string `json:"vatNumber,omitempty"`
-
-	// white list domains
-	WhiteListDomains []*PartnerDetailsOKBodyWhiteListDomainsItems0 `json:"whiteListDomains"`
-}
-
-// Validate validates this partner details o k body
-func (o *PartnerDetailsOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateOrganizations(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateWhiteListDomains(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PartnerDetailsOKBody) validateOrganizations(formats strfmt.Registry) error {
-	if swag.IsZero(o.Organizations) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Organizations); i++ {
-		if swag.IsZero(o.Organizations[i]) { // not required
-			continue
-		}
-
-		if o.Organizations[i] != nil {
-			if err := o.Organizations[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("partnerDetailsOK" + "." + "organizations" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("partnerDetailsOK" + "." + "organizations" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *PartnerDetailsOKBody) validateWhiteListDomains(formats strfmt.Registry) error {
-	if swag.IsZero(o.WhiteListDomains) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.WhiteListDomains); i++ {
-		if swag.IsZero(o.WhiteListDomains[i]) { // not required
-			continue
-		}
-
-		if o.WhiteListDomains[i] != nil {
-			if err := o.WhiteListDomains[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("partnerDetailsOK" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("partnerDetailsOK" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this partner details o k body based on the context it is used
-func (o *PartnerDetailsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateOrganizations(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateWhiteListDomains(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PartnerDetailsOKBody) contextValidateOrganizations(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Organizations); i++ {
-
-		if o.Organizations[i] != nil {
-			if err := o.Organizations[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("partnerDetailsOK" + "." + "organizations" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("partnerDetailsOK" + "." + "organizations" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *PartnerDetailsOKBody) contextValidateWhiteListDomains(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.WhiteListDomains); i++ {
-
-		if o.WhiteListDomains[i] != nil {
-			if err := o.WhiteListDomains[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("partnerDetailsOK" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("partnerDetailsOK" + "." + "whiteListDomains" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerDetailsOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerDetailsOKBody) UnmarshalBinary(b []byte) error {
-	var res PartnerDetailsOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerDetailsOKBodyOrganizationsItems0 partner details o k body organizations items0
-swagger:model PartnerDetailsOKBodyOrganizationsItems0
-*/
-type PartnerDetailsOKBodyOrganizationsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this partner details o k body organizations items0
-func (o *PartnerDetailsOKBodyOrganizationsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner details o k body organizations items0 based on context it is used
-func (o *PartnerDetailsOKBodyOrganizationsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerDetailsOKBodyOrganizationsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerDetailsOKBodyOrganizationsItems0) UnmarshalBinary(b []byte) error {
-	var res PartnerDetailsOKBodyOrganizationsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerDetailsOKBodyWhiteListDomainsItems0 partner details o k body white list domains items0
-swagger:model PartnerDetailsOKBodyWhiteListDomainsItems0
-*/
-type PartnerDetailsOKBodyWhiteListDomainsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this partner details o k body white list domains items0
-func (o *PartnerDetailsOKBodyWhiteListDomainsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner details o k body white list domains items0 based on context it is used
-func (o *PartnerDetailsOKBodyWhiteListDomainsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerDetailsOKBodyWhiteListDomainsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerDetailsOKBodyWhiteListDomainsItems0) UnmarshalBinary(b []byte) error {
-	var res PartnerDetailsOKBodyWhiteListDomainsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerDetailsUnauthorizedBody partner details unauthorized body
-swagger:model PartnerDetailsUnauthorizedBody
-*/
-type PartnerDetailsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this partner details unauthorized body
-func (o *PartnerDetailsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner details unauthorized body based on context it is used
-func (o *PartnerDetailsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerDetailsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerDetailsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PartnerDetailsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

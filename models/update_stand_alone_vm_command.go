@@ -20,7 +20,7 @@ import (
 type UpdateStandAloneVMCommand struct {
 
 	// disks
-	Disks []*UpdateStandAloneVMCommandDisksItems0 `json:"disks"`
+	Disks []*UpdateStandAloneVMDiskDto `json:"disks"`
 
 	// flavor Id
 	FlavorID string `json:"flavorId,omitempty"`
@@ -126,49 +126,6 @@ func (m *UpdateStandAloneVMCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *UpdateStandAloneVMCommand) UnmarshalBinary(b []byte) error {
 	var res UpdateStandAloneVMCommand
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// UpdateStandAloneVMCommandDisksItems0 update stand alone VM command disks items0
-//
-// swagger:model UpdateStandAloneVMCommandDisksItems0
-type UpdateStandAloneVMCommandDisksItems0 struct {
-
-	// device name
-	DeviceName string `json:"deviceName,omitempty"`
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this update stand alone VM command disks items0
-func (m *UpdateStandAloneVMCommandDisksItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this update stand alone VM command disks items0 based on context it is used
-func (m *UpdateStandAloneVMCommandDisksItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *UpdateStandAloneVMCommandDisksItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *UpdateStandAloneVMCommandDisksItems0) UnmarshalBinary(b []byte) error {
-	var res UpdateStandAloneVMCommandDisksItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

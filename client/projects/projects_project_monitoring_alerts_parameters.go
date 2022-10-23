@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectsProjectMonitoringAlertsParams creates a new ProjectsProjectMonitoringAlertsParams object,
@@ -62,7 +64,7 @@ ProjectsProjectMonitoringAlertsParams contains all the parameters to send to the
 type ProjectsProjectMonitoringAlertsParams struct {
 
 	// Body.
-	Body ProjectsProjectMonitoringAlertsBody
+	Body *models.ProjectsMonitoringAlertsCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *ProjectsProjectMonitoringAlertsParams) SetHTTPClient(client *http.Clien
 }
 
 // WithBody adds the body to the projects project monitoring alerts params
-func (o *ProjectsProjectMonitoringAlertsParams) WithBody(body ProjectsProjectMonitoringAlertsBody) *ProjectsProjectMonitoringAlertsParams {
+func (o *ProjectsProjectMonitoringAlertsParams) WithBody(body *models.ProjectsMonitoringAlertsCommand) *ProjectsProjectMonitoringAlertsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the projects project monitoring alerts params
-func (o *ProjectsProjectMonitoringAlertsParams) SetBody(body ProjectsProjectMonitoringAlertsBody) {
+func (o *ProjectsProjectMonitoringAlertsParams) SetBody(body *models.ProjectsMonitoringAlertsCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *ProjectsProjectMonitoringAlertsParams) WriteToRequest(r runtime.ClientR
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

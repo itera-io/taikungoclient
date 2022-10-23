@@ -6,13 +6,13 @@ package admin
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AdminMakeCsmUserReader is a Reader for the AdminMakeCsmUser structure.
@@ -75,7 +75,7 @@ AdminMakeCsmUserOK describes a response with status code 200, with default heade
 Success
 */
 type AdminMakeCsmUserOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this admin make csm user o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AdminMakeCsmUserOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserOK  %+v", 200, o.Payload)
 }
 
-func (o *AdminMakeCsmUserOK) GetPayload() interface{} {
+func (o *AdminMakeCsmUserOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AdminMakeCsmUserBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type AdminMakeCsmUserBadRequest struct {
-	Payload []*AdminMakeCsmUserBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this admin make csm user bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminMakeCsmUserBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminMakeCsmUserBadRequest) GetPayload() []*AdminMakeCsmUserBadRequestBodyItems0 {
+func (o *AdminMakeCsmUserBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AdminMakeCsmUserUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type AdminMakeCsmUserUnauthorized struct {
-	Payload *AdminMakeCsmUserUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin make csm user unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AdminMakeCsmUserUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminMakeCsmUserUnauthorized) GetPayload() *AdminMakeCsmUserUnauthorizedBody {
+func (o *AdminMakeCsmUserUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminMakeCsmUserUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminMakeCsmUserUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AdminMakeCsmUserForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type AdminMakeCsmUserForbidden struct {
-	Payload *AdminMakeCsmUserForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin make csm user forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AdminMakeCsmUserForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminMakeCsmUserForbidden) GetPayload() *AdminMakeCsmUserForbiddenBody {
+func (o *AdminMakeCsmUserForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminMakeCsmUserForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminMakeCsmUserForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AdminMakeCsmUserNotFound describes a response with status code 404, with default
 Not Found
 */
 type AdminMakeCsmUserNotFound struct {
-	Payload *AdminMakeCsmUserNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin make csm user not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AdminMakeCsmUserNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/make/csm][%d] adminMakeCsmUserNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminMakeCsmUserNotFound) GetPayload() *AdminMakeCsmUserNotFoundBody {
+func (o *AdminMakeCsmUserNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminMakeCsmUserNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminMakeCsmUserNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *AdminMakeCsmUserInternalServerError) String() string {
 
 func (o *AdminMakeCsmUserInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AdminMakeCsmUserBadRequestBodyItems0 admin make csm user bad request body items0
-swagger:model AdminMakeCsmUserBadRequestBodyItems0
-*/
-type AdminMakeCsmUserBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this admin make csm user bad request body items0
-func (o *AdminMakeCsmUserBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin make csm user bad request body items0 based on context it is used
-func (o *AdminMakeCsmUserBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminMakeCsmUserBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminMakeCsmUserBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AdminMakeCsmUserBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminMakeCsmUserBody admin make csm user body
-swagger:model AdminMakeCsmUserBody
-*/
-type AdminMakeCsmUserBody struct {
-
-	// mode
-	Mode string `json:"mode,omitempty"`
-
-	// user Id
-	UserID string `json:"userId,omitempty"`
-}
-
-// Validate validates this admin make csm user body
-func (o *AdminMakeCsmUserBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin make csm user body based on context it is used
-func (o *AdminMakeCsmUserBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminMakeCsmUserBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminMakeCsmUserBody) UnmarshalBinary(b []byte) error {
-	var res AdminMakeCsmUserBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminMakeCsmUserForbiddenBody admin make csm user forbidden body
-swagger:model AdminMakeCsmUserForbiddenBody
-*/
-type AdminMakeCsmUserForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin make csm user forbidden body
-func (o *AdminMakeCsmUserForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin make csm user forbidden body based on context it is used
-func (o *AdminMakeCsmUserForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminMakeCsmUserForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminMakeCsmUserForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AdminMakeCsmUserForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminMakeCsmUserNotFoundBody admin make csm user not found body
-swagger:model AdminMakeCsmUserNotFoundBody
-*/
-type AdminMakeCsmUserNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin make csm user not found body
-func (o *AdminMakeCsmUserNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin make csm user not found body based on context it is used
-func (o *AdminMakeCsmUserNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminMakeCsmUserNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminMakeCsmUserNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AdminMakeCsmUserNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminMakeCsmUserUnauthorizedBody admin make csm user unauthorized body
-swagger:model AdminMakeCsmUserUnauthorizedBody
-*/
-type AdminMakeCsmUserUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin make csm user unauthorized body
-func (o *AdminMakeCsmUserUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin make csm user unauthorized body based on context it is used
-func (o *AdminMakeCsmUserUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminMakeCsmUserUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminMakeCsmUserUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AdminMakeCsmUserUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

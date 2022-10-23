@@ -6,13 +6,13 @@ package images
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ImagesPersonalAzureImagesReader is a Reader for the ImagesPersonalAzureImages structure.
@@ -75,7 +75,7 @@ ImagesPersonalAzureImagesOK describes a response with status code 200, with defa
 Success
 */
 type ImagesPersonalAzureImagesOK struct {
-	Payload []*ImagesPersonalAzureImagesOKBodyItems0
+	Payload []*models.CommonStringBasedDropdownDto
 }
 
 // IsSuccess returns true when this images personal azure images o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ImagesPersonalAzureImagesOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesOK  %+v", 200, o.Payload)
 }
 
-func (o *ImagesPersonalAzureImagesOK) GetPayload() []*ImagesPersonalAzureImagesOKBodyItems0 {
+func (o *ImagesPersonalAzureImagesOK) GetPayload() []*models.CommonStringBasedDropdownDto {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ImagesPersonalAzureImagesBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ImagesPersonalAzureImagesBadRequest struct {
-	Payload []*ImagesPersonalAzureImagesBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this images personal azure images bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ImagesPersonalAzureImagesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ImagesPersonalAzureImagesBadRequest) GetPayload() []*ImagesPersonalAzureImagesBadRequestBodyItems0 {
+func (o *ImagesPersonalAzureImagesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ImagesPersonalAzureImagesUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ImagesPersonalAzureImagesUnauthorized struct {
-	Payload *ImagesPersonalAzureImagesUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images personal azure images unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ImagesPersonalAzureImagesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ImagesPersonalAzureImagesUnauthorized) GetPayload() *ImagesPersonalAzureImagesUnauthorizedBody {
+func (o *ImagesPersonalAzureImagesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesPersonalAzureImagesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ImagesPersonalAzureImagesUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ImagesPersonalAzureImagesForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ImagesPersonalAzureImagesForbidden struct {
-	Payload *ImagesPersonalAzureImagesForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images personal azure images forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ImagesPersonalAzureImagesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ImagesPersonalAzureImagesForbidden) GetPayload() *ImagesPersonalAzureImagesForbiddenBody {
+func (o *ImagesPersonalAzureImagesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesPersonalAzureImagesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ImagesPersonalAzureImagesForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ImagesPersonalAzureImagesNotFound describes a response with status code 404, wit
 Not Found
 */
 type ImagesPersonalAzureImagesNotFound struct {
-	Payload *ImagesPersonalAzureImagesNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this images personal azure images not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ImagesPersonalAzureImagesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Images/azure/personal/{cloudId}][%d] imagesPersonalAzureImagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ImagesPersonalAzureImagesNotFound) GetPayload() *ImagesPersonalAzureImagesNotFoundBody {
+func (o *ImagesPersonalAzureImagesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ImagesPersonalAzureImagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ImagesPersonalAzureImagesNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *ImagesPersonalAzureImagesInternalServerError) String() string {
 
 func (o *ImagesPersonalAzureImagesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ImagesPersonalAzureImagesBadRequestBodyItems0 images personal azure images bad request body items0
-swagger:model ImagesPersonalAzureImagesBadRequestBodyItems0
-*/
-type ImagesPersonalAzureImagesBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this images personal azure images bad request body items0
-func (o *ImagesPersonalAzureImagesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this images personal azure images bad request body items0 based on context it is used
-func (o *ImagesPersonalAzureImagesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ImagesPersonalAzureImagesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ImagesPersonalAzureImagesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ImagesPersonalAzureImagesBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ImagesPersonalAzureImagesForbiddenBody images personal azure images forbidden body
-swagger:model ImagesPersonalAzureImagesForbiddenBody
-*/
-type ImagesPersonalAzureImagesForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this images personal azure images forbidden body
-func (o *ImagesPersonalAzureImagesForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this images personal azure images forbidden body based on context it is used
-func (o *ImagesPersonalAzureImagesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ImagesPersonalAzureImagesForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ImagesPersonalAzureImagesForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ImagesPersonalAzureImagesForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ImagesPersonalAzureImagesNotFoundBody images personal azure images not found body
-swagger:model ImagesPersonalAzureImagesNotFoundBody
-*/
-type ImagesPersonalAzureImagesNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this images personal azure images not found body
-func (o *ImagesPersonalAzureImagesNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this images personal azure images not found body based on context it is used
-func (o *ImagesPersonalAzureImagesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ImagesPersonalAzureImagesNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ImagesPersonalAzureImagesNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ImagesPersonalAzureImagesNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ImagesPersonalAzureImagesOKBodyItems0 images personal azure images o k body items0
-swagger:model ImagesPersonalAzureImagesOKBodyItems0
-*/
-type ImagesPersonalAzureImagesOKBodyItems0 struct {
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this images personal azure images o k body items0
-func (o *ImagesPersonalAzureImagesOKBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this images personal azure images o k body items0 based on context it is used
-func (o *ImagesPersonalAzureImagesOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ImagesPersonalAzureImagesOKBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ImagesPersonalAzureImagesOKBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ImagesPersonalAzureImagesOKBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ImagesPersonalAzureImagesUnauthorizedBody images personal azure images unauthorized body
-swagger:model ImagesPersonalAzureImagesUnauthorizedBody
-*/
-type ImagesPersonalAzureImagesUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this images personal azure images unauthorized body
-func (o *ImagesPersonalAzureImagesUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this images personal azure images unauthorized body based on context it is used
-func (o *ImagesPersonalAzureImagesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ImagesPersonalAzureImagesUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ImagesPersonalAzureImagesUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ImagesPersonalAzureImagesUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package backup
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // BackupImportBackupStorageReader is a Reader for the BackupImportBackupStorage structure.
@@ -75,7 +75,7 @@ BackupImportBackupStorageOK describes a response with status code 200, with defa
 Success
 */
 type BackupImportBackupStorageOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this backup import backup storage o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *BackupImportBackupStorageOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageOK  %+v", 200, o.Payload)
 }
 
-func (o *BackupImportBackupStorageOK) GetPayload() interface{} {
+func (o *BackupImportBackupStorageOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ BackupImportBackupStorageBadRequest describes a response with status code 400, w
 Bad Request
 */
 type BackupImportBackupStorageBadRequest struct {
-	Payload []*BackupImportBackupStorageBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this backup import backup storage bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *BackupImportBackupStorageBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupImportBackupStorageBadRequest) GetPayload() []*BackupImportBackupStorageBadRequestBodyItems0 {
+func (o *BackupImportBackupStorageBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ BackupImportBackupStorageUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type BackupImportBackupStorageUnauthorized struct {
-	Payload *BackupImportBackupStorageUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup import backup storage unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *BackupImportBackupStorageUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupImportBackupStorageUnauthorized) GetPayload() *BackupImportBackupStorageUnauthorizedBody {
+func (o *BackupImportBackupStorageUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupImportBackupStorageUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BackupImportBackupStorageUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ BackupImportBackupStorageForbidden describes a response with status code 403, wi
 Forbidden
 */
 type BackupImportBackupStorageForbidden struct {
-	Payload *BackupImportBackupStorageForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup import backup storage forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *BackupImportBackupStorageForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupImportBackupStorageForbidden) GetPayload() *BackupImportBackupStorageForbiddenBody {
+func (o *BackupImportBackupStorageForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupImportBackupStorageForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BackupImportBackupStorageForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ BackupImportBackupStorageNotFound describes a response with status code 404, wit
 Not Found
 */
 type BackupImportBackupStorageNotFound struct {
-	Payload *BackupImportBackupStorageNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup import backup storage not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *BackupImportBackupStorageNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/location][%d] backupImportBackupStorageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupImportBackupStorageNotFound) GetPayload() *BackupImportBackupStorageNotFoundBody {
+func (o *BackupImportBackupStorageNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupImportBackupStorageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BackupImportBackupStorageNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *BackupImportBackupStorageInternalServerError) String() string {
 
 func (o *BackupImportBackupStorageInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-BackupImportBackupStorageBadRequestBodyItems0 backup import backup storage bad request body items0
-swagger:model BackupImportBackupStorageBadRequestBodyItems0
-*/
-type BackupImportBackupStorageBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this backup import backup storage bad request body items0
-func (o *BackupImportBackupStorageBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this backup import backup storage bad request body items0 based on context it is used
-func (o *BackupImportBackupStorageBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupImportBackupStorageBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupImportBackupStorageBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res BackupImportBackupStorageBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BackupImportBackupStorageBody backup import backup storage body
-swagger:model BackupImportBackupStorageBody
-*/
-type BackupImportBackupStorageBody struct {
-
-	// source project Id
-	SourceProjectID int32 `json:"sourceProjectId,omitempty"`
-
-	// target project Id
-	TargetProjectID int32 `json:"targetProjectId,omitempty"`
-}
-
-// Validate validates this backup import backup storage body
-func (o *BackupImportBackupStorageBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this backup import backup storage body based on context it is used
-func (o *BackupImportBackupStorageBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupImportBackupStorageBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupImportBackupStorageBody) UnmarshalBinary(b []byte) error {
-	var res BackupImportBackupStorageBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BackupImportBackupStorageForbiddenBody backup import backup storage forbidden body
-swagger:model BackupImportBackupStorageForbiddenBody
-*/
-type BackupImportBackupStorageForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this backup import backup storage forbidden body
-func (o *BackupImportBackupStorageForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this backup import backup storage forbidden body based on context it is used
-func (o *BackupImportBackupStorageForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupImportBackupStorageForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupImportBackupStorageForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res BackupImportBackupStorageForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BackupImportBackupStorageNotFoundBody backup import backup storage not found body
-swagger:model BackupImportBackupStorageNotFoundBody
-*/
-type BackupImportBackupStorageNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this backup import backup storage not found body
-func (o *BackupImportBackupStorageNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this backup import backup storage not found body based on context it is used
-func (o *BackupImportBackupStorageNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupImportBackupStorageNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupImportBackupStorageNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res BackupImportBackupStorageNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BackupImportBackupStorageUnauthorizedBody backup import backup storage unauthorized body
-swagger:model BackupImportBackupStorageUnauthorizedBody
-*/
-type BackupImportBackupStorageUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this backup import backup storage unauthorized body
-func (o *BackupImportBackupStorageUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this backup import backup storage unauthorized body based on context it is used
-func (o *BackupImportBackupStorageUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupImportBackupStorageUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupImportBackupStorageUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res BackupImportBackupStorageUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

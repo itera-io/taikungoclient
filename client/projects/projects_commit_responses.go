@@ -6,13 +6,13 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsCommitReader is a Reader for the ProjectsCommit structure.
@@ -75,7 +75,7 @@ ProjectsCommitOK describes a response with status code 200, with default header 
 Success
 */
 type ProjectsCommitOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects commit o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectsCommitOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsCommitOK) GetPayload() interface{} {
+func (o *ProjectsCommitOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectsCommitBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type ProjectsCommitBadRequest struct {
-	Payload []*ProjectsCommitBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects commit bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsCommitBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsCommitBadRequest) GetPayload() []*ProjectsCommitBadRequestBodyItems0 {
+func (o *ProjectsCommitBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectsCommitUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type ProjectsCommitUnauthorized struct {
-	Payload *ProjectsCommitUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects commit unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectsCommitUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsCommitUnauthorized) GetPayload() *ProjectsCommitUnauthorizedBody {
+func (o *ProjectsCommitUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsCommitUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsCommitUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectsCommitForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type ProjectsCommitForbidden struct {
-	Payload *ProjectsCommitForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects commit forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectsCommitForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsCommitForbidden) GetPayload() *ProjectsCommitForbiddenBody {
+func (o *ProjectsCommitForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsCommitForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsCommitForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectsCommitNotFound describes a response with status code 404, with default h
 Not Found
 */
 type ProjectsCommitNotFound struct {
-	Payload *ProjectsCommitNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects commit not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectsCommitNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/commit/{projectId}][%d] projectsCommitNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsCommitNotFound) GetPayload() *ProjectsCommitNotFoundBody {
+func (o *ProjectsCommitNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsCommitNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsCommitNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *ProjectsCommitInternalServerError) String() string {
 
 func (o *ProjectsCommitInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectsCommitBadRequestBodyItems0 projects commit bad request body items0
-swagger:model ProjectsCommitBadRequestBodyItems0
-*/
-type ProjectsCommitBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this projects commit bad request body items0
-func (o *ProjectsCommitBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects commit bad request body items0 based on context it is used
-func (o *ProjectsCommitBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsCommitBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsCommitBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectsCommitBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsCommitForbiddenBody projects commit forbidden body
-swagger:model ProjectsCommitForbiddenBody
-*/
-type ProjectsCommitForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects commit forbidden body
-func (o *ProjectsCommitForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects commit forbidden body based on context it is used
-func (o *ProjectsCommitForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsCommitForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsCommitForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsCommitForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsCommitNotFoundBody projects commit not found body
-swagger:model ProjectsCommitNotFoundBody
-*/
-type ProjectsCommitNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects commit not found body
-func (o *ProjectsCommitNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects commit not found body based on context it is used
-func (o *ProjectsCommitNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsCommitNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsCommitNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsCommitNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsCommitUnauthorizedBody projects commit unauthorized body
-swagger:model ProjectsCommitUnauthorizedBody
-*/
-type ProjectsCommitUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects commit unauthorized body
-func (o *ProjectsCommitUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects commit unauthorized body based on context it is used
-func (o *ProjectsCommitUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsCommitUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsCommitUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsCommitUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

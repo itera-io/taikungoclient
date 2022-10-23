@@ -6,15 +6,13 @@ package prometheus
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PrometheusBindRulesReader is a Reader for the PrometheusBindRules structure.
@@ -77,7 +75,7 @@ PrometheusBindRulesOK describes a response with status code 200, with default he
 Success
 */
 type PrometheusBindRulesOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this prometheus bind rules o k response has a 2xx status code
@@ -113,7 +111,7 @@ func (o *PrometheusBindRulesOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesOK  %+v", 200, o.Payload)
 }
 
-func (o *PrometheusBindRulesOK) GetPayload() interface{} {
+func (o *PrometheusBindRulesOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -138,7 +136,7 @@ PrometheusBindRulesBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type PrometheusBindRulesBadRequest struct {
-	Payload []*PrometheusBindRulesBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this prometheus bind rules bad request response has a 2xx status code
@@ -174,7 +172,7 @@ func (o *PrometheusBindRulesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusBindRulesBadRequest) GetPayload() []*PrometheusBindRulesBadRequestBodyItems0 {
+func (o *PrometheusBindRulesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +197,7 @@ PrometheusBindRulesUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type PrometheusBindRulesUnauthorized struct {
-	Payload *PrometheusBindRulesUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus bind rules unauthorized response has a 2xx status code
@@ -235,13 +233,13 @@ func (o *PrometheusBindRulesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusBindRulesUnauthorized) GetPayload() *PrometheusBindRulesUnauthorizedBody {
+func (o *PrometheusBindRulesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusBindRulesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusBindRulesUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +260,7 @@ PrometheusBindRulesForbidden describes a response with status code 403, with def
 Forbidden
 */
 type PrometheusBindRulesForbidden struct {
-	Payload *PrometheusBindRulesForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus bind rules forbidden response has a 2xx status code
@@ -298,13 +296,13 @@ func (o *PrometheusBindRulesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusBindRulesForbidden) GetPayload() *PrometheusBindRulesForbiddenBody {
+func (o *PrometheusBindRulesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusBindRulesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusBindRulesForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +323,7 @@ PrometheusBindRulesNotFound describes a response with status code 404, with defa
 Not Found
 */
 type PrometheusBindRulesNotFound struct {
-	Payload *PrometheusBindRulesNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus bind rules not found response has a 2xx status code
@@ -361,13 +359,13 @@ func (o *PrometheusBindRulesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindrules][%d] prometheusBindRulesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusBindRulesNotFound) GetPayload() *PrometheusBindRulesNotFoundBody {
+func (o *PrometheusBindRulesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusBindRulesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusBindRulesNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,348 +423,5 @@ func (o *PrometheusBindRulesInternalServerError) String() string {
 
 func (o *PrometheusBindRulesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PrometheusBindRulesBadRequestBodyItems0 prometheus bind rules bad request body items0
-swagger:model PrometheusBindRulesBadRequestBodyItems0
-*/
-type PrometheusBindRulesBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this prometheus bind rules bad request body items0
-func (o *PrometheusBindRulesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus bind rules bad request body items0 based on context it is used
-func (o *PrometheusBindRulesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBindRulesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBindRulesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PrometheusBindRulesBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusBindRulesBody prometheus bind rules body
-swagger:model PrometheusBindRulesBody
-*/
-type PrometheusBindRulesBody struct {
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// rules
-	Rules []*PrometheusBindRulesParamsBodyRulesItems0 `json:"rules"`
-}
-
-// Validate validates this prometheus bind rules body
-func (o *PrometheusBindRulesBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateRules(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PrometheusBindRulesBody) validateRules(formats strfmt.Registry) error {
-	if swag.IsZero(o.Rules) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Rules); i++ {
-		if swag.IsZero(o.Rules[i]) { // not required
-			continue
-		}
-
-		if o.Rules[i] != nil {
-			if err := o.Rules[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "rules" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "rules" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this prometheus bind rules body based on the context it is used
-func (o *PrometheusBindRulesBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateRules(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PrometheusBindRulesBody) contextValidateRules(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Rules); i++ {
-
-		if o.Rules[i] != nil {
-			if err := o.Rules[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "rules" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "rules" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBindRulesBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBindRulesBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusBindRulesBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusBindRulesForbiddenBody prometheus bind rules forbidden body
-swagger:model PrometheusBindRulesForbiddenBody
-*/
-type PrometheusBindRulesForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus bind rules forbidden body
-func (o *PrometheusBindRulesForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus bind rules forbidden body based on context it is used
-func (o *PrometheusBindRulesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBindRulesForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBindRulesForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusBindRulesForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusBindRulesNotFoundBody prometheus bind rules not found body
-swagger:model PrometheusBindRulesNotFoundBody
-*/
-type PrometheusBindRulesNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus bind rules not found body
-func (o *PrometheusBindRulesNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus bind rules not found body based on context it is used
-func (o *PrometheusBindRulesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBindRulesNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBindRulesNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusBindRulesNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusBindRulesParamsBodyRulesItems0 prometheus bind rules params body rules items0
-swagger:model PrometheusBindRulesParamsBodyRulesItems0
-*/
-type PrometheusBindRulesParamsBodyRulesItems0 struct {
-
-	// discount rate
-	DiscountRate float64 `json:"discountRate"`
-
-	// is bound
-	IsBound bool `json:"isBound"`
-
-	// prometheus rule Id
-	PrometheusRuleID int32 `json:"prometheusRuleId,omitempty"`
-
-	// prometheus rule name
-	PrometheusRuleName string `json:"prometheusRuleName,omitempty"`
-}
-
-// Validate validates this prometheus bind rules params body rules items0
-func (o *PrometheusBindRulesParamsBodyRulesItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus bind rules params body rules items0 based on context it is used
-func (o *PrometheusBindRulesParamsBodyRulesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBindRulesParamsBodyRulesItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBindRulesParamsBodyRulesItems0) UnmarshalBinary(b []byte) error {
-	var res PrometheusBindRulesParamsBodyRulesItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusBindRulesUnauthorizedBody prometheus bind rules unauthorized body
-swagger:model PrometheusBindRulesUnauthorizedBody
-*/
-type PrometheusBindRulesUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus bind rules unauthorized body
-func (o *PrometheusBindRulesUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus bind rules unauthorized body based on context it is used
-func (o *PrometheusBindRulesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBindRulesUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBindRulesUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusBindRulesUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

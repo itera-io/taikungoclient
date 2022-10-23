@@ -6,13 +6,13 @@ package organizations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // OrganizationsLeaveTaikunReader is a Reader for the OrganizationsLeaveTaikun structure.
@@ -75,7 +75,7 @@ OrganizationsLeaveTaikunOK describes a response with status code 200, with defau
 Success
 */
 type OrganizationsLeaveTaikunOK struct {
-	Payload *OrganizationsLeaveTaikunOKBody
+	Payload *models.LeaveTaikunDto
 }
 
 // IsSuccess returns true when this organizations leave taikun o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *OrganizationsLeaveTaikunOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunOK  %+v", 200, o.Payload)
 }
 
-func (o *OrganizationsLeaveTaikunOK) GetPayload() *OrganizationsLeaveTaikunOKBody {
+func (o *OrganizationsLeaveTaikunOK) GetPayload() *models.LeaveTaikunDto {
 	return o.Payload
 }
 
 func (o *OrganizationsLeaveTaikunOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OrganizationsLeaveTaikunOKBody)
+	o.Payload = new(models.LeaveTaikunDto)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ OrganizationsLeaveTaikunBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type OrganizationsLeaveTaikunBadRequest struct {
-	Payload []*OrganizationsLeaveTaikunBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this organizations leave taikun bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *OrganizationsLeaveTaikunBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OrganizationsLeaveTaikunBadRequest) GetPayload() []*OrganizationsLeaveTaikunBadRequestBodyItems0 {
+func (o *OrganizationsLeaveTaikunBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ OrganizationsLeaveTaikunUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type OrganizationsLeaveTaikunUnauthorized struct {
-	Payload *OrganizationsLeaveTaikunUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations leave taikun unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *OrganizationsLeaveTaikunUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OrganizationsLeaveTaikunUnauthorized) GetPayload() *OrganizationsLeaveTaikunUnauthorizedBody {
+func (o *OrganizationsLeaveTaikunUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsLeaveTaikunUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OrganizationsLeaveTaikunUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ OrganizationsLeaveTaikunForbidden describes a response with status code 403, wit
 Forbidden
 */
 type OrganizationsLeaveTaikunForbidden struct {
-	Payload *OrganizationsLeaveTaikunForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations leave taikun forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *OrganizationsLeaveTaikunForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OrganizationsLeaveTaikunForbidden) GetPayload() *OrganizationsLeaveTaikunForbiddenBody {
+func (o *OrganizationsLeaveTaikunForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsLeaveTaikunForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OrganizationsLeaveTaikunForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ OrganizationsLeaveTaikunNotFound describes a response with status code 404, with
 Not Found
 */
 type OrganizationsLeaveTaikunNotFound struct {
-	Payload *OrganizationsLeaveTaikunNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this organizations leave taikun not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *OrganizationsLeaveTaikunNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Organizations/leave][%d] organizationsLeaveTaikunNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OrganizationsLeaveTaikunNotFound) GetPayload() *OrganizationsLeaveTaikunNotFoundBody {
+func (o *OrganizationsLeaveTaikunNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OrganizationsLeaveTaikunNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OrganizationsLeaveTaikunNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,278 +425,5 @@ func (o *OrganizationsLeaveTaikunInternalServerError) String() string {
 
 func (o *OrganizationsLeaveTaikunInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-OrganizationsLeaveTaikunBadRequestBodyItems0 organizations leave taikun bad request body items0
-swagger:model OrganizationsLeaveTaikunBadRequestBodyItems0
-*/
-type OrganizationsLeaveTaikunBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this organizations leave taikun bad request body items0
-func (o *OrganizationsLeaveTaikunBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations leave taikun bad request body items0 based on context it is used
-func (o *OrganizationsLeaveTaikunBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsLeaveTaikunBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsLeaveTaikunBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OrganizationsLeaveTaikunBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsLeaveTaikunBody organizations leave taikun body
-swagger:model OrganizationsLeaveTaikunBody
-*/
-type OrganizationsLeaveTaikunBody struct {
-
-	// message
-	Message string `json:"message,omitempty"`
-
-	// reason
-	Reason string `json:"reason,omitempty"`
-}
-
-// Validate validates this organizations leave taikun body
-func (o *OrganizationsLeaveTaikunBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations leave taikun body based on context it is used
-func (o *OrganizationsLeaveTaikunBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsLeaveTaikunBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsLeaveTaikunBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsLeaveTaikunBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsLeaveTaikunForbiddenBody organizations leave taikun forbidden body
-swagger:model OrganizationsLeaveTaikunForbiddenBody
-*/
-type OrganizationsLeaveTaikunForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this organizations leave taikun forbidden body
-func (o *OrganizationsLeaveTaikunForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations leave taikun forbidden body based on context it is used
-func (o *OrganizationsLeaveTaikunForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsLeaveTaikunForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsLeaveTaikunForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsLeaveTaikunForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsLeaveTaikunNotFoundBody organizations leave taikun not found body
-swagger:model OrganizationsLeaveTaikunNotFoundBody
-*/
-type OrganizationsLeaveTaikunNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this organizations leave taikun not found body
-func (o *OrganizationsLeaveTaikunNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations leave taikun not found body based on context it is used
-func (o *OrganizationsLeaveTaikunNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsLeaveTaikunNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsLeaveTaikunNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsLeaveTaikunNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsLeaveTaikunOKBody organizations leave taikun o k body
-swagger:model OrganizationsLeaveTaikunOKBody
-*/
-type OrganizationsLeaveTaikunOKBody struct {
-
-	// payment client secret
-	PaymentClientSecret string `json:"paymentClientSecret,omitempty"`
-
-	// payment intent Id
-	PaymentIntentID string `json:"paymentIntentId,omitempty"`
-}
-
-// Validate validates this organizations leave taikun o k body
-func (o *OrganizationsLeaveTaikunOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations leave taikun o k body based on context it is used
-func (o *OrganizationsLeaveTaikunOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsLeaveTaikunOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsLeaveTaikunOKBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsLeaveTaikunOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OrganizationsLeaveTaikunUnauthorizedBody organizations leave taikun unauthorized body
-swagger:model OrganizationsLeaveTaikunUnauthorizedBody
-*/
-type OrganizationsLeaveTaikunUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this organizations leave taikun unauthorized body
-func (o *OrganizationsLeaveTaikunUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this organizations leave taikun unauthorized body based on context it is used
-func (o *OrganizationsLeaveTaikunUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OrganizationsLeaveTaikunUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OrganizationsLeaveTaikunUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res OrganizationsLeaveTaikunUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

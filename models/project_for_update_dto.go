@@ -7,12 +7,10 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // ProjectForUpdateDto project for update dto
@@ -30,8 +28,7 @@ type ProjectForUpdateDto struct {
 	FailureReason string `json:"failureReason,omitempty"`
 
 	// health
-	// Enum: [100 150 200 300 400]
-	Health int32 `json:"health,omitempty"`
+	Health ProjectHealth `json:"health,omitempty"`
 
 	// image name
 	ImageName string `json:"imageName,omitempty"`
@@ -61,8 +58,7 @@ type ProjectForUpdateDto struct {
 	KubesprayCurrentVersion string `json:"kubesprayCurrentVersion,omitempty"`
 
 	// status
-	// Enum: [100 145 150 154 155 156 160 165 200 250 300 400 500 550 600 700 800 900 1000 1100]
-	Status int32 `json:"status,omitempty"`
+	Status ProjectStatus `json:"status,omitempty"`
 }
 
 // Validate validates this project for update dto
@@ -83,56 +79,20 @@ func (m *ProjectForUpdateDto) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var projectForUpdateDtoTypeHealthPropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,150,200,300,400]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		projectForUpdateDtoTypeHealthPropEnum = append(projectForUpdateDtoTypeHealthPropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *ProjectForUpdateDto) validateHealthEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, projectForUpdateDtoTypeHealthPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *ProjectForUpdateDto) validateHealth(formats strfmt.Registry) error {
 	if swag.IsZero(m.Health) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateHealthEnum("health", "body", m.Health); err != nil {
+	if err := m.Health.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("health")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("health")
+		}
 		return err
 	}
 
-	return nil
-}
-
-var projectForUpdateDtoTypeStatusPropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,145,150,154,155,156,160,165,200,250,300,400,500,550,600,700,800,900,1000,1100]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		projectForUpdateDtoTypeStatusPropEnum = append(projectForUpdateDtoTypeStatusPropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *ProjectForUpdateDto) validateStatusEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, projectForUpdateDtoTypeStatusPropEnum, true); err != nil {
-		return err
-	}
 	return nil
 }
 
@@ -141,16 +101,61 @@ func (m *ProjectForUpdateDto) validateStatus(formats strfmt.Registry) error {
 		return nil
 	}
 
-	// value enum
-	if err := m.validateStatusEnum("status", "body", m.Status); err != nil {
+	if err := m.Status.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("status")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("status")
+		}
 		return err
 	}
 
 	return nil
 }
 
-// ContextValidate validates this project for update dto based on context it is used
+// ContextValidate validate this project for update dto based on the context it is used
 func (m *ProjectForUpdateDto) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateHealth(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ProjectForUpdateDto) contextValidateHealth(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Health.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("health")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("health")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *ProjectForUpdateDto) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Status.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("status")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("status")
+		}
+		return err
+	}
+
 	return nil
 }
 

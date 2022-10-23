@@ -6,15 +6,13 @@ package stand_alone
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneUpdateReader is a Reader for the StandAloneUpdate structure.
@@ -77,7 +75,7 @@ StandAloneUpdateOK describes a response with status code 200, with default heade
 Success
 */
 type StandAloneUpdateOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone update o k response has a 2xx status code
@@ -113,7 +111,7 @@ func (o *StandAloneUpdateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update][%d] standAloneUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneUpdateOK) GetPayload() interface{} {
+func (o *StandAloneUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -138,7 +136,7 @@ StandAloneUpdateBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type StandAloneUpdateBadRequest struct {
-	Payload []*StandAloneUpdateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone update bad request response has a 2xx status code
@@ -174,7 +172,7 @@ func (o *StandAloneUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update][%d] standAloneUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneUpdateBadRequest) GetPayload() []*StandAloneUpdateBadRequestBodyItems0 {
+func (o *StandAloneUpdateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +197,7 @@ StandAloneUpdateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type StandAloneUpdateUnauthorized struct {
-	Payload *StandAloneUpdateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone update unauthorized response has a 2xx status code
@@ -235,13 +233,13 @@ func (o *StandAloneUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update][%d] standAloneUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneUpdateUnauthorized) GetPayload() *StandAloneUpdateUnauthorizedBody {
+func (o *StandAloneUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneUpdateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +260,7 @@ StandAloneUpdateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type StandAloneUpdateForbidden struct {
-	Payload *StandAloneUpdateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone update forbidden response has a 2xx status code
@@ -298,13 +296,13 @@ func (o *StandAloneUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update][%d] standAloneUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneUpdateForbidden) GetPayload() *StandAloneUpdateForbiddenBody {
+func (o *StandAloneUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneUpdateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +323,7 @@ StandAloneUpdateNotFound describes a response with status code 404, with default
 Not Found
 */
 type StandAloneUpdateNotFound struct {
-	Payload *StandAloneUpdateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone update not found response has a 2xx status code
@@ -361,13 +359,13 @@ func (o *StandAloneUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/update][%d] standAloneUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneUpdateNotFound) GetPayload() *StandAloneUpdateNotFoundBody {
+func (o *StandAloneUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneUpdateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,360 +423,5 @@ func (o *StandAloneUpdateInternalServerError) String() string {
 
 func (o *StandAloneUpdateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-StandAloneUpdateBadRequestBodyItems0 stand alone update bad request body items0
-swagger:model StandAloneUpdateBadRequestBodyItems0
-*/
-type StandAloneUpdateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this stand alone update bad request body items0
-func (o *StandAloneUpdateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone update bad request body items0 based on context it is used
-func (o *StandAloneUpdateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneUpdateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneUpdateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneUpdateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneUpdateBody stand alone update body
-swagger:model StandAloneUpdateBody
-*/
-type StandAloneUpdateBody struct {
-
-	// disks
-	Disks []*StandAloneUpdateParamsBodyDisksItems0 `json:"disks"`
-
-	// flavor Id
-	FlavorID string `json:"flavorId,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// instance Id
-	InstanceID string `json:"instanceId,omitempty"`
-
-	// ip address
-	IPAddress string `json:"ipAddress,omitempty"`
-
-	// public Ip
-	PublicIP string `json:"publicIp,omitempty"`
-
-	// revision
-	Revision int32 `json:"revision,omitempty"`
-}
-
-// Validate validates this stand alone update body
-func (o *StandAloneUpdateBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateDisks(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneUpdateBody) validateDisks(formats strfmt.Registry) error {
-	if swag.IsZero(o.Disks) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Disks); i++ {
-		if swag.IsZero(o.Disks[i]) { // not required
-			continue
-		}
-
-		if o.Disks[i] != nil {
-			if err := o.Disks[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "disks" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "disks" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this stand alone update body based on the context it is used
-func (o *StandAloneUpdateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateDisks(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneUpdateBody) contextValidateDisks(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Disks); i++ {
-
-		if o.Disks[i] != nil {
-			if err := o.Disks[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "disks" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "disks" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneUpdateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneUpdateBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneUpdateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneUpdateForbiddenBody stand alone update forbidden body
-swagger:model StandAloneUpdateForbiddenBody
-*/
-type StandAloneUpdateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone update forbidden body
-func (o *StandAloneUpdateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone update forbidden body based on context it is used
-func (o *StandAloneUpdateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneUpdateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneUpdateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneUpdateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneUpdateNotFoundBody stand alone update not found body
-swagger:model StandAloneUpdateNotFoundBody
-*/
-type StandAloneUpdateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone update not found body
-func (o *StandAloneUpdateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone update not found body based on context it is used
-func (o *StandAloneUpdateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneUpdateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneUpdateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneUpdateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneUpdateParamsBodyDisksItems0 stand alone update params body disks items0
-swagger:model StandAloneUpdateParamsBodyDisksItems0
-*/
-type StandAloneUpdateParamsBodyDisksItems0 struct {
-
-	// device name
-	DeviceName string `json:"deviceName,omitempty"`
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this stand alone update params body disks items0
-func (o *StandAloneUpdateParamsBodyDisksItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone update params body disks items0 based on context it is used
-func (o *StandAloneUpdateParamsBodyDisksItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneUpdateParamsBodyDisksItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneUpdateParamsBodyDisksItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneUpdateParamsBodyDisksItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneUpdateUnauthorizedBody stand alone update unauthorized body
-swagger:model StandAloneUpdateUnauthorizedBody
-*/
-type StandAloneUpdateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone update unauthorized body
-func (o *StandAloneUpdateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone update unauthorized body based on context it is used
-func (o *StandAloneUpdateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneUpdateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneUpdateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneUpdateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

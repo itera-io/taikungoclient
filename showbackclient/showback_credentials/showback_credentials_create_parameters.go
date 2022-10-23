@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewShowbackCredentialsCreateParams creates a new ShowbackCredentialsCreateParams object,
@@ -62,7 +64,7 @@ ShowbackCredentialsCreateParams contains all the parameters to send to the API e
 type ShowbackCredentialsCreateParams struct {
 
 	// Body.
-	Body ShowbackCredentialsCreateBody
+	Body *models.CreateShowbackCredentialCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *ShowbackCredentialsCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the showback credentials create params
-func (o *ShowbackCredentialsCreateParams) WithBody(body ShowbackCredentialsCreateBody) *ShowbackCredentialsCreateParams {
+func (o *ShowbackCredentialsCreateParams) WithBody(body *models.CreateShowbackCredentialCommand) *ShowbackCredentialsCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the showback credentials create params
-func (o *ShowbackCredentialsCreateParams) SetBody(body ShowbackCredentialsCreateBody) {
+func (o *ShowbackCredentialsCreateParams) SetBody(body *models.CreateShowbackCredentialCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *ShowbackCredentialsCreateParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

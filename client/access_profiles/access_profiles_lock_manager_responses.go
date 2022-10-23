@@ -6,13 +6,13 @@ package access_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AccessProfilesLockManagerReader is a Reader for the AccessProfilesLockManager structure.
@@ -75,7 +75,7 @@ AccessProfilesLockManagerOK describes a response with status code 200, with defa
 Success
 */
 type AccessProfilesLockManagerOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this access profiles lock manager o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AccessProfilesLockManagerOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerOK  %+v", 200, o.Payload)
 }
 
-func (o *AccessProfilesLockManagerOK) GetPayload() interface{} {
+func (o *AccessProfilesLockManagerOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AccessProfilesLockManagerBadRequest describes a response with status code 400, w
 Bad Request
 */
 type AccessProfilesLockManagerBadRequest struct {
-	Payload []*AccessProfilesLockManagerBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this access profiles lock manager bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AccessProfilesLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AccessProfilesLockManagerBadRequest) GetPayload() []*AccessProfilesLockManagerBadRequestBodyItems0 {
+func (o *AccessProfilesLockManagerBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AccessProfilesLockManagerUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type AccessProfilesLockManagerUnauthorized struct {
-	Payload *AccessProfilesLockManagerUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles lock manager unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AccessProfilesLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AccessProfilesLockManagerUnauthorized) GetPayload() *AccessProfilesLockManagerUnauthorizedBody {
+func (o *AccessProfilesLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AccessProfilesLockManagerUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AccessProfilesLockManagerForbidden describes a response with status code 403, wi
 Forbidden
 */
 type AccessProfilesLockManagerForbidden struct {
-	Payload *AccessProfilesLockManagerForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles lock manager forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AccessProfilesLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AccessProfilesLockManagerForbidden) GetPayload() *AccessProfilesLockManagerForbiddenBody {
+func (o *AccessProfilesLockManagerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AccessProfilesLockManagerForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AccessProfilesLockManagerNotFound describes a response with status code 404, wit
 Not Found
 */
 type AccessProfilesLockManagerNotFound struct {
-	Payload *AccessProfilesLockManagerNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this access profiles lock manager not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AccessProfilesLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/AccessProfiles/lockmanager][%d] accessProfilesLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AccessProfilesLockManagerNotFound) GetPayload() *AccessProfilesLockManagerNotFoundBody {
+func (o *AccessProfilesLockManagerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AccessProfilesLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AccessProfilesLockManagerNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *AccessProfilesLockManagerInternalServerError) String() string {
 
 func (o *AccessProfilesLockManagerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AccessProfilesLockManagerBadRequestBodyItems0 access profiles lock manager bad request body items0
-swagger:model AccessProfilesLockManagerBadRequestBodyItems0
-*/
-type AccessProfilesLockManagerBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this access profiles lock manager bad request body items0
-func (o *AccessProfilesLockManagerBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles lock manager bad request body items0 based on context it is used
-func (o *AccessProfilesLockManagerBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesLockManagerBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesLockManagerBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesLockManagerBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesLockManagerBody access profiles lock manager body
-swagger:model AccessProfilesLockManagerBody
-*/
-type AccessProfilesLockManagerBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// mode
-	Mode string `json:"mode,omitempty"`
-}
-
-// Validate validates this access profiles lock manager body
-func (o *AccessProfilesLockManagerBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles lock manager body based on context it is used
-func (o *AccessProfilesLockManagerBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesLockManagerBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesLockManagerBody) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesLockManagerBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesLockManagerForbiddenBody access profiles lock manager forbidden body
-swagger:model AccessProfilesLockManagerForbiddenBody
-*/
-type AccessProfilesLockManagerForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this access profiles lock manager forbidden body
-func (o *AccessProfilesLockManagerForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles lock manager forbidden body based on context it is used
-func (o *AccessProfilesLockManagerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesLockManagerForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesLockManagerForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesLockManagerForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesLockManagerNotFoundBody access profiles lock manager not found body
-swagger:model AccessProfilesLockManagerNotFoundBody
-*/
-type AccessProfilesLockManagerNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this access profiles lock manager not found body
-func (o *AccessProfilesLockManagerNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles lock manager not found body based on context it is used
-func (o *AccessProfilesLockManagerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesLockManagerNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesLockManagerNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesLockManagerNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AccessProfilesLockManagerUnauthorizedBody access profiles lock manager unauthorized body
-swagger:model AccessProfilesLockManagerUnauthorizedBody
-*/
-type AccessProfilesLockManagerUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this access profiles lock manager unauthorized body
-func (o *AccessProfilesLockManagerUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this access profiles lock manager unauthorized body based on context it is used
-func (o *AccessProfilesLockManagerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AccessProfilesLockManagerUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AccessProfilesLockManagerUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AccessProfilesLockManagerUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

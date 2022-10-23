@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectAppSyncParams creates a new ProjectAppSyncParams object,
@@ -62,7 +64,7 @@ ProjectAppSyncParams contains all the parameters to send to the API endpoint
 type ProjectAppSyncParams struct {
 
 	// Body.
-	Body ProjectAppSyncBody
+	Body *models.SyncProjectAppCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *ProjectAppSyncParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the project app sync params
-func (o *ProjectAppSyncParams) WithBody(body ProjectAppSyncBody) *ProjectAppSyncParams {
+func (o *ProjectAppSyncParams) WithBody(body *models.SyncProjectAppCommand) *ProjectAppSyncParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the project app sync params
-func (o *ProjectAppSyncParams) SetBody(body ProjectAppSyncBody) {
+func (o *ProjectAppSyncParams) SetBody(body *models.SyncProjectAppCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *ProjectAppSyncParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

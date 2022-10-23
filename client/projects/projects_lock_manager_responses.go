@@ -6,13 +6,13 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsLockManagerReader is a Reader for the ProjectsLockManager structure.
@@ -75,7 +75,7 @@ ProjectsLockManagerOK describes a response with status code 200, with default he
 Success
 */
 type ProjectsLockManagerOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects lock manager o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectsLockManagerOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsLockManagerOK) GetPayload() interface{} {
+func (o *ProjectsLockManagerOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectsLockManagerBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type ProjectsLockManagerBadRequest struct {
-	Payload []*ProjectsLockManagerBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects lock manager bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsLockManagerBadRequest) GetPayload() []*ProjectsLockManagerBadRequestBodyItems0 {
+func (o *ProjectsLockManagerBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectsLockManagerUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ProjectsLockManagerUnauthorized struct {
-	Payload *ProjectsLockManagerUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects lock manager unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectsLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsLockManagerUnauthorized) GetPayload() *ProjectsLockManagerUnauthorizedBody {
+func (o *ProjectsLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsLockManagerUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectsLockManagerForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ProjectsLockManagerForbidden struct {
-	Payload *ProjectsLockManagerForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects lock manager forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectsLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsLockManagerForbidden) GetPayload() *ProjectsLockManagerForbiddenBody {
+func (o *ProjectsLockManagerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsLockManagerForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectsLockManagerNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ProjectsLockManagerNotFound struct {
-	Payload *ProjectsLockManagerNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects lock manager not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectsLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/lockmanager][%d] projectsLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsLockManagerNotFound) GetPayload() *ProjectsLockManagerNotFoundBody {
+func (o *ProjectsLockManagerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsLockManagerNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *ProjectsLockManagerInternalServerError) String() string {
 
 func (o *ProjectsLockManagerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectsLockManagerBadRequestBodyItems0 projects lock manager bad request body items0
-swagger:model ProjectsLockManagerBadRequestBodyItems0
-*/
-type ProjectsLockManagerBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this projects lock manager bad request body items0
-func (o *ProjectsLockManagerBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects lock manager bad request body items0 based on context it is used
-func (o *ProjectsLockManagerBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsLockManagerBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsLockManagerBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectsLockManagerBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsLockManagerForbiddenBody projects lock manager forbidden body
-swagger:model ProjectsLockManagerForbiddenBody
-*/
-type ProjectsLockManagerForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects lock manager forbidden body
-func (o *ProjectsLockManagerForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects lock manager forbidden body based on context it is used
-func (o *ProjectsLockManagerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsLockManagerForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsLockManagerForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsLockManagerForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsLockManagerNotFoundBody projects lock manager not found body
-swagger:model ProjectsLockManagerNotFoundBody
-*/
-type ProjectsLockManagerNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects lock manager not found body
-func (o *ProjectsLockManagerNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects lock manager not found body based on context it is used
-func (o *ProjectsLockManagerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsLockManagerNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsLockManagerNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsLockManagerNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsLockManagerUnauthorizedBody projects lock manager unauthorized body
-swagger:model ProjectsLockManagerUnauthorizedBody
-*/
-type ProjectsLockManagerUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects lock manager unauthorized body
-func (o *ProjectsLockManagerUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects lock manager unauthorized body based on context it is used
-func (o *ProjectsLockManagerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsLockManagerUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsLockManagerUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsLockManagerUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

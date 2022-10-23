@@ -6,13 +6,13 @@ package stand_alone_actions
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneActionsUnshelveReader is a Reader for the StandAloneActionsUnshelve structure.
@@ -75,7 +75,7 @@ StandAloneActionsUnshelveOK describes a response with status code 200, with defa
 Success
 */
 type StandAloneActionsUnshelveOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone actions unshelve o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneActionsUnshelveOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneActionsUnshelveOK) GetPayload() interface{} {
+func (o *StandAloneActionsUnshelveOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneActionsUnshelveBadRequest describes a response with status code 400, w
 Bad Request
 */
 type StandAloneActionsUnshelveBadRequest struct {
-	Payload []*StandAloneActionsUnshelveBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone actions unshelve bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneActionsUnshelveBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsUnshelveBadRequest) GetPayload() []*StandAloneActionsUnshelveBadRequestBodyItems0 {
+func (o *StandAloneActionsUnshelveBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneActionsUnshelveUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type StandAloneActionsUnshelveUnauthorized struct {
-	Payload *StandAloneActionsUnshelveUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions unshelve unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneActionsUnshelveUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsUnshelveUnauthorized) GetPayload() *StandAloneActionsUnshelveUnauthorizedBody {
+func (o *StandAloneActionsUnshelveUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsUnshelveUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneActionsUnshelveUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneActionsUnshelveForbidden describes a response with status code 403, wi
 Forbidden
 */
 type StandAloneActionsUnshelveForbidden struct {
-	Payload *StandAloneActionsUnshelveForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions unshelve forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneActionsUnshelveForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsUnshelveForbidden) GetPayload() *StandAloneActionsUnshelveForbiddenBody {
+func (o *StandAloneActionsUnshelveForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsUnshelveForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneActionsUnshelveForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneActionsUnshelveNotFound describes a response with status code 404, wit
 Not Found
 */
 type StandAloneActionsUnshelveNotFound struct {
-	Payload *StandAloneActionsUnshelveNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions unshelve not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneActionsUnshelveNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/unshelve][%d] standAloneActionsUnshelveNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsUnshelveNotFound) GetPayload() *StandAloneActionsUnshelveNotFoundBody {
+func (o *StandAloneActionsUnshelveNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsUnshelveNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneActionsUnshelveNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *StandAloneActionsUnshelveInternalServerError) String() string {
 
 func (o *StandAloneActionsUnshelveInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-StandAloneActionsUnshelveBadRequestBodyItems0 stand alone actions unshelve bad request body items0
-swagger:model StandAloneActionsUnshelveBadRequestBodyItems0
-*/
-type StandAloneActionsUnshelveBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this stand alone actions unshelve bad request body items0
-func (o *StandAloneActionsUnshelveBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions unshelve bad request body items0 based on context it is used
-func (o *StandAloneActionsUnshelveBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsUnshelveBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsUnshelveBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsUnshelveBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneActionsUnshelveBody stand alone actions unshelve body
-swagger:model StandAloneActionsUnshelveBody
-*/
-type StandAloneActionsUnshelveBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-}
-
-// Validate validates this stand alone actions unshelve body
-func (o *StandAloneActionsUnshelveBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions unshelve body based on context it is used
-func (o *StandAloneActionsUnshelveBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsUnshelveBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsUnshelveBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsUnshelveBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneActionsUnshelveForbiddenBody stand alone actions unshelve forbidden body
-swagger:model StandAloneActionsUnshelveForbiddenBody
-*/
-type StandAloneActionsUnshelveForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone actions unshelve forbidden body
-func (o *StandAloneActionsUnshelveForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions unshelve forbidden body based on context it is used
-func (o *StandAloneActionsUnshelveForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsUnshelveForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsUnshelveForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsUnshelveForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneActionsUnshelveNotFoundBody stand alone actions unshelve not found body
-swagger:model StandAloneActionsUnshelveNotFoundBody
-*/
-type StandAloneActionsUnshelveNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone actions unshelve not found body
-func (o *StandAloneActionsUnshelveNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions unshelve not found body based on context it is used
-func (o *StandAloneActionsUnshelveNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsUnshelveNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsUnshelveNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsUnshelveNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneActionsUnshelveUnauthorizedBody stand alone actions unshelve unauthorized body
-swagger:model StandAloneActionsUnshelveUnauthorizedBody
-*/
-type StandAloneActionsUnshelveUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone actions unshelve unauthorized body
-func (o *StandAloneActionsUnshelveUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions unshelve unauthorized body based on context it is used
-func (o *StandAloneActionsUnshelveUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsUnshelveUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsUnshelveUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsUnshelveUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

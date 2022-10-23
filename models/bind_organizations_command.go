@@ -20,7 +20,7 @@ import (
 type BindOrganizationsCommand struct {
 
 	// organizations
-	Organizations []*BindOrganizationsCommandOrganizationsItems0 `json:"organizations"`
+	Organizations []*OrganizationDto `json:"organizations"`
 
 	// partner Id
 	PartnerID int32 `json:"partnerId,omitempty"`
@@ -111,46 +111,6 @@ func (m *BindOrganizationsCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BindOrganizationsCommand) UnmarshalBinary(b []byte) error {
 	var res BindOrganizationsCommand
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// BindOrganizationsCommandOrganizationsItems0 bind organizations command organizations items0
-//
-// swagger:model BindOrganizationsCommandOrganizationsItems0
-type BindOrganizationsCommandOrganizationsItems0 struct {
-
-	// is bound
-	IsBound bool `json:"isBound"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-}
-
-// Validate validates this bind organizations command organizations items0
-func (m *BindOrganizationsCommandOrganizationsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this bind organizations command organizations items0 based on context it is used
-func (m *BindOrganizationsCommandOrganizationsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *BindOrganizationsCommandOrganizationsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *BindOrganizationsCommandOrganizationsItems0) UnmarshalBinary(b []byte) error {
-	var res BindOrganizationsCommandOrganizationsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

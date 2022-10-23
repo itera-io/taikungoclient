@@ -6,15 +6,13 @@ package catalog
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CatalogListReader is a Reader for the CatalogList structure.
@@ -77,7 +75,7 @@ CatalogListOK describes a response with status code 200, with default header val
 Success
 */
 type CatalogListOK struct {
-	Payload *CatalogListOKBody
+	Payload *models.AvailablePackagesList
 }
 
 // IsSuccess returns true when this catalog list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *CatalogListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListOK  %+v", 200, o.Payload)
 }
 
-func (o *CatalogListOK) GetPayload() *CatalogListOKBody {
+func (o *CatalogListOK) GetPayload() *models.AvailablePackagesList {
 	return o.Payload
 }
 
 func (o *CatalogListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CatalogListOKBody)
+	o.Payload = new(models.AvailablePackagesList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ CatalogListBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type CatalogListBadRequest struct {
-	Payload []*CatalogListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this catalog list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *CatalogListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CatalogListBadRequest) GetPayload() []*CatalogListBadRequestBodyItems0 {
+func (o *CatalogListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ CatalogListUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type CatalogListUnauthorized struct {
-	Payload *CatalogListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *CatalogListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CatalogListUnauthorized) GetPayload() *CatalogListUnauthorizedBody {
+func (o *CatalogListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CatalogListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ CatalogListForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type CatalogListForbidden struct {
-	Payload *CatalogListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *CatalogListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CatalogListForbidden) GetPayload() *CatalogListForbiddenBody {
+func (o *CatalogListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CatalogListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ CatalogListNotFound describes a response with status code 404, with default head
 Not Found
 */
 type CatalogListNotFound struct {
-	Payload *CatalogListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this catalog list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *CatalogListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Catalog/available/packages][%d] catalogListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CatalogListNotFound) GetPayload() *CatalogListNotFoundBody {
+func (o *CatalogListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CatalogListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CatalogListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,589 +425,5 @@ func (o *CatalogListInternalServerError) String() string {
 
 func (o *CatalogListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CatalogListBadRequestBodyItems0 catalog list bad request body items0
-swagger:model CatalogListBadRequestBodyItems0
-*/
-type CatalogListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this catalog list bad request body items0
-func (o *CatalogListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog list bad request body items0 based on context it is used
-func (o *CatalogListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CatalogListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogListForbiddenBody catalog list forbidden body
-swagger:model CatalogListForbiddenBody
-*/
-type CatalogListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this catalog list forbidden body
-func (o *CatalogListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog list forbidden body based on context it is used
-func (o *CatalogListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CatalogListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogListNotFoundBody catalog list not found body
-swagger:model CatalogListNotFoundBody
-*/
-type CatalogListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this catalog list not found body
-func (o *CatalogListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog list not found body based on context it is used
-func (o *CatalogListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CatalogListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogListOKBody catalog list o k body
-swagger:model CatalogListOKBody
-*/
-type CatalogListOKBody struct {
-
-	// data
-	Data []*CatalogListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this catalog list o k body
-func (o *CatalogListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *CatalogListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("catalogListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("catalogListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this catalog list o k body based on the context it is used
-func (o *CatalogListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *CatalogListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("catalogListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("catalogListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogListOKBody) UnmarshalBinary(b []byte) error {
-	var res CatalogListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogListOKBodyDataItems0 catalog list o k body data items0
-swagger:model CatalogListOKBodyDataItems0
-*/
-type CatalogListOKBodyDataItems0 struct {
-
-	// app version
-	AppVersion string `json:"appVersion,omitempty"`
-
-	// catalog app Id
-	CatalogAppID int32 `json:"catalogAppId,omitempty"`
-
-	// deprecated
-	Deprecated bool `json:"deprecated"`
-
-	// description
-	Description string `json:"description,omitempty"`
-
-	// installed instance count
-	InstalledInstanceCount int32 `json:"installedInstanceCount,omitempty"`
-
-	// logo image Id
-	LogoImageID string `json:"logoImageId,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// normalized name
-	NormalizedName string `json:"normalizedName,omitempty"`
-
-	// package Id
-	PackageID string `json:"packageId,omitempty"`
-
-	// repository
-	Repository *CatalogListOKBodyDataItems0Repository `json:"repository,omitempty"`
-
-	// security report summary
-	SecurityReportSummary *CatalogListOKBodyDataItems0SecurityReportSummary `json:"securityReportSummary,omitempty"`
-
-	// signed
-	Signed bool `json:"signed"`
-
-	// stars
-	Stars int64 `json:"stars,omitempty"`
-
-	// ts
-	Ts string `json:"ts,omitempty"`
-
-	// version
-	Version string `json:"version,omitempty"`
-}
-
-// Validate validates this catalog list o k body data items0
-func (o *CatalogListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateRepository(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateSecurityReportSummary(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *CatalogListOKBodyDataItems0) validateRepository(formats strfmt.Registry) error {
-	if swag.IsZero(o.Repository) { // not required
-		return nil
-	}
-
-	if o.Repository != nil {
-		if err := o.Repository.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("repository")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("repository")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *CatalogListOKBodyDataItems0) validateSecurityReportSummary(formats strfmt.Registry) error {
-	if swag.IsZero(o.SecurityReportSummary) { // not required
-		return nil
-	}
-
-	if o.SecurityReportSummary != nil {
-		if err := o.SecurityReportSummary.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("securityReportSummary")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("securityReportSummary")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this catalog list o k body data items0 based on the context it is used
-func (o *CatalogListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateRepository(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateSecurityReportSummary(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *CatalogListOKBodyDataItems0) contextValidateRepository(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Repository != nil {
-		if err := o.Repository.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("repository")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("repository")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *CatalogListOKBodyDataItems0) contextValidateSecurityReportSummary(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.SecurityReportSummary != nil {
-		if err := o.SecurityReportSummary.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("securityReportSummary")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("securityReportSummary")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res CatalogListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogListOKBodyDataItems0Repository catalog list o k body data items0 repository
-swagger:model CatalogListOKBodyDataItems0Repository
-*/
-type CatalogListOKBodyDataItems0Repository struct {
-
-	// kind
-	Kind int64 `json:"kind,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// official
-	Official bool `json:"official"`
-
-	// organization display name
-	OrganizationDisplayName string `json:"organizationDisplayName,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// repository Id
-	RepositoryID string `json:"repositoryId,omitempty"`
-
-	// scanner disabled
-	ScannerDisabled bool `json:"scannerDisabled"`
-
-	// url
-	URL string `json:"url,omitempty"`
-
-	// verified publisher
-	VerifiedPublisher bool `json:"verifiedPublisher"`
-}
-
-// Validate validates this catalog list o k body data items0 repository
-func (o *CatalogListOKBodyDataItems0Repository) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog list o k body data items0 repository based on context it is used
-func (o *CatalogListOKBodyDataItems0Repository) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogListOKBodyDataItems0Repository) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogListOKBodyDataItems0Repository) UnmarshalBinary(b []byte) error {
-	var res CatalogListOKBodyDataItems0Repository
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogListOKBodyDataItems0SecurityReportSummary catalog list o k body data items0 security report summary
-swagger:model CatalogListOKBodyDataItems0SecurityReportSummary
-*/
-type CatalogListOKBodyDataItems0SecurityReportSummary struct {
-
-	// critical
-	Critical int64 `json:"critical,omitempty"`
-
-	// high
-	High int64 `json:"high,omitempty"`
-
-	// low
-	Low int64 `json:"low,omitempty"`
-
-	// medium
-	Medium int64 `json:"medium,omitempty"`
-
-	// unknown
-	Unknown int64 `json:"unknown,omitempty"`
-}
-
-// Validate validates this catalog list o k body data items0 security report summary
-func (o *CatalogListOKBodyDataItems0SecurityReportSummary) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog list o k body data items0 security report summary based on context it is used
-func (o *CatalogListOKBodyDataItems0SecurityReportSummary) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogListOKBodyDataItems0SecurityReportSummary) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogListOKBodyDataItems0SecurityReportSummary) UnmarshalBinary(b []byte) error {
-	var res CatalogListOKBodyDataItems0SecurityReportSummary
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CatalogListUnauthorizedBody catalog list unauthorized body
-swagger:model CatalogListUnauthorizedBody
-*/
-type CatalogListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this catalog list unauthorized body
-func (o *CatalogListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this catalog list unauthorized body based on context it is used
-func (o *CatalogListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CatalogListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CatalogListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CatalogListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -6,13 +6,13 @@ package subscription
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // SubscriptionUpdateReader is a Reader for the SubscriptionUpdate structure.
@@ -75,7 +75,7 @@ SubscriptionUpdateOK describes a response with status code 200, with default hea
 Success
 */
 type SubscriptionUpdateOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this subscription update o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *SubscriptionUpdateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/update][%d] subscriptionUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *SubscriptionUpdateOK) GetPayload() interface{} {
+func (o *SubscriptionUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ SubscriptionUpdateBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type SubscriptionUpdateBadRequest struct {
-	Payload []*SubscriptionUpdateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this subscription update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *SubscriptionUpdateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/update][%d] subscriptionUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionUpdateBadRequest) GetPayload() []*SubscriptionUpdateBadRequestBodyItems0 {
+func (o *SubscriptionUpdateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ SubscriptionUpdateUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type SubscriptionUpdateUnauthorized struct {
-	Payload *SubscriptionUpdateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription update unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *SubscriptionUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/update][%d] subscriptionUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SubscriptionUpdateUnauthorized) GetPayload() *SubscriptionUpdateUnauthorizedBody {
+func (o *SubscriptionUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SubscriptionUpdateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ SubscriptionUpdateForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type SubscriptionUpdateForbidden struct {
-	Payload *SubscriptionUpdateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription update forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *SubscriptionUpdateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/update][%d] subscriptionUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SubscriptionUpdateForbidden) GetPayload() *SubscriptionUpdateForbiddenBody {
+func (o *SubscriptionUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SubscriptionUpdateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ SubscriptionUpdateNotFound describes a response with status code 404, with defau
 Not Found
 */
 type SubscriptionUpdateNotFound struct {
-	Payload *SubscriptionUpdateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription update not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *SubscriptionUpdateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/update][%d] subscriptionUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SubscriptionUpdateNotFound) GetPayload() *SubscriptionUpdateNotFoundBody {
+func (o *SubscriptionUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SubscriptionUpdateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,261 +423,5 @@ func (o *SubscriptionUpdateInternalServerError) String() string {
 
 func (o *SubscriptionUpdateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-SubscriptionUpdateBadRequestBodyItems0 subscription update bad request body items0
-swagger:model SubscriptionUpdateBadRequestBodyItems0
-*/
-type SubscriptionUpdateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this subscription update bad request body items0
-func (o *SubscriptionUpdateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this subscription update bad request body items0 based on context it is used
-func (o *SubscriptionUpdateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SubscriptionUpdateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SubscriptionUpdateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res SubscriptionUpdateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SubscriptionUpdateBody subscription update body
-swagger:model SubscriptionUpdateBody
-*/
-type SubscriptionUpdateBody struct {
-
-	// cloud credential limit
-	CloudCredentialLimit int32 `json:"cloudCredentialLimit,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// monthly price
-	MonthlyPrice float64 `json:"monthlyPrice,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// project limit
-	ProjectLimit int32 `json:"projectLimit,omitempty"`
-
-	// server limit
-	ServerLimit int32 `json:"serverLimit,omitempty"`
-
-	// tcu price
-	TcuPrice float64 `json:"tcuPrice,omitempty"`
-
-	// trial days
-	TrialDays int32 `json:"trialDays,omitempty"`
-
-	// user limit
-	UserLimit int32 `json:"userLimit,omitempty"`
-
-	// yearly price
-	YearlyPrice float64 `json:"yearlyPrice,omitempty"`
-}
-
-// Validate validates this subscription update body
-func (o *SubscriptionUpdateBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this subscription update body based on context it is used
-func (o *SubscriptionUpdateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SubscriptionUpdateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SubscriptionUpdateBody) UnmarshalBinary(b []byte) error {
-	var res SubscriptionUpdateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SubscriptionUpdateForbiddenBody subscription update forbidden body
-swagger:model SubscriptionUpdateForbiddenBody
-*/
-type SubscriptionUpdateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this subscription update forbidden body
-func (o *SubscriptionUpdateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this subscription update forbidden body based on context it is used
-func (o *SubscriptionUpdateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SubscriptionUpdateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SubscriptionUpdateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res SubscriptionUpdateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SubscriptionUpdateNotFoundBody subscription update not found body
-swagger:model SubscriptionUpdateNotFoundBody
-*/
-type SubscriptionUpdateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this subscription update not found body
-func (o *SubscriptionUpdateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this subscription update not found body based on context it is used
-func (o *SubscriptionUpdateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SubscriptionUpdateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SubscriptionUpdateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res SubscriptionUpdateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SubscriptionUpdateUnauthorizedBody subscription update unauthorized body
-swagger:model SubscriptionUpdateUnauthorizedBody
-*/
-type SubscriptionUpdateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this subscription update unauthorized body
-func (o *SubscriptionUpdateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this subscription update unauthorized body based on context it is used
-func (o *SubscriptionUpdateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SubscriptionUpdateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SubscriptionUpdateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res SubscriptionUpdateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

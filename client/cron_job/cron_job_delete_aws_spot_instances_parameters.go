@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobDeleteAwsSpotInstancesParams creates a new CronJobDeleteAwsSpotInstancesParams object,
@@ -62,7 +64,7 @@ CronJobDeleteAwsSpotInstancesParams contains all the parameters to send to the A
 type CronJobDeleteAwsSpotInstancesParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.DeleteRemovedSpotInstancesCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CronJobDeleteAwsSpotInstancesParams) SetHTTPClient(client *http.Client)
 }
 
 // WithBody adds the body to the cron job delete aws spot instances params
-func (o *CronJobDeleteAwsSpotInstancesParams) WithBody(body interface{}) *CronJobDeleteAwsSpotInstancesParams {
+func (o *CronJobDeleteAwsSpotInstancesParams) WithBody(body models.DeleteRemovedSpotInstancesCommand) *CronJobDeleteAwsSpotInstancesParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job delete aws spot instances params
-func (o *CronJobDeleteAwsSpotInstancesParams) SetBody(body interface{}) {
+func (o *CronJobDeleteAwsSpotInstancesParams) SetBody(body models.DeleteRemovedSpotInstancesCommand) {
 	o.Body = body
 }
 

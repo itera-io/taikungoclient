@@ -7,12 +7,10 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // ResetStandAloneVMStatusCommand reset stand alone Vm status command
@@ -24,8 +22,7 @@ type ResetStandAloneVMStatusCommand struct {
 	ProjectID int32 `json:"projectId,omitempty"`
 
 	// status
-	// Enum: [100 200 300 400 500 600]
-	Status int32 `json:"status,omitempty"`
+	Status StandAloneVMStatus `json:"status,omitempty"`
 
 	// vm ids
 	VMIds []int32 `json:"vmIds"`
@@ -45,41 +42,48 @@ func (m *ResetStandAloneVMStatusCommand) Validate(formats strfmt.Registry) error
 	return nil
 }
 
-var resetStandAloneVmStatusCommandTypeStatusPropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200,300,400,500,600]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		resetStandAloneVmStatusCommandTypeStatusPropEnum = append(resetStandAloneVmStatusCommandTypeStatusPropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *ResetStandAloneVMStatusCommand) validateStatusEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, resetStandAloneVmStatusCommandTypeStatusPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *ResetStandAloneVMStatusCommand) validateStatus(formats strfmt.Registry) error {
 	if swag.IsZero(m.Status) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateStatusEnum("status", "body", m.Status); err != nil {
+	if err := m.Status.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("status")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("status")
+		}
 		return err
 	}
 
 	return nil
 }
 
-// ContextValidate validates this reset stand alone Vm status command based on context it is used
+// ContextValidate validate this reset stand alone Vm status command based on the context it is used
 func (m *ResetStandAloneVMStatusCommand) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *ResetStandAloneVMStatusCommand) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Status.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("status")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("status")
+		}
+		return err
+	}
+
 	return nil
 }
 

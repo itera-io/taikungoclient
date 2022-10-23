@@ -15,6 +15,8 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewPrometheusUpdateParams creates a new PrometheusUpdateParams object,
@@ -63,7 +65,7 @@ PrometheusUpdateParams contains all the parameters to send to the API endpoint
 type PrometheusUpdateParams struct {
 
 	// Body.
-	Body PrometheusUpdateBody
+	Body *models.RuleForUpdateDto
 
 	// ID.
 	//
@@ -127,13 +129,13 @@ func (o *PrometheusUpdateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the prometheus update params
-func (o *PrometheusUpdateParams) WithBody(body PrometheusUpdateBody) *PrometheusUpdateParams {
+func (o *PrometheusUpdateParams) WithBody(body *models.RuleForUpdateDto) *PrometheusUpdateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the prometheus update params
-func (o *PrometheusUpdateParams) SetBody(body PrometheusUpdateBody) {
+func (o *PrometheusUpdateParams) SetBody(body *models.RuleForUpdateDto) {
 	o.Body = body
 }
 
@@ -166,8 +168,10 @@ func (o *PrometheusUpdateParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param id

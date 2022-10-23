@@ -6,13 +6,13 @@ package openstack
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // OpenstackZoneListReader is a Reader for the OpenstackZoneList structure.
@@ -136,7 +136,7 @@ OpenstackZoneListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type OpenstackZoneListBadRequest struct {
-	Payload []*OpenstackZoneListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this openstack zone list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpenstackZoneListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackZoneListBadRequest) GetPayload() []*OpenstackZoneListBadRequestBodyItems0 {
+func (o *OpenstackZoneListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OpenstackZoneListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpenstackZoneListUnauthorized struct {
-	Payload *OpenstackZoneListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack zone list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OpenstackZoneListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackZoneListUnauthorized) GetPayload() *OpenstackZoneListUnauthorizedBody {
+func (o *OpenstackZoneListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackZoneListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackZoneListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OpenstackZoneListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpenstackZoneListForbidden struct {
-	Payload *OpenstackZoneListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack zone list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OpenstackZoneListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackZoneListForbidden) GetPayload() *OpenstackZoneListForbiddenBody {
+func (o *OpenstackZoneListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackZoneListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackZoneListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OpenstackZoneListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpenstackZoneListNotFound struct {
-	Payload *OpenstackZoneListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack zone list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OpenstackZoneListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/zones][%d] openstackZoneListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackZoneListNotFound) GetPayload() *OpenstackZoneListNotFoundBody {
+func (o *OpenstackZoneListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackZoneListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackZoneListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,255 +423,5 @@ func (o *OpenstackZoneListInternalServerError) String() string {
 
 func (o *OpenstackZoneListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-OpenstackZoneListBadRequestBodyItems0 openstack zone list bad request body items0
-swagger:model OpenstackZoneListBadRequestBodyItems0
-*/
-type OpenstackZoneListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this openstack zone list bad request body items0
-func (o *OpenstackZoneListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack zone list bad request body items0 based on context it is used
-func (o *OpenstackZoneListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackZoneListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackZoneListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OpenstackZoneListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackZoneListBody openstack zone list body
-swagger:model OpenstackZoneListBody
-*/
-type OpenstackZoneListBody struct {
-
-	// application cred enabled
-	ApplicationCredEnabled bool `json:"applicationCredEnabled"`
-
-	// is admin
-	IsAdmin bool `json:"isAdmin"`
-
-	// open stack domain
-	OpenStackDomain string `json:"openStackDomain,omitempty"`
-
-	// open stack password
-	OpenStackPassword string `json:"openStackPassword,omitempty"`
-
-	// open stack region
-	OpenStackRegion string `json:"openStackRegion,omitempty"`
-
-	// open stack Url
-	OpenStackURL string `json:"openStackUrl,omitempty"`
-
-	// open stack user
-	OpenStackUser string `json:"openStackUser,omitempty"`
-
-	// openstack project
-	OpenstackProject string `json:"openstackProject,omitempty"`
-}
-
-// Validate validates this openstack zone list body
-func (o *OpenstackZoneListBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack zone list body based on context it is used
-func (o *OpenstackZoneListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackZoneListBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackZoneListBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackZoneListBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackZoneListForbiddenBody openstack zone list forbidden body
-swagger:model OpenstackZoneListForbiddenBody
-*/
-type OpenstackZoneListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this openstack zone list forbidden body
-func (o *OpenstackZoneListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack zone list forbidden body based on context it is used
-func (o *OpenstackZoneListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackZoneListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackZoneListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackZoneListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackZoneListNotFoundBody openstack zone list not found body
-swagger:model OpenstackZoneListNotFoundBody
-*/
-type OpenstackZoneListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this openstack zone list not found body
-func (o *OpenstackZoneListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack zone list not found body based on context it is used
-func (o *OpenstackZoneListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackZoneListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackZoneListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackZoneListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackZoneListUnauthorizedBody openstack zone list unauthorized body
-swagger:model OpenstackZoneListUnauthorizedBody
-*/
-type OpenstackZoneListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this openstack zone list unauthorized body
-func (o *OpenstackZoneListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack zone list unauthorized body based on context it is used
-func (o *OpenstackZoneListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackZoneListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackZoneListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackZoneListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

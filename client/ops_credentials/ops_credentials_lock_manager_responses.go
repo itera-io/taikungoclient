@@ -6,13 +6,13 @@ package ops_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // OpsCredentialsLockManagerReader is a Reader for the OpsCredentialsLockManager structure.
@@ -75,7 +75,7 @@ OpsCredentialsLockManagerOK describes a response with status code 200, with defa
 Success
 */
 type OpsCredentialsLockManagerOK struct {
-	Payload *OpsCredentialsLockManagerOKBody
+	Payload *models.APIResponse
 }
 
 // IsSuccess returns true when this ops credentials lock manager o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *OpsCredentialsLockManagerOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerOK  %+v", 200, o.Payload)
 }
 
-func (o *OpsCredentialsLockManagerOK) GetPayload() *OpsCredentialsLockManagerOKBody {
+func (o *OpsCredentialsLockManagerOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *OpsCredentialsLockManagerOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpsCredentialsLockManagerOKBody)
+	o.Payload = new(models.APIResponse)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ OpsCredentialsLockManagerBadRequest describes a response with status code 400, w
 Bad Request
 */
 type OpsCredentialsLockManagerBadRequest struct {
-	Payload []*OpsCredentialsLockManagerBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this ops credentials lock manager bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *OpsCredentialsLockManagerBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsLockManagerBadRequest) GetPayload() []*OpsCredentialsLockManagerBadRequestBodyItems0 {
+func (o *OpsCredentialsLockManagerBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ OpsCredentialsLockManagerUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type OpsCredentialsLockManagerUnauthorized struct {
-	Payload *OpsCredentialsLockManagerUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials lock manager unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *OpsCredentialsLockManagerUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpsCredentialsLockManagerUnauthorized) GetPayload() *OpsCredentialsLockManagerUnauthorizedBody {
+func (o *OpsCredentialsLockManagerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsLockManagerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpsCredentialsLockManagerUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ OpsCredentialsLockManagerForbidden describes a response with status code 403, wi
 Forbidden
 */
 type OpsCredentialsLockManagerForbidden struct {
-	Payload *OpsCredentialsLockManagerForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials lock manager forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *OpsCredentialsLockManagerForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpsCredentialsLockManagerForbidden) GetPayload() *OpsCredentialsLockManagerForbiddenBody {
+func (o *OpsCredentialsLockManagerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsLockManagerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpsCredentialsLockManagerForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ OpsCredentialsLockManagerNotFound describes a response with status code 404, wit
 Not Found
 */
 type OpsCredentialsLockManagerNotFound struct {
-	Payload *OpsCredentialsLockManagerNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials lock manager not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *OpsCredentialsLockManagerNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/lockmanager][%d] opsCredentialsLockManagerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpsCredentialsLockManagerNotFound) GetPayload() *OpsCredentialsLockManagerNotFoundBody {
+func (o *OpsCredentialsLockManagerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsLockManagerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpsCredentialsLockManagerNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,287 +425,5 @@ func (o *OpsCredentialsLockManagerInternalServerError) String() string {
 
 func (o *OpsCredentialsLockManagerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-OpsCredentialsLockManagerBadRequestBodyItems0 ops credentials lock manager bad request body items0
-swagger:model OpsCredentialsLockManagerBadRequestBodyItems0
-*/
-type OpsCredentialsLockManagerBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this ops credentials lock manager bad request body items0
-func (o *OpsCredentialsLockManagerBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ops credentials lock manager bad request body items0 based on context it is used
-func (o *OpsCredentialsLockManagerBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpsCredentialsLockManagerBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpsCredentialsLockManagerBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OpsCredentialsLockManagerBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpsCredentialsLockManagerBody ops credentials lock manager body
-swagger:model OpsCredentialsLockManagerBody
-*/
-type OpsCredentialsLockManagerBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// mode
-	Mode string `json:"mode,omitempty"`
-}
-
-// Validate validates this ops credentials lock manager body
-func (o *OpsCredentialsLockManagerBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ops credentials lock manager body based on context it is used
-func (o *OpsCredentialsLockManagerBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpsCredentialsLockManagerBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpsCredentialsLockManagerBody) UnmarshalBinary(b []byte) error {
-	var res OpsCredentialsLockManagerBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpsCredentialsLockManagerForbiddenBody ops credentials lock manager forbidden body
-swagger:model OpsCredentialsLockManagerForbiddenBody
-*/
-type OpsCredentialsLockManagerForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ops credentials lock manager forbidden body
-func (o *OpsCredentialsLockManagerForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ops credentials lock manager forbidden body based on context it is used
-func (o *OpsCredentialsLockManagerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpsCredentialsLockManagerForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpsCredentialsLockManagerForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res OpsCredentialsLockManagerForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpsCredentialsLockManagerNotFoundBody ops credentials lock manager not found body
-swagger:model OpsCredentialsLockManagerNotFoundBody
-*/
-type OpsCredentialsLockManagerNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ops credentials lock manager not found body
-func (o *OpsCredentialsLockManagerNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ops credentials lock manager not found body based on context it is used
-func (o *OpsCredentialsLockManagerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpsCredentialsLockManagerNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpsCredentialsLockManagerNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res OpsCredentialsLockManagerNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpsCredentialsLockManagerOKBody ops credentials lock manager o k body
-swagger:model OpsCredentialsLockManagerOKBody
-*/
-type OpsCredentialsLockManagerOKBody struct {
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// is error
-	IsError bool `json:"isError"`
-
-	// message
-	Message string `json:"message,omitempty"`
-
-	// result
-	Result interface{} `json:"result,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-}
-
-// Validate validates this ops credentials lock manager o k body
-func (o *OpsCredentialsLockManagerOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ops credentials lock manager o k body based on context it is used
-func (o *OpsCredentialsLockManagerOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpsCredentialsLockManagerOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpsCredentialsLockManagerOKBody) UnmarshalBinary(b []byte) error {
-	var res OpsCredentialsLockManagerOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpsCredentialsLockManagerUnauthorizedBody ops credentials lock manager unauthorized body
-swagger:model OpsCredentialsLockManagerUnauthorizedBody
-*/
-type OpsCredentialsLockManagerUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ops credentials lock manager unauthorized body
-func (o *OpsCredentialsLockManagerUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ops credentials lock manager unauthorized body based on context it is used
-func (o *OpsCredentialsLockManagerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpsCredentialsLockManagerUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpsCredentialsLockManagerUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res OpsCredentialsLockManagerUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

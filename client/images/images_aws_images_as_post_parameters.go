@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewImagesAwsImagesAsPostParams creates a new ImagesAwsImagesAsPostParams object,
@@ -62,7 +64,7 @@ ImagesAwsImagesAsPostParams contains all the parameters to send to the API endpo
 type ImagesAwsImagesAsPostParams struct {
 
 	// Body.
-	Body ImagesAwsImagesAsPostBody
+	Body *models.AwsImagesPostListCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *ImagesAwsImagesAsPostParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the images aws images as post params
-func (o *ImagesAwsImagesAsPostParams) WithBody(body ImagesAwsImagesAsPostBody) *ImagesAwsImagesAsPostParams {
+func (o *ImagesAwsImagesAsPostParams) WithBody(body *models.AwsImagesPostListCommand) *ImagesAwsImagesAsPostParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the images aws images as post params
-func (o *ImagesAwsImagesAsPostParams) SetBody(body ImagesAwsImagesAsPostBody) {
+func (o *ImagesAwsImagesAsPostParams) SetBody(body *models.AwsImagesPostListCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *ImagesAwsImagesAsPostParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

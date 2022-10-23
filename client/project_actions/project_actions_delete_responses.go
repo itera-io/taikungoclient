@@ -6,13 +6,13 @@ package project_actions
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectActionsDeleteReader is a Reader for the ProjectActionsDelete structure.
@@ -183,7 +183,7 @@ ProjectActionsDeleteBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type ProjectActionsDeleteBadRequest struct {
-	Payload []*ProjectActionsDeleteBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this project actions delete bad request response has a 2xx status code
@@ -219,7 +219,7 @@ func (o *ProjectActionsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectActionsDeleteBadRequest) GetPayload() []*ProjectActionsDeleteBadRequestBodyItems0 {
+func (o *ProjectActionsDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -244,7 +244,7 @@ ProjectActionsDeleteUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type ProjectActionsDeleteUnauthorized struct {
-	Payload *ProjectActionsDeleteUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project actions delete unauthorized response has a 2xx status code
@@ -280,13 +280,13 @@ func (o *ProjectActionsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectActionsDeleteUnauthorized) GetPayload() *ProjectActionsDeleteUnauthorizedBody {
+func (o *ProjectActionsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectActionsDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectActionsDeleteUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -307,7 +307,7 @@ ProjectActionsDeleteForbidden describes a response with status code 403, with de
 Forbidden
 */
 type ProjectActionsDeleteForbidden struct {
-	Payload *ProjectActionsDeleteForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project actions delete forbidden response has a 2xx status code
@@ -343,13 +343,13 @@ func (o *ProjectActionsDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectActionsDeleteForbidden) GetPayload() *ProjectActionsDeleteForbiddenBody {
+func (o *ProjectActionsDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectActionsDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectActionsDeleteForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -370,7 +370,7 @@ ProjectActionsDeleteNotFound describes a response with status code 404, with def
 Not Found
 */
 type ProjectActionsDeleteNotFound struct {
-	Payload *ProjectActionsDeleteNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this project actions delete not found response has a 2xx status code
@@ -406,13 +406,13 @@ func (o *ProjectActionsDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/ProjectActions/delete][%d] projectActionsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectActionsDeleteNotFound) GetPayload() *ProjectActionsDeleteNotFoundBody {
+func (o *ProjectActionsDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectActionsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectActionsDeleteNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -470,234 +470,5 @@ func (o *ProjectActionsDeleteInternalServerError) String() string {
 
 func (o *ProjectActionsDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectActionsDeleteBadRequestBodyItems0 project actions delete bad request body items0
-swagger:model ProjectActionsDeleteBadRequestBodyItems0
-*/
-type ProjectActionsDeleteBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this project actions delete bad request body items0
-func (o *ProjectActionsDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project actions delete bad request body items0 based on context it is used
-func (o *ProjectActionsDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectActionsDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectActionsDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectActionsDeleteBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectActionsDeleteBody project actions delete body
-swagger:model ProjectActionsDeleteBody
-*/
-type ProjectActionsDeleteBody struct {
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this project actions delete body
-func (o *ProjectActionsDeleteBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project actions delete body based on context it is used
-func (o *ProjectActionsDeleteBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectActionsDeleteBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectActionsDeleteBody) UnmarshalBinary(b []byte) error {
-	var res ProjectActionsDeleteBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectActionsDeleteForbiddenBody project actions delete forbidden body
-swagger:model ProjectActionsDeleteForbiddenBody
-*/
-type ProjectActionsDeleteForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this project actions delete forbidden body
-func (o *ProjectActionsDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project actions delete forbidden body based on context it is used
-func (o *ProjectActionsDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectActionsDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectActionsDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectActionsDeleteForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectActionsDeleteNotFoundBody project actions delete not found body
-swagger:model ProjectActionsDeleteNotFoundBody
-*/
-type ProjectActionsDeleteNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this project actions delete not found body
-func (o *ProjectActionsDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project actions delete not found body based on context it is used
-func (o *ProjectActionsDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectActionsDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectActionsDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectActionsDeleteNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectActionsDeleteUnauthorizedBody project actions delete unauthorized body
-swagger:model ProjectActionsDeleteUnauthorizedBody
-*/
-type ProjectActionsDeleteUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this project actions delete unauthorized body
-func (o *ProjectActionsDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project actions delete unauthorized body based on context it is used
-func (o *ProjectActionsDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectActionsDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectActionsDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectActionsDeleteUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

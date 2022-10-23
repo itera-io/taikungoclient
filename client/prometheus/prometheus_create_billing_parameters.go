@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewPrometheusCreateBillingParams creates a new PrometheusCreateBillingParams object,
@@ -62,7 +64,7 @@ PrometheusCreateBillingParams contains all the parameters to send to the API end
 type PrometheusCreateBillingParams struct {
 
 	// Body.
-	Body PrometheusCreateBillingBody
+	Body *models.PrometheusBillingCreateCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *PrometheusCreateBillingParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the prometheus create billing params
-func (o *PrometheusCreateBillingParams) WithBody(body PrometheusCreateBillingBody) *PrometheusCreateBillingParams {
+func (o *PrometheusCreateBillingParams) WithBody(body *models.PrometheusBillingCreateCommand) *PrometheusCreateBillingParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the prometheus create billing params
-func (o *PrometheusCreateBillingParams) SetBody(body PrometheusCreateBillingBody) {
+func (o *PrometheusCreateBillingParams) SetBody(body *models.PrometheusBillingCreateCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *PrometheusCreateBillingParams) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

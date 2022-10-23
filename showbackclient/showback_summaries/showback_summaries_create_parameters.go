@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewShowbackSummariesCreateParams creates a new ShowbackSummariesCreateParams object,
@@ -62,7 +64,7 @@ ShowbackSummariesCreateParams contains all the parameters to send to the API end
 type ShowbackSummariesCreateParams struct {
 
 	// Body.
-	Body ShowbackSummariesCreateBody
+	Body *models.CreateShowbackSummaryCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *ShowbackSummariesCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the showback summaries create params
-func (o *ShowbackSummariesCreateParams) WithBody(body ShowbackSummariesCreateBody) *ShowbackSummariesCreateParams {
+func (o *ShowbackSummariesCreateParams) WithBody(body *models.CreateShowbackSummaryCommand) *ShowbackSummariesCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the showback summaries create params
-func (o *ShowbackSummariesCreateParams) SetBody(body ShowbackSummariesCreateBody) {
+func (o *ShowbackSummariesCreateParams) SetBody(body *models.CreateShowbackSummaryCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *ShowbackSummariesCreateParams) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

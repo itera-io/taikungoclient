@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubesprayCreateParams creates a new KubesprayCreateParams object,
@@ -62,7 +64,7 @@ KubesprayCreateParams contains all the parameters to send to the API endpoint
 type KubesprayCreateParams struct {
 
 	// Body.
-	Body KubesprayCreateBody
+	Body *models.KubesprayCreateCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *KubesprayCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the kubespray create params
-func (o *KubesprayCreateParams) WithBody(body KubesprayCreateBody) *KubesprayCreateParams {
+func (o *KubesprayCreateParams) WithBody(body *models.KubesprayCreateCommand) *KubesprayCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubespray create params
-func (o *KubesprayCreateParams) SetBody(body KubesprayCreateBody) {
+func (o *KubesprayCreateParams) SetBody(body *models.KubesprayCreateCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *KubesprayCreateParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

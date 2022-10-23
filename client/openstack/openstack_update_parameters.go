@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOpenstackUpdateParams creates a new OpenstackUpdateParams object,
@@ -62,7 +64,7 @@ OpenstackUpdateParams contains all the parameters to send to the API endpoint
 type OpenstackUpdateParams struct {
 
 	// Body.
-	Body OpenstackUpdateBody
+	Body *models.UpdateOpenStackCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *OpenstackUpdateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the openstack update params
-func (o *OpenstackUpdateParams) WithBody(body OpenstackUpdateBody) *OpenstackUpdateParams {
+func (o *OpenstackUpdateParams) WithBody(body *models.UpdateOpenStackCommand) *OpenstackUpdateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the openstack update params
-func (o *OpenstackUpdateParams) SetBody(body OpenstackUpdateBody) {
+func (o *OpenstackUpdateParams) SetBody(body *models.UpdateOpenStackCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *OpenstackUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

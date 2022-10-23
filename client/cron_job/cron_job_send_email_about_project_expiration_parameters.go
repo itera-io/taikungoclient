@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobSendEmailAboutProjectExpirationParams creates a new CronJobSendEmailAboutProjectExpirationParams object,
@@ -62,7 +64,7 @@ CronJobSendEmailAboutProjectExpirationParams contains all the parameters to send
 type CronJobSendEmailAboutProjectExpirationParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.SendEmailAboutProjectExpirationCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CronJobSendEmailAboutProjectExpirationParams) SetHTTPClient(client *htt
 }
 
 // WithBody adds the body to the cron job send email about project expiration params
-func (o *CronJobSendEmailAboutProjectExpirationParams) WithBody(body interface{}) *CronJobSendEmailAboutProjectExpirationParams {
+func (o *CronJobSendEmailAboutProjectExpirationParams) WithBody(body models.SendEmailAboutProjectExpirationCommand) *CronJobSendEmailAboutProjectExpirationParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job send email about project expiration params
-func (o *CronJobSendEmailAboutProjectExpirationParams) SetBody(body interface{}) {
+func (o *CronJobSendEmailAboutProjectExpirationParams) SetBody(body models.SendEmailAboutProjectExpirationCommand) {
 	o.Body = body
 }
 

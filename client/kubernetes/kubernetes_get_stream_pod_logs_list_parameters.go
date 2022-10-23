@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesGetStreamPodLogsListParams creates a new KubernetesGetStreamPodLogsListParams object,
@@ -62,7 +64,7 @@ KubernetesGetStreamPodLogsListParams contains all the parameters to send to the 
 type KubernetesGetStreamPodLogsListParams struct {
 
 	// Body.
-	Body KubernetesGetStreamPodLogsListBody
+	Body *models.KubernetesPodLogsAsStreamCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *KubernetesGetStreamPodLogsListParams) SetHTTPClient(client *http.Client
 }
 
 // WithBody adds the body to the kubernetes get stream pod logs list params
-func (o *KubernetesGetStreamPodLogsListParams) WithBody(body KubernetesGetStreamPodLogsListBody) *KubernetesGetStreamPodLogsListParams {
+func (o *KubernetesGetStreamPodLogsListParams) WithBody(body *models.KubernetesPodLogsAsStreamCommand) *KubernetesGetStreamPodLogsListParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes get stream pod logs list params
-func (o *KubernetesGetStreamPodLogsListParams) SetBody(body KubernetesGetStreamPodLogsListBody) {
+func (o *KubernetesGetStreamPodLogsListParams) SetBody(body *models.KubernetesPodLogsAsStreamCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *KubernetesGetStreamPodLogsListParams) WriteToRequest(r runtime.ClientRe
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

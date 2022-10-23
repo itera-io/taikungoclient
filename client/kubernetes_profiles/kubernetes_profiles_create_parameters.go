@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesProfilesCreateParams creates a new KubernetesProfilesCreateParams object,
@@ -62,7 +64,7 @@ KubernetesProfilesCreateParams contains all the parameters to send to the API en
 type KubernetesProfilesCreateParams struct {
 
 	// Body.
-	Body KubernetesProfilesCreateBody
+	Body *models.CreateKubernetesProfileCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *KubernetesProfilesCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the kubernetes profiles create params
-func (o *KubernetesProfilesCreateParams) WithBody(body KubernetesProfilesCreateBody) *KubernetesProfilesCreateParams {
+func (o *KubernetesProfilesCreateParams) WithBody(body *models.CreateKubernetesProfileCommand) *KubernetesProfilesCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes profiles create params
-func (o *KubernetesProfilesCreateParams) SetBody(body KubernetesProfilesCreateBody) {
+func (o *KubernetesProfilesCreateParams) SetBody(body *models.CreateKubernetesProfileCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *KubernetesProfilesCreateParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

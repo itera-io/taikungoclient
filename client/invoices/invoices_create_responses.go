@@ -6,15 +6,13 @@ package invoices
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // InvoicesCreateReader is a Reader for the InvoicesCreate structure.
@@ -138,7 +136,7 @@ InvoicesCreateBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type InvoicesCreateBadRequest struct {
-	Payload []*InvoicesCreateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this invoices create bad request response has a 2xx status code
@@ -174,7 +172,7 @@ func (o *InvoicesCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/create][%d] invoicesCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *InvoicesCreateBadRequest) GetPayload() []*InvoicesCreateBadRequestBodyItems0 {
+func (o *InvoicesCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +197,7 @@ InvoicesCreateUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type InvoicesCreateUnauthorized struct {
-	Payload *InvoicesCreateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this invoices create unauthorized response has a 2xx status code
@@ -235,13 +233,13 @@ func (o *InvoicesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/create][%d] invoicesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *InvoicesCreateUnauthorized) GetPayload() *InvoicesCreateUnauthorizedBody {
+func (o *InvoicesCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *InvoicesCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(InvoicesCreateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +260,7 @@ InvoicesCreateForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type InvoicesCreateForbidden struct {
-	Payload *InvoicesCreateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this invoices create forbidden response has a 2xx status code
@@ -298,13 +296,13 @@ func (o *InvoicesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/create][%d] invoicesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *InvoicesCreateForbidden) GetPayload() *InvoicesCreateForbiddenBody {
+func (o *InvoicesCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *InvoicesCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(InvoicesCreateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +323,7 @@ InvoicesCreateNotFound describes a response with status code 404, with default h
 Not Found
 */
 type InvoicesCreateNotFound struct {
-	Payload *InvoicesCreateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this invoices create not found response has a 2xx status code
@@ -361,13 +359,13 @@ func (o *InvoicesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Invoices/create][%d] invoicesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *InvoicesCreateNotFound) GetPayload() *InvoicesCreateNotFoundBody {
+func (o *InvoicesCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *InvoicesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(InvoicesCreateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,314 +423,5 @@ func (o *InvoicesCreateInternalServerError) String() string {
 
 func (o *InvoicesCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-InvoicesCreateBadRequestBodyItems0 invoices create bad request body items0
-swagger:model InvoicesCreateBadRequestBodyItems0
-*/
-type InvoicesCreateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this invoices create bad request body items0
-func (o *InvoicesCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this invoices create bad request body items0 based on context it is used
-func (o *InvoicesCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *InvoicesCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *InvoicesCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res InvoicesCreateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-InvoicesCreateBody invoices create body
-swagger:model InvoicesCreateBody
-*/
-type InvoicesCreateBody struct {
-
-	// due date
-	// Format: date-time
-	DueDate *strfmt.DateTime `json:"dueDate,omitempty"`
-
-	// end date
-	// Format: date-time
-	EndDate *strfmt.DateTime `json:"endDate,omitempty"`
-
-	// is paid
-	IsPaid bool `json:"isPaid"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization subscription Id
-	OrganizationSubscriptionID int32 `json:"organizationSubscriptionId,omitempty"`
-
-	// price
-	Price float64 `json:"price,omitempty"`
-
-	// required payment action
-	RequiredPaymentAction bool `json:"requiredPaymentAction"`
-
-	// start date
-	// Format: date-time
-	StartDate *strfmt.DateTime `json:"startDate,omitempty"`
-
-	// stripe invoice Id
-	StripeInvoiceID string `json:"stripeInvoiceId,omitempty"`
-}
-
-// Validate validates this invoices create body
-func (o *InvoicesCreateBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateDueDate(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateEndDate(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateStartDate(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *InvoicesCreateBody) validateDueDate(formats strfmt.Registry) error {
-	if swag.IsZero(o.DueDate) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("body"+"."+"dueDate", "body", "date-time", o.DueDate.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (o *InvoicesCreateBody) validateEndDate(formats strfmt.Registry) error {
-	if swag.IsZero(o.EndDate) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("body"+"."+"endDate", "body", "date-time", o.EndDate.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (o *InvoicesCreateBody) validateStartDate(formats strfmt.Registry) error {
-	if swag.IsZero(o.StartDate) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("body"+"."+"startDate", "body", "date-time", o.StartDate.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this invoices create body based on context it is used
-func (o *InvoicesCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *InvoicesCreateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *InvoicesCreateBody) UnmarshalBinary(b []byte) error {
-	var res InvoicesCreateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-InvoicesCreateForbiddenBody invoices create forbidden body
-swagger:model InvoicesCreateForbiddenBody
-*/
-type InvoicesCreateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this invoices create forbidden body
-func (o *InvoicesCreateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this invoices create forbidden body based on context it is used
-func (o *InvoicesCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *InvoicesCreateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *InvoicesCreateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res InvoicesCreateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-InvoicesCreateNotFoundBody invoices create not found body
-swagger:model InvoicesCreateNotFoundBody
-*/
-type InvoicesCreateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this invoices create not found body
-func (o *InvoicesCreateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this invoices create not found body based on context it is used
-func (o *InvoicesCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *InvoicesCreateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *InvoicesCreateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res InvoicesCreateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-InvoicesCreateUnauthorizedBody invoices create unauthorized body
-swagger:model InvoicesCreateUnauthorizedBody
-*/
-type InvoicesCreateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this invoices create unauthorized body
-func (o *InvoicesCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this invoices create unauthorized body based on context it is used
-func (o *InvoicesCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *InvoicesCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *InvoicesCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res InvoicesCreateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

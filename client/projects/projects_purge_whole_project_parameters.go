@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectsPurgeWholeProjectParams creates a new ProjectsPurgeWholeProjectParams object,
@@ -62,7 +64,7 @@ ProjectsPurgeWholeProjectParams contains all the parameters to send to the API e
 type ProjectsPurgeWholeProjectParams struct {
 
 	// Body.
-	Body ProjectsPurgeWholeProjectBody
+	Body *models.PurgeWholeProjectCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *ProjectsPurgeWholeProjectParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the projects purge whole project params
-func (o *ProjectsPurgeWholeProjectParams) WithBody(body ProjectsPurgeWholeProjectBody) *ProjectsPurgeWholeProjectParams {
+func (o *ProjectsPurgeWholeProjectParams) WithBody(body *models.PurgeWholeProjectCommand) *ProjectsPurgeWholeProjectParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the projects purge whole project params
-func (o *ProjectsPurgeWholeProjectParams) SetBody(body ProjectsPurgeWholeProjectBody) {
+func (o *ProjectsPurgeWholeProjectParams) SetBody(body *models.PurgeWholeProjectCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *ProjectsPurgeWholeProjectParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

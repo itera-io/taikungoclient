@@ -6,13 +6,13 @@ package cloud_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CloudCredentialsMakeDefaultReader is a Reader for the CloudCredentialsMakeDefault structure.
@@ -75,7 +75,7 @@ CloudCredentialsMakeDefaultOK describes a response with status code 200, with de
 Success
 */
 type CloudCredentialsMakeDefaultOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this cloud credentials make default o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CloudCredentialsMakeDefaultOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultOK  %+v", 200, o.Payload)
 }
 
-func (o *CloudCredentialsMakeDefaultOK) GetPayload() interface{} {
+func (o *CloudCredentialsMakeDefaultOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CloudCredentialsMakeDefaultBadRequest describes a response with status code 400,
 Bad Request
 */
 type CloudCredentialsMakeDefaultBadRequest struct {
-	Payload []*CloudCredentialsMakeDefaultBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cloud credentials make default bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CloudCredentialsMakeDefaultBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsMakeDefaultBadRequest) GetPayload() []*CloudCredentialsMakeDefaultBadRequestBodyItems0 {
+func (o *CloudCredentialsMakeDefaultBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CloudCredentialsMakeDefaultUnauthorized describes a response with status code 40
 Unauthorized
 */
 type CloudCredentialsMakeDefaultUnauthorized struct {
-	Payload *CloudCredentialsMakeDefaultUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials make default unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CloudCredentialsMakeDefaultUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsMakeDefaultUnauthorized) GetPayload() *CloudCredentialsMakeDefaultUnauthorizedBody {
+func (o *CloudCredentialsMakeDefaultUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsMakeDefaultUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CloudCredentialsMakeDefaultUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CloudCredentialsMakeDefaultForbidden describes a response with status code 403, 
 Forbidden
 */
 type CloudCredentialsMakeDefaultForbidden struct {
-	Payload *CloudCredentialsMakeDefaultForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials make default forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CloudCredentialsMakeDefaultForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsMakeDefaultForbidden) GetPayload() *CloudCredentialsMakeDefaultForbiddenBody {
+func (o *CloudCredentialsMakeDefaultForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsMakeDefaultForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CloudCredentialsMakeDefaultForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CloudCredentialsMakeDefaultNotFound describes a response with status code 404, w
 Not Found
 */
 type CloudCredentialsMakeDefaultNotFound struct {
-	Payload *CloudCredentialsMakeDefaultNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials make default not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CloudCredentialsMakeDefaultNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CloudCredentials/makedefault][%d] cloudCredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsMakeDefaultNotFound) GetPayload() *CloudCredentialsMakeDefaultNotFoundBody {
+func (o *CloudCredentialsMakeDefaultNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsMakeDefaultNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CloudCredentialsMakeDefaultNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *CloudCredentialsMakeDefaultInternalServerError) String() string {
 
 func (o *CloudCredentialsMakeDefaultInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CloudCredentialsMakeDefaultBadRequestBodyItems0 cloud credentials make default bad request body items0
-swagger:model CloudCredentialsMakeDefaultBadRequestBodyItems0
-*/
-type CloudCredentialsMakeDefaultBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this cloud credentials make default bad request body items0
-func (o *CloudCredentialsMakeDefaultBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials make default bad request body items0 based on context it is used
-func (o *CloudCredentialsMakeDefaultBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsMakeDefaultBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsMakeDefaultBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsMakeDefaultBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsMakeDefaultBody cloud credentials make default body
-swagger:model CloudCredentialsMakeDefaultBody
-*/
-type CloudCredentialsMakeDefaultBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-}
-
-// Validate validates this cloud credentials make default body
-func (o *CloudCredentialsMakeDefaultBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials make default body based on context it is used
-func (o *CloudCredentialsMakeDefaultBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsMakeDefaultBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsMakeDefaultBody) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsMakeDefaultBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsMakeDefaultForbiddenBody cloud credentials make default forbidden body
-swagger:model CloudCredentialsMakeDefaultForbiddenBody
-*/
-type CloudCredentialsMakeDefaultForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cloud credentials make default forbidden body
-func (o *CloudCredentialsMakeDefaultForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials make default forbidden body based on context it is used
-func (o *CloudCredentialsMakeDefaultForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsMakeDefaultForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsMakeDefaultForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsMakeDefaultForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsMakeDefaultNotFoundBody cloud credentials make default not found body
-swagger:model CloudCredentialsMakeDefaultNotFoundBody
-*/
-type CloudCredentialsMakeDefaultNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cloud credentials make default not found body
-func (o *CloudCredentialsMakeDefaultNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials make default not found body based on context it is used
-func (o *CloudCredentialsMakeDefaultNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsMakeDefaultNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsMakeDefaultNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsMakeDefaultNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsMakeDefaultUnauthorizedBody cloud credentials make default unauthorized body
-swagger:model CloudCredentialsMakeDefaultUnauthorizedBody
-*/
-type CloudCredentialsMakeDefaultUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cloud credentials make default unauthorized body
-func (o *CloudCredentialsMakeDefaultUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials make default unauthorized body based on context it is used
-func (o *CloudCredentialsMakeDefaultUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsMakeDefaultUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsMakeDefaultUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsMakeDefaultUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -6,17 +6,13 @@ package showback_rules
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"encoding/json"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ShowbackRulesCreateReader is a Reader for the ShowbackRulesCreate structure.
@@ -79,7 +75,7 @@ ShowbackRulesCreateOK describes a response with status code 200, with default he
 Success
 */
 type ShowbackRulesCreateOK struct {
-	Payload *ShowbackRulesCreateOKBody
+	Payload *models.APIResponse
 }
 
 // IsSuccess returns true when this showback rules create o k response has a 2xx status code
@@ -115,13 +111,13 @@ func (o *ShowbackRulesCreateOK) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *ShowbackRulesCreateOK) GetPayload() *ShowbackRulesCreateOKBody {
+func (o *ShowbackRulesCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *ShowbackRulesCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackRulesCreateOKBody)
+	o.Payload = new(models.APIResponse)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -142,7 +138,7 @@ ShowbackRulesCreateBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type ShowbackRulesCreateBadRequest struct {
-	Payload *ShowbackRulesCreateBadRequestBody
+	Payload *models.ValidationProblemDetails
 }
 
 // IsSuccess returns true when this showback rules create bad request response has a 2xx status code
@@ -178,13 +174,13 @@ func (o *ShowbackRulesCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackRulesCreateBadRequest) GetPayload() *ShowbackRulesCreateBadRequestBody {
+func (o *ShowbackRulesCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackRulesCreateBadRequestBody)
+	o.Payload = new(models.ValidationProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -205,7 +201,7 @@ ShowbackRulesCreateUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type ShowbackRulesCreateUnauthorized struct {
-	Payload *ShowbackRulesCreateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback rules create unauthorized response has a 2xx status code
@@ -241,13 +237,13 @@ func (o *ShowbackRulesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackRulesCreateUnauthorized) GetPayload() *ShowbackRulesCreateUnauthorizedBody {
+func (o *ShowbackRulesCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackRulesCreateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -268,7 +264,7 @@ ShowbackRulesCreateForbidden describes a response with status code 403, with def
 Forbidden
 */
 type ShowbackRulesCreateForbidden struct {
-	Payload *ShowbackRulesCreateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback rules create forbidden response has a 2xx status code
@@ -304,13 +300,13 @@ func (o *ShowbackRulesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackRulesCreateForbidden) GetPayload() *ShowbackRulesCreateForbiddenBody {
+func (o *ShowbackRulesCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackRulesCreateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -331,7 +327,7 @@ ShowbackRulesCreateNotFound describes a response with status code 404, with defa
 Not Found
 */
 type ShowbackRulesCreateNotFound struct {
-	Payload *ShowbackRulesCreateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback rules create not found response has a 2xx status code
@@ -367,13 +363,13 @@ func (o *ShowbackRulesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackRules/create][%d] showbackRulesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackRulesCreateNotFound) GetPayload() *ShowbackRulesCreateNotFoundBody {
+func (o *ShowbackRulesCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackRulesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackRulesCreateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -431,522 +427,5 @@ func (o *ShowbackRulesCreateInternalServerError) String() string {
 
 func (o *ShowbackRulesCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ShowbackRulesCreateBadRequestBody showback rules create bad request body
-swagger:model ShowbackRulesCreateBadRequestBody
-*/
-type ShowbackRulesCreateBadRequestBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// errors
-	// Read Only: true
-	Errors map[string][]string `json:"errors,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback rules create bad request body
-func (o *ShowbackRulesCreateBadRequestBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validate this showback rules create bad request body based on the context it is used
-func (o *ShowbackRulesCreateBadRequestBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateErrors(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ShowbackRulesCreateBadRequestBody) contextValidateErrors(ctx context.Context, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackRulesCreateBadRequestBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackRulesCreateBadRequestBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackRulesCreateBadRequestBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackRulesCreateBody showback rules create body
-swagger:model ShowbackRulesCreateBody
-*/
-type ShowbackRulesCreateBody struct {
-
-	// by label
-	ByLabel string `json:"byLabel,omitempty"`
-
-	// global alert limit
-	GlobalAlertLimit int32 `json:"globalAlertLimit,omitempty"`
-
-	// kind
-	// Enum: [100 200]
-	Kind int32 `json:"kind,omitempty"`
-
-	// labels
-	Labels []*ShowbackRulesCreateParamsBodyLabelsItems0 `json:"labels"`
-
-	// metric name
-	MetricName string `json:"metricName,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// price
-	Price float64 `json:"price,omitempty"`
-
-	// project alert limit
-	ProjectAlertLimit int32 `json:"projectAlertLimit,omitempty"`
-
-	// showback credential Id
-	ShowbackCredentialID *int32 `json:"showbackCredentialId,omitempty"`
-
-	// type
-	// Enum: [100 200]
-	Type int32 `json:"type,omitempty"`
-}
-
-// Validate validates this showback rules create body
-func (o *ShowbackRulesCreateBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateKind(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateLabels(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateType(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-var showbackRulesCreateBodyTypeKindPropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		showbackRulesCreateBodyTypeKindPropEnum = append(showbackRulesCreateBodyTypeKindPropEnum, v)
-	}
-}
-
-// prop value enum
-func (o *ShowbackRulesCreateBody) validateKindEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, showbackRulesCreateBodyTypeKindPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ShowbackRulesCreateBody) validateKind(formats strfmt.Registry) error {
-	if swag.IsZero(o.Kind) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := o.validateKindEnum("body"+"."+"kind", "body", o.Kind); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (o *ShowbackRulesCreateBody) validateLabels(formats strfmt.Registry) error {
-	if swag.IsZero(o.Labels) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Labels); i++ {
-		if swag.IsZero(o.Labels[i]) { // not required
-			continue
-		}
-
-		if o.Labels[i] != nil {
-			if err := o.Labels[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "labels" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "labels" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-var showbackRulesCreateBodyTypeTypePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		showbackRulesCreateBodyTypeTypePropEnum = append(showbackRulesCreateBodyTypeTypePropEnum, v)
-	}
-}
-
-// prop value enum
-func (o *ShowbackRulesCreateBody) validateTypeEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, showbackRulesCreateBodyTypeTypePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *ShowbackRulesCreateBody) validateType(formats strfmt.Registry) error {
-	if swag.IsZero(o.Type) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := o.validateTypeEnum("body"+"."+"type", "body", o.Type); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this showback rules create body based on the context it is used
-func (o *ShowbackRulesCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateLabels(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ShowbackRulesCreateBody) contextValidateLabels(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Labels); i++ {
-
-		if o.Labels[i] != nil {
-			if err := o.Labels[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "labels" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "labels" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackRulesCreateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackRulesCreateBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackRulesCreateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackRulesCreateForbiddenBody showback rules create forbidden body
-swagger:model ShowbackRulesCreateForbiddenBody
-*/
-type ShowbackRulesCreateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback rules create forbidden body
-func (o *ShowbackRulesCreateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback rules create forbidden body based on context it is used
-func (o *ShowbackRulesCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackRulesCreateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackRulesCreateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackRulesCreateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackRulesCreateNotFoundBody showback rules create not found body
-swagger:model ShowbackRulesCreateNotFoundBody
-*/
-type ShowbackRulesCreateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback rules create not found body
-func (o *ShowbackRulesCreateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback rules create not found body based on context it is used
-func (o *ShowbackRulesCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackRulesCreateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackRulesCreateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackRulesCreateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackRulesCreateOKBody showback rules create o k body
-swagger:model ShowbackRulesCreateOKBody
-*/
-type ShowbackRulesCreateOKBody struct {
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// is error
-	IsError bool `json:"isError"`
-
-	// message
-	Message string `json:"message,omitempty"`
-
-	// result
-	Result interface{} `json:"result,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-}
-
-// Validate validates this showback rules create o k body
-func (o *ShowbackRulesCreateOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback rules create o k body based on context it is used
-func (o *ShowbackRulesCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackRulesCreateOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackRulesCreateOKBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackRulesCreateOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackRulesCreateParamsBodyLabelsItems0 showback rules create params body labels items0
-swagger:model ShowbackRulesCreateParamsBodyLabelsItems0
-*/
-type ShowbackRulesCreateParamsBodyLabelsItems0 struct {
-
-	// label
-	Label string `json:"label,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this showback rules create params body labels items0
-func (o *ShowbackRulesCreateParamsBodyLabelsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback rules create params body labels items0 based on context it is used
-func (o *ShowbackRulesCreateParamsBodyLabelsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackRulesCreateParamsBodyLabelsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackRulesCreateParamsBodyLabelsItems0) UnmarshalBinary(b []byte) error {
-	var res ShowbackRulesCreateParamsBodyLabelsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackRulesCreateUnauthorizedBody showback rules create unauthorized body
-swagger:model ShowbackRulesCreateUnauthorizedBody
-*/
-type ShowbackRulesCreateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback rules create unauthorized body
-func (o *ShowbackRulesCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback rules create unauthorized body based on context it is used
-func (o *ShowbackRulesCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackRulesCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackRulesCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackRulesCreateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

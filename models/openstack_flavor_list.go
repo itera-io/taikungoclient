@@ -20,7 +20,7 @@ import (
 type OpenstackFlavorList struct {
 
 	// data
-	Data []*OpenstackFlavorListDataItems0 `json:"data"`
+	Data []*OpenstackFlavorListDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,52 +111,6 @@ func (m *OpenstackFlavorList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *OpenstackFlavorList) UnmarshalBinary(b []byte) error {
 	var res OpenstackFlavorList
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// OpenstackFlavorListDataItems0 openstack flavor list data items0
-//
-// swagger:model OpenstackFlavorListDataItems0
-type OpenstackFlavorListDataItems0 struct {
-
-	// cpu
-	CPU int64 `json:"cpu,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// ram
-	RAM int64 `json:"ram,omitempty"`
-}
-
-// Validate validates this openstack flavor list data items0
-func (m *OpenstackFlavorListDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack flavor list data items0 based on context it is used
-func (m *OpenstackFlavorListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *OpenstackFlavorListDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *OpenstackFlavorListDataItems0) UnmarshalBinary(b []byte) error {
-	var res OpenstackFlavorListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

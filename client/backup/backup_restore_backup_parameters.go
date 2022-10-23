@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewBackupRestoreBackupParams creates a new BackupRestoreBackupParams object,
@@ -62,7 +64,7 @@ BackupRestoreBackupParams contains all the parameters to send to the API endpoin
 type BackupRestoreBackupParams struct {
 
 	// Body.
-	Body BackupRestoreBackupBody
+	Body *models.RestoreBackupCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *BackupRestoreBackupParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the backup restore backup params
-func (o *BackupRestoreBackupParams) WithBody(body BackupRestoreBackupBody) *BackupRestoreBackupParams {
+func (o *BackupRestoreBackupParams) WithBody(body *models.RestoreBackupCommand) *BackupRestoreBackupParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the backup restore backup params
-func (o *BackupRestoreBackupParams) SetBody(body BackupRestoreBackupBody) {
+func (o *BackupRestoreBackupParams) SetBody(body *models.RestoreBackupCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *BackupRestoreBackupParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

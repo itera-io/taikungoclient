@@ -23,7 +23,7 @@ type EditCatalogAppParamCommand struct {
 	CatalogAppID int32 `json:"catalogAppId,omitempty"`
 
 	// parameters
-	Parameters []*EditCatalogAppParamCommandParametersItems0 `json:"parameters"`
+	Parameters []*CatalogAppParamsDto `json:"parameters"`
 }
 
 // Validate validates this edit catalog app param command
@@ -111,52 +111,6 @@ func (m *EditCatalogAppParamCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *EditCatalogAppParamCommand) UnmarshalBinary(b []byte) error {
 	var res EditCatalogAppParamCommand
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// EditCatalogAppParamCommandParametersItems0 edit catalog app param command parameters items0
-//
-// swagger:model EditCatalogAppParamCommandParametersItems0
-type EditCatalogAppParamCommandParametersItems0 struct {
-
-	// is changeable
-	IsChangeable bool `json:"isChangeable"`
-
-	// is readonly
-	IsReadonly bool `json:"isReadonly"`
-
-	// key
-	Key string `json:"key,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this edit catalog app param command parameters items0
-func (m *EditCatalogAppParamCommandParametersItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this edit catalog app param command parameters items0 based on context it is used
-func (m *EditCatalogAppParamCommandParametersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *EditCatalogAppParamCommandParametersItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *EditCatalogAppParamCommandParametersItems0) UnmarshalBinary(b []byte) error {
-	var res EditCatalogAppParamCommandParametersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

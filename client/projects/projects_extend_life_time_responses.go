@@ -6,15 +6,13 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsExtendLifeTimeReader is a Reader for the ProjectsExtendLifeTime structure.
@@ -77,7 +75,7 @@ ProjectsExtendLifeTimeOK describes a response with status code 200, with default
 Success
 */
 type ProjectsExtendLifeTimeOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects extend life time o k response has a 2xx status code
@@ -113,7 +111,7 @@ func (o *ProjectsExtendLifeTimeOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsExtendLifeTimeOK) GetPayload() interface{} {
+func (o *ProjectsExtendLifeTimeOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -138,7 +136,7 @@ ProjectsExtendLifeTimeBadRequest describes a response with status code 400, with
 Bad Request
 */
 type ProjectsExtendLifeTimeBadRequest struct {
-	Payload []*ProjectsExtendLifeTimeBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects extend life time bad request response has a 2xx status code
@@ -174,7 +172,7 @@ func (o *ProjectsExtendLifeTimeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsExtendLifeTimeBadRequest) GetPayload() []*ProjectsExtendLifeTimeBadRequestBodyItems0 {
+func (o *ProjectsExtendLifeTimeBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +197,7 @@ ProjectsExtendLifeTimeUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type ProjectsExtendLifeTimeUnauthorized struct {
-	Payload *ProjectsExtendLifeTimeUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects extend life time unauthorized response has a 2xx status code
@@ -235,13 +233,13 @@ func (o *ProjectsExtendLifeTimeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsExtendLifeTimeUnauthorized) GetPayload() *ProjectsExtendLifeTimeUnauthorizedBody {
+func (o *ProjectsExtendLifeTimeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsExtendLifeTimeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsExtendLifeTimeUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +260,7 @@ ProjectsExtendLifeTimeForbidden describes a response with status code 403, with 
 Forbidden
 */
 type ProjectsExtendLifeTimeForbidden struct {
-	Payload *ProjectsExtendLifeTimeForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects extend life time forbidden response has a 2xx status code
@@ -298,13 +296,13 @@ func (o *ProjectsExtendLifeTimeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsExtendLifeTimeForbidden) GetPayload() *ProjectsExtendLifeTimeForbiddenBody {
+func (o *ProjectsExtendLifeTimeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsExtendLifeTimeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsExtendLifeTimeForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +323,7 @@ ProjectsExtendLifeTimeNotFound describes a response with status code 404, with d
 Not Found
 */
 type ProjectsExtendLifeTimeNotFound struct {
-	Payload *ProjectsExtendLifeTimeNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects extend life time not found response has a 2xx status code
@@ -361,13 +359,13 @@ func (o *ProjectsExtendLifeTimeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/extend/lifetime][%d] projectsExtendLifeTimeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsExtendLifeTimeNotFound) GetPayload() *ProjectsExtendLifeTimeNotFoundBody {
+func (o *ProjectsExtendLifeTimeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsExtendLifeTimeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsExtendLifeTimeNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,262 +423,5 @@ func (o *ProjectsExtendLifeTimeInternalServerError) String() string {
 
 func (o *ProjectsExtendLifeTimeInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectsExtendLifeTimeBadRequestBodyItems0 projects extend life time bad request body items0
-swagger:model ProjectsExtendLifeTimeBadRequestBodyItems0
-*/
-type ProjectsExtendLifeTimeBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this projects extend life time bad request body items0
-func (o *ProjectsExtendLifeTimeBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects extend life time bad request body items0 based on context it is used
-func (o *ProjectsExtendLifeTimeBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsExtendLifeTimeBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsExtendLifeTimeBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectsExtendLifeTimeBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsExtendLifeTimeBody projects extend life time body
-swagger:model ProjectsExtendLifeTimeBody
-*/
-type ProjectsExtendLifeTimeBody struct {
-
-	// delete on expiration
-	DeleteOnExpiration bool `json:"deleteOnExpiration"`
-
-	// expire at
-	// Format: date-time
-	ExpireAt *strfmt.DateTime `json:"expireAt,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this projects extend life time body
-func (o *ProjectsExtendLifeTimeBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateExpireAt(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ProjectsExtendLifeTimeBody) validateExpireAt(formats strfmt.Registry) error {
-	if swag.IsZero(o.ExpireAt) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("body"+"."+"expireAt", "body", "date-time", o.ExpireAt.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this projects extend life time body based on context it is used
-func (o *ProjectsExtendLifeTimeBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsExtendLifeTimeBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsExtendLifeTimeBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsExtendLifeTimeBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsExtendLifeTimeForbiddenBody projects extend life time forbidden body
-swagger:model ProjectsExtendLifeTimeForbiddenBody
-*/
-type ProjectsExtendLifeTimeForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects extend life time forbidden body
-func (o *ProjectsExtendLifeTimeForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects extend life time forbidden body based on context it is used
-func (o *ProjectsExtendLifeTimeForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsExtendLifeTimeForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsExtendLifeTimeForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsExtendLifeTimeForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsExtendLifeTimeNotFoundBody projects extend life time not found body
-swagger:model ProjectsExtendLifeTimeNotFoundBody
-*/
-type ProjectsExtendLifeTimeNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects extend life time not found body
-func (o *ProjectsExtendLifeTimeNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects extend life time not found body based on context it is used
-func (o *ProjectsExtendLifeTimeNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsExtendLifeTimeNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsExtendLifeTimeNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsExtendLifeTimeNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsExtendLifeTimeUnauthorizedBody projects extend life time unauthorized body
-swagger:model ProjectsExtendLifeTimeUnauthorizedBody
-*/
-type ProjectsExtendLifeTimeUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects extend life time unauthorized body
-func (o *ProjectsExtendLifeTimeUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects extend life time unauthorized body based on context it is used
-func (o *ProjectsExtendLifeTimeUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsExtendLifeTimeUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsExtendLifeTimeUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsExtendLifeTimeUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

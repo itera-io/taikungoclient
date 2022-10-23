@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAdminMakeOwnerParams creates a new AdminMakeOwnerParams object,
@@ -62,7 +64,7 @@ AdminMakeOwnerParams contains all the parameters to send to the API endpoint
 type AdminMakeOwnerParams struct {
 
 	// Body.
-	Body AdminMakeOwnerBody
+	Body *models.MakeOwnerCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *AdminMakeOwnerParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the admin make owner params
-func (o *AdminMakeOwnerParams) WithBody(body AdminMakeOwnerBody) *AdminMakeOwnerParams {
+func (o *AdminMakeOwnerParams) WithBody(body *models.MakeOwnerCommand) *AdminMakeOwnerParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the admin make owner params
-func (o *AdminMakeOwnerParams) SetBody(body AdminMakeOwnerBody) {
+func (o *AdminMakeOwnerParams) SetBody(body *models.MakeOwnerCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *AdminMakeOwnerParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

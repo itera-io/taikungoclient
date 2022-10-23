@@ -6,13 +6,13 @@ package admin
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AdminUpdateUserEmailReader is a Reader for the AdminUpdateUserEmail structure.
@@ -75,7 +75,7 @@ AdminUpdateUserEmailOK describes a response with status code 200, with default h
 Success
 */
 type AdminUpdateUserEmailOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this admin update user email o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AdminUpdateUserEmailOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailOK  %+v", 200, o.Payload)
 }
 
-func (o *AdminUpdateUserEmailOK) GetPayload() interface{} {
+func (o *AdminUpdateUserEmailOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AdminUpdateUserEmailBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type AdminUpdateUserEmailBadRequest struct {
-	Payload []*AdminUpdateUserEmailBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this admin update user email bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminUpdateUserEmailBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminUpdateUserEmailBadRequest) GetPayload() []*AdminUpdateUserEmailBadRequestBodyItems0 {
+func (o *AdminUpdateUserEmailBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AdminUpdateUserEmailUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type AdminUpdateUserEmailUnauthorized struct {
-	Payload *AdminUpdateUserEmailUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin update user email unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AdminUpdateUserEmailUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminUpdateUserEmailUnauthorized) GetPayload() *AdminUpdateUserEmailUnauthorizedBody {
+func (o *AdminUpdateUserEmailUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserEmailUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminUpdateUserEmailUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AdminUpdateUserEmailForbidden describes a response with status code 403, with de
 Forbidden
 */
 type AdminUpdateUserEmailForbidden struct {
-	Payload *AdminUpdateUserEmailForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin update user email forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AdminUpdateUserEmailForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminUpdateUserEmailForbidden) GetPayload() *AdminUpdateUserEmailForbiddenBody {
+func (o *AdminUpdateUserEmailForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserEmailForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminUpdateUserEmailForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AdminUpdateUserEmailNotFound describes a response with status code 404, with def
 Not Found
 */
 type AdminUpdateUserEmailNotFound struct {
-	Payload *AdminUpdateUserEmailNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin update user email not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AdminUpdateUserEmailNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/users/update/email][%d] adminUpdateUserEmailNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminUpdateUserEmailNotFound) GetPayload() *AdminUpdateUserEmailNotFoundBody {
+func (o *AdminUpdateUserEmailNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUpdateUserEmailNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminUpdateUserEmailNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *AdminUpdateUserEmailInternalServerError) String() string {
 
 func (o *AdminUpdateUserEmailInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AdminUpdateUserEmailBadRequestBodyItems0 admin update user email bad request body items0
-swagger:model AdminUpdateUserEmailBadRequestBodyItems0
-*/
-type AdminUpdateUserEmailBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this admin update user email bad request body items0
-func (o *AdminUpdateUserEmailBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin update user email bad request body items0 based on context it is used
-func (o *AdminUpdateUserEmailBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUpdateUserEmailBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUpdateUserEmailBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AdminUpdateUserEmailBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminUpdateUserEmailBody admin update user email body
-swagger:model AdminUpdateUserEmailBody
-*/
-type AdminUpdateUserEmailBody struct {
-
-	// email
-	Email string `json:"email,omitempty"`
-
-	// id
-	ID string `json:"id,omitempty"`
-}
-
-// Validate validates this admin update user email body
-func (o *AdminUpdateUserEmailBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin update user email body based on context it is used
-func (o *AdminUpdateUserEmailBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUpdateUserEmailBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUpdateUserEmailBody) UnmarshalBinary(b []byte) error {
-	var res AdminUpdateUserEmailBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminUpdateUserEmailForbiddenBody admin update user email forbidden body
-swagger:model AdminUpdateUserEmailForbiddenBody
-*/
-type AdminUpdateUserEmailForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin update user email forbidden body
-func (o *AdminUpdateUserEmailForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin update user email forbidden body based on context it is used
-func (o *AdminUpdateUserEmailForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUpdateUserEmailForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUpdateUserEmailForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AdminUpdateUserEmailForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminUpdateUserEmailNotFoundBody admin update user email not found body
-swagger:model AdminUpdateUserEmailNotFoundBody
-*/
-type AdminUpdateUserEmailNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin update user email not found body
-func (o *AdminUpdateUserEmailNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin update user email not found body based on context it is used
-func (o *AdminUpdateUserEmailNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUpdateUserEmailNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUpdateUserEmailNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AdminUpdateUserEmailNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminUpdateUserEmailUnauthorizedBody admin update user email unauthorized body
-swagger:model AdminUpdateUserEmailUnauthorizedBody
-*/
-type AdminUpdateUserEmailUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin update user email unauthorized body
-func (o *AdminUpdateUserEmailUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin update user email unauthorized body based on context it is used
-func (o *AdminUpdateUserEmailUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUpdateUserEmailUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUpdateUserEmailUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AdminUpdateUserEmailUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

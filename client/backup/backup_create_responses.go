@@ -6,13 +6,13 @@ package backup
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // BackupCreateReader is a Reader for the BackupCreate structure.
@@ -75,7 +75,7 @@ BackupCreateOK describes a response with status code 200, with default header va
 Success
 */
 type BackupCreateOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this backup create o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *BackupCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *BackupCreateOK) GetPayload() interface{} {
+func (o *BackupCreateOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ BackupCreateBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type BackupCreateBadRequest struct {
-	Payload []*BackupCreateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this backup create bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *BackupCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupCreateBadRequest) GetPayload() []*BackupCreateBadRequestBodyItems0 {
+func (o *BackupCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ BackupCreateUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type BackupCreateUnauthorized struct {
-	Payload *BackupCreateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup create unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *BackupCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupCreateUnauthorized) GetPayload() *BackupCreateUnauthorizedBody {
+func (o *BackupCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BackupCreateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ BackupCreateForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type BackupCreateForbidden struct {
-	Payload *BackupCreateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup create forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *BackupCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupCreateForbidden) GetPayload() *BackupCreateForbiddenBody {
+func (o *BackupCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BackupCreateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ BackupCreateNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type BackupCreateNotFound struct {
-	Payload *BackupCreateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup create not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *BackupCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Backup/create][%d] backupCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupCreateNotFound) GetPayload() *BackupCreateNotFoundBody {
+func (o *BackupCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BackupCreateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,249 +423,5 @@ func (o *BackupCreateInternalServerError) String() string {
 
 func (o *BackupCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-BackupCreateBadRequestBodyItems0 backup create bad request body items0
-swagger:model BackupCreateBadRequestBodyItems0
-*/
-type BackupCreateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this backup create bad request body items0
-func (o *BackupCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this backup create bad request body items0 based on context it is used
-func (o *BackupCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res BackupCreateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BackupCreateBody backup create body
-swagger:model BackupCreateBody
-*/
-type BackupCreateBody struct {
-
-	// cron period
-	CronPeriod string `json:"cronPeriod,omitempty"`
-
-	// exclude namespaces
-	ExcludeNamespaces []string `json:"excludeNamespaces"`
-
-	// include namespaces
-	IncludeNamespaces []string `json:"includeNamespaces"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// retention period
-	RetentionPeriod string `json:"retentionPeriod,omitempty"`
-}
-
-// Validate validates this backup create body
-func (o *BackupCreateBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this backup create body based on context it is used
-func (o *BackupCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupCreateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupCreateBody) UnmarshalBinary(b []byte) error {
-	var res BackupCreateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BackupCreateForbiddenBody backup create forbidden body
-swagger:model BackupCreateForbiddenBody
-*/
-type BackupCreateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this backup create forbidden body
-func (o *BackupCreateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this backup create forbidden body based on context it is used
-func (o *BackupCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupCreateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupCreateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res BackupCreateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BackupCreateNotFoundBody backup create not found body
-swagger:model BackupCreateNotFoundBody
-*/
-type BackupCreateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this backup create not found body
-func (o *BackupCreateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this backup create not found body based on context it is used
-func (o *BackupCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupCreateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupCreateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res BackupCreateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BackupCreateUnauthorizedBody backup create unauthorized body
-swagger:model BackupCreateUnauthorizedBody
-*/
-type BackupCreateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this backup create unauthorized body
-func (o *BackupCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this backup create unauthorized body based on context it is used
-func (o *BackupCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res BackupCreateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

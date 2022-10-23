@@ -6,15 +6,13 @@ package cloud_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CloudCredentialsAllFlavorsReader is a Reader for the CloudCredentialsAllFlavors structure.
@@ -77,7 +75,7 @@ CloudCredentialsAllFlavorsOK describes a response with status code 200, with def
 Success
 */
 type CloudCredentialsAllFlavorsOK struct {
-	Payload *CloudCredentialsAllFlavorsOKBody
+	Payload *models.AllFlavorsList
 }
 
 // IsSuccess returns true when this cloud credentials all flavors o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *CloudCredentialsAllFlavorsOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsOK  %+v", 200, o.Payload)
 }
 
-func (o *CloudCredentialsAllFlavorsOK) GetPayload() *CloudCredentialsAllFlavorsOKBody {
+func (o *CloudCredentialsAllFlavorsOK) GetPayload() *models.AllFlavorsList {
 	return o.Payload
 }
 
 func (o *CloudCredentialsAllFlavorsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CloudCredentialsAllFlavorsOKBody)
+	o.Payload = new(models.AllFlavorsList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ CloudCredentialsAllFlavorsBadRequest describes a response with status code 400, 
 Bad Request
 */
 type CloudCredentialsAllFlavorsBadRequest struct {
-	Payload []*CloudCredentialsAllFlavorsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cloud credentials all flavors bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *CloudCredentialsAllFlavorsBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CloudCredentialsAllFlavorsBadRequest) GetPayload() []*CloudCredentialsAllFlavorsBadRequestBodyItems0 {
+func (o *CloudCredentialsAllFlavorsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ CloudCredentialsAllFlavorsUnauthorized describes a response with status code 401
 Unauthorized
 */
 type CloudCredentialsAllFlavorsUnauthorized struct {
-	Payload *CloudCredentialsAllFlavorsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials all flavors unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *CloudCredentialsAllFlavorsUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CloudCredentialsAllFlavorsUnauthorized) GetPayload() *CloudCredentialsAllFlavorsUnauthorizedBody {
+func (o *CloudCredentialsAllFlavorsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsAllFlavorsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CloudCredentialsAllFlavorsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ CloudCredentialsAllFlavorsForbidden describes a response with status code 403, w
 Forbidden
 */
 type CloudCredentialsAllFlavorsForbidden struct {
-	Payload *CloudCredentialsAllFlavorsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials all flavors forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *CloudCredentialsAllFlavorsForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CloudCredentialsAllFlavorsForbidden) GetPayload() *CloudCredentialsAllFlavorsForbiddenBody {
+func (o *CloudCredentialsAllFlavorsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsAllFlavorsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CloudCredentialsAllFlavorsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ CloudCredentialsAllFlavorsNotFound describes a response with status code 404, wi
 Not Found
 */
 type CloudCredentialsAllFlavorsNotFound struct {
-	Payload *CloudCredentialsAllFlavorsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cloud credentials all flavors not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *CloudCredentialsAllFlavorsNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/CloudCredentials/flavors/{cloudId}][%d] cloudCredentialsAllFlavorsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CloudCredentialsAllFlavorsNotFound) GetPayload() *CloudCredentialsAllFlavorsNotFoundBody {
+func (o *CloudCredentialsAllFlavorsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CloudCredentialsAllFlavorsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CloudCredentialsAllFlavorsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,354 +425,5 @@ func (o *CloudCredentialsAllFlavorsInternalServerError) String() string {
 
 func (o *CloudCredentialsAllFlavorsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CloudCredentialsAllFlavorsBadRequestBodyItems0 cloud credentials all flavors bad request body items0
-swagger:model CloudCredentialsAllFlavorsBadRequestBodyItems0
-*/
-type CloudCredentialsAllFlavorsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this cloud credentials all flavors bad request body items0
-func (o *CloudCredentialsAllFlavorsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials all flavors bad request body items0 based on context it is used
-func (o *CloudCredentialsAllFlavorsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsAllFlavorsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsAllFlavorsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsAllFlavorsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsAllFlavorsForbiddenBody cloud credentials all flavors forbidden body
-swagger:model CloudCredentialsAllFlavorsForbiddenBody
-*/
-type CloudCredentialsAllFlavorsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cloud credentials all flavors forbidden body
-func (o *CloudCredentialsAllFlavorsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials all flavors forbidden body based on context it is used
-func (o *CloudCredentialsAllFlavorsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsAllFlavorsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsAllFlavorsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsAllFlavorsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsAllFlavorsNotFoundBody cloud credentials all flavors not found body
-swagger:model CloudCredentialsAllFlavorsNotFoundBody
-*/
-type CloudCredentialsAllFlavorsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cloud credentials all flavors not found body
-func (o *CloudCredentialsAllFlavorsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials all flavors not found body based on context it is used
-func (o *CloudCredentialsAllFlavorsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsAllFlavorsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsAllFlavorsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsAllFlavorsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsAllFlavorsOKBody cloud credentials all flavors o k body
-swagger:model CloudCredentialsAllFlavorsOKBody
-*/
-type CloudCredentialsAllFlavorsOKBody struct {
-
-	// cloud type
-	CloudType string `json:"cloudType,omitempty"`
-
-	// data
-	Data []*CloudCredentialsAllFlavorsOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this cloud credentials all flavors o k body
-func (o *CloudCredentialsAllFlavorsOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *CloudCredentialsAllFlavorsOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("cloudCredentialsAllFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("cloudCredentialsAllFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this cloud credentials all flavors o k body based on the context it is used
-func (o *CloudCredentialsAllFlavorsOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *CloudCredentialsAllFlavorsOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("cloudCredentialsAllFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("cloudCredentialsAllFlavorsOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsAllFlavorsOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsAllFlavorsOKBody) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsAllFlavorsOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsAllFlavorsOKBodyDataItems0 cloud credentials all flavors o k body data items0
-swagger:model CloudCredentialsAllFlavorsOKBodyDataItems0
-*/
-type CloudCredentialsAllFlavorsOKBodyDataItems0 struct {
-
-	// cpu
-	CPU int32 `json:"cpu,omitempty"`
-
-	// description
-	Description interface{} `json:"description,omitempty"`
-
-	// max data disk count
-	MaxDataDiskCount float64 `json:"maxDataDiskCount,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// ram
-	RAM int64 `json:"ram,omitempty"`
-}
-
-// Validate validates this cloud credentials all flavors o k body data items0
-func (o *CloudCredentialsAllFlavorsOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials all flavors o k body data items0 based on context it is used
-func (o *CloudCredentialsAllFlavorsOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsAllFlavorsOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsAllFlavorsOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsAllFlavorsOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CloudCredentialsAllFlavorsUnauthorizedBody cloud credentials all flavors unauthorized body
-swagger:model CloudCredentialsAllFlavorsUnauthorizedBody
-*/
-type CloudCredentialsAllFlavorsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cloud credentials all flavors unauthorized body
-func (o *CloudCredentialsAllFlavorsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cloud credentials all flavors unauthorized body based on context it is used
-func (o *CloudCredentialsAllFlavorsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CloudCredentialsAllFlavorsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CloudCredentialsAllFlavorsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CloudCredentialsAllFlavorsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

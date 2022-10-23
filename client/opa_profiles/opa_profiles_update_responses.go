@@ -6,13 +6,13 @@ package opa_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // OpaProfilesUpdateReader is a Reader for the OpaProfilesUpdate structure.
@@ -75,7 +75,7 @@ OpaProfilesUpdateOK describes a response with status code 200, with default head
 Success
 */
 type OpaProfilesUpdateOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this opa profiles update o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OpaProfilesUpdateOK) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/OpaProfiles][%d] opaProfilesUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *OpaProfilesUpdateOK) GetPayload() interface{} {
+func (o *OpaProfilesUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OpaProfilesUpdateBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type OpaProfilesUpdateBadRequest struct {
-	Payload []*OpaProfilesUpdateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this opa profiles update bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpaProfilesUpdateBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/OpaProfiles][%d] opaProfilesUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesUpdateBadRequest) GetPayload() []*OpaProfilesUpdateBadRequestBodyItems0 {
+func (o *OpaProfilesUpdateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OpaProfilesUpdateUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpaProfilesUpdateUnauthorized struct {
-	Payload *OpaProfilesUpdateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles update unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OpaProfilesUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/OpaProfiles][%d] opaProfilesUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesUpdateUnauthorized) GetPayload() *OpaProfilesUpdateUnauthorizedBody {
+func (o *OpaProfilesUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpaProfilesUpdateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OpaProfilesUpdateForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpaProfilesUpdateForbidden struct {
-	Payload *OpaProfilesUpdateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles update forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OpaProfilesUpdateForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/OpaProfiles][%d] opaProfilesUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesUpdateForbidden) GetPayload() *OpaProfilesUpdateForbiddenBody {
+func (o *OpaProfilesUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpaProfilesUpdateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OpaProfilesUpdateNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpaProfilesUpdateNotFound struct {
-	Payload *OpaProfilesUpdateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles update not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OpaProfilesUpdateNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/OpaProfiles][%d] opaProfilesUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesUpdateNotFound) GetPayload() *OpaProfilesUpdateNotFoundBody {
+func (o *OpaProfilesUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpaProfilesUpdateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,261 +423,5 @@ func (o *OpaProfilesUpdateInternalServerError) String() string {
 
 func (o *OpaProfilesUpdateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-OpaProfilesUpdateBadRequestBodyItems0 opa profiles update bad request body items0
-swagger:model OpaProfilesUpdateBadRequestBodyItems0
-*/
-type OpaProfilesUpdateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this opa profiles update bad request body items0
-func (o *OpaProfilesUpdateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles update bad request body items0 based on context it is used
-func (o *OpaProfilesUpdateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesUpdateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesUpdateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesUpdateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesUpdateBody opa profiles update body
-swagger:model OpaProfilesUpdateBody
-*/
-type OpaProfilesUpdateBody struct {
-
-	// allowed repo
-	AllowedRepo []string `json:"allowedRepo"`
-
-	// forbid Http ingress
-	ForbidHTTPIngress bool `json:"forbidHttpIngress"`
-
-	// forbid node port
-	ForbidNodePort bool `json:"forbidNodePort"`
-
-	// forbid specific tags
-	ForbidSpecificTags []string `json:"forbidSpecificTags"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// ingress whitelist
-	IngressWhitelist []string `json:"ingressWhitelist"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// require probe
-	RequireProbe bool `json:"requireProbe"`
-
-	// unique ingresses
-	UniqueIngresses bool `json:"uniqueIngresses"`
-
-	// unique service selector
-	UniqueServiceSelector bool `json:"uniqueServiceSelector"`
-}
-
-// Validate validates this opa profiles update body
-func (o *OpaProfilesUpdateBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles update body based on context it is used
-func (o *OpaProfilesUpdateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesUpdateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesUpdateBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesUpdateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesUpdateForbiddenBody opa profiles update forbidden body
-swagger:model OpaProfilesUpdateForbiddenBody
-*/
-type OpaProfilesUpdateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this opa profiles update forbidden body
-func (o *OpaProfilesUpdateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles update forbidden body based on context it is used
-func (o *OpaProfilesUpdateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesUpdateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesUpdateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesUpdateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesUpdateNotFoundBody opa profiles update not found body
-swagger:model OpaProfilesUpdateNotFoundBody
-*/
-type OpaProfilesUpdateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this opa profiles update not found body
-func (o *OpaProfilesUpdateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles update not found body based on context it is used
-func (o *OpaProfilesUpdateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesUpdateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesUpdateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesUpdateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesUpdateUnauthorizedBody opa profiles update unauthorized body
-swagger:model OpaProfilesUpdateUnauthorizedBody
-*/
-type OpaProfilesUpdateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this opa profiles update unauthorized body
-func (o *OpaProfilesUpdateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles update unauthorized body based on context it is used
-func (o *OpaProfilesUpdateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesUpdateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesUpdateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesUpdateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

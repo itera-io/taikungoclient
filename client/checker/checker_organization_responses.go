@@ -6,13 +6,13 @@ package checker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CheckerOrganizationReader is a Reader for the CheckerOrganization structure.
@@ -75,7 +75,7 @@ CheckerOrganizationOK describes a response with status code 200, with default he
 Success
 */
 type CheckerOrganizationOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this checker organization o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CheckerOrganizationOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationOK  %+v", 200, o.Payload)
 }
 
-func (o *CheckerOrganizationOK) GetPayload() interface{} {
+func (o *CheckerOrganizationOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CheckerOrganizationBadRequest describes a response with status code 400, with de
 Bad Request
 */
 type CheckerOrganizationBadRequest struct {
-	Payload []*CheckerOrganizationBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this checker organization bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerOrganizationBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerOrganizationBadRequest) GetPayload() []*CheckerOrganizationBadRequestBodyItems0 {
+func (o *CheckerOrganizationBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CheckerOrganizationUnauthorized describes a response with status code 401, with 
 Unauthorized
 */
 type CheckerOrganizationUnauthorized struct {
-	Payload *CheckerOrganizationUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker organization unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CheckerOrganizationUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerOrganizationUnauthorized) GetPayload() *CheckerOrganizationUnauthorizedBody {
+func (o *CheckerOrganizationUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerOrganizationUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerOrganizationUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CheckerOrganizationForbidden describes a response with status code 403, with def
 Forbidden
 */
 type CheckerOrganizationForbidden struct {
-	Payload *CheckerOrganizationForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker organization forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CheckerOrganizationForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerOrganizationForbidden) GetPayload() *CheckerOrganizationForbiddenBody {
+func (o *CheckerOrganizationForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerOrganizationForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerOrganizationForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CheckerOrganizationNotFound describes a response with status code 404, with defa
 Not Found
 */
 type CheckerOrganizationNotFound struct {
-	Payload *CheckerOrganizationNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker organization not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CheckerOrganizationNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/organization][%d] checkerOrganizationNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerOrganizationNotFound) GetPayload() *CheckerOrganizationNotFoundBody {
+func (o *CheckerOrganizationNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerOrganizationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerOrganizationNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *CheckerOrganizationInternalServerError) String() string {
 
 func (o *CheckerOrganizationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CheckerOrganizationBadRequestBodyItems0 checker organization bad request body items0
-swagger:model CheckerOrganizationBadRequestBodyItems0
-*/
-type CheckerOrganizationBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this checker organization bad request body items0
-func (o *CheckerOrganizationBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker organization bad request body items0 based on context it is used
-func (o *CheckerOrganizationBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerOrganizationBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerOrganizationBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CheckerOrganizationBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerOrganizationBody checker organization body
-swagger:model CheckerOrganizationBody
-*/
-type CheckerOrganizationBody struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this checker organization body
-func (o *CheckerOrganizationBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker organization body based on context it is used
-func (o *CheckerOrganizationBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerOrganizationBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerOrganizationBody) UnmarshalBinary(b []byte) error {
-	var res CheckerOrganizationBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerOrganizationForbiddenBody checker organization forbidden body
-swagger:model CheckerOrganizationForbiddenBody
-*/
-type CheckerOrganizationForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker organization forbidden body
-func (o *CheckerOrganizationForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker organization forbidden body based on context it is used
-func (o *CheckerOrganizationForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerOrganizationForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerOrganizationForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CheckerOrganizationForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerOrganizationNotFoundBody checker organization not found body
-swagger:model CheckerOrganizationNotFoundBody
-*/
-type CheckerOrganizationNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker organization not found body
-func (o *CheckerOrganizationNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker organization not found body based on context it is used
-func (o *CheckerOrganizationNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerOrganizationNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerOrganizationNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CheckerOrganizationNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerOrganizationUnauthorizedBody checker organization unauthorized body
-swagger:model CheckerOrganizationUnauthorizedBody
-*/
-type CheckerOrganizationUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker organization unauthorized body
-func (o *CheckerOrganizationUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker organization unauthorized body based on context it is used
-func (o *CheckerOrganizationUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerOrganizationUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerOrganizationUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CheckerOrganizationUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -6,15 +6,13 @@ package repository
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // RepositoryListReader is a Reader for the RepositoryList structure.
@@ -77,7 +75,7 @@ RepositoryListOK describes a response with status code 200, with default header 
 Success
 */
 type RepositoryListOK struct {
-	Payload *RepositoryListOKBody
+	Payload *models.AppRepositoryList
 }
 
 // IsSuccess returns true when this repository list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *RepositoryListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListOK  %+v", 200, o.Payload)
 }
 
-func (o *RepositoryListOK) GetPayload() *RepositoryListOKBody {
+func (o *RepositoryListOK) GetPayload() *models.AppRepositoryList {
 	return o.Payload
 }
 
 func (o *RepositoryListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(RepositoryListOKBody)
+	o.Payload = new(models.AppRepositoryList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ RepositoryListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type RepositoryListBadRequest struct {
-	Payload []*RepositoryListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this repository list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *RepositoryListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *RepositoryListBadRequest) GetPayload() []*RepositoryListBadRequestBodyItems0 {
+func (o *RepositoryListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ RepositoryListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type RepositoryListUnauthorized struct {
-	Payload *RepositoryListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this repository list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *RepositoryListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *RepositoryListUnauthorized) GetPayload() *RepositoryListUnauthorizedBody {
+func (o *RepositoryListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *RepositoryListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(RepositoryListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ RepositoryListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type RepositoryListForbidden struct {
-	Payload *RepositoryListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this repository list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *RepositoryListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *RepositoryListForbidden) GetPayload() *RepositoryListForbiddenBody {
+func (o *RepositoryListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *RepositoryListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(RepositoryListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ RepositoryListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type RepositoryListNotFound struct {
-	Payload *RepositoryListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this repository list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *RepositoryListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Repository/available][%d] repositoryListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *RepositoryListNotFound) GetPayload() *RepositoryListNotFoundBody {
+func (o *RepositoryListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *RepositoryListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(RepositoryListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,366 +425,5 @@ func (o *RepositoryListInternalServerError) String() string {
 
 func (o *RepositoryListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-RepositoryListBadRequestBodyItems0 repository list bad request body items0
-swagger:model RepositoryListBadRequestBodyItems0
-*/
-type RepositoryListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this repository list bad request body items0
-func (o *RepositoryListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this repository list bad request body items0 based on context it is used
-func (o *RepositoryListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *RepositoryListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *RepositoryListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res RepositoryListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-RepositoryListForbiddenBody repository list forbidden body
-swagger:model RepositoryListForbiddenBody
-*/
-type RepositoryListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this repository list forbidden body
-func (o *RepositoryListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this repository list forbidden body based on context it is used
-func (o *RepositoryListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *RepositoryListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *RepositoryListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res RepositoryListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-RepositoryListNotFoundBody repository list not found body
-swagger:model RepositoryListNotFoundBody
-*/
-type RepositoryListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this repository list not found body
-func (o *RepositoryListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this repository list not found body based on context it is used
-func (o *RepositoryListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *RepositoryListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *RepositoryListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res RepositoryListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-RepositoryListOKBody repository list o k body
-swagger:model RepositoryListOKBody
-*/
-type RepositoryListOKBody struct {
-
-	// data
-	Data []*RepositoryListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this repository list o k body
-func (o *RepositoryListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *RepositoryListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("repositoryListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("repositoryListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this repository list o k body based on the context it is used
-func (o *RepositoryListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *RepositoryListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("repositoryListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("repositoryListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *RepositoryListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *RepositoryListOKBody) UnmarshalBinary(b []byte) error {
-	var res RepositoryListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-RepositoryListOKBodyDataItems0 repository list o k body data items0
-swagger:model RepositoryListOKBodyDataItems0
-*/
-type RepositoryListOKBodyDataItems0 struct {
-
-	// disabled
-	Disabled bool `json:"disabled"`
-
-	// display name
-	DisplayName string `json:"displayName"`
-
-	// has catalog app
-	HasCatalogApp bool `json:"hasCatalogApp"`
-
-	// is bound
-	IsBound bool `json:"isBound"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// official
-	Official bool `json:"official"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// repository Id
-	RepositoryID string `json:"repositoryId,omitempty"`
-
-	// url
-	URL string `json:"url,omitempty"`
-
-	// verified publisher
-	VerifiedPublisher bool `json:"verifiedPublisher"`
-}
-
-// Validate validates this repository list o k body data items0
-func (o *RepositoryListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this repository list o k body data items0 based on context it is used
-func (o *RepositoryListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *RepositoryListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *RepositoryListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res RepositoryListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-RepositoryListUnauthorizedBody repository list unauthorized body
-swagger:model RepositoryListUnauthorizedBody
-*/
-type RepositoryListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this repository list unauthorized body
-func (o *RepositoryListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this repository list unauthorized body based on context it is used
-func (o *RepositoryListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *RepositoryListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *RepositoryListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res RepositoryListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

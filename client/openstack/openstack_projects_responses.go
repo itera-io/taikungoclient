@@ -6,13 +6,13 @@ package openstack
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // OpenstackProjectsReader is a Reader for the OpenstackProjects structure.
@@ -75,7 +75,7 @@ OpenstackProjectsOK describes a response with status code 200, with default head
 Success
 */
 type OpenstackProjectsOK struct {
-	Payload []*OpenstackProjectsOKBodyItems0
+	Payload []*models.CommonStringBasedDropdownDto
 }
 
 // IsSuccess returns true when this openstack projects o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OpenstackProjectsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/projects][%d] openstackProjectsOK  %+v", 200, o.Payload)
 }
 
-func (o *OpenstackProjectsOK) GetPayload() []*OpenstackProjectsOKBodyItems0 {
+func (o *OpenstackProjectsOK) GetPayload() []*models.CommonStringBasedDropdownDto {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OpenstackProjectsBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type OpenstackProjectsBadRequest struct {
-	Payload []*OpenstackProjectsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this openstack projects bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpenstackProjectsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/projects][%d] openstackProjectsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpenstackProjectsBadRequest) GetPayload() []*OpenstackProjectsBadRequestBodyItems0 {
+func (o *OpenstackProjectsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OpenstackProjectsUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpenstackProjectsUnauthorized struct {
-	Payload *OpenstackProjectsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack projects unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OpenstackProjectsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/projects][%d] openstackProjectsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpenstackProjectsUnauthorized) GetPayload() *OpenstackProjectsUnauthorizedBody {
+func (o *OpenstackProjectsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackProjectsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackProjectsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OpenstackProjectsForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpenstackProjectsForbidden struct {
-	Payload *OpenstackProjectsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack projects forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OpenstackProjectsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/projects][%d] openstackProjectsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpenstackProjectsForbidden) GetPayload() *OpenstackProjectsForbiddenBody {
+func (o *OpenstackProjectsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackProjectsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackProjectsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OpenstackProjectsNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpenstackProjectsNotFound struct {
-	Payload *OpenstackProjectsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this openstack projects not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OpenstackProjectsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Openstack/projects][%d] openstackProjectsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpenstackProjectsNotFound) GetPayload() *OpenstackProjectsNotFoundBody {
+func (o *OpenstackProjectsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpenstackProjectsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpenstackProjectsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,290 +423,5 @@ func (o *OpenstackProjectsInternalServerError) String() string {
 
 func (o *OpenstackProjectsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-OpenstackProjectsBadRequestBodyItems0 openstack projects bad request body items0
-swagger:model OpenstackProjectsBadRequestBodyItems0
-*/
-type OpenstackProjectsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this openstack projects bad request body items0
-func (o *OpenstackProjectsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack projects bad request body items0 based on context it is used
-func (o *OpenstackProjectsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackProjectsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackProjectsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OpenstackProjectsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackProjectsBody openstack projects body
-swagger:model OpenstackProjectsBody
-*/
-type OpenstackProjectsBody struct {
-
-	// application cred enabled
-	ApplicationCredEnabled bool `json:"applicationCredEnabled"`
-
-	// is admin
-	IsAdmin bool `json:"isAdmin"`
-
-	// open stack domain
-	OpenStackDomain string `json:"openStackDomain,omitempty"`
-
-	// open stack password
-	OpenStackPassword string `json:"openStackPassword,omitempty"`
-
-	// open stack Url
-	OpenStackURL string `json:"openStackUrl,omitempty"`
-
-	// open stack user
-	OpenStackUser string `json:"openStackUser,omitempty"`
-}
-
-// Validate validates this openstack projects body
-func (o *OpenstackProjectsBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack projects body based on context it is used
-func (o *OpenstackProjectsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackProjectsBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackProjectsBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackProjectsBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackProjectsForbiddenBody openstack projects forbidden body
-swagger:model OpenstackProjectsForbiddenBody
-*/
-type OpenstackProjectsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this openstack projects forbidden body
-func (o *OpenstackProjectsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack projects forbidden body based on context it is used
-func (o *OpenstackProjectsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackProjectsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackProjectsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackProjectsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackProjectsNotFoundBody openstack projects not found body
-swagger:model OpenstackProjectsNotFoundBody
-*/
-type OpenstackProjectsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this openstack projects not found body
-func (o *OpenstackProjectsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack projects not found body based on context it is used
-func (o *OpenstackProjectsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackProjectsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackProjectsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackProjectsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackProjectsOKBodyItems0 openstack projects o k body items0
-swagger:model OpenstackProjectsOKBodyItems0
-*/
-type OpenstackProjectsOKBodyItems0 struct {
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this openstack projects o k body items0
-func (o *OpenstackProjectsOKBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack projects o k body items0 based on context it is used
-func (o *OpenstackProjectsOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackProjectsOKBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackProjectsOKBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OpenstackProjectsOKBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpenstackProjectsUnauthorizedBody openstack projects unauthorized body
-swagger:model OpenstackProjectsUnauthorizedBody
-*/
-type OpenstackProjectsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this openstack projects unauthorized body
-func (o *OpenstackProjectsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this openstack projects unauthorized body based on context it is used
-func (o *OpenstackProjectsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpenstackProjectsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpenstackProjectsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res OpenstackProjectsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

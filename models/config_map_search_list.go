@@ -20,7 +20,7 @@ import (
 type ConfigMapSearchList struct {
 
 	// data
-	Data []*ConfigMapSearchListDataItems0 `json:"data"`
+	Data []*CommonSearchKubernetesResponseData `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,58 +111,6 @@ func (m *ConfigMapSearchList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ConfigMapSearchList) UnmarshalBinary(b []byte) error {
 	var res ConfigMapSearchList
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// ConfigMapSearchListDataItems0 config map search list data items0
-//
-// swagger:model ConfigMapSearchListDataItems0
-type ConfigMapSearchListDataItems0 struct {
-
-	// metadata name
-	MetadataName string `json:"metadataName,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
-}
-
-// Validate validates this config map search list data items0
-func (m *ConfigMapSearchListDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this config map search list data items0 based on context it is used
-func (m *ConfigMapSearchListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *ConfigMapSearchListDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *ConfigMapSearchListDataItems0) UnmarshalBinary(b []byte) error {
-	var res ConfigMapSearchListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

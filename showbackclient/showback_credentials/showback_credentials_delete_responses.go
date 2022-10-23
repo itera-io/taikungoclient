@@ -6,14 +6,13 @@ package showback_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ShowbackCredentialsDeleteReader is a Reader for the ShowbackCredentialsDelete structure.
@@ -82,7 +81,7 @@ ShowbackCredentialsDeleteOK describes a response with status code 200, with defa
 Success
 */
 type ShowbackCredentialsDeleteOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this showback credentials delete o k response has a 2xx status code
@@ -118,7 +117,7 @@ func (o *ShowbackCredentialsDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *ShowbackCredentialsDeleteOK) GetPayload() interface{} {
+func (o *ShowbackCredentialsDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -194,7 +193,7 @@ ShowbackCredentialsDeleteBadRequest describes a response with status code 400, w
 Bad Request
 */
 type ShowbackCredentialsDeleteBadRequest struct {
-	Payload *ShowbackCredentialsDeleteBadRequestBody
+	Payload *models.ValidationProblemDetails
 }
 
 // IsSuccess returns true when this showback credentials delete bad request response has a 2xx status code
@@ -230,13 +229,13 @@ func (o *ShowbackCredentialsDeleteBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackCredentialsDeleteBadRequest) GetPayload() *ShowbackCredentialsDeleteBadRequestBody {
+func (o *ShowbackCredentialsDeleteBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackCredentialsDeleteBadRequestBody)
+	o.Payload = new(models.ValidationProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -257,7 +256,7 @@ ShowbackCredentialsDeleteUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type ShowbackCredentialsDeleteUnauthorized struct {
-	Payload *ShowbackCredentialsDeleteUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback credentials delete unauthorized response has a 2xx status code
@@ -293,13 +292,13 @@ func (o *ShowbackCredentialsDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackCredentialsDeleteUnauthorized) GetPayload() *ShowbackCredentialsDeleteUnauthorizedBody {
+func (o *ShowbackCredentialsDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackCredentialsDeleteUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -320,7 +319,7 @@ ShowbackCredentialsDeleteForbidden describes a response with status code 403, wi
 Forbidden
 */
 type ShowbackCredentialsDeleteForbidden struct {
-	Payload *ShowbackCredentialsDeleteForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback credentials delete forbidden response has a 2xx status code
@@ -356,13 +355,13 @@ func (o *ShowbackCredentialsDeleteForbidden) String() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackCredentialsDeleteForbidden) GetPayload() *ShowbackCredentialsDeleteForbiddenBody {
+func (o *ShowbackCredentialsDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackCredentialsDeleteForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -383,7 +382,7 @@ ShowbackCredentialsDeleteNotFound describes a response with status code 404, wit
 Not Found
 */
 type ShowbackCredentialsDeleteNotFound struct {
-	Payload *ShowbackCredentialsDeleteNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback credentials delete not found response has a 2xx status code
@@ -419,13 +418,13 @@ func (o *ShowbackCredentialsDeleteNotFound) String() string {
 	return fmt.Sprintf("[DELETE /showback/v{v}/ShowbackCredentials/{id}][%d] showbackCredentialsDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackCredentialsDeleteNotFound) GetPayload() *ShowbackCredentialsDeleteNotFoundBody {
+func (o *ShowbackCredentialsDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackCredentialsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackCredentialsDeleteNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -483,223 +482,5 @@ func (o *ShowbackCredentialsDeleteInternalServerError) String() string {
 
 func (o *ShowbackCredentialsDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ShowbackCredentialsDeleteBadRequestBody showback credentials delete bad request body
-swagger:model ShowbackCredentialsDeleteBadRequestBody
-*/
-type ShowbackCredentialsDeleteBadRequestBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// errors
-	// Read Only: true
-	Errors map[string][]string `json:"errors,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback credentials delete bad request body
-func (o *ShowbackCredentialsDeleteBadRequestBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validate this showback credentials delete bad request body based on the context it is used
-func (o *ShowbackCredentialsDeleteBadRequestBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateErrors(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ShowbackCredentialsDeleteBadRequestBody) contextValidateErrors(ctx context.Context, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackCredentialsDeleteBadRequestBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackCredentialsDeleteBadRequestBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackCredentialsDeleteBadRequestBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackCredentialsDeleteForbiddenBody showback credentials delete forbidden body
-swagger:model ShowbackCredentialsDeleteForbiddenBody
-*/
-type ShowbackCredentialsDeleteForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback credentials delete forbidden body
-func (o *ShowbackCredentialsDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback credentials delete forbidden body based on context it is used
-func (o *ShowbackCredentialsDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackCredentialsDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackCredentialsDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackCredentialsDeleteForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackCredentialsDeleteNotFoundBody showback credentials delete not found body
-swagger:model ShowbackCredentialsDeleteNotFoundBody
-*/
-type ShowbackCredentialsDeleteNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback credentials delete not found body
-func (o *ShowbackCredentialsDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback credentials delete not found body based on context it is used
-func (o *ShowbackCredentialsDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackCredentialsDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackCredentialsDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackCredentialsDeleteNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackCredentialsDeleteUnauthorizedBody showback credentials delete unauthorized body
-swagger:model ShowbackCredentialsDeleteUnauthorizedBody
-*/
-type ShowbackCredentialsDeleteUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback credentials delete unauthorized body
-func (o *ShowbackCredentialsDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback credentials delete unauthorized body based on context it is used
-func (o *ShowbackCredentialsDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackCredentialsDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackCredentialsDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackCredentialsDeleteUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

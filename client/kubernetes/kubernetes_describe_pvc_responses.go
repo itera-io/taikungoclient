@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesDescribePvcReader is a Reader for the KubernetesDescribePvc structure.
@@ -136,7 +136,7 @@ KubernetesDescribePvcBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesDescribePvcBadRequest struct {
-	Payload []*KubernetesDescribePvcBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes describe pvc bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribePvcBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribePvcBadRequest) GetPayload() []*KubernetesDescribePvcBadRequestBodyItems0 {
+func (o *KubernetesDescribePvcBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesDescribePvcUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesDescribePvcUnauthorized struct {
-	Payload *KubernetesDescribePvcUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe pvc unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesDescribePvcUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribePvcUnauthorized) GetPayload() *KubernetesDescribePvcUnauthorizedBody {
+func (o *KubernetesDescribePvcUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribePvcUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribePvcUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesDescribePvcForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesDescribePvcForbidden struct {
-	Payload *KubernetesDescribePvcForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe pvc forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesDescribePvcForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribePvcForbidden) GetPayload() *KubernetesDescribePvcForbiddenBody {
+func (o *KubernetesDescribePvcForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribePvcForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribePvcForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesDescribePvcNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesDescribePvcNotFound struct {
-	Payload *KubernetesDescribePvcNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe pvc not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesDescribePvcNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pvc][%d] kubernetesDescribePvcNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribePvcNotFound) GetPayload() *KubernetesDescribePvcNotFoundBody {
+func (o *KubernetesDescribePvcNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribePvcNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribePvcNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,240 +423,5 @@ func (o *KubernetesDescribePvcInternalServerError) String() string {
 
 func (o *KubernetesDescribePvcInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesDescribePvcBadRequestBodyItems0 kubernetes describe pvc bad request body items0
-swagger:model KubernetesDescribePvcBadRequestBodyItems0
-*/
-type KubernetesDescribePvcBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes describe pvc bad request body items0
-func (o *KubernetesDescribePvcBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe pvc bad request body items0 based on context it is used
-func (o *KubernetesDescribePvcBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribePvcBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribePvcBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribePvcBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribePvcBody kubernetes describe pvc body
-swagger:model KubernetesDescribePvcBody
-*/
-type KubernetesDescribePvcBody struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this kubernetes describe pvc body
-func (o *KubernetesDescribePvcBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe pvc body based on context it is used
-func (o *KubernetesDescribePvcBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribePvcBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribePvcBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribePvcBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribePvcForbiddenBody kubernetes describe pvc forbidden body
-swagger:model KubernetesDescribePvcForbiddenBody
-*/
-type KubernetesDescribePvcForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe pvc forbidden body
-func (o *KubernetesDescribePvcForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe pvc forbidden body based on context it is used
-func (o *KubernetesDescribePvcForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribePvcForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribePvcForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribePvcForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribePvcNotFoundBody kubernetes describe pvc not found body
-swagger:model KubernetesDescribePvcNotFoundBody
-*/
-type KubernetesDescribePvcNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe pvc not found body
-func (o *KubernetesDescribePvcNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe pvc not found body based on context it is used
-func (o *KubernetesDescribePvcNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribePvcNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribePvcNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribePvcNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribePvcUnauthorizedBody kubernetes describe pvc unauthorized body
-swagger:model KubernetesDescribePvcUnauthorizedBody
-*/
-type KubernetesDescribePvcUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe pvc unauthorized body
-func (o *KubernetesDescribePvcUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe pvc unauthorized body based on context it is used
-func (o *KubernetesDescribePvcUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribePvcUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribePvcUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribePvcUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

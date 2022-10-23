@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewSecurityGroupDeleteParams creates a new SecurityGroupDeleteParams object,
@@ -62,7 +64,7 @@ SecurityGroupDeleteParams contains all the parameters to send to the API endpoin
 type SecurityGroupDeleteParams struct {
 
 	// Body.
-	Body SecurityGroupDeleteBody
+	Body *models.DeleteSecurityGroupCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *SecurityGroupDeleteParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the security group delete params
-func (o *SecurityGroupDeleteParams) WithBody(body SecurityGroupDeleteBody) *SecurityGroupDeleteParams {
+func (o *SecurityGroupDeleteParams) WithBody(body *models.DeleteSecurityGroupCommand) *SecurityGroupDeleteParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the security group delete params
-func (o *SecurityGroupDeleteParams) SetBody(body SecurityGroupDeleteBody) {
+func (o *SecurityGroupDeleteParams) SetBody(body *models.DeleteSecurityGroupCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *SecurityGroupDeleteParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

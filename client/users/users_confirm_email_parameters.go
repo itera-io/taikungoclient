@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewUsersConfirmEmailParams creates a new UsersConfirmEmailParams object,
@@ -62,7 +64,7 @@ UsersConfirmEmailParams contains all the parameters to send to the API endpoint
 type UsersConfirmEmailParams struct {
 
 	// Body.
-	Body UsersConfirmEmailBody
+	Body *models.ConfirmEmailCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *UsersConfirmEmailParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the users confirm email params
-func (o *UsersConfirmEmailParams) WithBody(body UsersConfirmEmailBody) *UsersConfirmEmailParams {
+func (o *UsersConfirmEmailParams) WithBody(body *models.ConfirmEmailCommand) *UsersConfirmEmailParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the users confirm email params
-func (o *UsersConfirmEmailParams) SetBody(body UsersConfirmEmailBody) {
+func (o *UsersConfirmEmailParams) SetBody(body *models.ConfirmEmailCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *UsersConfirmEmailParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

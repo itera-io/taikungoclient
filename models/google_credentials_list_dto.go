@@ -62,7 +62,7 @@ type GoogleCredentialsListDto struct {
 	ProjectID string `json:"projectId,omitempty"`
 
 	// projects
-	Projects []*GoogleCredentialsListDtoProjectsItems0 `json:"projects"`
+	Projects []*CommonDropdownDto `json:"projects"`
 
 	// region
 	Region string `json:"region,omitempty"`
@@ -156,46 +156,6 @@ func (m *GoogleCredentialsListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *GoogleCredentialsListDto) UnmarshalBinary(b []byte) error {
 	var res GoogleCredentialsListDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// GoogleCredentialsListDtoProjectsItems0 google credentials list dto projects items0
-//
-// swagger:model GoogleCredentialsListDtoProjectsItems0
-type GoogleCredentialsListDtoProjectsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this google credentials list dto projects items0
-func (m *GoogleCredentialsListDtoProjectsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this google credentials list dto projects items0 based on context it is used
-func (m *GoogleCredentialsListDtoProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *GoogleCredentialsListDtoProjectsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *GoogleCredentialsListDtoProjectsItems0) UnmarshalBinary(b []byte) error {
-	var res GoogleCredentialsListDtoProjectsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -20,7 +20,7 @@ import (
 type Pvcs struct {
 
 	// data
-	Data []*PvcsDataItems0 `json:"data"`
+	Data []*PvcDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,58 +111,6 @@ func (m *Pvcs) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *Pvcs) UnmarshalBinary(b []byte) error {
 	var res Pvcs
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// PvcsDataItems0 pvcs data items0
-//
-// swagger:model PvcsDataItems0
-type PvcsDataItems0 struct {
-
-	// age
-	Age string `json:"age,omitempty"`
-
-	// metadata name
-	MetadataName string `json:"metadataName,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// phase
-	Phase string `json:"phase,omitempty"`
-
-	// size
-	Size string `json:"size,omitempty"`
-
-	// storage class name
-	StorageClassName string `json:"storageClassName,omitempty"`
-}
-
-// Validate validates this pvcs data items0
-func (m *PvcsDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this pvcs data items0 based on context it is used
-func (m *PvcsDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *PvcsDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *PvcsDataItems0) UnmarshalBinary(b []byte) error {
-	var res PvcsDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

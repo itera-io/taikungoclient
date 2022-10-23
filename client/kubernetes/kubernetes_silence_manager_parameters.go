@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesSilenceManagerParams creates a new KubernetesSilenceManagerParams object,
@@ -62,7 +64,7 @@ KubernetesSilenceManagerParams contains all the parameters to send to the API en
 type KubernetesSilenceManagerParams struct {
 
 	// Body.
-	Body KubernetesSilenceManagerBody
+	Body *models.SilenceOperationsCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *KubernetesSilenceManagerParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the kubernetes silence manager params
-func (o *KubernetesSilenceManagerParams) WithBody(body KubernetesSilenceManagerBody) *KubernetesSilenceManagerParams {
+func (o *KubernetesSilenceManagerParams) WithBody(body *models.SilenceOperationsCommand) *KubernetesSilenceManagerParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes silence manager params
-func (o *KubernetesSilenceManagerParams) SetBody(body KubernetesSilenceManagerBody) {
+func (o *KubernetesSilenceManagerParams) SetBody(body *models.SilenceOperationsCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *KubernetesSilenceManagerParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

@@ -15,6 +15,8 @@ import (
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewDNSServersEditParams creates a new DNSServersEditParams object,
@@ -63,7 +65,7 @@ DNSServersEditParams contains all the parameters to send to the API endpoint
 type DNSServersEditParams struct {
 
 	// Body.
-	Body DNSServersEditBody
+	Body *models.DNSNtpAddressEditDto
 
 	// ID.
 	//
@@ -127,13 +129,13 @@ func (o *DNSServersEditParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the Dns servers edit params
-func (o *DNSServersEditParams) WithBody(body DNSServersEditBody) *DNSServersEditParams {
+func (o *DNSServersEditParams) WithBody(body *models.DNSNtpAddressEditDto) *DNSServersEditParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the Dns servers edit params
-func (o *DNSServersEditParams) SetBody(body DNSServersEditBody) {
+func (o *DNSServersEditParams) SetBody(body *models.DNSNtpAddressEditDto) {
 	o.Body = body
 }
 
@@ -166,8 +168,10 @@ func (o *DNSServersEditParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param id

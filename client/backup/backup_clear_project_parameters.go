@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewBackupClearProjectParams creates a new BackupClearProjectParams object,
@@ -62,7 +64,7 @@ BackupClearProjectParams contains all the parameters to send to the API endpoint
 type BackupClearProjectParams struct {
 
 	// Body.
-	Body BackupClearProjectBody
+	Body *models.ClearProjectBackupCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *BackupClearProjectParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the backup clear project params
-func (o *BackupClearProjectParams) WithBody(body BackupClearProjectBody) *BackupClearProjectParams {
+func (o *BackupClearProjectParams) WithBody(body *models.ClearProjectBackupCommand) *BackupClearProjectParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the backup clear project params
-func (o *BackupClearProjectParams) SetBody(body BackupClearProjectBody) {
+func (o *BackupClearProjectParams) SetBody(body *models.ClearProjectBackupCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *BackupClearProjectParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

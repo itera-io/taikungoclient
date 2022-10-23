@@ -6,13 +6,13 @@ package checker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CheckerAwsReader is a Reader for the CheckerAws structure.
@@ -75,7 +75,7 @@ CheckerAwsOK describes a response with status code 200, with default header valu
 Success
 */
 type CheckerAwsOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this checker aws o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CheckerAwsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsOK  %+v", 200, o.Payload)
 }
 
-func (o *CheckerAwsOK) GetPayload() interface{} {
+func (o *CheckerAwsOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CheckerAwsBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type CheckerAwsBadRequest struct {
-	Payload []*CheckerAwsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this checker aws bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerAwsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerAwsBadRequest) GetPayload() []*CheckerAwsBadRequestBodyItems0 {
+func (o *CheckerAwsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CheckerAwsUnauthorized describes a response with status code 401, with default h
 Unauthorized
 */
 type CheckerAwsUnauthorized struct {
-	Payload *CheckerAwsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker aws unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CheckerAwsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerAwsUnauthorized) GetPayload() *CheckerAwsUnauthorizedBody {
+func (o *CheckerAwsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerAwsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerAwsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CheckerAwsForbidden describes a response with status code 403, with default head
 Forbidden
 */
 type CheckerAwsForbidden struct {
-	Payload *CheckerAwsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker aws forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CheckerAwsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerAwsForbidden) GetPayload() *CheckerAwsForbiddenBody {
+func (o *CheckerAwsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerAwsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerAwsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CheckerAwsNotFound describes a response with status code 404, with default heade
 Not Found
 */
 type CheckerAwsNotFound struct {
-	Payload *CheckerAwsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker aws not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CheckerAwsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/aws][%d] checkerAwsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerAwsNotFound) GetPayload() *CheckerAwsNotFoundBody {
+func (o *CheckerAwsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerAwsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerAwsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,240 +423,5 @@ func (o *CheckerAwsInternalServerError) String() string {
 
 func (o *CheckerAwsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CheckerAwsBadRequestBodyItems0 checker aws bad request body items0
-swagger:model CheckerAwsBadRequestBodyItems0
-*/
-type CheckerAwsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this checker aws bad request body items0
-func (o *CheckerAwsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker aws bad request body items0 based on context it is used
-func (o *CheckerAwsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerAwsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerAwsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CheckerAwsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerAwsBody checker aws body
-swagger:model CheckerAwsBody
-*/
-type CheckerAwsBody struct {
-
-	// aws access key Id
-	AwsAccessKeyID string `json:"awsAccessKeyId,omitempty"`
-
-	// aws secret access key
-	AwsSecretAccessKey string `json:"awsSecretAccessKey,omitempty"`
-
-	// region
-	Region string `json:"region,omitempty"`
-}
-
-// Validate validates this checker aws body
-func (o *CheckerAwsBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker aws body based on context it is used
-func (o *CheckerAwsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerAwsBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerAwsBody) UnmarshalBinary(b []byte) error {
-	var res CheckerAwsBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerAwsForbiddenBody checker aws forbidden body
-swagger:model CheckerAwsForbiddenBody
-*/
-type CheckerAwsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker aws forbidden body
-func (o *CheckerAwsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker aws forbidden body based on context it is used
-func (o *CheckerAwsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerAwsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerAwsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CheckerAwsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerAwsNotFoundBody checker aws not found body
-swagger:model CheckerAwsNotFoundBody
-*/
-type CheckerAwsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker aws not found body
-func (o *CheckerAwsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker aws not found body based on context it is used
-func (o *CheckerAwsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerAwsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerAwsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CheckerAwsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerAwsUnauthorizedBody checker aws unauthorized body
-swagger:model CheckerAwsUnauthorizedBody
-*/
-type CheckerAwsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker aws unauthorized body
-func (o *CheckerAwsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker aws unauthorized body based on context it is used
-func (o *CheckerAwsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerAwsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerAwsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CheckerAwsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

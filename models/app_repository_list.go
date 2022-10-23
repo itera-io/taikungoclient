@@ -20,7 +20,7 @@ import (
 type AppRepositoryList struct {
 
 	// data
-	Data []*AppRepositoryListDataItems0 `json:"data"`
+	Data []*ArtifactRepositoryDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,70 +111,6 @@ func (m *AppRepositoryList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *AppRepositoryList) UnmarshalBinary(b []byte) error {
 	var res AppRepositoryList
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// AppRepositoryListDataItems0 app repository list data items0
-//
-// swagger:model AppRepositoryListDataItems0
-type AppRepositoryListDataItems0 struct {
-
-	// disabled
-	Disabled bool `json:"disabled"`
-
-	// display name
-	DisplayName string `json:"displayName"`
-
-	// has catalog app
-	HasCatalogApp bool `json:"hasCatalogApp"`
-
-	// is bound
-	IsBound bool `json:"isBound"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// official
-	Official bool `json:"official"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// repository Id
-	RepositoryID string `json:"repositoryId,omitempty"`
-
-	// url
-	URL string `json:"url,omitempty"`
-
-	// verified publisher
-	VerifiedPublisher bool `json:"verifiedPublisher"`
-}
-
-// Validate validates this app repository list data items0
-func (m *AppRepositoryListDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this app repository list data items0 based on context it is used
-func (m *AppRepositoryListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *AppRepositoryListDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *AppRepositoryListDataItems0) UnmarshalBinary(b []byte) error {
-	var res AppRepositoryListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

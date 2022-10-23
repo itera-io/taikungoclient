@@ -6,13 +6,13 @@ package subscription
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // SubscriptionDeleteReader is a Reader for the SubscriptionDelete structure.
@@ -81,7 +81,7 @@ SubscriptionDeleteOK describes a response with status code 200, with default hea
 Success
 */
 type SubscriptionDeleteOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this subscription delete o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *SubscriptionDeleteOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *SubscriptionDeleteOK) GetPayload() interface{} {
+func (o *SubscriptionDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ SubscriptionDeleteBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type SubscriptionDeleteBadRequest struct {
-	Payload []*SubscriptionDeleteBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this subscription delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *SubscriptionDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SubscriptionDeleteBadRequest) GetPayload() []*SubscriptionDeleteBadRequestBodyItems0 {
+func (o *SubscriptionDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ SubscriptionDeleteUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type SubscriptionDeleteUnauthorized struct {
-	Payload *SubscriptionDeleteUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription delete unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *SubscriptionDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SubscriptionDeleteUnauthorized) GetPayload() *SubscriptionDeleteUnauthorizedBody {
+func (o *SubscriptionDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SubscriptionDeleteUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ SubscriptionDeleteForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type SubscriptionDeleteForbidden struct {
-	Payload *SubscriptionDeleteForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription delete forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *SubscriptionDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SubscriptionDeleteForbidden) GetPayload() *SubscriptionDeleteForbiddenBody {
+func (o *SubscriptionDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SubscriptionDeleteForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ SubscriptionDeleteNotFound describes a response with status code 404, with defau
 Not Found
 */
 type SubscriptionDeleteNotFound struct {
-	Payload *SubscriptionDeleteNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this subscription delete not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *SubscriptionDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Subscription/delete][%d] subscriptionDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SubscriptionDeleteNotFound) GetPayload() *SubscriptionDeleteNotFoundBody {
+func (o *SubscriptionDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SubscriptionDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SubscriptionDeleteNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,234 +480,5 @@ func (o *SubscriptionDeleteInternalServerError) String() string {
 
 func (o *SubscriptionDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-SubscriptionDeleteBadRequestBodyItems0 subscription delete bad request body items0
-swagger:model SubscriptionDeleteBadRequestBodyItems0
-*/
-type SubscriptionDeleteBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this subscription delete bad request body items0
-func (o *SubscriptionDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this subscription delete bad request body items0 based on context it is used
-func (o *SubscriptionDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SubscriptionDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SubscriptionDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res SubscriptionDeleteBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SubscriptionDeleteBody subscription delete body
-swagger:model SubscriptionDeleteBody
-*/
-type SubscriptionDeleteBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-}
-
-// Validate validates this subscription delete body
-func (o *SubscriptionDeleteBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this subscription delete body based on context it is used
-func (o *SubscriptionDeleteBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SubscriptionDeleteBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SubscriptionDeleteBody) UnmarshalBinary(b []byte) error {
-	var res SubscriptionDeleteBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SubscriptionDeleteForbiddenBody subscription delete forbidden body
-swagger:model SubscriptionDeleteForbiddenBody
-*/
-type SubscriptionDeleteForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this subscription delete forbidden body
-func (o *SubscriptionDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this subscription delete forbidden body based on context it is used
-func (o *SubscriptionDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SubscriptionDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SubscriptionDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res SubscriptionDeleteForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SubscriptionDeleteNotFoundBody subscription delete not found body
-swagger:model SubscriptionDeleteNotFoundBody
-*/
-type SubscriptionDeleteNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this subscription delete not found body
-func (o *SubscriptionDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this subscription delete not found body based on context it is used
-func (o *SubscriptionDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SubscriptionDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SubscriptionDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res SubscriptionDeleteNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SubscriptionDeleteUnauthorizedBody subscription delete unauthorized body
-swagger:model SubscriptionDeleteUnauthorizedBody
-*/
-type SubscriptionDeleteUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this subscription delete unauthorized body
-func (o *SubscriptionDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this subscription delete unauthorized body based on context it is used
-func (o *SubscriptionDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SubscriptionDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SubscriptionDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res SubscriptionDeleteUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

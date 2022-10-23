@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewPaymentGetFinalPriceParams creates a new PaymentGetFinalPriceParams object,
@@ -62,7 +64,7 @@ PaymentGetFinalPriceParams contains all the parameters to send to the API endpoi
 type PaymentGetFinalPriceParams struct {
 
 	// Body.
-	Body PaymentGetFinalPriceBody
+	Body *models.FinalPriceCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *PaymentGetFinalPriceParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the payment get final price params
-func (o *PaymentGetFinalPriceParams) WithBody(body PaymentGetFinalPriceBody) *PaymentGetFinalPriceParams {
+func (o *PaymentGetFinalPriceParams) WithBody(body *models.FinalPriceCommand) *PaymentGetFinalPriceParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the payment get final price params
-func (o *PaymentGetFinalPriceParams) SetBody(body PaymentGetFinalPriceBody) {
+func (o *PaymentGetFinalPriceParams) SetBody(body *models.FinalPriceCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *PaymentGetFinalPriceParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

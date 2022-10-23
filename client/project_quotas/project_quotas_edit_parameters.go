@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectQuotasEditParams creates a new ProjectQuotasEditParams object,
@@ -62,7 +64,7 @@ ProjectQuotasEditParams contains all the parameters to send to the API endpoint
 type ProjectQuotasEditParams struct {
 
 	// Body.
-	Body ProjectQuotasEditBody
+	Body *models.UpdateQuotaCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *ProjectQuotasEditParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the project quotas edit params
-func (o *ProjectQuotasEditParams) WithBody(body ProjectQuotasEditBody) *ProjectQuotasEditParams {
+func (o *ProjectQuotasEditParams) WithBody(body *models.UpdateQuotaCommand) *ProjectQuotasEditParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the project quotas edit params
-func (o *ProjectQuotasEditParams) SetBody(body ProjectQuotasEditBody) {
+func (o *ProjectQuotasEditParams) SetBody(body *models.UpdateQuotaCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *ProjectQuotasEditParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

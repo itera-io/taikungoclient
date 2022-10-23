@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAutoscalingEditAutoscalingParams creates a new AutoscalingEditAutoscalingParams object,
@@ -62,7 +64,7 @@ AutoscalingEditAutoscalingParams contains all the parameters to send to the API 
 type AutoscalingEditAutoscalingParams struct {
 
 	// Body.
-	Body AutoscalingEditAutoscalingBody
+	Body *models.EditAutoscalingCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *AutoscalingEditAutoscalingParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the autoscaling edit autoscaling params
-func (o *AutoscalingEditAutoscalingParams) WithBody(body AutoscalingEditAutoscalingBody) *AutoscalingEditAutoscalingParams {
+func (o *AutoscalingEditAutoscalingParams) WithBody(body *models.EditAutoscalingCommand) *AutoscalingEditAutoscalingParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the autoscaling edit autoscaling params
-func (o *AutoscalingEditAutoscalingParams) SetBody(body AutoscalingEditAutoscalingBody) {
+func (o *AutoscalingEditAutoscalingParams) SetBody(body *models.EditAutoscalingCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *AutoscalingEditAutoscalingParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

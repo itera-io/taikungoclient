@@ -6,13 +6,13 @@ package checker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CheckerSSHReader is a Reader for the CheckerSSH structure.
@@ -75,7 +75,7 @@ CheckerSSHOK describes a response with status code 200, with default header valu
 Success
 */
 type CheckerSSHOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this checker Ssh o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CheckerSSHOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshOK  %+v", 200, o.Payload)
 }
 
-func (o *CheckerSSHOK) GetPayload() interface{} {
+func (o *CheckerSSHOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CheckerSSHBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type CheckerSSHBadRequest struct {
-	Payload []*CheckerSSHBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this checker Ssh bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CheckerSSHBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CheckerSSHBadRequest) GetPayload() []*CheckerSSHBadRequestBodyItems0 {
+func (o *CheckerSSHBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CheckerSSHUnauthorized describes a response with status code 401, with default h
 Unauthorized
 */
 type CheckerSSHUnauthorized struct {
-	Payload *CheckerSSHUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker Ssh unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CheckerSSHUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CheckerSSHUnauthorized) GetPayload() *CheckerSSHUnauthorizedBody {
+func (o *CheckerSSHUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerSSHUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerSSHUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CheckerSSHForbidden describes a response with status code 403, with default head
 Forbidden
 */
 type CheckerSSHForbidden struct {
-	Payload *CheckerSSHForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker Ssh forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CheckerSSHForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CheckerSSHForbidden) GetPayload() *CheckerSSHForbiddenBody {
+func (o *CheckerSSHForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerSSHForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerSSHForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CheckerSSHNotFound describes a response with status code 404, with default heade
 Not Found
 */
 type CheckerSSHNotFound struct {
-	Payload *CheckerSSHNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this checker Ssh not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CheckerSSHNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Checker/ssh][%d] checkerSshNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CheckerSSHNotFound) GetPayload() *CheckerSSHNotFoundBody {
+func (o *CheckerSSHNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CheckerSSHNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CheckerSSHNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *CheckerSSHInternalServerError) String() string {
 
 func (o *CheckerSSHInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CheckerSSHBadRequestBodyItems0 checker SSH bad request body items0
-swagger:model CheckerSSHBadRequestBodyItems0
-*/
-type CheckerSSHBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this checker SSH bad request body items0
-func (o *CheckerSSHBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker SSH bad request body items0 based on context it is used
-func (o *CheckerSSHBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerSSHBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerSSHBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CheckerSSHBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerSSHBody checker SSH body
-swagger:model CheckerSSHBody
-*/
-type CheckerSSHBody struct {
-
-	// ssh public key
-	SSHPublicKey string `json:"sshPublicKey,omitempty"`
-}
-
-// Validate validates this checker SSH body
-func (o *CheckerSSHBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker SSH body based on context it is used
-func (o *CheckerSSHBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerSSHBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerSSHBody) UnmarshalBinary(b []byte) error {
-	var res CheckerSSHBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerSSHForbiddenBody checker SSH forbidden body
-swagger:model CheckerSSHForbiddenBody
-*/
-type CheckerSSHForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker SSH forbidden body
-func (o *CheckerSSHForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker SSH forbidden body based on context it is used
-func (o *CheckerSSHForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerSSHForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerSSHForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CheckerSSHForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerSSHNotFoundBody checker SSH not found body
-swagger:model CheckerSSHNotFoundBody
-*/
-type CheckerSSHNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker SSH not found body
-func (o *CheckerSSHNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker SSH not found body based on context it is used
-func (o *CheckerSSHNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerSSHNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerSSHNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CheckerSSHNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CheckerSSHUnauthorizedBody checker SSH unauthorized body
-swagger:model CheckerSSHUnauthorizedBody
-*/
-type CheckerSSHUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this checker SSH unauthorized body
-func (o *CheckerSSHUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this checker SSH unauthorized body based on context it is used
-func (o *CheckerSSHUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CheckerSSHUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CheckerSSHUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CheckerSSHUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

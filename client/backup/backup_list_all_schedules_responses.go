@@ -6,16 +6,13 @@ package backup
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // BackupListAllSchedulesReader is a Reader for the BackupListAllSchedules structure.
@@ -78,7 +75,7 @@ BackupListAllSchedulesOK describes a response with status code 200, with default
 Success
 */
 type BackupListAllSchedulesOK struct {
-	Payload *BackupListAllSchedulesOKBody
+	Payload *models.ListAllSchedules
 }
 
 // IsSuccess returns true when this backup list all schedules o k response has a 2xx status code
@@ -114,13 +111,13 @@ func (o *BackupListAllSchedulesOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedules/{projectId}][%d] backupListAllSchedulesOK  %+v", 200, o.Payload)
 }
 
-func (o *BackupListAllSchedulesOK) GetPayload() *BackupListAllSchedulesOKBody {
+func (o *BackupListAllSchedulesOK) GetPayload() *models.ListAllSchedules {
 	return o.Payload
 }
 
 func (o *BackupListAllSchedulesOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BackupListAllSchedulesOKBody)
+	o.Payload = new(models.ListAllSchedules)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -141,7 +138,7 @@ BackupListAllSchedulesBadRequest describes a response with status code 400, with
 Bad Request
 */
 type BackupListAllSchedulesBadRequest struct {
-	Payload []*BackupListAllSchedulesBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this backup list all schedules bad request response has a 2xx status code
@@ -177,7 +174,7 @@ func (o *BackupListAllSchedulesBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedules/{projectId}][%d] backupListAllSchedulesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BackupListAllSchedulesBadRequest) GetPayload() []*BackupListAllSchedulesBadRequestBodyItems0 {
+func (o *BackupListAllSchedulesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -202,7 +199,7 @@ BackupListAllSchedulesUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type BackupListAllSchedulesUnauthorized struct {
-	Payload *BackupListAllSchedulesUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup list all schedules unauthorized response has a 2xx status code
@@ -238,13 +235,13 @@ func (o *BackupListAllSchedulesUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedules/{projectId}][%d] backupListAllSchedulesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BackupListAllSchedulesUnauthorized) GetPayload() *BackupListAllSchedulesUnauthorizedBody {
+func (o *BackupListAllSchedulesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupListAllSchedulesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BackupListAllSchedulesUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -265,7 +262,7 @@ BackupListAllSchedulesForbidden describes a response with status code 403, with 
 Forbidden
 */
 type BackupListAllSchedulesForbidden struct {
-	Payload *BackupListAllSchedulesForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup list all schedules forbidden response has a 2xx status code
@@ -301,13 +298,13 @@ func (o *BackupListAllSchedulesForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedules/{projectId}][%d] backupListAllSchedulesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BackupListAllSchedulesForbidden) GetPayload() *BackupListAllSchedulesForbiddenBody {
+func (o *BackupListAllSchedulesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupListAllSchedulesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BackupListAllSchedulesForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -328,7 +325,7 @@ BackupListAllSchedulesNotFound describes a response with status code 404, with d
 Not Found
 */
 type BackupListAllSchedulesNotFound struct {
-	Payload *BackupListAllSchedulesNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this backup list all schedules not found response has a 2xx status code
@@ -364,13 +361,13 @@ func (o *BackupListAllSchedulesNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Backup/schedules/{projectId}][%d] backupListAllSchedulesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BackupListAllSchedulesNotFound) GetPayload() *BackupListAllSchedulesNotFoundBody {
+func (o *BackupListAllSchedulesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BackupListAllSchedulesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BackupListAllSchedulesNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -428,516 +425,5 @@ func (o *BackupListAllSchedulesInternalServerError) String() string {
 
 func (o *BackupListAllSchedulesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-BackupListAllSchedulesBadRequestBodyItems0 backup list all schedules bad request body items0
-swagger:model BackupListAllSchedulesBadRequestBodyItems0
-*/
-type BackupListAllSchedulesBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this backup list all schedules bad request body items0
-func (o *BackupListAllSchedulesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this backup list all schedules bad request body items0 based on context it is used
-func (o *BackupListAllSchedulesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupListAllSchedulesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupListAllSchedulesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res BackupListAllSchedulesBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BackupListAllSchedulesForbiddenBody backup list all schedules forbidden body
-swagger:model BackupListAllSchedulesForbiddenBody
-*/
-type BackupListAllSchedulesForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this backup list all schedules forbidden body
-func (o *BackupListAllSchedulesForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this backup list all schedules forbidden body based on context it is used
-func (o *BackupListAllSchedulesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupListAllSchedulesForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupListAllSchedulesForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res BackupListAllSchedulesForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BackupListAllSchedulesNotFoundBody backup list all schedules not found body
-swagger:model BackupListAllSchedulesNotFoundBody
-*/
-type BackupListAllSchedulesNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this backup list all schedules not found body
-func (o *BackupListAllSchedulesNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this backup list all schedules not found body based on context it is used
-func (o *BackupListAllSchedulesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupListAllSchedulesNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupListAllSchedulesNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res BackupListAllSchedulesNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BackupListAllSchedulesOKBody backup list all schedules o k body
-swagger:model BackupListAllSchedulesOKBody
-*/
-type BackupListAllSchedulesOKBody struct {
-
-	// data
-	Data []*BackupListAllSchedulesOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this backup list all schedules o k body
-func (o *BackupListAllSchedulesOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *BackupListAllSchedulesOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("backupListAllSchedulesOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("backupListAllSchedulesOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this backup list all schedules o k body based on the context it is used
-func (o *BackupListAllSchedulesOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *BackupListAllSchedulesOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("backupListAllSchedulesOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("backupListAllSchedulesOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupListAllSchedulesOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupListAllSchedulesOKBody) UnmarshalBinary(b []byte) error {
-	var res BackupListAllSchedulesOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BackupListAllSchedulesOKBodyDataItems0 backup list all schedules o k body data items0
-swagger:model BackupListAllSchedulesOKBodyDataItems0
-*/
-type BackupListAllSchedulesOKBodyDataItems0 struct {
-
-	// created at
-	// Format: date-time
-	CreatedAt *strfmt.DateTime `json:"createdAt,omitempty"`
-
-	// excluded namespaces
-	ExcludedNamespaces []string `json:"excludedNamespaces"`
-
-	// included namespaces
-	IncludedNamespaces []string `json:"includedNamespaces"`
-
-	// last backup
-	// Format: date-time
-	LastBackup *strfmt.DateTime `json:"lastBackup,omitempty"`
-
-	// metadata name
-	MetadataName string `json:"metadataName,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// phase
-	Phase string `json:"phase,omitempty"`
-
-	// schedule
-	Schedule string `json:"schedule,omitempty"`
-
-	// status
-	Status *BackupListAllSchedulesOKBodyDataItems0Status `json:"status,omitempty"`
-
-	// ttl
-	TTL string `json:"ttl,omitempty"`
-}
-
-// Validate validates this backup list all schedules o k body data items0
-func (o *BackupListAllSchedulesOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateCreatedAt(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateLastBackup(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateStatus(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *BackupListAllSchedulesOKBodyDataItems0) validateCreatedAt(formats strfmt.Registry) error {
-	if swag.IsZero(o.CreatedAt) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("createdAt", "body", "date-time", o.CreatedAt.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (o *BackupListAllSchedulesOKBodyDataItems0) validateLastBackup(formats strfmt.Registry) error {
-	if swag.IsZero(o.LastBackup) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("lastBackup", "body", "date-time", o.LastBackup.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (o *BackupListAllSchedulesOKBodyDataItems0) validateStatus(formats strfmt.Registry) error {
-	if swag.IsZero(o.Status) { // not required
-		return nil
-	}
-
-	if o.Status != nil {
-		if err := o.Status.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("status")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("status")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this backup list all schedules o k body data items0 based on the context it is used
-func (o *BackupListAllSchedulesOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateStatus(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *BackupListAllSchedulesOKBodyDataItems0) contextValidateStatus(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.Status != nil {
-		if err := o.Status.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("status")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("status")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupListAllSchedulesOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupListAllSchedulesOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res BackupListAllSchedulesOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BackupListAllSchedulesOKBodyDataItems0Status backup list all schedules o k body data items0 status
-swagger:model BackupListAllSchedulesOKBodyDataItems0Status
-*/
-type BackupListAllSchedulesOKBodyDataItems0Status struct {
-
-	// last backup
-	// Format: date-time
-	LastBackup *strfmt.DateTime `json:"lastBackup,omitempty"`
-
-	// phase
-	Phase string `json:"phase,omitempty"`
-}
-
-// Validate validates this backup list all schedules o k body data items0 status
-func (o *BackupListAllSchedulesOKBodyDataItems0Status) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateLastBackup(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *BackupListAllSchedulesOKBodyDataItems0Status) validateLastBackup(formats strfmt.Registry) error {
-	if swag.IsZero(o.LastBackup) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("status"+"."+"lastBackup", "body", "date-time", o.LastBackup.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this backup list all schedules o k body data items0 status based on context it is used
-func (o *BackupListAllSchedulesOKBodyDataItems0Status) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupListAllSchedulesOKBodyDataItems0Status) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupListAllSchedulesOKBodyDataItems0Status) UnmarshalBinary(b []byte) error {
-	var res BackupListAllSchedulesOKBodyDataItems0Status
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BackupListAllSchedulesUnauthorizedBody backup list all schedules unauthorized body
-swagger:model BackupListAllSchedulesUnauthorizedBody
-*/
-type BackupListAllSchedulesUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this backup list all schedules unauthorized body
-func (o *BackupListAllSchedulesUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this backup list all schedules unauthorized body based on context it is used
-func (o *BackupListAllSchedulesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BackupListAllSchedulesUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BackupListAllSchedulesUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res BackupListAllSchedulesUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

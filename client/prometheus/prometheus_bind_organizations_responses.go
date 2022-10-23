@@ -6,15 +6,13 @@ package prometheus
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PrometheusBindOrganizationsReader is a Reader for the PrometheusBindOrganizations structure.
@@ -77,7 +75,7 @@ PrometheusBindOrganizationsOK describes a response with status code 200, with de
 Success
 */
 type PrometheusBindOrganizationsOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this prometheus bind organizations o k response has a 2xx status code
@@ -113,7 +111,7 @@ func (o *PrometheusBindOrganizationsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsOK  %+v", 200, o.Payload)
 }
 
-func (o *PrometheusBindOrganizationsOK) GetPayload() interface{} {
+func (o *PrometheusBindOrganizationsOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -138,7 +136,7 @@ PrometheusBindOrganizationsBadRequest describes a response with status code 400,
 Bad Request
 */
 type PrometheusBindOrganizationsBadRequest struct {
-	Payload []*PrometheusBindOrganizationsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this prometheus bind organizations bad request response has a 2xx status code
@@ -174,7 +172,7 @@ func (o *PrometheusBindOrganizationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusBindOrganizationsBadRequest) GetPayload() []*PrometheusBindOrganizationsBadRequestBodyItems0 {
+func (o *PrometheusBindOrganizationsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +197,7 @@ PrometheusBindOrganizationsUnauthorized describes a response with status code 40
 Unauthorized
 */
 type PrometheusBindOrganizationsUnauthorized struct {
-	Payload *PrometheusBindOrganizationsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus bind organizations unauthorized response has a 2xx status code
@@ -235,13 +233,13 @@ func (o *PrometheusBindOrganizationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusBindOrganizationsUnauthorized) GetPayload() *PrometheusBindOrganizationsUnauthorizedBody {
+func (o *PrometheusBindOrganizationsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusBindOrganizationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusBindOrganizationsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +260,7 @@ PrometheusBindOrganizationsForbidden describes a response with status code 403, 
 Forbidden
 */
 type PrometheusBindOrganizationsForbidden struct {
-	Payload *PrometheusBindOrganizationsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus bind organizations forbidden response has a 2xx status code
@@ -298,13 +296,13 @@ func (o *PrometheusBindOrganizationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusBindOrganizationsForbidden) GetPayload() *PrometheusBindOrganizationsForbiddenBody {
+func (o *PrometheusBindOrganizationsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusBindOrganizationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusBindOrganizationsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +323,7 @@ PrometheusBindOrganizationsNotFound describes a response with status code 404, w
 Not Found
 */
 type PrometheusBindOrganizationsNotFound struct {
-	Payload *PrometheusBindOrganizationsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus bind organizations not found response has a 2xx status code
@@ -361,13 +359,13 @@ func (o *PrometheusBindOrganizationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus/bindorganizations][%d] prometheusBindOrganizationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusBindOrganizationsNotFound) GetPayload() *PrometheusBindOrganizationsNotFoundBody {
+func (o *PrometheusBindOrganizationsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusBindOrganizationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusBindOrganizationsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,348 +423,5 @@ func (o *PrometheusBindOrganizationsInternalServerError) String() string {
 
 func (o *PrometheusBindOrganizationsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PrometheusBindOrganizationsBadRequestBodyItems0 prometheus bind organizations bad request body items0
-swagger:model PrometheusBindOrganizationsBadRequestBodyItems0
-*/
-type PrometheusBindOrganizationsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this prometheus bind organizations bad request body items0
-func (o *PrometheusBindOrganizationsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus bind organizations bad request body items0 based on context it is used
-func (o *PrometheusBindOrganizationsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBindOrganizationsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBindOrganizationsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PrometheusBindOrganizationsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusBindOrganizationsBody prometheus bind organizations body
-swagger:model PrometheusBindOrganizationsBody
-*/
-type PrometheusBindOrganizationsBody struct {
-
-	// organizations
-	Organizations []*PrometheusBindOrganizationsParamsBodyOrganizationsItems0 `json:"organizations"`
-
-	// prometheus rule Id
-	PrometheusRuleID int32 `json:"prometheusRuleId,omitempty"`
-}
-
-// Validate validates this prometheus bind organizations body
-func (o *PrometheusBindOrganizationsBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateOrganizations(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PrometheusBindOrganizationsBody) validateOrganizations(formats strfmt.Registry) error {
-	if swag.IsZero(o.Organizations) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Organizations); i++ {
-		if swag.IsZero(o.Organizations[i]) { // not required
-			continue
-		}
-
-		if o.Organizations[i] != nil {
-			if err := o.Organizations[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "organizations" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "organizations" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this prometheus bind organizations body based on the context it is used
-func (o *PrometheusBindOrganizationsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateOrganizations(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PrometheusBindOrganizationsBody) contextValidateOrganizations(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Organizations); i++ {
-
-		if o.Organizations[i] != nil {
-			if err := o.Organizations[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "organizations" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "organizations" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBindOrganizationsBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBindOrganizationsBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusBindOrganizationsBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusBindOrganizationsForbiddenBody prometheus bind organizations forbidden body
-swagger:model PrometheusBindOrganizationsForbiddenBody
-*/
-type PrometheusBindOrganizationsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus bind organizations forbidden body
-func (o *PrometheusBindOrganizationsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus bind organizations forbidden body based on context it is used
-func (o *PrometheusBindOrganizationsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBindOrganizationsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBindOrganizationsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusBindOrganizationsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusBindOrganizationsNotFoundBody prometheus bind organizations not found body
-swagger:model PrometheusBindOrganizationsNotFoundBody
-*/
-type PrometheusBindOrganizationsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus bind organizations not found body
-func (o *PrometheusBindOrganizationsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus bind organizations not found body based on context it is used
-func (o *PrometheusBindOrganizationsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBindOrganizationsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBindOrganizationsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusBindOrganizationsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusBindOrganizationsParamsBodyOrganizationsItems0 prometheus bind organizations params body organizations items0
-swagger:model PrometheusBindOrganizationsParamsBodyOrganizationsItems0
-*/
-type PrometheusBindOrganizationsParamsBodyOrganizationsItems0 struct {
-
-	// is bound
-	IsBound bool `json:"isBound"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// rule discount rate
-	RuleDiscountRate float64 `json:"ruleDiscountRate"`
-}
-
-// Validate validates this prometheus bind organizations params body organizations items0
-func (o *PrometheusBindOrganizationsParamsBodyOrganizationsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus bind organizations params body organizations items0 based on context it is used
-func (o *PrometheusBindOrganizationsParamsBodyOrganizationsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBindOrganizationsParamsBodyOrganizationsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBindOrganizationsParamsBodyOrganizationsItems0) UnmarshalBinary(b []byte) error {
-	var res PrometheusBindOrganizationsParamsBodyOrganizationsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusBindOrganizationsUnauthorizedBody prometheus bind organizations unauthorized body
-swagger:model PrometheusBindOrganizationsUnauthorizedBody
-*/
-type PrometheusBindOrganizationsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus bind organizations unauthorized body
-func (o *PrometheusBindOrganizationsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus bind organizations unauthorized body based on context it is used
-func (o *PrometheusBindOrganizationsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusBindOrganizationsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusBindOrganizationsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusBindOrganizationsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

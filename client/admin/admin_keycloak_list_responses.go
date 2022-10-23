@@ -6,15 +6,13 @@ package admin
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AdminKeycloakListReader is a Reader for the AdminKeycloakList structure.
@@ -77,7 +75,7 @@ AdminKeycloakListOK describes a response with status code 200, with default head
 Success
 */
 type AdminKeycloakListOK struct {
-	Payload *AdminKeycloakListOKBody
+	Payload *models.AdminKeycloakList
 }
 
 // IsSuccess returns true when this admin keycloak list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *AdminKeycloakListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListOK  %+v", 200, o.Payload)
 }
 
-func (o *AdminKeycloakListOK) GetPayload() *AdminKeycloakListOKBody {
+func (o *AdminKeycloakListOK) GetPayload() *models.AdminKeycloakList {
 	return o.Payload
 }
 
 func (o *AdminKeycloakListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminKeycloakListOKBody)
+	o.Payload = new(models.AdminKeycloakList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ AdminKeycloakListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type AdminKeycloakListBadRequest struct {
-	Payload []*AdminKeycloakListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this admin keycloak list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *AdminKeycloakListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminKeycloakListBadRequest) GetPayload() []*AdminKeycloakListBadRequestBodyItems0 {
+func (o *AdminKeycloakListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ AdminKeycloakListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type AdminKeycloakListUnauthorized struct {
-	Payload *AdminKeycloakListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin keycloak list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *AdminKeycloakListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminKeycloakListUnauthorized) GetPayload() *AdminKeycloakListUnauthorizedBody {
+func (o *AdminKeycloakListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminKeycloakListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminKeycloakListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ AdminKeycloakListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type AdminKeycloakListForbidden struct {
-	Payload *AdminKeycloakListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin keycloak list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *AdminKeycloakListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminKeycloakListForbidden) GetPayload() *AdminKeycloakListForbiddenBody {
+func (o *AdminKeycloakListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminKeycloakListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminKeycloakListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ AdminKeycloakListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type AdminKeycloakListNotFound struct {
-	Payload *AdminKeycloakListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin keycloak list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *AdminKeycloakListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/keycloak/list][%d] adminKeycloakListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminKeycloakListNotFound) GetPayload() *AdminKeycloakListNotFoundBody {
+func (o *AdminKeycloakListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminKeycloakListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminKeycloakListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,366 +425,5 @@ func (o *AdminKeycloakListInternalServerError) String() string {
 
 func (o *AdminKeycloakListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AdminKeycloakListBadRequestBodyItems0 admin keycloak list bad request body items0
-swagger:model AdminKeycloakListBadRequestBodyItems0
-*/
-type AdminKeycloakListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this admin keycloak list bad request body items0
-func (o *AdminKeycloakListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin keycloak list bad request body items0 based on context it is used
-func (o *AdminKeycloakListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminKeycloakListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminKeycloakListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AdminKeycloakListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminKeycloakListForbiddenBody admin keycloak list forbidden body
-swagger:model AdminKeycloakListForbiddenBody
-*/
-type AdminKeycloakListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin keycloak list forbidden body
-func (o *AdminKeycloakListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin keycloak list forbidden body based on context it is used
-func (o *AdminKeycloakListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminKeycloakListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminKeycloakListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AdminKeycloakListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminKeycloakListNotFoundBody admin keycloak list not found body
-swagger:model AdminKeycloakListNotFoundBody
-*/
-type AdminKeycloakListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin keycloak list not found body
-func (o *AdminKeycloakListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin keycloak list not found body based on context it is used
-func (o *AdminKeycloakListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminKeycloakListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminKeycloakListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AdminKeycloakListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminKeycloakListOKBody admin keycloak list o k body
-swagger:model AdminKeycloakListOKBody
-*/
-type AdminKeycloakListOKBody struct {
-
-	// data
-	Data []*AdminKeycloakListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this admin keycloak list o k body
-func (o *AdminKeycloakListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AdminKeycloakListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("adminKeycloakListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("adminKeycloakListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this admin keycloak list o k body based on the context it is used
-func (o *AdminKeycloakListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AdminKeycloakListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("adminKeycloakListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("adminKeycloakListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminKeycloakListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminKeycloakListOKBody) UnmarshalBinary(b []byte) error {
-	var res AdminKeycloakListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminKeycloakListOKBodyDataItems0 admin keycloak list o k body data items0
-swagger:model AdminKeycloakListOKBodyDataItems0
-*/
-type AdminKeycloakListOKBodyDataItems0 struct {
-
-	// client Id
-	ClientID string `json:"clientId,omitempty"`
-
-	// client secret
-	ClientSecret string `json:"clientSecret,omitempty"`
-
-	// enabled
-	Enabled bool `json:"enabled"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// partner logo
-	PartnerLogo string `json:"partnerLogo,omitempty"`
-
-	// realms name
-	RealmsName string `json:"realmsName,omitempty"`
-
-	// url
-	URL string `json:"url,omitempty"`
-}
-
-// Validate validates this admin keycloak list o k body data items0
-func (o *AdminKeycloakListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin keycloak list o k body data items0 based on context it is used
-func (o *AdminKeycloakListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminKeycloakListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminKeycloakListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res AdminKeycloakListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminKeycloakListUnauthorizedBody admin keycloak list unauthorized body
-swagger:model AdminKeycloakListUnauthorizedBody
-*/
-type AdminKeycloakListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin keycloak list unauthorized body
-func (o *AdminKeycloakListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin keycloak list unauthorized body based on context it is used
-func (o *AdminKeycloakListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminKeycloakListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminKeycloakListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AdminKeycloakListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

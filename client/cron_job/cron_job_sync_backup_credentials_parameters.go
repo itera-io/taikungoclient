@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobSyncBackupCredentialsParams creates a new CronJobSyncBackupCredentialsParams object,
@@ -62,7 +64,7 @@ CronJobSyncBackupCredentialsParams contains all the parameters to send to the AP
 type CronJobSyncBackupCredentialsParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.SyncBackupCredentialsCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CronJobSyncBackupCredentialsParams) SetHTTPClient(client *http.Client) 
 }
 
 // WithBody adds the body to the cron job sync backup credentials params
-func (o *CronJobSyncBackupCredentialsParams) WithBody(body interface{}) *CronJobSyncBackupCredentialsParams {
+func (o *CronJobSyncBackupCredentialsParams) WithBody(body models.SyncBackupCredentialsCommand) *CronJobSyncBackupCredentialsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job sync backup credentials params
-func (o *CronJobSyncBackupCredentialsParams) SetBody(body interface{}) {
+func (o *CronJobSyncBackupCredentialsParams) SetBody(body models.SyncBackupCredentialsCommand) {
 	o.Body = body
 }
 

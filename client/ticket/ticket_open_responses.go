@@ -6,13 +6,13 @@ package ticket
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // TicketOpenReader is a Reader for the TicketOpen structure.
@@ -75,7 +75,7 @@ TicketOpenOK describes a response with status code 200, with default header valu
 Success
 */
 type TicketOpenOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this ticket open o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *TicketOpenOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenOK  %+v", 200, o.Payload)
 }
 
-func (o *TicketOpenOK) GetPayload() interface{} {
+func (o *TicketOpenOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ TicketOpenBadRequest describes a response with status code 400, with default hea
 Bad Request
 */
 type TicketOpenBadRequest struct {
-	Payload []*TicketOpenBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this ticket open bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *TicketOpenBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketOpenBadRequest) GetPayload() []*TicketOpenBadRequestBodyItems0 {
+func (o *TicketOpenBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ TicketOpenUnauthorized describes a response with status code 401, with default h
 Unauthorized
 */
 type TicketOpenUnauthorized struct {
-	Payload *TicketOpenUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket open unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *TicketOpenUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketOpenUnauthorized) GetPayload() *TicketOpenUnauthorizedBody {
+func (o *TicketOpenUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketOpenUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(TicketOpenUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ TicketOpenForbidden describes a response with status code 403, with default head
 Forbidden
 */
 type TicketOpenForbidden struct {
-	Payload *TicketOpenForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket open forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *TicketOpenForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketOpenForbidden) GetPayload() *TicketOpenForbiddenBody {
+func (o *TicketOpenForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketOpenForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(TicketOpenForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ TicketOpenNotFound describes a response with status code 404, with default heade
 Not Found
 */
 type TicketOpenNotFound struct {
-	Payload *TicketOpenNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket open not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *TicketOpenNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Ticket/open][%d] ticketOpenNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketOpenNotFound) GetPayload() *TicketOpenNotFoundBody {
+func (o *TicketOpenNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketOpenNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(TicketOpenNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *TicketOpenInternalServerError) String() string {
 
 func (o *TicketOpenInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-TicketOpenBadRequestBodyItems0 ticket open bad request body items0
-swagger:model TicketOpenBadRequestBodyItems0
-*/
-type TicketOpenBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this ticket open bad request body items0
-func (o *TicketOpenBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ticket open bad request body items0 based on context it is used
-func (o *TicketOpenBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketOpenBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketOpenBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res TicketOpenBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-TicketOpenBody ticket open body
-swagger:model TicketOpenBody
-*/
-type TicketOpenBody struct {
-
-	// ticket Id
-	TicketID string `json:"ticketId,omitempty"`
-}
-
-// Validate validates this ticket open body
-func (o *TicketOpenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ticket open body based on context it is used
-func (o *TicketOpenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketOpenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketOpenBody) UnmarshalBinary(b []byte) error {
-	var res TicketOpenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-TicketOpenForbiddenBody ticket open forbidden body
-swagger:model TicketOpenForbiddenBody
-*/
-type TicketOpenForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ticket open forbidden body
-func (o *TicketOpenForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ticket open forbidden body based on context it is used
-func (o *TicketOpenForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketOpenForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketOpenForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res TicketOpenForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-TicketOpenNotFoundBody ticket open not found body
-swagger:model TicketOpenNotFoundBody
-*/
-type TicketOpenNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ticket open not found body
-func (o *TicketOpenNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ticket open not found body based on context it is used
-func (o *TicketOpenNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketOpenNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketOpenNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res TicketOpenNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-TicketOpenUnauthorizedBody ticket open unauthorized body
-swagger:model TicketOpenUnauthorizedBody
-*/
-type TicketOpenUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ticket open unauthorized body
-func (o *TicketOpenUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ticket open unauthorized body based on context it is used
-func (o *TicketOpenUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketOpenUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketOpenUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res TicketOpenUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

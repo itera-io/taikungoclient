@@ -6,15 +6,13 @@ package search
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // SearchCloudCredentialsListReader is a Reader for the SearchCloudCredentialsList structure.
@@ -77,7 +75,7 @@ SearchCloudCredentialsListOK describes a response with status code 200, with def
 Success
 */
 type SearchCloudCredentialsListOK struct {
-	Payload *SearchCloudCredentialsListOKBody
+	Payload *models.CloudCredentialsSearchList
 }
 
 // IsSuccess returns true when this search cloud credentials list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *SearchCloudCredentialsListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListOK  %+v", 200, o.Payload)
 }
 
-func (o *SearchCloudCredentialsListOK) GetPayload() *SearchCloudCredentialsListOKBody {
+func (o *SearchCloudCredentialsListOK) GetPayload() *models.CloudCredentialsSearchList {
 	return o.Payload
 }
 
 func (o *SearchCloudCredentialsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchCloudCredentialsListOKBody)
+	o.Payload = new(models.CloudCredentialsSearchList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ SearchCloudCredentialsListBadRequest describes a response with status code 400, 
 Bad Request
 */
 type SearchCloudCredentialsListBadRequest struct {
-	Payload []*SearchCloudCredentialsListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this search cloud credentials list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *SearchCloudCredentialsListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchCloudCredentialsListBadRequest) GetPayload() []*SearchCloudCredentialsListBadRequestBodyItems0 {
+func (o *SearchCloudCredentialsListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ SearchCloudCredentialsListUnauthorized describes a response with status code 401
 Unauthorized
 */
 type SearchCloudCredentialsListUnauthorized struct {
-	Payload *SearchCloudCredentialsListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search cloud credentials list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *SearchCloudCredentialsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchCloudCredentialsListUnauthorized) GetPayload() *SearchCloudCredentialsListUnauthorizedBody {
+func (o *SearchCloudCredentialsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchCloudCredentialsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchCloudCredentialsListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ SearchCloudCredentialsListForbidden describes a response with status code 403, w
 Forbidden
 */
 type SearchCloudCredentialsListForbidden struct {
-	Payload *SearchCloudCredentialsListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search cloud credentials list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *SearchCloudCredentialsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchCloudCredentialsListForbidden) GetPayload() *SearchCloudCredentialsListForbiddenBody {
+func (o *SearchCloudCredentialsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchCloudCredentialsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchCloudCredentialsListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ SearchCloudCredentialsListNotFound describes a response with status code 404, wi
 Not Found
 */
 type SearchCloudCredentialsListNotFound struct {
-	Payload *SearchCloudCredentialsListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search cloud credentials list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *SearchCloudCredentialsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/cloud-credentials][%d] searchCloudCredentialsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchCloudCredentialsListNotFound) GetPayload() *SearchCloudCredentialsListNotFoundBody {
+func (o *SearchCloudCredentialsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchCloudCredentialsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchCloudCredentialsListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,395 +425,5 @@ func (o *SearchCloudCredentialsListInternalServerError) String() string {
 
 func (o *SearchCloudCredentialsListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-SearchCloudCredentialsListBadRequestBodyItems0 search cloud credentials list bad request body items0
-swagger:model SearchCloudCredentialsListBadRequestBodyItems0
-*/
-type SearchCloudCredentialsListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this search cloud credentials list bad request body items0
-func (o *SearchCloudCredentialsListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search cloud credentials list bad request body items0 based on context it is used
-func (o *SearchCloudCredentialsListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchCloudCredentialsListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchCloudCredentialsListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res SearchCloudCredentialsListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchCloudCredentialsListBody search cloud credentials list body
-swagger:model SearchCloudCredentialsListBody
-*/
-type SearchCloudCredentialsListBody struct {
-
-	// limit
-	Limit int32 `json:"limit,omitempty"`
-
-	// offset
-	Offset int32 `json:"offset,omitempty"`
-
-	// search term
-	SearchTerm string `json:"searchTerm,omitempty"`
-}
-
-// Validate validates this search cloud credentials list body
-func (o *SearchCloudCredentialsListBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search cloud credentials list body based on context it is used
-func (o *SearchCloudCredentialsListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchCloudCredentialsListBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchCloudCredentialsListBody) UnmarshalBinary(b []byte) error {
-	var res SearchCloudCredentialsListBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchCloudCredentialsListForbiddenBody search cloud credentials list forbidden body
-swagger:model SearchCloudCredentialsListForbiddenBody
-*/
-type SearchCloudCredentialsListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this search cloud credentials list forbidden body
-func (o *SearchCloudCredentialsListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search cloud credentials list forbidden body based on context it is used
-func (o *SearchCloudCredentialsListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchCloudCredentialsListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchCloudCredentialsListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res SearchCloudCredentialsListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchCloudCredentialsListNotFoundBody search cloud credentials list not found body
-swagger:model SearchCloudCredentialsListNotFoundBody
-*/
-type SearchCloudCredentialsListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this search cloud credentials list not found body
-func (o *SearchCloudCredentialsListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search cloud credentials list not found body based on context it is used
-func (o *SearchCloudCredentialsListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchCloudCredentialsListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchCloudCredentialsListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res SearchCloudCredentialsListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchCloudCredentialsListOKBody search cloud credentials list o k body
-swagger:model SearchCloudCredentialsListOKBody
-*/
-type SearchCloudCredentialsListOKBody struct {
-
-	// data
-	Data []*SearchCloudCredentialsListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this search cloud credentials list o k body
-func (o *SearchCloudCredentialsListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *SearchCloudCredentialsListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("searchCloudCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("searchCloudCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this search cloud credentials list o k body based on the context it is used
-func (o *SearchCloudCredentialsListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *SearchCloudCredentialsListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("searchCloudCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("searchCloudCredentialsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchCloudCredentialsListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchCloudCredentialsListOKBody) UnmarshalBinary(b []byte) error {
-	var res SearchCloudCredentialsListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchCloudCredentialsListOKBodyDataItems0 search cloud credentials list o k body data items0
-swagger:model SearchCloudCredentialsListOKBodyDataItems0
-*/
-type SearchCloudCredentialsListOKBodyDataItems0 struct {
-
-	// cloud type
-	CloudType string `json:"cloudType,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-}
-
-// Validate validates this search cloud credentials list o k body data items0
-func (o *SearchCloudCredentialsListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search cloud credentials list o k body data items0 based on context it is used
-func (o *SearchCloudCredentialsListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchCloudCredentialsListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchCloudCredentialsListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res SearchCloudCredentialsListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchCloudCredentialsListUnauthorizedBody search cloud credentials list unauthorized body
-swagger:model SearchCloudCredentialsListUnauthorizedBody
-*/
-type SearchCloudCredentialsListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this search cloud credentials list unauthorized body
-func (o *SearchCloudCredentialsListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search cloud credentials list unauthorized body based on context it is used
-func (o *SearchCloudCredentialsListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchCloudCredentialsListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchCloudCredentialsListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res SearchCloudCredentialsListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewNtpServersCreateParams creates a new NtpServersCreateParams object,
@@ -62,7 +64,7 @@ NtpServersCreateParams contains all the parameters to send to the API endpoint
 type NtpServersCreateParams struct {
 
 	// Body.
-	Body NtpServersCreateBody
+	Body *models.CreateNtpServerCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *NtpServersCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the ntp servers create params
-func (o *NtpServersCreateParams) WithBody(body NtpServersCreateBody) *NtpServersCreateParams {
+func (o *NtpServersCreateParams) WithBody(body *models.CreateNtpServerCommand) *NtpServersCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the ntp servers create params
-func (o *NtpServersCreateParams) SetBody(body NtpServersCreateBody) {
+func (o *NtpServersCreateParams) SetBody(body *models.CreateNtpServerCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *NtpServersCreateParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

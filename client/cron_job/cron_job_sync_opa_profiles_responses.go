@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobSyncOpaProfilesReader is a Reader for the CronJobSyncOpaProfiles structure.
@@ -75,7 +75,7 @@ CronJobSyncOpaProfilesOK describes a response with status code 200, with default
 Success
 */
 type CronJobSyncOpaProfilesOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job sync opa profiles o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobSyncOpaProfilesOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobSyncOpaProfilesOK) GetPayload() interface{} {
+func (o *CronJobSyncOpaProfilesOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobSyncOpaProfilesBadRequest describes a response with status code 400, with
 Bad Request
 */
 type CronJobSyncOpaProfilesBadRequest struct {
-	Payload []*CronJobSyncOpaProfilesBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job sync opa profiles bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobSyncOpaProfilesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobSyncOpaProfilesBadRequest) GetPayload() []*CronJobSyncOpaProfilesBadRequestBodyItems0 {
+func (o *CronJobSyncOpaProfilesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobSyncOpaProfilesUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type CronJobSyncOpaProfilesUnauthorized struct {
-	Payload *CronJobSyncOpaProfilesUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job sync opa profiles unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobSyncOpaProfilesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobSyncOpaProfilesUnauthorized) GetPayload() *CronJobSyncOpaProfilesUnauthorizedBody {
+func (o *CronJobSyncOpaProfilesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobSyncOpaProfilesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobSyncOpaProfilesUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobSyncOpaProfilesForbidden describes a response with status code 403, with 
 Forbidden
 */
 type CronJobSyncOpaProfilesForbidden struct {
-	Payload *CronJobSyncOpaProfilesForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job sync opa profiles forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobSyncOpaProfilesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobSyncOpaProfilesForbidden) GetPayload() *CronJobSyncOpaProfilesForbiddenBody {
+func (o *CronJobSyncOpaProfilesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobSyncOpaProfilesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobSyncOpaProfilesForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobSyncOpaProfilesNotFound describes a response with status code 404, with d
 Not Found
 */
 type CronJobSyncOpaProfilesNotFound struct {
-	Payload *CronJobSyncOpaProfilesNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job sync opa profiles not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobSyncOpaProfilesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/sync-opa-profiles][%d] cronJobSyncOpaProfilesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobSyncOpaProfilesNotFound) GetPayload() *CronJobSyncOpaProfilesNotFoundBody {
+func (o *CronJobSyncOpaProfilesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobSyncOpaProfilesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobSyncOpaProfilesNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *CronJobSyncOpaProfilesInternalServerError) String() string {
 
 func (o *CronJobSyncOpaProfilesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CronJobSyncOpaProfilesBadRequestBodyItems0 cron job sync opa profiles bad request body items0
-swagger:model CronJobSyncOpaProfilesBadRequestBodyItems0
-*/
-type CronJobSyncOpaProfilesBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this cron job sync opa profiles bad request body items0
-func (o *CronJobSyncOpaProfilesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job sync opa profiles bad request body items0 based on context it is used
-func (o *CronJobSyncOpaProfilesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobSyncOpaProfilesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobSyncOpaProfilesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CronJobSyncOpaProfilesBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobSyncOpaProfilesForbiddenBody cron job sync opa profiles forbidden body
-swagger:model CronJobSyncOpaProfilesForbiddenBody
-*/
-type CronJobSyncOpaProfilesForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job sync opa profiles forbidden body
-func (o *CronJobSyncOpaProfilesForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job sync opa profiles forbidden body based on context it is used
-func (o *CronJobSyncOpaProfilesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobSyncOpaProfilesForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobSyncOpaProfilesForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CronJobSyncOpaProfilesForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobSyncOpaProfilesNotFoundBody cron job sync opa profiles not found body
-swagger:model CronJobSyncOpaProfilesNotFoundBody
-*/
-type CronJobSyncOpaProfilesNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job sync opa profiles not found body
-func (o *CronJobSyncOpaProfilesNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job sync opa profiles not found body based on context it is used
-func (o *CronJobSyncOpaProfilesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobSyncOpaProfilesNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobSyncOpaProfilesNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CronJobSyncOpaProfilesNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobSyncOpaProfilesUnauthorizedBody cron job sync opa profiles unauthorized body
-swagger:model CronJobSyncOpaProfilesUnauthorizedBody
-*/
-type CronJobSyncOpaProfilesUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job sync opa profiles unauthorized body
-func (o *CronJobSyncOpaProfilesUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job sync opa profiles unauthorized body based on context it is used
-func (o *CronJobSyncOpaProfilesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobSyncOpaProfilesUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobSyncOpaProfilesUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CronJobSyncOpaProfilesUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

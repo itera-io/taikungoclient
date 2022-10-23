@@ -6,13 +6,13 @@ package aws
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AwsRegionListReader is a Reader for the AwsRegionList structure.
@@ -75,7 +75,7 @@ AwsRegionListOK describes a response with status code 200, with default header v
 Success
 */
 type AwsRegionListOK struct {
-	Payload []*AwsRegionListOKBodyItems0
+	Payload []*models.AwsRegionDto
 }
 
 // IsSuccess returns true when this aws region list o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AwsRegionListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListOK  %+v", 200, o.Payload)
 }
 
-func (o *AwsRegionListOK) GetPayload() []*AwsRegionListOKBodyItems0 {
+func (o *AwsRegionListOK) GetPayload() []*models.AwsRegionDto {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AwsRegionListBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type AwsRegionListBadRequest struct {
-	Payload []*AwsRegionListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this aws region list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AwsRegionListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsRegionListBadRequest) GetPayload() []*AwsRegionListBadRequestBodyItems0 {
+func (o *AwsRegionListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AwsRegionListUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type AwsRegionListUnauthorized struct {
-	Payload *AwsRegionListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws region list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AwsRegionListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsRegionListUnauthorized) GetPayload() *AwsRegionListUnauthorizedBody {
+func (o *AwsRegionListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsRegionListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AwsRegionListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AwsRegionListForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type AwsRegionListForbidden struct {
-	Payload *AwsRegionListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws region list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AwsRegionListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsRegionListForbidden) GetPayload() *AwsRegionListForbiddenBody {
+func (o *AwsRegionListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsRegionListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AwsRegionListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AwsRegionListNotFound describes a response with status code 404, with default he
 Not Found
 */
 type AwsRegionListNotFound struct {
-	Payload *AwsRegionListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws region list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AwsRegionListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Aws/regions][%d] awsRegionListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsRegionListNotFound) GetPayload() *AwsRegionListNotFoundBody {
+func (o *AwsRegionListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsRegionListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AwsRegionListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,278 +423,5 @@ func (o *AwsRegionListInternalServerError) String() string {
 
 func (o *AwsRegionListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AwsRegionListBadRequestBodyItems0 aws region list bad request body items0
-swagger:model AwsRegionListBadRequestBodyItems0
-*/
-type AwsRegionListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this aws region list bad request body items0
-func (o *AwsRegionListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws region list bad request body items0 based on context it is used
-func (o *AwsRegionListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsRegionListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsRegionListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AwsRegionListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AwsRegionListBody aws region list body
-swagger:model AwsRegionListBody
-*/
-type AwsRegionListBody struct {
-
-	// aws access key Id
-	AwsAccessKeyID string `json:"awsAccessKeyId,omitempty"`
-
-	// aws secret access key
-	AwsSecretAccessKey string `json:"awsSecretAccessKey,omitempty"`
-}
-
-// Validate validates this aws region list body
-func (o *AwsRegionListBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws region list body based on context it is used
-func (o *AwsRegionListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsRegionListBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsRegionListBody) UnmarshalBinary(b []byte) error {
-	var res AwsRegionListBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AwsRegionListForbiddenBody aws region list forbidden body
-swagger:model AwsRegionListForbiddenBody
-*/
-type AwsRegionListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this aws region list forbidden body
-func (o *AwsRegionListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws region list forbidden body based on context it is used
-func (o *AwsRegionListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsRegionListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsRegionListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AwsRegionListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AwsRegionListNotFoundBody aws region list not found body
-swagger:model AwsRegionListNotFoundBody
-*/
-type AwsRegionListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this aws region list not found body
-func (o *AwsRegionListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws region list not found body based on context it is used
-func (o *AwsRegionListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsRegionListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsRegionListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AwsRegionListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AwsRegionListOKBodyItems0 aws region list o k body items0
-swagger:model AwsRegionListOKBodyItems0
-*/
-type AwsRegionListOKBodyItems0 struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// region
-	Region string `json:"region,omitempty"`
-}
-
-// Validate validates this aws region list o k body items0
-func (o *AwsRegionListOKBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws region list o k body items0 based on context it is used
-func (o *AwsRegionListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsRegionListOKBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsRegionListOKBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AwsRegionListOKBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AwsRegionListUnauthorizedBody aws region list unauthorized body
-swagger:model AwsRegionListUnauthorizedBody
-*/
-type AwsRegionListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this aws region list unauthorized body
-func (o *AwsRegionListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws region list unauthorized body based on context it is used
-func (o *AwsRegionListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsRegionListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsRegionListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AwsRegionListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

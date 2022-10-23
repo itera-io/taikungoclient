@@ -20,7 +20,7 @@ import (
 type DocumentationsList struct {
 
 	// data
-	Data []*DocumentationsListDataItems0 `json:"data"`
+	Data []*DocumentationData `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,52 +111,6 @@ func (m *DocumentationsList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *DocumentationsList) UnmarshalBinary(b []byte) error {
 	var res DocumentationsList
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// DocumentationsListDataItems0 documentations list data items0
-//
-// swagger:model DocumentationsListDataItems0
-type DocumentationsListDataItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// key
-	Key string `json:"key,omitempty"`
-
-	// link
-	Link string `json:"link,omitempty"`
-
-	// role
-	Role string `json:"role,omitempty"`
-}
-
-// Validate validates this documentations list data items0
-func (m *DocumentationsListDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this documentations list data items0 based on context it is used
-func (m *DocumentationsListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *DocumentationsListDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *DocumentationsListDataItems0) UnmarshalBinary(b []byte) error {
-	var res DocumentationsListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

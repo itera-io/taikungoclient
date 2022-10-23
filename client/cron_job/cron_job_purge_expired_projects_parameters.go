@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobPurgeExpiredProjectsParams creates a new CronJobPurgeExpiredProjectsParams object,
@@ -62,7 +64,7 @@ CronJobPurgeExpiredProjectsParams contains all the parameters to send to the API
 type CronJobPurgeExpiredProjectsParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.PurgeExpiredProjectsCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CronJobPurgeExpiredProjectsParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the cron job purge expired projects params
-func (o *CronJobPurgeExpiredProjectsParams) WithBody(body interface{}) *CronJobPurgeExpiredProjectsParams {
+func (o *CronJobPurgeExpiredProjectsParams) WithBody(body models.PurgeExpiredProjectsCommand) *CronJobPurgeExpiredProjectsParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job purge expired projects params
-func (o *CronJobPurgeExpiredProjectsParams) SetBody(body interface{}) {
+func (o *CronJobPurgeExpiredProjectsParams) SetBody(body models.PurgeExpiredProjectsCommand) {
 	o.Body = body
 }
 

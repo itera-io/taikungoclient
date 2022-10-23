@@ -20,7 +20,7 @@ import (
 type Services struct {
 
 	// data
-	Data []*ServicesDataItems0 `json:"data"`
+	Data []*ServiceDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,55 +111,6 @@ func (m *Services) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *Services) UnmarshalBinary(b []byte) error {
 	var res Services
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// ServicesDataItems0 services data items0
-//
-// swagger:model ServicesDataItems0
-type ServicesDataItems0 struct {
-
-	// age
-	Age string `json:"age,omitempty"`
-
-	// ip
-	IP interface{} `json:"ip,omitempty"`
-
-	// metadata name
-	MetadataName string `json:"metadataName,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this services data items0
-func (m *ServicesDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this services data items0 based on context it is used
-func (m *ServicesDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *ServicesDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *ServicesDataItems0) UnmarshalBinary(b []byte) error {
-	var res ServicesDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesDescribeDaemonSetReader is a Reader for the KubernetesDescribeDaemonSet structure.
@@ -136,7 +136,7 @@ KubernetesDescribeDaemonSetBadRequest describes a response with status code 400,
 Bad Request
 */
 type KubernetesDescribeDaemonSetBadRequest struct {
-	Payload []*KubernetesDescribeDaemonSetBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes describe daemon set bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribeDaemonSetBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribeDaemonSetBadRequest) GetPayload() []*KubernetesDescribeDaemonSetBadRequestBodyItems0 {
+func (o *KubernetesDescribeDaemonSetBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesDescribeDaemonSetUnauthorized describes a response with status code 40
 Unauthorized
 */
 type KubernetesDescribeDaemonSetUnauthorized struct {
-	Payload *KubernetesDescribeDaemonSetUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe daemon set unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesDescribeDaemonSetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribeDaemonSetUnauthorized) GetPayload() *KubernetesDescribeDaemonSetUnauthorizedBody {
+func (o *KubernetesDescribeDaemonSetUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeDaemonSetUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeDaemonSetUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesDescribeDaemonSetForbidden describes a response with status code 403, 
 Forbidden
 */
 type KubernetesDescribeDaemonSetForbidden struct {
-	Payload *KubernetesDescribeDaemonSetForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe daemon set forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesDescribeDaemonSetForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribeDaemonSetForbidden) GetPayload() *KubernetesDescribeDaemonSetForbiddenBody {
+func (o *KubernetesDescribeDaemonSetForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeDaemonSetForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeDaemonSetForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesDescribeDaemonSetNotFound describes a response with status code 404, w
 Not Found
 */
 type KubernetesDescribeDaemonSetNotFound struct {
-	Payload *KubernetesDescribeDaemonSetNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe daemon set not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesDescribeDaemonSetNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/daemonset][%d] kubernetesDescribeDaemonSetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribeDaemonSetNotFound) GetPayload() *KubernetesDescribeDaemonSetNotFoundBody {
+func (o *KubernetesDescribeDaemonSetNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribeDaemonSetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribeDaemonSetNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,240 +423,5 @@ func (o *KubernetesDescribeDaemonSetInternalServerError) String() string {
 
 func (o *KubernetesDescribeDaemonSetInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesDescribeDaemonSetBadRequestBodyItems0 kubernetes describe daemon set bad request body items0
-swagger:model KubernetesDescribeDaemonSetBadRequestBodyItems0
-*/
-type KubernetesDescribeDaemonSetBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes describe daemon set bad request body items0
-func (o *KubernetesDescribeDaemonSetBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe daemon set bad request body items0 based on context it is used
-func (o *KubernetesDescribeDaemonSetBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeDaemonSetBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeDaemonSetBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeDaemonSetBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeDaemonSetBody kubernetes describe daemon set body
-swagger:model KubernetesDescribeDaemonSetBody
-*/
-type KubernetesDescribeDaemonSetBody struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this kubernetes describe daemon set body
-func (o *KubernetesDescribeDaemonSetBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe daemon set body based on context it is used
-func (o *KubernetesDescribeDaemonSetBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeDaemonSetBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeDaemonSetBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeDaemonSetBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeDaemonSetForbiddenBody kubernetes describe daemon set forbidden body
-swagger:model KubernetesDescribeDaemonSetForbiddenBody
-*/
-type KubernetesDescribeDaemonSetForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe daemon set forbidden body
-func (o *KubernetesDescribeDaemonSetForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe daemon set forbidden body based on context it is used
-func (o *KubernetesDescribeDaemonSetForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeDaemonSetForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeDaemonSetForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeDaemonSetForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeDaemonSetNotFoundBody kubernetes describe daemon set not found body
-swagger:model KubernetesDescribeDaemonSetNotFoundBody
-*/
-type KubernetesDescribeDaemonSetNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe daemon set not found body
-func (o *KubernetesDescribeDaemonSetNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe daemon set not found body based on context it is used
-func (o *KubernetesDescribeDaemonSetNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeDaemonSetNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeDaemonSetNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeDaemonSetNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribeDaemonSetUnauthorizedBody kubernetes describe daemon set unauthorized body
-swagger:model KubernetesDescribeDaemonSetUnauthorizedBody
-*/
-type KubernetesDescribeDaemonSetUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe daemon set unauthorized body
-func (o *KubernetesDescribeDaemonSetUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe daemon set unauthorized body based on context it is used
-func (o *KubernetesDescribeDaemonSetUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribeDaemonSetUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribeDaemonSetUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribeDaemonSetUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

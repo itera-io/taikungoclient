@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectAppLockManagerParams creates a new ProjectAppLockManagerParams object,
@@ -62,7 +64,7 @@ ProjectAppLockManagerParams contains all the parameters to send to the API endpo
 type ProjectAppLockManagerParams struct {
 
 	// Body.
-	Body ProjectAppLockManagerBody
+	Body *models.LockProjectAppCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *ProjectAppLockManagerParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the project app lock manager params
-func (o *ProjectAppLockManagerParams) WithBody(body ProjectAppLockManagerBody) *ProjectAppLockManagerParams {
+func (o *ProjectAppLockManagerParams) WithBody(body *models.LockProjectAppCommand) *ProjectAppLockManagerParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the project app lock manager params
-func (o *ProjectAppLockManagerParams) SetBody(body ProjectAppLockManagerBody) {
+func (o *ProjectAppLockManagerParams) SetBody(body *models.LockProjectAppCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *ProjectAppLockManagerParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

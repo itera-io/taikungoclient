@@ -6,13 +6,13 @@ package prometheus
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PrometheusGroupedListReader is a Reader for the PrometheusGroupedList structure.
@@ -136,7 +136,7 @@ PrometheusGroupedListBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type PrometheusGroupedListBadRequest struct {
-	Payload []*PrometheusGroupedListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this prometheus grouped list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PrometheusGroupedListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusGroupedListBadRequest) GetPayload() []*PrometheusGroupedListBadRequestBodyItems0 {
+func (o *PrometheusGroupedListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ PrometheusGroupedListUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type PrometheusGroupedListUnauthorized struct {
-	Payload *PrometheusGroupedListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus grouped list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *PrometheusGroupedListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusGroupedListUnauthorized) GetPayload() *PrometheusGroupedListUnauthorizedBody {
+func (o *PrometheusGroupedListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusGroupedListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusGroupedListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ PrometheusGroupedListForbidden describes a response with status code 403, with d
 Forbidden
 */
 type PrometheusGroupedListForbidden struct {
-	Payload *PrometheusGroupedListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus grouped list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *PrometheusGroupedListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusGroupedListForbidden) GetPayload() *PrometheusGroupedListForbiddenBody {
+func (o *PrometheusGroupedListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusGroupedListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusGroupedListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ PrometheusGroupedListNotFound describes a response with status code 404, with de
 Not Found
 */
 type PrometheusGroupedListNotFound struct {
-	Payload *PrometheusGroupedListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus grouped list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *PrometheusGroupedListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Prometheus/grouped][%d] prometheusGroupedListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusGroupedListNotFound) GetPayload() *PrometheusGroupedListNotFoundBody {
+func (o *PrometheusGroupedListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusGroupedListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusGroupedListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *PrometheusGroupedListInternalServerError) String() string {
 
 func (o *PrometheusGroupedListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PrometheusGroupedListBadRequestBodyItems0 prometheus grouped list bad request body items0
-swagger:model PrometheusGroupedListBadRequestBodyItems0
-*/
-type PrometheusGroupedListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this prometheus grouped list bad request body items0
-func (o *PrometheusGroupedListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus grouped list bad request body items0 based on context it is used
-func (o *PrometheusGroupedListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusGroupedListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusGroupedListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PrometheusGroupedListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusGroupedListForbiddenBody prometheus grouped list forbidden body
-swagger:model PrometheusGroupedListForbiddenBody
-*/
-type PrometheusGroupedListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus grouped list forbidden body
-func (o *PrometheusGroupedListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus grouped list forbidden body based on context it is used
-func (o *PrometheusGroupedListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusGroupedListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusGroupedListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusGroupedListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusGroupedListNotFoundBody prometheus grouped list not found body
-swagger:model PrometheusGroupedListNotFoundBody
-*/
-type PrometheusGroupedListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus grouped list not found body
-func (o *PrometheusGroupedListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus grouped list not found body based on context it is used
-func (o *PrometheusGroupedListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusGroupedListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusGroupedListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusGroupedListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusGroupedListUnauthorizedBody prometheus grouped list unauthorized body
-swagger:model PrometheusGroupedListUnauthorizedBody
-*/
-type PrometheusGroupedListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus grouped list unauthorized body
-func (o *PrometheusGroupedListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus grouped list unauthorized body based on context it is used
-func (o *PrometheusGroupedListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusGroupedListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusGroupedListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusGroupedListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

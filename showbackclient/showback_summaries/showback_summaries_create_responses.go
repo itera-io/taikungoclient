@@ -6,15 +6,13 @@ package showback_summaries
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ShowbackSummariesCreateReader is a Reader for the ShowbackSummariesCreate structure.
@@ -77,7 +75,7 @@ ShowbackSummariesCreateOK describes a response with status code 200, with defaul
 Success
 */
 type ShowbackSummariesCreateOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this showback summaries create o k response has a 2xx status code
@@ -113,7 +111,7 @@ func (o *ShowbackSummariesCreateOK) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *ShowbackSummariesCreateOK) GetPayload() interface{} {
+func (o *ShowbackSummariesCreateOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -138,7 +136,7 @@ ShowbackSummariesCreateBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type ShowbackSummariesCreateBadRequest struct {
-	Payload *ShowbackSummariesCreateBadRequestBody
+	Payload *models.ValidationProblemDetails
 }
 
 // IsSuccess returns true when this showback summaries create bad request response has a 2xx status code
@@ -174,13 +172,13 @@ func (o *ShowbackSummariesCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ShowbackSummariesCreateBadRequest) GetPayload() *ShowbackSummariesCreateBadRequestBody {
+func (o *ShowbackSummariesCreateBadRequest) GetPayload() *models.ValidationProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackSummariesCreateBadRequestBody)
+	o.Payload = new(models.ValidationProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -201,7 +199,7 @@ ShowbackSummariesCreateUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type ShowbackSummariesCreateUnauthorized struct {
-	Payload *ShowbackSummariesCreateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback summaries create unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *ShowbackSummariesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ShowbackSummariesCreateUnauthorized) GetPayload() *ShowbackSummariesCreateUnauthorizedBody {
+func (o *ShowbackSummariesCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackSummariesCreateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ ShowbackSummariesCreateForbidden describes a response with status code 403, with
 Forbidden
 */
 type ShowbackSummariesCreateForbidden struct {
-	Payload *ShowbackSummariesCreateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback summaries create forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *ShowbackSummariesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ShowbackSummariesCreateForbidden) GetPayload() *ShowbackSummariesCreateForbiddenBody {
+func (o *ShowbackSummariesCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackSummariesCreateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ ShowbackSummariesCreateNotFound describes a response with status code 404, with 
 Not Found
 */
 type ShowbackSummariesCreateNotFound struct {
-	Payload *ShowbackSummariesCreateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this showback summaries create not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *ShowbackSummariesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /showback/v{v}/ShowbackSummaries/create][%d] showbackSummariesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ShowbackSummariesCreateNotFound) GetPayload() *ShowbackSummariesCreateNotFoundBody {
+func (o *ShowbackSummariesCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ShowbackSummariesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ShowbackSummariesCreateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,295 +425,5 @@ func (o *ShowbackSummariesCreateInternalServerError) String() string {
 
 func (o *ShowbackSummariesCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ShowbackSummariesCreateBadRequestBody showback summaries create bad request body
-swagger:model ShowbackSummariesCreateBadRequestBody
-*/
-type ShowbackSummariesCreateBadRequestBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// errors
-	// Read Only: true
-	Errors map[string][]string `json:"errors,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback summaries create bad request body
-func (o *ShowbackSummariesCreateBadRequestBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validate this showback summaries create bad request body based on the context it is used
-func (o *ShowbackSummariesCreateBadRequestBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateErrors(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ShowbackSummariesCreateBadRequestBody) contextValidateErrors(ctx context.Context, formats strfmt.Registry) error {
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackSummariesCreateBadRequestBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackSummariesCreateBadRequestBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackSummariesCreateBadRequestBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackSummariesCreateBody showback summaries create body
-swagger:model ShowbackSummariesCreateBody
-*/
-type ShowbackSummariesCreateBody struct {
-
-	// begin apply
-	// Format: date-time
-	BeginApply *strfmt.DateTime `json:"beginApply,omitempty"`
-
-	// by label value
-	ByLabelValue string `json:"byLabelValue,omitempty"`
-
-	// price
-	Price float64 `json:"price,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// showback rule Id
-	ShowbackRuleID int32 `json:"showbackRuleId,omitempty"`
-}
-
-// Validate validates this showback summaries create body
-func (o *ShowbackSummariesCreateBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateBeginApply(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ShowbackSummariesCreateBody) validateBeginApply(formats strfmt.Registry) error {
-	if swag.IsZero(o.BeginApply) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("body"+"."+"beginApply", "body", "date-time", o.BeginApply.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this showback summaries create body based on context it is used
-func (o *ShowbackSummariesCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackSummariesCreateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackSummariesCreateBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackSummariesCreateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackSummariesCreateForbiddenBody showback summaries create forbidden body
-swagger:model ShowbackSummariesCreateForbiddenBody
-*/
-type ShowbackSummariesCreateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback summaries create forbidden body
-func (o *ShowbackSummariesCreateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback summaries create forbidden body based on context it is used
-func (o *ShowbackSummariesCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackSummariesCreateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackSummariesCreateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackSummariesCreateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackSummariesCreateNotFoundBody showback summaries create not found body
-swagger:model ShowbackSummariesCreateNotFoundBody
-*/
-type ShowbackSummariesCreateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback summaries create not found body
-func (o *ShowbackSummariesCreateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback summaries create not found body based on context it is used
-func (o *ShowbackSummariesCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackSummariesCreateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackSummariesCreateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackSummariesCreateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ShowbackSummariesCreateUnauthorizedBody showback summaries create unauthorized body
-swagger:model ShowbackSummariesCreateUnauthorizedBody
-*/
-type ShowbackSummariesCreateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this showback summaries create unauthorized body
-func (o *ShowbackSummariesCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this showback summaries create unauthorized body based on context it is used
-func (o *ShowbackSummariesCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ShowbackSummariesCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ShowbackSummariesCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ShowbackSummariesCreateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

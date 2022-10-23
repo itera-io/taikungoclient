@@ -6,15 +6,13 @@ package search
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // SearchStsListReader is a Reader for the SearchStsList structure.
@@ -77,7 +75,7 @@ SearchStsListOK describes a response with status code 200, with default header v
 Success
 */
 type SearchStsListOK struct {
-	Payload *SearchStsListOKBody
+	Payload *models.StsSearchList
 }
 
 // IsSuccess returns true when this search sts list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *SearchStsListOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/sts][%d] searchStsListOK  %+v", 200, o.Payload)
 }
 
-func (o *SearchStsListOK) GetPayload() *SearchStsListOKBody {
+func (o *SearchStsListOK) GetPayload() *models.StsSearchList {
 	return o.Payload
 }
 
 func (o *SearchStsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchStsListOKBody)
+	o.Payload = new(models.StsSearchList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ SearchStsListBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type SearchStsListBadRequest struct {
-	Payload []*SearchStsListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this search sts list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *SearchStsListBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/sts][%d] searchStsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SearchStsListBadRequest) GetPayload() []*SearchStsListBadRequestBodyItems0 {
+func (o *SearchStsListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ SearchStsListUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type SearchStsListUnauthorized struct {
-	Payload *SearchStsListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search sts list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *SearchStsListUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/sts][%d] searchStsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SearchStsListUnauthorized) GetPayload() *SearchStsListUnauthorizedBody {
+func (o *SearchStsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchStsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchStsListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ SearchStsListForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type SearchStsListForbidden struct {
-	Payload *SearchStsListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search sts list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *SearchStsListForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/sts][%d] searchStsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SearchStsListForbidden) GetPayload() *SearchStsListForbiddenBody {
+func (o *SearchStsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchStsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchStsListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ SearchStsListNotFound describes a response with status code 404, with default he
 Not Found
 */
 type SearchStsListNotFound struct {
-	Payload *SearchStsListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this search sts list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *SearchStsListNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Search/sts][%d] searchStsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SearchStsListNotFound) GetPayload() *SearchStsListNotFoundBody {
+func (o *SearchStsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SearchStsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SearchStsListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,398 +425,5 @@ func (o *SearchStsListInternalServerError) String() string {
 
 func (o *SearchStsListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-SearchStsListBadRequestBodyItems0 search sts list bad request body items0
-swagger:model SearchStsListBadRequestBodyItems0
-*/
-type SearchStsListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this search sts list bad request body items0
-func (o *SearchStsListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search sts list bad request body items0 based on context it is used
-func (o *SearchStsListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchStsListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchStsListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res SearchStsListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchStsListBody search sts list body
-swagger:model SearchStsListBody
-*/
-type SearchStsListBody struct {
-
-	// limit
-	Limit int32 `json:"limit,omitempty"`
-
-	// offset
-	Offset int32 `json:"offset,omitempty"`
-
-	// search term
-	SearchTerm string `json:"searchTerm,omitempty"`
-}
-
-// Validate validates this search sts list body
-func (o *SearchStsListBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search sts list body based on context it is used
-func (o *SearchStsListBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchStsListBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchStsListBody) UnmarshalBinary(b []byte) error {
-	var res SearchStsListBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchStsListForbiddenBody search sts list forbidden body
-swagger:model SearchStsListForbiddenBody
-*/
-type SearchStsListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this search sts list forbidden body
-func (o *SearchStsListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search sts list forbidden body based on context it is used
-func (o *SearchStsListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchStsListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchStsListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res SearchStsListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchStsListNotFoundBody search sts list not found body
-swagger:model SearchStsListNotFoundBody
-*/
-type SearchStsListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this search sts list not found body
-func (o *SearchStsListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search sts list not found body based on context it is used
-func (o *SearchStsListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchStsListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchStsListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res SearchStsListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchStsListOKBody search sts list o k body
-swagger:model SearchStsListOKBody
-*/
-type SearchStsListOKBody struct {
-
-	// data
-	Data []*SearchStsListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this search sts list o k body
-func (o *SearchStsListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *SearchStsListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("searchStsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("searchStsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this search sts list o k body based on the context it is used
-func (o *SearchStsListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *SearchStsListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("searchStsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("searchStsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchStsListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchStsListOKBody) UnmarshalBinary(b []byte) error {
-	var res SearchStsListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchStsListOKBodyDataItems0 search sts list o k body data items0
-swagger:model SearchStsListOKBodyDataItems0
-*/
-type SearchStsListOKBodyDataItems0 struct {
-
-	// metadata name
-	MetadataName string `json:"metadataName,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
-}
-
-// Validate validates this search sts list o k body data items0
-func (o *SearchStsListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search sts list o k body data items0 based on context it is used
-func (o *SearchStsListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchStsListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchStsListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res SearchStsListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SearchStsListUnauthorizedBody search sts list unauthorized body
-swagger:model SearchStsListUnauthorizedBody
-*/
-type SearchStsListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this search sts list unauthorized body
-func (o *SearchStsListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this search sts list unauthorized body based on context it is used
-func (o *SearchStsListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SearchStsListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SearchStsListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res SearchStsListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

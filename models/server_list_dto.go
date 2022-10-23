@@ -62,7 +62,7 @@ type ServerListDto struct {
 	KubernetesHealth string `json:"kubernetesHealth,omitempty"`
 
 	// kubernetes node labels
-	KubernetesNodeLabels []*ServerListDtoKubernetesNodeLabelsItems0 `json:"kubernetesNodeLabels"`
+	KubernetesNodeLabels []*KubernetesNodeLabelsDto `json:"kubernetesNodeLabels"`
 
 	// last modified
 	LastModified string `json:"lastModified,omitempty"`
@@ -195,46 +195,6 @@ func (m *ServerListDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ServerListDto) UnmarshalBinary(b []byte) error {
 	var res ServerListDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// ServerListDtoKubernetesNodeLabelsItems0 server list dto kubernetes node labels items0
-//
-// swagger:model ServerListDtoKubernetesNodeLabelsItems0
-type ServerListDtoKubernetesNodeLabelsItems0 struct {
-
-	// key
-	Key string `json:"key,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this server list dto kubernetes node labels items0
-func (m *ServerListDtoKubernetesNodeLabelsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this server list dto kubernetes node labels items0 based on context it is used
-func (m *ServerListDtoKubernetesNodeLabelsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *ServerListDtoKubernetesNodeLabelsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *ServerListDtoKubernetesNodeLabelsItems0) UnmarshalBinary(b []byte) error {
-	var res ServerListDtoKubernetesNodeLabelsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

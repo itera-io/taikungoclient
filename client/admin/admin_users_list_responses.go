@@ -6,15 +6,13 @@ package admin
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AdminUsersListReader is a Reader for the AdminUsersList structure.
@@ -77,7 +75,7 @@ AdminUsersListOK describes a response with status code 200, with default header 
 Success
 */
 type AdminUsersListOK struct {
-	Payload *AdminUsersListOKBody
+	Payload *models.AdminUsersList
 }
 
 // IsSuccess returns true when this admin users list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *AdminUsersListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListOK  %+v", 200, o.Payload)
 }
 
-func (o *AdminUsersListOK) GetPayload() *AdminUsersListOKBody {
+func (o *AdminUsersListOK) GetPayload() *models.AdminUsersList {
 	return o.Payload
 }
 
 func (o *AdminUsersListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminUsersListOKBody)
+	o.Payload = new(models.AdminUsersList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ AdminUsersListBadRequest describes a response with status code 400, with default
 Bad Request
 */
 type AdminUsersListBadRequest struct {
-	Payload []*AdminUsersListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this admin users list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *AdminUsersListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminUsersListBadRequest) GetPayload() []*AdminUsersListBadRequestBodyItems0 {
+func (o *AdminUsersListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ AdminUsersListUnauthorized describes a response with status code 401, with defau
 Unauthorized
 */
 type AdminUsersListUnauthorized struct {
-	Payload *AdminUsersListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin users list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *AdminUsersListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminUsersListUnauthorized) GetPayload() *AdminUsersListUnauthorizedBody {
+func (o *AdminUsersListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUsersListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminUsersListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ AdminUsersListForbidden describes a response with status code 403, with default 
 Forbidden
 */
 type AdminUsersListForbidden struct {
-	Payload *AdminUsersListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin users list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *AdminUsersListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminUsersListForbidden) GetPayload() *AdminUsersListForbiddenBody {
+func (o *AdminUsersListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUsersListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminUsersListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ AdminUsersListNotFound describes a response with status code 404, with default h
 Not Found
 */
 type AdminUsersListNotFound struct {
-	Payload *AdminUsersListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin users list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *AdminUsersListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Admin/users/list][%d] adminUsersListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminUsersListNotFound) GetPayload() *AdminUsersListNotFoundBody {
+func (o *AdminUsersListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminUsersListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminUsersListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,357 +425,5 @@ func (o *AdminUsersListInternalServerError) String() string {
 
 func (o *AdminUsersListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AdminUsersListBadRequestBodyItems0 admin users list bad request body items0
-swagger:model AdminUsersListBadRequestBodyItems0
-*/
-type AdminUsersListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this admin users list bad request body items0
-func (o *AdminUsersListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin users list bad request body items0 based on context it is used
-func (o *AdminUsersListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUsersListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUsersListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AdminUsersListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminUsersListForbiddenBody admin users list forbidden body
-swagger:model AdminUsersListForbiddenBody
-*/
-type AdminUsersListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin users list forbidden body
-func (o *AdminUsersListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin users list forbidden body based on context it is used
-func (o *AdminUsersListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUsersListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUsersListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AdminUsersListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminUsersListNotFoundBody admin users list not found body
-swagger:model AdminUsersListNotFoundBody
-*/
-type AdminUsersListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin users list not found body
-func (o *AdminUsersListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin users list not found body based on context it is used
-func (o *AdminUsersListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUsersListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUsersListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AdminUsersListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminUsersListOKBody admin users list o k body
-swagger:model AdminUsersListOKBody
-*/
-type AdminUsersListOKBody struct {
-
-	// data
-	Data []*AdminUsersListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this admin users list o k body
-func (o *AdminUsersListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AdminUsersListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("adminUsersListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("adminUsersListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this admin users list o k body based on the context it is used
-func (o *AdminUsersListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AdminUsersListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("adminUsersListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("adminUsersListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUsersListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUsersListOKBody) UnmarshalBinary(b []byte) error {
-	var res AdminUsersListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminUsersListOKBodyDataItems0 admin users list o k body data items0
-swagger:model AdminUsersListOKBodyDataItems0
-*/
-type AdminUsersListOKBodyDataItems0 struct {
-
-	// csm
-	Csm bool `json:"csm"`
-
-	// email
-	Email string `json:"email,omitempty"`
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// owner
-	Owner bool `json:"owner"`
-
-	// role
-	Role string `json:"role,omitempty"`
-}
-
-// Validate validates this admin users list o k body data items0
-func (o *AdminUsersListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin users list o k body data items0 based on context it is used
-func (o *AdminUsersListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUsersListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUsersListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res AdminUsersListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminUsersListUnauthorizedBody admin users list unauthorized body
-swagger:model AdminUsersListUnauthorizedBody
-*/
-type AdminUsersListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin users list unauthorized body
-func (o *AdminUsersListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin users list unauthorized body based on context it is used
-func (o *AdminUsersListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminUsersListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminUsersListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AdminUsersListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

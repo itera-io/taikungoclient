@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewPreDefinedQueriesUpdatePrometheusDashboardParams creates a new PreDefinedQueriesUpdatePrometheusDashboardParams object,
@@ -62,7 +64,7 @@ PreDefinedQueriesUpdatePrometheusDashboardParams contains all the parameters to 
 type PreDefinedQueriesUpdatePrometheusDashboardParams struct {
 
 	// Body.
-	Body PreDefinedQueriesUpdatePrometheusDashboardBody
+	Body *models.PrometheusDashboardUpdateCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *PreDefinedQueriesUpdatePrometheusDashboardParams) SetHTTPClient(client 
 }
 
 // WithBody adds the body to the pre defined queries update prometheus dashboard params
-func (o *PreDefinedQueriesUpdatePrometheusDashboardParams) WithBody(body PreDefinedQueriesUpdatePrometheusDashboardBody) *PreDefinedQueriesUpdatePrometheusDashboardParams {
+func (o *PreDefinedQueriesUpdatePrometheusDashboardParams) WithBody(body *models.PrometheusDashboardUpdateCommand) *PreDefinedQueriesUpdatePrometheusDashboardParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the pre defined queries update prometheus dashboard params
-func (o *PreDefinedQueriesUpdatePrometheusDashboardParams) SetBody(body PreDefinedQueriesUpdatePrometheusDashboardBody) {
+func (o *PreDefinedQueriesUpdatePrometheusDashboardParams) SetBody(body *models.PrometheusDashboardUpdateCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *PreDefinedQueriesUpdatePrometheusDashboardParams) WriteToRequest(r runt
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

@@ -6,15 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesGetConfigMapReader is a Reader for the KubernetesGetConfigMap structure.
@@ -77,7 +75,7 @@ KubernetesGetConfigMapOK describes a response with status code 200, with default
 Success
 */
 type KubernetesGetConfigMapOK struct {
-	Payload *KubernetesGetConfigMapOKBody
+	Payload *models.ConfigMaps
 }
 
 // IsSuccess returns true when this kubernetes get config map o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *KubernetesGetConfigMapOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/configmap][%d] kubernetesGetConfigMapOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesGetConfigMapOK) GetPayload() *KubernetesGetConfigMapOKBody {
+func (o *KubernetesGetConfigMapOK) GetPayload() *models.ConfigMaps {
 	return o.Payload
 }
 
 func (o *KubernetesGetConfigMapOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetConfigMapOKBody)
+	o.Payload = new(models.ConfigMaps)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ KubernetesGetConfigMapBadRequest describes a response with status code 400, with
 Bad Request
 */
 type KubernetesGetConfigMapBadRequest struct {
-	Payload []*KubernetesGetConfigMapBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes get config map bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *KubernetesGetConfigMapBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/configmap][%d] kubernetesGetConfigMapBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetConfigMapBadRequest) GetPayload() []*KubernetesGetConfigMapBadRequestBodyItems0 {
+func (o *KubernetesGetConfigMapBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ KubernetesGetConfigMapUnauthorized describes a response with status code 401, wi
 Unauthorized
 */
 type KubernetesGetConfigMapUnauthorized struct {
-	Payload *KubernetesGetConfigMapUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get config map unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *KubernetesGetConfigMapUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/configmap][%d] kubernetesGetConfigMapUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetConfigMapUnauthorized) GetPayload() *KubernetesGetConfigMapUnauthorizedBody {
+func (o *KubernetesGetConfigMapUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetConfigMapUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetConfigMapUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ KubernetesGetConfigMapForbidden describes a response with status code 403, with 
 Forbidden
 */
 type KubernetesGetConfigMapForbidden struct {
-	Payload *KubernetesGetConfigMapForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get config map forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *KubernetesGetConfigMapForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/configmap][%d] kubernetesGetConfigMapForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetConfigMapForbidden) GetPayload() *KubernetesGetConfigMapForbiddenBody {
+func (o *KubernetesGetConfigMapForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetConfigMapForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetConfigMapForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ KubernetesGetConfigMapNotFound describes a response with status code 404, with d
 Not Found
 */
 type KubernetesGetConfigMapNotFound struct {
-	Payload *KubernetesGetConfigMapNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get config map not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *KubernetesGetConfigMapNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/configmap][%d] kubernetesGetConfigMapNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetConfigMapNotFound) GetPayload() *KubernetesGetConfigMapNotFoundBody {
+func (o *KubernetesGetConfigMapNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetConfigMapNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetConfigMapNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,345 +425,5 @@ func (o *KubernetesGetConfigMapInternalServerError) String() string {
 
 func (o *KubernetesGetConfigMapInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesGetConfigMapBadRequestBodyItems0 kubernetes get config map bad request body items0
-swagger:model KubernetesGetConfigMapBadRequestBodyItems0
-*/
-type KubernetesGetConfigMapBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes get config map bad request body items0
-func (o *KubernetesGetConfigMapBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get config map bad request body items0 based on context it is used
-func (o *KubernetesGetConfigMapBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetConfigMapBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetConfigMapBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetConfigMapBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetConfigMapForbiddenBody kubernetes get config map forbidden body
-swagger:model KubernetesGetConfigMapForbiddenBody
-*/
-type KubernetesGetConfigMapForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get config map forbidden body
-func (o *KubernetesGetConfigMapForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get config map forbidden body based on context it is used
-func (o *KubernetesGetConfigMapForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetConfigMapForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetConfigMapForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetConfigMapForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetConfigMapNotFoundBody kubernetes get config map not found body
-swagger:model KubernetesGetConfigMapNotFoundBody
-*/
-type KubernetesGetConfigMapNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get config map not found body
-func (o *KubernetesGetConfigMapNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get config map not found body based on context it is used
-func (o *KubernetesGetConfigMapNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetConfigMapNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetConfigMapNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetConfigMapNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetConfigMapOKBody kubernetes get config map o k body
-swagger:model KubernetesGetConfigMapOKBody
-*/
-type KubernetesGetConfigMapOKBody struct {
-
-	// data
-	Data []*KubernetesGetConfigMapOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this kubernetes get config map o k body
-func (o *KubernetesGetConfigMapOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *KubernetesGetConfigMapOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("kubernetesGetConfigMapOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("kubernetesGetConfigMapOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this kubernetes get config map o k body based on the context it is used
-func (o *KubernetesGetConfigMapOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *KubernetesGetConfigMapOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("kubernetesGetConfigMapOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("kubernetesGetConfigMapOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetConfigMapOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetConfigMapOKBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetConfigMapOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetConfigMapOKBodyDataItems0 kubernetes get config map o k body data items0
-swagger:model KubernetesGetConfigMapOKBodyDataItems0
-*/
-type KubernetesGetConfigMapOKBodyDataItems0 struct {
-
-	// age
-	Age string `json:"age,omitempty"`
-
-	// metadata name
-	MetadataName string `json:"metadataName,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-}
-
-// Validate validates this kubernetes get config map o k body data items0
-func (o *KubernetesGetConfigMapOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get config map o k body data items0 based on context it is used
-func (o *KubernetesGetConfigMapOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetConfigMapOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetConfigMapOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetConfigMapOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetConfigMapUnauthorizedBody kubernetes get config map unauthorized body
-swagger:model KubernetesGetConfigMapUnauthorizedBody
-*/
-type KubernetesGetConfigMapUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get config map unauthorized body
-func (o *KubernetesGetConfigMapUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get config map unauthorized body based on context it is used
-func (o *KubernetesGetConfigMapUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetConfigMapUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetConfigMapUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetConfigMapUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

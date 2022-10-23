@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewKubernetesDescribeNetworkPolicyParams creates a new KubernetesDescribeNetworkPolicyParams object,
@@ -62,7 +64,7 @@ KubernetesDescribeNetworkPolicyParams contains all the parameters to send to the
 type KubernetesDescribeNetworkPolicyParams struct {
 
 	// Body.
-	Body KubernetesDescribeNetworkPolicyBody
+	Body *models.DescribeNetworkPolicyCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *KubernetesDescribeNetworkPolicyParams) SetHTTPClient(client *http.Clien
 }
 
 // WithBody adds the body to the kubernetes describe network policy params
-func (o *KubernetesDescribeNetworkPolicyParams) WithBody(body KubernetesDescribeNetworkPolicyBody) *KubernetesDescribeNetworkPolicyParams {
+func (o *KubernetesDescribeNetworkPolicyParams) WithBody(body *models.DescribeNetworkPolicyCommand) *KubernetesDescribeNetworkPolicyParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the kubernetes describe network policy params
-func (o *KubernetesDescribeNetworkPolicyParams) SetBody(body KubernetesDescribeNetworkPolicyBody) {
+func (o *KubernetesDescribeNetworkPolicyParams) SetBody(body *models.DescribeNetworkPolicyCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *KubernetesDescribeNetworkPolicyParams) WriteToRequest(r runtime.ClientR
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

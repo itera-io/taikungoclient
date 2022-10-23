@@ -7,13 +7,11 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // ServerForCreateDto server for create dto
@@ -37,7 +35,7 @@ type ServerForCreateDto struct {
 	Flavor string `json:"flavor,omitempty"`
 
 	// kubernetes node labels
-	KubernetesNodeLabels []*ServerForCreateDtoKubernetesNodeLabelsItems0 `json:"kubernetesNodeLabels"`
+	KubernetesNodeLabels []*KubernetesNodeLabelsDto `json:"kubernetesNodeLabels"`
 
 	// name
 	Name string `json:"name,omitempty"`
@@ -46,8 +44,7 @@ type ServerForCreateDto struct {
 	ProjectID int32 `json:"projectId,omitempty"`
 
 	// role
-	// Enum: [100 200 300 400]
-	Role int32 `json:"role,omitempty"`
+	Role CloudRole `json:"role,omitempty"`
 
 	// spot instance
 	SpotInstance bool `json:"spotInstance"`
@@ -100,33 +97,17 @@ func (m *ServerForCreateDto) validateKubernetesNodeLabels(formats strfmt.Registr
 	return nil
 }
 
-var serverForCreateDtoTypeRolePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200,300,400]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		serverForCreateDtoTypeRolePropEnum = append(serverForCreateDtoTypeRolePropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *ServerForCreateDto) validateRoleEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, serverForCreateDtoTypeRolePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *ServerForCreateDto) validateRole(formats strfmt.Registry) error {
 	if swag.IsZero(m.Role) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateRoleEnum("role", "body", m.Role); err != nil {
+	if err := m.Role.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("role")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("role")
+		}
 		return err
 	}
 
@@ -138,6 +119,10 @@ func (m *ServerForCreateDto) ContextValidate(ctx context.Context, formats strfmt
 	var res []error
 
 	if err := m.contextValidateKubernetesNodeLabels(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRole(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -167,6 +152,20 @@ func (m *ServerForCreateDto) contextValidateKubernetesNodeLabels(ctx context.Con
 	return nil
 }
 
+func (m *ServerForCreateDto) contextValidateRole(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Role.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("role")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("role")
+		}
+		return err
+	}
+
+	return nil
+}
+
 // MarshalBinary interface implementation
 func (m *ServerForCreateDto) MarshalBinary() ([]byte, error) {
 	if m == nil {
@@ -178,46 +177,6 @@ func (m *ServerForCreateDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ServerForCreateDto) UnmarshalBinary(b []byte) error {
 	var res ServerForCreateDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// ServerForCreateDtoKubernetesNodeLabelsItems0 server for create dto kubernetes node labels items0
-//
-// swagger:model ServerForCreateDtoKubernetesNodeLabelsItems0
-type ServerForCreateDtoKubernetesNodeLabelsItems0 struct {
-
-	// key
-	Key string `json:"key,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this server for create dto kubernetes node labels items0
-func (m *ServerForCreateDtoKubernetesNodeLabelsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this server for create dto kubernetes node labels items0 based on context it is used
-func (m *ServerForCreateDtoKubernetesNodeLabelsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *ServerForCreateDtoKubernetesNodeLabelsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *ServerForCreateDtoKubernetesNodeLabelsItems0) UnmarshalBinary(b []byte) error {
-	var res ServerForCreateDtoKubernetesNodeLabelsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

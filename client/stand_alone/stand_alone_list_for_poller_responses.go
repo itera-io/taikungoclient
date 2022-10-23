@@ -6,15 +6,13 @@ package stand_alone
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneListForPollerReader is a Reader for the StandAloneListForPoller structure.
@@ -77,7 +75,7 @@ StandAloneListForPollerOK describes a response with status code 200, with defaul
 Success
 */
 type StandAloneListForPollerOK struct {
-	Payload *StandAloneListForPollerOKBody
+	Payload *models.StandaloneVmsListForPoller
 }
 
 // IsSuccess returns true when this stand alone list for poller o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *StandAloneListForPollerOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneListForPollerOK) GetPayload() *StandAloneListForPollerOKBody {
+func (o *StandAloneListForPollerOK) GetPayload() *models.StandaloneVmsListForPoller {
 	return o.Payload
 }
 
 func (o *StandAloneListForPollerOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneListForPollerOKBody)
+	o.Payload = new(models.StandaloneVmsListForPoller)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ StandAloneListForPollerBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type StandAloneListForPollerBadRequest struct {
-	Payload []*StandAloneListForPollerBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone list for poller bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *StandAloneListForPollerBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneListForPollerBadRequest) GetPayload() []*StandAloneListForPollerBadRequestBodyItems0 {
+func (o *StandAloneListForPollerBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ StandAloneListForPollerUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type StandAloneListForPollerUnauthorized struct {
-	Payload *StandAloneListForPollerUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone list for poller unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *StandAloneListForPollerUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneListForPollerUnauthorized) GetPayload() *StandAloneListForPollerUnauthorizedBody {
+func (o *StandAloneListForPollerUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneListForPollerUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneListForPollerUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ StandAloneListForPollerForbidden describes a response with status code 403, with
 Forbidden
 */
 type StandAloneListForPollerForbidden struct {
-	Payload *StandAloneListForPollerForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone list for poller forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *StandAloneListForPollerForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneListForPollerForbidden) GetPayload() *StandAloneListForPollerForbiddenBody {
+func (o *StandAloneListForPollerForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneListForPollerForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneListForPollerForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ StandAloneListForPollerNotFound describes a response with status code 404, with 
 Not Found
 */
 type StandAloneListForPollerNotFound struct {
-	Payload *StandAloneListForPollerNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone list for poller not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *StandAloneListForPollerNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/StandAlone/forpoller][%d] standAloneListForPollerNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneListForPollerNotFound) GetPayload() *StandAloneListForPollerNotFoundBody {
+func (o *StandAloneListForPollerNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneListForPollerNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneListForPollerNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,735 +425,5 @@ func (o *StandAloneListForPollerInternalServerError) String() string {
 
 func (o *StandAloneListForPollerInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-StandAloneListForPollerBadRequestBodyItems0 stand alone list for poller bad request body items0
-swagger:model StandAloneListForPollerBadRequestBodyItems0
-*/
-type StandAloneListForPollerBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this stand alone list for poller bad request body items0
-func (o *StandAloneListForPollerBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone list for poller bad request body items0 based on context it is used
-func (o *StandAloneListForPollerBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListForPollerBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListForPollerBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneListForPollerBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneListForPollerForbiddenBody stand alone list for poller forbidden body
-swagger:model StandAloneListForPollerForbiddenBody
-*/
-type StandAloneListForPollerForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone list for poller forbidden body
-func (o *StandAloneListForPollerForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone list for poller forbidden body based on context it is used
-func (o *StandAloneListForPollerForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListForPollerForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListForPollerForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneListForPollerForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneListForPollerNotFoundBody stand alone list for poller not found body
-swagger:model StandAloneListForPollerNotFoundBody
-*/
-type StandAloneListForPollerNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone list for poller not found body
-func (o *StandAloneListForPollerNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone list for poller not found body based on context it is used
-func (o *StandAloneListForPollerNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListForPollerNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListForPollerNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneListForPollerNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneListForPollerOKBody stand alone list for poller o k body
-swagger:model StandAloneListForPollerOKBody
-*/
-type StandAloneListForPollerOKBody struct {
-
-	// data
-	Data []*StandAloneListForPollerOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this stand alone list for poller o k body
-func (o *StandAloneListForPollerOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneListForPollerOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("standAloneListForPollerOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("standAloneListForPollerOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this stand alone list for poller o k body based on the context it is used
-func (o *StandAloneListForPollerOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneListForPollerOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("standAloneListForPollerOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("standAloneListForPollerOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListForPollerOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListForPollerOKBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneListForPollerOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneListForPollerOKBodyDataItems0 stand alone list for poller o k body data items0
-swagger:model StandAloneListForPollerOKBodyDataItems0
-*/
-type StandAloneListForPollerOKBodyDataItems0 struct {
-
-	// availability zone
-	AvailabilityZone string `json:"availabilityZone,omitempty"`
-
-	// cloud init
-	CloudInit string `json:"cloudInit,omitempty"`
-
-	// cpu
-	CPU int32 `json:"cpu,omitempty"`
-
-	// flavor Id
-	FlavorID string `json:"flavorId,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// image
-	Image string `json:"image,omitempty"`
-
-	// is windows
-	IsWindows bool `json:"isWindows"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// password
-	Password string `json:"password,omitempty"`
-
-	// public Ip enabled
-	PublicIPEnabled bool `json:"publicIpEnabled"`
-
-	// ram
-	RAM int64 `json:"ram,omitempty"`
-
-	// revision
-	Revision int32 `json:"revision,omitempty"`
-
-	// shut off
-	ShutOff bool `json:"shutOff"`
-
-	// spot instance
-	SpotInstance bool `json:"spotInstance"`
-
-	// spot price
-	SpotPrice string `json:"spotPrice,omitempty"`
-
-	// ssh public key
-	SSHPublicKey string `json:"sshPublicKey,omitempty"`
-
-	// stand alone profile
-	StandAloneProfile *StandAloneListForPollerOKBodyDataItems0StandAloneProfile `json:"standAloneProfile,omitempty"`
-
-	// stand alone Vm disks
-	StandAloneVMDisks []*StandAloneListForPollerOKBodyDataItems0StandAloneVMDisksItems0 `json:"standAloneVmDisks"`
-
-	// status
-	Status string `json:"status,omitempty"`
-
-	// username
-	Username string `json:"username,omitempty"`
-
-	// volume size
-	VolumeSize int64 `json:"volumeSize,omitempty"`
-
-	// volume type
-	VolumeType string `json:"volumeType,omitempty"`
-}
-
-// Validate validates this stand alone list for poller o k body data items0
-func (o *StandAloneListForPollerOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateStandAloneProfile(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateStandAloneVMDisks(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneListForPollerOKBodyDataItems0) validateStandAloneProfile(formats strfmt.Registry) error {
-	if swag.IsZero(o.StandAloneProfile) { // not required
-		return nil
-	}
-
-	if o.StandAloneProfile != nil {
-		if err := o.StandAloneProfile.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("standAloneProfile")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("standAloneProfile")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *StandAloneListForPollerOKBodyDataItems0) validateStandAloneVMDisks(formats strfmt.Registry) error {
-	if swag.IsZero(o.StandAloneVMDisks) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.StandAloneVMDisks); i++ {
-		if swag.IsZero(o.StandAloneVMDisks[i]) { // not required
-			continue
-		}
-
-		if o.StandAloneVMDisks[i] != nil {
-			if err := o.StandAloneVMDisks[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this stand alone list for poller o k body data items0 based on the context it is used
-func (o *StandAloneListForPollerOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateStandAloneProfile(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateStandAloneVMDisks(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneListForPollerOKBodyDataItems0) contextValidateStandAloneProfile(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.StandAloneProfile != nil {
-		if err := o.StandAloneProfile.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("standAloneProfile")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("standAloneProfile")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *StandAloneListForPollerOKBodyDataItems0) contextValidateStandAloneVMDisks(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.StandAloneVMDisks); i++ {
-
-		if o.StandAloneVMDisks[i] != nil {
-			if err := o.StandAloneVMDisks[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("standAloneVmDisks" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListForPollerOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListForPollerOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneListForPollerOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneListForPollerOKBodyDataItems0StandAloneProfile stand alone list for poller o k body data items0 stand alone profile
-swagger:model StandAloneListForPollerOKBodyDataItems0StandAloneProfile
-*/
-type StandAloneListForPollerOKBodyDataItems0StandAloneProfile struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// public key
-	PublicKey string `json:"publicKey,omitempty"`
-
-	// revision
-	Revision int32 `json:"revision,omitempty"`
-
-	// stand alone profile security groups
-	StandAloneProfileSecurityGroups []*StandAloneListForPollerOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0 `json:"standAloneProfileSecurityGroups"`
-}
-
-// Validate validates this stand alone list for poller o k body data items0 stand alone profile
-func (o *StandAloneListForPollerOKBodyDataItems0StandAloneProfile) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateStandAloneProfileSecurityGroups(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneListForPollerOKBodyDataItems0StandAloneProfile) validateStandAloneProfileSecurityGroups(formats strfmt.Registry) error {
-	if swag.IsZero(o.StandAloneProfileSecurityGroups) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.StandAloneProfileSecurityGroups); i++ {
-		if swag.IsZero(o.StandAloneProfileSecurityGroups[i]) { // not required
-			continue
-		}
-
-		if o.StandAloneProfileSecurityGroups[i] != nil {
-			if err := o.StandAloneProfileSecurityGroups[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this stand alone list for poller o k body data items0 stand alone profile based on the context it is used
-func (o *StandAloneListForPollerOKBodyDataItems0StandAloneProfile) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateStandAloneProfileSecurityGroups(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *StandAloneListForPollerOKBodyDataItems0StandAloneProfile) contextValidateStandAloneProfileSecurityGroups(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.StandAloneProfileSecurityGroups); i++ {
-
-		if o.StandAloneProfileSecurityGroups[i] != nil {
-			if err := o.StandAloneProfileSecurityGroups[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("standAloneProfile" + "." + "standAloneProfileSecurityGroups" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListForPollerOKBodyDataItems0StandAloneProfile) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListForPollerOKBodyDataItems0StandAloneProfile) UnmarshalBinary(b []byte) error {
-	var res StandAloneListForPollerOKBodyDataItems0StandAloneProfile
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneListForPollerOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0 stand alone list for poller o k body data items0 stand alone profile stand alone profile security groups items0
-swagger:model StandAloneListForPollerOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0
-*/
-type StandAloneListForPollerOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// port max range
-	PortMaxRange int32 `json:"portMaxRange,omitempty"`
-
-	// port min range
-	PortMinRange int32 `json:"portMinRange,omitempty"`
-
-	// priority
-	Priority int32 `json:"priority,omitempty"`
-
-	// protocol
-	Protocol string `json:"protocol,omitempty"`
-
-	// remote Ip prefix
-	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
-}
-
-// Validate validates this stand alone list for poller o k body data items0 stand alone profile stand alone profile security groups items0
-func (o *StandAloneListForPollerOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone list for poller o k body data items0 stand alone profile stand alone profile security groups items0 based on context it is used
-func (o *StandAloneListForPollerOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListForPollerOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListForPollerOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneListForPollerOKBodyDataItems0StandAloneProfileStandAloneProfileSecurityGroupsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneListForPollerOKBodyDataItems0StandAloneVMDisksItems0 stand alone list for poller o k body data items0 stand alone VM disks items0
-swagger:model StandAloneListForPollerOKBodyDataItems0StandAloneVMDisksItems0
-*/
-type StandAloneListForPollerOKBodyDataItems0StandAloneVMDisksItems0 struct {
-
-	// device name
-	DeviceName string `json:"deviceName,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// lun Id
-	LunID string `json:"lunId,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// size
-	Size int64 `json:"size,omitempty"`
-
-	// status
-	Status string `json:"status,omitempty"`
-
-	// volume type
-	VolumeType string `json:"volumeType,omitempty"`
-}
-
-// Validate validates this stand alone list for poller o k body data items0 stand alone VM disks items0
-func (o *StandAloneListForPollerOKBodyDataItems0StandAloneVMDisksItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone list for poller o k body data items0 stand alone VM disks items0 based on context it is used
-func (o *StandAloneListForPollerOKBodyDataItems0StandAloneVMDisksItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListForPollerOKBodyDataItems0StandAloneVMDisksItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListForPollerOKBodyDataItems0StandAloneVMDisksItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneListForPollerOKBodyDataItems0StandAloneVMDisksItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneListForPollerUnauthorizedBody stand alone list for poller unauthorized body
-swagger:model StandAloneListForPollerUnauthorizedBody
-*/
-type StandAloneListForPollerUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone list for poller unauthorized body
-func (o *StandAloneListForPollerUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone list for poller unauthorized body based on context it is used
-func (o *StandAloneListForPollerUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneListForPollerUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneListForPollerUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneListForPollerUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

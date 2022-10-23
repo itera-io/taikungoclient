@@ -6,16 +6,13 @@ package slack
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // SlackUpdateReader is a Reader for the SlackUpdate structure.
@@ -78,7 +75,7 @@ SlackUpdateOK describes a response with status code 200, with default header val
 Success
 */
 type SlackUpdateOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this slack update o k response has a 2xx status code
@@ -114,7 +111,7 @@ func (o *SlackUpdateOK) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *SlackUpdateOK) GetPayload() interface{} {
+func (o *SlackUpdateOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -139,7 +136,7 @@ SlackUpdateBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type SlackUpdateBadRequest struct {
-	Payload []*SlackUpdateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this slack update bad request response has a 2xx status code
@@ -175,7 +172,7 @@ func (o *SlackUpdateBadRequest) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *SlackUpdateBadRequest) GetPayload() []*SlackUpdateBadRequestBodyItems0 {
+func (o *SlackUpdateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -200,7 +197,7 @@ SlackUpdateUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type SlackUpdateUnauthorized struct {
-	Payload *SlackUpdateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack update unauthorized response has a 2xx status code
@@ -236,13 +233,13 @@ func (o *SlackUpdateUnauthorized) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *SlackUpdateUnauthorized) GetPayload() *SlackUpdateUnauthorizedBody {
+func (o *SlackUpdateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackUpdateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SlackUpdateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -263,7 +260,7 @@ SlackUpdateForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type SlackUpdateForbidden struct {
-	Payload *SlackUpdateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack update forbidden response has a 2xx status code
@@ -299,13 +296,13 @@ func (o *SlackUpdateForbidden) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *SlackUpdateForbidden) GetPayload() *SlackUpdateForbiddenBody {
+func (o *SlackUpdateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackUpdateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SlackUpdateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -326,7 +323,7 @@ SlackUpdateNotFound describes a response with status code 404, with default head
 Not Found
 */
 type SlackUpdateNotFound struct {
-	Payload *SlackUpdateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this slack update not found response has a 2xx status code
@@ -362,13 +359,13 @@ func (o *SlackUpdateNotFound) String() string {
 	return fmt.Sprintf("[PUT /api/v{v}/Slack/update/{id}][%d] slackUpdateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *SlackUpdateNotFound) GetPayload() *SlackUpdateNotFoundBody {
+func (o *SlackUpdateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *SlackUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(SlackUpdateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -426,289 +423,5 @@ func (o *SlackUpdateInternalServerError) String() string {
 
 func (o *SlackUpdateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-SlackUpdateBadRequestBodyItems0 slack update bad request body items0
-swagger:model SlackUpdateBadRequestBodyItems0
-*/
-type SlackUpdateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this slack update bad request body items0
-func (o *SlackUpdateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this slack update bad request body items0 based on context it is used
-func (o *SlackUpdateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SlackUpdateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SlackUpdateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res SlackUpdateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SlackUpdateBody slack update body
-swagger:model SlackUpdateBody
-*/
-type SlackUpdateBody struct {
-
-	// channel
-	Channel string `json:"channel,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// slack type
-	// Enum: [100 200]
-	SlackType int32 `json:"slackType,omitempty"`
-
-	// url
-	URL string `json:"url,omitempty"`
-}
-
-// Validate validates this slack update body
-func (o *SlackUpdateBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateSlackType(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-var slackUpdateBodyTypeSlackTypePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		slackUpdateBodyTypeSlackTypePropEnum = append(slackUpdateBodyTypeSlackTypePropEnum, v)
-	}
-}
-
-// prop value enum
-func (o *SlackUpdateBody) validateSlackTypeEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, slackUpdateBodyTypeSlackTypePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *SlackUpdateBody) validateSlackType(formats strfmt.Registry) error {
-	if swag.IsZero(o.SlackType) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := o.validateSlackTypeEnum("body"+"."+"slackType", "body", o.SlackType); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this slack update body based on context it is used
-func (o *SlackUpdateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SlackUpdateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SlackUpdateBody) UnmarshalBinary(b []byte) error {
-	var res SlackUpdateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SlackUpdateForbiddenBody slack update forbidden body
-swagger:model SlackUpdateForbiddenBody
-*/
-type SlackUpdateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this slack update forbidden body
-func (o *SlackUpdateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this slack update forbidden body based on context it is used
-func (o *SlackUpdateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SlackUpdateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SlackUpdateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res SlackUpdateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SlackUpdateNotFoundBody slack update not found body
-swagger:model SlackUpdateNotFoundBody
-*/
-type SlackUpdateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this slack update not found body
-func (o *SlackUpdateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this slack update not found body based on context it is used
-func (o *SlackUpdateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SlackUpdateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SlackUpdateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res SlackUpdateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-SlackUpdateUnauthorizedBody slack update unauthorized body
-swagger:model SlackUpdateUnauthorizedBody
-*/
-type SlackUpdateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this slack update unauthorized body
-func (o *SlackUpdateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this slack update unauthorized body based on context it is used
-func (o *SlackUpdateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *SlackUpdateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *SlackUpdateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res SlackUpdateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

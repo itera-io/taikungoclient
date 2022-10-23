@@ -6,15 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesGetPdbListReader is a Reader for the KubernetesGetPdbList structure.
@@ -77,7 +75,7 @@ KubernetesGetPdbListOK describes a response with status code 200, with default h
 Success
 */
 type KubernetesGetPdbListOK struct {
-	Payload *KubernetesGetPdbListOKBody
+	Payload *models.PodDisruptions
 }
 
 // IsSuccess returns true when this kubernetes get pdb list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *KubernetesGetPdbListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pdb][%d] kubernetesGetPdbListOK  %+v", 200, o.Payload)
 }
 
-func (o *KubernetesGetPdbListOK) GetPayload() *KubernetesGetPdbListOKBody {
+func (o *KubernetesGetPdbListOK) GetPayload() *models.PodDisruptions {
 	return o.Payload
 }
 
 func (o *KubernetesGetPdbListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetPdbListOKBody)
+	o.Payload = new(models.PodDisruptions)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ KubernetesGetPdbListBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type KubernetesGetPdbListBadRequest struct {
-	Payload []*KubernetesGetPdbListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes get pdb list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *KubernetesGetPdbListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pdb][%d] kubernetesGetPdbListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesGetPdbListBadRequest) GetPayload() []*KubernetesGetPdbListBadRequestBodyItems0 {
+func (o *KubernetesGetPdbListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ KubernetesGetPdbListUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type KubernetesGetPdbListUnauthorized struct {
-	Payload *KubernetesGetPdbListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get pdb list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *KubernetesGetPdbListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pdb][%d] kubernetesGetPdbListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesGetPdbListUnauthorized) GetPayload() *KubernetesGetPdbListUnauthorizedBody {
+func (o *KubernetesGetPdbListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetPdbListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetPdbListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ KubernetesGetPdbListForbidden describes a response with status code 403, with de
 Forbidden
 */
 type KubernetesGetPdbListForbidden struct {
-	Payload *KubernetesGetPdbListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get pdb list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *KubernetesGetPdbListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pdb][%d] kubernetesGetPdbListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesGetPdbListForbidden) GetPayload() *KubernetesGetPdbListForbiddenBody {
+func (o *KubernetesGetPdbListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetPdbListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetPdbListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ KubernetesGetPdbListNotFound describes a response with status code 404, with def
 Not Found
 */
 type KubernetesGetPdbListNotFound struct {
-	Payload *KubernetesGetPdbListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes get pdb list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *KubernetesGetPdbListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Kubernetes/{projectId}/pdb][%d] kubernetesGetPdbListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesGetPdbListNotFound) GetPayload() *KubernetesGetPdbListNotFoundBody {
+func (o *KubernetesGetPdbListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesGetPdbListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesGetPdbListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,354 +425,5 @@ func (o *KubernetesGetPdbListInternalServerError) String() string {
 
 func (o *KubernetesGetPdbListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesGetPdbListBadRequestBodyItems0 kubernetes get pdb list bad request body items0
-swagger:model KubernetesGetPdbListBadRequestBodyItems0
-*/
-type KubernetesGetPdbListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes get pdb list bad request body items0
-func (o *KubernetesGetPdbListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get pdb list bad request body items0 based on context it is used
-func (o *KubernetesGetPdbListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetPdbListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetPdbListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetPdbListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetPdbListForbiddenBody kubernetes get pdb list forbidden body
-swagger:model KubernetesGetPdbListForbiddenBody
-*/
-type KubernetesGetPdbListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get pdb list forbidden body
-func (o *KubernetesGetPdbListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get pdb list forbidden body based on context it is used
-func (o *KubernetesGetPdbListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetPdbListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetPdbListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetPdbListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetPdbListNotFoundBody kubernetes get pdb list not found body
-swagger:model KubernetesGetPdbListNotFoundBody
-*/
-type KubernetesGetPdbListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get pdb list not found body
-func (o *KubernetesGetPdbListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get pdb list not found body based on context it is used
-func (o *KubernetesGetPdbListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetPdbListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetPdbListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetPdbListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetPdbListOKBody kubernetes get pdb list o k body
-swagger:model KubernetesGetPdbListOKBody
-*/
-type KubernetesGetPdbListOKBody struct {
-
-	// data
-	Data []*KubernetesGetPdbListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this kubernetes get pdb list o k body
-func (o *KubernetesGetPdbListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *KubernetesGetPdbListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("kubernetesGetPdbListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("kubernetesGetPdbListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this kubernetes get pdb list o k body based on the context it is used
-func (o *KubernetesGetPdbListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *KubernetesGetPdbListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("kubernetesGetPdbListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("kubernetesGetPdbListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetPdbListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetPdbListOKBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetPdbListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetPdbListOKBodyDataItems0 kubernetes get pdb list o k body data items0
-swagger:model KubernetesGetPdbListOKBodyDataItems0
-*/
-type KubernetesGetPdbListOKBodyDataItems0 struct {
-
-	// allowed disruptions
-	AllowedDisruptions interface{} `json:"allowedDisruptions,omitempty"`
-
-	// created at
-	CreatedAt string `json:"createdAt,omitempty"`
-
-	// max available
-	MaxAvailable interface{} `json:"maxAvailable,omitempty"`
-
-	// min available
-	MinAvailable interface{} `json:"minAvailable,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-}
-
-// Validate validates this kubernetes get pdb list o k body data items0
-func (o *KubernetesGetPdbListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get pdb list o k body data items0 based on context it is used
-func (o *KubernetesGetPdbListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetPdbListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetPdbListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetPdbListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesGetPdbListUnauthorizedBody kubernetes get pdb list unauthorized body
-swagger:model KubernetesGetPdbListUnauthorizedBody
-*/
-type KubernetesGetPdbListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes get pdb list unauthorized body
-func (o *KubernetesGetPdbListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes get pdb list unauthorized body based on context it is used
-func (o *KubernetesGetPdbListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesGetPdbListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesGetPdbListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesGetPdbListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

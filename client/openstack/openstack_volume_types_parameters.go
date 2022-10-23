@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOpenstackVolumeTypesParams creates a new OpenstackVolumeTypesParams object,
@@ -62,7 +64,7 @@ OpenstackVolumeTypesParams contains all the parameters to send to the API endpoi
 type OpenstackVolumeTypesParams struct {
 
 	// Body.
-	Body OpenstackVolumeTypesBody
+	Body *models.OpenstackVolumeTypeListQuery
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *OpenstackVolumeTypesParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the openstack volume types params
-func (o *OpenstackVolumeTypesParams) WithBody(body OpenstackVolumeTypesBody) *OpenstackVolumeTypesParams {
+func (o *OpenstackVolumeTypesParams) WithBody(body *models.OpenstackVolumeTypeListQuery) *OpenstackVolumeTypesParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the openstack volume types params
-func (o *OpenstackVolumeTypesParams) SetBody(body OpenstackVolumeTypesBody) {
+func (o *OpenstackVolumeTypesParams) SetBody(body *models.OpenstackVolumeTypeListQuery) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *OpenstackVolumeTypesParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

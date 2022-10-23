@@ -29,7 +29,7 @@ type StandAloneProfileForDetailsDto struct {
 	PublicKey string `json:"publicKey,omitempty"`
 
 	// security groups
-	SecurityGroups []*StandAloneProfileForDetailsDtoSecurityGroupsItems0 `json:"securityGroups"`
+	SecurityGroups []*StandAloneProfileSecurityGroupForDetailsDto `json:"securityGroups"`
 }
 
 // Validate validates this stand alone profile for details dto
@@ -117,61 +117,6 @@ func (m *StandAloneProfileForDetailsDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *StandAloneProfileForDetailsDto) UnmarshalBinary(b []byte) error {
 	var res StandAloneProfileForDetailsDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// StandAloneProfileForDetailsDtoSecurityGroupsItems0 stand alone profile for details dto security groups items0
-//
-// swagger:model StandAloneProfileForDetailsDtoSecurityGroupsItems0
-type StandAloneProfileForDetailsDtoSecurityGroupsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// is rdp port enabled
-	IsRdpPortEnabled bool `json:"isRdpPortEnabled"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// port max range
-	PortMaxRange int32 `json:"portMaxRange,omitempty"`
-
-	// port min range
-	PortMinRange int32 `json:"portMinRange,omitempty"`
-
-	// protocol
-	Protocol string `json:"protocol,omitempty"`
-
-	// remote Ip prefix
-	RemoteIPPrefix string `json:"remoteIpPrefix,omitempty"`
-}
-
-// Validate validates this stand alone profile for details dto security groups items0
-func (m *StandAloneProfileForDetailsDtoSecurityGroupsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone profile for details dto security groups items0 based on context it is used
-func (m *StandAloneProfileForDetailsDtoSecurityGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *StandAloneProfileForDetailsDtoSecurityGroupsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *StandAloneProfileForDetailsDtoSecurityGroupsItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneProfileForDetailsDtoSecurityGroupsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobUpdateProjectQuotaMessageParams creates a new CronJobUpdateProjectQuotaMessageParams object,
@@ -62,7 +64,7 @@ CronJobUpdateProjectQuotaMessageParams contains all the parameters to send to th
 type CronJobUpdateProjectQuotaMessageParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.UpdateProjectQuotaMessageCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CronJobUpdateProjectQuotaMessageParams) SetHTTPClient(client *http.Clie
 }
 
 // WithBody adds the body to the cron job update project quota message params
-func (o *CronJobUpdateProjectQuotaMessageParams) WithBody(body interface{}) *CronJobUpdateProjectQuotaMessageParams {
+func (o *CronJobUpdateProjectQuotaMessageParams) WithBody(body models.UpdateProjectQuotaMessageCommand) *CronJobUpdateProjectQuotaMessageParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job update project quota message params
-func (o *CronJobUpdateProjectQuotaMessageParams) SetBody(body interface{}) {
+func (o *CronJobUpdateProjectQuotaMessageParams) SetBody(body models.UpdateProjectQuotaMessageCommand) {
 	o.Body = body
 }
 

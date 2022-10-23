@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectsDeleteWholeProjectParams creates a new ProjectsDeleteWholeProjectParams object,
@@ -62,7 +64,7 @@ ProjectsDeleteWholeProjectParams contains all the parameters to send to the API 
 type ProjectsDeleteWholeProjectParams struct {
 
 	// Body.
-	Body ProjectsDeleteWholeProjectBody
+	Body *models.DeleteWholeProjectCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *ProjectsDeleteWholeProjectParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the projects delete whole project params
-func (o *ProjectsDeleteWholeProjectParams) WithBody(body ProjectsDeleteWholeProjectBody) *ProjectsDeleteWholeProjectParams {
+func (o *ProjectsDeleteWholeProjectParams) WithBody(body *models.DeleteWholeProjectCommand) *ProjectsDeleteWholeProjectParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the projects delete whole project params
-func (o *ProjectsDeleteWholeProjectParams) SetBody(body ProjectsDeleteWholeProjectBody) {
+func (o *ProjectsDeleteWholeProjectParams) SetBody(body *models.DeleteWholeProjectCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *ProjectsDeleteWholeProjectParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

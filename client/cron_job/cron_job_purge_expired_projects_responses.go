@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobPurgeExpiredProjectsReader is a Reader for the CronJobPurgeExpiredProjects structure.
@@ -75,7 +75,7 @@ CronJobPurgeExpiredProjectsOK describes a response with status code 200, with de
 Success
 */
 type CronJobPurgeExpiredProjectsOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job purge expired projects o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobPurgeExpiredProjectsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobPurgeExpiredProjectsOK) GetPayload() interface{} {
+func (o *CronJobPurgeExpiredProjectsOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobPurgeExpiredProjectsBadRequest describes a response with status code 400,
 Bad Request
 */
 type CronJobPurgeExpiredProjectsBadRequest struct {
-	Payload []*CronJobPurgeExpiredProjectsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job purge expired projects bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobPurgeExpiredProjectsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobPurgeExpiredProjectsBadRequest) GetPayload() []*CronJobPurgeExpiredProjectsBadRequestBodyItems0 {
+func (o *CronJobPurgeExpiredProjectsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobPurgeExpiredProjectsUnauthorized describes a response with status code 40
 Unauthorized
 */
 type CronJobPurgeExpiredProjectsUnauthorized struct {
-	Payload *CronJobPurgeExpiredProjectsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job purge expired projects unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobPurgeExpiredProjectsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobPurgeExpiredProjectsUnauthorized) GetPayload() *CronJobPurgeExpiredProjectsUnauthorizedBody {
+func (o *CronJobPurgeExpiredProjectsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobPurgeExpiredProjectsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobPurgeExpiredProjectsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobPurgeExpiredProjectsForbidden describes a response with status code 403, 
 Forbidden
 */
 type CronJobPurgeExpiredProjectsForbidden struct {
-	Payload *CronJobPurgeExpiredProjectsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job purge expired projects forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobPurgeExpiredProjectsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobPurgeExpiredProjectsForbidden) GetPayload() *CronJobPurgeExpiredProjectsForbiddenBody {
+func (o *CronJobPurgeExpiredProjectsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobPurgeExpiredProjectsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobPurgeExpiredProjectsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobPurgeExpiredProjectsNotFound describes a response with status code 404, w
 Not Found
 */
 type CronJobPurgeExpiredProjectsNotFound struct {
-	Payload *CronJobPurgeExpiredProjectsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job purge expired projects not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobPurgeExpiredProjectsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/projects][%d] cronJobPurgeExpiredProjectsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobPurgeExpiredProjectsNotFound) GetPayload() *CronJobPurgeExpiredProjectsNotFoundBody {
+func (o *CronJobPurgeExpiredProjectsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobPurgeExpiredProjectsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobPurgeExpiredProjectsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *CronJobPurgeExpiredProjectsInternalServerError) String() string {
 
 func (o *CronJobPurgeExpiredProjectsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CronJobPurgeExpiredProjectsBadRequestBodyItems0 cron job purge expired projects bad request body items0
-swagger:model CronJobPurgeExpiredProjectsBadRequestBodyItems0
-*/
-type CronJobPurgeExpiredProjectsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this cron job purge expired projects bad request body items0
-func (o *CronJobPurgeExpiredProjectsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job purge expired projects bad request body items0 based on context it is used
-func (o *CronJobPurgeExpiredProjectsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobPurgeExpiredProjectsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobPurgeExpiredProjectsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CronJobPurgeExpiredProjectsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobPurgeExpiredProjectsForbiddenBody cron job purge expired projects forbidden body
-swagger:model CronJobPurgeExpiredProjectsForbiddenBody
-*/
-type CronJobPurgeExpiredProjectsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job purge expired projects forbidden body
-func (o *CronJobPurgeExpiredProjectsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job purge expired projects forbidden body based on context it is used
-func (o *CronJobPurgeExpiredProjectsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobPurgeExpiredProjectsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobPurgeExpiredProjectsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CronJobPurgeExpiredProjectsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobPurgeExpiredProjectsNotFoundBody cron job purge expired projects not found body
-swagger:model CronJobPurgeExpiredProjectsNotFoundBody
-*/
-type CronJobPurgeExpiredProjectsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job purge expired projects not found body
-func (o *CronJobPurgeExpiredProjectsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job purge expired projects not found body based on context it is used
-func (o *CronJobPurgeExpiredProjectsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobPurgeExpiredProjectsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobPurgeExpiredProjectsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CronJobPurgeExpiredProjectsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobPurgeExpiredProjectsUnauthorizedBody cron job purge expired projects unauthorized body
-swagger:model CronJobPurgeExpiredProjectsUnauthorizedBody
-*/
-type CronJobPurgeExpiredProjectsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job purge expired projects unauthorized body
-func (o *CronJobPurgeExpiredProjectsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job purge expired projects unauthorized body based on context it is used
-func (o *CronJobPurgeExpiredProjectsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobPurgeExpiredProjectsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobPurgeExpiredProjectsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CronJobPurgeExpiredProjectsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

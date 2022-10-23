@@ -6,13 +6,13 @@ package servers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ServersRebootReader is a Reader for the ServersReboot structure.
@@ -75,7 +75,7 @@ ServersRebootOK describes a response with status code 200, with default header v
 Success
 */
 type ServersRebootOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this servers reboot o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ServersRebootOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootOK  %+v", 200, o.Payload)
 }
 
-func (o *ServersRebootOK) GetPayload() interface{} {
+func (o *ServersRebootOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ServersRebootBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type ServersRebootBadRequest struct {
-	Payload []*ServersRebootBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this servers reboot bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ServersRebootBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersRebootBadRequest) GetPayload() []*ServersRebootBadRequestBodyItems0 {
+func (o *ServersRebootBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ServersRebootUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type ServersRebootUnauthorized struct {
-	Payload *ServersRebootUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers reboot unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ServersRebootUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersRebootUnauthorized) GetPayload() *ServersRebootUnauthorizedBody {
+func (o *ServersRebootUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersRebootUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersRebootUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ServersRebootForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type ServersRebootForbidden struct {
-	Payload *ServersRebootForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers reboot forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ServersRebootForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersRebootForbidden) GetPayload() *ServersRebootForbiddenBody {
+func (o *ServersRebootForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersRebootForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersRebootForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ServersRebootNotFound describes a response with status code 404, with default he
 Not Found
 */
 type ServersRebootNotFound struct {
-	Payload *ServersRebootNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers reboot not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ServersRebootNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/reboot][%d] serversRebootNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersRebootNotFound) GetPayload() *ServersRebootNotFoundBody {
+func (o *ServersRebootNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersRebootNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersRebootNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *ServersRebootInternalServerError) String() string {
 
 func (o *ServersRebootInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ServersRebootBadRequestBodyItems0 servers reboot bad request body items0
-swagger:model ServersRebootBadRequestBodyItems0
-*/
-type ServersRebootBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this servers reboot bad request body items0
-func (o *ServersRebootBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers reboot bad request body items0 based on context it is used
-func (o *ServersRebootBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersRebootBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersRebootBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ServersRebootBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersRebootBody servers reboot body
-swagger:model ServersRebootBody
-*/
-type ServersRebootBody struct {
-
-	// server Id
-	ServerID int32 `json:"serverId,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers reboot body
-func (o *ServersRebootBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers reboot body based on context it is used
-func (o *ServersRebootBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersRebootBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersRebootBody) UnmarshalBinary(b []byte) error {
-	var res ServersRebootBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersRebootForbiddenBody servers reboot forbidden body
-swagger:model ServersRebootForbiddenBody
-*/
-type ServersRebootForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers reboot forbidden body
-func (o *ServersRebootForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers reboot forbidden body based on context it is used
-func (o *ServersRebootForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersRebootForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersRebootForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ServersRebootForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersRebootNotFoundBody servers reboot not found body
-swagger:model ServersRebootNotFoundBody
-*/
-type ServersRebootNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers reboot not found body
-func (o *ServersRebootNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers reboot not found body based on context it is used
-func (o *ServersRebootNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersRebootNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersRebootNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ServersRebootNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersRebootUnauthorizedBody servers reboot unauthorized body
-swagger:model ServersRebootUnauthorizedBody
-*/
-type ServersRebootUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers reboot unauthorized body
-func (o *ServersRebootUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers reboot unauthorized body based on context it is used
-func (o *ServersRebootUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersRebootUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersRebootUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ServersRebootUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

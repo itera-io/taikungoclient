@@ -6,13 +6,13 @@ package projects
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ProjectsUpgradeReader is a Reader for the ProjectsUpgrade structure.
@@ -75,7 +75,7 @@ ProjectsUpgradeOK describes a response with status code 200, with default header
 Success
 */
 type ProjectsUpgradeOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this projects upgrade o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *ProjectsUpgradeOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeOK  %+v", 200, o.Payload)
 }
 
-func (o *ProjectsUpgradeOK) GetPayload() interface{} {
+func (o *ProjectsUpgradeOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ ProjectsUpgradeBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type ProjectsUpgradeBadRequest struct {
-	Payload []*ProjectsUpgradeBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this projects upgrade bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *ProjectsUpgradeBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ProjectsUpgradeBadRequest) GetPayload() []*ProjectsUpgradeBadRequestBodyItems0 {
+func (o *ProjectsUpgradeBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ ProjectsUpgradeUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type ProjectsUpgradeUnauthorized struct {
-	Payload *ProjectsUpgradeUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects upgrade unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *ProjectsUpgradeUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ProjectsUpgradeUnauthorized) GetPayload() *ProjectsUpgradeUnauthorizedBody {
+func (o *ProjectsUpgradeUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsUpgradeUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsUpgradeUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ ProjectsUpgradeForbidden describes a response with status code 403, with default
 Forbidden
 */
 type ProjectsUpgradeForbidden struct {
-	Payload *ProjectsUpgradeForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects upgrade forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *ProjectsUpgradeForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ProjectsUpgradeForbidden) GetPayload() *ProjectsUpgradeForbiddenBody {
+func (o *ProjectsUpgradeForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsUpgradeForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsUpgradeForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ ProjectsUpgradeNotFound describes a response with status code 404, with default 
 Not Found
 */
 type ProjectsUpgradeNotFound struct {
-	Payload *ProjectsUpgradeNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this projects upgrade not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *ProjectsUpgradeNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Projects/upgrade/{projectId}][%d] projectsUpgradeNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ProjectsUpgradeNotFound) GetPayload() *ProjectsUpgradeNotFoundBody {
+func (o *ProjectsUpgradeNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ProjectsUpgradeNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ProjectsUpgradeNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *ProjectsUpgradeInternalServerError) String() string {
 
 func (o *ProjectsUpgradeInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ProjectsUpgradeBadRequestBodyItems0 projects upgrade bad request body items0
-swagger:model ProjectsUpgradeBadRequestBodyItems0
-*/
-type ProjectsUpgradeBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this projects upgrade bad request body items0
-func (o *ProjectsUpgradeBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects upgrade bad request body items0 based on context it is used
-func (o *ProjectsUpgradeBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsUpgradeBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsUpgradeBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectsUpgradeBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsUpgradeForbiddenBody projects upgrade forbidden body
-swagger:model ProjectsUpgradeForbiddenBody
-*/
-type ProjectsUpgradeForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects upgrade forbidden body
-func (o *ProjectsUpgradeForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects upgrade forbidden body based on context it is used
-func (o *ProjectsUpgradeForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsUpgradeForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsUpgradeForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsUpgradeForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsUpgradeNotFoundBody projects upgrade not found body
-swagger:model ProjectsUpgradeNotFoundBody
-*/
-type ProjectsUpgradeNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects upgrade not found body
-func (o *ProjectsUpgradeNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects upgrade not found body based on context it is used
-func (o *ProjectsUpgradeNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsUpgradeNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsUpgradeNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsUpgradeNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ProjectsUpgradeUnauthorizedBody projects upgrade unauthorized body
-swagger:model ProjectsUpgradeUnauthorizedBody
-*/
-type ProjectsUpgradeUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this projects upgrade unauthorized body
-func (o *ProjectsUpgradeUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this projects upgrade unauthorized body based on context it is used
-func (o *ProjectsUpgradeUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ProjectsUpgradeUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ProjectsUpgradeUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ProjectsUpgradeUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

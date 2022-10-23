@@ -6,13 +6,13 @@ package billing
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // BillingExportCsvReader is a Reader for the BillingExportCsv structure.
@@ -126,7 +126,7 @@ BillingExportCsvBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type BillingExportCsvBadRequest struct {
-	Payload []*BillingExportCsvBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this billing export csv bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *BillingExportCsvBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *BillingExportCsvBadRequest) GetPayload() []*BillingExportCsvBadRequestBodyItems0 {
+func (o *BillingExportCsvBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -187,7 +187,7 @@ BillingExportCsvUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type BillingExportCsvUnauthorized struct {
-	Payload *BillingExportCsvUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this billing export csv unauthorized response has a 2xx status code
@@ -223,13 +223,13 @@ func (o *BillingExportCsvUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *BillingExportCsvUnauthorized) GetPayload() *BillingExportCsvUnauthorizedBody {
+func (o *BillingExportCsvUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BillingExportCsvUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BillingExportCsvUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -250,7 +250,7 @@ BillingExportCsvForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type BillingExportCsvForbidden struct {
-	Payload *BillingExportCsvForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this billing export csv forbidden response has a 2xx status code
@@ -286,13 +286,13 @@ func (o *BillingExportCsvForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvForbidden  %+v", 403, o.Payload)
 }
 
-func (o *BillingExportCsvForbidden) GetPayload() *BillingExportCsvForbiddenBody {
+func (o *BillingExportCsvForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BillingExportCsvForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BillingExportCsvForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -313,7 +313,7 @@ BillingExportCsvNotFound describes a response with status code 404, with default
 Not Found
 */
 type BillingExportCsvNotFound struct {
-	Payload *BillingExportCsvNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this billing export csv not found response has a 2xx status code
@@ -349,13 +349,13 @@ func (o *BillingExportCsvNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Billing/export][%d] billingExportCsvNotFound  %+v", 404, o.Payload)
 }
 
-func (o *BillingExportCsvNotFound) GetPayload() *BillingExportCsvNotFoundBody {
+func (o *BillingExportCsvNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *BillingExportCsvNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(BillingExportCsvNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -413,196 +413,5 @@ func (o *BillingExportCsvInternalServerError) String() string {
 
 func (o *BillingExportCsvInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-BillingExportCsvBadRequestBodyItems0 billing export csv bad request body items0
-swagger:model BillingExportCsvBadRequestBodyItems0
-*/
-type BillingExportCsvBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this billing export csv bad request body items0
-func (o *BillingExportCsvBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this billing export csv bad request body items0 based on context it is used
-func (o *BillingExportCsvBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BillingExportCsvBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BillingExportCsvBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res BillingExportCsvBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BillingExportCsvForbiddenBody billing export csv forbidden body
-swagger:model BillingExportCsvForbiddenBody
-*/
-type BillingExportCsvForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this billing export csv forbidden body
-func (o *BillingExportCsvForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this billing export csv forbidden body based on context it is used
-func (o *BillingExportCsvForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BillingExportCsvForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BillingExportCsvForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res BillingExportCsvForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BillingExportCsvNotFoundBody billing export csv not found body
-swagger:model BillingExportCsvNotFoundBody
-*/
-type BillingExportCsvNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this billing export csv not found body
-func (o *BillingExportCsvNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this billing export csv not found body based on context it is used
-func (o *BillingExportCsvNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BillingExportCsvNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BillingExportCsvNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res BillingExportCsvNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-BillingExportCsvUnauthorizedBody billing export csv unauthorized body
-swagger:model BillingExportCsvUnauthorizedBody
-*/
-type BillingExportCsvUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this billing export csv unauthorized body
-func (o *BillingExportCsvUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this billing export csv unauthorized body based on context it is used
-func (o *BillingExportCsvUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *BillingExportCsvUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *BillingExportCsvUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res BillingExportCsvUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

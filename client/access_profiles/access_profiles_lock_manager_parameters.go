@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAccessProfilesLockManagerParams creates a new AccessProfilesLockManagerParams object,
@@ -62,7 +64,7 @@ AccessProfilesLockManagerParams contains all the parameters to send to the API e
 type AccessProfilesLockManagerParams struct {
 
 	// Body.
-	Body AccessProfilesLockManagerBody
+	Body *models.AccessProfilesLockManagementCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *AccessProfilesLockManagerParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the access profiles lock manager params
-func (o *AccessProfilesLockManagerParams) WithBody(body AccessProfilesLockManagerBody) *AccessProfilesLockManagerParams {
+func (o *AccessProfilesLockManagerParams) WithBody(body *models.AccessProfilesLockManagementCommand) *AccessProfilesLockManagerParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the access profiles lock manager params
-func (o *AccessProfilesLockManagerParams) SetBody(body AccessProfilesLockManagerBody) {
+func (o *AccessProfilesLockManagerParams) SetBody(body *models.AccessProfilesLockManagementCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *AccessProfilesLockManagerParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

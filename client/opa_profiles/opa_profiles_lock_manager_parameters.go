@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOpaProfilesLockManagerParams creates a new OpaProfilesLockManagerParams object,
@@ -62,7 +64,7 @@ OpaProfilesLockManagerParams contains all the parameters to send to the API endp
 type OpaProfilesLockManagerParams struct {
 
 	// Body.
-	Body OpaProfilesLockManagerBody
+	Body *models.OpaProfileLockManagerCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *OpaProfilesLockManagerParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the opa profiles lock manager params
-func (o *OpaProfilesLockManagerParams) WithBody(body OpaProfilesLockManagerBody) *OpaProfilesLockManagerParams {
+func (o *OpaProfilesLockManagerParams) WithBody(body *models.OpaProfileLockManagerCommand) *OpaProfilesLockManagerParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the opa profiles lock manager params
-func (o *OpaProfilesLockManagerParams) SetBody(body OpaProfilesLockManagerBody) {
+func (o *OpaProfilesLockManagerParams) SetBody(body *models.OpaProfileLockManagerCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *OpaProfilesLockManagerParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

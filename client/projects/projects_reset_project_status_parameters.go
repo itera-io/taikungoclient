@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewProjectsResetProjectStatusParams creates a new ProjectsResetProjectStatusParams object,
@@ -62,7 +64,7 @@ ProjectsResetProjectStatusParams contains all the parameters to send to the API 
 type ProjectsResetProjectStatusParams struct {
 
 	// Body.
-	Body ProjectsResetProjectStatusBody
+	Body *models.ResetProjectStatusCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *ProjectsResetProjectStatusParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the projects reset project status params
-func (o *ProjectsResetProjectStatusParams) WithBody(body ProjectsResetProjectStatusBody) *ProjectsResetProjectStatusParams {
+func (o *ProjectsResetProjectStatusParams) WithBody(body *models.ResetProjectStatusCommand) *ProjectsResetProjectStatusParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the projects reset project status params
-func (o *ProjectsResetProjectStatusParams) SetBody(body ProjectsResetProjectStatusBody) {
+func (o *ProjectsResetProjectStatusParams) SetBody(body *models.ResetProjectStatusCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *ProjectsResetProjectStatusParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

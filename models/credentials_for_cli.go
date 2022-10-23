@@ -20,7 +20,7 @@ import (
 type CredentialsForCli struct {
 
 	// data
-	Data []*CredentialsForCliDataItems0 `json:"data"`
+	Data []*CredentialsForCliDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,58 +111,6 @@ func (m *CredentialsForCli) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *CredentialsForCli) UnmarshalBinary(b []byte) error {
 	var res CredentialsForCli
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// CredentialsForCliDataItems0 credentials for cli data items0
-//
-// swagger:model CredentialsForCliDataItems0
-type CredentialsForCliDataItems0 struct {
-
-	// cloud credential name
-	CloudCredentialName string `json:"cloudCredentialName,omitempty"`
-
-	// cloud type
-	CloudType string `json:"cloudType,omitempty"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// partner name
-	PartnerName string `json:"partnerName,omitempty"`
-}
-
-// Validate validates this credentials for cli data items0
-func (m *CredentialsForCliDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this credentials for cli data items0 based on context it is used
-func (m *CredentialsForCliDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *CredentialsForCliDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *CredentialsForCliDataItems0) UnmarshalBinary(b []byte) error {
-	var res CredentialsForCliDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

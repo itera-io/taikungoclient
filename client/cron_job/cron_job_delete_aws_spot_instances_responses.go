@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobDeleteAwsSpotInstancesReader is a Reader for the CronJobDeleteAwsSpotInstances structure.
@@ -75,7 +75,7 @@ CronJobDeleteAwsSpotInstancesOK describes a response with status code 200, with 
 Success
 */
 type CronJobDeleteAwsSpotInstancesOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job delete aws spot instances o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobDeleteAwsSpotInstancesOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobDeleteAwsSpotInstancesOK) GetPayload() interface{} {
+func (o *CronJobDeleteAwsSpotInstancesOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobDeleteAwsSpotInstancesBadRequest describes a response with status code 40
 Bad Request
 */
 type CronJobDeleteAwsSpotInstancesBadRequest struct {
-	Payload []*CronJobDeleteAwsSpotInstancesBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job delete aws spot instances bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobDeleteAwsSpotInstancesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobDeleteAwsSpotInstancesBadRequest) GetPayload() []*CronJobDeleteAwsSpotInstancesBadRequestBodyItems0 {
+func (o *CronJobDeleteAwsSpotInstancesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobDeleteAwsSpotInstancesUnauthorized describes a response with status code 
 Unauthorized
 */
 type CronJobDeleteAwsSpotInstancesUnauthorized struct {
-	Payload *CronJobDeleteAwsSpotInstancesUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete aws spot instances unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobDeleteAwsSpotInstancesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobDeleteAwsSpotInstancesUnauthorized) GetPayload() *CronJobDeleteAwsSpotInstancesUnauthorizedBody {
+func (o *CronJobDeleteAwsSpotInstancesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteAwsSpotInstancesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobDeleteAwsSpotInstancesUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobDeleteAwsSpotInstancesForbidden describes a response with status code 403
 Forbidden
 */
 type CronJobDeleteAwsSpotInstancesForbidden struct {
-	Payload *CronJobDeleteAwsSpotInstancesForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete aws spot instances forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobDeleteAwsSpotInstancesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobDeleteAwsSpotInstancesForbidden) GetPayload() *CronJobDeleteAwsSpotInstancesForbiddenBody {
+func (o *CronJobDeleteAwsSpotInstancesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteAwsSpotInstancesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobDeleteAwsSpotInstancesForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobDeleteAwsSpotInstancesNotFound describes a response with status code 404,
 Not Found
 */
 type CronJobDeleteAwsSpotInstancesNotFound struct {
-	Payload *CronJobDeleteAwsSpotInstancesNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job delete aws spot instances not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobDeleteAwsSpotInstancesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/delete-aws-spot-instances][%d] cronJobDeleteAwsSpotInstancesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobDeleteAwsSpotInstancesNotFound) GetPayload() *CronJobDeleteAwsSpotInstancesNotFoundBody {
+func (o *CronJobDeleteAwsSpotInstancesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobDeleteAwsSpotInstancesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobDeleteAwsSpotInstancesNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *CronJobDeleteAwsSpotInstancesInternalServerError) String() string {
 
 func (o *CronJobDeleteAwsSpotInstancesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CronJobDeleteAwsSpotInstancesBadRequestBodyItems0 cron job delete aws spot instances bad request body items0
-swagger:model CronJobDeleteAwsSpotInstancesBadRequestBodyItems0
-*/
-type CronJobDeleteAwsSpotInstancesBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this cron job delete aws spot instances bad request body items0
-func (o *CronJobDeleteAwsSpotInstancesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete aws spot instances bad request body items0 based on context it is used
-func (o *CronJobDeleteAwsSpotInstancesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteAwsSpotInstancesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteAwsSpotInstancesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteAwsSpotInstancesBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobDeleteAwsSpotInstancesForbiddenBody cron job delete aws spot instances forbidden body
-swagger:model CronJobDeleteAwsSpotInstancesForbiddenBody
-*/
-type CronJobDeleteAwsSpotInstancesForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job delete aws spot instances forbidden body
-func (o *CronJobDeleteAwsSpotInstancesForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete aws spot instances forbidden body based on context it is used
-func (o *CronJobDeleteAwsSpotInstancesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteAwsSpotInstancesForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteAwsSpotInstancesForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteAwsSpotInstancesForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobDeleteAwsSpotInstancesNotFoundBody cron job delete aws spot instances not found body
-swagger:model CronJobDeleteAwsSpotInstancesNotFoundBody
-*/
-type CronJobDeleteAwsSpotInstancesNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job delete aws spot instances not found body
-func (o *CronJobDeleteAwsSpotInstancesNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete aws spot instances not found body based on context it is used
-func (o *CronJobDeleteAwsSpotInstancesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteAwsSpotInstancesNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteAwsSpotInstancesNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteAwsSpotInstancesNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobDeleteAwsSpotInstancesUnauthorizedBody cron job delete aws spot instances unauthorized body
-swagger:model CronJobDeleteAwsSpotInstancesUnauthorizedBody
-*/
-type CronJobDeleteAwsSpotInstancesUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job delete aws spot instances unauthorized body
-func (o *CronJobDeleteAwsSpotInstancesUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job delete aws spot instances unauthorized body based on context it is used
-func (o *CronJobDeleteAwsSpotInstancesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobDeleteAwsSpotInstancesUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobDeleteAwsSpotInstancesUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CronJobDeleteAwsSpotInstancesUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

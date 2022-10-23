@@ -6,13 +6,13 @@ package stand_alone_actions
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneActionsStopReader is a Reader for the StandAloneActionsStop structure.
@@ -75,7 +75,7 @@ StandAloneActionsStopOK describes a response with status code 200, with default 
 Success
 */
 type StandAloneActionsStopOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone actions stop o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *StandAloneActionsStopOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneActionsStopOK) GetPayload() interface{} {
+func (o *StandAloneActionsStopOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ StandAloneActionsStopBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type StandAloneActionsStopBadRequest struct {
-	Payload []*StandAloneActionsStopBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone actions stop bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *StandAloneActionsStopBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneActionsStopBadRequest) GetPayload() []*StandAloneActionsStopBadRequestBodyItems0 {
+func (o *StandAloneActionsStopBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ StandAloneActionsStopUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type StandAloneActionsStopUnauthorized struct {
-	Payload *StandAloneActionsStopUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions stop unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *StandAloneActionsStopUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneActionsStopUnauthorized) GetPayload() *StandAloneActionsStopUnauthorizedBody {
+func (o *StandAloneActionsStopUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsStopUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneActionsStopUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ StandAloneActionsStopForbidden describes a response with status code 403, with d
 Forbidden
 */
 type StandAloneActionsStopForbidden struct {
-	Payload *StandAloneActionsStopForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions stop forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *StandAloneActionsStopForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneActionsStopForbidden) GetPayload() *StandAloneActionsStopForbiddenBody {
+func (o *StandAloneActionsStopForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsStopForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneActionsStopForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ StandAloneActionsStopNotFound describes a response with status code 404, with de
 Not Found
 */
 type StandAloneActionsStopNotFound struct {
-	Payload *StandAloneActionsStopNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone actions stop not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *StandAloneActionsStopNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAloneActions/stop][%d] standAloneActionsStopNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneActionsStopNotFound) GetPayload() *StandAloneActionsStopNotFoundBody {
+func (o *StandAloneActionsStopNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneActionsStopNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneActionsStopNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *StandAloneActionsStopInternalServerError) String() string {
 
 func (o *StandAloneActionsStopInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-StandAloneActionsStopBadRequestBodyItems0 stand alone actions stop bad request body items0
-swagger:model StandAloneActionsStopBadRequestBodyItems0
-*/
-type StandAloneActionsStopBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this stand alone actions stop bad request body items0
-func (o *StandAloneActionsStopBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions stop bad request body items0 based on context it is used
-func (o *StandAloneActionsStopBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsStopBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsStopBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsStopBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneActionsStopBody stand alone actions stop body
-swagger:model StandAloneActionsStopBody
-*/
-type StandAloneActionsStopBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-}
-
-// Validate validates this stand alone actions stop body
-func (o *StandAloneActionsStopBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions stop body based on context it is used
-func (o *StandAloneActionsStopBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsStopBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsStopBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsStopBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneActionsStopForbiddenBody stand alone actions stop forbidden body
-swagger:model StandAloneActionsStopForbiddenBody
-*/
-type StandAloneActionsStopForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone actions stop forbidden body
-func (o *StandAloneActionsStopForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions stop forbidden body based on context it is used
-func (o *StandAloneActionsStopForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsStopForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsStopForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsStopForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneActionsStopNotFoundBody stand alone actions stop not found body
-swagger:model StandAloneActionsStopNotFoundBody
-*/
-type StandAloneActionsStopNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone actions stop not found body
-func (o *StandAloneActionsStopNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions stop not found body based on context it is used
-func (o *StandAloneActionsStopNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsStopNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsStopNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsStopNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneActionsStopUnauthorizedBody stand alone actions stop unauthorized body
-swagger:model StandAloneActionsStopUnauthorizedBody
-*/
-type StandAloneActionsStopUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone actions stop unauthorized body
-func (o *StandAloneActionsStopUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone actions stop unauthorized body based on context it is used
-func (o *StandAloneActionsStopUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneActionsStopUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneActionsStopUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneActionsStopUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

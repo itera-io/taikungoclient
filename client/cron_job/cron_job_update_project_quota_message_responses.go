@@ -6,13 +6,13 @@ package cron_job
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // CronJobUpdateProjectQuotaMessageReader is a Reader for the CronJobUpdateProjectQuotaMessage structure.
@@ -75,7 +75,7 @@ CronJobUpdateProjectQuotaMessageOK describes a response with status code 200, wi
 Success
 */
 type CronJobUpdateProjectQuotaMessageOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this cron job update project quota message o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *CronJobUpdateProjectQuotaMessageOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageOK  %+v", 200, o.Payload)
 }
 
-func (o *CronJobUpdateProjectQuotaMessageOK) GetPayload() interface{} {
+func (o *CronJobUpdateProjectQuotaMessageOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ CronJobUpdateProjectQuotaMessageBadRequest describes a response with status code
 Bad Request
 */
 type CronJobUpdateProjectQuotaMessageBadRequest struct {
-	Payload []*CronJobUpdateProjectQuotaMessageBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this cron job update project quota message bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *CronJobUpdateProjectQuotaMessageBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *CronJobUpdateProjectQuotaMessageBadRequest) GetPayload() []*CronJobUpdateProjectQuotaMessageBadRequestBodyItems0 {
+func (o *CronJobUpdateProjectQuotaMessageBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ CronJobUpdateProjectQuotaMessageUnauthorized describes a response with status co
 Unauthorized
 */
 type CronJobUpdateProjectQuotaMessageUnauthorized struct {
-	Payload *CronJobUpdateProjectQuotaMessageUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job update project quota message unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *CronJobUpdateProjectQuotaMessageUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *CronJobUpdateProjectQuotaMessageUnauthorized) GetPayload() *CronJobUpdateProjectQuotaMessageUnauthorizedBody {
+func (o *CronJobUpdateProjectQuotaMessageUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobUpdateProjectQuotaMessageUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobUpdateProjectQuotaMessageUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ CronJobUpdateProjectQuotaMessageForbidden describes a response with status code 
 Forbidden
 */
 type CronJobUpdateProjectQuotaMessageForbidden struct {
-	Payload *CronJobUpdateProjectQuotaMessageForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job update project quota message forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *CronJobUpdateProjectQuotaMessageForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageForbidden  %+v", 403, o.Payload)
 }
 
-func (o *CronJobUpdateProjectQuotaMessageForbidden) GetPayload() *CronJobUpdateProjectQuotaMessageForbiddenBody {
+func (o *CronJobUpdateProjectQuotaMessageForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobUpdateProjectQuotaMessageForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobUpdateProjectQuotaMessageForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ CronJobUpdateProjectQuotaMessageNotFound describes a response with status code 4
 Not Found
 */
 type CronJobUpdateProjectQuotaMessageNotFound struct {
-	Payload *CronJobUpdateProjectQuotaMessageNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this cron job update project quota message not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *CronJobUpdateProjectQuotaMessageNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/CronJob/project-quota-message][%d] cronJobUpdateProjectQuotaMessageNotFound  %+v", 404, o.Payload)
 }
 
-func (o *CronJobUpdateProjectQuotaMessageNotFound) GetPayload() *CronJobUpdateProjectQuotaMessageNotFoundBody {
+func (o *CronJobUpdateProjectQuotaMessageNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *CronJobUpdateProjectQuotaMessageNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(CronJobUpdateProjectQuotaMessageNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *CronJobUpdateProjectQuotaMessageInternalServerError) String() string {
 
 func (o *CronJobUpdateProjectQuotaMessageInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-CronJobUpdateProjectQuotaMessageBadRequestBodyItems0 cron job update project quota message bad request body items0
-swagger:model CronJobUpdateProjectQuotaMessageBadRequestBodyItems0
-*/
-type CronJobUpdateProjectQuotaMessageBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this cron job update project quota message bad request body items0
-func (o *CronJobUpdateProjectQuotaMessageBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job update project quota message bad request body items0 based on context it is used
-func (o *CronJobUpdateProjectQuotaMessageBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobUpdateProjectQuotaMessageBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobUpdateProjectQuotaMessageBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res CronJobUpdateProjectQuotaMessageBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobUpdateProjectQuotaMessageForbiddenBody cron job update project quota message forbidden body
-swagger:model CronJobUpdateProjectQuotaMessageForbiddenBody
-*/
-type CronJobUpdateProjectQuotaMessageForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job update project quota message forbidden body
-func (o *CronJobUpdateProjectQuotaMessageForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job update project quota message forbidden body based on context it is used
-func (o *CronJobUpdateProjectQuotaMessageForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobUpdateProjectQuotaMessageForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobUpdateProjectQuotaMessageForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res CronJobUpdateProjectQuotaMessageForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobUpdateProjectQuotaMessageNotFoundBody cron job update project quota message not found body
-swagger:model CronJobUpdateProjectQuotaMessageNotFoundBody
-*/
-type CronJobUpdateProjectQuotaMessageNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job update project quota message not found body
-func (o *CronJobUpdateProjectQuotaMessageNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job update project quota message not found body based on context it is used
-func (o *CronJobUpdateProjectQuotaMessageNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobUpdateProjectQuotaMessageNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobUpdateProjectQuotaMessageNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res CronJobUpdateProjectQuotaMessageNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-CronJobUpdateProjectQuotaMessageUnauthorizedBody cron job update project quota message unauthorized body
-swagger:model CronJobUpdateProjectQuotaMessageUnauthorizedBody
-*/
-type CronJobUpdateProjectQuotaMessageUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this cron job update project quota message unauthorized body
-func (o *CronJobUpdateProjectQuotaMessageUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this cron job update project quota message unauthorized body based on context it is used
-func (o *CronJobUpdateProjectQuotaMessageUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *CronJobUpdateProjectQuotaMessageUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *CronJobUpdateProjectQuotaMessageUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res CronJobUpdateProjectQuotaMessageUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAdminMakeCsmUserParams creates a new AdminMakeCsmUserParams object,
@@ -62,7 +64,7 @@ AdminMakeCsmUserParams contains all the parameters to send to the API endpoint
 type AdminMakeCsmUserParams struct {
 
 	// Body.
-	Body AdminMakeCsmUserBody
+	Body *models.MakeCsmCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *AdminMakeCsmUserParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the admin make csm user params
-func (o *AdminMakeCsmUserParams) WithBody(body AdminMakeCsmUserBody) *AdminMakeCsmUserParams {
+func (o *AdminMakeCsmUserParams) WithBody(body *models.MakeCsmCommand) *AdminMakeCsmUserParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the admin make csm user params
-func (o *AdminMakeCsmUserParams) SetBody(body AdminMakeCsmUserBody) {
+func (o *AdminMakeCsmUserParams) SetBody(body *models.MakeCsmCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *AdminMakeCsmUserParams) WriteToRequest(r runtime.ClientRequest, reg str
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

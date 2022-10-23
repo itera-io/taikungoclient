@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewStandAloneVMDisksUpdateDiskSizeParams creates a new StandAloneVMDisksUpdateDiskSizeParams object,
@@ -62,7 +64,7 @@ StandAloneVMDisksUpdateDiskSizeParams contains all the parameters to send to the
 type StandAloneVMDisksUpdateDiskSizeParams struct {
 
 	// Body.
-	Body StandAloneVMDisksUpdateDiskSizeBody
+	Body *models.UpdateStandaloneVMDiskSizeCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *StandAloneVMDisksUpdateDiskSizeParams) SetHTTPClient(client *http.Clien
 }
 
 // WithBody adds the body to the stand alone Vm disks update disk size params
-func (o *StandAloneVMDisksUpdateDiskSizeParams) WithBody(body StandAloneVMDisksUpdateDiskSizeBody) *StandAloneVMDisksUpdateDiskSizeParams {
+func (o *StandAloneVMDisksUpdateDiskSizeParams) WithBody(body *models.UpdateStandaloneVMDiskSizeCommand) *StandAloneVMDisksUpdateDiskSizeParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the stand alone Vm disks update disk size params
-func (o *StandAloneVMDisksUpdateDiskSizeParams) SetBody(body StandAloneVMDisksUpdateDiskSizeBody) {
+func (o *StandAloneVMDisksUpdateDiskSizeParams) SetBody(body *models.UpdateStandaloneVMDiskSizeCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *StandAloneVMDisksUpdateDiskSizeParams) WriteToRequest(r runtime.ClientR
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

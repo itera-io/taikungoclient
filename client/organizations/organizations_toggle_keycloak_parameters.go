@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOrganizationsToggleKeycloakParams creates a new OrganizationsToggleKeycloakParams object,
@@ -62,7 +64,7 @@ OrganizationsToggleKeycloakParams contains all the parameters to send to the API
 type OrganizationsToggleKeycloakParams struct {
 
 	// Body.
-	Body OrganizationsToggleKeycloakBody
+	Body *models.ToggleKeycloakCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *OrganizationsToggleKeycloakParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the organizations toggle keycloak params
-func (o *OrganizationsToggleKeycloakParams) WithBody(body OrganizationsToggleKeycloakBody) *OrganizationsToggleKeycloakParams {
+func (o *OrganizationsToggleKeycloakParams) WithBody(body *models.ToggleKeycloakCommand) *OrganizationsToggleKeycloakParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the organizations toggle keycloak params
-func (o *OrganizationsToggleKeycloakParams) SetBody(body OrganizationsToggleKeycloakBody) {
+func (o *OrganizationsToggleKeycloakParams) SetBody(body *models.ToggleKeycloakCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *OrganizationsToggleKeycloakParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

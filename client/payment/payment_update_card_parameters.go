@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewPaymentUpdateCardParams creates a new PaymentUpdateCardParams object,
@@ -62,7 +64,7 @@ PaymentUpdateCardParams contains all the parameters to send to the API endpoint
 type PaymentUpdateCardParams struct {
 
 	// Body.
-	Body PaymentUpdateCardBody
+	Body *models.ChangeCardCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *PaymentUpdateCardParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the payment update card params
-func (o *PaymentUpdateCardParams) WithBody(body PaymentUpdateCardBody) *PaymentUpdateCardParams {
+func (o *PaymentUpdateCardParams) WithBody(body *models.ChangeCardCommand) *PaymentUpdateCardParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the payment update card params
-func (o *PaymentUpdateCardParams) SetBody(body PaymentUpdateCardBody) {
+func (o *PaymentUpdateCardParams) SetBody(body *models.ChangeCardCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *PaymentUpdateCardParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

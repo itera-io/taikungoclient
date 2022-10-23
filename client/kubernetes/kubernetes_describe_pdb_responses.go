@@ -6,13 +6,13 @@ package kubernetes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // KubernetesDescribePdbReader is a Reader for the KubernetesDescribePdb structure.
@@ -136,7 +136,7 @@ KubernetesDescribePdbBadRequest describes a response with status code 400, with 
 Bad Request
 */
 type KubernetesDescribePdbBadRequest struct {
-	Payload []*KubernetesDescribePdbBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this kubernetes describe pdb bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *KubernetesDescribePdbBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *KubernetesDescribePdbBadRequest) GetPayload() []*KubernetesDescribePdbBadRequestBodyItems0 {
+func (o *KubernetesDescribePdbBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ KubernetesDescribePdbUnauthorized describes a response with status code 401, wit
 Unauthorized
 */
 type KubernetesDescribePdbUnauthorized struct {
-	Payload *KubernetesDescribePdbUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe pdb unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *KubernetesDescribePdbUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *KubernetesDescribePdbUnauthorized) GetPayload() *KubernetesDescribePdbUnauthorizedBody {
+func (o *KubernetesDescribePdbUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribePdbUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribePdbUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ KubernetesDescribePdbForbidden describes a response with status code 403, with d
 Forbidden
 */
 type KubernetesDescribePdbForbidden struct {
-	Payload *KubernetesDescribePdbForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe pdb forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *KubernetesDescribePdbForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbForbidden  %+v", 403, o.Payload)
 }
 
-func (o *KubernetesDescribePdbForbidden) GetPayload() *KubernetesDescribePdbForbiddenBody {
+func (o *KubernetesDescribePdbForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribePdbForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribePdbForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ KubernetesDescribePdbNotFound describes a response with status code 404, with de
 Not Found
 */
 type KubernetesDescribePdbNotFound struct {
-	Payload *KubernetesDescribePdbNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this kubernetes describe pdb not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *KubernetesDescribePdbNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Kubernetes/describe/pdb][%d] kubernetesDescribePdbNotFound  %+v", 404, o.Payload)
 }
 
-func (o *KubernetesDescribePdbNotFound) GetPayload() *KubernetesDescribePdbNotFoundBody {
+func (o *KubernetesDescribePdbNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *KubernetesDescribePdbNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(KubernetesDescribePdbNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,240 +423,5 @@ func (o *KubernetesDescribePdbInternalServerError) String() string {
 
 func (o *KubernetesDescribePdbInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-KubernetesDescribePdbBadRequestBodyItems0 kubernetes describe pdb bad request body items0
-swagger:model KubernetesDescribePdbBadRequestBodyItems0
-*/
-type KubernetesDescribePdbBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this kubernetes describe pdb bad request body items0
-func (o *KubernetesDescribePdbBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe pdb bad request body items0 based on context it is used
-func (o *KubernetesDescribePdbBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribePdbBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribePdbBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribePdbBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribePdbBody kubernetes describe pdb body
-swagger:model KubernetesDescribePdbBody
-*/
-type KubernetesDescribePdbBody struct {
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this kubernetes describe pdb body
-func (o *KubernetesDescribePdbBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe pdb body based on context it is used
-func (o *KubernetesDescribePdbBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribePdbBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribePdbBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribePdbBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribePdbForbiddenBody kubernetes describe pdb forbidden body
-swagger:model KubernetesDescribePdbForbiddenBody
-*/
-type KubernetesDescribePdbForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe pdb forbidden body
-func (o *KubernetesDescribePdbForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe pdb forbidden body based on context it is used
-func (o *KubernetesDescribePdbForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribePdbForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribePdbForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribePdbForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribePdbNotFoundBody kubernetes describe pdb not found body
-swagger:model KubernetesDescribePdbNotFoundBody
-*/
-type KubernetesDescribePdbNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe pdb not found body
-func (o *KubernetesDescribePdbNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe pdb not found body based on context it is used
-func (o *KubernetesDescribePdbNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribePdbNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribePdbNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribePdbNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-KubernetesDescribePdbUnauthorizedBody kubernetes describe pdb unauthorized body
-swagger:model KubernetesDescribePdbUnauthorizedBody
-*/
-type KubernetesDescribePdbUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this kubernetes describe pdb unauthorized body
-func (o *KubernetesDescribePdbUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this kubernetes describe pdb unauthorized body based on context it is used
-func (o *KubernetesDescribePdbUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *KubernetesDescribePdbUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *KubernetesDescribePdbUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res KubernetesDescribePdbUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

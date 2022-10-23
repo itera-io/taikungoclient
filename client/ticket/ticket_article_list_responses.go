@@ -6,15 +6,13 @@ package ticket
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // TicketArticleListReader is a Reader for the TicketArticleList structure.
@@ -77,7 +75,7 @@ TicketArticleListOK describes a response with status code 200, with default head
 Success
 */
 type TicketArticleListOK struct {
-	Payload *TicketArticleListOKBody
+	Payload *models.ArticleList
 }
 
 // IsSuccess returns true when this ticket article list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *TicketArticleListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListOK  %+v", 200, o.Payload)
 }
 
-func (o *TicketArticleListOK) GetPayload() *TicketArticleListOKBody {
+func (o *TicketArticleListOK) GetPayload() *models.ArticleList {
 	return o.Payload
 }
 
 func (o *TicketArticleListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(TicketArticleListOKBody)
+	o.Payload = new(models.ArticleList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ TicketArticleListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type TicketArticleListBadRequest struct {
-	Payload []*TicketArticleListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this ticket article list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *TicketArticleListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketArticleListBadRequest) GetPayload() []*TicketArticleListBadRequestBodyItems0 {
+func (o *TicketArticleListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ TicketArticleListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type TicketArticleListUnauthorized struct {
-	Payload *TicketArticleListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket article list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *TicketArticleListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketArticleListUnauthorized) GetPayload() *TicketArticleListUnauthorizedBody {
+func (o *TicketArticleListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketArticleListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(TicketArticleListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ TicketArticleListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type TicketArticleListForbidden struct {
-	Payload *TicketArticleListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket article list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *TicketArticleListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketArticleListForbidden) GetPayload() *TicketArticleListForbiddenBody {
+func (o *TicketArticleListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketArticleListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(TicketArticleListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ TicketArticleListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type TicketArticleListNotFound struct {
-	Payload *TicketArticleListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket article list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *TicketArticleListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/{ticketId}/messages][%d] ticketArticleListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketArticleListNotFound) GetPayload() *TicketArticleListNotFoundBody {
+func (o *TicketArticleListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketArticleListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(TicketArticleListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,354 +425,5 @@ func (o *TicketArticleListInternalServerError) String() string {
 
 func (o *TicketArticleListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-TicketArticleListBadRequestBodyItems0 ticket article list bad request body items0
-swagger:model TicketArticleListBadRequestBodyItems0
-*/
-type TicketArticleListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this ticket article list bad request body items0
-func (o *TicketArticleListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ticket article list bad request body items0 based on context it is used
-func (o *TicketArticleListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketArticleListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketArticleListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res TicketArticleListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-TicketArticleListForbiddenBody ticket article list forbidden body
-swagger:model TicketArticleListForbiddenBody
-*/
-type TicketArticleListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ticket article list forbidden body
-func (o *TicketArticleListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ticket article list forbidden body based on context it is used
-func (o *TicketArticleListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketArticleListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketArticleListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res TicketArticleListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-TicketArticleListNotFoundBody ticket article list not found body
-swagger:model TicketArticleListNotFoundBody
-*/
-type TicketArticleListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ticket article list not found body
-func (o *TicketArticleListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ticket article list not found body based on context it is used
-func (o *TicketArticleListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketArticleListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketArticleListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res TicketArticleListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-TicketArticleListOKBody ticket article list o k body
-swagger:model TicketArticleListOKBody
-*/
-type TicketArticleListOKBody struct {
-
-	// data
-	Data []*TicketArticleListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this ticket article list o k body
-func (o *TicketArticleListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *TicketArticleListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("ticketArticleListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("ticketArticleListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this ticket article list o k body based on the context it is used
-func (o *TicketArticleListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *TicketArticleListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("ticketArticleListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("ticketArticleListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketArticleListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketArticleListOKBody) UnmarshalBinary(b []byte) error {
-	var res TicketArticleListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-TicketArticleListOKBodyDataItems0 ticket article list o k body data items0
-swagger:model TicketArticleListOKBodyDataItems0
-*/
-type TicketArticleListOKBodyDataItems0 struct {
-
-	// body
-	Body string `json:"body,omitempty"`
-
-	// create at
-	CreateAt string `json:"createAt,omitempty"`
-
-	// is csm
-	IsCsm bool `json:"isCsm"`
-
-	// message Id
-	MessageID string `json:"messageId,omitempty"`
-
-	// sender name
-	SenderName string `json:"senderName,omitempty"`
-
-	// user Id
-	UserID string `json:"userId,omitempty"`
-}
-
-// Validate validates this ticket article list o k body data items0
-func (o *TicketArticleListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ticket article list o k body data items0 based on context it is used
-func (o *TicketArticleListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketArticleListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketArticleListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res TicketArticleListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-TicketArticleListUnauthorizedBody ticket article list unauthorized body
-swagger:model TicketArticleListUnauthorizedBody
-*/
-type TicketArticleListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ticket article list unauthorized body
-func (o *TicketArticleListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ticket article list unauthorized body based on context it is used
-func (o *TicketArticleListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketArticleListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketArticleListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res TicketArticleListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

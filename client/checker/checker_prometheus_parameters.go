@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCheckerPrometheusParams creates a new CheckerPrometheusParams object,
@@ -62,7 +64,7 @@ CheckerPrometheusParams contains all the parameters to send to the API endpoint
 type CheckerPrometheusParams struct {
 
 	// Body.
-	Body CheckerPrometheusBody
+	Body *models.CheckPrometheusCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CheckerPrometheusParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the checker prometheus params
-func (o *CheckerPrometheusParams) WithBody(body CheckerPrometheusBody) *CheckerPrometheusParams {
+func (o *CheckerPrometheusParams) WithBody(body *models.CheckPrometheusCommand) *CheckerPrometheusParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the checker prometheus params
-func (o *CheckerPrometheusParams) SetBody(body CheckerPrometheusBody) {
+func (o *CheckerPrometheusParams) SetBody(body *models.CheckPrometheusCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *CheckerPrometheusParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

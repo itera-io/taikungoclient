@@ -6,17 +6,13 @@ package prometheus
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"encoding/json"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PrometheusCreateReader is a Reader for the PrometheusCreate structure.
@@ -79,7 +75,7 @@ PrometheusCreateOK describes a response with status code 200, with default heade
 Success
 */
 type PrometheusCreateOK struct {
-	Payload *PrometheusCreateOKBody
+	Payload *models.APIResponse
 }
 
 // IsSuccess returns true when this prometheus create o k response has a 2xx status code
@@ -115,13 +111,13 @@ func (o *PrometheusCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *PrometheusCreateOK) GetPayload() *PrometheusCreateOKBody {
+func (o *PrometheusCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *PrometheusCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusCreateOKBody)
+	o.Payload = new(models.APIResponse)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -142,7 +138,7 @@ PrometheusCreateBadRequest describes a response with status code 400, with defau
 Bad Request
 */
 type PrometheusCreateBadRequest struct {
-	Payload []*PrometheusCreateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this prometheus create bad request response has a 2xx status code
@@ -178,7 +174,7 @@ func (o *PrometheusCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PrometheusCreateBadRequest) GetPayload() []*PrometheusCreateBadRequestBodyItems0 {
+func (o *PrometheusCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -203,7 +199,7 @@ PrometheusCreateUnauthorized describes a response with status code 401, with def
 Unauthorized
 */
 type PrometheusCreateUnauthorized struct {
-	Payload *PrometheusCreateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus create unauthorized response has a 2xx status code
@@ -239,13 +235,13 @@ func (o *PrometheusCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PrometheusCreateUnauthorized) GetPayload() *PrometheusCreateUnauthorizedBody {
+func (o *PrometheusCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusCreateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -266,7 +262,7 @@ PrometheusCreateForbidden describes a response with status code 403, with defaul
 Forbidden
 */
 type PrometheusCreateForbidden struct {
-	Payload *PrometheusCreateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus create forbidden response has a 2xx status code
@@ -302,13 +298,13 @@ func (o *PrometheusCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PrometheusCreateForbidden) GetPayload() *PrometheusCreateForbiddenBody {
+func (o *PrometheusCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusCreateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -329,7 +325,7 @@ PrometheusCreateNotFound describes a response with status code 404, with default
 Not Found
 */
 type PrometheusCreateNotFound struct {
-	Payload *PrometheusCreateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this prometheus create not found response has a 2xx status code
@@ -365,13 +361,13 @@ func (o *PrometheusCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Prometheus][%d] prometheusCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PrometheusCreateNotFound) GetPayload() *PrometheusCreateNotFoundBody {
+func (o *PrometheusCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PrometheusCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PrometheusCreateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -429,451 +425,5 @@ func (o *PrometheusCreateInternalServerError) String() string {
 
 func (o *PrometheusCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PrometheusCreateBadRequestBodyItems0 prometheus create bad request body items0
-swagger:model PrometheusCreateBadRequestBodyItems0
-*/
-type PrometheusCreateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this prometheus create bad request body items0
-func (o *PrometheusCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus create bad request body items0 based on context it is used
-func (o *PrometheusCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PrometheusCreateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusCreateBody prometheus create body
-swagger:model PrometheusCreateBody
-*/
-type PrometheusCreateBody struct {
-
-	// labels
-	Labels []*PrometheusCreateParamsBodyLabelsItems0 `json:"labels"`
-
-	// metric name
-	MetricName string `json:"metricName,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// operation credential Id
-	OperationCredentialID int32 `json:"operationCredentialId,omitempty"`
-
-	// organization Id
-	OrganizationID []int32 `json:"organizationId"`
-
-	// partner Id
-	PartnerID int32 `json:"partnerId,omitempty"`
-
-	// price
-	Price float64 `json:"price,omitempty"`
-
-	// rule discount rate
-	RuleDiscountRate int32 `json:"ruleDiscountRate"`
-
-	// type
-	// Enum: [100 200]
-	Type int32 `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus create body
-func (o *PrometheusCreateBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateLabels(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateType(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PrometheusCreateBody) validateLabels(formats strfmt.Registry) error {
-	if swag.IsZero(o.Labels) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Labels); i++ {
-		if swag.IsZero(o.Labels[i]) { // not required
-			continue
-		}
-
-		if o.Labels[i] != nil {
-			if err := o.Labels[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "labels" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "labels" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-var prometheusCreateBodyTypeTypePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		prometheusCreateBodyTypeTypePropEnum = append(prometheusCreateBodyTypeTypePropEnum, v)
-	}
-}
-
-// prop value enum
-func (o *PrometheusCreateBody) validateTypeEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, prometheusCreateBodyTypeTypePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *PrometheusCreateBody) validateType(formats strfmt.Registry) error {
-	if swag.IsZero(o.Type) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := o.validateTypeEnum("body"+"."+"type", "body", o.Type); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validate this prometheus create body based on the context it is used
-func (o *PrometheusCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateLabels(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PrometheusCreateBody) contextValidateLabels(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Labels); i++ {
-
-		if o.Labels[i] != nil {
-			if err := o.Labels[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "labels" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "labels" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusCreateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusCreateBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusCreateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusCreateForbiddenBody prometheus create forbidden body
-swagger:model PrometheusCreateForbiddenBody
-*/
-type PrometheusCreateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus create forbidden body
-func (o *PrometheusCreateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus create forbidden body based on context it is used
-func (o *PrometheusCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusCreateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusCreateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusCreateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusCreateNotFoundBody prometheus create not found body
-swagger:model PrometheusCreateNotFoundBody
-*/
-type PrometheusCreateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus create not found body
-func (o *PrometheusCreateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus create not found body based on context it is used
-func (o *PrometheusCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusCreateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusCreateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusCreateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusCreateOKBody prometheus create o k body
-swagger:model PrometheusCreateOKBody
-*/
-type PrometheusCreateOKBody struct {
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// is error
-	IsError bool `json:"isError"`
-
-	// message
-	Message string `json:"message,omitempty"`
-
-	// result
-	Result interface{} `json:"result,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-}
-
-// Validate validates this prometheus create o k body
-func (o *PrometheusCreateOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus create o k body based on context it is used
-func (o *PrometheusCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusCreateOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusCreateOKBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusCreateOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusCreateParamsBodyLabelsItems0 prometheus create params body labels items0
-swagger:model PrometheusCreateParamsBodyLabelsItems0
-*/
-type PrometheusCreateParamsBodyLabelsItems0 struct {
-
-	// label
-	Label string `json:"label,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this prometheus create params body labels items0
-func (o *PrometheusCreateParamsBodyLabelsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus create params body labels items0 based on context it is used
-func (o *PrometheusCreateParamsBodyLabelsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusCreateParamsBodyLabelsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusCreateParamsBodyLabelsItems0) UnmarshalBinary(b []byte) error {
-	var res PrometheusCreateParamsBodyLabelsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PrometheusCreateUnauthorizedBody prometheus create unauthorized body
-swagger:model PrometheusCreateUnauthorizedBody
-*/
-type PrometheusCreateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this prometheus create unauthorized body
-func (o *PrometheusCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this prometheus create unauthorized body based on context it is used
-func (o *PrometheusCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PrometheusCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PrometheusCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PrometheusCreateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

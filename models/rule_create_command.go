@@ -7,13 +7,11 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // RuleCreateCommand rule create command
@@ -22,7 +20,7 @@ import (
 type RuleCreateCommand struct {
 
 	// labels
-	Labels []*RuleCreateCommandLabelsItems0 `json:"labels"`
+	Labels []*PrometheusLabelListDto `json:"labels"`
 
 	// metric name
 	MetricName string `json:"metricName,omitempty"`
@@ -46,8 +44,7 @@ type RuleCreateCommand struct {
 	RuleDiscountRate int32 `json:"ruleDiscountRate"`
 
 	// type
-	// Enum: [100 200]
-	Type int32 `json:"type,omitempty"`
+	Type PrometheusType `json:"type,omitempty"`
 }
 
 // Validate validates this rule create command
@@ -94,33 +91,17 @@ func (m *RuleCreateCommand) validateLabels(formats strfmt.Registry) error {
 	return nil
 }
 
-var ruleCreateCommandTypeTypePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		ruleCreateCommandTypeTypePropEnum = append(ruleCreateCommandTypeTypePropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *RuleCreateCommand) validateTypeEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, ruleCreateCommandTypeTypePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *RuleCreateCommand) validateType(formats strfmt.Registry) error {
 	if swag.IsZero(m.Type) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateTypeEnum("type", "body", m.Type); err != nil {
+	if err := m.Type.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("type")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("type")
+		}
 		return err
 	}
 
@@ -132,6 +113,10 @@ func (m *RuleCreateCommand) ContextValidate(ctx context.Context, formats strfmt.
 	var res []error
 
 	if err := m.contextValidateLabels(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateType(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -161,6 +146,20 @@ func (m *RuleCreateCommand) contextValidateLabels(ctx context.Context, formats s
 	return nil
 }
 
+func (m *RuleCreateCommand) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.Type.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("type")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("type")
+		}
+		return err
+	}
+
+	return nil
+}
+
 // MarshalBinary interface implementation
 func (m *RuleCreateCommand) MarshalBinary() ([]byte, error) {
 	if m == nil {
@@ -172,46 +171,6 @@ func (m *RuleCreateCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *RuleCreateCommand) UnmarshalBinary(b []byte) error {
 	var res RuleCreateCommand
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// RuleCreateCommandLabelsItems0 rule create command labels items0
-//
-// swagger:model RuleCreateCommandLabelsItems0
-type RuleCreateCommandLabelsItems0 struct {
-
-	// label
-	Label string `json:"label,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this rule create command labels items0
-func (m *RuleCreateCommandLabelsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this rule create command labels items0 based on context it is used
-func (m *RuleCreateCommandLabelsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *RuleCreateCommandLabelsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *RuleCreateCommandLabelsItems0) UnmarshalBinary(b []byte) error {
-	var res RuleCreateCommandLabelsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

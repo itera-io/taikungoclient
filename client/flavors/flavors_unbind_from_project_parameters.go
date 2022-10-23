@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewFlavorsUnbindFromProjectParams creates a new FlavorsUnbindFromProjectParams object,
@@ -62,7 +64,7 @@ FlavorsUnbindFromProjectParams contains all the parameters to send to the API en
 type FlavorsUnbindFromProjectParams struct {
 
 	// Body.
-	Body FlavorsUnbindFromProjectBody
+	Body *models.UnbindFlavorFromProjectCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *FlavorsUnbindFromProjectParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the flavors unbind from project params
-func (o *FlavorsUnbindFromProjectParams) WithBody(body FlavorsUnbindFromProjectBody) *FlavorsUnbindFromProjectParams {
+func (o *FlavorsUnbindFromProjectParams) WithBody(body *models.UnbindFlavorFromProjectCommand) *FlavorsUnbindFromProjectParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the flavors unbind from project params
-func (o *FlavorsUnbindFromProjectParams) SetBody(body FlavorsUnbindFromProjectBody) {
+func (o *FlavorsUnbindFromProjectParams) SetBody(body *models.UnbindFlavorFromProjectCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *FlavorsUnbindFromProjectParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

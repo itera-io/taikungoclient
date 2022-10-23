@@ -6,13 +6,13 @@ package notifications
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NotificationsGetProjectOperationMessagesReader is a Reader for the NotificationsGetProjectOperationMessages structure.
@@ -136,7 +136,7 @@ NotificationsGetProjectOperationMessagesBadRequest describes a response with sta
 Bad Request
 */
 type NotificationsGetProjectOperationMessagesBadRequest struct {
-	Payload []*NotificationsGetProjectOperationMessagesBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this notifications get project operation messages bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *NotificationsGetProjectOperationMessagesBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NotificationsGetProjectOperationMessagesBadRequest) GetPayload() []*NotificationsGetProjectOperationMessagesBadRequestBodyItems0 {
+func (o *NotificationsGetProjectOperationMessagesBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ NotificationsGetProjectOperationMessagesUnauthorized describes a response with s
 Unauthorized
 */
 type NotificationsGetProjectOperationMessagesUnauthorized struct {
-	Payload *NotificationsGetProjectOperationMessagesUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this notifications get project operation messages unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *NotificationsGetProjectOperationMessagesUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NotificationsGetProjectOperationMessagesUnauthorized) GetPayload() *NotificationsGetProjectOperationMessagesUnauthorizedBody {
+func (o *NotificationsGetProjectOperationMessagesUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NotificationsGetProjectOperationMessagesUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(NotificationsGetProjectOperationMessagesUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ NotificationsGetProjectOperationMessagesForbidden describes a response with stat
 Forbidden
 */
 type NotificationsGetProjectOperationMessagesForbidden struct {
-	Payload *NotificationsGetProjectOperationMessagesForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this notifications get project operation messages forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *NotificationsGetProjectOperationMessagesForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NotificationsGetProjectOperationMessagesForbidden) GetPayload() *NotificationsGetProjectOperationMessagesForbiddenBody {
+func (o *NotificationsGetProjectOperationMessagesForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NotificationsGetProjectOperationMessagesForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(NotificationsGetProjectOperationMessagesForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ NotificationsGetProjectOperationMessagesNotFound describes a response with statu
 Not Found
 */
 type NotificationsGetProjectOperationMessagesNotFound struct {
-	Payload *NotificationsGetProjectOperationMessagesNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this notifications get project operation messages not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *NotificationsGetProjectOperationMessagesNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Notifications/operations][%d] notificationsGetProjectOperationMessagesNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NotificationsGetProjectOperationMessagesNotFound) GetPayload() *NotificationsGetProjectOperationMessagesNotFoundBody {
+func (o *NotificationsGetProjectOperationMessagesNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NotificationsGetProjectOperationMessagesNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(NotificationsGetProjectOperationMessagesNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *NotificationsGetProjectOperationMessagesInternalServerError) String() s
 
 func (o *NotificationsGetProjectOperationMessagesInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-NotificationsGetProjectOperationMessagesBadRequestBodyItems0 notifications get project operation messages bad request body items0
-swagger:model NotificationsGetProjectOperationMessagesBadRequestBodyItems0
-*/
-type NotificationsGetProjectOperationMessagesBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this notifications get project operation messages bad request body items0
-func (o *NotificationsGetProjectOperationMessagesBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this notifications get project operation messages bad request body items0 based on context it is used
-func (o *NotificationsGetProjectOperationMessagesBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NotificationsGetProjectOperationMessagesBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NotificationsGetProjectOperationMessagesBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res NotificationsGetProjectOperationMessagesBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NotificationsGetProjectOperationMessagesBody notifications get project operation messages body
-swagger:model NotificationsGetProjectOperationMessagesBody
-*/
-type NotificationsGetProjectOperationMessagesBody struct {
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-}
-
-// Validate validates this notifications get project operation messages body
-func (o *NotificationsGetProjectOperationMessagesBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this notifications get project operation messages body based on context it is used
-func (o *NotificationsGetProjectOperationMessagesBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NotificationsGetProjectOperationMessagesBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NotificationsGetProjectOperationMessagesBody) UnmarshalBinary(b []byte) error {
-	var res NotificationsGetProjectOperationMessagesBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NotificationsGetProjectOperationMessagesForbiddenBody notifications get project operation messages forbidden body
-swagger:model NotificationsGetProjectOperationMessagesForbiddenBody
-*/
-type NotificationsGetProjectOperationMessagesForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this notifications get project operation messages forbidden body
-func (o *NotificationsGetProjectOperationMessagesForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this notifications get project operation messages forbidden body based on context it is used
-func (o *NotificationsGetProjectOperationMessagesForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NotificationsGetProjectOperationMessagesForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NotificationsGetProjectOperationMessagesForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res NotificationsGetProjectOperationMessagesForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NotificationsGetProjectOperationMessagesNotFoundBody notifications get project operation messages not found body
-swagger:model NotificationsGetProjectOperationMessagesNotFoundBody
-*/
-type NotificationsGetProjectOperationMessagesNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this notifications get project operation messages not found body
-func (o *NotificationsGetProjectOperationMessagesNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this notifications get project operation messages not found body based on context it is used
-func (o *NotificationsGetProjectOperationMessagesNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NotificationsGetProjectOperationMessagesNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NotificationsGetProjectOperationMessagesNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res NotificationsGetProjectOperationMessagesNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NotificationsGetProjectOperationMessagesUnauthorizedBody notifications get project operation messages unauthorized body
-swagger:model NotificationsGetProjectOperationMessagesUnauthorizedBody
-*/
-type NotificationsGetProjectOperationMessagesUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this notifications get project operation messages unauthorized body
-func (o *NotificationsGetProjectOperationMessagesUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this notifications get project operation messages unauthorized body based on context it is used
-func (o *NotificationsGetProjectOperationMessagesUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NotificationsGetProjectOperationMessagesUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NotificationsGetProjectOperationMessagesUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res NotificationsGetProjectOperationMessagesUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

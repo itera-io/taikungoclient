@@ -6,13 +6,13 @@ package opa_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // OpaProfilesCreateReader is a Reader for the OpaProfilesCreate structure.
@@ -75,7 +75,7 @@ OpaProfilesCreateOK describes a response with status code 200, with default head
 Success
 */
 type OpaProfilesCreateOK struct {
-	Payload *OpaProfilesCreateOKBody
+	Payload *models.APIResponse
 }
 
 // IsSuccess returns true when this opa profiles create o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *OpaProfilesCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *OpaProfilesCreateOK) GetPayload() *OpaProfilesCreateOKBody {
+func (o *OpaProfilesCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *OpaProfilesCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpaProfilesCreateOKBody)
+	o.Payload = new(models.APIResponse)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ OpaProfilesCreateBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type OpaProfilesCreateBadRequest struct {
-	Payload []*OpaProfilesCreateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this opa profiles create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *OpaProfilesCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpaProfilesCreateBadRequest) GetPayload() []*OpaProfilesCreateBadRequestBodyItems0 {
+func (o *OpaProfilesCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ OpaProfilesCreateUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type OpaProfilesCreateUnauthorized struct {
-	Payload *OpaProfilesCreateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles create unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *OpaProfilesCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpaProfilesCreateUnauthorized) GetPayload() *OpaProfilesCreateUnauthorizedBody {
+func (o *OpaProfilesCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpaProfilesCreateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ OpaProfilesCreateForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type OpaProfilesCreateForbidden struct {
-	Payload *OpaProfilesCreateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles create forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *OpaProfilesCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpaProfilesCreateForbidden) GetPayload() *OpaProfilesCreateForbiddenBody {
+func (o *OpaProfilesCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpaProfilesCreateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ OpaProfilesCreateNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type OpaProfilesCreateNotFound struct {
-	Payload *OpaProfilesCreateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this opa profiles create not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *OpaProfilesCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpaProfiles][%d] opaProfilesCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpaProfilesCreateNotFound) GetPayload() *OpaProfilesCreateNotFoundBody {
+func (o *OpaProfilesCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpaProfilesCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpaProfilesCreateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,311 +425,5 @@ func (o *OpaProfilesCreateInternalServerError) String() string {
 
 func (o *OpaProfilesCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-OpaProfilesCreateBadRequestBodyItems0 opa profiles create bad request body items0
-swagger:model OpaProfilesCreateBadRequestBodyItems0
-*/
-type OpaProfilesCreateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this opa profiles create bad request body items0
-func (o *OpaProfilesCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles create bad request body items0 based on context it is used
-func (o *OpaProfilesCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesCreateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesCreateBody opa profiles create body
-swagger:model OpaProfilesCreateBody
-*/
-type OpaProfilesCreateBody struct {
-
-	// allowed repo
-	AllowedRepo []string `json:"allowedRepo"`
-
-	// forbid Http ingress
-	ForbidHTTPIngress bool `json:"forbidHttpIngress"`
-
-	// forbid node port
-	ForbidNodePort bool `json:"forbidNodePort"`
-
-	// forbid specific tags
-	ForbidSpecificTags []string `json:"forbidSpecificTags"`
-
-	// ingress whitelist
-	IngressWhitelist []string `json:"ingressWhitelist"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// require probe
-	RequireProbe bool `json:"requireProbe"`
-
-	// unique ingresses
-	UniqueIngresses bool `json:"uniqueIngresses"`
-
-	// unique service selector
-	UniqueServiceSelector bool `json:"uniqueServiceSelector"`
-}
-
-// Validate validates this opa profiles create body
-func (o *OpaProfilesCreateBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles create body based on context it is used
-func (o *OpaProfilesCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesCreateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesCreateBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesCreateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesCreateForbiddenBody opa profiles create forbidden body
-swagger:model OpaProfilesCreateForbiddenBody
-*/
-type OpaProfilesCreateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this opa profiles create forbidden body
-func (o *OpaProfilesCreateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles create forbidden body based on context it is used
-func (o *OpaProfilesCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesCreateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesCreateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesCreateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesCreateNotFoundBody opa profiles create not found body
-swagger:model OpaProfilesCreateNotFoundBody
-*/
-type OpaProfilesCreateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this opa profiles create not found body
-func (o *OpaProfilesCreateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles create not found body based on context it is used
-func (o *OpaProfilesCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesCreateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesCreateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesCreateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesCreateOKBody opa profiles create o k body
-swagger:model OpaProfilesCreateOKBody
-*/
-type OpaProfilesCreateOKBody struct {
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// is error
-	IsError bool `json:"isError"`
-
-	// message
-	Message string `json:"message,omitempty"`
-
-	// result
-	Result interface{} `json:"result,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-}
-
-// Validate validates this opa profiles create o k body
-func (o *OpaProfilesCreateOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles create o k body based on context it is used
-func (o *OpaProfilesCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesCreateOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesCreateOKBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesCreateOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpaProfilesCreateUnauthorizedBody opa profiles create unauthorized body
-swagger:model OpaProfilesCreateUnauthorizedBody
-*/
-type OpaProfilesCreateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this opa profiles create unauthorized body
-func (o *OpaProfilesCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this opa profiles create unauthorized body based on context it is used
-func (o *OpaProfilesCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpaProfilesCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpaProfilesCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res OpaProfilesCreateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

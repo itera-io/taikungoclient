@@ -6,13 +6,13 @@ package aws
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AwsAwsOwnersReader is a Reader for the AwsAwsOwners structure.
@@ -75,7 +75,7 @@ AwsAwsOwnersOK describes a response with status code 200, with default header va
 Success
 */
 type AwsAwsOwnersOK struct {
-	Payload []*AwsAwsOwnersOKBodyItems0
+	Payload []*models.CommonStringBasedDropdownDto
 }
 
 // IsSuccess returns true when this aws aws owners o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AwsAwsOwnersOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersOK  %+v", 200, o.Payload)
 }
 
-func (o *AwsAwsOwnersOK) GetPayload() []*AwsAwsOwnersOKBodyItems0 {
+func (o *AwsAwsOwnersOK) GetPayload() []*models.CommonStringBasedDropdownDto {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AwsAwsOwnersBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type AwsAwsOwnersBadRequest struct {
-	Payload []*AwsAwsOwnersBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this aws aws owners bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AwsAwsOwnersBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AwsAwsOwnersBadRequest) GetPayload() []*AwsAwsOwnersBadRequestBodyItems0 {
+func (o *AwsAwsOwnersBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AwsAwsOwnersUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type AwsAwsOwnersUnauthorized struct {
-	Payload *AwsAwsOwnersUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws aws owners unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AwsAwsOwnersUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AwsAwsOwnersUnauthorized) GetPayload() *AwsAwsOwnersUnauthorizedBody {
+func (o *AwsAwsOwnersUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsAwsOwnersUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AwsAwsOwnersUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AwsAwsOwnersForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type AwsAwsOwnersForbidden struct {
-	Payload *AwsAwsOwnersForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws aws owners forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AwsAwsOwnersForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AwsAwsOwnersForbidden) GetPayload() *AwsAwsOwnersForbiddenBody {
+func (o *AwsAwsOwnersForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsAwsOwnersForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AwsAwsOwnersForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AwsAwsOwnersNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type AwsAwsOwnersNotFound struct {
-	Payload *AwsAwsOwnersNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this aws aws owners not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AwsAwsOwnersNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Aws/owners][%d] awsAwsOwnersNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AwsAwsOwnersNotFound) GetPayload() *AwsAwsOwnersNotFoundBody {
+func (o *AwsAwsOwnersNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AwsAwsOwnersNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AwsAwsOwnersNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *AwsAwsOwnersInternalServerError) String() string {
 
 func (o *AwsAwsOwnersInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AwsAwsOwnersBadRequestBodyItems0 aws aws owners bad request body items0
-swagger:model AwsAwsOwnersBadRequestBodyItems0
-*/
-type AwsAwsOwnersBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this aws aws owners bad request body items0
-func (o *AwsAwsOwnersBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws aws owners bad request body items0 based on context it is used
-func (o *AwsAwsOwnersBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsAwsOwnersBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsAwsOwnersBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AwsAwsOwnersBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AwsAwsOwnersForbiddenBody aws aws owners forbidden body
-swagger:model AwsAwsOwnersForbiddenBody
-*/
-type AwsAwsOwnersForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this aws aws owners forbidden body
-func (o *AwsAwsOwnersForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws aws owners forbidden body based on context it is used
-func (o *AwsAwsOwnersForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsAwsOwnersForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsAwsOwnersForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AwsAwsOwnersForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AwsAwsOwnersNotFoundBody aws aws owners not found body
-swagger:model AwsAwsOwnersNotFoundBody
-*/
-type AwsAwsOwnersNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this aws aws owners not found body
-func (o *AwsAwsOwnersNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws aws owners not found body based on context it is used
-func (o *AwsAwsOwnersNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsAwsOwnersNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsAwsOwnersNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AwsAwsOwnersNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AwsAwsOwnersOKBodyItems0 aws aws owners o k body items0
-swagger:model AwsAwsOwnersOKBodyItems0
-*/
-type AwsAwsOwnersOKBodyItems0 struct {
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this aws aws owners o k body items0
-func (o *AwsAwsOwnersOKBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws aws owners o k body items0 based on context it is used
-func (o *AwsAwsOwnersOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsAwsOwnersOKBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsAwsOwnersOKBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AwsAwsOwnersOKBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AwsAwsOwnersUnauthorizedBody aws aws owners unauthorized body
-swagger:model AwsAwsOwnersUnauthorizedBody
-*/
-type AwsAwsOwnersUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this aws aws owners unauthorized body
-func (o *AwsAwsOwnersUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this aws aws owners unauthorized body based on context it is used
-func (o *AwsAwsOwnersUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AwsAwsOwnersUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AwsAwsOwnersUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AwsAwsOwnersUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

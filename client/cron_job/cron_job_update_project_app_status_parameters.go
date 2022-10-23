@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCronJobUpdateProjectAppStatusParams creates a new CronJobUpdateProjectAppStatusParams object,
@@ -62,7 +64,7 @@ CronJobUpdateProjectAppStatusParams contains all the parameters to send to the A
 type CronJobUpdateProjectAppStatusParams struct {
 
 	// Body.
-	Body interface{}
+	Body models.UpdateProjectAppStatusCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CronJobUpdateProjectAppStatusParams) SetHTTPClient(client *http.Client)
 }
 
 // WithBody adds the body to the cron job update project app status params
-func (o *CronJobUpdateProjectAppStatusParams) WithBody(body interface{}) *CronJobUpdateProjectAppStatusParams {
+func (o *CronJobUpdateProjectAppStatusParams) WithBody(body models.UpdateProjectAppStatusCommand) *CronJobUpdateProjectAppStatusParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the cron job update project app status params
-func (o *CronJobUpdateProjectAppStatusParams) SetBody(body interface{}) {
+func (o *CronJobUpdateProjectAppStatusParams) SetBody(body models.UpdateProjectAppStatusCommand) {
 	o.Body = body
 }
 

@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCheckerNodeParams creates a new CheckerNodeParams object,
@@ -62,7 +64,7 @@ CheckerNodeParams contains all the parameters to send to the API endpoint
 type CheckerNodeParams struct {
 
 	// Body.
-	Body CheckerNodeBody
+	Body *models.NodeCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CheckerNodeParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the checker node params
-func (o *CheckerNodeParams) WithBody(body CheckerNodeBody) *CheckerNodeParams {
+func (o *CheckerNodeParams) WithBody(body *models.NodeCommand) *CheckerNodeParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the checker node params
-func (o *CheckerNodeParams) SetBody(body CheckerNodeBody) {
+func (o *CheckerNodeParams) SetBody(body *models.NodeCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *CheckerNodeParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOpenstackZoneListParams creates a new OpenstackZoneListParams object,
@@ -62,7 +64,7 @@ OpenstackZoneListParams contains all the parameters to send to the API endpoint
 type OpenstackZoneListParams struct {
 
 	// Body.
-	Body OpenstackZoneListBody
+	Body *models.OpenStackZoneListQuery
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *OpenstackZoneListParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the openstack zone list params
-func (o *OpenstackZoneListParams) WithBody(body OpenstackZoneListBody) *OpenstackZoneListParams {
+func (o *OpenstackZoneListParams) WithBody(body *models.OpenStackZoneListQuery) *OpenstackZoneListParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the openstack zone list params
-func (o *OpenstackZoneListParams) SetBody(body OpenstackZoneListBody) {
+func (o *OpenstackZoneListParams) SetBody(body *models.OpenStackZoneListQuery) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *OpenstackZoneListParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

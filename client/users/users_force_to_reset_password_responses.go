@@ -6,13 +6,13 @@ package users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // UsersForceToResetPasswordReader is a Reader for the UsersForceToResetPassword structure.
@@ -75,7 +75,7 @@ UsersForceToResetPasswordOK describes a response with status code 200, with defa
 Success
 */
 type UsersForceToResetPasswordOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this users force to reset password o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *UsersForceToResetPasswordOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordOK  %+v", 200, o.Payload)
 }
 
-func (o *UsersForceToResetPasswordOK) GetPayload() interface{} {
+func (o *UsersForceToResetPasswordOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ UsersForceToResetPasswordBadRequest describes a response with status code 400, w
 Bad Request
 */
 type UsersForceToResetPasswordBadRequest struct {
-	Payload []*UsersForceToResetPasswordBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this users force to reset password bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UsersForceToResetPasswordBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersForceToResetPasswordBadRequest) GetPayload() []*UsersForceToResetPasswordBadRequestBodyItems0 {
+func (o *UsersForceToResetPasswordBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ UsersForceToResetPasswordUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type UsersForceToResetPasswordUnauthorized struct {
-	Payload *UsersForceToResetPasswordUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users force to reset password unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *UsersForceToResetPasswordUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersForceToResetPasswordUnauthorized) GetPayload() *UsersForceToResetPasswordUnauthorizedBody {
+func (o *UsersForceToResetPasswordUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersForceToResetPasswordUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UsersForceToResetPasswordUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ UsersForceToResetPasswordForbidden describes a response with status code 403, wi
 Forbidden
 */
 type UsersForceToResetPasswordForbidden struct {
-	Payload *UsersForceToResetPasswordForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users force to reset password forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *UsersForceToResetPasswordForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersForceToResetPasswordForbidden) GetPayload() *UsersForceToResetPasswordForbiddenBody {
+func (o *UsersForceToResetPasswordForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersForceToResetPasswordForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UsersForceToResetPasswordForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ UsersForceToResetPasswordNotFound describes a response with status code 404, wit
 Not Found
 */
 type UsersForceToResetPasswordNotFound struct {
-	Payload *UsersForceToResetPasswordNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users force to reset password not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *UsersForceToResetPasswordNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/force-to-reset][%d] usersForceToResetPasswordNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersForceToResetPasswordNotFound) GetPayload() *UsersForceToResetPasswordNotFoundBody {
+func (o *UsersForceToResetPasswordNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersForceToResetPasswordNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UsersForceToResetPasswordNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *UsersForceToResetPasswordInternalServerError) String() string {
 
 func (o *UsersForceToResetPasswordInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-UsersForceToResetPasswordBadRequestBodyItems0 users force to reset password bad request body items0
-swagger:model UsersForceToResetPasswordBadRequestBodyItems0
-*/
-type UsersForceToResetPasswordBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this users force to reset password bad request body items0
-func (o *UsersForceToResetPasswordBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users force to reset password bad request body items0 based on context it is used
-func (o *UsersForceToResetPasswordBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersForceToResetPasswordBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersForceToResetPasswordBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res UsersForceToResetPasswordBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UsersForceToResetPasswordBody users force to reset password body
-swagger:model UsersForceToResetPasswordBody
-*/
-type UsersForceToResetPasswordBody struct {
-
-	// id
-	ID string `json:"id,omitempty"`
-}
-
-// Validate validates this users force to reset password body
-func (o *UsersForceToResetPasswordBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users force to reset password body based on context it is used
-func (o *UsersForceToResetPasswordBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersForceToResetPasswordBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersForceToResetPasswordBody) UnmarshalBinary(b []byte) error {
-	var res UsersForceToResetPasswordBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UsersForceToResetPasswordForbiddenBody users force to reset password forbidden body
-swagger:model UsersForceToResetPasswordForbiddenBody
-*/
-type UsersForceToResetPasswordForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this users force to reset password forbidden body
-func (o *UsersForceToResetPasswordForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users force to reset password forbidden body based on context it is used
-func (o *UsersForceToResetPasswordForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersForceToResetPasswordForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersForceToResetPasswordForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res UsersForceToResetPasswordForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UsersForceToResetPasswordNotFoundBody users force to reset password not found body
-swagger:model UsersForceToResetPasswordNotFoundBody
-*/
-type UsersForceToResetPasswordNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this users force to reset password not found body
-func (o *UsersForceToResetPasswordNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users force to reset password not found body based on context it is used
-func (o *UsersForceToResetPasswordNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersForceToResetPasswordNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersForceToResetPasswordNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res UsersForceToResetPasswordNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UsersForceToResetPasswordUnauthorizedBody users force to reset password unauthorized body
-swagger:model UsersForceToResetPasswordUnauthorizedBody
-*/
-type UsersForceToResetPasswordUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this users force to reset password unauthorized body
-func (o *UsersForceToResetPasswordUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users force to reset password unauthorized body based on context it is used
-func (o *UsersForceToResetPasswordUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersForceToResetPasswordUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersForceToResetPasswordUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res UsersForceToResetPasswordUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

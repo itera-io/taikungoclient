@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewPrometheusBindRulesParams creates a new PrometheusBindRulesParams object,
@@ -62,7 +64,7 @@ PrometheusBindRulesParams contains all the parameters to send to the API endpoin
 type PrometheusBindRulesParams struct {
 
 	// Body.
-	Body PrometheusBindRulesBody
+	Body *models.BindRulesCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *PrometheusBindRulesParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the prometheus bind rules params
-func (o *PrometheusBindRulesParams) WithBody(body PrometheusBindRulesBody) *PrometheusBindRulesParams {
+func (o *PrometheusBindRulesParams) WithBody(body *models.BindRulesCommand) *PrometheusBindRulesParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the prometheus bind rules params
-func (o *PrometheusBindRulesParams) SetBody(body PrometheusBindRulesBody) {
+func (o *PrometheusBindRulesParams) SetBody(body *models.BindRulesCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *PrometheusBindRulesParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

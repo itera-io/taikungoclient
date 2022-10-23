@@ -6,15 +6,13 @@ package alerting_profiles
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AlertingProfilesListReader is a Reader for the AlertingProfilesList structure.
@@ -77,7 +75,7 @@ AlertingProfilesListOK describes a response with status code 200, with default h
 Success
 */
 type AlertingProfilesListOK struct {
-	Payload *AlertingProfilesListOKBody
+	Payload *models.AlertingProfilesList
 }
 
 // IsSuccess returns true when this alerting profiles list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *AlertingProfilesListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles][%d] alertingProfilesListOK  %+v", 200, o.Payload)
 }
 
-func (o *AlertingProfilesListOK) GetPayload() *AlertingProfilesListOKBody {
+func (o *AlertingProfilesListOK) GetPayload() *models.AlertingProfilesList {
 	return o.Payload
 }
 
 func (o *AlertingProfilesListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AlertingProfilesListOKBody)
+	o.Payload = new(models.AlertingProfilesList)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ AlertingProfilesListBadRequest describes a response with status code 400, with d
 Bad Request
 */
 type AlertingProfilesListBadRequest struct {
-	Payload []*AlertingProfilesListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this alerting profiles list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *AlertingProfilesListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles][%d] alertingProfilesListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AlertingProfilesListBadRequest) GetPayload() []*AlertingProfilesListBadRequestBodyItems0 {
+func (o *AlertingProfilesListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ AlertingProfilesListUnauthorized describes a response with status code 401, with
 Unauthorized
 */
 type AlertingProfilesListUnauthorized struct {
-	Payload *AlertingProfilesListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *AlertingProfilesListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles][%d] alertingProfilesListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AlertingProfilesListUnauthorized) GetPayload() *AlertingProfilesListUnauthorizedBody {
+func (o *AlertingProfilesListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AlertingProfilesListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ AlertingProfilesListForbidden describes a response with status code 403, with de
 Forbidden
 */
 type AlertingProfilesListForbidden struct {
-	Payload *AlertingProfilesListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *AlertingProfilesListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles][%d] alertingProfilesListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AlertingProfilesListForbidden) GetPayload() *AlertingProfilesListForbiddenBody {
+func (o *AlertingProfilesListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AlertingProfilesListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ AlertingProfilesListNotFound describes a response with status code 404, with def
 Not Found
 */
 type AlertingProfilesListNotFound struct {
-	Payload *AlertingProfilesListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this alerting profiles list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *AlertingProfilesListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/AlertingProfiles][%d] alertingProfilesListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AlertingProfilesListNotFound) GetPayload() *AlertingProfilesListNotFoundBody {
+func (o *AlertingProfilesListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AlertingProfilesListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AlertingProfilesListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,784 +425,5 @@ func (o *AlertingProfilesListInternalServerError) String() string {
 
 func (o *AlertingProfilesListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AlertingProfilesListBadRequestBodyItems0 alerting profiles list bad request body items0
-swagger:model AlertingProfilesListBadRequestBodyItems0
-*/
-type AlertingProfilesListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this alerting profiles list bad request body items0
-func (o *AlertingProfilesListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting profiles list bad request body items0 based on context it is used
-func (o *AlertingProfilesListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingProfilesListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingProfilesListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingProfilesListForbiddenBody alerting profiles list forbidden body
-swagger:model AlertingProfilesListForbiddenBody
-*/
-type AlertingProfilesListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this alerting profiles list forbidden body
-func (o *AlertingProfilesListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting profiles list forbidden body based on context it is used
-func (o *AlertingProfilesListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingProfilesListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingProfilesListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingProfilesListNotFoundBody alerting profiles list not found body
-swagger:model AlertingProfilesListNotFoundBody
-*/
-type AlertingProfilesListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this alerting profiles list not found body
-func (o *AlertingProfilesListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting profiles list not found body based on context it is used
-func (o *AlertingProfilesListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingProfilesListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingProfilesListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingProfilesListOKBody alerting profiles list o k body
-swagger:model AlertingProfilesListOKBody
-*/
-type AlertingProfilesListOKBody struct {
-
-	// data
-	Data []*AlertingProfilesListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this alerting profiles list o k body
-func (o *AlertingProfilesListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AlertingProfilesListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("alertingProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("alertingProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this alerting profiles list o k body based on the context it is used
-func (o *AlertingProfilesListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AlertingProfilesListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("alertingProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("alertingProfilesListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingProfilesListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingProfilesListOKBody) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingProfilesListOKBodyDataItems0 alerting profiles list o k body data items0
-swagger:model AlertingProfilesListOKBodyDataItems0
-*/
-type AlertingProfilesListOKBodyDataItems0 struct {
-
-	// created at
-	CreatedAt string `json:"createdAt,omitempty"`
-
-	// created by
-	CreatedBy string `json:"createdBy,omitempty"`
-
-	// emails
-	Emails []*AlertingProfilesListOKBodyDataItems0EmailsItems0 `json:"emails"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// is locked
-	IsLocked bool `json:"isLocked"`
-
-	// last modified
-	LastModified string `json:"lastModified,omitempty"`
-
-	// last modified by
-	LastModifiedBy string `json:"lastModifiedBy,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-
-	// organization name
-	OrganizationName string `json:"organizationName,omitempty"`
-
-	// projects
-	Projects []*AlertingProfilesListOKBodyDataItems0ProjectsItems0 `json:"projects"`
-
-	// reminder
-	Reminder string `json:"reminder,omitempty"`
-
-	// slack configuration Id
-	SlackConfigurationID int32 `json:"slackConfigurationId,omitempty"`
-
-	// slack configuration name
-	SlackConfigurationName string `json:"slackConfigurationName,omitempty"`
-
-	// webhooks
-	Webhooks []*AlertingProfilesListOKBodyDataItems0WebhooksItems0 `json:"webhooks"`
-}
-
-// Validate validates this alerting profiles list o k body data items0
-func (o *AlertingProfilesListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateEmails(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateProjects(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateWebhooks(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AlertingProfilesListOKBodyDataItems0) validateEmails(formats strfmt.Registry) error {
-	if swag.IsZero(o.Emails) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Emails); i++ {
-		if swag.IsZero(o.Emails[i]) { // not required
-			continue
-		}
-
-		if o.Emails[i] != nil {
-			if err := o.Emails[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("emails" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("emails" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *AlertingProfilesListOKBodyDataItems0) validateProjects(formats strfmt.Registry) error {
-	if swag.IsZero(o.Projects) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Projects); i++ {
-		if swag.IsZero(o.Projects[i]) { // not required
-			continue
-		}
-
-		if o.Projects[i] != nil {
-			if err := o.Projects[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *AlertingProfilesListOKBodyDataItems0) validateWebhooks(formats strfmt.Registry) error {
-	if swag.IsZero(o.Webhooks) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Webhooks); i++ {
-		if swag.IsZero(o.Webhooks[i]) { // not required
-			continue
-		}
-
-		if o.Webhooks[i] != nil {
-			if err := o.Webhooks[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("webhooks" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("webhooks" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this alerting profiles list o k body data items0 based on the context it is used
-func (o *AlertingProfilesListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateEmails(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateProjects(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateWebhooks(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AlertingProfilesListOKBodyDataItems0) contextValidateEmails(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Emails); i++ {
-
-		if o.Emails[i] != nil {
-			if err := o.Emails[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("emails" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("emails" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *AlertingProfilesListOKBodyDataItems0) contextValidateProjects(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Projects); i++ {
-
-		if o.Projects[i] != nil {
-			if err := o.Projects[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("projects" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("projects" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-func (o *AlertingProfilesListOKBodyDataItems0) contextValidateWebhooks(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Webhooks); i++ {
-
-		if o.Webhooks[i] != nil {
-			if err := o.Webhooks[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("webhooks" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("webhooks" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingProfilesListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingProfilesListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingProfilesListOKBodyDataItems0EmailsItems0 alerting profiles list o k body data items0 emails items0
-swagger:model AlertingProfilesListOKBodyDataItems0EmailsItems0
-*/
-type AlertingProfilesListOKBodyDataItems0EmailsItems0 struct {
-
-	// email
-	Email string `json:"email,omitempty"`
-}
-
-// Validate validates this alerting profiles list o k body data items0 emails items0
-func (o *AlertingProfilesListOKBodyDataItems0EmailsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting profiles list o k body data items0 emails items0 based on context it is used
-func (o *AlertingProfilesListOKBodyDataItems0EmailsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingProfilesListOKBodyDataItems0EmailsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingProfilesListOKBodyDataItems0EmailsItems0) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesListOKBodyDataItems0EmailsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingProfilesListOKBodyDataItems0ProjectsItems0 alerting profiles list o k body data items0 projects items0
-swagger:model AlertingProfilesListOKBodyDataItems0ProjectsItems0
-*/
-type AlertingProfilesListOKBodyDataItems0ProjectsItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this alerting profiles list o k body data items0 projects items0
-func (o *AlertingProfilesListOKBodyDataItems0ProjectsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting profiles list o k body data items0 projects items0 based on context it is used
-func (o *AlertingProfilesListOKBodyDataItems0ProjectsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingProfilesListOKBodyDataItems0ProjectsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingProfilesListOKBodyDataItems0ProjectsItems0) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesListOKBodyDataItems0ProjectsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingProfilesListOKBodyDataItems0WebhooksItems0 alerting profiles list o k body data items0 webhooks items0
-swagger:model AlertingProfilesListOKBodyDataItems0WebhooksItems0
-*/
-type AlertingProfilesListOKBodyDataItems0WebhooksItems0 struct {
-
-	// headers
-	Headers []*AlertingProfilesListOKBodyDataItems0WebhooksItems0HeadersItems0 `json:"headers"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// url
-	URL string `json:"url,omitempty"`
-}
-
-// Validate validates this alerting profiles list o k body data items0 webhooks items0
-func (o *AlertingProfilesListOKBodyDataItems0WebhooksItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateHeaders(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AlertingProfilesListOKBodyDataItems0WebhooksItems0) validateHeaders(formats strfmt.Registry) error {
-	if swag.IsZero(o.Headers) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Headers); i++ {
-		if swag.IsZero(o.Headers[i]) { // not required
-			continue
-		}
-
-		if o.Headers[i] != nil {
-			if err := o.Headers[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("headers" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("headers" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this alerting profiles list o k body data items0 webhooks items0 based on the context it is used
-func (o *AlertingProfilesListOKBodyDataItems0WebhooksItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateHeaders(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *AlertingProfilesListOKBodyDataItems0WebhooksItems0) contextValidateHeaders(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Headers); i++ {
-
-		if o.Headers[i] != nil {
-			if err := o.Headers[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("headers" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("headers" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingProfilesListOKBodyDataItems0WebhooksItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingProfilesListOKBodyDataItems0WebhooksItems0) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesListOKBodyDataItems0WebhooksItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingProfilesListOKBodyDataItems0WebhooksItems0HeadersItems0 alerting profiles list o k body data items0 webhooks items0 headers items0
-swagger:model AlertingProfilesListOKBodyDataItems0WebhooksItems0HeadersItems0
-*/
-type AlertingProfilesListOKBodyDataItems0WebhooksItems0HeadersItems0 struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// key
-	Key string `json:"key,omitempty"`
-
-	// value
-	Value string `json:"value,omitempty"`
-}
-
-// Validate validates this alerting profiles list o k body data items0 webhooks items0 headers items0
-func (o *AlertingProfilesListOKBodyDataItems0WebhooksItems0HeadersItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting profiles list o k body data items0 webhooks items0 headers items0 based on context it is used
-func (o *AlertingProfilesListOKBodyDataItems0WebhooksItems0HeadersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingProfilesListOKBodyDataItems0WebhooksItems0HeadersItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingProfilesListOKBodyDataItems0WebhooksItems0HeadersItems0) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesListOKBodyDataItems0WebhooksItems0HeadersItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AlertingProfilesListUnauthorizedBody alerting profiles list unauthorized body
-swagger:model AlertingProfilesListUnauthorizedBody
-*/
-type AlertingProfilesListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this alerting profiles list unauthorized body
-func (o *AlertingProfilesListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this alerting profiles list unauthorized body based on context it is used
-func (o *AlertingProfilesListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AlertingProfilesListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AlertingProfilesListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AlertingProfilesListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

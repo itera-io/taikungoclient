@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewOrganizationsCreateParams creates a new OrganizationsCreateParams object,
@@ -65,7 +67,7 @@ type OrganizationsCreateParams struct {
 
 	   Create command
 	*/
-	Body OrganizationsCreateBody
+	Body *models.OrganizationCreateCommand
 
 	// V.
 	V string
@@ -124,13 +126,13 @@ func (o *OrganizationsCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the organizations create params
-func (o *OrganizationsCreateParams) WithBody(body OrganizationsCreateBody) *OrganizationsCreateParams {
+func (o *OrganizationsCreateParams) WithBody(body *models.OrganizationCreateCommand) *OrganizationsCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the organizations create params
-func (o *OrganizationsCreateParams) SetBody(body OrganizationsCreateBody) {
+func (o *OrganizationsCreateParams) SetBody(body *models.OrganizationCreateCommand) {
 	o.Body = body
 }
 
@@ -152,8 +154,10 @@ func (o *OrganizationsCreateParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

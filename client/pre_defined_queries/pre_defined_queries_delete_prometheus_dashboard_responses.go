@@ -6,13 +6,13 @@ package pre_defined_queries
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PreDefinedQueriesDeletePrometheusDashboardReader is a Reader for the PreDefinedQueriesDeletePrometheusDashboard structure.
@@ -75,7 +75,7 @@ PreDefinedQueriesDeletePrometheusDashboardOK describes a response with status co
 Success
 */
 type PreDefinedQueriesDeletePrometheusDashboardOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this pre defined queries delete prometheus dashboard o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardOK) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardOK  %+v", 200, o.Payload)
 }
 
-func (o *PreDefinedQueriesDeletePrometheusDashboardOK) GetPayload() interface{} {
+func (o *PreDefinedQueriesDeletePrometheusDashboardOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ PreDefinedQueriesDeletePrometheusDashboardBadRequest describes a response with s
 Bad Request
 */
 type PreDefinedQueriesDeletePrometheusDashboardBadRequest struct {
-	Payload []*PreDefinedQueriesDeletePrometheusDashboardBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this pre defined queries delete prometheus dashboard bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardBadRequest) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PreDefinedQueriesDeletePrometheusDashboardBadRequest) GetPayload() []*PreDefinedQueriesDeletePrometheusDashboardBadRequestBodyItems0 {
+func (o *PreDefinedQueriesDeletePrometheusDashboardBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ PreDefinedQueriesDeletePrometheusDashboardUnauthorized describes a response with
 Unauthorized
 */
 type PreDefinedQueriesDeletePrometheusDashboardUnauthorized struct {
-	Payload *PreDefinedQueriesDeletePrometheusDashboardUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this pre defined queries delete prometheus dashboard unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorized) String() string
 	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorized) GetPayload() *PreDefinedQueriesDeletePrometheusDashboardUnauthorizedBody {
+func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PreDefinedQueriesDeletePrometheusDashboardUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ PreDefinedQueriesDeletePrometheusDashboardForbidden describes a response with st
 Forbidden
 */
 type PreDefinedQueriesDeletePrometheusDashboardForbidden struct {
-	Payload *PreDefinedQueriesDeletePrometheusDashboardForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this pre defined queries delete prometheus dashboard forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardForbidden) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PreDefinedQueriesDeletePrometheusDashboardForbidden) GetPayload() *PreDefinedQueriesDeletePrometheusDashboardForbiddenBody {
+func (o *PreDefinedQueriesDeletePrometheusDashboardForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesDeletePrometheusDashboardForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PreDefinedQueriesDeletePrometheusDashboardForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ PreDefinedQueriesDeletePrometheusDashboardNotFound describes a response with sta
 Not Found
 */
 type PreDefinedQueriesDeletePrometheusDashboardNotFound struct {
-	Payload *PreDefinedQueriesDeletePrometheusDashboardNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this pre defined queries delete prometheus dashboard not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardNotFound) String() string {
 	return fmt.Sprintf("[DELETE /api/v{v}/PreDefinedQueries/prometheus/dashboard/delete/{id}][%d] preDefinedQueriesDeletePrometheusDashboardNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PreDefinedQueriesDeletePrometheusDashboardNotFound) GetPayload() *PreDefinedQueriesDeletePrometheusDashboardNotFoundBody {
+func (o *PreDefinedQueriesDeletePrometheusDashboardNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PreDefinedQueriesDeletePrometheusDashboardNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PreDefinedQueriesDeletePrometheusDashboardNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,196 +423,5 @@ func (o *PreDefinedQueriesDeletePrometheusDashboardInternalServerError) String()
 
 func (o *PreDefinedQueriesDeletePrometheusDashboardInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PreDefinedQueriesDeletePrometheusDashboardBadRequestBodyItems0 pre defined queries delete prometheus dashboard bad request body items0
-swagger:model PreDefinedQueriesDeletePrometheusDashboardBadRequestBodyItems0
-*/
-type PreDefinedQueriesDeletePrometheusDashboardBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this pre defined queries delete prometheus dashboard bad request body items0
-func (o *PreDefinedQueriesDeletePrometheusDashboardBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this pre defined queries delete prometheus dashboard bad request body items0 based on context it is used
-func (o *PreDefinedQueriesDeletePrometheusDashboardBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PreDefinedQueriesDeletePrometheusDashboardBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PreDefinedQueriesDeletePrometheusDashboardBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PreDefinedQueriesDeletePrometheusDashboardBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PreDefinedQueriesDeletePrometheusDashboardForbiddenBody pre defined queries delete prometheus dashboard forbidden body
-swagger:model PreDefinedQueriesDeletePrometheusDashboardForbiddenBody
-*/
-type PreDefinedQueriesDeletePrometheusDashboardForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this pre defined queries delete prometheus dashboard forbidden body
-func (o *PreDefinedQueriesDeletePrometheusDashboardForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this pre defined queries delete prometheus dashboard forbidden body based on context it is used
-func (o *PreDefinedQueriesDeletePrometheusDashboardForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PreDefinedQueriesDeletePrometheusDashboardForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PreDefinedQueriesDeletePrometheusDashboardForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PreDefinedQueriesDeletePrometheusDashboardForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PreDefinedQueriesDeletePrometheusDashboardNotFoundBody pre defined queries delete prometheus dashboard not found body
-swagger:model PreDefinedQueriesDeletePrometheusDashboardNotFoundBody
-*/
-type PreDefinedQueriesDeletePrometheusDashboardNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this pre defined queries delete prometheus dashboard not found body
-func (o *PreDefinedQueriesDeletePrometheusDashboardNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this pre defined queries delete prometheus dashboard not found body based on context it is used
-func (o *PreDefinedQueriesDeletePrometheusDashboardNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PreDefinedQueriesDeletePrometheusDashboardNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PreDefinedQueriesDeletePrometheusDashboardNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PreDefinedQueriesDeletePrometheusDashboardNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PreDefinedQueriesDeletePrometheusDashboardUnauthorizedBody pre defined queries delete prometheus dashboard unauthorized body
-swagger:model PreDefinedQueriesDeletePrometheusDashboardUnauthorizedBody
-*/
-type PreDefinedQueriesDeletePrometheusDashboardUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this pre defined queries delete prometheus dashboard unauthorized body
-func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this pre defined queries delete prometheus dashboard unauthorized body based on context it is used
-func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PreDefinedQueriesDeletePrometheusDashboardUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PreDefinedQueriesDeletePrometheusDashboardUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

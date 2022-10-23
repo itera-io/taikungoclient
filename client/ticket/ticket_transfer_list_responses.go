@@ -6,13 +6,13 @@ package ticket
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // TicketTransferListReader is a Reader for the TicketTransferList structure.
@@ -75,7 +75,7 @@ TicketTransferListOK describes a response with status code 200, with default hea
 Success
 */
 type TicketTransferListOK struct {
-	Payload []*TicketTransferListOKBodyItems0
+	Payload []*models.TransferList
 }
 
 // IsSuccess returns true when this ticket transfer list o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *TicketTransferListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListOK  %+v", 200, o.Payload)
 }
 
-func (o *TicketTransferListOK) GetPayload() []*TicketTransferListOKBodyItems0 {
+func (o *TicketTransferListOK) GetPayload() []*models.TransferList {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ TicketTransferListBadRequest describes a response with status code 400, with def
 Bad Request
 */
 type TicketTransferListBadRequest struct {
-	Payload []*TicketTransferListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this ticket transfer list bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *TicketTransferListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *TicketTransferListBadRequest) GetPayload() []*TicketTransferListBadRequestBodyItems0 {
+func (o *TicketTransferListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ TicketTransferListUnauthorized describes a response with status code 401, with d
 Unauthorized
 */
 type TicketTransferListUnauthorized struct {
-	Payload *TicketTransferListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket transfer list unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *TicketTransferListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *TicketTransferListUnauthorized) GetPayload() *TicketTransferListUnauthorizedBody {
+func (o *TicketTransferListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketTransferListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(TicketTransferListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ TicketTransferListForbidden describes a response with status code 403, with defa
 Forbidden
 */
 type TicketTransferListForbidden struct {
-	Payload *TicketTransferListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket transfer list forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *TicketTransferListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *TicketTransferListForbidden) GetPayload() *TicketTransferListForbiddenBody {
+func (o *TicketTransferListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketTransferListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(TicketTransferListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ TicketTransferListNotFound describes a response with status code 404, with defau
 Not Found
 */
 type TicketTransferListNotFound struct {
-	Payload *TicketTransferListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ticket transfer list not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *TicketTransferListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Ticket/transfer/list][%d] ticketTransferListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *TicketTransferListNotFound) GetPayload() *TicketTransferListNotFoundBody {
+func (o *TicketTransferListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *TicketTransferListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(TicketTransferListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *TicketTransferListInternalServerError) String() string {
 
 func (o *TicketTransferListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-TicketTransferListBadRequestBodyItems0 ticket transfer list bad request body items0
-swagger:model TicketTransferListBadRequestBodyItems0
-*/
-type TicketTransferListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this ticket transfer list bad request body items0
-func (o *TicketTransferListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ticket transfer list bad request body items0 based on context it is used
-func (o *TicketTransferListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketTransferListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketTransferListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res TicketTransferListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-TicketTransferListForbiddenBody ticket transfer list forbidden body
-swagger:model TicketTransferListForbiddenBody
-*/
-type TicketTransferListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ticket transfer list forbidden body
-func (o *TicketTransferListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ticket transfer list forbidden body based on context it is used
-func (o *TicketTransferListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketTransferListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketTransferListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res TicketTransferListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-TicketTransferListNotFoundBody ticket transfer list not found body
-swagger:model TicketTransferListNotFoundBody
-*/
-type TicketTransferListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ticket transfer list not found body
-func (o *TicketTransferListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ticket transfer list not found body based on context it is used
-func (o *TicketTransferListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketTransferListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketTransferListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res TicketTransferListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-TicketTransferListOKBodyItems0 ticket transfer list o k body items0
-swagger:model TicketTransferListOKBodyItems0
-*/
-type TicketTransferListOKBodyItems0 struct {
-
-	// user Id
-	UserID string `json:"userId,omitempty"`
-
-	// user name
-	UserName string `json:"userName,omitempty"`
-}
-
-// Validate validates this ticket transfer list o k body items0
-func (o *TicketTransferListOKBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ticket transfer list o k body items0 based on context it is used
-func (o *TicketTransferListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketTransferListOKBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketTransferListOKBodyItems0) UnmarshalBinary(b []byte) error {
-	var res TicketTransferListOKBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-TicketTransferListUnauthorizedBody ticket transfer list unauthorized body
-swagger:model TicketTransferListUnauthorizedBody
-*/
-type TicketTransferListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ticket transfer list unauthorized body
-func (o *TicketTransferListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ticket transfer list unauthorized body based on context it is used
-func (o *TicketTransferListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *TicketTransferListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *TicketTransferListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res TicketTransferListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

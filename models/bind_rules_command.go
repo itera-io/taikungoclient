@@ -23,7 +23,7 @@ type BindRulesCommand struct {
 	OrganizationID int32 `json:"organizationId,omitempty"`
 
 	// rules
-	Rules []*BindRulesCommandRulesItems0 `json:"rules"`
+	Rules []*BindRulesToOrganizationDto `json:"rules"`
 }
 
 // Validate validates this bind rules command
@@ -111,52 +111,6 @@ func (m *BindRulesCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BindRulesCommand) UnmarshalBinary(b []byte) error {
 	var res BindRulesCommand
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// BindRulesCommandRulesItems0 bind rules command rules items0
-//
-// swagger:model BindRulesCommandRulesItems0
-type BindRulesCommandRulesItems0 struct {
-
-	// discount rate
-	DiscountRate float64 `json:"discountRate"`
-
-	// is bound
-	IsBound bool `json:"isBound"`
-
-	// prometheus rule Id
-	PrometheusRuleID int32 `json:"prometheusRuleId,omitempty"`
-
-	// prometheus rule name
-	PrometheusRuleName string `json:"prometheusRuleName,omitempty"`
-}
-
-// Validate validates this bind rules command rules items0
-func (m *BindRulesCommandRulesItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this bind rules command rules items0 based on context it is used
-func (m *BindRulesCommandRulesItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *BindRulesCommandRulesItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *BindRulesCommandRulesItems0) UnmarshalBinary(b []byte) error {
-	var res BindRulesCommandRulesItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

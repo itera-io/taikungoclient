@@ -6,13 +6,13 @@ package azure
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AzureCreateReader is a Reader for the AzureCreate structure.
@@ -75,7 +75,7 @@ AzureCreateOK describes a response with status code 200, with default header val
 Success
 */
 type AzureCreateOK struct {
-	Payload *AzureCreateOKBody
+	Payload *models.APIResponse
 }
 
 // IsSuccess returns true when this azure create o k response has a 2xx status code
@@ -111,13 +111,13 @@ func (o *AzureCreateOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateOK  %+v", 200, o.Payload)
 }
 
-func (o *AzureCreateOK) GetPayload() *AzureCreateOKBody {
+func (o *AzureCreateOK) GetPayload() *models.APIResponse {
 	return o.Payload
 }
 
 func (o *AzureCreateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureCreateOKBody)
+	o.Payload = new(models.APIResponse)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -138,7 +138,7 @@ AzureCreateBadRequest describes a response with status code 400, with default he
 Bad Request
 */
 type AzureCreateBadRequest struct {
-	Payload []*AzureCreateBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this azure create bad request response has a 2xx status code
@@ -174,7 +174,7 @@ func (o *AzureCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AzureCreateBadRequest) GetPayload() []*AzureCreateBadRequestBodyItems0 {
+func (o *AzureCreateBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +199,7 @@ AzureCreateUnauthorized describes a response with status code 401, with default 
 Unauthorized
 */
 type AzureCreateUnauthorized struct {
-	Payload *AzureCreateUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure create unauthorized response has a 2xx status code
@@ -235,13 +235,13 @@ func (o *AzureCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AzureCreateUnauthorized) GetPayload() *AzureCreateUnauthorizedBody {
+func (o *AzureCreateUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureCreateUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +262,7 @@ AzureCreateForbidden describes a response with status code 403, with default hea
 Forbidden
 */
 type AzureCreateForbidden struct {
-	Payload *AzureCreateForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure create forbidden response has a 2xx status code
@@ -298,13 +298,13 @@ func (o *AzureCreateForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AzureCreateForbidden) GetPayload() *AzureCreateForbiddenBody {
+func (o *AzureCreateForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureCreateForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureCreateForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +325,7 @@ AzureCreateNotFound describes a response with status code 404, with default head
 Not Found
 */
 type AzureCreateNotFound struct {
-	Payload *AzureCreateNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this azure create not found response has a 2xx status code
@@ -361,13 +361,13 @@ func (o *AzureCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Azure/create][%d] azureCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AzureCreateNotFound) GetPayload() *AzureCreateNotFoundBody {
+func (o *AzureCreateNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AzureCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AzureCreateNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,305 +425,5 @@ func (o *AzureCreateInternalServerError) String() string {
 
 func (o *AzureCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AzureCreateBadRequestBodyItems0 azure create bad request body items0
-swagger:model AzureCreateBadRequestBodyItems0
-*/
-type AzureCreateBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this azure create bad request body items0
-func (o *AzureCreateBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure create bad request body items0 based on context it is used
-func (o *AzureCreateBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureCreateBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureCreateBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AzureCreateBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureCreateBody azure create body
-swagger:model AzureCreateBody
-*/
-type AzureCreateBody struct {
-
-	// az count
-	AzCount int32 `json:"azCount,omitempty"`
-
-	// azure client Id
-	AzureClientID string `json:"azureClientId,omitempty"`
-
-	// azure client secret
-	AzureClientSecret string `json:"azureClientSecret,omitempty"`
-
-	// azure location
-	AzureLocation string `json:"azureLocation,omitempty"`
-
-	// azure subscription Id
-	AzureSubscriptionID string `json:"azureSubscriptionId,omitempty"`
-
-	// azure tenant Id
-	AzureTenantID string `json:"azureTenantId,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-}
-
-// Validate validates this azure create body
-func (o *AzureCreateBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure create body based on context it is used
-func (o *AzureCreateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureCreateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureCreateBody) UnmarshalBinary(b []byte) error {
-	var res AzureCreateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureCreateForbiddenBody azure create forbidden body
-swagger:model AzureCreateForbiddenBody
-*/
-type AzureCreateForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure create forbidden body
-func (o *AzureCreateForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure create forbidden body based on context it is used
-func (o *AzureCreateForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureCreateForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureCreateForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AzureCreateForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureCreateNotFoundBody azure create not found body
-swagger:model AzureCreateNotFoundBody
-*/
-type AzureCreateNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure create not found body
-func (o *AzureCreateNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure create not found body based on context it is used
-func (o *AzureCreateNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureCreateNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureCreateNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AzureCreateNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureCreateOKBody azure create o k body
-swagger:model AzureCreateOKBody
-*/
-type AzureCreateOKBody struct {
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// is error
-	IsError bool `json:"isError"`
-
-	// message
-	Message string `json:"message,omitempty"`
-
-	// result
-	Result interface{} `json:"result,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-}
-
-// Validate validates this azure create o k body
-func (o *AzureCreateOKBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure create o k body based on context it is used
-func (o *AzureCreateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureCreateOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureCreateOKBody) UnmarshalBinary(b []byte) error {
-	var res AzureCreateOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AzureCreateUnauthorizedBody azure create unauthorized body
-swagger:model AzureCreateUnauthorizedBody
-*/
-type AzureCreateUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this azure create unauthorized body
-func (o *AzureCreateUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this azure create unauthorized body based on context it is used
-func (o *AzureCreateUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AzureCreateUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AzureCreateUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AzureCreateUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

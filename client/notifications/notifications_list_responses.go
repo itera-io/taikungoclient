@@ -6,15 +6,13 @@ package notifications
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NotificationsListReader is a Reader for the NotificationsList structure.
@@ -77,7 +75,7 @@ NotificationsListOK describes a response with status code 200, with default head
 Success
 */
 type NotificationsListOK struct {
-	Payload *NotificationsListOKBody
+	Payload *models.NotificationHistory
 }
 
 // IsSuccess returns true when this notifications list o k response has a 2xx status code
@@ -113,13 +111,13 @@ func (o *NotificationsListOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListOK  %+v", 200, o.Payload)
 }
 
-func (o *NotificationsListOK) GetPayload() *NotificationsListOKBody {
+func (o *NotificationsListOK) GetPayload() *models.NotificationHistory {
 	return o.Payload
 }
 
 func (o *NotificationsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(NotificationsListOKBody)
+	o.Payload = new(models.NotificationHistory)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -140,7 +138,7 @@ NotificationsListBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type NotificationsListBadRequest struct {
-	Payload []*NotificationsListBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this notifications list bad request response has a 2xx status code
@@ -176,7 +174,7 @@ func (o *NotificationsListBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *NotificationsListBadRequest) GetPayload() []*NotificationsListBadRequestBodyItems0 {
+func (o *NotificationsListBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -201,7 +199,7 @@ NotificationsListUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type NotificationsListUnauthorized struct {
-	Payload *NotificationsListUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this notifications list unauthorized response has a 2xx status code
@@ -237,13 +235,13 @@ func (o *NotificationsListUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *NotificationsListUnauthorized) GetPayload() *NotificationsListUnauthorizedBody {
+func (o *NotificationsListUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NotificationsListUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(NotificationsListUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -264,7 +262,7 @@ NotificationsListForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type NotificationsListForbidden struct {
-	Payload *NotificationsListForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this notifications list forbidden response has a 2xx status code
@@ -300,13 +298,13 @@ func (o *NotificationsListForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListForbidden  %+v", 403, o.Payload)
 }
 
-func (o *NotificationsListForbidden) GetPayload() *NotificationsListForbiddenBody {
+func (o *NotificationsListForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NotificationsListForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(NotificationsListForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -327,7 +325,7 @@ NotificationsListNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type NotificationsListNotFound struct {
-	Payload *NotificationsListNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this notifications list not found response has a 2xx status code
@@ -363,13 +361,13 @@ func (o *NotificationsListNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Notifications][%d] notificationsListNotFound  %+v", 404, o.Payload)
 }
 
-func (o *NotificationsListNotFound) GetPayload() *NotificationsListNotFoundBody {
+func (o *NotificationsListNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *NotificationsListNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(NotificationsListNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -427,360 +425,5 @@ func (o *NotificationsListInternalServerError) String() string {
 
 func (o *NotificationsListInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-NotificationsListBadRequestBodyItems0 notifications list bad request body items0
-swagger:model NotificationsListBadRequestBodyItems0
-*/
-type NotificationsListBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this notifications list bad request body items0
-func (o *NotificationsListBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this notifications list bad request body items0 based on context it is used
-func (o *NotificationsListBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NotificationsListBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NotificationsListBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res NotificationsListBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NotificationsListForbiddenBody notifications list forbidden body
-swagger:model NotificationsListForbiddenBody
-*/
-type NotificationsListForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this notifications list forbidden body
-func (o *NotificationsListForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this notifications list forbidden body based on context it is used
-func (o *NotificationsListForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NotificationsListForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NotificationsListForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res NotificationsListForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NotificationsListNotFoundBody notifications list not found body
-swagger:model NotificationsListNotFoundBody
-*/
-type NotificationsListNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this notifications list not found body
-func (o *NotificationsListNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this notifications list not found body based on context it is used
-func (o *NotificationsListNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NotificationsListNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NotificationsListNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res NotificationsListNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NotificationsListOKBody notifications list o k body
-swagger:model NotificationsListOKBody
-*/
-type NotificationsListOKBody struct {
-
-	// data
-	Data []*NotificationsListOKBodyDataItems0 `json:"data"`
-
-	// total count
-	TotalCount int32 `json:"totalCount,omitempty"`
-}
-
-// Validate validates this notifications list o k body
-func (o *NotificationsListOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateData(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *NotificationsListOKBody) validateData(formats strfmt.Registry) error {
-	if swag.IsZero(o.Data) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Data); i++ {
-		if swag.IsZero(o.Data[i]) { // not required
-			continue
-		}
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("notificationsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("notificationsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this notifications list o k body based on the context it is used
-func (o *NotificationsListOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateData(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *NotificationsListOKBody) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Data); i++ {
-
-		if o.Data[i] != nil {
-			if err := o.Data[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("notificationsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("notificationsListOK" + "." + "data" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NotificationsListOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NotificationsListOKBody) UnmarshalBinary(b []byte) error {
-	var res NotificationsListOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NotificationsListOKBodyDataItems0 notifications list o k body data items0
-swagger:model NotificationsListOKBodyDataItems0
-*/
-type NotificationsListOKBodyDataItems0 struct {
-
-	// action message
-	ActionMessage string `json:"actionMessage,omitempty"`
-
-	// action status
-	ActionStatus string `json:"actionStatus,omitempty"`
-
-	// category
-	Category string `json:"category,omitempty"`
-
-	// created at
-	CreatedAt string `json:"createdAt,omitempty"`
-
-	// is deleted
-	IsDeleted bool `json:"isDeleted"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
-
-	// username
-	Username string `json:"username,omitempty"`
-}
-
-// Validate validates this notifications list o k body data items0
-func (o *NotificationsListOKBodyDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this notifications list o k body data items0 based on context it is used
-func (o *NotificationsListOKBodyDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NotificationsListOKBodyDataItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NotificationsListOKBodyDataItems0) UnmarshalBinary(b []byte) error {
-	var res NotificationsListOKBodyDataItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-NotificationsListUnauthorizedBody notifications list unauthorized body
-swagger:model NotificationsListUnauthorizedBody
-*/
-type NotificationsListUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this notifications list unauthorized body
-func (o *NotificationsListUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this notifications list unauthorized body based on context it is used
-func (o *NotificationsListUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *NotificationsListUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *NotificationsListUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res NotificationsListUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCheckerCronParams creates a new CheckerCronParams object,
@@ -62,7 +64,7 @@ CheckerCronParams contains all the parameters to send to the API endpoint
 type CheckerCronParams struct {
 
 	// Body.
-	Body CheckerCronBody
+	Body *models.CronJobCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CheckerCronParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the checker cron params
-func (o *CheckerCronParams) WithBody(body CheckerCronBody) *CheckerCronParams {
+func (o *CheckerCronParams) WithBody(body *models.CronJobCommand) *CheckerCronParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the checker cron params
-func (o *CheckerCronParams) SetBody(body CheckerCronBody) {
+func (o *CheckerCronParams) SetBody(body *models.CronJobCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *CheckerCronParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

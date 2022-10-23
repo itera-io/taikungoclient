@@ -6,13 +6,13 @@ package payment
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PaymentPayInvoiceReader is a Reader for the PaymentPayInvoice structure.
@@ -126,7 +126,7 @@ PaymentPayInvoiceBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type PaymentPayInvoiceBadRequest struct {
-	Payload []*PaymentPayInvoiceBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this payment pay invoice bad request response has a 2xx status code
@@ -162,7 +162,7 @@ func (o *PaymentPayInvoiceBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentPayInvoiceBadRequest) GetPayload() []*PaymentPayInvoiceBadRequestBodyItems0 {
+func (o *PaymentPayInvoiceBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -187,7 +187,7 @@ PaymentPayInvoiceUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type PaymentPayInvoiceUnauthorized struct {
-	Payload *PaymentPayInvoiceUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment pay invoice unauthorized response has a 2xx status code
@@ -223,13 +223,13 @@ func (o *PaymentPayInvoiceUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentPayInvoiceUnauthorized) GetPayload() *PaymentPayInvoiceUnauthorizedBody {
+func (o *PaymentPayInvoiceUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentPayInvoiceUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PaymentPayInvoiceUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -250,7 +250,7 @@ PaymentPayInvoiceForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type PaymentPayInvoiceForbidden struct {
-	Payload *PaymentPayInvoiceForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment pay invoice forbidden response has a 2xx status code
@@ -286,13 +286,13 @@ func (o *PaymentPayInvoiceForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentPayInvoiceForbidden) GetPayload() *PaymentPayInvoiceForbiddenBody {
+func (o *PaymentPayInvoiceForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentPayInvoiceForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PaymentPayInvoiceForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -313,7 +313,7 @@ PaymentPayInvoiceNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type PaymentPayInvoiceNotFound struct {
-	Payload *PaymentPayInvoiceNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment pay invoice not found response has a 2xx status code
@@ -349,13 +349,13 @@ func (o *PaymentPayInvoiceNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/pay][%d] paymentPayInvoiceNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentPayInvoiceNotFound) GetPayload() *PaymentPayInvoiceNotFoundBody {
+func (o *PaymentPayInvoiceNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentPayInvoiceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PaymentPayInvoiceNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -413,234 +413,5 @@ func (o *PaymentPayInvoiceInternalServerError) String() string {
 
 func (o *PaymentPayInvoiceInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PaymentPayInvoiceBadRequestBodyItems0 payment pay invoice bad request body items0
-swagger:model PaymentPayInvoiceBadRequestBodyItems0
-*/
-type PaymentPayInvoiceBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this payment pay invoice bad request body items0
-func (o *PaymentPayInvoiceBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment pay invoice bad request body items0 based on context it is used
-func (o *PaymentPayInvoiceBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentPayInvoiceBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentPayInvoiceBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PaymentPayInvoiceBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PaymentPayInvoiceBody payment pay invoice body
-swagger:model PaymentPayInvoiceBody
-*/
-type PaymentPayInvoiceBody struct {
-
-	// invoice Id
-	InvoiceID string `json:"invoiceId,omitempty"`
-}
-
-// Validate validates this payment pay invoice body
-func (o *PaymentPayInvoiceBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment pay invoice body based on context it is used
-func (o *PaymentPayInvoiceBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentPayInvoiceBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentPayInvoiceBody) UnmarshalBinary(b []byte) error {
-	var res PaymentPayInvoiceBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PaymentPayInvoiceForbiddenBody payment pay invoice forbidden body
-swagger:model PaymentPayInvoiceForbiddenBody
-*/
-type PaymentPayInvoiceForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this payment pay invoice forbidden body
-func (o *PaymentPayInvoiceForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment pay invoice forbidden body based on context it is used
-func (o *PaymentPayInvoiceForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentPayInvoiceForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentPayInvoiceForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PaymentPayInvoiceForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PaymentPayInvoiceNotFoundBody payment pay invoice not found body
-swagger:model PaymentPayInvoiceNotFoundBody
-*/
-type PaymentPayInvoiceNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this payment pay invoice not found body
-func (o *PaymentPayInvoiceNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment pay invoice not found body based on context it is used
-func (o *PaymentPayInvoiceNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentPayInvoiceNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentPayInvoiceNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PaymentPayInvoiceNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PaymentPayInvoiceUnauthorizedBody payment pay invoice unauthorized body
-swagger:model PaymentPayInvoiceUnauthorizedBody
-*/
-type PaymentPayInvoiceUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this payment pay invoice unauthorized body
-func (o *PaymentPayInvoiceUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment pay invoice unauthorized body based on context it is used
-func (o *PaymentPayInvoiceUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentPayInvoiceUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentPayInvoiceUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PaymentPayInvoiceUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

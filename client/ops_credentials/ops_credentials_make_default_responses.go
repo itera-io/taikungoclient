@@ -6,13 +6,13 @@ package ops_credentials
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // OpsCredentialsMakeDefaultReader is a Reader for the OpsCredentialsMakeDefault structure.
@@ -75,7 +75,7 @@ OpsCredentialsMakeDefaultOK describes a response with status code 200, with defa
 Success
 */
 type OpsCredentialsMakeDefaultOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this ops credentials make default o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *OpsCredentialsMakeDefaultOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultOK  %+v", 200, o.Payload)
 }
 
-func (o *OpsCredentialsMakeDefaultOK) GetPayload() interface{} {
+func (o *OpsCredentialsMakeDefaultOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ OpsCredentialsMakeDefaultBadRequest describes a response with status code 400, w
 Bad Request
 */
 type OpsCredentialsMakeDefaultBadRequest struct {
-	Payload []*OpsCredentialsMakeDefaultBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this ops credentials make default bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *OpsCredentialsMakeDefaultBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *OpsCredentialsMakeDefaultBadRequest) GetPayload() []*OpsCredentialsMakeDefaultBadRequestBodyItems0 {
+func (o *OpsCredentialsMakeDefaultBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ OpsCredentialsMakeDefaultUnauthorized describes a response with status code 401,
 Unauthorized
 */
 type OpsCredentialsMakeDefaultUnauthorized struct {
-	Payload *OpsCredentialsMakeDefaultUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials make default unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *OpsCredentialsMakeDefaultUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *OpsCredentialsMakeDefaultUnauthorized) GetPayload() *OpsCredentialsMakeDefaultUnauthorizedBody {
+func (o *OpsCredentialsMakeDefaultUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsMakeDefaultUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpsCredentialsMakeDefaultUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ OpsCredentialsMakeDefaultForbidden describes a response with status code 403, wi
 Forbidden
 */
 type OpsCredentialsMakeDefaultForbidden struct {
-	Payload *OpsCredentialsMakeDefaultForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials make default forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *OpsCredentialsMakeDefaultForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultForbidden  %+v", 403, o.Payload)
 }
 
-func (o *OpsCredentialsMakeDefaultForbidden) GetPayload() *OpsCredentialsMakeDefaultForbiddenBody {
+func (o *OpsCredentialsMakeDefaultForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsMakeDefaultForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpsCredentialsMakeDefaultForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ OpsCredentialsMakeDefaultNotFound describes a response with status code 404, wit
 Not Found
 */
 type OpsCredentialsMakeDefaultNotFound struct {
-	Payload *OpsCredentialsMakeDefaultNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this ops credentials make default not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *OpsCredentialsMakeDefaultNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/OpsCredentials/makedefault][%d] opsCredentialsMakeDefaultNotFound  %+v", 404, o.Payload)
 }
 
-func (o *OpsCredentialsMakeDefaultNotFound) GetPayload() *OpsCredentialsMakeDefaultNotFoundBody {
+func (o *OpsCredentialsMakeDefaultNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *OpsCredentialsMakeDefaultNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(OpsCredentialsMakeDefaultNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *OpsCredentialsMakeDefaultInternalServerError) String() string {
 
 func (o *OpsCredentialsMakeDefaultInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-OpsCredentialsMakeDefaultBadRequestBodyItems0 ops credentials make default bad request body items0
-swagger:model OpsCredentialsMakeDefaultBadRequestBodyItems0
-*/
-type OpsCredentialsMakeDefaultBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this ops credentials make default bad request body items0
-func (o *OpsCredentialsMakeDefaultBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ops credentials make default bad request body items0 based on context it is used
-func (o *OpsCredentialsMakeDefaultBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpsCredentialsMakeDefaultBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpsCredentialsMakeDefaultBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res OpsCredentialsMakeDefaultBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpsCredentialsMakeDefaultBody ops credentials make default body
-swagger:model OpsCredentialsMakeDefaultBody
-*/
-type OpsCredentialsMakeDefaultBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-}
-
-// Validate validates this ops credentials make default body
-func (o *OpsCredentialsMakeDefaultBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ops credentials make default body based on context it is used
-func (o *OpsCredentialsMakeDefaultBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpsCredentialsMakeDefaultBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpsCredentialsMakeDefaultBody) UnmarshalBinary(b []byte) error {
-	var res OpsCredentialsMakeDefaultBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpsCredentialsMakeDefaultForbiddenBody ops credentials make default forbidden body
-swagger:model OpsCredentialsMakeDefaultForbiddenBody
-*/
-type OpsCredentialsMakeDefaultForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ops credentials make default forbidden body
-func (o *OpsCredentialsMakeDefaultForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ops credentials make default forbidden body based on context it is used
-func (o *OpsCredentialsMakeDefaultForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpsCredentialsMakeDefaultForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpsCredentialsMakeDefaultForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res OpsCredentialsMakeDefaultForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpsCredentialsMakeDefaultNotFoundBody ops credentials make default not found body
-swagger:model OpsCredentialsMakeDefaultNotFoundBody
-*/
-type OpsCredentialsMakeDefaultNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ops credentials make default not found body
-func (o *OpsCredentialsMakeDefaultNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ops credentials make default not found body based on context it is used
-func (o *OpsCredentialsMakeDefaultNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpsCredentialsMakeDefaultNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpsCredentialsMakeDefaultNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res OpsCredentialsMakeDefaultNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-OpsCredentialsMakeDefaultUnauthorizedBody ops credentials make default unauthorized body
-swagger:model OpsCredentialsMakeDefaultUnauthorizedBody
-*/
-type OpsCredentialsMakeDefaultUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this ops credentials make default unauthorized body
-func (o *OpsCredentialsMakeDefaultUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this ops credentials make default unauthorized body based on context it is used
-func (o *OpsCredentialsMakeDefaultUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *OpsCredentialsMakeDefaultUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *OpsCredentialsMakeDefaultUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res OpsCredentialsMakeDefaultUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

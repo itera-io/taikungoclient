@@ -6,16 +6,13 @@ package stand_alone
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // StandAloneResetReader is a Reader for the StandAloneReset structure.
@@ -78,7 +75,7 @@ StandAloneResetOK describes a response with status code 200, with default header
 Success
 */
 type StandAloneResetOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this stand alone reset o k response has a 2xx status code
@@ -114,7 +111,7 @@ func (o *StandAloneResetOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetOK  %+v", 200, o.Payload)
 }
 
-func (o *StandAloneResetOK) GetPayload() interface{} {
+func (o *StandAloneResetOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -139,7 +136,7 @@ StandAloneResetBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type StandAloneResetBadRequest struct {
-	Payload []*StandAloneResetBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this stand alone reset bad request response has a 2xx status code
@@ -175,7 +172,7 @@ func (o *StandAloneResetBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *StandAloneResetBadRequest) GetPayload() []*StandAloneResetBadRequestBodyItems0 {
+func (o *StandAloneResetBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -200,7 +197,7 @@ StandAloneResetUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type StandAloneResetUnauthorized struct {
-	Payload *StandAloneResetUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone reset unauthorized response has a 2xx status code
@@ -236,13 +233,13 @@ func (o *StandAloneResetUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *StandAloneResetUnauthorized) GetPayload() *StandAloneResetUnauthorizedBody {
+func (o *StandAloneResetUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneResetUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneResetUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -263,7 +260,7 @@ StandAloneResetForbidden describes a response with status code 403, with default
 Forbidden
 */
 type StandAloneResetForbidden struct {
-	Payload *StandAloneResetForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone reset forbidden response has a 2xx status code
@@ -299,13 +296,13 @@ func (o *StandAloneResetForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetForbidden  %+v", 403, o.Payload)
 }
 
-func (o *StandAloneResetForbidden) GetPayload() *StandAloneResetForbiddenBody {
+func (o *StandAloneResetForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneResetForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneResetForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -326,7 +323,7 @@ StandAloneResetNotFound describes a response with status code 404, with default 
 Not Found
 */
 type StandAloneResetNotFound struct {
-	Payload *StandAloneResetNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this stand alone reset not found response has a 2xx status code
@@ -362,13 +359,13 @@ func (o *StandAloneResetNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/StandAlone/reset][%d] standAloneResetNotFound  %+v", 404, o.Payload)
 }
 
-func (o *StandAloneResetNotFound) GetPayload() *StandAloneResetNotFoundBody {
+func (o *StandAloneResetNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *StandAloneResetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(StandAloneResetNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -426,283 +423,5 @@ func (o *StandAloneResetInternalServerError) String() string {
 
 func (o *StandAloneResetInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-StandAloneResetBadRequestBodyItems0 stand alone reset bad request body items0
-swagger:model StandAloneResetBadRequestBodyItems0
-*/
-type StandAloneResetBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this stand alone reset bad request body items0
-func (o *StandAloneResetBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone reset bad request body items0 based on context it is used
-func (o *StandAloneResetBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneResetBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneResetBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res StandAloneResetBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneResetBody stand alone reset body
-swagger:model StandAloneResetBody
-*/
-type StandAloneResetBody struct {
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// status
-	// Enum: [100 200 300 400 500 600]
-	Status int32 `json:"status,omitempty"`
-
-	// vm ids
-	VMIds []int32 `json:"vmIds"`
-}
-
-// Validate validates this stand alone reset body
-func (o *StandAloneResetBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateStatus(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-var standAloneResetBodyTypeStatusPropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200,300,400,500,600]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		standAloneResetBodyTypeStatusPropEnum = append(standAloneResetBodyTypeStatusPropEnum, v)
-	}
-}
-
-// prop value enum
-func (o *StandAloneResetBody) validateStatusEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, standAloneResetBodyTypeStatusPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *StandAloneResetBody) validateStatus(formats strfmt.Registry) error {
-	if swag.IsZero(o.Status) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := o.validateStatusEnum("body"+"."+"status", "body", o.Status); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this stand alone reset body based on context it is used
-func (o *StandAloneResetBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneResetBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneResetBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneResetBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneResetForbiddenBody stand alone reset forbidden body
-swagger:model StandAloneResetForbiddenBody
-*/
-type StandAloneResetForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone reset forbidden body
-func (o *StandAloneResetForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone reset forbidden body based on context it is used
-func (o *StandAloneResetForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneResetForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneResetForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneResetForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneResetNotFoundBody stand alone reset not found body
-swagger:model StandAloneResetNotFoundBody
-*/
-type StandAloneResetNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone reset not found body
-func (o *StandAloneResetNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone reset not found body based on context it is used
-func (o *StandAloneResetNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneResetNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneResetNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneResetNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-StandAloneResetUnauthorizedBody stand alone reset unauthorized body
-swagger:model StandAloneResetUnauthorizedBody
-*/
-type StandAloneResetUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this stand alone reset unauthorized body
-func (o *StandAloneResetUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this stand alone reset unauthorized body based on context it is used
-func (o *StandAloneResetUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *StandAloneResetUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *StandAloneResetUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res StandAloneResetUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

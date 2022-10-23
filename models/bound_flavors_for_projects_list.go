@@ -20,7 +20,7 @@ import (
 type BoundFlavorsForProjectsList struct {
 
 	// data
-	Data []*BoundFlavorsForProjectsListDataItems0 `json:"data"`
+	Data []*BoundFlavorsForProjectsListDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,88 +111,6 @@ func (m *BoundFlavorsForProjectsList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BoundFlavorsForProjectsList) UnmarshalBinary(b []byte) error {
 	var res BoundFlavorsForProjectsList
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// BoundFlavorsForProjectsListDataItems0 bound flavors for projects list data items0
-//
-// swagger:model BoundFlavorsForProjectsListDataItems0
-type BoundFlavorsForProjectsListDataItems0 struct {
-
-	// cpu
-	CPU int32 `json:"cpu,omitempty"`
-
-	// has linux spot price
-	HasLinuxSpotPrice bool `json:"hasLinuxSpotPrice"`
-
-	// has windows spot price
-	HasWindowsSpotPrice bool `json:"hasWindowsSpotPrice"`
-
-	// id
-	ID int32 `json:"id,omitempty"`
-
-	// is aws
-	IsAws bool `json:"isAws"`
-
-	// is azure
-	IsAzure bool `json:"isAzure"`
-
-	// is openstack
-	IsOpenstack bool `json:"isOpenstack"`
-
-	// linux price
-	LinuxPrice string `json:"linuxPrice,omitempty"`
-
-	// linux spot price
-	LinuxSpotPrice string `json:"linuxSpotPrice,omitempty"`
-
-	// max data disk count
-	MaxDataDiskCount int32 `json:"maxDataDiskCount,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// project name
-	ProjectName string `json:"projectName,omitempty"`
-
-	// ram
-	RAM int64 `json:"ram,omitempty"`
-
-	// windows price
-	WindowsPrice string `json:"windowsPrice,omitempty"`
-
-	// windows spot price
-	WindowsSpotPrice string `json:"windowsSpotPrice,omitempty"`
-}
-
-// Validate validates this bound flavors for projects list data items0
-func (m *BoundFlavorsForProjectsListDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this bound flavors for projects list data items0 based on context it is used
-func (m *BoundFlavorsForProjectsListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *BoundFlavorsForProjectsListDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *BoundFlavorsForProjectsListDataItems0) UnmarshalBinary(b []byte) error {
-	var res BoundFlavorsForProjectsListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

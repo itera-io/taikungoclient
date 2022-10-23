@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAlertingIntegrationsCreateParams creates a new AlertingIntegrationsCreateParams object,
@@ -62,7 +64,7 @@ AlertingIntegrationsCreateParams contains all the parameters to send to the API 
 type AlertingIntegrationsCreateParams struct {
 
 	// Body.
-	Body AlertingIntegrationsCreateBody
+	Body *models.CreateAlertingIntegrationCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *AlertingIntegrationsCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the alerting integrations create params
-func (o *AlertingIntegrationsCreateParams) WithBody(body AlertingIntegrationsCreateBody) *AlertingIntegrationsCreateParams {
+func (o *AlertingIntegrationsCreateParams) WithBody(body *models.CreateAlertingIntegrationCommand) *AlertingIntegrationsCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the alerting integrations create params
-func (o *AlertingIntegrationsCreateParams) SetBody(body AlertingIntegrationsCreateBody) {
+func (o *AlertingIntegrationsCreateParams) SetBody(body *models.CreateAlertingIntegrationCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *AlertingIntegrationsCreateParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

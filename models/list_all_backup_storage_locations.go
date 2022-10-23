@@ -12,7 +12,6 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // ListAllBackupStorageLocations list all backup storage locations
@@ -21,7 +20,7 @@ import (
 type ListAllBackupStorageLocations struct {
 
 	// data
-	Data []*ListAllBackupStorageLocationsDataItems0 `json:"data"`
+	Data []*BackupStorageLocationDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -112,103 +111,6 @@ func (m *ListAllBackupStorageLocations) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ListAllBackupStorageLocations) UnmarshalBinary(b []byte) error {
 	var res ListAllBackupStorageLocations
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// ListAllBackupStorageLocationsDataItems0 list all backup storage locations data items0
-//
-// swagger:model ListAllBackupStorageLocationsDataItems0
-type ListAllBackupStorageLocationsDataItems0 struct {
-
-	// access mode
-	AccessMode string `json:"accessMode,omitempty"`
-
-	// backup credential Id
-	BackupCredentialID int32 `json:"backupCredentialId,omitempty"`
-
-	// created at
-	// Format: date-time
-	CreatedAt *strfmt.DateTime `json:"createdAt,omitempty"`
-
-	// last validated
-	// Format: date-time
-	LastValidated *strfmt.DateTime `json:"lastValidated,omitempty"`
-
-	// metadata name
-	MetadataName string `json:"metadataName,omitempty"`
-
-	// namespace
-	Namespace string `json:"namespace,omitempty"`
-
-	// phase
-	Phase string `json:"phase,omitempty"`
-
-	// provider
-	Provider string `json:"provider,omitempty"`
-}
-
-// Validate validates this list all backup storage locations data items0
-func (m *ListAllBackupStorageLocationsDataItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateCreatedAt(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateLastValidated(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *ListAllBackupStorageLocationsDataItems0) validateCreatedAt(formats strfmt.Registry) error {
-	if swag.IsZero(m.CreatedAt) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("createdAt", "body", "date-time", m.CreatedAt.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *ListAllBackupStorageLocationsDataItems0) validateLastValidated(formats strfmt.Registry) error {
-	if swag.IsZero(m.LastValidated) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("lastValidated", "body", "date-time", m.LastValidated.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this list all backup storage locations data items0 based on context it is used
-func (m *ListAllBackupStorageLocationsDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *ListAllBackupStorageLocationsDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *ListAllBackupStorageLocationsDataItems0) UnmarshalBinary(b []byte) error {
-	var res ListAllBackupStorageLocationsDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

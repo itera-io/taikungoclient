@@ -6,13 +6,13 @@ package payment
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PaymentClearReader is a Reader for the PaymentClear structure.
@@ -75,7 +75,7 @@ PaymentClearOK describes a response with status code 200, with default header va
 Success
 */
 type PaymentClearOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this payment clear o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *PaymentClearOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/clear][%d] paymentClearOK  %+v", 200, o.Payload)
 }
 
-func (o *PaymentClearOK) GetPayload() interface{} {
+func (o *PaymentClearOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ PaymentClearBadRequest describes a response with status code 400, with default h
 Bad Request
 */
 type PaymentClearBadRequest struct {
-	Payload []*PaymentClearBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this payment clear bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *PaymentClearBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/clear][%d] paymentClearBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PaymentClearBadRequest) GetPayload() []*PaymentClearBadRequestBodyItems0 {
+func (o *PaymentClearBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ PaymentClearUnauthorized describes a response with status code 401, with default
 Unauthorized
 */
 type PaymentClearUnauthorized struct {
-	Payload *PaymentClearUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment clear unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *PaymentClearUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/clear][%d] paymentClearUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PaymentClearUnauthorized) GetPayload() *PaymentClearUnauthorizedBody {
+func (o *PaymentClearUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentClearUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PaymentClearUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ PaymentClearForbidden describes a response with status code 403, with default he
 Forbidden
 */
 type PaymentClearForbidden struct {
-	Payload *PaymentClearForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment clear forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *PaymentClearForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/clear][%d] paymentClearForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PaymentClearForbidden) GetPayload() *PaymentClearForbiddenBody {
+func (o *PaymentClearForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentClearForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PaymentClearForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ PaymentClearNotFound describes a response with status code 404, with default hea
 Not Found
 */
 type PaymentClearNotFound struct {
-	Payload *PaymentClearNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this payment clear not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *PaymentClearNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Payment/clear][%d] paymentClearNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PaymentClearNotFound) GetPayload() *PaymentClearNotFoundBody {
+func (o *PaymentClearNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PaymentClearNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PaymentClearNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *PaymentClearInternalServerError) String() string {
 
 func (o *PaymentClearInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PaymentClearBadRequestBodyItems0 payment clear bad request body items0
-swagger:model PaymentClearBadRequestBodyItems0
-*/
-type PaymentClearBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this payment clear bad request body items0
-func (o *PaymentClearBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment clear bad request body items0 based on context it is used
-func (o *PaymentClearBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentClearBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentClearBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PaymentClearBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PaymentClearBody payment clear body
-swagger:model PaymentClearBody
-*/
-type PaymentClearBody struct {
-
-	// uuid
-	UUID string `json:"uuid,omitempty"`
-}
-
-// Validate validates this payment clear body
-func (o *PaymentClearBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment clear body based on context it is used
-func (o *PaymentClearBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentClearBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentClearBody) UnmarshalBinary(b []byte) error {
-	var res PaymentClearBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PaymentClearForbiddenBody payment clear forbidden body
-swagger:model PaymentClearForbiddenBody
-*/
-type PaymentClearForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this payment clear forbidden body
-func (o *PaymentClearForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment clear forbidden body based on context it is used
-func (o *PaymentClearForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentClearForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentClearForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PaymentClearForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PaymentClearNotFoundBody payment clear not found body
-swagger:model PaymentClearNotFoundBody
-*/
-type PaymentClearNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this payment clear not found body
-func (o *PaymentClearNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment clear not found body based on context it is used
-func (o *PaymentClearNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentClearNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentClearNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PaymentClearNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PaymentClearUnauthorizedBody payment clear unauthorized body
-swagger:model PaymentClearUnauthorizedBody
-*/
-type PaymentClearUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this payment clear unauthorized body
-func (o *PaymentClearUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this payment clear unauthorized body based on context it is used
-func (o *PaymentClearUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PaymentClearUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PaymentClearUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PaymentClearUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

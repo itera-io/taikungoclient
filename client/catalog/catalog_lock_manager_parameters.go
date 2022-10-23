@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCatalogLockManagerParams creates a new CatalogLockManagerParams object,
@@ -62,7 +64,7 @@ CatalogLockManagerParams contains all the parameters to send to the API endpoint
 type CatalogLockManagerParams struct {
 
 	// Body.
-	Body CatalogLockManagerBody
+	Body *models.CatalogLockManagementCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CatalogLockManagerParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the catalog lock manager params
-func (o *CatalogLockManagerParams) WithBody(body CatalogLockManagerBody) *CatalogLockManagerParams {
+func (o *CatalogLockManagerParams) WithBody(body *models.CatalogLockManagementCommand) *CatalogLockManagerParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the catalog lock manager params
-func (o *CatalogLockManagerParams) SetBody(body CatalogLockManagerBody) {
+func (o *CatalogLockManagerParams) SetBody(body *models.CatalogLockManagementCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *CatalogLockManagerParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

@@ -6,13 +6,13 @@ package users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // UsersListSelectorReader is a Reader for the UsersListSelector structure.
@@ -75,7 +75,7 @@ UsersListSelectorOK describes a response with status code 200, with default head
 Success
 */
 type UsersListSelectorOK struct {
-	Payload []*UsersListSelectorOKBodyItems0
+	Payload []*models.CommonStringBasedDropdownDto
 }
 
 // IsSuccess returns true when this users list selector o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *UsersListSelectorOK) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorOK  %+v", 200, o.Payload)
 }
 
-func (o *UsersListSelectorOK) GetPayload() []*UsersListSelectorOKBodyItems0 {
+func (o *UsersListSelectorOK) GetPayload() []*models.CommonStringBasedDropdownDto {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ UsersListSelectorBadRequest describes a response with status code 400, with defa
 Bad Request
 */
 type UsersListSelectorBadRequest struct {
-	Payload []*UsersListSelectorBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this users list selector bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *UsersListSelectorBadRequest) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersListSelectorBadRequest) GetPayload() []*UsersListSelectorBadRequestBodyItems0 {
+func (o *UsersListSelectorBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ UsersListSelectorUnauthorized describes a response with status code 401, with de
 Unauthorized
 */
 type UsersListSelectorUnauthorized struct {
-	Payload *UsersListSelectorUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users list selector unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *UsersListSelectorUnauthorized) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersListSelectorUnauthorized) GetPayload() *UsersListSelectorUnauthorizedBody {
+func (o *UsersListSelectorUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersListSelectorUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UsersListSelectorUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ UsersListSelectorForbidden describes a response with status code 403, with defau
 Forbidden
 */
 type UsersListSelectorForbidden struct {
-	Payload *UsersListSelectorForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users list selector forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *UsersListSelectorForbidden) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersListSelectorForbidden) GetPayload() *UsersListSelectorForbiddenBody {
+func (o *UsersListSelectorForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersListSelectorForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UsersListSelectorForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ UsersListSelectorNotFound describes a response with status code 404, with defaul
 Not Found
 */
 type UsersListSelectorNotFound struct {
-	Payload *UsersListSelectorNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users list selector not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *UsersListSelectorNotFound) String() string {
 	return fmt.Sprintf("[GET /api/v{v}/Users/list][%d] usersListSelectorNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersListSelectorNotFound) GetPayload() *UsersListSelectorNotFoundBody {
+func (o *UsersListSelectorNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersListSelectorNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UsersListSelectorNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,237 +423,5 @@ func (o *UsersListSelectorInternalServerError) String() string {
 
 func (o *UsersListSelectorInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-UsersListSelectorBadRequestBodyItems0 users list selector bad request body items0
-swagger:model UsersListSelectorBadRequestBodyItems0
-*/
-type UsersListSelectorBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this users list selector bad request body items0
-func (o *UsersListSelectorBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users list selector bad request body items0 based on context it is used
-func (o *UsersListSelectorBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersListSelectorBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersListSelectorBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res UsersListSelectorBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UsersListSelectorForbiddenBody users list selector forbidden body
-swagger:model UsersListSelectorForbiddenBody
-*/
-type UsersListSelectorForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this users list selector forbidden body
-func (o *UsersListSelectorForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users list selector forbidden body based on context it is used
-func (o *UsersListSelectorForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersListSelectorForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersListSelectorForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res UsersListSelectorForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UsersListSelectorNotFoundBody users list selector not found body
-swagger:model UsersListSelectorNotFoundBody
-*/
-type UsersListSelectorNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this users list selector not found body
-func (o *UsersListSelectorNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users list selector not found body based on context it is used
-func (o *UsersListSelectorNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersListSelectorNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersListSelectorNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res UsersListSelectorNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UsersListSelectorOKBodyItems0 users list selector o k body items0
-swagger:model UsersListSelectorOKBodyItems0
-*/
-type UsersListSelectorOKBodyItems0 struct {
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// name
-	Name string `json:"name,omitempty"`
-}
-
-// Validate validates this users list selector o k body items0
-func (o *UsersListSelectorOKBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users list selector o k body items0 based on context it is used
-func (o *UsersListSelectorOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersListSelectorOKBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersListSelectorOKBodyItems0) UnmarshalBinary(b []byte) error {
-	var res UsersListSelectorOKBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UsersListSelectorUnauthorizedBody users list selector unauthorized body
-swagger:model UsersListSelectorUnauthorizedBody
-*/
-type UsersListSelectorUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this users list selector unauthorized body
-func (o *UsersListSelectorUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users list selector unauthorized body based on context it is used
-func (o *UsersListSelectorUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersListSelectorUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersListSelectorUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res UsersListSelectorUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

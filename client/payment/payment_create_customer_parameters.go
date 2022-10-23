@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewPaymentCreateCustomerParams creates a new PaymentCreateCustomerParams object,
@@ -62,7 +64,7 @@ PaymentCreateCustomerParams contains all the parameters to send to the API endpo
 type PaymentCreateCustomerParams struct {
 
 	// Body.
-	Body PaymentCreateCustomerBody
+	Body *models.CreateStripeCustomerCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *PaymentCreateCustomerParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the payment create customer params
-func (o *PaymentCreateCustomerParams) WithBody(body PaymentCreateCustomerBody) *PaymentCreateCustomerParams {
+func (o *PaymentCreateCustomerParams) WithBody(body *models.CreateStripeCustomerCommand) *PaymentCreateCustomerParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the payment create customer params
-func (o *PaymentCreateCustomerParams) SetBody(body PaymentCreateCustomerBody) {
+func (o *PaymentCreateCustomerParams) SetBody(body *models.CreateStripeCustomerCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *PaymentCreateCustomerParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

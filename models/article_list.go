@@ -20,7 +20,7 @@ import (
 type ArticleList struct {
 
 	// data
-	Data []*ArticleListDataItems0 `json:"data"`
+	Data []*ArticlesListDto `json:"data"`
 
 	// total count
 	TotalCount int32 `json:"totalCount,omitempty"`
@@ -111,58 +111,6 @@ func (m *ArticleList) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ArticleList) UnmarshalBinary(b []byte) error {
 	var res ArticleList
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// ArticleListDataItems0 article list data items0
-//
-// swagger:model ArticleListDataItems0
-type ArticleListDataItems0 struct {
-
-	// body
-	Body string `json:"body,omitempty"`
-
-	// create at
-	CreateAt string `json:"createAt,omitempty"`
-
-	// is csm
-	IsCsm bool `json:"isCsm"`
-
-	// message Id
-	MessageID string `json:"messageId,omitempty"`
-
-	// sender name
-	SenderName string `json:"senderName,omitempty"`
-
-	// user Id
-	UserID string `json:"userId,omitempty"`
-}
-
-// Validate validates this article list data items0
-func (m *ArticleListDataItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this article list data items0 based on context it is used
-func (m *ArticleListDataItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *ArticleListDataItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *ArticleListDataItems0) UnmarshalBinary(b []byte) error {
-	var res ArticleListDataItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

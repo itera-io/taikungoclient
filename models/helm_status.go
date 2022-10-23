@@ -12,7 +12,6 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // HelmStatus helm status
@@ -21,7 +20,7 @@ import (
 type HelmStatus struct {
 
 	// conditions
-	Conditions []*HelmStatusConditionsItems0 `json:"conditions"`
+	Conditions []*Condition `json:"conditions"`
 
 	// failures
 	Failures int64 `json:"failures,omitempty"`
@@ -118,77 +117,6 @@ func (m *HelmStatus) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *HelmStatus) UnmarshalBinary(b []byte) error {
 	var res HelmStatus
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// HelmStatusConditionsItems0 helm status conditions items0
-//
-// swagger:model HelmStatusConditionsItems0
-type HelmStatusConditionsItems0 struct {
-
-	// last transition time
-	// Format: date-time
-	LastTransitionTime *strfmt.DateTime `json:"lastTransitionTime,omitempty"`
-
-	// message
-	Message string `json:"message,omitempty"`
-
-	// reason
-	Reason string `json:"reason,omitempty"`
-
-	// status
-	Status string `json:"status,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this helm status conditions items0
-func (m *HelmStatusConditionsItems0) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateLastTransitionTime(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *HelmStatusConditionsItems0) validateLastTransitionTime(formats strfmt.Registry) error {
-	if swag.IsZero(m.LastTransitionTime) { // not required
-		return nil
-	}
-
-	if err := validate.FormatOf("lastTransitionTime", "body", "date-time", m.LastTransitionTime.String(), formats); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this helm status conditions items0 based on context it is used
-func (m *HelmStatusConditionsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *HelmStatusConditionsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *HelmStatusConditionsItems0) UnmarshalBinary(b []byte) error {
-	var res HelmStatusConditionsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

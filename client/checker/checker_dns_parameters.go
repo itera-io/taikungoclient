@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewCheckerDNSParams creates a new CheckerDNSParams object,
@@ -62,7 +64,7 @@ CheckerDNSParams contains all the parameters to send to the API endpoint
 type CheckerDNSParams struct {
 
 	// Body.
-	Body CheckerDNSBody
+	Body *models.DNSCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *CheckerDNSParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the checker Dns params
-func (o *CheckerDNSParams) WithBody(body CheckerDNSBody) *CheckerDNSParams {
+func (o *CheckerDNSParams) WithBody(body *models.DNSCommand) *CheckerDNSParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the checker Dns params
-func (o *CheckerDNSParams) SetBody(body CheckerDNSBody) {
+func (o *CheckerDNSParams) SetBody(body *models.DNSCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *CheckerDNSParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

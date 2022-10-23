@@ -32,7 +32,7 @@ type ProjectListDetailDto struct {
 	AllowSpotWorkers bool `json:"allowSpotWorkers"`
 
 	// bound users
-	BoundUsers []*ProjectListDetailDtoBoundUsersItems0 `json:"boundUsers"`
+	BoundUsers []*UserDto `json:"boundUsers"`
 
 	// certification expired at
 	CertificationExpiredAt string `json:"certificationExpiredAt,omitempty"`
@@ -207,46 +207,6 @@ func (m *ProjectListDetailDto) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *ProjectListDetailDto) UnmarshalBinary(b []byte) error {
 	var res ProjectListDetailDto
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// ProjectListDetailDtoBoundUsersItems0 project list detail dto bound users items0
-//
-// swagger:model ProjectListDetailDtoBoundUsersItems0
-type ProjectListDetailDtoBoundUsersItems0 struct {
-
-	// user Id
-	UserID string `json:"userId,omitempty"`
-
-	// user name
-	UserName string `json:"userName,omitempty"`
-}
-
-// Validate validates this project list detail dto bound users items0
-func (m *ProjectListDetailDtoBoundUsersItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this project list detail dto bound users items0 based on context it is used
-func (m *ProjectListDetailDtoBoundUsersItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *ProjectListDetailDtoBoundUsersItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *ProjectListDetailDtoBoundUsersItems0) UnmarshalBinary(b []byte) error {
-	var res ProjectListDetailDtoBoundUsersItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

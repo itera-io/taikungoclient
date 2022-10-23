@@ -6,13 +6,13 @@ package admin
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // AdminDeleteOrganizationReader is a Reader for the AdminDeleteOrganization structure.
@@ -75,7 +75,7 @@ AdminDeleteOrganizationOK describes a response with status code 200, with defaul
 Success
 */
 type AdminDeleteOrganizationOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this admin delete organization o k response has a 2xx status code
@@ -111,7 +111,7 @@ func (o *AdminDeleteOrganizationOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationOK  %+v", 200, o.Payload)
 }
 
-func (o *AdminDeleteOrganizationOK) GetPayload() interface{} {
+func (o *AdminDeleteOrganizationOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -136,7 +136,7 @@ AdminDeleteOrganizationBadRequest describes a response with status code 400, wit
 Bad Request
 */
 type AdminDeleteOrganizationBadRequest struct {
-	Payload []*AdminDeleteOrganizationBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this admin delete organization bad request response has a 2xx status code
@@ -172,7 +172,7 @@ func (o *AdminDeleteOrganizationBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AdminDeleteOrganizationBadRequest) GetPayload() []*AdminDeleteOrganizationBadRequestBodyItems0 {
+func (o *AdminDeleteOrganizationBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -197,7 +197,7 @@ AdminDeleteOrganizationUnauthorized describes a response with status code 401, w
 Unauthorized
 */
 type AdminDeleteOrganizationUnauthorized struct {
-	Payload *AdminDeleteOrganizationUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin delete organization unauthorized response has a 2xx status code
@@ -233,13 +233,13 @@ func (o *AdminDeleteOrganizationUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AdminDeleteOrganizationUnauthorized) GetPayload() *AdminDeleteOrganizationUnauthorizedBody {
+func (o *AdminDeleteOrganizationUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminDeleteOrganizationUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminDeleteOrganizationUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -260,7 +260,7 @@ AdminDeleteOrganizationForbidden describes a response with status code 403, with
 Forbidden
 */
 type AdminDeleteOrganizationForbidden struct {
-	Payload *AdminDeleteOrganizationForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin delete organization forbidden response has a 2xx status code
@@ -296,13 +296,13 @@ func (o *AdminDeleteOrganizationForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationForbidden  %+v", 403, o.Payload)
 }
 
-func (o *AdminDeleteOrganizationForbidden) GetPayload() *AdminDeleteOrganizationForbiddenBody {
+func (o *AdminDeleteOrganizationForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminDeleteOrganizationForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminDeleteOrganizationForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -323,7 +323,7 @@ AdminDeleteOrganizationNotFound describes a response with status code 404, with 
 Not Found
 */
 type AdminDeleteOrganizationNotFound struct {
-	Payload *AdminDeleteOrganizationNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this admin delete organization not found response has a 2xx status code
@@ -359,13 +359,13 @@ func (o *AdminDeleteOrganizationNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Admin/organizations/delete][%d] adminDeleteOrganizationNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AdminDeleteOrganizationNotFound) GetPayload() *AdminDeleteOrganizationNotFoundBody {
+func (o *AdminDeleteOrganizationNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *AdminDeleteOrganizationNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AdminDeleteOrganizationNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -423,234 +423,5 @@ func (o *AdminDeleteOrganizationInternalServerError) String() string {
 
 func (o *AdminDeleteOrganizationInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-AdminDeleteOrganizationBadRequestBodyItems0 admin delete organization bad request body items0
-swagger:model AdminDeleteOrganizationBadRequestBodyItems0
-*/
-type AdminDeleteOrganizationBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this admin delete organization bad request body items0
-func (o *AdminDeleteOrganizationBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin delete organization bad request body items0 based on context it is used
-func (o *AdminDeleteOrganizationBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminDeleteOrganizationBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminDeleteOrganizationBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res AdminDeleteOrganizationBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminDeleteOrganizationBody admin delete organization body
-swagger:model AdminDeleteOrganizationBody
-*/
-type AdminDeleteOrganizationBody struct {
-
-	// id
-	ID int32 `json:"id,omitempty"`
-}
-
-// Validate validates this admin delete organization body
-func (o *AdminDeleteOrganizationBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin delete organization body based on context it is used
-func (o *AdminDeleteOrganizationBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminDeleteOrganizationBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminDeleteOrganizationBody) UnmarshalBinary(b []byte) error {
-	var res AdminDeleteOrganizationBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminDeleteOrganizationForbiddenBody admin delete organization forbidden body
-swagger:model AdminDeleteOrganizationForbiddenBody
-*/
-type AdminDeleteOrganizationForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin delete organization forbidden body
-func (o *AdminDeleteOrganizationForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin delete organization forbidden body based on context it is used
-func (o *AdminDeleteOrganizationForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminDeleteOrganizationForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminDeleteOrganizationForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res AdminDeleteOrganizationForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminDeleteOrganizationNotFoundBody admin delete organization not found body
-swagger:model AdminDeleteOrganizationNotFoundBody
-*/
-type AdminDeleteOrganizationNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin delete organization not found body
-func (o *AdminDeleteOrganizationNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin delete organization not found body based on context it is used
-func (o *AdminDeleteOrganizationNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminDeleteOrganizationNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminDeleteOrganizationNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res AdminDeleteOrganizationNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AdminDeleteOrganizationUnauthorizedBody admin delete organization unauthorized body
-swagger:model AdminDeleteOrganizationUnauthorizedBody
-*/
-type AdminDeleteOrganizationUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this admin delete organization unauthorized body
-func (o *AdminDeleteOrganizationUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this admin delete organization unauthorized body based on context it is used
-func (o *AdminDeleteOrganizationUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AdminDeleteOrganizationUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AdminDeleteOrganizationUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res AdminDeleteOrganizationUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

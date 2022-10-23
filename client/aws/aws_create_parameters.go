@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // NewAwsCreateParams creates a new AwsCreateParams object,
@@ -62,7 +64,7 @@ AwsCreateParams contains all the parameters to send to the API endpoint
 type AwsCreateParams struct {
 
 	// Body.
-	Body AwsCreateBody
+	Body *models.CreateAwsCloudCommand
 
 	// V.
 	V string
@@ -121,13 +123,13 @@ func (o *AwsCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithBody adds the body to the aws create params
-func (o *AwsCreateParams) WithBody(body AwsCreateBody) *AwsCreateParams {
+func (o *AwsCreateParams) WithBody(body *models.CreateAwsCloudCommand) *AwsCreateParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the aws create params
-func (o *AwsCreateParams) SetBody(body AwsCreateBody) {
+func (o *AwsCreateParams) SetBody(body *models.CreateAwsCloudCommand) {
 	o.Body = body
 }
 
@@ -149,8 +151,10 @@ func (o *AwsCreateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 		return err
 	}
 	var res []error
-	if err := r.SetBodyParam(o.Body); err != nil {
-		return err
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
 	}
 
 	// path param v

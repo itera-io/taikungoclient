@@ -6,15 +6,13 @@ package partner
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
-	"strconv"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // PartnerBindOrganizationsReader is a Reader for the PartnerBindOrganizations structure.
@@ -77,7 +75,7 @@ PartnerBindOrganizationsOK describes a response with status code 200, with defau
 Success
 */
 type PartnerBindOrganizationsOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this partner bind organizations o k response has a 2xx status code
@@ -113,7 +111,7 @@ func (o *PartnerBindOrganizationsOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsOK  %+v", 200, o.Payload)
 }
 
-func (o *PartnerBindOrganizationsOK) GetPayload() interface{} {
+func (o *PartnerBindOrganizationsOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -138,7 +136,7 @@ PartnerBindOrganizationsBadRequest describes a response with status code 400, wi
 Bad Request
 */
 type PartnerBindOrganizationsBadRequest struct {
-	Payload []*PartnerBindOrganizationsBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this partner bind organizations bad request response has a 2xx status code
@@ -174,7 +172,7 @@ func (o *PartnerBindOrganizationsBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *PartnerBindOrganizationsBadRequest) GetPayload() []*PartnerBindOrganizationsBadRequestBodyItems0 {
+func (o *PartnerBindOrganizationsBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -199,7 +197,7 @@ PartnerBindOrganizationsUnauthorized describes a response with status code 401, 
 Unauthorized
 */
 type PartnerBindOrganizationsUnauthorized struct {
-	Payload *PartnerBindOrganizationsUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner bind organizations unauthorized response has a 2xx status code
@@ -235,13 +233,13 @@ func (o *PartnerBindOrganizationsUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *PartnerBindOrganizationsUnauthorized) GetPayload() *PartnerBindOrganizationsUnauthorizedBody {
+func (o *PartnerBindOrganizationsUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerBindOrganizationsUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PartnerBindOrganizationsUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -262,7 +260,7 @@ PartnerBindOrganizationsForbidden describes a response with status code 403, wit
 Forbidden
 */
 type PartnerBindOrganizationsForbidden struct {
-	Payload *PartnerBindOrganizationsForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner bind organizations forbidden response has a 2xx status code
@@ -298,13 +296,13 @@ func (o *PartnerBindOrganizationsForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsForbidden  %+v", 403, o.Payload)
 }
 
-func (o *PartnerBindOrganizationsForbidden) GetPayload() *PartnerBindOrganizationsForbiddenBody {
+func (o *PartnerBindOrganizationsForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerBindOrganizationsForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PartnerBindOrganizationsForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -325,7 +323,7 @@ PartnerBindOrganizationsNotFound describes a response with status code 404, with
 Not Found
 */
 type PartnerBindOrganizationsNotFound struct {
-	Payload *PartnerBindOrganizationsNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this partner bind organizations not found response has a 2xx status code
@@ -361,13 +359,13 @@ func (o *PartnerBindOrganizationsNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Partner/bindorganizations][%d] partnerBindOrganizationsNotFound  %+v", 404, o.Payload)
 }
 
-func (o *PartnerBindOrganizationsNotFound) GetPayload() *PartnerBindOrganizationsNotFoundBody {
+func (o *PartnerBindOrganizationsNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *PartnerBindOrganizationsNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(PartnerBindOrganizationsNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -425,342 +423,5 @@ func (o *PartnerBindOrganizationsInternalServerError) String() string {
 
 func (o *PartnerBindOrganizationsInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-PartnerBindOrganizationsBadRequestBodyItems0 partner bind organizations bad request body items0
-swagger:model PartnerBindOrganizationsBadRequestBodyItems0
-*/
-type PartnerBindOrganizationsBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this partner bind organizations bad request body items0
-func (o *PartnerBindOrganizationsBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner bind organizations bad request body items0 based on context it is used
-func (o *PartnerBindOrganizationsBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerBindOrganizationsBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerBindOrganizationsBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res PartnerBindOrganizationsBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerBindOrganizationsBody partner bind organizations body
-swagger:model PartnerBindOrganizationsBody
-*/
-type PartnerBindOrganizationsBody struct {
-
-	// organizations
-	Organizations []*PartnerBindOrganizationsParamsBodyOrganizationsItems0 `json:"organizations"`
-
-	// partner Id
-	PartnerID int32 `json:"partnerId,omitempty"`
-}
-
-// Validate validates this partner bind organizations body
-func (o *PartnerBindOrganizationsBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateOrganizations(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PartnerBindOrganizationsBody) validateOrganizations(formats strfmt.Registry) error {
-	if swag.IsZero(o.Organizations) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(o.Organizations); i++ {
-		if swag.IsZero(o.Organizations[i]) { // not required
-			continue
-		}
-
-		if o.Organizations[i] != nil {
-			if err := o.Organizations[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "organizations" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "organizations" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// ContextValidate validate this partner bind organizations body based on the context it is used
-func (o *PartnerBindOrganizationsBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateOrganizations(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *PartnerBindOrganizationsBody) contextValidateOrganizations(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(o.Organizations); i++ {
-
-		if o.Organizations[i] != nil {
-			if err := o.Organizations[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("body" + "." + "organizations" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("body" + "." + "organizations" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerBindOrganizationsBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerBindOrganizationsBody) UnmarshalBinary(b []byte) error {
-	var res PartnerBindOrganizationsBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerBindOrganizationsForbiddenBody partner bind organizations forbidden body
-swagger:model PartnerBindOrganizationsForbiddenBody
-*/
-type PartnerBindOrganizationsForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this partner bind organizations forbidden body
-func (o *PartnerBindOrganizationsForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner bind organizations forbidden body based on context it is used
-func (o *PartnerBindOrganizationsForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerBindOrganizationsForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerBindOrganizationsForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res PartnerBindOrganizationsForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerBindOrganizationsNotFoundBody partner bind organizations not found body
-swagger:model PartnerBindOrganizationsNotFoundBody
-*/
-type PartnerBindOrganizationsNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this partner bind organizations not found body
-func (o *PartnerBindOrganizationsNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner bind organizations not found body based on context it is used
-func (o *PartnerBindOrganizationsNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerBindOrganizationsNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerBindOrganizationsNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res PartnerBindOrganizationsNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerBindOrganizationsParamsBodyOrganizationsItems0 partner bind organizations params body organizations items0
-swagger:model PartnerBindOrganizationsParamsBodyOrganizationsItems0
-*/
-type PartnerBindOrganizationsParamsBodyOrganizationsItems0 struct {
-
-	// is bound
-	IsBound bool `json:"isBound"`
-
-	// organization Id
-	OrganizationID int32 `json:"organizationId,omitempty"`
-}
-
-// Validate validates this partner bind organizations params body organizations items0
-func (o *PartnerBindOrganizationsParamsBodyOrganizationsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner bind organizations params body organizations items0 based on context it is used
-func (o *PartnerBindOrganizationsParamsBodyOrganizationsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerBindOrganizationsParamsBodyOrganizationsItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerBindOrganizationsParamsBodyOrganizationsItems0) UnmarshalBinary(b []byte) error {
-	var res PartnerBindOrganizationsParamsBodyOrganizationsItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-PartnerBindOrganizationsUnauthorizedBody partner bind organizations unauthorized body
-swagger:model PartnerBindOrganizationsUnauthorizedBody
-*/
-type PartnerBindOrganizationsUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this partner bind organizations unauthorized body
-func (o *PartnerBindOrganizationsUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this partner bind organizations unauthorized body based on context it is used
-func (o *PartnerBindOrganizationsUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *PartnerBindOrganizationsUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *PartnerBindOrganizationsUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res PartnerBindOrganizationsUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

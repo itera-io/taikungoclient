@@ -6,13 +6,13 @@ package servers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // ServersDeleteReader is a Reader for the ServersDelete structure.
@@ -81,7 +81,7 @@ ServersDeleteOK describes a response with status code 200, with default header v
 Success
 */
 type ServersDeleteOK struct {
-	Payload interface{}
+	Payload models.Unit
 }
 
 // IsSuccess returns true when this servers delete o k response has a 2xx status code
@@ -117,7 +117,7 @@ func (o *ServersDeleteOK) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteOK  %+v", 200, o.Payload)
 }
 
-func (o *ServersDeleteOK) GetPayload() interface{} {
+func (o *ServersDeleteOK) GetPayload() models.Unit {
 	return o.Payload
 }
 
@@ -193,7 +193,7 @@ ServersDeleteBadRequest describes a response with status code 400, with default 
 Bad Request
 */
 type ServersDeleteBadRequest struct {
-	Payload []*ServersDeleteBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this servers delete bad request response has a 2xx status code
@@ -229,7 +229,7 @@ func (o *ServersDeleteBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *ServersDeleteBadRequest) GetPayload() []*ServersDeleteBadRequestBodyItems0 {
+func (o *ServersDeleteBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -254,7 +254,7 @@ ServersDeleteUnauthorized describes a response with status code 401, with defaul
 Unauthorized
 */
 type ServersDeleteUnauthorized struct {
-	Payload *ServersDeleteUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers delete unauthorized response has a 2xx status code
@@ -290,13 +290,13 @@ func (o *ServersDeleteUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *ServersDeleteUnauthorized) GetPayload() *ServersDeleteUnauthorizedBody {
+func (o *ServersDeleteUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersDeleteUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -317,7 +317,7 @@ ServersDeleteForbidden describes a response with status code 403, with default h
 Forbidden
 */
 type ServersDeleteForbidden struct {
-	Payload *ServersDeleteForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers delete forbidden response has a 2xx status code
@@ -353,13 +353,13 @@ func (o *ServersDeleteForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteForbidden  %+v", 403, o.Payload)
 }
 
-func (o *ServersDeleteForbidden) GetPayload() *ServersDeleteForbiddenBody {
+func (o *ServersDeleteForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersDeleteForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -380,7 +380,7 @@ ServersDeleteNotFound describes a response with status code 404, with default he
 Not Found
 */
 type ServersDeleteNotFound struct {
-	Payload *ServersDeleteNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this servers delete not found response has a 2xx status code
@@ -416,13 +416,13 @@ func (o *ServersDeleteNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Servers/delete][%d] serversDeleteNotFound  %+v", 404, o.Payload)
 }
 
-func (o *ServersDeleteNotFound) GetPayload() *ServersDeleteNotFoundBody {
+func (o *ServersDeleteNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *ServersDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(ServersDeleteNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -480,240 +480,5 @@ func (o *ServersDeleteInternalServerError) String() string {
 
 func (o *ServersDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-ServersDeleteBadRequestBodyItems0 servers delete bad request body items0
-swagger:model ServersDeleteBadRequestBodyItems0
-*/
-type ServersDeleteBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this servers delete bad request body items0
-func (o *ServersDeleteBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers delete bad request body items0 based on context it is used
-func (o *ServersDeleteBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersDeleteBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersDeleteBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res ServersDeleteBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersDeleteBody servers delete body
-swagger:model ServersDeleteBody
-*/
-type ServersDeleteBody struct {
-
-	// delete autoscaling servers
-	DeleteAutoscalingServers bool `json:"deleteAutoscalingServers"`
-
-	// project Id
-	ProjectID int32 `json:"projectId,omitempty"`
-
-	// server ids
-	ServerIds []int32 `json:"serverIds"`
-}
-
-// Validate validates this servers delete body
-func (o *ServersDeleteBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers delete body based on context it is used
-func (o *ServersDeleteBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersDeleteBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersDeleteBody) UnmarshalBinary(b []byte) error {
-	var res ServersDeleteBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersDeleteForbiddenBody servers delete forbidden body
-swagger:model ServersDeleteForbiddenBody
-*/
-type ServersDeleteForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers delete forbidden body
-func (o *ServersDeleteForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers delete forbidden body based on context it is used
-func (o *ServersDeleteForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersDeleteForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersDeleteForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res ServersDeleteForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersDeleteNotFoundBody servers delete not found body
-swagger:model ServersDeleteNotFoundBody
-*/
-type ServersDeleteNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers delete not found body
-func (o *ServersDeleteNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers delete not found body based on context it is used
-func (o *ServersDeleteNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersDeleteNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersDeleteNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res ServersDeleteNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-ServersDeleteUnauthorizedBody servers delete unauthorized body
-swagger:model ServersDeleteUnauthorizedBody
-*/
-type ServersDeleteUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this servers delete unauthorized body
-func (o *ServersDeleteUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this servers delete unauthorized body based on context it is used
-func (o *ServersDeleteUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ServersDeleteUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ServersDeleteUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res ServersDeleteUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }

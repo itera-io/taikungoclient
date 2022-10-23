@@ -20,7 +20,7 @@ import (
 type BindProjectGroupsToUserGroupCommand struct {
 
 	// project groups
-	ProjectGroups []*BindProjectGroupsToUserGroupCommandProjectGroupsItems0 `json:"projectGroups"`
+	ProjectGroups []*UpdateUserProjectGroupDto `json:"projectGroups"`
 
 	// user group Id
 	UserGroupID int32 `json:"userGroupId,omitempty"`
@@ -114,46 +114,6 @@ func (m *BindProjectGroupsToUserGroupCommand) MarshalBinary() ([]byte, error) {
 // UnmarshalBinary interface implementation
 func (m *BindProjectGroupsToUserGroupCommand) UnmarshalBinary(b []byte) error {
 	var res BindProjectGroupsToUserGroupCommand
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// BindProjectGroupsToUserGroupCommandProjectGroupsItems0 bind project groups to user group command project groups items0
-//
-// swagger:model BindProjectGroupsToUserGroupCommandProjectGroupsItems0
-type BindProjectGroupsToUserGroupCommandProjectGroupsItems0 struct {
-
-	// is bound
-	IsBound bool `json:"isBound"`
-
-	// project group Id
-	ProjectGroupID int32 `json:"projectGroupId,omitempty"`
-}
-
-// Validate validates this bind project groups to user group command project groups items0
-func (m *BindProjectGroupsToUserGroupCommandProjectGroupsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this bind project groups to user group command project groups items0 based on context it is used
-func (m *BindProjectGroupsToUserGroupCommandProjectGroupsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *BindProjectGroupsToUserGroupCommandProjectGroupsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *BindProjectGroupsToUserGroupCommandProjectGroupsItems0) UnmarshalBinary(b []byte) error {
-	var res BindProjectGroupsToUserGroupCommandProjectGroupsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

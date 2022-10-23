@@ -6,16 +6,13 @@ package users
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
+
+	"github.com/itera-io/taikungoclient/models"
 )
 
 // UsersUpdateUserReader is a Reader for the UsersUpdateUser structure.
@@ -129,7 +126,7 @@ UsersUpdateUserBadRequest describes a response with status code 400, with defaul
 Bad Request
 */
 type UsersUpdateUserBadRequest struct {
-	Payload []*UsersUpdateUserBadRequestBodyItems0
+	Payload []*models.Error
 }
 
 // IsSuccess returns true when this users update user bad request response has a 2xx status code
@@ -165,7 +162,7 @@ func (o *UsersUpdateUserBadRequest) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *UsersUpdateUserBadRequest) GetPayload() []*UsersUpdateUserBadRequestBodyItems0 {
+func (o *UsersUpdateUserBadRequest) GetPayload() []*models.Error {
 	return o.Payload
 }
 
@@ -190,7 +187,7 @@ UsersUpdateUserUnauthorized describes a response with status code 401, with defa
 Unauthorized
 */
 type UsersUpdateUserUnauthorized struct {
-	Payload *UsersUpdateUserUnauthorizedBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users update user unauthorized response has a 2xx status code
@@ -226,13 +223,13 @@ func (o *UsersUpdateUserUnauthorized) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *UsersUpdateUserUnauthorized) GetPayload() *UsersUpdateUserUnauthorizedBody {
+func (o *UsersUpdateUserUnauthorized) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersUpdateUserUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UsersUpdateUserUnauthorizedBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -253,7 +250,7 @@ UsersUpdateUserForbidden describes a response with status code 403, with default
 Forbidden
 */
 type UsersUpdateUserForbidden struct {
-	Payload *UsersUpdateUserForbiddenBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users update user forbidden response has a 2xx status code
@@ -289,13 +286,13 @@ func (o *UsersUpdateUserForbidden) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserForbidden  %+v", 403, o.Payload)
 }
 
-func (o *UsersUpdateUserForbidden) GetPayload() *UsersUpdateUserForbiddenBody {
+func (o *UsersUpdateUserForbidden) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersUpdateUserForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UsersUpdateUserForbiddenBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -316,7 +313,7 @@ UsersUpdateUserNotFound describes a response with status code 404, with default 
 Not Found
 */
 type UsersUpdateUserNotFound struct {
-	Payload *UsersUpdateUserNotFoundBody
+	Payload *models.ProblemDetails
 }
 
 // IsSuccess returns true when this users update user not found response has a 2xx status code
@@ -352,13 +349,13 @@ func (o *UsersUpdateUserNotFound) String() string {
 	return fmt.Sprintf("[POST /api/v{v}/Users/update][%d] usersUpdateUserNotFound  %+v", 404, o.Payload)
 }
 
-func (o *UsersUpdateUserNotFound) GetPayload() *UsersUpdateUserNotFoundBody {
+func (o *UsersUpdateUserNotFound) GetPayload() *models.ProblemDetails {
 	return o.Payload
 }
 
 func (o *UsersUpdateUserNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(UsersUpdateUserNotFoundBody)
+	o.Payload = new(models.ProblemDetails)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -416,298 +413,5 @@ func (o *UsersUpdateUserInternalServerError) String() string {
 
 func (o *UsersUpdateUserInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	return nil
-}
-
-/*
-UsersUpdateUserBadRequestBodyItems0 users update user bad request body items0
-swagger:model UsersUpdateUserBadRequestBodyItems0
-*/
-type UsersUpdateUserBadRequestBodyItems0 struct {
-
-	// code
-	Code string `json:"code,omitempty"`
-
-	// description
-	Description string `json:"description,omitempty"`
-}
-
-// Validate validates this users update user bad request body items0
-func (o *UsersUpdateUserBadRequestBodyItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users update user bad request body items0 based on context it is used
-func (o *UsersUpdateUserBadRequestBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersUpdateUserBadRequestBodyItems0) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersUpdateUserBadRequestBodyItems0) UnmarshalBinary(b []byte) error {
-	var res UsersUpdateUserBadRequestBodyItems0
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UsersUpdateUserBody users update user body
-swagger:model UsersUpdateUserBody
-*/
-type UsersUpdateUserBody struct {
-
-	// disable
-	Disable bool `json:"disable"`
-
-	// display name
-	DisplayName string `json:"displayName"`
-
-	// email
-	Email string `json:"email,omitempty"`
-
-	// force to reset password
-	ForceToResetPassword bool `json:"forceToResetPassword"`
-
-	// id
-	ID string `json:"id,omitempty"`
-
-	// is approved by partner
-	IsApprovedByPartner bool `json:"isApprovedByPartner"`
-
-	// role
-	// Enum: [100 200 250 400 6000]
-	Role int32 `json:"role,omitempty"`
-
-	// username
-	Username string `json:"username,omitempty"`
-}
-
-// Validate validates this users update user body
-func (o *UsersUpdateUserBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateRole(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-var usersUpdateUserBodyTypeRolePropEnum []interface{}
-
-func init() {
-	var res []int32
-	if err := json.Unmarshal([]byte(`[100,200,250,400,6000]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		usersUpdateUserBodyTypeRolePropEnum = append(usersUpdateUserBodyTypeRolePropEnum, v)
-	}
-}
-
-// prop value enum
-func (o *UsersUpdateUserBody) validateRoleEnum(path, location string, value int32) error {
-	if err := validate.EnumCase(path, location, value, usersUpdateUserBodyTypeRolePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (o *UsersUpdateUserBody) validateRole(formats strfmt.Registry) error {
-	if swag.IsZero(o.Role) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := o.validateRoleEnum("body"+"."+"role", "body", o.Role); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-// ContextValidate validates this users update user body based on context it is used
-func (o *UsersUpdateUserBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersUpdateUserBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersUpdateUserBody) UnmarshalBinary(b []byte) error {
-	var res UsersUpdateUserBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UsersUpdateUserForbiddenBody users update user forbidden body
-swagger:model UsersUpdateUserForbiddenBody
-*/
-type UsersUpdateUserForbiddenBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this users update user forbidden body
-func (o *UsersUpdateUserForbiddenBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users update user forbidden body based on context it is used
-func (o *UsersUpdateUserForbiddenBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersUpdateUserForbiddenBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersUpdateUserForbiddenBody) UnmarshalBinary(b []byte) error {
-	var res UsersUpdateUserForbiddenBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UsersUpdateUserNotFoundBody users update user not found body
-swagger:model UsersUpdateUserNotFoundBody
-*/
-type UsersUpdateUserNotFoundBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this users update user not found body
-func (o *UsersUpdateUserNotFoundBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users update user not found body based on context it is used
-func (o *UsersUpdateUserNotFoundBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersUpdateUserNotFoundBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersUpdateUserNotFoundBody) UnmarshalBinary(b []byte) error {
-	var res UsersUpdateUserNotFoundBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-UsersUpdateUserUnauthorizedBody users update user unauthorized body
-swagger:model UsersUpdateUserUnauthorizedBody
-*/
-type UsersUpdateUserUnauthorizedBody struct {
-
-	// detail
-	Detail string `json:"detail,omitempty"`
-
-	// instance
-	Instance string `json:"instance,omitempty"`
-
-	// status
-	Status int32 `json:"status,omitempty"`
-
-	// title
-	Title string `json:"title,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
-}
-
-// Validate validates this users update user unauthorized body
-func (o *UsersUpdateUserUnauthorizedBody) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this users update user unauthorized body based on context it is used
-func (o *UsersUpdateUserUnauthorizedBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *UsersUpdateUserUnauthorizedBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *UsersUpdateUserUnauthorizedBody) UnmarshalBinary(b []byte) error {
-	var res UsersUpdateUserUnauthorizedBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
 	return nil
 }
